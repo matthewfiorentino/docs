@@ -143,56 +143,69 @@
         "tab": "Clinical Research SOPs",
         "groups": [
           {
-            "group": "About the SOPs",
+            "group": "Clinical Research SOPs",
             "pages": [
-              "sops/overview"
-            ]
-          },
-          {
-            "group": "SOP-CR-002 — Research Team Roles",
-            "pages": [
-              "sops/cr-002-overview",
-              "sops/cr-002"
-            ]
-          },
-          {
-            "group": "SOP-CR-008 — Informed Consent",
-            "pages": [
-              "sops/cr-008-overview",
-              "sops/cr-008"
-            ]
-          },
-          {
-            "group": "Core Series — Team & Study Management",
-            "pages": [
-              "sops/team-governance",
-              "sops/study-setup"
-            ]
-          },
-          {
-            "group": "Core Series — Participants & Safety",
-            "pages": [
-              "sops/participants",
-              "sops/safety-reporting"
-            ]
-          },
-          {
-            "group": "Core Series — Data & Records",
-            "pages": [
-              "sops/data-records",
-              "sops/investigational-products"
-            ]
-          },
-          {
-            "group": "Core Series — Oversight",
-            "pages": [
-              "sops/monitoring-inspection"
-            ]
-          },
-          {
-            "group": "Sponsor-Investigator Series",
-            "pages": [
-              "sops/sponsor-investigator"
+              {
+                "group": "About the SOPs",
+                "expanded": true,
+                "pages": [
+                  "sops/overview"
+                ]
+              },
+              {
+                "group": "SOP-CR-002 — Research Team Roles",
+                "expanded": false,
+                "pages": [
+                  "sops/cr-002-overview",
+                  "sops/cr-002"
+                ]
+              },
+              {
+                "group": "SOP-CR-008 — Informed Consent",
+                "expanded": false,
+                "pages": [
+                  "sops/cr-008-overview",
+                  "sops/cr-008"
+                ]
+              },
+              {
+                "group": "Core Series — Team & Study Management",
+                "expanded": false,
+                "pages": [
+                  "sops/team-governance",
+                  "sops/study-setup"
+                ]
+              },
+              {
+                "group": "Core Series — Participants & Safety",
+                "expanded": false,
+                "pages": [
+                  "sops/participants",
+                  "sops/safety-reporting"
+                ]
+              },
+              {
+                "group": "Core Series — Data & Records",
+                "expanded": false,
+                "pages": [
+                  "sops/data-records",
+                  "sops/investigational-products"
+                ]
+              },
+              {
+                "group": "Core Series — Oversight",
+                "expanded": false,
+                "pages": [
+                  "sops/monitoring-inspection"
+                ]
+              },
+              {
+                "group": "Sponsor-Investigator Series",
+                "expanded": false,
+                "pages": [
+                  "sops/sponsor-investigator"
+                ]
+              }
             ]
           }
         ]
@@ -201,27 +214,35 @@
         "tab": "Training and Learning",
         "groups": [
           {
-            "group": "Overview",
+            "group": "Training and Learning",
             "pages": [
-              "training/overview"
-            ]
-          },
-          {
-            "group": "Requirements",
-            "pages": [
-              "training/compliance-requirements",
-              "training/research-privileges",
-              "training/external-certifications",
-              "training/study-classifier",
-              "training/cantrain"
-            ]
-          },
-          {
-            "group": "Learning",
-            "pages": [
-              "training/learning-lab",
-              "training/community-connect",
-              "training/talentlms"
+              {
+                "group": "Overview",
+                "expanded": true,
+                "pages": [
+                  "training/overview"
+                ]
+              },
+              {
+                "group": "Requirements",
+                "expanded": false,
+                "pages": [
+                  "training/compliance-requirements",
+                  "training/research-privileges",
+                  "training/external-certifications",
+                  "training/study-classifier",
+                  "training/cantrain"
+                ]
+              },
+              {
+                "group": "Learning",
+                "expanded": false,
+                "pages": [
+                  "training/learning-lab",
+                  "training/community-connect",
+                  "training/talentlms"
+                ]
+              }
             ]
           }
         ]
@@ -230,26 +251,34 @@
         "tab": "Centre for Innovative Medicine",
         "groups": [
           {
-            "group": "Overview",
+            "group": "Centre for Innovative Medicine",
             "pages": [
-              "apps/cim/overview"
-            ]
-          },
-          {
-            "group": "For Researchers",
-            "pages": [
-              "apps/cim/services",
-              "apps/cim/planning",
-              "apps/cim/is-cim-right",
-              "apps/cim/researcher-guide"
-            ]
-          },
-          {
-            "group": "For CIM Staff",
-            "pages": [
-              "apps/cim/training",
-              "apps/cim/using-cim",
-              "apps/cim/wi-sops"
+              {
+                "group": "Overview",
+                "expanded": true,
+                "pages": [
+                  "apps/cim/overview"
+                ]
+              },
+              {
+                "group": "For Researchers",
+                "expanded": false,
+                "pages": [
+                  "apps/cim/services",
+                  "apps/cim/planning",
+                  "apps/cim/is-cim-right",
+                  "apps/cim/researcher-guide"
+                ]
+              },
+              {
+                "group": "For CIM Staff",
+                "expanded": false,
+                "pages": [
+                  "apps/cim/training",
+                  "apps/cim/using-cim",
+                  "apps/cim/wi-sops"
+                ]
+              }
             ]
           }
         ]
@@ -258,31 +287,38 @@
         "tab": "Applications",
         "groups": [
           {
-            "group": "Nagano",
+            "group": "Applications",
             "pages": [
-              "apps/nagano/overview",
-              "apps/nagano/guide-00",
-              "apps/nagano/guide-01",
-              "apps/nagano/guide-02",
-              "apps/nagano/guide-03",
-              "apps/nagano/guide-04",
-              "apps/nagano/guide-05",
-              "apps/nagano/guide-06",
-              "apps/nagano/guide-07",
-              "apps/nagano/guide-08",
-              "apps/nagano/guide-09",
-              "apps/nagano/guide-10",
-              "apps/nagano/guide-11",
-              "apps/nagano/guide-12",
-              "apps/nagano/guide-13"
-            ]
-          },
-          {
-            "group": "Other Tools",
-            "pages": [
-              "apps/redcap",
-              "apps/talentlms",
-              "apps/oacis"
+              {
+                "group": "Nagano",
+                "expanded": true,
+                "pages": [
+                  "apps/nagano/overview",
+                  "apps/nagano/guide-00",
+                  "apps/nagano/guide-01",
+                  "apps/nagano/guide-02",
+                  "apps/nagano/guide-03",
+                  "apps/nagano/guide-04",
+                  "apps/nagano/guide-05",
+                  "apps/nagano/guide-06",
+                  "apps/nagano/guide-07",
+                  "apps/nagano/guide-08",
+                  "apps/nagano/guide-09",
+                  "apps/nagano/guide-10",
+                  "apps/nagano/guide-11",
+                  "apps/nagano/guide-12",
+                  "apps/nagano/guide-13"
+                ]
+              },
+              {
+                "group": "Other Tools",
+                "expanded": false,
+                "pages": [
+                  "apps/redcap",
+                  "apps/talentlms",
+                  "apps/oacis"
+                ]
+              }
             ]
           }
         ]
