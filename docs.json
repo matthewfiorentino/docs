@@ -265,14 +265,14 @@
                 "expanded": false,
                 "pages": [
                   "cim/services",
-                  "cim/planning",
-                  "cim/researcher-guide"
+                  "cim/planning"
                 ]
               },
               {
                 "group": "For CIM Staff",
                 "expanded": false,
                 "pages": [
+                  "cim/researcher-guide",
                   "cim/training",
                   "cim/wi-sops"
                 ]
