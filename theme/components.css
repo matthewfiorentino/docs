@@ -26,21 +26,16 @@
 }
 
 /* Kill sidebar scroll-fade gradient.
-   Mintlify renders this as a sticky/absolute div with pointer-events-none
-   and Tailwind gradient classes (from-background, bg-gradient-to-b etc).
-   Target every combination we know of. */
-#sidebar .pointer-events-none,
-#sidebar-content .pointer-events-none,
-#navigation-items .pointer-events-none,
-#sidebar .sticky.pointer-events-none,
-#sidebar .absolute.pointer-events-none,
-#sidebar-content .sticky.pointer-events-none,
-#sidebar-content .absolute.pointer-events-none,
-#sidebar [class*="from-"],
-#sidebar [class*="bg-gradient"],
-#sidebar-content [class*="from-"],
-#sidebar-content [class*="bg-gradient"] {
-    display: none !important;
+   Mintlify applies mask-image on the scroll container itself — not a child div.
+   That's why right-click passes through to links and element targeting fails.
+   Remove the mask entirely. */
+#sidebar,
+#sidebar-content,
+#navigation-items,
+#sidebar > *,
+#sidebar-content > * {
+    -webkit-mask-image: none !important;
+    mask-image:         none !important;
 }
 
 :where(#header, #navbar, #navbar-transition) {
