@@ -1,6 +1,6 @@
 {
   "$schema": "https://mintlify.com/docs.json",
-  "theme": "palm",
+  "theme": "luma",
   "name": "RI-MUHC Clinical Research Hub",
   "colors": {
     "primary": "#007a6e",

@@ -431,35 +431,18 @@ html.dark .ri-tag-sop   { background: rgba(157,23,77,.3);  color: #f9a8d4; }
 }
 
 /* ══════════════════════════════════════════════
-   NAVBAR
-   • Frosted-glass background
-   • Bigger logo
-   • Centered tab strip
+   NAVBAR — Luma theme
    ══════════════════════════════════════════════ */
 
-/* Frosted background */
-#navbar {
-    background: rgba(255, 255, 255, 0.96) !important;
-    backdrop-filter: blur(10px) saturate(180%) !important;
-    -webkit-backdrop-filter: blur(10px) saturate(180%) !important;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.06) !important;
-}
-html.dark #navbar {
-    background: rgba(17, 11, 56, 0.96) !important;
-    border-bottom-color: rgba(255, 255, 255, 0.06) !important;
-}
-
-/* Logo — bigger (Palm theme uses .nav-logo class) */
-.nav-logo {
-    height: 44px !important;
+/* Logo size */
+#navbar img {
+    height: 40px !important;
     width: auto !important;
-    max-height: 44px !important;
 }
 
-/* Mobile */
 @media (max-width: 1024px) {
-    .nav-logo {
-        height: 32px !important;
+    #navbar img {
+        height: 30px !important;
     }
 }
 
