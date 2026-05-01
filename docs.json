@@ -39,10 +39,11 @@
     ],
     "tabs": [
       {
-        "tab": "Getting Started",
+        "tab": "Knowledge Base",
         "groups": [
           {
             "group": "Getting Started",
+            "collapsed": false,
             "pages": [
               "kb/introduction",
               "kb/clinical-research-101",
@@ -51,14 +52,10 @@
               "kb/study-lifecycle",
               "kb/glossary"
             ]
-          }
-        ]
-      },
-      {
-        "tab": "Onboarding Guides",
-        "groups": [
+          },
           {
-            "group": "By Role",
+            "group": "Onboarding Guides",
+            "collapsed": true,
             "pages": [
               "kb/roles/pi-pathway",
               "kb/roles/pi-guide",
@@ -69,14 +66,10 @@
               "kb/roles/nurse-pathway",
               "kb/roles/onboarding"
             ]
-          }
-        ]
-      },
-      {
-        "tab": "Study Planning",
-        "groups": [
+          },
           {
             "group": "Study Planning",
+            "collapsed": true,
             "pages": [
               "kb/planning/overview",
               "kb/planning/feasibility",
@@ -93,14 +86,10 @@
               "kb/planning/budgets-contracts",
               "kb/planning/data-services"
             ]
-          }
-        ]
-      },
-      {
-        "tab": "Submission & Review",
-        "groups": [
+          },
           {
             "group": "Submission & Review",
+            "collapsed": true,
             "pages": [
               "kb/submission/overview",
               "kb/submission/preparing",
@@ -108,14 +97,10 @@
               "kb/submission/tracking-responding",
               "kb/submission/study-review"
             ]
-          }
-        ]
-      },
-      {
-        "tab": "Study Conduct",
-        "groups": [
+          },
           {
             "group": "Study Conduct",
+            "collapsed": true,
             "pages": [
               "kb/conduct/overview",
               "kb/conduct/site-setup",
@@ -135,14 +120,10 @@
               "kb/conduct/close-out",
               "kb/conduct/publications"
             ]
-          }
-        ]
-      },
-      {
-        "tab": "Governance",
-        "groups": [
+          },
           {
             "group": "Governance",
+            "collapsed": true,
             "pages": [
               "kb/governance/institutional-structure",
               "kb/governance/regulatory-framework",
