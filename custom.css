@@ -456,40 +456,10 @@ html.dark #navbar {
     max-height: 44px !important;
 }
 
-/* Tab strip — centered within its row */
-.nav-tabs {
-    margin: 0 auto !important;
-}
-
 /* Mobile */
 @media (max-width: 1024px) {
     .nav-logo {
         height: 32px !important;
-    }
-}
-
-/* ══════════════════════════════════════════════
-   SIDEBAR SEARCH
-   Desktop: lift #search-bar-entry out of the navbar
-   and pin it to the top of the sidebar panel.
-   Mobile: #search-bar-entry-mobile is already in the
-   top-right of the mobile nav — untouched.
-   ══════════════════════════════════════════════ */
-
-@media (min-width: 1024px) {
-    /* Pull the search bar out of navbar flow and fix it at sidebar-top */
-    #search-bar-entry {
-        position: fixed !important;
-        left: 1.75rem !important;                   /* sidebar px-7 padding */
-        top: calc(7rem + 0.875rem) !important;      /* below navbar + gap */
-        width: calc(19rem - 3.5rem) !important;     /* sidebar width − 2 × px-7 */
-        z-index: 29 !important;                     /* above sidebar, below navbar */
-        box-shadow: none !important;
-    }
-
-    /* Push the navigation list below the fixed search bar */
-    #navigation-items {
-        padding-top: 3.25rem !important;
     }
 }
 
