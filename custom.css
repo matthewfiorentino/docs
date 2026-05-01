@@ -154,13 +154,15 @@ html.dark a:has([data-component-part="card-content-container"]):hover {
 }
 
 /* ══════════════════════════════════════════════
-   HOME PAGE — HERO (full-bleed)
+   HOME PAGE — HERO (full content-width bleed)
    ══════════════════════════════════════════════ */
+
 .ri-hero-bleed {
-    /* Break out of Mintlify's content container */
-    width: 100vw;
-    margin-left: calc(-50vw + 50%);
-    max-width: 100vw;
+    /* Extend to content container edges (cancels Mintlify's ~2rem padding)
+       without crossing into the sidebar — use % not vw */
+    margin-left:  -2rem;
+    margin-right: -2rem;
+    width: calc(100% + 4rem);
     margin-top: -2rem;
     margin-bottom: 48px;
     position: relative;
