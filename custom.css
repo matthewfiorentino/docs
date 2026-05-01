@@ -97,6 +97,19 @@ a[href="/contacts"]:hover {
 }
 
 /* ── Tables ── */
+/* Horizontal scroll for wide tables instead of text overflow */
+.prose table,
+article table {
+    display:    block !important;
+    overflow-x: auto !important;
+    white-space: nowrap;
+}
+.prose table th,
+.prose table td,
+article table th,
+article table td {
+    white-space: normal;
+}
 table thead tr {
     background: var(--ri-heading) !important;
 }
@@ -110,15 +123,69 @@ table thead th {
 table tbody tr:nth-child(even) {
     background: rgba(0,0,0,0.03) !important;
 }
+table tbody tr {
+    transition: background 0.12s ease;
+}
+table tbody tr:hover {
+    background: rgba(0, 122, 110, 0.06) !important;
+}
+html.dark table tbody tr:hover {
+    background: rgba(0, 196, 180, 0.08) !important;
+}
 table td:first-child {
     font-weight: 600 !important;
     color:       var(--ri-heading) !important;
 }
 
-/* ── Cards — teal border on hover ── */
+/* ── Cards — lift + teal border on hover ── */
+a.card,
+a:has([data-component-part="card-content-container"]) {
+    transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease !important;
+}
 a.card:hover,
 a:has([data-component-part="card-content-container"]):hover {
+    transform:    translateY(-3px) !important;
+    box-shadow:   0 6px 20px rgba(0, 0, 0, 0.08) !important;
     border-color: var(--ri-accent) !important;
+}
+html.dark a.card:hover,
+html.dark a:has([data-component-part="card-content-container"]):hover {
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35) !important;
+}
+
+/* ── Frosted-glass navbar ── */
+#navbar,
+header[class*="sticky"] {
+    backdrop-filter:         blur(14px) saturate(160%) !important;
+    -webkit-backdrop-filter: blur(14px) saturate(160%) !important;
+    background:              rgba(255, 255, 255, 0.72) !important;
+    border-bottom:           1px solid rgba(0, 0, 0, 0.07) !important;
+}
+html.dark #navbar,
+html.dark header[class*="sticky"] {
+    background:   rgba(17, 11, 56, 0.72) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.07) !important;
+}
+
+/* ── Page content fade-in ── */
+@keyframes ri-fade-up {
+    from { opacity: 0; transform: translateY(10px); }
+    to   { opacity: 1; transform: translateY(0);    }
+}
+article {
+    animation: ri-fade-up 0.3s ease-out both;
+}
+
+/* ── Accordions — teal left bar on open ── */
+details[open],
+[data-state="open"][data-component="accordion"] {
+    border-left: 3px solid var(--ri-accent) !important;
+    padding-left: 12px !important;
+}
+
+/* ── Callout / Note / Warning / Tip boxes ── */
+[data-component="callout"] {
+    border-radius: 8px !important;
 }
 
 /* ── Steps ── */
