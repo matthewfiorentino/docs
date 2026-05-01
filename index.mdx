@@ -7,7 +7,7 @@ mode: "wide"
 <div className="ri-hero-bleed">
 <div style={{
   position: "relative",
-  minHeight: "480px",
+  minHeight: "460px",
   padding: "88px 8vw 80px",
   display: "flex",
   alignItems: "center"
@@ -23,20 +23,7 @@ mode: "wide"
     position: "absolute", inset: 0,
     background: "linear-gradient(to right, rgba(21,14,81,.93) 0%, rgba(21,14,81,.74) 44%, rgba(21,14,81,.10) 100%)"
   }}/>
-  <div style={{
-    position: "absolute", inset: 0,
-    background: "linear-gradient(110deg, rgba(0,196,180,.10) 0%, transparent 55%)",
-    pointerEvents: "none"
-  }}/>
   <div style={{position: "relative", zIndex: 1, maxWidth: "520px"}}>
-    <div style={{
-      fontSize: "10px", fontWeight: 700, letterSpacing: ".22em", textTransform: "uppercase",
-      color: "#00c4b4", marginBottom: "22px",
-      display: "flex", alignItems: "center", gap: "10px"
-    }}>
-      <span style={{display: "inline-block", width: "24px", height: "1px", background: "#00c4b4", opacity: .8}}/>
-      RI-MUHC · Research Institute
-    </div>
     <h1 style={{
       color: "#fff", fontSize: "clamp(38px,4.5vw,60px)", fontWeight: 800,
       lineHeight: 1.04, letterSpacing: "-.03em", margin: "0 0 20px"
@@ -66,9 +53,7 @@ mode: "wide"
 </div>
 </div>
 
-{/* ── LATEST UPDATES ── */}
-<span className="ri-section-kicker">Latest updates</span>
-<h2 className="ri-section-h2">What's new</h2>
+## What's new
 
 <div className="ri-updates">
   <div className="ri-update-bar">
@@ -97,163 +82,189 @@ mode: "wide"
   </div>
 </div>
 
-{/* ── BENTO GRID ── */}
-<span className="ri-section-kicker">Documentation</span>
-<h2 className="ri-section-h2">Explore the Hub</h2>
+## Explore the Hub
 
 <div className="ri-bento">
 
-  {/* Knowledge Base — large anchor */}
   <a href="/kb/introduction" className="ri-bento-anchor">
     <div className="ri-bento-anchor-body">
-      <div className="ri-bento-anchor-eye">Knowledge Base</div>
-      <div className="ri-bento-anchor-title">Guidance for every stage of a clinical study</div>
+      <div className="ri-bento-anchor-title">Knowledge Base</div>
       <div className="ri-bento-anchor-desc">Regulatory context, operational guides, and Quebec-specific guidance — from concept and feasibility through close-out and archiving.</div>
-      <div className="ri-bento-anchor-cta">Explore the Knowledge Base →</div>
+      <div className="ri-bento-anchor-cta">Explore the Knowledge Base</div>
     </div>
   </a>
 
-  {/* SOPs — col 2, rows 1–2 */}
   <a href="/sops/overview" className="ri-bento-card ri-bento-c2r12">
     <div className="ri-bento-card-body">
-      <div className="ri-bento-card-eye">SOPs</div>
-      <div className="ri-bento-card-title">Clinical Research Standard Operating Procedures</div>
+      <div className="ri-bento-card-title">Clinical Research SOPs</div>
       <div className="ri-bento-card-desc">Plain-language summaries and key points for all RI-MUHC clinical research SOPs, with downloadable appendices.</div>
-      <div className="ri-bento-card-cta">View SOPs →</div>
+      <div className="ri-bento-card-cta">View SOPs</div>
     </div>
   </a>
 
-  {/* Training — col 3, row 1 */}
   <a href="/training/overview" className="ri-bento-card ri-bento-c3r1">
     <div className="ri-bento-card-body">
-      <div className="ri-bento-card-eye">Training</div>
-      <div className="ri-bento-card-title">Training & Compliance Requirements</div>
-      <div className="ri-bento-card-cta">View requirements →</div>
+      <div className="ri-bento-card-title">Training & Compliance</div>
+      <div className="ri-bento-card-cta">View requirements</div>
     </div>
   </a>
 
-  {/* CIM — col 3, row 2 */}
   <a href="/cim/overview" className="ri-bento-card ri-bento-c3r2">
     <div className="ri-bento-card-body">
-      <div className="ri-bento-card-eye">Centre for Innovative Medicine</div>
-      <div className="ri-bento-card-title">CIM Services & Platforms</div>
-      <div className="ri-bento-card-cta">Explore CIM →</div>
+      <div className="ri-bento-card-title">Centre for Innovative Medicine</div>
+      <div className="ri-bento-card-cta">Explore CIM</div>
     </div>
   </a>
 
-  {/* Nagano — col 2–3, row 3 */}
   <a href="/apps/nagano/overview" className="ri-bento-card ri-bento-c23r3">
     <div className="ri-bento-card-body">
-      <div className="ri-bento-card-eye">Platform Guide</div>
       <div className="ri-bento-card-title">Nagano — Research Submission & Management</div>
       <div className="ri-bento-card-desc">Step-by-step instructions for submitting and managing clinical research projects in Nagano, the RI-MUHC research platform.</div>
-      <div className="ri-bento-card-cta">Open Nagano guide →</div>
+      <div className="ri-bento-card-cta">Open Nagano guide</div>
     </div>
   </a>
 
 </div>
 
-{/* ── ROLE CARDS ── */}
-<span className="ri-section-kicker">Quick start</span>
-<h2 className="ri-section-h2">Where do you fit in?</h2>
+## The research journey
 
-<div className="ri-role-grid">
-  <a href="/kb/roles/pi-pathway" className="ri-role-card">
-    <div className="ri-role-card-body">
-      <div className="ri-role-name">PI / Qualified Investigator</div>
-      <div className="ri-role-body">Your accountability map — prerequisites, what only you sign, and obligations from submission through close-out.</div>
-      <div className="ri-role-cta">View pathway →</div>
-    </div>
+The five phases of a clinical study at the RI-MUHC — from first concept through archiving.
+
+<div className="ri-journey">
+  <a href="/kb/planning/feasibility" className="ri-journey-step">
+    <span className="ri-journey-num">1</span>
+    <span className="ri-journey-label">Plan</span>
+    <span className="ri-journey-sub">Feasibility, credentials, Health Canada</span>
   </a>
-  <a href="/kb/roles/crc-pathway" className="ri-role-card">
-    <div className="ri-role-card-body">
-      <div className="ri-role-name">Clinical Research Coordinator</div>
-      <div className="ri-role-body">Training pathway and day-to-day operational reference, organized by study stage.</div>
-      <div className="ri-role-cta">View pathway →</div>
-    </div>
+  <a href="/kb/submission/preparing" className="ri-journey-step">
+    <span className="ri-journey-num">2</span>
+    <span className="ri-journey-label">Submit</span>
+    <span className="ri-journey-sub">Nagano F11, REB, MUHC Authorization</span>
   </a>
-  <a href="/kb/roles/nurse-pathway" className="ri-role-card">
-    <div className="ri-role-card-body">
-      <div className="ri-role-name">Research Nurse</div>
-      <div className="ri-role-body">OIIQ obligations, reserved acts, and nursing-specific guidance for licensed nurses on a study team.</div>
-      <div className="ri-role-cta">View pathway →</div>
-    </div>
+  <a href="/kb/conduct/site-setup" className="ri-journey-step">
+    <span className="ri-journey-num">3</span>
+    <span className="ri-journey-label">Activate</span>
+    <span className="ri-journey-sub">SIV, delegation log, team setup</span>
   </a>
-  <a href="/kb/roles/onboarding" className="ri-role-card">
-    <div className="ri-role-card-body">
-      <div className="ri-role-name">Research Trainee</div>
-      <div className="ri-role-body">What's required before you start and how delegation works within your training scope.</div>
-      <div className="ri-role-cta">View guide →</div>
-    </div>
+  <a href="/kb/conduct/overview" className="ri-journey-step">
+    <span className="ri-journey-num">4</span>
+    <span className="ri-journey-label">Conduct</span>
+    <span className="ri-journey-sub">Consent, enrollment, safety, monitoring</span>
   </a>
-  <a href="/kb/clinical-research-101" className="ri-role-card">
-    <div className="ri-role-card-body">
-      <div className="ri-role-name">New to Clinical Research</div>
-      <div className="ri-role-body">Regulatory frameworks, key roles, and Quebec-specific obligations — the foundation for everything else.</div>
-      <div className="ri-role-cta">Start here →</div>
-    </div>
-  </a>
-  <a href="/cim/researcher-guide" className="ri-role-card">
-    <div className="ri-role-card-body">
-      <div className="ri-role-name">CIM Staff</div>
-      <div className="ri-role-body">Role tracks, responsibilities, and the training layers that apply to staff working at the Centre for Innovative Medicine.</div>
-      <div className="ri-role-cta">View guide →</div>
-    </div>
+  <a href="/kb/conduct/close-out" className="ri-journey-step">
+    <span className="ri-journey-num">5</span>
+    <span className="ri-journey-label">Close Out</span>
+    <span className="ri-journey-sub">COV, archiving, reporting</span>
   </a>
 </div>
 
-{/* ── FAQ ── */}
-<div className="ri-faq-grid">
-  <div>
-    <span className="ri-section-kicker">FAQ</span>
-    <h2 className="ri-section-h2">Frequently asked questions</h2>
-    <p style={{fontSize: "13.5px", color: "#666", lineHeight: 1.6, marginTop: 0}}>Common questions from investigators and coordinators starting out at the RI-MUHC.</p>
-  </div>
-  <AccordionGroup>
-    <Accordion title="Where do I start if I want to conduct a study at the MUHC?">
-      Start with a [feasibility assessment](/kb/planning/feasibility) — before any submission, confirm that your protocol is scientifically and ethically sound, that your team has the required qualifications, and that the facilities and patient population are available. Once ready, submissions go through **Nagano** using the F11 form, which simultaneously triggers REB review and institutional feasibility review. Confirm your Human Research Privileges or Researcher Status before any activities begin.
-    </Accordion>
-    <Accordion title="What's the difference between the REB and the Personne mandatée?">
-      The **Research Ethics Board (REB)** conducts the scientific and ethics review — participant safety, informed consent, risk–benefit ratio, and methodological soundness. REB approval is valid for one year and must be renewed annually.
+## Where do you fit in?
 
-      The **Personne mandatée** is the MUHC institutional authority who issues the final authorization to conduct research. This authorization is granted only after all reviews are complete — REB approval, feasibility reviews, and any required Health Canada approvals. Conditional REB approval is not sufficient. The two roles are independent — REB approval does not automatically confer MUHC authorization.
-    </Accordion>
-    <Accordion title="Does my study need Health Canada approval?">
-      It depends on whether your study involves an investigational product. **Investigational drug or biologic** → Clinical Trial Application (CTA), No Objection Letter (NOL). **Medical device** (Class II, III, or IV) → Investigational Testing Authorization (ITA). **Natural health product** → NHP CTA, Notice of Authorization (NOA).
+<Tabs>
+  <Tab title="PI / Investigator">
+    Your core obligation before submitting: current **Human Research Privileges** (CPDP members) or **Researcher Status** (non-CPDP), institutional training at the correct level for your study type, and a feasibility assessment confirming your site can support the protocol.
 
-      Observational studies and studies using biological specimens only — with no investigational product — do not require a Health Canada submission. When in doubt, contact the Research Facilitator early in your planning process.
-    </Accordion>
-    <Accordion title="What training do I need to join a study team?">
-      Training requirements depend on study type. All research staff must complete the **RI-MUHC SOP Reader** (tracked acknowledgement of each applicable SOP via TalentLMS) and the **Competency Assessment** (renewed every 2 years for interventional studies, every 5 years for observational or retrospective work).
+    - [Verify credentials and training requirements](/training/compliance-requirements)
+    - [Run a feasibility assessment](/kb/planning/feasibility)
+    - [Prepare your Nagano F11 submission](/kb/submission/preparing)
+    - [Full PI / QI pathway →](/kb/roles/pi-pathway)
+  </Tab>
+  <Tab title="Coordinator">
+    No team member may perform any study task before appearing on the Task Delegation Log with documented training and QI/PI countersignature. Training requirements depend on your study type — drug trials require GCP and Division 5; device trials require GCP and ISO 14155.
 
-      For drug studies (Level I), **ICH GCP** and **Health Canada Division 5** training are also required. Device studies (Level II) require GCP and **ISO 14155**. No team member may perform any study task before their training is documented and they appear on the Task Delegation Log. See [Training Requirements](/training/compliance-requirements).
-    </Accordion>
-    <Accordion title="What is a Task Delegation Log and why does it matter?">
-      The **Task Delegation Log (TDL)** is the central compliance document for every study at the RI-MUHC. It records who is authorized to perform which tasks and confirms that each person has the required training. No person may perform any study task before they appear on the TDL, their training is documented, and the QI/PI has countersigned their entry.
+    - [Check training requirements for your study level](/training/compliance-requirements)
+    - [Understand the Task Delegation Log](/kb/conduct/site-setup)
+    - [Day-to-day operational guidance by study stage](/kb/roles/crc-pathway)
+    - [Full CRC pathway →](/kb/roles/crc-pathway)
+  </Tab>
+  <Tab title="Research Nurse">
+    Licensed nurses on study teams must understand OIIQ obligations, which reserved acts can be delegated within a research protocol, and the training requirements that apply at your study level.
 
-      The TDL is an inspection-facing document — during an audit or sponsor monitoring visit, it will be one of the first documents reviewed. Gaps (tasks performed before delegation, undocumented training, missing signatures) are among the most common inspection findings.
-    </Accordion>
-    <Accordion title="How does a new researcher get Human Research Privileges or Researcher Status?">
-      **Human Research Privileges** are required for CPDP members (physicians and dentists) acting as QI or PI on studies involving medical oversight — drug trials, device studies, or protocols involving acts reserved to physicians. **Researcher Status** applies to non-CPDP researchers (PhDs, nurses, physiotherapists) conducting studies that do not require medical oversight.
+    - [OIIQ obligations, reserved acts, and delegation scope](/kb/roles/nurse-pathway)
+    - [Training requirements by study level](/training/compliance-requirements)
+    - [Task Delegation Log — what it covers and why it matters](/kb/conduct/site-setup)
+  </Tab>
+  <Tab title="Trainee">
+    Research trainees — students, residents, fellows — must complete required training before any study tasks and cannot conduct research independently. All tasks must be explicitly scoped on the Task Delegation Log.
 
-      Both are applied for through TalentLMS and managed by the Performance Office. Applications are typically processed within 1–5 business days. Contact [riprograms@muhc.mcgill.ca](mailto:riprograms@muhc.mcgill.ca) or speak with the Research Facilitator.
-    </Accordion>
-    <Accordion title="Can a fellow or rotating resident be on my study team?">
-      Yes, but with important restrictions. Fellows and rotating residents **cannot conduct research independently** or serve as QI/PI backup. Any medical acts they perform as part of a study must be supervised by a QI/PI or qualified Sub-Investigator who holds Human Research Privileges. They must still appear on the Task Delegation Log with their training documented, and their delegation must be clearly scoped to tasks appropriate to their role.
+    - [What is required before you start](/kb/roles/onboarding)
+    - [How delegation works within your training scope](/kb/roles/onboarding)
+    - [Training requirements](/training/compliance-requirements)
+  </Tab>
+  <Tab title="New to Research">
+    Start with the regulatory framework and key roles before diving into the operational guides. Understanding who does what — and why — makes everything else easier to navigate.
 
-      Because residents and fellows rotate, their departure must be tracked and the TDL updated promptly.
-    </Accordion>
-    <Accordion title="What do I do if I identify a protocol deviation?">
-      First, **document it and notify the Sponsor as soon as possible**. Then classify the deviation: minor deviations are logged and reported to the REB at annual renewal; major deviations must be reported to the REB within 15 days with a CAPA; critical deviations within 7 days with a CAPA.
+    - [Clinical Research 101 — frameworks, roles, Quebec law](/kb/clinical-research-101)
+    - [The study lifecycle from concept to archiving](/kb/study-lifecycle)
+    - [Key regulations and guidelines at the RI-MUHC](/kb/planning/regulations)
+  </Tab>
+</Tabs>
 
-      A CAPA (Corrective and Preventive Action) form is required for major and critical deviations — submit to QA and include with the REB deviation report. Remove all participant nominative information and use study number only. See [Reportable Events and Protocol Deviations](/kb/conduct/reportable-events).
-    </Accordion>
-  </AccordionGroup>
+## Keep learning
+
+<div className="ri-learn-grid">
+  <a href="/kb/clinical-research-101" className="ri-learn-card">
+    <div className="ri-learn-title">Clinical Research 101</div>
+    <div className="ri-learn-desc">Regulatory frameworks, key roles, and Quebec-specific obligations — the foundation for everything else.</div>
+  </a>
+  <a href="/kb/study-lifecycle" className="ri-learn-card">
+    <div className="ri-learn-title">The Study Lifecycle</div>
+    <div className="ri-learn-desc">How a study moves from concept to activation to close-out — and what happens at each stage.</div>
+  </a>
+  <a href="/kb/planning/regulations" className="ri-learn-card">
+    <div className="ri-learn-title">Regulations & Guidelines</div>
+    <div className="ri-learn-desc">ICH E6(R3), Health Canada Division 5, ISO 14155, TCPS2, and Quebec Law 25 — what applies and when.</div>
+  </a>
+  <a href="/apps/nagano/overview" className="ri-learn-card">
+    <div className="ri-learn-title">Nagano Platform Guide</div>
+    <div className="ri-learn-desc">Step-by-step instructions for every submission type — F11, amendments, renewals, and closure.</div>
+  </a>
 </div>
 
-{/* ── NEW RESEARCHER STEPS ── */}
-<span className="ri-section-kicker">Getting started</span>
-<h2 className="ri-section-h2">Starting a new study?</h2>
+## Frequently asked questions
+
+<AccordionGroup>
+  <Accordion title="Where do I start if I want to conduct a study at the MUHC?">
+    Start with a [feasibility assessment](/kb/planning/feasibility) — before any submission, confirm that your protocol is scientifically and ethically sound, that your team has the required qualifications, and that the facilities and patient population are available. Once ready, submissions go through **Nagano** using the F11 form, which simultaneously triggers REB review and institutional feasibility review. Confirm your Human Research Privileges or Researcher Status before any activities begin.
+  </Accordion>
+  <Accordion title="What's the difference between the REB and the Personne mandatée?">
+    The **Research Ethics Board (REB)** conducts the scientific and ethics review — participant safety, informed consent, risk–benefit ratio, and methodological soundness. REB approval is valid for one year and must be renewed annually.
+
+    The **Personne mandatée** is the MUHC institutional authority who issues the final authorization to conduct research. This authorization is granted only after all reviews are complete — REB approval, feasibility reviews, and any required Health Canada approvals. Conditional REB approval is not sufficient. The two roles are independent — REB approval does not automatically confer MUHC authorization.
+  </Accordion>
+  <Accordion title="Does my study need Health Canada approval?">
+    It depends on whether your study involves an investigational product. **Investigational drug or biologic** → Clinical Trial Application (CTA), No Objection Letter (NOL). **Medical device** (Class II, III, or IV) → Investigational Testing Authorization (ITA). **Natural health product** → NHP CTA, Notice of Authorization (NOA).
+
+    Observational studies and studies using biological specimens only — with no investigational product — do not require a Health Canada submission. When in doubt, contact the Research Facilitator early in your planning process.
+  </Accordion>
+  <Accordion title="What training do I need to join a study team?">
+    Training requirements depend on study type. All research staff must complete the **RI-MUHC SOP Reader** (tracked acknowledgement of each applicable SOP via TalentLMS) and the **Competency Assessment** (renewed every 2 years for interventional studies, every 5 years for observational or retrospective work).
+
+    For drug studies (Level I), **ICH GCP** and **Health Canada Division 5** training are also required. Device studies (Level II) require GCP and **ISO 14155**. No team member may perform any study task before their training is documented and they appear on the Task Delegation Log. See [Training Requirements](/training/compliance-requirements).
+  </Accordion>
+  <Accordion title="What is a Task Delegation Log and why does it matter?">
+    The **Task Delegation Log (TDL)** is the central compliance document for every study at the RI-MUHC. It records who is authorized to perform which tasks and confirms that each person has the required training. No person may perform any study task before they appear on the TDL, their training is documented, and the QI/PI has countersigned their entry.
+
+    The TDL is an inspection-facing document — during an audit or sponsor monitoring visit, it will be one of the first documents reviewed. Gaps (tasks performed before delegation, undocumented training, missing signatures) are among the most common inspection findings.
+  </Accordion>
+  <Accordion title="How does a new researcher get Human Research Privileges or Researcher Status?">
+    **Human Research Privileges** are required for CPDP members (physicians and dentists) acting as QI or PI on studies involving medical oversight — drug trials, device studies, or protocols involving acts reserved to physicians. **Researcher Status** applies to non-CPDP researchers (PhDs, nurses, physiotherapists) conducting studies that do not require medical oversight.
+
+    Both are applied for through TalentLMS and managed by the Performance Office. Applications are typically processed within 1–5 business days. Contact [riprograms@muhc.mcgill.ca](mailto:riprograms@muhc.mcgill.ca) or speak with the Research Facilitator.
+  </Accordion>
+  <Accordion title="Can a fellow or rotating resident be on my study team?">
+    Yes, but with important restrictions. Fellows and rotating residents **cannot conduct research independently** or serve as QI/PI backup. Any medical acts they perform as part of a study must be supervised by a QI/PI or qualified Sub-Investigator who holds Human Research Privileges. They must still appear on the Task Delegation Log with their training documented, and their delegation must be clearly scoped to tasks appropriate to their role.
+
+    Because residents and fellows rotate, their departure must be tracked and the TDL updated promptly.
+  </Accordion>
+  <Accordion title="What do I do if I identify a protocol deviation?">
+    First, **document it and notify the Sponsor as soon as possible**. Then classify the deviation: minor deviations are logged and reported to the REB at annual renewal; major deviations must be reported to the REB within 15 days with a CAPA; critical deviations within 7 days with a CAPA.
+
+    A CAPA (Corrective and Preventive Action) form is required for major and critical deviations — submit to QA and include with the REB deviation report. Remove all participant nominative information and use study number only. See [Reportable Events and Protocol Deviations](/kb/conduct/reportable-events).
+  </Accordion>
+</AccordionGroup>
+
+## Starting a new study?
 
 <Steps>
   <Step title="Confirm your credentials">
@@ -273,3 +284,11 @@ mode: "wide"
 <Note>
   A study cannot begin until the **Personne mandatée** grants MUHC Authorization. REB approval alone does not authorize research activities — both approvals must be in your ISF before any study procedures begin.
 </Note>
+
+<div className="ri-contact-band">
+  <div>
+    <div className="ri-contact-heading">Questions about your study?</div>
+    <div className="ri-contact-body">The Research Facilitator is your first contact for study setup, regulatory questions, and institutional processes at the RI-MUHC.</div>
+  </div>
+  <a href="/contacts" className="ri-contact-btn">Get in touch</a>
+</div>
