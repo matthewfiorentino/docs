@@ -39,10 +39,10 @@
     ],
     "tabs": [
       {
-        "tab": "Get Started",
+        "tab": "Getting Started",
         "groups": [
           {
-            "group": "Get Started",
+            "group": "Getting Started",
             "pages": [
               "kb/introduction",
               "kb/clinical-research-101",
@@ -55,7 +55,7 @@
         ]
       },
       {
-        "tab": "By Role",
+        "tab": "Onboarding Guides",
         "groups": [
           {
             "group": "By Role",
@@ -73,7 +73,7 @@
         ]
       },
       {
-        "tab": "Planning",
+        "tab": "Study Planning",
         "groups": [
           {
             "group": "Study Planning",
@@ -97,7 +97,7 @@
         ]
       },
       {
-        "tab": "Submission",
+        "tab": "Submission & Review",
         "groups": [
           {
             "group": "Submission & Review",
@@ -112,7 +112,7 @@
         ]
       },
       {
-        "tab": "Conduct",
+        "tab": "Study Conduct",
         "groups": [
           {
             "group": "Study Conduct",
@@ -236,7 +236,7 @@
         ]
       },
       {
-        "tab": "CIM",
+        "tab": "Centre for Innovative Medicine",
         "groups": [
           {
             "group": "Overview",
