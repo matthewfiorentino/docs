@@ -25,6 +25,38 @@ Three articles of the CCQ are directly relevant to research consent:
 
 ## Age of consent in Quebec
 
+```mermaid
+flowchart TD
+    A[Potential participant] --> B{Age?}
+
+    B -->|18 or over| C{Capable of\nfree & enlightened\nconsent?}
+    B -->|14 – 17| D{Minimal risk\n& REB-approved\nexception?}
+    B -->|Under 14| E[Parental authority\nor tutor consents\nAssent from minor]
+
+    C -->|Yes| F([Self-consent])
+    C -->|No| G[LAR consents\nAssent if capable]
+
+    D -->|Yes – REB approved| H([May self-consent])
+    D -->|No| I[Parental authority\nor tutor consents\nAssent from minor]
+
+    G --> J{Participant\nobjects?}
+    J -->|Yes| K([Cannot enrol —\nCCQ Art. 21])
+    J -->|No| L([Enrol with\nLAR consent])
+
+    style A  fill:#150e51,color:#fff,stroke:none
+    style B  fill:#1a1466,color:#fff,stroke:none
+    style C  fill:#1a1466,color:#fff,stroke:none
+    style D  fill:#1a1466,color:#fff,stroke:none
+    style J  fill:#1a1466,color:#fff,stroke:none
+    style F  fill:#007a6e,color:#fff,stroke:none
+    style H  fill:#007a6e,color:#fff,stroke:none
+    style L  fill:#007a6e,color:#fff,stroke:none
+    style E  fill:#00c4b4,color:#fff,stroke:none
+    style I  fill:#00c4b4,color:#fff,stroke:none
+    style G  fill:#00c4b4,color:#fff,stroke:none
+    style K  fill:#c0392b,color:#fff,stroke:none
+```
+
 **The age of majority for research consent in Quebec is 18, not 16.** This is a common source of confusion for teams who have worked in other provinces. A 17-year-old patient can consent to their own medical care in Quebec but cannot independently consent to research participation unless the minimal-risk exception expressly applies and the REB has approved it.
 
 | Situation | Rule |

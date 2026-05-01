@@ -7,6 +7,32 @@ Approval is granted. Authorization is in hand. But a study is not running yet â€
 
 ## The activation sequence
 
+```mermaid
+flowchart TD
+    SUB[Study submitted\nvia Nagano]
+
+    SUB --> REB[REB Review\nscientific + ethics]
+    SUB --> MUHCF[MUHC Feasibility\nReview]
+    SUB --> HC[Health Canada\nCTA / ITA Review\ndrug & device only]
+
+    REB --> AUTH[MUHC Authorization\nPersonne mandatÃ©e]
+    MUHCF --> AUTH
+    HC --> AUTH
+
+    AUTH --> SIV[Site Initiation\nVisit]
+    SIV --> GO[Sponsor Go\nLetter]
+    GO --> FP([First participant\nmay be approached])
+
+    style SUB fill:#150e51,color:#fff,stroke:none
+    style HC  fill:#150e51,color:#fff,stroke:none
+    style REB fill:#007a6e,color:#fff,stroke:none
+    style MUHCF fill:#007a6e,color:#fff,stroke:none
+    style AUTH fill:#1a1466,color:#fff,stroke:none
+    style SIV  fill:#007a6e,color:#fff,stroke:none
+    style GO   fill:#007a6e,color:#fff,stroke:none
+    style FP   fill:#00c4b4,color:#fff,stroke:none
+```
+
 <Steps>
   <Step title="Health Canada authorization (drug and device studies only)">
     No Objection Letter (NOL) for drug studies, Notice of Authorization (NOA) for natural health products, or Investigational Testing Authorization (ITA) for medical devices. Runs in parallel with Nagano submission. Must be received before MUHC Authorization can be granted.

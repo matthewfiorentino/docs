@@ -35,6 +35,37 @@ When you are hired, you receive the RI-MUHC Research Staff Handbook by email. Co
 
 Before you can be delegated tasks on a study, you need SOP training, regulatory certification (if your level requires it), and a signed Task Delegation Log. These requirements apply to everyone — regardless of role.
 
+```mermaid
+flowchart TD
+    LVL{Study level?}
+
+    LVL -->|Level I — Drug| GCP1[ICH GCP\nvia CITI]
+    LVL -->|Level I — Drug| HC[Health Canada\nDivision 5]
+    LVL -->|Level II — Device| GCP2[ICH GCP or\nISO 14155]
+    LVL -->|Levels III–V| SKIP[External certs\nnot required]
+
+    GCP1 --> SOP[SOP Reader\nall units for your level\nno expiry]
+    HC   --> SOP
+    GCP2 --> SOP
+    SKIP --> SOP
+
+    SOP --> COMP[Competency\nAssessment\n2 yr I–III · 5 yr IV–V]
+    COMP --> TDL([Signed Task\nDelegation Log])
+    TDL --> PROTO[Protocol-specific\ntraining from Sponsor/PI]
+    PROTO --> ACTIVE([Active on study])
+
+    style LVL   fill:#1a1466,color:#fff,stroke:none
+    style GCP1  fill:#007a6e,color:#fff,stroke:none
+    style HC    fill:#007a6e,color:#fff,stroke:none
+    style GCP2  fill:#007a6e,color:#fff,stroke:none
+    style SKIP  fill:#150e51,color:#fff,stroke:none
+    style SOP   fill:#150e51,color:#fff,stroke:none
+    style COMP  fill:#150e51,color:#fff,stroke:none
+    style TDL   fill:#007a6e,color:#fff,stroke:none
+    style PROTO fill:#00c4b4,color:#fff,stroke:none
+    style ACTIVE fill:#00c4b4,color:#fff,stroke:none
+```
+
 <Steps>
   <Step title="Complete GCP certification (Levels I and II only)">
     ICH Good Clinical Practice training through any recognized provider — the RI-MUHC has a CITI licence (free for staff). Certificates valid for 3 years from other providers are recognized for 2 years at the RI-MUHC. For Level II (medical device studies), completing ICH-GCP satisfies the requirement.
