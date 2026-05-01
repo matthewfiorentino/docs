@@ -257,24 +257,24 @@
                 "group": "Overview",
                 "expanded": true,
                 "pages": [
-                  "apps/cim/overview"
+                  "cim/overview"
                 ]
               },
               {
                 "group": "For Researchers",
                 "expanded": false,
                 "pages": [
-                  "apps/cim/services",
-                  "apps/cim/planning",
-                  "apps/cim/researcher-guide"
+                  "cim/services",
+                  "cim/planning",
+                  "cim/researcher-guide"
                 ]
               },
               {
                 "group": "For CIM Staff",
                 "expanded": false,
                 "pages": [
-                  "apps/cim/training",
-                  "apps/cim/wi-sops"
+                  "cim/training",
+                  "cim/wi-sops"
                 ]
               }
             ]
