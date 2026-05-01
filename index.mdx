@@ -4,161 +4,273 @@ description: "The central resource for clinical research at the RI-MUHC — guid
 mode: "wide"
 ---
 
+{/* ── HERO ── */}
 <div style={{
-  background: "linear-gradient(135deg, #150e51 0%, #007a6e 100%)",
-  borderRadius: "16px",
-  padding: "64px 48px",
-  marginBottom: "48px",
   position: "relative",
-  overflow: "hidden"
+  minHeight: "460px",
+  padding: "80px 48px 72px",
+  marginBottom: "48px",
+  borderRadius: "12px",
+  overflow: "hidden",
+  display: "flex",
+  alignItems: "center"
 }}>
   <div style={{
     position: "absolute", inset: 0,
-    backgroundImage: "radial-gradient(circle at 80% 20%, rgba(0,196,180,0.15) 0%, transparent 60%)",
+    backgroundImage: "url('/images/hero.png')",
+    backgroundSize: "cover",
+    backgroundPosition: "center 30%",
+    backgroundAttachment: "fixed",
+    borderRadius: "12px"
+  }}/>
+  <div style={{
+    position: "absolute", inset: 0,
+    background: "linear-gradient(to right, rgba(21,14,81,.92) 0%, rgba(21,14,81,.72) 42%, rgba(21,14,81,.12) 100%)",
+    borderRadius: "12px"
+  }}/>
+  <div style={{
+    position: "absolute", inset: 0,
+    background: "linear-gradient(110deg, rgba(0,196,180,.10) 0%, transparent 55%)",
     pointerEvents: "none"
-  }} />
-  <div style={{maxWidth: "640px", position: "relative"}}>
+  }}/>
+  <div style={{position: "relative", zIndex: 1, maxWidth: "520px"}}>
     <div style={{
-      display: "inline-block",
-      background: "rgba(255,255,255,0.12)",
-      color: "rgba(255,255,255,0.9)",
-      fontSize: "0.75rem",
-      fontWeight: 600,
-      letterSpacing: "0.08em",
-      textTransform: "uppercase",
-      padding: "4px 14px",
-      borderRadius: "20px",
-      marginBottom: "20px"
-    }}>RI-MUHC · Research Institute</div>
-    <h1 style={{
-      color: "#ffffff",
-      fontSize: "2.6rem",
-      fontWeight: 700,
-      lineHeight: 1.15,
-      marginBottom: "16px",
-      marginTop: 0
-    }}>Clinical Research Hub</h1>
-    <p style={{
-      color: "rgba(255,255,255,0.82)",
-      fontSize: "1.1rem",
-      lineHeight: 1.6,
-      marginBottom: "32px",
-      marginTop: 0
+      fontSize: "10px", fontWeight: 700, letterSpacing: ".22em", textTransform: "uppercase",
+      color: "#00c4b4", marginBottom: "22px",
+      display: "flex", alignItems: "center", gap: "10px"
     }}>
-      Everything you need to plan, conduct, and close out clinical research at The Institute — regulatory guidance, SOPs, training requirements, and platform documentation in one place.
+      <span style={{display: "inline-block", width: "24px", height: "1px", background: "#00c4b4", opacity: .8}}/>
+      RI-MUHC · Research Institute
+    </div>
+    <h1 style={{
+      color: "#fff", fontSize: "clamp(38px,4.5vw,60px)", fontWeight: 800,
+      lineHeight: 1.04, letterSpacing: "-.03em", margin: "0 0 20px"
+    }}>
+      Clinical<br/>Research Hub
+    </h1>
+    <p style={{
+      color: "rgba(255,255,255,.78)", fontSize: "15px", lineHeight: 1.7,
+      maxWidth: "420px", margin: "0 0 36px"
+    }}>
+      Everything you need to plan, conduct, and close out clinical research at The Institute — regulatory guidance, SOPs, training, and platform documentation in one place.
     </p>
     <div style={{display: "flex", gap: "12px", flexWrap: "wrap"}}>
       <a href="/kb/introduction" style={{
-        background: "#ffffff",
-        color: "#007a6e",
-        padding: "11px 24px",
-        borderRadius: "8px",
-        fontWeight: 700,
-        fontSize: "0.95rem",
-        textDecoration: "none",
-        display: "inline-block"
-      }}>Explore the Knowledge Base →</a>
+        background: "#fff", color: "#007a6e", padding: "11px 24px",
+        borderRadius: "8px", fontWeight: 700, fontSize: "14px",
+        textDecoration: "none", display: "inline-block"
+      }}>Explore the Knowledge Base</a>
       <a href="/training/compliance-requirements" style={{
-        background: "rgba(255,255,255,0.13)",
-        color: "#ffffff",
-        padding: "11px 24px",
-        borderRadius: "8px",
-        fontWeight: 600,
-        fontSize: "0.95rem",
-        textDecoration: "none",
-        display: "inline-block",
-        border: "1px solid rgba(255,255,255,0.28)"
-      }}>Training Requirements →</a>
+        background: "rgba(255,255,255,.12)", color: "#fff", padding: "11px 24px",
+        borderRadius: "8px", fontWeight: 600, fontSize: "14px",
+        textDecoration: "none", display: "inline-block",
+        border: "1px solid rgba(255,255,255,.28)"
+      }}>Training Requirements</a>
     </div>
   </div>
 </div>
 
-## Latest updates
+{/* ── LATEST UPDATES ── */}
+<span className="ri-section-kicker">Latest updates</span>
+<h2 className="ri-section-h2">What's new</h2>
 
-<div style={{display: "flex", flexDirection: "column", gap: "10px", marginBottom: "48px"}}>
-  <div style={{display: "flex", gap: "16px", alignItems: "flex-start", padding: "16px 20px", border: "1px solid rgba(0,0,0,0.08)", borderRadius: "10px"}}>
-    <span style={{background: "#007a6e", color: "white", padding: "3px 12px", borderRadius: "20px", fontSize: "0.72rem", fontWeight: 700, whiteSpace: "nowrap", marginTop: "2px", letterSpacing: "0.04em"}}>May 2026</span>
-    <div>
-      <div style={{fontWeight: 600, marginBottom: "3px"}}>ICH E6(R3) GCP now in effect at the RI-MUHC</div>
-      <div style={{fontSize: "0.875rem", opacity: 0.72, lineHeight: 1.5}}>Health Canada adopted E6(R3) on April 1, 2026. Certificates completed before October 27, 2025 have been reset — renew via CITI before your next submission. <a href="/training/external-certifications">See renewal instructions →</a></div>
+<div className="ri-updates">
+  <div className="ri-update-bar">
+    <span className="ri-update-tag ri-tag-train">Training</span>
+    <div className="ri-update-content">
+      <div className="ri-update-title">ICH E6(R3) GCP now in effect — certificates before Oct 27, 2025 have been reset</div>
+      <div className="ri-update-desc">Health Canada adopted E6(R3) on April 1, 2026. Renew via CITI before your next submission. <a href="/training/external-certifications">See renewal instructions →</a></div>
     </div>
+    <span className="ri-update-date">May 2026</span>
   </div>
-  <div style={{display: "flex", gap: "16px", alignItems: "flex-start", padding: "16px 20px", border: "1px solid rgba(0,0,0,0.08)", borderRadius: "10px"}}>
-    <span style={{background: "#007a6e", color: "white", padding: "3px 12px", borderRadius: "20px", fontSize: "0.72rem", fontWeight: 700, whiteSpace: "nowrap", marginTop: "2px", letterSpacing: "0.04em"}}>Apr 2026</span>
-    <div>
-      <div style={{fontWeight: 600, marginBottom: "3px"}}>Clinical Research Hub launched</div>
-      <div style={{fontSize: "0.875rem", opacity: 0.72, lineHeight: 1.5}}>The RI-MUHC Clinical Research Hub replaces the previous intranet research pages. All SOPs, training requirements, and platform guides are now available here.</div>
+  <div className="ri-update-bar">
+    <span className="ri-update-tag ri-tag-inst">Hub</span>
+    <div className="ri-update-content">
+      <div className="ri-update-title">Clinical Research Hub launched — replaces previous intranet research pages</div>
+      <div className="ri-update-desc">All SOPs, training requirements, Nagano guides, and CIM documentation are now consolidated here.</div>
     </div>
+    <span className="ri-update-date">Apr 2026</span>
   </div>
-  <div style={{display: "flex", gap: "16px", alignItems: "flex-start", padding: "16px 20px", border: "1px solid rgba(0,0,0,0.08)", borderRadius: "10px"}}>
-    <span style={{background: "#1a1466", color: "white", padding: "3px 12px", borderRadius: "20px", fontSize: "0.72rem", fontWeight: 700, whiteSpace: "nowrap", marginTop: "2px", letterSpacing: "0.04em"}}>Mar 2026</span>
-    <div>
-      <div style={{fontWeight: 600, marginBottom: "3px"}}>CATALIS FAST TRACK now available for industry-sponsored trials</div>
-      <div style={{fontSize: "0.875rem", opacity: 0.72, lineHeight: 1.5}}>The RI-MUHC participates in the CATALIS FAST TRACK program targeting institutional authorization in 8 weeks or less. Contact the Research Facilitator to confirm eligibility.</div>
+  <div className="ri-update-bar">
+    <span className="ri-update-tag ri-tag-reg">Regulatory</span>
+    <div className="ri-update-content">
+      <div className="ri-update-title">CATALIS FAST TRACK now available — institutional authorization in 8 weeks or less</div>
+      <div className="ri-update-desc">The RI-MUHC participates in the CATALIS FAST TRACK program for industry-sponsored trials. Contact the Research Facilitator to confirm eligibility.</div>
     </div>
+    <span className="ri-update-date">Mar 2026</span>
   </div>
 </div>
 
-## Explore the Hub
+{/* ── BENTO GRID ── */}
+<span className="ri-section-kicker">Documentation</span>
+<h2 className="ri-section-h2">Explore the Hub</h2>
 
-<CardGroup cols={3}>
-  <Card title="Knowledge Base" icon="book-open" href="/kb/introduction">
-    Regulatory guidance and operational context for every stage of a clinical study — organized by phase and cross-referenced to the SOPs.
-  </Card>
-  <Card title="Clinical Research SOPs" icon="file-contract" href="/sops/overview">
-    Plain-language summaries and key points for all RI-MUHC SOPs, with downloadable appendices.
-  </Card>
-  <Card title="Training and Learning" icon="graduation-cap" href="/training/overview">
-    Compliance requirements by study type — SOP Reader, Competency Assessment, GCP, and practice tools.
-  </Card>
-  <Card title="Centre for Innovative Medicine" icon="flask" href="/cim/overview">
-    CIM services, technical platforms, and support for complex trials at the Glen and MGH sites.
-  </Card>
-  <Card title="Nagano User Guide" icon="laptop" href="/apps/nagano/overview">
-    Step-by-step instructions for submitting and managing research projects in Nagano.
-  </Card>
-  <Card title="Contacts" icon="address-book" href="/contacts">
-    The right contact for every stage — Research Facilitator, QA, REB, CIM team, and site locations.
-  </Card>
-</CardGroup>
+<div className="ri-bento">
 
-## Where do you fit in?
+  {/* Knowledge Base — large anchor */}
+  <a href="/kb/introduction" className="ri-bento-anchor">
+    <div className="ri-bento-anchor-body">
+      <div className="ri-bento-anchor-eye">Knowledge Base</div>
+      <div className="ri-bento-anchor-title">Guidance for every stage of a clinical study</div>
+      <div className="ri-bento-anchor-desc">Regulatory context, operational guides, and Quebec-specific guidance — from concept and feasibility through close-out and archiving.</div>
+      <div className="ri-bento-anchor-cta">Explore the Knowledge Base →</div>
+    </div>
+  </a>
 
-<CardGroup cols={3}>
-  <Card title="PI / Qualified Investigator" icon="user-doctor" href="/kb/roles/pi-pathway">
-    Your accountability map — prerequisites, what only you sign, and obligations from submission through close-out.
-  </Card>
-  <Card title="Clinical Research Coordinator" icon="clipboard-list" href="/kb/roles/crc-pathway">
-    Training pathway and day-to-day reference organized by study stage.
-  </Card>
-  <Card title="Research Nurse" icon="user-nurse" href="/kb/roles/nurse-pathway">
-    OIIQ obligations, reserved acts, and nursing-specific guidance for nurses on a study team.
-  </Card>
-  <Card title="Research Trainee" icon="person-chalkboard" href="/kb/roles/onboarding">
-    What's required before you start and how delegation works within your training scope.
-  </Card>
-  <Card title="New to Clinical Research" icon="circle-info" href="/kb/clinical-research-101">
-    The regulatory frameworks, key roles, and Quebec-specific obligations — the foundation for everything else.
-  </Card>
-  <Card title="CIM Staff" icon="id-badge" href="/cim/researcher-guide">
-    Role tracks, responsibilities, and the training layers that apply to staff working at the CIM.
-  </Card>
-</CardGroup>
+  {/* SOPs — col 2, rows 1–2 */}
+  <a href="/sops/overview" className="ri-bento-card ri-bento-c2r12">
+    <div className="ri-bento-card-body">
+      <div className="ri-bento-card-eye">SOPs</div>
+      <div className="ri-bento-card-title">Clinical Research Standard Operating Procedures</div>
+      <div className="ri-bento-card-desc">Plain-language summaries and key points for all RI-MUHC clinical research SOPs, with downloadable appendices.</div>
+      <div className="ri-bento-card-cta">View SOPs →</div>
+    </div>
+  </a>
 
-## Starting a new study?
+  {/* Training — col 3, row 1 */}
+  <a href="/training/overview" className="ri-bento-card ri-bento-c3r1">
+    <div className="ri-bento-card-body">
+      <div className="ri-bento-card-eye">Training</div>
+      <div className="ri-bento-card-title">Training & Compliance Requirements</div>
+      <div className="ri-bento-card-cta">View requirements →</div>
+    </div>
+  </a>
+
+  {/* CIM — col 3, row 2 */}
+  <a href="/cim/overview" className="ri-bento-card ri-bento-c3r2">
+    <div className="ri-bento-card-body">
+      <div className="ri-bento-card-eye">Centre for Innovative Medicine</div>
+      <div className="ri-bento-card-title">CIM Services & Platforms</div>
+      <div className="ri-bento-card-cta">Explore CIM →</div>
+    </div>
+  </a>
+
+  {/* Nagano — col 2–3, row 3 */}
+  <a href="/apps/nagano/overview" className="ri-bento-card ri-bento-c23r3">
+    <div className="ri-bento-card-body">
+      <div className="ri-bento-card-eye">Platform Guide</div>
+      <div className="ri-bento-card-title">Nagano — Research Submission & Management</div>
+      <div className="ri-bento-card-desc">Step-by-step instructions for submitting and managing clinical research projects in Nagano, the RI-MUHC research platform.</div>
+      <div className="ri-bento-card-cta">Open Nagano guide →</div>
+    </div>
+  </a>
+
+</div>
+
+{/* ── ROLE CARDS ── */}
+<span className="ri-section-kicker">Quick start</span>
+<h2 className="ri-section-h2">Where do you fit in?</h2>
+
+<div className="ri-role-grid">
+  <a href="/kb/roles/pi-pathway" className="ri-role-card">
+    <div className="ri-role-card-body">
+      <div className="ri-role-name">PI / Qualified Investigator</div>
+      <div className="ri-role-body">Your accountability map — prerequisites, what only you sign, and obligations from submission through close-out.</div>
+      <div className="ri-role-cta">View pathway →</div>
+    </div>
+  </a>
+  <a href="/kb/roles/crc-pathway" className="ri-role-card">
+    <div className="ri-role-card-body">
+      <div className="ri-role-name">Clinical Research Coordinator</div>
+      <div className="ri-role-body">Training pathway and day-to-day operational reference, organized by study stage.</div>
+      <div className="ri-role-cta">View pathway →</div>
+    </div>
+  </a>
+  <a href="/kb/roles/nurse-pathway" className="ri-role-card">
+    <div className="ri-role-card-body">
+      <div className="ri-role-name">Research Nurse</div>
+      <div className="ri-role-body">OIIQ obligations, reserved acts, and nursing-specific guidance for licensed nurses on a study team.</div>
+      <div className="ri-role-cta">View pathway →</div>
+    </div>
+  </a>
+  <a href="/kb/roles/onboarding" className="ri-role-card">
+    <div className="ri-role-card-body">
+      <div className="ri-role-name">Research Trainee</div>
+      <div className="ri-role-body">What's required before you start and how delegation works within your training scope.</div>
+      <div className="ri-role-cta">View guide →</div>
+    </div>
+  </a>
+  <a href="/kb/clinical-research-101" className="ri-role-card">
+    <div className="ri-role-card-body">
+      <div className="ri-role-name">New to Clinical Research</div>
+      <div className="ri-role-body">Regulatory frameworks, key roles, and Quebec-specific obligations — the foundation for everything else.</div>
+      <div className="ri-role-cta">Start here →</div>
+    </div>
+  </a>
+  <a href="/cim/researcher-guide" className="ri-role-card">
+    <div className="ri-role-card-body">
+      <div className="ri-role-name">CIM Staff</div>
+      <div className="ri-role-body">Role tracks, responsibilities, and the training layers that apply to staff working at the Centre for Innovative Medicine.</div>
+      <div className="ri-role-cta">View guide →</div>
+    </div>
+  </a>
+</div>
+
+{/* ── FAQ ── */}
+<div className="ri-faq-grid">
+  <div>
+    <span className="ri-section-kicker">FAQ</span>
+    <h2 className="ri-section-h2">Frequently asked questions</h2>
+    <p style={{fontSize: "13.5px", color: "#666", lineHeight: 1.6, marginTop: 0}}>Common questions from investigators and coordinators starting out at the RI-MUHC.</p>
+  </div>
+  <AccordionGroup>
+    <Accordion title="Where do I start if I want to conduct a study at the MUHC?">
+      Start with a [feasibility assessment](/kb/planning/feasibility) — before any submission, confirm that your protocol is scientifically and ethically sound, that your team has the required qualifications, and that the facilities and patient population are available. Once ready, submissions go through **Nagano** using the F11 form, which simultaneously triggers REB review and institutional feasibility review. Confirm your Human Research Privileges or Researcher Status before any activities begin.
+    </Accordion>
+    <Accordion title="What's the difference between the REB and the Personne mandatée?">
+      The **Research Ethics Board (REB)** conducts the scientific and ethics review — participant safety, informed consent, risk–benefit ratio, and methodological soundness. REB approval is valid for one year and must be renewed annually.
+
+      The **Personne mandatée** is the MUHC institutional authority who issues the final authorization to conduct research. This authorization is granted only after all reviews are complete — REB approval, feasibility reviews, and any required Health Canada approvals. Conditional REB approval is not sufficient. The two roles are independent — REB approval does not automatically confer MUHC authorization.
+    </Accordion>
+    <Accordion title="Does my study need Health Canada approval?">
+      It depends on whether your study involves an investigational product. **Investigational drug or biologic** → Clinical Trial Application (CTA), No Objection Letter (NOL). **Medical device** (Class II, III, or IV) → Investigational Testing Authorization (ITA). **Natural health product** → NHP CTA, Notice of Authorization (NOA).
+
+      Observational studies and studies using biological specimens only — with no investigational product — do not require a Health Canada submission. When in doubt, contact the Research Facilitator early in your planning process.
+    </Accordion>
+    <Accordion title="What training do I need to join a study team?">
+      Training requirements depend on study type. All research staff must complete the **RI-MUHC SOP Reader** (tracked acknowledgement of each applicable SOP via TalentLMS) and the **Competency Assessment** (renewed every 2 years for interventional studies, every 5 years for observational or retrospective work).
+
+      For drug studies (Level I), **ICH GCP** and **Health Canada Division 5** training are also required. Device studies (Level II) require GCP and **ISO 14155**. No team member may perform any study task before their training is documented and they appear on the Task Delegation Log. See [Training Requirements](/training/compliance-requirements).
+    </Accordion>
+    <Accordion title="What is a Task Delegation Log and why does it matter?">
+      The **Task Delegation Log (TDL)** is the central compliance document for every study at the RI-MUHC. It records who is authorized to perform which tasks and confirms that each person has the required training. No person may perform any study task before they appear on the TDL, their training is documented, and the QI/PI has countersigned their entry.
+
+      The TDL is an inspection-facing document — during an audit or sponsor monitoring visit, it will be one of the first documents reviewed. Gaps (tasks performed before delegation, undocumented training, missing signatures) are among the most common inspection findings.
+    </Accordion>
+    <Accordion title="How does a new researcher get Human Research Privileges or Researcher Status?">
+      **Human Research Privileges** are required for CPDP members (physicians and dentists) acting as QI or PI on studies involving medical oversight — drug trials, device studies, or protocols involving acts reserved to physicians. **Researcher Status** applies to non-CPDP researchers (PhDs, nurses, physiotherapists) conducting studies that do not require medical oversight.
+
+      Both are applied for through TalentLMS and managed by the Performance Office. Applications are typically processed within 1–5 business days. Contact [riprograms@muhc.mcgill.ca](mailto:riprograms@muhc.mcgill.ca) or speak with the Research Facilitator.
+    </Accordion>
+    <Accordion title="Can a fellow or rotating resident be on my study team?">
+      Yes, but with important restrictions. Fellows and rotating residents **cannot conduct research independently** or serve as QI/PI backup. Any medical acts they perform as part of a study must be supervised by a QI/PI or qualified Sub-Investigator who holds Human Research Privileges. They must still appear on the Task Delegation Log with their training documented, and their delegation must be clearly scoped to tasks appropriate to their role.
+
+      Because residents and fellows rotate, their departure must be tracked and the TDL updated promptly.
+    </Accordion>
+    <Accordion title="What do I do if I identify a protocol deviation?">
+      First, **document it and notify the Sponsor as soon as possible**. Then classify the deviation: minor deviations are logged and reported to the REB at annual renewal; major deviations must be reported to the REB within 15 days with a CAPA; critical deviations within 7 days with a CAPA.
+
+      A CAPA (Corrective and Preventive Action) form is required for major and critical deviations — submit to QA and include with the REB deviation report. Remove all participant nominative information and use study number only. See [Reportable Events and Protocol Deviations](/kb/conduct/reportable-events).
+    </Accordion>
+  </AccordionGroup>
+</div>
+
+{/* ── NEW RESEARCHER STEPS ── */}
+<span className="ri-section-kicker">Getting started</span>
+<h2 className="ri-section-h2">Starting a new study?</h2>
 
 <Steps>
   <Step title="Confirm your credentials">
-    Your Human Research Privileges or Researcher Status and institutional training must be current and not within 90 days of expiry. [Check requirements →](/training/compliance-requirements)
+    Your Human Research Privileges or Researcher Status and institutional training must be current and not within 90 days of expiry before submission. [Check requirements →](/training/compliance-requirements)
   </Step>
   <Step title="Assess feasibility">
-    Confirm your protocol is scientifically sound, your team is in place, and the site can support your protocol. [Feasibility guide →](/kb/planning/feasibility)
+    Confirm your protocol is scientifically sound, your team is in place, and the site can support the protocol's demands. [Feasibility guide →](/kb/planning/feasibility)
   </Step>
   <Step title="Prepare your submission">
     Assemble your protocol, ICF, recruitment materials, and Health Canada authorization documents if applicable. [Submission checklist →](/kb/submission/preparing)
   </Step>
   <Step title="Submit via Nagano">
-    Use the F11 form to simultaneously open your study file and trigger REB review and institutional feasibility review. [Nagano guide →](/apps/nagano/overview)
+    Use the F11 form to open your study file and simultaneously trigger REB review and institutional feasibility review. [Nagano guide →](/apps/nagano/overview)
   </Step>
 </Steps>
 
