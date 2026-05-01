@@ -153,6 +153,11 @@ html.dark a:has([data-component-part="card-content-container"]):hover {
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35) !important;
 }
 
+/* ── Home page update feed — dark mode border ── */
+html.dark .ri-update-item {
+    border-color: rgba(255, 255, 255, 0.08) !important;
+}
+
 /* ── Frosted-glass navbar ── */
 #navbar,
 header[class*="sticky"] {
