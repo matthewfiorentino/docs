@@ -13,7 +13,16 @@
     "dark": "/logo/rimuhc.svg",
     "href": "/"
   },
+  "appearance": {
+    "default": "dark"
+  },
   "navbar": {
+    "links": [
+      {
+        "label": "Contact",
+        "href": "/contacts"
+      }
+    ],
     "primary": {
       "type": "button",
       "label": "RI-MUHC Portal",
