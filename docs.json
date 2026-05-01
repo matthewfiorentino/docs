@@ -266,7 +266,6 @@
                 "pages": [
                   "apps/cim/services",
                   "apps/cim/planning",
-                  "apps/cim/is-cim-right",
                   "apps/cim/researcher-guide"
                 ]
               },
@@ -275,7 +274,6 @@
                 "expanded": false,
                 "pages": [
                   "apps/cim/training",
-                  "apps/cim/using-cim",
                   "apps/cim/wi-sops"
                 ]
               }
