@@ -42,94 +42,99 @@
         "tab": "Knowledge Base",
         "groups": [
           {
-            "group": "Getting Started",
-            "collapsed": false,
+            "group": "Knowledge Base",
             "pages": [
-              "kb/introduction",
-              "kb/clinical-research-101",
-              "kb/trial-design",
-              "kb/gcp-quality-by-design",
-              "kb/study-lifecycle",
-              "kb/glossary"
-            ]
-          },
-          {
-            "group": "Onboarding Guides",
-            "collapsed": true,
-            "pages": [
-              "kb/roles/pi-pathway",
-              "kb/roles/pi-guide",
-              "kb/roles/crc-pathway",
-              "kb/roles/crc-guide",
-              "kb/roles/crc-guide-iv",
-              "kb/roles/crc-guide-v",
-              "kb/roles/nurse-pathway",
-              "kb/roles/onboarding"
-            ]
-          },
-          {
-            "group": "Study Planning",
-            "collapsed": true,
-            "pages": [
-              "kb/planning/overview",
-              "kb/planning/feasibility",
-              "kb/planning/study-design",
-              "kb/planning/building-your-team",
-              "kb/planning/sponsored-trials",
-              "kb/planning/sponsor-investigator",
-              "kb/planning/dct-design",
-              "kb/planning/multi-centric",
-              "kb/planning/bcu",
-              "kb/planning/cord",
-              "kb/planning/research-grants",
-              "kb/planning/regulations",
-              "kb/planning/budgets-contracts",
-              "kb/planning/data-services"
-            ]
-          },
-          {
-            "group": "Submission & Review",
-            "collapsed": true,
-            "pages": [
-              "kb/submission/overview",
-              "kb/submission/preparing",
-              "kb/submission/submitting-via-nagano",
-              "kb/submission/tracking-responding",
-              "kb/submission/study-review"
-            ]
-          },
-          {
-            "group": "Study Conduct",
-            "collapsed": true,
-            "pages": [
-              "kb/conduct/overview",
-              "kb/conduct/site-setup",
-              "kb/conduct/consent",
-              "kb/conduct/recruitment-enrollment",
-              "kb/conduct/privacy",
-              "kb/conduct/data-security",
-              "kb/conduct/data-integrity",
-              "kb/conduct/protocol-documents",
-              "kb/conduct/isf",
-              "kb/conduct/investigational-products",
-              "kb/conduct/biological-specimens",
-              "kb/conduct/decentralized-trials",
-              "kb/conduct/reportable-events",
-              "kb/conduct/team-management",
-              "kb/conduct/monitoring-audits",
-              "kb/conduct/close-out",
-              "kb/conduct/publications"
-            ]
-          },
-          {
-            "group": "Governance",
-            "collapsed": true,
-            "pages": [
-              "kb/governance/institutional-structure",
-              "kb/governance/regulatory-framework",
-              "kb/governance/quality-assurance",
-              "kb/governance/research-integrity",
-              "kb/governance/conflict-of-interest"
+              {
+                "group": "Getting Started",
+                "expanded": true,
+                "pages": [
+                  "kb/introduction",
+                  "kb/clinical-research-101",
+                  "kb/trial-design",
+                  "kb/gcp-quality-by-design",
+                  "kb/study-lifecycle",
+                  "kb/glossary"
+                ]
+              },
+              {
+                "group": "Onboarding Guides",
+                "expanded": false,
+                "pages": [
+                  "kb/roles/pi-pathway",
+                  "kb/roles/pi-guide",
+                  "kb/roles/crc-pathway",
+                  "kb/roles/crc-guide",
+                  "kb/roles/crc-guide-iv",
+                  "kb/roles/crc-guide-v",
+                  "kb/roles/nurse-pathway",
+                  "kb/roles/onboarding"
+                ]
+              },
+              {
+                "group": "Study Planning",
+                "expanded": false,
+                "pages": [
+                  "kb/planning/overview",
+                  "kb/planning/feasibility",
+                  "kb/planning/study-design",
+                  "kb/planning/building-your-team",
+                  "kb/planning/sponsored-trials",
+                  "kb/planning/sponsor-investigator",
+                  "kb/planning/dct-design",
+                  "kb/planning/multi-centric",
+                  "kb/planning/bcu",
+                  "kb/planning/cord",
+                  "kb/planning/research-grants",
+                  "kb/planning/regulations",
+                  "kb/planning/budgets-contracts",
+                  "kb/planning/data-services"
+                ]
+              },
+              {
+                "group": "Submission & Review",
+                "expanded": false,
+                "pages": [
+                  "kb/submission/overview",
+                  "kb/submission/preparing",
+                  "kb/submission/submitting-via-nagano",
+                  "kb/submission/tracking-responding",
+                  "kb/submission/study-review"
+                ]
+              },
+              {
+                "group": "Study Conduct",
+                "expanded": false,
+                "pages": [
+                  "kb/conduct/overview",
+                  "kb/conduct/site-setup",
+                  "kb/conduct/consent",
+                  "kb/conduct/recruitment-enrollment",
+                  "kb/conduct/privacy",
+                  "kb/conduct/data-security",
+                  "kb/conduct/data-integrity",
+                  "kb/conduct/protocol-documents",
+                  "kb/conduct/isf",
+                  "kb/conduct/investigational-products",
+                  "kb/conduct/biological-specimens",
+                  "kb/conduct/decentralized-trials",
+                  "kb/conduct/reportable-events",
+                  "kb/conduct/team-management",
+                  "kb/conduct/monitoring-audits",
+                  "kb/conduct/close-out",
+                  "kb/conduct/publications"
+                ]
+              },
+              {
+                "group": "Governance",
+                "expanded": false,
+                "pages": [
+                  "kb/governance/institutional-structure",
+                  "kb/governance/regulatory-framework",
+                  "kb/governance/quality-assurance",
+                  "kb/governance/research-integrity",
+                  "kb/governance/conflict-of-interest"
+                ]
+              }
             ]
           }
         ]
