@@ -73,7 +73,7 @@
 }
 
 :where(h1, h2, h3, h4, h5, h6, #page-title, strong, b) {
-    color: var(--ri-fg) !important;
+    color: var(--ri-heading) !important;
 }
 :where(p, li, span, small, td, th) {
     color: var(--ri-muted) !important;
@@ -188,7 +188,7 @@
 
 /* ── Tables ── */
 :where(table thead tr) {
-    background: var(--ri-fg) !important;
+    background: var(--ri-heading) !important;
 }
 :where(table thead th) {
     color:          #ffffff       !important;
@@ -201,8 +201,8 @@
     background: var(--ri-surface) !important;
 }
 :where(table td:first-child) {
-    font-weight: 600              !important;
-    color:       var(--ri-fg)     !important;
+    font-weight: 600                !important;
+    color:       var(--ri-heading)  !important;
 }
 
 /* ── Callout boxes — color-coded by type ── */
@@ -250,12 +250,12 @@
     border-top: 1px solid var(--ri-border) !important;
 }
 :where(details.accordion > summary[data-component-part="accordion-button"]) {
-    background:    var(--ri-fg) !important;
-    color:         var(--ri-bg) !important;
-    border-radius: 0           !important;
+    background:    var(--ri-heading) !important;
+    color:         #ffffff           !important;
+    border-radius: 0                 !important;
 }
 :where(details.accordion > summary[data-component-part="accordion-button"]:hover) {
-    background: color-mix(in srgb, var(--ri-fg) 90%, transparent) !important;
+    background: color-mix(in srgb, var(--ri-heading) 88%, transparent) !important;
 }
 :where(details.accordion > summary *) {
     color: inherit !important;

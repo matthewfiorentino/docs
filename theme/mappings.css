@@ -19,10 +19,10 @@
 
     /* prose typography */
     --tw-prose-body:          var(--ri-muted);
-    --tw-prose-headings:      var(--ri-fg);
+    --tw-prose-headings:      var(--ri-heading);
     --tw-prose-lead:          var(--ri-muted);
     --tw-prose-links:         var(--ri-accent);
-    --tw-prose-bold:          var(--ri-fg);
+    --tw-prose-bold:          var(--ri-heading);
     --tw-prose-counters:      var(--ri-accent);
     --tw-prose-bullets:       var(--ri-accent);
     --tw-prose-hr:            var(--ri-border);

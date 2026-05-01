@@ -1,12 +1,13 @@
 /* ── RI-MUHC Design Tokens ────────────────────────────────────────────────── */
 /* Edit only this file to change the overall look and feel.                    */
-/* Light mode: white bg, navy text, teal accent                                */
-/* Dark mode:  navy bg, light text, bright-teal accent                         */
+/* Light mode: white bg, charcoal body text, navy headings, teal accent        */
+/* Dark mode:  navy bg, light body text, bright-teal headings + accent         */
 
 :root {
-    --ri-bg: #f6f6f7;
-    --ri-fg: #150e51;
-    --ri-accent: #007a6e;
+    --ri-bg:      #f6f6f7;
+    --ri-fg:      #374151;   /* body text, sidebar — dark charcoal, not navy */
+    --ri-heading: #150e51;   /* navy — headings and bold only */
+    --ri-accent:  #007a6e;
     --ri-accent-bright: #00c4b4;
 
     --ri-surface:   color-mix(in srgb, var(--ri-fg) 5%,  transparent);
@@ -30,9 +31,10 @@
 }
 
 html.dark {
-    --ri-bg: #150e51;
-    --ri-fg: #eeeef6;
-    --ri-accent: #00c4b4;
+    --ri-bg:      #150e51;
+    --ri-fg:      #eeeef6;
+    --ri-heading: #00c4b4;   /* bright teal for headings in dark mode */
+    --ri-accent:  #00c4b4;
     --ri-accent-bright: #00e0d0;
 
     --ri-surface:   rgba(255, 255, 255, 0.06);
