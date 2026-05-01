@@ -39,10 +39,10 @@
     ],
     "tabs": [
       {
-        "tab": "Knowledge Base",
+        "tab": "Get Started",
         "groups": [
           {
-            "group": "Getting Started",
+            "group": "Get Started",
             "pages": [
               "kb/introduction",
               "kb/clinical-research-101",
@@ -51,7 +51,12 @@
               "kb/study-lifecycle",
               "kb/glossary"
             ]
-          },
+          }
+        ]
+      },
+      {
+        "tab": "By Role",
+        "groups": [
           {
             "group": "By Role",
             "pages": [
@@ -64,7 +69,12 @@
               "kb/roles/nurse-pathway",
               "kb/roles/onboarding"
             ]
-          },
+          }
+        ]
+      },
+      {
+        "tab": "Planning",
+        "groups": [
           {
             "group": "Study Planning",
             "pages": [
@@ -83,7 +93,12 @@
               "kb/planning/budgets-contracts",
               "kb/planning/data-services"
             ]
-          },
+          }
+        ]
+      },
+      {
+        "tab": "Submission",
+        "groups": [
           {
             "group": "Submission & Review",
             "pages": [
@@ -93,7 +108,12 @@
               "kb/submission/tracking-responding",
               "kb/submission/study-review"
             ]
-          },
+          }
+        ]
+      },
+      {
+        "tab": "Conduct",
+        "groups": [
           {
             "group": "Study Conduct",
             "pages": [
@@ -129,7 +149,7 @@
         ]
       },
       {
-        "tab": "Clinical Research SOPs",
+        "tab": "SOPs",
         "groups": [
           {
             "group": "About the SOPs",
@@ -187,7 +207,7 @@
         ]
       },
       {
-        "tab": "Training and Learning",
+        "tab": "Training",
         "groups": [
           {
             "group": "Overview",
