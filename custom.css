@@ -154,6 +154,29 @@ html.dark a:has([data-component-part="card-content-container"]):hover {
 }
 
 /* ══════════════════════════════════════════════
+   HOME PAGE — HERO (full-bleed)
+   ══════════════════════════════════════════════ */
+.ri-hero-bleed {
+    /* Break out of Mintlify's content container */
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+    max-width: 100vw;
+    margin-top: -2rem;
+    margin-bottom: 48px;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Override global heading colour rule inside the hero */
+.ri-hero-bleed h1,
+.ri-hero-bleed h2,
+.ri-hero-bleed p,
+.ri-hero-bleed strong,
+.ri-hero-bleed b {
+    color: #ffffff !important;
+}
+
+/* ══════════════════════════════════════════════
    HOME PAGE — BENTO GRID
    ══════════════════════════════════════════════ */
 .ri-bento {
