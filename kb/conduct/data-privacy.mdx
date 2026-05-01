@@ -1,0 +1,149 @@
+---
+title: "Data, Privacy, and Security During Study Conduct"
+description: "Quebec privacy law (Law 25 and Law 5), the EFVP process, data security requirements, ALCOA+ data integrity principles, and REDCap usage at RI-MUHC."
+---
+
+Privacy obligations in clinical research at the MUHC come from four overlapping layers. The international and federal layers are covered by GCP training. This page covers the two that are most likely to be unfamiliar: Quebec provincial law and MUHC institutional policy — together with the data integrity requirements that apply to all records from the first day of the study.
+
+## The Quebec legislative layer
+
+Quebec has two pieces of legislation that directly affect how research data is handled at the MUHC. Both apply on top of federal requirements.
+
+<AccordionGroup>
+  <Accordion title="Law 25 — Act to Modernize Legislative Provisions Respecting the Protection of Personal Information (in force Sept. 2022–2023)">
+    Strengthened Quebec's privacy framework for all organizations. Requires that personal information be collected only for explicit, defined purposes. Individuals have rights to access and correct their information. Triggers an EFVP (privacy impact assessment) when technology products or services involving personal data are acquired, developed, or modified for a study. Also applies when personal information is communicated outside Quebec.
+  </Accordion>
+  <Accordion title="Law 5 — Act Respecting Health and Social Services Information">
+    Governs access to health and social services information held by public institutions, including the MUHC. A public body may not release nominative (identifiable) information without the person's consent, except in specific circumstances authorized by the Commission d'accès à l'information du Québec (CAI). In research, this is the legal basis for the EFVP requirement when participant consent cannot be obtained for data access.
+  </Accordion>
+</AccordionGroup>
+
+Together, these laws mean that any research study at the MUHC involving identifiable patient data must follow a formal authorization process. The laws apply regardless of the study's scientific merit or the researcher's institutional affiliation.
+
+## The EFVP — when it applies and how to submit
+
+An *Évaluation des facteurs relatifs à la vie privée* (EFVP) is a privacy impact assessment required under Quebec's Act respecting health and social services information. It is the mechanism through which the institution demonstrates accountability for data use.
+
+An EFVP is required in any of the following situations:
+
+| # | Situation | What this looks like in practice |
+|---|---|---|
+| 1 | Access to identifiable health information without consent | Records research, retrospective studies, chart reviews, or pre-screening using OACIS to identify potential participants before they have consented. |
+| 2 | Personal health data transferred outside Quebec | Transmitting participant-level data to a sponsor's servers, a CRO, a central lab, a cloud platform, or an academic collaborator located outside Quebec — including other Canadian provinces and international sites. |
+| 3 | Technology involving personal data | Acquiring, developing, or modifying a technology product or service that will collect, use, or communicate personal data as part of the study — an app, wearable device, electronic data capture system, or any software platform that handles participant information. |
+
+The EFVP is completed in French, signed by the QI/PI, and submitted via Nagano as part of the initial study submission — not as a separate process afterward. In Nagano it is submitted as Form F17 (pre-screening access before consent) or Form F18 (access without consent). For multi-centric studies, the lead site submits one EFVP for the entire project.
+
+<Warning>
+The EFVP is a prerequisite, not a retrospective justification. Accessing OACIS to identify potential participants before the EFVP is approved is a privacy violation under Quebec law, regardless of the intent. Contact efvp@muhc.mcgill.ca with questions about scope.
+</Warning>
+
+## The MUHC Confidentiality and Security Agreement
+
+Every member of a research team who will access MUHC systems, patient records, or any identifiable participant information must sign the MUHC Confidentiality and Security Agreement before doing so. This is an MUHC institutional requirement that exists separately from any sponsor confidentiality agreement.
+
+The sponsor's confidentiality agreement governs information about the study itself (the protocol, the IB, proprietary data). The MUHC Confidentiality Agreement governs access to MUHC systems and MUHC-held patient information. They are not interchangeable.
+
+The agreement is included as Appendix 1 of SOP-CR-019. It must be signed and submitted to MUHC Medical Records Services before that person is granted access to patient records.
+
+<Warning>
+Medical Records Services will not grant OACIS access without a signed confidentiality agreement on file. Ensure agreements are signed and submitted before the SIV, not after, so team members are able to work from day one of study activation.
+</Warning>
+
+## Handling participant data during a study
+
+Quebec law and MUHC policy create several specific requirements for how participant data is handled day-to-day.
+
+<AccordionGroup>
+  <Accordion title="Participant ID log confidentiality">
+    The Participant ID Log — which links a participant's name and MRN to their study number — must never be shared with the sponsor. The sponsor receives data coded by study number only. This reflects the requirement that nominative information not leave the institution without CAI authorization (SOP-CR-014).
+  </Accordion>
+  <Accordion title="De-identification of source documents">
+    When source documents are copied for the sponsor or monitor, nominative information (name, MRN, date of birth) must be blacked out and replaced with the participant's study number. Best practice is for two team members to be involved: one de-identifies, one performs quality control to confirm the correct study number was recorded.
+  </Accordion>
+  <Accordion title="Electronic devices">
+    Validated electronic devices used for study purposes — tablets, laptops, personal digital assistants — must not contain any nominative participant information. Study data on portable devices must be stored in coded form only. Research data must never be stored on personal laptops, personal USB drives, or personal cloud accounts.
+  </Accordion>
+  <Accordion title="Data collected only for approved purposes">
+    Data may be collected and used only for the REB-approved study. Accessing participant records for purposes beyond the approved study scope is a privacy violation regardless of whether the researcher has clinical access to those records in their treating role.
+  </Accordion>
+  <Accordion title="Certified copies for transmission">
+    When documents containing participant information must leave the institution, a certified copy must be created. Identifying information must be removed, the copy must be clearly marked as a certified copy, and it must be signed and dated by the person who made it.
+  </Accordion>
+</AccordionGroup>
+
+## Data security requirements
+
+The RI-MUHC classifies human research data into four categories. The category determines where data can be stored, how it can be shared, and what approvals are required.
+
+| Category | Type | Security requirements |
+|---|---|---|
+| 1 | Aggregate / Statistical | No restrictions on storage or sharing once published. |
+| 2 | Anonymized | Identifiers irreversibly stripped; no linking key exists. Can be stored broadly and shared via standard encrypted methods. |
+| 3 | De-identified | Identifiers removed but re-identification remains possible through a linking key. Subject to the same security requirements as identifying data. |
+| 4 | Identifying | Contains direct identifiers (name, MRN, RAMQ number, date of birth). Strictest storage and sharing controls. Requires full REB approval, PM Final Authorization, and typically an EFVP. |
+
+<Warning>
+De-identified is not the same as anonymized. If a linking key exists anywhere — even stored separately — the data is de-identified, not anonymized. The security and EFVP requirements for de-identified data are the same as for identifying data.
+</Warning>
+
+**Storage rules:**
+- De-identified and identifying data must be stored on the MUHC network only, or in a MUHC-approved encrypted cloud environment with Canadian/EU servers, 2FA, and MUHC-held encryption keys. NextCloud meets these requirements.
+- No personal devices: research data must never be stored on personal laptops, home computers, personal tablets, or personal USB drives.
+- For remote access to MUHC data, use Citrix to connect to the MUHC network.
+
+**Sharing rules:**
+- Between MUHC or MSSS email addresses: encrypt the file and send the decryption password by a different channel (SMS or phone).
+- To external recipients (including McGill mcgill.ca addresses): use MUHC NextCloud — not Outlook. McGill email addresses are external to the MSSS network.
+- Any data sharing with an external collaborator requires a signed collaboration or data use agreement before transfer.
+
+## OACIS access for monitors and third parties
+
+Monitors, CROs, auditors, and other third parties who require access to OACIS must be formally authorized before they are granted access. The QI/PI must submit a written letter to Medical Records Services requesting access, specifying the reason and the scope. This authorization is time-limited and specific to the study.
+
+<Warning>
+OACIS access is not automatic for monitors. Industry sponsors often assume monitors have standard OACIS access. They do not. Arrange authorization before the first monitoring visit, not on the day of. A template letter is in SOP-CR-013.
+</Warning>
+
+## ALCOA+ data integrity principles
+
+Data integrity is about the trustworthiness and auditability of the research record — whether it was documented correctly in the first place. At the RI-MUHC, ALCOA+ applies across all study records — hospital records in OACIS, data entered in REDCap, paper source documents, and submission records in Nagano.
+
+| Principle | What it means in practice |
+|---|---|
+| **A** — Attributable | It must be clear who collected or entered the data, and when. Every entry signed and dated by the person who made it. |
+| **L** — Legible | The record must be readable now and 15 years from now. Permanent ink. No overwriting that obscures the original. |
+| **C** — Contemporaneous | Recorded at the time the activity occurred — not reconstructed from memory later. Backdating is a serious GCP violation. |
+| **O** — Original | The first place data was recorded is the source. Transcriptions must be traceable back to the original source document. |
+| **A** — Accurate | Reflects what actually happened. Errors corrected with a single line through the original, initialled and dated, with the reason noted. |
+| **+ Complete** | All data required by the protocol is present. No blank fields without explanation. |
+| **+ Consistent** | Data is internally consistent across documents. Dates, values, and sequences match across source documents and CRF entries. |
+| **+ Enduring** | Recorded on durable media that will remain readable for the required retention period. Pencil, sticky notes, and erasable ink are not permitted. |
+| **+ Available** | Can be retrieved for audit or inspection when required. |
+
+<Warning>
+Never use Wite-Out, correction fluid, or tape over any entry on any document. Correct errors with a single line through the original entry, leaving it legible, then add the correction, a reason (if not obvious), and your initials and date.
+</Warning>
+
+## REDCap and electronic data capture
+
+For most low-to-moderate complexity studies at the RI-MUHC, REDCap is the eCRF platform. REDCap is validated and compliant with 21 CFR Part 11. For studies requiring more than approximately 1,000 variables, discuss platform requirements with the DW team or sponsor.
+
+OACIS is the primary source for most clinical data — anything documented in OACIS is a source document. Data transcribed from OACIS into a CRF or REDCap database must be traceable back to the OACIS record. Monitors verify this traceability during Source Data Verification (SDV).
+
+Any electronic data capture system used in an HC-regulated study must be validated before use — contact IT via the RI-MUHC Portal before the Site Initiation Visit.
+
+## Document retention
+
+Records must be retained for the full applicable period before any destruction. Early destruction of study records is a serious regulatory violation.
+
+| Study type | Retention period | Notes |
+|---|---|---|
+| HC-regulated studies (drug, device, NHP) | **15 years** after study completion | Sponsor-held records: 25 years. Destruction requires sponsor authorization. |
+| Non-regulated studies | **7 years** after study completion | Institutional policy minimum. Individual funding agencies may require longer. |
+
+The MUHC Medical Records Services retains health records for a minimum of 25 years of inactivity. This obligation rests with the institution, not the research team. These two retention periods cover different documents held by different custodians — meeting one does not satisfy the other.
+
+<Info>
+For data security questions, contact MUHC IT Security at securitygovernance@muhc.mcgill.ca. For EFVP questions, contact efvp@muhc.mcgill.ca. For privileges and training, contact Quality Assurance at qaclinical@muhc.mcgill.ca.
+</Info>

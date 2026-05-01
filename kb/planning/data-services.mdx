@@ -1,0 +1,210 @@
+---
+title: "Data and Research Services at RI-MUHC"
+description: "Accessing MUHC patient data via the Data Warehouse, the Biostatistics Consulting Unit (BCU), and CORD for REDCap database builds and research data management."
+---
+
+The Institute has three main data and research services available to support your study at the planning stage and throughout the study lifecycle: the MUHC Data Warehouse for accessing clinical and administrative patient data, the Biostatistics Consulting Unit (BCU) for statistical design and analysis, and CORD for research data management and REDCap. Engaging these services early — before your protocol is finalized — is strongly recommended.
+
+## Accessing MUHC patient data
+
+The MUHC Data Warehouse (DW) is a patient-centric database integrating clinical and administrative data from over 18 MUHC hospital systems, updated within 24 hours. It supports research involving large-scale retrospective analysis of patient data across MUHC sites — admissions, emergency visits, laboratory results, imaging reports, pharmacy dispensations, surgical records, and more, going back in many cases to 2008.
+
+<Note>
+  The DW is a **research service**, not a quality improvement tool. If you are uncertain whether your project is research or quality improvement, use the MUHC CAE QI vs Research screening tool before proceeding.
+</Note>
+
+<Tip>
+  Consult the DW team early — before finalizing your protocol. They can help you define patient selection criteria, sample size, and variables. If these are not clearly defined in your Nagano submission, it can cause delays at both the ethics review and data request stages.
+</Tip>
+
+The DW contains data from these MUHC sites: Montreal General Hospital (MGH), Royal Victoria Hospital (RVH), Montreal Children's Hospital (MCH), Lachine General Hospital (LAC), Montreal Neurological Hospital (MNH). Not all data types are available at all sites and for all time periods — consult the Data Summary and the Data Dictionary tool when planning your protocol.
+
+Major data domains available include: patient demographics and identifiers, hospitalization and emergency episodes, laboratory results (from 2020), medical imaging reports (from 2000), surgical records (from 2003), pharmacy prescriptions and dispensations, cancer tumour registry, infection control data, blood bank records, allied health professional activities, and outpatient appointment data. Medical image files (PACS), scanned documents, and outpatient clinical notes are not available in the DW.
+
+### Request process
+
+<Steps>
+  <Step title="Explore the Data Summary and Data Dictionary">
+    Review what data is available, from which source systems, and from what dates. Use the Data Dictionary tool to check variable definitions, data types, and site availability before committing to a protocol design.
+  </Step>
+  <Step title="Request a consultation">
+    Contact the DW team through the Request Center to discuss patient selection criteria, variable availability, and sample size. Aggregate data requests can also be made at any time — for feasibility checks or sample size calculations.
+  </Step>
+  <Step title="Finalize your protocol and submit to Nagano">
+    Ensure the data access section of your Nagano submission is clearly defined. The DW team can advise on how to complete the EFVP section if required.
+  </Step>
+  <Step title="Submit a Data Request">
+    Once REB approval and PM Final Authorization are in place (and all other requirements for your data type are met), submit a Data Request through the Request Center.
+  </Step>
+  <Step title="Receive data through NextCloud">
+    Data is delivered securely via the MUHC NextCloud platform. You will need a NextCloud account for all data types except aggregate.
+  </Step>
+</Steps>
+
+### Requirements by data type
+
+What you need to open a data request depends on the type of data you are requesting.
+
+| Requirement | Aggregate | Anonymized | De-identified | Identifying |
+|---|---|---|---|---|
+| Data Use Agreement (DUA) | ✓ | ✓ | ✓ | ✓ |
+| Valid Human Research Privileges or Researcher Status + SOP training | ✓ | ✓ | ✓ | ✓ |
+| NextCloud account | — | ✓ | ✓ | ✓ |
+| Most recently REB-approved protocol | — | ✓ | ✓ | ✓ |
+| REB approval letter | — | ✓ | ✓ | ✓ |
+| PM Final Authorization letter | — | ✓ | ✓ | ✓ |
+| REB renewal letter (if applicable) | — | ✓ | ✓ | ✓ |
+| EFVP (required when accessing personal health information WITHOUT participant consent) | — | — | See note | See note |
+
+<Note>
+  **De-identified data is not the same as anonymized.** De-identified data has had identifiers removed, but re-identification remains possible through a linking key. Only the PI has access to the key linking de-identified data to the patient list. Anonymized data has been irreversibly stripped of all identifiers with no possibility of re-identification. The security and EFVP requirements differ between the two.
+</Note>
+
+### DW resources and tools
+
+<CardGroup cols={2}>
+  <Card title="DW Request Center" icon="arrow-right-to-bracket" href="https://portal.rimuhc.ca/pls/apex/f?p=106:360">
+    Submit consultation requests and data requests. Track status, communicate with the team, and receive files. Requires RI-MUHC Portal login.
+  </Card>
+  <Card title="Data Dictionary Tool" icon="book" href="https://portal.rimuhc.ca/pls/apex/f?p=132:1">
+    Search variables by domain, source system, and site. For non-identifying fields, view value distributions, completeness percentages, and min/max ranges.
+  </Card>
+</CardGroup>
+
+**Contact:** [info.ridw@muhc.mcgill.ca](mailto:info.ridw@muhc.mcgill.ca)
+
+---
+
+## Biostatistics Consulting Unit (BCU)
+
+The BCU provides consultation on biostatistics for basic, clinical, and epidemiological research across the full study lifecycle — from grant application and study design through to analysis, manuscripts, and knowledge translation. The BCU is a service platform under the Centre for Outcomes Research and Evaluation (CORE).
+
+<Tip>
+  Engaging the BCU early — at the study design or grant application stage — is strongly recommended. Statistical decisions made before data collection are far less costly to change than those made after.
+</Tip>
+
+### Services
+
+<Tabs>
+  <Tab title="Study design and grants">
+    - Grant proposal preparation
+    - Sample size calculations
+    - Randomization plans
+    - Experimental design
+    - Statistical Analysis Plan (SAP)
+  </Tab>
+  <Tab title="Analysis and reporting">
+    - Data analysis with advanced analytical methods
+    - Epidemiologic and population-based studies
+    - Clinical trials (Phase II, III, IV)
+    - Translational studies combining clinical and biological data
+    - Statistical interpretation and manuscripts
+    - DSMB and other reports
+  </Tab>
+  <Tab title="Large-scale data">
+    - Analysis of administrative databases (RAMQ, Medicare, StatCan)
+    - Big data and large-scale cohort analyses
+    - Training, education, and knowledge transfer
+
+    Software used: R, SAS, STATA.
+  </Tab>
+</Tabs>
+
+### How to request a consultation
+
+BCU uses iLab to manage service requests. All clients — new and returning — submit requests through the platform.
+
+<Steps>
+  <Step title="Register for an iLab account (first time)">
+    Go to [rimuhc.corefacilities.org — BCU service centre](https://rimuhc.corefacilities.org/service_center/show_external/4719). Click **Register** in the upper right corner, select your PI/Lab, and verify your contact information. Your registration is reviewed by the iLab team; once confirmed, you can submit requests.
+  </Step>
+  <Step title="Submit a service request">
+    Sign in at the BCU service centre page. Select the **Request Services** tab and click **Initiate request**. Complete the form and submit. The BCU team will review and confirm, or follow up for more information.
+  </Step>
+</Steps>
+
+For questions or assistance with iLab: [bcu@rimuhc.ca](mailto:bcu@rimuhc.ca)
+
+### BCU fees
+
+**Early Career Researchers — free consultation hours.** The first four hours of consultation per grant submission are provided at no cost at the time of service, for a maximum of two grant applications per PI per year. This is reserved for Early Career Researchers and researchers who currently hold no research funding. If the grant is successfully funded, those four hours are charged to the project.
+
+| Client | Rate |
+|---|---|
+| RI-MUHC and MUHC researchers | $80 / hour |
+| McGill and other academic or research institutions | $90 / hour |
+| Industry | $125–$145 / hour |
+
+Rates effective April 1, 2025.
+
+### BCU team
+
+| Name | Role | Contact |
+|---|---|---|
+| Ramanakumar V. Agnihotram, PhD | Associate Director | [raman.agnihotram@muhc.mcgill.ca](mailto:raman.agnihotram@muhc.mcgill.ca) — 514-934-1934 ext. 35630 |
+| Jihoon Lim, PhD | Biostatistician | [jihoon.lim@rimuhc.ca](mailto:jihoon.lim@rimuhc.ca) — 514-934-1934 ext. 23207 |
+| Frédéric Lamonde | Programmer | [frederic.lamonde@muhc.mcgill.ca](mailto:frederic.lamonde@muhc.mcgill.ca) — 514-934-1934 ext. 24921 |
+| Kim Allan | Coordinator | [kim.allan@rimuhc.ca](mailto:kim.allan@rimuhc.ca) — 514-934-1934 ext. 44641 |
+
+BCU is located at the Montreal General Hospital (MGH), R1.104, 1650 Cedar Avenue, Montréal, Québec H3G 1A4.
+
+---
+
+## CORD — Research Data Management
+
+The Capture and Optimization of Research Data (CORD) unit provides expertise, technical support, and methodological guidance for all data-related operations across the study lifecycle. CORD is the primary resource for REDCap database builds and ongoing data management support at the RI-MUHC. It is a service platform under the Centre for Outcomes Research and Evaluation (CORE).
+
+### Services
+
+CORD works with researchers across the full data lifecycle, from planning data collection at the protocol stage through to database maintenance and close-out:
+
+- Review data plans in study protocols or grant applications — how data will be collected, cleaned, stored, shared, and estimated costs
+- Review study data collection forms (CRFs, participant questionnaires, data dictionaries) and suggest improvements
+- Build and test REDCap databases to ensure they function correctly and meet the study's needs
+- Ongoing data management support including extraction, cleaning, integration, version tracking, and database updates
+- REDCap assistance throughout the project lifecycle
+
+<Note>
+  **REDCap for regulated studies.** REDCap is the standard eCRF platform at the RI-MUHC and is validated for 21 CFR Part 11 compliance. For studies requiring electronic source data, IT feasibility must be confirmed before submission. Contact CORD early in the design process — database architecture decisions are costly to change after data collection begins.
+</Note>
+
+### How to request support
+
+For general inquiries, contact CORD at [cord@rimuhc.ca](mailto:cord@rimuhc.ca).
+
+For a REDCap project or specific CORD support, submit a request through the online form:
+
+[Submit a CORD Service Request](https://portal.rimuhc.ca/cim/redcap/surveys/?s=LPCYP8KP4JHP8C79) (requires RI-MUHC Portal login)
+
+### CORD fees
+
+One free hour of expert support is included per research initiative.
+
+| Service | RI-MUHC and MUHC | McGill (External) | Details |
+|---|---|---|---|
+| REDCap project setup | $200.00 | $300.00 | One-time fee per study. Includes user account creation and access. |
+| Each additional linked project | $75.00 | $115.00 | Additional REDCap projects under the same study. |
+| REDCap hosting | $87.50 / 3 months | $131.25 / 3 months | Ongoing hosting. Flat rate regardless of linked projects. |
+| Expert support and technical assistance | $55.00 / hour | $55.00 / hour | Consultation, troubleshooting. First hour free per initiative. |
+
+Rates effective April 1, 2025.
+
+### CORD team
+
+CORD is located at the Montreal General Hospital (MGH), R3.113, 1650 Cedar Avenue, Montréal, Québec H3G 1A4. Contact the team at [cord@rimuhc.ca](mailto:cord@rimuhc.ca).
+
+| Name | Role |
+|---|---|
+| Isabel Fortier, PhD | Scientific Director |
+| Lovemine Jeannot | Project Manager |
+| Mathieu Lanteigne-Cauvier | Data Manager |
+| Vasile Catana | Data Manager |
+| Kim Allan | Coordinator |
+| Sofia Bamboulas | Coordinator |
+
+## Related resources
+
+- [Study Design — data and technology planning](/kb/planning/study-design)
+- [Regulations and Guidelines — EFVP and privacy requirements](/kb/planning/regulations)
+- [Contracts, Budgets and Agreements](/kb/planning/budgets-contracts)
+- [Submission and Review Overview](/kb/submission/overview)

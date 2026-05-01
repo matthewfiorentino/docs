@@ -1,0 +1,169 @@
+{
+  "projectType": "saas",
+  "projectName": "RI-MUHC Clinical Research Hub",
+  "projectDescription": "The institutional knowledge hub for clinical research at the Research Institute of the McGill University Health Centre — covering study planning, submission, conduct, training, SOPs, and the tools researchers use at every stage.",
+  "theme": "almond",
+  "primaryColor": "#1B6B8A",
+  "lightColor": "#E8F4F8",
+  "darkColor": "#0D3D52",
+  "navigation": {
+    "tabs": [
+      {
+        "tab": "Knowledge Base",
+        "groups": [
+          {
+            "group": "Getting Started",
+            "pages": [
+              "kb/introduction",
+              "kb/clinical-research-101",
+              "kb/study-lifecycle",
+              "kb/glossary"
+            ]
+          },
+          {
+            "group": "By Role",
+            "pages": [
+              "kb/roles/pi-pathway",
+              "kb/roles/crc-pathway",
+              "kb/roles/nurse-pathway",
+              "kb/roles/onboarding"
+            ]
+          },
+          {
+            "group": "Study Planning",
+            "pages": [
+              "kb/planning/overview",
+              "kb/planning/feasibility",
+              "kb/planning/study-design",
+              "kb/planning/regulations",
+              "kb/planning/budgets-contracts",
+              "kb/planning/data-services"
+            ]
+          },
+          {
+            "group": "Submission & Review",
+            "pages": [
+              "kb/submission/overview",
+              "kb/submission/preparing",
+              "kb/submission/submitting-via-nagano",
+              "kb/submission/tracking-responding",
+              "kb/submission/study-review"
+            ]
+          },
+          {
+            "group": "Study Conduct",
+            "pages": [
+              "kb/conduct/overview",
+              "kb/conduct/site-setup",
+              "kb/conduct/consent",
+              "kb/conduct/recruitment-enrollment",
+              "kb/conduct/data-privacy",
+              "kb/conduct/reportable-events",
+              "kb/conduct/monitoring-audits",
+              "kb/conduct/close-out"
+            ]
+          },
+          {
+            "group": "Governance",
+            "pages": [
+              "kb/governance/institutional-structure",
+              "kb/governance/regulatory-framework",
+              "kb/governance/quality-assurance",
+              "kb/governance/research-integrity"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "SOPs",
+        "groups": [
+          {
+            "group": "Standard Operating Procedures",
+            "pages": [
+              "sops/overview",
+              "sops/team-governance",
+              "sops/study-setup",
+              "sops/participants",
+              "sops/safety-reporting",
+              "sops/data-records",
+              "sops/investigational-products",
+              "sops/monitoring-inspection",
+              "sops/sponsor-investigator"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Training",
+        "groups": [
+          {
+            "group": "Requirements",
+            "pages": [
+              "training/compliance-requirements",
+              "training/research-privileges",
+              "training/external-certifications"
+            ]
+          },
+          {
+            "group": "Learning",
+            "pages": [
+              "training/learning-lab",
+              "training/community-connect",
+              "training/talentlms"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Applications",
+        "groups": [
+          {
+            "group": "Nagano",
+            "pages": [
+              "apps/nagano/overview",
+              "apps/nagano/guide-getting-started",
+              "apps/nagano/guide-creating-submitting",
+              "apps/nagano/guide-after-submission"
+            ]
+          },
+          {
+            "group": "Other Tools",
+            "pages": [
+              "apps/redcap",
+              "apps/talentlms",
+              "apps/oacis"
+            ]
+          },
+          {
+            "group": "CIM",
+            "pages": [
+              "apps/cim/services",
+              "apps/cim/planning"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "keyFeatures": [
+    "Role-based pathways for PIs, CRCs, and research nurses",
+    "Comprehensive Knowledge Base covering every study phase",
+    "Plain-language SOP summaries with downloadable appendices and forms",
+    "Nagano submission platform user guide (step-by-step F11 walkthrough)",
+    "Training compliance tracker with certification requirements by study level",
+    "Interactive Learning Lab with knowledge checks, team exercises, and inspection prep",
+    "Centre for Innovative Medicine (CIM) service catalogue and booking guidance",
+    "REDCap and data management guidance",
+    "Quebec-specific regulatory context (Civil Code, Law 25, MSSS framework)",
+    "Community Connect recordings and ongoing learning sessions"
+  ],
+  "publicApiSurface": [
+    "Nagano study submission platform (nagano.muhc.mcgill.ca)",
+    "TalentLMS training portal (SOP Reader, Competency Assessment, Privileges/Status)",
+    "REDCap data capture platform (portal.rimuhc.ca/cim/redcap/)",
+    "OACIS clinical records system",
+    "CrossLab CIM technical platform booking (rimuhc.corefacilities.org)",
+    "RI-MUHC Portal (portal.rimuhc.ca)",
+    "CORD REDCap support and EFVP privacy process"
+  ]
+}
