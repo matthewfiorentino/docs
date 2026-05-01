@@ -7,6 +7,16 @@ Clinical research at the RI-MUHC requires two independent approvals before a sin
 
 ## The RI-MUHC and the MUHC
 
+```mermaid
+flowchart TD
+    MSSS["Ministry of Health and Social Services<br/>MSSS — Quebec government"]
+    MUHC["McGill University Health Centre<br/>MGH · RVH · MCH · LAC · MNH"]
+    McGill["McGill University"] -. Teaching affiliation .-> MUHC
+    RIMUHC["Research Institute of the MUHC<br/>RI-MUHC — Research arm"]
+    CIM["McConnell Centre for Innovative Medicine<br/>Clinical research facility within RI-MUHC"]
+    MSSS --> MUHC --> RIMUHC --> CIM
+```
+
 The **Research Institute of the McGill University Health Centre (RI-MUHC)** is the research arm of the McGill University Health Centre. The MUHC is the host institution — a university-affiliated hospital network operating under the Quebec Ministry of Health and Social Services (MSSS). The RI-MUHC operates within the MUHC but has its own governance, administration, and mandate focused on research.
 
 Clinical research conducted at the MUHC is governed by this dual structure:
@@ -78,6 +88,22 @@ The Director of Professional Services (DPS), Nursing Resources, Laboratory Servi
 ## Investigator credentials
 
 Before submitting a study to the REB, every QI/PI must hold either Human Research Privileges or Researcher Status. The path depends on professional background. Both are administered by the Performance Office and renewed every three years.
+
+```mermaid
+flowchart TD
+    A["Investigator applying to conduct<br/>human research at the MUHC"]
+    B{"Does the study require<br/>medical oversight?"}
+    C["Path A — Human Research Privileges<br/>For physicians and dentists on the CPDP"]
+    D["Path B — Human Researcher Status<br/>For PhDs, nurses, physiotherapists,<br/>psychologists, and others"]
+    E["Pharmacist exception<br/>CPDP members but must obtain<br/>Human Researcher Status — Path B"]
+    F["Eligible to conduct human research at the RI-MUHC<br/>Administered by Performance Office · Renewed every 3 years"]
+    A --> B
+    B -->|"Yes — CPDP member"| C
+    B -->|"No — non-CPDP researcher"| D
+    E -.-> C
+    C --> F
+    D --> F
+```
 
 <Tabs>
   <Tab title="Human Research Privileges (Path A)">

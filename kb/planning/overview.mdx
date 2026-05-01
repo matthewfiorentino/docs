@@ -9,6 +9,20 @@ Planning is the most consequential phase of a clinical study. Decisions made her
 
 All studies at the MUHC follow the same broad arc: the research question and design are established, the team and operational elements are put in place, and the study is prepared for submission. The two most common starting points — PI-initiated and sponsor-initiated — converge before submission.
 
+```mermaid
+flowchart TD
+    START([Study initiation]) --> PI & SP
+    PI["PI-Initiated Study<br/>PI conceives and owns the protocol<br/>PI team manages all study activities"]
+    SP["Sponsor-Initiated / Multicentre<br/>Sponsor owns and develops the protocol<br/>PI joins as Qualified Investigator"]
+    PI & SP --> GATE([Both paths continue here])
+    GATE --> F & H & R
+    F["If seeking funding<br/>Engage Pre-Awards Office early"]
+    H["If hiring staff<br/>Contact People and Culture, RI-MUHC"]
+    R["If drug or device trial<br/>Health Canada CTA or ITA required"]
+    F & H & R --> PREP["Prepare for submission<br/>Privileges · Training · Protocol · ICF · Budget · Contracts"]
+    PREP --> SUB([Continues in Submission and Review])
+```
+
 How a study originates determines who owns the protocol and what your responsibilities are. In a **PI-initiated study**, you conceive the research question and lead all aspects of development. In a **sponsor-initiated** study, the sponsor owns the protocol and you take on the role of Qualified Investigator (QI) for the MUHC site. Engaging the McConnell Centre for Innovative Medicine (CIM) is optional in both cases — the CIM provides research staff, QA, data management, and infrastructure at the Glen site and the Montreal General Hospital.
 
 <Tabs>

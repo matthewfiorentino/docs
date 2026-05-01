@@ -13,6 +13,18 @@ Before any clinical research can begin at the MUHC, studies must pass through a 
 
 Every study submitted at the MUHC passes through two parallel review processes, with an additional Health Canada track for drug and device trials.
 
+```mermaid
+flowchart TD
+    A([Submit F11 via Nagano]) --> B & C
+    B["REB Review<br/>Scientific · Ethics · Multicentre coordination"]
+    C["Institutional Feasibility<br/>MUHC · RI-MUHC · The Neuro"]
+    A -. Drug or device trials only .-> D["Health Canada<br/>CTA or ITA required"]
+    B & C --> E{All reviews approved}
+    D --> E
+    E --> F["MUHC Authorization letter<br/>Personne mandatée office"]
+    F --> G([Research may begin])
+```
+
 <Steps>
   <Step title="Submit via Nagano (F11)">
     The F11 form is the entry point for all studies. Submitting it simultaneously initiates REB review and institutional feasibility review. For studies involving access to identifiable personal health information without consent, an EFVP form (F17 or F18) must be submitted alongside F11.

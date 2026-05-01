@@ -11,6 +11,18 @@ All studies are submitted through **Nagano**, the MUHC's research management pla
 
 The Personne mandatée reviews all completed evaluations and, when satisfied, issues the MUHC Authorization letter. Research may not begin — including recruitment, screening, or consent — until that letter is in your ISF.
 
+```mermaid
+flowchart TD
+    A([Submit F11 via Nagano]) --> B & C
+    B["Stream 1 + 2 — REB Review<br/>Scientific review · Ethics review · Multicentre coordination"]
+    C["Stream 3 — Institutional Feasibility<br/>MUHC · RI-MUHC · The Neuro"]
+    A -. Drug or device trials only .-> D["Health Canada<br/>CTA or ITA — must precede MUHC Authorization"]
+    B & C --> E{All reviews approved}
+    D --> E
+    E --> F["MUHC Authorization letter<br/>Personne mandatée office"]
+    F --> G([Research may begin])
+```
+
 <Warning>
   REB approval is not the same as MUHC Authorization. Do not begin any research activity until the Personne mandatée has issued the MUHC Authorization letter.
 </Warning>
