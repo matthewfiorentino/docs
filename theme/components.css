@@ -25,16 +25,22 @@
     color:      var(--ri-fg) !important;
 }
 
-/* Kill sidebar scroll-fade gradient — Mintlify puts this on a child element
-   inside the sidebar, not directly on #sidebar. Zero out gradient backgrounds
-   on all sidebar descendants while leaving content/layout pseudo-elements
-   intact so icons and other structural uses still work. */
-#sidebar *::before,
-#sidebar *::after,
-#sidebar-content *::before,
-#sidebar-content *::after {
-    background:       none !important;
-    background-image: none !important;
+/* Kill sidebar scroll-fade gradient.
+   Mintlify renders this as a sticky/absolute div with pointer-events-none
+   and Tailwind gradient classes (from-background, bg-gradient-to-b etc).
+   Target every combination we know of. */
+#sidebar .pointer-events-none,
+#sidebar-content .pointer-events-none,
+#navigation-items .pointer-events-none,
+#sidebar .sticky.pointer-events-none,
+#sidebar .absolute.pointer-events-none,
+#sidebar-content .sticky.pointer-events-none,
+#sidebar-content .absolute.pointer-events-none,
+#sidebar [class*="from-"],
+#sidebar [class*="bg-gradient"],
+#sidebar-content [class*="from-"],
+#sidebar-content [class*="bg-gradient"] {
+    display: none !important;
 }
 
 :where(#header, #navbar, #navbar-transition) {
