@@ -54,6 +54,20 @@ article a:hover,
 #table-of-contents-content li[data-active-deepest="true"] > a {
     color: var(--ri-accent) !important;
     font-weight: 600 !important;
+    padding-left: 14px !important;
+    position: relative !important;
+}
+#table-of-contents-content li[data-active="true"] > a::before,
+#table-of-contents-content li[data-active-deepest="true"] > a::before {
+    content: '';
+    position: absolute;
+    left: 2px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: var(--ri-accent);
 }
 
 /* ── Sidebar active link ── */
