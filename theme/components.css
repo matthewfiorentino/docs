@@ -26,16 +26,24 @@
 }
 
 /* Kill sidebar scroll-fade gradient.
-   Mintlify applies mask-image on the scroll container itself — not a child div.
-   That's why right-click passes through to links and element targeting fails.
-   Remove the mask entirely. */
-#sidebar,
-#sidebar-content,
-#navigation-items,
-#sidebar > *,
-#sidebar-content > * {
-    -webkit-mask-image: none !important;
-    mask-image:         none !important;
+   It's a position:sticky div that only appears when you scroll.
+   Strategy 1: strip background-image (gradients) from all sidebar descendants —
+     Tailwind gradient utilities use background-image, hover bg-colors don't.
+   Strategy 2: make sticky divs in the sidebar transparent.
+   Strategy 3: cover aside + nav role containers as fallback IDs. */
+#sidebar *,
+#sidebar-content *,
+aside *,
+[role="navigation"] * {
+    background-image: none !important;
+}
+
+#sidebar div.sticky,
+#sidebar-content div.sticky,
+aside div.sticky,
+[role="navigation"] div.sticky {
+    background:       transparent !important;
+    background-image: none        !important;
 }
 
 :where(#header, #navbar, #navbar-transition) {
