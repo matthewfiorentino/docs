@@ -30,10 +30,6 @@
     -webkit-backdrop-filter: none !important;
 }
 
-:where(#sidebar div, #sidebar nav, #sidebar aside) {
-    background: transparent !important;
-}
-
 /* ── Typography ── */
 :where(html, body) {
     font-family:  var(--ri-font)            !important;
@@ -105,24 +101,45 @@
     font-weight:   600                 !important;
 }
 
-/* ── Navbar tab pills ── */
+/* ── Navbar tab links — underline style ── */
 :where(#navbar a, #navbar-transition a) {
-    border-radius: var(--ri-radius-sm) !important;
-    padding:       4px 10px            !important;
-    transition:    background 0.15s ease, color 0.15s ease !important;
+    background:     transparent              !important;
+    border-radius:  0                        !important;
+    padding-bottom: 2px                      !important;
+    border-bottom:  2px solid transparent    !important;
+    transition:     color 0.15s ease, border-color 0.15s ease !important;
 }
 :where(#navbar a:hover, #navbar-transition a:hover) {
-    background: color-mix(in srgb, var(--ri-accent) 12%, transparent) !important;
-    color:      var(--ri-accent) !important;
+    color:        var(--ri-accent) !important;
+    background:   transparent      !important;
+    border-bottom-color: color-mix(in srgb, var(--ri-accent), transparent 55%) !important;
 }
 :where(
     #navbar a[aria-current="page"],
     #navbar a[data-active="true"],
     #navbar-transition a[aria-current="page"]
 ) {
-    background:  color-mix(in srgb, var(--ri-accent) 15%, transparent) !important;
-    color:       var(--ri-accent) !important;
-    font-weight: 600              !important;
+    color:               var(--ri-accent) !important;
+    background:          transparent      !important;
+    border-bottom-color: var(--ri-accent) !important;
+    font-weight:         600              !important;
+}
+
+/* ── Contact navbar link — teal pill ── */
+:where(a[href="/contacts"], a[href*="/contacts"]) {
+    background:    var(--ri-accent)    !important;
+    color:         #ffffff             !important;
+    border-radius: 20px               !important;
+    padding:       4px 14px           !important;
+    font-weight:   600                !important;
+    border-bottom: none               !important;
+    text-decoration: none             !important;
+    transition: background 0.15s ease !important;
+}
+:where(a[href="/contacts"]:hover, a[href*="/contacts"]:hover) {
+    background:    var(--ri-accent-bright) !important;
+    color:         #ffffff                 !important;
+    border-bottom: none                    !important;
 }
 
 /* ── Cards ── */
