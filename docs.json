@@ -294,20 +294,26 @@
                 "expanded": true,
                 "pages": [
                   "apps/nagano/overview",
-                  "apps/nagano/guide-00",
-                  "apps/nagano/guide-01",
-                  "apps/nagano/guide-02",
-                  "apps/nagano/guide-03",
-                  "apps/nagano/guide-04",
-                  "apps/nagano/guide-05",
-                  "apps/nagano/guide-06",
-                  "apps/nagano/guide-07",
-                  "apps/nagano/guide-08",
-                  "apps/nagano/guide-09",
-                  "apps/nagano/guide-10",
-                  "apps/nagano/guide-11",
-                  "apps/nagano/guide-12",
-                  "apps/nagano/guide-13"
+                  {
+                    "group": "Nagano User Guide",
+                    "expanded": false,
+                    "pages": [
+                      "apps/nagano/guide-00",
+                      "apps/nagano/guide-01",
+                      "apps/nagano/guide-02",
+                      "apps/nagano/guide-03",
+                      "apps/nagano/guide-04",
+                      "apps/nagano/guide-05",
+                      "apps/nagano/guide-06",
+                      "apps/nagano/guide-07",
+                      "apps/nagano/guide-08",
+                      "apps/nagano/guide-09",
+                      "apps/nagano/guide-10",
+                      "apps/nagano/guide-11",
+                      "apps/nagano/guide-12",
+                      "apps/nagano/guide-13"
+                    ]
+                  }
                 ]
               },
               {
