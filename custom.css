@@ -46,6 +46,21 @@ article a:hover,
     color: var(--ri-accent-bright) !important;
 }
 
+/* ── "On this page" TOC — reset link color so active state is visible ── */
+nav[aria-label="On this page"] a,
+[data-component="toc"] a,
+aside a {
+    color: inherit !important;
+    text-decoration: none !important;
+}
+nav[aria-label="On this page"] a[data-active="true"],
+nav[aria-label="On this page"] a[aria-current="true"],
+[data-component="toc"] a[data-active="true"],
+[data-component="toc"] a[aria-current="true"] {
+    color: var(--ri-accent) !important;
+    font-weight: 600 !important;
+}
+
 /* ── Sidebar active link ── */
 #sidebar a[aria-current="page"],
 #sidebar a[aria-selected="true"] {
