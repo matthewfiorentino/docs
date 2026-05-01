@@ -136,6 +136,11 @@
               "kb/conduct/publications"
             ]
           },
+        ]
+      },
+      {
+        "tab": "Governance",
+        "groups": [
           {
             "group": "Governance",
             "pages": [
@@ -149,7 +154,7 @@
         ]
       },
       {
-        "tab": "SOPs",
+        "tab": "Clinical Research SOPs",
         "groups": [
           {
             "group": "About the SOPs",
@@ -207,7 +212,7 @@
         ]
       },
       {
-        "tab": "Training",
+        "tab": "Training and Learning",
         "groups": [
           {
             "group": "Overview",
