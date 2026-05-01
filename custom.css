@@ -1,1 +1,119 @@
-/* Styling has moved to /theme/tokens.css, /theme/mappings.css, /theme/components.css */
+/* ── RI-MUHC Clinical Research Hub — Mintlify styles ─────────────────────── */
+
+/* ── Design tokens ── */
+:root {
+    --ri-heading: #150e51;
+    --ri-accent:  #007a6e;
+    --ri-accent-bright: #00c4b4;
+
+    /* --background in HSL (no hsl() wrapper) so Mintlify's Tailwind gradient
+       utilities resolve correctly — fixes the sidebar scroll-fade colour     */
+    --background: 240 3% 97%;
+    --primary:    #007a6e;
+}
+
+html.dark {
+    --ri-heading: #00c4b4;
+    --ri-accent:  #00c4b4;
+    --ri-accent-bright: #00e0d0;
+
+    --background: 246 70% 19%;
+    --primary:    #00c4b4;
+}
+
+/* ── Font ── */
+body,
+button,
+input,
+select,
+textarea {
+    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif !important;
+}
+
+/* ── Headings ── */
+h1, h2, h3, h4, h5, h6, #page-title, strong, b {
+    color: var(--ri-heading) !important;
+}
+
+/* ── Links ── */
+article a,
+.prose a {
+    color: var(--ri-accent) !important;
+    text-underline-offset: 3px;
+}
+article a:hover,
+.prose a:hover {
+    color: var(--ri-accent-bright) !important;
+}
+
+/* ── Sidebar active link ── */
+#sidebar a[aria-current="page"],
+#sidebar a[aria-selected="true"] {
+    color:       var(--ri-accent) !important;
+    font-weight: 600 !important;
+}
+
+/* ── Navbar — teal underline on active tab ── */
+#navbar a,
+#navbar-transition a {
+    border-bottom:  2px solid transparent !important;
+    padding-bottom: 2px !important;
+    transition:     color 0.15s, border-color 0.15s !important;
+}
+#navbar a:hover,
+#navbar-transition a:hover {
+    color:               var(--ri-accent) !important;
+    border-bottom-color: color-mix(in srgb, var(--ri-accent), transparent 55%) !important;
+}
+#navbar a[aria-current="page"],
+#navbar a[data-active="true"] {
+    color:               var(--ri-accent) !important;
+    border-bottom-color: var(--ri-accent) !important;
+    font-weight:         600 !important;
+}
+
+/* ── Contact link — teal pill ── */
+a[href="/contacts"] {
+    background:    var(--ri-accent) !important;
+    color:         #fff !important;
+    border-radius: 20px !important;
+    padding:       4px 14px !important;
+    font-weight:   600 !important;
+    border-bottom: none !important;
+}
+a[href="/contacts"]:hover {
+    background: var(--ri-accent-bright) !important;
+    color:      #fff !important;
+}
+
+/* ── Tables ── */
+table thead tr {
+    background: var(--ri-heading) !important;
+}
+table thead th {
+    color:          #fff !important;
+    font-size:      0.72rem !important;
+    font-weight:    700 !important;
+    letter-spacing: 0.06em !important;
+    text-transform: uppercase !important;
+}
+table tbody tr:nth-child(even) {
+    background: rgba(0,0,0,0.03) !important;
+}
+table td:first-child {
+    font-weight: 600 !important;
+    color:       var(--ri-heading) !important;
+}
+
+/* ── Cards — teal border on hover ── */
+a.card:hover,
+a:has([data-component-part="card-content-container"]):hover {
+    border-color: var(--ri-accent) !important;
+}
+
+/* ── Steps ── */
+[data-component="step"] [data-step-number],
+.step-number {
+    border-color: var(--ri-accent) !important;
+    color:        var(--ri-accent) !important;
+}
