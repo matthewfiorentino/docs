@@ -7,6 +7,42 @@ Recruitment is where the study moves from activation to having participants in t
 
 ## Before you can recruit
 
+```mermaid
+flowchart TD
+    ACT([Study activated]) --> G1{REB approval\n+ all materials?}
+    G1 -->|No| WAIT1[Wait]
+    G1 -->|Yes| G2{MUHC\nAuthorization?}
+    G2 -->|No| WAIT2[Wait]
+    G2 -->|Yes| G3{Sponsor Go\nLetter?}
+    G3 -->|Not required| REC
+    G3 -->|Required — received?| REC[Begin recruitment\nvia approved materials]
+    G3 -->|Required — pending| WAIT3[Wait]
+
+    REC --> ID[Potential participant\nidentified]
+    ID --> CON[Consent obtained\nbefore any screening]
+    CON --> SCR{Meets eligibility\ncriteria?}
+    SCR -->|No — screen failure| LOG[Record in Screening Log\nwith reason for failure]
+    SCR -->|Yes| ENR[Enroll\nassign participant ID]
+    ENR --> MR[File ICF + FMU-9997\nwith MUHC Medical Records]
+    MR --> ACT2([Active participant])
+
+    style ACT  fill:#150e51,color:#fff,stroke:none
+    style G1   fill:#1a1466,color:#fff,stroke:none
+    style G2   fill:#1a1466,color:#fff,stroke:none
+    style G3   fill:#1a1466,color:#fff,stroke:none
+    style SCR  fill:#1a1466,color:#fff,stroke:none
+    style WAIT1 fill:#c0392b,color:#fff,stroke:none
+    style WAIT2 fill:#c0392b,color:#fff,stroke:none
+    style WAIT3 fill:#c0392b,color:#fff,stroke:none
+    style REC  fill:#007a6e,color:#fff,stroke:none
+    style ID   fill:#007a6e,color:#fff,stroke:none
+    style CON  fill:#007a6e,color:#fff,stroke:none
+    style ENR  fill:#007a6e,color:#fff,stroke:none
+    style LOG  fill:#007a6e,color:#fff,stroke:none
+    style MR   fill:#00c4b4,color:#fff,stroke:none
+    style ACT2 fill:#00c4b4,color:#fff,stroke:none
+```
+
 Recruitment cannot begin until three conditions are all in place simultaneously:
 
 1. **REB approval** — including approval of all recruitment materials

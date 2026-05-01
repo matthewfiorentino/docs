@@ -5,6 +5,36 @@ description: "Close-out visit procedures, ISF archiving and retention periods, f
 
 Close-out is not the end of a study's regulatory life — it is the beginning of a 15-year accountability phase. A study is not closed until a defined set of conditions are all met, and a Nagano submission reflects that fact.
 
+```mermaid
+flowchart TD
+    A([Last participant\nvisit complete]) --> B[Prepare ISF\nresolve queries\nreconcile budget]
+    B --> C[Close-Out Visit\nCOV by Sponsor / Monitor]
+    C --> D[Resolve action items\nlock & sign eCRF]
+    D --> E[IP reconciliation\n& destruction]
+    E --> F{Multi-centric\nstudy?}
+
+    F -->|Yes — MUHC is\nlead site| G[Confirm all other\nsites closed first]
+    F -->|No| H[Submit Closure\nform via Nagano]
+    G --> H
+
+    H --> HC[Notify Health\nCanada if applicable]
+    H --> ARCH[Archive ISF\n15 yr drug/device\n7 yr other]
+    HC --> DONE([Study closed])
+    ARCH --> DONE
+
+    style A    fill:#150e51,color:#fff,stroke:none
+    style B    fill:#1a1466,color:#fff,stroke:none
+    style C    fill:#007a6e,color:#fff,stroke:none
+    style D    fill:#007a6e,color:#fff,stroke:none
+    style E    fill:#007a6e,color:#fff,stroke:none
+    style F    fill:#1a1466,color:#fff,stroke:none
+    style G    fill:#007a6e,color:#fff,stroke:none
+    style H    fill:#007a6e,color:#fff,stroke:none
+    style HC   fill:#00c4b4,color:#fff,stroke:none
+    style ARCH fill:#00c4b4,color:#fff,stroke:none
+    style DONE fill:#00c4b4,color:#fff,stroke:none
+```
+
 ## Preparing for the close-out visit
 
 Close-out is a sequence, not a single event. Starting preparation early — well before the last participant visit — means close-out happens smoothly rather than becoming a months-long reconciliation exercise.
