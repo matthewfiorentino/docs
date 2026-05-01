@@ -54,7 +54,6 @@
           },
           {
             "group": "By Role",
-            "expanded": false,
             "pages": [
               "kb/roles/pi-pathway",
               "kb/roles/pi-guide",
@@ -68,7 +67,6 @@
           },
           {
             "group": "Study Planning",
-            "expanded": false,
             "pages": [
               "kb/planning/overview",
               "kb/planning/feasibility",
@@ -88,7 +86,6 @@
           },
           {
             "group": "Submission & Review",
-            "expanded": false,
             "pages": [
               "kb/submission/overview",
               "kb/submission/preparing",
@@ -99,7 +96,6 @@
           },
           {
             "group": "Study Conduct",
-            "expanded": false,
             "pages": [
               "kb/conduct/overview",
               "kb/conduct/site-setup",
@@ -122,7 +118,6 @@
           },
           {
             "group": "Governance",
-            "expanded": false,
             "pages": [
               "kb/governance/institutional-structure",
               "kb/governance/regulatory-framework",
@@ -144,7 +139,6 @@
           },
           {
             "group": "SOP-CR-002 — Research Team Roles",
-            "expanded": false,
             "pages": [
               "sops/cr-002-overview",
               "sops/cr-002"
@@ -152,7 +146,6 @@
           },
           {
             "group": "SOP-CR-008 — Informed Consent",
-            "expanded": false,
             "pages": [
               "sops/cr-008-overview",
               "sops/cr-008"
@@ -160,7 +153,6 @@
           },
           {
             "group": "Core Series — Team & Study Management",
-            "expanded": false,
             "pages": [
               "sops/team-governance",
               "sops/study-setup"
@@ -168,7 +160,6 @@
           },
           {
             "group": "Core Series — Participants & Safety",
-            "expanded": false,
             "pages": [
               "sops/participants",
               "sops/safety-reporting"
@@ -176,7 +167,6 @@
           },
           {
             "group": "Core Series — Data & Records",
-            "expanded": false,
             "pages": [
               "sops/data-records",
               "sops/investigational-products"
@@ -184,14 +174,12 @@
           },
           {
             "group": "Core Series — Oversight",
-            "expanded": false,
             "pages": [
               "sops/monitoring-inspection"
             ]
           },
           {
             "group": "Sponsor-Investigator Series",
-            "expanded": false,
             "pages": [
               "sops/sponsor-investigator"
             ]
@@ -209,7 +197,6 @@
           },
           {
             "group": "Requirements",
-            "expanded": false,
             "pages": [
               "training/compliance-requirements",
               "training/research-privileges",
@@ -220,7 +207,6 @@
           },
           {
             "group": "Learning",
-            "expanded": false,
             "pages": [
               "training/learning-lab",
               "training/community-connect",
@@ -240,7 +226,6 @@
           },
           {
             "group": "For Researchers",
-            "expanded": false,
             "pages": [
               "apps/cim/services",
               "apps/cim/planning",
@@ -250,7 +235,6 @@
           },
           {
             "group": "For CIM Staff",
-            "expanded": false,
             "pages": [
               "apps/cim/training",
               "apps/cim/using-cim",
@@ -284,7 +268,6 @@
           },
           {
             "group": "Other Tools",
-            "expanded": false,
             "pages": [
               "apps/redcap",
               "apps/talentlms",
