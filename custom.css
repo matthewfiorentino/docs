@@ -431,84 +431,40 @@ html.dark .ri-tag-sop   { background: rgba(157,23,77,.3);  color: #f9a8d4; }
 }
 
 /* ══════════════════════════════════════════════
-   NAVBAR — Claude-docs style layout
+   NAVBAR
+   • Frosted-glass background
    • Bigger logo
-   • Centered tab navigation
-   • Cleaner, taller bar
+   • Centered tab strip
    ══════════════════════════════════════════════ */
 
-#navbar,
-header[class*="sticky"] {
-    height: 76px !important;
+/* Frosted background */
+#navbar {
     background: rgba(255, 255, 255, 0.96) !important;
     backdrop-filter: blur(10px) saturate(180%) !important;
     -webkit-backdrop-filter: blur(10px) saturate(180%) !important;
     border-bottom: 1px solid rgba(0, 0, 0, 0.06) !important;
 }
-html.dark #navbar,
-html.dark header[class*="sticky"] {
+html.dark #navbar {
     background: rgba(17, 11, 56, 0.96) !important;
     border-bottom-color: rgba(255, 255, 255, 0.06) !important;
 }
 
-/* Convert the navbar's flex layout to a 3-column grid:
-   logo (left) │ tabs (center) │ actions (right) */
-#navbar > div:first-child,
-header[class*="sticky"] > div:first-child {
-    display: grid !important;
-    grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr) !important;
-    align-items: center !important;
-    gap: 32px !important;
-    height: 100% !important;
-    width: 100% !important;
-    max-width: none !important;
-}
-
-/* Logo — left column, bigger */
-#navbar img,
-header[class*="sticky"] img {
+/* Logo — bigger (Palm theme uses .nav-logo class) */
+.nav-logo {
     height: 44px !important;
     width: auto !important;
     max-height: 44px !important;
 }
 
-/* Tab navigation — centered */
-#navbar nav,
-header[class*="sticky"] nav {
-    justify-self: center !important;
-    margin-left: auto !important;
-    margin-right: auto !important;
+/* Tab strip — centered within its row */
+.nav-tabs {
+    margin: 0 auto !important;
 }
 
-/* Right-side actions block — pushed to right edge of column */
-#navbar > div:first-child > div:last-child,
-header[class*="sticky"] > div:first-child > div:last-child {
-    justify-self: end !important;
-    display: flex !important;
-    align-items: center !important;
-    gap: 14px !important;
-}
-
-/* More breathing room between tabs */
-#navbar nav a,
-#navbar nav button {
-    padding: 6px 14px !important;
-}
-
-/* Mobile — fall back to standard left-aligned layout to avoid overlap */
+/* Mobile */
 @media (max-width: 1024px) {
-    #navbar > div:first-child,
-    header[class*="sticky"] > div:first-child {
-        display: flex !important;
-        gap: 16px !important;
-    }
-    #navbar img,
-    header[class*="sticky"] img {
+    .nav-logo {
         height: 32px !important;
-    }
-    #navbar nav {
-        margin-left: 0 !important;
-        margin-right: auto !important;
     }
 }
 
