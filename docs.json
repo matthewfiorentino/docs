@@ -7,7 +7,7 @@
     "light": "#00c4b4",
     "dark": "#150e51"
   },
-  "customCSS": ["/custom.css"],
+  "customCSS": ["/theme/tokens.css", "/theme/mappings.css", "/theme/components.css"],
   "logo": {
     "light": "/logo/rimuhc.svg",
     "dark": "/logo/rimuhc.svg",

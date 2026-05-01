@@ -1,0 +1,304 @@
+/* ── Component Overrides ──────────────────────────────────────────────────── */
+/* Targets stable Mintlify anchors (#header, #sidebar, data-component-part)  */
+/* so overrides don't break when Mintlify updates class names.                */
+
+/* ── Layout surfaces ── */
+:where(
+    #header,
+    #navbar,
+    #navbar-transition,
+    #content-container,
+    #content-area,
+    #content-side-layout,
+    #table-of-contents,
+    #table-of-contents-layout,
+    #footer,
+    main,
+    [role="main"]
+) {
+    background: var(--ri-bg) !important;
+    color:      var(--ri-fg) !important;
+}
+
+:where(#sidebar, #sidebar-content, #navigation-items) {
+    background: var(--ri-bg) !important;
+    color:      var(--ri-fg) !important;
+}
+
+:where(#header, #navbar, #navbar-transition) {
+    backdrop-filter:         none !important;
+    -webkit-backdrop-filter: none !important;
+}
+
+:where(#sidebar div, #sidebar nav, #sidebar aside) {
+    background: transparent !important;
+}
+
+/* ── Typography ── */
+:where(html, body) {
+    font-family:  var(--ri-font)            !important;
+    font-size:    var(--ri-font-body-size)  !important;
+    font-weight:  var(--ri-font-body-weight)!important;
+}
+
+:where(h1, #page-title) {
+    font-family:  var(--ri-font)             !important;
+    font-size:    var(--ri-font-head-size)   !important;
+    font-weight:  var(--ri-font-head-weight) !important;
+}
+:where(h2) {
+    font-family:  var(--ri-font)                              !important;
+    font-size:    calc(var(--ri-font-head-size) * 0.83)       !important;
+    font-weight:  var(--ri-font-head-weight)                  !important;
+}
+:where(h3) {
+    font-family:  var(--ri-font)                              !important;
+    font-size:    calc(var(--ri-font-head-size) * 0.7)        !important;
+    font-weight:  var(--ri-font-head-weight)                  !important;
+}
+:where(h4, h5, h6) {
+    font-family:  var(--ri-font)                              !important;
+    font-size:    calc(var(--ri-font-head-size) * 0.6)        !important;
+    font-weight:  var(--ri-font-head-weight)                  !important;
+}
+
+:where(h1, h2, h3, h4, h5, h6, #page-title, strong, b) {
+    color: var(--ri-fg) !important;
+}
+:where(p, li, span, small, td, th) {
+    color: var(--ri-muted) !important;
+}
+
+:where(code, pre, kbd, samp) {
+    font-size: var(--ri-font-mono-size) !important;
+}
+
+/* ── Links ── */
+:where(a, .link, .navbar-link) {
+    color: var(--ri-accent) !important;
+    text-decoration-color: color-mix(in srgb, var(--ri-accent), transparent 60%) !important;
+    text-underline-offset: 3px !important;
+}
+:where(a:hover, .link:hover, .navbar-link:hover) {
+    color: var(--ri-accent-bright) !important;
+    text-decoration-color: color-mix(in srgb, var(--ri-accent-bright), transparent 40%) !important;
+}
+
+/* ── Sidebar links ── */
+:where(#sidebar a, #sidebar .nav-anchor, .sidebar a) {
+    color:      var(--ri-muted)   !important;
+    background: transparent      !important;
+}
+:where(#sidebar a:hover, .sidebar a:hover) {
+    color:         var(--ri-fg)      !important;
+    background:    var(--ri-surface) !important;
+    border-radius: var(--ri-radius-sm) !important;
+}
+:where(
+    #sidebar a[aria-current="page"],
+    #sidebar a[aria-selected="true"],
+    .sidebar a[aria-current="page"]
+) {
+    color:         var(--ri-accent)    !important;
+    background:    var(--ri-surface-2) !important;
+    border-radius: var(--ri-radius-sm) !important;
+    font-weight:   600                 !important;
+}
+
+/* ── Navbar tab pills ── */
+:where(#navbar a, #navbar-transition a) {
+    border-radius: var(--ri-radius-sm) !important;
+    padding:       4px 10px            !important;
+    transition:    background 0.15s ease, color 0.15s ease !important;
+}
+:where(#navbar a:hover, #navbar-transition a:hover) {
+    background: color-mix(in srgb, var(--ri-accent) 12%, transparent) !important;
+    color:      var(--ri-accent) !important;
+}
+:where(
+    #navbar a[aria-current="page"],
+    #navbar a[data-active="true"],
+    #navbar-transition a[aria-current="page"]
+) {
+    background:  color-mix(in srgb, var(--ri-accent) 15%, transparent) !important;
+    color:       var(--ri-accent) !important;
+    font-weight: 600              !important;
+}
+
+/* ── Cards ── */
+:where(a.card, a:has([data-component-part="card-content-container"])) {
+    background:    var(--ri-surface) !important;
+    border:        1px solid var(--ri-border) !important;
+    border-radius: var(--ri-radius-md) !important;
+    box-shadow:    none !important;
+    text-shadow:   none !important;
+    transition:    border-color 0.15s ease, background 0.15s ease !important;
+}
+:where(
+    a.card:hover,
+    a:has([data-component-part="card-content-container"]):hover
+) {
+    background:   var(--ri-surface-2) !important;
+    border-color: var(--ri-accent)    !important;
+}
+:where([data-component-part="card-content-container"]) {
+    background: transparent !important;
+}
+:where([data-component-part="card-title"]) {
+    color:       var(--ri-fg)             !important;
+    font-weight: var(--ri-font-head-weight) !important;
+}
+:where([data-component-part="card-content"]) {
+    color: var(--ri-muted) !important;
+}
+:where([data-component-part="card-icon"]) {
+    color: var(--ri-accent) !important;
+}
+
+/* ── Tables ── */
+:where(table thead tr) {
+    background: var(--ri-fg) !important;
+}
+:where(table thead th) {
+    color:          #ffffff       !important;
+    font-size:      0.72rem       !important;
+    font-weight:    700           !important;
+    letter-spacing: 0.06em        !important;
+    text-transform: uppercase     !important;
+}
+:where(table tbody tr:nth-child(even)) {
+    background: var(--ri-surface) !important;
+}
+:where(table td:first-child) {
+    font-weight: 600              !important;
+    color:       var(--ri-fg)     !important;
+}
+
+/* ── Callout boxes — color-coded by type ── */
+:where(.callout) {
+    border-radius: var(--ri-radius-md) !important;
+    overflow:      hidden              !important;
+}
+
+/* Note — blue */
+:where(.callout-note, [data-type="note"] .callout, div[class*="note"].callout) {
+    background:   #e5f3fb !important;
+    border-color: #2b9ce2 !important;
+}
+/* Warning — amber */
+:where(.callout-warning, [data-type="warning"] .callout, div[class*="warning"].callout) {
+    background:   #fff3cc !important;
+    border-color: #ffb400 !important;
+    color:        #5a3800 !important;
+}
+/* Tip — green */
+:where(.callout-tip, [data-type="tip"] .callout, div[class*="tip"].callout) {
+    background:   #e5f5ee !important;
+    border-color: #1d9e75 !important;
+}
+/* Info — teal */
+:where(.callout-info, [data-type="info"] .callout, div[class*="info"].callout) {
+    background:   #e0f7f5 !important;
+    border-color: var(--ri-accent) !important;
+}
+
+/* ── Accordions ── */
+:where(.accordion-group) {
+    border:        1px solid var(--ri-border) !important;
+    border-radius: var(--ri-radius-md)        !important;
+    overflow:      hidden                     !important;
+    background:    transparent                !important;
+}
+:where(.accordion-group > details.accordion) {
+    margin: 0 !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    background: transparent !important;
+}
+:where(.accordion-group > details.accordion + details.accordion) {
+    border-top: 1px solid var(--ri-border) !important;
+}
+:where(details.accordion > summary[data-component-part="accordion-button"]) {
+    background:    var(--ri-fg) !important;
+    color:         var(--ri-bg) !important;
+    border-radius: 0           !important;
+}
+:where(details.accordion > summary[data-component-part="accordion-button"]:hover) {
+    background: color-mix(in srgb, var(--ri-fg) 90%, transparent) !important;
+}
+:where(details.accordion > summary *) {
+    color: inherit !important;
+}
+:where(details.accordion [data-component-part="accordion-content"]) {
+    background: transparent  !important;
+    color:      var(--ri-fg) !important;
+}
+
+/* ── Steps ── */
+:where([data-component="step"] [data-step-number], .step-number) {
+    border-color: var(--ri-accent) !important;
+    color:        var(--ri-accent) !important;
+}
+
+/* ── Blockquotes ── */
+:where(blockquote) {
+    background:    transparent                !important;
+    border:        0                          !important;
+    border-left:   3px solid var(--ri-accent) !important;
+    padding-left:  18px                       !important;
+    border-radius: 0                          !important;
+    box-shadow:    none                       !important;
+}
+
+/* ── Mobile / dialog surfaces ── */
+:where([role="dialog"]) :where(.flex.flex-col.flex-1.overflow-y-auto.h-full) {
+    background: var(--ri-bg) !important;
+    color:      var(--ri-fg) !important;
+}
+:where([role="dialog"]) :where(#navigation-items a) {
+    color:      var(--ri-muted) !important;
+    background: transparent     !important;
+}
+:where([role="dialog"]) :where(#navigation-items a:hover) {
+    color:         var(--ri-fg)        !important;
+    background:    var(--ri-surface)   !important;
+    border-radius: var(--ri-radius-sm) !important;
+}
+:where([role="dialog"]) :where(#navigation-items a[aria-current="page"]) {
+    color:         var(--ri-accent)    !important;
+    background:    var(--ri-surface-2) !important;
+    border-radius: var(--ri-radius-sm) !important;
+}
+
+/* ── Radix dropdown menus ── */
+:where([data-radix-menu-content][role="menu"]) {
+    background:              var(--ri-bg)     !important;
+    color:                   var(--ri-fg)     !important;
+    border:                  1px solid var(--ri-border) !important;
+    border-radius:           var(--ri-radius-md) !important;
+    box-shadow:              none              !important;
+    backdrop-filter:         none              !important;
+    -webkit-backdrop-filter: none              !important;
+}
+
+/* ── Footer ── */
+:where(#footer) {
+    border-top: 1px solid var(--ri-border) !important;
+}
+:where(#footer a, #footer span) {
+    color: var(--ri-muted) !important;
+}
+
+/* ── Dark mode toggle ── */
+:where(button[aria-label="Toggle dark mode"]) {
+    border-radius: var(--ri-radius-md) !important;
+    overflow:      hidden              !important;
+}
+
+/* ── Icons ── */
+:where(svg) {
+    color: currentColor !important;
+}
+:where([style*="mask-image"], svg[style*="mask-image"]) {
+    background-color: currentColor !important;
+}

@@ -1,0 +1,43 @@
+/* ── RI-MUHC Design Tokens ────────────────────────────────────────────────── */
+/* Edit only this file to change the overall look and feel.                    */
+/* Light mode: white bg, navy text, teal accent                                */
+/* Dark mode:  navy bg, light text, bright-teal accent                         */
+
+:root {
+    --ri-bg: #f6f6f7;
+    --ri-fg: #150e51;
+    --ri-accent: #007a6e;
+    --ri-accent-bright: #00c4b4;
+
+    --ri-surface:   color-mix(in srgb, var(--ri-fg) 5%,  transparent);
+    --ri-surface-2: color-mix(in srgb, var(--ri-fg) 10%, transparent);
+    --ri-border:    color-mix(in srgb, var(--ri-fg) 14%, transparent);
+    --ri-muted:     color-mix(in srgb, var(--ri-fg) 70%, transparent);
+    --ri-muted-2:   color-mix(in srgb, var(--ri-fg) 50%, transparent);
+    --ri-code-bg:   color-mix(in srgb, var(--ri-fg) 5%,  transparent);
+    --ri-focus:     color-mix(in srgb, var(--ri-accent) 50%, transparent);
+
+    --ri-radius-xs: 4px;
+    --ri-radius-sm: 6px;
+    --ri-radius-md: 8px;
+
+    --ri-font:            Arial, "Helvetica Neue", Helvetica, sans-serif;
+    --ri-font-body-size:  15px;
+    --ri-font-body-weight: 400;
+    --ri-font-head-size:   24px;
+    --ri-font-head-weight: 700;
+    --ri-font-mono-size:   0.9em;
+}
+
+html.dark {
+    --ri-bg: #150e51;
+    --ri-fg: #eeeef6;
+    --ri-accent: #00c4b4;
+    --ri-accent-bright: #00e0d0;
+
+    --ri-surface:   rgba(255, 255, 255, 0.06);
+    --ri-surface-2: rgba(255, 255, 255, 0.11);
+    --ri-border:    rgba(255, 255, 255, 0.16);
+    --ri-muted:     rgba(238, 238, 246, 0.72);
+    --ri-muted-2:   rgba(238, 238, 246, 0.50);
+}
