@@ -1,0 +1,129 @@
+/* RI-MUHC Clinical Research Hub — Mintlify brand overrides
+   Primary: #007a6e (teal)  Dark: #150e51 (navy)  Bright: #00c4b4
+   Font: Arial
+   Background: #f6f6f7
+*/
+
+/* ── Font ── */
+body,
+button,
+input,
+select,
+textarea {
+  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+}
+
+/* ── Headings — navy ── */
+h1, h2, h3, h4, h5, h6 {
+  color: #150e51;
+}
+
+/* ── Page background ── */
+:root {
+  --background-default: #f6f6f7;
+  --background-subtle:  #f0f0f2;
+}
+
+/* ── Navbar — white with border, matching source design ── */
+header,
+nav.sticky {
+  background: #ffffff !important;
+  border-bottom: 1px solid #e0dfe6 !important;
+}
+
+/* Navbar brand/logo text — navy */
+header a,
+nav.sticky a {
+  color: #150e51;
+}
+
+/* ── Sidebar active link — teal ── */
+/* Mintlify renders active sidebar links with a data-active or aria-current attribute */
+[data-active="true"],
+[aria-current="page"] {
+  color: #007a6e !important;
+  font-weight: 600;
+}
+
+/* ── Links — teal ── */
+article a,
+.prose a {
+  color: #007a6e;
+  text-decoration-color: rgba(0, 122, 110, 0.3);
+}
+article a:hover,
+.prose a:hover {
+  color: #005f55;
+}
+
+/* ── Callout boxes — map to brand palette ── */
+
+/* Note (sky blue) */
+.callout-note,
+[data-type="note"] .callout,
+div[class*="note"] {
+  background: #e5f3fb !important;
+  border-color: #2b9ce2 !important;
+}
+
+/* Warning (amber) */
+.callout-warning,
+[data-type="warning"] .callout,
+div[class*="warning"] {
+  background: #fff3cc !important;
+  border-color: #ffb400 !important;
+  color: #5a3800 !important;
+}
+
+/* Tip (green) */
+.callout-tip,
+[data-type="tip"] .callout,
+div[class*="tip"] {
+  background: #e5f5ee !important;
+  border-color: #1d9e75 !important;
+}
+
+/* Info / Caution (teal) */
+.callout-info,
+[data-type="info"] .callout,
+div[class*="info"] {
+  background: #e0f7f5 !important;
+  border-color: #007a6e !important;
+}
+
+/* ── Tables — navy header row ── */
+table thead tr {
+  background: #150e51 !important;
+  color: #ffffff !important;
+}
+table thead th {
+  color: #ffffff !important;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+table tbody tr:nth-child(even) {
+  background: #f0f0f2;
+}
+table td:first-child {
+  font-weight: 600;
+  color: #150e51;
+}
+
+/* ── Steps component — teal accent ── */
+[data-component="step"] [data-step-number],
+.step-number {
+  border-color: #007a6e !important;
+  color: #007a6e !important;
+}
+
+/* ── Card borders — subtle ── */
+[data-component="card"],
+.card {
+  border-color: #e0dfe6;
+}
+[data-component="card"]:hover,
+.card:hover {
+  border-color: #007a6e;
+}

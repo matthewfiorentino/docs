@@ -1,0 +1,179 @@
+---
+title: "Trial Design and Study Types"
+description: "How study design determines the kind of evidence a trial can produce — and the regulatory and ethical obligations that follow."
+---
+
+## What the study type actually determines
+
+Study design is not a methodological preference. In Canada, the category of research a study falls into determines which regulatory authorizations are required before a single participant can be enrolled, what GCP standard applies, how the REB reviews the submission, and what training the research team must hold.
+
+A drug trial under Health Canada's Division 5 requires a Clinical Trial Application and must comply with ICH GCP E6(R3). A medical device study requires an Investigational Testing Authorization and follows ISO 14155. An observational chart review requires neither — but still requires full REB review and, in Quebec, an ÉFVP when identifiable health data is involved.
+
+The classification comes first. The regulatory pathway, the design, the training requirements — all of it follows from that initial determination. Understanding how trials are classified — and what the design mechanics like blinding and randomization actually accomplish — is foundational for anyone reading a protocol, preparing a submission, or working with participants.
+
+<Note>
+**Three frameworks, one study.** In Canada, a single clinical trial must satisfy three separate regulatory frameworks simultaneously: **TCPS2** (ethics, applies to all human research at Tri-Council-funded institutions), **ICH GCP E6(R3)** (operational standards, applies to interventional drug and device trials), and **Health Canada Division 5** (federal drug law, applies to investigational drug trials). These do not always agree — where they conflict, the most stringent requirement applies.
+</Note>
+
+## The classification landscape
+
+Research involving human participants covers a wide range of methodologies. The table below maps the major study categories to their regulatory pathway, applicable GCP standard, and review level under Canadian law. The row that describes your study determines the compliance baseline before any design choices are made.
+
+| Study type | Health Canada authorization | GCP standard | REB review level |
+| --- | --- | --- | --- |
+| Drug trial, Phase I–III | CTA required — Division 5, C.05.005 | ICH GCP E6(R3) | Full board |
+| Drug trial, Phase IV (within NOC/DIN) | No CTA — C.05.002(2) exemption | ICH GCP E6(R3) still applies | Proportionate |
+| Medical device trial, Class II–IV | ITA required — Medical Devices Regulations, Part 3 | ISO 14155 | Full board (Class III/IV) |
+| Natural health product trial, Phase I–III | CTA required — NHP Regulations, Part 4 | ICH GCP E6(R3) | Full board |
+| Observational / chart review | No CTA/ITA | TCPS2 | Often delegated |
+| Psychosocial or educational study | No CTA/ITA | TCPS2 | Proportionate |
+
+<Warning>
+**Sponsor-investigator studies.** When the investigator also initiates the study — as happens frequently at the RI-MUHC with investigator-initiated trials — they assume all sponsor obligations under Division 5 in addition to their investigator duties. This includes filing the CTA, arranging independent monitoring, managing investigational product supply, and submitting safety reports. Health Canada does not distinguish between commercial and non-commercial sponsors.
+</Warning>
+
+### Interventional studies
+
+An interventional study assigns participants to receive a health-related intervention — a drug, device, procedure, behaviour change, or other action — and measures its effect. The investigator actively modifies what happens to participants beyond their standard clinical care. Clinical trials are the most regulated form of interventional research; the sponsor must demonstrate that the risk of the intervention is justified before any human testing can begin.
+
+Because investigators are introducing something into participants' lives, the ethical threshold is higher: consent must cover the specific risks of the intervention, participants must be able to withdraw without consequence to their care, and safety monitoring must be in place throughout.
+
+### Observational studies
+
+Observational studies do not modify participants' standard care. Investigators collect and analyze data — from existing records, biological samples, questionnaires, or direct observation — without assigning any treatment. Common forms include cohort studies, case-control studies, and cross-sectional studies.
+
+Observational research does not require a CTA or ITA, but it is not exempt from ethics oversight. In Quebec, any study accessing identifiable health data triggers an ÉFVP under Law 25, and REB approval is still mandatory. The absence of a regulatory authorization requirement does not mean the absence of participant protection obligations.
+
+## Blinding
+
+When people know which treatment they are receiving — or administering — their expectations can change the outcome. A participant who knows they received the active drug may report feeling better regardless of pharmacological effect. An investigator who knows which arm a participant is in may unconsciously assess outcomes differently. Blinding controls for these effects by concealing treatment allocation from some or all of the people involved.
+
+TCPS2 is clear that random, blinded assignment does not change consent requirements: participants must be informed that they may receive any of the trial's treatments, including placebo, and must understand the range of possibilities before agreeing to participate. Blinding conceals _which_ treatment a participant received; it does not conceal the fact that multiple treatments exist.
+
+<AccordionGroup>
+  <Accordion title="Open-label — no blinding">
+    All parties know which treatment is administered. Common when blinding is impractical — surgical procedures, device implantation, or lifestyle interventions where concealment cannot be maintained.
+
+    - Participant: knows
+    - Investigator: knows
+    - Data analyst: knows
+  </Accordion>
+  <Accordion title="Single-blind — one party blinded">
+    Typically the participant does not know their treatment assignment, but the investigator and research team do. Each direction controls for a different bias.
+
+    - Participant: blinded
+    - Investigator: knows
+    - Data analyst: knows
+  </Accordion>
+  <Accordion title="Double-blind — two parties blinded">
+    Neither the participant nor the investigator knows treatment assignment. The research pharmacy maintains the allocation code. Most Phase II–III drug trials use this design.
+
+    - Participant: blinded
+    - Investigator: blinded
+    - Data analyst: knows
+  </Accordion>
+  <Accordion title="Triple-blind — three parties blinded">
+    Participant, investigator, and data analyst are all blinded. The allocation code is held independently, often by the Data Safety Monitoring Board, until pre-specified unblinding criteria are met.
+
+    - Participant: blinded
+    - Investigator: blinded
+    - Data analyst: blinded
+  </Accordion>
+</AccordionGroup>
+
+### Unblinding — when and how
+
+**Emergency unblinding** occurs when a participant experiences a serious adverse event and the treating physician needs to know what they received to manage it safely. The research pharmacy holds the code and must be reachable at all times. **Planned unblinding** occurs at a pre-specified interim analysis or at study completion. The protocol must define both pathways in advance. Any emergency unblinding is a reportable event and must be documented and communicated to the sponsor and the REB.
+
+## Randomization and what it controls for
+
+Randomization assigns participants to treatment groups by chance rather than by choice — by the investigator, the participant, or any other party. Its purpose is to distribute known and unknown factors evenly across groups so that, at baseline, the groups are comparable. Without randomization, differences observed between groups at the end of a trial may reflect pre-existing differences in the groups rather than the effect of the treatment.
+
+<Note>
+Randomization doesn't just control for what you know. It controls for what you don't know you should have controlled for.
+</Note>
+
+<AccordionGroup>
+  <Accordion title="Randomized Controlled Trial — allocation by chance">
+    Participants are assigned to groups through a random process — a computer-generated sequence, a sealed envelope system, or centralized randomization via an Interactive Response Technology (IRT) system. No one involved in patient care or outcome assessment selects who receives which treatment.
+
+    TCPS2 states that randomization is ethically justified only when **clinical equipoise** exists — genuine uncertainty within the expert community about which intervention is superior. You cannot randomize participants to an arm you already know to be inferior.
+  </Accordion>
+  <Accordion title="Non-Randomized Trial — allocation by design">
+    Participants are assigned to groups by the investigator, by participant preference, by clinical presentation, or by another non-random criterion.
+
+    This is appropriate when randomization is impractical or unethical — for example, comparing outcomes in patients who have and have not been exposed to a risk factor that cannot be experimentally assigned. The tradeoff is greater vulnerability to confounding: systematic differences between groups at baseline that may explain the outcome independently of the treatment being studied.
+  </Accordion>
+</AccordionGroup>
+
+### Stratified and adaptive randomization
+
+Simple randomization can produce imbalanced groups by chance, particularly in smaller trials. **Stratified randomization** ensures balance on key variables (age, disease severity, site) by randomizing separately within each stratum. **Adaptive randomization** adjusts allocation probabilities as the trial accumulates data — increasing the proportion assigned to the arm that appears more effective. Both are accepted by Health Canada under standard CTA processes.
+
+## Controls and comparators
+
+A control is what the investigational treatment is being compared against. The choice of comparator is both a scientific decision and an ethical one. Using a placebo when an effective standard treatment exists is ethically impermissible under [TCPS2 Article 11.4](https://ethics.gc.ca/eng/tcps2-eptc2_2022_chapter11-chapitre11.html) — participants in the control arm must not be denied care they would otherwise receive. The comparator choice also shapes what claims can be made from the results.
+
+<AccordionGroup>
+  <Accordion title="Placebo control — inert comparator">
+    An intervention designed to be indistinguishable from the experimental treatment but without active components. Appropriate only when no established effective treatment exists, or when compelling scientific reasons justify its use and withholding active treatment will not cause serious or irreversible harm. [TCPS2 Article 11.4](https://ethics.gc.ca/eng/tcps2-eptc2_2022_chapter11-chapitre11.html) and Health Canada both require the protocol to justify placebo use when an active comparator exists.
+  </Accordion>
+  <Accordion title="Active comparator — standard of care">
+    The current best available treatment. ICH guideline E9 recommends active comparators over placebo when standard treatments exist. Phase III trials typically use active comparators; a new treatment that only proves superior to placebo has not demonstrated it is better than — or equivalent to — what is already available.
+  </Accordion>
+  <Accordion title="No comparator — single-arm trials">
+    All participants receive the experimental intervention; there is no control group. Common in early Phase I safety work or in rare disease research where patient numbers are insufficient for a parallel controlled design. Single-arm trials cannot show whether the treatment is better than existing alternatives without external comparison data.
+  </Accordion>
+  <Accordion title="Crossover designs">
+    In a crossover trial, each participant receives more than one treatment in sequence, with each participant serving as their own control. This reduces the sample size needed and controls for between-person variability. A washout period between treatment phases is required to prevent carry-over effects. Crossover designs are appropriate for chronic conditions with stable outcomes; they are not suitable for acute treatments or irreversible interventions.
+  </Accordion>
+</AccordionGroup>
+
+## How design choices shape the evidence
+
+No single design element determines the quality of a study's evidence. It is the combination of randomization, blinding, and comparator choice — applied consistently and transparently — that determines what claims the results can and cannot support. Regulatory agencies and REBs evaluate these choices together, not in isolation.
+
+| Design element | What it controls for | Why it matters |
+| --- | --- | --- |
+| Randomization | Confounding | Distributes unknown variables across groups, making them comparable at baseline. Without it, observed differences may reflect pre-existing group differences rather than the treatment effect. |
+| Blinding | Expectation bias | Prevents participants, investigators, and analysts from allowing expectations to influence outcomes or analysis. The appropriate level depends on the intervention type and outcome measures. |
+| Comparator | What can be claimed | A trial that proves superiority over placebo cannot claim equivalence to current standard of care. The comparator choice must be scientifically and ethically justified. |
+
+<Note>
+**The hierarchy of evidence — a practical note.** Systematic reviews and meta-analyses sit at the top of the evidence hierarchy, but they depend entirely on the quality of the trials they analyze. A poorly designed trial — even one with hundreds of participants — produces results that are difficult to interpret. Design quality is not a secondary concern. It is the mechanism by which research translates into changes in care.
+</Note>
+
+## What this means at the RI-MUHC
+
+Most of what this guide covers appears directly in every protocol you will read at the RI-MUHC. The protocol's study design section will specify the classification, the randomization method (or justify its absence), the blinding level, and the comparator. These are not boilerplate — they are the basis on which the REB evaluates the ethics of the study and Health Canada evaluates its regulatory pathway.
+
+For CRCs and research nurses, blinding has direct operational implications. In a double-blind trial, the research pharmacy manages the allocation code and prepares treatments in a way that is visually identical regardless of assignment. You will not know what a participant received unless there is a clinical reason to unblind. Your documentation — visit notes, adverse event reports — must not inadvertently reveal treatment assignment.
+
+### Device trials: a different standard
+
+Medical device trials at the RI-MUHC follow ISO 14155 rather than ICH GCP E6(R3). Blinding is often impractical (a participant knows whether they have received an implant or a sham procedure), device designs may undergo iterative modification during development subject to amendment procedures, and the risk profile is fundamentally different from drug pharmacology. If you are working on a device study, verify the applicable standard at the start — the monitoring, documentation, and safety reporting requirements differ from those in drug trials.
+
+### Reading a protocol: what to look for
+
+When you review a new protocol, four design elements determine the compliance baseline:
+
+<Steps>
+  <Step title="Classification">
+    Interventional or observational? Does it involve an investigational drug or device? This determines whether a CTA or ITA is required.
+  </Step>
+  <Step title="Randomization">
+    How are participants allocated? What system manages the randomization? Who holds the allocation sequence?
+  </Step>
+  <Step title="Blinding">
+    Who is blinded? Who holds the code? What is the emergency unblinding procedure?
+  </Step>
+  <Step title="Comparator">
+    What is the control arm? Is placebo use justified? Does the comparator reflect current standard of care?
+  </Step>
+</Steps>
+
+<Note>
+**Multicentric studies.** When a trial runs across multiple sites, Quebec mandates a single ethics review conducted by one designated reviewing REB, typically at the principal investigator's institution. All other sites accept that review. However, every site must still complete its own institutional feasibility review and obtain authorization from its _personne formellement mandatée_. The ethics review is shared; the authorization is not.
+</Note>
+
+The design of a study is a set of commitments made before any data exists. Its integrity cannot be recovered after the fact.

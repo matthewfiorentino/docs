@@ -1,0 +1,129 @@
+---
+title: "CRC Guide — Retrospective and Chart Review (Level V)"
+description: "Operational reference for CRCs working on retrospective chart review studies and studies using previously anonymized biobanked samples. Covers REB submission, data extraction, privacy compliance, and documentation."
+---
+
+## Understanding the role
+
+Level V studies use existing data or previously collected specimens. In most cases, you are not interacting with participants directly. Your work is data extraction, database management, privacy compliance, and documentation.
+
+This is a different operational profile from all other levels. There is typically no recruitment, no study visits, no investigational product, no monitoring visit, and no SAE reporting. The core competencies are: accurate data abstraction from medical records, rigorous de-identification, REDCap or database management, privacy compliance under Quebec law, and REB maintenance.
+
+Your training level is **SOP-LR** (9 SOPs, 5-year renewal cycle). No GCP certification is required. Your authorization comes through the Task Delegation Log.
+
+<Warning>
+**Consent waiver is not automatic.** Most retrospective chart review studies operate under a waiver of consent granted by the REB. However, under Loi 25, whether a waiver is granted now depends on the outcome of the ÉFVP (privacy impact assessment). The legal default is always to obtain consent. Access to identifiable data without consent requires approval from the ÉFVP committee. A waiver is granted when the committee determines that obtaining consent is not feasible — for example, a chart review of 500 patients from 2000 to 2010, where many patients may have died, been lost to follow-up, or have outdated contact information. In contrast, if you are reviewing records for a small number of recent patients, the committee may determine it is reasonable to contact those patients and obtain their consent. Confirm the consent requirement with your PI and the REB before beginning data extraction.
+</Warning>
+
+### Your training requirements
+
+| Level | Study type | SOP series | GCP | Other certs | Renewal |
+| --- | --- | --- | --- | --- | --- |
+| V | Retrospective chart review, anonymized biobanked samples | SOP-LR (9 SOPs) | — | — | 5 years |
+
+No external certifications are required. For the full training matrix, see [Training and Compliance Requirements](/kb/training).
+
+### On the study team
+
+- **QI/PI:** carries ultimate legal and regulatory accountability for the study. Your PI's countersignature on the delegation log confirms your qualification for your tasks.
+- **Research Assistant:** may support data extraction or database management under CRC or PI supervision. Must have current SOP training and be on the delegation log before accessing study data.
+
+### Institutional contacts
+
+- **QA department:** contact QA for compliance questions. QA verifies that training, Research Privileges or Researcher Status, and delegation documentation are current at every Nagano submission.
+- **Research Facilitator:** your entry point for navigating RI-MUHC processes and the Nagano submission workflow.
+
+### MUHC service departments
+
+- **Privacy and information security:** the ÉFVP (privacy impact assessment under Loi 25) is likely required for any retrospective study that accesses identifiable health information. Triggered via the F17/F18 forms in Nagano. This is often the most consequential feasibility review for Level V studies.
+- **Director of Professional Services (DPS):** if your study requires access to MUHC clinical systems or medical records beyond standard OACIS access, a DPS review may be triggered.
+
+## Study preparation
+
+See also: Preparing Your Submission | Privacy and Confidentiality in Quebec
+
+- **REB approval and MUHC Authorization** — submit via Nagano. The REB approval should explicitly state whether a waiver of consent has been granted. This determination is informed by the ÉFVP.
+- **Delegation log** — signed by your PI with your tasks listed. File your CV and TalentLMS certificate.
+- **OACIS access** — confirm your access is authorized specifically for this study and limited to the patient population and data elements specified in the protocol. For data beyond what OACIS provides (lab results at scale, pharmacy dispensing, radiology, administrative data), the MUHC Data Warehouse may be required — contact the Data Warehouse team early.
+- **Data extraction plan** — define which variables you are extracting, from which source systems, for which patient population. Document this in the protocol or a data management plan.
+- **Database setup** — build the REDCap database (or equivalent) with fields matching the extraction plan. Test data entry with sample records before beginning the full extraction. CORD can build and test REDCap databases for you — contact them early, as database architecture decisions are costly to change after extraction begins.
+- **Study file** — maintain: protocol, REB approval letter (confirming consent waiver), MUHC Authorization, delegation log, data management plan, and any data access agreements.
+
+<AccordionGroup>
+  <Accordion title="Learning activity — Study preparation">
+    **Review:** Read your study's REB approval letter. Confirm it explicitly grants a waiver of consent and specifies the data sources and patient population you are authorized to access.
+
+    **Discuss with your supervisor:**
+    - What data sources am I authorized to access for this study? Is OACIS the primary source, or are there others (lab systems, radiology, pharmacy)?
+    - Who built the REDCap database, and what is the process if I need to add or modify a field?
+  </Accordion>
+</AccordionGroup>
+
+## Data extraction
+
+Data extraction from medical records is the core of your work. Accuracy and consistency are critical — errors at this stage propagate through the entire analysis.
+
+- **Follow the extraction plan exactly.** Extract only the variables specified in the protocol. If you encounter relevant data that is not in the plan, do not extract it without PI approval and, if necessary, a protocol amendment.
+- **Use participant IDs, not names.** Never enter patient names or health card numbers into the research database. Maintain the identification key (linking participant IDs to chart numbers) separately and securely.
+- **Document your extraction process.** Record which records you reviewed, when, and any issues encountered (missing data, ambiguous entries, conflicting information in the chart).
+- **Handle missing data consistently.** Decide in advance (with your PI) how missing data will be coded. Do not leave fields blank without documentation of why the data is missing.
+- **Verify a sample.** For large extractions, have a second person verify a random sample of extracted records against the source charts. Document the verification process and the error rate.
+- **Corrections follow GDP.** If you discover an error in your extraction, correct it in the database using the audit trail (in REDCap, use the Data History feature). Do not overwrite without documentation.
+
+<AccordionGroup>
+  <Accordion title="Learning activity — Data extraction">
+    **Observe:** If another CRC or research assistant on your team has experience with chart abstraction, ask to observe their process. Note how they navigate OACIS, handle ambiguous chart entries, and maintain their extraction log.
+
+    **Discuss with your supervisor:**
+    - How do we handle ambiguous data in the chart — for example, when the diagnosis in the discharge summary doesn't match the clinical notes?
+    - What verification process do we use to ensure extraction accuracy?
+  </Accordion>
+</AccordionGroup>
+
+## Privacy and data protection
+
+Privacy is the highest-risk area for retrospective studies. You are accessing identifiable health information without participant consent. The legal and institutional frameworks that permit this are specific and must be followed precisely.
+
+- An **ÉFVP** (privacy impact assessment under Loi 25) is likely required for any retrospective study that accesses identifiable PHI. Confirm with your PI and QA before starting.
+- Your **OACIS access must be authorized and auditable.** Access logs may be reviewed — access only the records and data elements specified in your protocol.
+- **De-identification is not optional.** The research database must contain participant IDs only. The key linking IDs to chart numbers must be stored separately, with access restricted to authorized team members.
+- If data is shared outside the MUHC — to a collaborating institution, a statistician, or a cloud analysis platform — confirm that appropriate **data transfer agreements** are in place and that the data is de-identified before transfer unless the agreement specifically authorizes identifiable data.
+- **Cross-border transfers** (data leaving Quebec or Canada) have additional requirements under Loi 25. Confirm with the Privacy Office or your PI before any transfer.
+- At study completion, confirm the **disposition of identifiable data**: is the identification key destroyed, retained for a specified period, or transferred? Document this in the study file.
+
+<AccordionGroup>
+  <Accordion title="Learning activity — Privacy and data protection">
+    **Review:** Read your study's ÉFVP (if one was completed). Identify what PHI is authorized for access, where the research data is stored, and whether any data is shared outside the MUHC.
+
+    **Discuss with your supervisor:**
+    - Who has access to the identification key, and where is it stored?
+    - What happens to the identifiable data at study completion?
+    - If I discover a potential privacy incident (e.g., I accidentally accessed a record outside the study population), who do I report it to?
+  </Accordion>
+</AccordionGroup>
+
+## Ongoing management
+
+- **Annual REB renewal** — submit via Nagano before approval expires. Include updated progress, any changes to the data extraction scope, and current personnel.
+- **Protocol amendments** — if the data extraction plan changes (new variables, expanded patient population, new data sources), submit an amendment via Nagano before implementing the change.
+- **Staff changes** — update the delegation log when team members join or leave. Incoming team members must have current SOP training before accessing study data.
+- **SOP updates** — complete updated Reader units in TalentLMS when they reset.
+- **Competency Assessment** — renews on a 5-year cycle (SOP-LR).
+- **Leave of absence:** if you are on leave for more than 6 months, your training must be renewed before returning to study tasks. The delegation log must reflect that you are undelegated during leave (SOP-CR-002).
+
+## Protocol deviations
+
+Deviations can happen on retrospective studies — extracting data outside the approved protocol scope, accessing records for patients not in the approved population, or failing to submit an amendment before changing the extraction plan. The process is the same as for any study: identify, document, report, correct.
+
+- **Identify** deviations as they occur and notify your PI immediately.
+- **Document** what happened, when, why, and what corrective action was taken.
+- **Report** major deviations to the REB via Nagano. Minor deviations are documented in the study file.
+- **Correct** the underlying issue — for example, if you extracted data for a patient outside the approved cohort, document it and confirm with your PI whether the data must be excluded from analysis.
+
+## Close-out
+
+- Confirm all data extraction is complete and the database is final.
+- Submit the **Study Completion Report** to the REB via Nagano.
+- Record end dates on the delegation log for all team members.
+- Determine the **disposition of the identification key** — destroy it, retain it for a specified period, or transfer responsibility. Document this decision and execute it.
+- Archive the study file. Retention requirements follow institutional policy and Quebec law — the 15-year Division 5 requirement does not apply to Level V studies. Confirm with your PI and QA.
