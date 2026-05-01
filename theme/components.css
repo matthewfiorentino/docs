@@ -25,6 +25,20 @@
     color:      var(--ri-fg) !important;
 }
 
+/* Kill sidebar scroll-fade gradient — Mintlify uses ::before/::after on the
+   sidebar to create a fade-to-background overlay, but the color it picks up
+   can be wrong. Removing it is cleaner than trying to correct the gradient. */
+#sidebar::before,
+#sidebar::after,
+#sidebar-content::before,
+#sidebar-content::after,
+#navigation-items::before,
+#navigation-items::after {
+    content:    none !important;
+    display:    none !important;
+    background: none !important;
+}
+
 :where(#header, #navbar, #navbar-transition) {
     backdrop-filter:         none !important;
     -webkit-backdrop-filter: none !important;
