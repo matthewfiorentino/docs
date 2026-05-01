@@ -157,6 +157,13 @@ html.dark a:has([data-component-part="card-content-container"]):hover {
    HOME PAGE — HERO (full content-width bleed)
    ══════════════════════════════════════════════ */
 
+/* Hide auto-generated frontmatter title only on pages that have a custom hero.
+   :has() is supported in all modern browsers (Chrome 105+, Safari 15.4+, FF 121+) */
+body:has(.ri-hero-bleed) #page-title,
+body:has(.ri-hero-bleed) #page-title + p {
+    display: none !important;
+}
+
 .ri-hero-bleed {
     /* Extend to content container edges (cancels Mintlify's ~2rem padding)
        without crossing into the sidebar — use % not vw */
@@ -444,13 +451,6 @@ html.dark header[class*="sticky"] {
 }
 article {
     animation: ri-fade-up 0.3s ease-out both;
-}
-
-/* ── Accordions — teal left bar on open ── */
-details[open],
-[data-state="open"][data-component="accordion"] {
-    border-left: 3px solid var(--ri-accent) !important;
-    padding-left: 12px !important;
 }
 
 /* ── Callout / Note / Warning / Tip boxes ── */
