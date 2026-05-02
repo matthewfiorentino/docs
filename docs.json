@@ -17,6 +17,7 @@
       "value": "accepted"
     }
   },
+  "favicon": "/logo/muhc-crest.png",
   "logo": {
     "light": "/logo/rimuhc-blue.png",
     "dark": "/logo/rimuhc-light.png",
