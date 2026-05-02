@@ -306,6 +306,7 @@ html.dark .ri-journey-sub { color: rgba(255,255,255,.5); }
     background: #fff;
     overflow: hidden;
     transition: border-color .18s, box-shadow .18s;
+    text-decoration: none !important;
 }
 html.dark .ri-feature-card {
     background: rgba(255,255,255,.04);
