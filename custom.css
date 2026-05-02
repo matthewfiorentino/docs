@@ -625,7 +625,7 @@ html.dark .ri-hub-body hr {
 }
 .ri-contact-btn {
     display: inline-block;
-    background: var(--ri-accent-bright);
+    background: #fff;
     color: #150e51 !important;
     font-weight: 700; font-size: 14px;
     padding: 12px 24px;
@@ -710,21 +710,21 @@ article {
     margin-right: 16px;
 }
 .ri-home-footer-institute-logo {
-    height: 36px;
+    height: 44px;
     width: auto;
     opacity: 0.85;
 }
 .ri-home-footer-logo {
-    height: 52px;
+    height: 44px;
     width: auto;
     display: block;
     opacity: 0.9;
 }
 .ri-footer-institute-logo {
     display: block;
-    height: 32px;
+    height: 40px;
     width: auto;
-    margin-top: 10px;
+    margin-top: 6px;
     opacity: 0.75;
 }
 .ri-home-footer-col { display: flex; flex-direction: column; gap: 10px; min-width: 160px; }
