@@ -45,6 +45,7 @@
             "group": "Knowledge Base",
             "pages": [
               "kb/introduction",
+              "kb/updates",
               {
                 "group": "Getting Started",
                 "expanded": false,
