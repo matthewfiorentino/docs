@@ -147,20 +147,20 @@ Two main entry points into the Hub. Most everything else branches from here.
 <div className="ri-feature-pair">
   <FeatureEntry
     href="/kb/introduction" icon="book-open" title="Knowledge Base"
-    desc="Concepts, processes, and Quebec-specific guidance — from feasibility through close-out, organized by study phase and role."
+    desc="Concepts, processes, and Quebec-specific regulatory guidance — organized by study phase from feasibility through close-out, with onboarding guides for every role on a research team."
     links={[
       { icon: "play", label: "Clinical Research 101" },
-      { icon: "route", label: "The study lifecycle" },
-      { icon: "users", label: "Onboarding by role" }
+      { icon: "route", label: "Study lifecycle" },
+      { icon: "users", label: "Onboarding guides by role" }
     ]}
   />
   <FeatureEntry
-    href="/sops/overview" icon="file-lines" title="SOPs and Training"
-    desc="The institutional rulebook and the path to compliance — every clinical research SOP, plus training requirements and certifications."
+    href="/sops/overview" icon="file-lines" title="Clinical Research SOPs"
+    desc="Every RI-MUHC clinical research SOP in one place. Consult the applicable SOPs for your study tasks — an essential reference for day-to-day compliance, team responsibilities, and inspection readiness."
     links={[
-      { icon: "list-check", label: "Training requirements" },
-      { icon: "award", label: "External certifications" },
-      { icon: "book", label: "SOP-CR-002 and SOP-CR-008" }
+      { icon: "book", label: "SOP-CR-002: Research team roles" },
+      { icon: "signature", label: "SOP-CR-008: Informed consent" },
+      { icon: "list-check", label: "Core series SOPs" }
     ]}
   />
 </div>
@@ -223,38 +223,40 @@ Follow the lifecycle, or jump to the phase you're in.
 
 ---
 
-## By role
+## Role guides
 
 <Tabs>
   <Tab title="PI / Investigator">
-    Your core obligation before submitting: current **Human Research Privileges** (CPDP members) or **Researcher Status** (non-CPDP), institutional training at the correct level for your study type, and a feasibility assessment confirming your site can support the protocol.
+    Before submitting, PIs must hold current **Human Research Privileges** (CPDP members) or **Researcher Status** (non-CPDP), complete institutional training at the level required for their study type, and confirm through a feasibility assessment that the site can support the protocol.
 
-    - [Verify credentials and training requirements](/training/compliance-requirements)
-    - [Run a feasibility assessment](/kb/planning/feasibility)
-    - [Prepare your Nagano F11 submission](/kb/submission/preparing)
-    - [Full PI / QI pathway →](/kb/roles/pi-pathway)
+    - [Training and credential requirements](/training/compliance-requirements)
+    - [Human Research Privileges and Researcher Status](/training/research-privileges)
+    - [Feasibility assessment guide](/kb/planning/feasibility)
+    - [Preparing your Nagano F11 submission](/kb/submission/preparing)
+    - [Full PI / QI onboarding pathway →](/kb/roles/pi-pathway)
   </Tab>
   <Tab title="Coordinator">
-    No team member may perform any study task before appearing on the Task Delegation Log with documented training and QI/PI countersignature. Training requirements depend on your study type — drug trials require GCP and Division 5; device trials require GCP and ISO 14155.
+    No team member may perform any study task before appearing on the Task Delegation Log with documented training and QI/PI countersignature. Training requirements depend on study type — drug trials require GCP and Division 5; device trials require GCP and ISO 14155.
 
-    - [Check training requirements for your study level](/training/compliance-requirements)
-    - [Understand the Task Delegation Log](/kb/conduct/site-setup)
-    - [Day-to-day operational guidance by study stage](/kb/roles/crc-pathway)
-    - [Full CRC pathway →](/kb/roles/crc-pathway)
+    - [Training requirements by study type](/training/compliance-requirements)
+    - [Task Delegation Log and site setup](/kb/conduct/site-setup)
+    - [CRC operational guide](/kb/roles/crc-guide)
+    - [Full CRC onboarding pathway →](/kb/roles/crc-pathway)
   </Tab>
   <Tab title="Research Nurse">
     Licensed nurses on study teams must understand OIIQ obligations, which reserved acts can be delegated within a research protocol, and the training requirements that apply at your study level.
 
     - [OIIQ obligations, reserved acts, and delegation scope](/kb/roles/nurse-pathway)
-    - [Operational nursing guide for I–III studies](/kb/roles/nurse-guide)
+    - [Operational nursing guide](/kb/roles/nurse-guide)
     - [Training requirements by study level](/training/compliance-requirements)
   </Tab>
-  <Tab title="Trainee">
-    Research trainees — students, residents, fellows — must complete required training before any study tasks and cannot conduct research independently. All tasks must be explicitly scoped on the Task Delegation Log.
+  <Tab title="Trainee / Visitor">
+    Research trainees and visitors must complete required training before any study tasks and cannot conduct research independently. All tasks must be explicitly scoped on the Task Delegation Log with QI/PI countersignature.
 
     - [Joining a research team as a trainee](/kb/roles/onboarding-trainees)
     - [Volunteering on a research team](/kb/roles/onboarding-volunteers)
     - [Observing at an RI-MUHC research site](/kb/roles/onboarding-observers)
+    - [Training requirements](/training/compliance-requirements)
   </Tab>
   <Tab title="New to research">
     Start with the regulatory framework and key roles before diving into the operational guides. Understanding who does what — and why — makes everything else easier to navigate.
@@ -262,32 +264,49 @@ Follow the lifecycle, or jump to the phase you're in.
     - [Clinical Research 101 — frameworks, roles, Quebec law](/kb/clinical-research-101)
     - [The study lifecycle from concept to archiving](/kb/study-lifecycle)
     - [Key regulations and guidelines at the RI-MUHC](/kb/planning/regulations)
+    - [Glossary of terms and acronyms](/kb/glossary)
   </Tab>
 </Tabs>
+
+---
+
+## Data and Research Services
+
+Internal services available to RI-MUHC researchers for study planning, data management, and statistical support.
+
+<div className="ri-resource-grid">
+  <ResourceCard icon="chart-bar" href="/kb/planning/bcu" title="Biostatistics Consulting Unit (BCU)"
+    desc="Statistical consulting from grant design through analysis and manuscripts — sample size, SAP, and advanced methods." />
+  <ResourceCard icon="database" href="/kb/planning/cord" title="CORD — Research Data Management"
+    desc="REDCap database builds, data management support, and data planning review across the study lifecycle." />
+  <ResourceCard icon="server" href="/kb/planning/data-warehouse" title="Accessing MUHC Patient Data"
+    desc="The MUHC Data Warehouse: 18 hospital systems, 5 sites, retrospective data going back to 2008. Request process and requirements." />
+</div>
+
+---
+
+## Training requirements
+
+Every member of a research team must meet training requirements before performing any study task. Requirements vary by study type and role — no one may perform a task before it is documented on the Task Delegation Log.
+
+<div className="ri-resource-grid">
+  <ResourceCard icon="list-check" href="/training/compliance-requirements" title="Compliance Requirements"
+    desc="Training requirements by study type and role — GCP, Division 5, ISO 14155, SOP Reader, and Competency Assessment." />
+  <ResourceCard icon="id-card" href="/training/research-privileges" title="Research Privileges & Researcher Status"
+    desc="How to obtain and maintain Human Research Privileges (CPDP) or Researcher Status (non-CPDP) at the RI-MUHC." />
+  <ResourceCard icon="award" href="/training/external-certifications" title="External Certifications"
+    desc="ICH GCP, TCPS2 CORE, and other recognized external certifications accepted at the RI-MUHC." />
+</div>
 
 ---
 
 ## Resources
 
 <div className="ri-resource-grid">
-  <ResourceCard icon="graduation-cap" href="/kb/clinical-research-101" title="Clinical Research 101"
-    desc="Regulatory frameworks, key roles, and Quebec-specific obligations — the foundation for everything else." />
-  <ResourceCard icon="timeline" href="/kb/study-lifecycle" title="The Study Lifecycle"
-    desc="How a study moves from concept to activation to close-out, and what happens at each stage." />
-  <ResourceCard icon="scale-balanced" href="/kb/planning/regulations" title="Regulations and Guidelines"
-    desc="ICH E6(R3), Health Canada Division 5, ISO 14155, TCPS2, and Quebec Loi 25 — what applies and when." />
   <ResourceCard icon="desktop" href="/apps/nagano/overview" title="Nagano Platform Guide"
     desc="Step-by-step instructions for every submission type — F11, amendments, renewals, and closure." />
   <ResourceCard icon="spell-check" href="/kb/glossary" title="Glossary"
     desc="Plain-language definitions for the acronyms, regulators, and key terms you'll encounter across the Hub." />
-  <ResourceCard icon="flask" href="/cim/overview" title="Centre for Innovative Medicine"
-    desc="Trial unit services, infusion centre, SOPs, and operational guides for CIM researchers and staff." />
-  <ResourceCard icon="chart-bar" href="/kb/planning/bcu" title="Biostatistics Consulting Unit"
-    desc="Statistical consulting from grant design through analysis and manuscripts. Sample size, SAP, advanced methods." />
-  <ResourceCard icon="database" href="/kb/planning/cord" title="CORD — Research Data Management"
-    desc="REDCap database builds, data management support, and data planning review across the study lifecycle." />
-  <ResourceCard icon="server" href="/kb/planning/data-warehouse" title="Accessing MUHC Patient Data"
-    desc="The MUHC Data Warehouse: 18 hospital systems, 5 sites, retrospective data going back to 2008. Request process and requirements." />
 </div>
 
 ---
