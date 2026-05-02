@@ -78,8 +78,21 @@
                       "kb/roles/crc-guide-v"
                     ]
                   },
-                  "kb/roles/nurse-pathway",
-                  "kb/roles/onboarding"
+                  {
+                    "group": "Research Nurse",
+                    "pages": [
+                      "kb/roles/nurse-pathway",
+                      "kb/roles/nurse-guide"
+                    ]
+                  },
+                  {
+                    "group": "Students, Trainees & Visitors",
+                    "pages": [
+                      "kb/roles/onboarding-trainees",
+                      "kb/roles/onboarding-volunteers",
+                      "kb/roles/onboarding-observers"
+                    ]
+                  }
                 ]
               },
               {
