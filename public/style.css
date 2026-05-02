@@ -1,0 +1,1112 @@
+/* RI-MUHC Clinical Research Hub — Shared Stylesheet
+ * Contains: CSS custom properties, base styles, nav (desktop + mobile drawer),
+ * footer, breadcrumb, callout boxes, chips, responsive breakpoints,
+ * KB article layout (banded sections + fixed TOC), prev/next nav.
+ *
+ * Page-specific CSS stays in each page's <style> block.
+ * In WordPress this file is enqueued via functions.php.
+ * ─────────────────────────────────────────────────────────────────────────── */
+
+:root {
+  --navy:        #150e51;
+  --navy-card:   #2b2666;
+  --teal:        #007a6e;  /* accessible text shade of brand turquoise #00c4b4 */
+  --teal-bright: #00c4b4;
+  --teal-chip:   #60f6e5;
+  --teal-ll:     #e0f7f5;
+  --sky:         #2b9ce2;
+  --sky-l:       #e5f3fb;
+  --amber:       #ffb400;
+  --amber-l:     #fff3cc;
+  --coral:       #e63946;
+  --coral-l:     #fde8ea;
+  --purple:      #9039f9;
+  --purple-l:    #ede3fe;
+  --fuchsia:     #f050d0;
+  --fuchsia-l:   #fce8f9;
+  --green:       #1d9e75;
+  --green-l:     #e5f5ee;
+  --bg:          #f6f6f7;   /* cool-neutral page background */
+  --bg-low:      #f0f0f2;   /* slightly deeper — alternate bands */
+  --bg-cont:     #eaeaec;
+  --bg-high:     #e4e4e7;
+  --bg-highest:  #dededf;
+  --white:       #ffffff;
+  --text:        #1b1c1a;
+  --textm:       #474650;
+  --textd:       #787681;
+  --bdr:         #c6c5ce;
+  --bdr-soft:    #e0dfe6;
+  --shadow:      0 12px 32px -4px rgba(27,28,26,.06);
+}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;overflow-x:hidden}
+body{font-family:Arial,"Helvetica Neue",Helvetica,sans-serif;font-size:15px;line-height:1.6;color:var(--text);background:var(--bg);-webkit-font-smoothing:antialiased;overflow-x:hidden;padding-top:64px}
+a{text-decoration:none;color:inherit}
+img{display:block;max-width:100%}
+
+
+/* ── NAV ── */
+/* White background, grey hover highlights (Microsoft-style), outlined portal button */
+.mnav{position:fixed;top:0;left:0;right:0;z-index:200;background:var(--white);border-bottom:1px solid var(--bdr-soft);height:64px;display:flex;align-items:center;padding:0 32px}
+
+.mnav-inner{max-width:1200px;width:100%;margin:0 auto;display:flex;align-items:center}
+.mnav-brand{flex-shrink:0;margin-right:32px}
+.mnav-logo{height:28px;width:auto;display:block}
+.mnav-links{display:flex;align-items:stretch;list-style:none;gap:0;flex:1;margin:0;padding:0}
+.mnav-links li{position:static}
+/* Nav items: grey bg highlight on hover, no border-bottom accent */
+.mnav-item{display:flex;align-items:center;gap:4px;font-size:12px;font-weight:600;letter-spacing:.01em;color:var(--textm);padding:0 11px;height:64px;border:none;transition:color .12s,background .12s;white-space:nowrap;text-decoration:none;cursor:pointer;background:transparent;font-family:Arial,sans-serif}
+.mnav-item:hover,.mnav-li:hover>.mnav-item{color:var(--navy);background:var(--bg-low)}
+/* carets removed — hover bg highlight is sufficient signal */
+.mnav-right{margin-left:auto;display:flex;align-items:center;gap:6px}
+.mnav-lang{font-size:11px;font-weight:600;color:var(--textd);padding:6px 8px;text-decoration:none;transition:color .12s,background .12s;border-radius:0}
+.mnav-lang:hover{color:var(--navy);background:var(--bg-low)}
+/* Portal: outlined box, navy text — no dark fill */
+.mnav-portal{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:700;color:var(--navy);background:transparent;border:1.5px solid var(--navy);padding:6px 12px;text-decoration:none;letter-spacing:.01em;transition:background .12s,color .12s}
+.mnav-portal:hover{background:var(--navy);color:white}
+.mnav-search-btn{display:flex;align-items:center;justify-content:center;width:32px;height:32px;background:none;border:none;cursor:pointer;color:var(--textd);transition:color .12s,background .12s;flex-shrink:0}
+.mnav-search-btn:hover{color:var(--navy);background:var(--bg-low)}
+@media(max-width:899px){.mnav-search-btn{display:none}}
+.mnav-hamburger{display:none;background:none;border:none;cursor:pointer;padding:8px;color:var(--navy)}
+
+/* mega panel */
+/* White mega panel — Microsoft/Linear style */
+.mega-panel{display:none;position:fixed;top:64px;left:0;right:0;background:rgba(255,255,255,.985);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-top:1px solid var(--bdr-soft);border-bottom:1px solid var(--bdr-soft);box-shadow:0 8px 32px rgba(21,14,81,.07);z-index:199}
+.mnav-li:hover>.mega-panel{display:block}
+.mega-inner{max-width:1200px;margin:0 auto;padding:20px 28px 24px;display:grid;gap:0}
+.mega-inner.cols-5{grid-template-columns:repeat(5,1fr)}
+.mega-inner.cols-4{grid-template-columns:repeat(4,1fr)}
+.mega-inner.cols-3{grid-template-columns:repeat(3,1fr)}
+.mega-inner.cols-2{grid-template-columns:repeat(2,1fr)}
+.mega-col{padding:0 22px;border-right:1px solid var(--bdr-soft)}
+.mega-col:first-child{padding-left:0}
+.mega-col:last-child{border-right:none;padding-right:0}
+/* Teal column heads — same 9px/700/uppercase as before, readable on white */
+.mega-col-head{font-size:9px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--teal);margin-bottom:10px;padding-bottom:8px;border-bottom:1px solid var(--bdr-soft)}
+/* Navy subheads ("101 Series", "Role Guides") — label weight, reduced tracking */
+.mega-subhead{font-size:9px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--navy);margin-top:8px;margin-bottom:2px;display:block}
+.mega-link{display:block;font-size:12.5px;font-weight:500;color:var(--textm);padding:3px 0;text-decoration:none;line-height:1.4;transition:color .12s,background .12s}
+.mega-link:hover{color:var(--navy);background:var(--bg-low);padding-left:4px}
+.mega-link-desc{display:block;font-size:10.5px;color:var(--textd);margin-top:1px;line-height:1.3;font-weight:400}
+
+/* Simple dropdown — same white treatment */
+.simple-dd{display:none;position:absolute;top:64px;right:0;background:rgba(255,255,255,.985);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);min-width:280px;border:1px solid var(--bdr-soft);border-top:none;box-shadow:0 8px 32px rgba(21,14,81,.07);z-index:199}
+.mnav-li:hover>.simple-dd{display:block}
+.simple-dd-item{display:block;font-size:13px;font-weight:500;color:var(--textm);padding:10px 20px;border-bottom:1px solid var(--bdr-soft);text-decoration:none;transition:background .12s,color .12s}
+.simple-dd-item:last-child{border-bottom:none}
+.simple-dd-item:hover{background:var(--bg-low);color:var(--navy)}
+
+@media(max-width:899px){
+  .mnav-links,.mnav-right .mnav-lang,.mnav-right .mnav-portal{display:none}
+  .mnav-hamburger{display:flex}
+  .mega-panel,.simple-dd{display:none!important}
+}
+
+
+/* ── DRAWER ── */
+.nav-drawer{display:none;position:fixed;inset:0;z-index:500}
+.nav-drawer.open{display:block}
+.nav-drawer-overlay{position:absolute;inset:0;background:rgba(21,14,81,.35);backdrop-filter:blur(2px);-webkit-backdrop-filter:blur(2px)}
+.nav-drawer-panel{position:absolute;top:0;right:0;bottom:0;width:min(320px,88vw);background:var(--white);overflow-y:auto;display:flex;flex-direction:column;box-shadow:-8px 0 40px rgba(21,14,81,.12)}
+
+/* Drawer head — matches nav bar height and style */
+.nav-drawer-head{display:flex;align-items:center;justify-content:space-between;padding:0 20px;height:64px;border-bottom:1px solid var(--bdr-soft);flex-shrink:0}
+.nav-drawer-head-right{display:flex;align-items:center;gap:8px}
+.nav-drawer-logo{height:28px;width:auto}
+.nav-drawer-close{width:32px;height:32px;background:none;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--textd);transition:color .12s,background .12s;border-radius:0}
+.nav-drawer-close:hover{color:var(--navy);background:var(--bg-low)}
+
+/* Drawer body */
+.nav-drawer-body{flex:1;overflow-y:auto}
+
+/* Top-level accordion items */
+.da-item{border-bottom:1px solid var(--bdr-soft)}
+.da-trigger{display:flex;align-items:center;justify-content:space-between;width:100%;padding:13px 20px;font-size:13px;font-weight:700;color:var(--textm);background:none;border:none;cursor:pointer;text-align:left;font-family:Arial,sans-serif;transition:color .12s,background .12s}
+.da-trigger:hover{color:var(--navy);background:var(--bg-low)}
+.da-trigger.open{color:var(--navy)}
+.da-trigger.sop-t{color:var(--navy)}
+.da-caret{width:14px;height:14px;flex-shrink:0;color:var(--textd);transition:transform .2s}
+.da-trigger.open .da-caret{transform:rotate(180deg)}
+
+/* First-level sub — slightly tinted bg, no per-row borders */
+.da-sub{display:none;background:var(--bg);border-top:1px solid var(--bdr-soft)}
+.da-sub.open{display:block}
+
+/* Direct links in da-sub (non-KB sections) */
+.da-sub a{display:block;padding:10px 20px 10px 28px;font-size:12.5px;font-weight:500;color:var(--textm);text-decoration:none;transition:color .12s,background .12s}
+.da-sub a:hover{color:var(--navy);background:var(--bg-low)}
+
+/* Second-level section within KB */
+.da-sec{border-top:1px solid var(--bdr-soft)}
+.da-sec:first-child{border-top:none}
+.da-sec .da-trigger{padding:10px 20px 10px 20px;font-size:11.5px;font-weight:700;letter-spacing:.03em;color:var(--textd);background:none}
+.da-sec .da-trigger:hover{color:var(--navy);background:var(--bg-low)}
+.da-sec .da-trigger.open{color:var(--navy)}
+.da-sec-body{display:none;background:var(--white)}
+.da-sec-body.open{display:block}
+
+/* Indented article links */
+.da-link-indent{display:block;padding:9px 20px 9px 32px;font-size:12px;font-weight:500;color:var(--textm);text-decoration:none;transition:color .12s,background .12s;border-left:2px solid transparent;margin-left:0}
+.da-link-indent:hover{color:var(--navy);background:var(--bg-low);border-left-color:var(--teal)}
+
+/* Double-indented sub-links */
+.da-link-sub{display:block;padding:8px 20px 8px 44px;font-size:11.5px;font-weight:500;color:var(--textd);text-decoration:none;transition:color .12s,background .12s}
+.da-link-sub:hover{color:var(--navy);background:var(--bg-low)}
+
+/* Stub — coming soon, not clickable */
+.da-stub{opacity:.4;pointer-events:none}
+
+.da-item.plain .da-trigger{color:var(--textm);font-weight:600}
+
+/* Drawer footer — portal as outlined pill matching desktop */
+.nav-drawer-foot{padding:16px 20px;border-top:1px solid var(--bdr-soft);display:flex;gap:10px;align-items:center;flex-shrink:0}
+.nav-drawer-portal{flex:1;display:flex;align-items:center;justify-content:center;gap:7px;background:none;border:1.5px solid var(--navy);color:var(--navy);font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;padding:9px 16px;text-decoration:none;transition:background .12s,color .12s}
+.nav-drawer-portal:hover{background:var(--navy);color:white}
+.nav-drawer-lang{font-size:12px;font-weight:700;color:var(--textd);letter-spacing:.06em;text-transform:uppercase;text-decoration:none;padding:4px 8px;transition:color .12s,background .12s}
+.nav-drawer-lang:hover{color:var(--navy);background:var(--bg-low)}
+
+
+/* ── SHARED ── */
+.wrap{max-width:1200px;margin:0 auto;padding:0 32px}
+.chip{display:inline-flex;align-items:center;font-size:9px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:3px 8px;border-radius:9999px}
+.chip-updated{background:var(--amber-l);color:#7a4f00}
+.chip-live{background:var(--teal-chip);color:#004d46}
+.chip-soon{background:var(--bg-highest);color:var(--textd)}
+
+
+/* ── BREADCRUMB ── */
+.bc{display:flex;align-items:center;gap:7px;flex-wrap:wrap;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--textd);padding:20px 0 0;margin-bottom:24px}
+.bc a{color:var(--textd);transition:color .12s}
+.bc a:hover{color:var(--navy)}
+.bc-sep{color:var(--bdr);font-size:12px}
+.bc strong{color:var(--navy)}
+
+
+/* ── CALLOUTS ── */
+/* Icon replaces accent bar — amber/coral get exclamation circle, sky/teal get info circle */
+.callout{padding:14px 16px 14px 44px;margin:20px 0;font-size:13.5px;line-height:1.65;position:relative}
+.callout::before{content:"";position:absolute;left:14px;top:15px;width:16px;height:16px;background-repeat:no-repeat;background-position:center;background-size:contain}
+.callout.teal{background:var(--teal-ll)}
+.callout.teal::before{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23007a6e' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='10'/%3E%3Cline x1='12' y1='16' x2='12' y2='12'/%3E%3Cline x1='12' y1='8' x2='12.01' y2='8'/%3E%3C/svg%3E")}
+.callout.amber{background:var(--amber-l);color:#5a3800}
+.callout.amber::before{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23b45309' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='10'/%3E%3Cline x1='12' y1='8' x2='12' y2='12'/%3E%3Cline x1='12' y1='16' x2='12.01' y2='16'/%3E%3C/svg%3E")}
+.callout.coral{background:var(--coral-l)}
+.callout.coral::before{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23e63946' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='10'/%3E%3Cline x1='12' y1='8' x2='12' y2='12'/%3E%3Cline x1='12' y1='16' x2='12.01' y2='16'/%3E%3C/svg%3E")}
+.callout.sky{background:var(--sky-l)}
+.callout.sky::before{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%232b9ce2' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='10'/%3E%3Cline x1='12' y1='16' x2='12' y2='12'/%3E%3Cline x1='12' y1='8' x2='12.01' y2='8'/%3E%3C/svg%3E")}
+
+
+/* ── CHECK LIST ── */
+/* Teal square bullet — use for compliance checklists, assessment items */
+.rg-list--check{list-style:none;padding-left:0;display:flex;flex-direction:column;gap:6px;margin-bottom:20px}
+.rg-list--check li{display:flex;align-items:flex-start;gap:10px;font-size:14.5px;color:var(--textm);line-height:1.7}
+.rg-list--check li::before{content:"";display:block;width:7px;height:7px;background:var(--teal);flex-shrink:0;margin-top:7px}
+
+
+/* ── INLINE CHIP ── */
+/* For regulatory codes, directive numbers, key labels inline in prose */
+.rg-chip{display:inline-block;font-size:10px;font-weight:700;letter-spacing:.04em;background:var(--amber-l);color:#7a4f00;padding:1px 7px;border-radius:9999px;white-space:nowrap;vertical-align:baseline;margin:0 1px}
+
+
+/* ── DEFINITION LIST ── */
+/* Term/definition pairs — use instead of bold-in-ul when items have labels + descriptions */
+.rg-dl{display:flex;flex-direction:column;gap:0;border:1px solid var(--bdr-soft);margin-bottom:24px}
+.rg-dl-row{display:grid;grid-template-columns:200px 1fr;border-bottom:1px solid var(--bdr-soft)}
+.rg-dl-row:last-child{border-bottom:none}
+.rg-dt{font-size:13px;font-weight:700;color:var(--navy);padding:12px 16px;background:var(--bg);border-right:1px solid var(--bdr-soft);line-height:1.4}
+.rg-dd{font-size:13px;color:var(--textm);padding:12px 16px;line-height:1.6;margin:0}
+@media(max-width:599px){
+  .rg-dl-row{grid-template-columns:1fr}
+  .rg-dt{border-right:none;border-bottom:1px solid var(--bdr-soft);padding-bottom:6px}
+  .rg-dd{padding-top:6px}
+}
+
+
+/* ── TAGS / PILLS ── */
+.update-tag{font-size:9px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;padding:2px 7px;border-radius:9999px}
+.tag-train{background:var(--purple-l);color:var(--purple)}
+.tag-sop{background:var(--fuchsia-l);color:var(--fuchsia)}
+.tag-reg{background:var(--sky-l);color:var(--sky)}
+.tag-priv{background:var(--amber-l);color:#7a4f00}
+.tag-inst{background:var(--green-l);color:var(--green)}
+
+
+/* ── FOOTER ── */
+.footer{border-top:1px solid var(--bdr-soft);padding:28px 32px;background:var(--white)}
+.footer-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px}
+.footer-logo{height:30px;width:auto;display:block}
+.footer-social{display:flex;align-items:center;gap:18px}
+.footer-social a{color:var(--textd);display:flex;align-items:center;transition:color .12s}
+.footer-social a:hover{color:var(--navy)}
+.footer-copy{font-size:12px;color:var(--textd)}
+
+
+/* ═══════════════════════════════════════════════════════════════
+   KB ARTICLE LAYOUT — Mintlify-style
+   Single narrow content column (~720px), fixed TOC at right.
+   Consistent left edge throughout: hero, gel strip, all sections.
+   No alternating backgrounds — sections separated by top borders.
+   ═══════════════════════════════════════════════════════════════ */
+
+/* ── Hero ── */
+/* Not a full-bleed band — sits in the same layout container as the article.
+   Constrained to content column width so breadcrumb/h1 align with body text. */
+.rg-hero{
+  max-width:1200px;
+  margin:0 auto;
+  padding:52px 32px 40px;
+}
+/* Divider scoped to content column width, not full hero container */
+.rg-hero::after{
+  content:"";
+  display:block;
+  width:720px;
+  max-width:100%;
+  height:1px;
+  background:var(--bdr-soft);
+  margin-top:40px;
+}
+@media(min-width:1100px){
+  .rg-hero{padding-right:220px}
+}
+.rg-h1{
+  font-size:clamp(26px,3.5vw,40px);
+  font-weight:800;
+  color:var(--navy);
+  letter-spacing:-.025em;
+  line-height:1.1;
+  margin-bottom:14px;
+}
+.rg-intro{
+  font-size:15px;
+  color:var(--textm);
+  line-height:1.75;
+  max-width:600px;
+}
+.rg-eyebrow{
+  font-size:9px;font-weight:700;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--teal);margin-bottom:12px;
+}
+
+
+
+/* ── Article layout wrapper ── */
+/* Full-width white zone — wraps hero + article content */
+.rg-page-body{
+  background:var(--white);
+  border-bottom:1px solid var(--bdr-soft);
+}
+
+.rg-article-layout{
+  max-width:1200px;
+  margin:0 auto;
+  padding:0 32px;
+  position:relative;
+}
+
+/* Content column: constrained width, right padding clears the fixed TOC */
+.rg-content{
+  max-width:720px;
+  padding-bottom:80px;
+}
+
+@media(min-width:1100px){
+  .rg-article-layout{
+    padding-right:220px;
+  }
+  .cr-hero-content{
+    padding-right:220px;
+  }
+}
+
+/* ── Sections ── */
+.rg-section{
+  padding:52px 0 48px;
+  border-top:1px solid var(--bdr-soft);
+}
+.rg-section:first-child{
+  border-top:none;
+  padding-top:44px;
+}
+.rg-section--last{
+  padding-top:0;
+  border-top:none; /* rg-related already has its own border-top */
+  padding-bottom:48px;
+}
+
+/* ── Section typography ── */
+.rg-section h2{
+  font-size:clamp(20px,2.2vw,24px);
+  font-weight:700;
+  color:var(--navy);
+  letter-spacing:-.02em;
+  line-height:1.2;
+  margin:0 0 20px;
+}
+.rg-section h3{
+  font-size:15px;
+  font-weight:700;
+  color:var(--navy);
+  margin:24px 0 8px;
+}
+.rg-section p{
+  font-size:14.5px;
+  color:var(--textm);
+  line-height:1.8;
+  margin-bottom:14px;
+}
+.rg-section ul,
+.rg-section ol{
+  font-size:14.5px;
+  color:var(--textm);
+  line-height:1.8;
+  margin:0 0 14px 20px;
+}
+.rg-section ul{list-style-type:square}
+.rg-section ul li::marker{color:var(--teal)}
+.rg-section li{margin-bottom:4px}
+.rg-section strong{color:var(--text);font-weight:700}
+
+/* Lead paragraph — slightly larger */
+.rg-lead{
+  font-size:15.5px !important;
+  line-height:1.85 !important;
+  margin-bottom:18px !important;
+}
+
+/* Diagrams, tables, prereq lists — can be wider than prose */
+.rg-section .rf-wrap,
+.rg-section .rg-table-wrap,
+.rg-section .prereq-list{
+  width:100%;
+  max-width:100%;
+}
+
+/* ── Numbered steps — for sequential processes ── */
+.rg-steps{
+  margin:20px 0;
+  counter-reset:step;
+}
+.rg-step{
+  display:flex;
+  gap:20px;
+  align-items:flex-start;
+  padding:0 0 28px 0;
+  position:relative;
+}
+.rg-step:not(:last-child)::before{
+  content:"";
+  position:absolute;
+  left:16px;
+  top:34px;
+  bottom:0;
+  width:1px;
+  background:var(--bdr-soft);
+}
+.rg-step-num{
+  flex-shrink:0;
+  width:32px;
+  height:32px;
+  border:1px solid var(--bdr-soft);
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:12px;
+  font-weight:700;
+  color:var(--textd);
+  background:var(--white);
+  position:relative;
+  z-index:1;
+}
+.rg-step-body{
+  flex:1;
+  padding-top:4px;
+}
+.rg-step-title{
+  font-size:14.5px;
+  font-weight:700;
+  color:var(--navy);
+  margin-bottom:6px;
+}
+.rg-step-desc{
+  font-size:13.5px;
+  color:var(--textm);
+  line-height:1.7;
+  max-width:none;
+  margin:0;
+}
+
+/* ── Card grid — 2×2 for discrete equal-weight items ── */
+.rg-card-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+  margin:20px 0;
+}
+.rg-card{
+  border:1px solid var(--bdr-soft);
+  padding:18px 20px;
+  background:var(--white);
+}
+.rg-card-label{
+  font-size:13px;
+  font-weight:700;
+  color:var(--navy);
+  margin-bottom:8px;
+}
+.rg-card-body{
+  font-size:13px;
+  color:var(--textm);
+  line-height:1.65;
+  margin:0;
+  max-width:none;
+}
+@media(max-width:599px){
+  .rg-card-grid{grid-template-columns:1fr}
+}
+
+/* ── Inline code highlight ── */
+/* Used for literal technical strings: SOP codes, form IDs, system names, reg codes.
+   NOT for semantic emphasis — that stays as <strong>.
+   Rule: if it's something you'd look up, type, or reference by ID → rg-code. */
+.rg-code{
+  font-family:"Courier New",monospace;
+  font-size:.88em;
+  background:var(--bg-low);
+  color:var(--navy);
+  border:1px solid var(--bdr-soft);
+  padding:1px 5px;
+  border-radius:3px;
+  font-style:normal;
+  font-weight:400;
+}
+
+/* ── Inline prose links ── */
+.rg-link{
+  color:var(--teal);font-weight:600;
+  text-decoration:none;
+  border-bottom:1px solid rgba(0,106,97,.3);
+  transition:border-color .12s;
+}
+.rg-link:hover{border-color:var(--teal)}
+
+/* ── TOC sidebar ── */
+/* position:fixed, right-aligned, always stable regardless of scroll */
+.rg-toc{
+  position:fixed;
+  top:88px;
+  right:max(0px, calc((100vw - 1200px) / 2));
+  width:196px;
+  padding:32px 20px 40px 16px;
+  z-index:10;
+  background:var(--white);
+  opacity:1;
+  visibility:visible;
+  transition:opacity .5s ease .1s, visibility .5s ease .1s;
+}
+.rg-toc-head{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  font-size:12px;
+  font-weight:600;
+  color:var(--textm);
+  margin-bottom:14px;
+}
+.rg-toc-inner{
+  border-left:2px solid var(--bdr-soft);
+  padding-left:12px;
+}
+.rg-toc-link{
+  display:block;
+  font-size:12.5px;
+  font-weight:400;
+  color:var(--textd);
+  padding:4px 0 4px 6px;
+  text-decoration:none;
+  line-height:1.4;
+  transition:color .12s,border-color .12s;
+  border-left:2px solid transparent;
+  margin-left:-14px;
+}
+.rg-toc-link:hover{color:var(--navy);border-color:var(--bdr-soft)}
+.rg-toc-link.active{color:var(--teal);font-weight:600;border-color:var(--teal)}
+.rg-toc-link[data-sub="true"]{
+  font-size:11.5px;padding-left:20px;opacity:.75;
+}
+.rg-toc-link[data-sub="true"].active{color:var(--teal);opacity:1}
+
+/* Hide fixed TOC on narrow screens — inline mobile TOC shows instead */
+@media(max-width:1099px){.rg-toc{display:none}}
+@media(max-width:899px){.rg-article-layout{padding-right:32px}}
+.rg-toc--hidden{opacity:0 !important;visibility:hidden !important;transition:opacity .15s ease, visibility .15s ease !important}
+
+/* Inline mobile TOC — shown on small screens only, hidden on desktop */
+.rg-toc-mobile{
+  display:none;
+  border:1px solid var(--bdr-soft);
+  padding:20px 24px;
+  margin:40px 0 0;
+}
+.rg-toc-mobile .rg-toc-head{
+  display:flex;align-items:center;gap:8px;
+  font-size:12px;font-weight:600;color:var(--textm);margin-bottom:16px;
+}
+.rg-toc-mobile .rg-toc-inner{
+  border-left:2px solid var(--bdr-soft);
+  padding-left:14px;
+}
+.rg-toc-mobile .rg-toc-link{
+  display:block;font-size:13px;font-weight:400;color:var(--textm);
+  padding:5px 0;text-decoration:none;line-height:1.4;
+  /* No active state on mobile — not scroll-tracking */
+}
+.rg-toc-mobile .rg-toc-link:hover{color:var(--navy)}
+/* Mobile TOC link class — no active state applied by scroll JS */
+.rg-toc-link-mob{
+  display:block;font-size:13px;font-weight:400;color:var(--textm);
+  padding:5px 0;text-decoration:none;line-height:1.4;
+}
+.rg-toc-link-mob:hover{color:var(--navy)}
+@media(max-width:1099px){.rg-toc-mobile{display:block}}
+@media(min-width:1100px){.rg-toc-mobile{display:none !important}}
+
+/* ── On this page (inline box — pages without TOC) ── */
+.kb-onpage{
+  border-left:3px solid var(--teal-bright);
+  padding:0 0 0 20px;
+  margin:44px 0;
+}
+.kb-onpage-head{
+  font-size:9px;font-weight:700;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--teal);margin-bottom:12px;
+}
+.kb-onpage a{
+  display:block;font-size:14px;font-weight:700;
+  color:var(--navy);padding:4px 0;
+  text-decoration:none;line-height:1.3;transition:color .12s;
+}
+.kb-onpage a:hover{color:var(--teal)}
+
+/* ── Mobile ── */
+@media(max-width:899px){
+  .rg-hero-inner{padding:0 20px 32px}
+  .rg-gel,.rg-article-layout{padding-left:20px;padding-right:20px}
+  .rg-content{padding-bottom:48px}
+  .rg-section{padding-top:40px}
+}
+
+/* ── TABLES ── */
+.rg-table-wrap{overflow-x:auto;margin:20px 0}
+.rg-table{width:100%;border-collapse:collapse;font-size:13.5px}
+.rg-table th{background:var(--navy);color:white;font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:10px 14px;text-align:left}
+.rg-table td{padding:10px 14px;border-bottom:1px solid var(--bdr-soft);vertical-align:top;color:var(--textm)}
+.rg-table tr:nth-child(even) td{background:var(--bg-low)}
+.rg-table td:first-child{font-weight:600;color:var(--navy)}
+.rg-td-note{display:block;font-size:11px;color:var(--textd);margin-top:3px;font-weight:400;letter-spacing:0}
+
+
+/* ── PREREQ LIST ── */
+.prereq-list{margin:20px 0}
+.prereq-item{padding:14px 16px;border-bottom:1px solid var(--bdr-soft);font-size:13.5px;color:var(--textm);line-height:1.65}
+.prereq-item:first-child{border-top:1px solid var(--bdr-soft)}
+.prereq-item strong{color:var(--text)}
+
+
+/* ── RELATED RESOURCES ── */
+.rg-related{margin-top:0;padding-top:24px;border-top:1px solid var(--bdr-soft)}
+.rg-related-label{font-size:9px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--textd);margin-bottom:14px}
+.rg-related-link{display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--bdr-soft);font-size:13.5px;font-weight:600;color:var(--navy);text-decoration:none;transition:color .12s}
+.rg-related-link:last-child{border-bottom:none}
+.rg-related-link:hover{color:var(--teal)}
+.rg-related-arr{color:var(--bdr);transition:color .12s,transform .12s}
+.rg-related-link:hover .rg-related-arr{color:var(--teal);transform:translateX(3px)}
+
+
+/* ── PREV / NEXT NAVIGATION ── */
+.rg-prevnext{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+  margin-top:32px;
+}
+.rg-prevnext-card{
+  display:block;
+  padding:16px 20px;
+  border:1px solid var(--bdr-soft);
+  text-decoration:none;
+  transition:border-color .15s,background .15s;
+  background:var(--white);
+}
+.rg-prevnext-card:hover{border-color:var(--bdr);background:var(--bg)}
+/* Direction label with caret — small, secondary */
+.rg-prevnext-dir{
+  display:flex;
+  align-items:center;
+  gap:4px;
+  font-size:11px;
+  font-weight:500;
+  color:var(--textd);
+  margin-bottom:4px;
+}
+.rg-prevnext-section{
+  font-size:10px;
+  font-weight:600;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+  color:var(--textd);
+  margin-bottom:4px;
+  opacity:.7;
+}
+.rg-prevnext-card--next .rg-prevnext-dir{justify-content:flex-end}
+.rg-prevnext-card--next .rg-prevnext-section{text-align:right}
+.rg-prevnext-caret{
+  font-size:14px;
+  line-height:1;
+  color:var(--textd);
+  transition:color .12s;
+}
+/* Title — prominent */
+.rg-prevnext-title{
+  font-size:13.5px;
+  font-weight:700;
+  color:var(--navy);
+  line-height:1.35;
+  transition:color .12s;
+}
+.rg-prevnext-card--next .rg-prevnext-title{text-align:right}
+.rg-prevnext-card:hover .rg-prevnext-title{color:var(--teal)}
+.rg-prevnext-card:hover .rg-prevnext-caret{color:var(--teal)}
+@media(max-width:599px){
+  .rg-prevnext{grid-template-columns:1fr}
+  .rg-prevnext-card--next .rg-prevnext-dir{justify-content:flex-start}
+  .rg-prevnext-card--next .rg-prevnext-title{text-align:left}
+  .rg-prevnext-card--next .rg-prevnext-section{text-align:left}
+}
+
+
+/* ── SECTION EYEBROW (optional, not currently used on planning-overview) ── */
+.rg-sec-num{
+  font-size:9px;
+  font-weight:700;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:var(--teal);
+  margin-bottom:14px;
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+.rg-sec-num::after{
+  content:"";
+  flex:1;
+  height:1px;
+  background:var(--bdr-soft);
+  display:block;
+}
+
+
+/* ── INSET / ANNOTATION BOX ── */
+.rg-inset{
+  border-left:3px solid var(--bdr);
+  padding:12px 0 12px 18px;
+  margin:20px 0;
+}
+.rg-inset-label{
+  font-size:9px;
+  font-weight:700;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--teal);
+  margin-bottom:6px;
+}
+.rg-inset p{
+  font-size:13.5px;
+  color:var(--textm);
+  line-height:1.65;
+  margin:0;
+  max-width:none;
+}
+
+
+/* ═══════════════════════════════════════════════════════════════
+   101 SERIES — Editorial guide component library (cr- prefix)
+   Shared across kb-cr101, kb-trial-design, kb-study-lifecycle,
+   kb-gcp-quality-by-design and any future 101-series guides.
+
+   Per-page <style> blocks keep only:
+     • hero background colour + photo positioning
+     • page-specific data components (timelines, VS layouts, etc.)
+   ═══════════════════════════════════════════════════════════════ */
+
+/* ── Page base ── */
+.cr-page{font-family:Arial,"Helvetica Neue",Helvetica,sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden}
+
+/* ── Hero — photo background with dot matrix overlay ── */
+.cr-hero{
+  position:relative;
+  min-height:92vh;
+  display:flex;
+  align-items:flex-end;
+  overflow:hidden;
+  background:var(--navy) center/cover no-repeat;
+}
+/* Left-to-right navy gradient over photo */
+.cr-hero::before{
+  content:"";position:absolute;inset:0;z-index:1;
+  background:linear-gradient(to right,
+    rgba(21,14,81,.88) 0%,
+    rgba(21,14,81,.65) 35%,
+    rgba(21,14,81,.1) 100%);
+  pointer-events:none;
+}
+/* Colour wash */
+.cr-hero::after{
+  content:"";position:absolute;inset:0;z-index:1;
+  background:linear-gradient(105deg,
+    rgba(0,196,180,.1) 0%,
+    rgba(127,119,221,.07) 35%,
+    transparent 65%);
+  pointer-events:none;
+}
+.cr-hero-bg{display:none}
+/* Photo: absolute fill, oversized vertically for parallax travel room */
+.cr-hero-img{
+  position:absolute;
+  left:0;right:0;
+  top:-15%;          /* start pulled up so bottom edge has room to travel */
+  width:100%;
+  height:130%;       /* 30% extra height = covers parallax travel at speed 0.2–0.3 */
+  object-fit:cover;
+  z-index:0;
+  will-change:transform;
+}
+.cr-hero-content{
+  position:relative;z-index:2;
+  width:100%;
+  max-width:1200px;
+  margin:0 auto;
+  padding:0 32px clamp(56px,9vw,108px);
+}
+.cr-hero-bc{margin-bottom:36px;opacity:0;animation:fadeUp .7s .1s ease-out forwards}
+.cr-hero-bc a{font-size:12px;color:rgba(255,255,255,.55);text-decoration:none;transition:color .12s}
+.cr-hero-bc a:hover{color:rgba(255,255,255,.85)}
+.cr-hero-bc .sep{font-size:12px;color:rgba(255,255,255,.3);margin:0 6px}
+.cr-hero-bc strong{font-size:12px;color:rgba(255,255,255,.75)}
+.cr-hero-eyebrow{display:flex;align-items:center;gap:12px;margin-bottom:24px;opacity:0;animation:fadeUp .7s .2s ease-out forwards}
+.cr-hero-eyebrow-label{font-size:9px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.75)}
+.cr-hero-eyebrow-line{height:1px;width:40px;background:rgba(255,255,255,.4)}
+.cr-hero h1{font-size:clamp(44px,7vw,88px);font-weight:800;line-height:.96;letter-spacing:-.03em;color:#fff;margin-bottom:18px;max-width:680px;opacity:0;animation:fadeUp .8s .35s ease-out forwards}
+.cr-hero h1 em{font-style:normal;color:rgba(255,255,255,.55)}
+.cr-hero-sub{font-size:clamp(14px,1.4vw,16px);color:rgba(255,255,255,.9);max-width:480px;line-height:1.65;margin-bottom:0;opacity:0;animation:fadeUp .8s .5s ease-out forwards}
+
+/* ── Section wrappers ── */
+/* Content sections live inside rg-article-layout / rg-content — no max-width needed here */
+.cr-section{padding:clamp(52px,7vw,96px) 0}
+.cr-section:first-child{padding-top:44px}
+
+/* ── Section number eyebrow ── */
+.cr-sec-num{font-size:9px;font-weight:700;letter-spacing:.2em;color:var(--textd);text-transform:uppercase;margin-bottom:32px;display:flex;align-items:center;gap:14px}
+.cr-sec-num::before{content:'';height:12px;width:3px;background:var(--teal);display:block;flex-shrink:0}
+.cr-sec-num::after{content:'';height:1px;width:36px;background:var(--bdr-soft);display:block}
+
+/* ── Typography ── */
+.cr-h2{font-size:clamp(24px,3.2vw,40px);font-weight:700;color:var(--navy);letter-spacing:-.025em;line-height:1.08;margin-bottom:20px}
+.cr-h2 em{font-style:italic;font-weight:400;color:var(--teal)}
+.cr-h2-white{font-size:clamp(24px,3.2vw,40px);font-weight:700;color:#fff;letter-spacing:-.02em;line-height:1.08;margin-bottom:20px}
+.cr-h2-white em{font-style:italic;font-weight:400;color:var(--teal-bright)}
+.cr-body{font-size:15px;line-height:1.8;color:var(--textm);margin-bottom:18px}
+.cr-body strong{color:var(--text);font-weight:700}
+
+/* ── Pull quote ── */
+.cr-pull{border-left:3px solid var(--teal);padding:6px 0 6px 24px;margin:32px 0}
+.cr-pull p{font-size:clamp(16px,1.8vw,20px);font-weight:700;font-style:italic;color:var(--navy);line-height:1.45}
+.cr-pull-white{border-left:3px solid var(--teal-bright);padding:4px 0 4px 22px;margin:28px 0}
+.cr-pull-white p{font-size:clamp(16px,1.8vw,20px);font-weight:700;font-style:italic;color:#fff;line-height:1.4}
+
+/* ── Image panel — constrained to content column width ── */
+.cr-img-panel{position:relative;height:clamp(220px,28vw,380px);overflow:hidden;margin:32px 0}
+.cr-img-panel img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;will-change:transform}
+
+/* ── Inset / annotation box ── */
+.cr-inset{background:var(--sky-l);border-left:3px solid var(--sky);padding:20px 22px;margin:24px 0}
+.cr-inset-teal{background:var(--teal-ll,#e0f7f5);border-left:3px solid var(--teal);padding:20px 22px;margin:24px 0}
+.cr-inset-label{font-size:9px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--sky);margin-bottom:10px;display:block}
+.cr-inset-teal .cr-inset-label{color:var(--teal)}
+.cr-inset p,.cr-inset-teal p{font-size:14px;line-height:1.75;color:var(--textm);margin-bottom:0}
+.cr-inset p strong,.cr-inset-teal p strong{color:var(--text);font-weight:700}
+
+/* ── Closing band — navy full-bleed, used at end of each guide ── */
+/* Sits outside rg-article-layout as a sibling to rg-page-body */
+.cr-closing-band{background:var(--navy);width:100%}
+.cr-closing{max-width:720px;margin:0 auto;padding:clamp(56px,7vw,88px) 32px}
+.cr-closing p{font-size:clamp(18px,2.4vw,28px);font-weight:700;font-style:italic;color:#fff;line-height:1.4;letter-spacing:-.01em}
+
+/* ── Scroll reveal animations ── */
+@keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+.cr-reveal{opacity:0;transform:translateY(18px);transition:opacity .6s ease-out,transform .6s ease-out}
+.cr-reveal.visible{opacity:1;transform:translateY(0)}
+.cr-reveal-d1{transition-delay:.1s}
+.cr-reveal-d2{transition-delay:.2s}
+.cr-reveal-d3{transition-delay:.3s}
+
+/* ── Responsive ── */
+@media(max-width:899px){
+  .cr-hero-content{padding:0 20px 72px}
+  .cr-section{padding:44px 0}
+}
+
+
+/* ── GEL STRIP (SVG-based, not CSS) ── */
+/* The gel strip SVG is inlined directly in each page after .rg-hero.
+   New pattern: content-width (max-width:1200px, padding:0 32px), transparent background,
+   height 10px, opacity .7 on SVG. No dark fill rect — rects on white background only.
+   This rule is a safety reset only. */
+.gel-strip{line-height:0;overflow:hidden;display:block}
+
+
+/* ── RESPONSIVE ── */
+@media(min-width:900px){.nav-hamburger{display:none}.nav-drawer{display:none !important}}
+@media(max-width:899px){
+  .mnav{padding:0 16px}
+  .wrap{padding:0 20px}
+  .footer{padding:24px 20px}
+  .footer-inner{flex-direction:column;align-items:center;gap:14px;text-align:center}
+  .footer-social{justify-content:center}
+
+}
+
+
+/* ═══════════════════════════════════════════════════════════════
+   SIDEBAR LAYOUT
+   Three-column shell: fixed left sidebar + main content + fixed right TOC.
+   Applies to KB articles, SOP pages, Role Guides, Training, CIM, Applications.
+   Does NOT apply to: index.html, team exercises, standalone tools.
+
+   Scoping approach: overrides for .rg-* components are scoped inside
+   .kb-shell so they only activate when the sidebar is present. Pages
+   without .kb-shell continue to use the original rg-* rules unchanged.
+═══════════════════════════════════════════════════════════════ */
+
+/* ── Shell — full-viewport white surface ── */
+.kb-shell{
+  background:var(--white);
+  min-height:calc(100vh - 64px);
+}
+
+/* ── Left sidebar ── */
+/* Fixed to viewport so it stays visible while content scrolls.
+   Overflow rules on body/html cannot break fixed positioning. */
+.kb-sidebar{
+  position:fixed;
+  top:64px;
+  left:0;
+  width:240px;
+  height:calc(100vh - 64px);
+  overflow-y:auto;
+  padding:24px 0;
+  border-right:1px solid var(--bdr-soft);
+  background:var(--white);
+  z-index:50;
+}
+
+/* Area badge — "KNOWLEDGE BASE", "SOPS", etc. */
+.kb-sidebar-area{
+  font-size:9px;
+  font-weight:700;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:var(--teal);
+  padding:0 24px 12px;
+  border-bottom:1px solid var(--bdr-soft);
+  margin-bottom:8px;
+  display:block;
+}
+
+/* ── Collapsible section ── */
+.kb-sidebar-section{padding:2px 0}
+
+/* Row: section head + chevron, full clickable row */
+.kb-sidebar-section-row{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:7px 20px 7px 24px;
+  cursor:pointer;
+  user-select:none;
+}
+.kb-sidebar-section-row:hover .kb-sidebar-head{color:var(--navy)}
+.kb-sidebar-section-row:hover .kb-sidebar-chev{color:var(--navy)}
+
+/* Section head — title, links to section landing page */
+.kb-sidebar-head{
+  font-size:13px;
+  font-weight:600;
+  color:var(--text);
+  text-decoration:none;
+  line-height:1.4;
+  flex:1;
+  transition:color .12s;
+}
+.kb-sidebar-head:hover{color:var(--navy)}
+
+/* Chevron — rotates when section is open */
+.kb-sidebar-chev{
+  display:inline-flex;
+  width:16px;
+  height:16px;
+  align-items:center;
+  justify-content:center;
+  color:var(--textd);
+  transition:transform .18s ease, color .12s;
+  flex-shrink:0;
+  margin-left:8px;
+}
+.kb-sidebar-section--open .kb-sidebar-chev{transform:rotate(90deg)}
+
+/* Body — hidden by default, shown when section is open */
+.kb-sidebar-body{display:none;padding:2px 0 8px}
+.kb-sidebar-section--open .kb-sidebar-body{display:block}
+
+/* ── Sidebar links ── */
+/* Active state: teal text + weight, no bar, no background.
+   Hover: navy text, no background. Clean, type-driven. */
+.kb-sidebar-link{
+  display:block;
+  font-size:13px;
+  color:var(--textm);
+  text-decoration:none;
+  padding:6px 24px 6px 36px;
+  line-height:1.4;
+  transition:color .12s;
+}
+.kb-sidebar-link:hover{color:var(--navy)}
+.kb-sidebar-link.active{color:var(--teal);font-weight:600}
+
+/* Sub-link — double-indented (Budget Template Guide under Contracts, etc.) */
+.kb-sidebar-link-sub{
+  padding-left:48px;
+  font-size:12.5px;
+  color:var(--textd);
+}
+.kb-sidebar-link-sub.active{color:var(--teal)}
+
+/* Sub-group label inside a collapsible section — visual divider, not interactive */
+.kb-sidebar-subhead{
+  display:block;
+  font-size:9px;
+  font-weight:700;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  color:var(--textd);
+  padding:14px 24px 4px 36px;
+}
+.kb-sidebar-subhead:first-child{padding-top:4px}
+
+/* ── Main content column ── */
+/* Clears the 240px fixed sidebar. Article content bounded by .article-wrap. */
+.kb-main{
+  margin-left:240px;
+  padding:0 80px;
+  background:var(--white);
+}
+
+/* Shared max-width wrapper — hero AND content both use this
+   so they align at the same left edge (fixes the alignment bug). */
+.kb-main .article-wrap{max-width:760px}
+
+/* Hero overrides inside sidebar layout */
+.kb-main .rg-page-body{border-bottom:none}
+.kb-main .rg-hero{padding:48px 0 28px}
+.kb-main .rg-hero::after{display:none}  /* hairline handled by rg-content border-top */
+
+/* Article layout overrides — no centering, no padding-right gutter
+   (content column handles its own width via article-wrap) */
+.kb-main .rg-article-layout{
+  max-width:none;
+  margin:0;
+  padding:0;
+  position:relative;
+}
+
+/* Content column — border-top acts as the hero divider */
+.kb-main .rg-content{
+  max-width:none;
+  padding:36px 0 96px;
+  border-top:1px solid var(--bdr-soft);
+}
+
+/* ── Right TOC — repositioned for sidebar layout ── */
+/* Fixed to right side of viewport. At ≥1280px viewports the right gutter
+   is wide enough to show it without overlapping the 760px article column. */
+.kb-main .rg-toc{
+  position:fixed;
+  top:88px;
+  right:40px;
+  width:200px;
+  background:var(--white);
+  max-height:calc(100vh - 120px);
+  overflow-y:auto;
+  /* Override the default right:max(0px,...) positioning */
+  left:auto;
+  padding:0;
+}
+
+/* Right TOC active state: small teal dot, no left-border.
+   Closer to Mintlify's pattern. */
+.kb-main .rg-toc-inner{border-left:none;padding-left:14px}
+.kb-main .rg-toc-link{
+  border-left:none;
+  margin-left:0;
+  padding:5px 0;
+  position:relative;
+}
+.kb-main .rg-toc-link::before{
+  content:"";
+  position:absolute;
+  left:-10px;
+  top:50%;
+  width:4px;
+  height:4px;
+  border-radius:50%;
+  background:transparent;
+  transform:translateY(-50%);
+  transition:background .12s;
+}
+.kb-main .rg-toc-link:hover{border-left:none;color:var(--navy)}
+.kb-main .rg-toc-link:hover::before{background:var(--bdr)}
+.kb-main .rg-toc-link.active{border-left:none;color:var(--teal)}
+.kb-main .rg-toc-link.active::before{background:var(--teal)}
+
+/* Footer clears the fixed sidebar */
+.kb-main-footer{
+  margin-left:240px;
+  background:var(--white);
+}
+
+/* ── Responsive breakpoints ── */
+
+/* ≤1279px: hide right TOC, show inline mobile version */
+@media(max-width:1279px){
+  .kb-main .rg-toc{display:none}
+  .kb-main .rg-toc-mobile{display:block !important}
+}
+@media(min-width:1280px){
+  .kb-main .rg-toc-mobile{display:none !important}
+}
+
+/* ≤899px: collapse sidebar, go full-width */
+@media(max-width:899px){
+  .kb-sidebar{display:none}
+  .kb-main{margin-left:0;padding:0 20px}
+  .kb-main-footer{margin-left:0}
+}
+
+/* ── Body background in sidebar layout ── */
+/* Pages using kb-shell are fully white surfaces.
+   Apply .kb-page to <body> on these pages to override the default --bg grey. */
+body.kb-page{background:var(--white)}
