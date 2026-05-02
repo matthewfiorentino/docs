@@ -93,7 +93,7 @@
     banner.id = 'ri-cookie-banner';
     banner.innerHTML =
       '<div id="ri-cookie-inner">' +
-        '<p id="ri-cookie-text">This site uses analytics to understand how our documentation is used. No personal information is collected.</p>' +
+        '<p id="ri-cookie-text">The RI-MUHC Clinical Research Hub uses analytics cookies to measure how this documentation is accessed and used. No personal information is collected. This site\'s use of cookies complies with Quebec\'s Act respecting the protection of personal information in the private sector (Law 25).</p>' +
         '<div id="ri-cookie-actions">' +
           '<button id="ri-cookie-decline">Decline</button>' +
           '<button id="ri-cookie-accept">Accept</button>' +
