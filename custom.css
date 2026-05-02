@@ -720,9 +720,20 @@ article {
     display: block;
     opacity: 0.9;
 }
+.ri-footer-logo-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+}
+footer a[href="/"] img {
+    height: 44px !important;
+    width: auto !important;
+    display: block !important;
+}
 .ri-footer-institute-logo {
-    display: block;
-    height: 48px;
+    display: block !important;
+    height: 44px;
     width: auto;
     opacity: 0.75;
 }
