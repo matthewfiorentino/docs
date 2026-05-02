@@ -678,6 +678,17 @@ article {
     gap: 64px;
     flex-wrap: wrap;
 }
+.ri-home-footer-logo-col {
+    display: flex;
+    align-items: flex-start;
+    margin-right: 16px;
+}
+.ri-home-footer-logo {
+    height: 52px;
+    width: auto;
+    display: block;
+    opacity: 0.9;
+}
 .ri-home-footer-col { display: flex; flex-direction: column; gap: 10px; min-width: 160px; }
 .ri-home-footer-head {
     font-size: 11px;
