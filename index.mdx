@@ -7,7 +7,7 @@ import { useState, useEffect } from 'react'
 
 export const UpdateBar = ({ tag, tagClass, title, desc, date, linkHref, linkLabel }) => (
   <div className="ri-update-bar">
-    <span className={`ri-update-tag ${tagClass}`}>{tag}</span>
+    {tag && <span className={`ri-update-tag ${tagClass}`}>{tag}</span>}
     <div className="ri-update-content">
       <div className="ri-update-title">{title}</div>
       <div className="ri-update-desc">{desc}{linkHref ? <> <a href={linkHref}>{linkLabel} →</a></> : null}</div>
@@ -37,7 +37,6 @@ export const LiveUpdates = () => {
           setDone(true);
           return;
         }
-        const tagMap = { Training: 'ri-tag-train', Regulatory: 'ri-tag-reg', Hub: 'ri-tag-inst' };
         const CONTENT_NS = 'http://purl.org/rss/1.0/modules/content/';
         const parsed = els.slice(0, 2).map(el => {
           const g = tag => el.getElementsByTagName(tag)[0]?.textContent?.trim() || '';
@@ -50,7 +49,7 @@ export const LiveUpdates = () => {
           const rawDesc = inner.body.textContent.replace(/\s+/g, ' ').trim();
           const desc = rawDesc.length > 160 ? rawDesc.slice(0, 157) + '…' : rawDesc;
           const tag = g('category');
-          return { title, desc, date: label, tag, tagClass: tagMap[tag] || 'ri-tag-inst' };
+          return { title, desc, date: label };
         }).filter(p => p.title);
         setItems(parsed);
         setDone(true);
@@ -70,8 +69,6 @@ export const LiveUpdates = () => {
       {items.map((item, i) => (
         <UpdateBar
           key={i}
-          tag={item.tag || 'Update'}
-          tagClass={item.tagClass}
           date={item.date}
           title={item.title}
           desc={item.desc}
