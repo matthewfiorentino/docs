@@ -22,7 +22,16 @@
     var mainLogoImg = logoLink.querySelector('img');
     if (mainLogoImg) {
       mainLogoImg.src = '/logo/rimuhc-footer-blue.png';
+      mainLogoImg.style.height = '48px';
+      mainLogoImg.style.width = 'auto';
     }
+
+    // Tighten Mintlify's logo column container so logos sit close together
+    var col = logoLink.parentNode;
+    col.style.display = 'flex';
+    col.style.flexDirection = 'column';
+    col.style.alignItems = 'flex-start';
+    col.style.gap = '8px';
 
     // Inject institute logo below
     var img = document.createElement('img');
@@ -30,7 +39,7 @@
     img.alt = 'Research Institute of the McGill University Health Centre';
     img.className = 'ri-footer-institute-logo';
 
-    logoLink.parentNode.insertBefore(img, logoLink.nextSibling);
+    col.insertBefore(img, logoLink.nextSibling);
   }
 
   // Watch for footer being added to the DOM (SPA navigation)
