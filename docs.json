@@ -22,7 +22,7 @@
       {
         "label": "Contact",
         "href": "/contacts"
-      },
+      }
     ],
     "primary": {
       "type": "button",
