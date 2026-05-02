@@ -524,18 +524,21 @@ html.dark .ri-hub-body hr {
     margin: 0;
     padding: 80px 8vw 70px;
     width: 100%;
-    background:
-        linear-gradient(to right, rgba(21,14,81,.97) 38%, rgba(21,14,81,.72) 65%, rgba(21,14,81,.30) 100%),
-        url('/images/dna-bg.png') center right / cover;
-    background-attachment: local, fixed;
+    background-color: #150e51;
+    background-image:
+        linear-gradient(to right, rgba(21,14,81,.96) 35%, rgba(21,14,81,.70) 60%, rgba(21,14,81,.20) 100%),
+        url('/images/dna-bg.png');
+    background-size: auto, cover;
+    background-position: 0 0, center right;
+    background-repeat: no-repeat, no-repeat;
+    background-attachment: scroll, fixed;
     color: #fff;
     position: relative;
     overflow: hidden;
 }
 @media (max-width: 768px) {
-    /* iOS/mobile: fixed attachment causes blank backgrounds — fall back to scroll */
     .ri-text-hero {
-        background-attachment: local, scroll;
+        background-attachment: scroll, scroll;
     }
 }
 .ri-text-hero-eyebrow {
