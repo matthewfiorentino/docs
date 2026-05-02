@@ -14,10 +14,9 @@ mode: "wide"
 }}>
   <div style={{
     position: "absolute", inset: 0,
-    backgroundImage: "url('/images/hero.png')",
+    backgroundImage: "url('https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=1600&q=85&auto=format&fit=crop&fp-y=0.4')",
     backgroundSize: "cover",
-    backgroundPosition: "center 30%",
-    backgroundAttachment: "fixed"
+    backgroundPosition: "center 40%"
   }}/>
   <div style={{
     position: "absolute", inset: 0,
@@ -84,47 +83,28 @@ mode: "wide"
 
 ## Explore the Hub
 
-<div className="ri-bento">
+<CardGroup cols={3}>
+  <Card title="Knowledge Base" icon="book-open" href="/kb/introduction">
+    Regulatory context, operational guides, and Quebec-specific guidance — from concept and feasibility through close-out and archiving.
+  </Card>
+  <Card title="Clinical Research SOPs" icon="file-lines" href="/sops/overview">
+    Plain-language summaries and key points for all RI-MUHC clinical research SOPs, with downloadable appendices.
+  </Card>
+  <Card title="Training & Compliance" icon="graduation-cap" href="/training/overview">
+    Training requirements by role and study type, external certifications, and the TalentLMS learning platform.
+  </Card>
+  <Card title="Centre for Innovative Medicine" icon="flask" href="/cim/overview">
+    Clinical trial unit services, SOPs, and operational guides for CIM researchers and staff.
+  </Card>
+  <Card title="Nagano Platform" icon="desktop" href="/apps/nagano/overview">
+    Step-by-step instructions for every submission type — F11, amendments, renewals, and closure.
+  </Card>
+  <Card title="Get in Touch" icon="address-book" href="/contacts">
+    Contact the Research Facilitator, CIM, training coordinators, and other key research support contacts.
+  </Card>
+</CardGroup>
 
-  <a href="/kb/introduction" className="ri-bento-anchor">
-    <div className="ri-bento-anchor-body">
-      <div className="ri-bento-anchor-title">Knowledge Base</div>
-      <div className="ri-bento-anchor-desc">Regulatory context, operational guides, and Quebec-specific guidance — from concept and feasibility through close-out and archiving.</div>
-      <div className="ri-bento-anchor-cta">Explore the Knowledge Base</div>
-    </div>
-  </a>
-
-  <a href="/sops/overview" className="ri-bento-card ri-bento-c2r12">
-    <div className="ri-bento-card-body">
-      <div className="ri-bento-card-title">Clinical Research SOPs</div>
-      <div className="ri-bento-card-desc">Plain-language summaries and key points for all RI-MUHC clinical research SOPs, with downloadable appendices.</div>
-      <div className="ri-bento-card-cta">View SOPs</div>
-    </div>
-  </a>
-
-  <a href="/training/overview" className="ri-bento-card ri-bento-c3r1">
-    <div className="ri-bento-card-body">
-      <div className="ri-bento-card-title">Training & Compliance</div>
-      <div className="ri-bento-card-cta">View requirements</div>
-    </div>
-  </a>
-
-  <a href="/cim/overview" className="ri-bento-card ri-bento-c3r2">
-    <div className="ri-bento-card-body">
-      <div className="ri-bento-card-title">Centre for Innovative Medicine</div>
-      <div className="ri-bento-card-cta">Explore CIM</div>
-    </div>
-  </a>
-
-  <a href="/apps/nagano/overview" className="ri-bento-card ri-bento-c23r3">
-    <div className="ri-bento-card-body">
-      <div className="ri-bento-card-title">Nagano — Research Submission & Management</div>
-      <div className="ri-bento-card-desc">Step-by-step instructions for submitting and managing clinical research projects in Nagano, the RI-MUHC research platform.</div>
-      <div className="ri-bento-card-cta">Open Nagano guide</div>
-    </div>
-  </a>
-
-</div>
+---
 
 ## The research journey
 
@@ -157,6 +137,8 @@ The five phases of a clinical study at the RI-MUHC — from first concept throug
     <span className="ri-journey-sub">COV, archiving, reporting</span>
   </a>
 </div>
+
+---
 
 ## Where do you fit in?
 
@@ -200,26 +182,54 @@ The five phases of a clinical study at the RI-MUHC — from first concept throug
   </Tab>
 </Tabs>
 
+---
+
 ## Keep learning
 
 <div className="ri-learn-grid">
   <a href="/kb/clinical-research-101" className="ri-learn-card">
-    <div className="ri-learn-title">Clinical Research 101</div>
-    <div className="ri-learn-desc">Regulatory frameworks, key roles, and Quebec-specific obligations — the foundation for everything else.</div>
+    <img
+      src="https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=640&q=75&auto=format&fit=crop"
+      className="ri-learn-img" loading="lazy" alt=""
+    />
+    <div className="ri-learn-content">
+      <div className="ri-learn-title">Clinical Research 101</div>
+      <div className="ri-learn-desc">Regulatory frameworks, key roles, and Quebec-specific obligations — the foundation for everything else.</div>
+    </div>
   </a>
   <a href="/kb/study-lifecycle" className="ri-learn-card">
-    <div className="ri-learn-title">The Study Lifecycle</div>
-    <div className="ri-learn-desc">How a study moves from concept to activation to close-out — and what happens at each stage.</div>
+    <img
+      src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=640&q=75&auto=format&fit=crop"
+      className="ri-learn-img" loading="lazy" alt=""
+    />
+    <div className="ri-learn-content">
+      <div className="ri-learn-title">The Study Lifecycle</div>
+      <div className="ri-learn-desc">How a study moves from concept to activation to close-out — and what happens at each stage.</div>
+    </div>
   </a>
   <a href="/kb/planning/regulations" className="ri-learn-card">
-    <div className="ri-learn-title">Regulations & Guidelines</div>
-    <div className="ri-learn-desc">ICH E6(R3), Health Canada Division 5, ISO 14155, TCPS2, and Quebec Law 25 — what applies and when.</div>
+    <img
+      src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=640&q=75&auto=format&fit=crop"
+      className="ri-learn-img" loading="lazy" alt=""
+    />
+    <div className="ri-learn-content">
+      <div className="ri-learn-title">Regulations & Guidelines</div>
+      <div className="ri-learn-desc">ICH E6(R3), Health Canada Division 5, ISO 14155, TCPS2, and Quebec Law 25 — what applies and when.</div>
+    </div>
   </a>
   <a href="/apps/nagano/overview" className="ri-learn-card">
-    <div className="ri-learn-title">Nagano Platform Guide</div>
-    <div className="ri-learn-desc">Step-by-step instructions for every submission type — F11, amendments, renewals, and closure.</div>
+    <img
+      src="https://images.unsplash.com/photo-1551434678-e076c223a692?w=640&q=75&auto=format&fit=crop"
+      className="ri-learn-img" loading="lazy" alt=""
+    />
+    <div className="ri-learn-content">
+      <div className="ri-learn-title">Nagano Platform Guide</div>
+      <div className="ri-learn-desc">Step-by-step instructions for every submission type — F11, amendments, renewals, and closure.</div>
+    </div>
   </a>
 </div>
+
+---
 
 ## Frequently asked questions
 
@@ -263,6 +273,8 @@ The five phases of a clinical study at the RI-MUHC — from first concept throug
     A CAPA (Corrective and Preventive Action) form is required for major and critical deviations — submit to QA and include with the REB deviation report. Remove all participant nominative information and use study number only. See [Reportable Events and Protocol Deviations](/kb/conduct/reportable-events).
   </Accordion>
 </AccordionGroup>
+
+---
 
 ## Starting a new study?
 
