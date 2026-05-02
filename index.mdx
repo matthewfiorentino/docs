@@ -22,9 +22,9 @@ export const LiveUpdates = () => {
   const [debug, setDebug] = useState('');
 
   useEffect(() => {
-    fetch('/rss.xml')
+    fetch('/kb/updates/rss.xml')
       .then(r => {
-        if (!r.ok) throw new Error(`HTTP ${r.status} from /rss.xml`);
+        if (!r.ok) throw new Error(`HTTP ${r.status} from /kb/updates/rss.xml`);
         return r.text();
       })
       .then(xml => {
