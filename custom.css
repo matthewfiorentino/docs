@@ -89,37 +89,39 @@ article a:hover,
     font-weight:         700 !important;
 }
 
-/* ── Contact — muted navy, distinct from tabs ── */
+/* ── Contact — outlined navy button ── */
 li.navbar-link a[href="/contacts"] {
-    background:     transparent !important;
-    color:          #150e51 !important;
-    border:         none !important;
-    font-size:      13px !important;
-    font-weight:    600 !important;
-    opacity:        0.5 !important;
-    transition:     opacity 0.15s !important;
+    background:    #fff !important;
+    color:         #2b2666 !important;
+    border:        1.5px solid #2b2666 !important;
+    border-radius: 4px !important;
+    font-size:     13px !important;
+    font-weight:   600 !important;
+    padding:       5px 13px !important;
+    opacity:       1 !important;
+    transition:    background 0.15s, color 0.15s !important;
 }
 li.navbar-link a[href="/contacts"]:hover {
-    background: transparent !important;
-    color:      #150e51 !important;
-    opacity:    0.8 !important;
+    background: #2b2666 !important;
+    color:      #fff !important;
+    opacity:    1 !important;
 }
 
-/* ── Portal — coral, compact, square ── */
+/* ── Portal — coral fill, inverts to outlined on hover ── */
 #topbar-cta-button a {
     background:    #ff537f !important;
     color:         #fff !important;
-    border:        none !important;
+    border:        1.5px solid #ff537f !important;
     border-radius: 4px !important;
     font-weight:   700 !important;
     font-size:     13px !important;
-    padding:       6px 14px !important;
-    transition:    background 0.15s !important;
+    padding:       5px 13px !important;
+    transition:    background 0.15s, color 0.15s !important;
 }
 #topbar-cta-button a:hover,
 #topbar-cta-button a:hover * {
-    background: #e0395e !important;
-    color:      #fff !important;
+    background: #fff !important;
+    color:      #2b2666 !important;
     opacity:    1 !important;
 }
 
