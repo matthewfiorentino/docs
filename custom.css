@@ -652,3 +652,36 @@ article {
     border-color: var(--ri-accent) !important;
     color:        var(--ri-accent) !important;
 }
+
+/* ── SOP meta bar ── */
+.ri-sop-meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin: 4px 0 20px;
+    flex-wrap: wrap;
+}
+.ri-sop-badges { display: flex; gap: 6px; flex-wrap: wrap; }
+.ri-print-btn {
+    display: inline-flex;
+    align-items: center;
+    padding: 6px 14px;
+    font-size: 12px;
+    font-weight: 600;
+    border: 1px solid var(--ri-accent);
+    color: var(--ri-accent);
+    background: transparent;
+    border-radius: 6px;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background .15s, color .15s;
+}
+.ri-print-btn:hover { background: var(--ri-accent); color: #fff; }
+
+/* ── Print styles ── */
+@media print {
+    #navbar, #sidebar, #topbar-cta-button, .ri-print-btn { display: none !important; }
+    #content-area { margin: 0 !important; padding: 0 !important; }
+    body { font-size: 11pt; color: #000; }
+}
