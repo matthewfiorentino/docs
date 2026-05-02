@@ -489,12 +489,24 @@ html.dark .ri-resource-desc { color: rgba(255,255,255,.55); }
 }
 
 /* ══════════════════════════════════════════════
-   HOME PAGE — TEXT HERO (icon-based, no photo)
+   HOME PAGE — BODY WRAPPER (custom mode canvas)
+   ══════════════════════════════════════════════ */
+.ri-hub-body {
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 56px 2.5rem 4rem;
+}
+@media (max-width: 720px) {
+    .ri-hub-body { padding: 40px 1.25rem 3rem; }
+}
+
+/* ══════════════════════════════════════════════
+   HOME PAGE — TEXT HERO (custom mode — full canvas width)
    ══════════════════════════════════════════════ */
 .ri-text-hero {
-    margin: 0 -2rem 56px;
+    margin: 0;
     padding: 80px 8vw 70px;
-    width: calc(100% + 4rem);
+    width: 100%;
     background:
         radial-gradient(circle at 1px 1px, rgba(255,255,255,.08) 1px, transparent 0) 0 0/22px 22px,
         linear-gradient(135deg, #150e51 0%, #1a1466 60%, #007a6e 130%);

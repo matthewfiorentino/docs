@@ -1,7 +1,61 @@
 ---
 title: "RI-MUHC Clinical Research Hub"
-mode: "wide"
+mode: "custom"
 ---
+
+export const UpdateBar = ({ tag, tagClass, title, desc, date, linkHref, linkLabel }) => (
+  <div className="ri-update-bar">
+    <span className={`ri-update-tag ${tagClass}`}>{tag}</span>
+    <div className="ri-update-content">
+      <div className="ri-update-title">{title}</div>
+      <div className="ri-update-desc">{desc}{linkHref ? <> <a href={linkHref}>{linkLabel} →</a></> : null}</div>
+    </div>
+    <span className="ri-update-date">{date}</span>
+  </div>
+);
+
+export const Phase = ({ num, title, cards }) => (
+  <div className="ri-phase">
+    <div className="ri-phase-num">{num}</div>
+    <div className="ri-phase-body">
+      <div className="ri-phase-title">{title}</div>
+      <div className="ri-phase-cards">
+        {cards.map((c, i) => (
+          <a key={i} href={c.href} className="ri-phase-card">
+            <Icon icon={c.icon} className="ri-phase-card-icon" /> {c.label}
+          </a>
+        ))}
+      </div>
+    </div>
+  </div>
+);
+
+export const ResourceCard = ({ icon, href, title, desc }) => (
+  <a href={href} className="ri-resource-card">
+    <Icon icon={icon} className="ri-resource-icon" />
+    <div className="ri-resource-title">{title} <span className="ri-resource-arrow">↗</span></div>
+    <div className="ri-resource-desc">{desc}</div>
+  </a>
+);
+
+export const FeatureEntry = ({ href, icon, title, desc, links }) => (
+  <a href={href} className="ri-feature-card">
+    <div className="ri-feature-icon-band">
+      <Icon icon={icon} iconType="regular" />
+    </div>
+    <div className="ri-feature-content">
+      <div className="ri-feature-title">{title}</div>
+      <div className="ri-feature-desc">{desc}</div>
+      <div className="ri-feature-links">
+        {links.map((l, i) => (
+          <span key={i} className="ri-feature-link">
+            <Icon icon={l.icon} className="ri-feature-link-icon" /> {l.label}
+          </span>
+        ))}
+      </div>
+    </div>
+  </a>
+);
 
 {/* ── HERO ── */}
 <div className="ri-text-hero">
@@ -16,33 +70,27 @@ mode: "wide"
   </div>
 </div>
 
+<div className="ri-hub-body">
+
 ## What's new
 
 <div className="ri-updates">
-  <div className="ri-update-bar">
-    <span className="ri-update-tag ri-tag-train">Training</span>
-    <div className="ri-update-content">
-      <div className="ri-update-title">ICH E6(R3) GCP now in effect — certificates before Oct 27, 2025 have been reset</div>
-      <div className="ri-update-desc">Health Canada adopted E6(R3) on April 1, 2026. Renew via CITI before your next submission. <a href="/training/external-certifications">See renewal instructions →</a></div>
-    </div>
-    <span className="ri-update-date">May 2026</span>
-  </div>
-  <div className="ri-update-bar">
-    <span className="ri-update-tag ri-tag-inst">Hub</span>
-    <div className="ri-update-content">
-      <div className="ri-update-title">Clinical Research Hub launched — replaces previous intranet research pages</div>
-      <div className="ri-update-desc">All SOPs, training requirements, Nagano guides, and CIM documentation are now consolidated here.</div>
-    </div>
-    <span className="ri-update-date">Apr 2026</span>
-  </div>
-  <div className="ri-update-bar">
-    <span className="ri-update-tag ri-tag-reg">Regulatory</span>
-    <div className="ri-update-content">
-      <div className="ri-update-title">CATALIS FAST TRACK now available — institutional authorization in 8 weeks or less</div>
-      <div className="ri-update-desc">The RI-MUHC participates in the CATALIS FAST TRACK program for industry-sponsored trials. Contact the Research Facilitator to confirm eligibility.</div>
-    </div>
-    <span className="ri-update-date">Mar 2026</span>
-  </div>
+  <UpdateBar
+    tag="Training" tagClass="ri-tag-train" date="May 2026"
+    title="ICH E6(R3) GCP now in effect — certificates before Oct 27, 2025 have been reset"
+    desc="Health Canada adopted E6(R3) on April 1, 2026. Renew via CITI before your next submission."
+    linkHref="/training/external-certifications" linkLabel="See renewal instructions"
+  />
+  <UpdateBar
+    tag="Hub" tagClass="ri-tag-inst" date="Apr 2026"
+    title="Clinical Research Hub launched — replaces previous intranet research pages"
+    desc="All SOPs, training requirements, Nagano guides, and CIM documentation are now consolidated here."
+  />
+  <UpdateBar
+    tag="Regulatory" tagClass="ri-tag-reg" date="Mar 2026"
+    title="CATALIS FAST TRACK now available — institutional authorization in 8 weeks or less"
+    desc="The RI-MUHC participates in the CATALIS FAST TRACK program for industry-sponsored trials. Contact the Research Facilitator to confirm eligibility."
+  />
 </div>
 
 ---
@@ -52,38 +100,24 @@ mode: "wide"
 Two main entry points into the Hub. Most everything else branches from here.
 
 <div className="ri-feature-pair">
-  <a href="/kb/introduction" className="ri-feature-card">
-    <div className="ri-feature-icon-band">
-      <Icon icon="book-open" iconType="regular" />
-    </div>
-    <div className="ri-feature-content">
-      <div className="ri-feature-title">Knowledge Base</div>
-      <div className="ri-feature-desc">
-        Concepts, processes, and Quebec-specific guidance — from feasibility through close-out, organized by study phase and role.
-      </div>
-      <div className="ri-feature-links">
-        <span className="ri-feature-link"><Icon icon="play" className="ri-feature-link-icon" /> Clinical Research 101</span>
-        <span className="ri-feature-link"><Icon icon="route" className="ri-feature-link-icon" /> The study lifecycle</span>
-        <span className="ri-feature-link"><Icon icon="users" className="ri-feature-link-icon" /> Onboarding by role</span>
-      </div>
-    </div>
-  </a>
-  <a href="/sops/overview" className="ri-feature-card">
-    <div className="ri-feature-icon-band">
-      <Icon icon="file-lines" iconType="regular" />
-    </div>
-    <div className="ri-feature-content">
-      <div className="ri-feature-title">SOPs and Training</div>
-      <div className="ri-feature-desc">
-        The institutional rulebook and the path to compliance — every clinical research SOP, plus training requirements and certifications.
-      </div>
-      <div className="ri-feature-links">
-        <span className="ri-feature-link"><Icon icon="list-check" className="ri-feature-link-icon" /> Training requirements</span>
-        <span className="ri-feature-link"><Icon icon="award" className="ri-feature-link-icon" /> External certifications</span>
-        <span className="ri-feature-link"><Icon icon="book" className="ri-feature-link-icon" /> SOP-CR-002 and SOP-CR-008</span>
-      </div>
-    </div>
-  </a>
+  <FeatureEntry
+    href="/kb/introduction" icon="book-open" title="Knowledge Base"
+    desc="Concepts, processes, and Quebec-specific guidance — from feasibility through close-out, organized by study phase and role."
+    links={[
+      { icon: "play", label: "Clinical Research 101" },
+      { icon: "route", label: "The study lifecycle" },
+      { icon: "users", label: "Onboarding by role" }
+    ]}
+  />
+  <FeatureEntry
+    href="/sops/overview" icon="file-lines" title="SOPs and Training"
+    desc="The institutional rulebook and the path to compliance — every clinical research SOP, plus training requirements and certifications."
+    links={[
+      { icon: "list-check", label: "Training requirements" },
+      { icon: "award", label: "External certifications" },
+      { icon: "book", label: "SOP-CR-002 and SOP-CR-008" }
+    ]}
+  />
 </div>
 
 ---
@@ -93,77 +127,41 @@ Two main entry points into the Hub. Most everything else branches from here.
 Follow the lifecycle, or jump to the phase you're in.
 
 <div className="ri-lifecycle">
-
-  <div className="ri-phase">
-    <div className="ri-phase-num">1</div>
-    <div className="ri-phase-body">
-      <div className="ri-phase-title">Plan</div>
-      <div className="ri-phase-cards">
-        <a href="/kb/planning/feasibility" className="ri-phase-card"><Icon icon="magnifying-glass-chart" className="ri-phase-card-icon" /> Feasibility</a>
-        <a href="/kb/planning/study-design" className="ri-phase-card"><Icon icon="diagram-project" className="ri-phase-card-icon" /> Study design</a>
-        <a href="/kb/planning/building-your-team" className="ri-phase-card"><Icon icon="users-gear" className="ri-phase-card-icon" /> Build your team</a>
-        <a href="/kb/planning/budgets-contracts" className="ri-phase-card"><Icon icon="file-contract" className="ri-phase-card-icon" /> Budgets and contracts</a>
-        <a href="/kb/planning/regulations" className="ri-phase-card"><Icon icon="scale-balanced" className="ri-phase-card-icon" /> Regulations and guidelines</a>
-        <a href="/kb/planning/cord" className="ri-phase-card"><Icon icon="database" className="ri-phase-card-icon" /> CORD and data services</a>
-      </div>
-    </div>
-  </div>
-
-  <div className="ri-phase">
-    <div className="ri-phase-num">2</div>
-    <div className="ri-phase-body">
-      <div className="ri-phase-title">Submit</div>
-      <div className="ri-phase-cards">
-        <a href="/kb/submission/preparing" className="ri-phase-card"><Icon icon="folder-open" className="ri-phase-card-icon" /> Preparing your submission</a>
-        <a href="/kb/submission/submitting-via-nagano" className="ri-phase-card"><Icon icon="paper-plane" className="ri-phase-card-icon" /> Submitting via Nagano</a>
-        <a href="/kb/submission/tracking-responding" className="ri-phase-card"><Icon icon="reply" className="ri-phase-card-icon" /> Tracking and responses</a>
-        <a href="/kb/submission/study-review" className="ri-phase-card"><Icon icon="clipboard-check" className="ri-phase-card-icon" /> Study review</a>
-        <a href="/apps/nagano/overview" className="ri-phase-card"><Icon icon="desktop" className="ri-phase-card-icon" /> Nagano user guide</a>
-      </div>
-    </div>
-  </div>
-
-  <div className="ri-phase">
-    <div className="ri-phase-num">3</div>
-    <div className="ri-phase-body">
-      <div className="ri-phase-title">Activate</div>
-      <div className="ri-phase-cards">
-        <a href="/kb/conduct/site-setup" className="ri-phase-card"><Icon icon="building-circle-check" className="ri-phase-card-icon" /> Site setup</a>
-        <a href="/kb/conduct/team-management" className="ri-phase-card"><Icon icon="user-plus" className="ri-phase-card-icon" /> Delegation log</a>
-        <a href="/kb/conduct/isf" className="ri-phase-card"><Icon icon="folder-tree" className="ri-phase-card-icon" /> Investigator Site File</a>
-      </div>
-    </div>
-  </div>
-
-  <div className="ri-phase">
-    <div className="ri-phase-num">4</div>
-    <div className="ri-phase-body">
-      <div className="ri-phase-title">Conduct</div>
-      <div className="ri-phase-cards">
-        <a href="/kb/conduct/consent" className="ri-phase-card"><Icon icon="signature" className="ri-phase-card-icon" /> Informed consent</a>
-        <a href="/kb/conduct/recruitment-enrollment" className="ri-phase-card"><Icon icon="user-check" className="ri-phase-card-icon" /> Recruitment and enrolment</a>
-        <a href="/kb/conduct/data-integrity" className="ri-phase-card"><Icon icon="database" className="ri-phase-card-icon" /> Data integrity</a>
-        <a href="/kb/conduct/investigational-products" className="ri-phase-card"><Icon icon="prescription-bottle-medical" className="ri-phase-card-icon" /> Investigational products</a>
-        <a href="/kb/conduct/biological-specimens" className="ri-phase-card"><Icon icon="vial" className="ri-phase-card-icon" /> Biological specimens</a>
-        <a href="/kb/conduct/reportable-events" className="ri-phase-card"><Icon icon="triangle-exclamation" className="ri-phase-card-icon" /> Reportable events</a>
-        <a href="/kb/conduct/monitoring-audits" className="ri-phase-card"><Icon icon="magnifying-glass" className="ri-phase-card-icon" /> Monitoring and audits</a>
-        <a href="/kb/conduct/privacy" className="ri-phase-card"><Icon icon="shield-halved" className="ri-phase-card-icon" /> Privacy and Loi 25</a>
-      </div>
-    </div>
-  </div>
-
-  <div className="ri-phase">
-    <div className="ri-phase-num">5</div>
-    <div className="ri-phase-body">
-      <div className="ri-phase-title">Close out</div>
-      <div className="ri-phase-cards">
-        <a href="/kb/conduct/close-out" className="ri-phase-card"><Icon icon="flag-checkered" className="ri-phase-card-icon" /> Study close-out</a>
-        <a href="/kb/conduct/publications" className="ri-phase-card"><Icon icon="newspaper" className="ri-phase-card-icon" /> Publications</a>
-        <a href="/kb/governance/research-integrity" className="ri-phase-card"><Icon icon="box-archive" className="ri-phase-card-icon" /> Archiving and retention</a>
-      </div>
-    </div>
-  </div>
-
+  <Phase num={1} title="Plan" cards={[
+    { href: "/kb/planning/feasibility", icon: "magnifying-glass-chart", label: "Feasibility" },
+    { href: "/kb/planning/study-design", icon: "diagram-project", label: "Study design" },
+    { href: "/kb/planning/building-your-team", icon: "users-gear", label: "Build your team" },
+    { href: "/kb/planning/budgets-contracts", icon: "file-contract", label: "Budgets and contracts" },
+    { href: "/kb/planning/regulations", icon: "scale-balanced", label: "Regulations and guidelines" },
+    { href: "/kb/planning/cord", icon: "database", label: "CORD and data services" }
+  ]} />
+  <Phase num={2} title="Submit" cards={[
+    { href: "/kb/submission/preparing", icon: "folder-open", label: "Preparing your submission" },
+    { href: "/kb/submission/submitting-via-nagano", icon: "paper-plane", label: "Submitting via Nagano" },
+    { href: "/kb/submission/tracking-responding", icon: "reply", label: "Tracking and responses" },
+    { href: "/kb/submission/study-review", icon: "clipboard-check", label: "Study review" },
+    { href: "/apps/nagano/overview", icon: "desktop", label: "Nagano user guide" }
+  ]} />
+  <Phase num={3} title="Activate" cards={[
+    { href: "/kb/conduct/site-setup", icon: "building-circle-check", label: "Site setup" },
+    { href: "/kb/conduct/team-management", icon: "user-plus", label: "Delegation log" },
+    { href: "/kb/conduct/isf", icon: "folder-tree", label: "Investigator Site File" }
+  ]} />
+  <Phase num={4} title="Conduct" cards={[
+    { href: "/kb/conduct/consent", icon: "signature", label: "Informed consent" },
+    { href: "/kb/conduct/recruitment-enrollment", icon: "user-check", label: "Recruitment and enrolment" },
+    { href: "/kb/conduct/data-integrity", icon: "database", label: "Data integrity" },
+    { href: "/kb/conduct/investigational-products", icon: "prescription-bottle-medical", label: "Investigational products" },
+    { href: "/kb/conduct/biological-specimens", icon: "vial", label: "Biological specimens" },
+    { href: "/kb/conduct/reportable-events", icon: "triangle-exclamation", label: "Reportable events" },
+    { href: "/kb/conduct/monitoring-audits", icon: "magnifying-glass", label: "Monitoring and audits" },
+    { href: "/kb/conduct/privacy", icon: "shield-halved", label: "Privacy and Loi 25" }
+  ]} />
+  <Phase num={5} title="Close out" cards={[
+    { href: "/kb/conduct/close-out", icon: "flag-checkered", label: "Study close-out" },
+    { href: "/kb/conduct/publications", icon: "newspaper", label: "Publications" },
+    { href: "/kb/governance/research-integrity", icon: "box-archive", label: "Archiving and retention" }
+  ]} />
 </div>
 
 ---
@@ -215,36 +213,18 @@ Follow the lifecycle, or jump to the phase you're in.
 ## Resources
 
 <div className="ri-resource-grid">
-  <a href="/kb/clinical-research-101" className="ri-resource-card">
-    <Icon icon="graduation-cap" className="ri-resource-icon" />
-    <div className="ri-resource-title">Clinical Research 101 <span className="ri-resource-arrow">↗</span></div>
-    <div className="ri-resource-desc">Regulatory frameworks, key roles, and Quebec-specific obligations — the foundation for everything else.</div>
-  </a>
-  <a href="/kb/study-lifecycle" className="ri-resource-card">
-    <Icon icon="timeline" className="ri-resource-icon" />
-    <div className="ri-resource-title">The Study Lifecycle <span className="ri-resource-arrow">↗</span></div>
-    <div className="ri-resource-desc">How a study moves from concept to activation to close-out, and what happens at each stage.</div>
-  </a>
-  <a href="/kb/planning/regulations" className="ri-resource-card">
-    <Icon icon="scale-balanced" className="ri-resource-icon" />
-    <div className="ri-resource-title">Regulations and Guidelines <span className="ri-resource-arrow">↗</span></div>
-    <div className="ri-resource-desc">ICH E6(R3), Health Canada Division 5, ISO 14155, TCPS2, and Quebec Loi 25 — what applies and when.</div>
-  </a>
-  <a href="/apps/nagano/overview" className="ri-resource-card">
-    <Icon icon="desktop" className="ri-resource-icon" />
-    <div className="ri-resource-title">Nagano Platform Guide <span className="ri-resource-arrow">↗</span></div>
-    <div className="ri-resource-desc">Step-by-step instructions for every submission type — F11, amendments, renewals, and closure.</div>
-  </a>
-  <a href="/kb/glossary" className="ri-resource-card">
-    <Icon icon="spell-check" className="ri-resource-icon" />
-    <div className="ri-resource-title">Glossary <span className="ri-resource-arrow">↗</span></div>
-    <div className="ri-resource-desc">Plain-language definitions for the acronyms, regulators, and key terms you'll encounter across the Hub.</div>
-  </a>
-  <a href="/cim/overview" className="ri-resource-card">
-    <Icon icon="flask" className="ri-resource-icon" />
-    <div className="ri-resource-title">Centre for Innovative Medicine <span className="ri-resource-arrow">↗</span></div>
-    <div className="ri-resource-desc">Trial unit services, infusion centre, SOPs, and operational guides for CIM researchers and staff.</div>
-  </a>
+  <ResourceCard icon="graduation-cap" href="/kb/clinical-research-101" title="Clinical Research 101"
+    desc="Regulatory frameworks, key roles, and Quebec-specific obligations — the foundation for everything else." />
+  <ResourceCard icon="timeline" href="/kb/study-lifecycle" title="The Study Lifecycle"
+    desc="How a study moves from concept to activation to close-out, and what happens at each stage." />
+  <ResourceCard icon="scale-balanced" href="/kb/planning/regulations" title="Regulations and Guidelines"
+    desc="ICH E6(R3), Health Canada Division 5, ISO 14155, TCPS2, and Quebec Loi 25 — what applies and when." />
+  <ResourceCard icon="desktop" href="/apps/nagano/overview" title="Nagano Platform Guide"
+    desc="Step-by-step instructions for every submission type — F11, amendments, renewals, and closure." />
+  <ResourceCard icon="spell-check" href="/kb/glossary" title="Glossary"
+    desc="Plain-language definitions for the acronyms, regulators, and key terms you'll encounter across the Hub." />
+  <ResourceCard icon="flask" href="/cim/overview" title="Centre for Innovative Medicine"
+    desc="Trial unit services, infusion centre, SOPs, and operational guides for CIM researchers and staff." />
 </div>
 
 ---
@@ -321,4 +301,6 @@ Follow the lifecycle, or jump to the phase you're in.
     <div className="ri-contact-body">The Research Facilitator is your first contact for study setup, regulatory questions, and institutional processes at the RI-MUHC.</div>
   </div>
   <a href="/contacts" className="ri-contact-btn">Get in touch</a>
+</div>
+
 </div>
