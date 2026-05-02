@@ -33,7 +33,7 @@
   "navigation": {
     "languages": [
       {
-        "language": "en",
+        "language": "en-CA",
         "anchors": [
           {
             "anchor": "Get in touch",
@@ -342,7 +342,7 @@
         ]
       },
       {
-        "language": "fr",
+        "language": "fr-CA",
         "anchors": [
           {
             "anchor": "Nous contacter",

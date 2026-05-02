@@ -5,6 +5,8 @@
     --ri-heading: #150e51;
     --ri-accent:  #007a6e;
     --ri-accent-bright: #00c4b4;
+    --ri-navy:    #2b2666;
+    --ri-coral:   #ff537f;
 
     /* --background in HSL (no hsl() wrapper) so Mintlify's Tailwind gradient
        utilities resolve correctly — fixes the sidebar scroll-fade colour     */
@@ -63,66 +65,65 @@ article a:hover,
     font-weight: 600 !important;
 }
 
-/* ── Navbar — tab strip ── */
+/* ── Navbar — dark navy background ── */
+#navbar {
+    background:    var(--ri-navy) !important;
+    border-bottom: 1px solid rgba(255,255,255,0.08) !important;
+}
+
+/* ── Navbar — tab strip — white text on navy ── */
 #navbar nav a.link {
     background:     transparent !important;
     border-radius:  0 !important;
     border-bottom:  2px solid transparent !important;
     padding-bottom: 2px !important;
-    color:          #150e51 !important;
+    color:          rgba(255,255,255,0.75) !important;
     font-weight:    600 !important;
     transition:     color 0.15s, border-bottom-color 0.15s !important;
 }
 #navbar nav a.link:hover {
     background:          transparent !important;
-    color:               #150e51 !important;
-    border-bottom-color: rgba(21,14,81,0.3) !important;
+    color:               #fff !important;
+    border-bottom-color: rgba(255,255,255,0.35) !important;
 }
 #navbar nav a.link[data-active="true"],
 #navbar nav a.link[aria-current="page"] {
     background:          transparent !important;
-    color:               #150e51 !important;
-    border-bottom-color: #150e51 !important;
+    color:               #fff !important;
+    border-bottom-color: var(--ri-coral) !important;
     font-weight:         700 !important;
 }
 
-/* ── Contact + FR — plain text, matches tab strip ── */
-li.navbar-link a[href="/contacts"],
-li.navbar-link a[href="/fr"] {
+/* ── Contact — coral, right-side nav link ── */
+li.navbar-link a[href="/contacts"] {
     background:  transparent !important;
-    color:       #150e51 !important;
+    color:       var(--ri-coral) !important;
     border:      none !important;
-    font-weight: 600 !important;
-    opacity:     0.6;
+    font-weight: 700 !important;
+    opacity:     1 !important;
     transition:  opacity 0.15s !important;
 }
-li.navbar-link a[href="/contacts"]:hover,
-li.navbar-link a[href="/fr"]:hover {
+li.navbar-link a[href="/contacts"]:hover {
     background: transparent !important;
-    color:      #150e51 !important;
-    opacity:    1 !important;
+    color:      var(--ri-coral) !important;
+    opacity:    0.75 !important;
 }
 
-/* ── FR — slightly distinct as language indicator ── */
-li.navbar-link a[href="/fr"] {
-    font-size:      11px !important;
-    letter-spacing: 0.08em !important;
-    font-weight:    700 !important;
-}
-
-/* ── Portal — solid navy CTA button ── */
+/* ── Portal — coral, compact, square ── */
 #topbar-cta-button a {
-    background:    #150e51 !important;
+    background:    var(--ri-coral) !important;
     color:         #fff !important;
-    border:        2px solid #150e51 !important;
-    border-radius: 7px !important;
+    border:        none !important;
+    border-radius: 0 !important;
     font-weight:   700 !important;
-    transition:    background 0.15s, color 0.15s !important;
+    font-size:     12px !important;
+    padding:       6px 14px !important;
+    transition:    background 0.15s !important;
 }
 #topbar-cta-button a:hover,
 #topbar-cta-button a:hover * {
-    background: transparent !important;
-    color:      #150e51 !important;
+    background: #e0395e !important;
+    color:      #fff !important;
     opacity:    1 !important;
 }
 
