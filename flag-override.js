@@ -12,19 +12,25 @@
     img.src = rep.src;
     img.alt = rep.alt;
 
-    // Inline styles override Tailwind's rounded-full and any CSS specificity
+    // Resize the img itself to flag proportions; don't resize the parent
+    // (resizing the parent collapses it and pushes the img below the button)
+    img.style.width          = '22px';
+    img.style.minWidth       = '22px';
+    img.style.height         = '14px';
     img.style.borderRadius   = '2px';
-    img.style.objectFit      = 'contain';
+    img.style.objectFit      = 'cover';
     img.style.objectPosition = 'center';
+    img.style.display        = 'inline-block';
+    img.style.verticalAlign  = 'middle';
     img.style.opacity        = '1';
 
-    // Fix the parent container circle clip too
+    // Only remove the circle clip on the parent; keep its layout intact
     var parent = img.parentElement;
     if (parent) {
-      parent.style.borderRadius = '3px';
+      parent.style.borderRadius = '2px';
       parent.style.overflow     = 'visible';
-      parent.style.width        = '22px';
-      parent.style.height       = '14px';
+      parent.style.display      = 'inline-flex';
+      parent.style.alignItems   = 'center';
     }
   }
 
