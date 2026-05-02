@@ -33,11 +33,10 @@ export const LiveUpdates = () => {
         if (parseErr) throw new Error('XML parse error: ' + parseErr.textContent.slice(0, 80));
         const els = Array.from(doc.getElementsByTagName('item'));
         if (!els.length) {
-          setDebug(`Feed loaded but 0 <item> elements found. Tags present: ${Array.from(doc.documentElement.children).map(n=>n.tagName).join(', ')}`);
+          setDebug('Feed loaded but no items found.');
           setDone(true);
           return;
         }
-        const tagMap = { Training: 'ri-tag-train', Regulatory: 'ri-tag-reg', Hub: 'ri-tag-inst' };
         const tagMap = { Training: 'ri-tag-train', Regulatory: 'ri-tag-reg', Hub: 'ri-tag-inst' };
         const CONTENT_NS = 'http://purl.org/rss/1.0/modules/content/';
         const parsed = els.slice(0, 2).map(el => {
