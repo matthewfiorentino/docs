@@ -385,7 +385,12 @@
           { "label": "Community Connect", "href": "/kb/community-connect" },
           { "label": "Knowledge Base", "href": "/kb/introduction" },
           { "label": "Clinical Research SOPs", "href": "/sops/overview" },
-          { "label": "Training and Learning", "href": "/training/overview" },
+          { "label": "Training and Learning", "href": "/training/overview" }
+        ]
+      },
+      {
+        "header": " ",
+        "items": [
           { "label": "Centre for Innovative Medicine", "href": "/cim/overview" },
           { "label": "Applications", "href": "/apps/nagano/overview" },
           { "label": "Contact", "href": "/contacts" },
