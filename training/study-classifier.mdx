@@ -1,23 +1,428 @@
 ---
 title: "Study Type and Training Classifier"
 description: "Answer a short series of questions about your study type and data practices to identify your required RI-MUHC training level, certifications, and applicable Quebec regulatory considerations."
+mode: "wide"
 ---
 
-The Study Type and Training Classifier helps you determine your required training level based on your study type and data practices. It identifies the SOP Reader and Competency Assessment you need to complete, and flags any applicable Quebec regulatory considerations.
+import { useState } from 'react';
+
+export const Q_STEP = { 1: 1, 2: 2, '3int': 3, '3obs': 3, '3retro': 3, '4drug': 4, 5: 5, 6: 6, 7: 7, 8: 8 };
+
+export const QUESTIONS = {
+  1: {
+    num: 1, part: null,
+    q: 'Does your research involve human participants, human biological material, or identifiable data about individuals?',
+    hint: 'Includes living or deceased individuals, cell lines, biobanked samples, health records, RAMQ data, or any dataset containing personal health information — whether collected prospectively or accessed retrospectively.',
+    type: 'yn',
+    callout: { type: 'sky', text: '<strong>TCPS2 (2022), Article 2.1:</strong> Research involving humans is defined broadly to include any activity that collects, uses, or discloses personal information, biological materials, or data about living or deceased individuals. If uncertain, consult the RI-MUHC REB before proceeding.' }
+  },
+  2: {
+    num: 2, part: null,
+    q: 'What best describes how your research interacts with participants or data?',
+    hint: 'Choose the option that best matches the primary nature of your research activities.',
+    type: 'opts',
+    opts: [
+      { val: 'interventional',          label: 'Interventional — you administer, apply, or test something on participants',          desc: 'Includes drugs, biologics, devices, surgical procedures, natural health products, psychotherapy, exercise, dietary, physiotherapy, educational interventions, radiotherapy' },
+      { val: 'observational-prospective',label: 'Prospective observational — participants are enrolled and followed, but nothing is administered', desc: 'Includes surveys, questionnaires, interviews, clinical assessments, blood draws, imaging, vital signs collected from consenting participants going forward' },
+      { val: 'retrospective',            label: 'Retrospective — you use data or samples that already exist',                         desc: 'Includes chart reviews, secondary analysis of datasets, RAMQ/registry data, previously collected biobanked samples — no new contact with participants' }
+    ]
+  },
+  '3int': {
+    num: 3, part: null,
+    q: 'What type of investigational product or intervention is involved?',
+    hint: 'Select the primary intervention. If multiple apply, choose the highest-risk category.',
+    type: 'opts',
+    opts: [
+      { val: 'drug',   label: 'Drug, biologic, or advanced therapy',                            desc: 'Pharmaceutical, biologic, gene therapy, cell therapy, blood product, vaccine, or radiopharmaceutical — regulated under Health Canada Food and Drug Regulations Part C, Division 5' },
+      { val: 'device', label: 'Medical device or surgical / radiotherapy procedure',             desc: 'Investigational medical device (ITA required), surgery, or radiotherapy — regulated under Health Canada Medical Devices Regulations; ISO 14155:2020 applies' },
+      { val: 'nhp',    label: 'Natural health product (NHP)',                                    desc: 'Vitamins, minerals, herbal remedies, homeopathic medicines, probiotics — regulated under Health Canada Natural Health Products Regulations' },
+      { val: 'low',    label: 'Non-invasive or behavioural intervention — no regulated product', desc: 'Psychotherapy, exercise, dietary intervention, physiotherapy, massage, educational program, behavioural change intervention' }
+    ]
+  },
+  '4drug': {
+    num: 4, part: null,
+    q: 'Does the drug study also involve an investigational medical device?',
+    hint: 'e.g. a drug-device combination product, or a device used alongside the investigational drug as part of the protocol',
+    type: 'yn',
+    ynLabels: ['Yes — drug + device combination', 'No — drug only']
+  },
+  '3obs': {
+    num: 3, part: null,
+    q: 'Does your prospective observational study involve any physical procedures on participants?',
+    hint: 'Physical procedures include blood collection, imaging (MRI, CT, X-ray, ultrasound), biopsies, exercise stress testing, spirometry, ECG, or any procedure involving contact beyond questionnaires and vital signs.',
+    type: 'yn',
+    ynLabels: ['Yes — physical procedures involved', 'No — questionnaires, interviews, vital signs only']
+  },
+  '3retro': {
+    num: 3, part: null,
+    q: 'What type of retrospective data or material is your research using?',
+    hint: null,
+    type: 'opts',
+    opts: [
+      { val: 'identifiable', label: 'Identifiable or potentially re-identifiable health data', desc: 'Hospital records, OACIS, medical charts, RAMQ administrative data, provincial registries (birth/death), linked datasets' },
+      { val: 'anonymized',   label: 'Previously anonymized data or biobanked samples',         desc: 'Fully de-identified datasets with no re-identification key, anonymized biobanked specimens — no participant-specific information accessible' }
+    ]
+  },
+  5: {
+    num: 5, part: 'Data use and privacy',
+    q: 'Will your study collect, access, or use identifiable or potentially identifiable personal health information (PHI)?',
+    hint: 'PHI includes names, health card numbers, dates of birth, diagnosis codes, addresses, or any combination of data that could identify a participant. Coded data (where a key exists) is considered identifiable.',
+    type: 'yn',
+    ynLabels: ['Yes', 'No — fully anonymized / aggregate only'],
+    calloutOnYes: { type: 'sky', text: '<strong>Quebec privacy law — Loi 25 (amended 2021–2023):</strong> Any research using PHI in Quebec requires a privacy impact assessment (ÉFVP) if the data is communicated outside the organization or used for secondary purposes. Consult SOP-CR-019 and your REB submission checklist.' }
+  },
+  6: {
+    num: 6, part: null,
+    q: 'How is consent for use of personal health information being handled?',
+    hint: null,
+    type: 'opts',
+    opts: [
+      { val: 'consent',  label: 'Prospective informed consent obtained from participants',                desc: 'Participants are informed of data use and sign or verbally agree — standard for interventional and prospective observational studies' },
+      { val: 'waiver',   label: 'Waiver of consent or secondary use authorization requested from REB',  desc: 'Impractical to obtain consent — REB waiver required under TCPS2 Article 3.7 / 5.5A; MSSS authorization may also apply for RAMQ data' },
+      { val: 'existing', label: 'Data collected under prior consent (participant-authorized secondary use)', desc: 'Data or samples collected under a previous study or biobank consent that includes permission for future use' }
+    ],
+    calloutOnWaiver: { type: 'amber', text: "<strong>RAMQ / provincial registry access — MSSS / CAI authorization:</strong> Secondary use of RAMQ data or linked provincial registries requires a formal authorization request to the MSSS Commission d'accès à l'information (CAI) and a privacy impact assessment (ÉFVP). Separate from REB approval — can take 3–6 months." }
+  },
+  7: {
+    num: 7, part: null,
+    q: 'Will identifiable or coded participant data be shared with parties outside RI-MUHC / MUHC?',
+    hint: 'Includes international sponsors, CROs, central labs, external academic collaborators, cloud-based platforms hosted outside Quebec, or any third party receiving participant-level data.',
+    type: 'yn',
+    ynLabels: ['Yes — data shared externally', 'No — data stays within MUHC systems'],
+    calloutOnYes: { type: 'amber', text: '<strong>Cross-border data transfer — Loi 25 / LSSSS:</strong> Communicating PHI outside Quebec requires a Privacy Impact Assessment (ÉFVP) before the transfer occurs. International transfers to non-equivalent jurisdictions require additional safeguards.' }
+  },
+  8: {
+    num: 8, part: null,
+    q: 'Does your study involve any of the following populations?',
+    hint: 'These trigger specific consent and authorization requirements in Quebec.',
+    type: 'opts',
+    opts: [
+      { val: 'minor',     label: 'Minors (individuals under 14 years of age in Quebec)',                          desc: 'Parental consent required; assent sought from children 7–13 years as developmentally appropriate — Civil Code of Québec, Art. 21' },
+      { val: 'incapable', label: 'Adults unable to consent (cognitive impairment, unconscious, or otherwise incapacitated)', desc: 'Requires authorization from a Personne mandétée, tutor, or curator — Civil Code of Québec, Art. 21; RI-MUHC Authorization process applies' },
+      { val: 'both',      label: 'Both minors and incapacitated adults', desc: null },
+      { val: 'none',      label: 'None of the above — participants are competent adults (18+)', desc: null }
+    ]
+  }
+};
+
+export const Q_LABELS = {
+  1:        { yes: 'Yes', no: 'No' },
+  2:        { 'interventional': 'Interventional', 'observational-prospective': 'Prospective observational', 'retrospective': 'Retrospective' },
+  '3int':   { drug: 'Drug, biologic, or advanced therapy', device: 'Medical device / surgery / radiotherapy', nhp: 'Natural health product', low: 'Non-invasive / behavioural' },
+  '4drug':  { yes: 'Yes — drug + device combination', no: 'No — drug only' },
+  '3obs':   { yes: 'Yes — physical procedures', no: 'No — questionnaires / vital signs only' },
+  '3retro': { identifiable: 'Identifiable health data', anonymized: 'Previously anonymized data' },
+  5:        { yes: 'Yes — involves PHI', no: 'No — fully anonymized' },
+  6:        { consent: 'Prospective informed consent', waiver: 'Waiver / secondary use authorization from REB', existing: 'Prior consent covers secondary use' },
+  7:        { yes: 'Yes — data shared externally', no: 'No — stays within MUHC' },
+  8:        { minor: 'Minors', incapable: 'Adults unable to consent', both: 'Both minors and incapacitated adults', none: 'None — competent adults' }
+};
+
+export const RESULTS = {
+  1: {
+    badge: 'Level I — SOP-CR Series',
+    title: 'High-Risk Interventional — Drug / Biologic / Advanced Therapy',
+    reqs: function(hasISO) {
+      return '<ul class="rc-req-list">'
+        + '<li class="rc-req-item"><span class="rc-pill p-sop">SOP</span><div>SOP Reader Level I (TalentLMS)<span class="rc-req-note">Read all 33 SOPs except SOP-CR-023 and SOP-CR-024. Completion is tracked per SOP unit in TalentLMS. When individual SOPs are revised, only those units reset and must be re-read — your overall completion percentage will be affected until you complete the updated units.</span></div></li>'
+        + '<li class="rc-req-item"><span class="rc-pill p-sop">SOP</span><div>Competency Assessment Level I (TalentLMS)<span class="rc-req-note">Certificate valid 2 years. Must not be within 90 days of expiry at time of Nagano submission.</span></div></li>'
+        + '<li class="rc-req-item"><span class="rc-pill p-gcp">GCP</span><div>ICH E6(R3) Good Clinical Practice (CITI — RI-MUHC affiliation)<span class="rc-req-note">Health Canada adopted ICH E6(R3) effective April 1, 2026. Renew every 2 years.</span></div></li>'
+        + '<li class="rc-req-item"><span class="rc-pill p-hc5">HC Div 5</span><div>Health Canada Part C Division 5 (CITI)<span class="rc-req-note">Required for Level I only. Based on GUI-0100. Renew every 2 years.</span></div></li>'
+        + (hasISO ? '<li class="rc-req-item"><span class="rc-pill p-iso">ISO</span><div>ISO 14155:2020 GCP for Medical Devices<span class="rc-req-note">Required because your study also involves a medical device. ICH-GCP accepted in lieu if ISO-GCP is unavailable.</span></div></li>' : '')
+        + '</ul>';
+    },
+    renewal: '<div class="rc-cycle"><div class="rc-cycle-item"><strong>Competency Assessment</strong>Every 2 years</div><div class="rc-cycle-item"><strong>GCP (CITI)</strong>Every 2 years</div><div class="rc-cycle-item"><strong>HC Division 5</strong>Every 2 years</div><div class="rc-cycle-item"><strong>90-day rule</strong>Certificates must not be within 90 days of expiry at the time of Nagano submission. If a certificate is nearing expiry, QA will ask the team member to re-certify before the study can proceed.</div></div>',
+    framework: 'Drug studies are governed by <strong>Health Canada Food and Drug Regulations Part C, Division 5</strong> (GUI-0100). A Clinical Trial Application (CTA) is required for Phase I–III drug trials (SOP-CR-018). Compliance with <strong>ICH E6(R3)</strong> (effective April 2026) and <strong>TCPS2 (2022)</strong> is mandatory. The QI/PI must hold RI-MUHC Research Privileges (SOP-CR-500).'
+  },
+  2: {
+    badge: 'Level II — SOP-CR Series',
+    title: 'High-Risk Interventional — Medical Device / Surgery / Radiotherapy',
+    reqs: function() {
+      return '<ul class="rc-req-list"><li class="rc-req-item"><span class="rc-pill p-sop">SOP</span><div>SOP Reader Level II (TalentLMS)<span class="rc-req-note">Read all 33 SOPs except SOP-CR-018, SOP-CR-010, and SOP-CR-023. Completion is tracked per SOP unit in TalentLMS. When individual SOPs are revised, only those units reset and must be re-read.</span></div></li><li class="rc-req-item"><span class="rc-pill p-sop">SOP</span><div>Competency Assessment Level II (TalentLMS)<span class="rc-req-note">Certificate valid 2 years. Must not be within 90 days of expiry at time of Nagano submission.</span></div></li><li class="rc-req-item"><span class="rc-pill p-gcp">GCP</span><div>ICH E6(R3) Good Clinical Practice (CITI)<span class="rc-req-note">ICH-GCP accepted in lieu of ISO-GCP where ISO training is unavailable. Renew every 2 years.</span></div></li><li class="rc-req-item"><span class="rc-pill p-iso">ISO</span><div>ISO 14155:2020 GCP for Medical Devices<span class="rc-req-note">Self-train on the ISO document (iso.org). Renew every 2 years.</span></div></li></ul>';
+    },
+    framework: 'Medical device studies require an <strong>Investigational Testing Authorization (ITA)</strong> from Health Canada under the <strong>Medical Devices Regulations (SOR/98-282)</strong> (SOP-CR-024). Compliance with <strong>ISO 14155:2020</strong> and <strong>ICH E6(R3)</strong> is mandatory. The QI/PI must hold RI-MUHC Research Privileges (SOP-CR-500).'
+  },
+  3: {
+    badge: 'Level III — SOP-CR Series',
+    title: 'High-Risk Interventional — Natural Health Product',
+    reqs: function() {
+      return '<ul class="rc-req-list"><li class="rc-req-item"><span class="rc-pill p-sop">SOP</span><div>SOP Reader Level III (TalentLMS)<span class="rc-req-note">Read all 33 SOPs except SOP-CR-018, SOP-CR-010, and SOP-CR-024. Completion is tracked per SOP unit in TalentLMS. When individual SOPs are revised, only those units reset and must be re-read.</span></div></li><li class="rc-req-item"><span class="rc-pill p-sop">SOP</span><div>Competency Assessment Level III (TalentLMS)<span class="rc-req-note">Certificate valid 2 years.</span></div></li></ul>';
+    },
+    framework: "NHP clinical trials are regulated under Health Canada’s <strong>Natural Health Products Regulations (SOR/2003-196)</strong> and require a <strong>Clinical Trial Site Licence</strong> (SOP-CR-023). Compliance with <strong>ICH E6(R3)</strong> and <strong>TCPS2 (2022)</strong> is mandatory. The QI/PI must hold RI-MUHC Research Privileges (SOP-CR-500)."
+  },
+  4: {
+    badge: 'Level IV — SOP-LR Series',
+    title: 'Prospective Observational or Low-Risk Interventional',
+    reqs: function() {
+      return '<ul class="rc-req-list"><li class="rc-req-item"><span class="rc-pill p-sop">SOP</span><div>SOP Reader Level IV (TalentLMS)<span class="rc-req-note">Read all 18 LR SOPs. Completion is tracked per SOP unit in TalentLMS. When individual SOPs are revised, only those units reset and must be re-read.</span></div></li><li class="rc-req-item"><span class="rc-pill p-sop">SOP</span><div>Competency Assessment Level IV (TalentLMS)<span class="rc-req-note">Certificate valid 5 years. Must not be within 90 days of expiry at time of Nagano submission.</span></div></li><li class="rc-req-item"><span class="rc-pill p-tcps">TCPS2</span><div>Tri-Council Policy Statement — CORE-2022 (recommended)<span class="rc-req-note">Recommended for team members new to human research ethics. tcps2core.ca</span></div></li></ul>';
+    },
+    renewal: '<div class="rc-cycle"><div class="rc-cycle-item"><strong>Competency Assessment</strong>Every 5 years</div><div class="rc-cycle-item"><strong>90-day rule</strong>Certificates must not be within 90 days of expiry at the time of Nagano submission. If a certificate is nearing expiry, QA will ask the team member to re-certify before the study can proceed.</div></div>',
+    framework: "Governed primarily by <strong>TCPS2 (2022)</strong> and RI-MUHC SOPs. No Health Canada CTA or ITA is typically required. Consent and participant contact must comply with Québec’s <strong>Civil Code (Art. 20–25)</strong> and the <strong>LSSSS</strong>. The QI/PI must hold RI-MUHC Researcher Status or Privileges (SOP-CR-500)."
+  },
+  5: {
+    badge: 'Level V — SOP-LR Series',
+    title: 'Retrospective / Secondary Analysis / Anonymized Biobanking',
+    reqs: function() {
+      return '<ul class="rc-req-list"><li class="rc-req-item"><span class="rc-pill p-sop">SOP</span><div>SOP Reader Level V (TalentLMS)<span class="rc-req-note">Read 9 LR SOPs. Completion is tracked per SOP unit in TalentLMS. When individual SOPs are revised, only those units reset and must be re-read.</span></div></li><li class="rc-req-item"><span class="rc-pill p-sop">SOP</span><div>Competency Assessment Level V (TalentLMS)<span class="rc-req-note">Certificate valid 5 years. Lowest-risk training track.</span></div></li><li class="rc-req-item"><span class="rc-pill p-tcps">TCPS2</span><div>Tri-Council Policy Statement — CORE-2022 (recommended)<span class="rc-req-note">Recommended for staff new to research ethics.</span></div></li></ul><p style="font-size:12px;color:#6b7280;margin-top:12px">GCP (CITI) is <strong>not required</strong> for Level V. No Health Canada CTA or ITA is typically required for purely retrospective studies.</p>';
+    },
+    renewal: '<div class="rc-cycle"><div class="rc-cycle-item"><strong>Competency Assessment</strong>Every 5 years</div><div class="rc-cycle-item"><strong>90-day rule</strong>Certificates must not be within 90 days of expiry at the time of Nagano submission. If a certificate is nearing expiry, QA will ask the team member to re-certify before the study can proceed.</div></div>',
+    framework: "Governed by <strong>TCPS2 (2022)</strong>, the <strong>LSSSS</strong>, and — for RAMQ or provincial registry data — <strong>MSSS / CAI</strong> authorization requirements. Québec’s <strong>Loi 25</strong> imposes ÉFVP obligations for studies communicating PHI outside the organization."
+  }
+};
+
+export const Classifier = () => {
+  const [currentQ, setCurrentQ]             = useState(1);
+  const [answers, setAnswers]               = useState({});
+  const [history, setHistory]               = useState([]);
+  const [resType, setResType]               = useState(null);
+  const [intType, setIntType]               = useState(null);
+  const [done, setDone]                     = useState(false);
+  const [outOfScope, setOutOfScope]         = useState(false);
+  const [pendingCallout, setPendingCallout] = useState(null);
+  const [stepNum, setStepNum]               = useState(1);
+
+  const getNextKey = (qKey, val) => {
+    if (qKey === 1)       return val === 'yes' ? 2 : 'no-human';
+    if (qKey === 2) {
+      if (val === 'interventional')           return '3int';
+      if (val === 'observational-prospective') return '3obs';
+      return '3retro';
+    }
+    if (qKey === '3int')  return val === 'drug' ? '4drug' : 5;
+    if (qKey === '4drug') return 5;
+    if (qKey === '3obs')  return 5;
+    if (qKey === '3retro')return 5;
+    if (qKey === 5)       return val === 'yes' ? 6 : 8;
+    if (qKey === 6)       return 7;
+    if (qKey === 7)       return 8;
+    if (qKey === 8)       return 'result';
+    return 'result';
+  };
+
+  const handleAnswer = (qKey, val) => {
+    const newAnswers = { ...answers, [qKey]: val };
+    const newHistory = [...history, qKey];
+    let newResType = resType;
+    let newIntType = intType;
+    if (qKey === 2)      newResType = val;
+    if (qKey === '3int') newIntType = val;
+
+    const qdef = QUESTIONS[qKey];
+    let callout = null;
+    if (qdef && qdef.calloutOnYes    && val === 'yes')    callout = qdef.calloutOnYes;
+    if (qdef && qdef.calloutOnWaiver && val === 'waiver') callout = qdef.calloutOnWaiver;
+
+    const nextKey = getNextKey(qKey, val);
+
+    setAnswers(newAnswers);
+    setHistory(newHistory);
+    setResType(newResType);
+    setIntType(newIntType);
+    setPendingCallout(callout);
+
+    if (nextKey === 'no-human') {
+      setOutOfScope(true);
+    } else if (nextKey === 'result') {
+      setDone(true);
+      setStepNum(8);
+    } else {
+      setCurrentQ(nextKey);
+      setStepNum(Q_STEP[nextKey] || stepNum);
+    }
+  };
+
+  const handleReset = () => {
+    setCurrentQ(1);
+    setAnswers({});
+    setHistory([]);
+    setResType(null);
+    setIntType(null);
+    setDone(false);
+    setOutOfScope(false);
+    setPendingCallout(null);
+    setStepNum(1);
+  };
+
+  const getLevel = () => {
+    if (resType === 'interventional') {
+      if (intType === 'drug')   return 1;
+      if (intType === 'device') return 2;
+      if (intType === 'nhp')    return 3;
+      if (intType === 'low')    return 4;
+    }
+    if (resType === 'observational-prospective') return 4;
+    if (resType === 'retrospective')             return 5;
+    return null;
+  };
+
+  const getFlags = () => {
+    const f = [];
+    if (answers[5] === 'yes')
+      f.push({ t: 'amber', l: 'Personal Health Information — LSSSS / Loi 25', x: 'Your study involves identifiable PHI. Ensure your REB application includes a data management and privacy protection plan. Loi 25 requires disclosure of any confidentiality breach within 72 hours to the CAI and affected individuals.' });
+    if (answers[6] === 'waiver')
+      f.push({ t: 'amber', l: 'Consent waiver — TCPS2 Art. 3.7 / 5.5A', x: 'The REB must determine the research could not practicably proceed with consent, benefits outweigh risks, and privacy is protected. If using RAMQ or provincial registry data, a separate MSSS/CAI authorization is required — typically 3–6 months.' });
+    if (answers[7] === 'yes')
+      f.push({ t: 'coral', l: 'Cross-border data transfer — ÉFVP required', x: 'Your study will share identifiable or coded data outside RI-MUHC/MUHC. A Privacy Impact Assessment (ÉFVP) must be completed before any transfer occurs. Address this in your REB submission and data transfer agreements.' });
+    const vuln = answers[8];
+    if (vuln === 'minor' || vuln === 'both')
+      f.push({ t: 'sky', l: 'Minors — Civil Code of Québec, Art. 21', x: 'Research involving minors requires written parental or guardian consent. Assent should be obtained from children aged 7–13 years as developmentally appropriate. Research posing more than minimal risk requires special justification under TCPS2 Section 4.' });
+    if (vuln === 'incapable' || vuln === 'both')
+      f.push({ t: 'coral', l: 'Adults unable to consent — Personne mandétée / Civil Code, Art. 21', x: 'Research involving adults who cannot consent requires authorization from a Personne mandétée (mandatary), tutor, or curator. The MUHC Authorization process applies. See SOP-CR-008.' });
+    if (resType === 'interventional' && (intType === 'drug' || intType === 'device' || intType === 'nhp'))
+      f.push({ t: 'teal', l: 'ICH E6(R3) — effective April 2026', x: 'Health Canada formally adopted ICH E6(R3) effective April 1, 2026. The guideline introduces a QMS approach and updates requirements for electronic systems and risk-proportionate monitoring.' });
+    if (resType === 'retrospective' && answers['3retro'] === 'identifiable')
+      f.push({ t: 'amber', l: 'RAMQ / registry data — MSSS / CAI authorization', x: 'Secondary use of RAMQ administrative data or provincial registries requires a formal authorization request to MSSS and/or CAI, plus an ÉFVP. Separate from REB approval — typically 3–6 months.' });
+    return f;
+  };
+
+  const RcCallout = ({ c }) => {
+    if (!c) return null;
+    return <div className={'rc-callout ' + c.type} dangerouslySetInnerHTML={{ __html: c.text }} />;
+  };
+
+  const qdef = !outOfScope && !done ? QUESTIONS[currentQ] : null;
+
+  const renderResult = () => {
+    const level = getLevel();
+    if (!level || !RESULTS[level]) {
+      return (
+        <div className="rc-fallback">
+          <strong>Unable to determine training level.</strong> Contact QA: <strong>qaclinicalresearch@muhc.mcgill.ca</strong>
+        </div>
+      );
+    }
+    const r = RESULTS[level];
+    const flags = getFlags();
+    const reqs = r.reqs(answers['4drug'] === 'yes');
+    return (
+      <div className="rc-result">
+        <div className="rc-result-head">
+          <span className="rc-level-badge">{r.badge}</span>
+          <span className="rc-result-title">{r.title}</span>
+        </div>
+        <div className="rc-result-section">
+          <div className="rc-result-section-label">Required — complete before study activation</div>
+          <div dangerouslySetInnerHTML={{ __html: reqs }} />
+        </div>
+        {r.renewal && (
+          <div className="rc-result-section">
+            <div className="rc-result-section-label">Renewal cycle</div>
+            <div dangerouslySetInnerHTML={{ __html: r.renewal }} />
+          </div>
+        )}
+        <div className="rc-result-section">
+          <div className="rc-result-section-label">Regulatory framework</div>
+          <div className="rc-reg-context" dangerouslySetInnerHTML={{ __html: r.framework }} />
+        </div>
+        {flags.length > 0 && (
+          <div className="rc-result-section">
+            <div className="rc-result-section-label">Flags and additional considerations</div>
+            <div className="rc-flags">
+              {flags.map((flag, i) => (
+                <div key={i} className={'rc-flag ' + flag.t}>
+                  <strong>{flag.l}</strong>
+                  {flag.x}
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+      </div>
+    );
+  };
+
+  return (
+    <div className="rc-wrap">
+
+      <div className="rc-reg-note">
+        <strong>Regulatory basis:</strong> Training requirements derive from <a href="/sops/overview">SOP-CR-003</a>, <strong>ICH E6(R3)</strong> (Health Canada, effective Apr 2026), <strong>Food and Drug Regulations Part C Div.&#8201;5</strong> (GUI-0100), <strong>ISO 14155:2020</strong>, <strong>TCPS2 (2022)</strong>, and Quebec&#8217;s <strong>LSSSS</strong>. Training level is based on your highest-risk study across all active protocols.
+      </div>
+
+      <div className="rc-progress">
+        {[1,2,3,4,5,6,7,8].map(i => (
+          <div key={i} className={'rc-prog-dot' + ((done && i <= 8) || i < stepNum ? ' done' : i === stepNum && !done ? ' active' : '')} />
+        ))}
+        <span className="rc-prog-label">{done ? 'Complete' : 'Step ' + stepNum + ' of 8'}</span>
+      </div>
+
+      {history.length > 0 && (
+        <div className="rc-history">
+          {history.map((qKey, idx) => {
+            const qd = QUESTIONS[qKey];
+            if (!qd) return null;
+            const labelMap = Q_LABELS[qKey] || {};
+            const aLabel = labelMap[answers[qKey]] || String(answers[qKey]);
+            return (
+              <div key={idx} className="rc-hist-item">
+                <div className="rc-hist-num">&#10003;</div>
+                <div>
+                  <div className="rc-hist-q">{qd.q}</div>
+                  <div className="rc-hist-a">{aLabel}</div>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      )}
+
+      {pendingCallout && <RcCallout c={pendingCallout} />}
+
+      {qdef && (
+        <div className="rc-q-block">
+          {qdef.part && <div className="rc-part-label">{qdef.part}</div>}
+          <div className="rc-q-row">
+            <div className="rc-q-num pass">&#8250;</div>
+            <div>
+              <div className="rc-q-main">{qdef.q}</div>
+              {qdef.hint && <div className="rc-q-hint">{qdef.hint}</div>}
+            </div>
+          </div>
+
+          {qdef.type === 'yn' ? (
+            <div className="rc-answers">
+              <button className="rc-btn" onClick={() => handleAnswer(currentQ, 'yes')}>
+                {(qdef.ynLabels && qdef.ynLabels[0]) || 'Yes'}
+              </button>
+              <button className="rc-btn" onClick={() => handleAnswer(currentQ, 'no')}>
+                {(qdef.ynLabels && qdef.ynLabels[1]) || 'No'}
+              </button>
+            </div>
+          ) : (
+            <div className="rc-options">
+              {qdef.opts.map(opt => (
+                <button key={opt.val} className="rc-opt-btn" onClick={() => handleAnswer(currentQ, opt.val)}>
+                  {opt.label}
+                  {opt.desc && <span className="rc-opt-desc">{opt.desc}</span>}
+                </button>
+              ))}
+            </div>
+          )}
+
+          {qdef.callout && <RcCallout c={qdef.callout} />}
+        </div>
+      )}
+
+      {outOfScope && (
+        <div className="rc-no-human">
+          <strong>Outside scope of this tool.</strong> Research that does not involve human participants, biological material, or personal data does not require RI-MUHC human research training. Contact QA if you are uncertain: <strong>qaclinicalresearch@muhc.mcgill.ca</strong>
+        </div>
+      )}
+
+      {done && renderResult()}
+
+      <div className="rc-footer">
+        <button className="rc-reset-btn" onClick={handleReset}>&#8635; Start over</button>
+        <p className="rc-disclaimer">This tool provides guidance based on <a href="/sops/overview">SOP-CR-003</a>. Training level is based on your <strong>highest-risk active study</strong>. Results do not constitute formal compliance advice. When in doubt, contact QA.</p>
+      </div>
+
+    </div>
+  );
+};
+
+# Study Type and Training Classifier
+
+Answer a short series of questions about your study type and data practices. The tool identifies your required training level, the SOP Reader and Competency Assessment you need to complete, and any applicable Quebec regulatory considerations.
 
 If you are involved in more than one study, complete this tool for the highest-risk study type. The resulting training level covers all lower levels.
 
-<Note>
-**Regulatory basis:** Training requirements derive from SOP-CR-003, **ICH E6(R3)** (Health Canada, effective Apr 2026), **Food and Drug Regulations Part C Div. 5** (GUI-0100), **ISO 14155:2020**, **TCPS2 (2022)**, and Quebec's **LSSSS**. Training level is based on your highest-risk study across all active protocols.
-</Note>
-
-<Warning>
-This tool provides guidance based on SOP-CR-003. Training level is based on your **highest-risk active study**. Results do not constitute formal compliance advice. When in doubt, contact QA.
-</Warning>
-
-## Related resources
-
-- [Training and Compliance Requirements](/training/compliance-requirements)
-- [SOP Reader](/training/talentlms)
-- [Competency Assessment](/training/talentlms)
-- [External Training Resources](/training/external-certifications)
+<Classifier />
