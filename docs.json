@@ -8,6 +8,11 @@
     "dark": "#150e51"
   },
   "customCSS": ["/custom.css"],
+  "integrations": {
+    "telemetry": {
+      "enabled": false
+    }
+  },
   "logo": {
     "light": "/logo/rimuhc-blue.png",
     "dark": "/logo/rimuhc-light.png",
