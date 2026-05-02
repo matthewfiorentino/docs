@@ -40,15 +40,18 @@ export const LiveUpdates = () => {
         const tagMap = { Training: 'ri-tag-train', Regulatory: 'ri-tag-reg', Hub: 'ri-tag-inst' };
         const parsed = els.slice(0, 2).map(el => {
           const g = tag => el.getElementsByTagName(tag)[0]?.textContent?.trim() || '';
-          const rawDesc = g('description').replace(/<[^>]+>/g, '').trim();
+          // Mintlify puts the label (e.g. "May 2026") in <title> and the
+          // actual heading + body in <description> as HTML
+          const label = g('title');
+          const descHtml = g('description');
+          const inner = new DOMParser().parseFromString(descHtml, 'text/html');
+          const headingEl = inner.querySelector('h1,h2,h3,h4,h5,h6');
+          const title = headingEl?.textContent?.trim() || label;
+          if (headingEl) headingEl.remove();
+          const rawDesc = inner.body.textContent.trim();
           const desc = rawDesc.length > 160 ? rawDesc.slice(0, 157) + '…' : rawDesc;
-          const dateStr = g('pubDate');
-          const d = dateStr ? new Date(dateStr) : null;
-          const date = (d && !isNaN(d))
-            ? d.toLocaleDateString('en-CA', { month: 'short', year: 'numeric' })
-            : '';
           const tag = g('category');
-          return { title: g('title'), desc, date, tag, tagClass: tagMap[tag] || 'ri-tag-inst' };
+          return { title, desc, date: label, tag, tagClass: tagMap[tag] || 'ri-tag-inst' };
         }).filter(p => p.title);
         setItems(parsed);
         setDone(true);
