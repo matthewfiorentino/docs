@@ -532,7 +532,7 @@ html.dark .ri-hub-body hr {
    ══════════════════════════════════════════════ */
 .ri-text-hero {
     margin: 0;
-    padding: 80px 8vw 70px;
+    padding: 120px 8vw 110px;
     width: 100%;
     background-color: #150e51;
     background-image: url('/images/dna-bg.png');
@@ -542,7 +542,6 @@ html.dark .ri-hub-body hr {
     background-attachment: fixed;
     color: #fff;
     position: relative;
-    overflow: hidden;
 }
 @media (max-width: 768px) {
     .ri-text-hero {
