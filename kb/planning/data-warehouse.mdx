@@ -1,0 +1,84 @@
+---
+title: Accessing MUHC Patient Data
+description: The MUHC Data Warehouse centralizes clinical and administrative data from over 18 hospital systems across MUHC sites. How to request data, requirements by data type, and available tools.
+---
+
+The MUHC Data Warehouse (DW) is a patient-centric database integrating clinical and administrative data from over 18 MUHC hospital systems, updated within 24 hours. This page explains when and how to use the DW service for research, and what you need to open a data request.
+
+## When to use the Data Warehouse
+
+The DW supports research involving large-scale retrospective analysis of patient data across MUHC sites — admissions, emergency visits, laboratory results, imaging reports, pharmacy dispensations, surgical records, and more, going back in many cases to 2008.
+
+The DW is a **research service**, not a quality improvement tool. If you are uncertain whether your project is research or quality improvement, use the [MUHC CAE QI vs Research screening tool](https://muhc.ca/cae) before proceeding.
+
+<Note>
+  **Consult early — before finalizing your protocol.** The DW team can help you define patient selection criteria, sample size, and variables before you submit to Nagano. If these are not clearly defined in your Nagano submission, it can cause delays at both the ethics review and data request stages. Contact the team as soon as you begin protocol development.
+</Note>
+
+The DW contains data from these MUHC sites: Montreal General Hospital (MGH), Royal Victoria Hospital (RVH), Montreal Children's Hospital (MCH), Lachine General Hospital (LAC), Montreal Neurological Hospital (MNH). Not all data types are available at all sites and for all time periods — consult the [Data Summary](https://portal.rimuhc.ca/pls/apex/MUHC2.download_my_file?p_file=65514749312768742) and the [Data Dictionary tool](https://portal.rimuhc.ca/pls/apex/f?p=132:1) when planning your protocol.
+
+Major data domains available include: patient demographics and identifiers, hospitalization and emergency episodes, laboratory results (from 2020), medical imaging reports (from 2000), surgical records (from 2003), pharmacy prescriptions and dispensations, cancer tumour registry, infection control data, blood bank records, allied health professional activities, and outpatient appointment data. Medical image files (PACS), scanned documents, and outpatient clinical notes are not available in the DW.
+
+## The request process
+
+All consultations and data requests are submitted through the [RI-MUHC Data Warehouse Request Center](https://portal.rimuhc.ca/pls/apex/f?p=106:360) on the Portal. Do not include patient MRNs or other identifying information in submissions through this system.
+
+<Steps>
+  <Step title="Explore the Data Summary and Data Dictionary">
+    Review what data is available, from which source systems, and from what dates. Use the Data Dictionary tool to check variable definitions, data types, and site availability before committing to a protocol design.
+  </Step>
+  <Step title="Request a consultation">
+    Contact the DW team through the Request Center to discuss patient selection criteria, variable availability, and sample size. This is strongly recommended before finalizing your protocol. Aggregate data requests can also be made at any time — for feasibility checks or sample size calculations.
+  </Step>
+  <Step title="Finalize your protocol and submit to Nagano">
+    Ensure the data access section of your Nagano submission is clearly defined. The DW team can advise on how to complete the EFVP section if required.
+  </Step>
+  <Step title="Submit a Data Request">
+    Once REB approval and PM Final Authorization are in place (and all other requirements for your data type are met — see below), submit a Data Request through the Request Center.
+  </Step>
+  <Step title="Receive data through NextCloud">
+    Data is delivered securely via the MUHC NextCloud platform. You will need a NextCloud account for all data types except aggregate. See the [Research Data Security](/kb/conduct/data-security) article for guidance on handling received data.
+  </Step>
+</Steps>
+
+## Requirements by data type
+
+What you need to open a data request depends on the type of data you are requesting. The four types reflect the data classification framework described in the [RI-MUHC Researcher's Guide to Data Security](https://portal.rimuhc.ca/pls/apex/MUHC2.download_my_file?p_file=111401908461398782).
+
+| Requirement | Aggregate | Anonymized | De-identified | Identifying |
+|-------------|:---------:|:----------:|:-------------:|:-----------:|
+| Data Use Agreement (DUA) | ✓ | ✓ | ✓ | ✓ |
+| Valid Human Research Privileges or Researcher Status + SOP training | ✓ | ✓ | ✓ | ✓ |
+| NextCloud account | — | ✓ | ✓ | ✓ |
+| Most recently REB-approved protocol | — | ✓ | ✓ | ✓ |
+| REB approval letter | — | ✓ | ✓ | ✓ |
+| PM Final Authorization letter | — | ✓ | ✓ | ✓ |
+| REB renewal letter (if applicable) | — | ✓ | ✓ | ✓ |
+| EFVP | — | — | See note | See note |
+
+EFVP is required when accessing personal health information **without** participant consent. EFVP-FT (court) applies to screening access; EFVP applies to non-screening access. Not required if participant consent is obtained.
+
+Source: [Requirements for Opening a Data Request](https://portal.rimuhc.ca/pls/apex/MUHC2.download_my_file?p_file=290508773952215500) — RI-MUHC Data Warehouse Service.
+
+<Warning>
+  **De-identified data is not the same as anonymized.** De-identified data has had identifiers removed, but re-identification remains possible through a linking key. Only the PI has access to the key linking de-identified data to the patient list. Anonymized data has been irreversibly stripped of all identifiers with no possibility of re-identification. The security and EFVP requirements differ between the two. For a full explanation, see the [Research Data Security](/kb/conduct/data-security) article.
+</Warning>
+
+## Resources and tools
+
+<CardGroup cols={2}>
+  <Card title="RI-MUHC DW Request Center" icon="arrow-up-right-from-square" href="https://portal.rimuhc.ca/pls/apex/f?p=106:360">
+    Submit consultation requests and data requests. Track status, communicate with the team, and receive files.
+  </Card>
+  <Card title="Data Dictionary Tool" icon="magnifying-glass" href="https://portal.rimuhc.ca/pls/apex/f?p=132:1">
+    Search variables by domain, source system, and site. View value distributions, completeness percentages, and min/max ranges. Each field shows site availability and start year.
+  </Card>
+  <Card title="Data Summary (PDF)" icon="file-pdf" href="https://portal.rimuhc.ca/pls/apex/MUHC2.download_my_file?p_file=65514749312768742">
+    Simplified overview of data available in the DW by domain and source system. Useful for protocol planning.
+  </Card>
+  <Card title="Requirements for Opening a Data Request (PDF)" icon="list-check" href="https://portal.rimuhc.ca/pls/apex/MUHC2.download_my_file?p_file=290508773952215500">
+    Full checklist of requirements by data type. Confirm what you need before submitting.
+  </Card>
+</CardGroup>
+
+For questions, contact the DW team directly: [info.ridw@muhc.mcgill.ca](mailto:info.ridw@muhc.mcgill.ca)

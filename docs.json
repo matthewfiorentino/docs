@@ -106,12 +106,18 @@
                   "kb/planning/sponsor-investigator",
                   "kb/planning/dct-design",
                   "kb/planning/multi-centric",
-                  "kb/planning/bcu",
-                  "kb/planning/cord",
+                  {
+                    "group": "Data and Research Services",
+                    "expanded": false,
+                    "pages": [
+                      "kb/planning/bcu",
+                      "kb/planning/cord",
+                      "kb/planning/data-warehouse"
+                    ]
+                  },
                   "kb/planning/research-grants",
                   "kb/planning/regulations",
-                  "kb/planning/budgets-contracts",
-                  "kb/planning/data-services"
+                  "kb/planning/budgets-contracts"
                 ]
               },
               {

@@ -123,40 +123,52 @@ Two main entry points into the Hub. Most everything else branches from here.
 Follow the lifecycle, or jump to the phase you're in.
 
 <div className="ri-lifecycle">
-  <Phase num={1} title="Plan" cards={[
-    { href: "/kb/planning/feasibility", icon: "magnifying-glass-chart", label: "Feasibility" },
+  <Phase num={1} title="Concept & Feasibility" cards={[
+    { href: "/kb/planning/feasibility", icon: "magnifying-glass-chart", label: "Feasibility assessment" },
+    { href: "/kb/clinical-research-101", icon: "book-open", label: "Clinical Research 101" },
+    { href: "/kb/planning/regulations", icon: "scale-balanced", label: "Regulations and guidelines" }
+  ]} />
+  <Phase num={2} title="Design & Planning" cards={[
     { href: "/kb/planning/study-design", icon: "diagram-project", label: "Study design" },
     { href: "/kb/planning/building-your-team", icon: "users-gear", label: "Build your team" },
     { href: "/kb/planning/budgets-contracts", icon: "file-contract", label: "Budgets and contracts" },
-    { href: "/kb/planning/regulations", icon: "scale-balanced", label: "Regulations and guidelines" },
-    { href: "/kb/planning/cord", icon: "database", label: "CORD and data services" }
+    { href: "/kb/planning/sponsored-trials", icon: "handshake", label: "Sponsored trials" },
+    { href: "/kb/planning/bcu", icon: "chart-bar", label: "Biostatistics (BCU)" },
+    { href: "/kb/planning/cord", icon: "database", label: "Data management (CORD)" },
+    { href: "/kb/planning/data-warehouse", icon: "server", label: "MUHC patient data" }
   ]} />
-  <Phase num={2} title="Submit" cards={[
+  <Phase num={3} title="Submission & Review" cards={[
     { href: "/kb/submission/preparing", icon: "folder-open", label: "Preparing your submission" },
     { href: "/kb/submission/submitting-via-nagano", icon: "paper-plane", label: "Submitting via Nagano" },
     { href: "/kb/submission/tracking-responding", icon: "reply", label: "Tracking and responses" },
     { href: "/kb/submission/study-review", icon: "clipboard-check", label: "Study review" },
     { href: "/apps/nagano/overview", icon: "desktop", label: "Nagano user guide" }
   ]} />
-  <Phase num={3} title="Activate" cards={[
+  <Phase num={4} title="Site Activation" cards={[
     { href: "/kb/conduct/site-setup", icon: "building-circle-check", label: "Site setup" },
     { href: "/kb/conduct/team-management", icon: "user-plus", label: "Delegation log" },
     { href: "/kb/conduct/isf", icon: "folder-tree", label: "Investigator Site File" }
   ]} />
-  <Phase num={4} title="Conduct" cards={[
+  <Phase num={5} title="Recruitment & Enrollment" cards={[
     { href: "/kb/conduct/consent", icon: "signature", label: "Informed consent" },
     { href: "/kb/conduct/recruitment-enrollment", icon: "user-check", label: "Recruitment and enrolment" },
+    { href: "/kb/conduct/privacy", icon: "shield-halved", label: "Privacy and Loi 25" }
+  ]} />
+  <Phase num={6} title="Study Conduct" cards={[
     { href: "/kb/conduct/data-integrity", icon: "database", label: "Data integrity" },
     { href: "/kb/conduct/investigational-products", icon: "prescription-bottle-medical", label: "Investigational products" },
     { href: "/kb/conduct/biological-specimens", icon: "vial", label: "Biological specimens" },
     { href: "/kb/conduct/reportable-events", icon: "triangle-exclamation", label: "Reportable events" },
     { href: "/kb/conduct/monitoring-audits", icon: "magnifying-glass", label: "Monitoring and audits" },
-    { href: "/kb/conduct/privacy", icon: "shield-halved", label: "Privacy and Loi 25" }
+    { href: "/kb/conduct/protocol-documents", icon: "file-lines", label: "Protocol documents" }
   ]} />
-  <Phase num={5} title="Close out" cards={[
+  <Phase num={7} title="Close-Out" cards={[
     { href: "/kb/conduct/close-out", icon: "flag-checkered", label: "Study close-out" },
-    { href: "/kb/conduct/publications", icon: "newspaper", label: "Publications" },
-    { href: "/kb/governance/research-integrity", icon: "box-archive", label: "Archiving and retention" }
+    { href: "/kb/conduct/publications", icon: "newspaper", label: "Publications" }
+  ]} />
+  <Phase num={8} title="Archiving" cards={[
+    { href: "/kb/governance/research-integrity", icon: "box-archive", label: "Archiving and retention" },
+    { href: "/kb/governance/quality-assurance", icon: "shield-check", label: "Quality assurance" }
   ]} />
 </div>
 
@@ -221,6 +233,12 @@ Follow the lifecycle, or jump to the phase you're in.
     desc="Plain-language definitions for the acronyms, regulators, and key terms you'll encounter across the Hub." />
   <ResourceCard icon="flask" href="/cim/overview" title="Centre for Innovative Medicine"
     desc="Trial unit services, infusion centre, SOPs, and operational guides for CIM researchers and staff." />
+  <ResourceCard icon="chart-bar" href="/kb/planning/bcu" title="Biostatistics Consulting Unit"
+    desc="Statistical consulting from grant design through analysis and manuscripts. Sample size, SAP, advanced methods." />
+  <ResourceCard icon="database" href="/kb/planning/cord" title="CORD — Research Data Management"
+    desc="REDCap database builds, data management support, and data planning review across the study lifecycle." />
+  <ResourceCard icon="server" href="/kb/planning/data-warehouse" title="Accessing MUHC Patient Data"
+    desc="The MUHC Data Warehouse: 18 hospital systems, 5 sites, retrospective data going back to 2008. Request process and requirements." />
 </div>
 
 ---
