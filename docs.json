@@ -9,8 +9,8 @@
   },
   "customCSS": ["/custom.css"],
   "logo": {
-    "light": "/logo/rimuhc-light.png",
-    "dark": "/logo/rimuhc.svg",
+    "light": "/logo/rimuhc.svg",
+    "dark": "/logo/rimuhc-light.png",
     "href": "/"
   },
   "appearance": {
