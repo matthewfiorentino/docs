@@ -84,6 +84,23 @@
     setTimeout(function () { banner.remove(); }, 220);
   }
 
+  var isFr = window.location.pathname.indexOf('/fr') === 0;
+
+  var strings = {
+    en: {
+      text: 'The RI-MUHC Clinical Research Hub uses analytics cookies to measure how this documentation is accessed and used. No personal information is collected. This site’s use of cookies complies with Quebec’s Act respecting the protection of personal information in the private sector (Law 25).',
+      accept: 'Accept',
+      decline: 'Decline'
+    },
+    fr: {
+      text: 'Le Centre de documentation en recherche clinique de l’IR-CUSM utilise des témoins analytiques pour mesurer la façon dont cette documentation est consultée et utilisée. Aucune information personnelle n’est collectée. L’utilisation de témoins sur ce site est conforme à la Loi 25 (Loi modernisant des dispositions législatives en matière de protection des renseignements personnels).',
+      accept: 'Accepter',
+      decline: 'Refuser'
+    }
+  };
+
+  var t = isFr ? strings.fr : strings.en;
+
   function init() {
     var style = document.createElement('style');
     style.textContent = css;
@@ -91,12 +108,13 @@
 
     var banner = document.createElement('div');
     banner.id = 'ri-cookie-banner';
+    banner.setAttribute('lang', isFr ? 'fr' : 'en');
     banner.innerHTML =
       '<div id="ri-cookie-inner">' +
-        '<p id="ri-cookie-text">The RI-MUHC Clinical Research Hub uses analytics cookies to measure how this documentation is accessed and used. No personal information is collected. This site\'s use of cookies complies with Quebec\'s Act respecting the protection of personal information in the private sector (Law 25).</p>' +
+        '<p id="ri-cookie-text">' + t.text + '</p>' +
         '<div id="ri-cookie-actions">' +
-          '<button id="ri-cookie-decline">Decline</button>' +
-          '<button id="ri-cookie-accept">Accept</button>' +
+          '<button id="ri-cookie-decline">' + t.decline + '</button>' +
+          '<button id="ri-cookie-accept">' + t.accept + '</button>' +
         '</div>' +
       '</div>';
 
