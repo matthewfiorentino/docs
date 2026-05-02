@@ -710,31 +710,31 @@ article {
     margin-right: 16px;
 }
 .ri-home-footer-institute-logo {
-    height: 52px;
+    height: 60px;
     width: auto;
     opacity: 0.85;
 }
 .ri-home-footer-logo {
-    height: 52px;
+    height: 60px;
     width: auto;
     display: block;
     opacity: 0.9;
 }
-.ri-footer-logo-wrap {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 10px;
+[data-ri-footer-logos="true"] {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 8px !important;
 }
 footer a[href="/"] img {
-    height: 44px !important;
+    height: 52px !important;
     width: auto !important;
     display: block !important;
 }
 .ri-footer-institute-logo {
     display: block !important;
-    height: 44px;
-    width: auto;
+    height: 52px !important;
+    width: auto !important;
     opacity: 0.75;
 }
 .ri-home-footer-col { display: flex; flex-direction: column; gap: 10px; min-width: 160px; }
