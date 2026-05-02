@@ -63,82 +63,66 @@ article a:hover,
     font-weight: 600 !important;
 }
 
-/* ── Navbar — Luma tab strip ────────────────────────────────────────────────
-   Target ONLY the nav tabs (nav a.link), not Contact or Portal buttons.
-   Replace Luma's pill-background hover with a clean underline indicator.
-────────────────────────────────────────────────────────────────────────── */
+/* ── Navbar — tab strip ── */
 #navbar nav a.link {
-    background:    transparent !important;
-    border-radius: 0 !important;
-    border-bottom: 2px solid transparent !important;
+    background:     transparent !important;
+    border-radius:  0 !important;
+    border-bottom:  2px solid transparent !important;
     padding-bottom: 2px !important;
-    transition:    color 0.15s, border-bottom-color 0.15s !important;
+    color:          #150e51 !important;
+    font-weight:    600 !important;
+    transition:     color 0.15s, border-bottom-color 0.15s !important;
 }
 #navbar nav a.link:hover {
     background:          transparent !important;
-    color:               var(--ri-heading) !important;
-    border-bottom-color: color-mix(in srgb, var(--ri-accent), transparent 55%) !important;
+    color:               #150e51 !important;
+    border-bottom-color: rgba(21,14,81,0.3) !important;
 }
-/* Active tab — set by Mintlify via data-active or aria-current */
 #navbar nav a.link[data-active="true"],
 #navbar nav a.link[aria-current="page"] {
     background:          transparent !important;
-    color:               var(--ri-accent) !important;
-    border-bottom-color: var(--ri-accent) !important;
-    font-weight:         600 !important;
+    color:               #150e51 !important;
+    border-bottom-color: #150e51 !important;
+    font-weight:         700 !important;
 }
 
-/* ── Contact — outlined secondary button ── */
-li.navbar-link a[href="/contacts"] {
-    background:    transparent !important;
-    color:         var(--ri-accent) !important;
-    border:        1.5px solid var(--ri-accent) !important;
-    border-radius: 7px !important;
-    padding:       4px 14px !important;
-    font-weight:   600 !important;
-    transition:    background 0.15s, color 0.15s !important;
+/* ── Contact + FR — plain text, matches tab strip ── */
+li.navbar-link a[href="/contacts"],
+li.navbar-link a[href="/fr"] {
+    background:  transparent !important;
+    color:       #150e51 !important;
+    border:      none !important;
+    font-weight: 600 !important;
+    opacity:     0.6;
+    transition:  opacity 0.15s !important;
 }
-li.navbar-link a[href="/contacts"]:hover {
-    background: var(--ri-accent) !important;
-    color:      #fff !important;
+li.navbar-link a[href="/contacts"]:hover,
+li.navbar-link a[href="/fr"]:hover {
+    background: transparent !important;
+    color:      #150e51 !important;
+    opacity:    1 !important;
 }
 
-/* ── Portal — outline button, fills on hover ── */
+/* ── FR — slightly distinct as language indicator ── */
+li.navbar-link a[href="/fr"] {
+    font-size:      11px !important;
+    letter-spacing: 0.08em !important;
+    font-weight:    700 !important;
+}
+
+/* ── Portal — solid navy CTA button ── */
 #topbar-cta-button a {
-    background:    transparent !important;
-    color:         #150e51 !important;
+    background:    #150e51 !important;
+    color:         #fff !important;
     border:        2px solid #150e51 !important;
     border-radius: 7px !important;
     font-weight:   700 !important;
     transition:    background 0.15s, color 0.15s !important;
 }
 #topbar-cta-button a:hover {
-    background: #150e51 !important;
-    color:      #fff !important;
-    opacity:    1 !important;
-}
-html.dark #topbar-cta-button a {
-    color:   #fff !important;
-    border-color: #fff !important;
-}
-html.dark #topbar-cta-button a:hover {
-    background: #fff !important;
+    background: transparent !important;
     color:      #150e51 !important;
-}
-
-/* ── FR language link — pill style ── */
-li.navbar-link a[href="/fr"] {
-    font-size:     11px !important;
-    font-weight:   700 !important;
-    letter-spacing: 0.06em !important;
-    border:        1.5px solid currentColor !important;
-    border-radius: 999px !important;
-    padding:       3px 10px !important;
-    opacity:       0.65;
-    transition:    opacity 0.15s !important;
-}
-li.navbar-link a[href="/fr"]:hover {
-    opacity: 1 !important;
+    opacity:    1 !important;
 }
 
 /* ── Tables ── */

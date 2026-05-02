@@ -14,7 +14,7 @@
     "href": "/"
   },
   "appearance": {
-    "default": "dark",
+    "default": "light",
     "strict": true
   },
   "navbar": {
