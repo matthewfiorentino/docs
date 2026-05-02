@@ -40,8 +40,6 @@ export const LiveUpdates = () => {
         const tagMap = { Training: 'ri-tag-train', Regulatory: 'ri-tag-reg', Hub: 'ri-tag-inst' };
         const parsed = els.slice(0, 2).map(el => {
           const g = tag => el.getElementsByTagName(tag)[0]?.textContent?.trim() || '';
-          // Mintlify puts the label (e.g. "May 2026") in <title> and the
-          // actual heading + body in <description> as HTML
           const label = g('title');
           const descHtml = g('description');
           const inner = new DOMParser().parseFromString(descHtml, 'text/html');
