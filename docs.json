@@ -14,13 +14,18 @@
     "href": "/"
   },
   "appearance": {
-    "default": "dark"
+    "default": "dark",
+    "strict": true
   },
   "navbar": {
     "links": [
       {
         "label": "Contact",
         "href": "/contacts"
+      },
+      {
+        "label": "FR",
+        "href": "/fr"
       }
     ],
     "primary": {

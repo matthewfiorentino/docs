@@ -103,20 +103,42 @@ li.navbar-link a[href="/contacts"]:hover {
     color:      #fff !important;
 }
 
-/* ── Portal — solid primary button, light + dark ── */
+/* ── Portal — outline button, fills on hover ── */
 #topbar-cta-button a {
-    background:    var(--ri-accent) !important;
-    color:         #fff !important;
+    background:    transparent !important;
+    color:         #150e51 !important;
+    border:        2px solid #150e51 !important;
     border-radius: 7px !important;
-    font-weight:   600 !important;
-    transition:    opacity 0.15s !important;
+    font-weight:   700 !important;
+    transition:    background 0.15s, color 0.15s !important;
 }
 #topbar-cta-button a:hover {
-    opacity: 0.85 !important;
+    background: #150e51 !important;
+    color:      #fff !important;
+    opacity:    1 !important;
 }
 html.dark #topbar-cta-button a {
-    background: var(--ri-accent-bright) !important;
+    color:   #fff !important;
+    border-color: #fff !important;
+}
+html.dark #topbar-cta-button a:hover {
+    background: #fff !important;
     color:      #150e51 !important;
+}
+
+/* ── FR language link — pill style ── */
+li.navbar-link a[href="/fr"] {
+    font-size:     11px !important;
+    font-weight:   700 !important;
+    letter-spacing: 0.06em !important;
+    border:        1.5px solid currentColor !important;
+    border-radius: 999px !important;
+    padding:       3px 10px !important;
+    opacity:       0.65;
+    transition:    opacity 0.15s !important;
+}
+li.navbar-link a[href="/fr"]:hover {
+    opacity: 1 !important;
 }
 
 /* ── Tables ── */
@@ -651,6 +673,39 @@ article {
 .step-number {
     border-color: var(--ri-accent) !important;
     color:        var(--ri-accent) !important;
+}
+
+/* ── Homepage footer ── */
+.ri-home-footer {
+    background: #150e51;
+    padding: 48px 8vw 40px;
+    margin-top: 0;
+}
+.ri-home-footer-inner {
+    max-width: 1120px;
+    margin: 0 auto;
+    display: flex;
+    gap: 64px;
+    flex-wrap: wrap;
+}
+.ri-home-footer-col { display: flex; flex-direction: column; gap: 10px; min-width: 160px; }
+.ri-home-footer-head {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.4);
+    margin-bottom: 4px;
+}
+.ri-home-footer-link {
+    font-size: 13.5px;
+    color: rgba(255,255,255,0.7);
+    text-decoration: none;
+    transition: color 0.12s;
+}
+.ri-home-footer-link:hover { color: #fff; }
+@media (max-width: 600px) {
+    .ri-home-footer-inner { gap: 36px; }
 }
 
 /* ── SOP meta bar ── */
