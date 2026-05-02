@@ -525,11 +525,18 @@ html.dark .ri-hub-body hr {
     padding: 80px 8vw 70px;
     width: 100%;
     background:
-        radial-gradient(circle at 1px 1px, rgba(255,255,255,.08) 1px, transparent 0) 0 0/22px 22px,
-        linear-gradient(135deg, #150e51 0%, #1a1466 60%, #007a6e 130%);
+        linear-gradient(to right, rgba(21,14,81,.97) 38%, rgba(21,14,81,.72) 65%, rgba(21,14,81,.30) 100%),
+        url('/images/dna-bg.png') center right / cover;
+    background-attachment: local, fixed;
     color: #fff;
     position: relative;
     overflow: hidden;
+}
+@media (max-width: 768px) {
+    /* iOS/mobile: fixed attachment causes blank backgrounds — fall back to scroll */
+    .ri-text-hero {
+        background-attachment: local, scroll;
+    }
 }
 .ri-text-hero-eyebrow {
     font-size: 11px; font-weight: 700; letter-spacing: .15em;
