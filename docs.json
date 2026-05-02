@@ -321,15 +321,9 @@
                   }
                 ]
               },
-              {
-                "group": "Other Tools",
-                "expanded": false,
-                "pages": [
-                  "apps/redcap",
-                  "apps/talentlms",
-                  "apps/oacis"
-                ]
-              }
+              "apps/redcap",
+              "apps/talentlms",
+              "apps/oacis"
             ]
           }
         ]
