@@ -1,6 +1,7 @@
 (function () {
   function replaceFlags() {
     // EN: US flag → Canadian flag
+    // Changing alt breaks the CSS opacity:0 rule, making the new flag visible
     document.querySelectorAll('img[alt="US"]').forEach(function (img) {
       if (img.src.indexOf('cloudfront.net/flags') !== -1) {
         img.src = '/images/flag-canada.svg';

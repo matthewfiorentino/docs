@@ -634,6 +634,22 @@ html.dark .ri-hub-body hr {
     width: auto !important;
 }
 
+/* ── Language switcher flag overrides ──
+   Hide original US/CA flags immediately (before JS runs) to prevent flash.
+   JS changes alt to "Canada"/"Quebec", breaking these selectors → opacity returns to 1. */
+img[alt="US"],
+img[alt="CA"] {
+    opacity: 0 !important;
+}
+/* Replacement flags: contain within circle, not cropped */
+img[alt="Canada"],
+img[alt="Quebec"] {
+    opacity: 1 !important;
+    object-fit: contain !important;
+    border-radius: 2px !important;
+    background: transparent !important;
+}
+
 @media (max-width: 1024px) {
     #navbar img {
         height: 36px !important;
