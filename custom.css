@@ -625,17 +625,9 @@ html.dark .ri-hub-body hr {
    ══════════════════════════════════════════════ */
 
 /* Logo size — navbar height grows naturally to fit */
-/* Logo size — navbar grows naturally to fit content, no fixed height */
 #navbar img {
     height: 48px !important;
     width: auto !important;
-}
-
-/* Extra vertical breathing room — padding lets the navbar expand without
-   a fixed height, so Mintlify's sticky offset stays in sync */
-#navbar {
-    padding-top:    10px !important;
-    padding-bottom: 10px !important;
 }
 
 @media (max-width: 1024px) {
