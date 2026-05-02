@@ -539,14 +539,8 @@ html.dark .ri-hub-body hr {
     background-size: cover;
     background-position: center right;
     background-repeat: no-repeat;
-    background-attachment: fixed;
     color: #fff;
     position: relative;
-}
-@media (max-width: 768px) {
-    .ri-text-hero {
-        background-attachment: scroll;
-    }
 }
 .ri-text-hero-eyebrow {
     font-size: 11px; font-weight: 700; letter-spacing: .15em;
