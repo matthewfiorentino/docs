@@ -84,8 +84,6 @@
     setTimeout(function () { banner.remove(); }, 220);
   }
 
-  var isFr = window.location.pathname.indexOf('/fr') === 0;
-
   var strings = {
     en: {
       text: 'The RI-MUHC Clinical Research Hub uses analytics cookies to measure how this documentation is accessed and used. No personal information is collected. This site’s use of cookies complies with Quebec’s Act respecting the protection of personal information in the private sector (Law 25).',
@@ -99,16 +97,23 @@
     }
   };
 
-  var t = isFr ? strings.fr : strings.en;
+  function getLang() {
+    if (window.location.pathname.indexOf('/fr') === 0) return 'fr';
+    var htmlLang = (document.documentElement.lang || '').toLowerCase();
+    if (htmlLang.indexOf('fr') === 0) return 'fr';
+    return 'en';
+  }
 
   function init() {
+    var t = strings[getLang()];
+
     var style = document.createElement('style');
     style.textContent = css;
     document.head.appendChild(style);
 
     var banner = document.createElement('div');
     banner.id = 'ri-cookie-banner';
-    banner.setAttribute('lang', isFr ? 'fr' : 'en');
+    banner.setAttribute('lang', getLang());
     banner.innerHTML =
       '<div id="ri-cookie-inner">' +
         '<p id="ri-cookie-text">' + t.text + '</p>' +
