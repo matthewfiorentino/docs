@@ -45,15 +45,20 @@
             "group": "Knowledge Base",
             "pages": [
               {
-                "group": "Getting Started",
+                "group": "About the Knowledge Base",
                 "expanded": true,
                 "pages": [
-                  "kb/introduction",
+                  "kb/introduction"
+                ]
+              },
+              {
+                "group": "Getting Started",
+                "expanded": false,
+                "pages": [
                   "kb/clinical-research-101",
                   "kb/trial-design",
                   "kb/gcp-quality-by-design",
-                  "kb/study-lifecycle",
-                  "kb/glossary"
+                  "kb/study-lifecycle"
                 ]
               },
               {
@@ -150,7 +155,7 @@
                 ]
               },
               {
-                "group": "Governance",
+                "group": "Governance and Oversight",
                 "expanded": false,
                 "pages": [
                   "kb/governance/institutional-structure",
@@ -158,6 +163,13 @@
                   "kb/governance/quality-assurance",
                   "kb/governance/research-integrity",
                   "kb/governance/conflict-of-interest"
+                ]
+              },
+              {
+                "group": "Glossary",
+                "expanded": false,
+                "pages": [
+                  "kb/glossary"
                 ]
               }
             ]
