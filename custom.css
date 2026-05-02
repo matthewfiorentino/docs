@@ -319,6 +319,7 @@ html.dark .ri-journey-sub { color: rgba(255,255,255,.5); }
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 16px;
+    margin-top: 20px;
     margin-bottom: 56px;
 }
 .ri-feature-card {
