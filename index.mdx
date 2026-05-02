@@ -3,6 +3,8 @@ title: "RI-MUHC Clinical Research Hub"
 mode: "custom"
 ---
 
+import { useState, useEffect } from 'react'
+
 export const UpdateBar = ({ tag, tagClass, title, desc, date, linkHref, linkLabel }) => (
   <div className="ri-update-bar">
     <span className={`ri-update-tag ${tagClass}`}>{tag}</span>
@@ -13,6 +15,55 @@ export const UpdateBar = ({ tag, tagClass, title, desc, date, linkHref, linkLabe
     <span className="ri-update-date">{date}</span>
   </div>
 );
+
+export const LiveUpdates = () => {
+  const [items, setItems] = useState([]);
+  const [done, setDone] = useState(false);
+
+  useEffect(() => {
+    fetch('/rss.xml')
+      .then(r => r.text())
+      .then(xml => {
+        const doc = new DOMParser().parseFromString(xml, 'application/rss+xml');
+        const tagMap = { Training: 'ri-tag-train', Regulatory: 'ri-tag-reg', Hub: 'ri-tag-inst' };
+        const parsed = Array.from(doc.querySelectorAll('item')).slice(0, 2).map(el => {
+          const text = s => el.querySelector(s)?.textContent?.trim() || '';
+          const rawDesc = text('description').replace(/<[^>]+>/g, '').trim();
+          const desc = rawDesc.length > 160 ? rawDesc.slice(0, 157) + '…' : rawDesc;
+          const dateStr = text('pubDate');
+          const d = dateStr ? new Date(dateStr) : null;
+          const date = (d && !isNaN(d))
+            ? d.toLocaleDateString('en-CA', { month: 'short', year: 'numeric' })
+            : '';
+          const tag = text('category');
+          return { title: text('title'), desc, date, tag, tagClass: tagMap[tag] || 'ri-tag-inst' };
+        });
+        setItems(parsed);
+        setDone(true);
+      })
+      .catch(() => setDone(true));
+  }, []);
+
+  if (!done) return <div className="ri-updates-loading">Loading…</div>;
+  if (!items.length) return null;
+
+  return (
+    <div className="ri-updates">
+      {items.map((item, i) => (
+        <UpdateBar
+          key={i}
+          tag={item.tag || 'Update'}
+          tagClass={item.tagClass}
+          date={item.date}
+          title={item.title}
+          desc={item.desc}
+          linkHref="/kb/updates"
+          linkLabel="See all updates"
+        />
+      ))}
+    </div>
+  );
+};
 
 export const Phase = ({ num, title, cards }) => (
   <div className="ri-phase">
@@ -70,20 +121,7 @@ export const FeatureEntry = ({ href, icon, title, desc, links }) => (
 
 ## What's new
 
-<div className="ri-updates">
-  <UpdateBar
-    tag="Training" tagClass="ri-tag-train" date="May 2026"
-    title="ICH E6(R3) GCP now in effect — certificates before Oct 27, 2025 have been reset"
-    desc="Health Canada adopted E6(R3) on April 1, 2026. Renew via CITI before your next submission."
-    linkHref="/training/external-certifications" linkLabel="See renewal instructions"
-  />
-  <UpdateBar
-    tag="Regulatory" tagClass="ri-tag-reg" date="Mar 2026"
-    title="CATALIS FAST TRACK now available — institutional authorization in 8 weeks or less"
-    desc="The RI-MUHC participates in the CATALIS FAST TRACK program for industry-sponsored trials."
-    linkHref="/kb/updates" linkLabel="See all updates"
-  />
-</div>
+<LiveUpdates />
 
 ---
 

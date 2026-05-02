@@ -214,6 +214,7 @@ body:has(.ri-text-hero) #page-title + p {
    HOME PAGE — UPDATE BARS
    ══════════════════════════════════════════════ */
 .ri-updates { display: flex; flex-direction: column; gap: 8px; margin-bottom: 48px; }
+.ri-updates-loading { font-size: 13px; color: var(--ri-text-muted, #888); padding: 12px 0; margin-bottom: 48px; }
 .ri-update-bar {
     display: flex; align-items: flex-start; gap: 14px;
     padding: 13px 18px;
