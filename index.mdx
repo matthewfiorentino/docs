@@ -19,33 +19,49 @@ export const UpdateBar = ({ tag, tagClass, title, desc, date, linkHref, linkLabe
 export const LiveUpdates = () => {
   const [items, setItems] = useState([]);
   const [done, setDone] = useState(false);
+  const [debug, setDebug] = useState('');
 
   useEffect(() => {
     fetch('/rss.xml')
-      .then(r => r.text())
+      .then(r => {
+        if (!r.ok) throw new Error(`HTTP ${r.status} from /rss.xml`);
+        return r.text();
+      })
       .then(xml => {
-        const doc = new DOMParser().parseFromString(xml, 'application/rss+xml');
+        const doc = new DOMParser().parseFromString(xml, 'text/xml');
+        const parseErr = doc.querySelector('parsererror');
+        if (parseErr) throw new Error('XML parse error: ' + parseErr.textContent.slice(0, 80));
+        const els = Array.from(doc.getElementsByTagName('item'));
+        if (!els.length) {
+          setDebug(`Feed loaded but 0 <item> elements found. Tags present: ${Array.from(doc.documentElement.children).map(n=>n.tagName).join(', ')}`);
+          setDone(true);
+          return;
+        }
         const tagMap = { Training: 'ri-tag-train', Regulatory: 'ri-tag-reg', Hub: 'ri-tag-inst' };
-        const parsed = Array.from(doc.querySelectorAll('item')).slice(0, 2).map(el => {
-          const text = s => el.querySelector(s)?.textContent?.trim() || '';
-          const rawDesc = text('description').replace(/<[^>]+>/g, '').trim();
+        const parsed = els.slice(0, 2).map(el => {
+          const g = tag => el.getElementsByTagName(tag)[0]?.textContent?.trim() || '';
+          const rawDesc = g('description').replace(/<[^>]+>/g, '').trim();
           const desc = rawDesc.length > 160 ? rawDesc.slice(0, 157) + '…' : rawDesc;
-          const dateStr = text('pubDate');
+          const dateStr = g('pubDate');
           const d = dateStr ? new Date(dateStr) : null;
           const date = (d && !isNaN(d))
             ? d.toLocaleDateString('en-CA', { month: 'short', year: 'numeric' })
             : '';
-          const tag = text('category');
-          return { title: text('title'), desc, date, tag, tagClass: tagMap[tag] || 'ri-tag-inst' };
-        });
+          const tag = g('category');
+          return { title: g('title'), desc, date, tag, tagClass: tagMap[tag] || 'ri-tag-inst' };
+        }).filter(p => p.title);
         setItems(parsed);
         setDone(true);
       })
-      .catch(() => setDone(true));
+      .catch(err => {
+        setDebug(err.message);
+        setDone(true);
+      });
   }, []);
 
   if (!done) return <div className="ri-updates-loading">Loading…</div>;
-  if (!items.length) return null;
+  if (debug) return <div className="ri-updates-loading">Updates unavailable — {debug}. <a href="/kb/updates">See all updates →</a></div>;
+  if (!items.length) return <div className="ri-updates-loading"><a href="/kb/updates">See all updates →</a></div>;
 
   return (
     <div className="ri-updates">
