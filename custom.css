@@ -124,45 +124,47 @@ li.navbar-link a[href="/contacts"]:hover {
 }
 
 /* ── Tables ── */
-/* Horizontal scroll for wide tables instead of text overflow */
 .prose table,
 article table {
-    display:    block !important;
-    overflow-x: auto !important;
-    white-space: nowrap;
-}
-.prose table th,
-.prose table td,
-article table th,
-article table td {
-    white-space: normal;
+    width: 100%;
+    table-layout: auto;
+    border-collapse: collapse;
+    font-size: 13.5px;
 }
 table thead tr {
-    background: var(--ri-heading) !important;
+    background:   #f0f0f4 !important;
+    border-bottom: 2px solid #dddde8 !important;
 }
 table thead th {
-    color:          #fff !important;
-    font-size:      0.72rem !important;
+    color:          var(--ri-heading) !important;
+    font-size:      0.7rem !important;
     font-weight:    700 !important;
     letter-spacing: 0.06em !important;
     text-transform: uppercase !important;
+    padding:        9px 14px !important;
+    white-space:    nowrap;
 }
-table tbody tr:nth-child(even) {
-    background: rgba(0,0,0,0.03) !important;
+table tbody td {
+    padding:        9px 14px !important;
+    border-bottom:  1px solid rgba(0,0,0,0.06) !important;
+    vertical-align: top;
+}
+table tbody tr:last-child td {
+    border-bottom: none !important;
 }
 table tbody tr {
     transition: background 0.12s ease;
 }
 table tbody tr:hover {
-    background: rgba(0, 122, 110, 0.06) !important;
+    background: rgba(0,122,110,0.04) !important;
 }
-html.dark table tbody tr:hover {
-    background: rgba(0, 196, 180, 0.08) !important;
+html.dark table thead tr {
+    background:    rgba(255,255,255,0.06) !important;
+    border-bottom: 2px solid rgba(255,255,255,0.1) !important;
 }
-table td:first-child {
-    font-weight: 600 !important;
-    color:       var(--ri-heading) !important;
-}
+html.dark table thead th  { color: rgba(255,255,255,0.7) !important; }
+html.dark table tbody td  { border-bottom-color: rgba(255,255,255,0.06) !important; }
+html.dark table tbody tr:hover { background: rgba(0,196,180,0.06) !important; }
 
 /* ── Cards — lift + teal border on hover ── */
 a.card,
