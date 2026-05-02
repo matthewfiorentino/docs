@@ -381,19 +381,15 @@
       {
         "header": "Clinical Research Hub",
         "items": [
+          { "label": "Latest Updates", "href": "/kb/updates" },
+          { "label": "Community Connect", "href": "/kb/community-connect" },
           { "label": "Knowledge Base", "href": "/kb/introduction" },
-          { "label": "SOPs", "href": "/sops/overview" },
+          { "label": "Clinical Research SOPs", "href": "/sops/overview" },
           { "label": "Training and Learning", "href": "/training/overview" },
-          { "label": "Applications", "href": "/apps/nagano/overview" },
-          { "label": "Latest Updates", "href": "/kb/updates" }
-        ]
-      },
-      {
-        "header": "RI-MUHC",
-        "items": [
-          { "label": "RI-MUHC Portal", "href": "https://portal.rimuhc.ca" },
           { "label": "Centre for Innovative Medicine", "href": "/cim/overview" },
-          { "label": "Contact", "href": "/contacts" }
+          { "label": "Applications", "href": "/apps/nagano/overview" },
+          { "label": "Contact", "href": "/contacts" },
+          { "label": "RI-MUHC Portal", "href": "https://portal.rimuhc.ca" }
         ]
       }
     ],
