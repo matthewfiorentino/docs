@@ -66,13 +66,19 @@ article a:hover,
 }
 
 /* ── Navbar — dark navy background ── */
-#navbar {
-    background:    var(--ri-navy) !important;
-    border-bottom: 1px solid rgba(255,255,255,0.08) !important;
+#navbar,
+#navbar > div,
+#navbar > header,
+[id="navbar"],
+[id="topbar"] {
+    background:       #2b2666 !important;
+    background-color: #2b2666 !important;
+    border-bottom:    1px solid rgba(255,255,255,0.08) !important;
 }
 
 /* ── Navbar — tab strip — white text on navy ── */
-#navbar nav a.link {
+#navbar nav a.link,
+[id="navbar"] nav a.link {
     background:     transparent !important;
     border-radius:  0 !important;
     border-bottom:  2px solid transparent !important;
@@ -81,23 +87,25 @@ article a:hover,
     font-weight:    600 !important;
     transition:     color 0.15s, border-bottom-color 0.15s !important;
 }
-#navbar nav a.link:hover {
+#navbar nav a.link:hover,
+[id="navbar"] nav a.link:hover {
     background:          transparent !important;
     color:               #fff !important;
     border-bottom-color: rgba(255,255,255,0.35) !important;
 }
 #navbar nav a.link[data-active="true"],
-#navbar nav a.link[aria-current="page"] {
+#navbar nav a.link[aria-current="page"],
+[id="navbar"] nav a.link[data-active="true"] {
     background:          transparent !important;
     color:               #fff !important;
-    border-bottom-color: var(--ri-coral) !important;
+    border-bottom-color: #ff537f !important;
     font-weight:         700 !important;
 }
 
 /* ── Contact — coral, right-side nav link ── */
 li.navbar-link a[href="/contacts"] {
     background:  transparent !important;
-    color:       var(--ri-coral) !important;
+    color:       #ff537f !important;
     border:      none !important;
     font-weight: 700 !important;
     opacity:     1 !important;
@@ -105,13 +113,13 @@ li.navbar-link a[href="/contacts"] {
 }
 li.navbar-link a[href="/contacts"]:hover {
     background: transparent !important;
-    color:      var(--ri-coral) !important;
+    color:      #ff537f !important;
     opacity:    0.75 !important;
 }
 
 /* ── Portal — coral, compact, square ── */
 #topbar-cta-button a {
-    background:    var(--ri-coral) !important;
+    background:    #ff537f !important;
     color:         #fff !important;
     border:        none !important;
     border-radius: 0 !important;
