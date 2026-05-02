@@ -14,36 +14,38 @@
     if (!logoLink) return;
 
     // Don't inject twice
-    if (footer.querySelector('.ri-footer-institute-logo')) return;
+    if (footer.querySelector('.ri-footer-logo-rimuhc')) return;
 
-    // Swap main logo src — leave node in place, never move React-owned nodes
-    var mainLogoImg = logoLink.querySelector('img');
-    if (mainLogoImg) {
-      mainLogoImg.src = '/logo/rimuhc-footer-blue.png';
-    }
+    // Hide the original React-managed logo — don't touch its src
+    logoLink.classList.add('ri-footer-original-hidden');
 
-    // Redirect main logo click to rimuhc.ca instead of "/"
-    logoLink.addEventListener('click', function (e) {
-      e.preventDefault();
-      window.open('https://rimuhc.ca', '_blank', 'noopener,noreferrer');
-    });
+    // Insert our own RIMUHC logo (fully new element, React won't touch it)
+    var rimuhcLink = document.createElement('a');
+    rimuhcLink.href = 'https://rimuhc.ca';
+    rimuhcLink.target = '_blank';
+    rimuhcLink.rel = 'noopener noreferrer';
+    var rimuhcImg = document.createElement('img');
+    rimuhcImg.src = '/logo/rimuhc-footer-blue.png';
+    rimuhcImg.alt = 'RI-MUHC';
+    rimuhcImg.className = 'ri-footer-logo-rimuhc';
+    rimuhcLink.appendChild(rimuhcImg);
 
-    // Mark the parent so CSS can collapse its gap
-    logoLink.parentNode.setAttribute('data-ri-footer-logos', 'true');
-
-    // Insert institute logo wrapped in a rimuhc.ca link
+    // Insert our own institute logo
     var instLink = document.createElement('a');
     instLink.href = 'https://rimuhc.ca';
     instLink.target = '_blank';
     instLink.rel = 'noopener noreferrer';
+    var instImg = document.createElement('img');
+    instImg.src = '/logo/institute-dark.png';
+    instImg.alt = 'Research Institute of the McGill University Health Centre';
+    instImg.className = 'ri-footer-logo-institute';
+    instLink.appendChild(instImg);
 
-    var inst = document.createElement('img');
-    inst.src = '/logo/institute-dark.png';
-    inst.alt = 'Research Institute of the McGill University Health Centre';
-    inst.className = 'ri-footer-institute-logo';
-
-    instLink.appendChild(inst);
-    logoLink.parentNode.insertBefore(instLink, logoLink.nextSibling);
+    // Mark parent for CSS gap control, insert both before the hidden original
+    var col = logoLink.parentNode;
+    col.setAttribute('data-ri-footer-logos', 'true');
+    col.insertBefore(instLink, logoLink);
+    col.insertBefore(rimuhcLink, instLink);
   }
 
   var observer = new MutationObserver(function () { inject(); });

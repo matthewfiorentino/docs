@@ -726,15 +726,18 @@ article {
     align-items: flex-start !important;
     gap: 8px !important;
 }
-footer a[href="/"] img {
-    height: 52px !important;
-    width: auto !important;
-    display: block !important;
+.ri-footer-original-hidden {
+    display: none !important;
 }
-.ri-footer-institute-logo {
-    display: block !important;
-    height: 52px !important;
-    width: auto !important;
+.ri-footer-logo-rimuhc {
+    display: block;
+    height: 52px;
+    width: auto;
+}
+.ri-footer-logo-institute {
+    display: block;
+    height: 52px;
+    width: auto;
     opacity: 0.75;
 }
 .ri-home-footer-col { display: flex; flex-direction: column; gap: 10px; min-width: 160px; }
