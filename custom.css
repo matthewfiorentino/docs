@@ -450,6 +450,7 @@ html.dark .ri-phase-card:hover { background: rgba(0,196,180,.05); }
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 12px;
+    margin-top: 20px;
     margin-bottom: 48px;
 }
 .ri-resource-card {
