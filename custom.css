@@ -221,14 +221,13 @@ body:has(.ri-text-hero) #page-title + p {
 /* ══════════════════════════════════════════════
    HOME PAGE — UPDATE BARS
    ══════════════════════════════════════════════ */
-.ri-updates { display: flex; flex-direction: column; gap: 8px; margin-bottom: 48px; }
-.ri-updates-loading { font-size: 13px; color: var(--ri-text-muted, #888); padding: 12px 0; margin-bottom: 48px; }
+.ri-updates { display: flex; flex-direction: column; gap: 14px; margin-bottom: 20px; }
+.ri-updates-loading { font-size: 13px; color: var(--ri-text-muted, #888); padding: 12px 0; margin-bottom: 20px; }
 .ri-update-bar {
-    display: flex; align-items: flex-start; gap: 14px;
-    padding: 13px 18px;
+    display: flex; flex-direction: column; gap: 8px;
+    padding: 20px 22px;
     border: 1px solid rgba(0,0,0,.08);
-    border-radius: 8px;
-    text-decoration: none;
+    border-radius: 10px;
     transition: border-color .15s, box-shadow .15s;
 }
 html.dark .ri-update-bar { border-color: rgba(255,255,255,.08); }
@@ -236,10 +235,11 @@ html.dark .ri-update-bar { border-color: rgba(255,255,255,.08); }
     border-color: var(--ri-accent) !important;
     box-shadow: 0 2px 12px rgba(0,122,110,.08);
 }
+.ri-update-header { display: flex; align-items: center; gap: 10px; }
 .ri-update-tag {
     font-size: 8px; font-weight: 700; letter-spacing: .07em; text-transform: uppercase;
     padding: 3px 9px; border-radius: 9999px;
-    white-space: nowrap; flex-shrink: 0; margin-top: 2px;
+    white-space: nowrap; flex-shrink: 0;
 }
 .ri-tag-train { background: #ede9fe; color: #5b21b6; }
 .ri-tag-reg   { background: #e0f2fe; color: #075985; }
@@ -249,13 +249,26 @@ html.dark .ri-tag-train { background: rgba(91,33,182,.3);  color: #c4b5fd; }
 html.dark .ri-tag-reg   { background: rgba(7,89,133,.3);   color: #7dd3fc; }
 html.dark .ri-tag-inst  { background: rgba(22,101,52,.3);  color: #86efac; }
 html.dark .ri-tag-sop   { background: rgba(157,23,77,.3);  color: #f9a8d4; }
-.ri-update-content { flex: 1; }
-.ri-update-title { font-size: 13.5px; font-weight: 600; line-height: 1.35; }
-.ri-update-desc  { font-size: 12px; opacity: .65; line-height: 1.5; margin-top: 3px; }
 .ri-update-date  {
-    font-family: "Courier New", monospace; font-size: 11px; font-weight: 700;
-    color: #888; letter-spacing: .04em; flex-shrink: 0; margin-top: 2px;
+    font-size: 11px; font-weight: 600; color: #999; letter-spacing: .03em; text-transform: uppercase;
 }
+html.dark .ri-update-date { color: rgba(255,255,255,.4); }
+.ri-update-title { font-size: 15px; font-weight: 700; line-height: 1.35; color: var(--ri-heading, #150e51); }
+html.dark .ri-update-title { color: #fff; }
+.ri-update-desc  { font-size: 13px; line-height: 1.6; color: var(--ri-text-muted, #555); }
+html.dark .ri-update-desc { color: rgba(255,255,255,.55); }
+.ri-updates-more {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 13px; font-weight: 600;
+    color: var(--ri-accent, #007a6e);
+    border: 1.5px solid var(--ri-accent, #007a6e);
+    border-radius: 6px; padding: 7px 16px;
+    text-decoration: none; margin-bottom: 48px;
+    transition: background .15s, color .15s;
+}
+.ri-updates-more:hover { background: var(--ri-accent, #007a6e); color: #fff !important; }
+html.dark .ri-updates-more { color: var(--ri-accent-bright, #00c4b4); border-color: var(--ri-accent-bright, #00c4b4); }
+html.dark .ri-updates-more:hover { background: var(--ri-accent-bright, #00c4b4); color: #150e51 !important; }
 
 /* ══════════════════════════════════════════════
    HOME PAGE — JOURNEY STRIP
@@ -539,8 +552,12 @@ html.dark .ri-hub-body hr {
     background-size: cover;
     background-position: center right;
     background-repeat: no-repeat;
+    background-attachment: fixed;
     color: #fff;
     position: relative;
+}
+@media (max-width: 768px) {
+    .ri-text-hero { background-attachment: scroll; }
 }
 .ri-text-hero-eyebrow {
     font-size: 11px; font-weight: 700; letter-spacing: .15em;

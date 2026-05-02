@@ -5,14 +5,14 @@ mode: "custom"
 
 import { useState, useEffect } from 'react'
 
-export const UpdateBar = ({ tag, tagClass, title, desc, date, linkHref, linkLabel }) => (
+export const UpdateBar = ({ tag, tagClass, title, desc, date }) => (
   <div className="ri-update-bar">
-    {tag && <span className={`ri-update-tag ${tagClass}`}>{tag}</span>}
-    <div className="ri-update-content">
-      <div className="ri-update-title">{title}</div>
-      <div className="ri-update-desc">{desc}{linkHref ? <> <a href={linkHref}>{linkLabel} →</a></> : null}</div>
+    <div className="ri-update-header">
+      <span className="ri-update-date">{date}</span>
+      {tag && <span className={`ri-update-tag ${tagClass}`}>{tag}</span>}
     </div>
-    <span className="ri-update-date">{date}</span>
+    <div className="ri-update-title">{title}</div>
+    <div className="ri-update-desc">{desc}</div>
   </div>
 );
 
@@ -61,21 +61,22 @@ export const LiveUpdates = () => {
   }, []);
 
   if (!done) return <div className="ri-updates-loading">Loading…</div>;
-  if (debug) return <div className="ri-updates-loading">Updates unavailable — {debug}. <a href="/kb/updates">See all updates →</a></div>;
-  if (!items.length) return <div className="ri-updates-loading"><a href="/kb/updates">See all updates →</a></div>;
+  if (debug) return <div className="ri-updates-loading">Updates unavailable — {debug}.</div>;
+  if (!items.length) return <a href="/kb/updates" className="ri-updates-more">See all updates →</a>;
 
   return (
-    <div className="ri-updates">
-      {items.map((item, i) => (
-        <UpdateBar
-          key={i}
-          date={item.date}
-          title={item.title}
-          desc={item.desc}
-          linkHref="/kb/updates"
-          linkLabel="See all updates"
-        />
-      ))}
+    <div>
+      <div className="ri-updates">
+        {items.map((item, i) => (
+          <UpdateBar
+            key={i}
+            date={item.date}
+            title={item.title}
+            desc={item.desc}
+          />
+        ))}
+      </div>
+      <a href="/kb/updates" className="ri-updates-more">See all updates →</a>
     </div>
   );
 };
