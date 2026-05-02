@@ -44,13 +44,7 @@
           {
             "group": "Knowledge Base",
             "pages": [
-              {
-                "group": "About the Knowledge Base",
-                "expanded": true,
-                "pages": [
-                  "kb/introduction"
-                ]
-              },
+              "kb/introduction",
               {
                 "group": "Getting Started",
                 "expanded": false,
@@ -165,13 +159,7 @@
                   "kb/governance/conflict-of-interest"
                 ]
               },
-              {
-                "group": "Glossary",
-                "expanded": false,
-                "pages": [
-                  "kb/glossary"
-                ]
-              }
+              "kb/glossary"
             ]
           }
         ]
@@ -182,13 +170,7 @@
           {
             "group": "Clinical Research SOPs",
             "pages": [
-              {
-                "group": "About the SOPs",
-                "expanded": true,
-                "pages": [
-                  "sops/overview"
-                ]
-              },
+              "sops/overview",
               {
                 "group": "SOP-CR-002 — Research Team Roles",
                 "expanded": false,
@@ -253,13 +235,7 @@
           {
             "group": "Training and Learning",
             "pages": [
-              {
-                "group": "Overview",
-                "expanded": true,
-                "pages": [
-                  "training/overview"
-                ]
-              },
+              "training/overview",
               {
                 "group": "Requirements",
                 "expanded": false,
@@ -290,13 +266,7 @@
           {
             "group": "Centre for Innovative Medicine",
             "pages": [
-              {
-                "group": "Overview",
-                "expanded": true,
-                "pages": [
-                  "cim/overview"
-                ]
-              },
+              "cim/overview",
               {
                 "group": "For Researchers",
                 "expanded": false,
