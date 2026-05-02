@@ -65,56 +65,44 @@ article a:hover,
     font-weight: 600 !important;
 }
 
-/* ── Navbar — dark navy background ── */
-#navbar,
-#navbar > div,
-#navbar > header,
-[id="navbar"],
-[id="topbar"] {
-    background:       #2b2666 !important;
-    background-color: #2b2666 !important;
-    border-bottom:    1px solid rgba(255,255,255,0.08) !important;
-}
-
-/* ── Navbar — tab strip — white text on navy ── */
-#navbar nav a.link,
-[id="navbar"] nav a.link {
+/* ── Navbar — tab strip ── */
+#navbar nav a.link {
     background:     transparent !important;
     border-radius:  0 !important;
     border-bottom:  2px solid transparent !important;
     padding-bottom: 2px !important;
-    color:          rgba(255,255,255,0.75) !important;
+    color:          #150e51 !important;
+    font-size:      13px !important;
     font-weight:    600 !important;
     transition:     color 0.15s, border-bottom-color 0.15s !important;
 }
-#navbar nav a.link:hover,
-[id="navbar"] nav a.link:hover {
+#navbar nav a.link:hover {
     background:          transparent !important;
-    color:               #fff !important;
-    border-bottom-color: rgba(255,255,255,0.35) !important;
+    color:               #150e51 !important;
+    border-bottom-color: rgba(21,14,81,0.3) !important;
 }
 #navbar nav a.link[data-active="true"],
-#navbar nav a.link[aria-current="page"],
-[id="navbar"] nav a.link[data-active="true"] {
+#navbar nav a.link[aria-current="page"] {
     background:          transparent !important;
-    color:               #fff !important;
-    border-bottom-color: #ff537f !important;
+    color:               #150e51 !important;
+    border-bottom-color: #150e51 !important;
     font-weight:         700 !important;
 }
 
-/* ── Contact — coral, right-side nav link ── */
+/* ── Contact — muted navy, distinct from tabs ── */
 li.navbar-link a[href="/contacts"] {
-    background:  transparent !important;
-    color:       #ff537f !important;
-    border:      none !important;
-    font-weight: 700 !important;
-    opacity:     1 !important;
-    transition:  opacity 0.15s !important;
+    background:     transparent !important;
+    color:          #150e51 !important;
+    border:         none !important;
+    font-size:      13px !important;
+    font-weight:    600 !important;
+    opacity:        0.5 !important;
+    transition:     opacity 0.15s !important;
 }
 li.navbar-link a[href="/contacts"]:hover {
     background: transparent !important;
-    color:      #ff537f !important;
-    opacity:    0.75 !important;
+    color:      #150e51 !important;
+    opacity:    0.8 !important;
 }
 
 /* ── Portal — coral, compact, square ── */
@@ -122,9 +110,9 @@ li.navbar-link a[href="/contacts"]:hover {
     background:    #ff537f !important;
     color:         #fff !important;
     border:        none !important;
-    border-radius: 0 !important;
+    border-radius: 4px !important;
     font-weight:   700 !important;
-    font-size:     12px !important;
+    font-size:     13px !important;
     padding:       6px 14px !important;
     transition:    background 0.15s !important;
 }
