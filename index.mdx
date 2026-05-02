@@ -38,20 +38,9 @@ export const LiveUpdates = () => {
           return;
         }
         const tagMap = { Training: 'ri-tag-train', Regulatory: 'ri-tag-reg', Hub: 'ri-tag-inst' };
-        const parsed = els.slice(0, 2).map(el => {
-          const g = tag => el.getElementsByTagName(tag)[0]?.textContent?.trim() || '';
-          const label = g('title');
-          const descHtml = g('description');
-          const inner = new DOMParser().parseFromString(descHtml, 'text/html');
-          const headingEl = inner.querySelector('h1,h2,h3,h4,h5,h6');
-          const title = headingEl?.textContent?.trim() || label;
-          if (headingEl) headingEl.remove();
-          const rawDesc = inner.body.textContent.trim();
-          const desc = rawDesc.length > 160 ? rawDesc.slice(0, 157) + '…' : rawDesc;
-          const tag = g('category');
-          return { title, desc, date: label, tag, tagClass: tagMap[tag] || 'ri-tag-inst' };
-        }).filter(p => p.title);
-        setItems(parsed);
+        const first = els[0];
+        const allTags = Array.from(first.childNodes).map(n => n.nodeName + '=' + JSON.stringify(n.textContent?.slice(0,80))).join(' | ');
+        setDebug('FIRST ITEM FIELDS: ' + allTags);
         setDone(true);
       })
       .catch(err => {
