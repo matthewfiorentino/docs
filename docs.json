@@ -60,12 +60,24 @@
                 "group": "Onboarding Guides",
                 "expanded": false,
                 "pages": [
-                  "kb/roles/pi-pathway",
-                  "kb/roles/pi-guide",
-                  "kb/roles/crc-pathway",
-                  "kb/roles/crc-guide",
-                  "kb/roles/crc-guide-iv",
-                  "kb/roles/crc-guide-v",
+                  {
+                    "group": "PI / Qualified Investigator",
+                    "pages": [
+                      "kb/roles/pi-pathway",
+                      "kb/roles/pi-guide",
+                      "kb/roles/pi-guide-iv",
+                      "kb/roles/pi-guide-v"
+                    ]
+                  },
+                  {
+                    "group": "Clinical Research Coordinator",
+                    "pages": [
+                      "kb/roles/crc-pathway",
+                      "kb/roles/crc-guide",
+                      "kb/roles/crc-guide-iv",
+                      "kb/roles/crc-guide-v"
+                    ]
+                  },
                   "kb/roles/nurse-pathway",
                   "kb/roles/onboarding"
                 ]
