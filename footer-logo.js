@@ -18,12 +18,18 @@
     // Don't inject twice
     if (footer.querySelector('.ri-footer-institute-logo')) return;
 
+    // Swap the main footer logo to the footer-specific version (blue text on white bg)
+    var mainLogoImg = logoLink.querySelector('img');
+    if (mainLogoImg) {
+      mainLogoImg.src = '/logo/rimuhc-footer-blue.png';
+    }
+
+    // Inject institute logo below
     var img = document.createElement('img');
     img.src = '/logo/institute-dark.png';
     img.alt = 'Research Institute of the McGill University Health Centre';
     img.className = 'ri-footer-institute-logo';
 
-    // Insert after the logo link, inside the same container
     logoLink.parentNode.insertBefore(img, logoLink.nextSibling);
   }
 
