@@ -50,6 +50,7 @@
                 "pages": [
                   "kb/introduction",
                   "kb/updates",
+                  "kb/community-connect",
                   {
                     "group": "Getting Started",
                     "expanded": false,
@@ -263,7 +264,6 @@
                     "expanded": false,
                     "pages": [
                       "training/learning-lab",
-                      "training/community-connect",
                       "training/talentlms"
                     ]
                   }

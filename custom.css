@@ -701,6 +701,41 @@ article {
     .ri-home-footer-inner { gap: 36px; }
 }
 
+/* ── Community Connect — video embed ── */
+.cc-video-wrap {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 */
+    height: 0;
+    overflow: hidden;
+    border-radius: 8px;
+    background: #150e51;
+    margin: 16px 0 0;
+}
+.cc-video-wrap iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+.cc-video-meta {
+    margin-top: 14px;
+    margin-bottom: 24px;
+}
+.cc-video-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--ri-heading);
+    margin-bottom: 4px;
+}
+.cc-video-date {
+    font-family: "Courier New", monospace;
+    font-size: 11px;
+    color: #888;
+    letter-spacing: 0.04em;
+    margin-bottom: 8px;
+}
+
 /* ── SOP meta bar ── */
 .ri-sop-meta {
     display: flex;
