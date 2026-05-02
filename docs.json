@@ -23,10 +23,6 @@
         "label": "Contact",
         "href": "/contacts"
       },
-      {
-        "label": "FR",
-        "href": "/fr"
-      }
     ],
     "primary": {
       "type": "button",
@@ -35,307 +31,335 @@
     }
   },
   "navigation": {
-    "anchors": [
+    "languages": [
       {
-        "anchor": "Get in touch",
-        "url": "contacts",
-        "icon": "address-book"
-      }
-    ],
-    "tabs": [
-      {
-        "tab": "Knowledge Base",
-        "groups": [
+        "language": "en",
+        "anchors": [
           {
-            "group": "Knowledge Base",
-            "pages": [
-              "kb/introduction",
-              "kb/updates",
+            "anchor": "Get in touch",
+            "url": "contacts",
+            "icon": "address-book"
+          }
+        ],
+        "tabs": [
+          {
+            "tab": "Knowledge Base",
+            "groups": [
               {
-                "group": "Getting Started",
-                "expanded": false,
+                "group": "Knowledge Base",
                 "pages": [
-                  "kb/clinical-research-101",
-                  "kb/trial-design",
-                  "kb/gcp-quality-by-design",
-                  "kb/study-lifecycle"
+                  "kb/introduction",
+                  "kb/updates",
+                  {
+                    "group": "Getting Started",
+                    "expanded": false,
+                    "pages": [
+                      "kb/clinical-research-101",
+                      "kb/trial-design",
+                      "kb/gcp-quality-by-design",
+                      "kb/study-lifecycle"
+                    ]
+                  },
+                  {
+                    "group": "Onboarding Guides",
+                    "expanded": false,
+                    "pages": [
+                      {
+                        "group": "PI / Qualified Investigator",
+                        "pages": [
+                          "kb/roles/pi-pathway",
+                          "kb/roles/pi-guide",
+                          "kb/roles/pi-guide-iv",
+                          "kb/roles/pi-guide-v"
+                        ]
+                      },
+                      {
+                        "group": "Clinical Research Coordinator",
+                        "pages": [
+                          "kb/roles/crc-pathway",
+                          "kb/roles/crc-guide",
+                          "kb/roles/crc-guide-iv",
+                          "kb/roles/crc-guide-v"
+                        ]
+                      },
+                      {
+                        "group": "Research Nurse",
+                        "pages": [
+                          "kb/roles/nurse-pathway",
+                          "kb/roles/nurse-guide"
+                        ]
+                      },
+                      {
+                        "group": "Students, Trainees & Visitors",
+                        "pages": [
+                          "kb/roles/onboarding-trainees",
+                          "kb/roles/onboarding-volunteers",
+                          "kb/roles/onboarding-observers"
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "group": "Study Planning",
+                    "expanded": false,
+                    "pages": [
+                      "kb/planning/overview",
+                      "kb/planning/feasibility",
+                      "kb/planning/study-design",
+                      "kb/planning/building-your-team",
+                      "kb/planning/sponsored-trials",
+                      "kb/planning/sponsor-investigator",
+                      "kb/planning/dct-design",
+                      "kb/planning/multi-centric",
+                      {
+                        "group": "Data and Research Services",
+                        "expanded": false,
+                        "pages": [
+                          "kb/planning/bcu",
+                          "kb/planning/cord",
+                          "kb/planning/data-warehouse"
+                        ]
+                      },
+                      "kb/planning/research-grants",
+                      "kb/planning/regulations",
+                      "kb/planning/budgets-contracts"
+                    ]
+                  },
+                  {
+                    "group": "Submission & Review",
+                    "expanded": false,
+                    "pages": [
+                      "kb/submission/overview",
+                      "kb/submission/preparing",
+                      "kb/submission/submitting-via-nagano",
+                      "kb/submission/tracking-responding",
+                      "kb/submission/study-review"
+                    ]
+                  },
+                  {
+                    "group": "Study Conduct",
+                    "expanded": false,
+                    "pages": [
+                      "kb/conduct/overview",
+                      "kb/conduct/site-setup",
+                      "kb/conduct/consent",
+                      "kb/conduct/recruitment-enrollment",
+                      "kb/conduct/privacy",
+                      "kb/conduct/data-security",
+                      "kb/conduct/data-integrity",
+                      "kb/conduct/protocol-documents",
+                      "kb/conduct/isf",
+                      "kb/conduct/investigational-products",
+                      "kb/conduct/biological-specimens",
+                      "kb/conduct/decentralized-trials",
+                      "kb/conduct/reportable-events",
+                      "kb/conduct/team-management",
+                      "kb/conduct/monitoring-audits",
+                      "kb/conduct/close-out",
+                      "kb/conduct/publications"
+                    ]
+                  },
+                  {
+                    "group": "Governance and Oversight",
+                    "expanded": false,
+                    "pages": [
+                      "kb/governance/institutional-structure",
+                      "kb/governance/regulatory-framework",
+                      "kb/governance/quality-assurance",
+                      "kb/governance/research-integrity",
+                      "kb/governance/conflict-of-interest"
+                    ]
+                  },
+                  "kb/glossary"
                 ]
-              },
+              }
+            ]
+          },
+          {
+            "tab": "Clinical Research SOPs",
+            "groups": [
               {
-                "group": "Onboarding Guides",
-                "expanded": false,
+                "group": "Clinical Research SOPs",
                 "pages": [
+                  "sops/overview",
                   {
-                    "group": "PI / Qualified Investigator",
+                    "group": "SOP-CR-002 — Research Team Roles",
+                    "expanded": false,
                     "pages": [
-                      "kb/roles/pi-pathway",
-                      "kb/roles/pi-guide",
-                      "kb/roles/pi-guide-iv",
-                      "kb/roles/pi-guide-v"
+                      "sops/cr-002-overview",
+                      "sops/cr-002"
                     ]
                   },
                   {
-                    "group": "Clinical Research Coordinator",
+                    "group": "SOP-CR-008 — Informed Consent",
+                    "expanded": false,
                     "pages": [
-                      "kb/roles/crc-pathway",
-                      "kb/roles/crc-guide",
-                      "kb/roles/crc-guide-iv",
-                      "kb/roles/crc-guide-v"
+                      "sops/cr-008-overview",
+                      "sops/cr-008"
                     ]
                   },
                   {
-                    "group": "Research Nurse",
+                    "group": "Core Series — Team & Study Management",
+                    "expanded": false,
                     "pages": [
-                      "kb/roles/nurse-pathway",
-                      "kb/roles/nurse-guide"
+                      "sops/team-governance",
+                      "sops/study-setup"
                     ]
                   },
                   {
-                    "group": "Students, Trainees & Visitors",
+                    "group": "Core Series — Participants & Safety",
+                    "expanded": false,
                     "pages": [
-                      "kb/roles/onboarding-trainees",
-                      "kb/roles/onboarding-volunteers",
-                      "kb/roles/onboarding-observers"
+                      "sops/participants",
+                      "sops/safety-reporting"
+                    ]
+                  },
+                  {
+                    "group": "Core Series — Data & Records",
+                    "expanded": false,
+                    "pages": [
+                      "sops/data-records",
+                      "sops/investigational-products"
+                    ]
+                  },
+                  {
+                    "group": "Core Series — Oversight",
+                    "expanded": false,
+                    "pages": [
+                      "sops/monitoring-inspection"
+                    ]
+                  },
+                  {
+                    "group": "Sponsor-Investigator Series",
+                    "expanded": false,
+                    "pages": [
+                      "sops/sponsor-investigator"
                     ]
                   }
                 ]
-              },
+              }
+            ]
+          },
+          {
+            "tab": "Training and Learning",
+            "groups": [
               {
-                "group": "Study Planning",
-                "expanded": false,
+                "group": "Training and Learning",
                 "pages": [
-                  "kb/planning/overview",
-                  "kb/planning/feasibility",
-                  "kb/planning/study-design",
-                  "kb/planning/building-your-team",
-                  "kb/planning/sponsored-trials",
-                  "kb/planning/sponsor-investigator",
-                  "kb/planning/dct-design",
-                  "kb/planning/multi-centric",
+                  "training/overview",
                   {
-                    "group": "Data and Research Services",
+                    "group": "Requirements",
                     "expanded": false,
                     "pages": [
-                      "kb/planning/bcu",
-                      "kb/planning/cord",
-                      "kb/planning/data-warehouse"
+                      "training/compliance-requirements",
+                      "training/research-privileges",
+                      "training/external-certifications",
+                      "training/study-classifier",
+                      "training/cantrain"
                     ]
                   },
-                  "kb/planning/research-grants",
-                  "kb/planning/regulations",
-                  "kb/planning/budgets-contracts"
-                ]
-              },
-              {
-                "group": "Submission & Review",
-                "expanded": false,
-                "pages": [
-                  "kb/submission/overview",
-                  "kb/submission/preparing",
-                  "kb/submission/submitting-via-nagano",
-                  "kb/submission/tracking-responding",
-                  "kb/submission/study-review"
-                ]
-              },
-              {
-                "group": "Study Conduct",
-                "expanded": false,
-                "pages": [
-                  "kb/conduct/overview",
-                  "kb/conduct/site-setup",
-                  "kb/conduct/consent",
-                  "kb/conduct/recruitment-enrollment",
-                  "kb/conduct/privacy",
-                  "kb/conduct/data-security",
-                  "kb/conduct/data-integrity",
-                  "kb/conduct/protocol-documents",
-                  "kb/conduct/isf",
-                  "kb/conduct/investigational-products",
-                  "kb/conduct/biological-specimens",
-                  "kb/conduct/decentralized-trials",
-                  "kb/conduct/reportable-events",
-                  "kb/conduct/team-management",
-                  "kb/conduct/monitoring-audits",
-                  "kb/conduct/close-out",
-                  "kb/conduct/publications"
-                ]
-              },
-              {
-                "group": "Governance and Oversight",
-                "expanded": false,
-                "pages": [
-                  "kb/governance/institutional-structure",
-                  "kb/governance/regulatory-framework",
-                  "kb/governance/quality-assurance",
-                  "kb/governance/research-integrity",
-                  "kb/governance/conflict-of-interest"
-                ]
-              },
-              "kb/glossary"
-            ]
-          }
-        ]
-      },
-      {
-        "tab": "Clinical Research SOPs",
-        "groups": [
-          {
-            "group": "Clinical Research SOPs",
-            "pages": [
-              "sops/overview",
-              {
-                "group": "SOP-CR-002 — Research Team Roles",
-                "expanded": false,
-                "pages": [
-                  "sops/cr-002-overview",
-                  "sops/cr-002"
-                ]
-              },
-              {
-                "group": "SOP-CR-008 — Informed Consent",
-                "expanded": false,
-                "pages": [
-                  "sops/cr-008-overview",
-                  "sops/cr-008"
-                ]
-              },
-              {
-                "group": "Core Series — Team & Study Management",
-                "expanded": false,
-                "pages": [
-                  "sops/team-governance",
-                  "sops/study-setup"
-                ]
-              },
-              {
-                "group": "Core Series — Participants & Safety",
-                "expanded": false,
-                "pages": [
-                  "sops/participants",
-                  "sops/safety-reporting"
-                ]
-              },
-              {
-                "group": "Core Series — Data & Records",
-                "expanded": false,
-                "pages": [
-                  "sops/data-records",
-                  "sops/investigational-products"
-                ]
-              },
-              {
-                "group": "Core Series — Oversight",
-                "expanded": false,
-                "pages": [
-                  "sops/monitoring-inspection"
-                ]
-              },
-              {
-                "group": "Sponsor-Investigator Series",
-                "expanded": false,
-                "pages": [
-                  "sops/sponsor-investigator"
-                ]
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "tab": "Training and Learning",
-        "groups": [
-          {
-            "group": "Training and Learning",
-            "pages": [
-              "training/overview",
-              {
-                "group": "Requirements",
-                "expanded": false,
-                "pages": [
-                  "training/compliance-requirements",
-                  "training/research-privileges",
-                  "training/external-certifications",
-                  "training/study-classifier",
-                  "training/cantrain"
-                ]
-              },
-              {
-                "group": "Learning",
-                "expanded": false,
-                "pages": [
-                  "training/learning-lab",
-                  "training/community-connect",
-                  "training/talentlms"
-                ]
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "tab": "Centre for Innovative Medicine",
-        "groups": [
-          {
-            "group": "Centre for Innovative Medicine",
-            "pages": [
-              "cim/overview",
-              {
-                "group": "For Researchers",
-                "expanded": false,
-                "pages": [
-                  "cim/services",
-                  "cim/planning"
-                ]
-              },
-              {
-                "group": "For CIM Staff",
-                "expanded": false,
-                "pages": [
-                  "cim/researcher-guide",
-                  "cim/training",
-                  "cim/wi-sops"
-                ]
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "tab": "Applications",
-        "groups": [
-          {
-            "group": "Applications",
-            "pages": [
-              {
-                "group": "Nagano",
-                "expanded": true,
-                "pages": [
-                  "apps/nagano/overview",
                   {
-                    "group": "Nagano User Guide",
+                    "group": "Learning",
                     "expanded": false,
                     "pages": [
-                      "apps/nagano/guide-00",
-                      "apps/nagano/guide-01",
-                      "apps/nagano/guide-02",
-                      "apps/nagano/guide-03",
-                      "apps/nagano/guide-04",
-                      "apps/nagano/guide-05",
-                      "apps/nagano/guide-06",
-                      "apps/nagano/guide-07",
-                      "apps/nagano/guide-08",
-                      "apps/nagano/guide-09",
-                      "apps/nagano/guide-10",
-                      "apps/nagano/guide-11",
-                      "apps/nagano/guide-12",
-                      "apps/nagano/guide-13"
+                      "training/learning-lab",
+                      "training/community-connect",
+                      "training/talentlms"
                     ]
                   }
                 ]
-              },
-              "apps/redcap",
-              "apps/talentlms",
-              "apps/oacis"
+              }
+            ]
+          },
+          {
+            "tab": "Centre for Innovative Medicine",
+            "groups": [
+              {
+                "group": "Centre for Innovative Medicine",
+                "pages": [
+                  "cim/overview",
+                  {
+                    "group": "For Researchers",
+                    "expanded": false,
+                    "pages": [
+                      "cim/services",
+                      "cim/planning"
+                    ]
+                  },
+                  {
+                    "group": "For CIM Staff",
+                    "expanded": false,
+                    "pages": [
+                      "cim/researcher-guide",
+                      "cim/training",
+                      "cim/wi-sops"
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "tab": "Applications",
+            "groups": [
+              {
+                "group": "Applications",
+                "pages": [
+                  {
+                    "group": "Nagano",
+                    "expanded": true,
+                    "pages": [
+                      "apps/nagano/overview",
+                      {
+                        "group": "Nagano User Guide",
+                        "expanded": false,
+                        "pages": [
+                          "apps/nagano/guide-00",
+                          "apps/nagano/guide-01",
+                          "apps/nagano/guide-02",
+                          "apps/nagano/guide-03",
+                          "apps/nagano/guide-04",
+                          "apps/nagano/guide-05",
+                          "apps/nagano/guide-06",
+                          "apps/nagano/guide-07",
+                          "apps/nagano/guide-08",
+                          "apps/nagano/guide-09",
+                          "apps/nagano/guide-10",
+                          "apps/nagano/guide-11",
+                          "apps/nagano/guide-12",
+                          "apps/nagano/guide-13"
+                        ]
+                      }
+                    ]
+                  },
+                  "apps/redcap",
+                  "apps/talentlms",
+                  "apps/oacis"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "language": "fr",
+        "anchors": [
+          {
+            "anchor": "Nous contacter",
+            "url": "contacts",
+            "icon": "address-book"
+          }
+        ],
+        "tabs": [
+          {
+            "tab": "Base de connaissances",
+            "groups": [
+              {
+                "group": "Base de connaissances",
+                "pages": [
+                  "fr/kb/introduction"
+                ]
+              }
             ]
           }
         ]
