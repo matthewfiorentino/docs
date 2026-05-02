@@ -704,14 +704,28 @@ article {
 }
 .ri-home-footer-logo-col {
     display: flex;
+    flex-direction: column;
     align-items: flex-start;
+    gap: 12px;
     margin-right: 16px;
+}
+.ri-home-footer-institute-logo {
+    height: 36px;
+    width: auto;
+    opacity: 0.85;
 }
 .ri-home-footer-logo {
     height: 52px;
     width: auto;
     display: block;
     opacity: 0.9;
+}
+.ri-footer-institute-logo {
+    display: block;
+    height: 32px;
+    width: auto;
+    margin-top: 10px;
+    opacity: 0.75;
 }
 .ri-home-footer-col { display: flex; flex-direction: column; gap: 10px; min-width: 160px; }
 .ri-home-footer-head {
