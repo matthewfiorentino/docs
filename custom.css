@@ -49,32 +49,42 @@ article a:hover,
 }
 
 /* ── "On this page" TOC ── */
-/* Only reset the outermost ul — nested uls keep their indentation
-   so h3 entries stay visually nested under their h2 parent        */
-#table-of-contents-content > ul {
-    padding-left: 0 !important;
-    margin-left:  0 !important;
-}
-#table-of-contents-content ul {
-    list-style: none !important;
-}
-#table-of-contents-content li {
-    margin-top:    0 !important;
-    margin-bottom: 0 !important;
-}
-#table-of-contents-content a {
-    color:       inherit !important;
+/* Mintlify uses <toc-item> custom elements, not <li>              */
+/* data-active / data-active-deepest have no value — just presence */
+
+toc-item a {
     font-size:   11.5px !important;
     line-height: 1.4 !important;
+    color:       inherit !important;
 }
-/* Active deepest: accent colour + inset left bar — zero layout shift */
-#table-of-contents-content li[data-active-deepest="true"] > a {
+/* Reserve dot space on ALL items so active state never shifts layout */
+toc-item {
+    display:      block !important;
+    position:     relative !important;
+    padding-left: 10px !important;
+}
+toc-item::before {
+    content:       '' !important;
+    position:      absolute !important;
+    left:          0 !important;
+    top:           50% !important;
+    transform:     translateY(-50%) !important;
+    width:         5px !important;
+    height:        5px !important;
+    border-radius: 50% !important;
+    background:    transparent !important;
+    transition:    background 0.15s !important;
+}
+/* Active deepest: fill dot + accent colour */
+toc-item[data-active-deepest] a {
     color:       var(--ri-accent) !important;
     font-weight: 600 !important;
-    box-shadow:  inset 2px 0 0 var(--ri-accent) !important;
 }
-/* Parent of active section: accent colour only, no bar */
-#table-of-contents-content li[data-active="true"] > a {
+toc-item[data-active-deepest]::before {
+    background: var(--ri-accent) !important;
+}
+/* Parent of active section: accent colour only, no dot */
+toc-item[data-active] a {
     color: var(--ri-accent) !important;
 }
 
