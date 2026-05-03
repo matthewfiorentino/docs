@@ -7,6 +7,22 @@ This guide prepares <Tooltip tip="The physician responsible to the sponsor for t
 
 After completing this guide you will be able to describe the purpose and regulatory framework of Health Canada inspections; identify key roles and responsibilities; apply procedures for document preparation, facility readiness, and team coordination; and understand post-inspection CAPA requirements.
 
+```mermaid
+flowchart LR
+    A["Notice received\n(routine: ~4 weeks\nfor-cause: no notice)"] --> B["Contact QA\nwithin 24 hours"]
+    B --> C["Preparation phase\n(team · documents · facility)"]
+    C --> D["Inspection\n(5 days on-site\n10 days remote)"]
+    D --> E["Closing meeting\n(last inspection day)"]
+    E --> F["Draft Exit Notice\n(within 3 weeks;\n48h before Exit Meeting)"]
+    F --> G["Exit Meeting"]
+    G --> H["Final Exit Notice\nissued"]
+    H --> I["CAPA response\n(30 calendar days)"]
+    I --> J{"Further\nclarification\nneeded?"}
+    J -- Yes --> K["Follow-up letter\nfrom HC"]
+    K --> I
+    J -- No --> L["Inspection closed\n(written acknowledgement)"]
+```
+
 <Warning>
 Contact <Tooltip tip="All planned and systematic actions to ensure trial data are generated, documented, and reported in compliance with GCP and SOPs." headline="Quality Assurance (QA)" cta="Full definition" href="/kb/glossary#qa">QA</Tooltip> at **QAClinicalresearch@muhc.mcgill.ca within 24 hours** of receiving an inspection notice. Four weeks is not as much time as it seems.
 </Warning>
