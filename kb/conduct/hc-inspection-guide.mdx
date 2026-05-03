@@ -13,23 +13,6 @@ Contact <Tooltip tip="All planned and systematic actions to ensure trial data ar
 
 ## How Health Canada conducts inspections
 
-```mermaid
-flowchart TD
-    A["📬 Notice received\n(routine: ~4 weeks / for-cause: no notice)"]
-    --> B["📞 Contact QA within 24 hours"]
-    --> C["📋 Preparation phase\n(team · documents · facility)"]
-    --> D["🔍 Inspection\n(5 days on-site / 10 days remote)"]
-    --> E["📝 Closing meeting\n(last inspection day)"]
-    --> F["📄 Draft Exit Notice\n(within 3 weeks; 48h before Exit Meeting)"]
-    --> G["🤝 Exit Meeting"]
-    --> H["✅ Final Exit Notice issued"]
-    --> I["📤 CAPA response\n(30 calendar days)"]
-    --> J{"Further clarification\nneeded?"}
-    J -- Yes --> K["Follow-up letter from HC"]
-    K --> I
-    J -- No --> L["✔ Inspection closed"]
-```
-
 ### The Regulatory Operations and Enforcement Branch (ROEB)
 
 Health Canada inspections of clinical trials are conducted by the **Clinical Trial Compliance Program (CTCP)** of the **Regulatory Operations and Enforcement Branch (ROEB)**. The ROEB's responsibilities span three compliance areas: Medical Devices and Clinical Compliance; Clinical Compliance, Border Operations, and Canada Vigilance; and Clinical Trial and Biological Product Compliance.
@@ -91,6 +74,23 @@ Findings are handled by Health Canada's Health Products and Food Branch (HPFB) t
 - **Formal enforcement** — For more serious findings, a follow-up inspection or formal CAPA plan may be required
 - **Coordination with other branches** — Significant non-compliance may involve the Therapeutic Products Directorate (TPD) or Biologics and Radiopharmaceutical Drugs Directorate (BRDD), which can recommend suspending study authorization or reassessing data validity
 - **Criminal investigation** — If non-compliance is deemed criminal in nature (e.g., fraud), Health Canada may initiate an investigation under the Criminal Code of Canada. Note that inspectors have limited authority in criminal cases; such investigations fall under separate legal oversight.
+
+```mermaid
+flowchart TD
+    A["📬 Notice received\n(routine: ~4 weeks / for-cause: no notice)"]
+    --> B["📞 Contact QA within 24 hours"]
+    --> C["📋 Preparation phase\n(team · documents · facility)"]
+    --> D["🔍 Inspection\n(5 days on-site / 10 days remote)"]
+    --> E["📝 Closing meeting\n(last inspection day)"]
+    --> F["📄 Draft Exit Notice\n(within 3 weeks; 48h before Exit Meeting)"]
+    --> G["🤝 Exit Meeting"]
+    --> H["✅ Final Exit Notice issued"]
+    --> I["📤 CAPA response\n(30 calendar days)"]
+    --> J{"Further clarification\nneeded?"}
+    J -- Yes --> K["Follow-up letter from HC"]
+    K --> I
+    J -- No --> L["✔ Inspection closed"]
+```
 
 ---
 
