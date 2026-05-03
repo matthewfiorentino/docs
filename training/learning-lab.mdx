@@ -6,7 +6,7 @@ mode: "wide"
 
 import { useEffect } from 'react'
 
-const LL_CSS = `:root {
+export const LL_CSS = `:root {
   --navy:        #150e51;
   --navy-card:   #2b2666;
   --teal:        #007a6e;
@@ -482,7 +482,7 @@ const LL_CSS = `:root {
 .jc-review-label { font-size: 9px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: var(--textd); border-top: 1px solid var(--bdr-soft); padding-top: 24px; margin: 0 0 24px; }
 @media (max-width: 699px) { .jc-cast { grid-template-columns: 1fr; } }`;
 
-const LL_HTML_1 = `
+export const LL_HTML_1 = `
 
 <div class="kp-stage">
 
@@ -1511,7 +1511,7 @@ const LL_HTML_1 = `
   
   <div class="te-section-head" style="margin-top:40px">Preparing for day one</div>
 `;
-const LL_HTML_2 = `  <div class="te-block">
+export const LL_HTML_2 = `  <div class="te-block">
     <ul class="te-questions">
       <li class="te-question" style="border-top:none">
         <div class="te-q-text">Walk through what the Health Canada inspector will want to see in the first two hours. What documents will be requested first? Given what Am&eacute;lie knows, which areas are most likely to generate observations?</div>
@@ -2540,7 +2540,7 @@ const LL_HTML_2 = `  <div class="te-block">
 </div>`;
 
 
-const LL_JS_1 = `
+export const LL_JS_1 = `
 
 
 /* ════════════════════════════════════════════
@@ -3047,7 +3047,7 @@ var KP_POOL = [
     correct:1,
     rationale:'Per SOP-CR-008 section 5.3.1, when a participant begins a study with investigational product (drug, device, or NHP), the Confirmation of Participation form (FMU-9997) and a copy of the signed ICF must be sent to MUHC Medical Records to be filed in the Alert section of the participant\u2019s OACIS chart. This ensures any caregiver providing emergency or other care is aware of the participant\u2019s study involvement and can access the QI/PI contact information.',
 `;
-const LL_JS_2 = `    ref:'<a href="SOP-CR-008-overview.html">SOP-CR-008 \u00a75.3.1</a>' },
+export const LL_JS_2 = `    ref:'<a href="SOP-CR-008-overview.html">SOP-CR-008 \u00a75.3.1</a>' },
 
   { id:'ic-c9', type:'check', topic:'Informed Consent', topicId:'consent', applies:'all',
     q:'A participant wants to take the ICF home overnight to review with their family before signing. What should you do?',
@@ -3554,7 +3554,7 @@ var KP_INSPECTION = [
     prep:'Who should have been covering? Where would that be documented? What would you show the inspector?',
     model:'During that period, Dr. [sub-investigator name] served as the acting QI. This is documented on the delegation log — you can see the entry here, which includes the tasks she was authorized to perform in the QI’s absence, and the dates of that coverage. The consent forms and eligibility checklists from that week are signed by Dr. [sub-investigator].',
 `;
-const LL_JS_3 = `    gap:'"The CRC handled it and the PI reviewed and signed everything when she got back" confirms the finding rather than resolving it. Retrospective PI signatures on documents from a period when the PI was demonstrably away is a major inspection finding.',
+export const LL_JS_3 = `    gap:'"The CRC handled it and the PI reviewed and signed everything when she got back" confirms the finding rather than resolving it. Retrospective PI signatures on documents from a period when the PI was demonstrably away is a major inspection finding.',
     ref:'GUI-0100 (sub-investigator coverage) · ICH E6(R3) §2.3.1 · C.05.010(f)' },
 
   { id:'insp-del-3', type:'inspection', topic:'Roles and Delegation', topicId:'delegation', applies:'interventional',
@@ -4599,7 +4599,7 @@ var KP_DR_EXERCISES = {
         fix:'Patrick should have been added to the delegation log before his first study activity. The January date does not retroactively authorize the December activities.',
         ref:'ICH E6(R3) §2.3.3 · C.05.012' },
 `;
-const LL_JS_4 = `      { type:'error', who:'Kevin Tremblay',
+export const LL_JS_4 = `      { type:'error', who:'Kevin Tremblay',
         problem:'No end date recorded, despite leaving the study February 28, 2026.',
         why:'The delegation log should reflect who is currently authorized. Leaving a former staff member on the log without a removal date implies Kevin is still authorized to act on the study.',
         fix:'When Kevin left, his removal date should have been recorded. This provides a clean audit trail of the period during which he was authorized.',
@@ -5151,7 +5151,7 @@ var JC_SCENARIOS = [
           { text: 'I don\u2019t think we should white it out \u2014 that doesn\u2019t feel right. Can we just fix the eCRF instead?', quality: 'partial', label: 'Right instinct, incomplete reasoning',
             feedback: '<p>You correctly identified that white-out is wrong, but <strong>jumping to fix the eCRF assumes the eCRF value is the error</strong>. You don\u2019t actually know which number is correct yet. The source document records 94; the eCRF says 84. The discrepancy could be a transcription error in either direction.</p><p>The correct first step is to verify the original measurement \u2014 check the device printout or automated monitor record. Only then can you determine which document needs correction, and the correction must use proper single-line method with date, initials, and reason.</p><span class="jc-fb-ref">ICH E6(R3) \u00a74 Data Governance, ALCOA+ (original, accurate) \u00b7 SOP-CR-014</span>' },
 `;
-const LL_JS_5 = `          { text: 'The source document is the original record — 94 might actually be the correct value. I need to check the monitor printout from the device before we decide which number to correct, and either way the correction has to be single-line with date, initials, and reason.', quality: 'good', label: 'Correct',
+export const LL_JS_5 = `          { text: 'The source document is the original record — 94 might actually be the correct value. I need to check the monitor printout from the device before we decide which number to correct, and either way the correction has to be single-line with date, initials, and reason.', quality: 'good', label: 'Correct',
             feedback: '<p>This is the right response. You identified that the source document might actually hold the correct value, that verification against the device record comes first, and that any correction — to either the source or the eCRF — must follow proper correction procedures.</p><p>A CRA asking you to white-out a source entry is a significant red flag. Even well-intentioned monitors sometimes prioritize data matching over data integrity. Your job is to protect the original record.</p><span class="jc-fb-ref">ICH E6(R3) §4 Data Governance, ALCOA+ principles · 21 CFR Part 11 · SOP-CR-014</span>' }
         ]
       },
@@ -5578,7 +5578,7 @@ const LL_JS_5 = `          { text: 'The source document is the original record �
   }
 ];
 `;
-const LL_JS_6 = `/* ════════════════════════════════════════════
+export const LL_JS_6 = `/* ════════════════════════════════════════════
    JUDGEMENT CALLS — ENGINE (role-based)
 ════════════════════════════════════════════ */
 var jcCurrentScenario = null;
