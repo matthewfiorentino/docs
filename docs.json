@@ -283,6 +283,22 @@
                     ]
                   },
                   {
+                    "group": "SOP-CR-014 — Clinical Data Management",
+                    "expanded": false,
+                    "pages": [
+                      "sops/cr-014-overview",
+                      "sops/cr-014"
+                    ]
+                  },
+                  {
+                    "group": "SOP-CR-015 — Investigator Study Files and Essential Documents",
+                    "expanded": false,
+                    "pages": [
+                      "sops/cr-015-overview",
+                      "sops/cr-015"
+                    ]
+                  },
+                  {
                     "group": "SOP-CR-010 — Management of Investigational Products",
                     "expanded": false,
                     "pages": [
