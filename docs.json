@@ -267,6 +267,22 @@
                     ]
                   },
                   {
+                    "group": "SOP-CR-010 — Management of Investigational Products",
+                    "expanded": false,
+                    "pages": [
+                      "sops/cr-010-overview",
+                      "sops/cr-010"
+                    ]
+                  },
+                  {
+                    "group": "SOP-CR-011 — Management of Biological Specimens",
+                    "expanded": false,
+                    "pages": [
+                      "sops/cr-011-overview",
+                      "sops/cr-011"
+                    ]
+                  },
+                  {
                     "group": "Core Series — Team & Study Management",
                     "expanded": false,
                     "pages": [
