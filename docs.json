@@ -243,6 +243,22 @@
                     ]
                   },
                   {
+                    "group": "SOP-CR-007 — Initial REB Review and Trial Registration",
+                    "expanded": false,
+                    "pages": [
+                      "sops/cr-007-overview",
+                      "sops/cr-007"
+                    ]
+                  },
+                  {
+                    "group": "SOP-CR-009 — Participant Recruitment and Enrollment",
+                    "expanded": false,
+                    "pages": [
+                      "sops/cr-009-overview",
+                      "sops/cr-009"
+                    ]
+                  },
+                  {
                     "group": "SOP-CR-008 — Informed Consent",
                     "expanded": false,
                     "pages": [
