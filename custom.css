@@ -48,14 +48,39 @@ article a:hover,
     color: var(--ri-accent-bright) !important;
 }
 
-/* ── "On this page" TOC — active item is data-active="true" on the <li> ── */
+/* ── "On this page" TOC ── */
 #table-of-contents-content a {
     color: inherit !important;
+    font-size: 12.5px !important;
+    /* Reserve dot space on ALL items so active state never shifts layout */
+    position: relative !important;
+    padding-left: 14px !important;
+    display: block !important;
 }
-#table-of-contents-content li[data-active="true"] > a,
+/* Dot — always present, transparent by default */
+#table-of-contents-content a::before {
+    content: '' !important;
+    position: absolute !important;
+    left: 1px !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    width: 5px !important;
+    height: 5px !important;
+    border-radius: 50% !important;
+    background: transparent !important;
+    transition: background 0.2s !important;
+}
+/* Active deepest item: accent dot + accent colour + medium weight */
 #table-of-contents-content li[data-active-deepest="true"] > a {
     color: var(--ri-accent) !important;
     font-weight: 600 !important;
+}
+#table-of-contents-content li[data-active-deepest="true"] > a::before {
+    background: var(--ri-accent) !important;
+}
+/* Parent heading of active section: slightly highlighted, no dot */
+#table-of-contents-content li[data-active="true"] > a {
+    color: var(--ri-accent) !important;
 }
 
 /* ── Sidebar active link ── */
