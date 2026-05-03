@@ -267,6 +267,22 @@
                     ]
                   },
                   {
+                    "group": "SOP-CR-012 — AE, SAE, and SUSAR Reporting",
+                    "expanded": false,
+                    "pages": [
+                      "sops/cr-012-overview",
+                      "sops/cr-012"
+                    ]
+                  },
+                  {
+                    "group": "SOP-CR-013 — Study Monitoring and Communication",
+                    "expanded": false,
+                    "pages": [
+                      "sops/cr-013-overview",
+                      "sops/cr-013"
+                    ]
+                  },
+                  {
                     "group": "SOP-CR-010 — Management of Investigational Products",
                     "expanded": false,
                     "pages": [
