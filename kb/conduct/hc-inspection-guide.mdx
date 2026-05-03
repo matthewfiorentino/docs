@@ -8,19 +8,20 @@ This guide prepares <Tooltip tip="The physician responsible to the sponsor for t
 After completing this guide you will be able to describe the purpose and regulatory framework of Health Canada inspections; identify key roles and responsibilities; apply procedures for document preparation, facility readiness, and team coordination; and understand post-inspection CAPA requirements.
 
 ```mermaid
-flowchart LR
-    A["Notice received\n(routine: ~4 weeks\nfor-cause: no notice)"] --> B["Contact QA\nwithin 24 hours"]
-    B --> C["Preparation phase\n(team · documents · facility)"]
-    C --> D["Inspection\n(5 days on-site\n10 days remote)"]
-    D --> E["Closing meeting\n(last inspection day)"]
-    E --> F["Draft Exit Notice\n(within 3 weeks;\n48h before Exit Meeting)"]
-    F --> G["Exit Meeting"]
-    G --> H["Final Exit Notice\nissued"]
-    H --> I["CAPA response\n(30 calendar days)"]
-    I --> J{"Further\nclarification\nneeded?"}
-    J -- Yes --> K["Follow-up letter\nfrom HC"]
+flowchart TD
+    A["📬 Notice received\n(routine: ~4 weeks / for-cause: no notice)"]
+    --> B["📞 Contact QA within 24 hours"]
+    --> C["📋 Preparation phase\n(team · documents · facility)"]
+    --> D["🔍 Inspection\n(5 days on-site / 10 days remote)"]
+    --> E["📝 Closing meeting\n(last inspection day)"]
+    --> F["📄 Draft Exit Notice\n(within 3 weeks; 48h before Exit Meeting)"]
+    --> G["🤝 Exit Meeting"]
+    --> H["✅ Final Exit Notice issued"]
+    --> I["📤 CAPA response\n(30 calendar days)"]
+    --> J{"Further clarification\nneeded?"}
+    J -- Yes --> K["Follow-up letter from HC"]
     K --> I
-    J -- No --> L["Inspection closed\n(written acknowledgement)"]
+    J -- No --> L["✔ Inspection closed"]
 ```
 
 <Warning>
