@@ -1,0 +1,3231 @@
+{
+  "directed": false,
+  "multigraph": false,
+  "graph": {},
+  "nodes": [
+    {
+      "label": "parallax.js",
+      "file_type": "code",
+      "source_file": "parallax.js",
+      "source_location": "L1",
+      "id": "parallax_js",
+      "community": 14,
+      "norm_label": "parallax.js"
+    },
+    {
+      "label": "footer-logo.js",
+      "file_type": "code",
+      "source_file": "footer-logo.js",
+      "source_location": "L1",
+      "id": "footer_logo_js",
+      "community": 7,
+      "norm_label": "footer-logo.js"
+    },
+    {
+      "label": "isHome()",
+      "file_type": "code",
+      "source_file": "footer-logo.js",
+      "source_location": "L2",
+      "id": "docs_footer_logo_ishome",
+      "community": 7,
+      "norm_label": "ishome()"
+    },
+    {
+      "label": "inject()",
+      "file_type": "code",
+      "source_file": "footer-logo.js",
+      "source_location": "L7",
+      "id": "docs_footer_logo_inject",
+      "community": 7,
+      "norm_label": "inject()"
+    },
+    {
+      "label": "cookie-consent.js",
+      "file_type": "code",
+      "source_file": "cookie-consent.js",
+      "source_location": "L1",
+      "id": "cookie_consent_js",
+      "community": 6,
+      "norm_label": "cookie-consent.js"
+    },
+    {
+      "label": "dismiss()",
+      "file_type": "code",
+      "source_file": "cookie-consent.js",
+      "source_location": "L80",
+      "id": "docs_cookie_consent_dismiss",
+      "community": 6,
+      "norm_label": "dismiss()"
+    },
+    {
+      "label": "getLang()",
+      "file_type": "code",
+      "source_file": "cookie-consent.js",
+      "source_location": "L100",
+      "id": "docs_cookie_consent_getlang",
+      "community": 6,
+      "norm_label": "getlang()"
+    },
+    {
+      "label": "init()",
+      "file_type": "code",
+      "source_file": "cookie-consent.js",
+      "source_location": "L107",
+      "id": "docs_cookie_consent_init",
+      "community": 6,
+      "norm_label": "init()"
+    },
+    {
+      "label": "flag-override.js",
+      "file_type": "code",
+      "source_file": "flag-override.js",
+      "source_location": "L1",
+      "id": "flag_override_js",
+      "community": 8,
+      "norm_label": "flag-override.js"
+    },
+    {
+      "label": "patchImg()",
+      "file_type": "code",
+      "source_file": "flag-override.js",
+      "source_location": "L7",
+      "id": "docs_flag_override_patchimg",
+      "community": 8,
+      "norm_label": "patchimg()"
+    },
+    {
+      "label": "replaceAll()",
+      "file_type": "code",
+      "source_file": "flag-override.js",
+      "source_location": "L37",
+      "id": "docs_flag_override_replaceall",
+      "community": 8,
+      "norm_label": "replaceall()"
+    },
+    {
+      "label": "kb-intake-script.js",
+      "file_type": "code",
+      "source_file": "public/kb-intake-script.js",
+      "source_location": "L1",
+      "id": "public_kb_intake_script_js",
+      "community": 0,
+      "norm_label": "kb-intake-script.js"
+    },
+    {
+      "label": "t()",
+      "file_type": "code",
+      "source_file": "public/kb-intake-script.js",
+      "source_location": "L549",
+      "id": "public_kb_intake_script_t",
+      "community": 0,
+      "norm_label": "t()"
+    },
+    {
+      "label": "escHtml()",
+      "file_type": "code",
+      "source_file": "public/kb-intake-script.js",
+      "source_location": "L553",
+      "id": "public_kb_intake_script_eschtml",
+      "community": 0,
+      "norm_label": "eschtml()"
+    },
+    {
+      "label": "isVisible()",
+      "file_type": "code",
+      "source_file": "public/kb-intake-script.js",
+      "source_location": "L557",
+      "id": "public_kb_intake_script_isvisible",
+      "community": 0,
+      "norm_label": "isvisible()"
+    },
+    {
+      "label": "questionsInSection()",
+      "file_type": "code",
+      "source_file": "public/kb-intake-script.js",
+      "source_location": "L561",
+      "id": "public_kb_intake_script_questionsinsection",
+      "community": 0,
+      "norm_label": "questionsinsection()"
+    },
+    {
+      "label": "pad()",
+      "file_type": "code",
+      "source_file": "public/kb-intake-script.js",
+      "source_location": "L566",
+      "id": "public_kb_intake_script_pad",
+      "community": 0,
+      "norm_label": "pad()"
+    },
+    {
+      "label": "validateQuestion()",
+      "file_type": "code",
+      "source_file": "public/kb-intake-script.js",
+      "source_location": "L575",
+      "id": "public_kb_intake_script_validatequestion",
+      "community": 0,
+      "norm_label": "validatequestion()"
+    },
+    {
+      "label": "validateSection()",
+      "file_type": "code",
+      "source_file": "public/kb-intake-script.js",
+      "source_location": "L589",
+      "id": "public_kb_intake_script_validatesection",
+      "community": 0,
+      "norm_label": "validatesection()"
+    },
+    {
+      "label": "renderDef()",
+      "file_type": "code",
+      "source_file": "public/kb-intake-script.js",
+      "source_location": "L603",
+      "id": "public_kb_intake_script_renderdef",
+      "community": 0,
+      "norm_label": "renderdef()"
+    },
+    {
+      "label": "renderQuestion()",
+      "file_type": "code",
+      "source_file": "public/kb-intake-script.js",
+      "source_location": "L613",
+      "id": "public_kb_intake_script_renderquestion",
+      "community": 0,
+      "norm_label": "renderquestion()"
+    },
+    {
+      "label": "renderSection()",
+      "file_type": "code",
+      "source_file": "public/kb-intake-script.js",
+      "source_location": "L713",
+      "id": "public_kb_intake_script_rendersection",
+      "community": 0,
+      "norm_label": "rendersection()"
+    },
+    {
+      "label": "handleOptClick()",
+      "file_type": "code",
+      "source_file": "public/kb-intake-script.js",
+      "source_location": "L752",
+      "id": "public_kb_intake_script_handleoptclick",
+      "community": 0,
+      "norm_label": "handleoptclick()"
+    },
+    {
+      "label": "reconcileVisibility()",
+      "file_type": "code",
+      "source_file": "public/kb-intake-script.js",
+      "source_location": "L812",
+      "id": "public_kb_intake_script_reconcilevisibility",
+      "community": 0,
+      "norm_label": "reconcilevisibility()"
+    },
+    {
+      "label": "refreshQuestionLabel()",
+      "file_type": "code",
+      "source_file": "public/kb-intake-script.js",
+      "source_location": "L839",
+      "id": "public_kb_intake_script_refreshquestionlabel",
+      "community": 0,
+      "norm_label": "refreshquestionlabel()"
+    },
+    {
+      "label": "handleTextInput()",
+      "file_type": "code",
+      "source_file": "public/kb-intake-script.js",
+      "source_location": "L860",
+      "id": "public_kb_intake_script_handletextinput",
+      "community": 0,
+      "norm_label": "handletextinput()"
+    },
+    {
+      "label": "handleMatrixCheck()",
+      "file_type": "code",
+      "source_file": "public/kb-intake-script.js",
+      "source_location": "L866",
+      "id": "public_kb_intake_script_handlematrixcheck",
+      "community": 0,
+      "norm_label": "handlematrixcheck()"
+    },
+    {
+      "label": "handleFileChange()",
+      "file_type": "code",
+      "source_file": "public/kb-intake-script.js",
+      "source_location": "L880",
+      "id": "public_kb_intake_script_handlefilechange",
+      "community": 0,
+      "norm_label": "handlefilechange()"
+    },
+    {
+      "label": "showOutOfScope()",
+      "file_type": "code",
+      "source_file": "public/kb-intake-script.js",
+      "source_location": "L960",
+      "id": "public_kb_intake_script_showoutofscope",
+      "community": 0,
+      "norm_label": "showoutofscope()"
+    },
+    {
+      "label": "classify()",
+      "file_type": "code",
+      "source_file": "public/kb-intake-script.js",
+      "source_location": "L989",
+      "id": "public_kb_intake_script_classify",
+      "community": 0,
+      "norm_label": "classify()"
+    },
+    {
+      "label": "buildChecklist()",
+      "file_type": "code",
+      "source_file": "public/kb-intake-script.js",
+      "source_location": "L1159",
+      "id": "public_kb_intake_script_buildchecklist",
+      "community": 0,
+      "norm_label": "buildchecklist()"
+    },
+    {
+      "label": "buildNextSteps()",
+      "file_type": "code",
+      "source_file": "public/kb-intake-script.js",
+      "source_location": "L1219",
+      "id": "public_kb_intake_script_buildnextsteps",
+      "community": 0,
+      "norm_label": "buildnextsteps()"
+    },
+    {
+      "label": "showResult()",
+      "file_type": "code",
+      "source_file": "public/kb-intake-script.js",
+      "source_location": "L1287",
+      "id": "public_kb_intake_script_showresult",
+      "community": 0,
+      "norm_label": "showresult()"
+    },
+    {
+      "label": "ll-script.js",
+      "file_type": "code",
+      "source_file": "public/ll-script.js",
+      "source_location": "L1",
+      "id": "public_ll_script_js",
+      "community": 1,
+      "norm_label": "ll-script.js"
+    },
+    {
+      "label": "kpAnimateOut()",
+      "file_type": "code",
+      "source_file": "public/ll-script.js",
+      "source_location": "L1317",
+      "id": "public_ll_script_kpanimateout",
+      "community": 3,
+      "norm_label": "kpanimateout()"
+    },
+    {
+      "label": "kpAnimateIn()",
+      "file_type": "code",
+      "source_file": "public/ll-script.js",
+      "source_location": "L1325",
+      "id": "public_ll_script_kpanimatein",
+      "community": 3,
+      "norm_label": "kpanimatein()"
+    },
+    {
+      "label": "kpTransition()",
+      "file_type": "code",
+      "source_file": "public/ll-script.js",
+      "source_location": "L1333",
+      "id": "public_ll_script_kptransition",
+      "community": 3,
+      "norm_label": "kptransition()"
+    },
+    {
+      "label": "kpGoBack()",
+      "file_type": "code",
+      "source_file": "public/ll-script.js",
+      "source_location": "L1343",
+      "id": "public_ll_script_kpgoback",
+      "community": 12,
+      "norm_label": "kpgoback()"
+    },
+    {
+      "label": "kpGoBackNoHash()",
+      "file_type": "code",
+      "source_file": "public/ll-script.js",
+      "source_location": "L1346",
+      "id": "public_ll_script_kpgobacknohash",
+      "community": 3,
+      "norm_label": "kpgobacknohash()"
+    },
+    {
+      "label": "kpGoHome()",
+      "file_type": "code",
+      "source_file": "public/ll-script.js",
+      "source_location": "L1353",
+      "id": "public_ll_script_kpgohome",
+      "community": 3,
+      "norm_label": "kpgohome()"
+    },
+    {
+      "label": "kpGoToPractice()",
+      "file_type": "code",
+      "source_file": "public/ll-script.js",
+      "source_location": "L1358",
+      "id": "public_ll_script_kpgotopractice",
+      "community": 3,
+      "norm_label": "kpgotopractice()"
+    },
+    {
+      "label": "kpSelectMode()",
+      "file_type": "code",
+      "source_file": "public/ll-script.js",
+      "source_location": "L1362",
+      "id": "public_ll_script_kpselectmode",
+      "community": 3,
+      "norm_label": "kpselectmode()"
+    },
+    {
+      "label": "kpSelectStudyType()",
+      "file_type": "code",
+      "source_file": "public/ll-script.js",
+      "source_location": "L1372",
+      "id": "public_ll_script_kpselectstudytype",
+      "community": 13,
+      "norm_label": "kpselectstudytype()"
+    },
+    {
+      "label": "kpBuildTopicGrid()",
+      "file_type": "code",
+      "source_file": "public/ll-script.js",
+      "source_location": "L1392",
+      "id": "public_ll_script_kpbuildtopicgrid",
+      "community": 13,
+      "norm_label": "kpbuildtopicgrid()"
+    },
+    {
+      "label": "kpBuildBrowseQueue()",
+      "file_type": "code",
+      "source_file": "public/ll-script.js",
+      "source_location": "L1431",
+      "id": "public_ll_script_kpbuildbrowsequeue",
+      "community": 4,
+      "norm_label": "kpbuildbrowsequeue()"
+    },
+    {
+      "label": "kpBuildShuffleQueue()",
+      "file_type": "code",
+      "source_file": "public/ll-script.js",
+      "source_location": "L1443",
+      "id": "public_ll_script_kpbuildshufflequeue",
+      "community": 4,
+      "norm_label": "kpbuildshufflequeue()"
+    },
+    {
+      "label": "kpStartBrowseNoTransition()",
+      "file_type": "code",
+      "source_file": "public/ll-script.js",
+      "source_location": "L1463",
+      "id": "public_ll_script_kpstartbrowsenotransition",
+      "community": 2,
+      "norm_label": "kpstartbrowsenotransition()"
+    },
+    {
+      "label": "kpStartBrowse()",
+      "file_type": "code",
+      "source_file": "public/ll-script.js",
+      "source_location": "L1470",
+      "id": "public_ll_script_kpstartbrowse",
+      "community": 4,
+      "norm_label": "kpstartbrowse()"
+    },
+    {
+      "label": "kpSelectBrowseMode()",
+      "file_type": "code",
+      "source_file": "public/ll-script.js",
+      "source_location": "L1485",
+      "id": "public_ll_script_kpselectbrowsemode",
+      "community": 4,
+      "norm_label": "kpselectbrowsemode()"
+    },
+    {
+      "label": "kpBuildInspectionQueue()",
+      "file_type": "code",
+      "source_file": "public/ll-script.js",
+      "source_location": "L1506",
+      "id": "public_ll_script_kpbuildinspectionqueue",
+      "community": 4,
+      "norm_label": "kpbuildinspectionqueue()"
+    },
+    {
+      "label": "kpStartShuffleWithCount()",
+      "file_type": "code",
+      "source_file": "public/ll-script.js",
+      "source_location": "L1519",
+      "id": "public_ll_script_kpstartshufflewithcount",
+      "community": 4,
+      "norm_label": "kpstartshufflewithcount()"
+    },
+    {
+      "label": "kpStartShuffle()",
+      "file_type": "code",
+      "source_file": "public/ll-script.js",
+      "source_location": "L1525",
+      "id": "public_ll_script_kpstartshuffle",
+      "community": 4,
+      "norm_label": "kpstartshuffle()"
+    },
+    {
+      "label": "kpSeqBack()",
+      "file_type": "code",
+      "source_file": "public/ll-script.js",
+      "source_location": "L1536",
+      "id": "public_ll_script_kpseqback",
+      "community": 12,
+      "norm_label": "kpseqback()"
+    },
+    {
+      "label": "kpSeqRender()",
+      "file_type": "code",
+      "source_file": "public/ll-script.js",
+      "source_location": "L1544",
+      "id": "public_ll_script_kpseqrender",
+      "community": 4,
+      "norm_label": "kpseqrender()"
+    },
+    {
+      "label": "kpSeqAnswer()",
+      "file_type": "code",
+      "source_file": "public/ll-script.js",
+      "source_location": "L1638",
+      "id": "public_ll_script_kpseqanswer",
+      "community": 1,
+      "norm_label": "kpseqanswer()"
+    },
+    {
+      "label": "kpSeqReveal()",
+      "file_type": "code",
+      "source_file": "public/ll-script.js",
+      "source_location": "L1657",
+      "id": "public_ll_script_kpseqreveal",
+      "community": 1,
+      "norm_label": "kpseqreveal()"
+    },
+    {
+      "label": "kpSeqHideReveal()",
+      "file_type": "code",
+      "source_file": "public/ll-script.js",
+      "source_location": "L1665",
+      "id": "public_ll_script_kpseqhidereveal",
+      "community": 1,
+      "norm_label": "kpseqhidereveal()"
+    },
+    {
+      "label": "kpSeqNext()",
+      "file_type": "code",
+      "source_file": "public/ll-script.js",
+      "source_location": "L1672",
+      "id": "public_ll_script_kpseqnext",
+      "community": 4,
+      "norm_label": "kpseqnext()"
+    },
+    {
+      "label": "kpShowEnd()",
+      "file_type": "code",
+      "source_file": "public/ll-script.js",
+      "source_location": "L1702",
+      "id": "public_ll_script_kpshowend",
+      "community": 4,
+      "norm_label": "kpshowend()"
+    },
+    {
+      "label": "kpEndPrimary()",
+      "file_type": "code",
+      "source_file": "public/ll-script.js",
+      "source_location": "L1735",
+      "id": "public_ll_script_kpendprimary",
+      "community": 4,
+      "norm_label": "kpendprimary()"
+    },
+    {
+      "label": "kpEndGhost()",
+      "file_type": "code",
+      "source_file": "public/ll-script.js",
+      "source_location": "L1752",
+      "id": "public_ll_script_kpendghost",
+      "community": 3,
+      "norm_label": "kpendghost()"
+    },
+    {
+      "label": "toggleDA()",
+      "file_type": "code",
+      "source_file": "public/ll-script.js",
+      "source_location": "L1760",
+      "id": "public_ll_script_toggleda",
+      "community": 1,
+      "norm_label": "toggleda()"
+    },
+    {
+      "label": "toggleDASec()",
+      "file_type": "code",
+      "source_file": "public/ll-script.js",
+      "source_location": "L1769",
+      "id": "public_ll_script_toggledasec",
+      "community": 1,
+      "norm_label": "toggledasec()"
+    },
+    {
+      "label": "kpStartTeamExercise()",
+      "file_type": "code",
+      "source_file": "public/ll-script.js",
+      "source_location": "L1789",
+      "id": "public_ll_script_kpstartteamexercise",
+      "community": 3,
+      "norm_label": "kpstartteamexercise()"
+    },
+    {
+      "label": "kpStartTeamExerciseDirect()",
+      "file_type": "code",
+      "source_file": "public/ll-script.js",
+      "source_location": "L1794",
+      "id": "public_ll_script_kpstartteamexercisedirect",
+      "community": 2,
+      "norm_label": "kpstartteamexercisedirect()"
+    },
+    {
+      "label": "teToggle()",
+      "file_type": "code",
+      "source_file": "public/ll-script.js",
+      "source_location": "L1799",
+      "id": "public_ll_script_tetoggle",
+      "community": 1,
+      "norm_label": "tetoggle()"
+    },
+    {
+      "label": "printVersion()",
+      "file_type": "code",
+      "source_file": "public/ll-script.js",
+      "source_location": "L1806",
+      "id": "public_ll_script_printversion",
+      "community": 1,
+      "norm_label": "printversion()"
+    },
+    {
+      "label": "kpHashFor()",
+      "file_type": "code",
+      "source_file": "public/ll-script.js",
+      "source_location": "L1814",
+      "id": "public_ll_script_kphashfor",
+      "community": 11,
+      "norm_label": "kphashfor()"
+    },
+    {
+      "label": "kpPushHash()",
+      "file_type": "code",
+      "source_file": "public/ll-script.js",
+      "source_location": "L1844",
+      "id": "public_ll_script_kppushhash",
+      "community": 11,
+      "norm_label": "kppushhash()"
+    },
+    {
+      "label": "kpActivateDirect()",
+      "file_type": "code",
+      "source_file": "public/ll-script.js",
+      "source_location": "L1851",
+      "id": "public_ll_script_kpactivatedirect",
+      "community": 2,
+      "norm_label": "kpactivatedirect()"
+    },
+    {
+      "label": "kpRouteFromHash()",
+      "file_type": "code",
+      "source_file": "public/ll-script.js",
+      "source_location": "L1866",
+      "id": "public_ll_script_kproutefromhash",
+      "community": 2,
+      "norm_label": "kproutefromhash()"
+    },
+    {
+      "label": "loadInclude()",
+      "file_type": "code",
+      "source_file": "public/ll-script.js",
+      "source_location": "L1993",
+      "id": "public_ll_script_loadinclude",
+      "community": 1,
+      "norm_label": "loadinclude()"
+    },
+    {
+      "label": "kpGoToTeamHub()",
+      "file_type": "code",
+      "source_file": "public/ll-script.js",
+      "source_location": "L2342",
+      "id": "public_ll_script_kpgototeamhub",
+      "community": 3,
+      "norm_label": "kpgototeamhub()"
+    },
+    {
+      "label": "kpGoToInspHub()",
+      "file_type": "code",
+      "source_file": "public/ll-script.js",
+      "source_location": "L2346",
+      "id": "public_ll_script_kpgotoinsphub",
+      "community": 2,
+      "norm_label": "kpgotoinsphub()"
+    },
+    {
+      "label": "kpGoToJcHub()",
+      "file_type": "code",
+      "source_file": "public/ll-script.js",
+      "source_location": "L2351",
+      "id": "public_ll_script_kpgotojchub",
+      "community": 2,
+      "norm_label": "kpgotojchub()"
+    },
+    {
+      "label": "kpGoToDocReviewHub()",
+      "file_type": "code",
+      "source_file": "public/ll-script.js",
+      "source_location": "L2356",
+      "id": "public_ll_script_kpgotodocreviewhub",
+      "community": 3,
+      "norm_label": "kpgotodocreviewhub()"
+    },
+    {
+      "label": "kpStartDocReviewDirect()",
+      "file_type": "code",
+      "source_file": "public/ll-script.js",
+      "source_location": "L2360",
+      "id": "public_ll_script_kpstartdocreviewdirect",
+      "community": 2,
+      "norm_label": "kpstartdocreviewdirect()"
+    },
+    {
+      "label": "kpDrSetup()",
+      "file_type": "code",
+      "source_file": "public/ll-script.js",
+      "source_location": "L2366",
+      "id": "public_ll_script_kpdrsetup",
+      "community": 10,
+      "norm_label": "kpdrsetup()"
+    },
+    {
+      "label": "kpStartDocReview()",
+      "file_type": "code",
+      "source_file": "public/ll-script.js",
+      "source_location": "L2429",
+      "id": "public_ll_script_kpstartdocreview",
+      "community": 10,
+      "norm_label": "kpstartdocreview()"
+    },
+    {
+      "label": "kpDrRenderFinding()",
+      "file_type": "code",
+      "source_file": "public/ll-script.js",
+      "source_location": "L2436",
+      "id": "public_ll_script_kpdrrenderfinding",
+      "community": 1,
+      "norm_label": "kpdrrenderfinding()"
+    },
+    {
+      "label": "kpDrPrev()",
+      "file_type": "code",
+      "source_file": "public/ll-script.js",
+      "source_location": "L2512",
+      "id": "public_ll_script_kpdrprev",
+      "community": 1,
+      "norm_label": "kpdrprev()"
+    },
+    {
+      "label": "kpDrNext()",
+      "file_type": "code",
+      "source_file": "public/ll-script.js",
+      "source_location": "L2520",
+      "id": "public_ll_script_kpdrnext",
+      "community": 1,
+      "norm_label": "kpdrnext()"
+    },
+    {
+      "label": "kpDrMarkRows()",
+      "file_type": "code",
+      "source_file": "public/ll-script.js",
+      "source_location": "L2532",
+      "id": "public_ll_script_kpdrmarkrows",
+      "community": 1,
+      "norm_label": "kpdrmarkrows()"
+    },
+    {
+      "label": "jcBuildHub()",
+      "file_type": "code",
+      "source_file": "public/ll-script.js",
+      "source_location": "L3052",
+      "id": "public_ll_script_jcbuildhub",
+      "community": 2,
+      "norm_label": "jcbuildhub()"
+    },
+    {
+      "label": "jcSelectRole()",
+      "file_type": "code",
+      "source_file": "public/ll-script.js",
+      "source_location": "L3078",
+      "id": "public_ll_script_jcselectrole",
+      "community": 9,
+      "norm_label": "jcselectrole()"
+    },
+    {
+      "label": "jcBuildRole()",
+      "file_type": "code",
+      "source_file": "public/ll-script.js",
+      "source_location": "L3084",
+      "id": "public_ll_script_jcbuildrole",
+      "community": 9,
+      "norm_label": "jcbuildrole()"
+    },
+    {
+      "label": "jcStartScenario()",
+      "file_type": "code",
+      "source_file": "public/ll-script.js",
+      "source_location": "L3116",
+      "id": "public_ll_script_jcstartscenario",
+      "community": 2,
+      "norm_label": "jcstartscenario()"
+    },
+    {
+      "label": "jcStartScenarioDirect()",
+      "file_type": "code",
+      "source_file": "public/ll-script.js",
+      "source_location": "L3137",
+      "id": "public_ll_script_jcstartscenariodirect",
+      "community": 2,
+      "norm_label": "jcstartscenariodirect()"
+    },
+    {
+      "label": "jcGoHub()",
+      "file_type": "code",
+      "source_file": "public/ll-script.js",
+      "source_location": "L3157",
+      "id": "public_ll_script_jcgohub",
+      "community": 3,
+      "norm_label": "jcgohub()"
+    },
+    {
+      "label": "jcGoRole()",
+      "file_type": "code",
+      "source_file": "public/ll-script.js",
+      "source_location": "L3165",
+      "id": "public_ll_script_jcgorole",
+      "community": 9,
+      "norm_label": "jcgorole()"
+    },
+    {
+      "label": "jcRenderHeader()",
+      "file_type": "code",
+      "source_file": "public/ll-script.js",
+      "source_location": "L3184",
+      "id": "public_ll_script_jcrenderheader",
+      "community": 2,
+      "norm_label": "jcrenderheader()"
+    },
+    {
+      "label": "jcRenderTracker()",
+      "file_type": "code",
+      "source_file": "public/ll-script.js",
+      "source_location": "L3198",
+      "id": "public_ll_script_jcrendertracker",
+      "community": 2,
+      "norm_label": "jcrendertracker()"
+    },
+    {
+      "label": "jcRenderAllScenes()",
+      "file_type": "code",
+      "source_file": "public/ll-script.js",
+      "source_location": "L3206",
+      "id": "public_ll_script_jcrenderallscenes",
+      "community": 2,
+      "norm_label": "jcrenderallscenes()"
+    },
+    {
+      "label": "jcShowScene()",
+      "file_type": "code",
+      "source_file": "public/ll-script.js",
+      "source_location": "L3229",
+      "id": "public_ll_script_jcshowscene",
+      "community": 2,
+      "norm_label": "jcshowscene()"
+    },
+    {
+      "label": "jcChoose()",
+      "file_type": "code",
+      "source_file": "public/ll-script.js",
+      "source_location": "L3234",
+      "id": "public_ll_script_jcchoose",
+      "community": 1,
+      "norm_label": "jcchoose()"
+    },
+    {
+      "label": "jcNextScene()",
+      "file_type": "code",
+      "source_file": "public/ll-script.js",
+      "source_location": "L3260",
+      "id": "public_ll_script_jcnextscene",
+      "community": 2,
+      "norm_label": "jcnextscene()"
+    },
+    {
+      "label": "jcShowEnding()",
+      "file_type": "code",
+      "source_file": "public/ll-script.js",
+      "source_location": "L3268",
+      "id": "public_ll_script_jcshowending",
+      "community": 1,
+      "norm_label": "jcshowending()"
+    },
+    {
+      "label": "jcRestartScenario()",
+      "file_type": "code",
+      "source_file": "public/ll-script.js",
+      "source_location": "L3290",
+      "id": "public_ll_script_jcrestartscenario",
+      "community": 2,
+      "norm_label": "jcrestartscenario()"
+    },
+    {
+      "label": "inspBuildHub()",
+      "file_type": "code",
+      "source_file": "public/ll-script.js",
+      "source_location": "L3318",
+      "id": "public_ll_script_inspbuildhub",
+      "community": 2,
+      "norm_label": "inspbuildhub()"
+    },
+    {
+      "label": "inspBuildQueue()",
+      "file_type": "code",
+      "source_file": "public/ll-script.js",
+      "source_location": "L3340",
+      "id": "public_ll_script_inspbuildqueue",
+      "community": 5,
+      "norm_label": "inspbuildqueue()"
+    },
+    {
+      "label": "inspStartTopic()",
+      "file_type": "code",
+      "source_file": "public/ll-script.js",
+      "source_location": "L3348",
+      "id": "public_ll_script_inspstarttopic",
+      "community": 5,
+      "norm_label": "inspstarttopic()"
+    },
+    {
+      "label": "inspStartTopicDirect()",
+      "file_type": "code",
+      "source_file": "public/ll-script.js",
+      "source_location": "L3357",
+      "id": "public_ll_script_inspstarttopicdirect",
+      "community": 5,
+      "norm_label": "inspstarttopicdirect()"
+    },
+    {
+      "label": "inspRenderHeader()",
+      "file_type": "code",
+      "source_file": "public/ll-script.js",
+      "source_location": "L3366",
+      "id": "public_ll_script_insprenderheader",
+      "community": 5,
+      "norm_label": "insprenderheader()"
+    },
+    {
+      "label": "inspRenderCard()",
+      "file_type": "code",
+      "source_file": "public/ll-script.js",
+      "source_location": "L3379",
+      "id": "public_ll_script_insprendercard",
+      "community": 5,
+      "norm_label": "insprendercard()"
+    },
+    {
+      "label": "inspReveal()",
+      "file_type": "code",
+      "source_file": "public/ll-script.js",
+      "source_location": "L3431",
+      "id": "public_ll_script_inspreveal",
+      "community": 1,
+      "norm_label": "inspreveal()"
+    },
+    {
+      "label": "inspNext()",
+      "file_type": "code",
+      "source_file": "public/ll-script.js",
+      "source_location": "L3440",
+      "id": "public_ll_script_inspnext",
+      "community": 5,
+      "norm_label": "inspnext()"
+    },
+    {
+      "label": "inspRestart()",
+      "file_type": "code",
+      "source_file": "public/ll-script.js",
+      "source_location": "L3446",
+      "id": "public_ll_script_insprestart",
+      "community": 5,
+      "norm_label": "insprestart()"
+    },
+    {
+      "label": "inspGoHub()",
+      "file_type": "code",
+      "source_file": "public/ll-script.js",
+      "source_location": "L3452",
+      "id": "public_ll_script_inspgohub",
+      "community": 3,
+      "norm_label": "inspgohub()"
+    },
+    {
+      "label": "llRefreshStats()",
+      "file_type": "code",
+      "source_file": "public/ll-script.js",
+      "source_location": "L3469",
+      "id": "public_ll_script_llrefreshstats",
+      "community": 1,
+      "norm_label": "llrefreshstats()"
+    }
+  ],
+  "links": [
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "footer-logo.js",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "footer_logo_js",
+      "target": "docs_footer_logo_ishome",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "footer-logo.js",
+      "source_location": "L7",
+      "weight": 1.0,
+      "source": "footer_logo_js",
+      "target": "docs_footer_logo_inject",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "footer-logo.js",
+      "source_location": "L8",
+      "weight": 1.0,
+      "source": "docs_footer_logo_inject",
+      "target": "docs_footer_logo_ishome",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "cookie-consent.js",
+      "source_location": "L80",
+      "weight": 1.0,
+      "source": "cookie_consent_js",
+      "target": "docs_cookie_consent_dismiss",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "cookie-consent.js",
+      "source_location": "L100",
+      "weight": 1.0,
+      "source": "cookie_consent_js",
+      "target": "docs_cookie_consent_getlang",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "cookie-consent.js",
+      "source_location": "L107",
+      "weight": 1.0,
+      "source": "cookie_consent_js",
+      "target": "docs_cookie_consent_init",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "cookie-consent.js",
+      "source_location": "L130",
+      "weight": 1.0,
+      "source": "docs_cookie_consent_init",
+      "target": "docs_cookie_consent_dismiss",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "cookie-consent.js",
+      "source_location": "L108",
+      "weight": 1.0,
+      "source": "docs_cookie_consent_init",
+      "target": "docs_cookie_consent_getlang",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "flag-override.js",
+      "source_location": "L7",
+      "weight": 1.0,
+      "source": "flag_override_js",
+      "target": "docs_flag_override_patchimg",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "flag-override.js",
+      "source_location": "L37",
+      "weight": 1.0,
+      "source": "flag_override_js",
+      "target": "docs_flag_override_replaceall",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "public/kb-intake-script.js",
+      "source_location": "L549",
+      "weight": 1.0,
+      "source": "public_kb_intake_script_js",
+      "target": "public_kb_intake_script_t",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "public/kb-intake-script.js",
+      "source_location": "L553",
+      "weight": 1.0,
+      "source": "public_kb_intake_script_js",
+      "target": "public_kb_intake_script_eschtml",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "public/kb-intake-script.js",
+      "source_location": "L557",
+      "weight": 1.0,
+      "source": "public_kb_intake_script_js",
+      "target": "public_kb_intake_script_isvisible",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "public/kb-intake-script.js",
+      "source_location": "L561",
+      "weight": 1.0,
+      "source": "public_kb_intake_script_js",
+      "target": "public_kb_intake_script_questionsinsection",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "public/kb-intake-script.js",
+      "source_location": "L566",
+      "weight": 1.0,
+      "source": "public_kb_intake_script_js",
+      "target": "public_kb_intake_script_pad",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "public/kb-intake-script.js",
+      "source_location": "L575",
+      "weight": 1.0,
+      "source": "public_kb_intake_script_js",
+      "target": "public_kb_intake_script_validatequestion",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "public/kb-intake-script.js",
+      "source_location": "L589",
+      "weight": 1.0,
+      "source": "public_kb_intake_script_js",
+      "target": "public_kb_intake_script_validatesection",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "public/kb-intake-script.js",
+      "source_location": "L603",
+      "weight": 1.0,
+      "source": "public_kb_intake_script_js",
+      "target": "public_kb_intake_script_renderdef",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "public/kb-intake-script.js",
+      "source_location": "L613",
+      "weight": 1.0,
+      "source": "public_kb_intake_script_js",
+      "target": "public_kb_intake_script_renderquestion",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "public/kb-intake-script.js",
+      "source_location": "L713",
+      "weight": 1.0,
+      "source": "public_kb_intake_script_js",
+      "target": "public_kb_intake_script_rendersection",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "public/kb-intake-script.js",
+      "source_location": "L752",
+      "weight": 1.0,
+      "source": "public_kb_intake_script_js",
+      "target": "public_kb_intake_script_handleoptclick",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "public/kb-intake-script.js",
+      "source_location": "L812",
+      "weight": 1.0,
+      "source": "public_kb_intake_script_js",
+      "target": "public_kb_intake_script_reconcilevisibility",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "public/kb-intake-script.js",
+      "source_location": "L839",
+      "weight": 1.0,
+      "source": "public_kb_intake_script_js",
+      "target": "public_kb_intake_script_refreshquestionlabel",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "public/kb-intake-script.js",
+      "source_location": "L860",
+      "weight": 1.0,
+      "source": "public_kb_intake_script_js",
+      "target": "public_kb_intake_script_handletextinput",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "public/kb-intake-script.js",
+      "source_location": "L866",
+      "weight": 1.0,
+      "source": "public_kb_intake_script_js",
+      "target": "public_kb_intake_script_handlematrixcheck",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "public/kb-intake-script.js",
+      "source_location": "L880",
+      "weight": 1.0,
+      "source": "public_kb_intake_script_js",
+      "target": "public_kb_intake_script_handlefilechange",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "public/kb-intake-script.js",
+      "source_location": "L960",
+      "weight": 1.0,
+      "source": "public_kb_intake_script_js",
+      "target": "public_kb_intake_script_showoutofscope",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "public/kb-intake-script.js",
+      "source_location": "L989",
+      "weight": 1.0,
+      "source": "public_kb_intake_script_js",
+      "target": "public_kb_intake_script_classify",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "public/kb-intake-script.js",
+      "source_location": "L1159",
+      "weight": 1.0,
+      "source": "public_kb_intake_script_js",
+      "target": "public_kb_intake_script_buildchecklist",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "public/kb-intake-script.js",
+      "source_location": "L1219",
+      "weight": 1.0,
+      "source": "public_kb_intake_script_js",
+      "target": "public_kb_intake_script_buildnextsteps",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "public/kb-intake-script.js",
+      "source_location": "L1287",
+      "weight": 1.0,
+      "source": "public_kb_intake_script_js",
+      "target": "public_kb_intake_script_showresult",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "public/kb-intake-script.js",
+      "source_location": "L605",
+      "weight": 1.0,
+      "source": "public_kb_intake_script_renderdef",
+      "target": "public_kb_intake_script_t",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "public/kb-intake-script.js",
+      "source_location": "L617",
+      "weight": 1.0,
+      "source": "public_kb_intake_script_renderquestion",
+      "target": "public_kb_intake_script_t",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "public/kb-intake-script.js",
+      "source_location": "L845",
+      "weight": 1.0,
+      "source": "public_kb_intake_script_refreshquestionlabel",
+      "target": "public_kb_intake_script_t",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "public/kb-intake-script.js",
+      "source_location": "L608",
+      "weight": 1.0,
+      "source": "public_kb_intake_script_renderdef",
+      "target": "public_kb_intake_script_eschtml",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "public/kb-intake-script.js",
+      "source_location": "L622",
+      "weight": 1.0,
+      "source": "public_kb_intake_script_renderquestion",
+      "target": "public_kb_intake_script_eschtml",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "public/kb-intake-script.js",
+      "source_location": "L721",
+      "weight": 1.0,
+      "source": "public_kb_intake_script_rendersection",
+      "target": "public_kb_intake_script_eschtml",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "public/kb-intake-script.js",
+      "source_location": "L845",
+      "weight": 1.0,
+      "source": "public_kb_intake_script_refreshquestionlabel",
+      "target": "public_kb_intake_script_eschtml",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "public/kb-intake-script.js",
+      "source_location": "L1303",
+      "weight": 1.0,
+      "source": "public_kb_intake_script_showresult",
+      "target": "public_kb_intake_script_eschtml",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "public/kb-intake-script.js",
+      "source_location": "L593",
+      "weight": 1.0,
+      "source": "public_kb_intake_script_validatesection",
+      "target": "public_kb_intake_script_isvisible",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "public/kb-intake-script.js",
+      "source_location": "L726",
+      "weight": 1.0,
+      "source": "public_kb_intake_script_rendersection",
+      "target": "public_kb_intake_script_isvisible",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "public/kb-intake-script.js",
+      "source_location": "L823",
+      "weight": 1.0,
+      "source": "public_kb_intake_script_reconcilevisibility",
+      "target": "public_kb_intake_script_isvisible",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "public/kb-intake-script.js",
+      "source_location": "L591",
+      "weight": 1.0,
+      "source": "public_kb_intake_script_validatesection",
+      "target": "public_kb_intake_script_questionsinsection",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "public/kb-intake-script.js",
+      "source_location": "L715",
+      "weight": 1.0,
+      "source": "public_kb_intake_script_rendersection",
+      "target": "public_kb_intake_script_questionsinsection",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "public/kb-intake-script.js",
+      "source_location": "L813",
+      "weight": 1.0,
+      "source": "public_kb_intake_script_reconcilevisibility",
+      "target": "public_kb_intake_script_questionsinsection",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "public/kb-intake-script.js",
+      "source_location": "L594",
+      "weight": 1.0,
+      "source": "public_kb_intake_script_validatesection",
+      "target": "public_kb_intake_script_validatequestion",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "public/kb-intake-script.js",
+      "source_location": "L624",
+      "weight": 1.0,
+      "source": "public_kb_intake_script_renderquestion",
+      "target": "public_kb_intake_script_renderdef",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "public/kb-intake-script.js",
+      "source_location": "L726",
+      "weight": 1.0,
+      "source": "public_kb_intake_script_rendersection",
+      "target": "public_kb_intake_script_renderquestion",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "public/kb-intake-script.js",
+      "source_location": "L826",
+      "weight": 1.0,
+      "source": "public_kb_intake_script_reconcilevisibility",
+      "target": "public_kb_intake_script_renderquestion",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "public/kb-intake-script.js",
+      "source_location": "L809",
+      "weight": 1.0,
+      "source": "public_kb_intake_script_handleoptclick",
+      "target": "public_kb_intake_script_reconcilevisibility",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "public/kb-intake-script.js",
+      "source_location": "L834",
+      "weight": 1.0,
+      "source": "public_kb_intake_script_reconcilevisibility",
+      "target": "public_kb_intake_script_refreshquestionlabel",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "public/kb-intake-script.js",
+      "source_location": "L1335",
+      "weight": 1.0,
+      "source": "public_kb_intake_script_showresult",
+      "target": "public_kb_intake_script_buildchecklist",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "public/kb-intake-script.js",
+      "source_location": "L1321",
+      "weight": 1.0,
+      "source": "public_kb_intake_script_showresult",
+      "target": "public_kb_intake_script_buildnextsteps",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "public/ll-script.js",
+      "source_location": "L1317",
+      "weight": 1.0,
+      "source": "public_ll_script_js",
+      "target": "public_ll_script_kpanimateout",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "public/ll-script.js",
+      "source_location": "L1325",
+      "weight": 1.0,
+      "source": "public_ll_script_js",
+      "target": "public_ll_script_kpanimatein",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "public/ll-script.js",
+      "source_location": "L1333",
+      "weight": 1.0,
+      "source": "public_ll_script_js",
+      "target": "public_ll_script_kptransition",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "public/ll-script.js",
+      "source_location": "L1343",
+      "weight": 1.0,
+      "source": "public_ll_script_js",
+      "target": "public_ll_script_kpgoback",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "public/ll-script.js",
+      "source_location": "L1346",
+      "weight": 1.0,
+      "source": "public_ll_script_js",
+      "target": "public_ll_script_kpgobacknohash",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "public/ll-script.js",
+      "source_location": "L1353",
+      "weight": 1.0,
+      "source": "public_ll_script_js",
+      "target": "public_ll_script_kpgohome",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "public/ll-script.js",
+      "source_location": "L1358",
+      "weight": 1.0,
+      "source": "public_ll_script_js",
+      "target": "public_ll_script_kpgotopractice",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "public/ll-script.js",
+      "source_location": "L1362",
+      "weight": 1.0,
+      "source": "public_ll_script_js",
+      "target": "public_ll_script_kpselectmode",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "public/ll-script.js",
+      "source_location": "L1372",
+      "weight": 1.0,
+      "source": "public_ll_script_js",
+      "target": "public_ll_script_kpselectstudytype",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "public/ll-script.js",
+      "source_location": "L1392",
+      "weight": 1.0,
+      "source": "public_ll_script_js",
+      "target": "public_ll_script_kpbuildtopicgrid",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "public/ll-script.js",
+      "source_location": "L1431",
+      "weight": 1.0,
+      "source": "public_ll_script_js",
+      "target": "public_ll_script_kpbuildbrowsequeue",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "public/ll-script.js",
+      "source_location": "L1443",
+      "weight": 1.0,
+      "source": "public_ll_script_js",
+      "target": "public_ll_script_kpbuildshufflequeue",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "public/ll-script.js",
+      "source_location": "L1463",
+      "weight": 1.0,
+      "source": "public_ll_script_js",
+      "target": "public_ll_script_kpstartbrowsenotransition",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "public/ll-script.js",
+      "source_location": "L1470",
+      "weight": 1.0,
+      "source": "public_ll_script_js",
+      "target": "public_ll_script_kpstartbrowse",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "public/ll-script.js",
+      "source_location": "L1485",
+      "weight": 1.0,
+      "source": "public_ll_script_js",
+      "target": "public_ll_script_kpselectbrowsemode",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "public/ll-script.js",
+      "source_location": "L1506",
+      "weight": 1.0,
+      "source": "public_ll_script_js",
+      "target": "public_ll_script_kpbuildinspectionqueue",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "public/ll-script.js",
+      "source_location": "L1519",
+      "weight": 1.0,
+      "source": "public_ll_script_js",
+      "target": "public_ll_script_kpstartshufflewithcount",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "public/ll-script.js",
+      "source_location": "L1525",
+      "weight": 1.0,
+      "source": "public_ll_script_js",
+      "target": "public_ll_script_kpstartshuffle",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "public/ll-script.js",
+      "source_location": "L1536",
+      "weight": 1.0,
+      "source": "public_ll_script_js",
+      "target": "public_ll_script_kpseqback",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "public/ll-script.js",
+      "source_location": "L1544",
+      "weight": 1.0,
+      "source": "public_ll_script_js",
+      "target": "public_ll_script_kpseqrender",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "public/ll-script.js",
+      "source_location": "L1638",
+      "weight": 1.0,
+      "source": "public_ll_script_js",
+      "target": "public_ll_script_kpseqanswer",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "public/ll-script.js",
+      "source_location": "L1657",
+      "weight": 1.0,
+      "source": "public_ll_script_js",
+      "target": "public_ll_script_kpseqreveal",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "public/ll-script.js",
+      "source_location": "L1665",
+      "weight": 1.0,
+      "source": "public_ll_script_js",
+      "target": "public_ll_script_kpseqhidereveal",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "public/ll-script.js",
+      "source_location": "L1672",
+      "weight": 1.0,
+      "source": "public_ll_script_js",
+      "target": "public_ll_script_kpseqnext",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "public/ll-script.js",
+      "source_location": "L1702",
+      "weight": 1.0,
+      "source": "public_ll_script_js",
+      "target": "public_ll_script_kpshowend",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "public/ll-script.js",
+      "source_location": "L1735",
+      "weight": 1.0,
+      "source": "public_ll_script_js",
+      "target": "public_ll_script_kpendprimary",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "public/ll-script.js",
+      "source_location": "L1752",
+      "weight": 1.0,
+      "source": "public_ll_script_js",
+      "target": "public_ll_script_kpendghost",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "public/ll-script.js",
+      "source_location": "L1760",
+      "weight": 1.0,
+      "source": "public_ll_script_js",
+      "target": "public_ll_script_toggleda",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "public/ll-script.js",
+      "source_location": "L1769",
+      "weight": 1.0,
+      "source": "public_ll_script_js",
+      "target": "public_ll_script_toggledasec",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "public/ll-script.js",
+      "source_location": "L1789",
+      "weight": 1.0,
+      "source": "public_ll_script_js",
+      "target": "public_ll_script_kpstartteamexercise",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "public/ll-script.js",
+      "source_location": "L1794",
+      "weight": 1.0,
+      "source": "public_ll_script_js",
+      "target": "public_ll_script_kpstartteamexercisedirect",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "public/ll-script.js",
+      "source_location": "L1799",
+      "weight": 1.0,
+      "source": "public_ll_script_js",
+      "target": "public_ll_script_tetoggle",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "public/ll-script.js",
+      "source_location": "L1806",
+      "weight": 1.0,
+      "source": "public_ll_script_js",
+      "target": "public_ll_script_printversion",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "public/ll-script.js",
+      "source_location": "L1814",
+      "weight": 1.0,
+      "source": "public_ll_script_js",
+      "target": "public_ll_script_kphashfor",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "public/ll-script.js",
+      "source_location": "L1844",
+      "weight": 1.0,
+      "source": "public_ll_script_js",
+      "target": "public_ll_script_kppushhash",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "public/ll-script.js",
+      "source_location": "L1851",
+      "weight": 1.0,
+      "source": "public_ll_script_js",
+      "target": "public_ll_script_kpactivatedirect",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "public/ll-script.js",
+      "source_location": "L1866",
+      "weight": 1.0,
+      "source": "public_ll_script_js",
+      "target": "public_ll_script_kproutefromhash",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "public/ll-script.js",
+      "source_location": "L1993",
+      "weight": 1.0,
+      "source": "public_ll_script_js",
+      "target": "public_ll_script_loadinclude",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "public/ll-script.js",
+      "source_location": "L2342",
+      "weight": 1.0,
+      "source": "public_ll_script_js",
+      "target": "public_ll_script_kpgototeamhub",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "public/ll-script.js",
+      "source_location": "L2346",
+      "weight": 1.0,
+      "source": "public_ll_script_js",
+      "target": "public_ll_script_kpgotoinsphub",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "public/ll-script.js",
+      "source_location": "L2351",
+      "weight": 1.0,
+      "source": "public_ll_script_js",
+      "target": "public_ll_script_kpgotojchub",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "public/ll-script.js",
+      "source_location": "L2356",
+      "weight": 1.0,
+      "source": "public_ll_script_js",
+      "target": "public_ll_script_kpgotodocreviewhub",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "public/ll-script.js",
+      "source_location": "L2360",
+      "weight": 1.0,
+      "source": "public_ll_script_js",
+      "target": "public_ll_script_kpstartdocreviewdirect",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "public/ll-script.js",
+      "source_location": "L2366",
+      "weight": 1.0,
+      "source": "public_ll_script_js",
+      "target": "public_ll_script_kpdrsetup",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "public/ll-script.js",
+      "source_location": "L2429",
+      "weight": 1.0,
+      "source": "public_ll_script_js",
+      "target": "public_ll_script_kpstartdocreview",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "public/ll-script.js",
+      "source_location": "L2436",
+      "weight": 1.0,
+      "source": "public_ll_script_js",
+      "target": "public_ll_script_kpdrrenderfinding",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "public/ll-script.js",
+      "source_location": "L2512",
+      "weight": 1.0,
+      "source": "public_ll_script_js",
+      "target": "public_ll_script_kpdrprev",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "public/ll-script.js",
+      "source_location": "L2520",
+      "weight": 1.0,
+      "source": "public_ll_script_js",
+      "target": "public_ll_script_kpdrnext",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "public/ll-script.js",
+      "source_location": "L2532",
+      "weight": 1.0,
+      "source": "public_ll_script_js",
+      "target": "public_ll_script_kpdrmarkrows",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "public/ll-script.js",
+      "source_location": "L3052",
+      "weight": 1.0,
+      "source": "public_ll_script_js",
+      "target": "public_ll_script_jcbuildhub",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "public/ll-script.js",
+      "source_location": "L3078",
+      "weight": 1.0,
+      "source": "public_ll_script_js",
+      "target": "public_ll_script_jcselectrole",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "public/ll-script.js",
+      "source_location": "L3084",
+      "weight": 1.0,
+      "source": "public_ll_script_js",
+      "target": "public_ll_script_jcbuildrole",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "public/ll-script.js",
+      "source_location": "L3116",
+      "weight": 1.0,
+      "source": "public_ll_script_js",
+      "target": "public_ll_script_jcstartscenario",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "public/ll-script.js",
+      "source_location": "L3137",
+      "weight": 1.0,
+      "source": "public_ll_script_js",
+      "target": "public_ll_script_jcstartscenariodirect",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "public/ll-script.js",
+      "source_location": "L3157",
+      "weight": 1.0,
+      "source": "public_ll_script_js",
+      "target": "public_ll_script_jcgohub",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "public/ll-script.js",
+      "source_location": "L3165",
+      "weight": 1.0,
+      "source": "public_ll_script_js",
+      "target": "public_ll_script_jcgorole",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "public/ll-script.js",
+      "source_location": "L3184",
+      "weight": 1.0,
+      "source": "public_ll_script_js",
+      "target": "public_ll_script_jcrenderheader",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "public/ll-script.js",
+      "source_location": "L3198",
+      "weight": 1.0,
+      "source": "public_ll_script_js",
+      "target": "public_ll_script_jcrendertracker",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "public/ll-script.js",
+      "source_location": "L3206",
+      "weight": 1.0,
+      "source": "public_ll_script_js",
+      "target": "public_ll_script_jcrenderallscenes",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "public/ll-script.js",
+      "source_location": "L3229",
+      "weight": 1.0,
+      "source": "public_ll_script_js",
+      "target": "public_ll_script_jcshowscene",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "public/ll-script.js",
+      "source_location": "L3234",
+      "weight": 1.0,
+      "source": "public_ll_script_js",
+      "target": "public_ll_script_jcchoose",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "public/ll-script.js",
+      "source_location": "L3260",
+      "weight": 1.0,
+      "source": "public_ll_script_js",
+      "target": "public_ll_script_jcnextscene",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "public/ll-script.js",
+      "source_location": "L3268",
+      "weight": 1.0,
+      "source": "public_ll_script_js",
+      "target": "public_ll_script_jcshowending",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "public/ll-script.js",
+      "source_location": "L3290",
+      "weight": 1.0,
+      "source": "public_ll_script_js",
+      "target": "public_ll_script_jcrestartscenario",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "public/ll-script.js",
+      "source_location": "L3318",
+      "weight": 1.0,
+      "source": "public_ll_script_js",
+      "target": "public_ll_script_inspbuildhub",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "public/ll-script.js",
+      "source_location": "L3340",
+      "weight": 1.0,
+      "source": "public_ll_script_js",
+      "target": "public_ll_script_inspbuildqueue",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "public/ll-script.js",
+      "source_location": "L3348",
+      "weight": 1.0,
+      "source": "public_ll_script_js",
+      "target": "public_ll_script_inspstarttopic",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "public/ll-script.js",
+      "source_location": "L3357",
+      "weight": 1.0,
+      "source": "public_ll_script_js",
+      "target": "public_ll_script_inspstarttopicdirect",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "public/ll-script.js",
+      "source_location": "L3366",
+      "weight": 1.0,
+      "source": "public_ll_script_js",
+      "target": "public_ll_script_insprenderheader",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "public/ll-script.js",
+      "source_location": "L3379",
+      "weight": 1.0,
+      "source": "public_ll_script_js",
+      "target": "public_ll_script_insprendercard",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "public/ll-script.js",
+      "source_location": "L3431",
+      "weight": 1.0,
+      "source": "public_ll_script_js",
+      "target": "public_ll_script_inspreveal",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "public/ll-script.js",
+      "source_location": "L3440",
+      "weight": 1.0,
+      "source": "public_ll_script_js",
+      "target": "public_ll_script_inspnext",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "public/ll-script.js",
+      "source_location": "L3446",
+      "weight": 1.0,
+      "source": "public_ll_script_js",
+      "target": "public_ll_script_insprestart",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "public/ll-script.js",
+      "source_location": "L3452",
+      "weight": 1.0,
+      "source": "public_ll_script_js",
+      "target": "public_ll_script_inspgohub",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "public/ll-script.js",
+      "source_location": "L3469",
+      "weight": 1.0,
+      "source": "public_ll_script_js",
+      "target": "public_ll_script_llrefreshstats",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "public/ll-script.js",
+      "source_location": "L1341",
+      "weight": 1.0,
+      "source": "public_ll_script_kptransition",
+      "target": "public_ll_script_kpanimateout",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "public/ll-script.js",
+      "source_location": "L1341",
+      "weight": 1.0,
+      "source": "public_ll_script_kptransition",
+      "target": "public_ll_script_kpanimatein",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "public/ll-script.js",
+      "source_location": "L1340",
+      "weight": 1.0,
+      "source": "public_ll_script_kptransition",
+      "target": "public_ll_script_kppushhash",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "public/ll-script.js",
+      "source_location": "L1344",
+      "weight": 1.0,
+      "source": "public_ll_script_kpgoback",
+      "target": "public_ll_script_kptransition",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "public/ll-script.js",
+      "source_location": "L1347",
+      "weight": 1.0,
+      "source": "public_ll_script_kpgobacknohash",
+      "target": "public_ll_script_kptransition",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "public/ll-script.js",
+      "source_location": "L1354",
+      "weight": 1.0,
+      "source": "public_ll_script_kpgohome",
+      "target": "public_ll_script_kptransition",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "public/ll-script.js",
+      "source_location": "L1359",
+      "weight": 1.0,
+      "source": "public_ll_script_kpgotopractice",
+      "target": "public_ll_script_kptransition",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "public/ll-script.js",
+      "source_location": "L1366",
+      "weight": 1.0,
+      "source": "public_ll_script_kpselectmode",
+      "target": "public_ll_script_kptransition",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "public/ll-script.js",
+      "source_location": "L1376",
+      "weight": 1.0,
+      "source": "public_ll_script_kpselectstudytype",
+      "target": "public_ll_script_kptransition",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "public/ll-script.js",
+      "source_location": "L1482",
+      "weight": 1.0,
+      "source": "public_ll_script_kpstartbrowse",
+      "target": "public_ll_script_kptransition",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "public/ll-script.js",
+      "source_location": "L1503",
+      "weight": 1.0,
+      "source": "public_ll_script_kpselectbrowsemode",
+      "target": "public_ll_script_kptransition",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "public/ll-script.js",
+      "source_location": "L1522",
+      "weight": 1.0,
+      "source": "public_ll_script_kpstartshufflewithcount",
+      "target": "public_ll_script_kptransition",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "public/ll-script.js",
+      "source_location": "L1732",
+      "weight": 1.0,
+      "source": "public_ll_script_kpshowend",
+      "target": "public_ll_script_kptransition",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "public/ll-script.js",
+      "source_location": "L1749",
+      "weight": 1.0,
+      "source": "public_ll_script_kpendprimary",
+      "target": "public_ll_script_kptransition",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "public/ll-script.js",
+      "source_location": "L1753",
+      "weight": 1.0,
+      "source": "public_ll_script_kpendghost",
+      "target": "public_ll_script_kptransition",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "public/ll-script.js",
+      "source_location": "L1791",
+      "weight": 1.0,
+      "source": "public_ll_script_kpstartteamexercise",
+      "target": "public_ll_script_kptransition",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "public/ll-script.js",
+      "source_location": "L2343",
+      "weight": 1.0,
+      "source": "public_ll_script_kpgototeamhub",
+      "target": "public_ll_script_kptransition",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "public/ll-script.js",
+      "source_location": "L2348",
+      "weight": 1.0,
+      "source": "public_ll_script_kpgotoinsphub",
+      "target": "public_ll_script_kptransition",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "public/ll-script.js",
+      "source_location": "L2353",
+      "weight": 1.0,
+      "source": "public_ll_script_kpgotojchub",
+      "target": "public_ll_script_kptransition",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "public/ll-script.js",
+      "source_location": "L2357",
+      "weight": 1.0,
+      "source": "public_ll_script_kpgotodocreviewhub",
+      "target": "public_ll_script_kptransition",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "public/ll-script.js",
+      "source_location": "L2433",
+      "weight": 1.0,
+      "source": "public_ll_script_kpstartdocreview",
+      "target": "public_ll_script_kptransition",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "public/ll-script.js",
+      "source_location": "L3081",
+      "weight": 1.0,
+      "source": "public_ll_script_jcselectrole",
+      "target": "public_ll_script_kptransition",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "public/ll-script.js",
+      "source_location": "L3134",
+      "weight": 1.0,
+      "source": "public_ll_script_jcstartscenario",
+      "target": "public_ll_script_kptransition",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "public/ll-script.js",
+      "source_location": "L3162",
+      "weight": 1.0,
+      "source": "public_ll_script_jcgohub",
+      "target": "public_ll_script_kptransition",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "public/ll-script.js",
+      "source_location": "L3170",
+      "weight": 1.0,
+      "source": "public_ll_script_jcgorole",
+      "target": "public_ll_script_kptransition",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "public/ll-script.js",
+      "source_location": "L3354",
+      "weight": 1.0,
+      "source": "public_ll_script_inspstarttopic",
+      "target": "public_ll_script_kptransition",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "public/ll-script.js",
+      "source_location": "L3454",
+      "weight": 1.0,
+      "source": "public_ll_script_inspgohub",
+      "target": "public_ll_script_kptransition",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "public/ll-script.js",
+      "source_location": "L1537",
+      "weight": 1.0,
+      "source": "public_ll_script_kpseqback",
+      "target": "public_ll_script_kpgoback",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "public/ll-script.js",
+      "source_location": "L1375",
+      "weight": 1.0,
+      "source": "public_ll_script_kpselectstudytype",
+      "target": "public_ll_script_kpbuildtopicgrid",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "public/ll-script.js",
+      "source_location": "L1900",
+      "weight": 1.0,
+      "source": "public_ll_script_kproutefromhash",
+      "target": "public_ll_script_kpbuildtopicgrid",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "public/ll-script.js",
+      "source_location": "L1476",
+      "weight": 1.0,
+      "source": "public_ll_script_kpstartbrowse",
+      "target": "public_ll_script_kpbuildbrowsequeue",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "public/ll-script.js",
+      "source_location": "L1496",
+      "weight": 1.0,
+      "source": "public_ll_script_kpselectbrowsemode",
+      "target": "public_ll_script_kpbuildbrowsequeue",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "public/ll-script.js",
+      "source_location": "L1742",
+      "weight": 1.0,
+      "source": "public_ll_script_kpendprimary",
+      "target": "public_ll_script_kpbuildbrowsequeue",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "public/ll-script.js",
+      "source_location": "L1526",
+      "weight": 1.0,
+      "source": "public_ll_script_kpstartshuffle",
+      "target": "public_ll_script_kpbuildshufflequeue",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "public/ll-script.js",
+      "source_location": "L1738",
+      "weight": 1.0,
+      "source": "public_ll_script_kpendprimary",
+      "target": "public_ll_script_kpbuildshufflequeue",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "public/ll-script.js",
+      "source_location": "L1908",
+      "weight": 1.0,
+      "source": "public_ll_script_kproutefromhash",
+      "target": "public_ll_script_kpstartbrowsenotransition",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "public/ll-script.js",
+      "source_location": "L1481",
+      "weight": 1.0,
+      "source": "public_ll_script_kpstartbrowse",
+      "target": "public_ll_script_kpseqrender",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "public/ll-script.js",
+      "source_location": "L1491",
+      "weight": 1.0,
+      "source": "public_ll_script_kpselectbrowsemode",
+      "target": "public_ll_script_kpbuildinspectionqueue",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "public/ll-script.js",
+      "source_location": "L1502",
+      "weight": 1.0,
+      "source": "public_ll_script_kpselectbrowsemode",
+      "target": "public_ll_script_kpseqrender",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "public/ll-script.js",
+      "source_location": "L1521",
+      "weight": 1.0,
+      "source": "public_ll_script_kpstartshufflewithcount",
+      "target": "public_ll_script_kpstartshuffle",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "public/ll-script.js",
+      "source_location": "L1533",
+      "weight": 1.0,
+      "source": "public_ll_script_kpstartshuffle",
+      "target": "public_ll_script_kpseqrender",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "public/ll-script.js",
+      "source_location": "L1551",
+      "weight": 1.0,
+      "source": "public_ll_script_kpseqrender",
+      "target": "public_ll_script_kpshowend",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "public/ll-script.js",
+      "source_location": "L1689",
+      "weight": 1.0,
+      "source": "public_ll_script_kpseqnext",
+      "target": "public_ll_script_kpseqrender",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "public/ll-script.js",
+      "source_location": "L1745",
+      "weight": 1.0,
+      "source": "public_ll_script_kpendprimary",
+      "target": "public_ll_script_kpseqrender",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "public/ll-script.js",
+      "source_location": "L1686",
+      "weight": 1.0,
+      "source": "public_ll_script_kpseqnext",
+      "target": "public_ll_script_kpshowend",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "public/ll-script.js",
+      "source_location": "L1796",
+      "weight": 1.0,
+      "source": "public_ll_script_kpstartteamexercisedirect",
+      "target": "public_ll_script_kpactivatedirect",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "public/ll-script.js",
+      "source_location": "L1928",
+      "weight": 1.0,
+      "source": "public_ll_script_kproutefromhash",
+      "target": "public_ll_script_kpstartteamexercisedirect",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "public/ll-script.js",
+      "source_location": "L1845",
+      "weight": 1.0,
+      "source": "public_ll_script_kppushhash",
+      "target": "public_ll_script_kphashfor",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "public/ll-script.js",
+      "source_location": "L1875",
+      "weight": 1.0,
+      "source": "public_ll_script_kproutefromhash",
+      "target": "public_ll_script_kpactivatedirect",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "public/ll-script.js",
+      "source_location": "L2364",
+      "weight": 1.0,
+      "source": "public_ll_script_kpstartdocreviewdirect",
+      "target": "public_ll_script_kpactivatedirect",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "public/ll-script.js",
+      "source_location": "L3141",
+      "weight": 1.0,
+      "source": "public_ll_script_jcstartscenariodirect",
+      "target": "public_ll_script_kpactivatedirect",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "public/ll-script.js",
+      "source_location": "L3363",
+      "weight": 1.0,
+      "source": "public_ll_script_inspstarttopicdirect",
+      "target": "public_ll_script_kpactivatedirect",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "public/ll-script.js",
+      "source_location": "L1937",
+      "weight": 1.0,
+      "source": "public_ll_script_kproutefromhash",
+      "target": "public_ll_script_kpstartdocreviewdirect",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "public/ll-script.js",
+      "source_location": "L1942",
+      "weight": 1.0,
+      "source": "public_ll_script_kproutefromhash",
+      "target": "public_ll_script_inspbuildhub",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "public/ll-script.js",
+      "source_location": "L1946",
+      "weight": 1.0,
+      "source": "public_ll_script_kproutefromhash",
+      "target": "public_ll_script_inspstarttopicdirect",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "public/ll-script.js",
+      "source_location": "L1951",
+      "weight": 1.0,
+      "source": "public_ll_script_kproutefromhash",
+      "target": "public_ll_script_jcbuildhub",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "public/ll-script.js",
+      "source_location": "L1956",
+      "weight": 1.0,
+      "source": "public_ll_script_kproutefromhash",
+      "target": "public_ll_script_jcstartscenariodirect",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "public/ll-script.js",
+      "source_location": "L1966",
+      "weight": 1.0,
+      "source": "public_ll_script_kproutefromhash",
+      "target": "public_ll_script_jcbuildrole",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "public/ll-script.js",
+      "source_location": "L2347",
+      "weight": 1.0,
+      "source": "public_ll_script_kpgotoinsphub",
+      "target": "public_ll_script_inspbuildhub",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "public/ll-script.js",
+      "source_location": "L2352",
+      "weight": 1.0,
+      "source": "public_ll_script_kpgotojchub",
+      "target": "public_ll_script_jcbuildhub",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "public/ll-script.js",
+      "source_location": "L2363",
+      "weight": 1.0,
+      "source": "public_ll_script_kpstartdocreviewdirect",
+      "target": "public_ll_script_kpdrsetup",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "public/ll-script.js",
+      "source_location": "L2432",
+      "weight": 1.0,
+      "source": "public_ll_script_kpstartdocreview",
+      "target": "public_ll_script_kpdrsetup",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "public/ll-script.js",
+      "source_location": "L2516",
+      "weight": 1.0,
+      "source": "public_ll_script_kpdrprev",
+      "target": "public_ll_script_kpdrrenderfinding",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "public/ll-script.js",
+      "source_location": "L2525",
+      "weight": 1.0,
+      "source": "public_ll_script_kpdrnext",
+      "target": "public_ll_script_kpdrrenderfinding",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "public/ll-script.js",
+      "source_location": "L3141",
+      "weight": 1.0,
+      "source": "public_ll_script_jcstartscenariodirect",
+      "target": "public_ll_script_jcbuildhub",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "public/ll-script.js",
+      "source_location": "L3080",
+      "weight": 1.0,
+      "source": "public_ll_script_jcselectrole",
+      "target": "public_ll_script_jcbuildrole",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "public/ll-script.js",
+      "source_location": "L3169",
+      "weight": 1.0,
+      "source": "public_ll_script_jcgorole",
+      "target": "public_ll_script_jcbuildrole",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "public/ll-script.js",
+      "source_location": "L3130",
+      "weight": 1.0,
+      "source": "public_ll_script_jcstartscenario",
+      "target": "public_ll_script_jcrenderheader",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "public/ll-script.js",
+      "source_location": "L3131",
+      "weight": 1.0,
+      "source": "public_ll_script_jcstartscenario",
+      "target": "public_ll_script_jcrendertracker",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "public/ll-script.js",
+      "source_location": "L3132",
+      "weight": 1.0,
+      "source": "public_ll_script_jcstartscenario",
+      "target": "public_ll_script_jcrenderallscenes",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "public/ll-script.js",
+      "source_location": "L3133",
+      "weight": 1.0,
+      "source": "public_ll_script_jcstartscenario",
+      "target": "public_ll_script_jcshowscene",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "public/ll-script.js",
+      "source_location": "L3294",
+      "weight": 1.0,
+      "source": "public_ll_script_jcrestartscenario",
+      "target": "public_ll_script_jcstartscenario",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "public/ll-script.js",
+      "source_location": "L3150",
+      "weight": 1.0,
+      "source": "public_ll_script_jcstartscenariodirect",
+      "target": "public_ll_script_jcrenderheader",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "public/ll-script.js",
+      "source_location": "L3151",
+      "weight": 1.0,
+      "source": "public_ll_script_jcstartscenariodirect",
+      "target": "public_ll_script_jcrendertracker",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "public/ll-script.js",
+      "source_location": "L3152",
+      "weight": 1.0,
+      "source": "public_ll_script_jcstartscenariodirect",
+      "target": "public_ll_script_jcrenderallscenes",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "public/ll-script.js",
+      "source_location": "L3153",
+      "weight": 1.0,
+      "source": "public_ll_script_jcstartscenariodirect",
+      "target": "public_ll_script_jcshowscene",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "public/ll-script.js",
+      "source_location": "L3263",
+      "weight": 1.0,
+      "source": "public_ll_script_jcnextscene",
+      "target": "public_ll_script_jcshowscene",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "public/ll-script.js",
+      "source_location": "L3350",
+      "weight": 1.0,
+      "source": "public_ll_script_inspstarttopic",
+      "target": "public_ll_script_inspbuildqueue",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "public/ll-script.js",
+      "source_location": "L3359",
+      "weight": 1.0,
+      "source": "public_ll_script_inspstarttopicdirect",
+      "target": "public_ll_script_inspbuildqueue",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "public/ll-script.js",
+      "source_location": "L3352",
+      "weight": 1.0,
+      "source": "public_ll_script_inspstarttopic",
+      "target": "public_ll_script_insprenderheader",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "public/ll-script.js",
+      "source_location": "L3353",
+      "weight": 1.0,
+      "source": "public_ll_script_inspstarttopic",
+      "target": "public_ll_script_insprendercard",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "public/ll-script.js",
+      "source_location": "L3361",
+      "weight": 1.0,
+      "source": "public_ll_script_inspstarttopicdirect",
+      "target": "public_ll_script_insprenderheader",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "public/ll-script.js",
+      "source_location": "L3362",
+      "weight": 1.0,
+      "source": "public_ll_script_inspstarttopicdirect",
+      "target": "public_ll_script_insprendercard",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "public/ll-script.js",
+      "source_location": "L3442",
+      "weight": 1.0,
+      "source": "public_ll_script_inspnext",
+      "target": "public_ll_script_insprendercard",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "public/ll-script.js",
+      "source_location": "L3448",
+      "weight": 1.0,
+      "source": "public_ll_script_insprestart",
+      "target": "public_ll_script_insprendercard",
+      "confidence_score": 1.0
+    }
+  ],
+  "hyperedges": []
+}
