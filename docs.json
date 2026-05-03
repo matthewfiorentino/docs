@@ -110,6 +110,7 @@
                       }
                     ]
                   },
+                  "kb/planning/study-intake",
                   {
                     "group": "Study Planning",
                     "expanded": false,
