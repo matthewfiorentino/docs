@@ -347,6 +347,22 @@
                     ]
                   },
                   {
+                    "group": "SOP-CR-025 — Equipment Calibration and Maintenance",
+                    "expanded": false,
+                    "pages": [
+                      "sops/cr-025-overview",
+                      "sops/cr-025"
+                    ]
+                  },
+                  {
+                    "group": "SOP-CR-026 — Ongoing REB Review and Reportable Events",
+                    "expanded": false,
+                    "pages": [
+                      "sops/cr-026-overview",
+                      "sops/cr-026"
+                    ]
+                  },
+                  {
                     "group": "SOP-CR-010 — Management of Investigational Products",
                     "expanded": false,
                     "pages": [
