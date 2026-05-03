@@ -2608,8 +2608,8 @@ var KP_POOL = [
 
   /* 3-part chain: Friday SAE cascade */
   { id:'sae-s1c', type:'check', topic:'Adverse Events / SAE', topicId:'sae', applies:'interventional',
-    q:'A participant was hospitalized for chest pain. The sub-investigator on the delegation log assessed the event as \u201cpossibly related\u201d to the study drug and you submitted the initial SAE report to the sponsor. On day 12, the sponsor\u2019s medical monitor calls and asks you to revise the relatedness assessment to \u201cunrelated\u201d before the final report is submitted. They argue it will \u201csimplify the submission.\u201d\n\nWhat do you do?',
-    opts:['Revise the assessment as requested \u2014 the sponsor\'s medical monitor has more context about the drug\'s safety profile across all sites','Ask the assessing investigator to reconsider, explaining the sponsor\'s reasoning, and change it only if they agree after independent review','Change it to \u201cunrelated\u201d in the eCRF but keep the original in the source file as a backup','Refuse outright and file a complaint against the sponsor with Health Canada'],
+    q:'A participant was hospitalized for chest pain. The sub-investigator on the delegation log assessed the event as \u201cpossibly related\u201d to the study drug and you submitted the initial SAE report to the sponsor. On day 12, the sponsor\u2019s medical monitor calls and asks you to revise the relatedness assessment to \u201cunrelated\u201d before the final report is submitted. They argue it will \u201csimplify the submission.\u201d\\n\\nWhat do you do?',
+    opts:['Revise the assessment as requested \u2014 the sponsor\\'s medical monitor has more context about the drug\\'s safety profile across all sites','Ask the assessing investigator to reconsider, explaining the sponsor\\'s reasoning, and change it only if they agree after independent review','Change it to \u201cunrelated\u201d in the eCRF but keep the original in the source file as a backup','Refuse outright and file a complaint against the sponsor with Health Canada'],
     ans:1,
     rationale:'You do not change the relatedness assessment at the sponsor\u2019s request. The clinical judgment belongs to the investigator who assessed the event. If the sponsor disagrees, the correct mechanism is a written query explaining their reasoning, which the investigator reviews and may respond to with documented rationale. Any change must be audit-trailed; the original assessment must be preserved. Changing a clinical assessment under sponsor pressure is a GCP violation and a data integrity issue. Document this conversation.',
     ref:'<a href="SOP-CR-012-overview.html">SOP-CR-012</a> \u00b7 <a href="kb-data-integrity.html">Data Integrity</a>' },
@@ -2624,7 +2624,7 @@ var KP_POOL = [
 
   { id:'sae-s3', type:'check', topic:'Adverse Events / SAE', topicId:'sae', applies:'interventional',
     q:'A participant completes all study procedures and enters the follow-up period. Three weeks later they are hospitalized for an event the PI considers possibly related to the study drug. The PI says \u201cthey\u2019re off-study, we don\u2019t need to report.\u201d Are they right?',
-    opts:['The PI is correct \u2014 once a participant completes the last study visit, reporting obligations end','Report only if the event is directly caused by the study drug, not if it is merely \u201cpossibly related\u201d','The PI is wrong \u2014 SAEs within the protocol-defined follow-up period that are possibly related must still be reported to the sponsor and REB','Document the event in the participant\'s medical chart but do not submit a formal SAE report'],
+    opts:['The PI is correct \u2014 once a participant completes the last study visit, reporting obligations end','Report only if the event is directly caused by the study drug, not if it is merely \u201cpossibly related\u201d','The PI is wrong \u2014 SAEs within the protocol-defined follow-up period that are possibly related must still be reported to the sponsor and REB','Document the event in the participant\\'s medical chart but do not submit a formal SAE report'],
     ans:2,
     rationale:'No. SAEs that occur within the protocol-defined follow-up period and are possibly related to the study drug or procedures must be reported regardless of whether active participation has ended. The follow-up period exists in the protocol precisely because safety obligations extend beyond the last visit. Report to the sponsor within 24 hours and to the REB within the applicable window. If the PI is resistant, walk them through SOP-CR-012 \u00a75.5.1 directly.',
     ref:'<a href="SOP-CR-012-overview.html">SOP-CR-012 \u00a75.5.1</a>' },
@@ -2687,7 +2687,7 @@ var KP_POOL = [
 
   { id:'ic-s2', type:'check', topic:'Informed Consent', topicId:'consent', applies:'all',
     q:'A participant does not speak English or French. A family member offers to interpret. Can you use them as your interpreter to obtain informed consent?',
-    opts:['Yes \u2014 a family member who speaks both languages is the most practical option and understands the participant\'s situation','Yes, but only if the family member signs a confidentiality agreement and the CRC documents their presence','No \u2014 arrange a qualified impartial interpreter; a family member may filter information or exert influence on the consent decision','No \u2014 the participant must learn English or French before they can be enrolled in a study at the MUHC'],
+    opts:['Yes \u2014 a family member who speaks both languages is the most practical option and understands the participant\\'s situation','Yes, but only if the family member signs a confidentiality agreement and the CRC documents their presence','No \u2014 arrange a qualified impartial interpreter; a family member may filter information or exert influence on the consent decision','No \u2014 the participant must learn English or French before they can be enrolled in a study at the MUHC'],
     ans:2,
     rationale:'No \u2014 a family member is not an impartial interpreter. SOP-CR-008 section 5.10.2 requires an impartial qualified interpreter/translator if the participant does not speak English or French. Using a family member introduces risk of filtering, selective translation, or undue influence. Arrange for a qualified interpreter. Document the interpreter\u2019s identity and their role. The REB-approved ICF should be translated, or a short-form consent in the participant\u2019s language used with an impartial witness present.',
     ref:'<a href="SOP-CR-008-overview.html">SOP-CR-008 \u00a75.10</a>' },
@@ -2763,7 +2763,7 @@ var KP_POOL = [
 
   { id:'gcp-s1', type:'check', topic:'GCP Principles', topicId:'gcp', applies:'interventional',
     q:'A sponsor\u2019s monitor arrives for a source data verification visit and asks to review a participant\u2019s full hospital medical record, including records unrelated to the study. Your site\u2019s ICF states that participants consent to study-related records access only. What do you do?',
-    opts:['Provide the full medical record \u2014 GCP requires investigators to allow monitor access to all source records','Provide study-related records only, consistent with the ICF scope, and escalate to the PI and privacy officer if the monitor insists','Refuse all access until the PI is present to supervise the review','Provide the full record but redact the participant\'s name from each page'],
+    opts:['Provide the full medical record \u2014 GCP requires investigators to allow monitor access to all source records','Provide study-related records only, consistent with the ICF scope, and escalate to the PI and privacy officer if the monitor insists','Refuse all access until the PI is present to supervise the review','Provide the full record but redact the participant\\'s name from each page'],
     ans:1,
     rationale:'You provide access to study-related records only, consistent with what participants consented to. GCP requires that investigators allow the sponsor, monitors, and regulatory authorities access to source records \u2014 but the scope of that access is bounded by the consent and applicable privacy law. Providing unrelated medical records without explicit consent would violate participant privacy and TCPS2/provincial law. Document the monitor\u2019s request and your response. If the monitor insists, escalate to the QI/PI and your institution\u2019s research privacy officer.',
     ref:'<a href="SOP-CR-014-overview.html">SOP-CR-014 \u00a75.3</a> \u00b7 ICH E6(R3)' },
@@ -2895,7 +2895,7 @@ var KP_POOL = [
 
   { id:'mon-s1', type:'check', topic:'Monitoring and Audits', topicId:'monitoring', applies:'interventional',
     q:'Health Canada inspectors arrive unannounced at your site for a for-cause inspection. The QI/PI is not present and unreachable. What do you do?',
-    opts:['Ask the inspectors to return when the PI is available \u2014 only the PI can authorize access to study documents','Cooperate fully, provide access to requested documents, attempt to reach the PI and compliance office, and document everything','Provide access only to documents you personally created and defer all other requests until the PI arrives','Call the sponsor first to get their legal team\'s guidance before providing any documents'],
+    opts:['Ask the inspectors to return when the PI is available \u2014 only the PI can authorize access to study documents','Cooperate fully, provide access to requested documents, attempt to reach the PI and compliance office, and document everything','Provide access only to documents you personally created and defer all other requests until the PI arrives','Call the sponsor first to get their legal team\\'s guidance before providing any documents'],
     ans:1,
     rationale:'Welcome the inspectors and cooperate fully \u2014 obstruction is a serious regulatory offence regardless of whether the PI is present. Immediately attempt to reach the QI/PI and your institution\u2019s research compliance office or a senior study team member. Provide the inspectors with access to the study documents they are entitled to review under HC authority. Do not delay, restrict, or selectively present records. Document the arrival time, inspectors\u2019 names, and all requests made. When the PI is reached, brief them immediately. Per SOP-CR-017, the site should have a plan for unannounced inspections in advance.',
     ref:'<a href="SOP-CR-017-overview.html">SOP-CR-017</a>' },
@@ -3007,7 +3007,7 @@ var KP_POOL = [
 
   { id:'dev-s3', type:'check', topic:'Protocol Deviations', topicId:'deviations', applies:'all',
     q:'The sponsor sends a written instruction allowing sites to skip a non-critical assessment at one visit for logistical reasons, saying sites can implement it immediately. Can you proceed without REB approval?',
-    opts:['Yes \u2014 the sponsor\'s written approval is sufficient authorization to deviate from the protocol','Yes, but only if the assessment is documented as non-critical in the protocol','No \u2014 any deviation from the REB-approved protocol requires REB approval before implementation, regardless of sponsor authorization, unless it eliminates an immediate hazard','No \u2014 sponsor instructions can never modify a protocol; only a formal amendment can'],
+    opts:['Yes \u2014 the sponsor\\'s written approval is sufficient authorization to deviate from the protocol','Yes, but only if the assessment is documented as non-critical in the protocol','No \u2014 any deviation from the REB-approved protocol requires REB approval before implementation, regardless of sponsor authorization, unless it eliminates an immediate hazard','No \u2014 sponsor instructions can never modify a protocol; only a formal amendment can'],
     ans:2,
     rationale:'Not necessarily. Even if the sponsor permits it, any deviation from the REB-approved protocol that is not purely administrative \u2014 and skipping a protocol-specified assessment is likely not administrative \u2014 requires REB approval before implementation at the MUHC. SOP-CR-026 section 5.3.3 states that intentional deviations must not be implemented without prior Sponsor agreement and REB approval unless they eliminate an immediate hazard. Get the sponsor\u2019s written confirmation (file it in the ISF), then submit to the REB via Nagano and wait for approval before implementing. Document the sponsor instruction and your REB submission regardless.',
     ref:'<a href="SOP-CR-026-overview.html">SOP-CR-026 \u00a75.2.3, 5.3.3</a>' },
@@ -3950,7 +3950,7 @@ function kpBuildTopicGrid() {
       checks++;
     }
     html += '<div class="kp-topic-tile' + (locked ? ' locked' : '') + '"' +
-      (!locked ? ' onclick="kpStartBrowse(\'' + t.id + '\')"' : '') + '>' +
+      (!locked ? ' onclick="kpStartBrowse(\\'' + t.id + '\\')"' : '') + '>' +
       '<div class="kp-tt-name">' + t.name + '</div>' +
       '<div class="kp-tt-sop">' + t.sop + '</div>' +
       '<div class="kp-tt-pills">';
@@ -4586,7 +4586,7 @@ var KP_DR_EXERCISES = {
       { type:'error', who:'Marie Dupont',
         problem:'"All study activities" is not an acceptable task description.',
         why:'This is not specific enough to allow a monitor or inspector to verify that delegation matches the tasks actually performed. ICH E6(R3) §2.3.3 requires documentation proportionate to the significance of activities.',
-        fix:'Tasks should be listed specifically — e.g. "eligibility screening, source document completion, participant follow-up, SAE documentation, CRF data entry." If the CRC\'s role is broad, the tasks should still be enumerated.',
+        fix:'Tasks should be listed specifically — e.g. "eligibility screening, source document completion, participant follow-up, SAE documentation, CRF data entry." If the CRC\\'s role is broad, the tasks should still be enumerated.',
         ref:'ICH E6(R3) §2.3.3 · C.05.012' },
       { type:'error', who:'Sophie Leclerc',
         problem:'Added April 22 — but HR records show she joined the study April 10.',
@@ -5607,7 +5607,7 @@ function jcBuildHub() {
       if (JC_SCENARIOS[s].role === role.id && JC_SCENARIOS[s].live) { count++; }
     }
     if (count === 0) { continue; }
-    html += '<div class="kp-dr-hub-card active" onclick="jcSelectRole(\'' + role.id + '\')">';
+    html += '<div class="kp-dr-hub-card active" onclick="jcSelectRole(\\'' + role.id + '\\')">';
     html += '<div class="kp-dr-hub-accent"></div>';
     html += '<div class="kp-dr-hub-title">' + role.name + '</div>';
     html += '<div class="kp-dr-hub-meta">';
@@ -5647,7 +5647,7 @@ function jcBuildRole(roleId) {
     var s = JC_SCENARIOS[i];
     if (s.role !== roleId) { continue; }
     var cls = s.live ? 'kp-dr-hub-card active' : 'kp-dr-hub-card';
-    html += '<div class="' + cls + '" onclick="jcStartScenario(\'' + s.id + '\')">';
+    html += '<div class="' + cls + '" onclick="jcStartScenario(\\'' + s.id + '\\')">';
     html += '<div class="kp-dr-hub-accent"></div>';
     html += '<div class="kp-dr-hub-topic">' + s.topic + '</div>';
     html += '<div class="kp-dr-hub-title">' + s.title + '</div>';
@@ -5868,7 +5868,7 @@ function inspBuildHub() {
   var html = '';
   for (var i = 0; i < INSP_TOPICS.length; i++) {
     var t = INSP_TOPICS[i];
-    html += '<div class="kp-dr-hub-card active" onclick="inspStartTopic(\'' + t.id + '\')">';
+    html += '<div class="kp-dr-hub-card active" onclick="inspStartTopic(\\'' + t.id + '\\')">';
     html += '<div class="kp-dr-hub-accent"></div>';
     html += '<div class="kp-dr-hub-topic">' + t.name + '</div>';
     html += '<div class="kp-dr-hub-title">' + t.count + ' inspector questions</div>';
