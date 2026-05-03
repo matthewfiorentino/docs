@@ -49,24 +49,25 @@ article a:hover,
 }
 
 /* ── "On this page" TOC ── */
-/* Mintlify uses <toc-item> custom elements, not <li>              */
-/* data-active / data-active-deepest have no value — just presence */
+/* Use #table-of-contents-content a (specificity 1-0-1) for universal styles —
+   this beats Mintlify's Tailwind classes and is confirmed to work.
+   toc-item[data-active-deepest] a (specificity 0-1-2) is lower, so we use
+   !important on active rules to guarantee they win.                          */
 
-toc-item a {
-    font-size:   11.5px !important;
-    line-height: 1.4 !important;
-    color:       inherit !important;
-}
-/* Reserve dot space on ALL items so active state never shifts layout */
-toc-item {
-    display:      block !important;
+#table-of-contents-content a {
+    font-size:    11.5px !important;
+    line-height:  1.4 !important;
+    color:        inherit !important;
+    /* Reserve dot space on ALL items — no layout shift when active changes */
     position:     relative !important;
-    padding-left: 10px !important;
+    padding-left: 12px !important;
+    transition:   color 0.15s !important;
 }
-toc-item::before {
+/* Dot — transparent on all items by default */
+#table-of-contents-content a::before {
     content:       '' !important;
     position:      absolute !important;
-    left:          0 !important;
+    left:          1px !important;
     top:           50% !important;
     transform:     translateY(-50%) !important;
     width:         5px !important;
@@ -75,15 +76,15 @@ toc-item::before {
     background:    transparent !important;
     transition:    background 0.15s !important;
 }
-/* Active deepest: fill dot + accent colour */
+/* Active deepest — fill dot + accent colour + bold */
 toc-item[data-active-deepest] a {
     color:       var(--ri-accent) !important;
     font-weight: 600 !important;
 }
-toc-item[data-active-deepest]::before {
+toc-item[data-active-deepest] a::before {
     background: var(--ri-accent) !important;
 }
-/* Parent of active section: accent colour only, no dot */
+/* Parent of active section — accent colour, no dot */
 toc-item[data-active] a {
     color: var(--ri-accent) !important;
 }
