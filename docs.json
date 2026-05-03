@@ -474,6 +474,22 @@
                     ]
                   },
                   {
+                    "group": "SOP-CR-500 — Human Research Privileges and Researcher Status",
+                    "expanded": false,
+                    "pages": [
+                      "sops/cr-500-overview",
+                      "sops/cr-500"
+                    ]
+                  },
+                  {
+                    "group": "SOP-CR-501 — Notification of Participant's Physician",
+                    "expanded": false,
+                    "pages": [
+                      "sops/cr-501-overview",
+                      "sops/cr-501"
+                    ]
+                  },
+                  {
                     "group": "Sponsor-Investigator Series",
                     "expanded": false,
                     "pages": [
