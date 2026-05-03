@@ -1385,7 +1385,7 @@ window.ikDownload = function() {
 };
 
 // ---------------------------------------------------------------------------
-// INIT — render form on load; retry if Mintlify re-renders the host component
+// INIT — render form on load; keep retrying in case Mintlify re-renders
 // ---------------------------------------------------------------------------
 window.ikRenderForm = function() {
   var area = document.getElementById('ik-form-area');
@@ -1393,8 +1393,13 @@ window.ikRenderForm = function() {
   if (!area.innerHTML.trim()) renderSection(state.currentSection);
 };
 
+// Poll every 150ms for up to 10 seconds — handles Mintlify SPA re-renders
+// at any delay. The guard in ikRenderForm prevents resetting a live form.
+var _ikPollInterval = setInterval(function() {
+  window.ikRenderForm && window.ikRenderForm();
+}, 150);
+setTimeout(function() { clearInterval(_ikPollInterval); }, 10000);
+
 window.ikRenderForm();
-setTimeout(function() { window.ikRenderForm && window.ikRenderForm(); }, 500);
-setTimeout(function() { window.ikRenderForm && window.ikRenderForm(); }, 1200);
 
 })();
