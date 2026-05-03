@@ -3497,5 +3497,9 @@ function llRefreshStats() {
   } catch(e) {}
 }
 
-/* Fire once after Mintlify's initial re-renders have settled */
+/* Fire at multiple delays to handle Mintlify SPA re-renders at varying speeds.
+   On hard-refresh the 300ms call wins. On SPA nav-back Mintlify's settling
+   re-render can arrive later, so 900ms and 1800ms act as fallbacks. */
 setTimeout(llRefreshStats, 300);
+setTimeout(llRefreshStats, 900);
+setTimeout(llRefreshStats, 1800);

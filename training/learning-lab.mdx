@@ -485,7 +485,7 @@ export const LL_CSS = `:root {
 
 export const LL_HTML_1 = `
 
-<div class="kp-stage">
+<div class="kp-stage" style="overflow-x:hidden">
 
   
   <div class="kp-phase phase-active" id="kp-phase-0">
@@ -6017,27 +6017,16 @@ export const LearningLab = () => {
     script.id = 'll-script';
     script.src = '/ll-script.js';
     document.body.appendChild(script);
-
-    // Schedule multiple stat-refresh attempts to handle Mintlify's
-    // settling re-renders, which can reset dangerouslySetInnerHTML
-    // content at unpredictable points after the script loads.
-    const timers = [400, 900, 1600].map(delay =>
-      setTimeout(() => {
-        if (typeof window.llRefreshStats === 'function') window.llRefreshStats();
-      }, delay)
-    );
-
     return () => {
       const s = document.getElementById('ll-script');
       if (s) s.remove();
-      timers.forEach(clearTimeout);
     };
   }, []);
 
   return (
     <>
       <style dangerouslySetInnerHTML={{__html: LL_CSS}} />
-      <div style={{overflowX: 'hidden'}} dangerouslySetInnerHTML={{__html: LL_HTML_1 + LL_HTML_2}} />
+      <div dangerouslySetInnerHTML={{__html: LL_HTML_1 + LL_HTML_2}} />
     </>
   );
 };
