@@ -49,17 +49,26 @@ article a:hover,
 }
 
 /* ── "On this page" TOC ──
-   Mintlify already provides a native sliding dot (span.bg-primary that
-   animates its top value) and active link colour (text-primary class on
-   the active <a>). We only touch font size and make the active item bold.
-   toc-item is a CLASS on <li>, not a custom element.                        */
+   Mintlify's native tracker is a <span> inside div.relative that slides by
+   animating its `top` style. The span uses bg-primary via Tailwind, but
+   Mintlify's Tailwind config expects --primary as an HSL triplet, not hex,
+   so the dot renders transparent. We force-colour it directly.
+   toc-item is a CSS CLASS on <li>, not a custom element.                    */
 
+/* Font size reduction */
 #table-of-contents-content a {
     font-size:   11.5px !important;
     line-height: 1.4 !important;
 }
 
-/* Bold the active-deepest item without touching colour (text-primary handles it) */
+/* Native sliding dot — force our accent colour so it's visible */
+#table-of-contents div.relative > span {
+    background-color: var(--ri-accent) !important;
+    width:            6px !important;
+    height:           6px !important;
+}
+
+/* Bold the active item (colour is handled by Mintlify's text-primary class) */
 #table-of-contents-content li.toc-item[data-active-deepest="true"] a {
     font-weight: 600 !important;
 }
