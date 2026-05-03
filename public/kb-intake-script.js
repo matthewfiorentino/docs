@@ -1393,12 +1393,13 @@ window.ikRenderForm = function() {
   if (!area.innerHTML.trim()) renderSection(state.currentSection);
 };
 
-// Poll every 150ms for up to 10 seconds — handles Mintlify SPA re-renders
-// at any delay. The guard in ikRenderForm prevents resetting a live form.
-var _ikPollInterval = setInterval(function() {
+// Clear any interval left over from a previous SPA visit, then start a new
+// one. Runs indefinitely at 400ms — cheap DOM check, no visible delay.
+// The guard in ikRenderForm prevents resetting a form the user is filling.
+if (window._ikPollInterval) clearInterval(window._ikPollInterval);
+window._ikPollInterval = setInterval(function() {
   window.ikRenderForm && window.ikRenderForm();
-}, 150);
-setTimeout(function() { clearInterval(_ikPollInterval); }, 10000);
+}, 400);
 
 window.ikRenderForm();
 
