@@ -195,11 +195,27 @@
                 "pages": [
                   "sops/overview",
                   {
+                    "group": "SOP-CR-001 — SOP Administrative Management",
+                    "expanded": false,
+                    "pages": [
+                      "sops/cr-001-overview",
+                      "sops/cr-001"
+                    ]
+                  },
+                  {
                     "group": "SOP-CR-002 — Research Team Roles",
                     "expanded": false,
                     "pages": [
                       "sops/cr-002-overview",
                       "sops/cr-002"
+                    ]
+                  },
+                  {
+                    "group": "SOP-CR-003 — Human Research Training",
+                    "expanded": false,
+                    "pages": [
+                      "sops/cr-003-overview",
+                      "sops/cr-003"
                     ]
                   },
                   {
