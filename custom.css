@@ -692,7 +692,7 @@ article {
 /* ── Homepage footer ── */
 .ri-home-footer {
     background-color: #150e51;
-    background-image: url('/footer.png');
+    background-image: url('/images/footer.png');
     background-size: cover;
     background-position: center;
     padding: 48px 8vw 40px;
