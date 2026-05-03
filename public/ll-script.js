@@ -2554,38 +2554,26 @@ function kpDrMarkRows() {
 
   /* auto-count active hub cards on landing */
   /* In a SPA the DOMContentLoaded event has already fired by the time this
-     script is dynamically injected, so we check readyState and run immediately
-     if the DOM is already available. */
-  function llInitStats() {
-    kpRouteFromHash();
-    var teHub = document.getElementById('kp-phase-team-hub');
-    var drHub = document.getElementById('kp-phase-docreview-hub');
-    if (teHub) {
-      var teCount = teHub.querySelectorAll('.kp-dr-hub-card.active').length;
-      var teEl = document.getElementById('stat-te-count');
-      if (teEl) { teEl.textContent = teCount; }
-    }
-    if (drHub) {
-      var drCount = drHub.querySelectorAll('.kp-dr-hub-card.active').length;
-      var drEl = document.getElementById('stat-dr-count');
-      if (drEl) { drEl.textContent = drCount; }
-    }
-    /* set practice stats from KP_TOPICS and KP_POOL */
-    var topicEl = document.getElementById('stat-topics');
-    var qEl = document.getElementById('stat-questions');
-    if (topicEl) { topicEl.textContent = KP_TOPICS.filter(function(t){return t.live;}).length; }
-    if (qEl) { qEl.textContent = KP_POOL.length + '+'; }
-    /* restore hub if navigated back from a team exercise page */
-    if (sessionStorage.getItem('teHub')) {
-      sessionStorage.removeItem('teHub');
-      kpTransition('0', 'team-hub', false);
-    }
-  }
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', llInitStats);
-  } else {
-    llInitStats();
-  }
+     script is dynamically injected. Run stat counts immediately.
+     Note: kpRouteFromHash() is intentionally NOT called here — calling it
+     during script init can throw if hash state references uninitialized
+     functions, halting the rest of the script. */
+  (function() {
+    try {
+      var teHub = document.getElementById('kp-phase-team-hub');
+      var drHub = document.getElementById('kp-phase-docreview-hub');
+      if (teHub) {
+        var teCount = teHub.querySelectorAll('.kp-dr-hub-card.active').length;
+        var teEl = document.getElementById('stat-te-count');
+        if (teEl) { teEl.textContent = teCount; }
+      }
+      if (drHub) {
+        var drCount = drHub.querySelectorAll('.kp-dr-hub-card.active').length;
+        var drEl = document.getElementById('stat-dr-count');
+        if (drEl) { drEl.textContent = drCount; }
+      }
+    } catch(e) {}
+  }());
 
 
 /* ════════════════════════════════════════════
