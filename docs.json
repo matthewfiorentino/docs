@@ -299,6 +299,22 @@
                     ]
                   },
                   {
+                    "group": "SOP-CR-016 — Study Close-Out",
+                    "expanded": false,
+                    "pages": [
+                      "sops/cr-016-overview",
+                      "sops/cr-016"
+                    ]
+                  },
+                  {
+                    "group": "SOP-CR-017 — Audits and Inspections",
+                    "expanded": false,
+                    "pages": [
+                      "sops/cr-017-overview",
+                      "sops/cr-017"
+                    ]
+                  },
+                  {
                     "group": "SOP-CR-010 — Management of Investigational Products",
                     "expanded": false,
                     "pages": [
