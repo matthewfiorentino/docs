@@ -6014,7 +6014,7 @@ export const LearningLab = () => {
     if (existing) existing.remove();
     const script = document.createElement('script');
     script.id = 'll-script';
-    script.textContent = LL_JS_1 + LL_JS_2 + LL_JS_3 + LL_JS_4 + LL_JS_5 + LL_JS_6;
+    script.src = '/ll-script.js';
     document.body.appendChild(script);
     return () => {
       const s = document.getElementById('ll-script');
