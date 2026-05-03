@@ -49,7 +49,7 @@ export const LL_CSS = `:root {
 .kp-h1 em { font-style: normal; color: var(--sky); }
 .kp-sub { font-size: 15px; color: var(--textm); line-height: 1.75; max-width: 540px; margin-bottom: 18px; }
 .kp-informal { font-size: 11px; color: var(--textd); background: var(--bg-low); border: 1px solid var(--bdr-soft); padding: 6px 12px; display: inline-block; }
-.kp-stage { max-width: 1200px; margin: 0 auto; padding: 16px 32px 100px; min-height: 560px; }
+.kp-stage { max-width: 1200px; margin: 0 auto; padding: 16px 32px 100px; min-height: 560px; overflow-x: hidden; }
 .kp-phase { display: none; }
 .kp-phase.phase-active { display: block; }
 @keyframes phaseIn   { from { opacity:0; transform:translateY(32px); } to { opacity:1; transform:translateY(0); } }
@@ -397,9 +397,10 @@ export const LL_CSS = `:root {
 .te-situation-eyebrow { font-size: 9px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: var(--teal); margin-bottom: 10px; }
 .te-situation p { font-size: 14px; color: var(--text); line-height: 1.75; margin: 0 0 10px; }
 .te-situation p:last-child { margin-bottom: 0; }
-.te-questions { margin: 0; padding: 0; list-style: none; }
-.te-question { border-top: 1px solid var(--bdr-soft); }
-.te-q-text { font-size: 14px; color: var(--text); line-height: 1.7; padding: 18px 24px; }
+.te-questions { margin: 0; padding: 0; list-style: none !important; }
+.te-question { border-top: 1px solid var(--bdr-soft); list-style: none !important; }
+.te-question::before { display: none !important; }
+.te-q-text { font-size: 14px; color: var(--text); line-height: 1.7; padding: 18px 24px; font-weight: 700; }
 .te-kp-toggle { width: 100%; text-align: left; background: none; border: none; border-top: 1px solid var(--bdr-soft); padding: 11px 24px; cursor: pointer; display: flex; align-items: center; justify-content: space-between; gap: 12px; font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--textd); font-family: Arial,sans-serif; transition: color .15s, background .15s; }
 .te-kp-toggle:hover { color: var(--navy); background: var(--bg-low); }
 .te-kp-toggle svg { flex-shrink: 0; transition: transform .2s; }
