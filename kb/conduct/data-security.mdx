@@ -7,14 +7,14 @@ The sensitivity of the data you are working with determines the environment in w
 
 ## Data classification
 
-The RI-MUHC classifies human research data into four categories. The category determines where data can be stored, how it can be shared, and what approvals are required to access it. Understanding these distinctions is essential for protocol design, Nagano submissions, and day-to-day data handling.
+The RI-MUHC classifies human research data into four categories. The category determines where data can be stored, how it can be shared, and what approvals are required to access it. Understanding these distinctions is essential for protocol design, <Tooltip tip="The RI-MUHC's electronic study submission and management platform. All studies requiring MUHC Authorization are submitted through Nagano." headline="Nagano (RI-MUHC)" cta="Full definition" href="/kb/glossary#nagano">Nagano</Tooltip> submissions, and day-to-day data handling.
 
 | Category | Type | Description |
 |----------|------|-------------|
 | 1 | Aggregate / Statistical | Fully summarized data with no individual identifiers and no reasonable risk of re-identification. Examples: published statistics, summary tables, group averages. No restrictions on storage or sharing once published. |
 | 2 | Anonymized | Identifiers have been **irreversibly** stripped with no possibility of re-identification — no linking key exists or ever existed. Anonymized data can be stored more broadly and shared via standard encrypted methods. |
-| 3 | De-identified | Identifiers have been removed, but re-identification **remains possible** through a linking key (e.g., a master ID log or participant number list). Only the PI has access to the key. De-identified data is subject to the same security requirements as identifying data. |
-| 4 | Identifying | Contains direct identifiers: name, MRN, RAMQ number, date of birth, or any other information that can directly identify a participant. Strictest storage and sharing controls apply. Requires full REB approval, PM Final Authorization, and typically an EFVP. |
+| 3 | De-identified | Identifiers have been removed, but re-identification **remains possible** through a linking key (e.g., a master ID log or participant number list). Only the <Tooltip tip="US equivalent of the Canadian Qualified Investigator (QI)." headline="Principal Investigator (PI)" cta="Full definition" href="/kb/glossary#pi">PI</Tooltip> has access to the key. De-identified data is subject to the same security requirements as identifying data. |
+| 4 | Identifying | Contains direct identifiers: name, MRN, RAMQ number, date of birth, or any other information that can directly identify a participant. Strictest storage and sharing controls apply. Requires full <Tooltip tip="The ethics committee that reviews and approves research involving human participants. Also called CER at French-language institutions." headline="Research Ethics Board (REB)" cta="Full definition" href="/kb/glossary#reb">REB</Tooltip> approval, PM Final Authorization, and typically an EFVP. |
 
 <Warning>
 **De-identified is not the same as anonymized.** This is the most common misconception the RI-MUHC sees from research teams. If a linking key exists anywhere — even stored separately — the data is de-identified, not anonymized. The security and EFVP requirements for de-identified data are the same as for identifying data.
@@ -41,7 +41,7 @@ Storage location depends on data classification. There are three environments: t
 
 ## Sharing data securely
 
-Only authorized recipients may receive research data: people named in the REB-approved protocol, people who have signed the required legal agreements, or people appropriately delegated by the PI and listed on the Task Delegation Log.
+Only authorized recipients may receive research data: people named in the REB-approved protocol, people who have signed the required legal agreements, or people appropriately delegated by the PI and listed on the <Tooltip tip="Lists each team member, their qualifications, and specific trial tasks authorized by the QI." headline="Task Delegation Log (TDL)" cta="Full definition" href="/kb/glossary#tdl">Task Delegation Log</Tooltip>.
 
 ### Sending to another MUHC or MSSS recipient
 
@@ -77,7 +77,7 @@ For questions specific to your study, always consult the relevant team directly 
 | EFVP questions | Privacy office — efvp@muhc.mcgill.ca |
 | Data security questions | MUHC IT Security — securitygovernance@muhc.mcgill.ca |
 | IT support / network access | RI-MUHC IT — ri.it@muhc.mcgill.ca |
-| Privileges and training | Quality Assurance — qaclinical@muhc.mcgill.ca |
+| Privileges and training | <Tooltip tip="All planned and systematic actions to ensure trial data are generated, documented, and reported in compliance with GCP and SOPs." headline="Quality Assurance (QA)" cta="Full definition" href="/kb/glossary#qa">Quality Assurance</Tooltip> — qaclinical@muhc.mcgill.ca |
 | Data Warehouse requests | RI-MUHC DW team — info.ridw@muhc.mcgill.ca |
 
 ---
