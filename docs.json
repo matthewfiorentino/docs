@@ -251,6 +251,14 @@
                     ]
                   },
                   {
+                    "group": "SOP-CR-008 — Informed Consent",
+                    "expanded": false,
+                    "pages": [
+                      "sops/cr-008-overview",
+                      "sops/cr-008"
+                    ]
+                  },
+                  {
                     "group": "SOP-CR-009 — Participant Recruitment and Enrollment",
                     "expanded": false,
                     "pages": [
@@ -259,11 +267,19 @@
                     ]
                   },
                   {
-                    "group": "SOP-CR-008 — Informed Consent",
+                    "group": "SOP-CR-010 — Management of Investigational Products",
                     "expanded": false,
                     "pages": [
-                      "sops/cr-008-overview",
-                      "sops/cr-008"
+                      "sops/cr-010-overview",
+                      "sops/cr-010"
+                    ]
+                  },
+                  {
+                    "group": "SOP-CR-011 — Management of Biological Specimens",
+                    "expanded": false,
+                    "pages": [
+                      "sops/cr-011-overview",
+                      "sops/cr-011"
                     ]
                   },
                   {
@@ -360,22 +376,6 @@
                     "pages": [
                       "sops/cr-026-overview",
                       "sops/cr-026"
-                    ]
-                  },
-                  {
-                    "group": "SOP-CR-010 — Management of Investigational Products",
-                    "expanded": false,
-                    "pages": [
-                      "sops/cr-010-overview",
-                      "sops/cr-010"
-                    ]
-                  },
-                  {
-                    "group": "SOP-CR-011 — Management of Biological Specimens",
-                    "expanded": false,
-                    "pages": [
-                      "sops/cr-011-overview",
-                      "sops/cr-011"
                     ]
                   },
                   {
