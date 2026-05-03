@@ -49,43 +49,56 @@ article a:hover,
 }
 
 /* ── "On this page" TOC ── */
-/* Use #table-of-contents-content a (specificity 1-0-1) for universal styles —
-   this beats Mintlify's Tailwind classes and is confirmed to work.
-   toc-item[data-active-deepest] a (specificity 0-1-2) is lower, so we use
-   !important on active rules to guarantee they win.                          */
+/* Base styles: use #table-of-contents-content a (specificity 1-0-1) so it
+   beats Mintlify's Tailwind utilities. display:block is required so that
+   position:relative takes effect on inline <a> elements.                    */
 
 #table-of-contents-content a {
     font-size:    11.5px !important;
     line-height:  1.4 !important;
+    display:      block !important;
     color:        inherit !important;
     /* Reserve dot space on ALL items — no layout shift when active changes */
     position:     relative !important;
     padding-left: 12px !important;
-    transition:   color 0.15s !important;
+    transition:   color 0.15s, font-weight 0.15s !important;
 }
-/* Dot — transparent on all items by default */
+
+/* Dot pseudo-element — transparent by default on every item */
 #table-of-contents-content a::before {
     content:       '' !important;
     position:      absolute !important;
-    left:          1px !important;
+    left:          0px !important;
     top:           50% !important;
-    transform:     translateY(-50%) !important;
+    transform:     translateY(-50%) scale(0.8) !important;
     width:         5px !important;
     height:        5px !important;
     border-radius: 50% !important;
     background:    transparent !important;
-    transition:    background 0.15s !important;
+    transition:    background 0.15s, transform 0.15s !important;
 }
-/* Active deepest — fill dot + accent colour + bold */
-toc-item[data-active-deepest] a {
+
+/* ── Active state ──
+   Combine #table-of-contents-content with the toc-item selector so
+   specificity (1-1-2) beats the base a::before rule (1-0-1) — both use
+   !important, so the higher-specificity rule wins.
+   Cover both attribute names Mintlify uses across versions:
+     data-active-deepest  — the exact heading in viewport
+     aria-current         — some Mintlify builds use this instead            */
+
+#table-of-contents-content toc-item[data-active-deepest] a,
+#table-of-contents-content toc-item[aria-current] a {
     color:       var(--ri-accent) !important;
     font-weight: 600 !important;
 }
-toc-item[data-active-deepest] a::before {
-    background: var(--ri-accent) !important;
+#table-of-contents-content toc-item[data-active-deepest] a::before,
+#table-of-contents-content toc-item[aria-current] a::before {
+    background:    var(--ri-accent) !important;
+    transform:     translateY(-50%) scale(1) !important;
 }
-/* Parent of active section — accent colour, no dot */
-toc-item[data-active] a {
+
+/* Parent heading of active section */
+#table-of-contents-content toc-item[data-active] a {
     color: var(--ri-accent) !important;
 }
 
