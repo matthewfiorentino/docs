@@ -483,10 +483,10 @@ const LL_CSS = `:root {
 @media (max-width: 699px) { .jc-cast { grid-template-columns: 1fr; } }`;
 
 const LL_HTML_1 = `
-<!-- STAGE -->
+
 <div class="kp-stage">
 
-  <!-- ══ PHASE 0: Landing — three pathways ══ -->
+  
   <div class="kp-phase phase-active" id="kp-phase-0">
     <div class="kp-phase-label">Where do you want to start?</div>
     <div class="kp-landing-grid">
@@ -551,7 +551,7 @@ const LL_HTML_1 = `
     </div>
   </div>
 
-  <!-- ══ PHASE entry: Browse / Shuffle ══ -->
+  
   <div class="kp-phase" id="kp-phase-entry">
     <button class="kp-back" onclick="kpGoBack('0')">
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
@@ -583,7 +583,7 @@ const LL_HTML_1 = `
     </div>
   </div>
 
-  <!-- ══ PHASE 0.5: Study type ══ -->
+  
   <div class="kp-phase" id="kp-phase-studytype">
     <div class="kp-nav-row">
     <button class="kp-back" onclick="kpGoBack('entry')">
@@ -636,7 +636,7 @@ const LL_HTML_1 = `
     </div>
   </div>
 
-  <!-- ══ PHASE count: How many questions? (Shuffle only) ══ -->
+  
   <div class="kp-phase" id="kp-phase-count">
     <div class="kp-nav-row">
     <button class="kp-back" onclick="kpGoBack('studytype')">
@@ -677,7 +677,7 @@ const LL_HTML_1 = `
     </div>
   </div>
 
-  <!-- ══ PHASE 1: Topic grid (Browse only) ══ -->
+  
   <div class="kp-phase" id="kp-phase-1">
     <div class="kp-nav-row">
     <button class="kp-back" onclick="kpGoBack('studytype')">
@@ -697,7 +697,7 @@ const LL_HTML_1 = `
     <div class="kp-topic-grid" id="kp-topic-grid"></div>
   </div>
 
-  <!-- ══ PHASE 1.5: Mode chooser ══ -->
+  
   <div class="kp-phase" id="kp-phase-mode">
     <div class="kp-nav-row">
     <button class="kp-back" onclick="kpGoBack('1')">
@@ -748,7 +748,7 @@ const LL_HTML_1 = `
     </div>
   </div>
 
-  <!-- ══ PHASE 2: Question sequence ══ -->
+  
   <div class="kp-phase" id="kp-phase-2">
     <div class="kp-nav-row">
     <button class="kp-back" id="kp-seq-back" onclick="kpSeqBack()">
@@ -776,7 +776,7 @@ const LL_HTML_1 = `
     <div id="kp-seq-card-wrap"></div>
   </div>
 
-  <!-- ══ PHASE 3: End screen ══ -->
+  
   <div class="kp-phase" id="kp-phase-3">
     <div class="kp-end">
       <div class="kp-end-eyebrow" id="end-eyebrow">Session complete</div>
@@ -798,7 +798,7 @@ const LL_HTML_1 = `
     </div>
   </div>
 
-  <!-- ══ PHASE team-hub: Team Exercises topic picker ══ -->
+  
   <div class="kp-phase" id="kp-phase-team-hub">
     <div class="kp-nav-row">
     <button class="kp-back" onclick="kpGoHome()">
@@ -898,7 +898,7 @@ const LL_HTML_1 = `
 
 
 
-  <!-- ══ PHASE te-delegation: Team Exercise ══ -->
+  
   <div class="kp-phase" id="kp-phase-te-delegation">
     <div class="kp-nav-row">
       <button class="kp-back" onclick="kpGoBack('team-hub')">
@@ -1033,7 +1033,7 @@ const LL_HTML_1 = `
 
   </div>
 
-  <!-- ══ PHASE te-consent: Team Exercise ══ -->
+  
   <div class="kp-phase" id="kp-phase-te-consent">
     <div class="kp-nav-row">
       <button class="kp-back" onclick="kpGoBack('team-hub')">
@@ -1159,7 +1159,7 @@ const LL_HTML_1 = `
   <div class="te-sources"><strong>Sources:</strong> TCPS2 (2022), Chapters 3 and 11 &middot; Civil Code of Quebec, Articles 20, 21, 24 &middot; ICH E6(R3) &sect;2.8&ndash;2.9 (effective April 1, 2026) &middot; Health Canada Division 5, C.05.010(h) &middot; Loi 25 / EFVP framework &middot; SOP-CR-008 v.08</div>
   </div>
 
-  <!-- ══ PHASE te-sae: Team Exercise ══ -->
+  
   <div class="kp-phase" id="kp-phase-te-sae">
     <div class="kp-nav-row">
       <button class="kp-back" onclick="kpGoBack('team-hub')">
@@ -1200,7 +1200,7 @@ const LL_HTML_1 = `
     <p>This case is a cascade &mdash; each situation compounds the previous one. Work through the questions in order.</p>
   </div>
 
-  <!-- Situation 1 -->
+  
   <div class="te-section-head" style="margin-top:40px">Situation 1</div>
   <div class="te-block">
     <div class="te-situation">
@@ -1222,7 +1222,7 @@ const LL_HTML_1 = `
     </ul>
   </div>
 
-  <!-- Situation 2 -->
+  
   <div class="te-section-head" style="margin-top:40px">Situation 2</div>
   <div class="te-block">
     <div class="te-situation">
@@ -1252,7 +1252,7 @@ const LL_HTML_1 = `
     </ul>
   </div>
 
-  <!-- Situation 3 -->
+  
   <div class="te-section-head" style="margin-top:40px">Situation 3</div>
   <div class="te-block">
     <div class="te-situation">
@@ -1272,7 +1272,7 @@ const LL_HTML_1 = `
     </ul>
   </div>
 
-  <!-- Situation 4 -->
+  
   <div class="te-section-head" style="margin-top:40px">Situation 4</div>
   <div class="te-block">
     <div class="te-situation">
@@ -1308,7 +1308,7 @@ const LL_HTML_1 = `
   <div class="te-sources"><strong>Sources:</strong> ICH E6(R3) &sect;2.7.2 (effective April 1, 2026) &middot; ICH E2A (adverse event definitions and reporting) &middot; Health Canada Division 5 C.05.001, C.05.014 &middot; SOP-CR-012 v.08 &middot; TCPS2 (2022) Art. 11.7&ndash;11.9 &middot; ALCOA+ data integrity principles</div>
   </div>
 
-  <!-- ══ PHASE te-deviations: Team Exercise ══ -->
+  
   <div class="kp-phase" id="kp-phase-te-deviations">
     <div class="kp-nav-row">
       <button class="kp-back" onclick="kpGoBack('team-hub')">
@@ -1353,7 +1353,7 @@ const LL_HTML_1 = `
     <p>Work through each issue: classify it, assess its severity, and identify what actions are required. One of the five issues may not be a deviation at all &mdash; check your calculations.</p>
   </div>
 
-  <!-- Issue 1 -->
+  
   <div class="te-section-head" style="margin-top:40px">Issue 1 &mdash; PT-003</div>
   <div class="te-block">
     <div class="te-situation">
@@ -1373,7 +1373,7 @@ const LL_HTML_1 = `
     </ul>
   </div>
 
-  <!-- Issue 2 -->
+  
   <div class="te-section-head" style="margin-top:40px">Issue 2 &mdash; PT-007</div>
   <div class="te-block">
     <div class="te-situation">
@@ -1393,7 +1393,7 @@ const LL_HTML_1 = `
     </ul>
   </div>
 
-  <!-- Issue 3 -->
+  
   <div class="te-section-head" style="margin-top:40px">Issue 3 &mdash; PT-011</div>
   <div class="te-block">
     <div class="te-situation">
@@ -1413,7 +1413,7 @@ const LL_HTML_1 = `
     </ul>
   </div>
 
-  <!-- Issue 4 -->
+  
   <div class="te-section-head" style="margin-top:40px">Issue 4 &mdash; PT-014</div>
   <div class="te-block">
     <div class="te-situation">
@@ -1433,7 +1433,7 @@ const LL_HTML_1 = `
     </ul>
   </div>
 
-  <!-- Issue 5 -->
+  
   <div class="te-section-head" style="margin-top:40px">Issue 5 &mdash; PI signatures</div>
   <div class="te-block">
     <div class="te-situation">
@@ -1459,7 +1459,7 @@ const LL_HTML_1 = `
   <div class="te-sources"><strong>Sources:</strong> ICH E6(R3) &sect;2.5.2 (effective April 1, 2026) &middot; Health Canada Division 5 C.05.010 &middot; CAPA principles &middot; GCP documentation and data integrity principles</div>
   </div>
 
-  <!-- ══ PHASE te-monitoring: Team Exercise ══ -->
+  
   <div class="kp-phase" id="kp-phase-te-monitoring">
     <div class="kp-nav-row">
       <button class="kp-back" onclick="kpGoBack('team-hub')">
@@ -1508,7 +1508,7 @@ const LL_HTML_1 = `
     </div>
   </div>
 
-  <!-- Q1 -->
+  
   <div class="te-section-head" style="margin-top:40px">Preparing for day one</div>
 `;
 const LL_HTML_2 = `  <div class="te-block">
@@ -1525,7 +1525,7 @@ const LL_HTML_2 = `  <div class="te-block">
     </ul>
   </div>
 
-  <!-- Q2 -->
+  
   <div class="te-section-head" style="margin-top:40px">12 days to prepare</div>
   <div class="te-block">
     <ul class="te-questions">
@@ -1541,7 +1541,7 @@ const LL_HTML_2 = `  <div class="te-block">
     </ul>
   </div>
 
-  <!-- Q3 -->
+  
   <div class="te-section-head" style="margin-top:40px">The open queries</div>
   <div class="te-block">
     <ul class="te-questions">
@@ -1557,7 +1557,7 @@ const LL_HTML_2 = `  <div class="te-block">
     </ul>
   </div>
 
-  <!-- Q4 -->
+  
   <div class="te-section-head" style="margin-top:40px">The IB version chain</div>
   <div class="te-block">
     <ul class="te-questions">
@@ -1573,7 +1573,7 @@ const LL_HTML_2 = `  <div class="te-block">
     </ul>
   </div>
 
-  <!-- Q5 -->
+  
   <div class="te-section-head" style="margin-top:40px">Dr. Patel&rsquo;s role</div>
   <div class="te-block">
     <ul class="te-questions">
@@ -1589,7 +1589,7 @@ const LL_HTML_2 = `  <div class="te-block">
     </ul>
   </div>
 
-  <!-- Q6 -->
+  
   <div class="te-section-head" style="margin-top:40px">Contesting an observation</div>
   <div class="te-block">
     <ul class="te-questions">
@@ -1611,7 +1611,7 @@ const LL_HTML_2 = `  <div class="te-block">
   <div class="te-sources"><strong>Sources:</strong> ICH E6(R3) Appendix C (effective April 1, 2026) &middot; GUI-0100 (updated March 2026) &middot; Health Canada Division 5 C.05.012 &middot; ICH E2A &middot; Health Canada Clinical Trial Inspection Program guidance</div>
   </div>
 
-  <!-- ══ PHASE te-data: Team Exercise ══ -->
+  
   <div class="kp-phase" id="kp-phase-te-data">
     <div class="kp-nav-row">
       <button class="kp-back" onclick="kpGoBack('team-hub')">
@@ -1649,7 +1649,7 @@ const LL_HTML_2 = `  <div class="te-block">
     </div>
   </div>
 
-  <!-- Situation 1 -->
+  
   <div class="te-section-head" style="margin-top:40px">Situation 1 &mdash; The corrected blood pressure</div>
   <div class="te-block">
     <div class="te-situation">
@@ -1669,7 +1669,7 @@ const LL_HTML_2 = `  <div class="te-block">
     </ul>
   </div>
 
-  <!-- Situation 2 -->
+  
   <div class="te-section-head" style="margin-top:40px">Situation 2 &mdash; The copied visit notes</div>
   <div class="te-block">
     <div class="te-situation">
@@ -1689,7 +1689,7 @@ const LL_HTML_2 = `  <div class="te-block">
     </ul>
   </div>
 
-  <!-- Situation 3 -->
+  
   <div class="te-section-head" style="margin-top:40px">Situation 3 &mdash; The reconstructed record</div>
   <div class="te-block">
     <div class="te-situation">
@@ -1709,7 +1709,7 @@ const LL_HTML_2 = `  <div class="te-block">
     </ul>
   </div>
 
-  <!-- Situation 4 -->
+  
   <div class="te-section-head" style="margin-top:40px">Situation 4 &mdash; The missing lab</div>
   <div class="te-block">
     <div class="te-situation">
@@ -1729,7 +1729,7 @@ const LL_HTML_2 = `  <div class="te-block">
     </ul>
   </div>
 
-  <!-- Situation 5 -->
+  
   <div class="te-section-head" style="margin-top:40px">Situation 5 &mdash; The missing audit trail</div>
   <div class="te-block">
     <div class="te-situation">
@@ -1750,7 +1750,7 @@ const LL_HTML_2 = `  <div class="te-block">
     </ul>
   </div>
 
-  <!-- Q6 -->
+  
   <div class="te-section-head" style="margin-top:40px">Across all five situations</div>
   <div class="te-block">
     <ul class="te-questions">
@@ -1772,7 +1772,7 @@ const LL_HTML_2 = `  <div class="te-block">
   <div class="te-sources"><strong>Sources:</strong> ICH E6(R3) &sect;2.12, &sect;4 Data Governance (effective April 1, 2026) &middot; ALCOA+ framework &middot; Health Canada Division 5 C.05.012 &middot; GUI-0100</div>
   </div>
 
-  <!-- ══ PHASE te-recruitment: Team Exercise ══ -->
+  
   <div class="kp-phase" id="kp-phase-te-recruitment">
     <div class="kp-nav-row">
       <button class="kp-back" onclick="kpGoBack('team-hub')">
@@ -1819,7 +1819,7 @@ const LL_HTML_2 = `  <div class="te-block">
     </div>
   </div>
 
-  <!-- Situation 1 -->
+  
   <div class="te-section-head" style="margin-top:40px">Situation 1 &mdash; The OACIS chart review</div>
   <div class="te-block">
     <div class="te-situation">
@@ -1839,7 +1839,7 @@ const LL_HTML_2 = `  <div class="te-block">
     </ul>
   </div>
 
-  <!-- Situation 2 -->
+  
   <div class="te-section-head" style="margin-top:40px">Situation 2 &mdash; Blood draw before consent</div>
   <div class="te-block">
     <div class="te-situation">
@@ -1859,7 +1859,7 @@ const LL_HTML_2 = `  <div class="te-block">
     </ul>
   </div>
 
-  <!-- Situation 3 -->
+  
   <div class="te-section-head" style="margin-top:40px">Situation 3 &mdash; The borderline HbA1c</div>
   <div class="te-block">
     <div class="te-situation">
@@ -1879,7 +1879,7 @@ const LL_HTML_2 = `  <div class="te-block">
     </ul>
   </div>
 
-  <!-- Situation 4 -->
+  
   <div class="te-section-head" style="margin-top:40px">Situation 4 &mdash; The compensation concern</div>
   <div class="te-block">
     <div class="te-situation">
@@ -1899,7 +1899,7 @@ const LL_HTML_2 = `  <div class="te-block">
     </ul>
   </div>
 
-  <!-- Situation 5 -->
+  
   <div class="te-section-head" style="margin-top:40px">Situation 5 &mdash; The sponsor&rsquo;s pressure</div>
   <div class="te-block">
     <div class="te-situation">
@@ -1925,7 +1925,7 @@ const LL_HTML_2 = `  <div class="te-block">
   <div class="te-sources"><strong>Sources:</strong> ICH E6(R3) &sect;2.4, &sect;2.8 (effective April 1, 2026) &middot; TCPS2 (2022) Art. 3.1 &middot; Health Canada Division 5 C.05.010 &middot; Loi 25 / EFVP framework &middot; MUHC privacy and recruitment policies</div>
   </div>
 
-  <!-- ══ PHASE te-gcp: Team Exercise ══ -->
+  
   <div class="kp-phase" id="kp-phase-te-gcp">
     <div class="kp-nav-row">
       <button class="kp-back" onclick="kpGoBack('team-hub')">
@@ -1965,7 +1965,7 @@ const LL_HTML_2 = `  <div class="te-block">
     </div>
   </div>
 
-  <!-- Q1 -->
+  
   <div class="te-section-head" style="margin-top:40px">David&rsquo;s comment</div>
   <div class="te-block">
     <div class="te-situation">
@@ -1985,7 +1985,7 @@ const LL_HTML_2 = `  <div class="te-block">
     </ul>
   </div>
 
-  <!-- Q2 -->
+  
   <div class="te-section-head" style="margin-top:40px">Karin&rsquo;s comment</div>
   <div class="te-block">
     <div class="te-situation">
@@ -2005,7 +2005,7 @@ const LL_HTML_2 = `  <div class="te-block">
     </ul>
   </div>
 
-  <!-- Q3 -->
+  
   <div class="te-section-head" style="margin-top:40px">Dr. Marchand&rsquo;s comment</div>
   <div class="te-block">
     <div class="te-situation">
@@ -2025,7 +2025,7 @@ const LL_HTML_2 = `  <div class="te-block">
     </ul>
   </div>
 
-  <!-- Q4 -->
+  
   <div class="te-section-head" style="margin-top:40px">Dr. Patel&rsquo;s framing</div>
   <div class="te-block">
     <div class="te-situation">
@@ -2045,7 +2045,7 @@ const LL_HTML_2 = `  <div class="te-block">
     </ul>
   </div>
 
-  <!-- Q5 -->
+  
   <div class="te-section-head" style="margin-top:40px">Karin&rsquo;s follow-up</div>
   <div class="te-block">
     <div class="te-situation">
@@ -2073,7 +2073,7 @@ const LL_HTML_2 = `  <div class="te-block">
 
   </div>
 
-  <!-- ══ PHASE docreview-hubment Review topic picker ══ -->
+  
   <div class="kp-phase" id="kp-phase-docreview-hub">
     <div class="kp-nav-row">
     <button class="kp-back" onclick="kpGoHome()">
@@ -2174,7 +2174,7 @@ const LL_HTML_2 = `  <div class="te-block">
     </div>
   </div>
 
-  <!-- ══ PHASE docreview: Individual exercise ══ -->
+  
   <div class="kp-phase" id="kp-phase-docreview">
     <div class="kp-nav-row">
     <button class="kp-back" onclick="kpTransition('docreview', 'docreview-hub', true)">
@@ -2263,9 +2263,9 @@ const LL_HTML_2 = `  <div class="te-block">
         </tbody>
       </table>
     </div>
-    </div><!-- /kp-dr-delegation-wrap -->
+    </div>
 
-    <!-- Consent form exercise (hidden until consent exercise selected) -->
+    
     <div id="kp-dr-consent-wrap" style="display:none">
       <div class="kp-dr-study-header">
         <div class="kp-dr-study-field"><span>Study:</span> NEURO-2026-002 &mdash; Phase III Alzheimer&rsquo;s Trial</div>
@@ -2286,8 +2286,8 @@ const LL_HTML_2 = `  <div class="te-block">
           </tbody>
         </table>
       </div>
-    </div><!-- /kp-dr-consent-wrap -->
-    <!-- SAE report exercise -->
+    </div>
+    
     <div id="kp-dr-sae-wrap" style="display:none">
       <div class="kp-dr-study-header">
         <div class="kp-dr-study-field"><span>Study:</span> ONCO-IMM-2026-003 &mdash; Phase II Oncology Immunotherapy Trial</div>
@@ -2314,7 +2314,7 @@ const LL_HTML_2 = `  <div class="te-block">
           </tbody>
         </table>
       </div>
-    </div><!-- /kp-dr-sae-wrap -->
+    </div>
 
     <div id="kp-dr-deviations-wrap" style="display:none">
       <div class="kp-dr-study-header">
@@ -2333,7 +2333,7 @@ const LL_HTML_2 = `  <div class="te-block">
           </tbody>
         </table>
       </div>
-    </div><!-- /kp-dr-deviations-wrap -->
+    </div>
 
     <div id="kp-dr-monitoring-wrap" style="display:none">
       <div class="kp-dr-study-header">
@@ -2352,7 +2352,7 @@ const LL_HTML_2 = `  <div class="te-block">
           </tbody>
         </table>
       </div>
-    </div><!-- /kp-dr-monitoring-wrap -->
+    </div>
     <div id="kp-dr-data-wrap" style="display:none">
       <div class="kp-dr-study-header">
         <div class="kp-dr-study-field"><span>Study:</span> CARDIO-2023-008 &mdash; Phase II Antihypertensive Trial</div>
@@ -2372,7 +2372,7 @@ const LL_HTML_2 = `  <div class="te-block">
         </table>
         <div style="font-size:12px;color:var(--textd);margin-top:12px;padding:10px 14px;background:var(--bg-low);border-radius:6px;"><strong style="color:var(--textm)">OACIS (clinic nurse, 09:15):</strong> BP 168/94 mmHg</div>
       </div>
-    </div><!-- /kp-dr-data-wrap -->
+    </div>
 
     <div id="kp-dr-recruitment-wrap" style="display:none">
       <div class="kp-dr-study-header">
@@ -2404,7 +2404,7 @@ const LL_HTML_2 = `  <div class="te-block">
           </tbody>
         </table>
       </div>
-    </div><!-- /kp-dr-recruitment-wrap -->
+    </div>
 
 
     <div id="kp-dr-gcp-wrap" style="display:none">
@@ -2451,7 +2451,7 @@ const LL_HTML_2 = `  <div class="te-block">
   </div>
 
 
-  <!-- ══ PHASE jc-hub: Judgement Calls role picker ══ -->
+  
   <div class="kp-phase" id="kp-phase-jc-hub">
     <div class="kp-nav-row">
     <button class="kp-back" onclick="kpGoHome()">
@@ -2467,7 +2467,7 @@ const LL_HTML_2 = `  <div class="te-block">
     <div class="kp-dr-hub-grid" id="jc-hub-grid"></div>
   </div>
 
-  <!-- ══ PHASE jc-role: Scenarios for a specific role ══ -->
+  
   <div class="kp-phase" id="kp-phase-jc-role">
     <div class="kp-nav-row">
       <button class="kp-back" onclick="jcGoHub()">
@@ -2484,7 +2484,7 @@ const LL_HTML_2 = `  <div class="te-block">
     <div class="kp-dr-hub-grid" id="jc-role-grid"></div>
   </div>
 
-  <!-- ══ PHASE jc-scenario: Active judgement call ══ -->
+  
   <div class="kp-phase" id="kp-phase-jc-scenario">
     <div class="kp-nav-row">
       <button class="kp-back" onclick="jcGoRole()">
@@ -2504,7 +2504,7 @@ const LL_HTML_2 = `  <div class="te-block">
   </div>
 
 
-  <!-- ══ PHASE insp-hub: Inspection Prep topic picker ══ -->
+  
   <div class="kp-phase" id="kp-phase-insp-hub">
     <div class="kp-nav-row">
     <button class="kp-back" onclick="kpGoHome()">
@@ -2520,7 +2520,7 @@ const LL_HTML_2 = `  <div class="te-block">
     <div class="kp-dr-hub-grid" id="insp-hub-grid"></div>
   </div>
 
-  <!-- ══ PHASE insp-practice: Active inspection session ══ -->
+  
   <div class="kp-phase" id="kp-phase-insp-practice">
     <div class="kp-nav-row">
       <button class="kp-back" onclick="inspGoHub()">
@@ -2537,7 +2537,7 @@ const LL_HTML_2 = `  <div class="te-block">
     <div id="insp-card-wrap"></div>
   </div>
 
-</div><!-- /stage -->`;
+</div>`;
 
 
 const LL_JS_1 = `
