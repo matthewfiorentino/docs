@@ -2553,7 +2553,10 @@ function kpDrMarkRows() {
 
 
   /* auto-count active hub cards on landing */
-  document.addEventListener('DOMContentLoaded', function() {
+  /* In a SPA the DOMContentLoaded event has already fired by the time this
+     script is dynamically injected, so we check readyState and run immediately
+     if the DOM is already available. */
+  function llInitStats() {
     kpRouteFromHash();
     var teHub = document.getElementById('kp-phase-team-hub');
     var drHub = document.getElementById('kp-phase-docreview-hub');
@@ -2577,7 +2580,12 @@ function kpDrMarkRows() {
       sessionStorage.removeItem('teHub');
       kpTransition('0', 'team-hub', false);
     }
-  });
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', llInitStats);
+  } else {
+    llInitStats();
+  }
 
 
 /* ════════════════════════════════════════════
