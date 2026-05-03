@@ -1352,6 +1352,7 @@ function kpGoBackNoHash(targetId) {
 ════════════════════════════════════════════ */
 function kpGoHome() {
   kpTransition(kpCurrentPhaseId, '0', true);
+  setTimeout(llRefreshStats, 50);
 }
 
 function kpGoToPractice() {
@@ -3458,3 +3459,43 @@ function inspGoHub() {
   var statEl = document.getElementById('stat-insp-count');
   if (statEl) { statEl.textContent = KP_INSPECTION.length; }
 })();
+
+/* ── Landing stat refresh ───────────────────────────────────────────────
+   Recalculates and writes all six landing-screen stat values.
+   Called: (a) 300 ms after script load — after Mintlify finishes its own
+   re-renders that reset dangerouslySetInnerHTML content; (b) every time
+   kpGoHome() is called so navigating back always shows fresh counts.
+──────────────────────────────────────────────────────────────────────── */
+function llRefreshStats() {
+  try {
+    var el;
+    /* knowledge checks */
+    el = document.getElementById('stat-topics');
+    if (el) { el.textContent = KP_TOPICS.filter(function(t) { return t.live; }).length; }
+    el = document.getElementById('stat-questions');
+    if (el) { el.textContent = KP_POOL.length + '+'; }
+    /* team exercises */
+    var teHub = document.getElementById('kp-phase-team-hub');
+    if (teHub) {
+      el = document.getElementById('stat-te-count');
+      if (el) { el.textContent = teHub.querySelectorAll('.kp-dr-hub-card.active').length; }
+    }
+    /* document review */
+    var drHub = document.getElementById('kp-phase-docreview-hub');
+    if (drHub) {
+      el = document.getElementById('stat-dr-count');
+      if (el) { el.textContent = drHub.querySelectorAll('.kp-dr-hub-card.active').length; }
+    }
+    /* judgement calls */
+    var jcLive = 0;
+    for (var j = 0; j < JC_SCENARIOS.length; j++) { if (JC_SCENARIOS[j].live) { jcLive++; } }
+    el = document.getElementById('stat-jc-count');
+    if (el) { el.textContent = jcLive; }
+    /* inspection prep */
+    el = document.getElementById('stat-insp-count');
+    if (el) { el.textContent = KP_INSPECTION.length; }
+  } catch(e) {}
+}
+
+/* Fire once after Mintlify's initial re-renders have settled */
+setTimeout(llRefreshStats, 300);
