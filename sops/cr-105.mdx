@@ -1,0 +1,122 @@
+---
+title: "SOP-CR-105 — Database Maintenance and Management"
+sidebarTitle: "View SOP"
+description: "Ongoing maintenance and management requirements for the study database throughout the active phase of a Sponsor-Investigator study at the RI-MUHC, covering backups, access management, query management, data validation, and database issue handling."
+---
+
+<div className="ri-sop-meta">
+  <div className="ri-sop-badges">
+    <Badge color="gray">SOP-CR-105_04</Badge>
+    <Badge color="gray">Version 04</Badge>
+    <Badge color="green">Effective 01 Sep 2018</Badge>
+    <Badge color="blue">Sponsor-Investigator</Badge>
+  </div>
+  <button className="ri-print-btn" onClick={() => window.print()}>Print / Save PDF</button>
+</div>
+
+Reviewed by Dr. Louise Pilote, Director of Clinical Research, RI-MUHC.
+Approved by Gilbert Tordjman, Chief Operating and Development Officer, RI-MUHC.
+Signed copy on file — download the PDF for the approved version with signatures.
+
+---
+
+## Purpose and scope
+
+This SOP describes the management and maintenance of the study database from database launch until database lock to ensure accurate, reliable, complete, and secure electronic data.
+
+This SOP is applicable to all study databases managed at the RI-MUHC and to those personnel responsible for management and maintenance of study databases, unless otherwise stated in the study contract or Data Management Plan.
+
+---
+
+## Responsibilities
+
+The **Sponsor-Investigator or QI/Investigator, Data Management personnel, and IT Systems Support personnel** (when applicable) are responsible for ensuring that all database maintenance and management processes meet all applicable regulatory, ICH-GCP, Sponsor, and local requirements.
+
+---
+
+## Procedure
+
+### 5.1 Routine database backups
+
+**5.1.1** The database must be backed up at a frequency sufficient to prevent unacceptable data loss (as specified in the DMP → SOP-CR-103). Minimum recommended frequency is daily for active studies.
+
+**5.1.2** Backups must use a method that ensures data are recoverable. Test backup restoration periodically to confirm recoverability.
+
+**5.1.3** Maintain a backup log documenting: date of backup, backup method, storage location, person responsible, and any issues encountered.
+
+**5.1.4** Store backups in a separate, secure location from the primary database.
+
+### 5.2 User access management
+
+**5.2.1** Review user access at regular intervals (at a minimum, at each annual renewal and whenever team members change) and update promptly when team members join, change roles, or leave the study.
+
+**5.2.2** Remove user access immediately when a team member is undelegated from the Task Delegation Log or leaves the study. Document the date of access removal.
+
+**5.2.3** Maintain a user access log documenting: user name, role, access level, date access was granted, and date access was removed (if applicable).
+
+**5.2.4** Shared user accounts are prohibited. Each user must have a unique login.
+
+### 5.3 Data entry and query management
+
+**5.3.1** Monitor data entry timelines per the DMP. Identify and address data entry backlogs promptly.
+
+**5.3.2** Run data validation checks routinely to identify:
+- Missing data or incomplete CRFs
+- Out-of-range values
+- Cross-field inconsistencies
+- Protocol deviation flags
+
+**5.3.3** Raise queries for all data issues identified. Queries must include: the field in question, the issue identified, and a request for the site/user to verify and correct.
+
+**5.3.4** Resolve all outstanding queries within the timeframes specified in the DMP. Document query status and closure.
+
+**5.3.5** All data corrections must be made through the audit trail — overwriting original data without an audit trail entry is prohibited.
+
+### 5.4 Handling database issues
+
+**5.4.1** Any system issue that could affect data integrity must be documented immediately, including: description of the issue, date/time of occurrence, potential data affected, and corrective action taken.
+
+**5.4.2** Assess the impact of any system issue on all data entries made during the affected period. Review and verify all potentially affected data.
+
+**5.4.3** Report significant database issues to the QI/PI and, if participant safety could be affected, to the REB → SOP-CR-026.
+
+### 5.5 Preparation for database lock
+
+**5.5.1** Prior to database lock → SOP-CR-107, ensure:
+- All participant data are entered and complete
+- All outstanding queries are resolved and closed
+- All protocol deviations are documented on the Deviation Log
+- All required data validation checks are completed and issues resolved
+- The Statistical Analysis Plan (SAP) is finalized → SOP-CR-101
+- A final audit trail review has been completed
+
+---
+
+## Appendices
+
+No appendices associated with this SOP.
+
+---
+
+## References
+
+- N2 Network SOP105_04
+- ICH-GCP E6(R2), Guideline for Good Clinical Practice — Section 5.5
+- 21 CFR Part 11, Electronic Records; Electronic Signatures
+- Health Canada, Food and Drug Regulations, Part C, Division 5
+
+---
+
+## Revision history
+
+<Update label="SOP-CR-105_04" description="01 Sep 2018">
+  Conversion to RI-MUHC SOP format. Updated regulatory references and local institutional requirements.
+</Update>
+
+<Update label="SOP-CR-105_03" description="24 May 2016">
+  Revised backup and query management requirements; updated regulatory references.
+</Update>
+
+<Update label="SOP-CR-105_02" description="15 May 2015">
+  Added Authorization to Adopt; updated reference versions.
+</Update>

@@ -410,6 +410,70 @@
                     ]
                   },
                   {
+                    "group": "SOP-CR-100 — CRF Design",
+                    "expanded": false,
+                    "pages": [
+                      "sops/cr-100-overview",
+                      "sops/cr-100"
+                    ]
+                  },
+                  {
+                    "group": "SOP-CR-101 — Study Analysis and Reporting",
+                    "expanded": false,
+                    "pages": [
+                      "sops/cr-101-overview",
+                      "sops/cr-101"
+                    ]
+                  },
+                  {
+                    "group": "SOP-CR-102 — Protocol Development",
+                    "expanded": false,
+                    "pages": [
+                      "sops/cr-102-overview",
+                      "sops/cr-102"
+                    ]
+                  },
+                  {
+                    "group": "SOP-CR-103 — Data Management Plan",
+                    "expanded": false,
+                    "pages": [
+                      "sops/cr-103-overview",
+                      "sops/cr-103"
+                    ]
+                  },
+                  {
+                    "group": "SOP-CR-104 — Database Set-up",
+                    "expanded": false,
+                    "pages": [
+                      "sops/cr-104-overview",
+                      "sops/cr-104"
+                    ]
+                  },
+                  {
+                    "group": "SOP-CR-105 — Database Maintenance and Management",
+                    "expanded": false,
+                    "pages": [
+                      "sops/cr-105-overview",
+                      "sops/cr-105"
+                    ]
+                  },
+                  {
+                    "group": "SOP-CR-106 — File Transfer",
+                    "expanded": false,
+                    "pages": [
+                      "sops/cr-106-overview",
+                      "sops/cr-106"
+                    ]
+                  },
+                  {
+                    "group": "SOP-CR-107 — Database Lock and Archiving",
+                    "expanded": false,
+                    "pages": [
+                      "sops/cr-107-overview",
+                      "sops/cr-107"
+                    ]
+                  },
+                  {
                     "group": "Sponsor-Investigator Series",
                     "expanded": false,
                     "pages": [

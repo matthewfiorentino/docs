@@ -1,0 +1,134 @@
+---
+title: "SOP-CR-107 — Database Lock and Archiving"
+sidebarTitle: "View SOP"
+description: "Procedures for locking, unlocking, and archiving a study database for Sponsor-Investigator studies at the RI-MUHC, including lock criteria, the formal lock memo, post-lock corrections, and 25-year archiving requirements."
+---
+
+<div className="ri-sop-meta">
+  <div className="ri-sop-badges">
+    <Badge color="gray">SOP-CR-107_04</Badge>
+    <Badge color="gray">Version 04</Badge>
+    <Badge color="green">Effective 01 Sep 2018</Badge>
+    <Badge color="blue">Sponsor-Investigator</Badge>
+  </div>
+  <button className="ri-print-btn" onClick={() => window.print()}>Print / Save PDF</button>
+</div>
+
+Reviewed by Dr. Louise Pilote, Director of Clinical Research, RI-MUHC.
+Approved by Gilbert Tordjman, Chief Operating and Development Officer, RI-MUHC.
+Signed copy on file — download the PDF for the approved version with signatures.
+
+---
+
+## Purpose and scope
+
+This SOP describes the procedures for locking, unlocking, and archiving a study database.
+
+This SOP is applicable to all clinical or research studies undertaken at the RI-MUHC, and to those research and Data Management personnel responsible for data management, unless otherwise stated in the study contract or Data Management Plan.
+
+---
+
+## Responsibilities
+
+The **Sponsor-Investigator or QI/Investigator and Data Manager** are responsible for ensuring that the database lock and archiving processes meet all applicable regulatory, ICH-GCP, Sponsor, and local requirements.
+
+Any or all parts of this procedure may be delegated to appropriately trained study team members, but remain the ultimate responsibility of the Sponsor, Sponsor-Investigator, and/or QI/Investigator.
+
+---
+
+## Procedure
+
+### 5.1 Pre-lock criteria
+
+**5.1.1** Before initiating database lock, confirm that all of the following criteria are met:
+- All participant data are entered and complete
+- All outstanding data queries are resolved and closed
+- All protocol deviations are documented on the Protocol/GCP/SOP Deviation Log
+- All required data validation checks (range checks, cross-field consistency, completeness) are completed and all identified issues resolved → SOP-CR-105
+- The Statistical Analysis Plan (SAP) is finalized, dated, and signed → SOP-CR-101
+- The final audit trail review is complete
+- A final data extract has been reviewed by the data manager and QI/PI
+
+### 5.2 Database lock procedure
+
+**5.2.1** Confirm all pre-lock criteria are met and documented.
+
+**5.2.2** Prepare a formal **database lock memo** documenting:
+- Study name and protocol number
+- Database version and date of lock
+- Confirmation that all pre-lock criteria have been met (with references to supporting documentation)
+- Name and date of lock authorization (QI/PI signature)
+- Name and date of lock execution (data manager)
+
+**5.2.3** The lock memo must be signed and dated by the **data manager** and the **QI/PI**.
+
+**5.2.4** Change the database status to **read-only** (no further data entry, editing, or deletion permitted) and document the date and time of lock.
+
+**5.2.5** Notify the Sponsor-Investigator and statistician that the database is locked and the final analysis dataset is available.
+
+**5.2.6** No statistical analysis using the final dataset may begin before database lock is confirmed and documented.
+
+### 5.3 Post-lock data corrections (unlock procedure)
+
+**5.3.1** If a data error is identified after database lock that requires correction, initiate a formal unlock procedure:
+- Document the reason for the data correction in a memo approved by the QI/PI
+- Request authorization for unlock from the QI/PI (and, if applicable, from the Sponsor)
+- Perform only the specific, documented correction
+- Re-lock the database following the lock procedure in section 5.2
+- Update the lock memo with the reason for unlock, correction made, and re-lock date
+
+**5.3.2** Post-lock corrections must be minimized. If a post-lock correction changes any primary outcome data, document the impact on the analysis and update the SAP as needed.
+
+### 5.4 Database archiving
+
+**5.4.1** After database lock and completion of the final analysis, archive the database and all associated documentation together. The archived set must include:
+- The locked database (all tables and fields)
+- Complete audit trail
+- Validation documentation (UAT records) → SOP-CR-104
+- Data dictionary (field names, variable descriptions, coding conventions)
+- Data Management Plan (DMP) → SOP-CR-103
+- Database lock memo
+- Any unlock/re-lock documentation
+- Final analysis datasets and programming code
+
+**5.4.2** Retain the archived database for the required regulatory retention period:
+- **25 years** for Health Canada-regulated studies
+- **7 years** from publication for non-regulated studies
+- → SOP-CR-015 for full archiving requirements and timelines
+
+**5.4.3** Archive in a format that will remain readable over the retention period. Include a data dictionary that documents all field names, variable definitions, and coding conventions to enable future interpretation.
+
+**5.4.4** Store archives in a secure location with controlled access. Maintain a record of the archive location in the TMF.
+
+**5.4.5** Inform the Sponsor-Investigator of the archive location → SOP-CR-015 section 5.3.
+
+---
+
+## Appendices
+
+No appendices associated with this SOP.
+
+---
+
+## References
+
+- N2 Network SOP107_04
+- ICH-GCP E6(R2), Guideline for Good Clinical Practice — Sections 5.5, 8
+- 21 CFR Part 11, Electronic Records; Electronic Signatures
+- Health Canada, Food and Drug Regulations, Part C, Division 5 — Record Retention Requirements
+
+---
+
+## Revision history
+
+<Update label="SOP-CR-107_04" description="01 Sep 2018">
+  Conversion to RI-MUHC SOP format. Updated regulatory references. Clarified 25-year archiving requirement for Health Canada-regulated studies and archive content requirements.
+</Update>
+
+<Update label="SOP-CR-107_03" description="24 May 2016">
+  Revised lock criteria and archiving requirements; updated regulatory references.
+</Update>
+
+<Update label="SOP-CR-107_02" description="15 May 2015">
+  Added Authorization to Adopt; updated reference versions.
+</Update>

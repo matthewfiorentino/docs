@@ -1,0 +1,111 @@
+---
+title: "SOP-CR-106 — File Transfer"
+sidebarTitle: "View SOP"
+description: "Requirements for transferring study data files to and from the study database for Sponsor-Investigator studies at the RI-MUHC, including transfer methods, documentation, integrity validation, and the Data Sharing/Transfer Agreement requirement."
+---
+
+<div className="ri-sop-meta">
+  <div className="ri-sop-badges">
+    <Badge color="gray">SOP-CR-106_04</Badge>
+    <Badge color="gray">Version 04</Badge>
+    <Badge color="green">Effective 01 Sep 2018</Badge>
+    <Badge color="blue">Sponsor-Investigator</Badge>
+  </div>
+  <button className="ri-print-btn" onClick={() => window.print()}>Print / Save PDF</button>
+</div>
+
+Reviewed by Dr. Louise Pilote, Director of Clinical Research, RI-MUHC.
+Approved by Gilbert Tordjman, Chief Operating and Development Officer, RI-MUHC.
+Signed copy on file — download the PDF for the approved version with signatures.
+
+---
+
+## Purpose and scope
+
+This SOP describes the steps required during the transfer of external files to and from the study database to preserve the integrity of transmitted data and the study database.
+
+This SOP is applicable to all data files that are part of the study data set and which are transmitted from another site to be included in the study database. This SOP also applies to those personnel responsible for the transmission, including all Data Management and Information Technology (IT) personnel, unless otherwise stated in the study contract or Data Management Plan.
+
+---
+
+## Responsibilities
+
+The **Sponsor-Investigator or QI/Investigator, Data Management, and IT personnel** (if applicable) are responsible for ensuring that all database file transfers meet all applicable regulatory, ICH-GCP, Sponsor, and local requirements.
+
+---
+
+## Procedure
+
+### 5.1 RI-MUHC Data Sharing/Transfer Agreement requirement
+
+**5.1.1** Prior to transfer or sharing of information (partial or entire data) to a non-MUHC site, or prior to receiving information (partial or entire data) from a non-MUHC site, a **Data Sharing/Transfer Agreement** must be in place between all parties (Disclosing Party and Receiving Party).
+
+**5.1.2** Obtain the template Agreement from the RI-MUHC Contracts Office at **contracts@muhc.mcgill.ca**. The Agreement must be reviewed and signed before any data transfer occurs. File a copy in the TMF.
+
+### 5.2 Secure transfer methods
+
+**5.2.1** All data transfers must use secure, encrypted methods. Prohibited methods include:
+- Unencrypted email (no study data or participant information in plain text attachments)
+- Unencrypted USB drives or removable media
+- Public file-sharing services without encryption and access controls
+
+**5.2.2** Acceptable secure transfer methods include:
+- Encrypted file transfer via institutional secure file sharing platforms
+- Secure FTP (SFTP) with authentication
+- Approved institutional data transfer services
+- Encrypted and password-protected archives (using strong encryption)
+
+### 5.3 Transfer documentation
+
+**5.3.1** Every data transfer must be documented in the TMF. The transfer record must include:
+- Description of the data transferred (dataset name, version, record count, date range)
+- Sending party (name, site, contact information)
+- Receiving party (name, organization, contact information)
+- Transfer method used
+- Date and time of transfer
+- Confirmation of receipt (from the receiving party)
+- Integrity validation results
+
+**5.3.2** Obtain written (or electronic) **confirmation of receipt** from the recipient, confirming that the data were received successfully and that data integrity was verified. File this confirmation in the TMF.
+
+### 5.4 Data integrity validation
+
+**5.4.1** After transfer, validate the integrity of the received data against the source data, using one or more of the following methods as specified in the DMP (SOP-CR-103):
+- Checksum or hash comparison (MD5, SHA-256)
+- Record count verification
+- Field-level spot checks
+- Automated validation rules
+
+**5.4.2** Document the integrity validation results. If discrepancies are found, investigate, correct, and re-transfer as needed. Document all corrective actions.
+
+### 5.5 Regulatory authority transfers
+
+**5.5.1** For transfers to regulatory authorities (e.g., Health Canada), use only the submission formats and channels specified by the regulator. Retain a copy of all submitted data and documentation in the TMF.
+
+---
+
+## Appendices
+
+No appendices associated with this SOP.
+
+---
+
+## References
+
+- N2 Network SOP106_04
+- ICH-GCP E6(R2), Guideline for Good Clinical Practice — Section 5.5
+- 21 CFR Part 11, Electronic Records; Electronic Signatures
+- Health Canada, Food and Drug Regulations, Part C, Division 5
+- Personal Information Protection and Electronic Documents Act (PIPEDA)
+
+---
+
+## Revision history
+
+<Update label="SOP-CR-106_04" description="01 Sep 2018">
+  Conversion to RI-MUHC SOP format. Added RI-MUHC Addendum: requirement for a Data Sharing/Transfer Agreement before any file transfer to/from a non-MUHC site; template Agreement to be obtained from the RI-MUHC Contracts Office. Renamed from SOP106_03.
+</Update>
+
+<Update label="SOP-CR-106_03" description="24 May 2016">
+  New SOP at the RI-MUHC. Added file transfer procedures and documentation requirements.
+</Update>

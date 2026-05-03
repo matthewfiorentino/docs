@@ -1,0 +1,131 @@
+---
+title: "SOP-CR-104 — Database Set-up"
+sidebarTitle: "View SOP"
+description: "Requirements for building and validating the study database for Sponsor-Investigator studies at the RI-MUHC, including database design, User Acceptance Testing, access controls, and audit trail configuration."
+---
+
+<div className="ri-sop-meta">
+  <div className="ri-sop-badges">
+    <Badge color="gray">SOP-CR-104_04</Badge>
+    <Badge color="gray">Version 04</Badge>
+    <Badge color="green">Effective 01 Sep 2018</Badge>
+    <Badge color="blue">Sponsor-Investigator</Badge>
+  </div>
+  <button className="ri-print-btn" onClick={() => window.print()}>Print / Save PDF</button>
+</div>
+
+Reviewed by Dr. Louise Pilote, Director of Clinical Research, RI-MUHC.
+Approved by Gilbert Tordjman, Chief Operating and Development Officer, RI-MUHC.
+Signed copy on file — download the PDF for the approved version with signatures.
+
+---
+
+## Purpose and scope
+
+This SOP describes the tasks necessary to generate, test, implement, and approve a database set-up for a study to ensure accurate, reliable, complete, and secure electronic data.
+
+This SOP is applicable to all study databases requiring set-up at the RI-MUHC and to those personnel responsible for database set-up, such as all Data Management and Information Technology (IT) personnel, unless otherwise stated in the study contract or Data Management Plan.
+
+---
+
+## Responsibilities
+
+The **Sponsor-Investigator or QI/Investigator, Data Management personnel, and IT Systems Support personnel** (when applicable) are responsible for ensuring that database system set-up meets all applicable regulatory, ICH-GCP, Sponsor, and local requirements.
+
+---
+
+## Procedure
+
+### 5.1 Prerequisites
+
+**5.1.1** Before beginning database build:
+- CRF designs must be finalized and approved → SOP-CR-100
+- The Data Management Plan (DMP) must be finalized and approved → SOP-CR-103
+- The protocol must have been finalized and REB-approved → SOP-CR-102, SOP-CR-007
+
+### 5.2 Database design and build
+
+**5.2.1** Build the study database according to the CRF designs (SOP-CR-100) and the DMP (SOP-CR-103). Each CRF field must be accurately represented in the database with the appropriate data type, validation rules, and field label.
+
+**5.2.2** At the RI-MUHC, REDCap is the supported electronic data capture platform for studies with ≤1,000 variables → SOP-CR-014. For larger or more complex databases, consult the Clinical Research Hub.
+
+**5.2.3** Build the database in a test environment first. The production database must not be opened for data entry until all testing is complete and sign-off obtained.
+
+### 5.3 Audit trail
+
+**5.3.1** Configure the database audit trail to capture:
+- All data entries, edits, and deletions
+- The user identifier (individual-level, not shared accounts)
+- Date and time of each action
+- The original value, the new value, and the reason for change (where applicable)
+
+**5.3.2** The audit trail is a regulatory requirement and cannot be disabled at any time.
+
+### 5.4 User access controls
+
+**5.4.1** Implement role-based access controls:
+
+| Role | Access level |
+|---|---|
+| Data entry user | Enter and edit data in assigned CRFs; cannot view other participants or fields outside their scope |
+| Data manager | Enter, edit, query, and resolve data; run validation checks; view all data |
+| Statistician | Read-only access to de-identified data after database lock |
+| Auditor/inspector | Read-only access to complete study data for audit purposes |
+| System administrator | Database configuration, user management, backup management |
+
+**5.4.2** All users must be uniquely identified; shared user accounts are prohibited.
+
+**5.4.3** Document all user accounts, access levels, and dates of access grant and removal.
+
+**5.4.4** Remove access immediately when a team member leaves the study or is undelegated from the Task Delegation Log.
+
+### 5.5 Validation testing (User Acceptance Testing)
+
+**5.5.1** Complete User Acceptance Testing (UAT) before opening the database for participant data entry. UAT must include:
+- Verification that all CRF fields are correctly represented
+- Testing of all data validation rules (range checks, required fields, cross-field logic)
+- Testing of the audit trail
+- Testing of user access restrictions (each role can and cannot access the appropriate areas)
+- Testing of data export functionality
+
+**5.5.2** Document all UAT test cases, expected results, actual results, and whether each test passed or failed. Resolve all failed tests before production launch.
+
+**5.5.3** Retain all UAT documentation in the TMF.
+
+### 5.6 Production launch
+
+**5.6.1** After successful UAT and documented sign-off by the Sponsor-Investigator or delegated data manager, open the production database for data entry.
+
+**5.6.2** Notify all data entry personnel of the database launch and provide training as needed. Document training on the Task Delegation Log.
+
+---
+
+## Appendices
+
+No appendices associated with this SOP.
+
+---
+
+## References
+
+- N2 Network SOP104_04
+- ICH-GCP E6(R2), Guideline for Good Clinical Practice — Section 5.5
+- 21 CFR Part 11, Electronic Records; Electronic Signatures
+- Health Canada, Food and Drug Regulations, Part C, Division 5
+- US DHHS, Guidance for Industry: Computerized Systems Used in Clinical Investigations
+
+---
+
+## Revision history
+
+<Update label="SOP-CR-104_04" description="01 Sep 2018">
+  Conversion to RI-MUHC SOP format. Added reference to REDCap as the supported eCRF platform. Updated regulatory references.
+</Update>
+
+<Update label="SOP-CR-104_03" description="24 May 2016">
+  Revised UAT and audit trail requirements; updated regulatory references.
+</Update>
+
+<Update label="SOP-CR-104_02" description="15 May 2015">
+  Added Authorization to Adopt; updated reference versions.
+</Update>
