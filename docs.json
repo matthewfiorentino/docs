@@ -219,6 +219,30 @@
                     ]
                   },
                   {
+                    "group": "SOP-CR-004 — Protocol Feasibility",
+                    "expanded": false,
+                    "pages": [
+                      "sops/cr-004-overview",
+                      "sops/cr-004"
+                    ]
+                  },
+                  {
+                    "group": "SOP-CR-005 — Study Initiation and Activation",
+                    "expanded": false,
+                    "pages": [
+                      "sops/cr-005-overview",
+                      "sops/cr-005"
+                    ]
+                  },
+                  {
+                    "group": "SOP-CR-006 — Informed Consent Forms",
+                    "expanded": false,
+                    "pages": [
+                      "sops/cr-006-overview",
+                      "sops/cr-006"
+                    ]
+                  },
+                  {
                     "group": "SOP-CR-008 — Informed Consent",
                     "expanded": false,
                     "pages": [
