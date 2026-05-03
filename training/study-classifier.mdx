@@ -69,7 +69,7 @@ export const QUESTIONS = {
     hint: 'PHI includes names, health card numbers, dates of birth, diagnosis codes, addresses, or any combination of data that could identify a participant. Coded data (where a key exists) is considered identifiable.',
     type: 'yn',
     ynLabels: ['Yes', 'No — fully anonymized / aggregate only'],
-    calloutOnYes: { type: 'sky', text: '<strong>Quebec privacy law — Loi 25 (amended 2021–2023):</strong> Any research using PHI in Quebec requires a privacy impact assessment (ÉFVP) if the data is communicated outside the organization or used for secondary purposes. Consult SOP-CR-019 and your REB submission checklist.' }
+    calloutOnYes: { type: 'sky', text: '<strong>Quebec privacy law — Loi 25 (amended 2021–2023):</strong> Any research using PHI in Quebec requires a privacy impact assessment (ÉFVP) if the data is communicated outside the organization or used for secondary purposes. Consult [SOP-CR-019](/sops/cr-019) and your REB submission checklist.' }
   },
   6: {
     num: 6, part: null,
@@ -124,7 +124,7 @@ export const RESULTS = {
     title: 'High-Risk Interventional — Drug / Biologic / Advanced Therapy',
     reqs: function(hasISO) {
       return '<ul class="rc-req-list">'
-        + '<li class="rc-req-item"><span class="rc-pill p-sop">SOP</span><div>SOP Reader Level I (TalentLMS)<span class="rc-req-note">Read all 33 SOPs except SOP-CR-023 and SOP-CR-024. Completion is tracked per SOP unit in TalentLMS. When individual SOPs are revised, only those units reset and must be re-read — your overall completion percentage will be affected until you complete the updated units.</span></div></li>'
+        + '<li class="rc-req-item"><span class="rc-pill p-sop">SOP</span><div>SOP Reader Level I (TalentLMS)<span class="rc-req-note">Read all 33 SOPs except [SOP-CR-023](/sops/cr-023) and [SOP-CR-024](/sops/cr-024). Completion is tracked per SOP unit in TalentLMS. When individual SOPs are revised, only those units reset and must be re-read — your overall completion percentage will be affected until you complete the updated units.</span></div></li>'
         + '<li class="rc-req-item"><span class="rc-pill p-sop">SOP</span><div>Competency Assessment Level I (TalentLMS)<span class="rc-req-note">Certificate valid 2 years. Must not be within 90 days of expiry at time of Nagano submission.</span></div></li>'
         + '<li class="rc-req-item"><span class="rc-pill p-gcp">GCP</span><div>ICH E6(R3) Good Clinical Practice (CITI — RI-MUHC affiliation)<span class="rc-req-note">Health Canada adopted ICH E6(R3) effective April 1, 2026. Renew every 2 years.</span></div></li>'
         + '<li class="rc-req-item"><span class="rc-pill p-hc5">HC Div 5</span><div>Health Canada Part C Division 5 (CITI)<span class="rc-req-note">Required for Level I only. Based on GUI-0100. Renew every 2 years.</span></div></li>'
@@ -132,23 +132,23 @@ export const RESULTS = {
         + '</ul>';
     },
     renewal: '<div class="rc-cycle"><div class="rc-cycle-item"><strong>Competency Assessment</strong>Every 2 years</div><div class="rc-cycle-item"><strong>GCP (CITI)</strong>Every 2 years</div><div class="rc-cycle-item"><strong>HC Division 5</strong>Every 2 years</div><div class="rc-cycle-item"><strong>90-day rule</strong>Certificates must not be within 90 days of expiry at the time of Nagano submission. If a certificate is nearing expiry, QA will ask the team member to re-certify before the study can proceed.</div></div>',
-    framework: 'Drug studies are governed by <strong>Health Canada Food and Drug Regulations Part C, Division 5</strong> (GUI-0100). A Clinical Trial Application (CTA) is required for Phase I–III drug trials (SOP-CR-018). Compliance with <strong>ICH E6(R3)</strong> (effective April 2026) and <strong>TCPS2 (2022)</strong> is mandatory. The QI/PI must hold RI-MUHC Research Privileges (SOP-CR-500).'
+    framework: 'Drug studies are governed by <strong>Health Canada Food and Drug Regulations Part C, Division 5</strong> (GUI-0100). A Clinical Trial Application (CTA) is required for Phase I–III drug trials ([SOP-CR-018](/sops/cr-018)). Compliance with <strong>ICH E6(R3)</strong> (effective April 2026) and <strong>TCPS2 (2022)</strong> is mandatory. The QI/PI must hold RI-MUHC Research Privileges ([SOP-CR-500](/sops/cr-500)).'
   },
   2: {
     badge: 'Level II — SOP-CR Series',
     title: 'High-Risk Interventional — Medical Device / Surgery / Radiotherapy',
     reqs: function() {
-      return '<ul class="rc-req-list"><li class="rc-req-item"><span class="rc-pill p-sop">SOP</span><div>SOP Reader Level II (TalentLMS)<span class="rc-req-note">Read all 33 SOPs except SOP-CR-018, SOP-CR-010, and SOP-CR-023. Completion is tracked per SOP unit in TalentLMS. When individual SOPs are revised, only those units reset and must be re-read.</span></div></li><li class="rc-req-item"><span class="rc-pill p-sop">SOP</span><div>Competency Assessment Level II (TalentLMS)<span class="rc-req-note">Certificate valid 2 years. Must not be within 90 days of expiry at time of Nagano submission.</span></div></li><li class="rc-req-item"><span class="rc-pill p-gcp">GCP</span><div>ICH E6(R3) Good Clinical Practice (CITI)<span class="rc-req-note">ICH-GCP accepted in lieu of ISO-GCP where ISO training is unavailable. Renew every 2 years.</span></div></li><li class="rc-req-item"><span class="rc-pill p-iso">ISO</span><div>ISO 14155:2020 GCP for Medical Devices<span class="rc-req-note">Self-train on the ISO document (iso.org). Renew every 2 years.</span></div></li></ul>';
+      return '<ul class="rc-req-list"><li class="rc-req-item"><span class="rc-pill p-sop">SOP</span><div>SOP Reader Level II (TalentLMS)<span class="rc-req-note">Read all 33 SOPs except [SOP-CR-018](/sops/cr-018), [SOP-CR-010](/sops/cr-010), and [SOP-CR-023](/sops/cr-023). Completion is tracked per SOP unit in TalentLMS. When individual SOPs are revised, only those units reset and must be re-read.</span></div></li><li class="rc-req-item"><span class="rc-pill p-sop">SOP</span><div>Competency Assessment Level II (TalentLMS)<span class="rc-req-note">Certificate valid 2 years. Must not be within 90 days of expiry at time of Nagano submission.</span></div></li><li class="rc-req-item"><span class="rc-pill p-gcp">GCP</span><div>ICH E6(R3) Good Clinical Practice (CITI)<span class="rc-req-note">ICH-GCP accepted in lieu of ISO-GCP where ISO training is unavailable. Renew every 2 years.</span></div></li><li class="rc-req-item"><span class="rc-pill p-iso">ISO</span><div>ISO 14155:2020 GCP for Medical Devices<span class="rc-req-note">Self-train on the ISO document (iso.org). Renew every 2 years.</span></div></li></ul>';
     },
-    framework: 'Medical device studies require an <strong>Investigational Testing Authorization (ITA)</strong> from Health Canada under the <strong>Medical Devices Regulations (SOR/98-282)</strong> (SOP-CR-024). Compliance with <strong>ISO 14155:2020</strong> and <strong>ICH E6(R3)</strong> is mandatory. The QI/PI must hold RI-MUHC Research Privileges (SOP-CR-500).'
+    framework: 'Medical device studies require an <strong>Investigational Testing Authorization (ITA)</strong> from Health Canada under the <strong>Medical Devices Regulations (SOR/98-282)</strong> ([SOP-CR-024](/sops/cr-024)). Compliance with <strong>ISO 14155:2020</strong> and <strong>ICH E6(R3)</strong> is mandatory. The QI/PI must hold RI-MUHC Research Privileges ([SOP-CR-500](/sops/cr-500)).'
   },
   3: {
     badge: 'Level III — SOP-CR Series',
     title: 'High-Risk Interventional — Natural Health Product',
     reqs: function() {
-      return '<ul class="rc-req-list"><li class="rc-req-item"><span class="rc-pill p-sop">SOP</span><div>SOP Reader Level III (TalentLMS)<span class="rc-req-note">Read all 33 SOPs except SOP-CR-018, SOP-CR-010, and SOP-CR-024. Completion is tracked per SOP unit in TalentLMS. When individual SOPs are revised, only those units reset and must be re-read.</span></div></li><li class="rc-req-item"><span class="rc-pill p-sop">SOP</span><div>Competency Assessment Level III (TalentLMS)<span class="rc-req-note">Certificate valid 2 years.</span></div></li></ul>';
+      return '<ul class="rc-req-list"><li class="rc-req-item"><span class="rc-pill p-sop">SOP</span><div>SOP Reader Level III (TalentLMS)<span class="rc-req-note">Read all 33 SOPs except [SOP-CR-018](/sops/cr-018), [SOP-CR-010](/sops/cr-010), and [SOP-CR-024](/sops/cr-024). Completion is tracked per SOP unit in TalentLMS. When individual SOPs are revised, only those units reset and must be re-read.</span></div></li><li class="rc-req-item"><span class="rc-pill p-sop">SOP</span><div>Competency Assessment Level III (TalentLMS)<span class="rc-req-note">Certificate valid 2 years.</span></div></li></ul>';
     },
-    framework: "NHP clinical trials are regulated under Health Canada’s <strong>Natural Health Products Regulations (SOR/2003-196)</strong> and require a <strong>Clinical Trial Site Licence</strong> (SOP-CR-023). Compliance with <strong>ICH E6(R3)</strong> and <strong>TCPS2 (2022)</strong> is mandatory. The QI/PI must hold RI-MUHC Research Privileges (SOP-CR-500)."
+    framework: "NHP clinical trials are regulated under Health Canada’s <strong>Natural Health Products Regulations (SOR/2003-196)</strong> and require a <strong>Clinical Trial Site Licence</strong> ([SOP-CR-023](/sops/cr-023)). Compliance with <strong>ICH E6(R3)</strong> and <strong>TCPS2 (2022)</strong> is mandatory. The QI/PI must hold RI-MUHC Research Privileges ([SOP-CR-500](/sops/cr-500))."
   },
   4: {
     badge: 'Level IV — SOP-LR Series',
@@ -157,7 +157,7 @@ export const RESULTS = {
       return '<ul class="rc-req-list"><li class="rc-req-item"><span class="rc-pill p-sop">SOP</span><div>SOP Reader Level IV (TalentLMS)<span class="rc-req-note">Read all 18 LR SOPs. Completion is tracked per SOP unit in TalentLMS. When individual SOPs are revised, only those units reset and must be re-read.</span></div></li><li class="rc-req-item"><span class="rc-pill p-sop">SOP</span><div>Competency Assessment Level IV (TalentLMS)<span class="rc-req-note">Certificate valid 5 years. Must not be within 90 days of expiry at time of Nagano submission.</span></div></li><li class="rc-req-item"><span class="rc-pill p-tcps">TCPS2</span><div>Tri-Council Policy Statement — CORE-2022 (recommended)<span class="rc-req-note">Recommended for team members new to human research ethics. tcps2core.ca</span></div></li></ul>';
     },
     renewal: '<div class="rc-cycle"><div class="rc-cycle-item"><strong>Competency Assessment</strong>Every 5 years</div><div class="rc-cycle-item"><strong>90-day rule</strong>Certificates must not be within 90 days of expiry at the time of Nagano submission. If a certificate is nearing expiry, QA will ask the team member to re-certify before the study can proceed.</div></div>',
-    framework: "Governed primarily by <strong>TCPS2 (2022)</strong> and RI-MUHC SOPs. No Health Canada CTA or ITA is typically required. Consent and participant contact must comply with Québec’s <strong>Civil Code (Art. 20–25)</strong> and the <strong>LSSSS</strong>. The QI/PI must hold RI-MUHC Researcher Status or Privileges (SOP-CR-500)."
+    framework: "Governed primarily by <strong>TCPS2 (2022)</strong> and RI-MUHC SOPs. No Health Canada CTA or ITA is typically required. Consent and participant contact must comply with Québec’s <strong>Civil Code (Art. 20–25)</strong> and the <strong>LSSSS</strong>. The QI/PI must hold RI-MUHC Researcher Status or Privileges ([SOP-CR-500](/sops/cr-500))."
   },
   5: {
     badge: 'Level V — SOP-LR Series',
@@ -267,7 +267,7 @@ export const Classifier = () => {
     if (vuln === 'minor' || vuln === 'both')
       f.push({ t: 'sky', l: 'Minors — Civil Code of Québec, Art. 21', x: 'Research involving minors requires written parental or guardian consent. Assent should be obtained from children aged 7–13 years as developmentally appropriate. Research posing more than minimal risk requires special justification under TCPS2 Section 4.' });
     if (vuln === 'incapable' || vuln === 'both')
-      f.push({ t: 'coral', l: 'Adults unable to consent — Personne mandétée / Civil Code, Art. 21', x: 'Research involving adults who cannot consent requires authorization from a Personne mandétée (mandatary), tutor, or curator. The MUHC Authorization process applies. See SOP-CR-008.' });
+      f.push({ t: 'coral', l: 'Adults unable to consent — Personne mandétée / Civil Code, Art. 21', x: 'Research involving adults who cannot consent requires authorization from a Personne mandétée (mandatary), tutor, or curator. The MUHC Authorization process applies. See [SOP-CR-008](/sops/cr-008).' });
     if (resType === 'interventional' && (intType === 'drug' || intType === 'device' || intType === 'nhp'))
       f.push({ t: 'teal', l: 'ICH E6(R3) — effective April 2026', x: 'Health Canada formally adopted ICH E6(R3) effective April 1, 2026. The guideline introduces a QMS approach and updates requirements for electronic systems and risk-proportionate monitoring.' });
     if (resType === 'retrospective' && answers['3retro'] === 'identifiable')
@@ -335,7 +335,7 @@ export const Classifier = () => {
     <div className="rc-wrap">
 
       <div className="rc-reg-note">
-        <strong>Regulatory basis:</strong> Training requirements derive from <a href="/sops/overview">SOP-CR-003</a>, <strong>ICH E6(R3)</strong> (Health Canada, effective Apr 2026), <strong>Food and Drug Regulations Part C Div.&#8201;5</strong> (GUI-0100), <strong>ISO 14155:2020</strong>, <strong>TCPS2 (2022)</strong>, and Quebec&#8217;s <strong>LSSSS</strong>. Training level is based on your highest-risk study across all active protocols.
+        <strong>Regulatory basis:</strong> Training requirements derive from <a href="/sops/overview">[SOP-CR-003](/sops/cr-003)</a>, <strong>ICH E6(R3)</strong> (Health Canada, effective Apr 2026), <strong>Food and Drug Regulations Part C Div.&#8201;5</strong> (GUI-0100), <strong>ISO 14155:2020</strong>, <strong>TCPS2 (2022)</strong>, and Quebec&#8217;s <strong>LSSSS</strong>. Training level is based on your highest-risk study across all active protocols.
       </div>
 
       <div className="rc-progress">
@@ -412,7 +412,7 @@ export const Classifier = () => {
 
       <div className="rc-footer">
         <button className="rc-reset-btn" onClick={handleReset}>&#8635; Start over</button>
-        <p className="rc-disclaimer">This tool provides guidance based on <a href="/sops/overview">SOP-CR-003</a>. Training level is based on your <strong>highest-risk active study</strong>. Results do not constitute formal compliance advice. When in doubt, contact QA.</p>
+        <p className="rc-disclaimer">This tool provides guidance based on <a href="/sops/overview">[SOP-CR-003](/sops/cr-003)</a>. Training level is based on your <strong>highest-risk active study</strong>. Results do not constitute formal compliance advice. When in doubt, contact QA.</p>
       </div>
 
     </div>
