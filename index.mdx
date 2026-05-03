@@ -143,9 +143,14 @@ export const FeatureEntry = ({ href, icon, title, desc, links }) => (
 
 ## Quick start
 
-The two most useful places to begin — whether you're new to the Hub or looking for something specific.
+The four resources you'll use most — tell us about your study, find the guidance you need, check the SOPs, or confirm your training requirements.
 
 <div className="ri-feature-pair">
+  <FeatureEntry
+    href="/kb/planning/study-intake" icon="clipboard-list" title="Study Intake Form"
+    desc="Answer questions about your planned study. The tool produces a personalised startup checklist for you and an intake record for the Office of Clinical Research, so we can follow up and support your study."
+    links={[]}
+  />
   <FeatureEntry
     href="/kb/introduction" icon="book-open" title="Knowledge Base"
     desc="Concepts, processes, and Quebec-specific regulatory guidance — organized by study stage from feasibility through close-out, with onboarding guides for every role on a research team."
@@ -156,14 +161,9 @@ The two most useful places to begin — whether you're new to the Hub or looking
     desc="Every RI-MUHC clinical research SOP in one place. Consult the applicable SOPs for your study tasks — an essential reference for day-to-day compliance, team responsibilities, and inspection readiness."
     links={[]}
   />
-</div>
-
----
-
-<div className="ri-feature-pair">
   <FeatureEntry
-    href="/kb/planning/study-intake" icon="clipboard-list" title="Study Intake Form"
-    desc="Answer questions about your planned study. The tool produces a personalised startup checklist for you and an intake record for the Office of Clinical Research, so we can follow up and support your study."
+    href="/training/compliance-requirements" icon="list-check" title="Training and Compliance Requirements"
+    desc="Training requirements by study level (I–V) — who must comply, the SOP Reader, Competency Assessment, GCP, Division 5, and ISO 14155. Includes the 90-day certificate rule and where to find your records."
     links={[]}
   />
 </div>
@@ -284,21 +284,6 @@ Internal services available to RI-MUHC researchers for study planning, data mana
     desc="REDCap database builds, data management support, and data planning review across the study lifecycle." />
   <ResourceCard icon="server" href="/kb/planning/data-warehouse" title="Accessing MUHC Patient Data"
     desc="The MUHC Data Warehouse: 18 hospital systems, 5 sites, retrospective data going back to 2008. Request process and requirements." />
-</div>
-
----
-
-## Training requirements
-
-Every member of a research team must meet training requirements before performing any study task. Requirements vary by study type and role — no one may perform a task before it is documented on the Task Delegation Log.
-
-<div className="ri-resource-grid">
-  <ResourceCard icon="list-check" href="/training/compliance-requirements" title="Compliance Requirements"
-    desc="Training requirements by study type and role — GCP, Division 5, ISO 14155, SOP Reader, and Competency Assessment." />
-  <ResourceCard icon="id-card" href="/training/research-privileges" title="Research Privileges & Researcher Status"
-    desc="How to obtain and maintain Human Research Privileges (CPDP) or Researcher Status (non-CPDP) at the RI-MUHC." />
-  <ResourceCard icon="award" href="/training/external-certifications" title="External Certifications"
-    desc="ICH GCP, TCPS2 CORE, and other recognized external certifications accepted at the RI-MUHC." />
 </div>
 
 ---
