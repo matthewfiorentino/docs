@@ -315,6 +315,38 @@
                     ]
                   },
                   {
+                    "group": "SOP-CR-018 — Clinical Trial Application (Drugs)",
+                    "expanded": false,
+                    "pages": [
+                      "sops/cr-018-overview",
+                      "sops/cr-018"
+                    ]
+                  },
+                  {
+                    "group": "SOP-CR-019 — Confidentiality and Privacy",
+                    "expanded": false,
+                    "pages": [
+                      "sops/cr-019-overview",
+                      "sops/cr-019"
+                    ]
+                  },
+                  {
+                    "group": "SOP-CR-023 — Clinical Trial Application (NHPs)",
+                    "expanded": false,
+                    "pages": [
+                      "sops/cr-023-overview",
+                      "sops/cr-023"
+                    ]
+                  },
+                  {
+                    "group": "SOP-CR-024 — ITA for Medical Devices",
+                    "expanded": false,
+                    "pages": [
+                      "sops/cr-024-overview",
+                      "sops/cr-024"
+                    ]
+                  },
+                  {
                     "group": "SOP-CR-010 — Management of Investigational Products",
                     "expanded": false,
                     "pages": [
