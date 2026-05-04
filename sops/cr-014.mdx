@@ -59,19 +59,19 @@ See [Glossary of Terms](/kb/glossary) for all term definitions.
 ## 5 · Procedure {#procedure}
 
 ```mermaid
-flowchart LR
-    A["Create source\ndocument forms\n§5.2"] --> B["Collect data\nat source\n§5.4"]
+flowchart TD
+    A["Create source\ndocument forms §5.2"] --> B["Collect data\nat source §5.4"]
     B --> C{"Paper or\nelectronic?"}
-    C -- "Paper CRF" --> D["Transcribe to\npaper CRF\n§5.7"]
-    C -- "eDC system" --> E["Enter in\neDC / eCRF\n§5.8"]
-    D --> F["QC review\n§5.9"]
+    C -- "Paper CRF" --> D["Transcribe to\npaper CRF §5.7"]
+    C -- "eDC system" --> E["Enter in\neDC / eCRF §5.8"]
+    D --> F["QC review §5.9"]
     E --> F
     F --> G{"Discrepancy?"}
-    G -- "Yes" --> H["Query / correction\nwith audit trail\n§5.9"]
+    G -- "Yes" --> H["Query / correction\nwith audit trail §5.9"]
     H --> F
-    G -- "No" --> I["Secure storage\n§5.10"]
-    I --> J["Database lock\n→ SOP-CR-107"]
-    J --> K["Archiving\n→ SOP-CR-015\nmin. 25 years"]
+    G -- "No" --> I["Secure storage §5.10"]
+    I --> J["Database lock → SOP-CR-107"]
+    J --> K["Archiving → SOP-CR-015\nmin. 25 years"]
 ```
 
 ### 5.1 General considerations
