@@ -676,15 +676,30 @@ button:has(img[alt="Quebec"]) {
     font-size: 11px !important;
 }
 
+/* ── Logo — prevent flex-shrink on the logo container so it stays legible
+   at all widths. The img already has shrink-0 but its parent wrapper can
+   still compress; targeting the direct parent via :has() locks it.        */
+:has(> img.nav-logo) {
+    flex-shrink: 0 !important;
+    min-width:   fit-content !important;
+}
+
 /* ── Navbar responsive tightening ──────────────────────────────────────────
+   Logo stays fixed; nav items tighten instead.
    1400–1200 px  typical 1366 px Acer / budget laptops
    ≤1200 px      very tight — minimal footprint before Mintlify's mobile menu */
 
 @media (max-width: 1400px) {
-    /* Tab links — slightly lighter weight to save a few px */
+    /* Tighten gap between tab links */
+    #navbar nav {
+        gap: 2px !important;
+    }
+    /* Tab links — reduce font and horizontal padding */
     #navbar nav a.link {
-        font-size:   12px !important;
-        font-weight: 500 !important;
+        font-size:      12px !important;
+        font-weight:    500 !important;
+        padding-left:   8px !important;
+        padding-right:  8px !important;
     }
     /* Contact outlined button */
     li.navbar-link a[href="/contacts"] {
@@ -699,9 +714,14 @@ button:has(img[alt="Quebec"]) {
 }
 
 @media (max-width: 1200px) {
+    #navbar nav {
+        gap: 0px !important;
+    }
     #navbar nav a.link {
-        font-size:   11px !important;
-        font-weight: 500 !important;
+        font-size:     11px !important;
+        font-weight:   500 !important;
+        padding-left:  6px !important;
+        padding-right: 6px !important;
     }
     li.navbar-link a[href="/contacts"] {
         font-size: 11px !important;
