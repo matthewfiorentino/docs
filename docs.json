@@ -36,7 +36,7 @@
     ],
     "primary": {
       "type": "button",
-      "label": "RI-MUHC Portal",
+      "label": "RI Portal",
       "href": "https://portal.rimuhc.ca"
     }
   },
@@ -547,7 +547,7 @@
           { "label": "Centre for Innovative Medicine", "href": "/cim/overview" },
           { "label": "Applications", "href": "/apps/nagano/overview" },
           { "label": "Contact", "href": "/contacts" },
-          { "label": "RI-MUHC Portal", "href": "https://portal.rimuhc.ca" }
+          { "label": "RI Portal", "href": "https://portal.rimuhc.ca" }
         ]
       }
     ],

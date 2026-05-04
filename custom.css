@@ -678,16 +678,12 @@ img[alt="Quebec"] {
 }
 
 /* ── Navbar responsive tightening ──────────────────────────────────────────
-   1400 px  comfortable MacBook range — keep defaults
-   1400–1200 px  typical 1366 px Acer / budget laptops — shrink everything
-   ≤1200 px  very tight — minimal footprint before Mintlify's mobile menu    */
+   Logo stays prominent at all sizes — only buttons/tabs tighten.
+   1400–1200 px  typical 1366 px Acer / budget laptops
+   ≤1200 px      very tight — minimal footprint before Mintlify's mobile menu */
 
 @media (max-width: 1400px) {
-    /* Logo */
-    #navbar img {
-        height: 42px !important;
-    }
-    /* Tab links */
+    /* Tab links — slightly lighter weight to save a few px */
     #navbar nav a.link {
         font-size:   12px !important;
         font-weight: 500 !important;
@@ -705,9 +701,6 @@ img[alt="Quebec"] {
 }
 
 @media (max-width: 1200px) {
-    #navbar img {
-        height: 36px !important;
-    }
     #navbar nav a.link {
         font-size:   11px !important;
         font-weight: 500 !important;
@@ -724,7 +717,7 @@ img[alt="Quebec"] {
 
 @media (max-width: 1024px) {
     #navbar img {
-        height: 32px !important;
+        height: 36px !important;
     }
 }
 
