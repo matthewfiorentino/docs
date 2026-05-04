@@ -7,7 +7,9 @@
   // Language name → short code
   var LABELS = {
     'English': 'EN', 'english': 'EN',
-    'Français': 'FR', 'français': 'FR', 'French': 'FR', 'french': 'FR'
+    'Français': 'FR', 'français': 'FR', 'French': 'FR', 'french': 'FR',
+    'Français canadien': 'FR', 'Francais canadien': 'FR',
+    'français canadien': 'FR', 'francais canadien': 'FR'
   };
 
   function patchLabel(btn) {
