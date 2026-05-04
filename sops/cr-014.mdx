@@ -57,6 +57,23 @@ See [Glossary of Terms](/kb/glossary) for all term definitions.
 ---
 
 ## 5 · Procedure {#procedure}
+
+```mermaid
+flowchart LR
+    A["Create source\ndocument forms\n§5.2"] --> B["Collect data\nat source\n§5.4"]
+    B --> C{"Paper or\nelectronic?"}
+    C -- "Paper CRF" --> D["Transcribe to\npaper CRF\n§5.7"]
+    C -- "eDC system" --> E["Enter in\neDC / eCRF\n§5.8"]
+    D --> F["QC review\n§5.9"]
+    E --> F
+    F --> G{"Discrepancy?"}
+    G -- "Yes" --> H["Query / correction\nwith audit trail\n§5.9"]
+    H --> F
+    G -- "No" --> I["Secure storage\n§5.10"]
+    I --> J["Database lock\n→ SOP-CR-107"]
+    J --> K["Archiving\n→ SOP-CR-015\nmin. 25 years"]
+```
+
 ### 5.1 General considerations
 
 **5.1.1** Prepare a study-specific <Tooltip tip="The QI's collection of documentation demonstrating compliance, study integrity, and participant safety." headline="Investigator Site File (ISF)" cta="Full definition" href="/kb/glossary#isf">Investigator Site File</Tooltip> (ISF) per [SOP-CR-015](/sops/cr-015) and store all essential documents in the ISF in a timely, ongoing fashion throughout the study.
