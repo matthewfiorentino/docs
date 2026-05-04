@@ -656,11 +656,13 @@ html.dark .ri-hub-body hr {
    ══════════════════════════════════════════════ */
 
 /* Logo size — target both desktop (#navbar img) and Mintlify's compact-nav
-   layout which moves the logo to img.nav-logo outside #navbar             */
+   layout which moves the logo to img.nav-logo outside #navbar.
+   html body prefix raises specificity above Tailwind's h-6 utility.       */
 #navbar img,
-img.nav-logo {
-    height: 58px !important;
-    width:  auto !important;
+html body img.nav-logo {
+    height:     58px !important;
+    max-height: none !important;
+    width:      auto !important;
 }
 
 /* ── Language switcher flag overrides ──
@@ -719,7 +721,7 @@ img[alt="Quebec"] {
 
 @media (max-width: 1024px) {
     #navbar img,
-    img.nav-logo {
+    html body img.nav-logo {
         height: 36px !important;
     }
 }
