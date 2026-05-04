@@ -4,6 +4,22 @@
     'CA': { src: '/images/flag-quebec.svg', alt: 'Quebec'  }
   };
 
+  // Language name → short code
+  var LABELS = {
+    'English': 'EN', 'english': 'EN',
+    'Français': 'FR', 'français': 'FR', 'French': 'FR', 'french': 'FR'
+  };
+
+  function patchLabel(btn) {
+    // Replace language name text in any span/div children, or bare text nodes
+    btn.querySelectorAll('span, div').forEach(function (el) {
+      // Only target leaf-level text nodes (skip containers that hold the flag)
+      if (el.querySelector('img')) return;
+      var t = el.textContent.trim();
+      if (LABELS[t]) el.textContent = LABELS[t];
+    });
+  }
+
   function patchImg(img) {
     var rep = REPLACEMENTS[img.alt];
     if (!rep) return;
@@ -32,6 +48,10 @@
       parent.style.display      = 'inline-flex';
       parent.style.alignItems   = 'center';
     }
+
+    // Shorten label text in the ancestor button
+    var btn = img.closest('button');
+    if (btn) patchLabel(btn);
   }
 
   function replaceAll() {
