@@ -513,6 +513,14 @@
                             ]
                           },
                           {
+                            "group": "WI-CIM-CR002 — SUSAR Review",
+                            "expanded": false,
+                            "pages": [
+                              "cim/wi/cr002-overview",
+                              "cim/wi/cr002"
+                            ]
+                          },
+                          {
                             "group": "WI-CIM-CR003 — Monitoring Visits & Audits",
                             "expanded": false,
                             "pages": [
