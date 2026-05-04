@@ -457,6 +457,218 @@
                       "cim/training",
                       "cim/wi-sops"
                     ]
+                  },
+                  {
+                    "group": "Work Instructions",
+                    "expanded": false,
+                    "pages": [
+                      {
+                        "group": "AD — Administrative & Emergency",
+                        "expanded": false,
+                        "pages": [
+                          {
+                            "group": "WI-CIM-AD001 — Code Blue",
+                            "expanded": false,
+                            "pages": [
+                              "cim/wi/ad001-overview",
+                              "cim/wi/ad001"
+                            ]
+                          },
+                          {
+                            "group": "WI-CIM-AD002 — Code Red/Green (Glen)",
+                            "expanded": false,
+                            "pages": [
+                              "cim/wi/ad002-overview",
+                              "cim/wi/ad002"
+                            ]
+                          },
+                          {
+                            "group": "WI-CIM-AD003 — Code Red/Green (MGH)",
+                            "expanded": false,
+                            "pages": [
+                              "cim/wi/ad003-overview",
+                              "cim/wi/ad003"
+                            ]
+                          },
+                          {
+                            "group": "WI-CIM-AD006 — Incident & Accident",
+                            "expanded": false,
+                            "pages": [
+                              "cim/wi/ad006-overview",
+                              "cim/wi/ad006"
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "group": "CR — Clinical Research",
+                        "expanded": false,
+                        "pages": [
+                          {
+                            "group": "WI-CIM-CR001 — Double Identification",
+                            "expanded": false,
+                            "pages": [
+                              "cim/wi/cr001-overview",
+                              "cim/wi/cr001"
+                            ]
+                          },
+                          {
+                            "group": "WI-CIM-CR003 — Monitoring Visits & Audits",
+                            "expanded": false,
+                            "pages": [
+                              "cim/wi/cr003-overview",
+                              "cim/wi/cr003"
+                            ]
+                          },
+                          {
+                            "group": "WI-CIM-CR007 — Investigator Site File",
+                            "expanded": false,
+                            "pages": [
+                              "cim/wi/cr007-overview",
+                              "cim/wi/cr007"
+                            ]
+                          },
+                          {
+                            "group": "WI-CIM-CR009 — Source Documents",
+                            "expanded": false,
+                            "pages": [
+                              "cim/wi/cr009-overview",
+                              "cim/wi/cr009"
+                            ]
+                          },
+                          {
+                            "group": "WI-CIM-CR010 — Participant Communication",
+                            "expanded": false,
+                            "pages": [
+                              "cim/wi/cr010-overview",
+                              "cim/wi/cr010"
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "group": "GN — General Nursing",
+                        "expanded": false,
+                        "pages": [
+                          {
+                            "group": "WI-CIM-GN001 — UBEC Verification",
+                            "expanded": false,
+                            "pages": [
+                              "cim/wi/gn001-overview",
+                              "cim/wi/gn001"
+                            ]
+                          },
+                          {
+                            "group": "WI-CIM-GN002 — Preparing IV Medications",
+                            "expanded": false,
+                            "pages": [
+                              "cim/wi/gn002-overview",
+                              "cim/wi/gn002"
+                            ]
+                          },
+                          {
+                            "group": "WI-CIM-GN003 — Accessing TIVAD",
+                            "expanded": false,
+                            "pages": [
+                              "cim/wi/gn003-overview",
+                              "cim/wi/gn003"
+                            ]
+                          },
+                          {
+                            "group": "WI-CIM-GN004 — Administering IV Infusion",
+                            "expanded": false,
+                            "pages": [
+                              "cim/wi/gn004-overview",
+                              "cim/wi/gn004"
+                            ]
+                          },
+                          {
+                            "group": "WI-CIM-GN005 — Study Briefings & Nurse Delegation",
+                            "expanded": false,
+                            "pages": [
+                              "cim/wi/gn005-overview",
+                              "cim/wi/gn005"
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "group": "MO — Monitoring",
+                        "expanded": false,
+                        "pages": [
+                          {
+                            "group": "WI-CIM-MO001 — Site Feasibility Visit",
+                            "expanded": false,
+                            "pages": [
+                              "cim/wi/mo001-overview",
+                              "cim/wi/mo001"
+                            ]
+                          },
+                          {
+                            "group": "WI-CIM-MO002 — Site Initiation Visit",
+                            "expanded": false,
+                            "pages": [
+                              "cim/wi/mo002-overview",
+                              "cim/wi/mo002"
+                            ]
+                          },
+                          {
+                            "group": "WI-CIM-MO003 — Site Monitoring Visit",
+                            "expanded": false,
+                            "pages": [
+                              "cim/wi/mo003-overview",
+                              "cim/wi/mo003"
+                            ]
+                          },
+                          {
+                            "group": "WI-CIM-MO004 — Site Close-Out Visit",
+                            "expanded": false,
+                            "pages": [
+                              "cim/wi/mo004-overview",
+                              "cim/wi/mo004"
+                            ]
+                          },
+                          {
+                            "group": "WI-CIM-MO005 — IP Monitoring",
+                            "expanded": false,
+                            "pages": [
+                              "cim/wi/mo005-overview",
+                              "cim/wi/mo005"
+                            ]
+                          },
+                          {
+                            "group": "WI-CIM-MO006 — Safety Assessment & AE/SAE Reporting",
+                            "expanded": false,
+                            "pages": [
+                              "cim/wi/mo006-overview",
+                              "cim/wi/mo006"
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "group": "ON — Oncology",
+                        "expanded": false,
+                        "pages": [
+                          {
+                            "group": "WI-CIM-ON001 — IV Chemotherapy Administration",
+                            "expanded": false,
+                            "pages": [
+                              "cim/wi/on001-overview",
+                              "cim/wi/on001"
+                            ]
+                          },
+                          {
+                            "group": "WI-CIM-ON002 — Safe Handling of Hazardous Drugs",
+                            "expanded": false,
+                            "pages": [
+                              "cim/wi/on002-overview",
+                              "cim/wi/on002"
+                            ]
+                          }
+                        ]
+                      }
+                    ]
                   }
                 ]
               }
