@@ -655,16 +655,6 @@ html.dark .ri-hub-body hr {
    NAVBAR — Luma theme
    ══════════════════════════════════════════════ */
 
-/* Logo size — target both desktop (#navbar img) and Mintlify's compact-nav
-   layout which moves the logo to img.nav-logo outside #navbar.
-   html body prefix raises specificity above Tailwind's h-6 utility.       */
-#navbar img,
-html body img.nav-logo {
-    height:     58px !important;
-    max-height: none !important;
-    width:      auto !important;
-}
-
 /* ── Language switcher flag overrides ──
    Hide original US/CA flags immediately (before JS runs) to prevent flash.
    JS changes alt to "Canada"/"Quebec", breaking these selectors → opacity returns to 1. */
@@ -682,7 +672,6 @@ img[alt="Quebec"] {
 }
 
 /* ── Navbar responsive tightening ──────────────────────────────────────────
-   Logo stays prominent at all sizes — only buttons/tabs tighten.
    1400–1200 px  typical 1366 px Acer / budget laptops
    ≤1200 px      very tight — minimal footprint before Mintlify's mobile menu */
 
@@ -716,13 +705,6 @@ img[alt="Quebec"] {
     #topbar-cta-button a {
         font-size: 11px !important;
         padding:   3px 8px !important;
-    }
-}
-
-@media (max-width: 1024px) {
-    #navbar img,
-    html body img.nav-logo {
-        height: 36px !important;
     }
 }
 
