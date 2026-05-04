@@ -657,7 +657,7 @@ html.dark .ri-hub-body hr {
 
 /* Logo size — navbar height grows naturally to fit */
 #navbar img {
-    height: 48px !important;
+    height: 58px !important;
     width: auto !important;
 }
 
