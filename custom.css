@@ -677,9 +677,54 @@ img[alt="Quebec"] {
     background: transparent !important;
 }
 
-@media (max-width: 1024px) {
+/* ── Navbar responsive tightening ──────────────────────────────────────────
+   1400 px  comfortable MacBook range — keep defaults
+   1400–1200 px  typical 1366 px Acer / budget laptops — shrink everything
+   ≤1200 px  very tight — minimal footprint before Mintlify's mobile menu    */
+
+@media (max-width: 1400px) {
+    /* Logo */
+    #navbar img {
+        height: 42px !important;
+    }
+    /* Tab links */
+    #navbar nav a.link {
+        font-size:   12px !important;
+        font-weight: 500 !important;
+    }
+    /* Contact outlined button */
+    li.navbar-link a[href="/contacts"] {
+        font-size: 11.5px !important;
+        padding:   4px 10px !important;
+    }
+    /* Portal filled button */
+    #topbar-cta-button a {
+        font-size: 11.5px !important;
+        padding:   4px 10px !important;
+    }
+}
+
+@media (max-width: 1200px) {
     #navbar img {
         height: 36px !important;
+    }
+    #navbar nav a.link {
+        font-size:   11px !important;
+        font-weight: 500 !important;
+    }
+    li.navbar-link a[href="/contacts"] {
+        font-size: 11px !important;
+        padding:   3px 8px !important;
+    }
+    #topbar-cta-button a {
+        font-size: 11px !important;
+        padding:   3px 8px !important;
+    }
+}
+
+@media (max-width: 1024px) {
+    #navbar img {
+        height: 32px !important;
     }
 }
 
