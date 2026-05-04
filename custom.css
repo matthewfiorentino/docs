@@ -655,10 +655,12 @@ html.dark .ri-hub-body hr {
    NAVBAR — Luma theme
    ══════════════════════════════════════════════ */
 
-/* Logo size — navbar height grows naturally to fit */
-#navbar img {
+/* Logo size — target both desktop (#navbar img) and Mintlify's compact-nav
+   layout which moves the logo to img.nav-logo outside #navbar             */
+#navbar img,
+img.nav-logo {
     height: 58px !important;
-    width: auto !important;
+    width:  auto !important;
 }
 
 /* ── Language switcher flag overrides ──
@@ -716,7 +718,8 @@ img[alt="Quebec"] {
 }
 
 @media (max-width: 1024px) {
-    #navbar img {
+    #navbar img,
+    img.nav-logo {
         height: 36px !important;
     }
 }
