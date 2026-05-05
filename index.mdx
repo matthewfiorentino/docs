@@ -392,55 +392,81 @@ The four resources you'll use most — tell us about your study, find the guidan
 Follow the lifecycle, or jump to the stage you're in.
 
 <div className="ri-lifecycle">
-  <Phase num={1} title="Concept & Feasibility" cards={[
-    { href: "/kb/planning/feasibility", icon: "magnifying-glass-chart", label: "Feasibility assessment" },
+  <Phase num={1} title="Clinical Research 101" cards={[
     { href: "/kb/clinical-research-101", icon: "book-open", label: "Clinical Research 101" },
-    { href: "/kb/planning/regulations", icon: "scale-balanced", label: "Regulations and guidelines" }
-  ]} />
-  <Phase num={2} title="Design & Planning" cards={[
-    { href: "/kb/planning/study-design", icon: "diagram-project", label: "Design stage support" },
+    { href: "/kb/study-lifecycle", icon: "sitemap", label: "The study lifecycle" },
     { href: "/kb/trial-design", icon: "microscope", label: "Trial design concepts" },
-    { href: "/kb/planning/building-your-team", icon: "users-gear", label: "Build your team" },
-    { href: "/kb/planning/budgets-contracts", icon: "file-contract", label: "Budgets and contracts" },
+    { href: "/kb/gcp-quality-by-design", icon: "award", label: "GCP and quality by design" },
+    { href: "/kb/governance/regulatory-framework", icon: "landmark", label: "Regulatory framework" },
+    { href: "/kb/governance/institutional-structure", icon: "building-columns", label: "Institutional structure" },
+    { href: "/kb/glossary", icon: "spell-check", label: "Glossary" }
+  ]} />
+  <Phase num={2} title="Concept and Feasibility" cards={[
+    { href: "/kb/planning/overview", icon: "map", label: "Planning overview" },
+    { href: "/kb/planning/feasibility", icon: "magnifying-glass-chart", label: "Feasibility assessment" },
+    { href: "/kb/planning/regulations", icon: "scale-balanced", label: "Regulations and guidelines" },
+    { href: "/kb/planning/multi-centric", icon: "network-wired", label: "Multi-centric studies" },
+    { href: "/kb/planning/dct-design", icon: "laptop-medical", label: "Decentralized trial design" },
     { href: "/kb/planning/sponsored-trials", icon: "handshake", label: "Sponsored trials" },
+    { href: "/kb/planning/sponsor-investigator", icon: "user-tie", label: "Sponsor-investigator studies" }
+  ]} />
+  <Phase num={3} title="Design and Planning" cards={[
+    { href: "/kb/planning/study-design", icon: "diagram-project", label: "Design stage support" },
+    { href: "/kb/planning/study-intake", icon: "clipboard-list", label: "Study Intake Form" },
+    { href: "/kb/planning/building-your-team", icon: "users-gear", label: "Build your team" },
+    { href: "/kb/planning/hr-people-culture", icon: "users", label: "HR and People and Culture" },
+    { href: "/kb/planning/edi", icon: "scale-balanced", label: "Equity, Diversity and Inclusion" },
+    { href: "/kb/planning/study-design#participant-considerations", icon: "hand-holding-heart", label: "Patient engagement (PWLLE)" },
+    { href: "/kb/planning/budgets-contracts", icon: "file-contract", label: "Budgets and contracts" },
+    { href: "/kb/planning/research-grants", icon: "coins", label: "Research grants" },
     { href: "/kb/planning/bcu", icon: "chart-bar", label: "Biostatistics (BCU)" },
     { href: "/kb/planning/cord", icon: "database", label: "Data management (CORD)" },
     { href: "/kb/planning/data-warehouse", icon: "server", label: "MUHC patient data" },
-    { href: "/cim/is-cim-right", icon: "flask", label: "Centre for Innovative Medicine (CIM)" },
-    { href: "/kb/planning/hr-people-culture", icon: "users-gear", label: "HR and People & Culture" },
-    { href: "/kb/planning/study-design#participant-considerations", icon: "hand-holding-heart", label: "Patient engagement (PWLLE)" },
-    { href: "/kb/planning/edi", icon: "scale-balanced", label: "Equity, Diversity and Inclusion" }
+    { href: "/cim/is-cim-right", icon: "flask", label: "Centre for Innovative Medicine (CIM)" }
   ]} />
-  <Phase num={3} title="Submission & Review" cards={[
+  <Phase num={4} title="Training and Credentials" cards={[
+    { href: "/training/compliance-requirements", icon: "graduation-cap", label: "Training and compliance requirements" },
+    { href: "/training/research-privileges", icon: "id-card", label: "Research privileges and credentials" },
+    { href: "/training/external-certifications", icon: "scroll", label: "External certifications" },
+    { href: "/training/study-classifier", icon: "list-check", label: "Study classifier" },
+    { href: "/training/cantrain", icon: "users", label: "CanTRAIN" },
+    { href: "/training/talentlms", icon: "desktop", label: "TalentLMS platform" }
+  ]} />
+  <Phase num={5} title="Submission and Review" cards={[
+    { href: "/kb/submission/overview", icon: "map", label: "Submission overview" },
     { href: "/kb/submission/preparing", icon: "folder-open", label: "Preparing your submission" },
     { href: "/kb/submission/submitting-via-nagano", icon: "paper-plane", label: "Submitting via Nagano" },
     { href: "/kb/submission/tracking-responding", icon: "reply", label: "Tracking and responses" },
     { href: "/kb/submission/study-review", icon: "clipboard-check", label: "Study review" },
     { href: "/apps/nagano/overview", icon: "desktop", label: "Nagano user guide" }
   ]} />
-  <Phase num={4} title="Site Activation" cards={[
-    { href: "/kb/conduct/site-setup", icon: "building-circle-check", label: "Site setup" },
+  <Phase num={6} title="Site Activation" cards={[
+    { href: "/kb/conduct/site-setup", icon: "building-circle-check", label: "Site setup and activation" },
     { href: "/kb/conduct/team-management", icon: "user-plus", label: "Delegation log" },
-    { href: "/kb/conduct/isf", icon: "folder-tree", label: "Investigator Site File" }
+    { href: "/kb/conduct/isf", icon: "folder-tree", label: "Investigator Site File" },
+    { href: "/kb/conduct/decentralized-trials", icon: "laptop-medical", label: "Decentralized trials" }
   ]} />
-  <Phase num={5} title="Recruitment & Enrollment" cards={[
+  <Phase num={7} title="Recruitment and Enrollment" cards={[
     { href: "/kb/conduct/consent", icon: "signature", label: "Informed consent" },
-    { href: "/kb/conduct/recruitment-enrollment", icon: "user-check", label: "Recruitment and enrolment" },
-    { href: "/kb/conduct/privacy", icon: "shield-halved", label: "Privacy and Loi 25" }
+    { href: "/kb/conduct/recruitment-enrollment", icon: "user-check", label: "Recruitment and enrollment" },
+    { href: "/kb/conduct/privacy", icon: "shield-halved", label: "Privacy and Loi 25" },
+    { href: "/kb/conduct/data-security", icon: "lock", label: "Data security" }
   ]} />
-  <Phase num={6} title="Study Conduct" cards={[
+  <Phase num={8} title="Study Conduct" cards={[
     { href: "/kb/conduct/data-integrity", icon: "database", label: "Data integrity" },
     { href: "/kb/conduct/investigational-products", icon: "prescription-bottle-medical", label: "Investigational products" },
     { href: "/kb/conduct/biological-specimens", icon: "vial", label: "Biological specimens" },
     { href: "/kb/conduct/reportable-events", icon: "triangle-exclamation", label: "Reportable events" },
     { href: "/kb/conduct/monitoring-audits", icon: "magnifying-glass", label: "Monitoring and audits" },
-    { href: "/kb/conduct/protocol-documents", icon: "file-lines", label: "Protocol documents" }
+    { href: "/kb/conduct/protocol-documents", icon: "file-lines", label: "Protocol documents" },
+    { href: "/kb/conduct/hc-inspection-guide", icon: "magnifying-glass-chart", label: "Health Canada inspection guide" }
   ]} />
-  <Phase num={7} title="Close-Out" cards={[
+  <Phase num={9} title="Close-Out" cards={[
     { href: "/kb/conduct/close-out", icon: "flag-checkered", label: "Study close-out" },
-    { href: "/kb/conduct/publications", icon: "newspaper", label: "Publications" }
+    { href: "/kb/conduct/publications", icon: "newspaper", label: "Publications" },
+    { href: "/kb/governance/conflict-of-interest", icon: "circle-exclamation", label: "Conflict of interest" }
   ]} />
-  <Phase num={8} title="Archiving" cards={[
+  <Phase num={10} title="Archiving" cards={[
     { href: "/kb/governance/research-integrity", icon: "box-archive", label: "Archiving and retention" },
     { href: "/kb/governance/quality-assurance", icon: "shield-check", label: "Quality assurance" }
   ]} />
