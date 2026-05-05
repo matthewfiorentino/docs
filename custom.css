@@ -411,6 +411,25 @@ html.dark .ri-dcard-desc { color: rgba(255,255,255,.55); }
 html.dark .ri-callout--note { background: rgba(0,122,110,.15); color: rgba(255,255,255,.8); }
 html.dark .ri-callout--warn { background: rgba(245,158,11,.12); color: rgba(255,255,255,.8); }
 
+/* Pathway banner — full-width link to role pathway guide, above detail grid */
+.ri-pathway-banner {
+    display: flex; align-items: center; gap: 20px;
+    padding: 14px 18px; border-radius: 10px;
+    border: 1px solid rgba(0,0,0,.08);
+    background: #f7f8fa; text-decoration: none;
+    margin-bottom: 1.5rem;
+    transition: background .15s, border-color .15s;
+}
+html.dark .ri-pathway-banner { background: rgba(255,255,255,.04); border-color: rgba(255,255,255,.08); }
+.ri-pathway-banner:hover { background: #f0faf8; border-color: var(--ri-accent); }
+html.dark .ri-pathway-banner:hover { background: rgba(0,122,110,.1); }
+.ri-pb-body { flex: 1; }
+.ri-pb-label { font-size: 13.5px; font-weight: 700; color: var(--ri-heading); margin-bottom: 3px; }
+html.dark .ri-pb-label { color: #fff; }
+.ri-pb-desc { font-size: 12.5px; line-height: 1.5; color: #666; }
+html.dark .ri-pb-desc { color: rgba(255,255,255,.5); }
+.ri-pb-arrow { font-size: 13px; font-weight: 600; color: var(--ri-accent); flex-shrink: 0; white-space: nowrap; }
+
 /* Study type conditional tiles (PI panel) */
 .ri-stype-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 1.75rem; margin-bottom: 1.25rem; }
 .ri-stype-tile { padding: 14px 16px; border: 1px solid rgba(0,0,0,.08); border-radius: 10px; background: #fff; display: flex; flex-direction: column; gap: 6px; }
