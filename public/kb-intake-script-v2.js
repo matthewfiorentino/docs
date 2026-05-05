@@ -386,7 +386,7 @@ function renderQuestion(q) {
 function renderSection(n, scrollToTop) {
   var meta = SECTIONS[n-1];
   var qs = questionsInSection(n);
-  var area = document.getElementById('ik-form-area');
+  var area = document.getElementById('ik-form-area-v2');
   if (!area || !meta) return;
 
   var h = '<div class="ik-section"><div class="ik-section-head">';
@@ -409,9 +409,9 @@ function renderSection(n, scrollToTop) {
   h += '</div>';
   area.innerHTML = h;
 
-  var fill = document.getElementById('ikProgFill');
-  var label = document.getElementById('ikProgLabel');
-  var sectionLabel = document.getElementById('ikSectionLabel');
+  var fill = document.getElementById('ik-prog-fill-v2');
+  var label = document.getElementById('ik-prog-label-v2');
+  var sectionLabel = document.getElementById('ik-section-label-v2');
   if (fill) fill.style.width = Math.round((n / SECTIONS.length) * 100) + '%';
   if (label) label.textContent = 'Section ' + n + ' / ' + SECTIONS.length;
   if (sectionLabel) sectionLabel.textContent = meta.title;
@@ -465,7 +465,7 @@ function handleOptClick(el) {
 
 function reconcileVisibility() {
   var qs = questionsInSection(state.currentSection);
-  var container = document.getElementById('ik-form-area');
+  var container = document.getElementById('ik-form-area-v2');
   if (!container) return;
   var sectionCard = container.querySelector('.ik-section');
   if (!sectionCard) return;
@@ -572,9 +572,9 @@ window.ikRestart = function() {
   state.answers = {};
   state.currentSection = 1;
   state.submitted = false;
-  var wrap = document.getElementById('ik-progress-wrap');
+  var wrap = document.getElementById('ik-prog-wrap-v2');
   if (wrap) wrap.style.display = '';
-  var resultArea = document.getElementById('ik-result-area');
+  var resultArea = document.getElementById('ik-result-area-v2');
   if (resultArea) resultArea.innerHTML = '';
   renderSection(1, true);
 };
@@ -855,9 +855,9 @@ function showResult(payload) {
   var a = payload.answers;
   var d = payload.derived;
   var stage = d.stage || 'submission';
-  var area = document.getElementById('ik-result-area');
-  var formArea = document.getElementById('ik-form-area');
-  var progWrap = document.getElementById('ik-progress-wrap');
+  var area = document.getElementById('ik-result-area-v2');
+  var formArea = document.getElementById('ik-form-area-v2');
+  var progWrap = document.getElementById('ik-prog-wrap-v2');
   if (formArea) formArea.innerHTML = '';
   if (progWrap) progWrap.style.display = 'none';
   if (!area) return;
@@ -963,7 +963,7 @@ window.ikDownload = function() {
 // INIT
 // ---------------------------------------------------------------------------
 window.ikRenderForm = function() {
-  var area = document.getElementById('ik-form-area');
+  var area = document.getElementById('ik-form-area-v2');
   if (!area) return;
   if (!area.innerHTML.trim()) renderSection(state.currentSection);
 };
