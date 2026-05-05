@@ -313,23 +313,23 @@ html.dark .ri-start-sub { color: rgba(255,255,255,.6); }
     position: relative; height: 190px;
     border-radius: 12px; overflow: hidden;
     background-size: cover; background-position: center;
-    cursor: pointer; border: 2.5px solid transparent;
-    transition: transform .2s, border-color .2s, box-shadow .2s;
+    cursor: pointer; border: none;
+    transition: transform .2s, box-shadow .2s;
     text-align: left; padding: 0; appearance: none; -webkit-appearance: none;
     background-color: #150e51;
 }
 .ri-role-card:hover { transform: translateY(-3px); box-shadow: 0 10px 30px rgba(0,0,0,.22); }
 .ri-role-card--active {
-    border-color: var(--ri-accent-bright, #00c4b4);
-    box-shadow: 0 0 0 3px rgba(0,196,180,.25), 0 8px 24px rgba(0,0,0,.2);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0,0,0,.2);
 }
 .ri-role-card-overlay {
     position: absolute; inset: 0;
-    background: rgba(21,14,81,0.72);
+    background: rgba(21,14,81,0.55);
     transition: opacity .2s;
 }
-.ri-role-card--active .ri-role-card-overlay { opacity: 0.78; }
-.ri-role-card:hover:not(.ri-role-card--active) .ri-role-card-overlay { opacity: 0.6; }
+.ri-role-card--active .ri-role-card-overlay { opacity: 0.32; }
+.ri-role-card:hover:not(.ri-role-card--active) .ri-role-card-overlay { opacity: 0.82; }
 .ri-role-card-body {
     position: relative; z-index: 1; height: 100%;
     display: flex; flex-direction: column; justify-content: flex-end;
