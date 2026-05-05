@@ -100,26 +100,19 @@ export const Phase = ({ num, title, cards }) => (
 export const ResourceCard = ({ icon, href, title, desc }) => (
   <a href={href} className="ri-resource-card">
     <Icon icon={icon} className="ri-resource-icon" />
-    <div className="ri-resource-title">{title} <span className="ri-resource-arrow">↗</span></div>
+    <div className="ri-resource-title">{title}</div>
     <div className="ri-resource-desc">{desc}</div>
   </a>
 );
 
-export const FeatureEntry = ({ href, icon, title, desc, links }) => (
+export const FeatureEntry = ({ href, icon, title, desc }) => (
   <a href={href} className="ri-feature-card">
-    <div className="ri-feature-icon-band">
-      <Icon icon={icon} iconType="regular" />
-    </div>
     <div className="ri-feature-content">
-      <div className="ri-feature-title">{title}</div>
-      <div className="ri-feature-desc">{desc}</div>
-      <div className="ri-feature-links">
-        {links.map((l, i) => (
-          <span key={i} className="ri-feature-link">
-            <Icon icon={l.icon} className="ri-feature-link-icon" /> {l.label}
-          </span>
-        ))}
+      <div className="ri-feature-header">
+        <Icon icon={icon} className="ri-feature-icon" />
+        <div className="ri-feature-title">{title}</div>
       </div>
+      <div className="ri-feature-desc">{desc}</div>
     </div>
   </a>
 );
@@ -340,6 +333,7 @@ export const StartHere = () => {
     <a href="/kb/planning/study-intake" className="ri-text-hero-btn-primary">Take the Study Intake Form</a>
     <a href="#start-here" className="ri-text-hero-btn-secondary">Find your role</a>
   </div>
+  <div className="ri-text-hero-search-hint">Press <kbd className="ri-kbd">⌘K</kbd> to search the Hub</div>
 </div>
 
 <div className="ri-hub-body">
@@ -362,22 +356,18 @@ The four resources you'll use most — tell us about your study, find the guidan
   <FeatureEntry
     href="/kb/planning/study-intake" icon="clipboard-list" title="Study Intake Form"
     desc="Answer questions about your planned study. The tool produces a personalized startup checklist for you and an intake record for the Research Facilitator, so we can follow up and support your study."
-    links={[]}
   />
   <FeatureEntry
     href="/kb/introduction" icon="book-open" title="Knowledge Base"
     desc="Concepts, processes, and Quebec-specific regulatory guidance — organized by study stage from feasibility through close-out, with onboarding guides for every role on a research team."
-    links={[]}
   />
   <FeatureEntry
     href="/sops/overview" icon="file-lines" title="Clinical Research SOPs"
     desc="Every RI-MUHC clinical research SOP in one place. Consult the applicable SOPs for your study tasks — an essential reference for day-to-day compliance, team responsibilities, and inspection readiness."
-    links={[]}
   />
   <FeatureEntry
     href="/training/compliance-requirements" icon="list-check" title="Training and Compliance Requirements"
     desc="Training requirements by study level (I–V) — who must comply, the SOP Reader, Competency Assessment, GCP, Division 5, and ISO 14155. Includes the 90-day certificate rule and where to find your records."
-    links={[]}
   />
 </div>
 
@@ -477,26 +467,6 @@ Follow the lifecycle, or jump to the stage you're in.
     Training requirements depend on study type. All research staff must complete the **RI-MUHC SOP Reader** (tracked acknowledgement of each applicable SOP via TalentLMS) and the **Competency Assessment** (renewed every 2 years for interventional studies, every 5 years for observational or retrospective work).
 
     For drug studies (Level I), **ICH GCP** and **Health Canada Division 5** training are also required. Device studies (Level II) require GCP and **ISO 14155**. No team member may perform any study task before their training is documented and they appear on the Task Delegation Log. See [Training Requirements](/training/compliance-requirements).
-  </Accordion>
-  <Accordion title="What is a Task Delegation Log and why does it matter?">
-    The **Task Delegation Log (TDL)** is the central compliance document for every study at the RI-MUHC. It records who is authorized to perform which tasks and confirms that each person has the required training. No person may perform any study task before they appear on the TDL, their training is documented, and the QI/PI has countersigned their entry.
-
-    The TDL is an inspection-facing document — during an audit or sponsor monitoring visit, it will be one of the first documents reviewed. Gaps (tasks performed before delegation, undocumented training, missing signatures) are among the most common inspection findings.
-  </Accordion>
-  <Accordion title="How does a new researcher get Human Research Privileges or Researcher Status?">
-    **Human Research Privileges** are required for CPDP members (physicians and dentists) acting as QI or PI on studies involving medical oversight — drug trials, device studies, or protocols involving acts reserved to physicians. **Researcher Status** applies to non-CPDP researchers (PhDs, nurses, physiotherapists) conducting studies that do not require medical oversight.
-
-    Both are applied for through TalentLMS and managed by the Performance Office. Applications are typically processed within 1–5 business days. Contact [riprograms@muhc.mcgill.ca](mailto:riprograms@muhc.mcgill.ca) or speak with the Research Facilitator.
-  </Accordion>
-  <Accordion title="Can a fellow or rotating resident be on my study team?">
-    Yes, but with important restrictions. Fellows and rotating residents **cannot conduct research independently** or serve as QI/PI backup. Any medical acts they perform as part of a study must be supervised by a QI/PI or qualified Sub-Investigator who holds Human Research Privileges. They must still appear on the Task Delegation Log with their training documented, and their delegation must be clearly scoped to tasks appropriate to their role.
-
-    Because residents and fellows rotate, their departure must be tracked and the TDL updated promptly.
-  </Accordion>
-  <Accordion title="What do I do if I identify a protocol deviation?">
-    First, **document it and notify the Sponsor as soon as possible**. Then classify the deviation: minor deviations are logged and reported to the REB at annual renewal; major deviations must be reported to the REB within 15 days with a CAPA; critical deviations within 7 days with a CAPA.
-
-    A CAPA (Corrective and Preventive Action) form is required for major and critical deviations — submit to QA and include with the REB deviation report. Remove all participant nominative information and use study number only. See [Reportable Events and Protocol Deviations](/kb/conduct/reportable-events).
   </Accordion>
 </AccordionGroup>
 
