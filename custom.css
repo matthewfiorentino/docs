@@ -325,7 +325,7 @@ html.dark .ri-start-sub { color: rgba(255,255,255,.6); }
 }
 .ri-role-card-overlay {
     position: absolute; inset: 0;
-    background: linear-gradient(160deg, rgba(21,14,81,.75) 0%, rgba(0,122,110,.6) 100%);
+    background: rgba(21,14,81,0.72);
     transition: opacity .2s;
 }
 .ri-role-card--active .ri-role-card-overlay { opacity: 0.78; }
@@ -409,6 +409,26 @@ html.dark .ri-dcard-desc { color: rgba(255,255,255,.55); }
 .ri-callout--warn { background: #fff8ed; border-left: 3px solid #f59e0b; color: #78350f; }
 html.dark .ri-callout--note { background: rgba(0,122,110,.15); border-color: var(--ri-accent); color: rgba(255,255,255,.8); }
 html.dark .ri-callout--warn { background: rgba(245,158,11,.12); border-color: #f59e0b; color: rgba(255,255,255,.8); }
+
+/* Study type conditional tiles (PI panel) */
+.ri-stype-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 1.75rem; margin-bottom: 1.25rem; }
+.ri-stype-tile { padding: 14px 16px; border: 1px solid rgba(0,0,0,.08); border-radius: 10px; background: #fff; display: flex; flex-direction: column; gap: 6px; }
+html.dark .ri-stype-tile { background: rgba(255,255,255,.04); border-color: rgba(255,255,255,.08); }
+.ri-stype-title { font-size: 12.5px; font-weight: 700; color: var(--ri-heading); }
+html.dark .ri-stype-title { color: #fff; }
+.ri-stype-body { font-size: 12px; line-height: 1.55; color: #666; flex: 1; }
+html.dark .ri-stype-body { color: rgba(255,255,255,.55); }
+.ri-stype-link { font-size: 11.5px; font-weight: 600; color: var(--ri-accent); text-decoration: none; }
+.ri-stype-link:hover { text-decoration: underline; }
+@media (max-width: 720px) { .ri-stype-grid { grid-template-columns: 1fr; } }
+
+/* "Already further along?" row (PI panel) */
+.ri-further-along { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; padding: 12px 0; border-top: 1px solid rgba(0,0,0,.07); margin-top: 0.25rem; }
+html.dark .ri-further-along { border-color: rgba(255,255,255,.08); }
+.ri-fa-label { font-size: 11.5px; font-weight: 700; color: #999; letter-spacing: .04em; text-transform: uppercase; }
+html.dark .ri-fa-label { color: rgba(255,255,255,.35); }
+.ri-fa-link { font-size: 12.5px; font-weight: 600; color: var(--ri-accent); text-decoration: none; }
+.ri-fa-link:hover { text-decoration: underline; }
 
 /* ══════════════════════════════════════════════
    HOME PAGE — JOURNEY STRIP

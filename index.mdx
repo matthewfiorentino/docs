@@ -152,10 +152,10 @@ export const DetailCard = ({ href, title, desc }) => (
 export const StartHere = () => {
   const [role, setRole] = useState('pi');
   const roles = [
-    { id: 'pi',    title: 'PI / Investigator',  sub: 'Planning or launching a study',    img: 'https://images.unsplash.com/photo-Ip6TEHPqqUM?w=700&h=420&fit=crop&q=80&auto=format' },
-    { id: 'crc',   title: 'Coordinator / CRC',   sub: 'Joining or managing a study team', img: 'https://images.unsplash.com/photo-oPiYRPoiC2Y?w=700&h=420&fit=crop&q=80&auto=format' },
-    { id: 'nurse', title: 'Research Nurse',       sub: 'Licensed nurse on a study team',   img: 'https://images.unsplash.com/photo-rSW30CYrzFc?w=700&h=420&fit=crop&q=80&auto=format' },
-    { id: 'new',   title: 'New to research',      sub: 'Starting out at the RI-MUHC',     img: 'https://images.unsplash.com/photo-iB3DoolTSPA?w=700&h=420&fit=crop&q=80&auto=format' },
+    { id: 'pi',    title: 'PI / Investigator',  sub: 'Planning or launching a study',    img: 'https://source.unsplash.com/Ip6TEHPqqUM/700x420' },
+    { id: 'crc',   title: 'Coordinator / CRC',   sub: 'Joining or managing a study team', img: 'https://source.unsplash.com/oPiYRPoiC2Y/700x420' },
+    { id: 'nurse', title: 'Research Nurse',       sub: 'Licensed nurse on a study team',   img: 'https://source.unsplash.com/rSW30CYrzFc/700x420' },
+    { id: 'new',   title: 'New to research',      sub: 'Starting out at the RI-MUHC',     img: 'https://source.unsplash.com/iB3DoolTSPA/700x420' },
   ];
   return (
     <div className="ri-start-here" id="start-here">
@@ -189,22 +189,46 @@ export const StartHere = () => {
           <p className="ri-role-framing">You carry ultimate accountability for your study. Whether you're launching your first trial or your tenth, start with the intake form — it generates your personalized checklist and connects you with the Research Facilitator.</p>
           <StepTrack steps={[
             { label: "Study Intake Form" },
+            { label: "Design & feasibility" },
             { label: "Confirm credentials" },
             { label: "Complete training" },
-            { label: "Design & plan your study" },
             { label: "Prepare your submission" },
             { label: "Submit via Nagano", end: true },
           ]} />
           <div className="ri-dcard-grid">
-            <DetailCard href="/kb/planning/study-intake" title="Study Intake Form" desc="Personalized startup checklist and Research Facilitator connection — start here." />
+            <DetailCard href="/kb/planning/study-intake" title="Study Intake Form" desc="Tell us about your study. Your answers generate a personalized startup checklist and create an intake record so the Research Facilitator can follow up and support your setup." />
+            <DetailCard href="/kb/planning/study-design" title="Design & feasibility" desc="Protocol design, study type, feasibility assessment, and the methodology and support resources you need before submission." />
             <DetailCard href="/training/research-privileges" title="Credentials guide" desc="Human Research Privileges or Researcher Status — which applies to you and how to apply." />
             <DetailCard href="/training/compliance-requirements" title="Training requirements" desc="SOP Reader, GCP, and study-level requirements — must be current, not within 90 days of expiry." />
-            <DetailCard href="/kb/planning/feasibility" title="Feasibility assessment" desc="Protocol soundness, team capacity, and site readiness — confirm before submission." />
             <DetailCard href="/kb/submission/preparing" title="Submission preparation" desc="Protocol, ICF, Health Canada authorization documents if applicable." />
-            <DetailCard href="/apps/nagano/overview" title="Nagano user guide" desc="F11 submission triggers REB + institutional feasibility review simultaneously." />
+            <DetailCard href="/apps/nagano/overview" title="Submit via Nagano" desc="F11 submission triggers REB + institutional feasibility review simultaneously. Step-by-step platform guide." />
+            <DetailCard href="#design-planning-support" title="Design & planning support" desc="All planning specialists on one page: BCU, CORD, CIM, methodology, pre-awards, HR, EDI — scroll to the full grid below." />
           </div>
-          <div className="ri-callout ri-callout--note">
+          <div className="ri-callout ri-callout--warn">
             A study cannot begin until the <strong>Personne mandatée</strong> grants MUHC Authorization. REB approval alone does not authorize research activities — both approvals must be in your ISF before any study procedures begin.
+          </div>
+          <div className="ri-stype-grid">
+            <div className="ri-stype-tile">
+              <div className="ri-stype-title">Investigator-initiated (IIR)</div>
+              <div className="ri-stype-body">You are the sponsor. SOPs CR-100–107 apply — protocol development, data management, analysis, and publication are your regulatory responsibility.</div>
+              <a href="/sops/sponsor-investigator" className="ri-stype-link">Sponsor-investigator SOPs →</a>
+            </div>
+            <div className="ri-stype-tile">
+              <div className="ri-stype-title">Externally sponsored</div>
+              <div className="ri-stype-body">Sponsor provides the protocol and Health Canada authorization (CTA/ITA/NOA). Your team handles site conduct, TDL, and ISF. Monitoring visits are sponsor-initiated.</div>
+              <a href="/kb/planning/sponsored-trials" className="ri-stype-link">Sponsored trial guide →</a>
+            </div>
+            <div className="ri-stype-tile">
+              <div className="ri-stype-title">Multi-centric / decentralized</div>
+              <div className="ri-stype-body">Each site requires its own feasibility review, QI, and MUHC Authorization. Decentralized procedures (eConsent, remote visits) need protocol-level authorization.</div>
+              <a href="/kb/planning/feasibility" className="ri-stype-link">Multi-site feasibility →</a>
+            </div>
+          </div>
+          <div className="ri-further-along">
+            <span className="ri-fa-label">Already further along?</span>
+            <a href="/kb/submission/tracking-responding" className="ri-fa-link">Track your submission →</a>
+            <a href="/kb/conduct/site-setup" className="ri-fa-link">Site activation →</a>
+            <a href="/kb/conduct/data-integrity" className="ri-fa-link">Study conduct →</a>
           </div>
         </div>
       )}
@@ -379,7 +403,7 @@ Follow the lifecycle, or jump to the stage you're in.
 
 ---
 
-## Design and planning support
+## Design and planning support {#design-planning-support}
 
 Specialists and services available from the design stage onward — engage early.
 
