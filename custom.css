@@ -278,7 +278,7 @@ html.dark .ri-update-desc { color: rgba(255,255,255,.55); }
     color: var(--ri-accent, #007a6e);
     border: 1.5px solid var(--ri-accent, #007a6e);
     border-radius: 6px; padding: 7px 16px;
-    text-decoration: none; margin-bottom: 48px;
+    text-decoration: none; margin-bottom: 16px;
     transition: background .15s, color .15s;
 }
 .ri-updates-more:hover { background: var(--ri-accent, #007a6e); color: #fff !important; }
@@ -530,7 +530,7 @@ html.dark .ri-journey-sub { color: rgba(255,255,255,.5); }
     grid-template-columns: repeat(2, 1fr);
     gap: 16px;
     margin-top: 20px;
-    margin-bottom: 56px;
+    margin-bottom: 0;
 }
 .ri-feature-card {
     display: flex; flex-direction: column;
@@ -601,7 +601,7 @@ html.dark .ri-feature-link-icon { color: var(--ri-accent-bright); }
 /* ══════════════════════════════════════════════
    HOME PAGE — LIFECYCLE PHASES (numbered)
    ══════════════════════════════════════════════ */
-.ri-lifecycle { margin: 0 0 56px; }
+.ri-lifecycle { margin: 16px 0 0; }
 .ri-phase {
     display: grid;
     grid-template-columns: 32px 1fr;
@@ -675,7 +675,7 @@ html.dark .ri-phase-card:hover { background: rgba(0,196,180,.05); }
     grid-template-columns: repeat(3, 1fr);
     gap: 12px;
     margin-top: 20px;
-    margin-bottom: 48px;
+    margin-bottom: 0;
 }
 .ri-resource-card {
     display: flex; flex-direction: column;
@@ -733,7 +733,7 @@ html.dark .ri-resource-desc { color: rgba(255,255,255,.55); }
 .ri-hub-body hr {
     border: none;
     border-top: 1px solid rgba(0,0,0,.08);
-    margin: 56px 0;
+    margin: 40px 0;
 }
 html.dark .ri-hub-body hr {
     border-top-color: rgba(255,255,255,.08);
@@ -748,7 +748,7 @@ html.dark .ri-hub-body hr {
 }
 @media (max-width: 720px) {
     .ri-hub-body { padding: 40px 1.25rem 3rem; }
-    .ri-hub-body hr { margin: 40px 0; }
+    .ri-hub-body hr { margin: 28px 0; }
 }
 
 /* ══════════════════════════════════════════════
