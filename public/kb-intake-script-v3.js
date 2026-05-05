@@ -867,7 +867,7 @@ function buildSupportLinks(a, d) {
     'design-protocol': function() {
       links.push('<strong>Protocol design &amp; feasibility</strong>');
       links.push('Study design, feasibility assessment, and methodology resources: <a href="/kb/planning/study-design">Design &amp; feasibility &rarr;</a>');
-      links.push('All planning specialists in one place — BCU, CORD, CIM, pre-awards, HR: <a href="/#design-planning-support">Design and planning support &rarr;</a>');
+      links.push('Planning specialists — BCU, CORD, CIM, pre-awards, HR, EDI: <a href="/kb/planning/study-design">Study design &amp; planning &rarr;</a>');
     },
     'regulatory': function() {
       links.push('<strong>Regulatory submissions</strong>');
@@ -930,14 +930,14 @@ function buildNextSteps(a, d) {
 
   if (stage === 'idea') {
     next.push('Start with the study design and feasibility resources: <a href="/kb/planning/study-design">Design &amp; feasibility &rarr;</a>');
-    next.push('Explore planning support services available from the design stage onward: <a href="/#design-planning-support">Design and planning support &rarr;</a>');
+    next.push('Planning specialists and design resources — BCU, CORD, CIM, and more: <a href="/kb/planning/study-design">Study design &amp; planning &rarr;</a>');
     next.push('Browse what it takes to run a clinical study at the RI-MUHC: <a href="/kb/introduction">Introduction to clinical research &rarr;</a>');
     next.push('The Research Facilitator will review your intake and follow up within 5 business days.');
 
   } else if (stage === 'design') {
     next.push('Review the full PI/QI pathway from intake to activation: <a href="/kb/roles/pi-pathway">PI/QI pathway overview &rarr;</a>');
     next.push('Understand training and credentials requirements for your study type: <a href="/training/compliance-requirements">Compliance requirements &rarr;</a>');
-    next.push('Planning support services — biostatistics, CORD, methodology, pre-awards, and more: <a href="/#design-planning-support">Design and planning support &rarr;</a>');
+    next.push('Planning specialists and methodology resources — BCU, CORD, CIM, pre-awards, and more: <a href="/kb/planning/study-design">Study design &amp; planning &rarr;</a>');
     next.push('The Research Facilitator will review your intake and follow up within 5 business days.');
 
   } else if (stage === 'submission') {

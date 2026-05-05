@@ -195,8 +195,8 @@ export const StartHere = () => {
           </div>
           <div className="ri-intake-connector">↓</div>
           <StepTrack steps={[
-            { label: "Design your study" },
             { label: "Assess feasibility" },
+            { label: "Design your study" },
             { label: "Credentials & compliance" },
             { label: "Prepare your submission" },
             { label: "Submit via Nagano", end: true },
@@ -212,7 +212,7 @@ export const StartHere = () => {
             <DetailCard href="/kb/planning/study-intake" title="Study Intake Form" desc="The full intake form — questions about your study type, team, sponsor, and design. Takes about 10 minutes and generates a startup checklist specific to your study." />
             <DetailCard href="/kb/planning/study-design" title="Study design" desc="Protocol design, trial types, participant considerations, and the methodology resources available from the design stage onward." />
             <DetailCard href="/kb/planning/feasibility" title="Feasibility assessment" desc="Protocol soundness, team capacity, site readiness, and the formal feasibility steps required before submission." />
-            <DetailCard href="#design-planning-support" title="Design & planning support" desc="BCU, CORD, CIM, methodology, pre-awards, HR, EDI — all the specialists available from the design stage, in one grid below." />
+            <DetailCard href="/kb/planning/study-design" title="Design & planning" desc="Protocol design, methodology, feasibility, and the full range of planning specialists — BCU, CORD, CIM, pre-awards, HR, EDI." />
             <DetailCard href="/training/research-privileges" title="Credentials guide" desc="Human Research Privileges or Researcher Status — which applies to you and how to apply." />
             <DetailCard href="/training/compliance-requirements" title="Training requirements" desc="SOP Reader, GCP, and study-level requirements — must be current, not within 90 days of expiry." />
             <DetailCard href="/kb/planning/budgets-contracts" title="Budgets & contracts" desc="Grant applications, budget development, and funding strategy. Engage pre-awards before your protocol is finalized." />
@@ -397,7 +397,11 @@ Follow the lifecycle, or jump to the stage you're in.
     { href: "/kb/planning/sponsored-trials", icon: "handshake", label: "Sponsored trials" },
     { href: "/kb/planning/bcu", icon: "chart-bar", label: "Biostatistics (BCU)" },
     { href: "/kb/planning/cord", icon: "database", label: "Data management (CORD)" },
-    { href: "/kb/planning/data-warehouse", icon: "server", label: "MUHC patient data" }
+    { href: "/kb/planning/data-warehouse", icon: "server", label: "MUHC patient data" },
+    { href: "/cim/is-cim-right", icon: "flask", label: "Centre for Innovative Medicine (CIM)" },
+    { href: "/kb/planning/hr-people-culture", icon: "users-gear", label: "HR and People & Culture" },
+    { href: "/kb/planning/study-design#participant-considerations", icon: "heart-handshake", label: "Patient engagement (PWLLE)" },
+    { href: "/kb/planning/edi", icon: "scale-balanced", label: "Equity, Diversity and Inclusion" }
   ]} />
   <Phase num={3} title="Submission & Review" cards={[
     { href: "/kb/submission/preparing", icon: "folder-open", label: "Preparing your submission" },
@@ -432,33 +436,6 @@ Follow the lifecycle, or jump to the stage you're in.
     { href: "/kb/governance/research-integrity", icon: "box-archive", label: "Archiving and retention" },
     { href: "/kb/governance/quality-assurance", icon: "shield-check", label: "Quality assurance" }
   ]} />
-</div>
-
----
-
-## Design and planning support {#design-planning-support}
-
-Specialists and services available from the design stage onward — engage early.
-
-<div className="ri-resource-grid">
-  <ResourceCard icon="chart-bar" href="/kb/planning/bcu" title="Biostatistics (BCU)"
-    desc="Sample size, statistical analysis plans, power calculations, and manuscript support. Engage before data collection begins." />
-  <ResourceCard icon="database" href="/kb/planning/cord" title="CORD — Data Management"
-    desc="REDCap database builds, CRF support, and data management planning across the study lifecycle." />
-  <ResourceCard icon="server" href="/kb/planning/data-warehouse" title="MUHC Patient Data"
-    desc="Retrospective access to 18 hospital systems across 5 sites going back to 2008. Request process and requirements." />
-  <ResourceCard icon="flask" href="/cim/is-cim-right" title="Centre for Innovative Medicine (CIM)"
-    desc="Phase I, oncology, and IV administration studies route through CIM from the start — staffing, platforms, and QA at Glen and MGH." />
-  <ResourceCard icon="microscope" href="/kb/planning/study-design" title="Clinical Trial Methodology"
-    desc="Protocol design optimization and feasibility. Biostatistician and methodology consultation — contact the Research Facilitator for access." />
-  <ResourceCard icon="coins" href="/kb/planning/budgets-contracts" title="Pre-Awards and Budget"
-    desc="Grant applications, budget development, and funding strategy. Engage the Pre-Awards Office before your protocol is finalized." />
-  <ResourceCard icon="users-gear" href="/kb/planning/hr-people-culture" title="HR and People & Culture"
-    desc="Hiring research staff, employment agreements, HR advisors, and trainee onboarding. All study team members need an RI-MUHC affiliation." />
-  <ResourceCard icon="heart-handshake" href="/kb/planning/study-design#participant-considerations" title="Patient Engagement (PWLLE)"
-    desc="Integrating persons with lived or living experience strengthens study relevance. The MUHC Patient Engagement Office can help identify and onboard PWLLE collaborators." />
-  <ResourceCard icon="scale-balanced" href="/kb/planning/edi" title="Equity, Diversity and Inclusion (EDI)"
-    desc="Most major funders now require EDI considerations. GBA+ consultation, inclusive recruitment, and team composition support." />
 </div>
 
 ---
