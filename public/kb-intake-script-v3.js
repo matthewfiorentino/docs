@@ -37,9 +37,9 @@ window._ikCurrentInstance = _ikInstance;
 // valid. If you rotate or replace the EmailJS account, update all four.
 // ---------------------------------------------------------------------------
 var IK_EMAIL_CONFIG = {
-  serviceId:  'YOUR_SERVICE_ID',   // EmailJS → Email Services → Service ID
-  templateId: 'YOUR_TEMPLATE_ID',  // EmailJS → Email Templates → Template ID
-  publicKey:  'YOUR_PUBLIC_KEY',   // EmailJS → Account → Public Key
+  serviceId:  'service_p1ld1rp',       // EmailJS → Email Services → Service ID
+  templateId: 'template_sqehaop',      // EmailJS → Email Templates → Template ID
+  publicKey:  'bY9Iw2R78ouIgz-rb',    // EmailJS → Account → Public Key
   toEmail:    'matthew.fiorentino@muhc.mcgill.ca'
 };
 
