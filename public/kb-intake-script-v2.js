@@ -10,7 +10,7 @@ var SECTIONS = [
   { n:2, key:'S2', title:'Your study',       desc:'Basic information about the study and your research program.' },
   { n:3, key:'S3', title:'Study type',       desc:'These answers determine your training requirements and regulatory pathway.' },
   { n:4, key:'S4', title:'Your team',        desc:'Who will run the study and what support is already in place.' },
-  { n:5, key:'S5', title:'Support needs',    desc:'How the Research Facilitator can best help you.' }
+  { n:5, key:'S5', title:'Anything else?',   desc:'Optional — tell us what you need most right now so the Research Facilitator can prepare.' }
 ];
 
 // ---------------------------------------------------------------------------
@@ -229,13 +229,6 @@ var Q = [
       {val:'closeout-support', en:'Close-out procedures or amendments'}
     ]},
 
-  { id:'S5_PATHWAY', section:5, type:'single', required:true,
-    label:{en:'Preferred level of support?'},
-    opts:[
-      {val:'self-serve',    en:'Self-serve',              desc:'I\'ll use the Hub on my own and reach out if needed'},
-      {val:'quick-consult', en:'Quick consult (30 min)',  desc:'A short call to clarify specific questions'},
-      {val:'warm-handoff',  en:'Warm handoff',            desc:'The Research Facilitator works alongside me through the process'}
-    ]}
 ];
 
 var QMAP = {};
@@ -635,18 +628,16 @@ function classify(a) {
   d.involvesMinors      = a.S3_POPULATION === 'minors' || a.S3_POPULATION === 'both';
   d.involvesIncapable   = a.S3_POPULATION === 'incapable' || a.S3_POPULATION === 'both';
 
-  // Pathway recommendation
-  var researcherChoice = a.S5_PATHWAY || 'self-serve';
-  var engineChoice = 'self-serve';
+  // Pathway recommendation — derived automatically (not shown to user, used for triage record)
   if (stage === 'idea' || stage === 'design') {
-    engineChoice = 'self-serve';
+    d.recommendedPathway = 'self-serve';
   } else if (d.riskGrouping === 'highest' || a.S4_EXPERIENCE === 'first') {
-    engineChoice = 'warm-handoff';
+    d.recommendedPathway = 'warm-handoff';
   } else if (d.riskGrouping === 'high') {
-    engineChoice = 'quick-consult';
+    d.recommendedPathway = 'quick-consult';
+  } else {
+    d.recommendedPathway = 'self-serve';
   }
-  var order = ['self-serve', 'quick-consult', 'warm-handoff'];
-  d.recommendedPathway = order.indexOf(researcherChoice) > order.indexOf(engineChoice) ? researcherChoice : engineChoice;
 
   // Flags — submission track only, max 6, highest priority first
   var flags = [];
@@ -696,6 +687,53 @@ var PATHWAY_LABEL = {
   'quick-consult': 'Quick consult',
   'warm-handoff':  'Warm handoff'
 };
+
+// ---------------------------------------------------------------------------
+// DESIGN GUIDANCE — study-type-specific "what to plan for" (design stage)
+// ---------------------------------------------------------------------------
+function buildDesignGuidance(a, d) {
+  if (d.stage !== 'design' && d.stage !== 'idea') return [];
+  var items = [];
+
+  if (d.trainingLevel) {
+    var levelDesc = LEVEL_LABEL[d.trainingLevel] || d.trainingLevel;
+    items.push('Training level for this study type: <strong>' + escHtml(levelDesc) + '</strong>. All team members performing study tasks need the SOP Reader + Competency Assessment before signing the Task Delegation Log. (<a href="/training/compliance-requirements">Full training requirements &rarr;</a>)');
+  }
+  if (d.isDrugStudy) {
+    items.push('A Health Canada Clinical Trial Application (CTA, Division 5) is required — filed separately from your REB submission. GCP (ICH E6 R3) and Division 5 training are required for all team members. (<a href="/sops/cr-018-overview">CTA overview &rarr;</a>)');
+  }
+  if (d.isNHPStudy) {
+    items.push('A Health Canada CTA for Natural Health Products is required. GCP training and a product dossier are needed before submission.');
+  }
+  if (d.isDeviceStudy) {
+    items.push('A Health Canada Investigational Testing Authorization (ITA) is required for the investigational device. ISO 14155:2020 GCP training required. (<a href="/sops/cr-024-overview">ITA overview &rarr;</a>)');
+  }
+  if (d.isSponsorInvestigator) {
+    items.push('As Sponsor-Investigator, you hold both Sponsor and QI/PI responsibilities simultaneously — Health Canada filings, independent monitoring, IP supply chain, SUSAR reporting, and the Trial Master File. The 100-series SOPs apply. Engage QA early. (<a href="/sops/sponsor-investigator">Sponsor-Investigator SOPs &rarr;</a>)');
+  }
+  if (d.isIndustrySponsored) {
+    items.push('Industry-sponsored studies: the Sponsor provides the protocol and Health Canada authorization. Your team handles site conduct, Task Delegation Log, and ISF. Budget for REB billing fees per Directive ministérielle 2023-016.');
+  }
+  if (d.involvesPHI && d.crossBorder) {
+    items.push('Cross-border data sharing requires an ÉFVP (Privacy Impact Assessment) before any transfer. Plan this into your protocol design and budget timeline.');
+  } else if (d.involvesPHI) {
+    items.push('Your study involves personal health information. Include a data management and privacy plan in your REB submission. Under Loi 25, confidentiality breaches must be disclosed within 72 hours.');
+  }
+  if (d.involvesMinors) {
+    items.push('Minors require written parental/guardian consent under Civil Code of Quebec Art. 21. Include age-appropriate assent forms and address this in your REB application.');
+  }
+  if (d.involvesIncapable) {
+    items.push('Adults unable to consent require authorization from a Personne mandatée, tutor, or curator (Civil Code Art. 21). Address this explicitly in your REB application.');
+  }
+  if (a.S3_SITES === 'multi-lead' || a.S3_SITES === 'multi-cross') {
+    items.push('Multicentre studies require site-specific feasibility reviews and coordination. As MUHC lead, you submit via Nagano on behalf of all Quebec RSSS sites. (<a href="/kb/planning/feasibility">Multi-site feasibility &rarr;</a>)');
+  }
+  if (a.S4_CIM && a.S4_CIM !== 'no') {
+    items.push('CIM involvement: engage CIM during the design phase, well before your Nagano submission. (<a href="/cim/is-cim-right">Is CIM right for your study? &rarr;</a>)');
+  }
+
+  return items;
+}
 
 // ---------------------------------------------------------------------------
 // CHECKLIST — submission track only, 3 groups with Hub links
@@ -778,14 +816,7 @@ function buildNextSteps(a, d) {
     next.push('The Research Facilitator will review your intake and follow up within 5 business days.');
 
   } else if (stage === 'submission') {
-    var pathway = d.recommendedPathway;
-    if (pathway === 'warm-handoff') {
-      next.push('Based on your study profile, the Research Facilitator will reach out within 5 business days to schedule a handoff meeting and work alongside you through submission.');
-    } else if (pathway === 'quick-consult') {
-      next.push('The Research Facilitator will reach out within 5 business days to schedule a 30-minute consult.');
-    } else {
-      next.push('The Research Facilitator will review your intake and reach out if any concerns arise. Use the Hub as your primary reference in the meantime.');
-    }
+    next.push('The Research Facilitator will review your intake and follow up within 5 business days.');
     next.push('Step-by-step guide to submitting via Nagano: <a href="/apps/nagano/overview">Submit via Nagano &rarr;</a>');
     if (d.isDrugStudy) {
       next.push('Drug study — Health Canada CTA requirements: <a href="/sops/cr-018-overview">SOP-CR-018 overview &rarr;</a>');
@@ -874,14 +905,21 @@ function showResult(payload) {
   h += ' <span class="ik-confirm-id">Ref: ' + escHtml(payload.intakeId) + '</span></div>';
   h += '</div></div>';
 
-  // Study profile card — submission track with classifiable type
-  if (stage === 'submission' && d.trainingLevel) {
+  // Study profile card — any stage where we have a classifiable study type
+  if (d.trainingLevel && (stage === 'submission' || stage === 'design')) {
     h += '<div class="ik-profile">';
     h += '<div class="ik-profile-eyebrow">Study profile</div>';
     h += '<div class="ik-profile-title">' + escHtml(a.S2_TITLE || 'Your study') + '</div>';
     h += '<dl class="ik-profile-grid">';
     h += '<div class="ik-profile-stat"><dt>Training level</dt><dd>' + escHtml(LEVEL_LABEL[d.trainingLevel] || d.trainingLevel) + '</dd></div>';
-    h += '<div class="ik-profile-stat"><dt>Support pathway</dt><dd>' + escHtml(PATHWAY_LABEL[d.recommendedPathway] || d.recommendedPathway) + '</dd></div>';
+    if (d.studyTypeBucket && d.studyTypeBucket !== 'unknown') {
+      var bucketLabel = d.studyTypeBucket.replace('interventional-', '').replace('-', ' ');
+      bucketLabel = bucketLabel.charAt(0).toUpperCase() + bucketLabel.slice(1);
+      h += '<div class="ik-profile-stat"><dt>Study type</dt><dd>' + escHtml(bucketLabel) + '</dd></div>';
+    }
+    if (d.isMulticentre) {
+      h += '<div class="ik-profile-stat"><dt>Sites</dt><dd>Multicentre</dd></div>';
+    }
     h += '</dl></div>';
   }
 
@@ -896,6 +934,14 @@ function showResult(payload) {
   var next = buildNextSteps(a, d);
   for (var i = 0; i < next.length; i++) h += '<li>' + next[i] + '</li>';
   h += '</ul></div>';
+
+  // Design / idea guidance — study-type-specific planning notes
+  var guidance = buildDesignGuidance(a, d);
+  if (guidance.length > 0) {
+    h += '<div class="ik-result-section"><h2>What to plan for</h2><ul>';
+    for (var gi0 = 0; gi0 < guidance.length; gi0++) h += '<li>' + guidance[gi0] + '</li>';
+    h += '</ul></div>';
+  }
 
   // Regulatory flags — submission track only
   if (stage === 'submission' && d.flags && d.flags.length > 0) {
