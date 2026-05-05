@@ -185,24 +185,24 @@ export const StartHere = () => {
 
       {role === 'pi' && (
         <div className="ri-role-panel">
-          <p className="ri-role-framing">You carry ultimate accountability for your study. Whether you're launching your first trial or your tenth, start with the intake form — it generates your personalized checklist and connects you with the Research Facilitator.</p>
+          <p className="ri-role-framing">As PI, you hold ultimate accountability for your study's scientific integrity and regulatory compliance. The intake form maps your study type and design to the specific approvals, training requirements, and forms your study needs — and creates your intake record with the Research Facilitator.</p>
           <StepTrack steps={[
             { label: "Study Intake Form" },
             { label: "Design & feasibility" },
             { label: "Confirm credentials" },
-            { label: "Complete training" },
+            { label: "Complete GCP + SOP training" },
             { label: "Prepare your submission" },
             { label: "Submit via Nagano", end: true },
           ]} />
           <div className="ri-dcard-grid">
-            <DetailCard href="/kb/planning/study-intake" title="Study Intake Form" desc="Tell us about your study. Your answers generate a personalized startup checklist and create an intake record so the Research Facilitator can follow up and support your setup." />
+            <DetailCard href="/kb/planning/study-intake" title="Study Intake Form" desc="Answer questions about your study type, team, and design. Your responses are mapped to the specific regulatory approvals, training requirements, and forms your study needs — and create an intake record for the Research Facilitator." />
             <DetailCard href="/kb/planning/study-design" title="Study design" desc="Protocol design, trial types, participant considerations, and the methodology resources available from the design stage onward." />
             <DetailCard href="/kb/planning/feasibility" title="Feasibility assessment" desc="Protocol soundness, team capacity, site readiness, and the formal feasibility steps required before submission." />
             <DetailCard href="#design-planning-support" title="Design & planning support" desc="BCU, CORD, CIM, methodology, pre-awards, HR, EDI — all the specialists available from the design stage, in one grid below." />
             <DetailCard href="/training/research-privileges" title="Credentials guide" desc="Human Research Privileges or Researcher Status — which applies to you and how to apply." />
             <DetailCard href="/training/compliance-requirements" title="Training requirements" desc="SOP Reader, GCP, and study-level requirements — must be current, not within 90 days of expiry." />
             <DetailCard href="/kb/planning/budgets-contracts" title="Budgets & contracts" desc="Grant applications, budget development, and funding strategy. Engage pre-awards before your protocol is finalized." />
-            <DetailCard href="/kb/submission/preparing" title="Submission preparation" desc="Protocol, ICF, Health Canada authorization documents if applicable." />
+            <DetailCard href="/kb/submission/preparing" title="Submission preparation" desc="Protocol, ICF, and Health Canada authorization documents. Studies with investigational products need a CTA/NOL (drugs), ITA (devices), or NHP CTA (natural health products)." />
             <DetailCard href="/apps/nagano/overview" title="Submit via Nagano" desc="F11 submission triggers REB + institutional feasibility review simultaneously. Step-by-step platform guide." />
           </div>
           <div className="ri-callout ri-callout--warn">
@@ -238,8 +238,8 @@ export const StartHere = () => {
         <div className="ri-role-panel">
           <p className="ri-role-framing">A PI is leading the study — your entry point is the Task Delegation Log. No team member may perform any study task before appearing on the TDL with documented training and QI/PI countersignature.</p>
           <StepTrack steps={[
-            { label: "Identify your study level" },
-            { label: "Complete required training" },
+            { label: "Identify your study level (I–V)" },
+            { label: "Complete GCP + study-level training" },
             { label: "PI/QI adds you to the TDL" },
             { label: "Site activation confirmed" },
             { label: "First study tasks begin", end: true },
@@ -248,10 +248,12 @@ export const StartHere = () => {
             No team member may perform any study task before they appear on the Task Delegation Log, their training is documented, and the QI/PI has countersigned their entry.
           </div>
           <div className="ri-dcard-grid">
-            <DetailCard href="/training/compliance-requirements" title="Training requirements by study type" desc="Drug trials require GCP and Division 5; device trials require GCP and ISO 14155." />
-            <DetailCard href="/kb/conduct/site-setup" title="Task Delegation Log and site setup" desc="How the TDL works and what you need in place before day one." />
-            <DetailCard href="/kb/roles/crc-guide" title="CRC operational guide" desc="Day-to-day reference for coordinators across study types." />
-            <DetailCard href="/kb/roles/crc-pathway" title="Full CRC onboarding pathway" desc="Complete onboarding, competency domains, and operational guidance by study type." />
+            <DetailCard href="/training/compliance-requirements" title="Training requirements by study type" desc="Drug trials (Level I) require GCP and Division 5; device trials (Level II) require GCP and ISO 14155. Observational and retrospective studies have separate requirements." />
+            <DetailCard href="/kb/conduct/site-setup" title="Task Delegation Log and site setup" desc="How the TDL works, what documentation is required before your first study task, and the coordinator's role in keeping it current." />
+            <DetailCard href="/kb/roles/crc-guide" title="CRC operational guide" desc="Study management, data collection, sponsor communication, and regulatory responsibilities across drug, device, and observational studies." />
+            <DetailCard href="/kb/roles/crc-pathway" title="Full CRC onboarding pathway" desc="Role-specific onboarding steps, competency domains, and operational guidance organized by study type and level." />
+            <DetailCard href="/kb/conduct/isf" title="Investigator Site File (ISF)" desc="Essential documents your site must maintain throughout the study — what goes in the ISF, coordinator responsibilities, and inspection readiness." />
+            <DetailCard href="/kb/conduct/reportable-events" title="Protocol deviations and events" desc="How to identify, classify, and report protocol deviations, adverse events, and other reportable events — timelines and CAPA requirements." />
           </div>
         </div>
       )}
@@ -261,14 +263,14 @@ export const StartHere = () => {
           <p className="ri-role-framing">Licensed nurses on study teams must understand OIIQ obligations, which reserved acts can be delegated within a research protocol, and the training requirements for your study level.</p>
           <StepTrack steps={[
             { label: "Confirm OIIQ licence + CPR" },
-            { label: "Complete training" },
+            { label: "Complete GCP + study-level training" },
             { label: "Delegation scope confirmed with QI" },
             { label: "Added to Task Delegation Log" },
             { label: "Nursing study tasks begin", end: true },
           ]} />
           <div className="ri-dcard-grid">
             <DetailCard href="/kb/roles/nurse-pathway" title="OIIQ obligations and delegation scope" desc="Reserved acts, CPR, specialized competencies, and nursing-specific guidance under the Code des professions." />
-            <DetailCard href="/kb/roles/nurse-guide" title="Operational nursing guide" desc="Day-to-day reference for research nurses." />
+            <DetailCard href="/kb/roles/nurse-guide" title="Operational nursing guide" desc="Study procedures, participant visits, data collection, and nursing-specific responsibilities across drug, device, and observational studies." />
             <DetailCard href="/training/compliance-requirements" title="Training requirements by study level" desc="Requirements by study type — drug, device, observational." />
           </div>
         </div>
@@ -276,9 +278,9 @@ export const StartHere = () => {
 
       {role === 'new' && (
         <div className="ri-role-panel">
-          <p className="ri-role-framing">Start with the regulatory framework and key roles before the operational guides. Understanding who does what — and why — makes everything else easier to navigate. Guidance for trainees, volunteers, and observers is also here.</p>
+          <p className="ri-role-framing">Start with the regulatory framework and key roles before the operational guides. Understanding who does what — and under which regulations — makes the operational content easier to navigate. If you're joining as a trainee, volunteer, or observer, the forms and eligibility requirements are here too.</p>
           <StepTrack steps={[
-            { label: "Understand the landscape" },
+            { label: "Understand the regulatory landscape" },
             { label: "Identify your role" },
             { label: "Complete role-specific training" },
             { label: "Choose your pathway above", end: true },
