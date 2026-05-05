@@ -45,7 +45,7 @@ export const INTAKE_CSS = `
 .ik-progress-row { display: flex; align-items: center; gap: 14px; margin-bottom: 10px; }
 .ik-progress-bar { flex: 1; height: 3px; background: var(--bg-high); border-radius: 2px; overflow: hidden; }
 .ik-progress-fill { height: 100%; background: var(--teal-bright); transition: width .4s cubic-bezier(.16,1,.3,1); width: 0; }
-.ik-progress-label { font-size: 11px; font-weight: 700; color: var(--textd); white-space: nowrap; font-family: "Courier New", monospace; }
+.ik-progress-label { font-size: 11px; font-weight: 700; color: var(--textd); white-space: nowrap; }
 .ik-section-label { font-size: 9px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: var(--teal); }
 
 /* SECTION CARD */
@@ -65,13 +65,13 @@ export const INTAKE_CSS = `
 
 /* DEFINITION */
 .ik-def { margin-top: 6px; margin-bottom: 12px; font-size: 12.5px; line-height: 1.6; }
-.ik-def.always { background: var(--bg-low); border-left: 3px solid var(--teal); padding: 12px 14px; color: var(--textm); border-radius: 0 6px 6px 0; }
+.ik-def.always { background: var(--bg-low); padding: 12px 14px; color: var(--textm); border-radius: 6px; border: 1px solid rgba(0,0,0,.06); }
 .ik-def.always .ik-def-title { display: block; font-size: 9px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--navy); margin-bottom: 6px; }
 .ik-def.expand summary { cursor: pointer; color: var(--teal); font-weight: 600; list-style: none; display: inline-flex; align-items: center; gap: 6px; padding: 4px 0; font-size: 12px; }
 .ik-def.expand summary::-webkit-details-marker { display: none; }
 .ik-def.expand summary::before { content: '\\24D8'; color: var(--teal); font-size: 13px; }
 .ik-def.expand[open] summary { margin-bottom: 6px; }
-.ik-def.expand .ik-def-body { padding: 10px 14px; background: var(--bg-low); border-left: 3px solid var(--teal); color: var(--textm); border-radius: 0 0 6px 6px; }
+.ik-def.expand .ik-def-body { padding: 10px 14px; background: var(--bg-low); color: var(--textm); border-radius: 6px; border: 1px solid rgba(0,0,0,.06); }
 .ik-def strong { color: var(--navy); }
 
 /* INPUTS */
@@ -85,8 +85,9 @@ export const INTAKE_CSS = `
 .ik-opt { display: flex; align-items: flex-start; gap: 12px; padding: 12px 14px; border: 1px solid rgba(0,0,0,.10); background: var(--white); cursor: pointer; transition: border-color .15s, background .15s; user-select: none; border-radius: 8px; }
 .ik-opt:hover { border-color: var(--teal); background: var(--bg-low); }
 .ik-opt.selected { border-color: var(--teal); background: var(--teal-ll); }
-.ik-opt-key { flex-shrink: 0; width: 22px; height: 22px; border: 1.5px solid var(--bdr); display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 700; color: var(--textd); font-family: "Courier New", monospace; background: var(--white); transition: all .15s; border-radius: 6px; }
-.ik-opt.selected .ik-opt-key { background: var(--teal); border-color: var(--teal); color: var(--white); }
+.ik-opt-key { flex-shrink: 0; width: 18px; height: 18px; border: 1.5px solid var(--bdr); border-radius: 50%; background: var(--white); transition: all .15s; display: flex; align-items: center; justify-content: center; }
+.ik-opt.selected .ik-opt-key { background: var(--teal); border-color: var(--teal); }
+.ik-opt.selected .ik-opt-key::after { content: '\\2713'; font-size: 11px; font-weight: 700; color: #fff; line-height: 1; }
 .ik-opt-body { flex: 1; min-width: 0; }
 .ik-opt-label { font-size: 14px; font-weight: 600; color: var(--navy); line-height: 1.4; }
 .ik-opt-desc { display: block; font-size: 12px; font-weight: 400; color: var(--textd); margin-top: 3px; line-height: 1.5; font-style: italic; }
@@ -111,7 +112,7 @@ export const INTAKE_CSS = `
 .ik-file input[type="file"] { position: absolute; opacity: 0; width: 0.1px; height: 0.1px; }
 .ik-file-label { display: inline-flex; align-items: center; gap: 8px; padding: 10px 16px; border: 1.5px dashed rgba(0,0,0,.2); background: var(--bg-low); color: var(--textm); cursor: pointer; font-size: 13px; font-weight: 600; transition: all .15s; border-radius: 6px; }
 .ik-file-label:hover { border-color: var(--teal); color: var(--teal); }
-.ik-file-name { display: inline-block; margin-left: 12px; font-size: 12.5px; color: var(--textm); font-family: "Courier New", monospace; }
+.ik-file-name { display: inline-block; margin-left: 12px; font-size: 12.5px; color: var(--textm); }
 .ik-file-constraints { display: block; font-size: 11.5px; color: var(--textd); margin-top: 6px; }
 
 /* NAV */
@@ -120,8 +121,8 @@ export const INTAKE_CSS = `
 .ik-btn:hover { background: var(--navy); }
 .ik-btn-secondary { background: none; color: var(--textd); padding: 11px 8px; }
 .ik-btn-secondary:hover { background: var(--bg-low); color: var(--navy); border-radius: 6px; }
-.ik-btn-submit { background: var(--navy); }
-.ik-btn-submit:hover { background: var(--navy-card); }
+.ik-btn-submit { background: var(--teal); }
+.ik-btn-submit:hover { background: var(--navy); }
 
 /* VALIDATION */
 .ik-error { font-size: 12px; color: var(--coral); margin-top: 6px; line-height: 1.4; display: block; }
@@ -220,9 +221,9 @@ export const INTAKE_HTML = `
   <div class="ik-progress-wrap" id="ik-progress-wrap">
     <div class="ik-progress-row">
       <div class="ik-progress-bar"><div class="ik-progress-fill" id="ikProgFill"></div></div>
-      <div class="ik-progress-label" id="ikProgLabel">Section 1 / 10</div>
+      <div class="ik-progress-label" id="ikProgLabel">Section 1 / 5</div>
     </div>
-    <div class="ik-section-label" id="ikSectionLabel">Start Here</div>
+    <div class="ik-section-label" id="ikSectionLabel">Where are you?</div>
   </div>
   <div id="ik-form-area"></div>
   <div id="ik-result-area"></div>
@@ -251,7 +252,7 @@ export const StudyIntake = () => {
 };
 
 <Info>
-**Privacy notice** — Your responses are shared with the Research Facilitator so we can follow up and support your study. Your information is handled in accordance with RI-MUHC data protection policies and Quebec <Tooltip tip="Quebec's Act to modernize personal information protection law (in force Sept 2023). Requires EFVP before sharing personal data without consent." headline="Law 25 / Loi 25" cta="Full definition" href="/kb/glossary#law-25">Loi 25</Tooltip>. Completing the form typically takes 10–15 minutes depending on your study type.
+**Privacy notice** — Your responses are shared with the Research Facilitator so we can follow up and support your study. Your information is handled in accordance with RI-MUHC data protection policies and Quebec <Tooltip tip="Quebec's Act to modernize personal information protection law (in force Sept 2023). Requires EFVP before sharing personal data without consent." headline="Law 25 / Loi 25" cta="Full definition" href="/kb/glossary#law-25">Loi 25</Tooltip>. Completing the form typically takes 5–10 minutes.
 </Info>
 
 <StudyIntake />
