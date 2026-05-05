@@ -418,6 +418,29 @@ html.dark .ri-dcard-desc { color: rgba(255,255,255,.55); }
 html.dark .ri-callout--note { background: rgba(0,122,110,.15); color: rgba(255,255,255,.8); }
 html.dark .ri-callout--warn { background: rgba(245,158,11,.12); color: rgba(255,255,255,.8); }
 
+/* Intake form — universal entry point above the step track */
+.ri-intake-entry {
+    display: flex; align-items: center; gap: 18px;
+    padding: 16px 20px; border-radius: 10px;
+    border: 1px solid rgba(0,122,110,.25);
+    background: #f6fffe; margin-bottom: 0;
+}
+html.dark .ri-intake-entry { background: rgba(0,122,110,.1); border-color: rgba(0,122,110,.3); }
+.ri-ie-body { flex: 1; }
+.ri-ie-label { font-size: 13.5px; font-weight: 700; color: var(--ri-heading); margin-bottom: 4px; }
+html.dark .ri-ie-label { color: #fff; }
+.ri-ie-desc { font-size: 12.5px; line-height: 1.55; color: #444; }
+html.dark .ri-ie-desc { color: rgba(255,255,255,.6); }
+.ri-ie-link {
+    font-size: 12.5px; font-weight: 600; color: var(--ri-accent);
+    text-decoration: none; flex-shrink: 0; white-space: nowrap;
+}
+.ri-ie-link:hover { text-decoration: underline; }
+.ri-intake-connector {
+    text-align: center; font-size: 18px; line-height: 1;
+    color: rgba(0,122,110,.5); padding: 4px 0 0; margin-bottom: -6px;
+}
+
 /* Pathway banner — full-width link to role pathway guide, above detail grid */
 .ri-pathway-banner {
     display: flex; align-items: center; gap: 20px;
