@@ -654,25 +654,40 @@ function classify(a) {
     d.studyTypeBucket = 'unknown';
   }
 
-  d.isDrugStudy         = a.S3_INT_TYPE === 'drug';
-  d.isDeviceStudy       = a.S3_INT_TYPE === 'device';
-  d.isNHPStudy          = a.S3_INT_TYPE === 'nhp';
+  d.isDrugStudy           = a.S3_INT_TYPE === 'drug';
+  d.isDeviceStudy         = a.S3_INT_TYPE === 'device';
+  d.isNHPStudy            = a.S3_INT_TYPE === 'nhp';
   d.isSponsorInvestigator = a.S4_SPONSORSHIP === 'si';
-  d.isIndustrySponsored = a.S4_SPONSORSHIP === 'industry';
-  d.isMulticentre       = a.S3_SITES && a.S3_SITES !== 'single';
-  d.involvesPHI         = a.S3_PHI === 'yes' || a.S3_PHI === 'unsure';
-  d.crossBorder         = a.S3_PHI_CROSSBORDER === 'yes';
-  d.needsHCfiling       = a.S3_TYPE === 'interventional' && (a.S3_INT_TYPE === 'drug' || a.S3_INT_TYPE === 'device' || a.S3_INT_TYPE === 'nhp');
-  d.involvesMinors      = a.S3_POPULATION === 'minors' || a.S3_POPULATION === 'both';
-  d.involvesIncapable   = a.S3_POPULATION === 'incapable' || a.S3_POPULATION === 'both';
+  d.isIndustrySponsored   = a.S4_SPONSORSHIP === 'industry';
+  d.isMulticentre         = !!(a.S3_SITES && a.S3_SITES !== 'single');
+  d.involvesPHI           = a.S3_PHI === 'yes' || a.S3_PHI === 'unsure';
+  d.crossBorder           = a.S3_PHI_CROSSBORDER === 'yes';
+  d.needsHCfiling         = a.S3_TYPE === 'interventional' && (a.S3_INT_TYPE === 'drug' || a.S3_INT_TYPE === 'device' || a.S3_INT_TYPE === 'nhp');
+  d.involvesMinors        = a.S3_POPULATION === 'minors' || a.S3_POPULATION === 'both';
+  d.involvesIncapable     = a.S3_POPULATION === 'incapable' || a.S3_POPULATION === 'both';
+  // hasCIMComponent must be set before pathway logic
+  d.hasCIMComponent       = !!(a.S4_CIM && a.S4_CIM !== 'no');
 
-  // Pathway recommendation — derived automatically (not shown to user, used for triage record)
-  if (stage === 'idea' || stage === 'design') {
-    d.recommendedPathway = 'self-serve';
-  } else if (d.riskGrouping === 'highest' || a.S4_EXPERIENCE === 'first') {
+  // Canonical aliases used in the email report and JSON
+  d.hasPHI        = d.involvesPHI;
+  d.isCrossBorder = d.crossBorder;
+  d.isUrgent      = (a.S2_NAGANO_STATUS === 'ready' || a.S2_NAGANO_STATUS === 'submitted');
+
+  // Pathway recommendation — internal only, shown to Research Facilitator in email, never to the researcher
+  if (stage === 'idea') {
+    // Too early to classify — Facilitator makes first contact
+    d.recommendedPathway = 'intro-call';
+  } else if (
+    d.isDrugStudy           ||  // all drug studies → Facilitator-led
+    d.isIndustrySponsored   ||  // industry sponsor → warm handoff
+    d.hasCIMComponent       ||  // CIM involved → route through Facilitator/CIM
+    d.isSponsorInvestigator ||  // SI dual obligations → needs active support
+    a.S4_EXPERIENCE === 'first' // first study at RI-MUHC → onboarding support needed
+  ) {
     d.recommendedPathway = 'warm-handoff';
-  } else if (d.riskGrouping === 'high') {
-    d.recommendedPathway = 'quick-consult';
+  } else if (d.riskGrouping === 'high' || d.riskGrouping === 'highest') {
+    // device/NHP with experienced team
+    d.recommendedPathway = 'consult';
   } else {
     d.recommendedPathway = 'self-serve';
   }
@@ -721,9 +736,10 @@ var LEVEL_LABEL = {
   'level-5': 'Level V — Retrospective'
 };
 var PATHWAY_LABEL = {
-  'self-serve':    'Self-serve',
-  'quick-consult': 'Quick consult',
-  'warm-handoff':  'Warm handoff'
+  'intro-call':   'Intro call — point to Hub resources, follow up if they proceed',
+  'warm-handoff': 'Warm handoff — Facilitator-led setup, likely involves CIM',
+  'consult':      '30-min consult — walk through Hub resources, check credentials',
+  'self-serve':   'Self-serve — experienced team, low-risk; brief email follow-up'
 };
 
 // ---------------------------------------------------------------------------
@@ -1100,18 +1116,76 @@ function buildEmailHtml(a, d, payload) {
       row('What they need most', qLabel('S5_SUPPORT_NEEDS', a.S5_SUPPORT_NEEDS))
     ]) +
 
-    section('Classification', [
-      row('Training level',       d.trainingLevel ? (LEVEL_LABEL[d.trainingLevel] || d.trainingLevel) : '—'),
-      row('Study type bucket',    d.studyTypeBucket || '—'),
-      row('Recommended pathway',  d.recommendedPathway || '—'),
-      row('Multicentre',          d.isMulticentre ? 'Yes' : 'No'),
-      row('Sponsor-investigator', d.isSponsorInvestigator ? 'Yes' : 'No'),
-      row('PHI / ÉFVP risk',      d.hasPHI ? 'Yes' : 'No'),
-      row('Cross-border',         d.isCrossBorder ? 'Yes' : 'No'),
-      row('Urgent (submission)',   d.isUrgent ? 'Yes' : 'No')
-    ]) +
+    // Classification — only show rows where the question was actually asked.
+    // classRow() returns '' when wasAsked is false, so unasked fields don't appear as "No".
+    (function() {
+      function classRow(label, val, wasAsked) {
+        if (!wasAsked) return '';
+        return row(label, val ? 'Yes' : 'No');
+      }
+      return section('Classification (Facilitator reference)', [
+        row('Training level',      d.trainingLevel ? (LEVEL_LABEL[d.trainingLevel] || d.trainingLevel) : '—'),
+        row('Study type',          d.studyTypeBucket && d.studyTypeBucket !== 'unknown' ? d.studyTypeBucket.replace('interventional-','').replace(/-/g,' ') : '—'),
+        row('Facilitator action',  PATHWAY_LABEL[d.recommendedPathway] || d.recommendedPathway || '—'),
+        classRow('Multicentre',          d.isMulticentre,         a.S3_SITES != null),
+        classRow('Sponsor-investigator', d.isSponsorInvestigator, a.S4_SPONSORSHIP != null),
+        classRow('Industry-sponsored',   d.isIndustrySponsored,   a.S4_SPONSORSHIP != null),
+        classRow('CIM component',        d.hasCIMComponent,       a.S4_CIM != null),
+        classRow('PHI / ÉFVP risk',      d.hasPHI,                a.S3_PHI != null),
+        classRow('Cross-border data',    d.isCrossBorder,         a.S3_PHI_CROSSBORDER != null),
+        classRow('Urgent',               d.isUrgent,              stage === 'submission')
+      ]);
+    })() +
 
     flagsHtml +
+
+    // Guidance surfaced to researcher — what they actually saw on screen
+    (function() {
+      // Strip HTML links to plain text for email readability:
+      // <a href="/path">label →</a>  →  label (/path)
+      function stripLinks(html) {
+        return html
+          .replace(/<a [^>]*href="([^"]*)"[^>]*>([^<]*)<\/a>/g, function(_, href, text) {
+            return text.replace(/\s*→\s*$/, '').trim() + ' (' + href + ')';
+          })
+          .replace(/<[^>]+>/g, '')
+          .replace(/&rarr;/g, '→')
+          .replace(/&amp;/g, '&')
+          .replace(/&lt;/g, '<')
+          .replace(/&gt;/g, '>');
+      }
+      function listSection(title, items) {
+        if (!items || items.length === 0) return '';
+        var rows = '';
+        for (var i = 0; i < items.length; i++) {
+          rows += '<tr><td style="padding:3px 0 3px 12px;font-size:12px;color:#444;vertical-align:top">· ' + stripLinks(items[i]) + '</td></tr>';
+        }
+        return '<div style="margin-bottom:10px"><div style="font-size:11px;font-weight:700;color:#555;margin-bottom:4px">' + title + '</div><table style="border-collapse:collapse;width:100%"><tbody>' + rows + '</tbody></table></div>';
+      }
+
+      var surfaced = payload.derived.surfaced || {};
+      var nextSteps    = surfaced.nextSteps    || [];
+      var guidance     = surfaced.guidance     || [];
+      var supportLinks = surfaced.supportLinks || [];
+      var checklistGroups = surfaced.checklist || [];
+      var hasContent = nextSteps.length || guidance.length || supportLinks.length;
+      for (var gi = 0; gi < checklistGroups.length; gi++) {
+        if (checklistGroups[gi].items && checklistGroups[gi].items.length) { hasContent = true; break; }
+      }
+      if (!hasContent) return '';
+
+      var body = '<div style="margin-bottom:24px;padding:16px 18px;background:#f8f8f8;border-radius:8px;border:1px solid #e8e8e8">';
+      body += '<div style="font-size:11px;font-weight:700;color:#007a6e;letter-spacing:.08em;text-transform:uppercase;margin-bottom:12px;padding-bottom:6px;border-bottom:1px solid #e0e0e0">GUIDANCE SURFACED TO RESEARCHER</div>';
+      if (nextSteps.length)    body += listSection('Next steps', nextSteps);
+      if (guidance.length)     body += listSection('What to plan for', guidance);
+      if (supportLinks.length) body += listSection('Resources for support needs', supportLinks);
+      for (var ci = 0; ci < checklistGroups.length; ci++) {
+        var grp = checklistGroups[ci];
+        if (grp.items && grp.items.length) body += listSection('Checklist — ' + grp.title, grp.items);
+      }
+      body += '</div>';
+      return body;
+    })() +
 
     // Raw JSON
     '<div style="margin-top:24px;border-top:1px solid #e8e8e8;padding-top:16px">' +
@@ -1140,11 +1214,14 @@ function sendIntakeEmail(payload) {
     var a = payload.answers;
     var d = payload.derived;
 
-    // Subject line format: [RI-MUHC Intake] RF-YYYYMMDD-XXXX — Study title (PI name)
-    // Truncated to keep email clients from wrapping the subject.
-    var subject = '[RI-MUHC Intake] ' + payload.intakeId + ' — ' +
-      (a.S2_TITLE ? a.S2_TITLE.substring(0, 60) : 'New study intake') +
-      ' (' + (a.S2_PI_NAME || 'PI unknown') + ')';
+    // Subject: [RI-MUHC Intake] RF-YYYYMMDD-XXXX — Study title [study type] — PI: Name
+    var studyTypeShort = d.studyTypeBucket
+      ? d.studyTypeBucket.replace('interventional-', '').replace(/-/g, ' ')
+      : '';
+    var subject = '[RI-MUHC Intake] ' + payload.intakeId +
+      ' — ' + (a.S2_TITLE ? a.S2_TITLE.substring(0, 50) : 'New intake') +
+      (studyTypeShort ? ' [' + studyTypeShort + ']' : '') +
+      ' — PI: ' + (a.S2_PI_NAME || 'unknown');
 
     var messageHtml = buildEmailHtml(a, d, payload);
 
@@ -1193,6 +1270,16 @@ window.ikSubmit = function() {
     answers: state.answers,
     derived: derived,
     schemaVersion: '2.0'
+  };
+
+  // Attach a record of what guidance was surfaced to the researcher on screen.
+  // Useful for the Facilitator's follow-up and for future dashboard analytics.
+  payload.derived.surfaced = {
+    nextSteps:    buildNextSteps(state.answers, derived),
+    guidance:     buildDesignGuidance(state.answers, derived),
+    supportLinks: buildSupportLinks(state.answers, derived),
+    checklist:    buildChecklist(state.answers, derived),
+    flags:        derived.flags || []
   };
 
   state.submitted = true;
