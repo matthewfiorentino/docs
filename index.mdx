@@ -152,10 +152,10 @@ export const DetailCard = ({ href, title, desc }) => (
 export const StartHere = () => {
   const [role, setRole] = useState('pi');
   const roles = [
-    { id: 'pi',    title: 'PI / Investigator',  sub: 'Planning or launching a study',    img: 'https://source.unsplash.com/Ip6TEHPqqUM/700x420' },
-    { id: 'crc',   title: 'Coordinator / CRC',   sub: 'Joining or managing a study team', img: 'https://source.unsplash.com/oPiYRPoiC2Y/700x420' },
-    { id: 'nurse', title: 'Research Nurse',       sub: 'Licensed nurse on a study team',   img: 'https://source.unsplash.com/rSW30CYrzFc/700x420' },
-    { id: 'new',   title: 'New to research',      sub: 'Starting out at the RI-MUHC',     img: 'https://source.unsplash.com/iB3DoolTSPA/700x420' },
+    { id: 'pi',    title: 'PI / Investigator',  sub: 'Planning or launching a study',    img: '/images/roles/pi.jpg' },
+    { id: 'crc',   title: 'Coordinator / CRC',   sub: 'Joining or managing a study team', img: '/images/roles/crc.jpg' },
+    { id: 'nurse', title: 'Research Nurse',       sub: 'Licensed nurse on a study team',   img: '/images/roles/nurse.jpg' },
+    { id: 'new',   title: 'New to research',      sub: 'Starting out at the RI-MUHC',     img: '/images/roles/new.jpg' },
   ];
   return (
     <div className="ri-start-here" id="start-here">
