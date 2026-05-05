@@ -43,6 +43,10 @@ var IK_EMAIL_CONFIG = {
   toEmail:    'matthew.fiorentino@muhc.mcgill.ca'
 };
 
+// Base URL for email links — relative paths (/kb/...) are fine on screen but
+// won't work in email clients. Update this when the site moves to its permanent domain.
+var IK_BASE_URL = 'https://ri-muhc.mintlify.app';
+
 var SECTIONS = [
   { n:1, key:'S1', title:'Where are you?',   desc:'Tell us your role and where you are in your study journey.' },
   { n:2, key:'S2', title:'Your study',       desc:'Basic information about the study and your research program.' },
@@ -1142,11 +1146,12 @@ function buildEmailHtml(a, d, payload) {
     // Guidance surfaced to researcher — what they actually saw on screen
     (function() {
       // Strip HTML links to plain text for email readability:
-      // <a href="/path">label →</a>  →  label (/path)
+      // <a href="/path">label →</a>  →  label (https://ri-muhc.mintlify.app/path)
       function stripLinks(html) {
         return html
           .replace(/<a [^>]*href="([^"]*)"[^>]*>([^<]*)<\/a>/g, function(_, href, text) {
-            return text.replace(/\s*→\s*$/, '').trim() + ' (' + href + ')';
+            var absHref = href.charAt(0) === '/' ? IK_BASE_URL + href : href;
+            return text.replace(/\s*→\s*$/, '').trim() + ' (' + absHref + ')';
           })
           .replace(/<[^>]+>/g, '')
           .replace(/&rarr;/g, '→')
@@ -1209,17 +1214,20 @@ function buildConfirmationEmailHtml(a, d, payload) {
   var supportLinks = surfaced.supportLinks || [];
   var firstName = (a.S1_CONTACT_NAME || '').split(' ')[0] || 'there';
 
-  // Inline link renderer — keeps <a> tags clickable in email clients
+  // Inline link renderer — keeps <a> tags clickable in email clients.
+  // Converts relative hrefs to absolute URLs so links work in email.
   function linkList(items) {
     if (!items || items.length === 0) return '';
     var rows = '';
     for (var i = 0; i < items.length; i++) {
-      // Skip bold heading items (support needs category labels)
-      var isHeading = items[i].indexOf('<strong>') === 0 && items[i].indexOf('<a ') === -1;
+      // Make relative hrefs absolute before inserting into email
+      var item = items[i].replace(/href="\//g, 'href="' + IK_BASE_URL + '/');
+      // Skip bold heading items (support needs category labels — no link)
+      var isHeading = item.indexOf('<strong>') === 0 && item.indexOf('<a ') === -1;
       if (isHeading) {
-        rows += '<tr><td style="padding:10px 0 4px;font-size:11px;font-weight:700;color:#150e51;letter-spacing:.06em;text-transform:uppercase">' + items[i].replace(/<\/?strong>/g,'') + '</td></tr>';
+        rows += '<tr><td style="padding:10px 0 4px;font-size:11px;font-weight:700;color:#150e51;letter-spacing:.06em;text-transform:uppercase">' + item.replace(/<\/?strong>/g,'') + '</td></tr>';
       } else {
-        rows += '<tr><td style="padding:3px 0 3px 12px;font-size:13px;color:#333;line-height:1.6;vertical-align:top">· ' + items[i] + '</td></tr>';
+        rows += '<tr><td style="padding:3px 0 3px 12px;font-size:13px;color:#333;line-height:1.6;vertical-align:top">· ' + item + '</td></tr>';
       }
     }
     return '<table style="border-collapse:collapse;width:100%"><tbody>' + rows + '</tbody></table>';
@@ -1262,7 +1270,7 @@ function buildConfirmationEmailHtml(a, d, payload) {
 
     // Closing
     '<hr style="border:none;border-top:1px solid #ebebeb;margin:24px 0 20px;">' +
-    '<p style="font-size:13px;color:#888;line-height:1.6;margin:0;">In the meantime, the <a href="https://hub.rimuhc.ca" style="color:#007a6e;text-decoration:none;font-weight:600;">RI-MUHC Clinical Research Hub</a> has guidance for every stage of your study — from design through close-out. Feel free to explore while you wait.</p>' +
+    '<p style="font-size:13px;color:#888;line-height:1.6;margin:0;">In the meantime, the <a href="' + IK_BASE_URL + '" style="color:#007a6e;text-decoration:none;font-weight:600;">RI-MUHC Clinical Research Hub</a> has guidance for every stage of your study — from design through close-out. Feel free to explore while you wait.</p>' +
 
     '</div>' + // end body card
 
