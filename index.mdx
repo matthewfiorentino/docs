@@ -124,6 +124,154 @@ export const FeatureEntry = ({ href, icon, title, desc, links }) => (
   </a>
 );
 
+export const StepTrack = ({ steps }) => (
+  <div className="ri-step-track">
+    {steps.map((step, i) => (
+      <React.Fragment key={i}>
+        <div className="ri-step-item">
+          <div className={`ri-step-node${step.end ? ' ri-step-node--end' : ''}`}>
+            {step.end ? '✓' : i + 1}
+          </div>
+          <div className="ri-step-label">{step.label}</div>
+        </div>
+        {i < steps.length - 1 && <div className="ri-step-conn" aria-hidden="true" />}
+      </React.Fragment>
+    ))}
+  </div>
+);
+
+export const DetailCard = ({ href, title, desc }) => (
+  <a href={href} className="ri-dcard">
+    <div className="ri-dcard-title">{title}</div>
+    <div className="ri-dcard-desc">{desc}</div>
+  </a>
+);
+
+const ROLES = [
+  { id: 'pi',    title: 'PI / Investigator',  sub: 'Planning or launching a study',    img: 'https://images.unsplash.com/photo-Ip6TEHPqqUM?w=700&h=420&fit=crop&q=80&auto=format' },
+  { id: 'crc',   title: 'Coordinator / CRC',   sub: 'Joining or managing a study team', img: 'https://images.unsplash.com/photo-oPiYRPoiC2Y?w=700&h=420&fit=crop&q=80&auto=format' },
+  { id: 'nurse', title: 'Research Nurse',       sub: 'Licensed nurse on a study team',   img: 'https://images.unsplash.com/photo-rSW30CYrzFc?w=700&h=420&fit=crop&q=80&auto=format' },
+  { id: 'new',   title: 'New to research',      sub: 'Starting out at the RI-MUHC',     img: 'https://images.unsplash.com/photo-iB3DoolTSPA?w=700&h=420&fit=crop&q=80&auto=format' },
+];
+
+export const StartHere = () => {
+  const [role, setRole] = useState('pi');
+  return (
+    <div className="ri-start-here" id="start-here">
+
+      <div className="ri-start-hero">
+        <p className="ri-start-eyebrow">GETTING STARTED</p>
+        <h2 className="ri-start-title">Where do I start?</h2>
+        <p className="ri-start-sub">Select your role — every pathway leads to MUHC Authorization.</p>
+      </div>
+
+      <div className="ri-role-cards">
+        {ROLES.map(r => (
+          <button
+            key={r.id}
+            className={`ri-role-card${role === r.id ? ' ri-role-card--active' : ''}`}
+            onClick={() => setRole(r.id)}
+            style={{ backgroundImage: `url('${r.img}')` }}
+          >
+            <div className="ri-role-card-overlay" />
+            <div className="ri-role-card-body">
+              <div className="ri-role-card-title">{r.title}</div>
+              <div className="ri-role-card-sub">{r.sub}</div>
+              <div className="ri-role-card-cta">{role === r.id ? '✓ Selected' : 'View pathway →'}</div>
+            </div>
+          </button>
+        ))}
+      </div>
+
+      {role === 'pi' && (
+        <div className="ri-role-panel">
+          <p className="ri-role-framing">You carry ultimate accountability for your study. Whether you're launching your first trial or your tenth, start with the intake form — it generates your personalized checklist and connects you with the Research Facilitator.</p>
+          <StepTrack steps={[
+            { label: "Study Intake Form" },
+            { label: "Confirm credentials" },
+            { label: "Complete training" },
+            { label: "Design & plan your study" },
+            { label: "Prepare your submission" },
+            { label: "Submit via Nagano", end: true },
+          ]} />
+          <div className="ri-dcard-grid">
+            <DetailCard href="/kb/planning/study-intake" title="Study Intake Form" desc="Personalized startup checklist and Research Facilitator connection — start here." />
+            <DetailCard href="/training/research-privileges" title="Credentials guide" desc="Human Research Privileges or Researcher Status — which applies to you and how to apply." />
+            <DetailCard href="/training/compliance-requirements" title="Training requirements" desc="SOP Reader, GCP, and study-level requirements — must be current, not within 90 days of expiry." />
+            <DetailCard href="/kb/planning/feasibility" title="Feasibility assessment" desc="Protocol soundness, team capacity, and site readiness — confirm before submission." />
+            <DetailCard href="/kb/submission/preparing" title="Submission preparation" desc="Protocol, ICF, Health Canada authorization documents if applicable." />
+            <DetailCard href="/apps/nagano/overview" title="Nagano user guide" desc="F11 submission triggers REB + institutional feasibility review simultaneously." />
+          </div>
+          <div className="ri-callout ri-callout--note">
+            A study cannot begin until the <strong>Personne mandatée</strong> grants MUHC Authorization. REB approval alone does not authorize research activities — both approvals must be in your ISF before any study procedures begin.
+          </div>
+        </div>
+      )}
+
+      {role === 'crc' && (
+        <div className="ri-role-panel">
+          <p className="ri-role-framing">A PI is leading the study — your entry point is the Task Delegation Log. No team member may perform any study task before appearing on the TDL with documented training and QI/PI countersignature.</p>
+          <StepTrack steps={[
+            { label: "Identify your study level" },
+            { label: "Complete required training" },
+            { label: "PI/QI adds you to the TDL" },
+            { label: "Site activation confirmed" },
+            { label: "First study tasks begin", end: true },
+          ]} />
+          <div className="ri-callout ri-callout--warn">
+            No team member may perform any study task before they appear on the Task Delegation Log, their training is documented, and the QI/PI has countersigned their entry.
+          </div>
+          <div className="ri-dcard-grid">
+            <DetailCard href="/training/compliance-requirements" title="Training requirements by study type" desc="Drug trials require GCP and Division 5; device trials require GCP and ISO 14155." />
+            <DetailCard href="/kb/conduct/site-setup" title="Task Delegation Log and site setup" desc="How the TDL works and what you need in place before day one." />
+            <DetailCard href="/kb/roles/crc-guide" title="CRC operational guide" desc="Day-to-day reference for coordinators across study types." />
+            <DetailCard href="/kb/roles/crc-pathway" title="Full CRC onboarding pathway" desc="Complete onboarding, competency domains, and operational guidance by study type." />
+          </div>
+        </div>
+      )}
+
+      {role === 'nurse' && (
+        <div className="ri-role-panel">
+          <p className="ri-role-framing">Licensed nurses on study teams must understand OIIQ obligations, which reserved acts can be delegated within a research protocol, and the training requirements for your study level.</p>
+          <StepTrack steps={[
+            { label: "Confirm OIIQ licence + CPR" },
+            { label: "Complete training" },
+            { label: "Delegation scope confirmed with QI" },
+            { label: "Added to Task Delegation Log" },
+            { label: "Nursing study tasks begin", end: true },
+          ]} />
+          <div className="ri-dcard-grid">
+            <DetailCard href="/kb/roles/nurse-pathway" title="OIIQ obligations and delegation scope" desc="Reserved acts, CPR, specialized competencies, and nursing-specific guidance under the Code des professions." />
+            <DetailCard href="/kb/roles/nurse-guide" title="Operational nursing guide" desc="Day-to-day reference for research nurses." />
+            <DetailCard href="/training/compliance-requirements" title="Training requirements by study level" desc="Requirements by study type — drug, device, observational." />
+          </div>
+        </div>
+      )}
+
+      {role === 'new' && (
+        <div className="ri-role-panel">
+          <p className="ri-role-framing">Start with the regulatory framework and key roles before the operational guides. Understanding who does what — and why — makes everything else easier to navigate. Guidance for trainees, volunteers, and observers is also here.</p>
+          <StepTrack steps={[
+            { label: "Understand the landscape" },
+            { label: "Identify your role" },
+            { label: "Complete role-specific training" },
+            { label: "Choose your pathway above", end: true },
+          ]} />
+          <div className="ri-dcard-grid">
+            <DetailCard href="/kb/clinical-research-101" title="Clinical Research 101" desc="Frameworks, roles, regulatory history from Nuremberg to ICH GCP, and Quebec-specific obligations." />
+            <DetailCard href="/kb/study-lifecycle" title="The Study Lifecycle" desc="All 8 stages from concept to archiving — with links to the sections that cover each stage." />
+            <DetailCard href="/kb/planning/regulations" title="Regulations and guidelines" desc="Health Canada, TCPS2, ICH GCP, and Quebec law at the RI-MUHC." />
+            <DetailCard href="/kb/glossary" title="Glossary" desc="Terms, acronyms, and definitions used across the Hub." />
+            <DetailCard href="/kb/roles/onboarding-trainees" title="Joining as a trainee" desc="Students and research trainees — eligibility, required forms, scope limitations." />
+            <DetailCard href="/kb/roles/onboarding-volunteers" title="Volunteers and observers" desc="Joining as a volunteer or observer — scope, confidentiality, required forms." />
+          </div>
+        </div>
+      )}
+
+    </div>
+  );
+};
+
 {/* ── HERO ── */}
 <div className="ri-text-hero">
   <div className="ri-text-hero-eyebrow">RI-MUHC · Clinical Research Hub</div>
@@ -141,179 +289,7 @@ export const FeatureEntry = ({ href, icon, title, desc, links }) => (
 
 ---
 
-## Where do I start? {#start-here}
-
-<Tabs>
-  <Tab title="PI / Investigator">
-    You carry ultimate accountability for your study. Whether you're launching your first trial or your tenth, start with the intake form — it generates your personalized startup checklist and connects you with the Research Facilitator.
-
-    <Card title="Study Intake Form" icon="clipboard-list" href="/kb/planning/study-intake">
-      Tell us about your planned study — receive a personalized startup checklist and get connected with clinical research support.
-    </Card>
-
-    ```mermaid
-    flowchart TD
-        A(["📋 Study Intake Form"]) --> B["Research Facilitator connected\nPersonalized checklist generated"]
-        B --> C["Design & plan your study\nBCU · CORD · Methodologist · CIM · Pre-Awards · HR"]
-        C --> D["Confirm credentials\nPrivileges or Researcher Status + training current"]
-        D --> E["Prepare your submission\nProtocol · ICF · Health Canada docs if applicable"]
-        E --> F["Submit via Nagano F11\nTriggers REB + institutional feasibility review"]
-        F --> G(["MUHC Authorization granted\n→ study may begin"])
-        style A fill:#150e51,color:#fff,stroke:none
-        style B fill:#007a6e,color:#fff,stroke:none
-        style C fill:#007a6e,color:#fff,stroke:none
-        style D fill:#007a6e,color:#fff,stroke:none
-        style E fill:#007a6e,color:#fff,stroke:none
-        style F fill:#007a6e,color:#fff,stroke:none
-        style G fill:#00c4b4,color:#fff,stroke:none
-    ```
-
-    <Steps>
-      <Step title="Confirm your credentials">
-        Your Human Research Privileges or Researcher Status and institutional training must be current and not within 90 days of expiry before submission. [Check requirements →](/training/compliance-requirements)
-      </Step>
-      <Step title="Assess feasibility">
-        Confirm your protocol is scientifically sound, your team is in place, and the site can support the protocol's demands. [Feasibility guide →](/kb/planning/feasibility)
-      </Step>
-      <Step title="Prepare your submission">
-        Assemble your protocol, ICF, recruitment materials, and Health Canada authorization documents if applicable. [Submission checklist →](/kb/submission/preparing)
-      </Step>
-      <Step title="Submit via Nagano">
-        Use the F11 form to open your study file and simultaneously trigger REB review and institutional feasibility review. [Nagano guide →](/apps/nagano/overview)
-      </Step>
-    </Steps>
-
-    <Note>
-      A study cannot begin until the **Personne mandatée** grants MUHC Authorization. REB approval alone does not authorize research activities — both approvals must be in your ISF before any study procedures begin.
-    </Note>
-
-    <CardGroup cols={2}>
-      <Card title="Training and credential requirements" icon="list-check" href="/training/compliance-requirements">
-        Training by study level, the 90-day certificate rule, and where to find your records.
-      </Card>
-      <Card title="PI / QI onboarding pathway" icon="route" href="/kb/roles/pi-pathway">
-        Accountability map from prerequisites through close-out — what you personally sign and what you can delegate.
-      </Card>
-      <Card title="Feasibility assessment guide" icon="magnifying-glass-chart" href="/kb/planning/feasibility">
-        Confirming your protocol, team, and site before submission.
-      </Card>
-      <Card title="Nagano user guide" icon="desktop" href="/apps/nagano/overview">
-        Step-by-step instructions for F11 submissions, amendments, renewals, and closure.
-      </Card>
-    </CardGroup>
-  </Tab>
-
-  <Tab title="Coordinator / CRC">
-    A PI is leading the study — your entry point is the Task Delegation Log. No team member may perform any study task before appearing on the TDL with documented training and QI/PI countersignature.
-
-    ```mermaid
-    flowchart TD
-        A(["Invited to join a study"]) --> B["Identify your study level\nDrug · Device · Observational"]
-        B --> C["Complete required training\nGCP · SOP Reader · Div.5 or ISO 14155"]
-        C --> D["PI/QI adds you to the TDL\nwith countersignature"]
-        D --> E["Site activation confirmed\nISF in place"]
-        E --> F(["First study tasks may begin"])
-        style A fill:#150e51,color:#fff,stroke:none
-        style B fill:#007a6e,color:#fff,stroke:none
-        style C fill:#007a6e,color:#fff,stroke:none
-        style D fill:#007a6e,color:#fff,stroke:none
-        style E fill:#007a6e,color:#fff,stroke:none
-        style F fill:#00c4b4,color:#fff,stroke:none
-    ```
-
-    <Warning>
-      No team member may perform any study task before they appear on the Task Delegation Log, their training is documented, and the QI/PI has countersigned their entry.
-    </Warning>
-
-    <CardGroup cols={2}>
-      <Card title="Training requirements by study type" icon="list-check" href="/training/compliance-requirements">
-        Drug trials require GCP and Division 5; device trials require GCP and ISO 14155.
-      </Card>
-      <Card title="Task Delegation Log and site setup" icon="building-circle-check" href="/kb/conduct/site-setup">
-        How the TDL works and what you need in place before day one.
-      </Card>
-      <Card title="CRC operational guide" icon="clipboard" href="/kb/roles/crc-guide">
-        Day-to-day reference for coordinators across study types.
-      </Card>
-      <Card title="Full CRC onboarding pathway →" icon="route" href="/kb/roles/crc-pathway">
-        Complete onboarding, competency domains, and operational guidance by study type.
-      </Card>
-    </CardGroup>
-  </Tab>
-
-  <Tab title="Research Nurse">
-    Licensed nurses on study teams must understand OIIQ obligations, which reserved acts can be delegated within a research protocol, and the training requirements for your study level.
-
-    ```mermaid
-    flowchart TD
-        A(["Invited to study team"]) --> B["Confirm OIIQ licence current\n+ CPR if required"]
-        B --> C["Complete training\nGCP · SOP Reader · study-level requirements"]
-        C --> D["Delegation scope confirmed with QI\nwhich reserved acts apply"]
-        D --> E["Added to Task Delegation Log\nwith QI countersignature"]
-        E --> F(["Nursing study tasks may begin"])
-        style A fill:#150e51,color:#fff,stroke:none
-        style B fill:#007a6e,color:#fff,stroke:none
-        style C fill:#007a6e,color:#fff,stroke:none
-        style D fill:#007a6e,color:#fff,stroke:none
-        style E fill:#007a6e,color:#fff,stroke:none
-        style F fill:#00c4b4,color:#fff,stroke:none
-    ```
-
-    <CardGroup cols={2}>
-      <Card title="OIIQ obligations and delegation scope" icon="stethoscope" href="/kb/roles/nurse-pathway">
-        Reserved acts, CPR, specialized competencies, and nursing-specific guidance under the Code des professions.
-      </Card>
-      <Card title="Operational nursing guide" icon="clipboard-medical" href="/kb/roles/nurse-guide">
-        Day-to-day reference for research nurses.
-      </Card>
-      <Card title="Training requirements by study level" icon="list-check" href="/training/compliance-requirements">
-        Requirements by study type — drug, device, observational.
-      </Card>
-    </CardGroup>
-  </Tab>
-
-  <Tab title="New to research">
-    Start with the regulatory framework and key roles before the operational guides. Understanding who does what — and why — makes everything else easier. Guidance for trainees, volunteers, and observers is also here.
-
-    ```mermaid
-    flowchart TD
-        A(["New to clinical research\nat the RI-MUHC"]) --> B["Understand the landscape\nClinical Research 101 · Study Lifecycle · Glossary"]
-        B --> C["Identify your role\nPI · CRC · Nurse · Trainee · Volunteer"]
-        C --> D["Complete role-specific training\nTalentLMS — SOP Reader + level requirements"]
-        D --> E{"Leading a study?"}
-        E -- "Yes" --> F["→ PI / Investigator tab\nIntake form + submission pathway"]
-        E -- "No" --> G["→ Coordinator or Nurse tab\nJoining an existing team"]
-        style A fill:#150e51,color:#fff,stroke:none
-        style B fill:#007a6e,color:#fff,stroke:none
-        style C fill:#007a6e,color:#fff,stroke:none
-        style D fill:#007a6e,color:#fff,stroke:none
-        style E fill:#1a1466,color:#fff,stroke:none
-        style F fill:#00c4b4,color:#fff,stroke:none
-        style G fill:#00c4b4,color:#fff,stroke:none
-    ```
-
-    <CardGroup cols={2}>
-      <Card title="Clinical Research 101" icon="book-open" href="/kb/clinical-research-101">
-        Frameworks, roles, the regulatory history from Nuremberg to ICH GCP, and Quebec-specific obligations.
-      </Card>
-      <Card title="The Study Lifecycle" icon="arrow-right-arrow-left" href="/kb/study-lifecycle">
-        All 8 stages from concept to archiving — with links to the sections that cover each stage.
-      </Card>
-      <Card title="Regulations and guidelines" icon="scale-balanced" href="/kb/planning/regulations">
-        Health Canada, TCPS2, ICH GCP, and Quebec law at the RI-MUHC.
-      </Card>
-      <Card title="Glossary" icon="book" href="/kb/glossary">
-        Terms, acronyms, and definitions used across the Hub.
-      </Card>
-      <Card title="Joining as a trainee" icon="graduation-cap" href="/kb/roles/onboarding-trainees">
-        Students and research trainees — eligibility, required forms, scope limitations.
-      </Card>
-      <Card title="Volunteers and observers" icon="user-plus" href="/kb/roles/onboarding-volunteers">
-        Joining as a volunteer or observer — scope limitations, confidentiality, required forms.
-      </Card>
-    </CardGroup>
-  </Tab>
-</Tabs>
+<StartHere />
 
 ---
 
