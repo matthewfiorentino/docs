@@ -304,6 +304,13 @@ html.dark .ri-updates-more:hover { background: var(--ri-accent-bright, #00c4b4);
 html.dark .ri-start-title { color: #fff; }
 html.dark .ri-start-sub { color: rgba(255,255,255,.6); }
 
+/* Apply the same heading style to all homepage section H2s */
+.ri-hub-body h2 {
+    font-size: 2.25rem; font-weight: 800; line-height: 1.1;
+    color: var(--ri-heading, #150e51);
+}
+html.dark .ri-hub-body h2 { color: #fff; }
+
 /* Role photo card grid */
 .ri-role-cards {
     display: grid; grid-template-columns: repeat(4, 1fr);
