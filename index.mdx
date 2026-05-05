@@ -126,17 +126,19 @@ export const FeatureEntry = ({ href, icon, title, desc, links }) => (
 
 export const StepTrack = ({ steps }) => (
   <div className="ri-step-track">
-    {steps.map((step, i) => (
-      <React.Fragment key={i}>
-        <div className="ri-step-item">
+    {steps.flatMap((step, i) => {
+      const node = (
+        <div key={`s${i}`} className="ri-step-item">
           <div className={`ri-step-node${step.end ? ' ri-step-node--end' : ''}`}>
             {step.end ? '✓' : i + 1}
           </div>
           <div className="ri-step-label">{step.label}</div>
         </div>
-        {i < steps.length - 1 && <div className="ri-step-conn" aria-hidden="true" />}
-      </React.Fragment>
-    ))}
+      );
+      return i < steps.length - 1
+        ? [node, <div key={`c${i}`} className="ri-step-conn" aria-hidden="true" />]
+        : [node];
+    })}
   </div>
 );
 
@@ -147,15 +149,14 @@ export const DetailCard = ({ href, title, desc }) => (
   </a>
 );
 
-const ROLES = [
-  { id: 'pi',    title: 'PI / Investigator',  sub: 'Planning or launching a study',    img: 'https://images.unsplash.com/photo-Ip6TEHPqqUM?w=700&h=420&fit=crop&q=80&auto=format' },
-  { id: 'crc',   title: 'Coordinator / CRC',   sub: 'Joining or managing a study team', img: 'https://images.unsplash.com/photo-oPiYRPoiC2Y?w=700&h=420&fit=crop&q=80&auto=format' },
-  { id: 'nurse', title: 'Research Nurse',       sub: 'Licensed nurse on a study team',   img: 'https://images.unsplash.com/photo-rSW30CYrzFc?w=700&h=420&fit=crop&q=80&auto=format' },
-  { id: 'new',   title: 'New to research',      sub: 'Starting out at the RI-MUHC',     img: 'https://images.unsplash.com/photo-iB3DoolTSPA?w=700&h=420&fit=crop&q=80&auto=format' },
-];
-
 export const StartHere = () => {
   const [role, setRole] = useState('pi');
+  const roles = [
+    { id: 'pi',    title: 'PI / Investigator',  sub: 'Planning or launching a study',    img: 'https://images.unsplash.com/photo-Ip6TEHPqqUM?w=700&h=420&fit=crop&q=80&auto=format' },
+    { id: 'crc',   title: 'Coordinator / CRC',   sub: 'Joining or managing a study team', img: 'https://images.unsplash.com/photo-oPiYRPoiC2Y?w=700&h=420&fit=crop&q=80&auto=format' },
+    { id: 'nurse', title: 'Research Nurse',       sub: 'Licensed nurse on a study team',   img: 'https://images.unsplash.com/photo-rSW30CYrzFc?w=700&h=420&fit=crop&q=80&auto=format' },
+    { id: 'new',   title: 'New to research',      sub: 'Starting out at the RI-MUHC',     img: 'https://images.unsplash.com/photo-iB3DoolTSPA?w=700&h=420&fit=crop&q=80&auto=format' },
+  ];
   return (
     <div className="ri-start-here" id="start-here">
 
@@ -166,7 +167,7 @@ export const StartHere = () => {
       </div>
 
       <div className="ri-role-cards">
-        {ROLES.map(r => (
+        {roles.map(r => (
           <button
             key={r.id}
             className={`ri-role-card${role === r.id ? ' ri-role-card--active' : ''}`}
