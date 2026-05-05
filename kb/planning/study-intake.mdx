@@ -236,7 +236,7 @@ export const StudyIntake = () => {
     if (existing) existing.remove();
     const script = document.createElement('script');
     script.id = 'intake-script';
-    script.src = '/kb-intake-script.js';
+    script.src = '/kb-intake-script-v2.js';
     document.body.appendChild(script);
     return () => {
       const s = document.getElementById('intake-script');
