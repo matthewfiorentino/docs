@@ -742,7 +742,6 @@ html.dark .ri-hub-body hr {
     text-transform: uppercase; color: var(--ri-accent-bright);
     margin: 0 0 18px;
 }
-.ri-text-hero-content { max-width: 640px; }
 .ri-text-hero h1 {
     color: #fff !important;
     font-size: clamp(38px, 4.6vw, 58px);
