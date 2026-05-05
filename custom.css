@@ -416,45 +416,52 @@ html.dark .ri-callout--warn { background: rgba(245,158,11,.12); color: rgba(255,
 
 /* Intake form — universal entry point above the step track */
 .ri-intake-entry {
-    display: flex; align-items: center; gap: 18px;
-    padding: 16px 20px; border-radius: 10px;
+    display: flex; flex-direction: column; align-items: flex-start;
+    gap: 0; padding: 16px 20px; border-radius: 10px;
     border: 1px solid rgba(0,122,110,.25);
     background: #f6fffe; margin-top: 1.75rem; margin-bottom: 0;
+    max-width: 460px;
 }
 html.dark .ri-intake-entry { background: rgba(0,122,110,.1); border-color: rgba(0,122,110,.3); }
-.ri-ie-body { flex: 1; }
+.ri-ie-body { width: 100%; }
 .ri-ie-label { font-size: 14px; font-weight: 700; color: var(--ri-heading); margin-bottom: 4px; }
 html.dark .ri-ie-label { color: #fff; }
 .ri-ie-desc { font-size: 13px; line-height: 1.55; color: #444; }
 html.dark .ri-ie-desc { color: rgba(255,255,255,.6); }
 .ri-ie-link {
     font-size: 13px; font-weight: 600; color: var(--ri-accent);
-    text-decoration: none; flex-shrink: 0; white-space: nowrap;
+    text-decoration: none; margin-top: 12px; display: inline-block;
 }
 .ri-ie-link:hover { text-decoration: underline; }
 .ri-intake-connector {
-    text-align: center; font-size: 16px; line-height: 1;
-    color: rgba(0,122,110,.5); padding: 4px 0 0; margin-bottom: -6px;
+    text-align: left; font-size: 16px; line-height: 1;
+    color: rgba(0,122,110,.5); padding: 6px 0 0; margin-bottom: -4px;
+    padding-left: 20px;
+}
+.ri-pathway-connector {
+    font-size: 16px; line-height: 1;
+    color: rgba(0,0,0,.25); padding: 6px 0 2px;
+    padding-left: 20px;
 }
 
-/* Pathway banner — full-width link to role pathway guide, above detail grid */
+/* Pathway banner — half-width link to role pathway guide, above detail grid */
 .ri-pathway-banner {
-    display: flex; align-items: center; gap: 20px;
-    padding: 14px 18px; border-radius: 10px;
+    display: flex; flex-direction: column; align-items: flex-start;
+    gap: 0; padding: 14px 18px; border-radius: 10px;
     border: 1px solid rgba(0,0,0,.08);
     background: #f7f8fa; text-decoration: none;
-    margin-bottom: 1.5rem;
+    max-width: 460px; margin-bottom: 0;
     transition: background .15s, border-color .15s;
 }
 html.dark .ri-pathway-banner { background: rgba(255,255,255,.04); border-color: rgba(255,255,255,.08); }
 .ri-pathway-banner:hover { background: #f0faf8; border-color: var(--ri-accent); }
 html.dark .ri-pathway-banner:hover { background: rgba(0,122,110,.1); }
-.ri-pb-body { flex: 1; }
+.ri-pb-body { width: 100%; }
 .ri-pb-label { font-size: 14px; font-weight: 700; color: var(--ri-heading); margin-bottom: 3px; }
 html.dark .ri-pb-label { color: #fff; }
 .ri-pb-desc { font-size: 13px; line-height: 1.5; color: #666; }
 html.dark .ri-pb-desc { color: rgba(255,255,255,.5); }
-.ri-pb-arrow { font-size: 13px; font-weight: 600; color: var(--ri-accent); flex-shrink: 0; white-space: nowrap; }
+.ri-pb-arrow { font-size: 13px; font-weight: 600; color: var(--ri-accent); margin-top: 10px; display: inline-block; }
 
 /* Study type conditional tiles (PI panel) */
 .ri-stype-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 1.75rem; margin-bottom: 1.25rem; }
