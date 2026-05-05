@@ -342,7 +342,7 @@ html.dark .ri-hub-body h2 { color: #fff; }
 .ri-role-card-title { font-size: 14px; font-weight: 700; color: #fff; line-height: 1.25; margin-bottom: 4px; }
 .ri-role-card-sub { font-size: 11px; color: rgba(255,255,255,.8); line-height: 1.4; margin-bottom: 6px; }
 .ri-role-card-cta {
-    font-size: 11px; font-weight: 600; color: var(--ri-accent-bright, #00c4b4);
+    font-size: 11px; font-weight: 600; color: #fff;
     opacity: 0; transition: opacity .2s; letter-spacing: .04em;
 }
 .ri-role-card:hover .ri-role-card-cta,
