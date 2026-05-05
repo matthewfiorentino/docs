@@ -748,6 +748,7 @@ html.dark .ri-hub-body hr {
     font-size: clamp(38px, 4.6vw, 58px);
     font-weight: 800; letter-spacing: -.02em;
     line-height: 1.1; margin: 0 0 22px;
+    max-width: 640px;
 }
 .ri-hero-accent {
     color: #30ffed !important;
@@ -756,6 +757,7 @@ html.dark .ri-hub-body hr {
     color: rgba(255,255,255,.78);
     font-size: 16px; line-height: 1.65;
     margin: 0 0 34px;
+    max-width: 640px;
 }
 .ri-text-hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
 .ri-text-hero-btn-primary {
