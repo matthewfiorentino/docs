@@ -8,6 +8,10 @@
     "dark": "#150e51"
   },
   "customCSS": ["/custom.css"],
+  "banner": {
+    "content": "🆕 **New on the Hub:** EDI requirements, HR & People and Culture, and expanded design support resources are now live. [Explore planning support →](/kb/planning/study-design)",
+    "dismissible": true
+  },
   "integrations": {
     "telemetry": {
       "enabled": true
