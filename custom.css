@@ -384,7 +384,7 @@ html.dark .ri-step-label { color: rgba(255,255,255,.85); }
 }
 
 /* Detail card grid */
-.ri-dcard-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-bottom: 1.5rem; }
+.ri-dcard-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 1.5rem; }
 .ri-dcard {
     display: flex; flex-direction: column; gap: 6px; padding: 16px 18px;
     border: 1px solid rgba(0,0,0,.08); border-radius: 10px;
@@ -401,14 +401,15 @@ html.dark .ri-dcard { background: rgba(255,255,255,.04); border-color: rgba(255,
 html.dark .ri-dcard-title { color: #fff; }
 .ri-dcard-desc { font-size: 12.5px; line-height: 1.55; color: #666; }
 html.dark .ri-dcard-desc { color: rgba(255,255,255,.55); }
+@media (max-width: 900px) { .ri-dcard-grid { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 560px) { .ri-dcard-grid { grid-template-columns: 1fr; } }
 
 /* Callout boxes (replaces <Note> and <Warning> inside JSX panels) */
 .ri-callout { padding: 14px 18px; border-radius: 8px; font-size: 13.5px; line-height: 1.6; margin-bottom: 1.5rem; }
-.ri-callout--note { background: #eff9f7; border-left: 3px solid var(--ri-accent); color: #1d4a44; }
-.ri-callout--warn { background: #fff8ed; border-left: 3px solid #f59e0b; color: #78350f; }
-html.dark .ri-callout--note { background: rgba(0,122,110,.15); border-color: var(--ri-accent); color: rgba(255,255,255,.8); }
-html.dark .ri-callout--warn { background: rgba(245,158,11,.12); border-color: #f59e0b; color: rgba(255,255,255,.8); }
+.ri-callout--note { background: #eff9f7; color: #1d4a44; }
+.ri-callout--warn { background: #fff8ed; color: #78350f; }
+html.dark .ri-callout--note { background: rgba(0,122,110,.15); color: rgba(255,255,255,.8); }
+html.dark .ri-callout--warn { background: rgba(245,158,11,.12); color: rgba(255,255,255,.8); }
 
 /* Study type conditional tiles (PI panel) */
 .ri-stype-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 1.75rem; margin-bottom: 1.25rem; }
