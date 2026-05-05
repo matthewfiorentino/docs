@@ -1199,6 +1199,83 @@ function buildEmailHtml(a, d, payload) {
   return html;
 }
 
+// ---------------------------------------------------------------------------
+// CONFIRMATION EMAIL — clean researcher-facing copy (no internal data)
+// ---------------------------------------------------------------------------
+function buildConfirmationEmailHtml(a, d, payload) {
+  var surfaced = payload.derived.surfaced || {};
+  var nextSteps    = surfaced.nextSteps    || [];
+  var guidance     = surfaced.guidance     || [];
+  var supportLinks = surfaced.supportLinks || [];
+  var firstName = (a.S1_CONTACT_NAME || '').split(' ')[0] || 'there';
+
+  // Inline link renderer — keeps <a> tags clickable in email clients
+  function linkList(items) {
+    if (!items || items.length === 0) return '';
+    var rows = '';
+    for (var i = 0; i < items.length; i++) {
+      // Skip bold heading items (support needs category labels)
+      var isHeading = items[i].indexOf('<strong>') === 0 && items[i].indexOf('<a ') === -1;
+      if (isHeading) {
+        rows += '<tr><td style="padding:10px 0 4px;font-size:11px;font-weight:700;color:#150e51;letter-spacing:.06em;text-transform:uppercase">' + items[i].replace(/<\/?strong>/g,'') + '</td></tr>';
+      } else {
+        rows += '<tr><td style="padding:3px 0 3px 12px;font-size:13px;color:#333;line-height:1.6;vertical-align:top">· ' + items[i] + '</td></tr>';
+      }
+    }
+    return '<table style="border-collapse:collapse;width:100%"><tbody>' + rows + '</tbody></table>';
+  }
+
+  function emailSection(title, content) {
+    if (!content) return '';
+    return '<div style="margin-bottom:22px">' +
+      '<div style="font-size:11px;font-weight:700;color:#007a6e;letter-spacing:.08em;text-transform:uppercase;margin-bottom:8px;padding-bottom:6px;border-bottom:1px solid #e8e8e8">' + title + '</div>' +
+      content +
+      '</div>';
+  }
+
+  var nextStepsHtml    = nextSteps.length    ? emailSection('Your next steps',           linkList(nextSteps))    : '';
+  var guidanceHtml     = guidance.length     ? emailSection('What to plan for',           linkList(guidance))     : '';
+  var supportLinksHtml = supportLinks.length ? emailSection('Resources for your needs',   linkList(supportLinks)) : '';
+
+  return '<!DOCTYPE html><html><body style="margin:0;padding:0;background:#f4f4f5;font-family:Arial,sans-serif;">' +
+    '<div style="max-width:640px;margin:32px auto;padding:0 16px 40px;">' +
+
+    // Header
+    '<div style="background:#150e51;color:#fff;padding:24px 28px;border-radius:8px 8px 0 0;">' +
+    '<div style="font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.55);margin-bottom:6px;">RI-MUHC Clinical Research Hub</div>' +
+    '<div style="font-size:20px;font-weight:700;line-height:1.2;">Your intake has been received</div>' +
+    '</div>' +
+
+    // Body
+    '<div style="padding:28px 28px 24px;border:1px solid #e0e0e0;border-top:none;border-radius:0 0 8px 8px;background:#fff;">' +
+
+    // Greeting
+    '<p style="font-size:15px;color:#222;margin:0 0 16px;">Hi ' + firstName + ',</p>' +
+    '<p style="font-size:14px;color:#444;line-height:1.7;margin:0 0 8px;">Thanks for completing the study intake form. The Research Facilitator has received your submission and will be in touch within <strong>5 business days</strong>.</p>' +
+    '<p style="font-size:13px;color:#888;margin:0 0 24px;">Reference number: <strong style="color:#150e51;">' + payload.intakeId + '</strong> — keep this for your records.</p>' +
+
+    '<hr style="border:none;border-top:1px solid #ebebeb;margin:0 0 24px;">' +
+
+    nextStepsHtml +
+    guidanceHtml +
+    supportLinksHtml +
+
+    // Closing
+    '<hr style="border:none;border-top:1px solid #ebebeb;margin:24px 0 20px;">' +
+    '<p style="font-size:13px;color:#888;line-height:1.6;margin:0;">In the meantime, the <a href="https://hub.rimuhc.ca" style="color:#007a6e;text-decoration:none;font-weight:600;">RI-MUHC Clinical Research Hub</a> has guidance for every stage of your study — from design through close-out. Feel free to explore while you wait.</p>' +
+
+    '</div>' + // end body card
+
+    // Footer
+    '<div style="margin-top:16px;font-size:11px;color:#aaa;line-height:1.6;text-align:center;">' +
+    'This confirmation was sent automatically by the RI-MUHC Clinical Research Hub.<br>' +
+    'Please do not reply — contact the Research Facilitator directly if you have questions.' +
+    '</div>' +
+
+    '</div>' + // end outer wrapper
+    '</body></html>';
+}
+
 function sendIntakeEmail(payload) {
   var cfg = IK_EMAIL_CONFIG;
 
@@ -1227,18 +1304,35 @@ function sendIntakeEmail(payload) {
 
     // The three template variables below must match what your EmailJS template
     // expects. If you rename them in the EmailJS dashboard, update them here too:
-    //   {{to_email}}     → recipient address (from IK_EMAIL_CONFIG.toEmail)
-    //   {{subject}}      → email subject line
+    //   {{to_email}}       → recipient address
+    //   {{subject}}        → email subject line
     //   {{{message_html}}} → full HTML body (triple braces = unescaped in EmailJS)
     window.emailjs.send(cfg.serviceId, cfg.templateId, {
       to_email:     cfg.toEmail,
       subject:      subject,
       message_html: messageHtml
     }).then(function() {
-      console.log('Intake email sent — ' + payload.intakeId);
+      console.log('Facilitator intake email sent — ' + payload.intakeId);
     }).catch(function(err) {
-      console.error('EmailJS send failed:', err);
+      console.error('EmailJS send to Facilitator failed:', err);
     });
+
+    // Confirmation email to the submitter — clean researcher-facing copy.
+    // Only sent if the submitter provided an email address.
+    var submitterEmail = a.S1_CONTACT_EMAIL;
+    if (submitterEmail && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(submitterEmail)) {
+      var confirmSubject = 'Your study intake has been received — ' + payload.intakeId;
+      var confirmHtml = buildConfirmationEmailHtml(a, d, payload);
+      window.emailjs.send(cfg.serviceId, cfg.templateId, {
+        to_email:     submitterEmail,
+        subject:      confirmSubject,
+        message_html: confirmHtml
+      }).then(function() {
+        console.log('Confirmation email sent to submitter — ' + payload.intakeId);
+      }).catch(function(err) {
+        console.error('EmailJS confirmation send failed:', err);
+      });
+    }
   });
 }
 
