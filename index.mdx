@@ -82,13 +82,16 @@ export const LiveUpdates = () => {
 };
 
 export const SearchHint = () => {
-  const [mod, setMod] = useState('⌘');
+  const [search, setSearch] = useState('⌘K');
+  const [ai, setAi] = useState('⌘I');
   useEffect(() => {
-    if (!/Mac|iPhone|iPad|iPod/.test(navigator.platform)) setMod('Ctrl');
+    if (!/Mac|iPhone|iPad|iPod/.test(navigator.platform)) {
+      setSearch('Ctrl+K'); setAi('Ctrl+I');
+    }
   }, []);
   return (
     <div className="ri-text-hero-search-hint">
-      <kbd className="ri-kbd">{mod}K</kbd> search &nbsp;·&nbsp; <kbd className="ri-kbd">{mod}I</kbd> ask AI
+      <kbd className="ri-kbd">{search}</kbd> search &nbsp;·&nbsp; <kbd className="ri-kbd">{ai}</kbd> ask AI
     </div>
   );
 };
