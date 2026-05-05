@@ -1,5 +1,10 @@
 (function(){
 
+// Instance guard — invalidates event listeners from any previously-loaded copy
+// of this script (e.g. old cached version still attached to document).
+var _ikInstance = Date.now() + Math.random();
+window._ikCurrentInstance = _ikInstance;
+
 var SECTIONS = [
   { n:1, key:'S1', title:'Where are you?',   desc:'Tell us your role and where you are in your study journey.' },
   { n:2, key:'S2', title:'Your study',       desc:'Basic information about the study and your research program.' },
@@ -513,6 +518,7 @@ function handleTextInput(el) {
 }
 
 document.addEventListener('click', function(e) {
+  if (window._ikCurrentInstance !== _ikInstance) return; // stale instance — ignore
   var t = e.target;
   while (t && t !== document.body) {
     if (t.classList && t.classList.contains('ik-opt')) { handleOptClick(t); return; }
@@ -520,6 +526,7 @@ document.addEventListener('click', function(e) {
   }
 });
 document.addEventListener('input', function(e) {
+  if (window._ikCurrentInstance !== _ikInstance) return; // stale instance — ignore
   var el = e.target;
   if (!el) return;
   if ((el.classList && (el.classList.contains('ik-input') || el.classList.contains('ik-textarea'))) && el.getAttribute('data-qid')) {
