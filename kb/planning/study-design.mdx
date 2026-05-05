@@ -3,95 +3,134 @@ title: "Design Stage Support"
 description: "Specialists and services available during the design phase — methodology, data management, funding, participant considerations, regulatory, and team setup."
 ---
 
-Designing a study well means getting the right people involved early. This page maps the six areas where design decisions need to be made and identifies who at the Institute can support you in each.
+Good study design is as much about engaging the right people at the right time as it is about methodological choices. The six areas below reflect where most studies accumulate preventable delays — not because the problems are hard, but because the right conversation didn't happen early enough. This page maps who at the Institute can help in each area, and why the timing matters.
 
-For study type classification, randomization, blinding, and comparator design, see [Trial Design and Study Types](/kb/trial-design) in the 101 series.
+For study type classification, randomization, blinding, and comparator design — see [Trial Design and Study Types](/kb/trial-design) in the 101 series.
 
 ## Support across the six design areas
 
 <AccordionGroup>
   <Accordion title="Methodology and biostatistics">
-    The methodological foundation shapes every subsequent decision in a study. The research question needs to be precisely framed before the protocol can be written; the study design determines what statistical analysis is appropriate.
+    The methodological foundation shapes every other design decision. A poorly framed research question produces a protocol that cannot answer it. A statistical analysis plan written after the data exist is not a plan — it is a post-hoc justification. Both problems are far cheaper to address at the design stage than anywhere else.
 
-    A statistical analysis plan should be finalized before data collection begins. The Biostatistics Consulting Unit (BCU) can advise on sample size, power calculations, and analysis strategy early in the design process, when changes are still low-cost. Waiting until after data collection to engage a biostatistician is one of the most common and most avoidable study design problems.
+    The **Biostatistics Consulting Unit (BCU)** supports researchers across the full study lifecycle — from grant applications and sample size calculations through to analysis, manuscript support, and <Tooltip tip="Independent committee that reviews interim safety and efficacy data and recommends whether to continue, modify, or stop the study." headline="Data Safety Monitoring Board (DSMB)" cta="Full definition" href="/kb/glossary#dsmb">DSMB</Tooltip> reports. The BCU works with R, SAS, and STATA and handles everything from Phase II–IV clinical trials to large administrative database studies (RAMQ, Medicare, StatCan). Engaging before data collection begins is strongly recommended — statistical decisions that are revisited mid-study cost multiples of what they would have cost at design.
+
+    For protocol-level methodology — research question framing, study design optimization, protocol feasibility — **Philippe Boileau, PhD** (clinical trial methodologist) and the **ACT-CTU** (Accelerating Clinical Trials unit) are the primary contacts. The ACT-CTU also offers protocol review sessions and connections to seed funding for early-stage studies.
+
+    The Institute has a service agreement with the **OHRI Methods Unit** for additional methodology support when study complexity warrants it — contact Amanda Lovato for access.
+
+    BCU operates on a fee-for-service basis through iLab ($80/hr for RI-MUHC researchers). Early Career Researchers receive the first four hours per grant submission free of charge. Full details on services, fees, and how to request a consultation are on the [Biostatistics Consulting Unit](/kb/planning/bcu) page.
 
     **Who to contact:**
+    - BCU — general inquiries and iLab requests: [bcu@rimuhc.ca](mailto:bcu@rimuhc.ca)
+    - Ramanakumar V. Agnihotram, PhD — Associate Director, BCU: [raman.agnihotram@muhc.mcgill.ca](mailto:raman.agnihotram@muhc.mcgill.ca)
+    - Philippe Boileau, PhD — Clinical trial methodologist: [philippe.boileau@mcgill.ca](mailto:philippe.boileau@mcgill.ca)
     - Amanda Lovato, ACT-CTU Manager — protocol review, methodology support, seed funding: [amanda.lovato@rimuhc.ca](mailto:amanda.lovato@rimuhc.ca)
-    - Ramanakumar V. Agnihotram, PhD — Biostatistics Consulting Unit (sample size, analysis plans, statistical power): [raman.agnihotram@muhc.mcgill.ca](mailto:raman.agnihotram@muhc.mcgill.ca)
-    - Philippe Boileau, PhD — Clinical trial methodologist (design optimization, protocol feasibility): [philippe.boileau@mcgill.ca](mailto:philippe.boileau@mcgill.ca)
-
-    The Institute also has a service agreement with the OHRI Methods Unit for additional methodology support — contact Amanda Lovato for access.
   </Accordion>
+
   <Accordion title="Data management and technology">
-    Data management planning is a submission requirement, not an afterthought. Before the first form is built, you need to determine what data you are collecting, where it will live, who will have access, and how it will be protected. For studies involving identifiable health data, Quebec's **Act 25 (Loi 25)** requires a privacy impact assessment (ÉFVP).
+    Data infrastructure involves two distinct needs that are often conflated: **building the system to capture your data**, and **accessing data that already exists**. Both need to be addressed at the design stage — not after your protocol is written.
 
-    If your study involves any electronic platform — eCRF, e-consent, mobile app, or external database — IT feasibility must be confirmed before submission. Pre-contract queries go to the Digital and IT Division; post-submission or platform security questions go to MUHC Security and Governance.
+    **CORD — building your data capture system**
 
-    The CORD unit supports the full REDCap lifecycle at The Institute. If you are accessing MUHC clinical or administrative data for a retrospective or feasibility study, the RI-MUHC Data Warehouse is the route in.
+    The CORD (Capture and Optimization of Research Data) unit handles everything related to how your study will collect, store, and manage its data. REDCap is the standard eCRF platform at the RI-MUHC and is validated for 21 CFR Part 11 compliance. CORD builds and tests REDCap databases, reviews <Tooltip tip="Document designed to record all protocol-required information to be reported to the sponsor for each participant." headline="Case Report Form (CRF)" cta="Full definition" href="/kb/glossary#crf">CRF</Tooltip> designs and data dictionaries before they are built, and provides ongoing data management support through the study lifecycle — extraction, cleaning, integration, and version tracking. Database architecture decisions made after data collection begins are expensive to fix; CORD's value is highest before the first form goes live.
+
+    CORD also reviews data management plans embedded in protocols and grant applications, which is increasingly a funder expectation. The unit operates on a fee-for-service basis ($200 initial REDCap project setup; $55/hr for expert support with the first hour free per initiative). Full details are on the [CORD — Research Data Management](/kb/planning/cord) page.
+
+    **The RI-MUHC Data Warehouse — accessing existing MUHC data**
+
+    If your study involves retrospective analysis of patient data — admissions, labs, pharmacy dispensations, imaging reports, surgical records, cancer registry — the Data Warehouse (DW) is the route in. The DW integrates data from over 18 MUHC hospital systems across five sites (MGH, RVH, MCH, Lachine, MNI), updated within 24 hours, with most domains going back to 2003–2008.
+
+    Consulting the DW team **before finalizing your protocol** is strongly recommended. They can help you define patient selection criteria, confirm variable availability, and advise on sample size — and they can flag ÉFVP requirements early. If data access is not clearly defined in your Nagano submission, it routinely causes delays at both the ethics review and data request stages. Full process, requirements by data type, and tools are on the [Accessing MUHC Patient Data](/kb/planning/data-warehouse) page.
+
+    **Technology feasibility**
+
+    If your study involves any electronic platform beyond REDCap — e-consent systems, mobile apps, external databases, wearables — IT feasibility must be confirmed with the Digital and IT Division before submission. Post-submission security reviews go to MUHC Security and Governance.
 
     **Who to contact:**
-    - CORD Unit — REDCap database creation, <Tooltip tip="Document designed to record all protocol-required information to be reported to the sponsor for each participant." headline="Case Report Form (CRF)" cta="Full definition" href="/kb/glossary#crf">CRF</Tooltip> support, data management: [cord@rimuhc.ca](mailto:cord@rimuhc.ca)
-    - RI-MUHC Data Warehouse — MUHC clinical and administrative data access for research: [info.ridw@muhc.mcgill.ca](mailto:info.ridw@muhc.mcgill.ca)
-    - Pascal St. Onge — Director, Digital and IT (IT feasibility for electronic platforms, pre-submission): [pascal.st-onge@muhc.mcgill.ca](mailto:pascal.st-onge@muhc.mcgill.ca)
-    - For security reviews post-submission: [securitygovernance@muhc.mcgill.ca](mailto:securitygovernance@muhc.mcgill.ca)
+    - CORD Unit — REDCap, CRF support, data management: [cord@rimuhc.ca](mailto:cord@rimuhc.ca)
+    - RI-MUHC Data Warehouse — patient data access: [info.ridw@muhc.mcgill.ca](mailto:info.ridw@muhc.mcgill.ca)
+    - Pascal St. Onge — Director, Digital and IT (electronic platform feasibility): [pascal.st-onge@muhc.mcgill.ca](mailto:pascal.st-onge@muhc.mcgill.ca)
+    - Security reviews post-submission: [securitygovernance@muhc.mcgill.ca](mailto:securitygovernance@muhc.mcgill.ca)
   </Accordion>
-  <Accordion title="Funding and pre-awards">
-    Funding timelines often precede REB submission timelines significantly — some major grant competitions (CIHR, FRQS) have application deadlines that fall months before a study can be submitted for ethics review. Engaging the Pre-Awards Office early is one of the highest-leverage steps you can take at the design stage.
 
-    The RI-MUHC Clinical Trial Budget Template (launched January 2026) is the recommended starting point for all budget builds. It covers staff salaries with built-in salary scale lookups, time and effort matrices, MUHC service costs, and produces both a project cost summary and a CIHR-format budget. The template is available on the RI-MUHC Portal.
+  <Accordion title="Funding and pre-awards">
+    Funding timelines and submission timelines do not align neatly. Major CIHR and FRQS grant competitions have application deadlines that can fall months before a study is ready to submit to <Tooltip tip="The RI-MUHC's electronic study submission and management platform. All studies requiring MUHC Authorization are submitted through Nagano." headline="Nagano (RI-MUHC)" cta="Full definition" href="/kb/glossary#nagano">Nagano</Tooltip>. This means the design stage often runs in parallel with grant preparation — and the Pre-Awards Office needs to be in the loop before the protocol is finalized, not after the grant is submitted.
+
+    Funding status also has regulatory implications. If you are initiating the study yourself — as happens frequently at the RI-MUHC with investigator-initiated trials — you are the Sponsor-Investigator and bear all Sponsor obligations under Health Canada Division 5, regardless of whether funding is secured. These include filing the <Tooltip tip="Application to Health Canada for authorization to conduct a drug trial under Division 5 of the Food and Drug Regulations." headline="Clinical Trial Application (CTA)" cta="Full definition" href="/kb/glossary#cta">CTA</Tooltip>, arranging independent monitoring, and managing investigational product supply.
+
+    The **RI-MUHC Clinical Trial Budget Template** (launched January 2026) is the recommended starting point for all budget builds. It includes staff salary lookup tables aligned with institutional salary scales, time and effort matrices for each study visit, MUHC service costs, and produces both a project cost summary and a CIHR-format budget. The template is available on the RI-MUHC Portal.
+
+    For grant applications, funding strategy, and budget development, the **Pre-Awards Office** is the point of contact. Full detail on the process, CIM budget considerations, and contracts is on the [Budgets, Contracts and Agreements](/kb/planning/budgets-contracts) page.
 
     **Who to contact:**
-    - Pre-Awards Office — grant applications, funding strategy: [pre-awards.rimuhc@muhc.mcgill.ca](mailto:pre-awards.rimuhc@muhc.mcgill.ca)
+    - Pre-Awards Office — grant applications, funding strategy, budget: [pre-awards.rimuhc@muhc.mcgill.ca](mailto:pre-awards.rimuhc@muhc.mcgill.ca)
     - Josie Campisi, M.Sc. — Research Facilitator: [Research.facilitator@muhc.mcgill.ca](mailto:Research.facilitator@muhc.mcgill.ca)
   </Accordion>
+
   <Accordion title="Participant considerations, PWLLE and EDI" id="participant-considerations">
-    Recruitment feasibility is one of the most common reasons studies are delayed or never complete enrolment. Before finalizing eligibility criteria, confirm that the target population exists at the proposed sites in the required numbers and that the recruitment strategy is realistic within the study timeline.
+    **Recruitment feasibility**
 
-    Consent design deserves attention at the protocol stage, not as a final pre-submission task. For studies involving vulnerable populations — minors, adults incapable of consenting, emergency situations — the consent framework has legal implications under Quebec's Civil Code.
+    Recruitment failure is the most common reason clinical studies are delayed or never complete enrolment. Before finalizing your eligibility criteria, confirm that the target population exists at the proposed site(s) in the required numbers — the Data Warehouse team can help with this for retrospective or feasibility queries. Confirm that your recruitment strategy is realistic within the study timeline and budget, and that the screening-to-enrolment ratio built into your statistical plan reflects actual site conversion rates.
 
-    **Integrating patient perspectives (PWLLE):**
-    Integrating the voices of persons with lived or living experience (PWLLE) strengthens the relevance and impact of your study. The MUHC Patient Engagement Office (Centre for Applied Ethics) can help identify, onboard, and support PWLLE collaborators throughout the study lifecycle.
+    **Consent design**
+
+    Consent design should happen at the protocol stage, not as a final pre-submission task. For studies involving vulnerable populations — minors, adults incapable of consenting for themselves, or emergency research situations — the consent framework has legal implications under Quebec's Civil Code (Articles 21–21.1) that the <Tooltip tip="The ethics committee that reviews and approves research involving human participants. Also called CER at French-language institutions." headline="Research Ethics Board (REB)" cta="Full definition" href="/kb/glossary#reb">REB</Tooltip> will scrutinize carefully. These requirements affect your Informed Consent Form design, the authorization workflow, and in some cases the institutional feasibility review.
+
+    **Patient perspectives — PWLLE**
+
+    Integrating the voices of persons with lived or living experience (PWLLE) strengthens study relevance and is increasingly expected by major funders. The MUHC Patient Engagement Office (Centre for Applied Ethics) can help identify PWLLE collaborators, advise on appropriate forms of engagement (advisory roles, co-investigators, recruitment partners), and support the onboarding process throughout the study lifecycle. Engaging PWLLE at the design stage — not as an afterthought — is what produces meaningful input.
 
     - Patient Engagement Office (MUHC): [contactpp@muhc.mcgill.ca](mailto:contactpp@muhc.mcgill.ca)
-    - Research Facilitator (The Institute): [research.facilitator@muhc.mcgill.ca](mailto:research.facilitator@muhc.mcgill.ca)
+    - Research Facilitator: [research.facilitator@muhc.mcgill.ca](mailto:research.facilitator@muhc.mcgill.ca)
 
-    **Equity, Diversity and Inclusion (EDI):**
-    EDI considerations are increasingly tied to funding eligibility — most major funders now require them in teams and study design. In 2023–24, 85% of CIHR training and career-support research integrated sex and gender considerations.
+    **Equity, Diversity and Inclusion (EDI)**
 
-    The RI-MUHC EDI team provides:
-    - GBA+ / SGBA consultation for grant proposals
-    - Inclusive recruitment and retention support
-    - Self-assessment tools for Tri-Agency-aligned EDI strategies (disability inclusion, neuroinclusion toolkits)
-    - Online training on unconscious bias and inclusive leadership
-    - Programs supporting women, racialized groups, Indigenous people, 2SLGBTQIA+ people, people with disabilities, and ethnic minorities
+    EDI considerations have moved from encouraged to required for most funded research. CIHR requires GBA+ / sex and gender considerations in study design and EDI attestation for team composition; FRQS and CFI have similar requirements. In 2023–24, 85% of CIHR training and career-support research integrated sex and gender considerations.
 
-    Contact: [edi.ri@muhc.mcgill.ca](mailto:edi.ri@muhc.mcgill.ca) — [EDI page on the RI Portal ↗](https://portal.rimuhc.ca/pls/apex/f?p=106:399)
+    The RI-MUHC EDI team provides GBA+ consultation for grant proposals, inclusive recruitment and retention support, Tri-Agency-aligned self-assessment tools, and workshops on unconscious bias and inclusive leadership. EDI consultation is time-sensitive relative to grant deadlines — engage early. Full detail on funder requirements, programs, and contacts is on the [Equity, Diversity and Inclusion](/kb/planning/edi) page.
+
+    - EDI Team (RI-MUHC): [edi.ri@muhc.mcgill.ca](mailto:edi.ri@muhc.mcgill.ca)
   </Accordion>
-  <Accordion title="Regulatory and ethics">
-    The regulatory pathway needs to be identified at the design stage, not resolved at submission. Studies involving investigational drugs require a <Tooltip tip="Application to Health Canada for authorization to conduct a drug trial under Division 5 of the Food and Drug Regulations." headline="Clinical Trial Application (CTA)" cta="Full definition" href="/kb/glossary#cta">CTA</Tooltip> under Health Canada Division 5; studies involving investigational medical devices require an <Tooltip tip="Health Canada authorization to conduct a clinical investigation of a medical device. The device equivalent of a CTA." headline="Investigational Testing Authorization (ITA)" cta="Full definition" href="/kb/glossary#ita">ITA</Tooltip>. These run in parallel with <Tooltip tip="The ethics committee that reviews and approves research involving human participants. Also called CER at French-language institutions." headline="Research Ethics Board (REB)" cta="Full definition" href="/kb/glossary#reb">REB</Tooltip> review — Health Canada has its own **30-day** default review clock — and must be submitted before a study can be activated.
 
-    For studies involving identifiable health data, the <Tooltip tip="Required under Quebec Law 25 before communicating personal information without consent for research. Non-compliance: up to $25M or 4% of worldwide turnover." headline="ÉFVP — Privacy Impact Assessment" cta="Full definition" href="/kb/glossary#efvp">ÉFVP</Tooltip> required under Act 25 must be initiated early. See [Regulations and Guidelines](/kb/planning/regulations) for the full regulatory framework.
+  <Accordion title="Regulatory and ethics">
+    The regulatory pathway should be resolved at the design stage — not at submission. The most important determination is whether your study requires a Health Canada authorization. Drug trials require a <Tooltip tip="Application to Health Canada for authorization to conduct a drug trial under Division 5 of the Food and Drug Regulations." headline="Clinical Trial Application (CTA)" cta="Full definition" href="/kb/glossary#cta">CTA</Tooltip> under Division 5; device studies require an <Tooltip tip="Health Canada authorization to conduct a clinical investigation of a medical device. The device equivalent of a CTA." headline="Investigational Testing Authorization (ITA)" cta="Full definition" href="/kb/glossary#ita">ITA</Tooltip>. Both run on their own review clocks — Health Canada has a default 30-day review period — and must be resolved before a study can be activated. They run **in parallel** with REB review, not in sequence. A study team that plans to submit the CTA after REB approval has misunderstood the regulatory timeline.
+
+    Beyond Health Canada, every study at the RI-MUHC requires both REB approval **and** institutional authorization from the <Tooltip tip="Individual formally authorized to issue the final written authorization for each research project at a Quebec RSSS institution." headline="Personne mandatée (PFM)" cta="Full definition" href="/kb/glossary#personne-mandatee">Personne mandatée</Tooltip>. These are separate approvals — REB approval alone does not authorize research activities. No study procedure may begin until both are in your <Tooltip tip="The QI's collection of documentation demonstrating compliance, study integrity, and participant safety." headline="Investigator Site File (ISF)" cta="Full definition" href="/kb/glossary#isf">ISF</Tooltip>.
+
+    For studies involving identifiable health data — including retrospective chart reviews and administrative data studies — Quebec's <Tooltip tip="Required under Quebec Law 25 before communicating personal information without consent for research. Non-compliance: up to $25M or 4% of worldwide turnover." headline="ÉFVP — Privacy Impact Assessment" cta="Full definition" href="/kb/glossary#efvp">ÉFVP</Tooltip> must be initiated before submission, and the Personne mandatée Office manages this process. Non-compliance carries penalties of up to $25M or 4% of worldwide turnover under <Tooltip tip="Quebec's Act to modernize personal information protection law (in force Sept 2023). Requires ÉFVP before sharing personal data without consent." headline="Law 25 / Loi 25" cta="Full definition" href="/kb/glossary#law-25">Law 25</Tooltip>.
+
+    The full regulatory framework — Health Canada authorization types, the ÉFVP process, and the three-framework model (TCPS2 + ICH GCP + Division 5) — is covered in [Regulations and Guidelines](/kb/planning/regulations).
 
     **Who to contact:**
     - MUHC Research Ethics Board: [reb@muhc.mcgill.ca](mailto:reb@muhc.mcgill.ca)
-    - <Tooltip tip="Individual formally authorized to issue the final written authorization for each research project at a Quebec RSSS institution." headline="Personne mandatée (PFM)" cta="Full definition" href="/kb/glossary#personne-mandatee">Personne mandatée</Tooltip> Office — ÉFVP process and institutional authorization: [personne.mandatee@muhc.mcgill.ca](mailto:personne.mandatee@muhc.mcgill.ca)
+    - Personne mandatée Office — ÉFVP process and institutional authorization: [personne.mandatee@muhc.mcgill.ca](mailto:personne.mandatee@muhc.mcgill.ca)
     - Josie Campisi, M.Sc. — Research Facilitator: [Research.facilitator@muhc.mcgill.ca](mailto:Research.facilitator@muhc.mcgill.ca)
   </Accordion>
+
   <Accordion title="Team, operations and CIM">
-    The <Tooltip tip="US equivalent of the Canadian Qualified Investigator (QI)." headline="Principal Investigator (PI)" cta="Full definition" href="/kb/glossary#pi">principal investigator</Tooltip> must hold valid **Human Research Privileges or Researcher Status** at the RI-MUHC before a study can be submitted. All team members listed on the <Tooltip tip="Lists each team member, their qualifications, and specific trial tasks authorized by the QI." headline="Task Delegation Log (TDL)" cta="Full definition" href="/kb/glossary#tdl">Task Delegation Log</Tooltip> must hold current compliance training appropriate to their study role. These are prerequisites for Nagano submission — missing privileges or training delays all review processes simultaneously.
+    **Credentials and affiliation**
 
-    CIM engagement is optional but worth evaluating early. The McConnell Centre for Innovative Medicine provides research staff, infrastructure, and <Tooltip tip="All planned and systematic actions to ensure trial data are generated, documented, and reported in compliance with GCP and SOPs." headline="Quality Assurance (QA)" cta="Full definition" href="/kb/glossary#qa">QA</Tooltip> services at both the Glen site and the Montreal General Hospital. For Phase I studies, oncology protocols, and studies requiring IV administration, routing through CIM is the standard path.
+    Before any study can be submitted to Nagano, the <Tooltip tip="US equivalent of the Canadian Qualified Investigator (QI)." headline="Principal Investigator (PI)" cta="Full definition" href="/kb/glossary#pi">principal investigator</Tooltip> must hold valid Human Research Privileges or Researcher Status at the RI-MUHC, and all team members on the <Tooltip tip="Lists each team member, their qualifications, and specific trial tasks authorized by the QI." headline="Task Delegation Log (TDL)" cta="Full definition" href="/kb/glossary#tdl">Task Delegation Log</Tooltip> must hold current compliance training appropriate to their study role. These are not administrative formalities — missing privileges or lapsed training delays all review processes simultaneously.
 
-    **Hiring and HR — People & Culture:**
-    All study team members must have an appropriate employment or affiliation agreement with the RI-MUHC before performing any study tasks. Volunteers, students without valid academic insurance, and non-affiliated individuals cannot be delegated study tasks.
+    Beyond credentials, **every team member must have a valid employment or affiliation agreement with the RI-MUHC before performing any study tasks**. This applies to students, postdocs, trainees, volunteers, and observers — not only paid staff. Individuals with existing clinical roles at the MUHC still require a separate research agreement. No individual without a valid agreement can be delegated study tasks or appear on the TDL.
 
-    - **Talent Acquisition** — Bilingual recruitment and workforce planning, EDI-informed hiring strategies. You lead the selection process, guided by best practices. Consult Talent Acquisition before advertising any position.
-    - **HR Service Centre** — One-stop shop for all employee and trainee lifecycle transactions: onboarding, role changes, leaves, and offboarding via the HR Hub application. [ri.hr.centre@muhc.mcgill.ca](mailto:ri.hr.centre@muhc.mcgill.ca)
-    - **HR Advisors** — Performance management, dispute resolution, disability case management, and work permits. Each research program has a dedicated HR partner.
+    **Hiring and HR**
+
+    If your study team needs to grow, engage **People & Culture** early. All positions must be posted bilingually for a minimum of five business days before an offer can be extended — allow additional time for the Talent Acquisition team to review and publish the posting before the clock starts. Work permit renewals for international staff are currently taking up to nine months through IRCC — if anyone on your team holds a work permit approaching expiry, start the renewal process at least six months early.
+
+    For full hiring procedures, contract templates, summer worker SOPs, and trainee affiliation agreements, see the [HR and People & Culture](/kb/planning/hr-people-culture) page.
+
+    **CIM — Centre for Innovative Medicine**
+
+    CIM engagement is not required for every study, but the cost of evaluating it late is high. CIM provides dedicated clinical infrastructure, specialized nursing, <Tooltip tip="All planned and systematic actions to ensure trial data are generated, documented, and reported in compliance with GCP and SOPs." headline="Quality Assurance (QA)" cta="Full definition" href="/kb/glossary#qa">QA</Tooltip> services, and technical platforms at both the Glen and Montreal General Hospital sites. For Phase I studies, oncology protocols, industry-sponsored trials requiring IV administration, and Sponsor-Investigator studies, CIM involvement is typically the default path — not an option to evaluate after REB submission.
+
+    The critical constraint is budget. CIM costs must be built into your initial budget before the CTA is filed. Adding CIM after the Site Agreement is signed requires a budget amendment, which delays activation. If you are unsure whether your study needs CIM, the feasibility conversation is not a commitment — it is a brief discussion to determine fit. [Is CIM Right for Your Study?](/cim/is-cim-right) walks through study types and the indicators that point toward CIM involvement.
 
     **Who to contact:**
     - McConnell Centre for Innovative Medicine (CIM): [clinical.research@muhc.mcgill.ca](mailto:clinical.research@muhc.mcgill.ca)
     - People & Culture — HR Service Centre: [ri.hr.centre@muhc.mcgill.ca](mailto:ri.hr.centre@muhc.mcgill.ca)
+    - Talent Acquisition — hiring and posting: [research.talent@muhc.mcgill.ca](mailto:research.talent@muhc.mcgill.ca)
     - Training and Learning Solutions — SOP Reader, TalentLMS support: [training-formation@muhc.mcgill.ca](mailto:training-formation@muhc.mcgill.ca)
     - Quality Assurance — SOP content, QA feasibility review: [QAClinicalResearch@muhc.mcgill.ca](mailto:QAClinicalResearch@muhc.mcgill.ca)
   </Accordion>
@@ -100,7 +139,12 @@ For study type classification, randomization, blinding, and comparator design, s
 ## Related resources
 
 - [Trial Design and Study Types](/kb/trial-design) — study type classification, randomization, blinding, and comparators
-- [Feasibility Assessment](/kb/planning/feasibility)
+- [Biostatistics Consulting Unit](/kb/planning/bcu) — services, fees, and iLab request process
+- [CORD — Research Data Management](/kb/planning/cord) — REDCap builds, CRF support, data management
+- [Accessing MUHC Patient Data](/kb/planning/data-warehouse) — Data Warehouse request process and requirements
+- [Budgets, Contracts and Agreements](/kb/planning/budgets-contracts)
+- [HR and People & Culture](/kb/planning/hr-people-culture) — hiring, affiliation, and HR transactions
+- [Equity, Diversity and Inclusion](/kb/planning/edi)
+- [Is CIM Right for Your Study?](/cim/is-cim-right)
 - [Regulations and Guidelines](/kb/planning/regulations)
-- [Data and Research Services](/kb/planning/data-services)
-- [Submitting via Nagano](/kb/submission/submitting-via-nagano)
+- [Feasibility Assessment](/kb/planning/feasibility)
