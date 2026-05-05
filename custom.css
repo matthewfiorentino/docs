@@ -423,7 +423,7 @@ html.dark .ri-callout--warn { background: rgba(245,158,11,.12); color: rgba(255,
     display: flex; align-items: center; gap: 18px;
     padding: 16px 20px; border-radius: 10px;
     border: 1px solid rgba(0,122,110,.25);
-    background: #f6fffe; margin-bottom: 0;
+    background: #f6fffe; margin-top: 1.75rem; margin-bottom: 0;
 }
 html.dark .ri-intake-entry { background: rgba(0,122,110,.1); border-color: rgba(0,122,110,.3); }
 .ri-ie-body { flex: 1; }
