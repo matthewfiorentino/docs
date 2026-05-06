@@ -180,7 +180,7 @@ export const StartHere = () => {
           <button
             key={r.id}
             className={`ri-role-card${role === r.id ? ' ri-role-card--active' : ''}`}
-            onClick={() => setRole(r.id)}
+            onClick={() => { setRole(r.id); document.getElementById('start-here')?.scrollIntoView({ behavior: 'smooth', block: 'start' }); }}
             style={{ backgroundImage: `url('${r.img}')` }}
           >
             <div className="ri-role-card-overlay" />
