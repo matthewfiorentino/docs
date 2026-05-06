@@ -240,6 +240,7 @@ export const StartHere = () => {
             { label: "Fulfill training and compliance requirements" },
             { label: "PI/QI adds you to the TDL" },
             { label: "Site activation confirmed" },
+            { label: "Complete protocol-specific training" },
             { label: "First study tasks begin", end: true },
           ]} />
           <div className="ri-callout ri-callout--warn">
@@ -266,6 +267,7 @@ export const StartHere = () => {
             { label: "Fulfill training and compliance requirements" },
             { label: "Delegation scope confirmed with QI" },
             { label: "Added to Task Delegation Log" },
+            { label: "Complete protocol-specific training" },
             { label: "Nursing study tasks begin", end: true },
           ]} />
           <div className="ri-dcard-grid">
@@ -282,6 +284,13 @@ export const StartHere = () => {
             <div className="ri-pb-desc">Eligibility requirements, affiliation agreement process, training obligations, and the scope of tasks that can and cannot be delegated to trainees.</div>
             <div className="ri-pb-arrow">View guide →</div>
           </a>
+          <StepTrack steps={[
+            { label: "Fulfill training and compliance requirements" },
+            { label: "Sign the Confidentiality and Security Agreement" },
+            { label: "PI adds you to the Task Delegation Log" },
+            { label: "Complete protocol-specific training" },
+            { label: "Study tasks begin", end: true },
+          ]} />
           <div className="ri-dcard-grid">
             <DetailCard href="/kb/clinical-research-101" title="Clinical Research 101" desc="Frameworks, roles, regulatory history from Nuremberg to ICH GCP, and Quebec-specific obligations — the starting point for anyone new to clinical research." />
             <DetailCard href="/kb/roles/onboarding-trainees" title="Joining as a trainee" desc="Eligibility, affiliation agreement process, training obligations, and the scope of tasks that can and cannot be delegated to trainees." />
@@ -298,6 +307,13 @@ export const StartHere = () => {
             <div className="ri-pb-desc">Volunteer agreement requirements, scope limitations, confidentiality obligations, and the process for becoming affiliated with the RI-MUHC as a volunteer.</div>
             <div className="ri-pb-arrow">View guide →</div>
           </a>
+          <StepTrack steps={[
+            { label: "Supervisor's Authorization form signed by PI" },
+            { label: "Sign the Confidentiality and Security Agreement" },
+            { label: "Provide proof of eligibility to work in Canada" },
+            { label: "PI adds you to the Task Delegation Log" },
+            { label: "Study tasks begin", end: true },
+          ]} />
           <div className="ri-dcard-grid">
             <DetailCard href="/kb/clinical-research-101" title="Clinical Research 101" desc="Frameworks, roles, regulatory history from Nuremberg to ICH GCP, and Quebec-specific obligations — the starting point for anyone new to clinical research." />
             <DetailCard href="/kb/roles/onboarding-volunteers" title="Joining as a volunteer" desc="Volunteer agreement requirements, scope limitations, confidentiality obligations, and the process for becoming affiliated with the RI-MUHC as a volunteer." />
@@ -314,6 +330,11 @@ export const StartHere = () => {
             <div className="ri-pb-desc">Observer agreement requirements, access limitations, what observers may and may not do during study visits, and how the observer role differs from study team membership.</div>
             <div className="ri-pb-arrow">View guide →</div>
           </a>
+          <StepTrack steps={[
+            { label: "Observer agreement signed" },
+            { label: "Access coordinated with QI/PI" },
+            { label: "Observation begins", end: true },
+          ]} />
           <div className="ri-dcard-grid">
             <DetailCard href="/kb/clinical-research-101" title="Clinical Research 101" desc="Frameworks, roles, regulatory history from Nuremberg to ICH GCP, and Quebec-specific obligations — the starting point for anyone new to clinical research." />
             <DetailCard href="/kb/roles/onboarding-observers" title="Joining as an observer" desc="Observer agreement requirements, access limitations, what observers may and may not do during study visits, and how the observer role differs from study team membership." />
