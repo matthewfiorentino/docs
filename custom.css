@@ -761,7 +761,7 @@ html.dark .ri-hub-body hr {
 }
 .ri-text-hero h1 {
     color: #fff !important;
-    font-size: clamp(30px, 3.2vw, 42px);
+    font-size: clamp(26px, 2.6vw, 36px);
     font-weight: 800; letter-spacing: -.02em;
     line-height: 1.1; margin: 0 0 22px;
 }
