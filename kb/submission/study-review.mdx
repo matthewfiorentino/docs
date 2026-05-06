@@ -71,6 +71,28 @@ REB approval is valid for up to one year. You must submit for renewal before the
 
 MUHC Authorization is automatically revalidated with each successful REB renewal. A lapse in REB approval means a new Authorization is required before the study can resume.
 
+```mermaid
+%%{init: {'theme':'base','themeVariables':{'primaryColor':'#150e51','primaryTextColor':'#ffffff','primaryBorderColor':'#150e51','lineColor':'#888','fontFamily':'system-ui,sans-serif'}}}%%
+flowchart LR
+    A(["REB approval<br/>granted (Day 0)"]) --> B["Study active<br/>(months 1–10)"]
+    B --> C["Submit annual<br/>renewal in Nagano<br/>(at least 30 days<br/>before expiry)"]
+    C --> D{"REB renewal<br/>review"}
+    D -->|"Approved"| E["MUHC Authorization<br/>revalidated automatically"]
+    E --> F(["12-month clock<br/>resets"])
+    F -.->|"loop"| B
+    D -->|"Lapse — approval<br/>expired before renewal"| G["Study suspended<br/>— activities must cease"]
+    G --> H["Resubmit + obtain<br/>new MUHC Authorization<br/>before resuming"]
+
+    style A fill:#150e51,color:#fff,stroke:none
+    style B fill:#007a6e,color:#fff,stroke:none
+    style C fill:#007a6e,color:#fff,stroke:none
+    style D fill:#1a1466,color:#fff,stroke:none
+    style E fill:#007a6e,color:#fff,stroke:none
+    style F fill:#00c4b4,color:#150e51,stroke:none
+    style G fill:#ff6b6b,color:#fff,stroke:none
+    style H fill:#f59e0b,color:#fff,stroke:none
+```
+
 ### REB review decisions
 
 After review, the MUHC REB issues one of four decisions:
