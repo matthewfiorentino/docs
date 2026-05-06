@@ -159,6 +159,13 @@ export const DetailCard = ({ href, title, desc }) => (
 
 export const StartHere = () => {
   const [role, setRole] = useState('pi');
+  useEffect(() => {
+    const t = setTimeout(() => {
+      const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+      if (window.scrollY > maxScroll) window.scrollTo({ top: maxScroll, behavior: 'instant' });
+    }, 250);
+    return () => clearTimeout(t);
+  }, [role]);
   const roles = [
     { id: 'pi',        title: 'PI / Investigator',    sub: 'Planning or launching a study',      img: '/images/roles/card_PI.jpg' },
     { id: 'crc',       title: 'Coordinator / CRC',     sub: 'Joining or managing a study team',   img: '/images/roles/card_coordinator.jpg' },
@@ -180,7 +187,7 @@ export const StartHere = () => {
           <button
             key={r.id}
             className={`ri-role-card${role === r.id ? ' ri-role-card--active' : ''}`}
-            onClick={() => { setRole(r.id); document.getElementById('start-here')?.scrollIntoView({ behavior: 'smooth', block: 'start' }); }}
+            onClick={() => setRole(r.id)}
             style={{ backgroundImage: `url('${r.img}')` }}
           >
             <div className="ri-role-card-overlay" />
