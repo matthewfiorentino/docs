@@ -418,7 +418,7 @@ html.dark .ri-callout--warn { background: rgba(245,158,11,.12); color: rgba(255,
 /* PI panel — top row: intake + arrow + pathway side by side */
 .ri-pi-top-row {
     display: flex; align-items: stretch; gap: 0;
-    margin-top: 1.75rem; margin-bottom: 0;
+    margin-top: 1.75rem; margin-bottom: 1.75rem;
 }
 .ri-pi-row-arrow {
     display: flex; align-items: center; justify-content: center;
