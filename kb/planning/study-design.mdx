@@ -173,15 +173,15 @@ Use the decision tree below to determine whether your study triggers an ÉFVP �
 ```mermaid
 %%{init: {'theme':'base','themeVariables':{'primaryColor':'#150e51','primaryTextColor':'#ffffff','primaryBorderColor':'#150e51','lineColor':'#888','fontFamily':'system-ui,sans-serif'}}}%%
 flowchart TD
-    A(["Does your study collect or access<br/>identifiable personal health information?"]) -->|No| Z(["No ÉFVP required<br/>(de-identified or aggregate data only)"])
-    A -->|Yes| B{"Will participants give<br/>consent for research use<br/>of their data?"}
-    B -->|Yes, all participants| C{"Will any identifiable data<br/>be transferred outside Quebec<br/>or outside Canada?"}
-    B -->|No / partial<br/>(retrospective, secondary use)| D["Standard ÉFVP required<br/>before submission"]
-    C -->|No| E(["Consent covers it —<br/>standard ÉFVP not triggered<br/>(privacy review still required)"])
-    C -->|Yes| F["ÉFVP with cross-border<br/>data transfer addendum"]
-    D --> G{"Is consent unfeasible<br/>(deceased, lost to follow-up,<br/>massive cohort)?"}
-    G -->|Yes| H["Apply for consent waiver<br/>under TCPS2 Art. 5.5A<br/>+ ÉFVP"]
-    G -->|No| D
+    A(["Does your study collect or access\nidentifiable personal health information?"]) -->|No| Z(["No EFVP required\n(de-identified or aggregate data only)"])
+    A -->|Yes| B{"Will participants consent\nto research use of their data?"}
+    B -->|Yes - all participants| C{"Will identifiable data be transferred\noutside Quebec or Canada?"}
+    B -->|No or partial - retrospective\nor secondary use| D["Standard EFVP required\nbefore submission"]
+    C -->|No| E(["Consent covers it\nprivacy review still required"])
+    C -->|Yes| F(["EFVP with cross-border\ndata transfer addendum"])
+    D --> G{"Is obtaining consent\nunfeasible?"}
+    G -->|Yes - deceased, lost to\nfollow-up, massive cohort| H(["Consent waiver under\nTCPS2 Art. 5.5A + EFVP"])
+    G -->|No - consent is feasible| I(["Obtain consent\nthen proceed"])
 
     style A fill:#1a1466,color:#fff,stroke:none
     style B fill:#1a1466,color:#fff,stroke:none
@@ -192,6 +192,7 @@ flowchart TD
     style H fill:#f59e0b,color:#fff,stroke:none
     style Z fill:#00c4b4,color:#150e51,stroke:none
     style E fill:#00c4b4,color:#150e51,stroke:none
+    style I fill:#00c4b4,color:#150e51,stroke:none
 ```
 
 Cross-border transfers (including data going to a US-based sponsor or CRO) are the most commonly missed trigger. If in doubt, contact the Personne mandatée Office before finalizing the protocol.
