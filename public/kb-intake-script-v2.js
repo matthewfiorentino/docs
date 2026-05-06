@@ -729,7 +729,7 @@ function buildDesignGuidance(a, d) {
     items.push('Multicentre studies require site-specific feasibility reviews and coordination. As MUHC lead, you submit via Nagano on behalf of all Quebec RSSS sites. (<a href="/kb/planning/feasibility">Multi-site feasibility &rarr;</a>)');
   }
   if (a.S4_CIM && a.S4_CIM !== 'no') {
-    items.push('CIM involvement: engage CIM during the design phase, well before your Nagano submission. (<a href="/cim/is-cim-right">Is CIM right for your study? &rarr;</a>)');
+    items.push('CIM involvement: engage CIM during the design phase, well before your Nagano submission. (<a href="/cim/planning">Planning your study with the CIM &rarr;</a>)');
   }
 
   return items;
@@ -779,7 +779,7 @@ function buildChecklist(a, d) {
     activation.push('Health Canada ITA for medical devices. (<a href="/sops/cr-024-overview">ITA overview &rarr;</a>)');
   }
   if (a.S4_CIM && a.S4_CIM !== 'no') {
-    activation.push('CIM feasibility assessment — required before activation for studies using CIM. (<a href="/cim/is-cim-right">Is CIM right for your study? &rarr;</a>)');
+    activation.push('CIM feasibility assessment — required before activation for studies using CIM. (<a href="/cim/planning">Planning your study with the CIM &rarr;</a>)');
   }
   activation.push('MUHC Authorization letter — all review streams must complete before any study activity can begin.');
   if (isInd) {
@@ -825,7 +825,7 @@ function buildNextSteps(a, d) {
       next.push('Device study — ITA requirements: <a href="/sops/cr-024-overview">SOP-CR-024 overview &rarr;</a>');
     }
     if (a.S4_CIM && a.S4_CIM !== 'no') {
-      next.push('CIM involvement — is CIM right for your study? <a href="/cim/is-cim-right">CIM overview &rarr;</a>');
+      next.push('CIM involvement — is CIM right for your study? <a href="/cim/planning">CIM overview &rarr;</a>');
     }
     if (d.isSponsorInvestigator) {
       next.push('Sponsor-Investigator obligations — the 100-series SOPs apply to you: <a href="/sops/sponsor-investigator">Sponsor-Investigator SOPs &rarr;</a>');
