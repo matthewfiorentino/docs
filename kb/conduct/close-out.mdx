@@ -125,6 +125,35 @@ Once the lead site's Nagano study status is set to "Closed", no further forms of
 A lead site that closes prematurely locks out all remaining sites from submitting anything further through Nagano. The sequence cannot be reversed.
 </Warning>
 
+```mermaid
+%%{init: {'theme':'base','themeVariables':{'primaryColor':'#150e51','primaryTextColor':'#ffffff','primaryBorderColor':'#150e51','lineColor':'#888','fontFamily':'system-ui,sans-serif'}}}%%
+flowchart TD
+    A(["All sites: COV completed,<br/>final data captured,<br/>queries resolved"]) --> B{"Multi-centric study?"}
+    B -->|"Single-site"| SS["Submit MUHC closure form<br/>→ REB acknowledgement<br/>→ archive ISF"]
+    B -->|"Multi-centric"| C["Step 1: Each participating site<br/>submits its own Closure of<br/>Research Project form"]
+    C --> D["Step 2: Each participating site<br/>receives REB acknowledgement"]
+    D --> E{"All participating sites<br/>acknowledged?"}
+    E -->|"No — wait"| C
+    E -->|"Yes"| F["Step 3: MUHC lead site<br/>submits its own closure form"]
+    F --> G["Step 4: Nagano status<br/>set to Closed"]
+    G --> END(["Archive TMF + all ISFs<br/>per retention rules"])
+    SS --> END
+
+    EARLY["Lead site closes<br/>before participating sites"]:::warn -.->|"Locks all sites out<br/>of Nagano forever"| LOCK([" Cannot be reversed"]):::warn
+
+    classDef warn fill:#ff6b6b,color:#fff,stroke:none
+
+    style A fill:#150e51,color:#fff,stroke:none
+    style B fill:#1a1466,color:#fff,stroke:none
+    style E fill:#1a1466,color:#fff,stroke:none
+    style SS fill:#007a6e,color:#fff,stroke:none
+    style C fill:#007a6e,color:#fff,stroke:none
+    style D fill:#007a6e,color:#fff,stroke:none
+    style F fill:#007a6e,color:#fff,stroke:none
+    style G fill:#007a6e,color:#fff,stroke:none
+    style END fill:#00c4b4,color:#150e51,stroke:none
+```
+
 ## Obligations that continue after close-out
 
 Two categories of obligation survive the COV and the Nagano closure form.

@@ -8,20 +8,23 @@ Approval is granted. Authorization is in hand. But a study is not running yet �
 ## The activation sequence
 
 ```mermaid
+%%{init: {'theme':'base','themeVariables':{'primaryColor':'#150e51','primaryTextColor':'#ffffff','primaryBorderColor':'#150e51','lineColor':'#888','fontFamily':'system-ui,sans-serif'}}}%%
 flowchart TD
-    SUB[Study submitted\nvia Nagano]
+    SUB[Study submitted<br/>via Nagano]
 
-    SUB --> REB[REB Review\nscientific + ethics]
-    SUB --> MUHCF[MUHC Feasibility\nReview]
-    SUB --> HC[Health Canada\nCTA / ITA Review\ndrug & device only]
+    SUB --> REB[REB Review<br/>scientific + ethics]
+    SUB --> MUHCF[MUHC Feasibility<br/>Review]
+    SUB --> HC[Health Canada<br/>CTA / ITA Review<br/>drug & device only]
 
-    REB --> AUTH[MUHC Authorization\nPersonne mandatée]
+    REB --> AUTH[MUHC Authorization<br/>Personne mandatée]
     MUHCF --> AUTH
     HC --> AUTH
 
-    AUTH --> SIV[Site Initiation\nVisit]
-    SIV --> GO[Sponsor Go\nLetter]
-    GO --> FP([First participant\nmay be approached])
+    AUTH --> SIV[Site Initiation<br/>Visit]
+    SIV --> GO[Sponsor Go<br/>Letter]
+    GO --> GATE{"All 4 conditions<br/>in hand?"}
+    GATE -->|"REB approval ✓<br/>MUHC Authorization ✓<br/>SIV completed ✓<br/>Go Letter ✓"| FP([First participant<br/>may be approached])
+    GATE -->|"Any one missing"| BLOCK([Study NOT activated<br/>— no participant contact])
 
     style SUB fill:#150e51,color:#fff,stroke:none
     style HC  fill:#007a6e,color:#fff,stroke:none
@@ -30,7 +33,9 @@ flowchart TD
     style AUTH fill:#007a6e,color:#fff,stroke:none
     style SIV  fill:#007a6e,color:#fff,stroke:none
     style GO   fill:#007a6e,color:#fff,stroke:none
-    style FP   fill:#00c4b4,color:#fff,stroke:none
+    style GATE fill:#1a1466,color:#fff,stroke:none
+    style FP   fill:#00c4b4,color:#150e51,stroke:none
+    style BLOCK fill:#ff6b6b,color:#fff,stroke:none
 ```
 
 <Steps>

@@ -54,6 +54,46 @@ When you receive an external SUSAR from the Sponsor, initial and date the docume
 
 REB submissions via Nagano — use form **F3H** for SAE/SUSAR reporting.
 
+The diagram below shows how a single SAE triggers parallel reporting tracks with different clocks. The Health Canada track applies only to Sponsor-Investigator studies — for industry-sponsored studies, the Sponsor handles HC reporting.
+
+```mermaid
+%%{init: {'theme':'base','themeVariables':{'primaryColor':'#150e51','primaryTextColor':'#ffffff','primaryBorderColor':'#150e51','lineColor':'#888','fontFamily':'system-ui,sans-serif'}}}%%
+flowchart TD
+    EVENT(["SAE occurs<br/>or external SUSAR received"]) --> ASSESS{"Assess seriousness,<br/>expectedness, relatedness"}
+
+    subgraph SITE["SITE TEAM"]
+        ASSESS
+        SDOC["Document in source docs<br/>and SAE log"]
+    end
+
+    subgraph SPONSOR["TO SPONSOR"]
+        SAE24["Notify Sponsor within 24 hours<br/>of becoming aware"]
+    end
+
+    subgraph REB_HC["TO REB · TO HEALTH CANADA (S-I only)"]
+        REB7["Life-threatening SAE / SUSAR:<br/>F3H within 7 days<br/>+ detailed report at day 8"]
+        REB15["Other reportable SAE / SUSAR:<br/>F3H within 15 days"]
+        HC7["Sponsor-Investigator only:<br/>CIOMS I to Health Canada<br/>same 7- or 15-day clock"]
+    end
+
+    ASSESS --> SDOC
+    ASSESS --> SAE24
+    SAE24 --> REB7
+    SAE24 --> REB15
+    REB7 --> HC7
+    REB15 --> HC7
+
+    style EVENT fill:#150e51,color:#fff,stroke:none
+    style ASSESS fill:#1a1466,color:#fff,stroke:none
+    style SDOC fill:#007a6e,color:#fff,stroke:none
+    style SAE24 fill:#ff6b6b,color:#fff,stroke:none
+    style REB7 fill:#f59e0b,color:#fff,stroke:none
+    style REB15 fill:#007a6e,color:#fff,stroke:none
+    style HC7 fill:#f59e0b,color:#fff,stroke:none
+```
+
+Color legend: **coral** = 24-hour clock (most urgent), **amber** = 7-day clock, **teal** = 15-day clock.
+
 ## Protocol deviations
 
 A protocol deviation is any departure from the REB-approved study documents, RI-MUHC SOPs, ICH <Tooltip tip="International standard for design, conduct, monitoring, recording, and reporting of clinical studies." headline="Good Clinical Practice (GCP)" cta="Full definition" href="/kb/glossary#gcp">GCP</Tooltip>, or ISO GCP that was not pre-approved. Every deviation — minor, major, or critical — must be documented on the Protocol/GCP/SOP Deviation Log. The Deviation Log is an essential document in the ISF and is reviewed at every monitoring visit.

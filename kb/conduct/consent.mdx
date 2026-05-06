@@ -5,6 +5,43 @@ description: "Civil Code consent rules, age of majority, treating physician rest
 
 In Quebec, the right to consent to research participation flows from the Civil Code — provincial law — not common law. Who can consent, who can consent on someone else's behalf, and what the consent form must contain are all shaped by rules that apply specifically here and differ in important ways from the rest of Canada. The consent process is governed by [SOP-CR-006](/sops/cr-006) (Informed Consent Forms) and [SOP-CR-008](/sops/cr-008) (Informed Consent Process).
 
+## Consent must precede every study procedure
+
+No study procedure — including screening blood draws, eligibility chart reviews, or questionnaires — may be performed before written informed consent is obtained. The diagram below shows the required sequence:
+
+```mermaid
+%%{init: {'theme':'base','themeVariables':{'primaryColor':'#150e51','primaryTextColor':'#ffffff','primaryBorderColor':'#150e51','lineColor':'#888','fontFamily':'system-ui,sans-serif'}}}%%
+flowchart TD
+    A(["Potential participant identified<br/>(referral, advert, chart prescreen<br/>under approved waiver)"]) --> B["Provide REB-approved<br/>recruitment materials and ICF"]
+    B --> C["Allow time to read,<br/>ask questions, consider"]
+    C --> D{"Participant agrees<br/>and signs ICF?"}
+    D -->|"No"| X(["No further<br/>study contact"])
+    D -->|"Yes"| E["Sign and date ICF<br/>(participant + person obtaining consent)"]
+    E --> F["Provide signed copy<br/>to participant"]
+    F --> G["Eligibility screening<br/>(labs, history, exams)"]
+    G --> H{"Eligible?"}
+    H -->|"No"| Y(["Screen failure documented<br/>— no further procedures"])
+    H -->|"Yes"| I(["Enrollment<br/>and randomization"])
+
+    Z["Any study procedure<br/>before signed consent"]:::warn -.->|"VIOLATES TCPS2 + GCP +<br/>Civil Code"| RED([" Protocol deviation<br/>+ inspection finding"]):::warn
+
+    classDef warn fill:#ff6b6b,color:#fff,stroke:none
+
+    style A fill:#150e51,color:#fff,stroke:none
+    style B fill:#007a6e,color:#fff,stroke:none
+    style C fill:#007a6e,color:#fff,stroke:none
+    style D fill:#1a1466,color:#fff,stroke:none
+    style E fill:#007a6e,color:#fff,stroke:none
+    style F fill:#007a6e,color:#fff,stroke:none
+    style G fill:#007a6e,color:#fff,stroke:none
+    style H fill:#1a1466,color:#fff,stroke:none
+    style I fill:#00c4b4,color:#150e51,stroke:none
+    style X fill:#888,color:#fff,stroke:none
+    style Y fill:#888,color:#fff,stroke:none
+```
+
+The most common deviation is drawing screening labs or recording history into the eCRF before the ICF is signed — even by minutes. If a study-specific procedure is needed before formal screening (e.g., a chart review to confirm potential eligibility), it requires either signed consent or an REB-approved consent waiver under TCPS2 Article 5.5A.
+
 ## The legal basis: the Civil Code
 
 Consent to research in Quebec is governed by the *Civil Code of Québec* (CCQ). The practical consequence is that the rules for who can give consent, who can give substitute consent, and under what conditions consent can be waived are all defined by the CCQ and interpreted by Quebec courts — not by the general <Tooltip tip="International standard for design, conduct, monitoring, recording, and reporting of clinical studies." headline="Good Clinical Practice (GCP)" cta="Full definition" href="/kb/glossary#gcp">GCP</Tooltip> framework.
