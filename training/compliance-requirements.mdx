@@ -38,6 +38,65 @@ The table below shows all mandatory training for each level. Your training level
 
 _Drug studies (Level I) includes biologics, gene/cell therapies, blood products, vaccines, and radiopharmaceuticals. Level IV includes educational and non-invasive interventions (psychotherapy, physiotherapy, diet, exercise, massage). Level V includes studies using previously anonymized biobanked samples._
 
+The diagram below shows the same requirements visually — what each level requires beyond the universal SOP Reader and Competency Assessment:
+
+```mermaid
+%%{init: {'theme':'base','themeVariables':{'primaryColor':'#150e51','primaryTextColor':'#ffffff','primaryBorderColor':'#150e51','lineColor':'#888','fontFamily':'system-ui,sans-serif'}}}%%
+flowchart LR
+    subgraph L1["LEVEL I — Drug studies"]
+        L1_SOP["SOP Reader"]
+        L1_CA["Competency Assessment<br/>(2 yr)"]
+        L1_GCP["ICH GCP E6 R3<br/>(2 yr)"]
+        L1_DIV5["Health Canada<br/>Division 5 (2 yr)"]
+    end
+    subgraph L2["LEVEL II — Devices & surgery"]
+        L2_SOP["SOP Reader"]
+        L2_CA["Competency Assessment<br/>(2 yr)"]
+        L2_GCP["ICH GCP E6 R3<br/>(2 yr)"]
+        L2_ISO["ISO 14155<br/>(2 yr, self-train)"]
+    end
+    subgraph L3["LEVEL III — Natural health products"]
+        L3_SOP["SOP Reader"]
+        L3_CA["Competency Assessment<br/>(2 yr)"]
+        L3_GCP["ICH GCP E6 R3<br/>(2 yr)"]
+    end
+    subgraph L4["LEVEL IV — Prospective observational"]
+        L4_SOP["SOP Reader"]
+        L4_CA["Competency Assessment<br/>(5 yr)"]
+    end
+    subgraph L5["LEVEL V — Retrospective / chart review"]
+        L5_SOP["SOP Reader"]
+        L5_CA["Competency Assessment<br/>(5 yr)"]
+    end
+
+    style L1 fill:#fff,color:#150e51,stroke:#150e51,stroke-width:2px
+    style L2 fill:#fff,color:#150e51,stroke:#150e51,stroke-width:2px
+    style L3 fill:#fff,color:#150e51,stroke:#150e51,stroke-width:2px
+    style L4 fill:#fff,color:#150e51,stroke:#150e51,stroke-width:2px
+    style L5 fill:#fff,color:#150e51,stroke:#150e51,stroke-width:2px
+
+    style L1_SOP fill:#150e51,color:#fff,stroke:none
+    style L2_SOP fill:#150e51,color:#fff,stroke:none
+    style L3_SOP fill:#150e51,color:#fff,stroke:none
+    style L4_SOP fill:#150e51,color:#fff,stroke:none
+    style L5_SOP fill:#150e51,color:#fff,stroke:none
+
+    style L1_CA fill:#007a6e,color:#fff,stroke:none
+    style L2_CA fill:#007a6e,color:#fff,stroke:none
+    style L3_CA fill:#007a6e,color:#fff,stroke:none
+    style L4_CA fill:#007a6e,color:#fff,stroke:none
+    style L5_CA fill:#007a6e,color:#fff,stroke:none
+
+    style L1_GCP fill:#f59e0b,color:#fff,stroke:none
+    style L2_GCP fill:#f59e0b,color:#fff,stroke:none
+    style L3_GCP fill:#f59e0b,color:#fff,stroke:none
+
+    style L1_DIV5 fill:#ff6b6b,color:#fff,stroke:none
+    style L2_ISO fill:#1a1466,color:#fff,stroke:none
+```
+
+Color legend: **navy** = SOP Reader (universal), **teal** = Competency Assessment (universal, different renewal cycle), **amber** = ICH GCP, **coral** = Health Canada Division 5 (Level I only), **purple** = ISO 14155 (Level II only).
+
 ## Compliance paths
 
 The certification cycle differs based on study risk level.
