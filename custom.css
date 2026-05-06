@@ -495,6 +495,9 @@ html.dark .ri-dual-sub { color: rgba(255,255,255,.6); }
 .ri-callout--warn { background: #fff8ed; color: #78350f; }
 html.dark .ri-callout--note { background: rgba(0,122,110,.15); color: rgba(255,255,255,.8); }
 html.dark .ri-callout--warn { background: rgba(245,158,11,.12); color: rgba(255,255,255,.8); }
+.ri-callout a { color: #007a6e !important; text-decoration: underline; text-underline-offset: 3px; }
+.ri-callout--warn a { color: #78350f !important; text-decoration: underline; text-underline-offset: 3px; font-weight: 600; }
+html.dark .ri-callout a { color: #00c4b4 !important; }
 
 /* Intake form — universal entry point above the step track */
 /* PI panel — top row: intake + arrow + pathway side by side */
