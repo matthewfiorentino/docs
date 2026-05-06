@@ -157,60 +157,6 @@ export const DetailCard = ({ href, title, desc }) => (
   </a>
 );
 
-export const ParallelTracks = () => (
-  <div className="ri-tracks" role="figure" aria-label="Parallel review streams after Nagano submission">
-    <div className="ri-tracks-eyebrow">After you submit</div>
-    <div className="ri-tracks-title">Three review streams run concurrently</div>
-    <div className="ri-tracks-sub">A single Nagano F11 submission opens all three streams at once. Drug, device, and NHP studies must also clear Health Canada — a separate parallel track that must not wait until after REB approval.</div>
-    <div className="ri-tracks-grid">
-      <div className="ri-track-lane ri-track-lane--reb">
-        <div className="ri-track-lane-label">Stream 1 — Scientific review <span className="ri-track-lane-cond">REB</span></div>
-        <div className="ri-track-lane-flow">
-          <div className="ri-track-node ri-track-node--start">Nagano F11</div>
-          <div className="ri-track-conn" />
-          <div className="ri-track-node">Methodology · design · team qualifications</div>
-          <div className="ri-track-conn" />
-          <div className="ri-track-node ri-track-node--end">Scientific approval</div>
-        </div>
-      </div>
-      <div className="ri-track-lane ri-track-lane--reb">
-        <div className="ri-track-lane-label">Stream 2 — Ethics review <span className="ri-track-lane-cond">REB</span></div>
-        <div className="ri-track-lane-flow">
-          <div className="ri-track-node ri-track-node--start">Nagano F11</div>
-          <div className="ri-track-conn" />
-          <div className="ri-track-node">Consent · risk–benefit · participant protections</div>
-          <div className="ri-track-conn" />
-          <div className="ri-track-node ri-track-node--end">REB approval</div>
-        </div>
-      </div>
-      <div className="ri-track-lane ri-track-lane--feas">
-        <div className="ri-track-lane-label">Stream 3 — Institutional feasibility <span className="ri-track-lane-cond">MUHC · RI-MUHC · The Neuro</span></div>
-        <div className="ri-track-lane-flow">
-          <div className="ri-track-node ri-track-node--start">Nagano F11</div>
-          <div className="ri-track-conn" />
-          <div className="ri-track-node">QA · Research Agreements · DPS · Pharmacy · Nursing · Lab</div>
-          <div className="ri-track-conn" />
-          <div className="ri-track-node ri-track-node--end">Feasibility report</div>
-        </div>
-      </div>
-      <div className="ri-track-lane ri-track-lane--hc">
-        <div className="ri-track-lane-label">Health Canada <span className="ri-track-lane-cond">drug · device · NHP only — submit in parallel, not after REB</span></div>
-        <div className="ri-track-lane-flow">
-          <div className="ri-track-node ri-track-node--start">CTA · ITA · NHP CTA</div>
-          <div className="ri-track-conn" />
-          <div className="ri-track-node">30-day review</div>
-          <div className="ri-track-conn" />
-          <div className="ri-track-node ri-track-node--end">NOL · ITA decision</div>
-        </div>
-      </div>
-    </div>
-    <div className="ri-tracks-converge">
-      <div className="ri-tracks-converge-arrow">↓</div>
-      <div className="ri-tracks-converge-node">MUHC Authorization granted by the Personne mandatée</div>
-    </div>
-  </div>
-);
-
 export const StartHere = () => {
   const [role, setRole] = useState('pi');
   const roles = [
@@ -297,9 +243,8 @@ export const StartHere = () => {
             </a>
           </div>
           <div className="ri-callout ri-callout--warn">
-            A study cannot begin until the <strong>Personne mandatée</strong> grants MUHC Authorization. REB approval alone does not authorize research activities — both approvals must be in your ISF before any study procedures begin.
+            A study cannot begin until the <strong>Personne mandatée</strong> grants <a href="/kb/submission/overview">MUHC Authorization</a>. REB approval alone does not authorize research activities — both approvals must be in your ISF before any study procedures begin.
           </div>
-          <ParallelTracks />
           <div className="ri-further-along">
             <span className="ri-fa-label">Already further along?</span>
             <a href="/kb/submission/tracking-responding" className="ri-fa-link">Track your submission →</a>
