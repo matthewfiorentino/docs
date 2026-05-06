@@ -158,39 +158,49 @@ export const DetailCard = ({ href, title, desc }) => (
 );
 
 export const ParallelTracks = () => (
-  <div className="ri-tracks" role="figure" aria-label="Parallel review tracks after Nagano submission">
+  <div className="ri-tracks" role="figure" aria-label="Parallel review streams after Nagano submission">
     <div className="ri-tracks-eyebrow">After you submit</div>
-    <div className="ri-tracks-title">Three review tracks run in parallel</div>
-    <div className="ri-tracks-sub">A single Nagano F11 submission triggers REB review, institutional feasibility, and (if applicable) Health Canada review — concurrently, not sequentially.</div>
+    <div className="ri-tracks-title">Three review streams run concurrently</div>
+    <div className="ri-tracks-sub">A single Nagano F11 submission opens all three streams at once. Drug, device, and NHP studies must also clear Health Canada — a separate parallel track that must not wait until after REB approval.</div>
     <div className="ri-tracks-grid">
       <div className="ri-track-lane ri-track-lane--reb">
-        <div className="ri-track-lane-label">REB review</div>
+        <div className="ri-track-lane-label">Stream 1 — Scientific review <span className="ri-track-lane-cond">REB</span></div>
         <div className="ri-track-lane-flow">
           <div className="ri-track-node ri-track-node--start">Nagano F11</div>
           <div className="ri-track-conn" />
-          <div className="ri-track-node">REB review</div>
+          <div className="ri-track-node">Methodology · design · team qualifications</div>
+          <div className="ri-track-conn" />
+          <div className="ri-track-node ri-track-node--end">Scientific approval</div>
+        </div>
+      </div>
+      <div className="ri-track-lane ri-track-lane--reb">
+        <div className="ri-track-lane-label">Stream 2 — Ethics review <span className="ri-track-lane-cond">REB</span></div>
+        <div className="ri-track-lane-flow">
+          <div className="ri-track-node ri-track-node--start">Nagano F11</div>
+          <div className="ri-track-conn" />
+          <div className="ri-track-node">Consent · risk–benefit · participant protections</div>
           <div className="ri-track-conn" />
           <div className="ri-track-node ri-track-node--end">REB approval</div>
         </div>
       </div>
       <div className="ri-track-lane ri-track-lane--feas">
-        <div className="ri-track-lane-label">Institutional feasibility</div>
+        <div className="ri-track-lane-label">Stream 3 — Institutional feasibility <span className="ri-track-lane-cond">MUHC · RI-MUHC · The Neuro</span></div>
         <div className="ri-track-lane-flow">
           <div className="ri-track-node ri-track-node--start">Nagano F11</div>
           <div className="ri-track-conn" />
-          <div className="ri-track-node">QA · Research Agreements · DPS · Pharmacy</div>
+          <div className="ri-track-node">QA · Research Agreements · DPS · Pharmacy · Nursing · Lab</div>
           <div className="ri-track-conn" />
           <div className="ri-track-node ri-track-node--end">Feasibility report</div>
         </div>
       </div>
       <div className="ri-track-lane ri-track-lane--hc">
-        <div className="ri-track-lane-label">Health Canada <span className="ri-track-lane-cond">if drug · device · NHP</span></div>
+        <div className="ri-track-lane-label">Health Canada <span className="ri-track-lane-cond">drug · device · NHP only — submit in parallel, not after REB</span></div>
         <div className="ri-track-lane-flow">
           <div className="ri-track-node ri-track-node--start">CTA · ITA · NHP CTA</div>
           <div className="ri-track-conn" />
           <div className="ri-track-node">30-day review</div>
           <div className="ri-track-conn" />
-          <div className="ri-track-node ri-track-node--end">NOL</div>
+          <div className="ri-track-node ri-track-node--end">NOL · ITA decision</div>
         </div>
       </div>
     </div>
