@@ -7,6 +7,8 @@ As <Tooltip tip="US equivalent of the Canadian Qualified Investigator (QI)." hea
 
 ### Operational guides — by study type
 
+Each guide covers day-to-day operations for a specific study type — what happens at each lifecycle stage, who does what, and which SOPs apply. They complement this page, which focuses on your personal accountability as PI regardless of study type.
+
 <CardGroup cols={3}>
   <Card title="Interventional (Levels I–III)" icon="flask" href="/kb/roles/pi-guide">
     Drug trials, medical device studies, NHP studies. Protocol oversight, delegation, consent, safety reporting, monitoring, IP accountability, close-out.
@@ -18,6 +20,10 @@ As <Tooltip tip="US equivalent of the Canadian Qualified Investigator (QI)." hea
     Chart review, anonymized biobanked samples. ÉFVP-driven consent waiver decisions, data extraction, privacy compliance.
   </Card>
 </CardGroup>
+
+### Study lifecycle at a glance
+
+The phases below trace the path from initial credentials through archiving. Each maps to sections on this page and in the guides above.
 
 ```mermaid
 flowchart TD
@@ -55,6 +61,8 @@ Two prerequisites must be in place before you can submit a study in <Tooltip tip
 <Warning>
   **The 90-day rule:** at submission, your Privileges or Status must be active and not within 90 days of expiry. Lapsed credentials prevent MUHC Authorization and may halt active studies mid-course.
 </Warning>
+
+Before opening a Nagano submission, confirm site feasibility: access to the target patient population, required facilities and equipment, team capacity, and estimated enrollment timelines. Use the [Study Feasibility Checklist (SOP-CR-004, Appendix 1)](/sops/cr-004#appendices) to document this assessment. If feasibility review fails during institutional review, the Personne mandatée cannot issue MUHC Authorization — and the study cannot activate.
 
 ### Institutional training by study level
 
@@ -161,7 +169,7 @@ Every person on the Task Delegation Log must hold current institutional training
 
 <Steps>
   <Step title="Set up the Task Delegation Log before any study tasks begin">
-    Name every team member, their role, their specific delegated tasks, and their start date. You countersign each entry. Team members sign to accept delegation. See [SOP-CR-002](/sops/cr-002) and [Building Your Research Team](/kb/planning/overview).
+    Name every team member, their role, their specific delegated tasks, and their start date. You countersign each entry. Team members sign to accept delegation. See [SOP-CR-002](/sops/cr-002) and [Building Your Research Team](/kb/planning/building-your-team).
   </Step>
   <Step title="Appoint a Sub-Investigator as your backup">
     Your Sub-I backup must hold the same Privileges or Researcher Status as you. For interventional studies (Levels I–III), Researcher Status is not sufficient — the backup must hold Privileges. Fellows and rotating residents cannot serve as PI backup.
@@ -180,6 +188,10 @@ Every person on the Task Delegation Log must hold current institutional training
 <Warning>
   **Staff changes during the study:** when a team member joins, confirm training, add to the log, countersign, and notify the Sponsor. When a team member leaves, record end date, countersign, notify the Sponsor, and submit a Nagano amendment (F1). If you leave the study, both you and the incoming PI must sign the delegation log, and the Sponsor and REB must be notified.
 </Warning>
+
+<Tip>
+  **Adding trainees, volunteers, or observers?** See the [Onboarding overview](/kb/roles/onboarding) for eligibility, agreements, and scope limitations. **Temporary staff** (visiting fellows, co-op students, contractors) follow the same TDL process — specify their end date on the entry. If a team member fails the Competency Assessment, they cannot be added to the TDL until retrained and reassessed.
+</Tip>
 
 ### Can this person be added to the Task Delegation Log?
 
@@ -231,6 +243,16 @@ All studies are submitted through Nagano. The F11 triggers parallel reviews — 
   **MUHC Authorization is the green light — not REB approval alone.** The Personne mandatée reviews all three evaluations and decides whether to issue MUHC Authorization. Do not begin any study procedures until the Authorization letter is in your ISF.
 </Warning>
 
+**Typical timeline:** REB review takes 3–6 weeks. Health Canada CTA/ITA review takes 30 calendar days. Nagano institutional review (feasibility, financial, QA) typically takes 2–4 weeks after REB approval. Submit CTA/ITA applications and sponsor contracts **in parallel** with Nagano to avoid sequential delays.
+
+<Warning>
+  **Sponsor-Investigator studies.** If you initiated and are funding the study, you hold Sponsor obligations *in addition to* your QI role — including CTA submission to Health Canada, independent monitoring, TMF maintenance, and SUSAR reporting directly to Health Canada. These obligations are distinct from QI responsibilities and involve additional SOPs (CR-100 series). See [Sponsor-Investigator Studies](/kb/planning/sponsor-investigator) before committing.
+</Warning>
+
+**Multi-centric studies:** If your study spans multiple Quebec RSSS institutions, a single reviewing REB handles ethics review. Whether the MUHC is lead or participating site changes your Nagano submission type and coordination responsibilities. See [Multi-Centric Studies in Quebec](/kb/planning/multi-centric). CATALIS FAST TRACK may compress the authorization timeline for industry-sponsored multi-site trials.
+
+**Decentralized elements:** If your protocol includes virtual visits, home visits, remote monitoring, or electronic consent, confirm the regulatory requirements before submission — Health Canada's DCT guidance is evolving. See [Designing a Decentralized Trial](/kb/planning/dct-design).
+
 See also: [Preparing Your Submission](/kb/submission/preparing) | [Submitting via Nagano](/kb/submission/submitting-via-nagano) | [Tracking Your Submission](/kb/submission/tracking-responding)
 
 ### Informed consent
@@ -242,6 +264,8 @@ You are accountable for ensuring informed consent is obtained from every partici
 - **Incapacitated adults — Civil Code Art. 21** — requires substitute consent from the person with legal authority AND authorization from an MSSS-designated REB. If the incapacitated person understands and objects, they cannot be enrolled regardless of substitute consent.
 - **French-language consent forms** — under Quebec's Charte de la langue française (Bill 96), consent forms at public institutions must be available in French. Always use the current REB-approved version.
 
+No study procedure — including screening blood draws, eligibility questionnaires, or medical record review for screening — may be performed before signed informed consent is obtained and documented in the source record. This is one of the most frequent observations at Health Canada inspections. If the protocol requires pre-screening activities before formal consent, confirm the scope of permissible pre-screening with the REB.
+
 ### Safety and medical oversight
 
 You retain medical oversight of all study activities even when tasks are delegated. For every AE and SAE, your team documents and reports to you — you assess causality, determine seriousness, and sign the report.
@@ -250,21 +274,33 @@ You retain medical oversight of all study activities even when tasks are delegat
 - **SUSAR reports from the Sponsor** — review, initial, date, and file in the ISF to document your awareness.
 - **Direct supervision means being reachable** — you must be contactable when a team member performs a task requiring medical oversight.
 
+Establish a clear escalation protocol: who contacts you, by what channel (pager, cell, secure messaging), and within what timeframe you respond. Document this in a department work instruction or site-specific addendum to the TDL. If you will be unavailable (conference, leave), your Sub-Investigator backup must be reachable and the team must know to redirect to them. A CRC who cannot reach you or your backup within a reasonable timeframe for a safety concern is in an untenable position.
+
 <Note>
   **Before extended absence:** appoint a Sub-I backup with Privileges or Researcher Status, update the delegation log and Nagano. [SOP-CR-002](/sops/cr-002) recommends writing a department-specific working instruction describing how QI/PI oversight is achieved for your team.
 </Note>
 
 ### Protocol deviations
 
-All deviations must be documented. Major or critical deviations must be reported to QA and the REB. Make it clear to your team that they should contact you when something is uncertain — not improvise.
+All deviations must be documented on the Deviation Log and classified by impact:
+
+- **Minor** — unintended departure with no effect on participant safety or data integrity (e.g., visit window exceeded by 1 day). Document on the Deviation Log and review for trends. Report to the REB at annual Continuing Review.
+- **Major** — departure affecting safety, consent validity, or data quality (e.g., consent obtained after a study procedure, or a dose administered outside the protocol window). CAPA required. Report to QA and the REB within 15 days.
+- **Critical** — departure posing immediate risk to participant safety or study integrity (e.g., unauthorized unblinding, unreported SAE). CAPA required immediately. Report to QA and the REB within 7 days. May trigger study suspension.
+
+All deviations — including those initiated by participants (missed visits, non-compliance) — must be documented. Your team should report deviations to you within 24 hours. Make it clear that they should contact you when something is uncertain — not improvise.
 
 Concerns about participant safety, informed consent, or undue risk should be reported to the MUHC REB immediately, even without a formal protocol deviation. Do not wait for the next reporting cycle.
+
+See [Reportable Events and Protocol Deviations](/kb/conduct/reportable-events) for the full classification framework and [SOP-CR-026](/sops/cr-026#appendices) for the Deviation Log ([Appendix 1](https://portal.rimuhc.ca/pls/apex/MUHC2.download_my_file?p_file=249508821981851318)) and CAPA Form ([Appendix 2](https://portal.rimuhc.ca/pls/apex/MUHC2.download_my_file?p_file=249510176054892893)) templates.
 
 ### Monitoring and inspections
 
 Health Canada inspects approximately 2% of Canadian clinical trial sites per year. Inspections can be announced or unannounced. As PI, you are present for the opening and closing meetings. QA leads coordination — notify QA as soon as an inspection notice is received.
 
-The best preparation is a well-maintained ISF and a team that follows SOPs consistently — not a last-minute review.
+Inspectors typically focus on: informed consent documentation and timing, adverse event assessment and reporting, the delegation log and team qualifications, monitoring letter follow-up, data integrity and source-to-CRF matching, and protocol deviation documentation. The practices that support good monitoring outcomes — a complete ISF, contemporaneous documentation, signed and dated corrections, and an intact audit trail — are what make an inspection manageable.
+
+See also: [Monitoring, Audits, and Inspections](/kb/conduct/monitoring-audits) | [Hosting a Health Canada Inspection](/kb/conduct/hc-inspection-guide) | [The Investigator Site File](/kb/conduct/isf)
 
 ### Privacy and data
 
@@ -280,6 +316,33 @@ Review and sign off on the completed ISF before the Sponsor's <Tooltip tip="Fina
 - **Conflict of interest declarations** are required at initial submission and every annual renewal. If a COI arises mid-study, disclose promptly via Nagano amendment — do not wait for renewal. See [Conflict of Interest](/kb/governance/conflict-of-interest).
 - **15-year retention for Division 5 studies (C.05.012)** — the ISF must remain complete, secure, and retrievable. Do not destroy any study documents without written authorization from you and the Sponsor. You retain personal accountability for the archived file even if you change institutions. See [Research Integrity](/kb/governance/research-integrity) for archiving and retention obligations.
 
+## Planning and support services
+
+Engage these services early — ideally during study design, before protocol finalization.
+
+<CardGroup cols={3}>
+  <Card title="Biostatistics (BCU)" icon="chart-line" href="/kb/planning/bcu">
+    Sample size calculations, randomization plans, Statistical Analysis Plans, DSMB support. Consult at the design stage — statistical design decisions are costly to revise after enrollment begins.
+  </Card>
+  <Card title="Data Management (CORD)" icon="database" href="/kb/planning/cord">
+    REDCap database builds, CRF review, data cleaning, and 21 CFR Part 11 compliance. Contact before finalizing your data collection plan.
+  </Card>
+  <Card title="Data Warehouse" icon="server" href="/kb/planning/data-warehouse">
+    Access to MUHC clinical and administrative data from 18+ hospital systems. Essential for retrospective studies and feasibility assessments.
+  </Card>
+  <Card title="CIM — Clinical Research Infrastructure" icon="flask-vial" href="/cim/is-cim-right">
+    Phase I, oncology, and IV/infusion studies. Turnkey or à la carte: nursing, coordination, monitoring, regulatory, lab, and imaging platforms. Engage early — availability is limited.
+  </Card>
+  <Card title="Hiring and HR Support" icon="user-plus" href="/kb/planning/hiring-hr-support">
+    Recruitment, employment agreements, bilingual hiring, and workforce planning through People & Culture. All team members need an RI-MUHC affiliation before performing study tasks.
+  </Card>
+  <Card title="EDI in Research" icon="hand-holding-heart" href="/kb/planning/edi">
+    GBA+ consultation, inclusive recruitment strategies, accessible consent materials, and funder EDI requirements (CIHR, FRQS, CFI).
+  </Card>
+</CardGroup>
+
+See also: [Contracts, Budgets, and Agreements](/kb/planning/budgets-contracts) | [Sponsor-Investigator Studies](/kb/planning/sponsor-investigator) | [Industry-Sponsored Trials](/kb/planning/sponsored-trials)
+
 ## Professional development
 
 <CardGroup cols={3}>
@@ -293,3 +356,16 @@ Review and sign off on the completed ISF before the Sponsor's <Tooltip tip="Fina
     Sessions hosted by the Research Facilitator covering practical topics in clinical research at the RI-MUHC. Open to all research staff and investigators.
   </Card>
 </CardGroup>
+
+---
+
+## Related resources
+
+- [PI Guide — Interventional (Levels I–III)](/kb/roles/pi-guide) — day-to-day operations for drug, device, and NHP studies
+- [PI Guide — Observational (Level IV)](/kb/roles/pi-guide-iv) — operations for prospective observational and educational studies
+- [PI Guide — Retrospective (Level V)](/kb/roles/pi-guide-v) — operations for chart review and biobanked sample studies
+- [CRC Pathway](/kb/roles/crc-pathway) — your coordinator's parallel accountability map
+- [Building Your Research Team](/kb/planning/building-your-team) — team structure, delegation rules, and role requirements
+- [Training and Compliance Requirements](/training/compliance-requirements) — full training matrix by study type and role
+- [Contracts, Budgets, and Agreements](/kb/planning/budgets-contracts) — CTA, budget tools, Research Agreements Office
+- [SOP Appendices and Templates](/sops/appendices) — downloadable ISF templates, delegation logs, and inspection checklists

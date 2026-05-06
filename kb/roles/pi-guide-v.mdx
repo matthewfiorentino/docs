@@ -5,6 +5,10 @@ description: "Accountability reference for PIs leading retrospective chart revie
 
 Accountability reference for PIs leading retrospective chart review studies and studies using previously anonymized biobanked samples (Level V). In most cases there is no participant contact. Your primary concerns are the <Tooltip tip="Required under Quebec Law 25 before communicating personal information without consent for research. Non-compliance: up to $25M or 4% of worldwide turnover." headline="ÉFVP — Privacy Impact Assessment" cta="Full definition" href="/kb/glossary#efvp">ÉFVP</Tooltip> consent waiver decision, data access authorization, and <Tooltip tip="The ethics committee that reviews and approves research involving human participants. Also called CER at French-language institutions." headline="Research Ethics Board (REB)" cta="Full definition" href="/kb/glossary#reb">REB</Tooltip> maintenance.
 
+<Info>
+  This guide covers day-to-day operations for Level V studies. For your personal accountability map — prerequisites, what only you sign, and training levels — see the [PI / Qualified Investigator Pathway](/kb/roles/pi-pathway).
+</Info>
+
 ## Understanding the role
 
 Level V studies use existing data or previously collected specimens. In most cases there is no participant contact, no consent process, no <Tooltip tip="A drug, medical device, or natural health product being tested or used as a reference in a clinical trial." headline="Investigational Product (IP)" cta="Full definition" href="/kb/glossary#ip">investigational product</Tooltip>, no monitoring, and no <Tooltip tip="An adverse event meeting seriousness criteria: death, life-threatening, hospitalization, disability, or congenital anomaly." headline="Serious Adverse Event (SAE)" cta="Full definition" href="/kb/glossary#sae">SAE</Tooltip> reporting. Your primary accountability areas are: ensuring the ÉFVP and consent waiver are properly obtained, authorizing and controlling data access, and maintaining REB compliance.
@@ -38,6 +42,10 @@ Most retrospective studies operate under a consent waiver, but under <Tooltip ti
 In contrast, if you are reviewing records for a small number of recent patients — say, five patients from the last year — the committee may determine it is reasonable to contact those patients and obtain consent, even though the research is retrospective.
 </Warning>
 
+The ÉFVP committee evaluates whether obtaining consent is genuinely infeasible — not merely inconvenient. Factors include: whether participants can be located, whether contacting them would reveal their health status to third parties, and whether the research could practicably be conducted with consent. A large cohort size alone does not establish infeasibility; the committee assesses the specific circumstances.
+
+**Timeline:** Allow 4–6 weeks for the ÉFVP review. The outcome is communicated to the REB, which makes the final consent waiver decision. If the ÉFVP determines consent is feasible, you must obtain consent from each participant — consider whether this changes the study design or feasibility before proceeding.
+
 If consent is required, you and your team follow the same consent process described in the [Level IV PI Guide](/kb/roles/pi-guide-iv) and the corresponding consent SOPs, even though the study remains Level V in every other respect. Confirm the consent requirement before your team begins any data extraction.
 
 ## Prerequisites
@@ -69,9 +77,15 @@ Privacy is the highest-risk area for retrospective studies. You are responsible 
 - **Data transfer agreements** are required if data is shared outside the MUHC. Cross-border transfers (data leaving Quebec or Canada) have additional requirements under Loi 25.
 - At study completion, determine the **disposition of identifiable data** — destroy the identification key, retain it for a specified period, or transfer responsibility. Document this decision.
 
+**De-identification standards:** Remove or code all direct identifiers (name, health insurance number, date of birth, address, phone number). Indirect identifiers (age, sex, diagnosis date, postal code) may remain if they cannot reasonably re-identify an individual in context. When in doubt, consult the CORD team. The identification key linking participant IDs to identifiers must be stored separately from the research database — encrypted, access-restricted, and with a documented disposition plan (destroy after analysis, or archive under specific conditions).
+
+**Data extraction:** Define the extraction plan before beginning — which variables, from which systems, for which date range. Have a second team member verify a sample (e.g., 10%) of extracted records against source for accuracy. Document the verification in the study file. If the extraction scope changes mid-study, submit an amendment before implementing the change.
+
 <Info>
 CORD can build and test REDCap databases for your study. Contact them early — database architecture decisions are costly to change after extraction begins. See [CORD](/kb/planning/cord).
 </Info>
+
+The [MUHC Data Warehouse](/kb/planning/data-warehouse) centralizes clinical and administrative data from over 18 hospital systems. For cohort identification and feasibility assessment, the Data Warehouse is often the starting point. For statistical methodology, sample size considerations, and analysis planning, consult the [Biostatistics Consulting Unit (BCU)](/kb/planning/bcu).
 
 ## Ongoing obligations
 
@@ -88,3 +102,15 @@ CORD can build and test REDCap databases for your study. Contact them early — 
 - Record end dates on the delegation log for all team members.
 - Execute the data disposition plan — destroy or archive the identification key as documented.
 - Archive the study file. The 15-year Division 5 retention requirement does not apply. Confirm retention requirements with QA based on funding source and institutional policy.
+
+---
+
+## Related resources
+
+- [PI / Qualified Investigator Pathway](/kb/roles/pi-pathway) — accountability map: prerequisites, training levels, what only you sign
+- [PI Guide — Interventional (Levels I–III)](/kb/roles/pi-guide) — if you also lead drug, device, or NHP studies
+- [PI Guide — Observational (Level IV)](/kb/roles/pi-guide-iv) — if you also lead prospective observational studies
+- [Building Your Research Team](/kb/planning/building-your-team) — team structure, delegation rules, and role requirements
+- [Privacy and Confidentiality in Research](/kb/conduct/privacy) — ÉFVP framework, consent waivers, and data handling under Quebec law
+- [Data and Research Services](/kb/planning/data-services) — Data Warehouse, BCU, and CORD overview
+- [SOP Appendices and Templates](/sops/appendices) — downloadable templates for delegation logs and study files
