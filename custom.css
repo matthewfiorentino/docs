@@ -552,7 +552,7 @@ html.dark .ri-dual-sub { color: rgba(255,255,255,.6); }
 
 .ri-dual-cells {
   display: grid;
-  grid-template-columns: repeat(8, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 8px;
 }
 .ri-dual-cell {
@@ -571,25 +571,22 @@ html.dark .ri-dual-sub { color: rgba(255,255,255,.6); }
 }
 
 .ri-dual-divider {
-  display: flex; align-items: center; justify-content: center;
-  padding: 6px 0;
-  font-size: 18px; font-weight: 800; color: #888; letter-spacing: .2em;
+  display: flex; align-items: center;
+  gap: 10px;
+  padding: 8px 18px;
+  background: #f0f0f8;
+  border-left: 3px solid #150e51;
 }
 .ri-dual-divider span {
-  display: inline-block;
-  width: 32px; height: 32px; line-height: 32px;
-  border-radius: 50%;
-  background: #fff;
-  color: #150e51;
-  text-align: center;
-  border: 2px solid #150e51;
+  font-size: 11px; font-weight: 700; letter-spacing: .1em;
+  text-transform: uppercase; color: #150e51;
 }
-html.dark .ri-dual-divider { color: rgba(255,255,255,.5); }
-html.dark .ri-dual-divider span { background: #1a1466; color: #00c4b4; border-color: #00c4b4; }
+html.dark .ri-dual-divider { background: rgba(21,14,81,.25); border-left-color: #00c4b4; }
+html.dark .ri-dual-divider span { color: #00c4b4; }
 
-/* Mobile/tablet: stack to 4 cols, then 2 cols */
-@media (max-width: 1100px) {
-  .ri-dual-cells { grid-template-columns: repeat(4, 1fr); }
+/* Mobile/tablet: stack to 2 cols, then 1 col */
+@media (max-width: 860px) {
+  .ri-dual-cells { grid-template-columns: repeat(2, 1fr); }
 }
 @media (max-width: 720px) {
   .ri-dual-lane { grid-template-columns: 1fr; gap: 8px; padding: 14px; }

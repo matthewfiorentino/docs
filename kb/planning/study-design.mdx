@@ -121,38 +121,6 @@ For study type classification, randomization, blinding, and comparator design �
     - MUHC Research Ethics Board: [reb@muhc.mcgill.ca](mailto:reb@muhc.mcgill.ca)
     - Personne mandatée Office: [personne.mandatee@muhc.mcgill.ca](mailto:personne.mandatee@muhc.mcgill.ca)
 
-    **ÉFVP and Law 25**
-
-    For studies involving identifiable health data — including retrospective chart reviews and administrative data studies — Quebec's <Tooltip tip="Required under Quebec Law 25 before communicating personal information without consent for research. Non-compliance: up to $25M or 4% of worldwide turnover." headline="ÉFVP — Privacy Impact Assessment" cta="Full definition" href="/kb/glossary#efvp">ÉFVP</Tooltip> must be initiated before submission, and the Personne mandatée Office manages this process. Non-compliance carries penalties of up to $25M or 4% of worldwide turnover under <Tooltip tip="Quebec's Act to modernize personal information protection law (in force Sept 2023). Requires ÉFVP before sharing personal data without consent." headline="Law 25 / Loi 25" cta="Full definition" href="/kb/glossary#law-25">Law 25</Tooltip>.
-
-    Use the decision tree below to determine whether your study triggers an ÉFVP — and what kind:
-
-    ```mermaid
-    %%{init: {'theme':'base','themeVariables':{'primaryColor':'#150e51','primaryTextColor':'#ffffff','primaryBorderColor':'#150e51','lineColor':'#888','fontFamily':'system-ui,sans-serif'}}}%%
-    flowchart TD
-        A(["Does your study collect or access<br/>identifiable personal health information?"]) -->|No| Z(["No ÉFVP required<br/>(de-identified or aggregate data only)"])
-        A -->|Yes| B{"Will participants give<br/>consent for research use<br/>of their data?"}
-        B -->|Yes, all participants| C{"Will any identifiable data<br/>be transferred outside Quebec<br/>or outside Canada?"}
-        B -->|No / partial<br/>(retrospective, secondary use)| D["Standard ÉFVP required<br/>before submission"]
-        C -->|No| E(["Consent covers it —<br/>standard ÉFVP not triggered<br/>(privacy review still required)"])
-        C -->|Yes| F["ÉFVP with cross-border<br/>data transfer addendum"]
-        D --> G{"Is consent unfeasible<br/>(deceased, lost to follow-up,<br/>massive cohort)?"}
-        G -->|Yes| H["Apply for consent waiver<br/>under TCPS2 Art. 5.5A<br/>+ ÉFVP"]
-        G -->|No| D
-
-        style A fill:#1a1466,color:#fff,stroke:none
-        style B fill:#1a1466,color:#fff,stroke:none
-        style C fill:#1a1466,color:#fff,stroke:none
-        style G fill:#1a1466,color:#fff,stroke:none
-        style D fill:#007a6e,color:#fff,stroke:none
-        style F fill:#ff6b6b,color:#fff,stroke:none
-        style H fill:#f59e0b,color:#fff,stroke:none
-        style Z fill:#00c4b4,color:#150e51,stroke:none
-        style E fill:#00c4b4,color:#150e51,stroke:none
-    ```
-
-    Cross-border transfers (including transfer to a US-based sponsor or CRO) are the most commonly missed trigger. If in doubt, contact the Personne mandatée Office before finalizing the protocol.
-
     The full regulatory framework — Health Canada authorization types, the ÉFVP process, and the three-framework model (TCPS2 + ICH GCP + Division 5) — is covered in [Regulations and Guidelines](/kb/planning/regulations).
 
     - Research Facilitator: [Research.facilitator@muhc.mcgill.ca](mailto:Research.facilitator@muhc.mcgill.ca)
@@ -195,6 +163,40 @@ For study type classification, randomization, blinding, and comparator design �
     - CIM — general inquiries: [clinical.research@muhc.mcgill.ca](mailto:clinical.research@muhc.mcgill.ca)
   </Accordion>
 </AccordionGroup>
+
+## Privacy impact assessment (ÉFVP)
+
+For studies involving identifiable personal health information — including retrospective chart reviews and administrative data studies — Quebec's <Tooltip tip="Required under Quebec Law 25 before communicating personal information without consent for research. Non-compliance: up to $25M or 4% of worldwide turnover." headline="ÉFVP — Privacy Impact Assessment" cta="Full definition" href="/kb/glossary#efvp">ÉFVP</Tooltip> must be initiated **before** your Nagano submission. The Personne mandatée Office manages this process. Non-compliance carries penalties of up to $25M or 4% of worldwide turnover under <Tooltip tip="Quebec's Act to modernize personal information protection law (in force Sept 2023). Requires ÉFVP before sharing personal data without consent." headline="Law 25 / Loi 25" cta="Full definition" href="/kb/glossary#law-25">Law 25</Tooltip>.
+
+Use the decision tree below to determine whether your study triggers an ÉFVP — and what type applies:
+
+```mermaid
+%%{init: {'theme':'base','themeVariables':{'primaryColor':'#150e51','primaryTextColor':'#ffffff','primaryBorderColor':'#150e51','lineColor':'#888','fontFamily':'system-ui,sans-serif'}}}%%
+flowchart TD
+    A(["Does your study collect or access<br/>identifiable personal health information?"]) -->|No| Z(["No ÉFVP required<br/>(de-identified or aggregate data only)"])
+    A -->|Yes| B{"Will participants give<br/>consent for research use<br/>of their data?"}
+    B -->|Yes, all participants| C{"Will any identifiable data<br/>be transferred outside Quebec<br/>or outside Canada?"}
+    B -->|No / partial<br/>(retrospective, secondary use)| D["Standard ÉFVP required<br/>before submission"]
+    C -->|No| E(["Consent covers it —<br/>standard ÉFVP not triggered<br/>(privacy review still required)"])
+    C -->|Yes| F["ÉFVP with cross-border<br/>data transfer addendum"]
+    D --> G{"Is consent unfeasible<br/>(deceased, lost to follow-up,<br/>massive cohort)?"}
+    G -->|Yes| H["Apply for consent waiver<br/>under TCPS2 Art. 5.5A<br/>+ ÉFVP"]
+    G -->|No| D
+
+    style A fill:#1a1466,color:#fff,stroke:none
+    style B fill:#1a1466,color:#fff,stroke:none
+    style C fill:#1a1466,color:#fff,stroke:none
+    style G fill:#1a1466,color:#fff,stroke:none
+    style D fill:#007a6e,color:#fff,stroke:none
+    style F fill:#ff6b6b,color:#fff,stroke:none
+    style H fill:#f59e0b,color:#fff,stroke:none
+    style Z fill:#00c4b4,color:#150e51,stroke:none
+    style E fill:#00c4b4,color:#150e51,stroke:none
+```
+
+Cross-border transfers (including data going to a US-based sponsor or CRO) are the most commonly missed trigger. If in doubt, contact the Personne mandatée Office before finalizing the protocol.
+
+- Personne mandatée Office (ÉFVP): [EFVP@muhc.mcgill.ca](mailto:EFVP@muhc.mcgill.ca)
 
 ## Related resources
 

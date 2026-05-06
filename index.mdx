@@ -178,7 +178,7 @@ export const ParallelTracks = () => (
         <div className="ri-track-lane-flow">
           <div className="ri-track-node ri-track-node--start">Nagano F11</div>
           <div className="ri-track-conn" />
-          <div className="ri-track-node">BCU · CORD · CIM · Pharmacy</div>
+          <div className="ri-track-node">QA · Research Agreements · DPS · Pharmacy</div>
           <div className="ri-track-conn" />
           <div className="ri-track-node ri-track-node--end">Feasibility report</div>
         </div>
@@ -260,7 +260,6 @@ export const StartHere = () => {
             { label: "Prepare your submission" },
             { label: "Submit via Nagano", end: true },
           ]} />
-          <ParallelTracks />
           <div className="ri-dcard-grid">
             <DetailCard href="/kb/planning/study-design" title="Design stage support" desc="Methodology, data management, funding, participants, regulatory, and team — specialists and contacts for each design area." />
             <DetailCard href="/kb/planning/feasibility" title="Feasibility assessment" desc="Protocol soundness, team capacity, site readiness, and the formal feasibility steps required before submission." />
@@ -290,6 +289,7 @@ export const StartHere = () => {
           <div className="ri-callout ri-callout--warn">
             A study cannot begin until the <strong>Personne mandatée</strong> grants MUHC Authorization. REB approval alone does not authorize research activities — both approvals must be in your ISF before any study procedures begin.
           </div>
+          <ParallelTracks />
           <div className="ri-further-along">
             <span className="ri-fa-label">Already further along?</span>
             <a href="/kb/submission/tracking-responding" className="ri-fa-link">Track your submission →</a>
