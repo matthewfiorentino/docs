@@ -460,8 +460,17 @@ html.dark .ri-pb-label { color: #fff; }
 html.dark .ri-pb-desc { color: rgba(255,255,255,.5); }
 .ri-pb-arrow { font-size: 13px; font-weight: 600; color: var(--ri-accent); margin-top: 14px; display: inline-block; }
 
+/* Spacing: pathway banner when directly inside a role panel (not inside ri-pi-top-row) */
+.ri-role-panel > .ri-pathway-banner { margin-top: 1.75rem; }
+
+/* Study arrangement eyebrow + subtitle (PI panel, above stype-grid) */
+.ri-stype-header { margin-top: 2rem; margin-bottom: 0.75rem; }
+.ri-stype-eyebrow { font-size: 10px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--ri-accent); margin-bottom: 4px; }
+.ri-stype-subtitle { font-size: 13px; color: #666; line-height: 1.5; }
+html.dark .ri-stype-subtitle { color: rgba(255,255,255,.5); }
+
 /* Study type conditional tiles (PI panel) */
-.ri-stype-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 1.75rem; margin-bottom: 1.25rem; }
+.ri-stype-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 0.75rem; margin-bottom: 1.25rem; }
 .ri-stype-tile { padding: 14px 16px; border: 1px solid rgba(0,0,0,.08); border-radius: 10px; background: #fff; display: flex; flex-direction: column; gap: 6px; }
 html.dark .ri-stype-tile { background: rgba(255,255,255,.04); border-color: rgba(255,255,255,.08); }
 .ri-stype-title { font-size: 13px; font-weight: 700; color: var(--ri-heading); }

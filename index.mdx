@@ -160,10 +160,10 @@ export const DetailCard = ({ href, title, desc }) => (
 export const StartHere = () => {
   const [role, setRole] = useState('pi');
   const roles = [
-    { id: 'pi',        title: 'PI / Investigator',    sub: 'Planning or launching a study',      img: '/images/roles/pi.jpg' },
-    { id: 'crc',       title: 'Coordinator / CRC',     sub: 'Joining or managing a study team',   img: '/images/roles/crc.jpg' },
+    { id: 'pi',        title: 'PI / Investigator',    sub: 'Planning or launching a study',      img: '/images/roles/crc.jpg' },
+    { id: 'crc',       title: 'Coordinator / CRC',     sub: 'Joining or managing a study team',   img: '/images/roles/new.jpg' },
     { id: 'nurse',     title: 'Research Nurse',         sub: 'Licensed nurse on a study team',     img: '/images/roles/nurse-bp.jpg' },
-    { id: 'trainee',   title: 'Research Trainee',       sub: 'Student or trainee on a study team', img: '/images/roles/new.jpg' },
+    { id: 'trainee',   title: 'Research Trainee',       sub: 'Student or trainee on a study team', img: '/images/roles/pi.jpg' },
     { id: 'volunteer', title: 'Research Volunteer',     sub: 'Volunteering on a study',            img: '/images/roles/new.jpg' },
     { id: 'observer',  title: 'Observer',               sub: 'Observing research activities',      img: '/images/roles/new.jpg' },
   ];
@@ -227,6 +227,10 @@ export const StartHere = () => {
           <div className="ri-callout ri-callout--warn">
             A study cannot begin until the <strong>Personne mandatée</strong> grants MUHC Authorization. REB approval alone does not authorize research activities — both approvals must be in your ISF before any study procedures begin.
           </div>
+          <div className="ri-stype-header">
+            <div className="ri-stype-eyebrow">Study arrangement</div>
+            <div className="ri-stype-subtitle">Your responsibilities and workflow vary depending on how your study is structured.</div>
+          </div>
           <div className="ri-stype-grid">
             <div className="ri-stype-tile">
               <div className="ri-stype-title">Investigator-initiated (IIR)</div>
@@ -272,12 +276,9 @@ export const StartHere = () => {
             No team member may perform any study task before they appear on the Task Delegation Log, their training is documented, and the QI/PI has countersigned their entry.
           </div>
           <div className="ri-dcard-grid">
-            <DetailCard href="/training/compliance-requirements" title="Training requirements by study type" desc="Drug trials (Level I) require GCP and Division 5; device trials (Level II) require GCP and ISO 14155. Observational and retrospective studies have separate requirements." />
-            <DetailCard href="/kb/conduct/site-setup" title="Task Delegation Log and site setup" desc="How the TDL works, what documentation is required before your first study task, and the coordinator's role in keeping it current." />
-            <DetailCard href="/kb/roles/crc-guide" title="CRC operational guide" desc="Study management, data collection, sponsor communication, and regulatory responsibilities across drug, device, and observational studies." />
-            <DetailCard href="/kb/roles/crc-pathway" title="Full CRC onboarding pathway" desc="Role-specific onboarding steps, competency domains, and operational guidance organized by study type and level." />
-            <DetailCard href="/kb/conduct/isf" title="Investigator Site File (ISF)" desc="Essential documents your site must maintain throughout the study — what goes in the ISF, coordinator responsibilities, and inspection readiness." />
-            <DetailCard href="/kb/conduct/reportable-events" title="Protocol deviations and events" desc="How to identify, classify, and report protocol deviations, adverse events, and other reportable events — timelines and CAPA requirements." />
+            <DetailCard href="/kb/roles/crc-guide" title="CRC Guide — Interventional Studies (Levels I–III)" desc="Operational reference for drug trials, medical device studies, and natural health products. Stage-by-stage procedures and domain-specific guidance." />
+            <DetailCard href="/kb/roles/crc-guide-iv" title="CRC Guide — Prospective Observational (Level IV)" desc="Consent, recruitment, data management, privacy, REB processes, and documentation for prospective observational and non-invasive intervention studies." />
+            <DetailCard href="/kb/roles/crc-guide-v" title="CRC Guide — Retrospective and Chart Review (Level V)" desc="REB submission, data extraction, privacy compliance, and documentation for retrospective chart review and anonymized biobank studies." />
           </div>
         </div>
       )}
@@ -298,9 +299,7 @@ export const StartHere = () => {
             { label: "Nursing study tasks begin", end: true },
           ]} />
           <div className="ri-dcard-grid">
-            <DetailCard href="/kb/roles/nurse-pathway" title="OIIQ obligations and delegation scope" desc="Reserved acts, CPR, specialized competencies, and nursing-specific guidance under the Code des professions." />
-            <DetailCard href="/kb/roles/nurse-guide" title="Operational nursing guide" desc="Study procedures, participant visits, data collection, and nursing-specific responsibilities across drug, device, and observational studies." />
-            <DetailCard href="/training/compliance-requirements" title="Training requirements by study level" desc="Requirements by study type — drug, device, observational." />
+            <DetailCard href="/kb/roles/nurse-guide" title="Research Nurse operational guide" desc="Study procedures, participant visits, data collection, reserved acts under the Code des professions, and nursing-specific responsibilities across drug, device, and observational studies." />
           </div>
         </div>
       )}
@@ -314,10 +313,9 @@ export const StartHere = () => {
             <div className="ri-pb-arrow">View guide →</div>
           </a>
           <div className="ri-dcard-grid">
-            <DetailCard href="/kb/roles/onboarding-trainees" title="Joining as a trainee" desc="Students and research trainees — eligibility, required affiliation agreements, and what tasks can and cannot be delegated." />
-            <DetailCard href="/kb/planning/hiring-hr-support" title="Hiring and HR support" desc="How affiliation agreements and trainee onboarding are processed through the HR Service Centre." />
-            <DetailCard href="/training/compliance-requirements" title="Training requirements" desc="SOP Reader and study-level training — what trainees must complete before appearing on the Task Delegation Log." />
-            <DetailCard href="/kb/clinical-research-101" title="Clinical Research 101" desc="Frameworks, roles, regulatory history from Nuremberg to ICH GCP, and Quebec-specific obligations." />
+            <DetailCard href="/kb/clinical-research-101" title="Clinical Research 101" desc="Frameworks, roles, regulatory history from Nuremberg to ICH GCP, and Quebec-specific obligations — the starting point for anyone new to clinical research." />
+            <DetailCard href="/kb/roles/onboarding-trainees" title="Joining as a trainee" desc="Eligibility, affiliation agreement process, training obligations, and the scope of tasks that can and cannot be delegated to trainees." />
+            <DetailCard href="/kb/glossary" title="Glossary" desc="Terms, acronyms, and definitions used across the Hub." />
           </div>
         </div>
       )}
@@ -331,10 +329,9 @@ export const StartHere = () => {
             <div className="ri-pb-arrow">View guide →</div>
           </a>
           <div className="ri-dcard-grid">
-            <DetailCard href="/kb/roles/onboarding-volunteers" title="Joining as a volunteer" desc="Research volunteer requirements, scope limitations, confidentiality obligations, and the volunteer agreement processed through the HR Service Centre." />
-            <DetailCard href="/kb/planning/hiring-hr-support" title="Hiring and HR support" desc="Volunteer agreements are processed through the HR Service Centre — what to submit and what timelines to expect." />
-            <DetailCard href="/training/compliance-requirements" title="Training requirements" desc="Minimum training obligations for research volunteers before study tasks can be delegated." />
-            <DetailCard href="/kb/clinical-research-101" title="Clinical Research 101" desc="Frameworks, roles, regulatory history from Nuremberg to ICH GCP, and Quebec-specific obligations." />
+            <DetailCard href="/kb/clinical-research-101" title="Clinical Research 101" desc="Frameworks, roles, regulatory history from Nuremberg to ICH GCP, and Quebec-specific obligations — the starting point for anyone new to clinical research." />
+            <DetailCard href="/kb/roles/onboarding-volunteers" title="Joining as a volunteer" desc="Volunteer agreement requirements, scope limitations, confidentiality obligations, and the process for becoming affiliated with the RI-MUHC as a volunteer." />
+            <DetailCard href="/kb/glossary" title="Glossary" desc="Terms, acronyms, and definitions used across the Hub." />
           </div>
         </div>
       )}
@@ -348,10 +345,9 @@ export const StartHere = () => {
             <div className="ri-pb-arrow">View guide →</div>
           </a>
           <div className="ri-dcard-grid">
-            <DetailCard href="/kb/roles/onboarding-observers" title="Joining as an observer" desc="Observer agreements, access limitations, what observers may and may not do on a study, and how the observer role differs from study team membership." />
-            <DetailCard href="/kb/planning/hiring-hr-support" title="Hiring and HR support" desc="Observer agreements are processed through the HR Service Centre — requirements and process." />
-            <DetailCard href="/kb/clinical-research-101" title="Clinical Research 101" desc="Frameworks, roles, regulatory history from Nuremberg to ICH GCP, and Quebec-specific obligations." />
-            <DetailCard href="/kb/glossary" title="Glossary" desc="Terms, acronyms, and definitions used across the Hub — useful orientation for those new to clinical research." />
+            <DetailCard href="/kb/clinical-research-101" title="Clinical Research 101" desc="Frameworks, roles, regulatory history from Nuremberg to ICH GCP, and Quebec-specific obligations — the starting point for anyone new to clinical research." />
+            <DetailCard href="/kb/roles/onboarding-observers" title="Joining as an observer" desc="Observer agreement requirements, access limitations, what observers may and may not do during study visits, and how the observer role differs from study team membership." />
+            <DetailCard href="/kb/glossary" title="Glossary" desc="Terms, acronyms, and definitions used across the Hub." />
           </div>
         </div>
       )}
