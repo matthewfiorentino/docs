@@ -23,34 +23,7 @@ Submitting a study initiates parallel reviews that go beyond ethics. The Nagano 
   Not all reviews apply to every study — the F11 form questions are designed to trigger only the reviews relevant to your study type. Answer the F11 accurately. Underreporting which services are needed delays authorization when the gap is discovered during feasibility review, not at the time of filing.
 </Note>
 
-### Typical timing of parallel review tracks
-
-The reviews run concurrently, not sequentially. The chart below shows representative durations — actual timing depends on study complexity, completeness of submission, and any required revisions.
-
-```mermaid
-%%{init: {'theme':'base','themeVariables':{'fontFamily':'system-ui,sans-serif'}}}%%
-gantt
-    title Submission to MUHC Authorization — concurrent review tracks
-    dateFormat  X
-    axisFormat  Day %s
-    section REB review
-    Initial REB review            :rev1, 0, 30
-    QI/PI revisions               :rev2, after rev1, 14
-    REB approval letter           :milestone, after rev2, 0
-    section Institutional feasibility
-    QA + DPS + Pharmacy + Lab     :feas1, 0, 21
-    Feasibility report assembled  :milestone, after feas1, 0
-    section Health Canada (drug, device, NHP)
-    CTA / ITA / NHP CTA submission :hc1, 0, 1
-    30-day Health Canada review   :hc2, 0, 30
-    NOL or ITA decision           :milestone, after hc2, 0
-    section Authorization gate
-    All approvals received        :milestone, 50, 0
-    Personne mandatée signs       :auth, 50, 5
-    MUHC Authorization granted    :milestone, after auth, 0
-```
-
-The Health Canada track is **not** sequential after REB approval. It must start at the same time you submit Nagano F11 — otherwise the 30-day HC clock runs after REB review is already done, delaying activation by weeks.
+The Health Canada track is **not** sequential after REB approval. It must start at the same time you submit Nagano F11 — otherwise the 30-day HC clock runs after REB review is already done, delaying activation by weeks. For an overview of how all three review streams run concurrently, see [The Study Review Process](/kb/submission/study-review).
 
 ## Pre-submission checklist
 

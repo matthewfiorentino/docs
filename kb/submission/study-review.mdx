@@ -151,6 +151,35 @@ The Personne mandatée reviews all completed evaluation streams — scientific, 
 - All applicable Health Canada approvals (<Tooltip tip="Application to Health Canada for authorization to conduct a drug trial under Division 5 of the Food and Drug Regulations." headline="Clinical Trial Application (CTA)" cta="Full definition" href="/kb/glossary#cta">CTA</Tooltip>/<Tooltip tip="Letter from Health Canada confirming a CTA is satisfactory and authorizing the sponsor to proceed." headline="No Objection Letter (NOL)" cta="Full definition" href="/kb/glossary#nol">NOL</Tooltip> or <Tooltip tip="Health Canada authorization to conduct a clinical investigation of a medical device. The device equivalent of a CTA." headline="Investigational Testing Authorization (ITA)" cta="Full definition" href="/kb/glossary#ita">ITA</Tooltip>) for drug or device trials
 - Confirmed Human Research Privileges or Researcher Status and training compliance for all Task Delegation Log members
 
+### Typical timing of parallel review tracks
+
+The reviews run concurrently, not sequentially. The chart below shows representative durations — actual timing depends on study complexity, completeness of submission, and any required revisions.
+
+<Note>
+  Durations shown are illustrative only. The only defined timeline is Health Canada's 30-day default review period. REB and feasibility durations vary by study and are not guaranteed.
+</Note>
+
+```mermaid
+%%{init: {'theme':'base','themeVariables':{'fontFamily':'system-ui,sans-serif'}}}%%
+gantt
+    title Concurrent review tracks — illustrative only
+    dateFormat YYYY-MM-DD
+    axisFormat %b %e
+    section REB review
+    Scientific + ethics review     :rev1, 2024-01-01, 45d
+    Revisions if required          :rev2, after rev1, 14d
+    REB approval letter            :milestone, after rev2, 0d
+    section Institutional feasibility
+    QA · Agreements · DPS · Pharmacy :feas1, 2024-01-01, 21d
+    Feasibility report assembled   :milestone, after feas1, 0d
+    section Health Canada (drug · device · NHP)
+    30-day review                  :hc1, 2024-01-01, 30d
+    NOL or ITA decision            :milestone, after hc1, 0d
+    section Authorization
+    Personne mandatée reviews      :auth, after rev2, 5d
+    MUHC Authorization granted     :milestone, after auth, 0d
+```
+
 ## Health Canada approval (drug and device trials)
 
 Drug and device trials require regulatory approval from Health Canada in addition to REB and institutional reviews. This is not an alternative to REB review — all three tracks must be completed before MUHC Authorization is granted.
