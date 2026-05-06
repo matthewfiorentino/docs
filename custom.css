@@ -212,6 +212,12 @@ body:has(.ri-text-hero) #page-title + p {
     display: none !important;
 }
 
+body:has(.ri-text-hero) #body-content,
+body:has(.ri-text-hero) main {
+    min-height: 0 !important;
+    height: auto !important;
+}
+
 .ri-hero-bleed {
     /* Extend to content container edges (cancels Mintlify's ~2rem padding)
        without crossing into the sidebar — use % not vw */
