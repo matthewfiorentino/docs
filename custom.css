@@ -461,12 +461,12 @@ html.dark .ri-pb-desc { color: rgba(255,255,255,.5); }
 .ri-pb-arrow { font-size: 13px; font-weight: 600; color: var(--ri-accent); margin-top: 14px; display: inline-block; }
 
 /* Spacing: pathway banner when directly inside a role panel (not inside ri-pi-top-row) */
-.ri-role-panel > .ri-pathway-banner { margin-top: 1.75rem; }
+.ri-role-panel > .ri-pathway-banner { margin-top: 1.75rem; margin-bottom: 1.5rem; }
 
 /* Study arrangement eyebrow + subtitle (PI panel, above stype-grid) */
 .ri-stype-header { margin-top: 2rem; margin-bottom: 0.75rem; }
-.ri-stype-eyebrow { font-size: 10px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--ri-accent); margin-bottom: 4px; }
-.ri-stype-subtitle { font-size: 13px; color: #666; line-height: 1.5; }
+.ri-stype-eyebrow { font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--ri-accent); margin-bottom: 4px; }
+.ri-stype-subtitle { font-size: 16px; color: #555; line-height: 1.5; }
 html.dark .ri-stype-subtitle { color: rgba(255,255,255,.5); }
 
 /* Study type conditional tiles (PI panel) */
