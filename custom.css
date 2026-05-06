@@ -435,7 +435,7 @@ html.dark .ri-pi-row-arrow { color: rgba(255,255,255,.3); }
     background: #150e51; text-decoration: none;
     transition: background .15s, box-shadow .15s;
 }
-.ri-intake-entry:hover { background: #1c1566; box-shadow: 0 0 0 2px rgba(0,196,180,.35); }
+.ri-intake-entry:hover { background: #1c1566; }
 .ri-ie-label { font-size: 14px; font-weight: 700; color: #fff; margin-bottom: 6px; }
 .ri-ie-desc { font-size: 13px; line-height: 1.55; color: rgba(255,255,255,.72); flex: 1; }
 .ri-ie-link {
