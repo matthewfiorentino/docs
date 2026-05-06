@@ -508,6 +508,98 @@ html.dark .ri-tracks-converge-node { background: var(--ri-accent-bright); color:
   .ri-track-conn { width: 18px; }
 }
 
+/* Sponsor-Investigator dual obligations swim lane */
+.ri-dual-obligations {
+  margin: 1.5rem 0 2rem;
+  padding: 24px;
+  border: 1px solid rgba(0,0,0,.08);
+  border-radius: 12px;
+  background: #fafafa;
+}
+html.dark .ri-dual-obligations {
+  border-color: rgba(255,255,255,.1);
+  background: rgba(255,255,255,.02);
+}
+.ri-dual-eyebrow {
+  font-size: 11px; font-weight: 700; letter-spacing: .12em;
+  text-transform: uppercase; color: #007a6e; margin-bottom: 4px;
+}
+.ri-dual-title { font-size: 18px; font-weight: 700; color: #150e51; margin-bottom: 4px; }
+html.dark .ri-dual-title { color: #fff; }
+.ri-dual-sub { font-size: 13px; line-height: 1.55; color: #666; margin-bottom: 18px; max-width: 780px; }
+html.dark .ri-dual-sub { color: rgba(255,255,255,.6); }
+
+.ri-dual-grid { display: flex; flex-direction: column; gap: 0; }
+
+.ri-dual-lane {
+  display: grid;
+  grid-template-columns: 130px 1fr;
+  gap: 14px;
+  padding: 16px 18px;
+  border-radius: 10px;
+  align-items: stretch;
+}
+.ri-dual-lane--sponsor { background: #150e51; color: #fff; }
+.ri-dual-lane--qi      { background: #007a6e; color: #fff; }
+
+.ri-dual-lane-label {
+  font-size: 11px; font-weight: 800; letter-spacing: .14em;
+  text-transform: uppercase; opacity: .85;
+  display: flex; align-items: center;
+}
+.ri-dual-lane--sponsor .ri-dual-lane-label { color: #00c4b4; }
+.ri-dual-lane--qi .ri-dual-lane-label { color: rgba(255,255,255,.85); }
+
+.ri-dual-cells {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  gap: 8px;
+}
+.ri-dual-cell {
+  background: rgba(255,255,255,.08);
+  border: 1px solid rgba(255,255,255,.12);
+  border-radius: 6px;
+  padding: 8px 9px;
+  font-size: 11.5px;
+  line-height: 1.4;
+  color: rgba(255,255,255,.92);
+}
+.ri-dual-cell-head {
+  font-size: 9.5px; font-weight: 700; letter-spacing: .06em;
+  text-transform: uppercase; color: rgba(255,255,255,.55);
+  margin-bottom: 3px;
+}
+
+.ri-dual-divider {
+  display: flex; align-items: center; justify-content: center;
+  padding: 6px 0;
+  font-size: 18px; font-weight: 800; color: #888; letter-spacing: .2em;
+}
+.ri-dual-divider span {
+  display: inline-block;
+  width: 32px; height: 32px; line-height: 32px;
+  border-radius: 50%;
+  background: #fff;
+  color: #150e51;
+  text-align: center;
+  border: 2px solid #150e51;
+}
+html.dark .ri-dual-divider { color: rgba(255,255,255,.5); }
+html.dark .ri-dual-divider span { background: #1a1466; color: #00c4b4; border-color: #00c4b4; }
+
+/* Mobile/tablet: stack to 4 cols, then 2 cols */
+@media (max-width: 1100px) {
+  .ri-dual-cells { grid-template-columns: repeat(4, 1fr); }
+}
+@media (max-width: 720px) {
+  .ri-dual-lane { grid-template-columns: 1fr; gap: 8px; padding: 14px; }
+  .ri-dual-cells { grid-template-columns: repeat(2, 1fr); }
+  .ri-dual-cell { font-size: 12px; padding: 8px; }
+}
+@media (max-width: 420px) {
+  .ri-dual-cells { grid-template-columns: 1fr; }
+}
+
 /* Callout boxes (replaces <Note> and <Warning> inside JSX panels) */
 .ri-callout { padding: 16px; border-radius: 8px; font-size: 14px; line-height: 1.6; margin-bottom: 1.5rem; }
 .ri-callout--note { background: #eff9f7; color: #1d4a44; }
