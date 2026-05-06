@@ -25,6 +25,42 @@ All other RSSS institutions where the study will be conducted are **participatin
 Ethics approval from the lead site's REB covers all RSSS sites ethically, but each site must still complete its own institutional feasibility review and receive its own Authorization from its Personne mandatée. A participating site cannot begin any research activity — including screening and consent — until that local authorization is in hand.
 </Warning>
 
+```mermaid
+%%{init: {'theme':'base','themeVariables':{'primaryColor':'#150e51','primaryTextColor':'#ffffff','primaryBorderColor':'#150e51','lineColor':'#888','fontFamily':'system-ui,sans-serif'}}}%%
+flowchart TD
+    A(["Multi-centric study<br/>2+ RSSS institutions"]) --> B["Lead site rREB<br/>conducts single ethics review"]
+    B --> C{"REB approval<br/>granted?"}
+    C -- "Yes" --> D["Approval recognized by<br/>all RSSS participating sites"]
+    C -- "No" --> X["Revisions / resubmission"]
+    X --> B
+
+    D --> E["Lead site:<br/>Personne mandatée<br/>grants MUHC Authorization"]
+    D --> F["Participating site 1:<br/>local feasibility review<br/>+ Personne mandatée authorization"]
+    D --> G["Participating site 2:<br/>local feasibility review<br/>+ Personne mandatée authorization"]
+    D --> H["Participating site 3 …"]
+
+    E --> I(["Lead site<br/>can begin"])
+    F --> J(["Site 1<br/>can begin"])
+    G --> K(["Site 2<br/>can begin"])
+    H --> L(["Site 3<br/>can begin"])
+
+    style A fill:#150e51,color:#fff,stroke:none
+    style B fill:#007a6e,color:#fff,stroke:none
+    style C fill:#1a1466,color:#fff,stroke:none
+    style D fill:#007a6e,color:#fff,stroke:none
+    style X fill:#ff6b6b,color:#fff,stroke:none
+    style E fill:#007a6e,color:#fff,stroke:none
+    style F fill:#007a6e,color:#fff,stroke:none
+    style G fill:#007a6e,color:#fff,stroke:none
+    style H fill:#007a6e,color:#fff,stroke:none
+    style I fill:#00c4b4,color:#150e51,stroke:none
+    style J fill:#00c4b4,color:#150e51,stroke:none
+    style K fill:#00c4b4,color:#150e51,stroke:none
+    style L fill:#00c4b4,color:#150e51,stroke:none
+```
+
+The diagram captures the core principle: **one ethics review, multiple authorizations**. Each site goes through its own institutional feasibility review and receives its own Authorization from its own Personne mandatée before opening.
+
 ## What this does not cover
 
 The MSSS Framework applies exclusively to studies with two or more RSSS public institutions within Quebec. It does not apply when a study involves one Quebec site and sites in other provinces or countries. In that scenario, each site submits to its own institution's REB independently. There is no pan-Canadian single-REB mechanism for multi-site studies that cross provincial borders in the same way.
