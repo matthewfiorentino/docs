@@ -475,19 +475,6 @@ html.dark .ri-dual-sub { color: rgba(255,255,255,.6); }
   margin-bottom: 3px;
 }
 
-.ri-dual-divider {
-  display: flex; align-items: center;
-  gap: 10px;
-  padding: 8px 18px;
-  background: #f0f0f8;
-  border-left: 3px solid #150e51;
-}
-.ri-dual-divider span {
-  font-size: 11px; font-weight: 700; letter-spacing: .1em;
-  text-transform: uppercase; color: #150e51;
-}
-html.dark .ri-dual-divider { background: rgba(21,14,81,.25); border-left-color: #00c4b4; }
-html.dark .ri-dual-divider span { color: #00c4b4; }
 
 /* Mobile/tablet: stack to 2 cols, then 1 col */
 @media (max-width: 860px) {
