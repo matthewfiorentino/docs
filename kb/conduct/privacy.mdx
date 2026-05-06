@@ -37,6 +37,35 @@ An EFVP is required in any of the following situations:
 
 The EFVP is completed in French, signed by the <Tooltip tip="The physician responsible to the sponsor for the conduct of a clinical trial at the site. One QI per study per Canadian site." headline="Qualified Investigator (QI)" cta="Full definition" href="/kb/glossary#qi">QI</Tooltip>/PI, and submitted via <Tooltip tip="The RI-MUHC's electronic study submission and management platform. All studies requiring MUHC Authorization are submitted through Nagano." headline="Nagano (RI-MUHC)" cta="Full definition" href="/kb/glossary#nagano">Nagano</Tooltip> as part of the initial study submission — not as a separate process afterward. In Nagano it is submitted as Form F17 (pre-screening access before consent) or Form F18 (access without consent). It is reviewed by the MUHC Access to Information Officer, who forwards it to the CAI. For multi-centric studies, the lead site submits one EFVP for the entire project; participating sites do not submit separately.
 
+Use the decision tree below to determine whether your study triggers an EFVP — and what type applies:
+
+```mermaid
+%%{init: {'theme':'base','themeVariables':{'primaryColor':'#150e51','primaryTextColor':'#ffffff','primaryBorderColor':'#150e51','lineColor':'#888','fontFamily':'system-ui,sans-serif'}}}%%
+flowchart TD
+    A(["Does your study collect or access\nidentifiable personal health information?"]) -->|No| Z(["No EFVP required\n(de-identified or aggregate data only)"])
+    A -->|Yes| B{"Will participants consent\nto research use of their data?"}
+    B -->|Yes - all participants| C{"Will identifiable data be transferred\noutside Quebec or Canada?"}
+    B -->|No or partial - retrospective\nor secondary use| D["Standard EFVP required\nbefore submission"]
+    C -->|No| E(["No EFVP required\nconsent is the legal basis"])
+    C -->|Yes| F(["EFVP with cross-border\ndata transfer addendum"])
+    D --> G{"Is obtaining consent\nunfeasible?"}
+    G -->|Yes - deceased, lost to\nfollow-up, massive cohort| H(["Consent waiver under\nTCPS2 Art. 5.5A + EFVP"])
+    G -->|No - consent is feasible| I(["Obtain consent\nthen proceed"])
+
+    style A fill:#1a1466,color:#fff,stroke:none
+    style B fill:#1a1466,color:#fff,stroke:none
+    style C fill:#1a1466,color:#fff,stroke:none
+    style G fill:#1a1466,color:#fff,stroke:none
+    style D fill:#007a6e,color:#fff,stroke:none
+    style F fill:#ff6b6b,color:#fff,stroke:none
+    style H fill:#f59e0b,color:#fff,stroke:none
+    style Z fill:#00c4b4,color:#150e51,stroke:none
+    style E fill:#00c4b4,color:#150e51,stroke:none
+    style I fill:#00c4b4,color:#150e51,stroke:none
+```
+
+Cross-border transfers (including data going to a US-based sponsor or CRO) are the most commonly missed trigger. If in doubt, contact the Personne mandatée Office before finalizing the protocol: [EFVP@muhc.mcgill.ca](mailto:EFVP@muhc.mcgill.ca)
+
 <Warning>
 **The EFVP is a prerequisite, not a retrospective justification.** Accessing OACIS to identify potential participants before the EFVP is approved is a privacy violation under Quebec law, regardless of the intent. If pre-screening access is part of your study design, submit the EFVP with the initial F11 and wait for authorization before accessing records. Contact efvp@muhc.mcgill.ca with questions about scope.
 </Warning>

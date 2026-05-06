@@ -121,7 +121,7 @@ For study type classification, randomization, blinding, and comparator design �
     - MUHC Research Ethics Board: [reb@muhc.mcgill.ca](mailto:reb@muhc.mcgill.ca)
     - Personne mandatée Office: [personne.mandatee@muhc.mcgill.ca](mailto:personne.mandatee@muhc.mcgill.ca)
 
-    The full regulatory framework — Health Canada authorization types, the ÉFVP process, and the three-framework model (TCPS2 + ICH GCP + Division 5) — is covered in [Regulations and Guidelines](/kb/planning/regulations).
+    The full regulatory framework — Health Canada authorization types, the ÉFVP process, and the three-framework model (TCPS2 + ICH GCP + Division 5) — is covered in [Regulations and Guidelines](/kb/planning/regulations). For the ÉFVP decision tree and full privacy obligations, see [Privacy and Confidentiality in Quebec](/kb/conduct/privacy).
 
     - Research Facilitator: [Research.facilitator@muhc.mcgill.ca](mailto:Research.facilitator@muhc.mcgill.ca)
   </Accordion>
@@ -164,43 +164,9 @@ For study type classification, randomization, blinding, and comparator design �
   </Accordion>
 </AccordionGroup>
 
-## Privacy impact assessment (ÉFVP)
-
-For studies involving identifiable personal health information — including retrospective chart reviews and administrative data studies — Quebec's <Tooltip tip="Required under Quebec Law 25 before communicating personal information without consent for research. Non-compliance: up to $25M or 4% of worldwide turnover." headline="ÉFVP — Privacy Impact Assessment" cta="Full definition" href="/kb/glossary#efvp">ÉFVP</Tooltip> must be initiated **before** your Nagano submission. The Personne mandatée Office manages this process. Non-compliance carries penalties of up to $25M or 4% of worldwide turnover under <Tooltip tip="Quebec's Act to modernize personal information protection law (in force Sept 2023). Requires ÉFVP before sharing personal data without consent." headline="Law 25 / Loi 25" cta="Full definition" href="/kb/glossary#law-25">Law 25</Tooltip>.
-
-Use the decision tree below to determine whether your study triggers an ÉFVP — and what type applies:
-
-```mermaid
-%%{init: {'theme':'base','themeVariables':{'primaryColor':'#150e51','primaryTextColor':'#ffffff','primaryBorderColor':'#150e51','lineColor':'#888','fontFamily':'system-ui,sans-serif'}}}%%
-flowchart TD
-    A(["Does your study collect or access\nidentifiable personal health information?"]) -->|No| Z(["No EFVP required\n(de-identified or aggregate data only)"])
-    A -->|Yes| B{"Will participants consent\nto research use of their data?"}
-    B -->|Yes - all participants| C{"Will identifiable data be transferred\noutside Quebec or Canada?"}
-    B -->|No or partial - retrospective\nor secondary use| D["Standard EFVP required\nbefore submission"]
-    C -->|No| E(["No EFVP required\nconsent is the legal basis"])
-    C -->|Yes| F(["EFVP with cross-border\ndata transfer addendum"])
-    D --> G{"Is obtaining consent\nunfeasible?"}
-    G -->|Yes - deceased, lost to\nfollow-up, massive cohort| H(["Consent waiver under\nTCPS2 Art. 5.5A + EFVP"])
-    G -->|No - consent is feasible| I(["Obtain consent\nthen proceed"])
-
-    style A fill:#1a1466,color:#fff,stroke:none
-    style B fill:#1a1466,color:#fff,stroke:none
-    style C fill:#1a1466,color:#fff,stroke:none
-    style G fill:#1a1466,color:#fff,stroke:none
-    style D fill:#007a6e,color:#fff,stroke:none
-    style F fill:#ff6b6b,color:#fff,stroke:none
-    style H fill:#f59e0b,color:#fff,stroke:none
-    style Z fill:#00c4b4,color:#150e51,stroke:none
-    style E fill:#00c4b4,color:#150e51,stroke:none
-    style I fill:#00c4b4,color:#150e51,stroke:none
-```
-
-Cross-border transfers (including data going to a US-based sponsor or CRO) are the most commonly missed trigger. If in doubt, contact the Personne mandatée Office before finalizing the protocol.
-
-- Personne mandatée Office (ÉFVP): [EFVP@muhc.mcgill.ca](mailto:EFVP@muhc.mcgill.ca)
-
 ## Related resources
 
+- [Privacy and Confidentiality in Quebec](/kb/conduct/privacy) — EFVP decision tree, Law 25, confidentiality agreements, and data handling requirements
 - [Trial Design and Study Types](/kb/trial-design) — study type classification, randomization, blinding, and comparators
 - [Biostatistics Consulting Unit](/kb/planning/bcu) — services, fees, and iLab request process
 - [CORD — Research Data Management](/kb/planning/cord) — REDCap builds, CRF support, data management
