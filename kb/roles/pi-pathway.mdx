@@ -23,25 +23,69 @@ Each guide covers day-to-day operations for a specific study type — what happe
 
 ### Study lifecycle at a glance
 
-The phases below trace the path from initial credentials through archiving. Each maps to sections on this page and in the guides above.
+The phases below trace the path from study initiation through archiving. Each maps to sections on this page and in the guides above.
 
 ```mermaid
 flowchart TD
-    A([Prerequisites\nPrivileges + Training]) --> B([Submission\nNagano F11\n+ QIU]) --> C([Activation\nSIV + TDL]) --> D([Consent &\nEnrollment]) --> E([Conduct &\nSafety oversight]) --> F([Monitoring\nresponse]) --> G([Close-Out\nCOV + ISF]) --> H([Archiving\n15 years])
+    A([Study origin\nPI-initiated or\nSponsor-initiated]) --> B([Design &\nFeasibility]) --> C([Protocol\nBudget & Contracts]) --> D([Prerequisites\nPrivileges + Training]) --> E([Submission\nNagano F11\n+ QIU]) --> F([Activation\nSIV + TDL]) --> G([Consent &\nEnrollment]) --> H([Conduct &\nSafety oversight]) --> I([Monitoring\nresponse]) --> J([Close-Out &\nArchiving])
 
     style A fill:#150e51,color:#fff,stroke:none
-    style B fill:#007a6e,color:#fff,stroke:none
-    style C fill:#007a6e,color:#fff,stroke:none
-    style D fill:#007a6e,color:#fff,stroke:none
+    style B fill:#150e51,color:#fff,stroke:none
+    style C fill:#1a1466,color:#fff,stroke:none
+    style D fill:#1a1466,color:#fff,stroke:none
     style E fill:#007a6e,color:#fff,stroke:none
     style F fill:#007a6e,color:#fff,stroke:none
-    style G fill:#00c4b4,color:#fff,stroke:none
-    style H fill:#00c4b4,color:#fff,stroke:none
+    style G fill:#007a6e,color:#fff,stroke:none
+    style H fill:#007a6e,color:#fff,stroke:none
+    style I fill:#007a6e,color:#fff,stroke:none
+    style J fill:#00c4b4,color:#fff,stroke:none
 ```
+
+## How your study begins
+
+Studies at the RI-MUHC start from one of two places. How yours originates determines who owns the protocol, who holds regulatory responsibility, and what your first steps are.
+
+<Tabs>
+  <Tab title="PI-initiated study">
+    You conceive the research question, develop the protocol, and lead the regulatory and funding strategy. Your team manages all study activities. If the study involves an investigational product (drug, device, NHP), you may be the **Sponsor-Investigator** — holding both QI and Sponsor obligations under Health Canada. Confirm with QA before committing to that role.
+
+    **First steps:**
+    - Frame the research question — engage the [Biostatistics Consulting Unit (BCU)](/kb/planning/bcu) for methodology and sample size, and [CORD](/kb/planning/cord) for data capture planning, before writing the protocol
+    - Confirm feasibility: patient population, facilities, team capacity, enrollment timeline. Use the [Study Feasibility Checklist (SOP-CR-004, Appendix 1)](/sops/cr-004#appendices)
+    - Identify funding (CIHR, FRQS, foundation, departmental) and engage the Pre-Awards Office early — grant deadlines and study timelines rarely align
+    - See [Design Stage Support](/kb/planning/study-design) for the full list of planning specialists
+  </Tab>
+  <Tab title="Sponsor-initiated study">
+    A pharmaceutical, biotech, or device company (or their CRO) approaches you with an existing protocol. The sponsor owns the protocol and holds the Health Canada authorization. You join as **Qualified Investigator** for the MUHC site — responsible for conduct, consent, safety, and data integrity locally.
+
+    **How sponsors find you:** Sponsors and CROs identify candidate sites based on access to the target patient population, PI expertise and publications in the disease area, prior enrollment performance, infrastructure and SOP readiness, and professional relationships formed at conferences or through previous studies. CROs maintain site databases — registering with major CROs signals your availability for new studies.
+
+    **The selection process:** feasibility questionnaire → pre-study site visit → site selection → contract and budget negotiation → activation. If you are considering having the study operated through the CIM, engage them before responding to the feasibility questionnaire.
+
+    See [How Sponsored Trials Come to the RI-MUHC](/kb/planning/sponsored-trials) for the full picture.
+  </Tab>
+</Tabs>
+
+### Building your research profile
+
+For PIs who want to attract industry-sponsored studies, the factors sponsors evaluate are practical:
+
+- **Publish in your disease area** — publications are how sponsors identify PIs with relevant clinical expertise
+- **Deliver on enrollment commitments** — sponsors track whether sites meet enrollment targets across studies, and sites that consistently under-enroll are unlikely to be selected again
+- **Maintain a clean study record** — a well-organized ISF, timely monitoring letter responses, and few unresolved findings signal a reliable site. CRAs report back to sponsors.
+- **Build professional relationships** — attend specialty conferences, engage at investigator meetings, and participate in advisory boards where appropriate
+- **Register with CRO site databases** — this signals availability and lets CROs find you when they have a study that matches your patient population
+- **Invest in structured development** — the [CANTRAIN Site PI program](/kb/roles/pi-pathway#professional-development) and Clinical Fellows program build trial-specific competencies
+
+<Tip>
+  **Starting a new study?** Complete the [Study Intake Form](/kb/planning/study-intake) — it produces a personalized startup checklist based on your study type and connects you with the Research Facilitator for guidance. This is the recommended first step for both PI-initiated and sponsor-initiated studies.
+</Tip>
+
+See also: [Study Planning Overview](/kb/planning/overview) | [Study Feasibility](/kb/planning/feasibility) | [Design Stage Support](/kb/planning/study-design) | [Sponsored Trials](/kb/planning/sponsored-trials)
 
 ## Prerequisites
 
-Two prerequisites must be in place before you can submit a study in <Tooltip tip="The RI-MUHC's electronic study submission and management platform. All studies requiring MUHC Authorization are submitted through Nagano." headline="Nagano (RI-MUHC)" cta="Full definition" href="/kb/glossary#nagano">Nagano</Tooltip>. <Tooltip tip="All planned and systematic actions to ensure trial data are generated, documented, and reported in compliance with GCP and SOPs." headline="Quality Assurance (QA)" cta="Full definition" href="/kb/glossary#qa">QA</Tooltip> verifies both at submission. If either is missing or within 90 days of expiry, the feasibility check fails and the <Tooltip tip="Individual formally authorized to issue the final written authorization for each research project at a Quebec RSSS institution." headline="Personne mandatée (PFM)" cta="Full definition" href="/kb/glossary#personne-mandatee">Personne mandatée</Tooltip> cannot issue <Tooltip tip="Institutional authorization allowing a study to proceed at the RI-MUHC. Issued after ethics approval and feasibility review." headline="MUHC Authorization" cta="Full definition" href="/kb/glossary#muhc-auth">MUHC Authorization</Tooltip>.
+Once your study is designed and feasibility confirmed, two personal prerequisites must be in place before you can submit in <Tooltip tip="The RI-MUHC's electronic study submission and management platform. All studies requiring MUHC Authorization are submitted through Nagano." headline="Nagano (RI-MUHC)" cta="Full definition" href="/kb/glossary#nagano">Nagano</Tooltip>. <Tooltip tip="All planned and systematic actions to ensure trial data are generated, documented, and reported in compliance with GCP and SOPs." headline="Quality Assurance (QA)" cta="Full definition" href="/kb/glossary#qa">QA</Tooltip> verifies both at submission. If either is missing or within 90 days of expiry, the feasibility check fails and the <Tooltip tip="Individual formally authorized to issue the final written authorization for each research project at a Quebec RSSS institution." headline="Personne mandatée (PFM)" cta="Full definition" href="/kb/glossary#personne-mandatee">Personne mandatée</Tooltip> cannot issue <Tooltip tip="Institutional authorization allowing a study to proceed at the RI-MUHC. Issued after ethics approval and feasibility review." headline="MUHC Authorization" cta="Full definition" href="/kb/glossary#muhc-auth">MUHC Authorization</Tooltip>.
 
 ### Research Privileges or Researcher Status
 
@@ -61,8 +105,6 @@ Two prerequisites must be in place before you can submit a study in <Tooltip tip
 <Warning>
   **The 90-day rule:** at submission, your Privileges or Status must be active and not within 90 days of expiry. Lapsed credentials prevent MUHC Authorization and may halt active studies mid-course.
 </Warning>
-
-Before opening a Nagano submission, confirm site feasibility: access to the target patient population, required facilities and equipment, team capacity, and estimated enrollment timelines. Use the [Study Feasibility Checklist (SOP-CR-004, Appendix 1)](/sops/cr-004#appendices) to document this assessment. If feasibility review fails during institutional review, the Personne mandatée cannot issue MUHC Authorization — and the study cannot activate.
 
 ### Institutional training by study level
 
@@ -140,7 +182,7 @@ Delegation is appropriate for most operational tasks. The items below require yo
     You review and initial all <Tooltip tip="Any untoward medical occurrence in a participant, whether or not related to the investigational product." headline="Adverse Event (AE)" cta="Full definition" href="/kb/glossary#ae">AE</Tooltip> documentation, <Tooltip tip="An adverse event meeting seriousness criteria: death, life-threatening, hospitalization, disability, or congenital anomaly." headline="Serious Adverse Event (SAE)" cta="Full definition" href="/kb/glossary#sae">SAE</Tooltip> reports, <Tooltip tip="Suspected Unexpected Serious Adverse Reaction — unexpected in nature, severity, or frequency; must be reported to Health Canada and the REB." headline="SUSAR" cta="Full definition" href="/kb/glossary#susar">SUSAR</Tooltip> reports, lab results, and any document requiring medical assessment. This is ongoing throughout the study and cannot be fully delegated — a qualified Sub-I may be delegated AE causality assessment, but that delegation must appear on the log.
   </Accordion>
   <Accordion title="Monitoring visit follow-up letters">
-    Every monitoring letter from the Sponsor's CRA must be initialled and dated by you before filing in the <Tooltip tip="The QI's collection of documentation demonstrating compliance, study integrity, and participant safety." headline="Investigator Site File (ISF)" cta="Full definition" href="/kb/glossary#isf">ISF</Tooltip>. A missing initial on a monitoring letter is one of the most consistent findings at Health Canada inspections.
+    Every monitoring letter from the Sponsor's CRA must be initialled and dated by you before filing in the <Tooltip tip="The QI's collection of documentation demonstrating compliance, study integrity, and participant safety." headline="Investigator Site File (ISF)" cta="Full definition" href="/kb/glossary#isf">ISF</Tooltip>. A missing initial on a monitoring letter is one of the most common findings at Health Canada inspections.
   </Accordion>
   <Accordion title="PI Commitment and Signature in Nagano">
     Your <Tooltip tip="The team member who handles day-to-day administration and coordination of the clinical trial." headline="Clinical Research Coordinator (CRC)" cta="Full definition" href="/kb/glossary#crc">CRC</Tooltip> can prepare the entire F11 submission — but it is not complete until you complete the final commitment and signature step in Nagano. The same applies to annual renewals and amendments.
@@ -287,7 +329,7 @@ You retain medical oversight of all study activities even when tasks are delegat
 - **SUSAR reports from the Sponsor** — review, initial, date, and file in the ISF to document your awareness.
 - **Direct supervision means being reachable** — you must be contactable when a team member performs a task requiring medical oversight.
 
-Establish a clear escalation protocol: who contacts you, by what channel (pager, cell, secure messaging), and within what timeframe you respond. Document this in a department work instruction or site-specific addendum to the TDL. If you will be unavailable (conference, leave), your Sub-Investigator backup must be reachable and the team must know to redirect to them. A CRC who cannot reach you or your backup within a reasonable timeframe for a safety concern is in an untenable position.
+Establish a clear escalation protocol: who contacts you, by what channel (pager, cell, secure messaging), and within what timeframe you respond. Document this in a department work instruction or site-specific addendum to the TDL. If you will be unavailable (conference, leave), your Sub-Investigator backup must be reachable and the team must know to redirect to them. A CRC who cannot reach you or your backup for a safety concern has no safe course of action.
 
 <Note>
   **Before extended absence:** appoint a Sub-I backup with Privileges or Researcher Status, update the delegation log and Nagano. [SOP-CR-002](/sops/cr-002) recommends writing a department-specific working instruction describing how QI/PI oversight is achieved for your team.
@@ -334,7 +376,7 @@ If a COI arises mid-study, disclose promptly via Nagano amendment — do not wai
 
 ### Research integrity
 
-Research integrity is not a separate compliance obligation — it is the condition under which everything else in clinical research is valid. As PI, you are responsible for ensuring honest, rigorous, and transparent conduct by everyone on your team throughout the study lifecycle.
+As PI, you are responsible for honest, rigorous, and transparent conduct by everyone on your team throughout the study lifecycle.
 
 Research misconduct — **fabrication, falsification, or plagiarism** in the design, execution, reporting, or review of research — is defined consistently across TCPS2, the Tri-Agency Framework, and McGill policy. Beyond the core three, serious departures from accepted standards may also constitute misconduct: failure to meet obligations to participants, improper authorship practices, inadequate supervision, and failure to report misconduct by others.
 
