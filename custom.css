@@ -141,6 +141,25 @@ li[data-group-tag]:first-child {
 #sidebar-content ul {
     gap: 0 !important;
 }
+/* ── Sidebar — tag pills (frontmatter tag: "New" / "Updated" / etc.) ──
+   Mintlify renders tag text inside .nav-tag-pill-text with Tailwind classes
+   that depend on --primary being HSL. We override to ensure visible pills.  */
+.nav-tag-pill-text {
+    display: inline-block !important;
+    font-size: 9.5px !important;
+    font-weight: 700 !important;
+    line-height: 1 !important;
+    padding: 2.5px 6px !important;
+    border-radius: 4px !important;
+    letter-spacing: 0.02em !important;
+    white-space: nowrap !important;
+    background: rgba(0, 122, 110, 0.12) !important;
+    color: #007a6e !important;
+}
+html.dark .nav-tag-pill-text {
+    background: rgba(0, 196, 180, 0.15) !important;
+    color: #00c4b4 !important;
+}
 /* ── Navbar — tab strip ── */
 #navbar nav a.link {
     background:     transparent !important;
