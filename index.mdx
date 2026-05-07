@@ -196,30 +196,29 @@ export const StartHere = () => {
       {role === 'pi' && (
         <div className="ri-role-panel">
           <p className="ri-role-framing">As PI or QI, you carry ultimate regulatory and scientific accountability for your study at the RI-MUHC — from the first feasibility conversation through close-out and archiving. That means protocol design, team delegation, Health Canada submissions if your study involves an investigational product, annual REB renewals, and MUHC Authorization before any study activity can begin.</p>
-          <div className="ri-intake-timeline">
-            <a href="/kb/study-intake" className="ri-intake-entry">
-              <div className="ri-ie-label">Tell us about your study</div>
-              <div className="ri-ie-desc">The intake form connects you with the Research Facilitator and maps your study to the approvals, training, and support you need.</div>
-              <div className="ri-ie-link">Open the intake form →</div>
-            </a>
-            <div className="ri-intake-conn" aria-hidden="true" />
-            <StepTrack steps={[
-              { label: "Assess feasibility" },
-              { label: "Design your study" },
-              { label: "Fulfill training and compliance requirements" },
-              { label: "Prepare your submission" },
-              { label: "Submit via Nagano", end: true },
-            ]} />
-          </div>
+          <StepTrack steps={[
+            { label: "Assess feasibility" },
+            { label: "Design your study" },
+            { label: "Fulfill training and compliance requirements" },
+            { label: "Prepare your submission" },
+            { label: "Submit via Nagano", end: true },
+          ]} />
           <div className="ri-callout ri-callout--warn">
             A study cannot begin until the <strong>Personne mandatée</strong> grants <a href="/kb/submission-overview">MUHC Authorization</a>. REB approval alone does not authorize research activities — both approvals must be in your ISF before any study procedures begin.
           </div>
           <div className="ri-guides-row">
-            <a href="/kb/roles/pi-pathway" className="ri-pathway-banner">
-              <div className="ri-pb-label">Investigator Pathway</div>
-              <div className="ri-pb-desc">End-to-end guide covering credentials, training and compliance requirements, Health Canada submissions, and how to prepare your study for MUHC Authorization.</div>
-              <div className="ri-pb-arrow">View pathway →</div>
-            </a>
+            <div className="ri-guides-left-col">
+              <a href="/kb/study-intake" className="ri-intake-entry">
+                <div className="ri-ie-label">Tell us about your study</div>
+                <div className="ri-ie-desc">The intake form connects you with the Research Facilitator and maps your study to the approvals, training, and support you need.</div>
+                <div className="ri-ie-link">Open the intake form →</div>
+              </a>
+              <a href="/kb/roles/pi-pathway" className="ri-pathway-banner">
+                <div className="ri-pb-label">Investigator Pathway</div>
+                <div className="ri-pb-desc">End-to-end guide covering credentials, training and compliance requirements, Health Canada submissions, and how to prepare your study for MUHC Authorization.</div>
+                <div className="ri-pb-arrow">View pathway →</div>
+              </a>
+            </div>
             <div className="ri-guides-stack">
               <DetailCard href="/kb/roles/pi-guide" title="Investigator Guide — Interventional (I–III)" desc="Day-to-day accountability for drug trials, device studies, and NHP studies — what you personally sign, what you delegate, and your obligations through close-out." />
               <DetailCard href="/kb/roles/pi-guide-iv" title="Investigator Guide — Observational (IV)" desc="Investigator obligations for prospective observational, educational, and non-invasive intervention studies — consent, team oversight, and data integrity." />
@@ -380,104 +379,6 @@ The essentials for every study team — tell us about your study, find the guida
     href="/training/compliance-requirements" icon="list-check" title="Training and Compliance Requirements"
     desc="Training requirements by study level (I–V) — who must comply, the SOP Reader, Competency Assessment, GCP, Division 5, and ISO 14155."
   />
-</div>
-
----
-
-## From concept to close-out
-
-Follow the lifecycle, or jump to the stage you're in.
-
-<div className="ri-lifecycle">
-  <Phase num={1} title="Clinical Research 101" cards={[
-    { href: "/kb/clinical-research-101", icon: "book-open", label: "Clinical Research 101" },
-    { href: "/kb/study-lifecycle", icon: "sitemap", label: "The study lifecycle" },
-    { href: "/kb/trial-design", icon: "microscope", label: "Trial design concepts" },
-    { href: "/kb/gcp-quality-by-design", icon: "award", label: "GCP and quality by design" },
-    { href: "/kb/governance/regulatory-framework", icon: "landmark", label: "Regulatory framework" },
-    { href: "/kb/governance/institutional-structure", icon: "building-columns", label: "Institutional structure" },
-    { href: "/kb/glossary", icon: "spell-check", label: "Glossary" }
-  ]} />
-  <Phase num={2} title="Study Planning" cards={[
-    { href: "/kb/planning-overview", icon: "map", label: "Planning overview" },
-    { href: "/kb/feasibility", icon: "magnifying-glass-chart", label: "Feasibility assessment" },
-    { href: "/kb/study-design", icon: "diagram-project", label: "Design stage support" },
-    { href: "/kb/regulations", icon: "scale-balanced", label: "Regulations and guidelines" },
-    { href: "/kb/multi-centric", icon: "network-wired", label: "Multi-centric studies" },
-    { href: "/kb/dct-design", icon: "laptop-medical", label: "Decentralized trial design" },
-    { href: "/kb/sponsored-trials", icon: "handshake", label: "Sponsored trials" },
-    { href: "/kb/sponsor-investigator", icon: "user-tie", label: "Sponsor-investigator studies" }
-  ]} />
-  <Phase num={3} title="Team, Funding and Services" cards={[
-    { href: "/kb/building-your-team", icon: "users-gear", label: "Build your team" },
-    { href: "/kb/hiring-hr-support", icon: "users", label: "Hiring and HR support" },
-    { href: "/kb/edi", icon: "scale-balanced", label: "Equity, Diversity and Inclusion" },
-    { href: "/kb/study-design#participant-considerations", icon: "hand-holding-heart", label: "Patient engagement (PWLLE)" },
-    { href: "/kb/budgets-contracts", icon: "file-contract", label: "Budgets and contracts" },
-    { href: "/kb/research-grants", icon: "coins", label: "Research grants" },
-    { href: "/kb/bcu", icon: "chart-bar", label: "Biostatistics (BCU)" },
-    { href: "/kb/cord", icon: "database", label: "Data management (CORD)" },
-    { href: "/kb/data-warehouse", icon: "server", label: "MUHC patient data" },
-    { href: "/cim/services", icon: "flask", label: "Centre for Innovative Medicine (CIM)" }
-  ]} />
-  <Phase num={4} title="Training and Credentials" cards={[
-    { href: "/training/compliance-requirements", icon: "graduation-cap", label: "Training and compliance requirements" },
-    { href: "/training/external-certifications", icon: "scroll", label: "External certifications" },
-    { href: "/training/study-classifier", icon: "list-check", label: "Study classifier" },
-    { href: "/training/cantrain", icon: "users", label: "CanTRAIN" },
-    { href: "/apps/talentlms", icon: "desktop", label: "TalentLMS platform" }
-  ]} />
-  <Phase num={5} title="Submission and Review" cards={[
-    { href: "/kb/submission-overview", icon: "map", label: "Submission overview" },
-    { href: "/kb/preparing", icon: "folder-open", label: "Preparing your submission" },
-    { href: "/kb/submitting-via-nagano", icon: "paper-plane", label: "Submitting via Nagano" },
-    { href: "/kb/tracking-responding", icon: "reply", label: "Tracking and responses" },
-    { href: "/kb/study-review", icon: "clipboard-check", label: "Study review" },
-    { href: "/apps/nagano/overview", icon: "desktop", label: "Nagano user guide" }
-  ]} />
-  <Phase num={6} title="Site Activation" cards={[
-    { href: "/kb/site-setup", icon: "building-circle-check", label: "Site setup and activation" },
-    { href: "/kb/protocol-documents", icon: "file-lines", label: "Protocol documents" },
-    { href: "/kb/isf", icon: "folder-tree", label: "Investigator Site File" }
-  ]} />
-  <Phase num={7} title="Recruitment and Enrollment" cards={[
-    { href: "/kb/consent", icon: "signature", label: "Informed consent" },
-    { href: "/kb/pediatric-research", icon: "child", label: "Pediatric research" },
-    { href: "/kb/vulnerable-populations", icon: "hand-holding-heart", label: "Vulnerable populations" },
-    { href: "/kb/recruitment-enrollment", icon: "user-check", label: "Recruitment and enrollment" },
-    { href: "/kb/privacy", icon: "shield-halved", label: "Privacy and Loi 25" },
-    { href: "/kb/data-security", icon: "lock", label: "Data security" }
-  ]} />
-  <Phase num={8} title="Study Conduct" cards={[
-    { href: "/kb/conduct-overview", icon: "map", label: "Study conduct overview" },
-    { href: "/kb/data-integrity", icon: "database", label: "Data integrity" },
-    { href: "/kb/decentralized-trials", icon: "laptop-medical", label: "Decentralized trials" },
-    { href: "/kb/investigational-products", icon: "prescription-bottle-medical", label: "Investigational products" },
-    { href: "/kb/biological-specimens", icon: "vial", label: "Biological specimens" },
-    { href: "/kb/reportable-events", icon: "triangle-exclamation", label: "Reportable events" },
-    { href: "/kb/team-management", icon: "user-plus", label: "Team management" },
-    { href: "/kb/monitoring-audits", icon: "magnifying-glass", label: "Monitoring and audits" }
-  ]} />
-  <Phase num={9} title="Close-Out and Archiving" cards={[
-    { href: "/kb/close-out", icon: "flag-checkered", label: "Study close-out" },
-    { href: "/kb/publications", icon: "newspaper", label: "Publications" },
-    { href: "/kb/hc-inspection-guide", icon: "magnifying-glass-chart", label: "Health Canada inspection guide" },
-    { href: "/kb/governance/research-integrity", icon: "box-archive", label: "Archiving and retention" },
-    { href: "/kb/governance/conflict-of-interest", icon: "circle-exclamation", label: "Conflict of interest" }
-  ]} />
-</div>
-
----
-
-## Quick references
-
-<div className="ri-resource-grid">
-  <ResourceCard icon="shield-halved" href="/kb/hc-inspection-guide" title="Health Canada Inspection Guide"
-    desc="How to prepare for and navigate a Health Canada GCP inspection — documents, roles, observation classifications, and what happens after." />
-  <ResourceCard icon="desktop" href="/apps/nagano/overview" title="Nagano Platform Guide"
-    desc="Step-by-step instructions for every submission type — F11, amendments, renewals, and closure." />
-  <ResourceCard icon="spell-check" href="/kb/glossary" title="Glossary"
-    desc="Plain-language definitions for the acronyms, regulators, and key terms you'll encounter across the Hub." />
 </div>
 
 ---
