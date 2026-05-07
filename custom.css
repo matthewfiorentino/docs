@@ -67,18 +67,21 @@ article a:hover,
     color:       var(--ri-accent) !important;
     font-weight: 600 !important;
 }
-/* ── Sidebar group headers — visual hierarchy ──
-   Group headers render as <li data-group-tag=""> > <button aria-expanded>.
-   Target via data-group-tag (present on groups, absent on page link <li>s).
-   Hardcoded hex avoids any var() resolution issue. Text div is targeted
-   explicitly because color must reach the child div holding the label text. */
+/* ── Sidebar group headers — structural labels (Stripe/Tailwind pattern) ──
+   Group headers are organisational structure, not navigation destinations.
+   Uppercase + small + letter-spaced + muted grey signals "I am a label"
+   without competing with page links or the teal active-page indicator.     */
 li[data-group-tag] > button,
 li[data-group-tag] > button > div {
-    color: #007a6e !important;
+    font-size:      11px !important;
+    font-weight:    700 !important;
+    letter-spacing: 0.07em !important;
+    text-transform: uppercase !important;
+    color:          #6b7280 !important;
 }
 html.dark li[data-group-tag] > button,
 html.dark li[data-group-tag] > button > div {
-    color: #00c4b4 !important;
+    color: rgba(255,255,255,0.4) !important;
 }
 /* ── Navbar — tab strip ── */
 #navbar nav a.link {
