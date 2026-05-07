@@ -1407,18 +1407,17 @@ article {
 /* ── CANTRAIN callout card ───────────────────────────────────────────────── */
 .ri-cantrain-callout {
     display: flex;
-    align-items: center;
-    gap: 20px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
     background: #ffffff;
     border: 1px solid #e2e8f0;
     border-radius: 8px;
-    padding: 16px 20px;
+    padding: 20px 24px;
     margin: 1.5rem 0;
-    text-decoration: none;
 }
 .ri-cantrain-logo {
-    width: 110px;
-    flex-shrink: 0;
+    width: 140px;
 }
 .ri-cantrain-text {
     font-size: 14px;
@@ -1438,9 +1437,4 @@ html.dark .ri-cantrain-callout {
     border-color: #334155;
 }
 html.dark .ri-cantrain-text { color: #cbd5e1; }
-
-@media (max-width: 640px) {
-    .ri-cantrain-callout { flex-direction: column; align-items: flex-start; gap: 12px; }
-    .ri-cantrain-logo { width: 90px; }
-}
 
