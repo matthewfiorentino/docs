@@ -136,88 +136,88 @@
                 "group": "Your Study, Step by Step",
                 "icon": "diagram-project",
                 "pages": [
-                  "kb/planning/study-intake",
+                  "kb/study-intake",
                   {
                     "group": "Study Planning",
                     "expanded": false,
                     "pages": [
-                      "kb/planning/overview",
-                      "kb/planning/feasibility",
-                      "kb/planning/study-design",
-                      "kb/planning/sponsored-trials",
-                      "kb/planning/sponsor-investigator",
-                      "kb/planning/multi-centric",
-                      "kb/planning/dct-design",
-                      "kb/planning/regulations"
+                      "kb/planning-overview",
+                      "kb/feasibility",
+                      "kb/study-design",
+                      "kb/sponsored-trials",
+                      "kb/sponsor-investigator",
+                      "kb/multi-centric",
+                      "kb/dct-design",
+                      "kb/regulations"
                     ]
                   },
                   {
                     "group": "Team, Funding and Services",
                     "expanded": false,
                     "pages": [
-                      "kb/planning/building-your-team",
-                      "kb/planning/hiring-hr-support",
-                      "kb/planning/edi",
-                      "kb/planning/budgets-contracts",
-                      "kb/planning/research-grants",
-                      "kb/planning/bcu",
-                      "kb/planning/cord",
-                      "kb/planning/data-warehouse"
+                      "kb/building-your-team",
+                      "kb/hiring-hr-support",
+                      "kb/edi",
+                      "kb/budgets-contracts",
+                      "kb/research-grants",
+                      "kb/bcu",
+                      "kb/cord",
+                      "kb/data-warehouse"
                     ]
                   },
                   {
                     "group": "Submission and Review",
                     "expanded": false,
                     "pages": [
-                      "kb/submission/overview",
-                      "kb/submission/preparing",
-                      "kb/submission/submitting-via-nagano",
-                      "kb/submission/tracking-responding",
-                      "kb/submission/study-review"
+                      "kb/submission-overview",
+                      "kb/preparing",
+                      "kb/submitting-via-nagano",
+                      "kb/tracking-responding",
+                      "kb/study-review"
                     ]
                   },
                   {
                     "group": "Site Activation",
                     "expanded": false,
                     "pages": [
-                      "kb/conduct/site-setup",
-                      "kb/conduct/protocol-documents",
-                      "kb/conduct/isf"
+                      "kb/site-setup",
+                      "kb/protocol-documents",
+                      "kb/isf"
                     ]
                   },
                   {
                     "group": "Recruitment and Enrollment",
                     "expanded": false,
                     "pages": [
-                      "kb/conduct/consent",
-                      "kb/conduct/pediatric-research",
-                      "kb/conduct/vulnerable-populations",
-                      "kb/conduct/recruitment-enrollment",
-                      "kb/conduct/privacy",
-                      "kb/conduct/data-security"
+                      "kb/consent",
+                      "kb/pediatric-research",
+                      "kb/vulnerable-populations",
+                      "kb/recruitment-enrollment",
+                      "kb/privacy",
+                      "kb/data-security"
                     ]
                   },
                   {
                     "group": "Study Conduct",
                     "expanded": false,
                     "pages": [
-                      "kb/conduct/overview",
-                      "kb/conduct/data-integrity",
-                      "kb/conduct/decentralized-trials",
-                      "kb/conduct/investigational-products",
-                      "kb/conduct/biological-specimens",
-                      "kb/conduct/reportable-events",
-                      "kb/conduct/team-management",
-                      "kb/conduct/monitoring-audits"
+                      "kb/conduct-overview",
+                      "kb/data-integrity",
+                      "kb/decentralized-trials",
+                      "kb/investigational-products",
+                      "kb/biological-specimens",
+                      "kb/reportable-events",
+                      "kb/team-management",
+                      "kb/monitoring-audits"
                     ]
                   },
                   {
                     "group": "Close-Out and Archiving",
                     "expanded": false,
                     "pages": [
-                      "kb/conduct/hc-inspection-guide",
-                      "kb/conduct/close-out",
-                      "kb/conduct/publications"
+                      "kb/hc-inspection-guide",
+                      "kb/close-out",
+                      "kb/publications"
                     ]
                   }
                 ]
@@ -974,5 +974,175 @@
     "socials": {
       "website": "https://rimuhc.ca"
     }
-  }
+  },
+  "redirects": [
+    {
+      "source": "/kb/conduct/biological-specimens",
+      "destination": "/kb/biological-specimens"
+    },
+    {
+      "source": "/kb/conduct/close-out",
+      "destination": "/kb/close-out"
+    },
+    {
+      "source": "/kb/conduct/consent",
+      "destination": "/kb/consent"
+    },
+    {
+      "source": "/kb/conduct/data-integrity",
+      "destination": "/kb/data-integrity"
+    },
+    {
+      "source": "/kb/conduct/data-security",
+      "destination": "/kb/data-security"
+    },
+    {
+      "source": "/kb/conduct/decentralized-trials",
+      "destination": "/kb/decentralized-trials"
+    },
+    {
+      "source": "/kb/conduct/hc-inspection-guide",
+      "destination": "/kb/hc-inspection-guide"
+    },
+    {
+      "source": "/kb/conduct/investigational-products",
+      "destination": "/kb/investigational-products"
+    },
+    {
+      "source": "/kb/conduct/isf",
+      "destination": "/kb/isf"
+    },
+    {
+      "source": "/kb/conduct/monitoring-audits",
+      "destination": "/kb/monitoring-audits"
+    },
+    {
+      "source": "/kb/conduct/overview",
+      "destination": "/kb/conduct-overview"
+    },
+    {
+      "source": "/kb/conduct/pediatric-research",
+      "destination": "/kb/pediatric-research"
+    },
+    {
+      "source": "/kb/conduct/privacy",
+      "destination": "/kb/privacy"
+    },
+    {
+      "source": "/kb/conduct/protocol-documents",
+      "destination": "/kb/protocol-documents"
+    },
+    {
+      "source": "/kb/conduct/publications",
+      "destination": "/kb/publications"
+    },
+    {
+      "source": "/kb/conduct/recruitment-enrollment",
+      "destination": "/kb/recruitment-enrollment"
+    },
+    {
+      "source": "/kb/conduct/reportable-events",
+      "destination": "/kb/reportable-events"
+    },
+    {
+      "source": "/kb/conduct/site-setup",
+      "destination": "/kb/site-setup"
+    },
+    {
+      "source": "/kb/conduct/team-management",
+      "destination": "/kb/team-management"
+    },
+    {
+      "source": "/kb/conduct/vulnerable-populations",
+      "destination": "/kb/vulnerable-populations"
+    },
+    {
+      "source": "/kb/planning/bcu",
+      "destination": "/kb/bcu"
+    },
+    {
+      "source": "/kb/planning/budgets-contracts",
+      "destination": "/kb/budgets-contracts"
+    },
+    {
+      "source": "/kb/planning/building-your-team",
+      "destination": "/kb/building-your-team"
+    },
+    {
+      "source": "/kb/planning/cord",
+      "destination": "/kb/cord"
+    },
+    {
+      "source": "/kb/planning/data-warehouse",
+      "destination": "/kb/data-warehouse"
+    },
+    {
+      "source": "/kb/planning/dct-design",
+      "destination": "/kb/dct-design"
+    },
+    {
+      "source": "/kb/planning/edi",
+      "destination": "/kb/edi"
+    },
+    {
+      "source": "/kb/planning/feasibility",
+      "destination": "/kb/feasibility"
+    },
+    {
+      "source": "/kb/planning/hiring-hr-support",
+      "destination": "/kb/hiring-hr-support"
+    },
+    {
+      "source": "/kb/planning/multi-centric",
+      "destination": "/kb/multi-centric"
+    },
+    {
+      "source": "/kb/planning/overview",
+      "destination": "/kb/planning-overview"
+    },
+    {
+      "source": "/kb/planning/regulations",
+      "destination": "/kb/regulations"
+    },
+    {
+      "source": "/kb/planning/research-grants",
+      "destination": "/kb/research-grants"
+    },
+    {
+      "source": "/kb/planning/sponsor-investigator",
+      "destination": "/kb/sponsor-investigator"
+    },
+    {
+      "source": "/kb/planning/sponsored-trials",
+      "destination": "/kb/sponsored-trials"
+    },
+    {
+      "source": "/kb/planning/study-design",
+      "destination": "/kb/study-design"
+    },
+    {
+      "source": "/kb/planning/study-intake",
+      "destination": "/kb/study-intake"
+    },
+    {
+      "source": "/kb/submission/overview",
+      "destination": "/kb/submission-overview"
+    },
+    {
+      "source": "/kb/submission/preparing",
+      "destination": "/kb/preparing"
+    },
+    {
+      "source": "/kb/submission/study-review",
+      "destination": "/kb/study-review"
+    },
+    {
+      "source": "/kb/submission/submitting-via-nagano",
+      "destination": "/kb/submitting-via-nagano"
+    },
+    {
+      "source": "/kb/submission/tracking-responding",
+      "destination": "/kb/tracking-responding"
+    }
+  ]
 }
