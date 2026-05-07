@@ -62,15 +62,10 @@
             "tab": "Knowledge Base",
             "groups": [
               {
-                "group": "Knowledge Base",
-                "pages": [
-                  "kb/introduction"
-                ]
-              },
-              {
                 "group": "Community",
                 "icon": "newspaper",
                 "pages": [
+                  "kb/introduction",
                   "kb/updates",
                   "kb/community-connect"
                 ]
@@ -219,8 +214,7 @@
                   "kb/governance/conflict-of-interest"
                 ]
               }
-            ],
-            "url": "kb/introduction"
+            ]
           },
           {
             "tab": "Clinical Research SOPs",
