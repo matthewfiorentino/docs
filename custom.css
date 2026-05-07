@@ -10,7 +10,7 @@
 
     /* --background in HSL (no hsl() wrapper) so Mintlify's Tailwind gradient
        utilities resolve correctly — fixes the sidebar scroll-fade colour     */
-    --background: 240 3% 97%;
+    --background: 40 20% 97%;
     --primary:    #007a6e;
 }
 
