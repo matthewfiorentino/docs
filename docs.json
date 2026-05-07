@@ -553,25 +553,22 @@
               {
                 "group": "Training and Learning",
                 "pages": [
-                  "training/overview"
+                  "training/compliance-requirements"
                 ]
               },
               {
-                "group": "Requirements",
+                "group": "Clinical Research Training",
                 "icon": "clipboard-check",
                 "pages": [
-                  "training/compliance-requirements",
-                  "training/research-privileges",
                   "training/external-certifications",
                   "training/study-classifier"
                 ]
               },
               {
-                "group": "Learning",
+                "group": "Beyond Compliance",
                 "icon": "book-open",
                 "pages": [
                   "training/learning-lab",
-                  "training/talentlms",
                   "training/cantrain"
                 ]
               }
