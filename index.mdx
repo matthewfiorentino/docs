@@ -135,17 +135,14 @@ export const FeatureEntry = ({ href, icon, title, desc }) => (
 export const StepTrack = ({ steps }) => (
   <div className="ri-step-track">
     {steps.flatMap((step, i) => {
-      const node = (
-        <div key={`s${i}`} className="ri-step-item">
-          <div className={`ri-step-node${step.end ? ' ri-step-node--end' : ''}`}>
-            {step.end ? '✓' : i + 1}
-          </div>
-          <div className="ri-step-label">{step.label}</div>
+      const pill = (
+        <div key={`s${i}`} className={`ri-step-pill${step.end ? ' ri-step-pill--end' : ''}`}>
+          {step.label}
         </div>
       );
       return i < steps.length - 1
-        ? [node, <div key={`c${i}`} className="ri-step-conn" aria-hidden="true" />]
-        : [node];
+        ? [pill, <div key={`c${i}`} className="ri-step-sep" aria-hidden="true" />]
+        : [pill];
     })}
   </div>
 );
