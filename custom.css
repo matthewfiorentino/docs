@@ -178,7 +178,7 @@ html.dark .nav-tag-pill-text {
 #navbar button[aria-haspopup="menu"]:hover {
     background:          transparent !important;
     color:               #150e51 !important;
-    border-bottom-color: rgba(21,14,81,0.3) !important;
+    border-bottom-color: #150e51 !important;
 }
 #navbar nav a.link[data-active="true"],
 #navbar nav a.link[aria-current="page"],
