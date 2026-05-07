@@ -164,7 +164,7 @@ html.dark .nav-tag-pill-text {
    Regular tabs are <a class="link">. Menu-enabled tabs are
    <button aria-haspopup="menu"> with Tailwind utility classes.   */
 #navbar nav a.link,
-#navbar nav button[aria-haspopup="menu"] {
+#navbar nav button[aria-haspopup="menu"]:not(#localization-select-trigger) {
     background:     transparent !important;
     border-radius:  0 !important;
     border-bottom:  2px solid transparent !important;
@@ -175,15 +175,15 @@ html.dark .nav-tag-pill-text {
     transition:     color 0.15s, border-bottom-color 0.15s !important;
 }
 #navbar nav a.link:hover,
-#navbar nav button[aria-haspopup="menu"]:hover {
+#navbar nav button[aria-haspopup="menu"]:not(#localization-select-trigger):hover {
     background:          transparent !important;
     color:               #150e51 !important;
     border-bottom-color: #150e51 !important;
 }
 #navbar nav a.link[data-active="true"],
 #navbar nav a.link[aria-current="page"],
-#navbar nav button[aria-haspopup="menu"][data-active="true"],
-#navbar nav button[aria-haspopup="menu"][data-state="open"] {
+#navbar nav button[aria-haspopup="menu"]:not(#localization-select-trigger)[data-active="true"],
+#navbar nav button[aria-haspopup="menu"]:not(#localization-select-trigger)[data-state="open"] {
     background:          transparent !important;
     color:               #150e51 !important;
     border-bottom-color: #150e51 !important;
@@ -1054,7 +1054,7 @@ button:has(img[alt="Quebec"]) {
     }
     /* Tab links — reduce font and horizontal padding */
     #navbar nav a.link,
-    #navbar nav button[aria-haspopup="menu"] {
+    #navbar nav button[aria-haspopup="menu"]:not(#localization-select-trigger) {
         font-size:     12px !important;
         padding-left:  8px !important;
         padding-right: 8px !important;
@@ -1075,7 +1075,7 @@ button:has(img[alt="Quebec"]) {
         gap: 0px !important;
     }
     #navbar nav a.link,
-    #navbar nav button[aria-haspopup="menu"] {
+    #navbar nav button[aria-haspopup="menu"]:not(#localization-select-trigger) {
         font-size:     11px !important;
         padding-left:  6px !important;
         padding-right: 6px !important;
