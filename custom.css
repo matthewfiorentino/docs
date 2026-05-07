@@ -74,6 +74,18 @@ article a:hover,
 #sidebar strong, #sidebar b {
     color: inherit !important;
 }
+/* ── Sidebar — category headers (icon + label) → black ──
+   sidebar-group-header is the Mintlify custom element for top-level
+   section labels. Explicitly force black so our global --ri-heading
+   navy doesn't bleed through via inherited or themed variables.      */
+sidebar-group-header,
+sidebar-group-header * {
+    color: #111111 !important;
+}
+html.dark sidebar-group-header,
+html.dark sidebar-group-header * {
+    color: rgba(255,255,255,0.85) !important;
+}
 /* ── Sidebar — hover → teal ── */
 #sidebar-content a:hover,
 #sidebar-content a:hover span,
