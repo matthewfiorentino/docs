@@ -68,19 +68,20 @@ article a:hover,
     font-weight: 600 !important;
 }
 /* ── Sidebar — compact type ──
-   Page links are <a> tags; collapsible group headers are <button> tags
-   inside <li> elements without [data-group-tag]. Target both.         */
+   Page links = <a>; collapsible group headers = <button>.
+   Target everything in #sidebar-content, then re-assert weight on
+   top-level section headers using a more specific selector.          */
 #sidebar-content a,
 #sidebar-content a span,
-li:not([data-group-tag]) > button,
-li:not([data-group-tag]) > button span {
+#sidebar-content button,
+#sidebar-content button span {
     font-size:   12px !important;
     font-weight: 400 !important;
     line-height: 1.4 !important;
 }
-/* Top-level section header buttons (bold labels like "Community") stay bolder */
-li[data-group-tag] > button,
-li[data-group-tag] > button span {
+/* Top-level section headers ("Community", "Getting Started", etc.) — bolder */
+#sidebar-content li[data-group-tag] > button,
+#sidebar-content li[data-group-tag] > button span {
     font-weight: 500 !important;
 }
 /* ── Sidebar — reduce gap between top-level section groups ── */
