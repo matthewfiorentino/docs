@@ -68,9 +68,10 @@ article a:hover,
     font-weight: 600 !important;
 }
 /* ── Sidebar group headers — visual hierarchy ──
-   Group headers (expandable section titles) get the heading colour
-   so they stand out from page links, which stay default grey.       */
-#sidebar sidebar-group-header {
+   Group headers render as <button aria-expanded> with Tailwind text-gray-700.
+   Target by aria-expanded so only collapsible section labels get the dark
+   heading colour — individual page links (<a> tags) stay grey.              */
+#sidebar button[aria-expanded] {
     color:       var(--ri-heading) !important;
     font-weight: 700 !important;
 }
