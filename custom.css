@@ -67,16 +67,26 @@ article a:hover,
     color:       var(--ri-accent) !important;
     font-weight: 600 !important;
 }
-/* ── Sidebar — compact type to match Mintlify's own docs density ──
-   Default Mintlify sidebar links are ~14px medium weight. Dropping to
-   12px + weight 400 produces the noticeably lighter, smaller feel of
-   Mintlify's own sidebar. Section header buttons stay at 500.         */
-#sidebar a {
+/* ── Sidebar — compact type ──
+   Use high-specificity selectors to beat Mintlify's Tailwind classes.
+   Target both the <a> and any <span> inside it that carries the text. */
+#sidebar-content a,
+#sidebar-content a span {
     font-size:   12px !important;
     font-weight: 400 !important;
+    line-height: 1.4 !important;
 }
-li[data-group-tag] > button {
+/* Top-level section header buttons stay slightly bolder */
+li[data-group-tag] > button,
+li[data-group-tag] > button span {
     font-weight: 500 !important;
+}
+/* ── Sidebar — reduce gap between top-level section groups ── */
+li[data-group-tag] {
+    margin-top: 8px !important;
+}
+li[data-group-tag]:first-child {
+    margin-top: 0 !important;
 }
 /* ── Navbar — tab strip ── */
 #navbar nav a.link {
