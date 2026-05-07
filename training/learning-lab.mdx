@@ -2563,7 +2563,7 @@ var KP_POOL = [
     opts:['7 calendar days','15 calendar days','30 calendar days','It depends on the sponsor\u2019s timeline'],
     correct:1,
     rationale:'15 calendar days for non-fatal, non-life-threatening SAEs. The 7-day window applies only to fatal or life-threatening unexpected SAEs (SUSAR-level), followed by a complete written report within 8 additional calendar days. The clock starts at site awareness \u2014 PI availability is irrelevant.',
-    ref:'<a href="/sops/cr-012">SOP-CR-012 \u00a75.5.2\u20135.5.3</a> \u00b7 <a href="kb-reportable-events.html">Reportable Events</a>' },
+    ref:'<a href="/sops/cr-012">SOP-CR-012 \u00a75.5.2\u20135.5.3</a> \u00b7 <a href="/kb/reportable-events">Reportable Events</a>' },
 
   { id:'sae-c2', type:'check', topic:'Adverse Events / SAE', topicId:'sae', applies:'interventional',
     q:'All SAEs must be reported to the sponsor within how many hours of the QI/PI awareness date?',
@@ -2615,7 +2615,7 @@ var KP_POOL = [
     opts:['Revise the assessment as requested \u2014 the sponsor\\'s medical monitor has more context about the drug\\'s safety profile across all sites','Ask the assessing investigator to reconsider, explaining the sponsor\\'s reasoning, and change it only if they agree after independent review','Change it to \u201cunrelated\u201d in the eCRF but keep the original in the source file as a backup','Refuse outright and file a complaint against the sponsor with Health Canada'],
     ans:1,
     rationale:'You do not change the relatedness assessment at the sponsor\u2019s request. The clinical judgment belongs to the investigator who assessed the event. If the sponsor disagrees, the correct mechanism is a written query explaining their reasoning, which the investigator reviews and may respond to with documented rationale. Any change must be audit-trailed; the original assessment must be preserved. Changing a clinical assessment under sponsor pressure is a GCP violation and a data integrity issue. Document this conversation.',
-    ref:'<a href="/sops/cr-012">SOP-CR-012</a> \u00b7 <a href="kb-data-integrity.html">Data Integrity</a>' },
+    ref:'<a href="/sops/cr-012">SOP-CR-012</a> \u00b7 <a href="/kb/data-integrity">Data Integrity</a>' },
 
   /* standalone scenarios */
   { id:'sae-s2', type:'check', topic:'Adverse Events / SAE', topicId:'sae', applies:'interventional',
@@ -2623,7 +2623,7 @@ var KP_POOL = [
     opts:['No \u2014 the coordinating centre handles all regulatory reporting for multi-site trials','Yes \u2014 notify the MUHC REB via Nagano, document the event in the ISF, and ensure the local QI/PI has assessed participant safety','Only if the participant was hospitalized at the MUHC \u2014 otherwise the event occurred at another institution','Send the coordinating centre your documentation and ask them to include it in their report'],
     ans:1,
     rationale:'Yes. The local QI/PI remains responsible for participant safety at this site and for local REB notification. Even where the lead site handles Health Canada reporting, your site must still notify the MUHC REB via Nagano (3H form) and document the event in your ISF. For the Quebec multi-centrique process, you may also need to notify the MUHC personne mandat\u00e9e. The coordinating centre\u2019s role does not discharge your local regulatory obligations.',
-    ref:'<a href="/sops/cr-012">SOP-CR-012 \u00a75.5.8, 5.9.3</a> \u00b7 <a href="kb-multi-centric-studies.html">Multi-Centric Studies</a>' },
+    ref:'<a href="/sops/cr-012">SOP-CR-012 \u00a75.5.8, 5.9.3</a> \u00b7 <a href="/kb/multi-centric">Multi-Centric Studies</a>' },
 
   { id:'sae-s3', type:'check', topic:'Adverse Events / SAE', topicId:'sae', applies:'interventional',
     q:'A participant completes all study procedures and enters the follow-up period. Three weeks later they are hospitalized for an event the PI considers possibly related to the study drug. The PI says \u201cthey\u2019re off-study, we don\u2019t need to report.\u201d Are they right?',
@@ -2658,14 +2658,14 @@ var KP_POOL = [
     opts:['14 years','16 years','18 years','21 years'],
     correct:2,
     rationale:'Per [SOP-CR-008](/sops/cr-008) section 5.8.1 and the Civil Code of Quebec (CCQ, a.21), the age of full consent to research participation in Quebec is 18 years. A minor who is 14 years or older may consent to minimal-risk research only if the REB specifically approves this. Otherwise, consent must be obtained from the person with parental authority or the tutor.',
-    ref:'<a href="/sops/cr-008">SOP-CR-008 \u00a75.8.1\u20135.8.2</a> \u00b7 <a href="kb-consent-in-quebec.html">Consent in Quebec</a>' },
+    ref:'<a href="/sops/cr-008">SOP-CR-008 \u00a75.8.1\u20135.8.2</a> \u00b7 <a href="/kb/consent">Consent in Quebec</a>' },
 
   { id:'ic-c4', type:'check', topic:'Informed Consent', topicId:'consent', applies:'all',
     q:'According to TCPS2, what does \u201cfree and informed consent\u201d require?',
     opts:['A signed form and verbal confirmation','Voluntary participation based on as full an understanding as reasonably possible of purpose, risks, and benefits','Completion of a standardized quiz to confirm understanding','Consent given at least 48 hours before any procedure'],
     correct:1,
     rationale:'TCPS2 Chapter 3 defines consent as free, informed, and ongoing. \u201cFree\u201d means voluntary, without coercion or undue influence. \u201cInformed\u201d means based on as complete an understanding as is reasonably possible of the research, its risks, and potential benefits. Consent is ongoing \u2014 it can be withdrawn at any time and must be refreshed when material new information becomes available.',
-    ref:'<a href="kb-consent-in-quebec.html">Consent in Quebec</a> \u00b7 TCPS2 Ch. 3' },
+    ref:'<a href="/kb/consent">Consent in Quebec</a> \u00b7 TCPS2 Ch. 3' },
 
   { id:'ic-c5', type:'check', topic:'Informed Consent', topicId:'consent', applies:'all',
     q:'When must a participant be re-consented following an ICF amendment?',
@@ -2727,7 +2727,7 @@ var KP_POOL = [
     opts:['Backdate the delegation log to cover the period when the task was performed, then notify the monitor it has been corrected','Acknowledge the finding, investigate when and why it occurred, update the log with the correct date, file a note-to-file, and complete a deviation report','Explain to the monitor that the person was verbally authorized by the PI and that the log is just a formality','Remove the data collected by the undelegated team member from the study records'],
     ans:1,
     rationale:'This is a protocol deviation and a GCP finding. First, acknowledge the finding. Investigate when the undelegated task occurred and who performed it. If the PI did intend to delegate the task to this person, update the delegation log with the correct date and document the retrospective correction with a note-to-file explaining what happened. If the person should not have been performing the task at all, complete a deviation report and CAPA as required. Do not falsely backdate the delegation log.',
-    ref:'<a href="/sops/cr-002">SOP-CR-002</a> \u00b7 <a href="kb-data-integrity.html">Data Integrity</a>' },
+    ref:'<a href="/sops/cr-002">SOP-CR-002</a> \u00b7 <a href="/kb/data-integrity">Data Integrity</a>' },
 
 
   /* ══════════════════════════════════════════════════════════════
@@ -2741,28 +2741,28 @@ var KP_POOL = [
     opts:['January 6, 2025','June 23, 2025','October 17, 2025','April 1, 2026'],
     correct:3,
     rationale:'Health Canada adopted ICH E6(R3) Good Clinical Practice effective April 1, 2026 (announced October 17, 2025). This replaces E6(R2) as the applicable GCP standard for Health Canada-regulated clinical trials. E6(R3) introduces 11 overarching principles, risk-based quality management, and critical-to-quality factor requirements.',
-    ref:'<a href="kb-regulatory-framework.html">Regulatory Framework</a> \u00b7 HC GUI-0100 (March 2026)' },
+    ref:'<a href="/kb/governance/regulatory-framework">Regulatory Framework</a> \u00b7 HC GUI-0100 (March 2026)' },
 
   { id:'gcp-c2', type:'check', topic:'GCP Principles', topicId:'gcp', applies:'interventional',
     q:'What is a \u201ccritical-to-quality\u201d (CtQ) factor under ICH E6(R3)?',
     opts:['Any data element required by the REB','A process or data element that is essential to participant protection or the reliability of trial results','A regulatory requirement that triggers Health Canada inspection','The primary endpoint of the study'],
     correct:1,
     rationale:'ICH E6(R3) introduces the concept of critical-to-quality (CtQ) factors: data elements and processes that, if they fail, would jeopardize participant safety or the reliability of the primary endpoint. Sponsors and investigators are expected to identify CtQ factors prospectively, set tolerance limits, and manage them through a risk-based quality management approach.',
-    ref:'<a href="kb-regulatory-framework.html">Regulatory Framework</a> \u00b7 ICH E6(R3)' },
+    ref:'<a href="/kb/governance/regulatory-framework">Regulatory Framework</a> \u00b7 ICH E6(R3)' },
 
   { id:'gcp-c3', type:'check', topic:'GCP Principles', topicId:'gcp', applies:'interventional',
     q:'Under ICH E6(R3), which statement about the rights of trial participants is correct?',
     opts:['The rights of participants may be balanced against scientific interests on a case-by-case basis','The rights, safety, and well-being of trial participants must take precedence over all other interests','Scientific integrity takes precedence when results could benefit many future patients','Participant rights are primarily the sponsor\u2019s responsibility, not the investigator\u2019s'],
     correct:1,
     rationale:'This is Principle 1 of ICH E6(R3), directly restating the Declaration of Helsinki: the rights, safety, and well-being of trial participants must take precedence over the interests of science and society. This is non-negotiable and applies to all parties \u2014 sponsor, investigator, and CRO alike.',
-    ref:'<a href="kb-regulatory-framework.html">Regulatory Framework</a> \u00b7 ICH E6(R3) Principle 1' },
+    ref:'<a href="/kb/governance/regulatory-framework">Regulatory Framework</a> \u00b7 ICH E6(R3) Principle 1' },
 
   { id:'gcp-c4', type:'check', topic:'GCP Principles', topicId:'gcp', applies:'interventional',
     q:'What does \u201crisk-based monitoring\u201d mean under ICH E6(R3)?',
     opts:['Conducting more site visits for high-risk participants','Tailoring the monitoring plan to the specific risks to data integrity and participant protection in the trial','Monitoring only the primary endpoint data','Reducing all monitoring to remote-only visits'],
     correct:1,
     rationale:'Risk-based monitoring (RBM) under E6(R3) means tailoring the monitoring strategy to the specific human subject protection and data integrity risks of each trial. This may include centralized data analytics, remote source data review, and targeted on-site visits \u2014 rather than defaulting to 100% on-site source data verification for every data point. The monitoring plan must be documented and focus on critical data and processes.',
-    ref:'<a href="kb-monitoring-audits-inspections.html">Monitoring, Audits and Inspections</a> \u00b7 ICH E6(R3)' },
+    ref:'<a href="/kb/monitoring-audits">Monitoring, Audits and Inspections</a> \u00b7 ICH E6(R3)' },
 
   { id:'gcp-s1', type:'check', topic:'GCP Principles', topicId:'gcp', applies:'interventional',
     q:'A sponsor\u2019s monitor arrives for a source data verification visit and asks to review a participant\u2019s full hospital medical record, including records unrelated to the study. Your site\u2019s ICF states that participants consent to study-related records access only. What do you do?',
@@ -2790,21 +2790,21 @@ var KP_POOL = [
     opts:['7 years','10 years','15 years','25 years'],
     correct:2,
     rationale:'Part C, Division 5 of the Food and Drug Regulations (C.05.012) requires sponsors to retain clinical trial records for 15 years. Health Canada reduced the retention period from 25 years to 15 years effective February 11, 2022. Records must be made available to Health Canada within 2 days if there is a concern regarding participant safety, or within 7 days in any other case.',
-    ref:'<a href="kb-regulatory-framework.html">Regulatory Framework</a> \u00b7 HC Div 5 C.05.012\u201313' },
+    ref:'<a href="/kb/governance/regulatory-framework">Regulatory Framework</a> \u00b7 HC Div 5 C.05.012\u201313' },
 
   { id:'hc-c3', type:'check', topic:'Health Canada Division 5', topicId:'div5', applies:'interventional',
     q:'The Division 5 regulations do not differentiate between a commercial and a non-commercial sponsor. What does this mean for a physician who initiates their own clinical trial?',
     opts:['They are exempt from Division 5 because they are not a commercial entity','They are considered the sponsor-investigator and must fulfil all sponsor obligations under Division 5','They only need to comply with GCP, not the regulatory requirements','The hospital is the sponsor and bears all regulatory responsibilities'],
     correct:1,
     rationale:'Division 5 explicitly does not differentiate between commercial and non-commercial sponsors. A physician or institution that initiates a trial (sponsor-investigator) must fulfil all sponsor obligations, including filing a CTA, monitoring the trial, and reporting adverse reactions to Health Canada. This is a common misunderstanding among academic researchers.',
-    ref:'<a href="kb-regulatory-framework.html">Regulatory Framework</a> \u00b7 HC GUI-0100' },
+    ref:'<a href="/kb/governance/regulatory-framework">Regulatory Framework</a> \u00b7 HC GUI-0100' },
 
   { id:'hc-c4', type:'check', topic:'Health Canada Division 5', topicId:'div5', applies:'interventional',
     q:'A protocol amendment changes the inclusion criteria in a way that could affect participant safety. When must a CTA amendment (CTA-A) be filed with Health Canada?',
     opts:['Within 15 calendar days after implementing the change','Before implementing the change \u2014 it must be authorized first','At the next annual submission','Only if Health Canada specifically requests it'],
     correct:1,
     rationale:'Under Division 5 (C.05.008), changes to the protocol that could affect the quality or safety of the drug or the risk to participants require a CTA amendment, which must be authorized by Health Canada before implementation. The only exception is if an immediate amendment is necessary to eliminate an immediate hazard to participants, in which case the sponsor may implement first and must notify Health Canada within 15 calendar days.',
-    ref:'<a href="kb-regulatory-framework.html">Regulatory Framework</a> \u00b7 HC GUI-0100' },
+    ref:'<a href="/kb/governance/regulatory-framework">Regulatory Framework</a> \u00b7 HC GUI-0100' },
 
   /* ══════════════════════════════════════════════════════════════
      TOPIC: TCPS2 and Research Ethics
@@ -2817,14 +2817,14 @@ var KP_POOL = [
     opts:['Beneficence, Non-maleficence, Autonomy','Respect for Persons, Concern for Welfare, Justice','Informed Consent, Privacy, Scientific Integrity','Voluntariness, Transparency, Accountability'],
     correct:1,
     rationale:'TCPS2 Chapter 1 establishes three core principles: Respect for Persons (autonomy, free and informed consent), Concern for Welfare (protecting participants\u2019 physical, mental, social, and other interests), and Justice (fair distribution of benefits and burdens of research, equitable inclusion). All research ethics decisions at the REB and researcher level should be guided by these principles.',
-    ref:'<a href="kb-regulatory-framework.html">Regulatory Framework</a> \u00b7 TCPS2 Ch. 1' },
+    ref:'<a href="/kb/governance/regulatory-framework">Regulatory Framework</a> \u00b7 TCPS2 Ch. 1' },
 
   { id:'tcps-c2', type:'check', topic:'Research Ethics / TCPS2', topicId:'tcps2', applies:'all',
     q:'A researcher wants to conduct a retrospective chart review and argues they don\u2019t need REB approval because they\u2019re not interacting with participants. Are they correct?',
     opts:['Yes \u2014 no participant interaction means no ethics review required','No \u2014 research involving identifiable human data still requires REB review and approval','Only if the data is de-identified before analysis','It depends on the source of the funding'],
     correct:1,
     rationale:'TCPS2 requires REB review for all research involving humans, including secondary use of identifiable data such as medical records. The absence of direct participant interaction does not exempt research from ethics review. An EFVP (privacy impact assessment) may also be required by the MUHC. Under TCPS2, the REB may grant a waiver of consent for retrospective studies if specific conditions are met.',
-    ref:'<a href="kb-regulatory-framework.html">Regulatory Framework</a> \u00b7 TCPS2 Ch. 2 &amp; 5 \u00b7 <a href="/sops/cr-008">SOP-CR-008 \u00a75.4</a>' },
+    ref:'<a href="/kb/governance/regulatory-framework">Regulatory Framework</a> \u00b7 TCPS2 Ch. 2 &amp; 5 \u00b7 <a href="/sops/cr-008">SOP-CR-008 \u00a75.4</a>' },
 
   { id:'tcps-c3', type:'check', topic:'Research Ethics / TCPS2', topicId:'tcps2', applies:'all',
     q:'Under TCPS2, can the REB grant a waiver of informed consent for research?',
@@ -2852,14 +2852,14 @@ var KP_POOL = [
     opts:['Accurate, Legible, Complete, Original, Auditable, plus Complete, Consistent, Enduring, Available','Attributable, Legible, Contemporaneous, Original, Accurate, plus Complete, Consistent, Enduring, Available','Authorized, Legible, Correct, Original, Archived, plus Checked, Compliant, Endorsed, Audited','Accurate, Labelled, Chronological, Organized, Archived, plus Checked, Certified, Endorsed, Accessible'],
     correct:1,
     rationale:'ALCOA+ is the foundational framework for good documentation practices in clinical research: Attributable (who recorded/changed and when), Legible (readable), Contemporaneous (recorded at the time of the action), Original (first recording or certified copy), Accurate (correct, truthful) \u2014 plus the extended elements: Complete, Consistent, Enduring, Available. Per [SOP-CR-014](/sops/cr-014), all data collection must follow ALCOA+ principles.',
-    ref:'<a href="/sops/cr-014">SOP-CR-014 \u00a75.4.2</a> \u00b7 <a href="kb-data-integrity.html">Data Integrity</a>' },
+    ref:'<a href="/sops/cr-014">SOP-CR-014 \u00a75.4.2</a> \u00b7 <a href="/kb/data-integrity">Data Integrity</a>' },
 
   { id:'data-c2', type:'check', topic:'Data Integrity', topicId:'data', applies:'all',
     q:'How must an error in a source document be corrected in a paper-based study?',
     opts:['Use correction fluid (white-out) to neatly cover the error and write the correct value','Scribble out the error so it cannot be read, write the correction, and initial','Draw a single line through the error without obscuring it, write the correction beside it, then initial, date, and explain','Delete the document and re-create it with the correct data'],
     correct:2,
     rationale:'Per [SOP-CR-014](/sops/cr-014) section 5.6.2 and GCP documentation standards, corrections must preserve the original entry (never use correction fluid or scribble), be traceable, and be explained. The correct method is: single line through the error (original still legible), correction written alongside, initialled and dated by an authorized person, with an explanation where needed. This maintains the audit trail.',
-    ref:'<a href="/sops/cr-014">SOP-CR-014 \u00a75.6.2</a> \u00b7 <a href="kb-data-integrity.html">Data Integrity</a>' },
+    ref:'<a href="/sops/cr-014">SOP-CR-014 \u00a75.6.2</a> \u00b7 <a href="/kb/data-integrity">Data Integrity</a>' },
 
   { id:'data-c3', type:'check', topic:'Data Integrity', topicId:'data', applies:'all',
     q:'A source document has a blank field for a test result that was not obtained at the visit. What is the correct approach?',
@@ -2873,7 +2873,7 @@ var KP_POOL = [
     opts:['This is normal \u2014 many sites have one person who completes all forms for efficiency','Investigate immediately: determine who actually recorded each entry, review delegation logs, and escalate to the QI/PI if intentional falsification is suspected','Ask the team members to re-write their entries in their own handwriting going forward','Inform the monitor that handwriting analysis is outside the scope of a monitoring visit'],
     ans:1,
     rationale:'This is a potential data integrity violation and a serious GCP finding. Source documents must be attributable \u2014 the person who recorded the data must be identifiable, and the record must reflect who actually made the entry. If entries attributed to one person are actually written by another, this could indicate falsification of records. Investigate immediately: speak with the team members, review delegation logs, and determine whether there is an innocent explanation (e.g., a supervisor completing forms on behalf of a trained delegate). If deliberate falsification is suspected, escalate to the QI/PI and the institution\u2019s research integrity office.',
-    ref:'<a href="kb-data-integrity.html">Data Integrity</a> \u00b7 <a href="/sops/cr-014">SOP-CR-014</a>' },
+    ref:'<a href="/kb/data-integrity">Data Integrity</a> \u00b7 <a href="/sops/cr-014">SOP-CR-014</a>' },
 
 
   /* ══════════════════════════════════════════════════════════════
@@ -3006,7 +3006,7 @@ var KP_POOL = [
     opts:['It remains minor as long as each individual instance is minor \u2014 severity is assessed per occurrence','It should be reassessed as major \u2014 a pattern of repeated identical deviations indicates a systemic process failure requiring a CAPA and REB reporting','Combine all six into a single minor deviation entry to simplify documentation','Stop enrolling and close the study until the process is corrected'],
     ans:1,
     rationale:'No \u2014 a pattern of repeated deviations changes the severity assessment. [SOP-CR-026](/sops/cr-026) requires that deviations be assessed to identify trends. Six consecutive occurrences of the same eligibility gap is no longer an isolated minor deviation; it indicates a systemic process failure that may have enrolled participants who were not properly confirmed as eligible. This should be reassessed as major, reported to the REB promptly, and a CAPA must be developed and implemented. The fact that each instance was assessed individually as minor does not protect against a trend-level finding during an audit.',
-    ref:'<a href="/sops/cr-026">SOP-CR-026 \u00a75.3.3</a> \u00b7 <a href="kb-data-integrity.html">Data Integrity</a>' },
+    ref:'<a href="/sops/cr-026">SOP-CR-026 \u00a75.3.3</a> \u00b7 <a href="/kb/data-integrity">Data Integrity</a>' },
 
   { id:'dev-s3', type:'check', topic:'Protocol Deviations', topicId:'deviations', applies:'all',
     q:'The sponsor sends a written instruction allowing sites to skip a non-critical assessment at one visit for logistical reasons, saying sites can implement it immediately. Can you proceed without REB approval?',
@@ -3310,7 +3310,7 @@ export const LL_JS_2 = `    ref:'<a href="/sops/cr-008">SOP-CR-008 \u00a75.3.1</
     opts:['5 principles, each specific to a phase of the trial','11 principles, designed to be flexible and applicable across trial types and settings','14 principles, directly mirroring the Declaration of Helsinki','8 principles, applicable only to interventional drug trials'],
     correct:1,
     rationale:'ICH E6(R3) articulates 11 overarching principles that provide a flexible framework for clinical trial conduct throughout the trial lifecycle. They are designed to be applicable across clinical trial types and settings and to remain relevant as technological and methodological advances occur. The principles are interdependent and should be considered in their totality.',
-    ref:'<a href="kb-regulatory-framework.html">Regulatory Framework</a> \u00b7 ICH E6(R3)' },
+    ref:'<a href="/kb/governance/regulatory-framework">Regulatory Framework</a> \u00b7 ICH E6(R3)' },
 
   { id:'gcp-c6', type:'check', topic:'GCP Principles', topicId:'gcp', applies:'interventional',
     q:'What is the primary purpose of ICH GCP as stated in E6(R3)?',
@@ -3324,7 +3324,7 @@ export const LL_JS_2 = `    ref:'<a href="/sops/cr-008">SOP-CR-008 \u00a75.3.1</
     opts:['R3 is shorter and less detailed than R2','R3 has a new structure: overarching Principles plus Annexes that expand on the principles for specific trial types; R2 was a single integrated document','R3 focuses on drug trials only; R2 covered all trial types','R3 replaces the Declaration of Helsinki; R2 did not'],
     correct:1,
     rationale:'ICH E6(R3) introduced a new modular structure: overarching Principles that remain stable over time, plus Annexes that can be updated more rapidly as practice evolves. Annex 1 covers interventional trials (final, January 2025). Annex 2 (decentralized and real-world designs) is in development. This modularity is a deliberate departure from the integrated single-document structure of E6(R2).',
-    ref:'ICH E6(R3) Introduction \u00b7 <a href="kb-regulatory-framework.html">Regulatory Framework</a>' },
+    ref:'ICH E6(R3) Introduction \u00b7 <a href="/kb/governance/regulatory-framework">Regulatory Framework</a>' },
 
   { id:'gcp-c8', type:'check', topic:'GCP Principles', topicId:'gcp', applies:'interventional',
     q:'What does ICH E6(R3) say about poorly conducted clinical trials?',
@@ -3338,7 +3338,7 @@ export const LL_JS_2 = `    ref:'<a href="/sops/cr-008">SOP-CR-008 \u00a75.3.1</
     opts:['Once delegated, the CRO assumes full responsibility and the sponsor has no further obligations','The sponsor retains overall responsibility for the quality and integrity of the trial data; they must ensure oversight of all subcontracted functions','The sponsor\u2019s obligations are transferred to the CRO by written agreement','The sponsor is only responsible for tasks not delegated to the CRO'],
     correct:1,
     rationale:'ICH E6(R3) Principle 9 and Annex 1 are clear: when a sponsor delegates trial-related duties to a CRO, the sponsor retains overall responsibility for the quality and integrity of trial data. The sponsor must ensure oversight of all trial-related duties and functions carried out by the CRO, including those the CRO further subcontracts. Delegation reduces workload but does not transfer responsibility.',
-    ref:'ICH E6(R3) Principle 9 \u00b7 <a href="kb-regulatory-framework.html">Regulatory Framework</a>' },
+    ref:'ICH E6(R3) Principle 9 \u00b7 <a href="/kb/governance/regulatory-framework">Regulatory Framework</a>' },
 
   { id:'gcp-c10', type:'check', topic:'GCP Principles', topicId:'gcp', applies:'interventional',
     q:'What does ICH E6(R3) require regarding the qualifications of individuals conducting a trial?',
@@ -3353,7 +3353,7 @@ export const LL_JS_2 = `    ref:'<a href="/sops/cr-008">SOP-CR-008 \u00a75.3.1</
     opts:['14 calendar days','30 calendar days \u2014 the trial may proceed if no objection is raised within this period','60 calendar days','There is no fixed review period; the sponsor must wait for a formal NOL'],
     correct:1,
     rationale:'Under Division 5 (C.05.006), Health Canada has 30 calendar days from receipt of the CTA to object. If no objection is raised within 30 days, the sponsor may proceed and a No Objection Letter (NOL) is issued. The NOL must be kept with the study\u2019s essential documents. If Health Canada needs more information during review, the sponsor has 2 calendar days to provide it.',
-    ref:'HC Div 5 C.05.006 \u00b7 <a href="kb-regulatory-framework.html">Regulatory Framework</a>' },
+    ref:'HC Div 5 C.05.006 \u00b7 <a href="/kb/governance/regulatory-framework">Regulatory Framework</a>' },
 
   { id:'hc-c6', type:'check', topic:'Health Canada Division 5', topicId:'div5', applies:'interventional',
     q:'Under Division 5, within how many calendar days must a sponsor notify Health Canada of a change that does not require a CTA amendment?',
@@ -3388,7 +3388,7 @@ export const LL_JS_2 = `    ref:'<a href="/sops/cr-008">SOP-CR-008 \u00a75.3.1</
     opts:['Yes \u2014 academic institutions are exempt from Division 5','No \u2014 Division 5 does not differentiate between commercial and non-commercial sponsors; academic sponsor-investigators must comply with all sponsor obligations','Only if the study involves a marketed drug used within its approved indications','Only if the study involves fewer than 10 participants'],
     correct:1,
     rationale:'Division 5 explicitly does not differentiate between commercial and non-commercial sponsors. An academic institution or physician who initiates a trial using an unapproved drug or a marketed drug outside its approved indications must file a CTA and comply with all sponsor obligations under Division 5 \u2014 including GCP, monitoring, adverse reaction reporting, and record retention. There is no academic exemption.',
-    ref:'HC Div 5 \u00b7 HC GUI-0100 \u00b7 <a href="kb-regulatory-framework.html">Regulatory Framework</a>' },
+    ref:'HC Div 5 \u00b7 HC GUI-0100 \u00b7 <a href="/kb/governance/regulatory-framework">Regulatory Framework</a>' },
 
   /* ── TCPS2: 7 additional checks (tcps-c4 to tcps-c10) ── */
   { id:'tcps-c4', type:'check', topic:'Research Ethics / TCPS2', topicId:'tcps2', applies:'all',
@@ -3453,7 +3453,7 @@ export const LL_JS_2 = `    ref:'<a href="/sops/cr-008">SOP-CR-008 \u00a75.3.1</
     opts:['Informed consent requirements were added for the first time','13 GCP principles aligned with ICH E6(R2) and the Declaration of Helsinki were explicitly articulated','Device classification requirements were introduced','Post-market surveillance was added as a requirement'],
     correct:1,
     rationale:'ISO 14155:2020 (third edition) explicitly added a summary of 13 GCP principles, aligning ISO 14155 more closely with ICH E6(R2) and the Declaration of Helsinki. Other key additions included risk-based monitoring, clinical investigation registration requirements before first enrolment, strengthened informed consent requirements including electronic consent provisions, and enhanced risk management integration throughout the investigation lifecycle.',
-    ref:'ISO 14155:2020 \u00b7 <a href="kb-regulatory-framework.html">Regulatory Framework</a>' },
+    ref:'ISO 14155:2020 \u00b7 <a href="/kb/governance/regulatory-framework">Regulatory Framework</a>' },
 
   { id:'iso-c5', type:'check', topic:'ISO 14155 (Medical Devices)', topicId:'iso14155', applies:'interventional',
     q:'Under ISO 14155:2020, what must a clinical investigation plan (CIP) \u2014 the device equivalent of a protocol \u2014 include regarding risk?',
@@ -3495,7 +3495,7 @@ export const LL_JS_2 = `    ref:'<a href="/sops/cr-008">SOP-CR-008 \u00a75.3.1</
     opts:['A Clinical Trial Application (CTA), the same as for drugs','An Investigational Testing Authorization (ITA), submitted to the Medical Devices Bureau of Health Canada','A Notified Body assessment, as used in the EU','No application is required \u2014 REB approval alone is sufficient'],
     correct:1,
     rationale:'In Canada, clinical investigations of Class II, III, and IV medical devices require an Investigational Testing Authorization (ITA) from Health Canada\u2019s Medical Devices Bureau. Class I devices do not require an ITA. The application results in a No Objection Letter (NOL) if approved. This is separate from the CTA process used for drugs. REB approval is also required and must be obtained before the investigation begins.',
-    ref:'<a href="/sops/cr-024">SOP-CR-024</a> \u00b7 <a href="kb-regulatory-framework.html">Regulatory Framework</a>' },
+    ref:'<a href="/sops/cr-024">SOP-CR-024</a> \u00b7 <a href="/kb/governance/regulatory-framework">Regulatory Framework</a>' },
 
   /* ── DEVIATIONS: 5 additional checks (dev-c6 to dev-c10) ── */
   { id:'dev-c6', type:'check', topic:'Protocol Deviations', topicId:'deviations', applies:'all',
