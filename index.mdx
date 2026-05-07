@@ -230,11 +230,6 @@ export const StartHere = () => {
       {role === 'crc' && (
         <div className="ri-role-panel">
           <p className="ri-role-framing">Coordinators are the operational core of clinical research at the RI-MUHC. You manage day-to-day study activity — participant recruitment and screening, data collection, regulatory documentation, sponsor communication, and keeping the Investigator Site File inspection-ready. Your authorized scope is defined by your study level and by what the QI/PI delegates on the Task Delegation Log. You cannot begin any study task until you appear on the TDL with your training documented and the QI/PI's countersignature in place.</p>
-          <a href="/kb/roles/crc-pathway" className="ri-pathway-banner">
-            <div className="ri-pb-label">CRC Pathway</div>
-            <div className="ri-pb-desc">Coordinator onboarding, competency domains, and operational guidance organized by study type and level (I–V).</div>
-            <div className="ri-pb-arrow">View pathway →</div>
-          </a>
           <StepTrack steps={[
             { label: "Identify your study level (I–V)" },
             { label: "Fulfill training and compliance requirements" },
@@ -246,10 +241,17 @@ export const StartHere = () => {
           <div className="ri-callout ri-callout--warn">
             No team member may perform any study task before they appear on the Task Delegation Log, their training is documented, and the QI/PI has countersigned their entry.
           </div>
-          <div className="ri-dcard-grid">
-            <DetailCard href="/kb/roles/crc-guide" title="CRC Guide — Interventional (I–III)" desc="Operational reference for drug trials, medical device studies, and natural health products. Stage-by-stage procedures and domain-specific guidance." />
-            <DetailCard href="/kb/roles/crc-guide-iv" title="CRC Guide — Observational (IV)" desc="Consent, recruitment, data management, privacy, REB processes, and documentation for prospective observational and non-invasive intervention studies." />
-            <DetailCard href="/kb/roles/crc-guide-v" title="CRC Guide — Retrospective (V)" desc="REB submission, data extraction, privacy compliance, and documentation for retrospective chart review and anonymized biobank studies." />
+          <div className="ri-guides-row">
+            <a href="/kb/roles/crc-pathway" className="ri-pathway-banner">
+              <div className="ri-pb-label">CRC Pathway</div>
+              <div className="ri-pb-desc">Coordinator onboarding, competency domains, and operational guidance organized by study type and level (I–V).</div>
+              <div className="ri-pb-arrow">View pathway →</div>
+            </a>
+            <div className="ri-guides-stack">
+              <DetailCard href="/kb/roles/crc-guide" title="CRC Guide — Interventional (I–III)" desc="Operational reference for drug trials, medical device studies, and natural health products. Stage-by-stage procedures and domain-specific guidance." />
+              <DetailCard href="/kb/roles/crc-guide-iv" title="CRC Guide — Observational (IV)" desc="Consent, recruitment, data management, privacy, REB processes, and documentation for prospective observational and non-invasive intervention studies." />
+              <DetailCard href="/kb/roles/crc-guide-v" title="CRC Guide — Retrospective (V)" desc="REB submission, data extraction, privacy compliance, and documentation for retrospective chart review and anonymized biobank studies." />
+            </div>
           </div>
         </div>
       )}
@@ -257,11 +259,6 @@ export const StartHere = () => {
       {role === 'nurse' && (
         <div className="ri-role-panel">
           <p className="ri-role-framing">Research nurses bring regulated clinical expertise to studies involving patient care, IV administration, biological specimen collection, or any act reserved under the Code des professions. Not all acts permissible in a clinical setting are authorized within a research protocol — your scope must be explicitly confirmed with the QI through the delegation process and documented on the Task Delegation Log before any study tasks begin. The training requirements you must meet depend on the study level.</p>
-          <a href="/kb/roles/nurse-pathway" className="ri-pathway-banner">
-            <div className="ri-pb-label">Nurse Pathway</div>
-            <div className="ri-pb-desc">Nursing-specific onboarding, OIIQ obligations, delegation scope confirmation with the QI, and study-level training and compliance requirements.</div>
-            <div className="ri-pb-arrow">View pathway →</div>
-          </a>
           <StepTrack steps={[
             { label: "Confirm OIIQ licence + CPR" },
             { label: "Fulfill training and compliance requirements" },
@@ -270,8 +267,15 @@ export const StartHere = () => {
             { label: "Complete protocol-specific training" },
             { label: "Nursing study tasks begin", end: true },
           ]} />
-          <div className="ri-dcard-grid">
-            <DetailCard href="/kb/roles/nurse-guide" title="Nurse Guide — Interventional (I–III)" desc="Study procedures, participant visits, data collection, reserved acts under the Code des professions, and nursing-specific responsibilities across drug, device, and observational studies." />
+          <div className="ri-guides-row">
+            <a href="/kb/roles/nurse-pathway" className="ri-pathway-banner">
+              <div className="ri-pb-label">Nurse Pathway</div>
+              <div className="ri-pb-desc">Nursing-specific onboarding, OIIQ obligations, delegation scope confirmation with the QI, and study-level training and compliance requirements.</div>
+              <div className="ri-pb-arrow">View pathway →</div>
+            </a>
+            <div className="ri-guides-stack">
+              <DetailCard href="/kb/roles/nurse-guide" title="Nurse Guide — Interventional (I–III)" desc="Study procedures, participant visits, data collection, reserved acts under the Code des professions, and nursing-specific responsibilities across drug, device, and observational studies." />
+            </div>
           </div>
         </div>
       )}
@@ -279,11 +283,6 @@ export const StartHere = () => {
       {role === 'trainee' && (
         <div className="ri-role-panel">
           <p className="ri-role-framing">Research trainees — graduate students, postdoctoral fellows, and other trainees registered in an academic program — can be delegated study tasks, but only after a formal affiliation agreement with the RI-MUHC is in place. That agreement is a prerequisite to appearing on the Task Delegation Log. Trainees without valid academic insurance, or who are not affiliated through the HR Service Centre, cannot perform study tasks regardless of their academic standing.</p>
-          <a href="/kb/roles/onboarding-trainees" className="ri-pathway-banner">
-            <div className="ri-pb-label">Trainee Onboarding Guide</div>
-            <div className="ri-pb-desc">Eligibility requirements, affiliation agreement process, training obligations, and the scope of tasks that can and cannot be delegated to trainees.</div>
-            <div className="ri-pb-arrow">View guide →</div>
-          </a>
           <StepTrack steps={[
             { label: "Fulfill training and compliance requirements" },
             { label: "Sign the Confidentiality and Security Agreement" },
@@ -302,11 +301,6 @@ export const StartHere = () => {
       {role === 'volunteer' && (
         <div className="ri-role-panel">
           <p className="ri-role-framing">Research volunteers contribute to studies in a non-employment capacity. A signed volunteer agreement processed through the HR Service Centre is required before a volunteer can access RI-MUHC facilities or appear on the Task Delegation Log. The scope of tasks that can be delegated to volunteers is limited — volunteers cannot perform acts requiring professional licensing or specialized clinical training.</p>
-          <a href="/kb/roles/onboarding-volunteers" className="ri-pathway-banner">
-            <div className="ri-pb-label">Volunteer Onboarding Guide</div>
-            <div className="ri-pb-desc">Volunteer agreement requirements, scope limitations, confidentiality obligations, and the process for becoming affiliated with the RI-MUHC as a volunteer.</div>
-            <div className="ri-pb-arrow">View guide →</div>
-          </a>
           <StepTrack steps={[
             { label: "Supervisor's Authorization form signed by PI" },
             { label: "Sign the Confidentiality and Security Agreement" },
@@ -325,11 +319,6 @@ export const StartHere = () => {
       {role === 'observer' && (
         <div className="ri-role-panel">
           <p className="ri-role-framing">Observers may attend and observe study activities but may not perform study tasks, handle investigational products, access participant records independently, or appear on the Task Delegation Log in a task-performing capacity. An observer agreement is required before any observation begins. Observers do not replace or supplement the study team — the scope is strictly witnessing and learning.</p>
-          <a href="/kb/roles/onboarding-observers" className="ri-pathway-banner">
-            <div className="ri-pb-label">Observer Onboarding Guide</div>
-            <div className="ri-pb-desc">Observer agreement requirements, access limitations, what observers may and may not do during study visits, and how the observer role differs from study team membership.</div>
-            <div className="ri-pb-arrow">View guide →</div>
-          </a>
           <StepTrack steps={[
             { label: "Observer agreement signed" },
             { label: "Access coordinated with QI/PI" },

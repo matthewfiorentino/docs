@@ -641,6 +641,31 @@ html.dark .ri-pb-desc { color: rgba(255,255,255,.5); }
 .ri-pb-arrow { font-size: 13px; font-weight: 600; color: var(--ri-accent); margin-top: 14px; display: inline-block; }
 /* Spacing: pathway banner when directly inside a role panel (not inside ri-pi-top-row) */
 .ri-role-panel > .ri-pathway-banner { margin-top: 1.75rem; margin-bottom: 1.5rem; }
+/* Pathway card alongside guide cards — side-by-side layout */
+.ri-guides-row {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 12px;
+    margin-bottom: 1.5rem;
+}
+.ri-guides-row .ri-pathway-banner {
+    margin: 0 !important;
+    background: #f0faf8;
+    border-color: rgba(0, 122, 110, 0.2);
+    justify-content: center;
+}
+html.dark .ri-guides-row .ri-pathway-banner {
+    background: rgba(0, 122, 110, 0.08);
+    border-color: rgba(0, 196, 180, 0.15);
+}
+.ri-guides-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+@media (max-width: 700px) {
+    .ri-guides-row { grid-template-columns: 1fr; }
+}
 /* Study arrangement eyebrow + subtitle (PI panel, above stype-grid) */
 .ri-stype-header { margin-top: 2rem; margin-bottom: 0.75rem; }
 .ri-stype-eyebrow { font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--ri-accent); margin-bottom: 4px; }
@@ -1032,9 +1057,13 @@ img[alt="Quebec"] {
     background: transparent !important;
 }
 /* Hide the circular border overlay Mintlify adds on top of flag images —
-   it renders as a visible ring/"radio button" over our rectangular flags. */
-#localization-select-trigger .rounded-full:not(img),
-[data-component-part="localization-select-trigger"] div.absolute.rounded-full {
+   it renders as a visible ring/"radio button" over our rectangular flags.
+   The overlay is a div.absolute immediately after the <img> inside the same
+   wrapper — this selector works in both the trigger button and the dropdown. */
+img[alt="Canada"] + div.absolute,
+img[alt="Quebec"] + div.absolute,
+img[alt="US"] + div.absolute,
+img[alt="CA"] + div.absolute {
     display: none !important;
 }
 /* Language switcher button — reduce font size globally */
