@@ -62,7 +62,7 @@
             "tab": "Knowledge Base",
             "groups": [
               {
-                "group": "Knowledge Base",
+                "group": "About this site",
                 "pages": [
                   "kb/introduction"
                 ]
@@ -79,13 +79,18 @@
                 "group": "Getting Started",
                 "icon": "graduation-cap",
                 "pages": [
-                  "kb/clinical-research-101",
-                  "kb/trial-design",
-                  "kb/gcp-quality-by-design",
-                  "kb/study-lifecycle",
+                  {
+                    "group": "Clinical Research 101",
+                    "expanded": false,
+                    "pages": [
+                      "kb/clinical-research-101",
+                      "kb/trial-design",
+                      "kb/gcp-quality-by-design",
+                      "kb/study-lifecycle"
+                    ]
+                  },
                   {
                     "group": "Onboarding Guides",
-                    "icon": "compass",
                     "expanded": false,
                     "pages": [
                       {
@@ -133,7 +138,6 @@
                   "kb/planning/study-intake",
                   {
                     "group": "Study Planning",
-                    "icon": "lightbulb",
                     "expanded": false,
                     "pages": [
                       "kb/planning/overview",
@@ -148,7 +152,6 @@
                       "kb/planning/multi-centric",
                       {
                         "group": "Data and Research Services",
-                        "icon": "database",
                         "expanded": false,
                         "pages": [
                           "kb/planning/bcu",
@@ -163,7 +166,6 @@
                   },
                   {
                     "group": "Submission & Review",
-                    "icon": "paper-plane",
                     "expanded": false,
                     "pages": [
                       "kb/submission/overview",
@@ -175,7 +177,6 @@
                   },
                   {
                     "group": "Study Conduct",
-                    "icon": "flask",
                     "expanded": false,
                     "pages": [
                       "kb/conduct/overview",
@@ -554,8 +555,7 @@
                       "training/research-privileges",
                       "training/external-certifications",
                       "training/study-classifier"
-                    ],
-                    "icon": "clipboard-check"
+                    ]
                   },
                   {
                     "group": "Learning",
@@ -563,8 +563,7 @@
                     "pages": [
                       "training/learning-lab",
                       "training/talentlms"
-                    ],
-                    "icon": "chalkboard-user"
+                    ]
                   },
                   "training/cantrain"
                 ]
@@ -584,8 +583,7 @@
                     "pages": [
                       "cim/services",
                       "cim/planning"
-                    ],
-                    "icon": "microscope"
+                    ]
                   },
                   {
                     "group": "For CIM Staff",
@@ -594,8 +592,7 @@
                       "cim/researcher-guide",
                       "cim/training",
                       "cim/wi-sops"
-                    ],
-                    "icon": "hospital-user"
+                    ]
                   },
                   {
                     "group": "Work Instructions",
@@ -815,8 +812,7 @@
                           }
                         ]
                       }
-                    ],
-                    "icon": "book"
+                    ]
                   }
                 ]
               }
@@ -853,8 +849,7 @@
                           "apps/nagano/guide-13"
                         ]
                       }
-                    ],
-                    "icon": "laptop"
+                    ]
                   },
                   "apps/redcap",
                   "apps/talentlms",
