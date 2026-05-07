@@ -70,22 +70,34 @@ article a:hover,
     font-weight: 400 !important;
     line-height: 1.4 !important;
 }
-/* ── Sidebar — top-level section headers (icon + bold label) ──
-   Slightly smaller than page links, bold, black — like Mintlify's own
-   "Get Started" / "Organize" pattern.                                 */
-#sidebar-content li[data-group-tag] > button,
-#sidebar-content li[data-group-tag] > button span {
-    font-size:   11px !important;
-    font-weight: 600 !important;
-    color:       #111111 !important;
+/* ── Sidebar — prevent global strong/b navy from bleeding in ── */
+#sidebar strong, #sidebar b {
+    color: inherit !important;
+}
+/* ── Sidebar — top-level section headers (icon-bearing buttons only) ──
+   :has(svg) targets only buttons that contain an icon — the top-level
+   category headers like "Getting Started", "The Study Lifecycle", etc.
+   Nested collapsible groups (no icon) are excluded by this selector.   */
+#sidebar-content li[data-group-tag] > button:has(svg),
+#sidebar-content li[data-group-tag] > button:has(svg) span {
+    font-size:      11px !important;
+    font-weight:    600 !important;
+    color:          #111111 !important;
     text-transform: uppercase !important;
     letter-spacing: 0.04em !important;
 }
-html.dark #sidebar-content li[data-group-tag] > button,
-html.dark #sidebar-content li[data-group-tag] > button span {
+html.dark #sidebar-content li[data-group-tag] > button:has(svg),
+html.dark #sidebar-content li[data-group-tag] > button:has(svg) span {
     color: rgba(255,255,255,0.85) !important;
 }
-/* ── Sidebar — active page link → teal ──
+/* ── Sidebar — hover → teal on all links and buttons ── */
+#sidebar-content a:hover,
+#sidebar-content a:hover span,
+#sidebar-content button:hover,
+#sidebar-content button:hover span {
+    color: #007a6e !important;
+}
+/* ── Sidebar — active page link → teal, no bold ──
    Use multiple selectors: aria-current for standard, li[data-active]
    for Mintlify's own active-state attribute.                          */
 #sidebar a[aria-current="page"],
@@ -93,11 +105,11 @@ html.dark #sidebar-content li[data-group-tag] > button span {
 #sidebar-content li[data-active] > a,
 #sidebar-content li[data-active] > a span {
     color:       #007a6e !important;
-    font-weight: 600 !important;
+    font-weight: 400 !important;
 }
 /* ── Sidebar — expanded collapsible group → teal ── */
-#sidebar-content button[aria-expanded="true"]:not(li[data-group-tag] > button),
-#sidebar-content button[aria-expanded="true"]:not(li[data-group-tag] > button) span {
+#sidebar-content button[aria-expanded="true"],
+#sidebar-content button[aria-expanded="true"] span {
     color: #007a6e !important;
 }
 /* ── Sidebar — tighten gap between top-level section groups ── */
