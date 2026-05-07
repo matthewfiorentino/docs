@@ -161,12 +161,10 @@ html.dark .nav-tag-pill-text {
     color: #00c4b4 !important;
 }
 /* ── Navbar — tab strip ──
-   Menu-enabled tabs render as <button> instead of <a>, so we target both.
-   Use broad selectors to catch any element Mintlify uses for tab items.    */
+   Regular tabs are <a class="link">. Menu-enabled tabs are
+   <button aria-haspopup="menu"> with Tailwind utility classes.   */
 #navbar nav a.link,
-#navbar nav button.link,
-#navbar nav > * > a,
-#navbar nav > * > button {
+#navbar button[aria-haspopup="menu"] {
     background:     transparent !important;
     border-radius:  0 !important;
     border-bottom:  2px solid transparent !important;
@@ -177,19 +175,15 @@ html.dark .nav-tag-pill-text {
     transition:     color 0.15s, border-bottom-color 0.15s !important;
 }
 #navbar nav a.link:hover,
-#navbar nav button.link:hover,
-#navbar nav > * > a:hover,
-#navbar nav > * > button:hover {
+#navbar button[aria-haspopup="menu"]:hover {
     background:          transparent !important;
     color:               #150e51 !important;
     border-bottom-color: rgba(21,14,81,0.3) !important;
 }
 #navbar nav a.link[data-active="true"],
 #navbar nav a.link[aria-current="page"],
-#navbar nav button.link[data-active="true"],
-#navbar nav button.link[aria-current="page"],
-#navbar nav > * > a[data-active="true"],
-#navbar nav > * > button[data-active="true"] {
+#navbar button[aria-haspopup="menu"][data-active="true"],
+#navbar button[aria-haspopup="menu"][data-state="open"] {
     background:          transparent !important;
     color:               #150e51 !important;
     border-bottom-color: #150e51 !important;
@@ -1060,9 +1054,7 @@ button:has(img[alt="Quebec"]) {
     }
     /* Tab links — reduce font and horizontal padding */
     #navbar nav a.link,
-    #navbar nav button.link,
-    #navbar nav > * > a,
-    #navbar nav > * > button {
+    #navbar button[aria-haspopup="menu"] {
         font-size:     12px !important;
         padding-left:  8px !important;
         padding-right: 8px !important;
@@ -1083,9 +1075,7 @@ button:has(img[alt="Quebec"]) {
         gap: 0px !important;
     }
     #navbar nav a.link,
-    #navbar nav button.link,
-    #navbar nav > * > a,
-    #navbar nav > * > button {
+    #navbar button[aria-haspopup="menu"] {
         font-size:     11px !important;
         padding-left:  6px !important;
         padding-right: 6px !important;
