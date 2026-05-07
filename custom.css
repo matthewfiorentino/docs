@@ -40,6 +40,11 @@ article a:hover,
 .prose a:hover {
     color: var(--ri-accent) !important;
 }
+/* Bold text inside links must inherit the link colour, not the heading navy */
+article a strong, article a b,
+.prose a strong, .prose a b {
+    color: inherit !important;
+}
 /* ── "On this page" TOC ──
    Mintlify's native tracker is a <span> inside div.relative that slides by
    animating its `top` style. The span uses bg-primary via Tailwind, but
