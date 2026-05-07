@@ -254,312 +254,81 @@
               {
                 "group": "Team & Governance",
                 "pages": [
-                  {
-                    "group": "SOP-CR-001 — SOP Administrative Management",
-                    "expanded": false,
-                    "pages": [
-                      "sops/cr-001-overview",
-                      "sops/cr-001"
-                    ]
-                  },
-                  {
-                    "group": "SOP-CR-002 — Research Team Roles",
-                    "expanded": false,
-                    "pages": [
-                      "sops/cr-002-overview",
-                      "sops/cr-002"
-                    ]
-                  },
-                  {
-                    "group": "SOP-CR-003 — Human Research Training",
-                    "expanded": false,
-                    "pages": [
-                      "sops/cr-003-overview",
-                      "sops/cr-003"
-                    ]
-                  },
-                  {
-                    "group": "SOP-CR-500 — Human Research Privileges and Researcher Status",
-                    "expanded": false,
-                    "pages": [
-                      "sops/cr-500-overview",
-                      "sops/cr-500"
-                    ]
-                  },
-                  {
-                    "group": "SOP-CR-501 — Notification of Participant's Physician",
-                    "expanded": false,
-                    "pages": [
-                      "sops/cr-501-overview",
-                      "sops/cr-501"
-                    ]
-                  }
+                  "sops/cr-001",
+                  "sops/cr-002",
+                  "sops/cr-003",
+                  "sops/cr-500",
+                  "sops/cr-501"
                 ],
                 "icon": "users"
               },
               {
                 "group": "Study Setup",
                 "pages": [
-                  {
-                    "group": "SOP-CR-004 — Protocol Feasibility",
-                    "expanded": false,
-                    "pages": [
-                      "sops/cr-004-overview",
-                      "sops/cr-004"
-                    ]
-                  },
-                  {
-                    "group": "SOP-CR-005 — Study Initiation and Activation",
-                    "expanded": false,
-                    "pages": [
-                      "sops/cr-005-overview",
-                      "sops/cr-005"
-                    ]
-                  },
-                  {
-                    "group": "SOP-CR-007 — Initial REB Review and Trial Registration",
-                    "expanded": false,
-                    "pages": [
-                      "sops/cr-007-overview",
-                      "sops/cr-007"
-                    ]
-                  },
-                  {
-                    "group": "SOP-CR-025 — Equipment Calibration and Maintenance",
-                    "expanded": false,
-                    "pages": [
-                      "sops/cr-025-overview",
-                      "sops/cr-025"
-                    ]
-                  }
+                  "sops/cr-004",
+                  "sops/cr-005",
+                  "sops/cr-007",
+                  "sops/cr-025"
                 ],
                 "icon": "rocket"
               },
               {
                 "group": "Health Canada Applications",
                 "pages": [
-                  {
-                    "group": "SOP-CR-018 — Clinical Trial Application (Drugs)",
-                    "expanded": false,
-                    "pages": [
-                      "sops/cr-018-overview",
-                      "sops/cr-018"
-                    ]
-                  },
-                  {
-                    "group": "SOP-CR-023 — Clinical Trial Application (NHPs)",
-                    "expanded": false,
-                    "pages": [
-                      "sops/cr-023-overview",
-                      "sops/cr-023"
-                    ]
-                  },
-                  {
-                    "group": "SOP-CR-024 — ITA for Medical Devices",
-                    "expanded": false,
-                    "pages": [
-                      "sops/cr-024-overview",
-                      "sops/cr-024"
-                    ]
-                  }
+                  "sops/cr-018",
+                  "sops/cr-023",
+                  "sops/cr-024"
                 ],
                 "icon": "building-columns"
               },
               {
                 "group": "Participants",
                 "pages": [
-                  {
-                    "group": "SOP-CR-006 — Informed Consent Forms",
-                    "expanded": false,
-                    "pages": [
-                      "sops/cr-006-overview",
-                      "sops/cr-006"
-                    ]
-                  },
-                  {
-                    "group": "SOP-CR-008 — Informed Consent",
-                    "expanded": false,
-                    "pages": [
-                      "sops/cr-008-overview",
-                      "sops/cr-008"
-                    ]
-                  },
-                  {
-                    "group": "SOP-CR-009 — Participant Recruitment and Enrollment",
-                    "expanded": false,
-                    "pages": [
-                      "sops/cr-009-overview",
-                      "sops/cr-009"
-                    ]
-                  },
-                  {
-                    "group": "SOP-CR-019 — Confidentiality and Privacy",
-                    "expanded": false,
-                    "pages": [
-                      "sops/cr-019-overview",
-                      "sops/cr-019"
-                    ]
-                  }
+                  "sops/cr-006",
+                  "sops/cr-008",
+                  "sops/cr-009",
+                  "sops/cr-019"
                 ],
                 "icon": "person"
               },
               {
                 "group": "Investigational Products",
                 "pages": [
-                  {
-                    "group": "SOP-CR-010 — Management of Investigational Products",
-                    "expanded": false,
-                    "pages": [
-                      "sops/cr-010-overview",
-                      "sops/cr-010"
-                    ]
-                  },
-                  {
-                    "group": "SOP-CR-011 — Management of Biological Specimens",
-                    "expanded": false,
-                    "pages": [
-                      "sops/cr-011-overview",
-                      "sops/cr-011"
-                    ]
-                  }
+                  "sops/cr-010",
+                  "sops/cr-011"
                 ],
                 "icon": "vials"
               },
               {
                 "group": "Safety Reporting",
                 "pages": [
-                  {
-                    "group": "SOP-CR-012 — AE, SAE, and SUSAR Reporting",
-                    "expanded": false,
-                    "pages": [
-                      "sops/cr-012-overview",
-                      "sops/cr-012"
-                    ]
-                  },
-                  {
-                    "group": "SOP-CR-026 — Ongoing REB Review and Reportable Events",
-                    "expanded": false,
-                    "pages": [
-                      "sops/cr-026-overview",
-                      "sops/cr-026"
-                    ]
-                  }
+                  "sops/cr-012",
+                  "sops/cr-026"
                 ],
                 "icon": "triangle-exclamation"
               },
               {
                 "group": "Monitoring, Data & Oversight",
                 "pages": [
-                  {
-                    "group": "SOP-CR-013 — Study Monitoring and Communication",
-                    "expanded": false,
-                    "pages": [
-                      "sops/cr-013-overview",
-                      "sops/cr-013"
-                    ]
-                  },
-                  {
-                    "group": "SOP-CR-014 — Clinical Data Management",
-                    "expanded": false,
-                    "pages": [
-                      "sops/cr-014-overview",
-                      "sops/cr-014"
-                    ]
-                  },
-                  {
-                    "group": "SOP-CR-015 — Investigator Study Files and Essential Documents",
-                    "expanded": false,
-                    "pages": [
-                      "sops/cr-015-overview",
-                      "sops/cr-015"
-                    ]
-                  },
-                  {
-                    "group": "SOP-CR-016 — Study Close-Out",
-                    "expanded": false,
-                    "pages": [
-                      "sops/cr-016-overview",
-                      "sops/cr-016"
-                    ]
-                  },
-                  {
-                    "group": "SOP-CR-017 — Audits and Inspections",
-                    "expanded": false,
-                    "pages": [
-                      "sops/cr-017-overview",
-                      "sops/cr-017"
-                    ]
-                  }
+                  "sops/cr-013",
+                  "sops/cr-014",
+                  "sops/cr-015",
+                  "sops/cr-016",
+                  "sops/cr-017"
                 ],
                 "icon": "chart-line"
               },
               {
                 "group": "Sponsor-Investigator Series",
                 "pages": [
-                  {
-                    "group": "SOP-CR-100 — CRF Design",
-                    "expanded": false,
-                    "pages": [
-                      "sops/cr-100-overview",
-                      "sops/cr-100"
-                    ]
-                  },
-                  {
-                    "group": "SOP-CR-101 — Study Analysis and Reporting",
-                    "expanded": false,
-                    "pages": [
-                      "sops/cr-101-overview",
-                      "sops/cr-101"
-                    ]
-                  },
-                  {
-                    "group": "SOP-CR-102 — Protocol Development",
-                    "expanded": false,
-                    "pages": [
-                      "sops/cr-102-overview",
-                      "sops/cr-102"
-                    ]
-                  },
-                  {
-                    "group": "SOP-CR-103 — Data Management Plan",
-                    "expanded": false,
-                    "pages": [
-                      "sops/cr-103-overview",
-                      "sops/cr-103"
-                    ]
-                  },
-                  {
-                    "group": "SOP-CR-104 — Database Set-up",
-                    "expanded": false,
-                    "pages": [
-                      "sops/cr-104-overview",
-                      "sops/cr-104"
-                    ]
-                  },
-                  {
-                    "group": "SOP-CR-105 — Database Maintenance and Management",
-                    "expanded": false,
-                    "pages": [
-                      "sops/cr-105-overview",
-                      "sops/cr-105"
-                    ]
-                  },
-                  {
-                    "group": "SOP-CR-106 — File Transfer",
-                    "expanded": false,
-                    "pages": [
-                      "sops/cr-106-overview",
-                      "sops/cr-106"
-                    ]
-                  },
-                  {
-                    "group": "SOP-CR-107 — Database Lock and Archiving",
-                    "expanded": false,
-                    "pages": [
-                      "sops/cr-107-overview",
-                      "sops/cr-107"
-                    ]
-                  }
+                  "sops/cr-100",
+                  "sops/cr-101",
+                  "sops/cr-102",
+                  "sops/cr-103",
+                  "sops/cr-104",
+                  "sops/cr-105",
+                  "sops/cr-106",
+                  "sops/cr-107"
                 ],
                 "icon": "star-half-stroke"
               }
@@ -1155,6 +924,138 @@
     {
       "source": "/kb/submission/tracking-responding",
       "destination": "/kb/tracking-responding"
+    },
+    {
+      "source": "/sops/cr-001-overview",
+      "destination": "/sops/cr-001"
+    },
+    {
+      "source": "/sops/cr-002-overview",
+      "destination": "/sops/cr-002"
+    },
+    {
+      "source": "/sops/cr-003-overview",
+      "destination": "/sops/cr-003"
+    },
+    {
+      "source": "/sops/cr-004-overview",
+      "destination": "/sops/cr-004"
+    },
+    {
+      "source": "/sops/cr-005-overview",
+      "destination": "/sops/cr-005"
+    },
+    {
+      "source": "/sops/cr-006-overview",
+      "destination": "/sops/cr-006"
+    },
+    {
+      "source": "/sops/cr-007-overview",
+      "destination": "/sops/cr-007"
+    },
+    {
+      "source": "/sops/cr-008-overview",
+      "destination": "/sops/cr-008"
+    },
+    {
+      "source": "/sops/cr-009-overview",
+      "destination": "/sops/cr-009"
+    },
+    {
+      "source": "/sops/cr-010-overview",
+      "destination": "/sops/cr-010"
+    },
+    {
+      "source": "/sops/cr-011-overview",
+      "destination": "/sops/cr-011"
+    },
+    {
+      "source": "/sops/cr-012-overview",
+      "destination": "/sops/cr-012"
+    },
+    {
+      "source": "/sops/cr-013-overview",
+      "destination": "/sops/cr-013"
+    },
+    {
+      "source": "/sops/cr-014-overview",
+      "destination": "/sops/cr-014"
+    },
+    {
+      "source": "/sops/cr-015-overview",
+      "destination": "/sops/cr-015"
+    },
+    {
+      "source": "/sops/cr-016-overview",
+      "destination": "/sops/cr-016"
+    },
+    {
+      "source": "/sops/cr-017-overview",
+      "destination": "/sops/cr-017"
+    },
+    {
+      "source": "/sops/cr-018-overview",
+      "destination": "/sops/cr-018"
+    },
+    {
+      "source": "/sops/cr-019-overview",
+      "destination": "/sops/cr-019"
+    },
+    {
+      "source": "/sops/cr-023-overview",
+      "destination": "/sops/cr-023"
+    },
+    {
+      "source": "/sops/cr-024-overview",
+      "destination": "/sops/cr-024"
+    },
+    {
+      "source": "/sops/cr-025-overview",
+      "destination": "/sops/cr-025"
+    },
+    {
+      "source": "/sops/cr-026-overview",
+      "destination": "/sops/cr-026"
+    },
+    {
+      "source": "/sops/cr-100-overview",
+      "destination": "/sops/cr-100"
+    },
+    {
+      "source": "/sops/cr-101-overview",
+      "destination": "/sops/cr-101"
+    },
+    {
+      "source": "/sops/cr-102-overview",
+      "destination": "/sops/cr-102"
+    },
+    {
+      "source": "/sops/cr-103-overview",
+      "destination": "/sops/cr-103"
+    },
+    {
+      "source": "/sops/cr-104-overview",
+      "destination": "/sops/cr-104"
+    },
+    {
+      "source": "/sops/cr-105-overview",
+      "destination": "/sops/cr-105"
+    },
+    {
+      "source": "/sops/cr-106-overview",
+      "destination": "/sops/cr-106"
+    },
+    {
+      "source": "/sops/cr-107-overview",
+      "destination": "/sops/cr-107"
+    },
+    {
+      "source": "/sops/cr-500-overview",
+      "destination": "/sops/cr-500"
+    },
+    {
+      "source": "/sops/cr-501-overview",
+      "destination": "/sops/cr-501"
     }
   ]
 }

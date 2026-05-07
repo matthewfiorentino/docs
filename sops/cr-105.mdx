@@ -1,6 +1,5 @@
 ---
 title: "SOP-CR-105 — Database Maintenance and Management"
-sidebarTitle: "View SOP"
 description: "Ongoing maintenance and management requirements for the study database throughout the active phase of a Sponsor-Investigator study at the RI-MUHC, covering backups, access management, query management, data validation, and database issue handling."
 ---
 
@@ -19,6 +18,24 @@ Approved by Gilbert Tordjman, Chief Operating and Development Officer, RI-MUHC.
 Signed copy on file — download the PDF for the approved version with signatures.
 
 ---
+
+
+<Warning>
+**Controlled document.** Always refer to this page for the current version. Do not rely on downloaded or printed copies. Reading this page does not fulfil the SOP training requirement — use the SOP Reader on TalentLMS.
+</Warning>
+
+<div className="ri-sop-key-points">
+
+## Key points
+
+- The database must be **backed up** at a frequency sufficient to prevent data loss, using a method that ensures backups are recoverable. Backup logs must be maintained.
+- **User access must be reviewed** at regular intervals and updated promptly when team members join, change roles, or leave the study. Removed users must be logged.
+- **Data validation checks** must be run routinely to identify missing data, out-of-range values, and cross-field inconsistencies. Findings must be queried and resolved in a timely manner.
+- Any **system issue that could affect data integrity** must be documented, assessed for impact, and corrected. All data entries made during the affected period must be reviewed and verified.
+- All database changes (including query resolutions, data corrections, and user access changes) must be captured in the **audit trail** with user identifier, date, time, original value, and reason for change.
+- Prepare for **database lock** ([SOP-CR-107](/sops/cr-107)) by ensuring all data are entered, all queries resolved, all protocol deviations documented, and all validation checks completed.
+
+</div>
 
 ## 1 · Purpose {#purpose}
 

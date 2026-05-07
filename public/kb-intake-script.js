@@ -735,10 +735,10 @@ function buildChecklist(a, d) {
   var activation = [];
   activation.push('Submit via Nagano F11 — triggers REB review and institutional feasibility review in parallel. (<a href="/apps/nagano/overview">Nagano step-by-step guide &rarr;</a>)');
   if (nHC && d.isDrugStudy) {
-    activation.push('Health Canada CTA (Division 5) — drug submission timeline is separate from REB review. (<a href="/sops/cr-018-overview">CTA overview &rarr;</a>)');
+    activation.push('Health Canada CTA (Division 5) — drug submission timeline is separate from REB review. (<a href="/sops/cr-018">CTA overview &rarr;</a>)');
   }
   if (nHC && d.isDeviceStudy) {
-    activation.push('Health Canada ITA for medical devices. (<a href="/sops/cr-024-overview">ITA overview &rarr;</a>)');
+    activation.push('Health Canada ITA for medical devices. (<a href="/sops/cr-024">ITA overview &rarr;</a>)');
   }
   if (a.S4_CIM && a.S4_CIM !== 'no') {
     activation.push('CIM feasibility assessment — required before activation for studies using CIM. (<a href="/cim/planning">Planning your study with the CIM &rarr;</a>)');
@@ -788,10 +788,10 @@ function buildNextSteps(a, d) {
     }
     next.push('Step-by-step guide to submitting via Nagano: <a href="/apps/nagano/overview">Submit via Nagano &rarr;</a>');
     if (d.isDrugStudy) {
-      next.push('Drug study — Health Canada CTA requirements: <a href="/sops/cr-018-overview">SOP-CR-018 overview &rarr;</a>');
+      next.push('Drug study — Health Canada CTA requirements: <a href="/sops/cr-018">SOP-CR-018 overview &rarr;</a>');
     }
     if (d.isDeviceStudy) {
-      next.push('Device study — ITA requirements: <a href="/sops/cr-024-overview">SOP-CR-024 overview &rarr;</a>');
+      next.push('Device study — ITA requirements: <a href="/sops/cr-024">SOP-CR-024 overview &rarr;</a>');
     }
     if (a.S4_CIM && a.S4_CIM !== 'no') {
       next.push('CIM involvement — is CIM right for your study? <a href="/cim/planning">CIM overview &rarr;</a>');
@@ -803,12 +803,12 @@ function buildNextSteps(a, d) {
   } else if (stage === 'conduct') {
     next.push('Study conduct resources — site setup and day-to-day operations: <a href="/kb/conduct/site-setup">Site activation &rarr;</a>');
     next.push('Data integrity and source documentation: <a href="/kb/conduct/data-integrity">Data integrity &rarr;</a>');
-    next.push('AE and SAE reporting procedures: <a href="/sops/cr-012-overview">SOP-CR-012 — AE/SAE reporting &rarr;</a>');
+    next.push('AE and SAE reporting procedures: <a href="/sops/cr-012">SOP-CR-012 — AE/SAE reporting &rarr;</a>');
     next.push('The Research Facilitator will review your intake and follow up within 5 business days.');
 
   } else if (stage === 'closeout') {
     next.push('Study close-out procedures and checklist: <a href="/kb/conduct/close-out">Close-out guide &rarr;</a>');
-    next.push('SOP-CR-016 — Study Close-Out: <a href="/sops/cr-016-overview">View SOP &rarr;</a>');
+    next.push('SOP-CR-016 — Study Close-Out: <a href="/sops/cr-016">View SOP &rarr;</a>');
     next.push('The Research Facilitator will review your intake and follow up within 5 business days.');
   }
 

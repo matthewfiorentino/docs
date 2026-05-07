@@ -1517,3 +1517,21 @@ html.dark .ri-cantrain-callout {
     border-color: #334155;
 }
 html.dark .ri-cantrain-text { color: #cbd5e1; }
+
+/* ── SOP key-points card (merged from overview pages) ── */
+.ri-sop-key-points {
+    background: #f8f9fb;
+    border: 1px solid rgba(0,0,0,.06);
+    border-radius: 10px;
+    padding: 20px 24px 12px;
+    margin-bottom: 2rem;
+}
+html.dark .ri-sop-key-points {
+    background: rgba(255,255,255,.03);
+    border-color: rgba(255,255,255,.08);
+}
+.ri-sop-key-points h2 {
+    font-size: 15px !important;
+    margin-top: 0 !important;
+    margin-bottom: 12px !important;
+}
