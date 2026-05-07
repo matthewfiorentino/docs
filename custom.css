@@ -1535,3 +1535,11 @@ html.dark .ri-sop-key-points {
     margin-top: 0 !important;
     margin-bottom: 12px !important;
 }
+
+/* ── Updates / changelog date pill ── */
+.update-container .bg-primary\/10 {
+    background-color: rgba(0, 122, 110, 0.18) !important;
+}
+html.dark .update-container .bg-primary\/10 {
+    background-color: rgba(0, 196, 180, 0.15) !important;
+}
