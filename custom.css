@@ -70,17 +70,23 @@ article a:hover,
     font-weight: 400 !important;
     line-height: 1.4 !important;
 }
-/* ── Sidebar — prevent global heading colour from bleeding in ── */
+/* ── Sidebar — prevent global heading colour and Mintlify dark-primary
+   from bleeding into sidebar text.
+   docs.json colors.dark (#150e51 navy) is used by Mintlify as
+   --primary-dark for section header icons + labels in light mode.
+   Overriding --primary-dark within #sidebar swaps it to near-black.  */
+#sidebar {
+    --primary-dark: #1f2937 !important;
+}
+html.dark #sidebar {
+    --primary-dark: rgba(255,255,255,0.85) !important;
+}
 #sidebar strong, #sidebar b {
     color: inherit !important;
 }
-/* ── Sidebar — category headers (icon + label) → black ──
-   sidebar-group-header is the Mintlify custom element for top-level
-   section labels. Explicitly force black so our global --ri-heading
-   navy doesn't bleed through via inherited or themed variables.      */
 sidebar-group-header,
 sidebar-group-header * {
-    color: #111111 !important;
+    color: #1f2937 !important;
 }
 html.dark sidebar-group-header,
 html.dark sidebar-group-header * {
