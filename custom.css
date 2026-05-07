@@ -68,11 +68,15 @@ article a:hover,
     font-weight: 600 !important;
 }
 /* ── Sidebar — compact type to match Mintlify's own docs density ──
-   Default Mintlify sidebar is ~14px; 12.5px gives a tighter feel
-   without becoming unreadable. Group header styles are left to
-   Mintlify's native active-state highlighting (primary colour on click). */
+   Default Mintlify sidebar links are ~14px medium weight. Dropping to
+   12px + weight 400 produces the noticeably lighter, smaller feel of
+   Mintlify's own sidebar. Section header buttons stay at 500.         */
 #sidebar a {
-    font-size: 12.5px !important;
+    font-size:   12px !important;
+    font-weight: 400 !important;
+}
+li[data-group-tag] > button {
+    font-weight: 500 !important;
 }
 /* ── Navbar — tab strip ── */
 #navbar nav a.link {
