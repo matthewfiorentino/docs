@@ -160,8 +160,10 @@ html.dark .nav-tag-pill-text {
     background: rgba(0, 196, 180, 0.15) !important;
     color: #00c4b4 !important;
 }
-/* ── Navbar — tab strip ── */
-#navbar nav a.link {
+/* ── Navbar — tab strip ──
+   Menu-enabled tabs render as <button> instead of <a>, so we target both. */
+#navbar nav a.link,
+#navbar nav button.link {
     background:     transparent !important;
     border-radius:  0 !important;
     border-bottom:  2px solid transparent !important;
@@ -171,13 +173,16 @@ html.dark .nav-tag-pill-text {
     font-weight:    600 !important;
     transition:     color 0.15s, border-bottom-color 0.15s !important;
 }
-#navbar nav a.link:hover {
+#navbar nav a.link:hover,
+#navbar nav button.link:hover {
     background:          transparent !important;
     color:               #150e51 !important;
     border-bottom-color: rgba(21,14,81,0.3) !important;
 }
 #navbar nav a.link[data-active="true"],
-#navbar nav a.link[aria-current="page"] {
+#navbar nav a.link[aria-current="page"],
+#navbar nav button.link[data-active="true"],
+#navbar nav button.link[aria-current="page"] {
     background:          transparent !important;
     color:               #150e51 !important;
     border-bottom-color: #150e51 !important;
@@ -1047,7 +1052,8 @@ button:has(img[alt="Quebec"]) {
         gap: 2px !important;
     }
     /* Tab links — reduce font and horizontal padding */
-    #navbar nav a.link {
+    #navbar nav a.link,
+    #navbar nav button.link {
         font-size:     12px !important;
         padding-left:  8px !important;
         padding-right: 8px !important;
@@ -1067,7 +1073,8 @@ button:has(img[alt="Quebec"]) {
     #navbar nav {
         gap: 0px !important;
     }
-    #navbar nav a.link {
+    #navbar nav a.link,
+    #navbar nav button.link {
         font-size:     11px !important;
         padding-left:  6px !important;
         padding-right: 6px !important;
