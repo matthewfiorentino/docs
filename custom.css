@@ -1031,6 +1031,12 @@ img[alt="Quebec"] {
     border-radius: 2px !important;
     background: transparent !important;
 }
+/* Hide the circular border overlay Mintlify adds on top of flag images —
+   it renders as a visible ring/"radio button" over our rectangular flags. */
+#localization-select-trigger .rounded-full:not(img),
+[data-component-part="localization-select-trigger"] div.absolute.rounded-full {
+    display: none !important;
+}
 /* Language switcher button — reduce font size globally */
 button:has(img[alt="Canada"]),
 button:has(img[alt="Quebec"]) {
