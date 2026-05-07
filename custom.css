@@ -1444,3 +1444,6 @@ html.dark .ri-cantrain-callout {
 }
 html.dark .ri-cantrain-text { color: #cbd5e1; }
 
+
+/* EXPERIMENT — zero border radius */
+* { border-radius: 0 !important; }
