@@ -551,19 +551,19 @@ html.dark .ri-callout a { color: #00c4b4 !important; }
 }
 html.dark .ri-pi-row-arrow { color: rgba(255,255,255,.3); }
 
-/* Intake entry — navy card, full surface is a link */
+/* Intake entry — coral card, full surface is a link */
 .ri-intake-entry {
     display: flex; flex-direction: column; align-items: flex-start;
     flex: 1; padding: 16px 20px; border-radius: 10px;
-    border: 1px solid #150e51;
-    background: #150e51; text-decoration: none;
+    border: 1px solid #ff537f;
+    background: #ff537f; text-decoration: none;
     transition: background .15s, box-shadow .15s;
 }
-.ri-intake-entry:hover { background: #1c1566; }
+.ri-intake-entry:hover { background: #e8496f; }
 .ri-ie-label { font-size: 14px; font-weight: 700; color: #fff; margin-bottom: 6px; }
-.ri-ie-desc { font-size: 13px; line-height: 1.55; color: rgba(255,255,255,.72); flex: 1; }
+.ri-ie-desc { font-size: 13px; line-height: 1.55; color: rgba(255,255,255,.88); flex: 1; }
 .ri-ie-link {
-    font-size: 13px; font-weight: 600; color: #00c4b4;
+    font-size: 13px; font-weight: 600; color: #fff;
     margin-top: 14px; display: inline-block;
 }
 
@@ -944,7 +944,7 @@ html.dark .ri-hub-body hr {
     align-items: center;
     justify-content: space-between;
     gap: 24px;
-    background: #150e51;
+    background: #ff537f;
     border-radius: 10px;
     padding: 32px 36px;
     margin-top: 48px;
@@ -955,12 +955,12 @@ html.dark .ri-hub-body hr {
     font-size: 20px; font-weight: 700; color: #fff !important; margin-bottom: 6px;
 }
 .ri-contact-body {
-    font-size: 14px; color: rgba(255,255,255,.72); line-height: 1.6; max-width: 480px;
+    font-size: 14px; color: rgba(255,255,255,.88); line-height: 1.6; max-width: 480px;
 }
 .ri-contact-btn {
     display: inline-block;
     background: #fff;
-    color: #150e51 !important;
+    color: #cc2a50 !important;
     font-weight: 700; font-size: 14px;
     padding: 12px 24px;
     border-radius: 8px;
