@@ -205,14 +205,20 @@
                 ]
               },
               {
-                "group": "Governance",
+                "group": "Governance & Oversight",
                 "icon": "scale-balanced",
                 "pages": [
-                  "kb/governance/institutional-structure",
                   "kb/governance/regulatory-framework",
+                  "kb/governance/institutional-structure",
                   "kb/governance/quality-assurance",
-                  "kb/governance/research-integrity",
-                  "kb/governance/conflict-of-interest"
+                  {
+                    "group": "Research Ethics",
+                    "expanded": false,
+                    "pages": [
+                      "kb/governance/research-integrity",
+                      "kb/governance/conflict-of-interest"
+                    ]
+                  }
                 ]
               }
             ]
@@ -823,8 +829,8 @@
             "tab": "Applications",
             "groups": [
               {
-                "group": "Nagano",
-                "icon": "file-pen",
+                "group": "Study Management",
+                "icon": "folder-open",
                 "pages": [
                   "apps/nagano/overview",
                   {
@@ -846,22 +852,36 @@
                       "apps/nagano/guide-12",
                       "apps/nagano/guide-13"
                     ]
-                  }
+                  },
+                  "apps/ctms"
                 ]
               },
               {
-                "group": "Research Tools",
+                "group": "Training & Certification",
+                "icon": "certificate",
+                "pages": [
+                  "apps/talentlms"
+                ]
+              },
+              {
+                "group": "Data Platforms",
                 "icon": "database",
                 "pages": [
-                  "apps/redcap",
+                  "apps/redcap"
+                ]
+              },
+              {
+                "group": "Clinical Systems",
+                "icon": "notes-medical",
+                "pages": [
                   "apps/oacis"
                 ]
               },
               {
-                "group": "Learning Management",
-                "icon": "chalkboard-user",
+                "group": "CIM Services",
+                "icon": "microscope",
                 "pages": [
-                  "apps/talentlms"
+                  "apps/crosslab"
                 ]
               }
             ]
