@@ -67,21 +67,12 @@ article a:hover,
     color:       var(--ri-accent) !important;
     font-weight: 600 !important;
 }
-/* ── Sidebar group headers — structural labels (Stripe/Tailwind pattern) ──
-   Group headers are organisational structure, not navigation destinations.
-   Uppercase + small + letter-spaced + muted grey signals "I am a label"
-   without competing with page links or the teal active-page indicator.     */
-li[data-group-tag] > button,
-li[data-group-tag] > button > div {
-    font-size:      11px !important;
-    font-weight:    700 !important;
-    letter-spacing: 0.07em !important;
-    text-transform: uppercase !important;
-    color:          #6b7280 !important;
-}
-html.dark li[data-group-tag] > button,
-html.dark li[data-group-tag] > button > div {
-    color: rgba(255,255,255,0.4) !important;
+/* ── Sidebar — slightly reduced type for a compact, clean hierarchy ──
+   Mintlify's default sidebar is ~14px; 13px matches the visual density
+   of Mintlify's own docs sidebar. Group header styles are left to
+   Mintlify's native active-state highlighting (primary colour on click). */
+#sidebar a {
+    font-size: 13px !important;
 }
 /* ── Navbar — tab strip ── */
 #navbar nav a.link {
