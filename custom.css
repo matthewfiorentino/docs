@@ -1,5 +1,4 @@
 /* ── RI-MUHC Clinical Research Hub — Mintlify styles ─────────────────────── */
-
 /* ── Design tokens ── */
 :root {
     --ri-heading: #150e51;
@@ -7,22 +6,18 @@
     --ri-accent-bright: #00c4b4;
     --ri-navy:    #2b2666;
     --ri-coral:   #ff537f;
-
     /* --background in HSL (no hsl() wrapper) so Mintlify's Tailwind gradient
        utilities resolve correctly — fixes the sidebar scroll-fade colour     */
     --background: 240 3% 97%;
     --primary:    #007a6e;
 }
-
 html.dark {
     --ri-heading: #00c4b4;
     --ri-accent:  #00c4b4;
     --ri-accent-bright: #00e0d0;
-
     --background: 246 70% 19%;
     --primary:    #00c4b4;
 }
-
 /* ── Font ── */
 body,
 button,
@@ -31,12 +26,10 @@ select,
 textarea {
     font-family: Arial, "Helvetica Neue", Helvetica, sans-serif !important;
 }
-
 /* ── Headings ── */
 h1, h2, h3, h4, h5, h6, #page-title, strong, b {
     color: var(--ri-heading) !important;
 }
-
 /* ── Links ── */
 article a,
 .prose a {
@@ -47,39 +40,33 @@ article a:hover,
 .prose a:hover {
     color: var(--ri-accent) !important;
 }
-
 /* ── "On this page" TOC ──
    Mintlify's native tracker is a <span> inside div.relative that slides by
    animating its `top` style. The span uses bg-primary via Tailwind, but
    Mintlify's Tailwind config expects --primary as an HSL triplet, not hex,
    so the dot renders transparent. We force-colour it directly.
    toc-item is a CSS CLASS on <li>, not a custom element.                    */
-
 /* Font size reduction */
 #table-of-contents-content a {
     font-size:   12px !important;
     line-height: 1.4 !important;
 }
-
 /* Native sliding dot — force our accent colour so it's visible */
 #table-of-contents div.relative > span {
     background-color: var(--ri-accent) !important;
     width:            6px !important;
     height:           6px !important;
 }
-
 /* Bold the active item (colour is handled by Mintlify's text-primary class) */
 #table-of-contents-content li.toc-item[data-active-deepest="true"] a {
     font-weight: 600 !important;
 }
-
 /* ── Sidebar active link ── */
 #sidebar a[aria-current="page"],
 #sidebar a[aria-selected="true"] {
     color:       var(--ri-accent) !important;
     font-weight: 600 !important;
 }
-
 /* ── Navbar — tab strip ── */
 #navbar nav a.link {
     background:     transparent !important;
@@ -103,7 +90,6 @@ article a:hover,
     border-bottom-color: #150e51 !important;
     font-weight:         700 !important;
 }
-
 /* ── Contact — outlined navy button ── */
 li.navbar-link a[href="/contacts"] {
     background:    #fff !important;
@@ -121,7 +107,6 @@ li.navbar-link a[href="/contacts"]:hover {
     color:      #fff !important;
     opacity:    1 !important;
 }
-
 /* ── Portal — coral fill, inverts to outlined on hover ── */
 #topbar-cta-button a {
     background:    #ff537f !important;
@@ -139,7 +124,6 @@ li.navbar-link a[href="/contacts"]:hover {
     color:      #2b2666 !important;
     opacity:    1 !important;
 }
-
 /* ── Tables ── */
 .prose table,
 article table {
@@ -182,7 +166,6 @@ html.dark table thead tr {
 html.dark table thead th  { color: rgba(255,255,255,0.7) !important; }
 html.dark table tbody td  { border-bottom-color: rgba(255,255,255,0.06) !important; }
 html.dark table tbody tr:hover { background: rgba(0,196,180,0.06) !important; }
-
 /* ── Cards — soft default shadow (no flat border), lift + teal border on hover ── */
 a.card,
 a:has([data-component-part="card-content-container"]) {
@@ -204,11 +187,9 @@ html.dark a.card:hover,
 html.dark a:has([data-component-part="card-content-container"]):hover {
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35) !important;
 }
-
 /* ══════════════════════════════════════════════
    HOME PAGE
    ══════════════════════════════════════════════ */
-
 /* Hide auto-generated frontmatter title only on pages that have a custom hero.
    :has() is supported in all modern browsers (Chrome 105+, Safari 15.4+, FF 121+) */
 body:has(.ri-hero-bleed) #page-title,
@@ -217,13 +198,11 @@ body:has(.ri-text-hero) #page-title,
 body:has(.ri-text-hero) #page-title + p {
     display: none !important;
 }
-
 body:has(.ri-text-hero) #body-content,
 body:has(.ri-text-hero) main {
     min-height: 0 !important;
     height: auto !important;
 }
-
 .ri-hero-bleed {
     /* Extend to content container edges (cancels Mintlify's ~2rem padding)
        without crossing into the sidebar — use % not vw */
@@ -235,7 +214,6 @@ body:has(.ri-text-hero) main {
     position: relative;
     overflow: hidden;
 }
-
 /* Override global heading colour rule inside the hero */
 .ri-hero-bleed h1,
 .ri-hero-bleed h2,
@@ -244,7 +222,6 @@ body:has(.ri-text-hero) main {
 .ri-hero-bleed b {
     color: #ffffff !important;
 }
-
 /* Page hero banner — used at top of section landing pages
    to differentiate them from regular article pages.
    Uses aspect-ratio (3/2) so the photo's natural shape is preserved
@@ -260,7 +237,6 @@ body:has(.ri-text-hero) main {
 @media (max-width: 768px) {
     .ri-page-hero { border-radius: 8px; margin-bottom: 1.5rem; }
 }
-
 /* RACI matrix pills — used in responsibility-matrix tables */
 .raci-a, .raci-r, .raci-c, .raci-i {
     display: inline-block;
@@ -277,7 +253,6 @@ body:has(.ri-text-hero) main {
 .raci-i { background: #f1f5f9; color: #64748b; font-weight: 500; }
 html.dark .raci-c { background: #334155; color: #e2e8f0; }
 html.dark .raci-i { background: #1e293b; color: #94a3b8; }
-
 /* ══════════════════════════════════════════════
    HOME PAGE — UPDATE BARS
    ══════════════════════════════════════════════ */
@@ -326,12 +301,10 @@ html.dark .ri-update-desc { color: rgba(255,255,255,.55); }
 .ri-updates-more:hover { background: var(--ri-accent, #007a6e); color: #fff !important; }
 html.dark .ri-updates-more { color: var(--ri-accent-bright, #00c4b4); border-color: var(--ri-accent-bright, #00c4b4); }
 html.dark .ri-updates-more:hover { background: var(--ri-accent-bright, #00c4b4); color: #150e51 !important; }
-
 /* ══════════════════════════════════════════════
    HOME PAGE — START HERE / ROLE SELECTOR
    ══════════════════════════════════════════════ */
 .ri-start-here { margin-bottom: 3rem; }
-
 /* Section header */
 .ri-start-hero { margin-bottom: 2rem; }
 .ri-start-eyebrow {
@@ -345,14 +318,12 @@ html.dark .ri-updates-more:hover { background: var(--ri-accent-bright, #00c4b4);
 .ri-start-sub { font-size: 16px; line-height: 1.5; color: #555; margin: 0; }
 html.dark .ri-start-title { color: #fff; }
 html.dark .ri-start-sub { color: rgba(255,255,255,.6); }
-
 /* Apply the same heading style to all homepage section H2s */
 .ri-hub-body h2 {
     font-size: 1.875rem; font-weight: 700; line-height: 1.1;
     color: var(--ri-heading, #150e51);
 }
 html.dark .ri-hub-body h2 { color: #fff; }
-
 /* Role photo card grid */
 .ri-role-cards {
     display: grid; grid-template-columns: repeat(4, 1fr);
@@ -394,12 +365,10 @@ html.dark .ri-hub-body h2 { color: #fff; }
 .ri-role-card--active .ri-role-card-cta { opacity: 1; }
 @media (max-width: 720px) { .ri-role-cards { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 420px) { .ri-role-cards { gap: 8px; } .ri-role-card { height: 150px; } }
-
 /* Role content panel */
 .ri-role-panel { animation: ri-fade-up .22s ease both; }
 .ri-role-framing { font-size: 16px; line-height: 1.65; color: #444; margin: 0 0 1.75rem; max-width: 680px; }
 html.dark .ri-role-framing { color: rgba(255,255,255,.7); }
-
 /* Horizontal step track */
 .ri-step-track {
     display: flex; align-items: flex-start; overflow-x: auto;
@@ -431,7 +400,6 @@ html.dark .ri-step-label { color: rgba(255,255,255,.85); }
     .ri-step-item  { flex-direction: row; width: auto; text-align: left; align-items: center; gap: 12px; }
     .ri-step-conn  { display: none; }
 }
-
 /* Detail card grid */
 .ri-dcard-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 1.5rem; }
 .ri-dcard {
@@ -451,7 +419,6 @@ html.dark .ri-dcard-title { color: #fff; }
 html.dark .ri-dcard-desc { color: rgba(255,255,255,.55); }
 @media (max-width: 900px) { .ri-dcard-grid { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 560px) { .ri-dcard-grid { grid-template-columns: 1fr; } }
-
 /* Sponsor-Investigator dual obligations swim lane */
 .ri-dual-obligations {
   margin: 1.5rem 0 2rem;
@@ -472,9 +439,7 @@ html.dark .ri-dual-obligations {
 html.dark .ri-dual-title { color: #fff; }
 .ri-dual-sub { font-size: 13px; line-height: 1.55; color: #666; margin-bottom: 18px; max-width: 780px; }
 html.dark .ri-dual-sub { color: rgba(255,255,255,.6); }
-
 .ri-dual-grid { display: flex; flex-direction: column; gap: 0; }
-
 .ri-dual-lane {
   display: grid;
   grid-template-columns: 130px 1fr;
@@ -485,7 +450,6 @@ html.dark .ri-dual-sub { color: rgba(255,255,255,.6); }
 }
 .ri-dual-lane--sponsor { background: #150e51; color: #fff; }
 .ri-dual-lane--qi      { background: #007a6e; color: #fff; }
-
 .ri-dual-lane-label {
   font-size: 11px; font-weight: 800; letter-spacing: .14em;
   text-transform: uppercase; opacity: .85;
@@ -493,7 +457,6 @@ html.dark .ri-dual-sub { color: rgba(255,255,255,.6); }
 }
 .ri-dual-lane--sponsor .ri-dual-lane-label { color: #00c4b4; }
 .ri-dual-lane--qi .ri-dual-lane-label { color: rgba(255,255,255,.85); }
-
 .ri-dual-cells {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -513,8 +476,6 @@ html.dark .ri-dual-sub { color: rgba(255,255,255,.6); }
   text-transform: uppercase; color: rgba(255,255,255,.55);
   margin-bottom: 3px;
 }
-
-
 /* Mobile/tablet: stack to 2 cols, then 1 col */
 @media (max-width: 860px) {
   .ri-dual-cells { grid-template-columns: repeat(2, 1fr); }
@@ -527,7 +488,6 @@ html.dark .ri-dual-sub { color: rgba(255,255,255,.6); }
 @media (max-width: 420px) {
   .ri-dual-cells { grid-template-columns: 1fr; }
 }
-
 /* Callout boxes (replaces <Note> and <Warning> inside JSX panels) */
 .ri-callout { padding: 16px; border-radius: 8px; font-size: 14px; line-height: 1.6; margin-bottom: 1.5rem; }
 .ri-callout--note { background: #eff9f7; color: #1d4a44; }
@@ -537,7 +497,6 @@ html.dark .ri-callout--warn { background: rgba(245,158,11,.12); color: rgba(255,
 .ri-callout a { color: #007a6e !important; text-decoration: underline; text-underline-offset: 3px; }
 .ri-callout--warn a { color: #78350f !important; text-decoration: underline; text-underline-offset: 3px; font-weight: 600; }
 html.dark .ri-callout a { color: #00c4b4 !important; }
-
 /* Intake form — universal entry point above the step track */
 /* PI panel — top row: intake + arrow + pathway side by side */
 .ri-pi-top-row {
@@ -550,7 +509,6 @@ html.dark .ri-callout a { color: #00c4b4 !important; }
     color: rgba(0,0,0,.28); font-size: 20px;
 }
 html.dark .ri-pi-row-arrow { color: rgba(255,255,255,.3); }
-
 /* Intake entry — coral card, full surface is a link */
 .ri-intake-entry {
     display: flex; flex-direction: column; align-items: flex-start;
@@ -566,7 +524,6 @@ html.dark .ri-pi-row-arrow { color: rgba(255,255,255,.3); }
     font-size: 13px; font-weight: 600; color: #fff;
     margin-top: 14px; display: inline-block;
 }
-
 /* Pathway banner — light grey card, same flex-1 width as intake entry */
 .ri-pathway-banner {
     display: flex; flex-direction: column; align-items: flex-start;
@@ -583,16 +540,13 @@ html.dark .ri-pb-label { color: #fff; }
 .ri-pb-desc { font-size: 13px; line-height: 1.5; color: #666; flex: 1; }
 html.dark .ri-pb-desc { color: rgba(255,255,255,.5); }
 .ri-pb-arrow { font-size: 13px; font-weight: 600; color: var(--ri-accent); margin-top: 14px; display: inline-block; }
-
 /* Spacing: pathway banner when directly inside a role panel (not inside ri-pi-top-row) */
 .ri-role-panel > .ri-pathway-banner { margin-top: 1.75rem; margin-bottom: 1.5rem; }
-
 /* Study arrangement eyebrow + subtitle (PI panel, above stype-grid) */
 .ri-stype-header { margin-top: 2rem; margin-bottom: 0.75rem; }
 .ri-stype-eyebrow { font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--ri-accent); margin-bottom: 4px; }
 .ri-stype-subtitle { font-size: 16px; color: #555; line-height: 1.5; }
 html.dark .ri-stype-subtitle { color: rgba(255,255,255,.5); }
-
 /* Study type conditional tiles (PI panel) */
 .ri-stype-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 0.75rem; margin-bottom: 1.25rem; }
 .ri-stype-tile {
@@ -608,7 +562,6 @@ html.dark .ri-stype-title { color: #fff; }
 .ri-stype-body { font-size: 12px; line-height: 1.55; color: #666; flex: 1; }
 html.dark .ri-stype-body { color: rgba(255,255,255,.55); }
 @media (max-width: 720px) { .ri-stype-grid { grid-template-columns: 1fr; } }
-
 /* "Already further along?" row (PI panel) */
 .ri-further-along { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; padding: 12px 0; border-top: 1px solid rgba(0,0,0,.07); margin-top: 0.25rem; }
 html.dark .ri-further-along { border-color: rgba(255,255,255,.08); }
@@ -616,7 +569,6 @@ html.dark .ri-further-along { border-color: rgba(255,255,255,.08); }
 html.dark .ri-fa-label { color: rgba(255,255,255,.35); }
 .ri-fa-link { font-size: 13px; font-weight: 600; color: var(--ri-accent); text-decoration: none; }
 .ri-fa-link:hover { text-decoration: underline; }
-
 /* ══════════════════════════════════════════════
    HOME PAGE — JOURNEY STRIP
    ══════════════════════════════════════════════ */
@@ -658,7 +610,6 @@ html.dark .ri-journey-sub { color: rgba(255,255,255,.5); }
     .ri-journey-step:not(:last-child) { border-right: none; border-bottom: 1px solid rgba(0,0,0,.08); }
     html.dark .ri-journey-step:not(:last-child) { border-bottom-color: rgba(255,255,255,.08); }
 }
-
 /* ══════════════════════════════════════════════
    HOME PAGE — FEATURE PAIR (large dual cards)
    ══════════════════════════════════════════════ */
@@ -706,7 +657,6 @@ html.dark .ri-feature-desc { color: rgba(255,255,255,.6); }
 @media (max-width: 720px) {
     .ri-feature-pair { grid-template-columns: 1fr; }
 }
-
 /* ══════════════════════════════════════════════
    HOME PAGE — LIFECYCLE PHASES (numbered)
    ══════════════════════════════════════════════ */
@@ -775,7 +725,6 @@ html.dark .ri-phase-card:hover { background: rgba(0,196,180,.05); }
 @media (max-width: 520px) {
     .ri-phase-cards { grid-template-columns: 1fr; }
 }
-
 /* ══════════════════════════════════════════════
    HOME PAGE — RESOURCE GRID (icon-based, replaces photo Keep Learning)
    ══════════════════════════════════════════════ */
@@ -829,7 +778,6 @@ html.dark .ri-resource-desc { color: rgba(255,255,255,.55); }
 @media (max-width: 520px) {
     .ri-resource-grid { grid-template-columns: 1fr; }
 }
-
 /* ══════════════════════════════════════════════
    HOME PAGE — BODY WRAPPER (custom mode canvas)
    ══════════════════════════════════════════════ */
@@ -858,7 +806,6 @@ html.dark .ri-hub-body hr {
     .ri-hub-body { padding: 40px 1.25rem 3rem; }
     .ri-hub-body hr { margin: 28px 0; }
 }
-
 /* ══════════════════════════════════════════════
    HOME PAGE — TEXT HERO (custom mode — full canvas width)
    ══════════════════════════════════════════════ */
@@ -918,7 +865,6 @@ html.dark .ri-hub-body hr {
     background: rgba(255,255,255,.14);
     border-color: rgba(255,255,255,.4);
 }
-
 /* ══════════════════════════════════════════════
    HOME PAGE — CONTACT BAND
    ══════════════════════════════════════════════ */
@@ -935,7 +881,6 @@ html.dark .ri-hub-body hr {
     padding: 1px 5px; font-size: 11px; font-family: inherit;
     letter-spacing: .02em;
 }
-
 /* ══════════════════════════════════════════════
    HOME PAGE — CONTACT BAND
    ══════════════════════════════════════════════ */
@@ -969,11 +914,9 @@ html.dark .ri-hub-body hr {
     transition: opacity .15s;
 }
 .ri-contact-btn:hover { opacity: .85; }
-
 /* ══════════════════════════════════════════════
    NAVBAR — Luma theme
    ══════════════════════════════════════════════ */
-
 /* ── Language switcher flag overrides ──
    Hide original US/CA flags immediately (before JS runs) to prevent flash.
    JS changes alt to "Canada"/"Quebec", breaking these selectors → opacity returns to 1. */
@@ -994,7 +937,6 @@ button:has(img[alt="Canada"]),
 button:has(img[alt="Quebec"]) {
     font-size: 11px !important;
 }
-
 /* ── Logo — prevent flex-shrink on the logo container so it stays legible
    at all widths. The img already has shrink-0 but its parent wrapper can
    still compress; targeting the direct parent via :has() locks it.        */
@@ -1002,12 +944,10 @@ button:has(img[alt="Quebec"]) {
     flex-shrink: 0 !important;
     min-width:   fit-content !important;
 }
-
 /* ── Navbar responsive tightening ──────────────────────────────────────────
    Logo stays fixed; nav items tighten instead.
    1400–1200 px  typical 1366 px Acer / budget laptops
    ≤1200 px      very tight — minimal footprint before Mintlify's mobile menu */
-
 @media (max-width: 1400px) {
     /* Tighten gap between tab links */
     #navbar nav {
@@ -1030,7 +970,6 @@ button:has(img[alt="Quebec"]) {
         padding:   4px 10px !important;
     }
 }
-
 @media (max-width: 1200px) {
     #navbar nav {
         gap: 0px !important;
@@ -1049,7 +988,6 @@ button:has(img[alt="Quebec"]) {
         padding:   3px 8px !important;
     }
 }
-
 /* ── Page content fade-in ── */
 @keyframes ri-fade-up {
     from { opacity: 0; transform: translateY(10px); }
@@ -1058,19 +996,16 @@ button:has(img[alt="Quebec"]) {
 article {
     animation: ri-fade-up 0.3s ease-out both;
 }
-
 /* ── Callout / Note / Warning / Tip boxes ── */
 [data-component="callout"] {
     border-radius: 8px !important;
 }
-
 /* ── Steps ── */
 [data-component="step"] [data-step-number],
 .step-number {
     border-color: var(--ri-accent) !important;
     color:        var(--ri-accent) !important;
 }
-
 /* ── Homepage footer ── */
 .ri-home-footer {
     background-color: #150e51;
@@ -1144,7 +1079,6 @@ article {
 @media (max-width: 600px) {
     .ri-home-footer-inner { gap: 36px; }
 }
-
 /* ── SOP meta bar ── */
 .ri-sop-meta {
     display: flex;
@@ -1170,14 +1104,12 @@ article {
     transition: background .15s, color .15s;
 }
 .ri-print-btn:hover { background: var(--ri-accent); color: #fff; }
-
 /* ── Print styles ── */
 @media print {
     #navbar, #sidebar, #topbar-cta-button, .ri-print-btn { display: none !important; }
     #content-area { margin: 0 !important; padding: 0 !important; }
     body { font-size: 11pt; color: #000; }
 }
-
 /* ══════════════════════════════════════════════
    STUDY TYPE & TRAINING CLASSIFIER
    ══════════════════════════════════════════════ */
@@ -1203,7 +1135,6 @@ article {
 }
 /* Keep strong/b white-overrides out of the classifier */
 .rc-wrap strong, .rc-wrap b { color: var(--rc-navy) !important; }
-
 /* Regulatory note */
 .rc-reg-note {
     margin-bottom: 24px; padding: 12px 16px 12px 44px;
@@ -1215,21 +1146,18 @@ article {
     background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%232b9ce2' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='10'/%3E%3Cline x1='12' y1='16' x2='12' y2='12'/%3E%3Cline x1='12' y1='8' x2='12.01' y2='8'/%3E%3C/svg%3E") no-repeat center/contain;
 }
 .rc-reg-note a { color: var(--rc-sky); font-weight: 600; }
-
 /* Progress */
 .rc-progress { display: flex; align-items: center; gap: 5px; margin-bottom: 24px; }
 .rc-prog-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--rc-bdr); }
 .rc-prog-dot.active { background: var(--rc-teal-br); }
 .rc-prog-dot.done   { background: var(--rc-teal); }
 .rc-prog-label { font-size: 11px; color: var(--rc-textd); margin-left: 8px; font-weight: 700; }
-
 /* Part label */
 .rc-part-label {
     font-size: 9px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase;
     color: var(--rc-textd); padding-bottom: 10px;
     border-bottom: 1px solid var(--rc-bdr-soft); margin-bottom: 20px;
 }
-
 /* Question block */
 .rc-q-block   { margin-bottom: 4px; }
 .rc-q-row     { display: flex; align-items: flex-start; gap: 14px; margin-bottom: 14px; }
@@ -1241,7 +1169,6 @@ article {
 .rc-q-num.pass { background: var(--rc-navy); border-color: var(--rc-navy); color: var(--rc-white); }
 .rc-q-main { font-size: 15px; font-weight: 700; color: var(--rc-navy); line-height: 1.4; }
 .rc-q-hint { font-size: 12.5px; color: var(--rc-textd); margin-top: 4px; line-height: 1.55; }
-
 /* History */
 .rc-history { margin-bottom: 20px; }
 .rc-hist-item {
@@ -1256,7 +1183,6 @@ article {
 }
 .rc-hist-q { font-weight: 600; color: var(--rc-navy); margin-bottom: 1px; font-size: 12px; }
 .rc-hist-a { color: var(--rc-textm); font-size: 12px; }
-
 /* Answer buttons */
 .rc-answers { display: flex; flex-wrap: wrap; gap: 8px; margin: 4px 0 8px 42px; }
 .rc-btn {
@@ -1265,7 +1191,6 @@ article {
     color: var(--rc-textm); cursor: pointer; font-family: inherit; border-radius: 0;
 }
 .rc-btn:hover { border-color: var(--rc-navy); color: var(--rc-navy); }
-
 /* Option buttons */
 .rc-options { display: flex; flex-direction: column; gap: 6px; margin: 4px 0 8px 42px; }
 .rc-opt-btn {
@@ -1276,7 +1201,6 @@ article {
 }
 .rc-opt-btn:hover { border-color: var(--rc-navy); color: var(--rc-navy); background: var(--rc-bg-low); }
 .rc-opt-desc { font-size: 11.5px; font-weight: 400; display: block; margin-top: 3px; opacity: .72; line-height: 1.4; }
-
 /* Inline callout */
 .rc-callout {
     margin: 10px 0 4px 42px; padding: 11px 14px 11px 38px;
@@ -1290,7 +1214,6 @@ article {
 .rc-callout.amber::before { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23b45309' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='10'/%3E%3Cline x1='12' y1='8' x2='12' y2='12'/%3E%3Cline x1='12' y1='16' x2='12.01' y2='16'/%3E%3C/svg%3E"); }
 .rc-callout.sky   { background: var(--rc-sky-l); color: var(--rc-textm); }
 .rc-callout.sky::before   { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%232b9ce2' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='10'/%3E%3Cline x1='12' y1='16' x2='12' y2='12'/%3E%3Cline x1='12' y1='8' x2='12.01' y2='8'/%3E%3C/svg%3E"); }
-
 /* Out of scope */
 .rc-no-human {
     padding: 14px 16px 14px 44px; border: 1px solid var(--rc-bdr-soft);
@@ -1301,7 +1224,6 @@ article {
     content: ""; position: absolute; left: 14px; top: 15px; width: 16px; height: 16px;
     background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23b45309' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='10'/%3E%3Cline x1='12' y1='8' x2='12' y2='12'/%3E%3Cline x1='12' y1='16' x2='12.01' y2='16'/%3E%3C/svg%3E") no-repeat center/contain;
 }
-
 /* Result panel */
 .rc-result { border: 1px solid var(--rc-bdr-soft); margin-top: 16px; }
 .rc-result-head {
@@ -1326,12 +1248,10 @@ article {
     font-size: 9px; font-weight: 700; letter-spacing: .15em; text-transform: uppercase;
     color: var(--rc-textd); margin-bottom: 12px;
 }
-
 /* Requirements list */
 .rc-req-list { list-style: none; display: flex; flex-direction: column; gap: 10px; padding: 0; margin: 0; }
 .rc-req-item { display: flex; align-items: flex-start; gap: 10px; font-size: 13px; line-height: 1.5; color: var(--rc-textm); }
 .rc-req-note { font-size: 11.5px; color: var(--rc-textd); display: block; margin-top: 2px; line-height: 1.45; }
-
 /* Pills */
 .rc-pill {
     display: inline-block; padding: 2px 9px; font-size: 9px; font-weight: 800;
@@ -1343,13 +1263,11 @@ article {
 .p-hc5  { background: var(--rc-coral); }
 .p-iso  { background: var(--rc-purple); }
 .p-tcps { background: var(--rc-sky); }
-
 /* Regulatory context box */
 .rc-reg-context {
     background: var(--rc-bg-low); border: 1px solid var(--rc-bdr-soft);
     padding: 12px 16px; font-size: 13px; color: var(--rc-textm); line-height: 1.65;
 }
-
 /* Renewal cycle */
 .rc-cycle { display: flex; gap: 8px; flex-wrap: wrap; }
 .rc-cycle-item {
@@ -1360,7 +1278,6 @@ article {
     color: var(--rc-navy) !important; display: block;
     font-size: 9px; text-transform: uppercase; letter-spacing: .1em; margin-bottom: 2px;
 }
-
 /* Flags */
 .rc-flags { display: flex; flex-direction: column; gap: 8px; }
 .rc-flag {
@@ -1379,7 +1296,6 @@ article {
 .rc-flag.teal  { background: var(--rc-green-l); }
 .rc-flag.teal::before  { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23007a6e' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='10'/%3E%3Cline x1='12' y1='16' x2='12' y2='12'/%3E%3Cline x1='12' y1='8' x2='12.01' y2='8'/%3E%3C/svg%3E"); }
 .rc-flag strong { color: var(--rc-navy) !important; display: block; font-size: 9px; text-transform: uppercase; letter-spacing: .08em; margin-bottom: 3px; }
-
 /* Fallback */
 .rc-fallback {
     padding: 14px 16px 14px 44px; border: 1px solid var(--rc-bdr-soft);
@@ -1389,7 +1305,6 @@ article {
     content: ""; position: absolute; left: 14px; top: 15px; width: 16px; height: 16px;
     background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23e63946' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='10'/%3E%3Cline x1='12' y1='8' x2='12' y2='12'/%3E%3Cline x1='12' y1='16' x2='12.01' y2='16'/%3E%3C/svg%3E") no-repeat center/contain;
 }
-
 /* Footer */
 .rc-footer {
     display: flex; align-items: center; justify-content: space-between;
@@ -1404,12 +1319,10 @@ article {
 .rc-reset-btn:hover { color: var(--rc-coral); }
 .rc-disclaimer { font-size: 11.5px; color: var(--rc-textd); max-width: 520px; line-height: 1.5; margin: 0; }
 .rc-disclaimer a { color: var(--rc-sky); font-weight: 600; }
-
 @media (max-width: 600px) {
     .rc-answers, .rc-options, .rc-callout { margin-left: 0; }
     .rc-result-head { flex-direction: column; gap: 6px; }
 }
-
 /* ── CANTRAIN callout card ───────────────────────────────────────────────── */
 .ri-cantrain-callout {
     display: flex;
@@ -1437,13 +1350,8 @@ article {
     list-style: none;
 }
 .ri-cantrain-text li { margin: 2px 0; font-style: italic; }
-
 html.dark .ri-cantrain-callout {
     background: #1e293b;
     border-color: #334155;
 }
 html.dark .ri-cantrain-text { color: #cbd5e1; }
-
-
-/* EXPERIMENT — zero border radius */
-* { border-radius: 0 !important; }
