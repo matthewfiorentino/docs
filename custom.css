@@ -74,8 +74,7 @@ article a:hover,
    explicitly because color must reach the child div holding the label text. */
 li[data-group-tag] > button,
 li[data-group-tag] > button > div {
-    color:       #007a6e !important;
-    font-weight: 600 !important;
+    color: #007a6e !important;
 }
 html.dark li[data-group-tag] > button,
 html.dark li[data-group-tag] > button > div {
