@@ -758,16 +758,16 @@ function buildDesignGuidance(a, d) {
     items.push('Training level for this study type: <strong>' + escHtml(levelDesc) + '</strong>. All team members performing study tasks need the SOP Reader + Competency Assessment before signing the Task Delegation Log. (<a href="/training/compliance-requirements">Full training requirements &rarr;</a>)');
   }
   if (d.isDrugStudy) {
-    items.push('A Health Canada Clinical Trial Application (CTA, Division 5) is required — filed separately from your REB submission. GCP (ICH E6 R3) and Division 5 training are required for all team members. (<a href="/sops/cr-018-overview">CTA overview &rarr;</a>)');
+    items.push('A Health Canada Clinical Trial Application (CTA, Division 5) is required — filed separately from your REB submission. GCP (ICH E6 R3) and Division 5 training are required for all team members. (<a href="/sops/cr-018">CTA overview &rarr;</a>)');
   }
   if (d.isNHPStudy) {
     items.push('A Health Canada CTA for Natural Health Products is required. GCP training and a product dossier are needed before submission.');
   }
   if (d.isDeviceStudy) {
-    items.push('A Health Canada Investigational Testing Authorization (ITA) is required for the investigational device. ISO 14155:2020 GCP training required. (<a href="/sops/cr-024-overview">ITA overview &rarr;</a>)');
+    items.push('A Health Canada Investigational Testing Authorization (ITA) is required for the investigational device. ISO 14155:2020 GCP training required. (<a href="/sops/cr-024">ITA overview &rarr;</a>)');
   }
   if (d.isSponsorInvestigator) {
-    items.push('As Sponsor-Investigator, you hold both Sponsor and QI/PI responsibilities simultaneously — Health Canada filings, independent monitoring, IP supply chain, SUSAR reporting, and the Trial Master File. The 100-series SOPs apply. Engage QA early. (<a href="/sops/sponsor-investigator">Sponsor-Investigator SOPs &rarr;</a>)');
+    items.push('As Sponsor-Investigator, you hold both Sponsor and QI/PI responsibilities simultaneously — Health Canada filings, independent monitoring, IP supply chain, SUSAR reporting, and the Trial Master File. The 100-series SOPs apply. Engage QA early. (<a href="/kb/sponsor-investigator">Sponsor-Investigator SOPs &rarr;</a>)');
   }
   if (d.isIndustrySponsored) {
     items.push('Industry-sponsored studies: the Sponsor provides the protocol and Health Canada authorization. Your team handles site conduct, Task Delegation Log, and ISF. Budget for REB billing fees per Directive ministérielle 2023-016.');
@@ -784,7 +784,7 @@ function buildDesignGuidance(a, d) {
     items.push('Adults unable to consent require authorization from a Personne mandatée, tutor, or curator (Civil Code Art. 21). Address this explicitly in your REB application.');
   }
   if (a.S3_SITES === 'multi-lead' || a.S3_SITES === 'multi-cross') {
-    items.push('Multicentre studies require site-specific feasibility reviews and coordination. As MUHC lead, you submit via Nagano on behalf of all Quebec RSSS sites. (<a href="/kb/planning/feasibility">Multi-site feasibility &rarr;</a>)');
+    items.push('Multicentre studies require site-specific feasibility reviews and coordination. As MUHC lead, you submit via Nagano on behalf of all Quebec RSSS sites. (<a href="/kb/feasibility">Multi-site feasibility &rarr;</a>)');
   }
   if (a.S4_CIM && a.S4_CIM !== 'no') {
     items.push('CIM involvement: engage CIM during the design phase, well before your Nagano submission. (<a href="/cim/planning">Planning your study with the CIM &rarr;</a>)');
@@ -826,15 +826,15 @@ function buildChecklist(a, d) {
   if (nHC) {
     docs.push('Investigator\'s Brochure (IB) or Product Monograph — current version required before REB submission.');
   }
-  docs.push('Study budget and contracts — initiate early via the Research Agreements Office. (<a href="/kb/planning/budgets-contracts">Budgets and contracts &rarr;</a>)');
+  docs.push('Study budget and contracts — initiate early via the Research Agreements Office. (<a href="/kb/budgets-contracts">Budgets and contracts &rarr;</a>)');
 
   var activation = [];
   activation.push('Submit via Nagano F11 — triggers REB review and institutional feasibility review in parallel. (<a href="/apps/nagano/overview">Nagano step-by-step guide &rarr;</a>)');
   if (nHC && d.isDrugStudy) {
-    activation.push('Health Canada CTA (Division 5) — drug submission timeline is separate from REB review. (<a href="/sops/cr-018-overview">CTA overview &rarr;</a>)');
+    activation.push('Health Canada CTA (Division 5) — drug submission timeline is separate from REB review. (<a href="/sops/cr-018">CTA overview &rarr;</a>)');
   }
   if (nHC && d.isDeviceStudy) {
-    activation.push('Health Canada ITA for medical devices. (<a href="/sops/cr-024-overview">ITA overview &rarr;</a>)');
+    activation.push('Health Canada ITA for medical devices. (<a href="/sops/cr-024">ITA overview &rarr;</a>)');
   }
   if (a.S4_CIM && a.S4_CIM !== 'no') {
     activation.push('CIM feasibility assessment — required before activation for studies using CIM. (<a href="/cim/planning">Planning your study with the CIM &rarr;</a>)');
@@ -844,7 +844,7 @@ function buildChecklist(a, d) {
     activation.push('Sponsor\'s Go Letter — participant enrolment may not begin until this is received.');
   }
   if (isSI) {
-    activation.push('Independent monitoring plan required — monitor must not be on the site Task Delegation Log. (<a href="/sops/sponsor-investigator">Sponsor-Investigator SOPs &rarr;</a>)');
+    activation.push('Independent monitoring plan required — monitor must not be on the site Task Delegation Log. (<a href="/kb/sponsor-investigator">Sponsor-Investigator SOPs &rarr;</a>)');
   }
 
   return [
@@ -866,15 +866,15 @@ function buildSupportLinks(a, d) {
   var needMap = {
     'design-protocol': function() {
       links.push('<strong>Protocol design &amp; feasibility</strong>');
-      links.push('Study design, feasibility assessment, and methodology resources: <a href="/kb/planning/study-design">Design &amp; feasibility &rarr;</a>');
-      links.push('Planning specialists — BCU, CORD, CIM, pre-awards, HR, EDI: <a href="/kb/planning/study-design">Study design &amp; planning &rarr;</a>');
+      links.push('Study design, feasibility assessment, and methodology resources: <a href="/kb/study-design">Design &amp; feasibility &rarr;</a>');
+      links.push('Planning specialists — BCU, CORD, CIM, pre-awards, HR, EDI: <a href="/kb/study-design">Study design &amp; planning &rarr;</a>');
     },
     'regulatory': function() {
       links.push('<strong>Regulatory submissions</strong>');
       links.push('Step-by-step guide to submitting via Nagano F11: <a href="/apps/nagano/overview">Submit via Nagano &rarr;</a>');
       links.push('Regulatory compliance requirements by study type: <a href="/training/compliance-requirements">Compliance requirements &rarr;</a>');
-      if (d.isDrugStudy) links.push('Drug study — Health Canada CTA (Division 5): <a href="/sops/cr-018-overview">SOP-CR-018 — CTA overview &rarr;</a>');
-      if (d.isDeviceStudy) links.push('Device study — Health Canada ITA: <a href="/sops/cr-024-overview">SOP-CR-024 — ITA overview &rarr;</a>');
+      if (d.isDrugStudy) links.push('Drug study — Health Canada CTA (Division 5): <a href="/sops/cr-018">SOP-CR-018 — CTA overview &rarr;</a>');
+      if (d.isDeviceStudy) links.push('Device study — Health Canada ITA: <a href="/sops/cr-024">SOP-CR-024 — ITA overview &rarr;</a>');
     },
     'training': function() {
       links.push('<strong>Training and credentials</strong>');
@@ -883,18 +883,18 @@ function buildSupportLinks(a, d) {
     },
     'budget-contracts': function() {
       links.push('<strong>Budget, contracts, and funding</strong>');
-      links.push('Research agreements, budget templates, and pre-awards guidance: <a href="/kb/planning/budgets-contracts">Budgets &amp; contracts &rarr;</a>');
+      links.push('Research agreements, budget templates, and pre-awards guidance: <a href="/kb/budgets-contracts">Budgets &amp; contracts &rarr;</a>');
     },
     'team-setup': function() {
       links.push('<strong>Hiring and team setup</strong>');
-      links.push('HR, People &amp; Culture — hiring research staff, employment agreements, trainee onboarding: <a href="/kb/planning/hr-people-culture">HR &amp; People and Culture &rarr;</a>');
+      links.push('HR, People &amp; Culture — hiring research staff, employment agreements, trainee onboarding: <a href="/kb/hiring-hr-support">HR &amp; People and Culture &rarr;</a>');
     },
     'data': function() {
       links.push('<strong>Data management, REDCap, and privacy</strong>');
-      links.push('CORD — REDCap builds, CRF design, and data management planning: <a href="/kb/planning/cord">CORD &rarr;</a>');
-      links.push('MUHC patient data — retrospective access across 5 sites: <a href="/kb/planning/data-warehouse">MUHC patient data &rarr;</a>');
+      links.push('CORD — REDCap builds, CRF design, and data management planning: <a href="/kb/cord">CORD &rarr;</a>');
+      links.push('MUHC patient data — retrospective access across 5 sites: <a href="/kb/data-warehouse">MUHC patient data &rarr;</a>');
       if (d.isCrossBorder || d.hasPHI) {
-        links.push('Privacy impact assessment (ÉFVP) — required before cross-border data sharing: <a href="/kb/governance/privacy">Privacy &amp; data governance &rarr;</a>');
+        links.push('Privacy impact assessment (ÉFVP) — required before cross-border data sharing: <a href="/kb/privacy">Privacy &amp; data governance &rarr;</a>');
       }
     },
     'cim-connect': function() {
@@ -903,14 +903,14 @@ function buildSupportLinks(a, d) {
     },
     'conduct-support': function() {
       links.push('<strong>Study conduct</strong>');
-      links.push('Site setup, delegation, and activation requirements: <a href="/kb/conduct/site-setup">Site activation &rarr;</a>');
-      links.push('Data integrity and source documentation standards: <a href="/kb/conduct/data-integrity">Data integrity &rarr;</a>');
-      links.push('AE and SAE reporting — timelines and Health Canada obligations: <a href="/sops/cr-012-overview">SOP-CR-012 — AE/SAE reporting &rarr;</a>');
+      links.push('Site setup, delegation, and activation requirements: <a href="/kb/site-setup">Site activation &rarr;</a>');
+      links.push('Data integrity and source documentation standards: <a href="/kb/data-integrity">Data integrity &rarr;</a>');
+      links.push('AE and SAE reporting — timelines and Health Canada obligations: <a href="/sops/cr-012">SOP-CR-012 — AE/SAE reporting &rarr;</a>');
     },
     'closeout-support': function() {
       links.push('<strong>Close-out and amendments</strong>');
-      links.push('Study close-out checklist and essential document retention: <a href="/kb/conduct/close-out">Close-out guide &rarr;</a>');
-      links.push('SOP-CR-016 — Study Close-Out procedures: <a href="/sops/cr-016-overview">View SOP &rarr;</a>');
+      links.push('Study close-out checklist and essential document retention: <a href="/kb/close-out">Close-out guide &rarr;</a>');
+      links.push('SOP-CR-016 — Study Close-Out procedures: <a href="/sops/cr-016">View SOP &rarr;</a>');
     }
   };
 
@@ -929,42 +929,42 @@ function buildNextSteps(a, d) {
   var next = [];
 
   if (stage === 'idea') {
-    next.push('Start with the study design and feasibility resources: <a href="/kb/planning/study-design">Design &amp; feasibility &rarr;</a>');
-    next.push('Planning specialists and design resources — BCU, CORD, CIM, and more: <a href="/kb/planning/study-design">Study design &amp; planning &rarr;</a>');
+    next.push('Start with the study design and feasibility resources: <a href="/kb/study-design">Design &amp; feasibility &rarr;</a>');
+    next.push('Planning specialists and design resources — BCU, CORD, CIM, and more: <a href="/kb/study-design">Study design &amp; planning &rarr;</a>');
     next.push('Browse what it takes to run a clinical study at the RI-MUHC: <a href="/kb/introduction">Introduction to clinical research &rarr;</a>');
     next.push('The Research Facilitator will review your intake and follow up within 5 business days.');
 
   } else if (stage === 'design') {
     next.push('Review the full PI/QI pathway from intake to activation: <a href="/kb/roles/pi-pathway">PI/QI pathway overview &rarr;</a>');
     next.push('Understand training and credentials requirements for your study type: <a href="/training/compliance-requirements">Compliance requirements &rarr;</a>');
-    next.push('Planning specialists and methodology resources — BCU, CORD, CIM, pre-awards, and more: <a href="/kb/planning/study-design">Study design &amp; planning &rarr;</a>');
+    next.push('Planning specialists and methodology resources — BCU, CORD, CIM, pre-awards, and more: <a href="/kb/study-design">Study design &amp; planning &rarr;</a>');
     next.push('The Research Facilitator will review your intake and follow up within 5 business days.');
 
   } else if (stage === 'submission') {
     next.push('The Research Facilitator will review your intake and follow up within 5 business days.');
     next.push('Step-by-step guide to submitting via Nagano: <a href="/apps/nagano/overview">Submit via Nagano &rarr;</a>');
     if (d.isDrugStudy) {
-      next.push('Drug study — Health Canada CTA requirements: <a href="/sops/cr-018-overview">SOP-CR-018 overview &rarr;</a>');
+      next.push('Drug study — Health Canada CTA requirements: <a href="/sops/cr-018">SOP-CR-018 overview &rarr;</a>');
     }
     if (d.isDeviceStudy) {
-      next.push('Device study — ITA requirements: <a href="/sops/cr-024-overview">SOP-CR-024 overview &rarr;</a>');
+      next.push('Device study — ITA requirements: <a href="/sops/cr-024">SOP-CR-024 overview &rarr;</a>');
     }
     if (a.S4_CIM && a.S4_CIM !== 'no') {
       next.push('CIM involvement — is CIM right for your study? <a href="/cim/planning">CIM overview &rarr;</a>');
     }
     if (d.isSponsorInvestigator) {
-      next.push('Sponsor-Investigator obligations — the 100-series SOPs apply to you: <a href="/sops/sponsor-investigator">Sponsor-Investigator SOPs &rarr;</a>');
+      next.push('Sponsor-Investigator obligations — the 100-series SOPs apply to you: <a href="/kb/sponsor-investigator">Sponsor-Investigator SOPs &rarr;</a>');
     }
 
   } else if (stage === 'conduct') {
-    next.push('Study conduct resources — site setup and day-to-day operations: <a href="/kb/conduct/site-setup">Site activation &rarr;</a>');
-    next.push('Data integrity and source documentation: <a href="/kb/conduct/data-integrity">Data integrity &rarr;</a>');
-    next.push('AE and SAE reporting procedures: <a href="/sops/cr-012-overview">SOP-CR-012 — AE/SAE reporting &rarr;</a>');
+    next.push('Study conduct resources — site setup and day-to-day operations: <a href="/kb/site-setup">Site activation &rarr;</a>');
+    next.push('Data integrity and source documentation: <a href="/kb/data-integrity">Data integrity &rarr;</a>');
+    next.push('AE and SAE reporting procedures: <a href="/sops/cr-012">SOP-CR-012 — AE/SAE reporting &rarr;</a>');
     next.push('The Research Facilitator will review your intake and follow up within 5 business days.');
 
   } else if (stage === 'closeout') {
-    next.push('Study close-out procedures and checklist: <a href="/kb/conduct/close-out">Close-out guide &rarr;</a>');
-    next.push('SOP-CR-016 — Study Close-Out: <a href="/sops/cr-016-overview">View SOP &rarr;</a>');
+    next.push('Study close-out procedures and checklist: <a href="/kb/close-out">Close-out guide &rarr;</a>');
+    next.push('SOP-CR-016 — Study Close-Out: <a href="/sops/cr-016">View SOP &rarr;</a>');
     next.push('The Research Facilitator will review your intake and follow up within 5 business days.');
   }
 
