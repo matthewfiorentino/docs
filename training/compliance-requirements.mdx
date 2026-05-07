@@ -27,6 +27,36 @@ For researchers acting as PI, QI, or Sub-Investigator, there is an additional pr
 
 The table below shows all mandatory training for each level. Your training level is determined by the highest-risk study you are involved in — higher-level certification covers all lower levels.
 
+### What training do I need?
+
+Use this decision tree to self-route. Refer to the full matrix below for the complete picture.
+
+```mermaid
+%%{init: {'theme':'base','themeVariables':{'primaryColor':'#150e51','primaryTextColor':'#ffffff','primaryBorderColor':'#150e51','lineColor':'#888','fontFamily':'system-ui,sans-serif'}}}%%
+flowchart TD
+    Start([I'm joining a study team]) --> Q1{Are you PI/QI<br/>or Sub-I?}
+    Q1 -->|Yes| P[Plus: Human Research<br/>Privileges or Status]
+    Q1 -->|No| Q2{What is the highest-risk<br/>study you'll work on?}
+    P --> Q2
+    Q2 -->|Level I — Drug| L1[SOP-CR + Competency 2 yr<br/>+ ICH GCP + HC Div 5]
+    Q2 -->|Level II — Device or surgery| L2[SOP-CR + Competency 2 yr<br/>+ ICH GCP + ISO 14155]
+    Q2 -->|Level III — NHP| L3[SOP-CR + Competency 2 yr<br/>+ ICH GCP]
+    Q2 -->|Level IV — Observational| L4[SOP-LR + Competency 5 yr]
+    Q2 -->|Level V — Retrospective| L5[SOP-LR + Competency 5 yr]
+
+    style Start fill:#150e51,color:#fff,stroke:none
+    style Q1 fill:#fff,color:#150e51,stroke:#150e51,stroke-width:2px
+    style Q2 fill:#fff,color:#150e51,stroke:#150e51,stroke-width:2px
+    style P fill:#fff3e0,color:#7a3a00,stroke:#cc6600,stroke-width:1.5px
+    style L1 fill:#007a6e,color:#fff,stroke:none
+    style L2 fill:#007a6e,color:#fff,stroke:none
+    style L3 fill:#007a6e,color:#fff,stroke:none
+    style L4 fill:#33b3a4,color:#fff,stroke:none
+    style L5 fill:#33b3a4,color:#fff,stroke:none
+```
+
+### Full requirements matrix
+
 | Requirement | Level I — Drug studies | Level II — Medical device & surgery | Level III — Natural health products | Level IV — Prospective observational | Level V — Retrospective |
 |---|---|---|---|---|---|
 | **SOP Reader** (TalentLMS) — No expiry; only resets when that SOP is revised | Required | Required | Required | Required | Required |

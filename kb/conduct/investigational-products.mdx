@@ -46,6 +46,27 @@ The division of responsibility between the QI/PI and the MUHC Research Pharmacy 
 
 From the moment an investigational product arrives at the MUHC to its final destruction or return, every step requires documentation. The pharmacy leads operational management; the QI maintains oversight.
 
+```mermaid
+flowchart LR
+    A[Receipt] --> B[Storage]
+    B --> C[Dispensing]
+    C --> D[Administration]
+    D --> E[Accountability]
+    E --> F[Return or Destruction]
+    F --> G[ISF documentation]
+    B -.->|Temperature excursion<br/>or expiry| Q[Quarantine]
+    Q -.->|Resolved| B
+    Q -.->|Cannot release| F
+    style A fill:#e6f7f5,stroke:#007a6e,color:#150e51
+    style B fill:#e6f7f5,stroke:#007a6e,color:#150e51
+    style C fill:#e6f7f5,stroke:#007a6e,color:#150e51
+    style D fill:#e6f7f5,stroke:#007a6e,color:#150e51
+    style E fill:#e6f7f5,stroke:#007a6e,color:#150e51
+    style F fill:#e6f7f5,stroke:#007a6e,color:#150e51
+    style G fill:#e6f7f5,stroke:#007a6e,color:#150e51
+    style Q fill:#fff3e0,stroke:#cc6600,color:#7a3a00
+```
+
 <Steps>
 
 <Step title="Receipt">
