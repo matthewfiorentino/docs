@@ -71,9 +71,21 @@ article a strong, article a b,
 #sidebar-content a span,
 #sidebar-content button,
 #sidebar-content button span {
-    font-size:   13px !important;
+    font-size:   12px !important;
     font-weight: 400 !important;
-    line-height: 1.4 !important;
+    line-height: 1.35 !important;
+}
+/* ── Sidebar — tighter vertical spacing on page links and group items ── */
+#sidebar-content li {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+}
+#sidebar-content a,
+#sidebar-content button {
+    padding-top:    4px !important;
+    padding-bottom: 4px !important;
 }
 /* ── Sidebar — prevent global heading colour and Mintlify dark-primary
    from bleeding into sidebar text.
@@ -120,10 +132,14 @@ html.dark sidebar-group-header * {
 }
 /* ── Sidebar — tighten gap between top-level section groups ── */
 li[data-group-tag] {
-    margin-top: 6px !important;
+    margin-top: 4px !important;
 }
 li[data-group-tag]:first-child {
     margin-top: 0 !important;
+}
+/* Tighten nested group content */
+#sidebar-content ul {
+    gap: 0 !important;
 }
 /* ── Navbar — tab strip ── */
 #navbar nav a.link {

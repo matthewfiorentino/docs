@@ -582,7 +582,7 @@
               },
               {
                 "group": "For CIM Staff",
-                "icon": "user-nurse",
+                "icon": "id-badge",
                 "pages": [
                   "cim/researcher-guide",
                   "cim/training",
