@@ -1544,34 +1544,47 @@ html.dark .update-container .bg-primary\/10 {
     background-color: rgba(0, 196, 180, 0.15) !important;
 }
 
-/* ── CIM homepage banner ── */
-.ri-cim-banner {
+/* ── CIM homepage split (photo + text) ── */
+.ri-cim-split {
     display: flex;
+    gap: 32px;
     align-items: center;
-    justify-content: space-between;
-    gap: 24px;
-    background: linear-gradient(135deg, #150e51, #1a1466);
-    border-radius: 10px;
-    padding: 32px 36px;
     margin-top: 8px;
-    flex-wrap: wrap;
+}
+.ri-cim-photo {
+    flex: 0 0 45%;
+    border-radius: 10px;
+    overflow: hidden;
+}
+.ri-cim-photo img {
+    display: block;
+    width: 100%;
+    height: 280px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+.ri-cim-text {
+    flex: 1;
+    min-width: 0;
 }
 .ri-cim-heading {
     font-size: 20px;
     font-weight: 700;
-    color: #fff !important;
-    margin-bottom: 6px;
+    color: var(--ri-heading) !important;
+    margin-bottom: 8px;
 }
 .ri-cim-body {
     font-size: 14px;
-    color: rgba(255,255,255,.8);
-    line-height: 1.6;
-    max-width: 540px;
+    color: rgba(0,0,0,.65);
+    line-height: 1.7;
+    margin-bottom: 20px;
+}
+html.dark .ri-cim-body {
+    color: rgba(255,255,255,.7);
 }
 .ri-cim-actions {
     display: flex;
     gap: 12px;
-    flex-shrink: 0;
     flex-wrap: wrap;
 }
 .ri-cim-btn {
@@ -1580,7 +1593,7 @@ html.dark .update-container .bg-primary\/10 {
     color: #fff !important;
     font-weight: 700;
     font-size: 14px;
-    padding: 12px 24px;
+    padding: 10px 22px;
     border-radius: 8px;
     text-decoration: none !important;
     white-space: nowrap;
@@ -1589,10 +1602,19 @@ html.dark .update-container .bg-primary\/10 {
 .ri-cim-btn:hover { opacity: .85; }
 .ri-cim-btn--outline {
     background: transparent;
-    border: 1.5px solid rgba(255,255,255,.3);
-    color: #fff !important;
+    border: 1.5px solid var(--ri-accent, #007a6e);
+    color: var(--ri-accent, #007a6e) !important;
 }
 .ri-cim-btn--outline:hover {
-    border-color: rgba(255,255,255,.6);
-    opacity: 1;
+    opacity: .75;
+}
+@media (max-width: 700px) {
+    .ri-cim-split {
+        flex-direction: column;
+        gap: 20px;
+    }
+    .ri-cim-photo {
+        flex: none;
+        width: 100%;
+    }
 }
