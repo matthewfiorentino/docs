@@ -596,18 +596,44 @@ html.dark .ri-callout--warn { background: rgba(245,158,11,.12); color: rgba(255,
 .ri-callout a { color: #007a6e !important; text-decoration: underline; text-underline-offset: 3px; }
 .ri-callout--warn a { color: #78350f !important; text-decoration: underline; text-underline-offset: 3px; font-weight: 600; }
 html.dark .ri-callout a { color: #00c4b4 !important; }
-/* Intake form — universal entry point above the step track */
-/* PI panel — top row: intake + arrow + pathway side by side */
-.ri-pi-top-row {
-    display: flex; align-items: stretch; gap: 0;
-    margin-top: 1.75rem; margin-bottom: 1.75rem;
+/* Intake card + timeline — card to the left, connector line, then StepTrack */
+.ri-intake-timeline {
+    display: flex;
+    align-items: flex-start;
+    margin-top: 1.75rem;
 }
-.ri-pi-row-arrow {
-    display: flex; align-items: center; justify-content: center;
-    flex-shrink: 0; padding: 0 14px;
-    color: rgba(0,0,0,.28); font-size: 20px;
+.ri-intake-timeline .ri-intake-entry {
+    flex: 0 0 auto;
+    width: 210px;
+    margin-top: 1.75rem; /* align top with step-track padding-top */
 }
-html.dark .ri-pi-row-arrow { color: rgba(255,255,255,.3); }
+.ri-intake-conn {
+    flex: 0 0 auto;
+    width: 24px;
+    height: 2px;
+    background: var(--ri-accent);
+    /* Align with step node centers: step-track padding-top + node center offset */
+    margin-top: calc(1.75rem + 15px);
+}
+html.dark .ri-intake-conn { background: var(--ri-accent-bright); }
+.ri-intake-timeline .ri-step-track {
+    flex: 1;
+    min-width: 0;
+}
+@media (max-width: 900px) {
+    .ri-intake-timeline .ri-intake-entry { width: 180px; }
+}
+@media (max-width: 600px) {
+    .ri-intake-timeline {
+        flex-direction: column;
+        gap: 0;
+    }
+    .ri-intake-timeline .ri-intake-entry {
+        width: 100%;
+        margin-top: 1rem;
+    }
+    .ri-intake-conn { display: none; }
+}
 /* Intake entry — coral card, full surface is a link */
 .ri-intake-entry {
     display: flex; flex-direction: column; align-items: flex-start;

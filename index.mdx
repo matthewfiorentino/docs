@@ -196,33 +196,35 @@ export const StartHere = () => {
       {role === 'pi' && (
         <div className="ri-role-panel">
           <p className="ri-role-framing">As PI or QI, you carry ultimate regulatory and scientific accountability for your study at the RI-MUHC — from the first feasibility conversation through close-out and archiving. That means protocol design, team delegation, Health Canada submissions if your study involves an investigational product, annual REB renewals, and MUHC Authorization before any study activity can begin.</p>
-          <div className="ri-pi-top-row">
+          <div className="ri-intake-timeline">
             <a href="/kb/study-intake" className="ri-intake-entry">
               <div className="ri-ie-label">Tell us about your study</div>
-              <div className="ri-ie-desc">Whether you're planning a new study or already at the submission stage, the intake form connects you with the Research Facilitator and maps your study to the specific support, approvals, and requirements you need.</div>
+              <div className="ri-ie-desc">The intake form connects you with the Research Facilitator and maps your study to the approvals, training, and support you need.</div>
               <div className="ri-ie-link">Open the intake form →</div>
             </a>
-            <div className="ri-pi-row-arrow"><Icon icon="arrow-right" /></div>
+            <div className="ri-intake-conn" aria-hidden="true" />
+            <StepTrack steps={[
+              { label: "Assess feasibility" },
+              { label: "Design your study" },
+              { label: "Fulfill training and compliance requirements" },
+              { label: "Prepare your submission" },
+              { label: "Submit via Nagano", end: true },
+            ]} />
+          </div>
+          <div className="ri-callout ri-callout--warn">
+            A study cannot begin until the <strong>Personne mandatée</strong> grants <a href="/kb/submission-overview">MUHC Authorization</a>. REB approval alone does not authorize research activities — both approvals must be in your ISF before any study procedures begin.
+          </div>
+          <div className="ri-guides-row">
             <a href="/kb/roles/pi-pathway" className="ri-pathway-banner">
               <div className="ri-pb-label">Investigator Pathway</div>
               <div className="ri-pb-desc">End-to-end guide covering credentials, training and compliance requirements, Health Canada submissions, and how to prepare your study for MUHC Authorization.</div>
               <div className="ri-pb-arrow">View pathway →</div>
             </a>
-          </div>
-          <StepTrack steps={[
-            { label: "Assess feasibility" },
-            { label: "Design your study" },
-            { label: "Fulfill training and compliance requirements" },
-            { label: "Prepare your submission" },
-            { label: "Submit via Nagano", end: true },
-          ]} />
-          <div className="ri-callout ri-callout--warn">
-            A study cannot begin until the <strong>Personne mandatée</strong> grants <a href="/kb/submission-overview">MUHC Authorization</a>. REB approval alone does not authorize research activities — both approvals must be in your ISF before any study procedures begin.
-          </div>
-          <div className="ri-dcard-grid">
-            <DetailCard href="/kb/roles/pi-guide" title="Investigator Guide — Interventional (I–III)" desc="Day-to-day accountability for drug trials, device studies, and NHP studies — what you personally sign, what you delegate, and your obligations through close-out." />
-            <DetailCard href="/kb/roles/pi-guide-iv" title="Investigator Guide — Observational (IV)" desc="Investigator obligations for prospective observational, educational, and non-invasive intervention studies — consent, team oversight, and data integrity." />
-            <DetailCard href="/kb/roles/pi-guide-v" title="Investigator Guide — Retrospective (V)" desc="Investigator obligations for retrospective chart review and anonymized biobank studies — the ÉFVP consent waiver decision, data access authorization, and REB maintenance." />
+            <div className="ri-guides-stack">
+              <DetailCard href="/kb/roles/pi-guide" title="Investigator Guide — Interventional (I–III)" desc="Day-to-day accountability for drug trials, device studies, and NHP studies — what you personally sign, what you delegate, and your obligations through close-out." />
+              <DetailCard href="/kb/roles/pi-guide-iv" title="Investigator Guide — Observational (IV)" desc="Investigator obligations for prospective observational, educational, and non-invasive intervention studies — consent, team oversight, and data integrity." />
+              <DetailCard href="/kb/roles/pi-guide-v" title="Investigator Guide — Retrospective (V)" desc="Investigator obligations for retrospective chart review and anonymized biobank studies — the ÉFVP consent waiver decision, data access authorization, and REB maintenance." />
+            </div>
           </div>
         </div>
       )}
