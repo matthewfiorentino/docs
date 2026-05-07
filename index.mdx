@@ -160,7 +160,7 @@ export const DetailCard = ({ href, title, desc }) => (
 export const StartHere = () => {
   const [role, setRole] = useState('pi');
   const roles = [
-    { id: 'pi',        title: 'PI / Investigator',    sub: 'Planning or launching a study',      img: '/images/roles/card_PI.jpg' },
+    { id: 'pi',        title: 'Investigator',           sub: 'Planning or launching a study',      img: '/images/roles/card_PI.jpg' },
     { id: 'crc',       title: 'Coordinator / CRC',     sub: 'Joining or managing a study team',   img: '/images/roles/card_coordinator.jpg' },
     { id: 'nurse',     title: 'Research Nurse',         sub: 'Licensed nurse on a study team',     img: '/images/roles/card_nurse.jpg' },
     { id: 'trainee',   title: 'Research Trainee',       sub: 'Student or trainee on a study team', img: '/images/roles/card_trainee.jpg' },
@@ -204,7 +204,7 @@ export const StartHere = () => {
             </a>
             <div className="ri-pi-row-arrow"><Icon icon="arrow-right" /></div>
             <a href="/kb/roles/pi-pathway" className="ri-pathway-banner">
-              <div className="ri-pb-label">PI / Investigator pathway</div>
+              <div className="ri-pb-label">Investigator Pathway</div>
               <div className="ri-pb-desc">End-to-end guide covering credentials, training and compliance requirements, Health Canada submissions, and how to prepare your study for MUHC Authorization.</div>
               <div className="ri-pb-arrow">View pathway →</div>
             </a>
@@ -220,9 +220,9 @@ export const StartHere = () => {
             A study cannot begin until the <strong>Personne mandatée</strong> grants <a href="/kb/submission/overview">MUHC Authorization</a>. REB approval alone does not authorize research activities — both approvals must be in your ISF before any study procedures begin.
           </div>
           <div className="ri-dcard-grid">
-            <DetailCard href="/kb/roles/pi-guide" title="PI Guide — Interventional Studies (Levels I–III)" desc="Day-to-day accountability for drug trials, device studies, and NHP studies — what you personally sign, what you delegate, and your obligations through close-out." />
-            <DetailCard href="/kb/roles/pi-guide-iv" title="PI Guide — Observational Studies (Level IV)" desc="PI obligations for prospective observational, educational, and non-invasive intervention studies — consent, team oversight, and data integrity." />
-            <DetailCard href="/kb/roles/pi-guide-v" title="PI Guide — Retrospective Studies (Level V)" desc="PI obligations for retrospective chart review and anonymized biobank studies — the ÉFVP consent waiver decision, data access authorization, and REB maintenance." />
+            <DetailCard href="/kb/roles/pi-guide" title="Investigator Guide — Interventional Studies (Levels I–III)" desc="Day-to-day accountability for drug trials, device studies, and NHP studies — what you personally sign, what you delegate, and your obligations through close-out." />
+            <DetailCard href="/kb/roles/pi-guide-iv" title="Investigator Guide — Observational Studies (Level IV)" desc="Investigator obligations for prospective observational, educational, and non-invasive intervention studies — consent, team oversight, and data integrity." />
+            <DetailCard href="/kb/roles/pi-guide-v" title="Investigator Guide — Retrospective Studies (Level V)" desc="Investigator obligations for retrospective chart review and anonymized biobank studies — the ÉFVP consent waiver decision, data access authorization, and REB maintenance." />
           </div>
         </div>
       )}
