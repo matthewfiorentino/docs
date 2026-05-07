@@ -137,7 +137,7 @@ export const StepTrack = ({ steps }) => (
     {steps.flatMap((step, i) => {
       const pill = (
         <div key={`s${i}`} className={`ri-step-pill${step.end ? ' ri-step-pill--end' : ''}`}>
-          {step.label}
+          {step.end && <span className="ri-step-check" aria-hidden="true">✓</span>}{step.label}
         </div>
       );
       return i < steps.length - 1

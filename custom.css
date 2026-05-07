@@ -490,6 +490,10 @@ html.dark .ri-step-pill {
     border-color: rgba(255,255,255,.1);
     color: rgba(255,255,255,.85);
 }
+.ri-step-check {
+    margin-right: 5px;
+    font-size: 11px;
+}
 .ri-step-pill--end {
     background: var(--ri-accent, #007a6e);
     border-color: var(--ri-accent, #007a6e);
