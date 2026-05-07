@@ -68,12 +68,18 @@ article a:hover,
     font-weight: 600 !important;
 }
 /* ── Sidebar group headers — visual hierarchy ──
-   Group headers render as <button aria-expanded> with Tailwind text-gray-700.
-   Target by aria-expanded so only collapsible section labels get the dark
-   heading colour — individual page links (<a> tags) stay grey.              */
-#sidebar button[aria-expanded] {
-    color:       var(--ri-heading) !important;
+   Group headers render as <li data-group-tag=""> > <button aria-expanded>.
+   Target via data-group-tag (present on groups, absent on page link <li>s).
+   Hardcoded hex avoids any var() resolution issue. Text div is targeted
+   explicitly because color must reach the child div holding the label text. */
+li[data-group-tag] > button,
+li[data-group-tag] > button > div {
+    color:       #150e51 !important;
     font-weight: 700 !important;
+}
+html.dark li[data-group-tag] > button,
+html.dark li[data-group-tag] > button > div {
+    color: #00c4b4 !important;
 }
 /* ── Navbar — tab strip ── */
 #navbar nav a.link {
