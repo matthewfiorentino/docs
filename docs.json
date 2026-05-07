@@ -181,14 +181,8 @@
                       "kb/conduct/overview",
                       "kb/conduct/site-setup",
                       "kb/conduct/consent",
-                      {
-                        "page": "kb/conduct/pediatric-research",
-                        "tag": "NEW"
-                      },
-                      {
-                        "page": "kb/conduct/vulnerable-populations",
-                        "tag": "NEW"
-                      },
+                      "kb/conduct/pediatric-research",
+                      "kb/conduct/vulnerable-populations",
                       "kb/conduct/recruitment-enrollment",
                       "kb/conduct/privacy",
                       "kb/conduct/data-security",
