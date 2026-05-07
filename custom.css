@@ -68,15 +68,17 @@ article a:hover,
     font-weight: 600 !important;
 }
 /* ── Sidebar — compact type ──
-   Use high-specificity selectors to beat Mintlify's Tailwind classes.
-   Target both the <a> and any <span> inside it that carries the text. */
+   Page links are <a> tags; collapsible group headers are <button> tags
+   inside <li> elements without [data-group-tag]. Target both.         */
 #sidebar-content a,
-#sidebar-content a span {
+#sidebar-content a span,
+li:not([data-group-tag]) > button,
+li:not([data-group-tag]) > button span {
     font-size:   12px !important;
     font-weight: 400 !important;
     line-height: 1.4 !important;
 }
-/* Top-level section header buttons stay slightly bolder */
+/* Top-level section header buttons (bold labels like "Community") stay bolder */
 li[data-group-tag] > button,
 li[data-group-tag] > button span {
     font-weight: 500 !important;
