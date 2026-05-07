@@ -24,8 +24,13 @@ html.dark {
 }
 
 /* ── Font ── */
-/* Arial override removed — using Mintlify Luma theme default.
-   To restore: font-family: Arial, "Helvetica Neue", Helvetica, sans-serif !important; */
+body,
+button,
+input,
+select,
+textarea {
+    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif !important;
+}
 
 /* ── Headings ── */
 h1, h2, h3, h4, h5, h6, #page-title, strong, b {

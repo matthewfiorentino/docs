@@ -2,16 +2,6 @@
   "$schema": "https://mintlify.com/docs.json",
   "theme": "luma",
   "name": "RI-MUHC Clinical Research Hub",
-  "fonts": {
-    "body": {
-      "family": "DM Sans",
-      "weight": 400
-    },
-    "heading": {
-      "family": "DM Sans",
-      "weight": 700
-    }
-  },
   "colors": {
     "primary": "#007a6e",
     "light": "#00c4b4",
