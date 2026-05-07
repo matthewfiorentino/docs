@@ -1039,7 +1039,7 @@ html.dark .ri-hub-body hr {
     align-items: center;
     justify-content: space-between;
     gap: 24px;
-    background: #ff537f;
+    background: var(--ri-accent, #007a6e);
     border-radius: 10px;
     padding: 32px 36px;
     margin-top: 48px;
@@ -1055,7 +1055,7 @@ html.dark .ri-hub-body hr {
 .ri-contact-btn {
     display: inline-block;
     background: #fff;
-    color: #cc2a50 !important;
+    color: var(--ri-accent, #007a6e) !important;
     font-weight: 700; font-size: 14px;
     padding: 12px 24px;
     border-radius: 8px;
