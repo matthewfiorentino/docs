@@ -95,7 +95,7 @@ li.navbar-link a[href="/contacts"] {
     background:    #fff !important;
     color:         #2b2666 !important;
     border:        1.5px solid #2b2666 !important;
-    border-radius: 8px !important;
+    border-radius: 4px !important;
     font-size:     13px !important;
     font-weight:   600 !important;
     padding:       5px 13px !important;
@@ -112,7 +112,7 @@ li.navbar-link a[href="/contacts"]:hover {
     background:    #ff537f !important;
     color:         #fff !important;
     border:        1.5px solid #ff537f !important;
-    border-radius: 8px !important;
+    border-radius: 4px !important;
     font-weight:   700 !important;
     font-size:     13px !important;
     padding:       5px 13px !important;
@@ -847,7 +847,7 @@ html.dark .ri-hub-body hr {
 .ri-text-hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
 .ri-text-hero-btn-primary {
     background: var(--ri-accent-bright); color: #150e51 !important;
-    padding: 12px 24px; border-radius: 22px;
+    padding: 12px 24px; border-radius: 8px;
     font-weight: 700; font-size: 14px;
     text-decoration: none !important;
     transition: opacity .15s;
@@ -855,7 +855,7 @@ html.dark .ri-hub-body hr {
 .ri-text-hero-btn-primary:hover { opacity: .9; }
 .ri-text-hero-btn-secondary {
     background: rgba(255,255,255,.08); color: #fff !important;
-    padding: 12px 24px; border-radius: 22px;
+    padding: 12px 24px; border-radius: 8px;
     font-weight: 600; font-size: 14px;
     text-decoration: none !important;
     border: 1px solid rgba(255,255,255,.22);
@@ -908,7 +908,7 @@ html.dark .ri-hub-body hr {
     color: #cc2a50 !important;
     font-weight: 700; font-size: 14px;
     padding: 12px 24px;
-    border-radius: 22px;
+    border-radius: 8px;
     text-decoration: none !important;
     white-space: nowrap; flex-shrink: 0;
     transition: opacity .15s;
