@@ -425,8 +425,7 @@
                       "training/compliance-requirements",
                       "training/research-privileges",
                       "training/external-certifications",
-                      "training/study-classifier",
-                      "training/cantrain"
+                      "training/study-classifier"
                     ]
                   },
                   {
@@ -436,7 +435,8 @@
                       "training/learning-lab",
                       "training/talentlms"
                     ]
-                  }
+                  },
+                  "training/cantrain"
                 ]
               }
             ]
