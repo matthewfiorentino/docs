@@ -67,6 +67,13 @@ article a:hover,
     color:       var(--ri-accent) !important;
     font-weight: 600 !important;
 }
+/* ── Sidebar group headers — visual hierarchy ──
+   Group headers (expandable section titles) get the heading colour
+   so they stand out from page links, which stay default grey.       */
+#sidebar sidebar-group-header {
+    color:       var(--ri-heading) !important;
+    font-weight: 700 !important;
+}
 /* ── Navbar — tab strip ── */
 #navbar nav a.link {
     background:     transparent !important;
