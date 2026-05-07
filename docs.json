@@ -831,11 +831,12 @@
           },
           {
             "tab": "Applications",
-            "groups": [
+            "menu": [
               {
-                "group": "Study Management",
-                "icon": "folder-open",
-                "pages": [
+                "item": "Nagano",
+                "icon": "paper-plane",
+                "description": "Study submission, REB review, and MUHC Authorization",
+                "groups": [
                   {
                     "group": "Nagano",
                     "pages": [
@@ -861,34 +862,45 @@
                         ]
                       }
                     ]
-                  },
+                  }
+                ]
+              },
+              {
+                "item": "CTMS",
+                "icon": "clipboard-list",
+                "description": "Clinical trial management and visit scheduling",
+                "pages": [
                   "apps/ctms"
                 ]
               },
               {
-                "group": "Training & Certification",
-                "icon": "certificate",
+                "item": "TalentLMS",
+                "icon": "graduation-cap",
+                "description": "Mandatory training and SOP compliance program",
                 "pages": [
                   "apps/talentlms"
                 ]
               },
               {
-                "group": "Data Platforms",
+                "item": "REDCap",
                 "icon": "database",
+                "description": "Secure research data capture and surveys",
                 "pages": [
                   "apps/redcap"
                 ]
               },
               {
-                "group": "Clinical Systems",
+                "item": "OACIS",
                 "icon": "notes-medical",
+                "description": "Electronic medical records access for research",
                 "pages": [
                   "apps/oacis"
                 ]
               },
               {
-                "group": "CIM Services",
+                "item": "CrossLab",
                 "icon": "microscope",
+                "description": "CIM technical platform bookings",
                 "pages": [
                   "apps/crosslab"
                 ]
