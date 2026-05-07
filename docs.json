@@ -133,7 +133,7 @@
                 ]
               },
               {
-                "group": "The Study Lifecycle — From Concept to Close-Out",
+                "group": "Your Study, Step by Step",
                 "icon": "diagram-project",
                 "pages": [
                   "kb/planning/study-intake",
@@ -144,29 +144,29 @@
                       "kb/planning/overview",
                       "kb/planning/feasibility",
                       "kb/planning/study-design",
-                      "kb/planning/building-your-team",
-                      "kb/planning/hiring-hr-support",
-                      "kb/planning/edi",
                       "kb/planning/sponsored-trials",
                       "kb/planning/sponsor-investigator",
-                      "kb/planning/dct-design",
                       "kb/planning/multi-centric",
-                      {
-                        "group": "Data and Research Services",
-                        "expanded": false,
-                        "pages": [
-                          "kb/planning/bcu",
-                          "kb/planning/cord",
-                          "kb/planning/data-warehouse"
-                        ]
-                      },
-                      "kb/planning/research-grants",
-                      "kb/planning/regulations",
-                      "kb/planning/budgets-contracts"
+                      "kb/planning/dct-design",
+                      "kb/planning/regulations"
                     ]
                   },
                   {
-                    "group": "Submission & Review",
+                    "group": "Team, Funding and Services",
+                    "expanded": false,
+                    "pages": [
+                      "kb/planning/building-your-team",
+                      "kb/planning/hiring-hr-support",
+                      "kb/planning/edi",
+                      "kb/planning/budgets-contracts",
+                      "kb/planning/research-grants",
+                      "kb/planning/bcu",
+                      "kb/planning/cord",
+                      "kb/planning/data-warehouse"
+                    ]
+                  },
+                  {
+                    "group": "Submission and Review",
                     "expanded": false,
                     "pages": [
                       "kb/submission/overview",
@@ -177,26 +177,44 @@
                     ]
                   },
                   {
-                    "group": "Study Conduct",
+                    "group": "Site Activation",
                     "expanded": false,
                     "pages": [
-                      "kb/conduct/overview",
                       "kb/conduct/site-setup",
+                      "kb/conduct/protocol-documents",
+                      "kb/conduct/isf"
+                    ]
+                  },
+                  {
+                    "group": "Recruitment and Enrollment",
+                    "expanded": false,
+                    "pages": [
                       "kb/conduct/consent",
                       "kb/conduct/pediatric-research",
                       "kb/conduct/vulnerable-populations",
                       "kb/conduct/recruitment-enrollment",
                       "kb/conduct/privacy",
-                      "kb/conduct/data-security",
+                      "kb/conduct/data-security"
+                    ]
+                  },
+                  {
+                    "group": "Study Conduct",
+                    "expanded": false,
+                    "pages": [
+                      "kb/conduct/overview",
                       "kb/conduct/data-integrity",
-                      "kb/conduct/protocol-documents",
-                      "kb/conduct/isf",
+                      "kb/conduct/decentralized-trials",
                       "kb/conduct/investigational-products",
                       "kb/conduct/biological-specimens",
-                      "kb/conduct/decentralized-trials",
                       "kb/conduct/reportable-events",
                       "kb/conduct/team-management",
-                      "kb/conduct/monitoring-audits",
+                      "kb/conduct/monitoring-audits"
+                    ]
+                  },
+                  {
+                    "group": "Close-Out and Archiving",
+                    "expanded": false,
+                    "pages": [
                       "kb/conduct/hc-inspection-guide",
                       "kb/conduct/close-out",
                       "kb/conduct/publications"
