@@ -147,6 +147,9 @@
                       "kb/planning-overview",
                       "kb/feasibility",
                       "kb/study-design",
+                      "kb/bcu",
+                      "kb/cord",
+                      "kb/data-warehouse",
                       "kb/sponsored-trials",
                       "kb/sponsor-investigator",
                       "kb/multi-centric",
@@ -163,10 +166,7 @@
                       "kb/edi",
                       "kb/budgets-contracts",
                       "kb/budget-negotiation",
-                      "kb/research-grants",
-                      "kb/bcu",
-                      "kb/cord",
-                      "kb/data-warehouse"
+                      "kb/research-grants"
                     ]
                   },
                   {
