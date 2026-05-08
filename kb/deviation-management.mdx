@@ -56,7 +56,20 @@ A CAPA has four parts:
 
     The root cause is rarely "human error." If a person made a mistake, something in the system allowed the mistake to happen — and that system issue is the root cause.
 
-    The 5 Whys is one approach. For more complex deviations, a **Fishbone (Ishikawa) diagram** can map contributing factors across categories (people, process, equipment, environment), and **Failure Mode and Effects Analysis (FMEA)** can identify where processes are most vulnerable to failure.
+    The 5 Whys is one approach. For more complex deviations, a **Fishbone (Ishikawa) diagram** maps contributing factors across categories to identify multiple root causes that a linear analysis might miss. **Failure Mode and Effects Analysis (FMEA)** is a proactive tool — it identifies where processes are most vulnerable to failure before a deviation occurs, and is more commonly used for process design than for post-deviation investigation.
+
+    **Fishbone analysis — same dosing error, by category:**
+
+    | Category | Contributing factors |
+    |---|---|
+    | **People** | CRC-N new to study; no second-person verification step for dosing |
+    | **Process** | Shared dosing log for all participants; no individual dosing worksheet template |
+    | **Environment** | Busy clinic day with multiple participants dosed; dosing area shared with other studies |
+    | **Equipment / Materials** | Dosing chart format unclear; no visual separator between participant rows |
+
+    → **Effect:** Wrong IP dose administered
+
+    The Fishbone surfaces contributing factors the 5 Whys might miss — the busy clinic day and shared dosing area didn't cause the error on their own, but they made it more likely. A CAPA that addresses only the worksheet (the 5 Whys root cause) might miss the verification gap or the environmental factors.
   </Step>
   <Step title="Define corrective actions">
     Corrective actions address the specific deviation that occurred. What was done to fix the immediate problem?
