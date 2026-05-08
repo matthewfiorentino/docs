@@ -1679,3 +1679,85 @@ html.dark .ri-svc-desc {
         grid-template-columns: 1fr;
     }
 }
+
+/* ── CIM decision tree ── */
+.ri-decision-tree {
+    margin-top: 12px;
+}
+.ri-dt-step {
+    border: 1px solid rgba(0,0,0,.1);
+    border-radius: 10px;
+    overflow: hidden;
+}
+html.dark .ri-dt-step {
+    border-color: rgba(255,255,255,.1);
+}
+.ri-dt-question {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--ri-heading) !important;
+    padding: 16px 20px;
+    line-height: 1.4;
+}
+.ri-dt-yes {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 20px;
+    background: rgba(0,122,110,.05);
+    border-top: 1px solid rgba(0,0,0,.06);
+}
+html.dark .ri-dt-yes {
+    background: rgba(0,196,180,.05);
+    border-top-color: rgba(255,255,255,.06);
+}
+.ri-dt-label {
+    flex-shrink: 0;
+    font-size: 11px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: .5px;
+    padding: 3px 10px;
+    border-radius: 4px;
+}
+.ri-dt-label--yes {
+    background: var(--ri-accent, #007a6e);
+    color: #fff;
+}
+.ri-dt-outcome {
+    font-size: 14px;
+    color: rgba(0,0,0,.65);
+    line-height: 1.45;
+}
+html.dark .ri-dt-outcome {
+    color: rgba(255,255,255,.65);
+}
+.ri-dt-outcome--urgent {
+    font-weight: 600;
+    color: var(--ri-heading) !important;
+}
+.ri-dt-outcome--discuss {
+    font-style: italic;
+}
+.ri-dt-connector {
+    text-align: center;
+    font-size: 13px;
+    font-weight: 700;
+    color: rgba(0,0,0,.3);
+    padding: 6px 0;
+}
+html.dark .ri-dt-connector {
+    color: rgba(255,255,255,.25);
+}
+.ri-dt-end {
+    text-align: center;
+    font-size: 14px;
+    color: rgba(0,0,0,.45);
+    padding: 14px 20px;
+    background: #f4f4f5;
+    border-radius: 10px;
+}
+html.dark .ri-dt-end {
+    background: rgba(255,255,255,.04);
+    color: rgba(255,255,255,.4);
+}
