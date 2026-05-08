@@ -185,7 +185,7 @@ export const StartHere = () => {
             <div className="ri-role-card-body">
               <div className="ri-role-card-title">{r.title}</div>
               <div className="ri-role-card-sub">{r.sub}</div>
-              <div className="ri-role-card-cta">{role === r.id ? '✓ Selected' : 'View pathway →'}</div>
+              <div className="ri-role-card-cta">{role === r.id ? '✓ Selected' : 'View orientation →'}</div>
             </div>
           </button>
         ))}
@@ -211,14 +211,14 @@ export const StartHere = () => {
                 <div className="ri-ie-desc">The intake form connects you with the Research Facilitator and maps your study to the approvals, training, and support you need.</div>
                 <div className="ri-ie-link">Open the intake form →</div>
               </a>
-              <a href="/kb/roles/pi-pathway" className="ri-pathway-banner">
+              <a href="/kb/roles/pi-orientation" className="ri-orientation-banner">
                 <div className="ri-pb-label">Investigator Orientation</div>
                 <div className="ri-pb-desc">Prerequisites, training levels, what only you sign, how your study begins, and links to the operational guides by study type.</div>
                 <div className="ri-pb-arrow">Get started →</div>
               </a>
             </div>
             <div className="ri-guides-stack">
-              <DetailCard href="/kb/roles/pi-guide" title="Investigator Guide — Interventional (I–III)" desc="Day-to-day accountability for drug trials, device studies, and NHP studies — what you personally sign, what you delegate, and your obligations through close-out." />
+              <DetailCard href="/kb/roles/pi-guide" title="Investigator Guide — Interventional (I–III)" desc="Stage-by-stage operations for drug trials, device studies, and NHP studies — team structure, RACI responsibilities, and your obligations from submission through close-out." />
               <DetailCard href="/kb/roles/pi-guide-iv" title="Investigator Guide — Observational (IV)" desc="Investigator obligations for prospective observational, educational, and non-invasive intervention studies — consent, team oversight, and data integrity." />
               <DetailCard href="/kb/roles/pi-guide-v" title="Investigator Guide — Retrospective (V)" desc="Investigator obligations for retrospective chart review and anonymized biobank studies — the ÉFVP consent waiver decision, data access authorization, and REB maintenance." />
             </div>
@@ -241,7 +241,7 @@ export const StartHere = () => {
             No team member may perform any study task before they appear on the Task Delegation Log, their training is documented, and the QI/PI has countersigned their entry.
           </div>
           <div className="ri-guides-row">
-            <a href="/kb/roles/crc-pathway" className="ri-pathway-banner">
+            <a href="/kb/roles/crc-orientation" className="ri-orientation-banner">
               <div className="ri-pb-label">CRC Orientation</div>
               <div className="ri-pb-desc">Institutional onboarding, training progression, competency domains, and links to the operational guides by study type.</div>
               <div className="ri-pb-arrow">Get started →</div>
@@ -267,13 +267,13 @@ export const StartHere = () => {
             { label: "Nursing study tasks begin", end: true },
           ]} />
           <div className="ri-guides-row">
-            <a href="/kb/roles/nurse-pathway" className="ri-pathway-banner">
+            <a href="/kb/roles/nurse-orientation" className="ri-orientation-banner">
               <div className="ri-pb-label">Research Nurse Orientation</div>
               <div className="ri-pb-desc">OIIQ obligations, reserved acts, dual accountability, specialized competencies, and link to the operational guide.</div>
               <div className="ri-pb-arrow">Get started →</div>
             </a>
             <div className="ri-guides-stack">
-              <DetailCard href="/kb/roles/nurse-guide" title="Nurse Guide — Interventional (I–III)" desc="Study procedures, participant visits, data collection, reserved acts under the Code des professions, and nursing-specific responsibilities across drug, device, and observational studies." />
+              <DetailCard href="/kb/roles/nurse-guide" title="Nurse Guide — Interventional (I–III)" desc="IP administration, specimen collection, clinical monitoring, AE assessment, and between-visit procedures — the nursing-specific operational layer for drug, device, and NHP studies." />
             </div>
           </div>
         </div>

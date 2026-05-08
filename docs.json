@@ -100,7 +100,7 @@
                       {
                         "group": "Investigator",
                         "pages": [
-                          "kb/roles/pi-pathway",
+                          "kb/roles/pi-orientation",
                           "kb/roles/pi-guide",
                           "kb/roles/pi-guide-iv",
                           "kb/roles/pi-guide-v"
@@ -109,7 +109,7 @@
                       {
                         "group": "Clinical Research Coordinator",
                         "pages": [
-                          "kb/roles/crc-pathway",
+                          "kb/roles/crc-orientation",
                           "kb/roles/crc-guide",
                           "kb/roles/crc-guide-iv",
                           "kb/roles/crc-guide-v"
@@ -118,7 +118,7 @@
                       {
                         "group": "Research Nurse",
                         "pages": [
-                          "kb/roles/nurse-pathway",
+                          "kb/roles/nurse-orientation",
                           "kb/roles/nurse-guide"
                         ]
                       },
@@ -1007,6 +1007,18 @@
     {
       "source": "/cim/wi/on002-overview",
       "destination": "/cim/wi/on002"
+    },
+    {
+      "source": "/kb/roles/pi-pathway",
+      "destination": "/kb/roles/pi-orientation"
+    },
+    {
+      "source": "/kb/roles/crc-pathway",
+      "destination": "/kb/roles/crc-orientation"
+    },
+    {
+      "source": "/kb/roles/nurse-pathway",
+      "destination": "/kb/roles/nurse-orientation"
     }
   ]
 }

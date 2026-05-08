@@ -613,7 +613,7 @@ html.dark .ri-callout--warn { background: rgba(245,158,11,.12); color: rgba(255,
 .ri-callout a { color: #007a6e !important; text-decoration: underline; text-underline-offset: 3px; }
 .ri-callout--warn a { color: #78350f !important; text-decoration: underline; text-underline-offset: 3px; font-weight: 600; }
 html.dark .ri-callout a { color: #00c4b4 !important; }
-/* Left column for stacking intake + pathway cards inside ri-guides-row */
+/* Left column for stacking intake + orientation cards inside ri-guides-row */
 .ri-guides-left-col {
     display: flex;
     flex-direction: column;
@@ -638,48 +638,48 @@ html.dark .ri-callout a { color: #00c4b4 !important; }
     font-size: 13px; font-weight: 600; color: #fff;
     margin-top: 14px; display: inline-block;
 }
-/* Pathway banner — light grey card, same flex-1 width as intake entry */
-.ri-pathway-banner {
+/* Orientation banner — light grey card, same flex-1 width as intake entry */
+.ri-orientation-banner {
     display: flex; flex-direction: column; align-items: flex-start;
     flex: 1; padding: 16px 20px; border-radius: 10px;
     border: 1px solid rgba(0,0,0,.08);
     background: #f7f8fa; text-decoration: none; margin-bottom: 0;
     transition: background .15s, border-color .15s;
 }
-html.dark .ri-pathway-banner { background: rgba(255,255,255,.04); border-color: rgba(255,255,255,.08); }
-.ri-pathway-banner:hover { background: #f0faf8; border-color: var(--ri-accent); }
-html.dark .ri-pathway-banner:hover { background: rgba(0,122,110,.1); }
+html.dark .ri-orientation-banner { background: rgba(255,255,255,.04); border-color: rgba(255,255,255,.08); }
+.ri-orientation-banner:hover { background: #f0faf8; border-color: var(--ri-accent); }
+html.dark .ri-orientation-banner:hover { background: rgba(0,122,110,.1); }
 .ri-pb-label { font-size: 14px; font-weight: 700; color: var(--ri-heading); margin-bottom: 6px; }
 html.dark .ri-pb-label { color: #fff; }
 .ri-pb-desc { font-size: 13px; line-height: 1.5; color: #666; flex: 1; }
 html.dark .ri-pb-desc { color: rgba(255,255,255,.5); }
 .ri-pb-arrow { font-size: 13px; font-weight: 600; color: var(--ri-accent); margin-top: 14px; display: inline-block; }
-/* Spacing: pathway banner when directly inside a role panel (not inside ri-pi-top-row) */
-.ri-role-panel > .ri-pathway-banner { margin-top: 1.75rem; margin-bottom: 1.5rem; }
-/* Pathway card alongside guide cards — side-by-side layout */
+/* Spacing: orientation banner when directly inside a role panel (not inside ri-pi-top-row) */
+.ri-role-panel > .ri-orientation-banner { margin-top: 1.75rem; margin-bottom: 1.5rem; }
+/* Orientation card alongside guide cards — side-by-side layout */
 .ri-guides-row {
     display: grid;
     grid-template-columns: 1fr 2fr;
     gap: 12px;
     margin-bottom: 1.5rem;
 }
-.ri-guides-row .ri-pathway-banner {
+.ri-guides-row .ri-orientation-banner {
     margin: 0 !important;
     background: #f7faf9;
     border-color: rgba(0, 122, 110, 0.15);
     justify-content: center;
     transition: background .15s, border-color .15s, box-shadow .15s;
 }
-.ri-guides-row .ri-pathway-banner:hover {
+.ri-guides-row .ri-orientation-banner:hover {
     background: #edf7f5;
     border-color: var(--ri-accent);
     box-shadow: 0 2px 8px rgba(0, 122, 110, 0.1);
 }
-html.dark .ri-guides-row .ri-pathway-banner {
+html.dark .ri-guides-row .ri-orientation-banner {
     background: rgba(0, 122, 110, 0.06);
     border-color: rgba(0, 196, 180, 0.12);
 }
-html.dark .ri-guides-row .ri-pathway-banner:hover {
+html.dark .ri-guides-row .ri-orientation-banner:hover {
     background: rgba(0, 122, 110, 0.12);
     border-color: var(--ri-accent-bright);
     box-shadow: 0 2px 8px rgba(0, 196, 180, 0.1);
