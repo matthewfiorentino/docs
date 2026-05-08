@@ -1619,61 +1619,64 @@ html.dark .ri-cim-body {
     }
 }
 
-/* ── Research support services list ── */
-.ri-services-list {
+/* ── Research support services grid ── */
+.ri-services-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-top: 12px;
+}
+.ri-svc {
     display: flex;
     flex-direction: column;
-    gap: 0;
-    margin-top: 8px;
-    border-top: 1px solid rgba(0,0,0,.08);
-}
-html.dark .ri-services-list {
-    border-top-color: rgba(255,255,255,.1);
-}
-.ri-service-row {
-    display: flex;
-    align-items: baseline;
-    gap: 16px;
-    padding: 14px 4px;
-    border-bottom: 1px solid rgba(0,0,0,.08);
+    gap: 6px;
+    padding: 20px 22px;
+    border-left: 3px solid var(--ri-accent, #007a6e);
+    background: #f8f9fb;
+    border-radius: 0 8px 8px 0;
     text-decoration: none !important;
-    transition: background .15s;
+    transition: background .15s, border-color .15s;
 }
-html.dark .ri-service-row {
-    border-bottom-color: rgba(255,255,255,.1);
+html.dark .ri-svc {
+    background: rgba(255,255,255,.03);
 }
-.ri-service-row:hover {
-    background: rgba(0,122,110,.04);
+.ri-svc:hover {
+    background: rgba(0,122,110,.06);
 }
-html.dark .ri-service-row:hover {
-    background: rgba(0,196,180,.06);
+html.dark .ri-svc:hover {
+    background: rgba(0,196,180,.07);
 }
-.ri-service-q {
-    flex: 0 0 44%;
+.ri-svc-q {
+    font-size: 15px;
     font-weight: 700;
-    font-size: 14px;
     color: var(--ri-heading) !important;
-    line-height: 1.45;
+    line-height: 1.4;
 }
-.ri-service-answer {
-    flex: 1;
-    font-size: 14px;
-    color: rgba(0,0,0,.55);
-    line-height: 1.5;
-}
-.ri-service-answer strong {
-    color: var(--ri-accent) !important;
+.ri-svc-badge {
+    display: inline-block;
+    align-self: flex-start;
+    font-size: 11px;
     font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .5px;
+    color: var(--ri-accent) !important;
+    background: rgba(0,122,110,.08);
+    padding: 3px 10px;
+    border-radius: 4px;
 }
-html.dark .ri-service-answer {
-    color: rgba(255,255,255,.55);
+html.dark .ri-svc-badge {
+    background: rgba(0,196,180,.1);
 }
-@media (max-width: 600px) {
-    .ri-service-row {
-        flex-direction: column;
-        gap: 4px;
-    }
-    .ri-service-q {
-        flex: none;
+.ri-svc-desc {
+    font-size: 13px;
+    color: rgba(0,0,0,.55);
+    line-height: 1.55;
+}
+html.dark .ri-svc-desc {
+    color: rgba(255,255,255,.5);
+}
+@media (max-width: 640px) {
+    .ri-services-grid {
+        grid-template-columns: 1fr;
     }
 }
