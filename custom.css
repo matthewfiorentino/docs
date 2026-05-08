@@ -1648,27 +1648,32 @@ html.dark .ri-service-row {
 html.dark .ri-service-row:hover {
     background: rgba(0,196,180,.06);
 }
-.ri-service-name {
-    flex: 0 0 200px;
+.ri-service-q {
+    flex: 0 0 44%;
     font-weight: 700;
     font-size: 14px;
     color: var(--ri-heading) !important;
+    line-height: 1.45;
 }
-.ri-service-desc {
+.ri-service-answer {
     flex: 1;
     font-size: 14px;
     color: rgba(0,0,0,.55);
     line-height: 1.5;
 }
-html.dark .ri-service-desc {
+.ri-service-answer strong {
+    color: var(--ri-accent) !important;
+    font-weight: 700;
+}
+html.dark .ri-service-answer {
     color: rgba(255,255,255,.55);
 }
 @media (max-width: 600px) {
     .ri-service-row {
         flex-direction: column;
-        gap: 2px;
+        gap: 4px;
     }
-    .ri-service-name {
+    .ri-service-q {
         flex: none;
     }
 }
