@@ -6,9 +6,38 @@ keywords: ["CIM feasibility", "Site Agreement", "CIM budget", "engage CIM early"
 
 CIM involvement needs to be confirmed early — before your Site Agreement is signed, before your Nagano submission, and in parallel with protocol development. This page explains when to engage, what happens at each stage, and how to make first contact.
 
-## Which studies use CIM?
+## Does your study need CIM?
 
-The CIM is built for interventional studies requiring dedicated clinical infrastructure, specialized nursing, or technical platforms that a standard department setting cannot provide. Not every study at the RI-MUHC needs CIM involvement — the question is whether the specific procedures, staffing needs, or platforms in your protocol require what the CIM offers.
+Not every study at the RI-MUHC needs CIM involvement. Use the flowchart below to determine whether your protocol requires CIM infrastructure, staffing, or platforms.
+
+<div style={{display:"flex", justifyContent:"center"}}>
+
+```mermaid
+flowchart TD
+    START(["Does your protocol involve<br/>any of the following?"]) --> Q1{"Phase I<br/>drug study?"}
+    Q1 -->|Yes| CIM_EARLY["Contact CIM immediately<br/>Capacity is limited — pre-booking required"]
+    Q1 -->|No| Q2{"IV drug administration,<br/>infusion, or oncology<br/>drugs?"}
+    Q2 -->|Yes| CIM["Contact CIM<br/>during feasibility"]
+    Q2 -->|No| Q3{"Functional testing?<br/>CPET · PFT · ECG · Holter<br/>imaging · sleep lab"}
+    Q3 -->|Yes| CIM_PLATFORM["Contact CIM<br/>for platform access"]
+    Q3 -->|No| Q4{"Specimen processing<br/>or biobanking?"}
+    Q4 -->|Yes| CIM_PLATFORM
+    Q4 -->|No| Q5{"Sponsor-Investigator<br/>study needing<br/>monitoring?"}
+    Q5 -->|Yes| CIM
+    Q5 -->|No| Q6{"Paediatric, device, or<br/>observational with<br/>specialized procedures?"}
+    Q6 -->|Yes| CIM_DISCUSS["Contact CIM to discuss<br/>availability and fit"]
+    Q6 -->|No| NO_CIM["CIM involvement<br/>likely not needed"]
+
+    style CIM_EARLY fill:#007a6e,color:#fff,stroke:#007a6e
+    style CIM fill:#007a6e,color:#fff,stroke:#007a6e
+    style CIM_PLATFORM fill:#007a6e,color:#fff,stroke:#007a6e
+    style CIM_DISCUSS fill:#2b2666,color:#fff,stroke:#2b2666
+    style NO_CIM fill:#f0f0f0,color:#333,stroke:#ccc
+```
+
+</div>
+
+### Study types at a glance
 
 <AccordionGroup>
   <Accordion title="Phase I drug studies">
