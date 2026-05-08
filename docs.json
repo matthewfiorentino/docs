@@ -167,12 +167,12 @@
                       "kb/building-your-team",
                       "kb/hiring-hr-support",
                       "kb/edi",
+                      "kb/funding-applications",
+                      "kb/patient-engagement",
                       "kb/budgets-contracts",
                       "kb/budget-negotiation",
                       "kb/clinical-trial-agreements",
-                      "kb/research-grants",
-                      "kb/funding-applications",
-                      "kb/patient-engagement"
+                      "kb/research-grants"
                     ]
                   },
                   {
@@ -199,11 +199,11 @@
                     "group": "Recruitment and Enrollment",
                     "expanded": false,
                     "pages": [
+                      "kb/recruitment-enrollment",
                       "kb/consent",
                       "kb/pediatric-research",
                       "kb/vulnerable-populations",
                       "kb/indigenous-research-ethics",
-                      "kb/recruitment-enrollment",
                       "kb/privacy",
                       "kb/data-security"
                     ]
@@ -229,9 +229,9 @@
                     "group": "Close-Out and Archiving",
                     "expanded": false,
                     "pages": [
-                      "kb/hc-inspection-guide",
                       "kb/close-out",
-                      "kb/publications"
+                      "kb/publications",
+                      "kb/hc-inspection-guide"
                     ]
                   }
                 ]
