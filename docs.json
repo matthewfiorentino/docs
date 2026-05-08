@@ -152,8 +152,11 @@
                       "kb/data-warehouse",
                       "kb/sponsored-trials",
                       "kb/sponsor-investigator",
+                      "kb/iit-startup",
                       "kb/multi-centric",
+                      "kb/cross-border-studies",
                       "kb/dct-design",
+                      "kb/real-world-evidence",
                       "kb/regulations"
                     ]
                   },
@@ -166,7 +169,10 @@
                       "kb/edi",
                       "kb/budgets-contracts",
                       "kb/budget-negotiation",
-                      "kb/research-grants"
+                      "kb/clinical-trial-agreements",
+                      "kb/research-grants",
+                      "kb/funding-applications",
+                      "kb/patient-engagement"
                     ]
                   },
                   {
@@ -186,6 +192,7 @@
                     "pages": [
                       "kb/site-setup",
                       "kb/protocol-documents",
+                      "kb/study-amendments",
                       "kb/isf"
                     ]
                   },
@@ -196,6 +203,7 @@
                       "kb/consent",
                       "kb/pediatric-research",
                       "kb/vulnerable-populations",
+                      "kb/indigenous-research-ethics",
                       "kb/recruitment-enrollment",
                       "kb/privacy",
                       "kb/data-security"
@@ -207,10 +215,12 @@
                     "pages": [
                       "kb/conduct-overview",
                       "kb/data-integrity",
+                      "kb/edc-query-management",
                       "kb/decentralized-trials",
                       "kb/investigational-products",
                       "kb/biological-specimens",
                       "kb/reportable-events",
+                      "kb/protocol-deviations",
                       "kb/team-management",
                       "kb/monitoring-audits"
                     ]

@@ -104,6 +104,43 @@ Records must be retained for the full applicable period before any destruction. 
 | Non-regulated studies — prospective observational, retrospective, secondary data analysis | 7 years after study completion | Institutional policy minimum. Individual funding agencies may require longer. |
 | Essential documents (ISF/<Tooltip tip="The sponsor's collection of documentation demonstrating compliance across all study sites." headline="Trial Master File (TMF)" cta="Full definition" href="/kb/glossary#tmf">TMF</Tooltip>) | Per above, by study type | The <Tooltip tip="The QI's collection of documentation demonstrating compliance, study integrity, and participant safety." headline="Investigator Site File (ISF)" cta="Full definition" href="/kb/glossary#isf">Investigator Site File</Tooltip> must be complete and current throughout the study. See [SOP-CR-015](/sops/cr-015) for ISF/TMF content requirements. |
 
+## eSource
+
+When the first record of a data point is captured electronically — in OACIS, REDCap, a validated eCRF, or another system — that electronic record is the source document. The same ALCOA+ principles apply: the entry must be attributable, contemporaneous, and unmodifiable without an audit trail.
+
+At the RI-MUHC, the most common eSource scenarios are:
+
+- **OACIS** — hospital records entered by clinicians are source by default.
+- **REDCap** — when used as the primary data collection tool (not just for transcription from paper), REDCap entries are source. The system must be validated for electronic records before use — at Canadian sites, this means compliance with Health Canada GUI-0100 and GUI-0050 (Annex 11); for trials also filed under a US IND, 21 CFR Part 11 applies concurrently.
+- **Sponsor eCRF platforms** — for studies where the sponsor's EDC system is the designated source, this must be documented in the Data Management Plan before data collection begins.
+
+The distinction that matters is between eSource (data entered directly into the system) and transcription (data copied from a paper or other source). For transcription, the paper record remains the source and the electronic entry must be verifiable against it. For eSource, the electronic record stands alone — which means the system's audit trail, access controls, and backup procedures must be documented and inspection-ready.
+
+<Note>
+If a study designates an electronic system as source, confirm with IT that the system meets validation requirements before the SIV. Late discovery that a system lacks a compliant audit trail can compromise data collected up to that point. ICH E6(R3) uses the term **"source records"** to encompass both paper and electronic source data — the ALCOA+ principles apply regardless of media.
+</Note>
+
+## Preparing for Source Data Verification
+
+Source Data Verification (SDV) is the monitor's comparison of CRF entries against source documents. How well-organized your records are directly affects how long monitoring visits take and how many queries result.
+
+Steps that reduce SDV friction:
+
+- **Pre-organize by participant and visit.** Before a monitoring visit, confirm that source documents for each participant are complete and accessible — not scattered across multiple binders or systems. For OACIS-sourced data, have the relevant records identified and printable.
+- **Flag transcription points.** Where data moves from source to CRF, make the path traceable. If a lab value in the CRF came from an OACIS report, the CRF annotation or worksheet should reference the OACIS record date and source.
+- **Resolve known discrepancies before the visit.** If you've identified errors or missing entries, correct them before the monitor arrives rather than generating queries. Use proper correction procedures — single line through, initials, date, reason.
+- **Keep the Delegation Log current.** Monitors verify that the person who collected and signed data was delegated to do so at the time. Backdated delegation log entries are a common finding.
+- **Have consent documentation accessible.** Monitors verify that the correct ICF version was signed before any study procedures. Organize consent forms so version numbers and dates are quickly verifiable.
+
+Common SDV findings to avoid:
+
+| Finding | What happened | How to prevent it |
+|---|---|---|
+| CRF entry does not match source | Transcription error or source updated after CRF entry | Verify CRF entries against source at the time of entry, not in batches |
+| Source document missing or incomplete | Worksheet not completed during the visit, or filed in the wrong location | Complete source documents contemporaneously; file immediately |
+| Consent version mismatch | Participant signed a superseded ICF version | Track ICF version dates and cross-check before each visit |
+| Undocumented correction | Error corrected without single-line, initials, date, and reason | Train all team members on GDP correction procedures per [SOP-CR-014](/sops/cr-014) |
+
 ---
 
 **Related resources**
