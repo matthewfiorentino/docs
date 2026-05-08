@@ -1631,9 +1631,8 @@ html.dark .ri-cim-body {
     flex-direction: column;
     gap: 6px;
     padding: 20px 22px;
-    border-left: 3px solid var(--ri-accent, #007a6e);
     background: #f8f9fb;
-    border-radius: 0 8px 8px 0;
+    border-radius: 8px;
     text-decoration: none !important;
     transition: background .15s, border-color .15s;
 }
