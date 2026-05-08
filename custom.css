@@ -1618,3 +1618,57 @@ html.dark .ri-cim-body {
         width: 100%;
     }
 }
+
+/* ── Research support services list ── */
+.ri-services-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    margin-top: 8px;
+    border-top: 1px solid rgba(0,0,0,.08);
+}
+html.dark .ri-services-list {
+    border-top-color: rgba(255,255,255,.1);
+}
+.ri-service-row {
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    padding: 14px 4px;
+    border-bottom: 1px solid rgba(0,0,0,.08);
+    text-decoration: none !important;
+    transition: background .15s;
+}
+html.dark .ri-service-row {
+    border-bottom-color: rgba(255,255,255,.1);
+}
+.ri-service-row:hover {
+    background: rgba(0,122,110,.04);
+}
+html.dark .ri-service-row:hover {
+    background: rgba(0,196,180,.06);
+}
+.ri-service-name {
+    flex: 0 0 200px;
+    font-weight: 700;
+    font-size: 14px;
+    color: var(--ri-heading) !important;
+}
+.ri-service-desc {
+    flex: 1;
+    font-size: 14px;
+    color: rgba(0,0,0,.55);
+    line-height: 1.5;
+}
+html.dark .ri-service-desc {
+    color: rgba(255,255,255,.55);
+}
+@media (max-width: 600px) {
+    .ri-service-row {
+        flex-direction: column;
+        gap: 2px;
+    }
+    .ri-service-name {
+        flex: none;
+    }
+}
