@@ -147,6 +147,7 @@
                       "kb/planning-overview",
                       "kb/feasibility",
                       "kb/study-design",
+                      "kb/patient-engagement",
                       "kb/bcu",
                       "kb/cord",
                       "kb/data-warehouse",
@@ -161,14 +162,19 @@
                     ]
                   },
                   {
-                    "group": "Team, Funding and Services",
+                    "group": "Building Your Team",
                     "expanded": false,
                     "pages": [
                       "kb/building-your-team",
                       "kb/hiring-hr-support",
-                      "kb/edi",
+                      "kb/edi"
+                    ]
+                  },
+                  {
+                    "group": "Funding and Agreements",
+                    "expanded": false,
+                    "pages": [
                       "kb/funding-applications",
-                      "kb/patient-engagement",
                       "kb/budgets-contracts",
                       "kb/budget-negotiation",
                       "kb/clinical-trial-agreements",
