@@ -386,214 +386,53 @@
                         "group": "AD — Administrative & Emergency",
                         "expanded": false,
                         "pages": [
-                          {
-                            "group": "WI-CIM-AD001 — Code Blue",
-                            "expanded": false,
-                            "pages": [
-                              "cim/wi/ad001-overview",
-                              "cim/wi/ad001"
-                            ]
-                          },
-                          {
-                            "group": "WI-CIM-AD002 — Code Red/Green (Glen)",
-                            "expanded": false,
-                            "pages": [
-                              "cim/wi/ad002-overview",
-                              "cim/wi/ad002"
-                            ]
-                          },
-                          {
-                            "group": "WI-CIM-AD003 — Code Red/Green (MGH)",
-                            "expanded": false,
-                            "pages": [
-                              "cim/wi/ad003-overview",
-                              "cim/wi/ad003"
-                            ]
-                          },
-                          {
-                            "group": "WI-CIM-AD006 — Incident & Accident",
-                            "expanded": false,
-                            "pages": [
-                              "cim/wi/ad006-overview",
-                              "cim/wi/ad006"
-                            ]
-                          }
+                          "cim/wi/ad001",
+                          "cim/wi/ad002",
+                          "cim/wi/ad003",
+                          "cim/wi/ad006"
                         ]
                       },
                       {
                         "group": "CR — Clinical Research",
                         "expanded": false,
                         "pages": [
-                          {
-                            "group": "WI-CIM-CR001 — Double Identification",
-                            "expanded": false,
-                            "pages": [
-                              "cim/wi/cr001-overview",
-                              "cim/wi/cr001"
-                            ]
-                          },
-                          {
-                            "group": "WI-CIM-CR002 — SUSAR Review",
-                            "expanded": false,
-                            "pages": [
-                              "cim/wi/cr002-overview",
-                              "cim/wi/cr002"
-                            ]
-                          },
-                          {
-                            "group": "WI-CIM-CR003 — Monitoring Visits & Audits",
-                            "expanded": false,
-                            "pages": [
-                              "cim/wi/cr003-overview",
-                              "cim/wi/cr003"
-                            ]
-                          },
-                          {
-                            "group": "WI-CIM-CR007 — Investigator Site File",
-                            "expanded": false,
-                            "pages": [
-                              "cim/wi/cr007-overview",
-                              "cim/wi/cr007"
-                            ]
-                          },
-                          {
-                            "group": "WI-CIM-CR009 — Source Documents",
-                            "expanded": false,
-                            "pages": [
-                              "cim/wi/cr009-overview",
-                              "cim/wi/cr009"
-                            ]
-                          },
-                          {
-                            "group": "WI-CIM-CR010 — Participant Communication",
-                            "expanded": false,
-                            "pages": [
-                              "cim/wi/cr010-overview",
-                              "cim/wi/cr010"
-                            ]
-                          }
+                          "cim/wi/cr001",
+                          "cim/wi/cr002",
+                          "cim/wi/cr003",
+                          "cim/wi/cr007",
+                          "cim/wi/cr009",
+                          "cim/wi/cr010"
                         ]
                       },
                       {
                         "group": "GN — General Nursing",
                         "expanded": false,
                         "pages": [
-                          {
-                            "group": "WI-CIM-GN001 — UBEC Verification",
-                            "expanded": false,
-                            "pages": [
-                              "cim/wi/gn001-overview",
-                              "cim/wi/gn001"
-                            ]
-                          },
-                          {
-                            "group": "WI-CIM-GN002 — Preparing IV Medications",
-                            "expanded": false,
-                            "pages": [
-                              "cim/wi/gn002-overview",
-                              "cim/wi/gn002"
-                            ]
-                          },
-                          {
-                            "group": "WI-CIM-GN003 — Accessing TIVAD",
-                            "expanded": false,
-                            "pages": [
-                              "cim/wi/gn003-overview",
-                              "cim/wi/gn003"
-                            ]
-                          },
-                          {
-                            "group": "WI-CIM-GN004 — Administering IV Infusion",
-                            "expanded": false,
-                            "pages": [
-                              "cim/wi/gn004-overview",
-                              "cim/wi/gn004"
-                            ]
-                          },
-                          {
-                            "group": "WI-CIM-GN005 — Study Briefings & Nurse Delegation",
-                            "expanded": false,
-                            "pages": [
-                              "cim/wi/gn005-overview",
-                              "cim/wi/gn005"
-                            ]
-                          }
+                          "cim/wi/gn001",
+                          "cim/wi/gn002",
+                          "cim/wi/gn003",
+                          "cim/wi/gn004",
+                          "cim/wi/gn005"
                         ]
                       },
                       {
                         "group": "MO — Monitoring",
                         "expanded": false,
                         "pages": [
-                          {
-                            "group": "WI-CIM-MO001 — Site Feasibility Visit",
-                            "expanded": false,
-                            "pages": [
-                              "cim/wi/mo001-overview",
-                              "cim/wi/mo001"
-                            ]
-                          },
-                          {
-                            "group": "WI-CIM-MO002 — Site Initiation Visit",
-                            "expanded": false,
-                            "pages": [
-                              "cim/wi/mo002-overview",
-                              "cim/wi/mo002"
-                            ]
-                          },
-                          {
-                            "group": "WI-CIM-MO003 — Site Monitoring Visit",
-                            "expanded": false,
-                            "pages": [
-                              "cim/wi/mo003-overview",
-                              "cim/wi/mo003"
-                            ]
-                          },
-                          {
-                            "group": "WI-CIM-MO004 — Site Close-Out Visit",
-                            "expanded": false,
-                            "pages": [
-                              "cim/wi/mo004-overview",
-                              "cim/wi/mo004"
-                            ]
-                          },
-                          {
-                            "group": "WI-CIM-MO005 — IP Monitoring",
-                            "expanded": false,
-                            "pages": [
-                              "cim/wi/mo005-overview",
-                              "cim/wi/mo005"
-                            ]
-                          },
-                          {
-                            "group": "WI-CIM-MO006 — Safety Assessment & AE/SAE Reporting",
-                            "expanded": false,
-                            "pages": [
-                              "cim/wi/mo006-overview",
-                              "cim/wi/mo006"
-                            ]
-                          }
+                          "cim/wi/mo001",
+                          "cim/wi/mo002",
+                          "cim/wi/mo003",
+                          "cim/wi/mo004",
+                          "cim/wi/mo005",
+                          "cim/wi/mo006"
                         ]
                       },
                       {
                         "group": "ON — Oncology",
                         "expanded": false,
                         "pages": [
-                          {
-                            "group": "WI-CIM-ON001 — IV Chemotherapy Administration",
-                            "expanded": false,
-                            "pages": [
-                              "cim/wi/on001-overview",
-                              "cim/wi/on001"
-                            ]
-                          },
-                          {
-                            "group": "WI-CIM-ON002 — Safe Handling of Hazardous Drugs",
-                            "expanded": false,
-                            "pages": [
-                              "cim/wi/on002-overview",
-                              "cim/wi/on002"
-                            ]
-                          }
+                          "cim/wi/on001",
+                          "cim/wi/on002"
                         ]
                       }
                     ]
@@ -1060,6 +899,98 @@
     {
       "source": "/sops/cr-501-overview",
       "destination": "/sops/cr-501"
+    },
+    {
+      "source": "/cim/wi/ad001-overview",
+      "destination": "/cim/wi/ad001"
+    },
+    {
+      "source": "/cim/wi/ad002-overview",
+      "destination": "/cim/wi/ad002"
+    },
+    {
+      "source": "/cim/wi/ad003-overview",
+      "destination": "/cim/wi/ad003"
+    },
+    {
+      "source": "/cim/wi/ad006-overview",
+      "destination": "/cim/wi/ad006"
+    },
+    {
+      "source": "/cim/wi/cr001-overview",
+      "destination": "/cim/wi/cr001"
+    },
+    {
+      "source": "/cim/wi/cr002-overview",
+      "destination": "/cim/wi/cr002"
+    },
+    {
+      "source": "/cim/wi/cr003-overview",
+      "destination": "/cim/wi/cr003"
+    },
+    {
+      "source": "/cim/wi/cr007-overview",
+      "destination": "/cim/wi/cr007"
+    },
+    {
+      "source": "/cim/wi/cr009-overview",
+      "destination": "/cim/wi/cr009"
+    },
+    {
+      "source": "/cim/wi/cr010-overview",
+      "destination": "/cim/wi/cr010"
+    },
+    {
+      "source": "/cim/wi/gn001-overview",
+      "destination": "/cim/wi/gn001"
+    },
+    {
+      "source": "/cim/wi/gn002-overview",
+      "destination": "/cim/wi/gn002"
+    },
+    {
+      "source": "/cim/wi/gn003-overview",
+      "destination": "/cim/wi/gn003"
+    },
+    {
+      "source": "/cim/wi/gn004-overview",
+      "destination": "/cim/wi/gn004"
+    },
+    {
+      "source": "/cim/wi/gn005-overview",
+      "destination": "/cim/wi/gn005"
+    },
+    {
+      "source": "/cim/wi/mo001-overview",
+      "destination": "/cim/wi/mo001"
+    },
+    {
+      "source": "/cim/wi/mo002-overview",
+      "destination": "/cim/wi/mo002"
+    },
+    {
+      "source": "/cim/wi/mo003-overview",
+      "destination": "/cim/wi/mo003"
+    },
+    {
+      "source": "/cim/wi/mo004-overview",
+      "destination": "/cim/wi/mo004"
+    },
+    {
+      "source": "/cim/wi/mo005-overview",
+      "destination": "/cim/wi/mo005"
+    },
+    {
+      "source": "/cim/wi/mo006-overview",
+      "destination": "/cim/wi/mo006"
+    },
+    {
+      "source": "/cim/wi/on001-overview",
+      "destination": "/cim/wi/on001"
+    },
+    {
+      "source": "/cim/wi/on002-overview",
+      "destination": "/cim/wi/on002"
     }
   ]
 }
