@@ -10,56 +10,46 @@ CIM involvement needs to be confirmed early — before your Site Agreement is si
 
 Not every study at the RI-MUHC needs CIM involvement. Use the flowchart below to determine whether your protocol requires CIM infrastructure, staffing, or platforms.
 
-<div className="ri-decision-tree">
-  <div className="ri-dt-step">
-    <div className="ri-dt-question">Is your study a Phase I drug trial?</div>
-    <div className="ri-dt-yes">
-      <span className="ri-dt-label ri-dt-label--yes">Yes</span>
-      <span className="ri-dt-outcome ri-dt-outcome--urgent">Contact CIM immediately — capacity is limited and pre-booking is required</span>
-    </div>
+<div className="ri-flow">
+  <div className="ri-flow-node ri-flow-node--start">Does your protocol involve any of the following?</div>
+  <div className="ri-flow-line"></div>
+  <div className="ri-flow-row">
+    <div className="ri-flow-node ri-flow-node--decision">Phase I drug study?</div>
+    <div className="ri-flow-arrow-right"><span>Yes</span></div>
+    <div className="ri-flow-node ri-flow-node--result ri-flow-node--urgent">Contact CIM immediately — capacity is limited, pre-booking required</div>
   </div>
-  <div className="ri-dt-connector">No ↓</div>
-  <div className="ri-dt-step">
-    <div className="ri-dt-question">Does it involve IV drug administration, infusion, or oncology drugs?</div>
-    <div className="ri-dt-yes">
-      <span className="ri-dt-label ri-dt-label--yes">Yes</span>
-      <span className="ri-dt-outcome">Contact CIM during feasibility</span>
-    </div>
+  <div className="ri-flow-down"><span>No</span></div>
+  <div className="ri-flow-row">
+    <div className="ri-flow-node ri-flow-node--decision">IV drug administration, infusion, or oncology drugs?</div>
+    <div className="ri-flow-arrow-right"><span>Yes</span></div>
+    <div className="ri-flow-node ri-flow-node--result">Contact CIM during feasibility</div>
   </div>
-  <div className="ri-dt-connector">No ↓</div>
-  <div className="ri-dt-step">
-    <div className="ri-dt-question">Does it require functional testing — CPET, PFT, ECG, Holter, imaging, or sleep lab?</div>
-    <div className="ri-dt-yes">
-      <span className="ri-dt-label ri-dt-label--yes">Yes</span>
-      <span className="ri-dt-outcome">Contact CIM for platform access</span>
-    </div>
+  <div className="ri-flow-down"><span>No</span></div>
+  <div className="ri-flow-row">
+    <div className="ri-flow-node ri-flow-node--decision">Functional testing — CPET, PFT, ECG, Holter, imaging, or sleep lab?</div>
+    <div className="ri-flow-arrow-right"><span>Yes</span></div>
+    <div className="ri-flow-node ri-flow-node--result">Contact CIM for platform access</div>
   </div>
-  <div className="ri-dt-connector">No ↓</div>
-  <div className="ri-dt-step">
-    <div className="ri-dt-question">Does it require specimen processing or biobanking?</div>
-    <div className="ri-dt-yes">
-      <span className="ri-dt-label ri-dt-label--yes">Yes</span>
-      <span className="ri-dt-outcome">Contact CIM for platform access</span>
-    </div>
+  <div className="ri-flow-down"><span>No</span></div>
+  <div className="ri-flow-row">
+    <div className="ri-flow-node ri-flow-node--decision">Specimen processing or biobanking?</div>
+    <div className="ri-flow-arrow-right"><span>Yes</span></div>
+    <div className="ri-flow-node ri-flow-node--result">Contact CIM for platform access</div>
   </div>
-  <div className="ri-dt-connector">No ↓</div>
-  <div className="ri-dt-step">
-    <div className="ri-dt-question">Is it a Sponsor-Investigator study that needs monitoring?</div>
-    <div className="ri-dt-yes">
-      <span className="ri-dt-label ri-dt-label--yes">Yes</span>
-      <span className="ri-dt-outcome">Contact CIM during feasibility</span>
-    </div>
+  <div className="ri-flow-down"><span>No</span></div>
+  <div className="ri-flow-row">
+    <div className="ri-flow-node ri-flow-node--decision">Sponsor-Investigator study needing monitoring?</div>
+    <div className="ri-flow-arrow-right"><span>Yes</span></div>
+    <div className="ri-flow-node ri-flow-node--result">Contact CIM during feasibility</div>
   </div>
-  <div className="ri-dt-connector">No ↓</div>
-  <div className="ri-dt-step">
-    <div className="ri-dt-question">Is it paediatric, a device study, or observational with specialized procedures?</div>
-    <div className="ri-dt-yes">
-      <span className="ri-dt-label ri-dt-label--yes">Yes</span>
-      <span className="ri-dt-outcome ri-dt-outcome--discuss">Contact CIM to discuss availability and fit</span>
-    </div>
+  <div className="ri-flow-down"><span>No</span></div>
+  <div className="ri-flow-row">
+    <div className="ri-flow-node ri-flow-node--decision">Paediatric, device, or observational with specialized procedures?</div>
+    <div className="ri-flow-arrow-right"><span>Yes</span></div>
+    <div className="ri-flow-node ri-flow-node--result ri-flow-node--discuss">Contact CIM to discuss availability and fit</div>
   </div>
-  <div className="ri-dt-connector">No ↓</div>
-  <div className="ri-dt-end">CIM involvement is likely not needed for your study</div>
+  <div className="ri-flow-down"><span>No</span></div>
+  <div className="ri-flow-node ri-flow-node--end">CIM involvement likely not needed</div>
 </div>
 
 ### Study types at a glance
