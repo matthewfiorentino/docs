@@ -26,6 +26,16 @@ In Quebec, the Civil Code governs who can consent to research and under what con
 
 Two tracks run in parallel throughout a study: a sequential lifecycle from activation to close-out, and a set of continuous obligations that apply at every stage.
 
+```mermaid
+flowchart TD
+    A["All prerequisites confirmed\n(REB approval · MUHC Authorization · SIV · Go Letter)"] --> B[Study activation]
+    B --> C[Recruitment & screening]
+    C --> D[Enrolment & consent]
+    D --> E[Study visits & procedures]
+    E --> F[Study close-out]
+    F --> G["Retention period\n(15 yr regulated · 7 yr non-regulated)"]
+```
+
 <Steps>
   <Step title="Foundations (throughout)">
     Privacy and data integrity obligations apply throughout the entire study, not at a specific stage. The MUHC Confidentiality and Security Agreement must be signed before any team member accesses participant records. ALCOA+ data standards apply from the first source document entry. The retention clock starts at study closure — 15 years for Health Canada-regulated studies, 7 years for non-regulated ones.

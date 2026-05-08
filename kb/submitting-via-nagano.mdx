@@ -19,6 +19,17 @@ The project type you select in Nagano determines which version of the F11 submis
 | Psychosocial / qualitative / nursing sciences | Your project is non-interventional and aligns primarily with psychosocial, qualitative, or nursing sciences approaches. | F11-NIR |
 | Epidemiology / health services / global health | Your project is population-based, health services-oriented, or global health-focused. | F11-NIR |
 
+```mermaid
+flowchart TD
+    A["What type of study?"] --> B{Involves human\nparticipants — clinical\ntrial or clinical research?}
+    B -->|Yes| C["F11-H"]
+    B -->|No| D{Creating a new\nbank or registry?}
+    D -->|Yes| E["F11-BR"]
+    D -->|No| F{Retrospective chart\nreview only?}
+    F -->|Yes| G["F11-HRR"]
+    F -->|No| H["F11-NIR"]
+```
+
 <Warning>
   If you are unsure which type applies, contact the Research Facilitator before creating the project. Changing project type after the F11 is underway can create inconsistencies in your submission record.
 </Warning>

@@ -38,6 +38,18 @@ Nagano uses two distinct types of status labels. Confusing them leads to missed 
 
 Your submission triggers three review streams simultaneously. All three must be complete before the Personne mandatée can issue MUHC Authorization.
 
+```mermaid
+flowchart TD
+    A[F11 submitted\nin Nagano] --> B["Scientific & ethics review\n(MUHC REB)"]
+    A --> C["Institutional feasibility\n(QA · Contracts · Services)"]
+    A --> D["Health Canada\n(CTA/ITA — if applicable)"]
+    B -->|Approved| E{All streams\ncomplete?}
+    C -->|Cleared| E
+    D -->|NOL / ITA| E
+    E -->|Yes| F["MUHC Authorization\n(Personne mandatée)"]
+    F --> G[Study may begin]
+```
+
 <CardGroup cols={3}>
   <Card title="Scientific and ethics review" icon="microscope">
     Conducted by the MUHC REB. Reviews study design, informed consent, risk-benefit ratio, data protections, and participant safety. Issues one of four formal decisions (Approved, Approval with Modifications, Deferral, Disapproval).

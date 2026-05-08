@@ -10,6 +10,18 @@ When an investigator is also the sponsor of a clinical trial, Health Canada does
 The regulatory burden for IITs is the same as for industry-sponsored trials. The investigator assumes all sponsor obligations: CTA filing, safety reporting to Health Canada, monitoring of all study sites, record retention for 15 years, and annual reporting. Ensure your team and institution have the infrastructure to support these obligations before filing the CTA.
 </Warning>
 
+```mermaid
+flowchart TD
+    A[Protocol and IB\ndeveloped] --> B[Institutional support\nand insurance confirmed]
+    B --> C["CTA filed with\nHealth Canada"]
+    B --> D["REB submission\nvia Nagano"]
+    C --> E["NOL received\n(30-day review)"]
+    D --> F[REB approval +\nMUHC Authorization]
+    E --> G{Both approvals\nin hand?}
+    F --> G
+    G -->|Yes| H[Site activation\nand first participant]
+```
+
 ## Startup checklist
 
 <Steps>
