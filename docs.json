@@ -192,7 +192,6 @@
                     "pages": [
                       "kb/site-setup",
                       "kb/protocol-documents",
-                      "kb/study-amendments",
                       "kb/isf"
                     ]
                   },
@@ -221,6 +220,7 @@
                       "kb/biological-specimens",
                       "kb/reportable-events",
                       "kb/protocol-deviations",
+                      "kb/study-amendments",
                       "kb/team-management",
                       "kb/monitoring-audits"
                     ]
