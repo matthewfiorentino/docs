@@ -19,6 +19,17 @@ Classification is a judgment made by the <Tooltip tip="The physician responsible
 
 If the answer to both is no, the deviation is likely minor. If the answer to either is yes or possibly, it is likely major. If the effect was severe, immediate, or involved deliberate misconduct, it is critical.
 
+```mermaid
+flowchart TD
+    A[Deviation identified] --> B{Could it affect\nparticipant safety?}
+    B -->|No| C{Could it affect\ndata integrity?}
+    B -->|Yes / Possibly| D{Severe, immediate,\nor deliberate misconduct?}
+    C -->|No| E[Minor\nLog and monitor for patterns]
+    C -->|Yes / Possibly| F[Major\nCAPA required]
+    D -->|No| F
+    D -->|Yes| G[Critical\nImmediate action + CAPA]
+```
+
 ### Common ambiguous scenarios
 
 | Scenario | Considerations | Likely classification |
@@ -58,16 +69,11 @@ A CAPA has four parts:
 
     The 5 Whys is one approach. For more complex deviations, a **Fishbone (Ishikawa) diagram** maps contributing factors across categories to identify multiple root causes that a linear analysis might miss. **Failure Mode and Effects Analysis (FMEA)** is a proactive tool — it identifies where processes are most vulnerable to failure before a deviation occurs, and is more commonly used for process design than for post-deviation investigation.
 
-    **Fishbone analysis — same dosing error, by category:**
+    **Fishbone diagram — same dosing error, by category:**
 
-    | Category | Contributing factors |
-    |---|---|
-    | **People** | CRC-N new to study; no second-person verification step for dosing |
-    | **Process** | Shared dosing log for all participants; no individual dosing worksheet template |
-    | **Environment** | Busy clinic day with multiple participants dosed; dosing area shared with other studies |
-    | **Equipment / Materials** | Dosing chart format unclear; no visual separator between participant rows |
-
-    → **Effect:** Wrong IP dose administered
+    <Frame caption="Example: Fishbone (Ishikawa) diagram — the same dosing error mapped across four contributing-factor categories.">
+      <img src="/images/fishbone-example.svg" alt="Fishbone diagram showing contributing factors across People, Process, Environment, and Equipment categories leading to wrong IP dose administered" />
+    </Frame>
 
     The Fishbone surfaces contributing factors the 5 Whys might miss — the busy clinic day and shared dosing area didn't cause the error on their own, but they made it more likely. A CAPA that addresses only the worksheet (the 5 Whys root cause) might miss the verification gap or the environmental factors.
   </Step>

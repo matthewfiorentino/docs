@@ -49,6 +49,18 @@ Filing an updated IB without reviewing it for new safety signals is a compliance
 
 For Health Canada-regulated studies, both regulatory and ethics approvals are required before implementation. Health Canada review (CTA-A) and REB review can proceed in parallel — there is no mandated sequence — but both must be obtained before the amendment takes effect at the site.
 
+```mermaid
+flowchart TD
+    A[Sponsor prepares\namendment package] --> B[CTA-A to\nHealth Canada]
+    A --> C[Amendment to\nREB via Nagano]
+    B --> D[NOL received\n30-day review]
+    C --> E[REB approval\nletter]
+    D --> F{Both approvals\nin hand}
+    E --> F
+    F --> G[Sponsor Go Letter\nif applicable]
+    G --> H[Implement at site]
+```
+
 <Steps>
   <Step title="Sponsor prepares the amendment package">
     For industry-sponsored studies, the sponsor prepares the amended documents and distributes them to all sites. For Sponsor-Investigator studies, the QI/PI prepares the amendment.

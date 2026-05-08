@@ -1,0 +1,71 @@
+<svg viewBox="0 0 860 400" width="100%" style="display:block;max-width:780px;margin:0 auto" xmlns="http://www.w3.org/2000/svg" font-family="Arial,sans-serif">
+  <defs>
+    <marker id="fbArr" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+      <polygon points="0,0 10,3.5 0,7" fill="#474650"/>
+    </marker>
+  </defs>
+
+  <!-- Tail -->
+  <line x1="80" y1="200" x2="52" y2="172" stroke="#474650" stroke-width="2" stroke-linecap="round"/>
+  <line x1="80" y1="200" x2="52" y2="228" stroke="#474650" stroke-width="2" stroke-linecap="round"/>
+
+  <!-- Spine -->
+  <line x1="80" y1="200" x2="618" y2="200" stroke="#474650" stroke-width="2.5" marker-end="url(#fbArr)"/>
+
+  <!-- Effect box (head) -->
+  <rect x="632" y="174" width="200" height="52" rx="4" fill="#b71c1c"/>
+  <text x="732" y="196" text-anchor="middle" font-size="11.5" font-weight="700" fill="white">Wrong IP dose</text>
+  <text x="732" y="212" text-anchor="middle" font-size="11.5" font-weight="700" fill="white">administered</text>
+
+  <!-- ===== PEOPLE (top-left) ===== -->
+  <line x1="260" y1="200" x2="175" y2="68" stroke="#2b9ce2" stroke-width="2"/>
+  <rect x="128" y="40" width="94" height="26" rx="13" fill="#2b9ce2"/>
+  <text x="175" y="57" text-anchor="middle" font-size="11" font-weight="700" fill="white">People</text>
+  <!-- Sub-cause: CRC-N new to study -->
+  <circle cx="230" cy="154" r="2.5" fill="#2b9ce2"/>
+  <line x1="230" y1="154" x2="148" y2="154" stroke="#2b9ce2" stroke-width="1"/>
+  <text x="145" y="150" text-anchor="end" font-size="9.5" fill="#474650">CRC-N new to study</text>
+  <!-- Sub-cause: No verification step -->
+  <circle cx="205" cy="114" r="2.5" fill="#2b9ce2"/>
+  <line x1="205" y1="114" x2="123" y2="114" stroke="#2b9ce2" stroke-width="1"/>
+  <text x="120" y="110" text-anchor="end" font-size="9.5" fill="#474650">No verification step</text>
+
+  <!-- ===== PROCESS (top-right) ===== -->
+  <line x1="470" y1="200" x2="385" y2="68" stroke="#9039f9" stroke-width="2"/>
+  <rect x="338" y="40" width="94" height="26" rx="13" fill="#9039f9"/>
+  <text x="385" y="57" text-anchor="middle" font-size="11" font-weight="700" fill="white">Process</text>
+  <!-- Sub-cause: Shared dosing log -->
+  <circle cx="440" cy="154" r="2.5" fill="#9039f9"/>
+  <line x1="440" y1="154" x2="348" y2="154" stroke="#9039f9" stroke-width="1"/>
+  <text x="345" y="150" text-anchor="end" font-size="9.5" fill="#474650">Shared dosing log</text>
+  <!-- Sub-cause: No individual worksheet -->
+  <circle cx="415" cy="114" r="2.5" fill="#9039f9"/>
+  <line x1="415" y1="114" x2="293" y2="114" stroke="#9039f9" stroke-width="1"/>
+  <text x="290" y="110" text-anchor="end" font-size="9.5" fill="#474650">No individual worksheet</text>
+
+  <!-- ===== ENVIRONMENT (bottom-left) ===== -->
+  <line x1="260" y1="200" x2="175" y2="332" stroke="#00c4b4" stroke-width="2"/>
+  <rect x="110" y="336" width="130" height="26" rx="13" fill="#00c4b4"/>
+  <text x="175" y="353" text-anchor="middle" font-size="11" font-weight="700" fill="white">Environment</text>
+  <!-- Sub-cause: Busy clinic day -->
+  <circle cx="230" cy="246" r="2.5" fill="#00c4b4"/>
+  <line x1="230" y1="246" x2="138" y2="246" stroke="#00c4b4" stroke-width="1"/>
+  <text x="135" y="242" text-anchor="end" font-size="9.5" fill="#474650">Busy clinic day</text>
+  <!-- Sub-cause: Shared dosing area -->
+  <circle cx="205" cy="286" r="2.5" fill="#00c4b4"/>
+  <line x1="205" y1="286" x2="103" y2="286" stroke="#00c4b4" stroke-width="1"/>
+  <text x="100" y="282" text-anchor="end" font-size="9.5" fill="#474650">Shared dosing area</text>
+
+  <!-- ===== EQUIPMENT / MATERIALS (bottom-right) ===== -->
+  <line x1="470" y1="200" x2="385" y2="332" stroke="#e8740c" stroke-width="2"/>
+  <rect x="295" y="336" width="180" height="26" rx="13" fill="#e8740c"/>
+  <text x="385" y="353" text-anchor="middle" font-size="11" font-weight="700" fill="white">Equipment / Materials</text>
+  <!-- Sub-cause: Chart format unclear -->
+  <circle cx="440" cy="246" r="2.5" fill="#e8740c"/>
+  <line x1="440" y1="246" x2="323" y2="246" stroke="#e8740c" stroke-width="1"/>
+  <text x="320" y="242" text-anchor="end" font-size="9.5" fill="#474650">Chart format unclear</text>
+  <!-- Sub-cause: No row separators -->
+  <circle cx="415" cy="286" r="2.5" fill="#e8740c"/>
+  <line x1="415" y1="286" x2="308" y2="286" stroke="#e8740c" stroke-width="1"/>
+  <text x="305" y="282" text-anchor="end" font-size="9.5" fill="#474650">No row separators</text>
+</svg>

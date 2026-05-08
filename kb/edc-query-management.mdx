@@ -47,6 +47,16 @@ Most queries are generated because the EDC's built-in validation checks (edit ch
 
 A query is a formal request from the sponsor, data manager, or monitor to clarify or correct a data entry. Queries are generated automatically by edit checks or manually by the data management team or CRA during review.
 
+```mermaid
+flowchart TD
+    A[Query opened in EDC] --> B[CRC reviews query\nand checks source documents]
+    B --> C[CRC responds with\nexplanation or correction]
+    C --> D{Response\nadequate?}
+    D -->|Yes| E[Query closed]
+    D -->|No| F[Follow-up query issued]
+    F --> B
+```
+
 <Steps>
   <Step title="Query is opened">
     The query appears in the EDC with a description of the issue and the affected field. Most systems highlight open queries with a flag or icon.
