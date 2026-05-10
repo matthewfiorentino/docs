@@ -1616,7 +1616,7 @@ html.dark .ri-cim-body {
 
 /* ── CIM full-width dark band ── */
 .ri-cim-band {
-    background: #2b2666;
+    background: var(--ri-navy);
     width: 100%;
 }
 .ri-cim-band-inner {
