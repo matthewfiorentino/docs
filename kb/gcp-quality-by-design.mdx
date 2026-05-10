@@ -120,6 +120,54 @@ Remote monitoring visits, formally recognized in E6(R3), are a direct product of
 
 Quality by design does not reduce accountability at the site. It shifts the question from "did we follow the procedures?" to "did we protect the things that matter?"
 
+## Computerized systems at the site level
+
+E6(R3) explicitly addresses computerized systems validation (CSV) at the site level — an area where previous versions of GCP were vague. The expectation is not that academic sites conduct formal GAMP 5 software validation on every tool they use; it is that sites apply **fit-for-purpose validation** — proportionate to the intended use and the associated risk.
+
+**What this means in practice.** For every computerized system used in the conduct of a study — eCRF platforms, eICF systems, sponsor portals, REDCap for data capture, or proprietary sponsor electronic patient-reported outcome (ePRO) tools — the site should be able to answer:
+
+- What does this system do in the context of this study?
+- What happens if it fails or produces incorrect outputs?
+- Is there documented validation (from the vendor or from the sponsor) that the system does what it is supposed to do?
+- Are user access controls, audit trails, and data backup in place?
+- Is there a procedure for what to do if the system is unavailable?
+
+For **sponsor-provided systems** (eCRF, ePRO, sponsor portal), the sponsor typically holds the validation documentation. The site's obligation is to confirm that validation documentation exists, that the system is being used as validated, and that user accounts are set up with appropriate access levels. Ask for confirmation of validation at the SIV — this is a routine question under E6(R3).
+
+For **site-initiated systems** (REDCap instances used for study data, shared drives used to store ISF components), the site holds the validation obligation. REDCap, for example, is not inherently validated — it must be configured, tested, and documented for the specific use case. CORD provides REDCap infrastructure with institutional configuration; if your REDCap build captures data that feeds regulatory submissions, confirm with CORD that the relevant validation documentation is in place.
+
+**Site-level computerized systems risk register.** A simple risk register helps the site meet E6(R3)'s expectations without over-engineering the process. It need not be elaborate — a table with the following columns covers the core requirement:
+
+| Column | Purpose |
+|---|---|
+| System name | e.g., Medidata Rave eCRF, REDCap, Sponsor XYZ portal |
+| Intended use in this study | What data does it capture or transmit? |
+| Validation status | Vendor-validated / sponsor-validated / site-validated / not validated (flag) |
+| Audit trail | Yes / No — can all changes be traced to a user and a timestamp? |
+| Backup / recovery | How often is data backed up, and what is the recovery procedure if the system fails? |
+| User access controls | Who has access, and is access role-appropriate? |
+| Risk rating | Low / Medium / High based on consequence of failure |
+
+Maintain one register per study (or per site, updated for each study). File it in the ISF. Review and update it at each monitoring visit.
+
+## Fit-for-purpose delegation and oversight
+
+E6(R3) introduces the phrase "fit-for-purpose" to describe how delegation and oversight should be structured — and this has direct operational implications for site teams.
+
+**Delegation is not just documentation.** The Task Delegation Log (TDL) is the record that documents delegation; it is not the delegation itself. Delegation under E6(R3) means that the QI/PI has assessed the delegated person's qualifications and training, determined that they are able to perform the task competently, and established a mechanism for overseeing their work. Signing a TDL is the documentation of that assessment — but the assessment must actually happen.
+
+**Oversight must be proportionate to the task and the person.** A CRC with ten years of experience in a specific therapeutic area and a long history at the site does not need the same level of PI oversight for a standard visit as a new team member who joined last month. E6(R3) asks for oversight to be proportionate to the risk of the delegated task and the demonstrated competency of the person performing it.
+
+This changes how the QI/PI should structure regular check-ins with the study team. Rather than reviewing every completed form or attending every visit, a QI operating within E6(R3)'s fit-for-purpose framework might:
+
+- Review primary endpoint assessments personally or with a qualified sub-investigator
+- Spot-check informed consent documentation and source notes regularly
+- Hold a brief weekly team check-in focused on open issues, safety events, and upcoming visits
+- Review the deviation log at defined intervals and sign off on CAPA assessments
+- Delegate routine data entry and source documentation to trained CRC staff with periodic review rather than visit-by-visit supervision
+
+**What this is not.** Fit-for-purpose does not mean reduced accountability. The QI/PI remains responsible for all aspects of the study conducted under their name. A monitoring finding that a delegated task was performed incorrectly reflects on the QI/PI's oversight, not only on the team member who made the error. The question in an inspection is whether the QI/PI's oversight was proportionate and documented — not whether they personally performed every task.
+
 <div className="ri-cantrain-callout">
   <a href="/training/cantrain"><img src="/images/cantrain_logo.png" alt="CANTRAIN" className="ri-cantrain-logo" /></a>
   <div className="ri-cantrain-text">
