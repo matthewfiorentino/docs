@@ -81,6 +81,47 @@ For questions specific to your study, always consult the relevant team directly 
 | Privileges and training | <Tooltip tip="All planned and systematic actions to ensure trial data are generated, documented, and reported in compliance with GCP and SOPs." headline="Quality Assurance (QA)" cta="Full definition" href="/kb/glossary#qa">Quality Assurance</Tooltip> — qaclinical@muhc.mcgill.ca |
 | Data Warehouse requests | RI-MUHC DW team — info.ridw@muhc.mcgill.ca |
 
+## Cybersecurity for research teams
+
+Clinical trial data is a high-value target. Sponsor portals, eConsent systems, EDC platforms, and REDCap instances all hold personal health information that must be protected throughout the trial lifecycle. The following practices address the most common vulnerabilities at the research-team level.
+
+### Phishing and social engineering
+
+Research staff receive communications from a wide range of sponsors, CROs, monitors, labs, and IRBs. This creates an environment where phishing attempts are easy to disguise as legitimate study communication.
+
+- Never open unexpected file attachments from sponsors or CROs without verifying through a second channel (a phone call or a separate email independent of the original message)
+- Sponsor portals will never ask you to confirm login credentials via email — portal credential requests by email are phishing attempts
+- Report suspicious emails to ri.it@muhc.mcgill.ca before clicking anything
+
+### Sponsor portal credential hygiene
+
+Research teams routinely hold active credentials for many sponsor portals simultaneously. This creates credential-accumulation risk — weak or reused passwords, shared credentials, and accounts that remain active after staff depart.
+
+- Use a unique, strong password for each sponsor portal — a password manager is the practical solution for managing this at scale
+- Never share portal credentials with colleagues. If a colleague needs access, request a separate account through the sponsor
+- When a team member leaves the study or the institution, notify the sponsor to deactivate their portal access. Include portal access deactivation in the Task Delegation Log off-boarding process
+- When you are removed from a study, confirm your portal access has been deactivated
+
+### REDCap and institutional platform security
+
+RI-MUHC REDCap instances are managed by [CORD](/kb/cord) and validated to institutional security standards. Research team obligations:
+
+- Only users listed on the REB-approved protocol and the Task Delegation Log should have REDCap project access
+- Remove user access when team members leave a study — this requires a deliberate action in the REDCap project, not just removal from the TDL
+- Enable two-factor authentication (2FA) on your REDCap account
+- Do not export REDCap data to personal devices or personal cloud storage (see storage requirements above)
+
+### Validated platforms for eConsent and electronic records
+
+When selecting an eConsent or eICF platform for a decentralized trial, platform security is an inspection-readiness question as much as an IT one. ICH E6(R3) requires that electronic systems used in clinical trials maintain audit trails, access logs, and data governance documentation from activation — retroactive remediation before an inspection is not always possible.
+
+Before adopting any sponsor-provided or investigator-selected digital platform:
+- Confirm the platform has a validation status document (IQ/OQ/PQ or equivalent)
+- Confirm audit trail and access log retention meets the study's retention period
+- Confirm the platform complies with Health Canada GUI-0100 requirements for electronic records
+
+Contact the [Research Facilitator](mailto:Research.facilitator@muhc.mcgill.ca) before committing to a new digital platform in a study protocol — platform selection is a setup decision, not a conduct item.
+
 ---
 
 **Related resources**

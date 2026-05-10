@@ -56,6 +56,20 @@ Registering a clinical trial and publicly disclosing its results are not the sam
 
 Registration must occur before the first participant is enrolled — not after. Under [TCPS2 Article 11.10](https://ethics.gc.ca/eng/tcps2-eptc2_2022_chapter11-chapitre11.html), all clinical trials involving humans must be registered in a publicly accessible registry as a condition of <Tooltip tip="The ethics committee that reviews and approves research involving human participants. Also called CER at French-language institutions." headline="Research Ethics Board (REB)" cta="Full definition" href="/kb/glossary#reb">REB</Tooltip> approval. The MUHC REB applies this requirement broadly. The most commonly used registry at the MUHC for industry-sponsored and investigator-initiated trials is [ClinicalTrials.gov](https://clinicaltrials.gov). Any WHO-recognized registry or ICMJE-approved registry is acceptable.
 
+### Choosing a registry
+
+WHO-recognized registries all meet the ICMJE minimum standard. The choice depends on funder requirements, sponsor preference, and results-posting obligations.
+
+| Registry | Study types | Who registers | Notes |
+|---|---|---|---|
+| [ClinicalTrials.gov](https://clinicaltrials.gov) | All types | Sponsor, SI, or site team | Most widely indexed globally; required by CIHR and most industry sponsors; FDAAA 801 results-posting requirements apply to US-funded studies |
+| [ISRCTN](https://www.isrctn.com/) | All types; frequently used for observational and device studies | Study team (manual process) | WHO-recognized; some funders and journals prefer ISRCTN for non-drug studies |
+| [WHO ICTRP](https://trialsearch.who.int/) | Search portal only | Feeds from primary registries | Not a registration destination — aggregates data from WHO-recognized registries for global search |
+| Health Canada Clinical Trials Database | Drug trials under a CTA | Sponsor or SI | HC-managed; required for drug CTAs under the *Food and Drug Regulations*; does **not** satisfy TCPS2 or CIHR registration requirements |
+| [EU Clinical Trials Register (EU CTR)](https://www.clinicaltrialsregister.eu/) | EMA-authorized trials | Sponsor or legal representative | Required for EUDAMED-registered devices and EMA-authorized drug trials; now publicly searchable |
+
+**Which registry to use at RI-MUHC:** For most MUHC studies, ClinicalTrials.gov is the appropriate primary registry. ISRCTN is an acceptable alternative where the sponsor or journal prefers it. For studies with a Health Canada CTA, the sponsor handles the HC Clinical Trials Database filing separately — this does not substitute for ClinicalTrials.gov registration.
+
 The registration number must appear in the abstract of any publication reporting trial results. This is an ICMJE requirement — journals will not accept trial manuscripts without it.
 
 ### CIHR-funded trials
@@ -147,6 +161,50 @@ A lay summary is not a compressed abstract. It is written for someone without a 
 
 **Practical tips:** Target a grade 8–10 reading level. Use active voice. Keep sentences short. Have someone outside the research team read a draft before finalizing. The [Research Facilitator](mailto:Research.facilitator@muhc.mcgill.ca) can advise on lay summary language if patient partners are involved in the review.
 
+## Data sharing after publication
+
+Sharing research data after publication is increasingly expected — and in some cases required. Tri-Agency policy, journal mandates, and funder conditions are converging on open data as a default.
+
+### Tri-Agency Research Data Management Policy
+
+The [Tri-Agency Research Data Management (RDM) Policy](https://science.gc.ca/site/science/en/interagency-research-funding/policies-and-guidelines/research-data-management/tri-agency-research-data-management-policy) (effective March 1, 2021) applies to all CIHR, NSERC, and SSHRC grant-holders. It requires:
+
+- Researchers to have a data management plan (DMP) for grant applications where required by the competition
+- Researchers to deposit data in a suitable repository after publication, "where ethically and legally appropriate"
+
+The RDM Policy does not require sharing participant-level health data where doing so would violate participant consent, ethics approvals, or applicable law. It does require documenting what data are available, where, and under what conditions — even when restricted access applies.
+
+### FAIR principles
+
+The [FAIR principles](https://www.nature.com/articles/sdata201618) (Findable, Accessible, Interoperable, Reusable — Wilkinson et al. 2016) are the internationally recognized standard for research data management and sharing:
+
+- **Findable:** Data are assigned a persistent identifier (DOI or equivalent) and described with rich metadata
+- **Accessible:** Data are retrievable by authorized users through a standard protocol; access conditions are clearly documented
+- **Interoperable:** Data use standard formats and controlled vocabularies that allow cross-study analysis
+- **Reusable:** Data and metadata are described thoroughly enough that another researcher could reproduce or build on the work
+
+FAIR does not mean "open." Participant health data can be FAIR without being publicly accessible — a restricted-access repository with clearly documented access criteria satisfies the principles.
+
+### Data repositories for clinical research
+
+| Repository | Best for | Access model |
+|---|---|---|
+| [Vivli](https://vivli.org/) | IPD sharing from industry and academic trials; supports ICMJE IPD sharing requests | Controlled — requestors apply; sponsor or PI approves |
+| [YODA Project](https://yoda.yale.edu/) | Johnson & Johnson–sponsored data; independent researcher access | Controlled with independent review board |
+| [FRDR](https://www.frdr-dfdr.ca/repo/) (Federated Research Data Repository) | Canadian funder-compliant deposit; free for Canadian researchers; health research with appropriate controls | Open or embargoed |
+| [OSF](https://osf.io/) (Open Science Framework) | Protocols, analysis plans, de-identified datasets; DOI assignable | Open or private |
+| [CORD institutional support](/kb/cord) | RI-MUHC–based projects | Institutional policy governs |
+
+### Individual participant data (IPD) sharing
+
+ICMJE encourages but does not universally require sharing of individual participant data. Where IPD sharing is committed to in the registration record or the published methods, it creates an expectation that data will be made available on reasonable request.
+
+For investigator-initiated trials, CIHR's open science framework encourages IPD sharing where consistent with consent, privacy law, and ethics approvals. Any IPD sharing must be consistent with what participants were told in the consent form. If the original consent form did not contemplate data sharing, sharing requires either a re-consent process or a TCPS2 Article 3.7A consent waiver reviewed by the REB.
+
+<Note>
+**Quebec Law 25 and cross-border data sharing.** If participant data collected at the RI-MUHC is to be deposited in a repository accessible to researchers outside Quebec, an ÉFVP (privacy impact assessment) is required before transfer. Contact the privacy office (efvp@muhc.mcgill.ca) before depositing data in any external repository. See [Privacy and Confidentiality in Quebec](/kb/privacy) for the ÉFVP process.
+</Note>
+
 ---
 
 **Related resources**
@@ -154,10 +212,14 @@ A lay summary is not a compressed abstract. It is written for someone without a 
 - [Conflict of Interest](/kb/governance/conflict-of-interest)
 - [AI in Clinical Research](/kb/ai-in-clinical-research)
 - [Modernized Clinical Trial Regulations](/kb/governance/modernized-ct-regulations)
+- [Privacy and Confidentiality in Quebec](/kb/privacy)
+- [CORD — Research Data Management](/kb/cord)
 - [CIHR Policy Guide — Registration and Disclosure of Results](https://cihr-irsc.gc.ca/e/52820.html)
+- [Tri-Agency RDM Policy](https://science.gc.ca/site/science/en/interagency-research-funding/policies-and-guidelines/research-data-management/tri-agency-research-data-management-policy)
 - [TCPS2 Chapter 11 — Clinical Trials](https://ethics.gc.ca/eng/tcps2-eptc2_2022_chapter11-chapitre11.html)
 - [ICMJE Recommendations (January 2024)](https://www.icmje.org/news-and-editorials/updated_recommendations_jan2024.html)
 - [WHO Trial Registration Data Set v2.0](https://www.who.int/clinical-trials-registry-platform/network/who-data-set)
+- [FAIR principles (Wilkinson et al. 2016)](https://www.nature.com/articles/sdata201618)
 
 <div className="ri-cantrain-callout">
   <a href="/training/cantrain"><img src="/images/cantrain_logo.png" alt="CANTRAIN" className="ri-cantrain-logo" /></a>
