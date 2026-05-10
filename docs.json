@@ -231,18 +231,36 @@
                     "expanded": false,
                     "pages": [
                       "kb/conduct-overview",
-                      "kb/data-integrity",
-                      "kb/data-security",
-                      "kb/edc-query-management",
-                      "kb/decentralized-trials",
-                      "kb/investigational-products",
-                      "kb/biological-specimens",
-                      "kb/reportable-events",
-                      "kb/deviation-management",
-                      "kb/study-amendments",
-                      "kb/team-management",
-                      "kb/monitoring-audits",
-                      "kb/hc-inspection-guide"
+                      {
+                        "group": "Data and Documentation",
+                        "expanded": false,
+                        "pages": [
+                          "kb/data-integrity",
+                          "kb/data-security",
+                          "kb/edc-query-management"
+                        ]
+                      },
+                      {
+                        "group": "Study Operations",
+                        "expanded": false,
+                        "pages": [
+                          "kb/decentralized-trials",
+                          "kb/investigational-products",
+                          "kb/biological-specimens"
+                        ]
+                      },
+                      {
+                        "group": "Safety Reporting and Compliance",
+                        "expanded": false,
+                        "pages": [
+                          "kb/reportable-events",
+                          "kb/deviation-management",
+                          "kb/study-amendments",
+                          "kb/team-management",
+                          "kb/monitoring-audits",
+                          "kb/hc-inspection-guide"
+                        ]
+                      }
                     ]
                   },
                   {
