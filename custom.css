@@ -1798,14 +1798,15 @@ html.dark .ri-cim-stat-l { color: #00c4b4; }
     grid-template-columns: 2fr 3fr;
     border-radius: 12px;
     overflow: hidden;
-    background: #f4f6f9;
+    background: #fff;
+    border: 1px solid rgba(0,0,0,.07);
     text-decoration: none !important;
     color: inherit !important;
-    transition: transform .15s, box-shadow .15s;
+    transition: box-shadow .15s;
     min-height: 260px;
 }
-html.dark .ri-svc-strip { background: rgba(255,255,255,.04); }
-.ri-svc-strip:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(0,0,0,.10); }
+html.dark .ri-svc-strip { background: rgba(255,255,255,.04); border-color: rgba(255,255,255,.07); }
+.ri-svc-strip:hover { box-shadow: 0 4px 16px rgba(0,0,0,.08); }
 .ri-svc-strip--reverse { grid-template-columns: 3fr 2fr; }
 .ri-svc-strip--reverse .ri-svc-strip-photo { order: 2; }
 .ri-svc-strip--reverse .ri-svc-strip-body { order: 1; }
@@ -1866,24 +1867,6 @@ html.dark .ri-svc-strip-desc { color: rgba(255,255,255,.5); }
     font-size: 14px;
     font-weight: 700;
     color: #007a6e !important;
-}
-.ri-svc-strip-cta::after { content: " →"; }
-.ri-svc-strip-badge {
-    display: inline-block;
-    background: rgba(0,122,110,.08);
-    color: var(--ri-accent);
-    border: 1.5px solid rgba(0,122,110,.22);
-    border-radius: 20px;
-    padding: 4px 12px;
-    font-size: 12px;
-    font-weight: 700;
-    letter-spacing: .04em;
-    margin-bottom: 16px;
-}
-html.dark .ri-svc-strip-badge {
-    background: rgba(0,196,180,.08);
-    color: var(--ri-accent-bright);
-    border-color: rgba(0,196,180,.22);
 }
 
 /* Sub-service cards */
