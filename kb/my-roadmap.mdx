@@ -1,0 +1,25 @@
+---
+title: "My Study Roadmap"
+sidebarTitle: "My Study Roadmap"
+description: "Answer a few questions about your study and get a personalized, phase-by-phase roadmap — showing exactly what you need to do, in order, for your specific study."
+---
+
+import { useEffect } from 'react'
+
+export const StudyRoadmap = () => {
+  useEffect(() => {
+    const existing = document.getElementById('roadmap-script');
+    if (existing) existing.remove();
+    const script = document.createElement('script');
+    script.id = 'roadmap-script';
+    script.src = '/roadmap-script.js';
+    document.body.appendChild(script);
+    return () => {
+      const s = document.getElementById('roadmap-script');
+      if (s) s.remove();
+    };
+  }, []);
+  return <div id="rm-root" />;
+};
+
+<StudyRoadmap />
