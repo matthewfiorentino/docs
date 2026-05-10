@@ -146,19 +146,32 @@
                     "pages": [
                       "kb/planning-overview",
                       "kb/feasibility",
-                      "kb/study-design",
-                      "kb/patient-engagement",
-                      "kb/bcu",
-                      "kb/cord",
-                      "kb/data-warehouse",
                       "kb/sponsored-trials",
                       "kb/sponsor-investigator",
                       "kb/iit-startup",
-                      "kb/multi-centric",
-                      "kb/cross-border-studies",
+                      "kb/regulations",
+                      "kb/ai-in-clinical-research"
+                    ]
+                  },
+                  {
+                    "group": "Study Design",
+                    "expanded": false,
+                    "pages": [
+                      "kb/patient-engagement",
                       "kb/dct-design",
                       "kb/real-world-evidence",
-                      "kb/regulations"
+                      "kb/multi-centric",
+                      "kb/cross-border-studies"
+                    ]
+                  },
+                  {
+                    "group": "Design Support",
+                    "expanded": false,
+                    "pages": [
+                      "kb/study-design",
+                      "kb/bcu",
+                      "kb/cord",
+                      "kb/data-warehouse"
                     ]
                   },
                   {
@@ -210,8 +223,7 @@
                       "kb/pediatric-research",
                       "kb/vulnerable-populations",
                       "kb/indigenous-research-ethics",
-                      "kb/privacy",
-                      "kb/data-security"
+                      "kb/privacy"
                     ]
                   },
                   {
@@ -220,6 +232,7 @@
                     "pages": [
                       "kb/conduct-overview",
                       "kb/data-integrity",
+                      "kb/data-security",
                       "kb/edc-query-management",
                       "kb/decentralized-trials",
                       "kb/investigational-products",
@@ -229,7 +242,7 @@
                       "kb/study-amendments",
                       "kb/team-management",
                       "kb/monitoring-audits",
-                      "kb/ai-in-clinical-research"
+                      "kb/hc-inspection-guide"
                     ]
                   },
                   {
@@ -237,8 +250,7 @@
                     "expanded": false,
                     "pages": [
                       "kb/close-out",
-                      "kb/publications",
-                      "kb/hc-inspection-guide"
+                      "kb/publications"
                     ]
                   }
                 ]
