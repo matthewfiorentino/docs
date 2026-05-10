@@ -1040,11 +1040,13 @@ html.dark .ri-hub-body hr {
     justify-content: space-between;
     gap: 24px;
     background: var(--ri-accent, #007a6e);
-    border-radius: 10px;
-    padding: 32px 36px;
-    margin-top: 48px;
-    margin-bottom: 16px;
+    border-radius: 0;
+    padding: 48px 2.5rem;
+    margin: 0 -2.5rem -4rem;
     flex-wrap: wrap;
+}
+@media (max-width: 720px) {
+    .ri-contact-band { margin: 0 -1.25rem -3rem; padding: 40px 1.25rem; }
 }
 .ri-contact-heading {
     font-size: 20px; font-weight: 700; color: #fff !important; margin-bottom: 6px;
@@ -1608,6 +1610,32 @@ html.dark .ri-cim-body {
 .ri-cim-btn--outline:hover {
     opacity: .75;
 }
+
+/* ── CIM full-width dark band ── */
+.ri-cim-band {
+    margin: 0 -2.5rem 48px;
+    padding: 56px 2.5rem;
+    background: #150e51;
+}
+.ri-cim-band h2 {
+    color: #fff;
+    margin-bottom: 20px;
+}
+.ri-cim-band .ri-cim-heading { color: #fff; }
+.ri-cim-band .ri-cim-body { color: rgba(255,255,255,.75); }
+.ri-cim-band .ri-cim-stat-n { color: #fff; }
+.ri-cim-band .ri-cim-stat-l { color: #00c4b4; }
+.ri-cim-band .ri-cim-btn { background: #fff; color: #150e51 !important; }
+.ri-cim-band .ri-cim-btn--outline {
+    background: transparent;
+    border-color: rgba(255,255,255,.35);
+    color: rgba(255,255,255,.9) !important;
+}
+.ri-cim-band .ri-cim-btn--outline:hover { border-color: rgba(255,255,255,.8); opacity: 1; }
+@media (max-width: 720px) {
+    .ri-cim-band { margin: 0 -1.25rem 40px; padding: 40px 1.25rem; }
+}
+
 @media (max-width: 700px) {
     .ri-cim-split {
         flex-direction: column;
