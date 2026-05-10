@@ -228,7 +228,8 @@
                       "kb/deviation-management",
                       "kb/study-amendments",
                       "kb/team-management",
-                      "kb/monitoring-audits"
+                      "kb/monitoring-audits",
+                      "kb/ai-in-clinical-research"
                     ]
                   },
                   {
@@ -249,6 +250,8 @@
                   "kb/governance/regulatory-framework",
                   "kb/governance/institutional-structure",
                   "kb/governance/quality-assurance",
+                  "kb/governance/modernized-ct-regulations",
+                  "kb/governance/french-language-requirements",
                   {
                     "group": "Research Ethics",
                     "expanded": false,
