@@ -44,6 +44,45 @@ Assess the following during study design:
 
 **IP logistics** — If direct-to-participant IP is planned, cold-chain requirements, chain-of-custody, and Quebec pharmacy obligations must be addressed before the pharmacy agreement is drafted.
 
+## Is your study suitable for DCT elements?
+
+Work through the questions below before deciding which elements to include in the protocol. Each "limit" outcome does not mean DCT is off the table — it means the element in question needs additional safeguards, adaptation, or should be scoped back.
+
+```mermaid
+flowchart TD
+    START([Your study is being designed]) --> Q1{Is this an early-phase\nor first-in-human study\nwith uncharacterized safety?}
+
+    Q1 -- Yes --> LIMIT1["Limit DCT elements\nMore in-person oversight needed\nRemote monitoring may still apply"]
+    Q1 -- No --> Q2{Can your primary\nassessments and safety\nmonitoring be done remotely\nor at a local facility?}
+
+    Q2 -- No --> ANCHOR["In-person anchored\nDecentralize secondary\nvisits only"]
+    Q2 -- Yes --> Q3{Does your target\npopulation have\nreliable digital access?}
+
+    Q3 -- No --> ADAPT["Adapt the approach\nOffer opt-in per element\nProvide paper / phone alternatives\nAddress in REB submission"]
+    Q3 -- Yes --> Q4{Does the protocol\ninclude direct-to-participant\nIP or local pharmacy\ndispensing?}
+
+    Q4 -- Yes --> PHARMACY["Engage MUHC pharmacy\nduring design\nPharmacy agreement required\nbefore activation\nSee Bill 67 / OPQ obligations"]
+    Q4 -- No --> Q5{Will participants be\nlocated outside Quebec\nduring virtual visits?}
+
+    Q5 -- Yes --> LICENCING["Telemedicine licensure\ncheck required\nSee provincial rules\nbefore finalizing protocol"]
+    Q5 -- No --> PROCEED["DCT elements appropriate\nDocument each element\nin protocol and CTA\nSubmit WI to REB before use"]
+
+    style START fill:#150e51,color:#fff,stroke:none
+    style LIMIT1 fill:#c97b2e,color:#fff,stroke:none
+    style ANCHOR fill:#c97b2e,color:#fff,stroke:none
+    style ADAPT fill:#c97b2e,color:#fff,stroke:none
+    style PHARMACY fill:#1a1466,color:#fff,stroke:none
+    style LICENCING fill:#1a1466,color:#fff,stroke:none
+    style PROCEED fill:#007a6e,color:#fff,stroke:none
+    style Q1 fill:#1a1466,color:#fff,stroke:none
+    style Q2 fill:#1a1466,color:#fff,stroke:none
+    style Q3 fill:#1a1466,color:#fff,stroke:none
+    style Q4 fill:#1a1466,color:#fff,stroke:none
+    style Q5 fill:#1a1466,color:#fff,stroke:none
+```
+
+For element-by-element requirements once suitability is confirmed, see the table in [Decentralized elements at a glance](#decentralized-elements-at-a-glance) below.
+
 ## Single-site with decentralized elements vs. multi-site
 
 When a study will reach participants across a wide geographic area, there is a structural decision to make: run it as a single MUHC site with decentralized elements, or as a multi-site trial with separate QIs at each site. These have meaningfully different administrative, regulatory, and operational implications. This decision shapes the protocol and the CTA.

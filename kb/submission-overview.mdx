@@ -52,6 +52,46 @@ flowchart TD
   </Step>
 </Steps>
 
+## Which ethics route applies to your study?
+
+Use this to identify the correct submission path before you start your F11.
+
+```mermaid
+flowchart TD
+    START([Your study involves\nMUHC participants, data,\nspaces, or affiliation]) --> Q1{Is the MUHC\nthe only site?}
+
+    Q1 -- Yes --> SINGLE["Single-site\nMUHC REB reviews\nSubmit F11 → Nagano"]
+
+    Q1 -- No --> Q2{Are all sites\nwithin Quebec\nRSSS network?}
+
+    Q2 -- Yes --> Q3{Is MUHC\nthe lead site?}
+    Q3 -- Yes --> LEAD["Multi-site Quebec\nMUHC REB acts as rREB\nParticipating sites follow\nMUHC REB review"]
+    Q3 -- No --> FOLLOW["Multi-site Quebec\nFollow the lead site's rREB\nMUHC submits local\nconvenance review only"]
+
+    Q2 -- No --> Q4{Does the study\ninclude Ontario sites?}
+    Q4 -- Yes --> Q5{Pediatric study\nwith MICYRN/CHEER\naffiliation?}
+    Q5 -- Yes --> CHEER["MICYRN/CHEER\nsingle-REB pilot\nContact Research\nFacilitator first"]
+    Q5 -- No --> CTO["Consider CTO Stream\nfor Ontario sites\nMUHC REB for MUHC\nparticipants"]
+    Q4 -- No --> MULTI["Multi-provincial\nMUHC REB for MUHC\nEach site submits\nto its local REB"]
+
+    style START fill:#150e51,color:#fff,stroke:none
+    style SINGLE fill:#007a6e,color:#fff,stroke:none
+    style LEAD fill:#007a6e,color:#fff,stroke:none
+    style FOLLOW fill:#007a6e,color:#fff,stroke:none
+    style CHEER fill:#007a6e,color:#fff,stroke:none
+    style CTO fill:#007a6e,color:#fff,stroke:none
+    style MULTI fill:#007a6e,color:#fff,stroke:none
+    style Q1 fill:#1a1466,color:#fff,stroke:none
+    style Q2 fill:#1a1466,color:#fff,stroke:none
+    style Q3 fill:#1a1466,color:#fff,stroke:none
+    style Q4 fill:#1a1466,color:#fff,stroke:none
+    style Q5 fill:#1a1466,color:#fff,stroke:none
+```
+
+<Note>
+If your study spans multiple provinces or includes networks like MICYRN, CHEER, or CTO, contact the [Research Facilitator](mailto:Research.facilitator@muhc.mcgill.ca) before submitting. Multi-site routing decisions affect timelines and the documents required in Nagano.
+</Note>
+
 ## Research Ethics Board (REB) review
 
 The MUHC REB conducts scientific and ethics review for research under MUHC auspices. Its jurisdiction is established by Quebec's _Cadre de référence ministériel_ and the TCPS2. Reviews are also guided by the Declaration of Helsinki.
