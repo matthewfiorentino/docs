@@ -30,7 +30,7 @@
     );
     return links
       .map(function (a) {
-        var id  = a.getAttribute('href').slice(1);
+        var id  = decodeURIComponent(a.getAttribute('href').slice(1));
         var el  = document.getElementById(id);
         var li  = a.closest('li.toc-item');
         return el && li ? { id: id, el: el, a: a, li: li } : null;
