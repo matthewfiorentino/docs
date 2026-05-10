@@ -1833,6 +1833,23 @@ html.dark .ri-svc-strip-desc { color: rgba(255,255,255,.5); }
     color: #007a6e !important;
 }
 .ri-svc-strip-cta::after { content: " →"; }
+.ri-svc-strip-badge {
+    display: inline-block;
+    background: rgba(0,122,110,.08);
+    color: var(--ri-accent);
+    border: 1.5px solid rgba(0,122,110,.22);
+    border-radius: 20px;
+    padding: 4px 12px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: .04em;
+    margin-bottom: 16px;
+}
+html.dark .ri-svc-strip-badge {
+    background: rgba(0,196,180,.08);
+    color: var(--ri-accent-bright);
+    border-color: rgba(0,196,180,.22);
+}
 
 /* Sub-service cards */
 .ri-svc-sub-grid {
