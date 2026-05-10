@@ -1035,18 +1035,21 @@ html.dark .ri-hub-body hr {
    HOME PAGE — CONTACT BAND
    ══════════════════════════════════════════════ */
 .ri-contact-band {
+    background: var(--ri-accent, #007a6e);
+    width: 100%;
+}
+.ri-contact-band-inner {
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 48px 2.5rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 24px;
-    background: var(--ri-accent, #007a6e);
-    border-radius: 0;
-    padding: 48px 2.5rem;
-    margin: 0 -2.5rem -4rem;
     flex-wrap: wrap;
 }
 @media (max-width: 720px) {
-    .ri-contact-band { margin: 0 -1.25rem -3rem; padding: 40px 1.25rem; }
+    .ri-contact-band-inner { padding: 40px 1.25rem; }
 }
 .ri-contact-heading {
     font-size: 20px; font-weight: 700; color: #fff !important; margin-bottom: 6px;
@@ -1613,27 +1616,34 @@ html.dark .ri-cim-body {
 
 /* ── CIM full-width dark band ── */
 .ri-cim-band {
-    margin: 0 -2.5rem 48px;
-    padding: 56px 2.5rem;
-    background: #150e51;
+    background: #2b2666;
+    width: 100%;
 }
-.ri-cim-band h2 {
-    color: #fff;
+.ri-cim-band-inner {
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 56px 2.5rem 48px;
+}
+.ri-cim-band-inner h2 {
+    color: #fff !important;
+    margin-top: 0;
     margin-bottom: 20px;
+    font-size: 1.5rem;
+    font-weight: 700;
 }
-.ri-cim-band .ri-cim-heading { color: #fff; }
-.ri-cim-band .ri-cim-body { color: rgba(255,255,255,.75); }
-.ri-cim-band .ri-cim-stat-n { color: #fff; }
-.ri-cim-band .ri-cim-stat-l { color: #00c4b4; }
-.ri-cim-band .ri-cim-btn { background: #fff; color: #150e51 !important; }
+.ri-cim-band .ri-cim-heading { color: #fff !important; }
+.ri-cim-band .ri-cim-body { color: rgba(255,255,255,.75) !important; }
+.ri-cim-band .ri-cim-stat-n { color: #fff !important; }
+.ri-cim-band .ri-cim-stat-l { color: #00c4b4 !important; }
+.ri-cim-band .ri-cim-btn { background: #fff !important; color: #150e51 !important; }
 .ri-cim-band .ri-cim-btn--outline {
-    background: transparent;
-    border-color: rgba(255,255,255,.35);
+    background: transparent !important;
+    border-color: rgba(255,255,255,.35) !important;
     color: rgba(255,255,255,.9) !important;
 }
-.ri-cim-band .ri-cim-btn--outline:hover { border-color: rgba(255,255,255,.8); opacity: 1; }
+.ri-cim-band .ri-cim-btn--outline:hover { border-color: rgba(255,255,255,.8) !important; opacity: 1; }
 @media (max-width: 720px) {
-    .ri-cim-band { margin: 0 -1.25rem 40px; padding: 40px 1.25rem; }
+    .ri-cim-band-inner { padding: 40px 1.25rem 32px; }
 }
 
 @media (max-width: 700px) {
