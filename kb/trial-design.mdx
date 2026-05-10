@@ -128,7 +128,52 @@ A control is what the investigational treatment is being compared against. The c
   <Accordion title="Crossover designs">
     In a crossover trial, each participant receives more than one treatment in sequence, with each participant serving as their own control. This reduces the sample size needed and controls for between-person variability. A washout period between treatment phases is required to prevent carry-over effects. Crossover designs are appropriate for chronic conditions with stable outcomes; they are not suitable for acute treatments or irreversible interventions.
   </Accordion>
+  <Accordion title="External control arms">
+    An external control arm uses historical or concurrent comparison data drawn from sources outside the trial — prior studies, registries, or real-world data — rather than a parallel control group enrolled in the current study.
+
+    **When it applies:** External controls are most accepted when a randomized control group is not feasible — insufficient patients for a parallel arm, ethical barriers to randomization, or rare disease settings where the natural history is well-documented and no standard therapy exists.
+
+    **Key limitations:** Selection bias (external controls may differ systematically from enrolled participants), temporal bias (standard of care may have shifted between when external controls were treated and when the study runs), and missing data (real-world sources rarely capture all protocol-required endpoints). These limitations produce less certain evidence than concurrent randomized controls, and regulators require robust justification.
+
+    **FDA position:** The [FDA's Feb 2023 draft guidance](https://www.fda.gov/regulatory-information/search-fda-guidance-documents/considerations-design-and-conduct-externally-controlled-trials-drug-and-biological-products) identifies five key considerations: data quality and relevance; patient similarity (eligibility criteria must produce populations comparable to the trial); temporal comparability; estimand alignment; and pre-specified sensitivity analyses to test robustness.
+
+    **Health Canada position:** No guidance document specific to external control arms exists. Health Canada applies the general Division 5 framework, and both the REB and Health Canada will scrutinize the scientific justification for choosing an external control over a randomized parallel design. The stronger the justification — particularly in rare disease contexts — the more receptive the review.
+
+    If your protocol contemplates an external control arm, contact the [BCU](/kb/bcu) and the [Research Facilitator](mailto:Research.facilitator@muhc.mcgill.ca) during design — the statistical approach and choice of external data source must be pre-specified before submission.
+  </Accordion>
 </AccordionGroup>
+
+## Master protocols and complex innovative designs
+
+A master protocol is a single overarching protocol designed to simultaneously evaluate one or more interventions in one or more disease subsets, using a shared infrastructure. They are increasingly used where the traditional parallel-arm RCT is inefficient — particularly in oncology, rare disease, and precision medicine. ICH E6(R3) and [ICH E8(R1)](https://database.ich.org/sites/default/files/E8-R1_Guideline_Step4_2021_1006.pdf) both explicitly recognize complex innovative designs as a core part of the clinical trial landscape.
+
+### Types
+
+| Design | Structure | Typical use |
+|---|---|---|
+| **Basket trial** | One investigational agent tested across multiple disease subsets simultaneously, often sharing a biomarker or molecular target | Oncology: a targeted therapy across tumor types sharing a driver mutation (e.g., NTRK fusion across lung, colorectal, salivary gland) |
+| **Umbrella trial** | Multiple investigational agents tested within a single disease, with participants assigned by biomarker profiling | Oncology: patients with one cancer type screened for multiple molecular targets, then assigned to the matched treatment arm |
+| **Platform trial** | A long-duration adaptive infrastructure where new treatments can enter and leave based on pre-specified rules while the trial continues | RECOVERY trial model; pandemic preparedness; diseases with multiple candidate therapies and stable patient populations |
+
+### What makes these designs different
+
+**Shared infrastructure** — participants are enrolled once and assigned using a central allocation system. This reduces per-study overhead and allows shared control arms across treatment comparisons — but shared controls require careful statistical justification.
+
+**Adaptive features** — most master protocols incorporate pre-specified decision rules: interim analyses that can add or drop arms, modify sample size, or adjust allocation ratios as data accumulates. These rules must be fully specified before the first participant is enrolled. Post-hoc modifications to the statistical plan are a data integrity problem, not a design refinement.
+
+**Statistical approach** — adaptive master protocols frequently use Bayesian methods that allow probability of success to be updated as data accumulates. Bayesian and frequentist approaches are both accepted by Health Canada; the choice depends on the scientific question and funder context. The [BCU](/kb/bcu) can advise on which is appropriate for your study.
+
+### Regulatory and ethics considerations at RI-MUHC
+
+Health Canada does not have a separate regulatory pathway for master protocols — they proceed under standard Division 5 CTA processes. However, the design complexity requires careful attention in the CTA:
+
+- The statistical analysis plan must be complete and pre-specified, including all decision rules for adaptations
+- Control arm sharing across sub-studies must be statistically justified
+- Each sub-study population may have different consent requirements if the biomarker-defined population changes the risk–benefit profile for that subgroup
+
+The REB will assess whether the master protocol's adaptive design genuinely maintains equipoise across all arms throughout the trial, and whether consent documents adequately describe the possibility of arm modification or new arms opening during a participant's involvement.
+
+Engage the [BCU](/kb/bcu) and the [Research Facilitator](mailto:Research.facilitator@muhc.mcgill.ca) during protocol design — both are needed before the CTA or REB submission for a master protocol study.
 
 ## How design choices shape the evidence
 
