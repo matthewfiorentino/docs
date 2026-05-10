@@ -1040,19 +1040,35 @@ html.dark .ri-hub-body hr {
     margin: 0 auto;
     padding: 48px 2.5rem;
     display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 24px;
+    align-items: stretch;
+    gap: 48px;
     flex-wrap: wrap;
 }
-@media (max-width: 720px) {
-    .ri-contact-band-inner { padding: 40px 1.25rem; }
+.ri-contact-primary {
+    flex: 1;
+    min-width: 260px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+.ri-contact-divider {
+    width: 1px;
+    background: rgba(255,255,255,.2);
+    align-self: stretch;
+    flex-shrink: 0;
+}
+.ri-contact-faq-callout {
+    flex: 1;
+    min-width: 240px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 .ri-contact-heading {
-    font-size: 20px; font-weight: 700; color: #fff !important; margin-bottom: 6px;
+    font-size: 20px; font-weight: 700; color: #fff !important; margin: 0;
 }
 .ri-contact-body {
-    font-size: 14px; color: rgba(255,255,255,.88); line-height: 1.6; max-width: 480px;
+    font-size: 14px; color: rgba(255,255,255,.8); line-height: 1.65; margin: 0;
 }
 .ri-contact-btn {
     display: inline-block;
@@ -1062,10 +1078,29 @@ html.dark .ri-hub-body hr {
     padding: 12px 24px;
     border-radius: 8px;
     text-decoration: none !important;
-    white-space: nowrap; flex-shrink: 0;
+    white-space: nowrap;
+    align-self: flex-start;
     transition: opacity .15s;
 }
 .ri-contact-btn:hover { opacity: .85; }
+.ri-contact-faq-heading {
+    font-size: 16px; font-weight: 700; color: #fff !important; margin: 0;
+}
+.ri-contact-faq-body {
+    font-size: 14px; color: rgba(255,255,255,.75); line-height: 1.65; margin: 0;
+}
+.ri-contact-faq-link {
+    font-size: 14px; font-weight: 700;
+    color: rgba(255,255,255,.9) !important;
+    text-decoration: none !important;
+    align-self: flex-start;
+    transition: color .15s;
+}
+.ri-contact-faq-link:hover { color: #fff !important; }
+@media (max-width: 720px) {
+    .ri-contact-band-inner { padding: 40px 1.25rem; gap: 32px; }
+    .ri-contact-divider { width: 100%; height: 1px; align-self: auto; }
+}
 /* ══════════════════════════════════════════════
    NAVBAR — Luma theme
    ══════════════════════════════════════════════ */
