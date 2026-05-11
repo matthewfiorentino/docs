@@ -3592,7 +3592,68 @@ function llStubPane(pane, title, sub) {
     '<div class="ll-pane-sub">' + sub + '</div>' +
     '<div class="ll-stub">Migration in progress — content will appear here.</div>';
 }
-function llRenderTeamExercises(pane)   { llStubPane(pane, 'Team Exercises',   'Case-based discussion exercises for team meetings or solo work. Reveal key points when ready.'); }
+/* ════════════════════════════════════════════════════════════════════════
+   TEAM EXERCISES — migrated to new shell
+════════════════════════════════════════════════════════════════════════ */
+
+var LL_TE_EXERCISES = [
+  { slug:'delegation', topic:'Delegation and Team Roles',        title:"Who’s Responsible for What?",          meta:'4 situations · SOP-CR-002' },
+  { slug:'consent',    topic:'Informed Consent Process',         title:'Did We Actually Consent This Participant?', meta:'4 situations · SOP-CR-008' },
+  { slug:'sae',        topic:'SAE and Adverse Event Reporting',  title:'The Friday Afternoon Cascade',              meta:'4 situations · SOP-CR-012' },
+  { slug:'deviations', topic:'Protocol Deviations',              title:'How Bad Is It?',                            meta:'5 issues · ICH E6(R3)' },
+  { slug:'monitoring', topic:'Monitoring and Inspection Readiness', title:'The Inspector Is Coming',                meta:'6 questions · ICH E6(R3)' },
+  { slug:'data',       topic:'Data Integrity',                   title:'What Is the Real Record?',                  meta:'5 situations · ALCOA+' },
+  { slug:'recruitment',topic:'Recruitment and Screening',        title:'Who Can We Enroll — and How?',         meta:'5 situations · ICH E6(R3)' },
+  { slug:'gcp',        topic:'GCP Principles',                   title:'Why Are We Doing This?',                    meta:'5 comments · ICH E6(R3)' }
+];
+
+var llTeCurrentSlug = '';
+
+function llRenderTeamExercises(pane) {
+  var h = (window.location.hash || '').replace(/^#/, '');
+  var parts = h.split('/');
+  if (parts[0] === 'team' && parts[1]) { llTeOpenExercise(parts[1]); return; }
+  llTeRenderList(pane);
+}
+
+function llTeRenderList(pane) {
+  var html = '<h1>Team Exercises</h1>';
+  html += '<div class="ll-pane-sub">Case-based discussion exercises for team meetings or solo work. Key points are hidden until you reveal them. Print without key points for group use.</div>';
+  html += '<div class="ll-te-list">';
+  for (var i = 0; i < LL_TE_EXERCISES.length; i++) {
+    var ex = LL_TE_EXERCISES[i];
+    html += '<div class="ll-te-item" onclick="llTeOpenExercise(\'' + ex.slug + '\')">';
+    html +=   '<div class="ll-te-topic">' + ex.topic + '</div>';
+    html +=   '<div class="ll-te-title">' + ex.title + '</div>';
+    html +=   '<div class="ll-te-meta">' + ex.meta + '</div>';
+    html += '</div>';
+  }
+  html += '</div>';
+  pane.innerHTML = html;
+}
+
+function llTeOpenExercise(slug) {
+  var source = document.getElementById('kp-phase-te-' + slug);
+  if (!source) { return; }
+  llTeCurrentSlug = slug;
+  var clone = source.cloneNode(true);
+  var navRow = clone.querySelector('.kp-nav-row');
+  if (navRow) { navRow.parentNode.removeChild(navRow); }
+  var navHTML =
+    '<div class="ll-kc-seq-nav" style="margin-bottom:24px">' +
+      '<button class="ll-back-btn" onclick="llTeBackToList()">&#8592; All exercises</button>' +
+      '<span class="ll-kc-seq-badge">Team Exercises</span>' +
+    '</div>';
+  llPane().innerHTML = navHTML + clone.innerHTML;
+  history.pushState(null, '', '#team/' + slug);
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function llTeBackToList() {
+  llTeCurrentSlug = '';
+  history.pushState(null, '', window.location.pathname + window.location.search);
+  llRoute('te', { noHash: true });
+}
 function llRenderDocReview(pane)       { llStubPane(pane, 'Document Review',  'Constructed research documents with deliberate errors. Identify the issues; reveal the findings when ready.'); }
 /* ════════════════════════════════════════════════════════════════════════
    JUDGEMENT CALLS — migrated to new shell

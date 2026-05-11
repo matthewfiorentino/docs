@@ -6121,6 +6121,13 @@ export const LL_SHELL_CSS = `
 .ll-kc-end-retry:hover { opacity: .85; }
 .ll-kc-end-back { padding: 9px 20px; background: none; color: var(--ll-text-2); border: 1px solid var(--ll-bdr); border-radius: var(--ll-radius); cursor: pointer; font: inherit; font-size: 13.5px; transition: border-color .15s, color .15s; }
 .ll-kc-end-back:hover { border-color: var(--ll-accent); color: var(--ll-accent); }
+/* Team Exercises list */
+.ll-te-list { display: flex; flex-direction: column; border-top: 1px solid var(--ll-bdr); }
+.ll-te-item { display: flex; flex-direction: column; gap: 3px; padding: 16px 0; border-bottom: 1px solid var(--ll-bdr); cursor: pointer; }
+.ll-te-item:hover .ll-te-title { color: var(--ll-accent); }
+.ll-te-topic { font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--ll-text-3); }
+.ll-te-title { font-size: 15px; font-weight: 600; color: var(--ll-text); line-height: 1.3; transition: color .15s; }
+.ll-te-meta { font-size: 12px; color: var(--ll-text-3); margin-top: 1px; }
 /* Judgement Calls */
 .ll-jc-scenarios { display: flex; flex-direction: column; gap: 10px; margin-top: 4px; }
 .ll-jc-scenario { padding: 16px 18px; border: 1px solid var(--ll-bdr); border-radius: var(--ll-radius); cursor: pointer; transition: border-color .15s, background .15s; }
