@@ -939,6 +939,8 @@ body:has(.ri-text-hero) main {
     margin: 0 0 34px;
 }
 .ri-text-hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+.ri-hero-palette { display: flex; gap: 5px; align-items: center; margin-top: 20px; }
+.ri-hero-palette span { display: block; width: 20px; height: 3px; border-radius: 2px; }
 .ri-text-hero-btn-primary {
     background: var(--ri-hero-accent); color: #150e51 !important;
     padding: 12px 24px; border-radius: 8px;
