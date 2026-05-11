@@ -190,7 +190,7 @@
         { val: 'drug',   label: 'Drug or biologic',                  hint: 'Includes biosimilars and advanced therapy products' },
         { val: 'device', label: 'Medical device',                    hint: 'Includes diagnostics, surgical devices, implants' },
         { val: 'nhp',    label: 'Natural health product (NHP)',       hint: 'Vitamins, herbal products, homeopathic medicines' },
-        { val: 'low',    label: 'Low-risk behavioral or procedural',  hint: 'No Health Canada filing required' }
+        { val: 'low',    label: 'Low-risk behavioural or procedural',  hint: 'No Health Canada filing required' }
       ]
     },
     {
@@ -789,7 +789,7 @@
   function buildEmailBody(a, p, flags) {
     var stageMap = { idea: 'Early idea / concept', design: 'Protocol design and planning', submission: 'Submission', conduct: 'In conduct', closeout: 'Close-out' };
     var typeMap  = { interventional: 'Interventional', 'observational-prospective': 'Prospective Observational', retrospective: 'Retrospective / Secondary' };
-    var intMap   = { drug: 'Drug / Biologic', device: 'Medical Device', nhp: 'Natural Health Product (NHP)', low: 'Low-risk behavioral / procedural' };
+    var intMap   = { drug: 'Drug / Biologic', device: 'Medical Device', nhp: 'Natural Health Product (NHP)', low: 'Low-risk behavioural / procedural' };
     var sponMap  = { industry: 'Industry-sponsored', si: 'Sponsor-Investigator', grant: 'Grant-funded / Academic' };
     var popMap   = { minors: 'Minors', incapable: 'Incapable adults', both: 'Minors and incapable adults', none: 'Standard adult population' };
     var sitMap   = { single: 'Single site (MUHC)', 'multi-lead': 'Multicentre — MUHC REB Lead', 'multi-part': 'Multicentre — MUHC participating', 'multi-cross': 'Multicentre — cross-provincial / international' };
