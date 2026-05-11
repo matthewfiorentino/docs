@@ -6067,7 +6067,9 @@ export const LL_SHELL_CSS = `
 
 /* — Mobile dropdown (hidden on desktop) — */
 .ll-mobile-nav { display: none; padding: 16px 20px; border-bottom: 1px solid var(--ll-bdr); background: #fff; position: sticky; top: 64px; z-index: 10; }
-.ll-mobile-select { width: 100%; padding: 10px 14px; font: inherit; font-size: 14px; color: var(--ll-text); background: #fff; border: 1px solid var(--ll-bdr); border-radius: var(--ll-radius); appearance: none; -webkit-appearance: none; cursor: pointer; background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23555' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'><polyline points='6 9 12 15 18 9'/></svg>"); background-repeat: no-repeat; background-position: right 14px center; padding-right: 38px; }
+.ll-mobile-select-wrap { position: relative; }
+.ll-mobile-select-wrap::after { content: "\\25BE"; position: absolute; right: 16px; top: 50%; transform: translateY(-50%); font-size: 12px; color: var(--ll-text-2); pointer-events: none; }
+.ll-mobile-select { width: 100%; padding: 10px 14px 10px 14px; padding-right: 38px; font: inherit; font-size: 14px; color: var(--ll-text); background: #fff; border: 1px solid var(--ll-bdr); border-radius: var(--ll-radius); appearance: none; -webkit-appearance: none; cursor: pointer; }
 .ll-mobile-select:focus { outline: none; border-color: var(--ll-accent); }
 
 /* — Pane — */
@@ -6099,13 +6101,15 @@ export const LL_SHELL_CSS = `
 export const LL_SHELL_HTML = `
 <div class="ll">
   <div class="ll-mobile-nav">
-    <select class="ll-mobile-select" id="ll-mobile-select" aria-label="Learning Lab mode">
-      <option value="kc">Knowledge Checks</option>
-      <option value="te">Team Exercises</option>
-      <option value="dr">Document Review</option>
-      <option value="jc">Judgement Calls</option>
-      <option value="insp">Inspection Prep</option>
-    </select>
+    <div class="ll-mobile-select-wrap">
+      <select class="ll-mobile-select" id="ll-mobile-select" aria-label="Learning Lab mode">
+        <option value="kc">Knowledge Checks</option>
+        <option value="te">Team Exercises</option>
+        <option value="dr">Document Review</option>
+        <option value="jc">Judgement Calls</option>
+        <option value="insp">Inspection Prep</option>
+      </select>
+    </div>
   </div>
   <div class="ll-wrap">
     <aside class="ll-rail" aria-label="Learning Lab modes">
