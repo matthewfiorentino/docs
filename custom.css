@@ -1519,25 +1519,27 @@ article {
 /* ── CIM homepage split (photo + text) ── */
 .ri-cim-split {
     display: flex;
-    gap: 32px;
-    align-items: center;
-    margin-top: 8px;
+    gap: 0;
+    align-items: stretch;
 }
 .ri-cim-photo {
-    flex: 0 0 45%;
-    border-radius: 10px;
-    overflow: hidden;
+    flex: 0 0 50%;
 }
 .ri-cim-photo img {
     display: block;
     width: 100%;
-    height: 280px;
+    height: 100%;
+    min-height: 360px;
     object-fit: cover;
-    border-radius: 10px;
+    border-radius: 0;
 }
 .ri-cim-text {
     flex: 1;
     min-width: 0;
+    padding: 56px 48px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 .ri-cim-heading {
     font-size: 20px;
@@ -1592,21 +1594,16 @@ article {
 .ri-cim-band {
     background: var(--ri-hero-accent);
     width: 100%;
+    overflow: hidden;
 }
-.ri-cim-band-inner {
-    max-width: 1120px;
-    margin: 0 auto;
-    padding: 56px 2.5rem 48px;
-}
-.ri-cim-band-inner h2 {
-    color: #fff !important;
-    margin-top: 0;
-    margin-bottom: 20px;
+.ri-cim-band .ri-cim-eyebrow { color: rgba(255,255,255,.7) !important; margin-bottom: 10px; }
+.ri-cim-heading {
     font-size: 1.5rem;
     font-weight: 700;
+    line-height: 1.2;
+    color: #fff !important;
+    margin: 0 0 20px;
 }
-.ri-cim-band .ri-cim-eyebrow { color: rgba(255,255,255,.8) !important; }
-.ri-cim-band .ri-cim-heading { color: #fff !important; }
 .ri-cim-band .ri-cim-body { color: rgba(255,255,255,.75) !important; }
 .ri-cim-band .ri-cim-stat-n { color: #fff !important; }
 .ri-cim-band .ri-cim-stat-l { color: rgba(255,255,255,.8) !important; }
@@ -1622,14 +1619,10 @@ article {
 }
 
 @media (max-width: 700px) {
-    .ri-cim-split {
-        flex-direction: column;
-        gap: 20px;
-    }
-    .ri-cim-photo {
-        flex: none;
-        width: 100%;
-    }
+    .ri-cim-split { flex-direction: column; }
+    .ri-cim-photo { flex: none; width: 100%; }
+    .ri-cim-photo img { height: 240px; min-height: 0; }
+    .ri-cim-text { padding: 40px 24px; }
 }
 
 /* ── Research support services grid ── */
