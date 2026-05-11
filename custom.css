@@ -1,8 +1,9 @@
 /* ── RI-MUHC Clinical Research Hub — Mintlify styles ─────────────────────── */
 /* ── Design tokens ── */
 :root {
-    --ri-heading: #150e51;
-    --ri-accent:  #008f82;
+    --ri-heading:      #150e51;
+    --ri-accent:       #008f82;
+    --ri-hero-accent:  #2b9ce2;
     --ri-accent-bright: #00c4b4;
     --ri-navy:    #2b2666;
     --ri-coral:   #ff537f;
@@ -987,7 +988,7 @@ html.dark .ri-hub-body hr {
     line-height: 1.1; margin: 0 0 22px;
 }
 .ri-hero-accent {
-    color: var(--ri-accent) !important;
+    color: var(--ri-hero-accent) !important;
 }
 .ri-text-hero-desc {
     color: rgba(255,255,255,.78);
@@ -996,7 +997,7 @@ html.dark .ri-hub-body hr {
 }
 .ri-text-hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
 .ri-text-hero-btn-primary {
-    background: var(--ri-accent); color: #fff !important;
+    background: var(--ri-hero-accent); color: #150e51 !important;
     padding: 12px 24px; border-radius: 8px;
     font-weight: 700; font-size: 14px;
     text-decoration: none !important;
