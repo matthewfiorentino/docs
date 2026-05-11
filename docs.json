@@ -396,8 +396,7 @@
                 "icon": "shield-check",
                 "pages": [
                   "training/compliance-requirements",
-                  "training/external-certifications",
-                  "training/study-classifier"
+                  "training/external-certifications"
                 ]
               },
               {
@@ -796,6 +795,10 @@
     },
     {
       "source": "/kb/study-intake",
+      "destination": "/kb/my-roadmap"
+    },
+    {
+      "source": "/training/study-classifier",
       "destination": "/kb/my-roadmap"
     },
     {
