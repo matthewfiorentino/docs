@@ -2,7 +2,7 @@
 title: "Learning Lab — Practice Tools for Clinical Research"
 sidebarTitle: "Learning Lab"
 description: "Applied practice tools for RI-MUHC clinical research staff — knowledge checks, team exercises, document review, judgement calls, and inspection prep."
-mode: "custom"
+mode: "wide"
 keywords: ["practice", "scenarios", "knowledge check", "team exercise", "inspection prep", "judgment calls"]
 ---
 
@@ -6012,6 +6012,9 @@ function inspGoHub() {
 `;
 
 export const LL_SHELL_CSS = `
+/* — Hide Mintlify sidebar so our rail is the only left panel — */
+#sidebar { display: none !important; }
+
 /* — Hide all legacy chrome — */
 .kp-hero, .kp-stage, .kp-phase, .kp-phase.phase-active { display: none !important; }
 
