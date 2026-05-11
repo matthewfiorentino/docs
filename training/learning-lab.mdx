@@ -6144,6 +6144,93 @@ export const LL_SHELL_CSS = `
 .ll-about-mode-desc { font-size: 13px; color: var(--ll-text-3); line-height: 1.5; }
 .ll-about-cta { padding: 10px 22px; background: var(--ll-accent); color: #fff; border: none; border-radius: var(--ll-radius); cursor: pointer; font: inherit; font-size: 14px; font-weight: 600; transition: opacity .15s; }
 .ll-about-cta:hover { opacity: .85; }
+
+/* ══ PALETTE HARMONIZATION ════════════════════════════════════════════
+   Redefine legacy vars at #ll-pane scope so all old content
+   (including inline style="color:var(--navy)") resolves to shell palette.
+   Semantic feedback colors (coral, green-bright, amber) stay intact.    */
+#ll-pane {
+  --navy:         #111;
+  --navy-card:    #222;
+  --teal:         #007a6e;
+  --teal-bright:  #007a6e;
+  --teal-chip:    #b3e8e3;
+  --sky:          #007a6e;
+  --sky-l:        #f0faf9;
+  --purple:       #007a6e;
+  --purple-l:     #f0faf9;
+  --fuchsia:      #007a6e;
+  --fuchsia-l:    #f0faf9;
+  --rose:         #666;
+  --rose-l:       #f5f5f5;
+  --bg:           #fafafa;
+  --bg-low:       #f8f8f8;
+  --bg-cont:      #f0f0f0;
+  --bg-high:      #e8e8e8;
+  --bg-highest:   #e0e0e0;
+  --bdr-soft:     #e5e5e5;
+  --bdr:          #c8c8c8;
+  --text:         #111;
+  --textm:        #444;
+  --textd:        #888;
+  --shadow:       0 1px 4px rgba(0,0,0,.05);
+}
+
+/* inspection-btn uses !important — override with higher specificity */
+#ll-pane .inspection-btn { background: #007a6e !important; box-shadow: none !important; }
+#ll-pane .inspection-btn:hover { opacity: .85; }
+
+/* ══ CHROME REDUCTION ═════════════════════════════════════════════════
+   Remove heavy box-shadows, gradient overlays, scale/translate
+   animations, and cascading entry delays.                               */
+#ll-pane .kp-qcard        { box-shadow: none; animation: none; opacity: 1; transform: none; }
+#ll-pane .kp-qcard.exiting { animation: none; opacity: 0; }
+#ll-pane .jc-card          { box-shadow: none; }
+#ll-pane .kp-entry-card, #ll-pane .kp-landing-card, #ll-pane .kp-mode-card,
+#ll-pane .kp-studytype-chip, #ll-pane .kp-topic-tile, #ll-pane .kp-count-tile {
+  box-shadow: none; animation: none; opacity: 1; transform: none;
+}
+#ll-pane .kp-entry-card:hover, #ll-pane .kp-landing-card:hover, #ll-pane .kp-mode-card:hover {
+  transform: translateY(-2px); box-shadow: 0 3px 10px rgba(0,0,0,.06);
+}
+#ll-pane .kp-studytype-chip:hover, #ll-pane .kp-topic-tile:hover,
+#ll-pane .kp-count-tile:hover { transform: none; }
+#ll-pane .kp-entry-card::before, #ll-pane .kp-landing-card::before,
+#ll-pane .kp-mode-card::before { display: none; }
+#ll-pane .kp-qcard-rat.check-rat, #ll-pane .kp-qcard-rat.scenario-rat {
+  background: var(--bg-low);
+}
+#ll-pane .kp-qcard-reveal-btn { box-shadow: none; }
+#ll-pane .kp-qcard-reveal-btn:hover { transform: none; box-shadow: none; background: #005c53; }
+#ll-pane .kp-qcard-next:hover { transform: none; box-shadow: none; background: #222; }
+#ll-pane .kp-end-btn-primary:hover { transform: none; }
+#ll-pane .jc-choice:hover { transform: none; }
+#ll-pane .kp-back:hover { transform: none; }
+#ll-pane .kp-dr-hub-card.active:hover { transform: translateY(-2px); box-shadow: 0 3px 10px rgba(0,0,0,.06); }
+#ll-pane .kp-dr-findings-head { border-top-color: #e5e5e5; }
+
+/* ══ INSPECTION PREP — single column, less vertical mass ══════════════ */
+#ll-pane .kp-insp-cols { display: flex; flex-direction: column; min-height: unset; }
+#ll-pane .kp-insp-left {
+  border-right: none; border-bottom: 1px solid var(--bdr-soft);
+  justify-content: flex-start; padding: 24px 28px 20px;
+}
+#ll-pane .kp-insp-right { padding: 20px 28px 28px; gap: 14px; }
+@media (max-width: 700px) {
+  #ll-pane .kp-insp-left { border-bottom: 1px solid var(--bdr-soft); }
+}
+
+/* ══ TEAM EXERCISES — more breathing room and visual separation ════════ */
+#ll-pane .te-block { margin-top: 28px; border-radius: 6px; overflow: hidden; }
+#ll-pane .te-situation { padding: 26px 28px; }
+#ll-pane .te-situation-eyebrow { margin-bottom: 12px; }
+#ll-pane .te-q-text { padding: 22px 28px; font-size: 14.5px; line-height: 1.65; }
+#ll-pane .te-kp-toggle { padding: 14px 28px; }
+#ll-pane .te-kp-body { padding: 22px 28px 26px; background: #f9f9f9; }
+#ll-pane .te-roster-item { padding: 14px 18px; border-radius: 6px; }
+#ll-pane .te-case-intro p { font-size: 14.5px; line-height: 1.75; }
+#ll-pane .te-reflection { padding: 22px 28px; border-radius: 6px; }
+#ll-pane .te-print-bar { border-radius: 4px; }
 `;
 
 export const LL_SHELL_HTML = `
