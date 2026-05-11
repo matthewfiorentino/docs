@@ -3574,11 +3574,169 @@ function llStubPane(pane, title, sub) {
     '<div class="ll-pane-sub">' + sub + '</div>' +
     '<div class="ll-stub">Migration in progress — content will appear here.</div>';
 }
-function llRenderKnowledgeChecks(pane) { llStubPane(pane, 'Knowledge Checks', 'Multiple-choice questions with immediate feedback across 11 topics. Browse by topic or shuffle for a randomized mix.'); }
 function llRenderTeamExercises(pane)   { llStubPane(pane, 'Team Exercises',   'Case-based discussion exercises for team meetings or solo work. Reveal key points when ready.'); }
 function llRenderDocReview(pane)       { llStubPane(pane, 'Document Review',  'Constructed research documents with deliberate errors. Identify the issues; reveal the findings when ready.'); }
 function llRenderJudgementCalls(pane)  { llStubPane(pane, 'Judgement Calls',  'Realistic pressure scenarios where someone asks you to do something that may not be right. Three decision points per scenario.'); }
 function llRenderInspectionPrep(pane)  { llStubPane(pane, 'Inspection Prep',  'Mock inspector questions with model responses. Prepare your answer, then reveal what a strong response looks like.'); }
+
+/* ════════════════════════════════════════════════════════════════════════
+   KNOWLEDGE CHECKS — migrated to new shell
+════════════════════════════════════════════════════════════════════════ */
+
+if (!kpStudyType) { kpStudyType = 'interventional'; }
+
+var llKcActive = false;
+
+(function() {
+  var _orig = kpShowEnd;
+  kpShowEnd = function() { if (llKcActive) { llKcRenderEnd(); } else { _orig(); } };
+})();
+
+function llRenderKnowledgeChecks(pane) {
+  var h = (window.location.hash || '').replace(/^#/, '');
+  var parts = h.split('/');
+  var p0 = parts[0] || '', p1 = parts[1] || '', p2 = parts[2] || '';
+  if ((p0 === 'browse' || p0 === 'practice') && (p1 === 'interventional' || p1 === 'observational')) {
+    kpStudyType = p1;
+  }
+  if (p0 === 'shuffle' && p1) { kpStudyType = p1; llKcStartShuffle(); return; }
+  if (p0 === 'browse' && p2)  { llKcStartTopic(p2); return; }
+  llKcRenderGrid(pane);
+}
+
+function llKcRenderGrid(pane) {
+  var intl = (kpStudyType !== 'observational');
+  var html = '<h1>Knowledge Checks</h1>';
+  html += '<div class="ll-pane-sub">Multiple-choice questions with immediate feedback across ' + KP_TOPICS.filter(function(t){ return t.live && (intl || t.applies !== 'interventional'); }).length + ' topics. Browse by topic or shuffle for a randomised mix.</div>';
+  html += '<div class="ll-kc-controls">';
+  html +=   '<div class="ll-kc-pills">';
+  html +=     '<button class="ll-kc-pill' + ( intl ? ' active' : '') + '" onclick="llKcSetStudyType(\'interventional\')">Interventional</button>';
+  html +=     '<button class="ll-kc-pill' + (!intl ? ' active' : '') + '" onclick="llKcSetStudyType(\'observational\')">Observational</button>';
+  html +=   '</div>';
+  html +=   '<button class="ll-kc-shuffle-btn" onclick="llKcStartShuffle()">Shuffle all</button>';
+  html += '</div>';
+  html += '<div class="ll-kc-topics">';
+  for (var i = 0; i < KP_TOPICS.length; i++) {
+    var t = KP_TOPICS[i];
+    if (!t.live || (!intl && t.applies === 'interventional')) { continue; }
+    var count = 0;
+    for (var j = 0; j < KP_POOL.length; j++) {
+      var q = KP_POOL[j];
+      if (q.topicId === t.id && q.type === 'check' && !(q.applies === 'interventional' && !intl)) { count++; }
+    }
+    html += '<div class="ll-kc-topic" onclick="llKcStartTopic(\'' + t.id + '\')">';
+    html +=   '<div class="ll-kc-topic-name">' + t.name + '</div>';
+    html +=   '<div class="ll-kc-topic-meta">' + count + ' questions · ' + t.sop + '</div>';
+    html += '</div>';
+  }
+  html += '</div>';
+  pane.innerHTML = html;
+}
+
+function llKcSetStudyType(type) {
+  kpStudyType = type;
+  llRoute('kc', { noHash: true });
+}
+
+function llKcStartTopic(topicId) {
+  var topic = null;
+  for (var i = 0; i < KP_TOPICS.length; i++) { if (KP_TOPICS[i].id === topicId) { topic = KP_TOPICS[i]; break; } }
+  if (!topic) { return; }
+  var intl = (kpStudyType !== 'observational');
+  var queue = [];
+  for (var j = 0; j < KP_POOL.length; j++) {
+    var q = KP_POOL[j];
+    if (q.topicId === topicId && q.type === 'check' && !(q.applies === 'interventional' && !intl)) { queue.push(q); }
+  }
+  if (!queue.length) { return; }
+  seqQueue = queue; seqIndex = 0; seqCorrect = 0; seqChecks = 0; seqTransitioning = false;
+  kpMode = 'browse'; kpBrowseTopicId = topicId; kpBrowseType = 'check';
+  var pane = llPane();
+  pane.innerHTML = llKcSeqHTML(topic.name);
+  var fill = document.getElementById('kp-seq-progress-fill');
+  if (fill) { fill.className = 'kp-seq-progress-fill browse-col'; }
+  history.pushState(null, '', '#browse/' + kpStudyType + '/' + topicId);
+  llKcActive = true;
+  kpSeqRender();
+}
+
+function llKcStartShuffle() {
+  var intl = (kpStudyType !== 'observational');
+  var pool = [];
+  for (var i = 0; i < KP_POOL.length; i++) {
+    var q = KP_POOL[i];
+    if (q.type === 'check' && !(q.applies === 'interventional' && !intl)) { pool.push(q); }
+  }
+  for (var i = pool.length - 1; i > 0; i--) {
+    var j = Math.floor(Math.random() * (i + 1));
+    var tmp = pool[i]; pool[i] = pool[j]; pool[j] = tmp;
+  }
+  seqQueue = pool; seqIndex = 0; seqCorrect = 0; seqChecks = 0; seqTransitioning = false;
+  kpMode = 'shuffle'; kpBrowseType = 'check';
+  var pane = llPane();
+  pane.innerHTML = llKcSeqHTML('All topics · ' + (intl ? 'Interventional' : 'Observational'));
+  var fill = document.getElementById('kp-seq-progress-fill');
+  if (fill) { fill.className = 'kp-seq-progress-fill shuffle-col'; }
+  history.pushState(null, '', '#shuffle/' + kpStudyType);
+  llKcActive = true;
+  kpSeqRender();
+}
+
+function llKcSeqHTML(label) {
+  return '<div class="ll-kc-seq">' +
+    '<div class="ll-kc-seq-nav">' +
+      '<button class="ll-back-btn" onclick="llKcBackToTopics()">&#8592; Topics</button>' +
+      '<span class="ll-kc-seq-badge">' + (kpStudyType === 'observational' ? 'Observational' : 'Interventional') + '</span>' +
+    '</div>' +
+    '<div class="ll-kc-seq-label">' + label + '</div>' +
+    '<div class="kp-seq-progress-row">' +
+      '<div class="kp-seq-progress-bar"><div id="kp-seq-progress-fill" style="width:0%"></div></div>' +
+      '<span id="kp-seq-progress-label" class="kp-seq-progress-label"></span>' +
+    '</div>' +
+    '<div id="kp-seq-card-wrap"></div>' +
+  '</div>';
+}
+
+function llKcRenderEnd() {
+  var pane = llPane(); if (!pane) { return; }
+  llKcActive = false;
+  var feedback;
+  if (seqChecks === 0 || seqCorrect === seqChecks) {
+    feedback = 'Perfect score — solid command of this material. Move on to another topic or try the shuffle for a mixed review.';
+  } else if (seqCorrect >= Math.ceil(seqChecks * 0.8)) {
+    feedback = 'Strong result. Review the rationale on any questions you weren’t sure about — the details tend to matter in practice.';
+  } else if (seqCorrect >= Math.ceil(seqChecks * 0.6)) {
+    feedback = 'A few gaps worth revisiting. Read through the rationale on the ones you missed — the SOP links are there if you want to go deeper.';
+  } else {
+    feedback = 'This material takes repetition. Try again and focus on the rationale — understanding the reasoning is more useful than memorising answers.';
+  }
+  var topicName = '';
+  if (kpMode === 'browse') {
+    for (var i = 0; i < KP_TOPICS.length; i++) { if (KP_TOPICS[i].id === kpBrowseTopicId) { topicName = KP_TOPICS[i].name; break; } }
+  }
+  pane.innerHTML =
+    '<div class="ll-kc-end">' +
+      '<div class="ll-kc-end-eyebrow">' + (kpMode === 'shuffle' ? 'Shuffle complete' : 'Topic complete') + '</div>' +
+      '<div class="ll-kc-end-score">' +
+        '<span class="ll-kc-end-num">' + seqCorrect + '</span>' +
+        '<span class="ll-kc-end-denom">/' + seqChecks + '</span>' +
+        '<span class="ll-kc-end-label">correct</span>' +
+      '</div>' +
+      (topicName ? '<div class="ll-kc-end-topic">' + topicName + '</div>' : '') +
+      '<div class="ll-kc-end-feedback">' + feedback + '</div>' +
+      '<div class="ll-kc-end-btns">' +
+        '<button class="ll-kc-end-retry" onclick="' + (kpMode === 'shuffle' ? 'llKcStartShuffle' : 'llKcRetry') + '()">Try again</button>' +
+        '<button class="ll-kc-end-back" onclick="llKcBackToTopics()">&#8592; Back to topics</button>' +
+      '</div>' +
+    '</div>';
+}
+
+function llKcRetry()        { llKcStartTopic(kpBrowseTopicId); }
+function llKcBackToTopics() {
+  llKcActive = false;
+  history.pushState(null, '', window.location.pathname + window.location.search);
+  llRoute('kc', { noHash: true });
+}
 
 /* ── Initial mode from hash, with legacy hash compatibility ──────────── */
 function llInitialMode() {
