@@ -7,7 +7,6 @@
   'use strict';
 
   /* ── Config ───────────────────────────────────────────────────────────── */
-  var LS_KEY      = 'rm_state_v2';
   var EMAILJS_SVC = 'service_p1ld1rp';
   var EMAILJS_TPL = 'template_sqehaop';
   var EMAILJS_KEY = 'bY9Iw2R78ouIgz-rb';
@@ -477,25 +476,8 @@
   /* ── State ────────────────────────────────────────────────────────────── */
   var S = { step: 0, answers: {}, profile: null, checks: {}, phaseOpen: {} };
 
-  function save() {
-    try { localStorage.setItem(LS_KEY, JSON.stringify({ answers: S.answers, profile: S.profile, checks: S.checks, phaseOpen: S.phaseOpen })); } catch (e) {}
-  }
-
-  function load() {
-    try {
-      var raw = localStorage.getItem(LS_KEY);
-      if (!raw) return false;
-      var d = JSON.parse(raw);
-      if (!d || !d.answers || !Object.keys(d.answers).length) return false;
-      S.answers = d.answers || {}; S.profile = d.profile || null;
-      S.checks  = d.checks  || {}; S.phaseOpen = d.phaseOpen || {};
-      return true;
-    } catch (e) { return false; }
-  }
-
   function reset() {
     S.step = 0; S.answers = {}; S.profile = null; S.checks = {}; S.phaseOpen = {};
-    try { localStorage.removeItem(LS_KEY); } catch (e) {}
   }
 
   /* ── Helpers ──────────────────────────────────────────────────────────── */
@@ -543,7 +525,6 @@
         QS.forEach(function (qq) {
           if (!newVis.some(function (v) { return v.key === qq.key; })) delete S.answers[qq.key];
         });
-        save();
         renderScreening();
       });
     });
@@ -557,7 +538,6 @@
         else {
           S.profile   = classify(S.answers);
           S.phaseOpen = defaultOpen(S.profile.stage);
-          save();
           renderRoadmap();
         }
       });
@@ -649,7 +629,6 @@
         var id = ph.id.replace('rmp-', '');
         S.phaseOpen[id] = !S.phaseOpen[id];
         ph.classList.toggle('open', !!S.phaseOpen[id]);
-        save();
       });
     });
 
@@ -659,7 +638,6 @@
         e.stopPropagation();
         var key = chk.dataset.key;
         S.checks[key] = !S.checks[key];
-        save();
         var itemEl = document.getElementById('rmi-' + key);
         if (itemEl) { itemEl.classList.toggle('done', !!S.checks[key]); chk.classList.toggle('done', !!S.checks[key]); }
         var phEl    = chk.closest('.rm-phase');
@@ -682,7 +660,6 @@
       editBtn.addEventListener('click', function () {
         S.profile = null;
         S.step = 0;
-        save();
         renderScreening();
       });
     }
@@ -764,18 +741,8 @@
 
   /* ── Init & SPA ───────────────────────────────────────────────────────── */
   function init() {
-    if (!load()) { S.step = 0; renderScreening(); return; }
-    if (S.profile)  { renderRoadmap(); return; }
-    // Partially answered — find first unanswered
-    var vis = visibleQs();
-    for (var i = 0; i < vis.length; i++) {
-      if (!S.answers[vis[i].key]) { S.step = i; renderScreening(); return; }
-    }
-    // All answered but no profile
-    S.profile   = classify(S.answers);
-    S.phaseOpen = defaultOpen(S.profile.stage);
-    save();
-    renderRoadmap();
+    reset();
+    renderScreening();
   }
 
   var _lastUrl = location.href;
