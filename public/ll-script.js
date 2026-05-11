@@ -3573,20 +3573,89 @@ function llRoute(modeId, opts) {
   llRouting = false;
 }
 
-function llRenderAbout(pane) {
-  pane.innerHTML =
-    '<div class="ll-about">' +
-      '<h1>Learning Lab</h1>' +
-      '<p class="ll-about-desc">Applied practice tools for clinical research staff at the RI-MUHC. Each mode targets a different kind of preparation — from quick knowledge checks to inspection readiness. Use them alongside your SOP training, or to prepare for a monitoring visit or audit.</p>' +
-      '<ul class="ll-about-modes">' +
-        '<li class="ll-about-mode"><span class="ll-about-mode-name">Knowledge Checks</span><span class="ll-about-mode-desc">Multiple-choice questions with immediate feedback. Covers 11 topics across interventional and observational study types.</span></li>' +
-        '<li class="ll-about-mode"><span class="ll-about-mode-name">Team Exercises</span><span class="ll-about-mode-desc">Case-based discussion scenarios for team meetings or solo review. Work through a situation, then reveal the key points.</span></li>' +
-        '<li class="ll-about-mode"><span class="ll-about-mode-name">Document Review</span><span class="ll-about-mode-desc">Constructed research documents with deliberate errors. Identify the issues before checking the annotated findings.</span></li>' +
-        '<li class="ll-about-mode"><span class="ll-about-mode-name">Judgement Calls</span><span class="ll-about-mode-desc">Realistic pressure scenarios where someone asks you to do something questionable. Three decision points per scenario.</span></li>' +
-        '<li class="ll-about-mode"><span class="ll-about-mode-name">Inspection Prep</span><span class="ll-about-mode-desc">Mock inspector questions across 8 topics. Formulate your answer, then compare it to a model response.</span></li>' +
-      '</ul>' +
-      '<button class="ll-about-cta" onclick="llRoute(\'kc\')">Start with Knowledge Checks →</button>' +
+var LL_SEE_ALSO_MAP = {
+  delegation:  { te: 'delegation',  dr: 'delegation',  insp: 'delegation' },
+  consent:     { te: 'consent',     dr: 'consent',     insp: 'consent'    },
+  sae:         { te: 'sae',         dr: 'sae',         insp: 'sae'        },
+  deviations:  { te: 'deviations',  dr: 'deviations',  insp: 'deviations' },
+  monitoring:  { te: 'monitoring',  dr: 'monitoring',  insp: 'monitoring' },
+  data:        { te: 'data',        dr: 'data',        insp: 'data'       },
+  recruitment: { te: 'recruitment', dr: 'recruitment', insp: 'recruitment'},
+  gcp:         { te: 'gcp',         dr: 'gcp',         insp: 'gcp'        }
+};
+
+function llSeeAlsoStrip(topicId, currentMode) {
+  var map = LL_SEE_ALSO_MAP[topicId];
+  if (!map) { return ''; }
+  var cfg = {
+    te:   { label: 'Team Exercise',   action: 'llTeOpenExercise'  },
+    dr:   { label: 'Document Review', action: 'llDrOpenExercise'  },
+    insp: { label: 'Inspection Prep', action: 'llInspStartTopic'  }
+  };
+  var html = '';
+  var modes = ['te', 'dr', 'insp'];
+  for (var i = 0; i < modes.length; i++) {
+    var m = modes[i];
+    if (m === currentMode || !map[m]) { continue; }
+    html += '<button class="ll-see-also-btn" onclick="' + cfg[m].action + '(\'' + map[m] + '\')">' + cfg[m].label + ' →</button>';
+  }
+  if (!html) { return ''; }
+  return '<div class="ll-see-also">' +
+    '<div class="ll-see-also-label">Practise this topic a different way</div>' +
+    '<div class="ll-see-also-links">' + html + '</div>' +
     '</div>';
+}
+
+function llRenderAbout(pane) {
+  var modes = [
+    {
+      id: 'kc', name: 'Knowledge Checks', count: '158 questions \xb7 11 topics',
+      desc: 'Multiple-choice questions with immediate feedback and SOP references across all key study areas.',
+      solo: 'Test recall before a monitoring visit, audit, or certification renewal.',
+      team: 'Assign topics by study level. Use one topic as a 5-minute team warmup before a meeting.'
+    },
+    {
+      id: 'te', name: 'Team Exercises', count: '8 case-based exercises',
+      desc: 'Scenario cases where you work through a real-world situation, then reveal the key points and analysis.',
+      solo: 'Read the case and answer the questions before revealing the structured analysis.',
+      team: 'Facilitate as a 20–30 min team case study. Print without key points so discussion happens before the reveal.'
+    },
+    {
+      id: 'dr', name: 'Document Review', count: '8 exercises \xb7 constructed case files',
+      desc: 'Research documents with deliberate errors — identify the issues, then step through annotated findings.',
+      solo: 'Build the habit of spotting documentation problems before they become inspection findings.',
+      team: 'Use as onboarding exercises for new CRCs or RAs joining a study team.'
+    },
+    {
+      id: 'jc', name: 'Judgement Calls', count: '6 scenarios \xb7 3 decision points each',
+      desc: 'Realistic pressure scenarios where someone asks you to do something that may not be right.',
+      solo: 'Work through each decision point before reading the analysis. Notice which pressures feel most compelling.',
+      team: 'Debrief as a group after each scenario. Particularly useful for fellows, residents, and new staff.'
+    },
+    {
+      id: 'insp', name: 'Inspection Prep', count: '8 topics \xb7 40 questions',
+      desc: 'Inspector-style questions across key study areas. Formulate your answer before seeing the model response.',
+      solo: 'Work through a topic before a scheduled monitoring visit or audit.',
+      team: 'Run as mock Q&A — one person plays inspector, others respond. Rotate the inspector role.'
+    }
+  ];
+  var html = '<div class="ll-about"><h1>Learning Lab</h1>';
+  html += '<p class="ll-about-intro">Applied practice tools for RI-MUHC clinical research staff — from quick knowledge checks to inspection readiness. Use the modes independently or deploy them as team exercises. Progress is not saved between sessions.</p>';
+  html += '<div class="ll-about-grid">';
+  for (var i = 0; i < modes.length; i++) {
+    var m = modes[i];
+    html += '<div class="ll-about-card" onclick="llRoute(\'' + m.id + '\')">';
+    html +=   '<div class="ll-about-card-name">' + m.name + '</div>';
+    html +=   '<div class="ll-about-card-count">' + m.count + '</div>';
+    html +=   '<div class="ll-about-card-desc">' + m.desc + '</div>';
+    html +=   '<div class="ll-about-card-uses">';
+    html +=     '<div class="ll-about-card-use"><strong>Solo:</strong> ' + m.solo + '</div>';
+    html +=     '<div class="ll-about-card-use"><strong>With your team:</strong> ' + m.team + '</div>';
+    html +=   '</div>';
+    html += '</div>';
+  }
+  html += '</div></div>';
+  pane.innerHTML = html;
 }
 
 /* ── Stub renderers (replaced as each mode is migrated) ───────────────── */
@@ -4079,6 +4148,7 @@ function llKcRenderEnd() {
   if (kpMode === 'browse') {
     for (var i = 0; i < KP_TOPICS.length; i++) { if (KP_TOPICS[i].id === kpBrowseTopicId) { topicName = KP_TOPICS[i].name; break; } }
   }
+  var seeAlso = (kpMode === 'browse' && kpBrowseTopicId) ? llSeeAlsoStrip(kpBrowseTopicId, 'kc') : '';
   pane.innerHTML =
     '<div class="ll-kc-end">' +
       '<div class="ll-kc-end-eyebrow">' + (kpMode === 'shuffle' ? 'Shuffle complete' : 'Topic complete') + '</div>' +
@@ -4093,7 +4163,8 @@ function llKcRenderEnd() {
         '<button class="ll-kc-end-retry" onclick="' + (kpMode === 'shuffle' ? 'llKcStartShuffle' : 'llKcRetry') + '()">Try again</button>' +
         '<button class="ll-kc-end-back" onclick="llKcBackToTopics()">&#8592; Back to topics</button>' +
       '</div>' +
-    '</div>';
+    '</div>' +
+    seeAlso;
 }
 
 function llKcRetry()        { llKcStartTopic(kpBrowseTopicId); }
@@ -4137,6 +4208,10 @@ function llBoot() {
       var m = e.currentTarget.dataset.mode;
       if (m) { llRoute(m); }
     });
+  }
+  var homeBtn = document.querySelector('.ll-rail-home');
+  if (homeBtn) {
+    homeBtn.addEventListener('click', function () { llRoute('about'); });
   }
   var msel = llMobileSel();
   if (msel) {
