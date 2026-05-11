@@ -6015,6 +6015,10 @@ export const LL_SHELL_CSS = `
 /* — Hide Mintlify sidebar so our rail is the only left panel — */
 #sidebar { display: none !important; }
 
+/* — Expand content area to fill the freed sidebar space — */
+#content-area { max-width: 100% !important; width: 100% !important; }
+#content-area > div:first-child { max-width: 100% !important; }
+
 /* — Hide all legacy chrome — */
 .kp-hero, .kp-stage, .kp-phase, .kp-phase.phase-active { display: none !important; }
 
