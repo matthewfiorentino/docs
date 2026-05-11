@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>RI-MUHC Palette Preview</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif; background: #f0f0f0; color: #111; }
+  .page { max-width: 960px; margin: 0 auto; padding: 48px 32px; display: flex; flex-direction: column; gap: 56px; }
+  h1 { font-size: 22px; font-weight: 700; margin-bottom: 6px; }
+  .sub { font-size: 14px; color: #666; }
+  h2 { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; color: #999; margin-bottom: 20px; }
+  h3 { font-size: 13px; font-weight: 700; color: #555; margin-bottom: 12px; margin-top: 24px; }
+
+  /* ── Surface rule callout ── */
+  .surface-rule {
+    display: flex; gap: 12px; align-items: stretch;
+    background: #fff; border-radius: 10px; padding: 20px 24px;
+    border: 1px solid #e5e5e5;
+  }
+  .sr-block {
+    flex: 1; border-radius: 8px; padding: 16px 18px;
+  }
+  .sr-dark { background: #2b2666; }
+  .sr-light { background: #fff; border: 1px solid #e5e5e5; }
+  .sr-label { font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; margin-bottom: 6px; }
+  .sr-dark .sr-label { color: rgba(255,255,255,.5); }
+  .sr-light .sr-label { color: #aaa; }
+  .sr-rule { font-size: 14px; font-weight: 600; }
+  .sr-dark .sr-rule { color: #fff; }
+  .sr-light .sr-rule { color: #333; }
+  .sr-note { font-size: 12px; margin-top: 4px; }
+  .sr-dark .sr-note { color: rgba(255,255,255,.55); }
+  .sr-light .sr-note { color: #888; }
+
+  /* ── Swatch rows ── */
+  .swatches { display: flex; flex-wrap: wrap; gap: 10px; }
+  .swatch { width: 148px; border-radius: 9px; overflow: hidden; box-shadow: 0 1px 3px rgba(0,0,0,.1); }
+  .swatch-color { height: 64px; }
+  .swatch-info { background: #fff; padding: 9px 11px; }
+  .swatch-hex { font-size: 12px; font-weight: 700; font-family: monospace; }
+  .swatch-name { font-size: 11px; color: #888; margin-top: 1px; }
+  .swatch-contrast { font-size: 11px; margin-top: 4px; font-weight: 600; }
+  .pass { color: #1a6e2a; } .fail { color: #b03030; } .marginal { color: #9a6000; }
+
+  /* ── Panels ── */
+  .panel { background: #fff; border-radius: 12px; padding: 28px 32px; border: 1px solid #e5e5e5; }
+  .panel + .panel { margin-top: 0; }
+
+  /* ── Hero mock ── */
+  .hero-mock {
+    background: #2b2666; border-radius: 12px; padding: 48px 40px;
+    position: relative; overflow: hidden;
+  }
+  .hero-eyebrow { font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: #30ffed; margin-bottom: 12px; }
+  .hero-title { font-size: 32px; font-weight: 800; color: #fff; line-height: 1.2; margin-bottom: 8px; }
+  .hero-title span { color: #2b9ce2; }
+  .hero-sub { font-size: 15px; color: rgba(255,255,255,.65); margin-bottom: 28px; max-width: 480px; line-height: 1.6; }
+  .hero-btns { display: flex; gap: 12px; flex-wrap: wrap; }
+  .hero-btn-p { background: #2b9ce2; color: #fff; font-weight: 700; font-size: 14px; padding: 11px 22px; border-radius: 8px; text-decoration: none; }
+  .hero-btn-s { background: transparent; border: 1.5px solid rgba(255,255,255,.35); color: rgba(255,255,255,.85); font-weight: 700; font-size: 14px; padding: 11px 22px; border-radius: 8px; text-decoration: none; }
+  .hero-dots { display: flex; gap: 8px; margin-top: 36px; }
+  .hero-dot { width: 8px; height: 8px; border-radius: 50%; }
+
+  /* ── Functional examples ── */
+  .ex-row { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; padding: 14px 0; border-bottom: 1px solid #f0f0f0; }
+  .ex-row:last-child { border-bottom: none; padding-bottom: 0; }
+  .ex-row:first-child { padding-top: 0; }
+  .ex-label { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: .07em; color: #aaa; width: 90px; flex-shrink: 0; }
+  .ex-link { font-size: 15px; font-weight: 500; text-decoration: underline; text-underline-offset: 3px; }
+  .ex-btn { font-size: 13px; font-weight: 700; padding: 8px 16px; border-radius: 7px; color: #fff; border: none; cursor: default; }
+  .ex-btn-outline { font-size: 13px; font-weight: 700; padding: 7px 15px; border-radius: 7px; background: transparent; cursor: default; border-width: 1.5px; border-style: solid; }
+  .ex-badge { font-size: 11px; font-weight: 700; padding: 3px 9px; border-radius: 20px; letter-spacing: .04em; }
+  .ex-callout { font-size: 13px; padding: 10px 14px; border-radius: 7px; border: 1px solid; line-height: 1.55; flex: 1; min-width: 280px; }
+
+  /* ── Mermaid ── */
+  .mermaid-demo { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+  .mnode {
+    font-size: 12px; font-weight: 600; padding: 8px 16px; border-radius: 7px;
+    border: 1.5px solid; text-align: center; min-width: 100px;
+  }
+  .mnode-diamond {
+    font-size: 12px; font-weight: 600; padding: 10px 16px;
+    transform: rotate(0deg); border-radius: 4px;
+    border: 1.5px solid; text-align: center; min-width: 110px;
+    background: #fffbf0; border-color: #7a4f00; color: #6b4500;
+  }
+  .marrow { font-size: 20px; color: #bbb; }
+  .mlegend { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+  .mleg-item { display: flex; align-items: center; gap: 6px; font-size: 12px; color: #555; }
+  .mleg-dot { width: 12px; height: 12px; border-radius: 3px; flex-shrink: 0; }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div>
+    <h1>RI-MUHC Colour System</h1>
+    <p class="sub">Work-in-progress palette plan — for review before implementation</p>
+  </div>
+
+  <!-- CORE PRINCIPLE -->
+  <section>
+    <h2>Core principle — two surfaces</h2>
+    <div class="surface-rule">
+      <div class="sr-block sr-dark">
+        <div class="sr-label">Dark surface</div>
+        <div class="sr-rule">Brand originals</div>
+        <div class="sr-note">Hero, CIM band, contact band, decorative sections. Full brand palette at full brightness.</div>
+      </div>
+      <div class="sr-block sr-light">
+        <div class="sr-label">White surface</div>
+        <div class="sr-rule">Derived functional palette</div>
+        <div class="sr-note">Docs, KB, guides, tools. Same hues, lightness reduced to WCAG AA on white.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BRAND ORIGINALS -->
+  <section>
+    <h2>Brand palette</h2>
+    <div class="swatches">
+      <div class="swatch"><div class="swatch-color" style="background:#2b2666"></div><div class="swatch-info"><div class="swatch-hex">#2b2666</div><div class="swatch-name">Navy</div><div class="swatch-contrast pass">14.2:1 on white ✓</div></div></div>
+      <div class="swatch"><div class="swatch-color" style="background:#30ffed"></div><div class="swatch-info"><div class="swatch-hex">#30ffed</div><div class="swatch-name">Teal</div><div class="swatch-contrast fail">1.2:1 on white ✗</div></div></div>
+      <div class="swatch"><div class="swatch-color" style="background:#2b9ce2"></div><div class="swatch-info"><div class="swatch-hex">#2b9ce2</div><div class="swatch-name">Blue</div><div class="swatch-contrast fail">2.9:1 on white ✗</div></div></div>
+      <div class="swatch"><div class="swatch-color" style="background:#9039f9"></div><div class="swatch-info"><div class="swatch-hex">#9039f9</div><div class="swatch-name">Purple</div><div class="swatch-contrast marginal">3.0:1 on white ~</div></div></div>
+      <div class="swatch"><div class="swatch-color" style="background:#ff62ed"></div><div class="swatch-info"><div class="swatch-hex">#ff62ed</div><div class="swatch-name">Magenta</div><div class="swatch-contrast fail">2.1:1 on white ✗</div></div></div>
+      <div class="swatch"><div class="swatch-color" style="background:#ff537f"></div><div class="swatch-info"><div class="swatch-hex">#ff537f</div><div class="swatch-name">Coral</div><div class="swatch-contrast fail">3.4:1 on white ✗</div></div></div>
+      <div class="swatch"><div class="swatch-color" style="background:#ffb400"></div><div class="swatch-info"><div class="swatch-hex">#ffb400</div><div class="swatch-name">Amber</div><div class="swatch-contrast fail">1.8:1 on white ✗</div></div></div>
+    </div>
+  </section>
+
+  <!-- HERO MOCK -->
+  <section>
+    <h2>Dark surface — brand originals in use</h2>
+    <div class="hero-mock">
+      <div class="hero-eyebrow">RI-MUHC · Clinical Research Hub</div>
+      <div class="hero-title">The home base for<br><span>clinical research</span> at<br>The Institute.</div>
+      <div class="hero-sub">Protocols, compliance, training, and team resources — everything your team needs, organized by role and study type.</div>
+      <div class="hero-btns">
+        <a class="hero-btn-p">Get started</a>
+        <a class="hero-btn-s">Browse by role</a>
+      </div>
+      <div class="hero-dots">
+        <div class="hero-dot" style="background:#30ffed"></div>
+        <div class="hero-dot" style="background:#2b9ce2"></div>
+        <div class="hero-dot" style="background:#9039f9"></div>
+        <div class="hero-dot" style="background:#ff62ed"></div>
+        <div class="hero-dot" style="background:#ff537f"></div>
+        <div class="hero-dot" style="background:#ffb400"></div>
+      </div>
+    </div>
+    <p style="font-size:12px;color:#999;margin-top:10px;">Dots show all brand originals reading on navy — any can be deployed here as eyebrow colour, stat highlight, badge, etc.</p>
+  </section>
+
+  <!-- FUNCTIONAL PALETTE -->
+  <section>
+    <h2>White surface — derived functional palette</h2>
+    <div class="swatches">
+      <div class="swatch"><div class="swatch-color" style="background:#2b2666"></div><div class="swatch-info"><div class="swatch-hex">#2b2666</div><div class="swatch-name">Heading / navy</div><div class="swatch-contrast pass">14.2:1 ✓</div></div></div>
+      <div class="swatch"><div class="swatch-color" style="background:#1572a7"></div><div class="swatch-info"><div class="swatch-hex">#1572a7</div><div class="swatch-name">Interactive — blue</div><div class="swatch-contrast pass">5.1:1 ✓</div></div></div>
+      <div class="swatch"><div class="swatch-color" style="background:#007468"></div><div class="swatch-info"><div class="swatch-hex">#007468</div><div class="swatch-name">Info — teal</div><div class="swatch-contrast pass">4.8:1 ✓</div></div></div>
+      <div class="swatch"><div class="swatch-color" style="background:#7a4f00"></div><div class="swatch-info"><div class="swatch-hex">#7a4f00</div><div class="swatch-name">Warning — amber</div><div class="swatch-contrast pass">6.5:1 ✓</div></div></div>
+      <div class="swatch"><div class="swatch-color" style="background:#b53060"></div><div class="swatch-info"><div class="swatch-hex">#b53060</div><div class="swatch-name">Attention — coral</div><div class="swatch-contrast pass">5.2:1 ✓</div></div></div>
+      <div class="swatch"><div class="swatch-color" style="background:#6b28c4"></div><div class="swatch-info"><div class="swatch-hex">#6b28c4</div><div class="swatch-name">Decorative — purple</div><div class="swatch-contrast pass">5.6:1 ✓</div></div></div>
+    </div>
+
+    <h3>In context</h3>
+    <div class="panel">
+      <div class="ex-row">
+        <span class="ex-label">Interactive</span>
+        <a class="ex-link" style="color:#1572a7">Protocol guide →</a>
+        <button class="ex-btn" style="background:#1572a7">Primary button</button>
+        <button class="ex-btn-outline" style="color:#1572a7;border-color:#1572a7">Outline</button>
+        <span class="ex-badge" style="background:#1572a7;color:#fff">Active</span>
+      </div>
+      <div class="ex-row">
+        <span class="ex-label">Info</span>
+        <div class="ex-callout" style="border-color:#c0e0db;background:#f0faf9;color:#005a50">
+          <strong style="color:#007468">Note —</strong> Training certificates are valid for 2 years (Levels I–III).
+        </div>
+      </div>
+      <div class="ex-row">
+        <span class="ex-label">Warning</span>
+        <div class="ex-callout" style="border-color:#e0d0aa;background:#fffbf0;color:#6b4500">
+          <strong style="color:#7a4f00">Caution —</strong> REB approval must be obtained before enrolment begins.
+        </div>
+      </div>
+      <div class="ex-row">
+        <span class="ex-label">Attention</span>
+        <div class="ex-callout" style="border-color:#e0b0c0;background:#fff0f4;color:#8a1840">
+          <strong style="color:#b53060">Important —</strong> Expired certificates must be renewed before performing delegated tasks.
+        </div>
+      </div>
+      <div class="ex-row">
+        <span class="ex-label">Headings</span>
+        <span style="color:#2b2666;font-size:22px;font-weight:700">Qualified Investigator</span>
+        <span class="ex-badge" style="background:#2b2666;color:#fff">QI</span>
+        <span class="ex-badge" style="background:#1572a7;color:#fff">Sub-I</span>
+        <span class="ex-badge" style="background:#007468;color:#fff">CRC</span>
+        <span class="ex-badge" style="background:#6b28c4;color:#fff">Trainee</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- MERMAID -->
+  <section>
+    <h2>Mermaid diagrams — proposed node colours</h2>
+    <p style="font-size:13px;color:#666;margin-bottom:20px;line-height:1.6;">Diagrams live on white pages, so use the functional palette. Node roles map to semantic colours: start → info teal, end → navy, decision → amber, blocker/stop → attention coral, regular process → neutral.</p>
+    <div class="panel">
+      <div class="mermaid-demo">
+        <div class="mnode" style="background:#f0faf9;border-color:#007468;color:#005a50;border-radius:20px;">● Start</div>
+        <div class="marrow">→</div>
+        <div class="mnode" style="background:#f5f5f5;border-color:#ccc;color:#333;">Process step</div>
+        <div class="marrow">→</div>
+        <div class="mnode-diamond">Decision?</div>
+        <div class="marrow">→</div>
+        <div class="mnode" style="background:#fff0f4;border-color:#b53060;color:#8a1840;">✕ Blocker</div>
+        <div class="marrow">→</div>
+        <div class="mnode" style="background:#2b2666;border-color:#2b2666;color:#fff;border-radius:20px;">■ End</div>
+      </div>
+      <div class="mlegend">
+        <div class="mleg-item"><div class="mleg-dot" style="background:#007468"></div>Start — teal (info)</div>
+        <div class="mleg-item"><div class="mleg-dot" style="background:#ccc;border:1px solid #bbb"></div>Process — neutral</div>
+        <div class="mleg-item"><div class="mleg-dot" style="background:#fffbf0;border:1px solid #7a4f00"></div>Decision — amber</div>
+        <div class="mleg-item"><div class="mleg-dot" style="background:#b53060"></div>Blocker/Stop — coral</div>
+        <div class="mleg-item"><div class="mleg-dot" style="background:#2b2666"></div>End — navy</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PURPLE / MAGENTA NOTE -->
+  <section>
+    <h2>Purple + magenta — decorative only</h2>
+    <div class="panel">
+      <p style="font-size:13px;color:#555;line-height:1.6;margin-bottom:16px;">No functional role assigned. Used for visual richness on dark surfaces, badges where semantic colour isn't needed, and illustration.</p>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;">
+        <div style="background:#2b2666;border-radius:10px;padding:20px 24px;display:flex;gap:12px;flex-wrap:wrap;align-items:center;">
+          <span style="font-size:13px;font-weight:700;padding:5px 14px;border-radius:20px;background:#9039f9;color:#fff;">Purple badge</span>
+          <span style="font-size:13px;font-weight:700;padding:5px 14px;border-radius:20px;background:#ff62ed;color:#fff;">Magenta badge</span>
+          <span style="font-size:13px;font-weight:700;padding:5px 14px;border-radius:20px;background:#30ffed;color:#2b2666;">Teal badge</span>
+        </div>
+        <div style="background:#fff;border:1px solid #e5e5e5;border-radius:10px;padding:20px 24px;display:flex;gap:12px;flex-wrap:wrap;align-items:center;">
+          <span style="font-size:13px;font-weight:700;padding:5px 14px;border-radius:20px;background:#6b28c4;color:#fff;">Purple (derived)</span>
+          <span style="font-size:11px;color:#999;">Magenta has no accessible derived form that remains recognisably magenta — avoid on white.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div>
+</body>
+</html>
