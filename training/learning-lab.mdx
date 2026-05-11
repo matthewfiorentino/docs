@@ -2,7 +2,7 @@
 title: "Learning Lab — Practice Tools for Clinical Research"
 sidebarTitle: "Learning Lab"
 description: "Applied practice tools for RI-MUHC clinical research staff — knowledge checks, team exercises, document review, judgement calls, and inspection prep."
-mode: "wide"
+mode: "custom"
 keywords: ["practice", "scenarios", "knowledge check", "team exercise", "inspection prep", "judgment calls"]
 ---
 
@@ -6011,6 +6011,122 @@ function inspGoHub() {
 })();
 `;
 
+/* ────────────────────────────────────────────────────────────────────────
+   LL_SHELL_CSS — Minimalist shell, persistent left rail + content pane.
+   Loaded AFTER LL_CSS so its rules win on shared selectors.
+   The defensive `display:none !important` rules hide every legacy phase
+   and hero block; their DOM stays mounted so renderers can clone the
+   static Team Exercise and Document Review HTML on demand.
+──────────────────────────────────────────────────────────────────────── */
+export const LL_SHELL_CSS = `
+/* — Hide all legacy chrome — */
+.kp-hero, .kp-stage, .kp-phase, .kp-phase.phase-active { display: none !important; }
+
+/* — Shell tokens (match Roadmap palette) — */
+.ll {
+  --ll-accent: #007a6e;
+  --ll-accent-soft: #f0faf9;
+  --ll-text: #111;
+  --ll-text-2: #555;
+  --ll-text-3: #888;
+  --ll-bdr: #e5e5e5;
+  --ll-bdr-strong: #d0d0d0;
+  --ll-bg: #ffffff;
+  --ll-radius: 8px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+  color: var(--ll-text);
+  background: var(--ll-bg);
+  min-height: calc(100vh - 64px);
+}
+.ll *, .ll *::before, .ll *::after { box-sizing: border-box; }
+.ll a { color: var(--ll-accent); text-decoration: none; }
+.ll a:hover { text-decoration: underline; }
+
+/* — Layout: rail + pane — */
+.ll-wrap { display: grid; grid-template-columns: 252px 1fr; gap: 0; max-width: 1180px; margin: 0 auto; }
+.ll-rail { padding: 36px 24px 36px 32px; border-right: 1px solid var(--ll-bdr); position: sticky; top: 64px; height: calc(100vh - 64px); overflow-y: auto; }
+.ll-pane { padding: 36px 40px 80px; min-width: 0; }
+
+/* — Rail header — */
+.ll-rail-eyebrow { font-size: 10px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--ll-text-3); margin-bottom: 6px; }
+.ll-rail-title { font-size: 18px; font-weight: 700; color: var(--ll-text); letter-spacing: -.01em; margin-bottom: 28px; }
+
+/* — Rail mode buttons — */
+.ll-rail-nav { display: flex; flex-direction: column; gap: 2px; margin-bottom: 28px; }
+.ll-rail-btn { display: flex; align-items: center; gap: 10px; padding: 9px 12px; border: none; background: none; cursor: pointer; font: inherit; color: var(--ll-text-2); text-align: left; border-radius: 6px; transition: background .15s, color .15s; }
+.ll-rail-btn:hover { background: #f7f7f7; color: var(--ll-text); }
+.ll-rail-btn.active { background: var(--ll-accent-soft); color: var(--ll-accent); font-weight: 600; }
+.ll-rail-btn-num { font-size: 10px; font-weight: 700; color: var(--ll-text-3); min-width: 14px; }
+.ll-rail-btn.active .ll-rail-btn-num { color: var(--ll-accent); }
+.ll-rail-btn-label { font-size: 13.5px; }
+
+/* — Rail footer — */
+.ll-rail-footer { font-size: 12px; color: var(--ll-text-3); padding-top: 20px; border-top: 1px solid var(--ll-bdr); }
+.ll-rail-footer a { color: var(--ll-text-3); }
+.ll-rail-footer a:hover { color: var(--ll-accent); }
+
+/* — Mobile dropdown (hidden on desktop) — */
+.ll-mobile-nav { display: none; padding: 16px 20px; border-bottom: 1px solid var(--ll-bdr); background: #fff; position: sticky; top: 64px; z-index: 10; }
+.ll-mobile-select { width: 100%; padding: 10px 14px; font: inherit; font-size: 14px; color: var(--ll-text); background: #fff; border: 1px solid var(--ll-bdr); border-radius: var(--ll-radius); appearance: none; -webkit-appearance: none; cursor: pointer; background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23555' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'><polyline points='6 9 12 15 18 9'/></svg>"); background-repeat: no-repeat; background-position: right 14px center; padding-right: 38px; }
+.ll-mobile-select:focus { outline: none; border-color: var(--ll-accent); }
+
+/* — Pane — */
+.ll-pane h1 { font-size: 22px; font-weight: 700; letter-spacing: -.01em; color: var(--ll-text); margin: 0 0 4px; }
+.ll-pane-sub { font-size: 13.5px; color: var(--ll-text-3); margin-bottom: 28px; line-height: 1.6; max-width: 640px; }
+
+/* — Stub placeholders (will be replaced as each mode is migrated) — */
+.ll-stub { padding: 60px 0; color: var(--ll-text-3); font-size: 14px; }
+
+/* — Mobile breakpoint — */
+@media (max-width: 899px) {
+  .ll-wrap { grid-template-columns: 1fr; }
+  .ll-rail { display: none; }
+  .ll-mobile-nav { display: block; }
+  .ll-pane { padding: 28px 20px 80px; }
+}
+
+/* — Print — */
+@media print {
+  .ll-rail, .ll-mobile-nav { display: none !important; }
+  .ll-wrap { grid-template-columns: 1fr; }
+  .ll-pane { padding: 0; }
+}
+`;
+
+/* ────────────────────────────────────────────────────────────────────────
+   LL_SHELL_HTML — The persistent shell. All content renders into #ll-pane.
+──────────────────────────────────────────────────────────────────────── */
+export const LL_SHELL_HTML = `
+<div class="ll">
+  <div class="ll-mobile-nav">
+    <select class="ll-mobile-select" id="ll-mobile-select" aria-label="Learning Lab mode">
+      <option value="kc">Knowledge Checks</option>
+      <option value="te">Team Exercises</option>
+      <option value="dr">Document Review</option>
+      <option value="jc">Judgement Calls</option>
+      <option value="insp">Inspection Prep</option>
+    </select>
+  </div>
+  <div class="ll-wrap">
+    <aside class="ll-rail" aria-label="Learning Lab modes">
+      <div class="ll-rail-eyebrow">RI-MUHC</div>
+      <div class="ll-rail-title">Learning Lab</div>
+      <nav class="ll-rail-nav">
+        <button class="ll-rail-btn" data-mode="kc"   type="button"><span class="ll-rail-btn-num">01</span><span class="ll-rail-btn-label">Knowledge Checks</span></button>
+        <button class="ll-rail-btn" data-mode="te"   type="button"><span class="ll-rail-btn-num">02</span><span class="ll-rail-btn-label">Team Exercises</span></button>
+        <button class="ll-rail-btn" data-mode="dr"   type="button"><span class="ll-rail-btn-num">03</span><span class="ll-rail-btn-label">Document Review</span></button>
+        <button class="ll-rail-btn" data-mode="jc"   type="button"><span class="ll-rail-btn-num">04</span><span class="ll-rail-btn-label">Judgement Calls</span></button>
+        <button class="ll-rail-btn" data-mode="insp" type="button"><span class="ll-rail-btn-num">05</span><span class="ll-rail-btn-label">Inspection Prep</span></button>
+      </nav>
+      <div class="ll-rail-footer">Practice tools for clinical research staff. Progress is not saved.</div>
+    </aside>
+    <main class="ll-pane" id="ll-pane" role="main" aria-live="polite">
+      <div class="ll-stub">Loading…</div>
+    </main>
+  </div>
+</div>
+`;
+
 export const LearningLab = () => {
   useEffect(() => {
     const existing = document.getElementById('ll-script');
@@ -6027,8 +6143,8 @@ export const LearningLab = () => {
 
   return (
     <>
-      <style dangerouslySetInnerHTML={{__html: LL_CSS}} />
-      <div dangerouslySetInnerHTML={{__html: LL_HTML_1 + LL_HTML_2}} />
+      <style dangerouslySetInnerHTML={{__html: LL_CSS + LL_SHELL_CSS}} />
+      <div dangerouslySetInnerHTML={{__html: LL_SHELL_HTML + LL_HTML_1 + LL_HTML_2}} />
     </>
   );
 };

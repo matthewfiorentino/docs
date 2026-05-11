@@ -3503,3 +3503,133 @@ function llRefreshStats() {
 setTimeout(llRefreshStats, 300);
 setTimeout(llRefreshStats, 900);
 setTimeout(llRefreshStats, 1800);
+
+/* ════════════════════════════════════════════════════════════════════════
+   NEW SHELL ROUTER — single-page architecture with persistent left rail.
+   Replaces the legacy phase-stack navigation. Renders into #ll-pane.
+   See /Users/matthewfiorentino/.claude/plans/ri-muhc-clinical-research-hub-robust-hamming.md
+═══════════════════════════════════════════════════════════════════════ */
+
+/* Modes registered in the rail. Order matches the rail buttons. */
+var LL_MODES = [
+  { id: 'kc',   label: 'Knowledge Checks' },
+  { id: 'te',   label: 'Team Exercises'   },
+  { id: 'dr',   label: 'Document Review'  },
+  { id: 'jc',   label: 'Judgement Calls'  },
+  { id: 'insp', label: 'Inspection Prep'  }
+];
+
+var llCurrentMode = '';   /* active mode id */
+var llRouting     = false;
+var llBooted      = false;
+
+function llPane()      { return document.getElementById('ll-pane'); }
+function llRailBtns()  { return document.querySelectorAll('.ll-rail-btn'); }
+function llMobileSel() { return document.getElementById('ll-mobile-select'); }
+
+/* Top-level orchestrator. modeId is required; sub state lives in mode renderers. */
+function llRoute(modeId, opts) {
+  if (llRouting) { return; }
+  if (!modeId) { modeId = 'kc'; }
+  opts = opts || {};
+  llRouting = true;
+  llCurrentMode = modeId;
+
+  /* Update rail + mobile dropdown active state */
+  var btns = llRailBtns();
+  for (var i = 0; i < btns.length; i++) {
+    btns[i].classList.toggle('active', btns[i].dataset.mode === modeId);
+  }
+  var msel = llMobileSel();
+  if (msel && msel.value !== modeId) { msel.value = modeId; }
+
+  /* Hash update */
+  if (!opts.noHash) {
+    var newHash = (modeId === 'kc') ? '' : modeId;
+    if (window.location.hash.replace(/^#/, '').split('/')[0] !== newHash) {
+      if (newHash) { history.pushState(null, '', '#' + newHash); }
+      else         { history.pushState(null, '', window.location.pathname + window.location.search); }
+    }
+  }
+
+  /* Render */
+  var pane = llPane();
+  if (!pane) { llRouting = false; return; }
+  switch (modeId) {
+    case 'kc':   llRenderKnowledgeChecks(pane, opts); break;
+    case 'te':   llRenderTeamExercises(pane, opts);   break;
+    case 'dr':   llRenderDocReview(pane, opts);       break;
+    case 'jc':   llRenderJudgementCalls(pane, opts);  break;
+    case 'insp': llRenderInspectionPrep(pane, opts);  break;
+    default:     pane.innerHTML = '<div class="ll-stub">Unknown mode.</div>';
+  }
+  pane.scrollTop = 0;
+  llRouting = false;
+}
+
+/* ── Stub renderers (replaced as each mode is migrated) ───────────────── */
+function llStubPane(pane, title, sub) {
+  pane.innerHTML =
+    '<h1>' + title + '</h1>' +
+    '<div class="ll-pane-sub">' + sub + '</div>' +
+    '<div class="ll-stub">Migration in progress — content will appear here.</div>';
+}
+function llRenderKnowledgeChecks(pane) { llStubPane(pane, 'Knowledge Checks', 'Multiple-choice questions with immediate feedback across 11 topics. Browse by topic or shuffle for a randomized mix.'); }
+function llRenderTeamExercises(pane)   { llStubPane(pane, 'Team Exercises',   'Case-based discussion exercises for team meetings or solo work. Reveal key points when ready.'); }
+function llRenderDocReview(pane)       { llStubPane(pane, 'Document Review',  'Constructed research documents with deliberate errors. Identify the issues; reveal the findings when ready.'); }
+function llRenderJudgementCalls(pane)  { llStubPane(pane, 'Judgement Calls',  'Realistic pressure scenarios where someone asks you to do something that may not be right. Three decision points per scenario.'); }
+function llRenderInspectionPrep(pane)  { llStubPane(pane, 'Inspection Prep',  'Mock inspector questions with model responses. Prepare your answer, then reveal what a strong response looks like.'); }
+
+/* ── Initial mode from hash, with legacy hash compatibility ──────────── */
+function llInitialMode() {
+  var h = (window.location.hash || '').replace(/^#/, '');
+  if (!h) { return 'kc'; }
+  var p0 = h.split('/')[0];
+  /* New short hashes */
+  if (p0 === 'kc' || p0 === 'te' || p0 === 'dr' || p0 === 'jc' || p0 === 'insp') { return p0; }
+  /* Legacy hash compatibility */
+  if (p0 === 'practice' || p0 === 'browse' || p0 === 'shuffle') { return 'kc'; }
+  if (p0 === 'team')                                            { return 'te'; }
+  if (p0 === 'docreview')                                       { return 'dr'; }
+  if (p0 === 'judgement-calls')                                 { return 'jc'; }
+  if (p0 === 'inspection-prep')                                 { return 'insp'; }
+  return 'kc';
+}
+
+/* ── Boot ──────────────────────────────────────────────────────────────
+   Mintlify can re-render the page on SPA navigation, which wipes our
+   event listeners. Re-bind on each boot attempt. Guard against double-
+   boot via the llBooted flag and check that #ll-pane exists. */
+function llBoot() {
+  var pane = llPane();
+  if (!pane) { return false; }       /* shell not in DOM yet */
+  /* Always (re)bind in case Mintlify re-mounted the shell */
+  var btns = llRailBtns();
+  for (var i = 0; i < btns.length; i++) {
+    btns[i].addEventListener('click', function (e) {
+      var m = e.currentTarget.dataset.mode;
+      if (m) { llRoute(m); }
+    });
+  }
+  var msel = llMobileSel();
+  if (msel) {
+    msel.addEventListener('change', function (e) { llRoute(e.target.value); });
+  }
+  /* popstate — re-route to current hash without pushing a new one */
+  window.addEventListener('popstate', function () {
+    llRoute(llInitialMode(), { noHash: true });
+  });
+  llBooted = true;
+  llRoute(llInitialMode(), { noHash: true });
+  return true;
+}
+
+/* Try boot at multiple intervals to handle Mintlify SPA timing. */
+(function llBootLoop() {
+  if (llBoot()) { return; }
+  var tries = 0;
+  var t = setInterval(function () {
+    tries++;
+    if (llBoot() || tries > 20) { clearInterval(t); }
+  }, 150);
+})();
