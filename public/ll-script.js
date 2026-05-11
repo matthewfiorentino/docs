@@ -3866,7 +3866,8 @@ function llBoot() {
   return true;
 }
 
-/* Try boot at multiple intervals to handle Mintlify SPA timing. */
+/* Boot on initial load — try immediately, then poll briefly in case
+   Mintlify hasn't committed the shell HTML to the DOM yet. */
 (function llBootLoop() {
   if (llBoot()) { return; }
   var tries = 0;
@@ -3874,4 +3875,21 @@ function llBoot() {
     tries++;
     if (llBoot() || tries > 20) { clearInterval(t); }
   }, 150);
+})();
+
+/* SPA re-navigation guard — Mintlify unmounts/remounts the component when
+   navigating away and back, resetting #ll-pane to "Loading…" without
+   re-executing this script. Watch for the pane to appear as a new DOM node
+   and re-boot whenever it does. The _lastPane reference prevents double-boot
+   when the same pane element is observed multiple times during subtree churn. */
+(function() {
+  var _lastPane = null;
+  var obs = new MutationObserver(function() {
+    var pane = document.getElementById('ll-pane');
+    if (pane && pane !== _lastPane) {
+      _lastPane = pane;
+      llBoot();
+    }
+  });
+  obs.observe(document.documentElement, { childList: true, subtree: true });
 })();
