@@ -13,7 +13,7 @@
     /* ── Functional palette (white surfaces) ── */
     --ri-heading:     #150e51;   /* Mintlify heading override */
     --ri-accent:      #007468;   /* teal: links, nav, TOC, buttons */   /* interactive: links, buttons, nav */
-    --ri-hero-accent: #2b9ce2;   /* dark-surface accent */
+    --ri-hero-accent: #ff537f;   /* dark-surface CTA — coral */
     --ri-info:        #007468;   /* info callouts — same hue as accent, tint treatment */
     --ri-warning:     #7a4f00;   /* caution callouts — amber derived */
     --ri-attention:   #b53060;   /* important/alert callouts — coral derived */
@@ -921,7 +921,7 @@ body:has(.ri-text-hero) main {
 }
 .ri-text-hero-eyebrow {
     font-size: 11px; font-weight: 700; letter-spacing: .15em;
-    text-transform: uppercase; color: var(--ri-hero-accent);
+    text-transform: uppercase; color: var(--ri-teal);
     margin: 0 0 18px;
 }
 .ri-text-hero h1 {
@@ -942,7 +942,7 @@ body:has(.ri-text-hero) main {
 .ri-hero-palette { display: flex; gap: 5px; align-items: center; margin-top: 20px; }
 .ri-hero-palette span { display: block; width: 20px; height: 3px; border-radius: 2px; }
 .ri-text-hero-btn-primary {
-    background: var(--ri-hero-accent); color: #150e51 !important;
+    background: var(--ri-hero-accent); color: #fff !important;
     padding: 12px 24px; border-radius: 8px;
     font-weight: 700; font-size: 14px;
     text-decoration: none !important;
@@ -978,7 +978,7 @@ body:has(.ri-text-hero) main {
    HOME PAGE — CONTACT BAND
    ══════════════════════════════════════════════ */
 .ri-contact-band {
-    background: var(--ri-hero-accent);
+    background: var(--ri-navy);
     width: 100%;
 }
 .ri-contact-band-inner {
@@ -1019,7 +1019,7 @@ body:has(.ri-text-hero) main {
 .ri-contact-btn {
     display: inline-block;
     background: #fff;
-    color: var(--ri-accent, #007468) !important;
+    color: var(--ri-navy) !important;
     font-weight: 700; font-size: 14px;
     padding: 12px 24px;
     border-radius: 8px;
@@ -1586,7 +1586,7 @@ article {
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: .08em;
-    color: var(--ri-hero-accent);
+    color: var(--ri-teal);
     margin-bottom: 8px;
 }
 
