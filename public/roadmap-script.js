@@ -363,7 +363,6 @@
     if (p.isDevice)
       ph3.items.push(it('p3-hc-ita', 'Health Canada ITA filed and under review', 'SOP-CR-024', '/sops/cr-024'));
     ph3.items.push(it('p3-reb',     'REB approval letter received — typically 6–8 weeks for initial review'));
-    ph3.items.push(it('p3-pm',      'PM Final Authorization received from the Research Programs Office'));
     if (p.multiLead)
       ph3.items.push(it('p3-rsss',  'Coordinate review at all Quebec RSSS participating sites — MUHC submits as the REB Lead'));
     if (p.multiCross)
