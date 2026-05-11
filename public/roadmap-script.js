@@ -80,6 +80,17 @@
       '.rm-phase-body { display: none; padding: 4px 0 18px 66px; flex-direction: column; gap: 1px; }',
       '.rm-phase.open .rm-phase-body { display: flex; }',
 
+      /* Level callout */
+      '.rm-level-callout { background: #f8f9f8; border: 1px solid #e5e5e5; border-radius: 9px; padding: 14px 16px; margin-bottom: 16px; }',
+      '.rm-level-name { font-size: 13.5px; font-weight: 700; color: #111; margin-bottom: 2px; }',
+      '.rm-level-path { font-size: 12px; color: #888; margin-bottom: 12px; }',
+      '.rm-level-reqs { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 5px; }',
+      '.rm-level-reqs li { font-size: 13px; color: #444; display: flex; align-items: baseline; gap: 6px; }',
+      '.rm-level-reqs li::before { content: "·"; color: #007a6e; font-weight: 700; flex-shrink: 0; }',
+      '.rm-level-reqs a { color: #007a6e; text-decoration: none; }',
+      '.rm-level-reqs a:hover { text-decoration: underline; }',
+      '.rm-level-where { color: #aaa; font-size: 11.5px; }',
+
       /* Items */
       '.rm-item { display: flex; align-items: flex-start; gap: 11px; padding: 6px 0; }',
       '.rm-checkbox { width: 17px; height: 17px; border-radius: 5px; border: 1.5px solid #ddd; flex-shrink: 0; cursor: pointer; display: flex; align-items: center; justify-content: center; margin-top: 2px; transition: border-color .12s, background .12s; }',
@@ -289,6 +300,44 @@
     return chips;
   }
 
+  /* ── Level training callout ──────────────────────────────────────────── */
+  function levelCallout(p) {
+    var names = {
+      1: 'Level I — Drug / Biologic Study',
+      2: 'Level II — Medical Device Study',
+      3: 'Level III — Natural Health Product Study',
+      4: 'Level IV — Prospective Observational Study',
+      5: 'Level V — Retrospective / Secondary Data Study'
+    };
+    var isCR = p.level <= 3;
+    var path = isCR
+      ? 'SOP-CR path · Competency Assessment valid 2 years'
+      : 'SOP-LR path · Competency Assessment valid 5 years';
+
+    var reqs = [];
+    if (isCR) {
+      reqs.push({ text: 'SOP-CR Reader', where: 'TalentLMS', href: '/training/compliance-requirements' });
+      reqs.push({ text: 'Competency Assessment — SOP-CR (valid 2 years)', where: 'TalentLMS', href: '/training/compliance-requirements' });
+      reqs.push({ text: 'ICH E6(R3) GCP — Good Clinical Practice (renew every 2 years)', where: 'CITI', href: '/training/external-certifications' });
+      if (p.isDrug)   reqs.push({ text: 'Health Canada Division 5 — Drugs for Clinical Trials (renew every 2 years)', where: 'CITI', href: '/training/external-certifications' });
+      if (p.isDevice) reqs.push({ text: 'ISO 14155:2020 GCP for Medical Devices (renew every 2 years)', where: 'iso.org', href: '/training/external-certifications' });
+    } else {
+      reqs.push({ text: 'SOP-LR Reader', where: 'TalentLMS', href: '/training/compliance-requirements' });
+      reqs.push({ text: 'Competency Assessment — SOP-LR (valid 5 years)', where: 'TalentLMS', href: '/training/compliance-requirements' });
+    }
+
+    var h = '<div class="rm-level-callout">';
+    h += '<div class="rm-level-name">' + (names[p.level] || 'Level ' + p.level) + '</div>';
+    h += '<div class="rm-level-path">' + path + '</div>';
+    h += '<ul class="rm-level-reqs">';
+    reqs.forEach(function (r) {
+      h += '<li><a href="' + r.href + '">' + r.text + '</a>';
+      h += ' <span class="rm-level-where">' + r.where + '</span></li>';
+    });
+    h += '</ul></div>';
+    return h;
+  }
+
   /* ── Roadmap content ──────────────────────────────────────────────────── */
   function it(key, text, linkLabel, linkHref) {
     return { key: key, text: text, link: linkLabel ? { label: linkLabel, href: linkHref } : null };
@@ -298,17 +347,24 @@
     var phases = [];
 
     /* ── Phase 0 — Credentials & Training ── */
-    var ph0 = { id: 'p0', num: 'Phase 0', title: 'Credentials & Training', items: [] };
-    ph0.items.push(it('p0-privs', 'Obtain or verify Research Privileges or Researcher Status for the PI/QI', 'PI/QI pathway', '/kb/roles/pi-orientation'));
-    ph0.items.push(it('p0-sop',   'Complete SOP Reader training for your level via TalentLMS', 'Training requirements', '/training/compliance-requirements'));
-    ph0.items.push(it('p0-ca',    'Complete Competency Assessment — certificate required before signing the Delegation Log', 'Training requirements', '/training/compliance-requirements'));
-    if (p.level <= 4)
-      ph0.items.push(it('p0-gcp', 'Obtain GCP certification (CITI ICH E6) — renew every 2 years. Must not expire within 90 days of submission', 'External certifications', '/training/external-certifications'));
+    var isCR = p.level <= 3;
+    var ph0 = { id: 'p0', num: 'Phase 0', title: 'Credentials & Training', intro: levelCallout(p), items: [] };
+    ph0.items.push(it('p0-privs', 'Obtain Human Research Privileges (physicians/dentists) or Human Researcher Status (all others) — apply via TalentLMS, allow 1–5 business days', 'Privileges & Status', '/training/compliance-requirements'));
+    ph0.items.push(it('p0-sop',   isCR
+      ? 'Complete SOP-CR Reader on TalentLMS — acknowledge all SOPs in the Level I–III track'
+      : 'Complete SOP-LR Reader on TalentLMS — acknowledge all SOPs in the Level IV–V track',
+      'Training requirements', '/training/compliance-requirements'));
+    ph0.items.push(it('p0-ca', isCR
+      ? 'Pass Competency Assessment — SOP-CR on TalentLMS (certificate valid 2 years; Reader must be complete first)'
+      : 'Pass Competency Assessment — SOP-LR on TalentLMS (certificate valid 5 years; Reader must be complete first)',
+      'Training requirements', '/training/compliance-requirements'));
+    if (p.level <= 3)
+      ph0.items.push(it('p0-gcp', 'Complete ICH E6(R3) GCP — Good Clinical Practice via CITI (renew every 2 years; must not expire within 90 days of submission)', 'External certifications', '/training/external-certifications'));
     if (p.isDrug)
-      ph0.items.push(it('p0-div5', 'Health Canada Part C Division 5 training — required for drug and biologic studies', 'Training requirements', '/training/compliance-requirements'));
+      ph0.items.push(it('p0-div5', 'Complete Health Canada Division 5 — Drugs for Clinical Trials via CITI (renew every 2 years)', 'External certifications', '/training/external-certifications'));
     if (p.isDevice)
-      ph0.items.push(it('p0-iso',  'ISO 14155:2020 GCP for Medical Devices training — required for device studies', 'External certifications', '/training/external-certifications'));
-    ph0.items.push(it('p0-tdl',   'Prepare the Task Delegation Log — PI/QI signature confirms training and qualification are current', 'SOP-CR-002', '/sops/cr-002'));
+      ph0.items.push(it('p0-iso',  'Complete ISO 14155:2020 GCP for Medical Devices — self-train via iso.org (renew every 2 years)', 'External certifications', '/training/external-certifications'));
+    ph0.items.push(it('p0-tdl',   'Prepare the Task Delegation Log — all team members must be trained and credentialed before signing', 'SOP-CR-002', '/sops/cr-002'));
     phases.push(ph0);
 
     /* ── Phase 1 — Study Design & Planning ── */
@@ -557,6 +613,8 @@
       h += '<div class="rm-phase-right"><span class="rm-phase-count' + (done > 0 ? ' has-done' : '') + '">' + done + ' / ' + total + '</span><span class="rm-chevron">▶</span></div>';
       h += '</div>';
       h += '<div class="rm-phase-body">';
+
+      if (phase.intro) h += phase.intro;
 
       phase.items.forEach(function (item) {
         var checked = !!S.checks[item.key];
