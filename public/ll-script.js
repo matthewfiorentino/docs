@@ -3553,6 +3553,10 @@ function llRoute(modeId, opts) {
     }
   }
 
+  /* If DR source was moved into pane, restore it before any other mode
+     replaces pane content (pane.innerHTML would orphan the moved element). */
+  if (modeId !== 'dr') { llDrRestoreSource(); }
+
   /* Render */
   var pane = llPane();
   if (!pane) { llRouting = false; return; }
@@ -3654,7 +3658,89 @@ function llTeBackToList() {
   history.pushState(null, '', window.location.pathname + window.location.search);
   llRoute('te', { noHash: true });
 }
-function llRenderDocReview(pane)       { llStubPane(pane, 'Document Review',  'Constructed research documents with deliberate errors. Identify the issues; reveal the findings when ready.'); }
+/* ════════════════════════════════════════════════════════════════════════
+   DOCUMENT REVIEW — migrated to new shell
+   Strategy: move (not clone) #kp-phase-docreview into #ll-pane so that
+   document.getElementById still finds all existing IDs uniquely, allowing
+   kpDrSetup / kpDrRenderFinding to work unchanged.
+════════════════════════════════════════════════════════════════════════ */
+
+var _llDrSourceParent = null;
+var _llDrSourceNext   = null;
+
+var LL_DR_EXERCISES = [
+  { slug:'delegation',  topic:'Delegation and Team Roles',           title:"What’s wrong with this delegation log?" },
+  { slug:'consent',     topic:'Informed Consent Process',            title:"What’s wrong with this consent form?" },
+  { slug:'sae',         topic:'SAE and Adverse Event Reporting',     title:"What’s wrong with this SAE report?" },
+  { slug:'deviations',  topic:'Protocol Deviations',                 title:"What’s wrong with this deviation log?" },
+  { slug:'monitoring',  topic:'Monitoring and Inspection Readiness', title:"What’s wrong with these site responses?" },
+  { slug:'data',        topic:'Data Integrity',                      title:"What’s wrong with this source document?" },
+  { slug:'recruitment', topic:'Recruitment and Screening',           title:"What’s wrong with this screen failure log?" },
+  { slug:'gcp',         topic:'GCP Principles',                      title:"What’s wrong with this qualification record?" }
+];
+
+function llDrRestoreSource() {
+  if (!_llDrSourceParent) { return; }
+  var source = document.getElementById('kp-phase-docreview');
+  if (source && source.parentNode !== _llDrSourceParent) {
+    source.style.display = '';
+    var navRow = source.querySelector('.kp-nav-row');
+    if (navRow) { navRow.style.display = ''; }
+    _llDrSourceParent.insertBefore(source, _llDrSourceNext || null);
+  }
+}
+
+function llRenderDocReview(pane) {
+  var h = (window.location.hash || '').replace(/^#/, '');
+  var parts = h.split('/');
+  if (parts[0] === 'docreview' && parts[1]) { llDrOpenExercise(parts[1]); return; }
+  llDrRenderList(pane);
+}
+
+function llDrRenderList(pane) {
+  var html = '<h1>Document Review</h1>';
+  html += '<div class="ll-pane-sub">Constructed research documents with deliberate errors. Identify the issues before stepping through the annotated findings.</div>';
+  html += '<div class="ll-te-list">';
+  for (var i = 0; i < LL_DR_EXERCISES.length; i++) {
+    var ex = LL_DR_EXERCISES[i];
+    var count = (KP_DR_EXERCISES[ex.slug] && KP_DR_EXERCISES[ex.slug].findings) ? KP_DR_EXERCISES[ex.slug].findings.length : 0;
+    html += '<div class="ll-te-item" onclick="llDrOpenExercise(\'' + ex.slug + '\')">';
+    html +=   '<div class="ll-te-topic">' + ex.topic + '</div>';
+    html +=   '<div class="ll-te-title">' + ex.title + '</div>';
+    html +=   '<div class="ll-te-meta">' + count + ' findings</div>';
+    html += '</div>';
+  }
+  html += '</div>';
+  pane.innerHTML = html;
+}
+
+function llDrOpenExercise(slug) {
+  var source = document.getElementById('kp-phase-docreview');
+  if (!source) { return; }
+  _llDrSourceParent = source.parentNode;
+  _llDrSourceNext   = source.nextSibling;
+  var navRow = source.querySelector('.kp-nav-row');
+  if (navRow) { navRow.style.display = 'none'; }
+  source.style.display = 'block';
+  var pane = llPane();
+  pane.innerHTML =
+    '<div class="ll-kc-seq-nav" style="margin-bottom:24px">' +
+      '<button class="ll-back-btn" onclick="llDrBackToList()">&#8592; All exercises</button>' +
+      '<span class="ll-kc-seq-badge">Document Review</span>' +
+    '</div>';
+  pane.appendChild(source);
+  kpDrExerciseId = slug;
+  kpDrCurrentExercise = KP_DR_EXERCISES[slug];
+  kpDrSetup(slug);
+  history.pushState(null, '', '#docreview/' + slug);
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function llDrBackToList() {
+  llDrRestoreSource();
+  history.pushState(null, '', window.location.pathname + window.location.search);
+  llRoute('dr', { noHash: true });
+}
 /* ════════════════════════════════════════════════════════════════════════
    JUDGEMENT CALLS — migrated to new shell
 ════════════════════════════════════════════════════════════════════════ */
@@ -4034,6 +4120,10 @@ function llInitialMode() {
    event listeners. Re-bind on each boot attempt. Guard against double-
    boot via the llBooted flag and check that #ll-pane exists. */
 function llBoot() {
+  /* Reset stale DR parent ref — on SPA re-navigation React remounts the
+     component, recreating kp-phase-docreview in its original position. */
+  _llDrSourceParent = null;
+  _llDrSourceNext   = null;
   var pane = llPane();
   if (!pane) { return false; }       /* shell not in DOM yet */
   /* Always (re)bind in case Mintlify re-mounted the shell */
