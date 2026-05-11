@@ -628,11 +628,11 @@ html.dark .ri-callout a { color: #00c4b4 !important; }
 .ri-intake-entry {
     display: flex; flex-direction: column; align-items: flex-start;
     flex: 1; padding: 16px 20px; border-radius: 10px;
-    border: 1px solid #ff537f;
-    background: #ff537f; text-decoration: none;
+    border: 1px solid var(--ri-hero-accent);
+    background: var(--ri-hero-accent); text-decoration: none;
     transition: background .15s, box-shadow .15s;
 }
-.ri-intake-entry:hover { background: #e8496f; }
+.ri-intake-entry:hover { filter: brightness(.9); }
 .ri-ie-label { font-size: 14px; font-weight: 700; color: #fff; margin-bottom: 6px; }
 .ri-ie-desc { font-size: 13px; line-height: 1.55; color: rgba(255,255,255,.88); flex: 1; }
 .ri-ie-link {
@@ -1033,7 +1033,7 @@ html.dark .ri-hub-body hr {
    HOME PAGE — CONTACT BAND
    ══════════════════════════════════════════════ */
 .ri-contact-band {
-    background: var(--ri-accent, #008f82);
+    background: var(--ri-hero-accent);
     width: 100%;
 }
 .ri-contact-band-inner {
