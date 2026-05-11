@@ -3530,7 +3530,7 @@ function llMobileSel() { return document.getElementById('ll-mobile-select'); }
 /* Top-level orchestrator. modeId is required; sub state lives in mode renderers. */
 function llRoute(modeId, opts) {
   if (llRouting) { return; }
-  if (!modeId) { modeId = 'kc'; }
+  if (!modeId) { modeId = 'about'; }
   opts = opts || {};
   llRouting = true;
   llCurrentMode = modeId;
@@ -3543,9 +3543,10 @@ function llRoute(modeId, opts) {
   var msel = llMobileSel();
   if (msel && msel.value !== modeId) { msel.value = modeId; }
 
-  /* Hash update */
+  /* Hash update — about and kc bare-URL states get no hash fragment */
   if (!opts.noHash) {
-    var newHash = (modeId === 'kc') ? '' : modeId;
+    var noHashModes = { about: true, kc: true };
+    var newHash = noHashModes[modeId] ? '' : modeId;
     if (window.location.hash.replace(/^#/, '').split('/')[0] !== newHash) {
       if (newHash) { history.pushState(null, '', '#' + newHash); }
       else         { history.pushState(null, '', window.location.pathname + window.location.search); }
@@ -3556,6 +3557,7 @@ function llRoute(modeId, opts) {
   var pane = llPane();
   if (!pane) { llRouting = false; return; }
   switch (modeId) {
+    case 'about': llRenderAbout(pane);                 break;
     case 'kc':   llRenderKnowledgeChecks(pane, opts); break;
     case 'te':   llRenderTeamExercises(pane, opts);   break;
     case 'dr':   llRenderDocReview(pane, opts);       break;
@@ -3565,6 +3567,22 @@ function llRoute(modeId, opts) {
   }
   pane.scrollTop = 0;
   llRouting = false;
+}
+
+function llRenderAbout(pane) {
+  pane.innerHTML =
+    '<div class="ll-about">' +
+      '<h1>Learning Lab</h1>' +
+      '<p class="ll-about-desc">Applied practice tools for clinical research staff at the RI-MUHC. Each mode targets a different kind of preparation — from quick knowledge checks to inspection readiness. Use them alongside your SOP training, or to prepare for a monitoring visit or audit.</p>' +
+      '<ul class="ll-about-modes">' +
+        '<li class="ll-about-mode"><span class="ll-about-mode-name">Knowledge Checks</span><span class="ll-about-mode-desc">Multiple-choice questions with immediate feedback. Covers 11 topics across interventional and observational study types.</span></li>' +
+        '<li class="ll-about-mode"><span class="ll-about-mode-name">Team Exercises</span><span class="ll-about-mode-desc">Case-based discussion scenarios for team meetings or solo review. Work through a situation, then reveal the key points.</span></li>' +
+        '<li class="ll-about-mode"><span class="ll-about-mode-name">Document Review</span><span class="ll-about-mode-desc">Constructed research documents with deliberate errors. Identify the issues before checking the annotated findings.</span></li>' +
+        '<li class="ll-about-mode"><span class="ll-about-mode-name">Judgement Calls</span><span class="ll-about-mode-desc">Realistic pressure scenarios where someone asks you to do something questionable. Three decision points per scenario.</span></li>' +
+        '<li class="ll-about-mode"><span class="ll-about-mode-name">Inspection Prep</span><span class="ll-about-mode-desc">Mock inspector questions across 8 topics. Formulate your answer, then compare it to a model response.</span></li>' +
+      '</ul>' +
+      '<button class="ll-about-cta" onclick="llRoute(\'kc\')">Start with Knowledge Checks →</button>' +
+    '</div>';
 }
 
 /* ── Stub renderers (replaced as each mode is migrated) ───────────────── */
@@ -3577,7 +3595,73 @@ function llStubPane(pane, title, sub) {
 function llRenderTeamExercises(pane)   { llStubPane(pane, 'Team Exercises',   'Case-based discussion exercises for team meetings or solo work. Reveal key points when ready.'); }
 function llRenderDocReview(pane)       { llStubPane(pane, 'Document Review',  'Constructed research documents with deliberate errors. Identify the issues; reveal the findings when ready.'); }
 function llRenderJudgementCalls(pane)  { llStubPane(pane, 'Judgement Calls',  'Realistic pressure scenarios where someone asks you to do something that may not be right. Three decision points per scenario.'); }
-function llRenderInspectionPrep(pane)  { llStubPane(pane, 'Inspection Prep',  'Mock inspector questions with model responses. Prepare your answer, then reveal what a strong response looks like.'); }
+/* ════════════════════════════════════════════════════════════════════════
+   INSPECTION PREP — migrated to new shell
+════════════════════════════════════════════════════════════════════════ */
+
+var llInspActive = false;
+
+(function() {
+  var _orig = inspGoHub;
+  inspGoHub = function() { if (llInspActive) { llInspBackToTopics(); } else { _orig(); } };
+})();
+
+function llRenderInspectionPrep(pane) {
+  var h = (window.location.hash || '').replace(/^#/, '');
+  var parts = h.split('/');
+  var p0 = parts[0] || '', p1 = parts[1] || '';
+  if (p0 === 'inspection-prep' && p1) { llInspStartTopic(p1); return; }
+  llInspRenderTopicList(pane);
+}
+
+function llInspRenderTopicList(pane) {
+  var html = '<h1>Inspection Prep</h1>';
+  html += '<div class="ll-pane-sub">Mock inspector questions across ' + INSP_TOPICS.length + ' topics. Formulate your answer before revealing the model response.</div>';
+  html += '<div class="ll-kc-topics">';
+  for (var i = 0; i < INSP_TOPICS.length; i++) {
+    var t = INSP_TOPICS[i];
+    html += '<div class="ll-kc-topic" onclick="llInspStartTopic(\'' + t.id + '\')">';
+    html +=   '<div class="ll-kc-topic-name">' + t.name + '</div>';
+    html +=   '<div class="ll-kc-topic-meta">' + t.count + ' questions · ' + t.ref + '</div>';
+    html += '</div>';
+  }
+  html += '</div>';
+  pane.innerHTML = html;
+}
+
+function llInspStartTopic(topicId) {
+  inspCurrentTopicId = topicId;
+  inspQueue = inspBuildQueue(topicId);
+  inspIndex = 0;
+  var topicName = '';
+  for (var i = 0; i < INSP_TOPICS.length; i++) {
+    if (INSP_TOPICS[i].id === topicId) { topicName = INSP_TOPICS[i].name; break; }
+  }
+  var pane = llPane();
+  pane.innerHTML = llInspSeqHTML(topicName);
+  history.pushState(null, '', '#inspection-prep/' + topicId);
+  llInspActive = true;
+  inspRenderCard();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function llInspSeqHTML(topicName) {
+  return '<div class="ll-kc-seq">' +
+    '<div class="ll-kc-seq-nav">' +
+      '<button class="ll-back-btn" onclick="llInspBackToTopics()">&#8592; Topics</button>' +
+      '<span class="ll-kc-seq-badge">Inspection Prep</span>' +
+    '</div>' +
+    '<div class="ll-kc-seq-label">' + topicName + '</div>' +
+    '<div id="insp-card-wrap"></div>' +
+  '</div>';
+}
+
+function llInspBackToTopics() {
+  llInspActive = false;
+  inspCurrentTopicId = '';
+  history.pushState(null, '', window.location.pathname + window.location.search);
+  llRoute('insp', { noHash: true });
+}
 
 /* ════════════════════════════════════════════════════════════════════════
    KNOWLEDGE CHECKS — migrated to new shell
@@ -3741,7 +3825,7 @@ function llKcBackToTopics() {
 /* ── Initial mode from hash, with legacy hash compatibility ──────────── */
 function llInitialMode() {
   var h = (window.location.hash || '').replace(/^#/, '');
-  if (!h) { return 'kc'; }
+  if (!h) { return 'about'; }
   var p0 = h.split('/')[0];
   /* New short hashes */
   if (p0 === 'kc' || p0 === 'te' || p0 === 'dr' || p0 === 'jc' || p0 === 'insp') { return p0; }
