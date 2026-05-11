@@ -1,12 +1,11 @@
 /**
  * My Study Roadmap — RI-MUHC Clinical Research Hub
- * Screening questions → personalized lifecycle checklist.
- * Self-contained: injects its own CSS, uses localStorage for persistence.
+ * Merged intake + roadmap: screening → auto-send email → personalized lifecycle checklist.
+ * Self-contained: injects own CSS, no localStorage.
  */
 (function () {
   'use strict';
 
-  /* ── Config ───────────────────────────────────────────────────────────── */
   var EMAILJS_SVC = 'service_p1ld1rp';
   var EMAILJS_TPL = 'template_sqehaop';
   var EMAILJS_KEY = 'bY9Iw2R78ouIgz-rb';
@@ -19,13 +18,21 @@
     s.textContent = [
       '#rm-root { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif; color: #111; max-width: 660px; padding: 0 0 80px; }',
 
-      /* Screening */
+      /* Screening — shared */
       '.rm-screen { padding: 4px 0 48px; }',
       '.rm-progress { height: 2px; background: #ebebeb; border-radius: 2px; margin-bottom: 36px; overflow: hidden; }',
       '.rm-progress-fill { height: 100%; background: #007a6e; border-radius: 2px; transition: width .35s cubic-bezier(.16,1,.3,1); }',
       '.rm-step-count { font-size: 11px; font-weight: 600; letter-spacing: .06em; color: #bbb; text-align: right; margin-bottom: 28px; text-transform: uppercase; }',
       '.rm-question { font-size: 22px; font-weight: 700; color: #111; line-height: 1.3; letter-spacing: -.02em; margin-bottom: 6px; }',
       '.rm-q-hint { font-size: 13.5px; color: #777; line-height: 1.6; margin-bottom: 24px; }',
+      '.rm-nav { display: flex; justify-content: space-between; align-items: center; }',
+      '.rm-back-btn { font-size: 13.5px; color: #999; cursor: pointer; background: none; border: none; padding: 0; font-family: inherit; }',
+      '.rm-back-btn:hover { color: #444; }',
+      '.rm-continue-btn { font-size: 13.5px; font-weight: 600; color: #fff; background: #007a6e; border: none; border-radius: 8px; padding: 10px 22px; cursor: pointer; opacity: 0; transition: opacity .2s, background .12s; pointer-events: none; font-family: inherit; }',
+      '.rm-continue-btn.on { opacity: 1; pointer-events: auto; }',
+      '.rm-continue-btn:hover { background: #005a52; }',
+
+      /* Single-select */
       '.rm-options { display: flex; flex-direction: column; gap: 7px; margin-bottom: 36px; }',
       '.rm-opt { display: flex; flex-direction: column; gap: 2px; padding: 13px 16px; border: 1.5px solid #e5e5e5; border-radius: 9px; cursor: pointer; background: #fff; transition: border-color .12s, background .12s; text-align: left; }',
       '.rm-opt:hover { border-color: #007a6e; background: #f7fdfb; }',
@@ -33,12 +40,41 @@
       '.rm-opt-label { font-size: 14.5px; font-weight: 500; color: #111; }',
       '.rm-opt.selected .rm-opt-label { color: #005a52; }',
       '.rm-opt-hint { font-size: 12.5px; color: #999; line-height: 1.45; margin-top: 1px; }',
-      '.rm-nav { display: flex; justify-content: space-between; align-items: center; }',
-      '.rm-back-btn { font-size: 13.5px; color: #999; cursor: pointer; background: none; border: none; padding: 0; font-family: inherit; }',
-      '.rm-back-btn:hover { color: #444; }',
-      '.rm-continue-btn { font-size: 13.5px; font-weight: 600; color: #fff; background: #007a6e; border: none; border-radius: 8px; padding: 10px 22px; cursor: pointer; opacity: 0; transition: opacity .2s, background .12s; pointer-events: none; font-family: inherit; }',
-      '.rm-continue-btn.on { opacity: 1; pointer-events: auto; }',
-      '.rm-continue-btn:hover { background: #005a52; }',
+
+      /* Multi-select */
+      '.rm-multi-options { display: flex; flex-direction: column; gap: 7px; margin-bottom: 28px; }',
+      '.rm-multi-opt { display: flex; align-items: center; gap: 12px; padding: 11px 16px; border: 1.5px solid #e5e5e5; border-radius: 9px; cursor: pointer; background: #fff; transition: border-color .12s, background .12s; text-align: left; }',
+      '.rm-multi-opt:hover { border-color: #007a6e; background: #f7fdfb; }',
+      '.rm-multi-opt.selected { border-color: #007a6e; background: #f0faf9; }',
+      '.rm-multi-check { width: 16px; height: 16px; border: 1.5px solid #ddd; border-radius: 4px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; transition: all .12s; }',
+      '.rm-multi-opt.selected .rm-multi-check { background: #007a6e; border-color: #007a6e; }',
+      '.rm-multi-opt.selected .rm-multi-check::after { content: ""; width: 4px; height: 7px; border: 2px solid #fff; border-top: none; border-left: none; transform: rotate(45deg) translate(-1px,-1px); display: block; }',
+      '.rm-multi-label { font-size: 14px; font-weight: 500; color: #111; }',
+      '.rm-multi-opt.selected .rm-multi-label { color: #005a52; }',
+      '.rm-multi-nav { display: flex; justify-content: space-between; align-items: center; margin-top: 8px; }',
+      '.rm-skip-btn { font-size: 12.5px; color: #bbb; cursor: pointer; background: none; border: none; padding: 0; font-family: inherit; }',
+      '.rm-skip-btn:hover { color: #777; }',
+
+      /* Text inputs */
+      '.rm-text-wrap { margin-bottom: 36px; }',
+      '.rm-text-input { width: 100%; padding: 12px 14px; border: 1.5px solid #e5e5e5; border-radius: 9px; font-size: 15px; color: #111; background: #fff; font-family: inherit; outline: none; transition: border-color .15s; box-sizing: border-box; }',
+      '.rm-text-input:focus { border-color: #007a6e; }',
+      '.rm-text-input::placeholder { color: #ccc; }',
+
+      /* Contact screen */
+      '.rm-contact-fields { display: flex; flex-direction: column; gap: 14px; margin-bottom: 36px; }',
+      '.rm-contact-label { font-size: 11px; font-weight: 700; color: #aaa; text-transform: uppercase; letter-spacing: .07em; margin-bottom: 5px; }',
+      '.rm-role-opts { display: flex; flex-wrap: wrap; gap: 7px; }',
+      '.rm-role-opt { padding: 8px 14px; border: 1.5px solid #e5e5e5; border-radius: 20px; font-size: 13.5px; font-weight: 500; color: #555; cursor: pointer; background: #fff; transition: all .12s; font-family: inherit; }',
+      '.rm-role-opt:hover { border-color: #007a6e; color: #005a52; background: #f7fdfb; }',
+      '.rm-role-opt.selected { border-color: #007a6e; background: #f0faf9; color: #005a52; }',
+      '.rm-submit-btn { font-size: 13.5px; font-weight: 600; color: #fff; background: #007a6e; border: none; border-radius: 8px; padding: 10px 22px; cursor: pointer; font-family: inherit; transition: background .12s; }',
+      '.rm-submit-btn:hover { background: #005a52; }',
+      '.rm-submit-btn:disabled { background: #ccc; cursor: default; }',
+
+      /* Roadmap — sent chip */
+      '.rm-sent-chip { display: flex; align-items: center; gap: 9px; padding: 10px 14px; background: #f0faf9; border: 1px solid #c5e8e4; border-radius: 8px; margin-bottom: 24px; font-size: 13px; color: #005a52; line-height: 1.5; }',
+      '.rm-sent-dot { width: 7px; height: 7px; background: #007a6e; border-radius: 50%; flex-shrink: 0; }',
 
       /* Roadmap — profile bar */
       '.rm-profile-bar { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1px solid #f0f0f0; }',
@@ -47,7 +83,10 @@
       '.rm-chips { display: flex; flex-wrap: wrap; gap: 5px; }',
       '.rm-chip { font-size: 12px; font-weight: 500; color: #555; background: #f5f5f5; border-radius: 20px; padding: 3px 10px; }',
       '.rm-chip.level { background: #f0faf9; color: #005a52; }',
-      '.rm-edit-btn { font-size: 12px; color: #bbb; background: none; border: none; cursor: pointer; padding: 0; font-family: inherit; flex-shrink: 0; white-space: nowrap; margin-top: 2px; }',
+      '.rm-profile-actions { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }',
+      '.rm-print-btn { font-size: 12px; color: #999; background: none; border: 1px solid #e5e5e5; border-radius: 6px; cursor: pointer; padding: 5px 10px; font-family: inherit; transition: border-color .12s, color .12s; }',
+      '.rm-print-btn:hover { color: #444; border-color: #bbb; }',
+      '.rm-edit-btn { font-size: 12px; color: #bbb; background: none; border: none; cursor: pointer; padding: 0; font-family: inherit; white-space: nowrap; }',
       '.rm-edit-btn:hover { color: #555; text-decoration: underline; }',
 
       /* Flags */
@@ -62,6 +101,17 @@
       '.rm-flag.amber { background: #fffbeb; } .rm-flag.amber .rm-flag-dot { background: #d97706; } .rm-flag.amber .rm-flag-title { color: #92400e; }',
       '.rm-flag.sky   { background: #eff6ff; } .rm-flag.sky   .rm-flag-dot { background: #2563eb; } .rm-flag.sky   .rm-flag-title { color: #1e40af; }',
       '.rm-flag.teal  { background: #f0faf9; } .rm-flag.teal  .rm-flag-dot { background: #007a6e; } .rm-flag.teal  .rm-flag-title { color: #005a52; }',
+
+      /* Level callout */
+      '.rm-level-callout { background: #f8f9f8; border: 1px solid #e5e5e5; border-radius: 9px; padding: 14px 16px; margin-bottom: 16px; }',
+      '.rm-level-name { font-size: 13.5px; font-weight: 700; color: #111; margin-bottom: 2px; }',
+      '.rm-level-path { font-size: 12px; color: #888; margin-bottom: 12px; }',
+      '.rm-level-reqs { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 5px; }',
+      '.rm-level-reqs li { font-size: 13px; color: #444; display: flex; align-items: baseline; gap: 6px; }',
+      '.rm-level-reqs li::before { content: "·"; color: #007a6e; font-weight: 700; flex-shrink: 0; }',
+      '.rm-level-reqs a { color: #007a6e; text-decoration: none; }',
+      '.rm-level-reqs a:hover { text-decoration: underline; }',
+      '.rm-level-where { color: #aaa; font-size: 11.5px; }',
 
       /* Phases */
       '.rm-roadmap { display: flex; flex-direction: column; }',
@@ -79,17 +129,6 @@
       '.rm-phase-body { display: none; padding: 4px 0 18px 66px; flex-direction: column; gap: 1px; }',
       '.rm-phase.open .rm-phase-body { display: flex; }',
 
-      /* Level callout */
-      '.rm-level-callout { background: #f8f9f8; border: 1px solid #e5e5e5; border-radius: 9px; padding: 14px 16px; margin-bottom: 16px; }',
-      '.rm-level-name { font-size: 13.5px; font-weight: 700; color: #111; margin-bottom: 2px; }',
-      '.rm-level-path { font-size: 12px; color: #888; margin-bottom: 12px; }',
-      '.rm-level-reqs { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 5px; }',
-      '.rm-level-reqs li { font-size: 13px; color: #444; display: flex; align-items: baseline; gap: 6px; }',
-      '.rm-level-reqs li::before { content: "·"; color: #007a6e; font-weight: 700; flex-shrink: 0; }',
-      '.rm-level-reqs a { color: #007a6e; text-decoration: none; }',
-      '.rm-level-reqs a:hover { text-decoration: underline; }',
-      '.rm-level-where { color: #aaa; font-size: 11.5px; }',
-
       /* Items */
       '.rm-item { display: flex; align-items: flex-start; gap: 11px; padding: 6px 0; }',
       '.rm-checkbox { width: 17px; height: 17px; border-radius: 5px; border: 1.5px solid #ddd; flex-shrink: 0; cursor: pointer; display: flex; align-items: center; justify-content: center; margin-top: 2px; transition: border-color .12s, background .12s; }',
@@ -103,26 +142,9 @@
       '.rm-item-link:hover { text-decoration: underline; }',
       '.rm-item-link::after { content: "→"; font-size: 10px; }',
 
-      /* Email CTA */
-      '.rm-email-cta { margin: 14px 0 6px; padding: 16px 18px; background: #fafafa; border: 1px solid #ebebeb; border-radius: 10px; }',
-      '.rm-email-title { font-size: 13.5px; font-weight: 600; color: #111; margin-bottom: 4px; }',
-      '.rm-email-desc { font-size: 12.5px; color: #777; line-height: 1.55; margin-bottom: 14px; }',
-      '.rm-email-row { display: flex; gap: 8px; margin-bottom: 8px; }',
-      '.rm-email-input { flex: 1; padding: 8px 11px; border: 1.5px solid #e5e5e5; border-radius: 7px; font-size: 13.5px; color: #111; background: #fff; font-family: inherit; outline: none; transition: border-color .12s; }',
-      '.rm-email-input:focus { border-color: #007a6e; }',
-      '.rm-email-submit { padding: 8px 16px; background: #007a6e; color: #fff; border: none; border-radius: 7px; font-size: 13px; font-weight: 600; cursor: pointer; font-family: inherit; transition: background .12s; white-space: nowrap; }',
-      '.rm-email-submit:hover { background: #005a52; }',
-      '.rm-email-submit:disabled { background: #ccc; cursor: default; }',
-      '.rm-email-ok { font-size: 13px; color: #007a6e; font-weight: 500; display: none; }',
-
-      /* Print button */
-      '.rm-print-btn { font-size: 12px; color: #999; background: none; border: 1px solid #e5e5e5; border-radius: 6px; cursor: pointer; padding: 5px 10px; font-family: inherit; transition: border-color .12s, color .12s; }',
-      '.rm-print-btn:hover { color: #444; border-color: #bbb; }',
-      '.rm-profile-actions { display: flex; align-items: center; gap: 8px; }',
-
       /* Print */
       '@media print {',
-      '  .rm-print-btn, .rm-edit-btn, .rm-chevron, .rm-email-cta { display: none !important; }',
+      '  .rm-print-btn, .rm-edit-btn, .rm-chevron, .rm-sent-chip { display: none !important; }',
       '  .rm-phase-body { display: flex !important; }',
       '  .rm-phase-hdr { padding: 10px 0; cursor: default; }',
       '  .rm-phase { border-top: 1px solid #ddd; }',
@@ -135,7 +157,7 @@
   /* ── Questions ────────────────────────────────────────────────────────── */
   var QS = [
     {
-      key: 'stage',
+      key: 'stage', type: 'single',
       q: 'Where are you in your study journey?',
       opts: [
         { val: 'idea',       label: 'Early idea or concept',          hint: 'Still developing the research question' },
@@ -146,27 +168,33 @@
       ]
     },
     {
-      key: 'type',
+      key: 'studyTitle', type: 'text',
+      q: 'Working study title',
+      hint: 'A working title is fine — helps the Research Facilitator match your roadmap to your file.',
+      placeholder: 'e.g. Phase II trial of X in adults with Y'
+    },
+    {
+      key: 'type', type: 'single',
       q: 'What type of study is this?',
       opts: [
-        { val: 'interventional',            label: 'Interventional',                hint: 'Participants receive a drug, device, or other intervention assigned by the protocol' },
-        { val: 'observational-prospective', label: 'Prospective observational',     hint: 'Observing outcomes without assigning an intervention' },
+        { val: 'interventional',            label: 'Interventional',                  hint: 'Participants receive a drug, device, or other intervention assigned by the protocol' },
+        { val: 'observational-prospective', label: 'Prospective observational',       hint: 'Observing outcomes without assigning an intervention' },
         { val: 'retrospective',             label: 'Retrospective or secondary data', hint: 'Analyzing data already collected — charts, registries, biobanks' }
       ]
     },
     {
-      key: 'intType',
-      q: 'What kind of investigational product?',
+      key: 'intType', type: 'single',
       showIf: function (a) { return a.type === 'interventional'; },
+      q: 'What kind of investigational product?',
       opts: [
-        { val: 'drug',   label: 'Drug or biologic',                   hint: 'Includes biosimilars and advanced therapy products' },
-        { val: 'device', label: 'Medical device',                     hint: 'Includes diagnostics, surgical devices, implants' },
-        { val: 'nhp',    label: 'Natural health product (NHP)',        hint: 'Vitamins, herbal products, homeopathic medicines' },
-        { val: 'low',    label: 'Low-risk behavioral or procedural',   hint: 'No Health Canada filing required' }
+        { val: 'drug',   label: 'Drug or biologic',                  hint: 'Includes biosimilars and advanced therapy products' },
+        { val: 'device', label: 'Medical device',                    hint: 'Includes diagnostics, surgical devices, implants' },
+        { val: 'nhp',    label: 'Natural health product (NHP)',       hint: 'Vitamins, herbal products, homeopathic medicines' },
+        { val: 'low',    label: 'Low-risk behavioral or procedural',  hint: 'No Health Canada filing required' }
       ]
     },
     {
-      key: 'sponsorship',
+      key: 'sponsorship', type: 'single',
       q: 'What is the sponsorship arrangement?',
       opts: [
         { val: 'industry', label: 'Industry-sponsored',       hint: 'A pharmaceutical, biotech, or device company is the sponsor' },
@@ -175,7 +203,7 @@
       ]
     },
     {
-      key: 'phi',
+      key: 'phi', type: 'single',
       q: 'Will your study collect or access identifiable health information?',
       hint: 'Includes names, MRNs, dates of birth, diagnoses, or any data that could identify a participant.',
       opts: [
@@ -185,33 +213,85 @@
       ]
     },
     {
-      key: 'crossBorder',
+      key: 'crossBorder', type: 'single',
+      showIf: function (a) { return a.phi === 'yes' || a.phi === 'unsure'; },
       q: 'Will identifiable data leave Quebec or Canada?',
       hint: 'Includes sharing with an international sponsor, or data stored on non-Canadian servers.',
-      showIf: function (a) { return a.phi === 'yes' || a.phi === 'unsure'; },
       opts: [
         { val: 'yes', label: 'Yes' },
         { val: 'no',  label: 'No — data stays within Quebec or Canada' }
       ]
     },
     {
-      key: 'population',
+      key: 'population', type: 'single',
       q: 'Does your study involve vulnerable populations?',
       opts: [
-        { val: 'minors',    label: 'Minors (under 18)',              hint: 'Requires parental consent and age-appropriate assent' },
-        { val: 'incapable', label: 'Adults unable to consent',       hint: 'Requires a Personne mandatée, tutor, or curator' },
+        { val: 'minors',    label: 'Minors (under 18)',               hint: 'Requires parental consent and age-appropriate assent' },
+        { val: 'incapable', label: 'Adults unable to consent',        hint: 'Requires a Personne mandatée, tutor, or curator' },
         { val: 'both',      label: 'Both minors and incapable adults' },
         { val: 'none',      label: 'No — standard adult population' }
       ]
     },
     {
-      key: 'sites',
+      key: 'sites', type: 'single',
       q: 'Is this a single-site or multicentre study?',
       opts: [
         { val: 'single',      label: 'Single site — MUHC only' },
-        { val: 'multi-lead',  label: 'Multicentre — MUHC is the Quebec REB Lead', hint: 'Other Quebec RSSS sites participating' },
-        { val: 'multi-cross', label: 'Multicentre — cross-provincial or international', hint: 'Sites outside Quebec' }
+        { val: 'multi-lead',  label: 'Multicentre — MUHC is the Quebec REB Lead',   hint: 'You handle submission and coordinate other Quebec RSSS sites' },
+        { val: 'multi-part',  label: 'Multicentre — MUHC is a participating site',  hint: 'Another site leads the submission' },
+        { val: 'multi-cross', label: 'Multicentre — cross-provincial or international', hint: 'Sites outside Quebec involved' }
       ]
+    },
+    {
+      key: 'cim', type: 'single',
+      showIf: function (a) { return a.type === 'interventional'; },
+      q: 'Will this study use the Centre for Innovative Medicine (CIM)?',
+      hint: 'CIM provides clinical space, research nursing, monitoring, and specialized platforms at the Glen and MGH sites.',
+      opts: [
+        { val: 'yes',     label: 'Yes — fully or primarily through CIM' },
+        { val: 'partial', label: 'Partially — specific CIM services' },
+        { val: 'no',      label: 'No' },
+        { val: 'unsure',  label: 'Unsure' }
+      ]
+    },
+    {
+      key: 'experience', type: 'single',
+      showIf: function (a) { return a.stage === 'submission' || a.stage === 'conduct'; },
+      q: 'How much experience does your team have running studies of this type at the RI-MUHC?',
+      hint: 'Helps the Research Facilitator calibrate the level of support to offer.',
+      opts: [
+        { val: 'first',     label: 'First or second study of this type' },
+        { val: 'some',      label: 'Some experience — 3 to 5 studies' },
+        { val: 'extensive', label: 'Extensive — this is routine for our team' }
+      ]
+    },
+    {
+      key: 'naganoNum', type: 'text', optional: true,
+      showIf: function (a) { return a.stage === 'conduct' || a.stage === 'closeout'; },
+      q: 'Nagano study number',
+      hint: 'So the Research Facilitator can pull up your record directly. Leave blank if you don\'t have it handy.',
+      placeholder: 'e.g. 2024-1234'
+    },
+    {
+      key: 'supportNeeds', type: 'multi', optional: true,
+      q: 'What do you need most right now?',
+      hint: 'Select all that apply — the Research Facilitator will come prepared.',
+      opts: [
+        { val: 'design-protocol',  label: 'Protocol design or feasibility support' },
+        { val: 'regulatory',       label: 'Regulatory submissions — Health Canada or Nagano' },
+        { val: 'training',         label: 'Training and credentials guidance' },
+        { val: 'budget-contracts', label: 'Budget, contracts, or funding' },
+        { val: 'team-setup',       label: 'Hiring or team setup' },
+        { val: 'data',             label: 'Data management, REDCap, or privacy' },
+        { val: 'cim-connect',      label: 'Connect with CIM' },
+        { val: 'conduct-support',  label: 'Study conduct support' },
+        { val: 'closeout-support', label: 'Close-out procedures or amendments' }
+      ]
+    },
+    {
+      key: '_contact', type: 'contact',
+      q: 'Almost there — where should we send your roadmap?',
+      hint: 'The Research Facilitator will follow up within 5 business days.'
     }
   ];
 
@@ -236,13 +316,28 @@
     p.minors      = a.population === 'minors'    || a.population === 'both';
     p.incapable   = a.population === 'incapable' || a.population === 'both';
     p.multiLead   = a.sites === 'multi-lead';
+    p.multiPart   = a.sites === 'multi-part';
     p.multiCross  = a.sites === 'multi-cross';
-    if      (p.isDrug)                   p.level = 1;
-    else if (p.isDevice)                 p.level = 2;
-    else if (p.isNHP)                    p.level = 3;
-    else if (p.isObs  || p.isLow)        p.level = 4;
-    else if (p.isRetro)                  p.level = 5;
-    else                                 p.level = 4;
+    p.hasCIM      = a.cim === 'yes' || a.cim === 'partial' || a.cim === 'unsure';
+
+    if      (p.isDrug)           p.level = 1;
+    else if (p.isDevice)         p.level = 2;
+    else if (p.isNHP)            p.level = 3;
+    else if (p.isObs || p.isLow) p.level = 4;
+    else if (p.isRetro)          p.level = 5;
+    else                         p.level = 4;
+
+    /* Pathway — shown to facilitator in email only */
+    if (p.stage === 'idea') {
+      p.pathway = 'intro-call';
+    } else if (p.isDrug || p.isIndustry || p.hasCIM || p.isSI || a.experience === 'first') {
+      p.pathway = 'warm-handoff';
+    } else if (p.level <= 2) {
+      p.pathway = 'consult';
+    } else {
+      p.pathway = 'self-serve';
+    }
+
     return p;
   }
 
@@ -260,7 +355,7 @@
     if (p.minors)
       f.push({ tone: 'sky', title: 'Minors — Civil Code Art. 21',
         detail: 'Parental or guardian consent required. Assent for children aged 7–13; minors 14+ may consent alone if REB determines minimal risk.',
-        href: '/kb/consent' });
+        href: '/kb/pediatric-research' });
     if (p.incapable)
       f.push({ tone: 'coral', title: 'Adults unable to consent — Personne mandatée required',
         detail: 'Authorization from a mandatary, tutor, or curator is required. Risk must not be disproportionate to expected benefit.',
@@ -295,6 +390,7 @@
     if (p.minors)               chips.push({ text: 'Minors' });
     if (p.incapable)            chips.push({ text: 'Incapable adults' });
     if (p.multiLead)            chips.push({ text: 'REB Lead' });
+    if (p.multiPart)            chips.push({ text: 'Participating site' });
     if (p.multiCross)           chips.push({ text: 'Cross-provincial' });
     return chips;
   }
@@ -309,10 +405,8 @@
       5: 'Level V — Retrospective / Secondary Data Study'
     };
     var isCR = p.level <= 3;
-    var path = isCR
-      ? 'SOP-CR path · Competency Assessment valid 2 years'
-      : 'SOP-LR path · Competency Assessment valid 5 years';
-
+    var path = isCR ? 'SOP-CR path · Competency Assessment valid 2 years'
+                    : 'SOP-LR path · Competency Assessment valid 5 years';
     var reqs = [];
     if (isCR) {
       reqs.push({ text: 'SOP-CR Reader', where: 'TalentLMS', href: '/training/compliance-requirements' });
@@ -324,32 +418,30 @@
       reqs.push({ text: 'SOP-LR Reader', where: 'TalentLMS', href: '/training/compliance-requirements' });
       reqs.push({ text: 'Competency Assessment — SOP-LR (valid 5 years)', where: 'TalentLMS', href: '/training/compliance-requirements' });
     }
-
     var h = '<div class="rm-level-callout">';
     h += '<div class="rm-level-name">' + (names[p.level] || 'Level ' + p.level) + '</div>';
     h += '<div class="rm-level-path">' + path + '</div>';
     h += '<ul class="rm-level-reqs">';
     reqs.forEach(function (r) {
-      h += '<li><a href="' + r.href + '">' + r.text + '</a>';
-      h += ' <span class="rm-level-where">' + r.where + '</span></li>';
+      h += '<li><a href="' + r.href + '">' + r.text + '</a> <span class="rm-level-where">' + r.where + '</span></li>';
     });
     h += '</ul></div>';
     return h;
   }
 
-  /* ── Roadmap content ──────────────────────────────────────────────────── */
+  /* ── Roadmap content ─────────────────────────────────────────────────── */
   function it(key, text, linkLabel, linkHref) {
     return { key: key, text: text, link: linkLabel ? { label: linkLabel, href: linkHref } : null };
   }
 
   function buildRoadmap(p) {
     var phases = [];
-
-    /* ── Phase 0 — Credentials & Training ── */
     var isCR = p.level <= 3;
+
+    /* Phase 0 — Credentials & Training */
     var ph0 = { id: 'p0', num: 'Phase 0', title: 'Credentials & Training', intro: levelCallout(p), items: [] };
     ph0.items.push(it('p0-privs', 'Obtain Human Research Privileges (physicians/dentists) or Human Researcher Status (all others) — apply via TalentLMS, allow 1–5 business days', 'Privileges & Status', '/training/compliance-requirements'));
-    ph0.items.push(it('p0-sop',   isCR
+    ph0.items.push(it('p0-sop', isCR
       ? 'Complete SOP-CR Reader on TalentLMS — acknowledge all SOPs in the Level I–III track'
       : 'Complete SOP-LR Reader on TalentLMS — acknowledge all SOPs in the Level IV–V track',
       'Training requirements', '/training/compliance-requirements'));
@@ -358,27 +450,27 @@
       : 'Pass Competency Assessment — SOP-LR on TalentLMS (certificate valid 5 years; Reader must be complete first)',
       'Training requirements', '/training/compliance-requirements'));
     if (p.level <= 3)
-      ph0.items.push(it('p0-gcp', 'Complete ICH E6(R3) GCP — Good Clinical Practice via CITI (renew every 2 years; must not expire within 90 days of submission)', 'External certifications', '/training/external-certifications'));
+      ph0.items.push(it('p0-gcp',  'Complete ICH E6(R3) GCP — Good Clinical Practice via CITI (renew every 2 years; must not expire within 90 days of submission)', 'External certifications', '/training/external-certifications'));
     if (p.isDrug)
       ph0.items.push(it('p0-div5', 'Complete Health Canada Division 5 — Drugs for Clinical Trials via CITI (renew every 2 years)', 'External certifications', '/training/external-certifications'));
     if (p.isDevice)
       ph0.items.push(it('p0-iso',  'Complete ISO 14155:2020 GCP for Medical Devices — self-train via iso.org (renew every 2 years)', 'External certifications', '/training/external-certifications'));
-    ph0.items.push(it('p0-tdl',   'Prepare the Task Delegation Log — all team members must be trained and credentialed before signing', 'SOP-CR-002', '/sops/cr-002'));
+    ph0.items.push(it('p0-tdl', 'Prepare the Task Delegation Log — all team members must be trained and credentialed before signing', 'SOP-CR-002', '/sops/cr-002'));
     phases.push(ph0);
 
-    /* ── Phase 1 — Study Design & Planning ── */
+    /* Phase 1 — Study Design & Planning */
     var ph1 = { id: 'p1', num: 'Phase 1', title: 'Study Design & Planning', items: [] };
-    ph1.items.push(it('p1-lifecycle',  'Review the study lifecycle — understand what lies ahead at each stage', 'Study lifecycle', '/kb/study-lifecycle'));
-    ph1.items.push(it('p1-feasibility','Conduct a feasibility assessment — site capacity, patient population, realistic timelines', 'Feasibility', '/kb/feasibility'));
+    ph1.items.push(it('p1-lifecycle',   'Review the study lifecycle — understand what lies ahead at each stage', 'Study lifecycle', '/kb/study-lifecycle'));
+    ph1.items.push(it('p1-feasibility', 'Conduct a feasibility assessment — site capacity, patient population, realistic timelines', 'Feasibility', '/kb/feasibility'));
     if (p.isInterv || p.isObs)
       ph1.items.push(it('p1-design',    'Develop or review the study design and protocol structure', 'Study design', '/kb/study-design'));
     if (p.isObs || p.isRetro)
       ph1.items.push(it('p1-bcu',       'Consult BCU (Biostatistics & Clinical Epidemiology) for study design and statistical planning', 'BCU', '/kb/bcu'));
     if (p.isRetro)
       ph1.items.push(it('p1-dw',        'Check the Data Warehouse for variable availability and cohort feasibility before finalizing the protocol', 'Data Warehouse', '/kb/data-warehouse'));
-    ph1.items.push(it('p1-budget',     'Develop the study budget — include REB fees, pharmacy, indirect costs, and screen-failure buffer', 'Budgets & contracts', '/kb/budget-negotiation'));
+    ph1.items.push(it('p1-budget',      'Develop the study budget — include REB fees, pharmacy, indirect costs, and screen-failure buffer', 'Budgets & contracts', '/kb/budget-negotiation'));
     if (p.isIndustry)
-      ph1.items.push(it('p1-cta',       'Negotiate the Clinical Trial Agreement with the sponsor — allow 60–90 days', 'Clinical trial agreements', '/kb/clinical-trial-agreements'));
+      ph1.items.push(it('p1-cta-neg',   'Negotiate the Clinical Trial Agreement with the sponsor — allow 60–90 days', 'Clinical trial agreements', '/kb/clinical-trial-agreements'));
     if (p.isSI)
       ph1.items.push(it('p1-si',        'Review Sponsor-Investigator obligations — the 100-series SOPs apply to your study', 'Sponsor-Investigator', '/kb/sponsor-investigator'));
     if (p.needsHC)
@@ -387,9 +479,11 @@
       ph1.items.push(it('p1-efvp-plan', 'Plan the ÉFVP (Privacy Impact Assessment) — allow 4–8 weeks to complete before submission', 'Privacy & data governance', '/kb/privacy'));
     if (p.phi)
       ph1.items.push(it('p1-data-plan', 'Plan the data management approach — REDCap build, CRF design, storage and access controls', 'CORD', '/kb/cord'));
+    if (p.hasCIM)
+      ph1.items.push(it('p1-cim',       'Engage CIM during the design phase — well before your Nagano submission', 'Planning with CIM', '/cim/planning'));
     phases.push(ph1);
 
-    /* ── Phase 2 — Pre-Submission Documents ── */
+    /* Phase 2 — Pre-Submission Documents */
     var ph2 = { id: 'p2', num: 'Phase 2', title: 'Pre-Submission Documents', items: [] };
     ph2.items.push(it('p2-protocol',   'Finalize the study protocol — PI/QI signature required before submission', 'Protocol & essential documents', '/kb/protocol-documents'));
     ph2.items.push(it('p2-icf',        'Prepare the Informed Consent Form using the MUHC REB template (editable Word; French translation follows English REB approval)', 'Consent', '/kb/consent'));
@@ -410,8 +504,8 @@
     ph2.items.push(it('p2-agreements', 'Research agreements initiated — contact the Research Agreements Office early in parallel with protocol development', 'Budgets & contracts', '/kb/budgets-contracts'));
     phases.push(ph2);
 
-    /* ── Phase 3 — Submission & Review ── */
-    var ph3 = { id: 'p3', num: 'Phase 3', title: 'Submission & Review', items: [], emailCTA: true };
+    /* Phase 3 — Submission & Review */
+    var ph3 = { id: 'p3', num: 'Phase 3', title: 'Submission & Review', items: [] };
     ph3.items.push(it('p3-nagano',  'Submit via Nagano F11 — triggers REB review and institutional feasibility review in parallel', 'Submitting via Nagano', '/kb/submitting-via-nagano'));
     if (p.isDrug)
       ph3.items.push(it('p3-hc-cta', 'Health Canada CTA filed and 30-day review period underway — may proceed after 30 days if no stop notice received', 'SOP-CR-018', '/sops/cr-018'));
@@ -420,29 +514,33 @@
     ph3.items.push(it('p3-reb',     'REB approval letter received — typically 6–8 weeks for initial review'));
     if (p.multiLead)
       ph3.items.push(it('p3-rsss',  'Coordinate review at all Quebec RSSS participating sites — MUHC submits as the REB Lead'));
+    if (p.multiPart)
+      ph3.items.push(it('p3-part',  'Confirm lead site REB approval — MUHC local review proceeds in parallel'));
     if (p.multiCross)
       ph3.items.push(it('p3-ext',   'Coordinate ethics and authorization review at all external (non-Quebec) sites'));
     phases.push(ph3);
 
-    /* ── Phase 4 — Activation ── */
+    /* Phase 4 — Activation */
     var ph4 = { id: 'p4', num: 'Phase 4', title: 'Activation', items: [] };
-    ph4.items.push(it('p4-auth',     'MUHC Authorization letter received — all review streams must be complete before any study activity begins'));
-    ph4.items.push(it('p4-tdl',      'Delegation Log finalized — all team members trained, credentialed, and signed', 'SOP-CR-002', '/sops/cr-002'));
-    ph4.items.push(it('p4-isf',      'Investigator Site File opened and organized with all essential documents', 'ISF', '/kb/isf'));
+    ph4.items.push(it('p4-auth',    'MUHC Authorization letter received — all review streams must be complete before any study activity begins'));
+    ph4.items.push(it('p4-tdl',     'Delegation Log finalized — all team members trained, credentialed, and signed', 'SOP-CR-002', '/sops/cr-002'));
+    ph4.items.push(it('p4-isf',     'Investigator Site File opened and organized with all essential documents', 'ISF', '/kb/isf'));
     if (p.isIndustry)
-      ph4.items.push(it('p4-go',     "Sponsor's Go Letter received — participant enrolment may not begin until this is in hand"));
+      ph4.items.push(it('p4-go',    "Sponsor's Go Letter received — participant enrolment may not begin until this is in hand"));
     if (p.isDrug)
-      ph4.items.push(it('p4-pharm',  'Pharmacy agreement in place — investigational product accountability system established', 'SOP-CR-010', '/sops/cr-010'));
+      ph4.items.push(it('p4-pharm', 'Pharmacy agreement in place — investigational product accountability system established', 'SOP-CR-010', '/sops/cr-010'));
     if (p.isSI)
-      ph4.items.push(it('p4-monitor','Independent monitor engaged — must not appear on the site Delegation Log', 'Sponsor-Investigator', '/kb/sponsor-investigator'));
+      ph4.items.push(it('p4-mon',   'Independent monitor engaged — must not appear on the site Delegation Log', 'Sponsor-Investigator', '/kb/sponsor-investigator'));
+    if (p.hasCIM)
+      ph4.items.push(it('p4-cim',   'CIM activation confirmed — pharmacy, nursing, and platform agreements in place', 'CIM services', '/cim/services'));
     phases.push(ph4);
 
-    /* ── Phase 5 — Conduct ── */
+    /* Phase 5 — Conduct */
     var ph5 = { id: 'p5', num: 'Phase 5', title: 'Conduct', items: [] };
     ph5.items.push(it('p5-consent',    'Ongoing consent — reconsent participants when the protocol or ICF changes', 'Consent', '/kb/consent'));
     ph5.items.push(it('p5-source',     'Source documentation maintained per GCP — legible, contemporaneous, attributable', 'Data integrity', '/kb/data-integrity'));
     ph5.items.push(it('p5-deviations', 'Protocol deviations identified and reported promptly per SOP', 'SOP-CR-015', '/sops/cr-015'));
-    ph5.items.push(it('p5-training',   "Team training records kept current — the 90-day rule applies to amendments"));
+    ph5.items.push(it('p5-training',   'Team training records kept current — the 90-day rule applies to amendments'));
     if (p.level <= 3)
       ph5.items.push(it('p5-sae',      'Adverse events and SAEs reported to sponsor; SUSARs to Health Canada within 7/15 days as applicable', 'SOP-CR-012', '/sops/cr-012'));
     if (p.needsHC)
@@ -453,7 +551,7 @@
       ph5.items.push(it('p5-breach',   'Any privacy breach reported to the CAI and affected participants within 72 hours (Loi 25)', 'Privacy & data governance', '/kb/privacy'));
     phases.push(ph5);
 
-    /* ── Phase 6 — Close-Out ── */
+    /* Phase 6 — Close-Out */
     var ph6 = { id: 'p6', num: 'Phase 6', title: 'Close-Out', items: [] };
     ph6.items.push(it('p6-visit',   'Close-out visit conducted (if required by sponsor or protocol) and sponsor notified', 'Close-out guide', '/kb/close-out'));
     ph6.items.push(it('p6-reb',     'Final close-out report submitted to the REB via Nagano', 'Close-out guide', '/kb/close-out'));
@@ -468,7 +566,6 @@
     return phases;
   }
 
-  /* ── Default open phases — all open ──────────────────────────────────── */
   function defaultOpen() {
     return { p0: true, p1: true, p2: true, p3: true, p4: true, p5: true, p6: true };
   }
@@ -480,35 +577,65 @@
     S.step = 0; S.answers = {}; S.profile = null; S.checks = {}; S.phaseOpen = {};
   }
 
-  /* ── Helpers ──────────────────────────────────────────────────────────── */
   function visibleQs() { return QS.filter(function (q) { return !q.showIf || q.showIf(S.answers); }); }
   function root()       { return document.getElementById('rm-root'); }
 
   /* ── Screening ────────────────────────────────────────────────────────── */
   function renderScreening() {
-    var vis  = visibleQs();
-    var q    = vis[S.step];
+    var vis = visibleQs();
+    var q   = vis[S.step];
     if (!q) return;
-    var pct  = Math.round((S.step / vis.length) * 100);
-    var sel  = S.answers[q.key] || null;
+    var pct = Math.round((S.step / vis.length) * 100);
 
     var h = '';
     h += '<div class="rm-progress"><div class="rm-progress-fill" style="width:' + pct + '%"></div></div>';
     h += '<div class="rm-step-count">' + (S.step + 1) + ' of ' + vis.length + '</div>';
     h += '<div class="rm-question">' + q.q + '</div>';
     if (q.hint) h += '<div class="rm-q-hint">' + q.hint + '</div>';
-    h += '<div class="rm-options">';
-    q.opts.forEach(function (o) {
-      h += '<button class="rm-opt' + (sel === o.val ? ' selected' : '') + '" data-val="' + o.val + '">';
-      h += '<span class="rm-opt-label">' + o.label + '</span>';
-      if (o.hint) h += '<span class="rm-opt-hint">' + o.hint + '</span>';
-      h += '</button>';
-    });
-    h += '</div>';
-    h += '<div class="rm-nav">';
-    h += S.step > 0 ? '<button class="rm-back-btn">← Back</button>' : '<span></span>';
-    h += '<button class="rm-continue-btn' + (sel ? ' on' : '') + '">Continue →</button>';
-    h += '</div>';
+
+    if (q.type === 'single') {
+      h += renderSingleOpts(q);
+      h += renderNav(!!S.answers[q.key], 'Continue →');
+
+    } else if (q.type === 'text') {
+      var val = S.answers[q.key] || '';
+      h += '<div class="rm-text-wrap"><input class="rm-text-input" id="rm-ti" type="text" value="' + esc(val) + '" placeholder="' + esc(q.placeholder || '') + '"></div>';
+      h += renderNav(q.optional || val.trim().length > 0, q.optional ? 'Skip →' : 'Continue →');
+
+    } else if (q.type === 'multi') {
+      var sel = Array.isArray(S.answers[q.key]) ? S.answers[q.key] : [];
+      h += '<div class="rm-multi-options">';
+      q.opts.forEach(function (o) {
+        var on = sel.indexOf(o.val) > -1;
+        h += '<button class="rm-multi-opt' + (on ? ' selected' : '') + '" data-val="' + o.val + '">';
+        h += '<span class="rm-multi-check"></span><span class="rm-multi-label">' + o.label + '</span></button>';
+      });
+      h += '</div>';
+      h += '<div class="rm-multi-nav">';
+      h += S.step > 0 ? '<button class="rm-back-btn">← Back</button>' : '<span></span>';
+      h += '<div style="display:flex;align-items:center;gap:16px;">';
+      if (q.optional) h += '<button class="rm-skip-btn" id="rm-skip">Skip</button>';
+      h += '<button class="rm-continue-btn on" id="rm-cont">Continue →</button>';
+      h += '</div></div>';
+
+    } else if (q.type === 'contact') {
+      var nm = S.answers._name  || '';
+      var em = S.answers._email || '';
+      var rl = S.answers._role  || '';
+      h += '<div class="rm-contact-fields">';
+      h += '<div><div class="rm-contact-label">Your name</div><input class="rm-text-input" id="rm-cn" type="text" value="' + esc(nm) + '" placeholder="First Last"></div>';
+      h += '<div><div class="rm-contact-label">Your email</div><input class="rm-text-input" id="rm-ce" type="email" value="' + esc(em) + '" placeholder="name@muhc.mcgill.ca"></div>';
+      h += '<div><div class="rm-contact-label">Your role</div><div class="rm-role-opts">';
+      ['PI / Qualified Investigator', 'Clinical Research Coordinator', 'Research staff', 'Other'].forEach(function (r) {
+        h += '<button class="rm-role-opt' + (rl === r ? ' selected' : '') + '" data-role="' + esc(r) + '">' + r + '</button>';
+      });
+      h += '</div></div></div>';
+      h += '<div class="rm-nav">';
+      h += '<button class="rm-back-btn">← Back</button>';
+      var ready = nm.trim() && em.trim() && rl;
+      h += '<button class="rm-submit-btn" id="rm-sub"' + (ready ? '' : ' disabled') + '>Generate my roadmap →</button>';
+      h += '</div>';
+    }
 
     var wrap = document.createElement('div');
     wrap.className = 'rm-screen';
@@ -517,34 +644,210 @@
     r.innerHTML = '';
     r.appendChild(wrap);
 
-    wrap.querySelectorAll('.rm-opt').forEach(function (btn) {
-      btn.addEventListener('click', function () {
-        S.answers[q.key] = btn.dataset.val;
-        // clear answers for questions now hidden
-        var newVis = visibleQs();
-        QS.forEach(function (qq) {
-          if (!newVis.some(function (v) { return v.key === qq.key; })) delete S.answers[qq.key];
+    /* Bind events */
+    if (q.type === 'single') {
+      wrap.querySelectorAll('.rm-opt').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          S.answers[q.key] = btn.dataset.val;
+          var nv = visibleQs();
+          QS.forEach(function (qq) { if (!nv.some(function (v) { return v.key === qq.key; })) delete S.answers[qq.key]; });
+          renderScreening();
         });
-        renderScreening();
       });
-    });
-
-    var cont = wrap.querySelector('.rm-continue-btn');
-    if (cont) {
-      cont.addEventListener('click', function () {
-        if (!S.answers[q.key]) return;
-        var v = visibleQs();
-        if (S.step < v.length - 1) { S.step++; renderScreening(); }
-        else {
-          S.profile   = classify(S.answers);
-          S.phaseOpen = defaultOpen(S.profile.stage);
-          renderRoadmap();
-        }
-      });
+      bindContinue(wrap, function () { if (S.answers[q.key]) advance(); });
+      bindBack(wrap);
     }
 
-    var back = wrap.querySelector('.rm-back-btn');
-    if (back) back.addEventListener('click', function () { if (S.step > 0) { S.step--; renderScreening(); } });
+    if (q.type === 'text') {
+      var ti = wrap.querySelector('#rm-ti');
+      var cb = wrap.querySelector('.rm-continue-btn');
+      if (ti && cb) {
+        if (!q.optional) {
+          ti.addEventListener('input', function () {
+            var ok = ti.value.trim().length > 0;
+            cb.classList.toggle('on', ok);
+            cb.style.pointerEvents = ok ? 'auto' : 'none';
+          });
+        }
+        ti.addEventListener('keydown', function (e) {
+          if (e.key === 'Enter' && (q.optional || ti.value.trim())) { S.answers[q.key] = ti.value.trim(); advance(); }
+        });
+        cb.addEventListener('click', function () { S.answers[q.key] = ti ? ti.value.trim() : ''; advance(); });
+        setTimeout(function () { ti.focus(); }, 40);
+      }
+      bindBack(wrap);
+    }
+
+    if (q.type === 'multi') {
+      if (!Array.isArray(S.answers[q.key])) S.answers[q.key] = [];
+      wrap.querySelectorAll('.rm-multi-opt').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var arr = S.answers[q.key];
+          var idx = arr.indexOf(btn.dataset.val);
+          if (idx > -1) arr.splice(idx, 1); else arr.push(btn.dataset.val);
+          renderScreening();
+        });
+      });
+      var contBtn = wrap.querySelector('#rm-cont');
+      if (contBtn) contBtn.addEventListener('click', advance);
+      var skipBtn = wrap.querySelector('#rm-skip');
+      if (skipBtn) skipBtn.addEventListener('click', function () { S.answers[q.key] = []; advance(); });
+      bindBack(wrap);
+    }
+
+    if (q.type === 'contact') {
+      var cn  = wrap.querySelector('#rm-cn');
+      var ce  = wrap.querySelector('#rm-ce');
+      var sub = wrap.querySelector('#rm-sub');
+
+      function checkReady() {
+        sub.disabled = !(cn.value.trim() && ce.value.trim() && S.answers._role);
+      }
+      cn.addEventListener('input',  function () { S.answers._name  = cn.value.trim(); checkReady(); });
+      ce.addEventListener('input',  function () { S.answers._email = ce.value.trim(); checkReady(); });
+
+      wrap.querySelectorAll('.rm-role-opt').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          S.answers._role = btn.dataset.role;
+          wrap.querySelectorAll('.rm-role-opt').forEach(function (b) { b.classList.remove('selected'); });
+          btn.classList.add('selected');
+          checkReady();
+        });
+      });
+
+      if (sub) {
+        sub.addEventListener('click', function () {
+          if (sub.disabled) return;
+          S.answers._name  = cn.value.trim();
+          S.answers._email = ce.value.trim();
+          S.profile   = classify(S.answers);
+          S.phaseOpen = defaultOpen();
+          sendEmail();
+          renderRoadmap();
+        });
+      }
+      bindBack(wrap);
+      setTimeout(function () { if (cn && !cn.value) cn.focus(); }, 40);
+    }
+  }
+
+  function renderSingleOpts(q) {
+    var h = '<div class="rm-options">';
+    q.opts.forEach(function (o) {
+      var sel = S.answers[q.key] === o.val;
+      h += '<button class="rm-opt' + (sel ? ' selected' : '') + '" data-val="' + o.val + '">';
+      h += '<span class="rm-opt-label">' + o.label + '</span>';
+      if (o.hint) h += '<span class="rm-opt-hint">' + o.hint + '</span>';
+      h += '</button>';
+    });
+    return h + '</div>';
+  }
+
+  function renderNav(canContinue, label) {
+    var h = '<div class="rm-nav">';
+    h += S.step > 0 ? '<button class="rm-back-btn">← Back</button>' : '<span></span>';
+    h += '<button class="rm-continue-btn' + (canContinue ? ' on' : '') + '">' + label + '</button>';
+    return h + '</div>';
+  }
+
+  function bindContinue(wrap, fn) {
+    var b = wrap.querySelector('.rm-continue-btn');
+    if (b) b.addEventListener('click', fn);
+  }
+
+  function bindBack(wrap) {
+    var b = wrap.querySelector('.rm-back-btn');
+    if (b) b.addEventListener('click', function () { if (S.step > 0) { S.step--; renderScreening(); } });
+  }
+
+  function advance() {
+    var vis = visibleQs();
+    if (S.step < vis.length - 1) { S.step++; renderScreening(); }
+  }
+
+  function esc(s) {
+    return String(s || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  }
+
+  /* ── Email — auto-send, fire and forget ──────────────────────────────── */
+  function sendEmail() {
+    var a = S.answers, p = S.profile, flags = getFlags(p);
+    loadEmailJS(function () {
+      window.emailjs.init({ publicKey: EMAILJS_KEY });
+      window.emailjs.send(EMAILJS_SVC, EMAILJS_TPL, { message_html: buildEmailBody(a, p, flags) });
+    });
+  }
+
+  function loadEmailJS(cb) {
+    if (window.emailjs) { cb(); return; }
+    var s = document.createElement('script');
+    s.src = 'https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js';
+    s.onload = cb;
+    document.head.appendChild(s);
+  }
+
+  function buildEmailBody(a, p, flags) {
+    var stageMap = { idea: 'Early idea / concept', design: 'Protocol design and planning', submission: 'Submission', conduct: 'In conduct', closeout: 'Close-out' };
+    var typeMap  = { interventional: 'Interventional', 'observational-prospective': 'Prospective Observational', retrospective: 'Retrospective / Secondary' };
+    var intMap   = { drug: 'Drug / Biologic', device: 'Medical Device', nhp: 'Natural Health Product (NHP)', low: 'Low-risk behavioral / procedural' };
+    var sponMap  = { industry: 'Industry-sponsored', si: 'Sponsor-Investigator', grant: 'Grant-funded / Academic' };
+    var popMap   = { minors: 'Minors', incapable: 'Incapable adults', both: 'Minors and incapable adults', none: 'Standard adult population' };
+    var sitMap   = { single: 'Single site (MUHC)', 'multi-lead': 'Multicentre — MUHC REB Lead', 'multi-part': 'Multicentre — MUHC participating', 'multi-cross': 'Multicentre — cross-provincial / international' };
+    var expMap   = { first: 'First or second study of this type', some: '3–5 studies', extensive: 'Extensive — routine for this team' };
+    var pathMap  = { 'intro-call': 'Intro call — too early to classify; make first contact', 'warm-handoff': 'Warm handoff — Facilitator-led setup recommended', consult: '30-min consult — walk through resources, check credentials', 'self-serve': 'Self-serve — experienced team, lower risk' };
+    var cimMap   = { yes: 'Yes — fully/primarily through CIM', partial: 'Partially — specific CIM services', no: 'No', unsure: 'Unsure' };
+    var needMap  = { 'design-protocol': 'Protocol design or feasibility', regulatory: 'Regulatory submissions (Health Canada / Nagano)', training: 'Training and credentials', 'budget-contracts': 'Budget, contracts, or funding', 'team-setup': 'Hiring or team setup', data: 'Data management, REDCap, or privacy', 'cim-connect': 'Connect with CIM', 'conduct-support': 'Study conduct support', 'closeout-support': 'Close-out or amendments' };
+
+    var rows = [
+      ['Submitted by',   (a._name || '') + ' &lt;' + (a._email || '') + '&gt;' + (a._role ? ' · ' + a._role : '')],
+      ['Study title',    a.studyTitle || '—'],
+      ['Stage',          stageMap[a.stage] || a.stage],
+      ['Training Level', 'Level ' + p.level],
+      ['Study type',     typeMap[a.type] || a.type],
+      a.intType     ? ['Product type',          intMap[a.intType] || a.intType] : null,
+      ['Sponsorship',    sponMap[a.sponsorship] || a.sponsorship],
+      ['Identifiable PHI', a.phi === 'yes' ? 'Yes' : a.phi === 'unsure' ? 'Unsure' : 'No'],
+      (a.phi === 'yes' || a.phi === 'unsure') ? ['Cross-border data', a.crossBorder === 'yes' ? 'Yes — ÉFVP required' : 'No'] : null,
+      ['Vulnerable populations', popMap[a.population] || a.population],
+      ['Sites',          sitMap[a.sites] || a.sites],
+      a.cim         ? ['CIM involvement',  cimMap[a.cim]] : null,
+      a.experience  ? ['Team experience',  expMap[a.experience]] : null,
+      a.naganoNum   ? ['Nagano number',    a.naganoNum] : null,
+      ['Recommended approach', pathMap[p.pathway] || p.pathway]
+    ].filter(Boolean);
+
+    var needs = Array.isArray(a.supportNeeds) ? a.supportNeeds : [];
+
+    var h = '<div style="font-family:Arial,sans-serif;max-width:600px">';
+    h += '<div style="background:#007a6e;padding:24px 28px;border-radius:8px 8px 0 0">';
+    h += '<h2 style="color:#fff;margin:0;font-size:18px">My Study Roadmap — New Submission</h2>';
+    h += '<p style="color:rgba(255,255,255,.8);margin:6px 0 0;font-size:13px">RI-MUHC Clinical Research Hub</p></div>';
+    h += '<div style="padding:24px 28px;background:#fff;border:1px solid #e5e5e5;border-top:none;border-radius:0 0 8px 8px">';
+    h += '<table style="width:100%;border-collapse:collapse;margin-bottom:20px">';
+    rows.forEach(function (r) {
+      h += '<tr><td style="padding:7px 16px 7px 0;color:#888;font-weight:600;white-space:nowrap;vertical-align:top;font-size:13px">' + r[0] + '</td>';
+      h += '<td style="padding:7px 0;color:#111;font-size:14px">' + r[1] + '</td></tr>';
+    });
+    h += '</table>';
+
+    if (needs.length) {
+      h += '<div style="border-top:1px solid #f0f0f0;padding-top:16px;margin-bottom:16px">';
+      h += '<p style="font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#999;margin:0 0 8px">What they need</p>';
+      h += '<ul style="margin:0;padding-left:18px;font-size:13.5px;color:#333">';
+      needs.forEach(function (n) { h += '<li style="margin-bottom:4px">' + (needMap[n] || n) + '</li>'; });
+      h += '</ul></div>';
+    }
+
+    if (flags.length) {
+      h += '<div style="border-top:1px solid #f0f0f0;padding-top:16px">';
+      h += '<p style="font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#999;margin:0 0 10px">Regulatory flags</p>';
+      h += '<ul style="margin:0;padding-left:18px;font-size:13.5px;color:#333">';
+      flags.forEach(function (f) { h += '<li style="margin-bottom:8px"><strong style="color:#111">' + f.title + '</strong><br>' + f.detail + '</li>'; });
+      h += '</ul></div>';
+    }
+
+    h += '</div></div>';
+    return h;
   }
 
   /* ── Roadmap ──────────────────────────────────────────────────────────── */
@@ -556,7 +859,8 @@
 
     var h = '';
 
-    /* Profile bar */
+    h += '<div class="rm-sent-chip"><div class="rm-sent-dot"></div>Your study profile has been sent to the Research Facilitator — expect a follow-up within 5 business days.</div>';
+
     h += '<div class="rm-profile-bar">';
     h += '<div class="rm-profile-meta">';
     h += '<div class="rm-profile-eyebrow">Your study profile</div>';
@@ -566,13 +870,11 @@
     h += '<div class="rm-profile-actions"><button class="rm-print-btn" id="rm-print">Print</button><button class="rm-edit-btn" id="rm-edit">Edit answers</button></div>';
     h += '</div>';
 
-    /* Flags */
     if (flags.length) {
       h += '<div class="rm-flags">';
       flags.forEach(function (f) {
-        h += '<div class="rm-flag ' + f.tone + '">';
-        h += '<div class="rm-flag-dot"></div>';
-        h += '<div class="rm-flag-inner"><span class="rm-flag-title">' + f.title + '</span>';
+        h += '<div class="rm-flag ' + f.tone + '"><div class="rm-flag-dot"></div><div class="rm-flag-inner">';
+        h += '<span class="rm-flag-title">' + f.title + '</span>';
         h += '<span class="rm-flag-detail">' + f.detail;
         if (f.href) h += ' <a href="' + f.href + '">Learn more →</a>';
         h += '</span></div></div>';
@@ -580,22 +882,18 @@
       h += '</div>';
     }
 
-    /* Phases */
     h += '<div class="rm-roadmap">';
     phases.forEach(function (phase) {
       var open  = !!S.phaseOpen[phase.id];
       var done  = phase.items.filter(function (i) { return !!S.checks[i.key]; }).length;
       var total = phase.items.length;
-
       h += '<div class="rm-phase' + (open ? ' open' : '') + '" id="rmp-' + phase.id + '">';
       h += '<div class="rm-phase-hdr">';
       h += '<div class="rm-phase-left"><span class="rm-phase-num">' + phase.num + '</span><span class="rm-phase-title">' + phase.title + '</span></div>';
-      h += '<div class="rm-phase-right"><span class="rm-phase-count' + (done > 0 ? ' has-done' : '') + '">' + done + ' / ' + total + '</span><span class="rm-chevron">▶</span></div>';
+      h += '<div class="rm-phase-right"><span class="rm-phase-count' + (done > 0 ? ' has-done' : '') + '">' + done + ' / ' + total + '</span><span class="rm-chevron">▶</span></div>';
       h += '</div>';
       h += '<div class="rm-phase-body">';
-
       if (phase.intro) h += phase.intro;
-
       phase.items.forEach(function (item) {
         var checked = !!S.checks[item.key];
         h += '<div class="rm-item' + (checked ? ' done' : '') + '" id="rmi-' + item.key + '">';
@@ -604,17 +902,6 @@
         if (item.link) h += '<a class="rm-item-link" href="' + item.link.href + '">' + item.link.label + '</a>';
         h += '</div></div>';
       });
-
-      if (phase.emailCTA) {
-        h += '<div class="rm-email-cta" id="rm-email-cta">';
-        h += '<div class="rm-email-title">Let the Research Facilitator know about your study</div>';
-        h += '<div class="rm-email-desc">Send your study profile — you\'ll receive a follow-up within 5 business days.</div>';
-        h += '<div class="rm-email-row"><input class="rm-email-input" id="rm-name" type="text" placeholder="Your name"><input class="rm-email-input" id="rm-email-addr" type="email" placeholder="Your email"></div>';
-        h += '<button class="rm-email-submit" id="rm-send">Send to Research Facilitator</button>';
-        h += '<div class="rm-email-ok" id="rm-email-ok">✓ Sent — the Research Facilitator will follow up within 5 business days.</div>';
-        h += '</div>';
-      }
-
       h += '</div></div>';
     });
     h += '</div>';
@@ -622,7 +909,6 @@
     var r = root();
     r.innerHTML = h;
 
-    /* Phase toggle */
     r.querySelectorAll('.rm-phase-hdr').forEach(function (hdr) {
       hdr.addEventListener('click', function () {
         var ph = hdr.closest('.rm-phase');
@@ -632,7 +918,6 @@
       });
     });
 
-    /* Checkbox */
     r.querySelectorAll('.rm-checkbox').forEach(function (chk) {
       chk.addEventListener('click', function (e) {
         e.stopPropagation();
@@ -640,117 +925,29 @@
         S.checks[key] = !S.checks[key];
         var itemEl = document.getElementById('rmi-' + key);
         if (itemEl) { itemEl.classList.toggle('done', !!S.checks[key]); chk.classList.toggle('done', !!S.checks[key]); }
-        var phEl    = chk.closest('.rm-phase');
+        var phEl = chk.closest('.rm-phase');
         if (phEl) {
-          var allChk  = phEl.querySelectorAll('.rm-checkbox');
-          var doneChk = phEl.querySelectorAll('.rm-checkbox.done').length;
-          var countEl = phEl.querySelector('.rm-phase-count');
-          if (countEl) { countEl.textContent = doneChk + ' / ' + allChk.length; countEl.classList.toggle('has-done', doneChk > 0); }
+          var doneN = phEl.querySelectorAll('.rm-checkbox.done').length;
+          var totN  = phEl.querySelectorAll('.rm-checkbox').length;
+          var ct    = phEl.querySelector('.rm-phase-count');
+          if (ct) { ct.textContent = doneN + ' / ' + totN; ct.classList.toggle('has-done', doneN > 0); }
         }
       });
     });
 
-    /* Print */
-    var printBtn = document.getElementById('rm-print');
-    if (printBtn) printBtn.addEventListener('click', function () { window.print(); });
+    var pb = document.getElementById('rm-print');
+    if (pb) pb.addEventListener('click', function () { window.print(); });
 
-    /* Edit / restart */
-    var editBtn = document.getElementById('rm-edit');
-    if (editBtn) {
-      editBtn.addEventListener('click', function () {
-        S.profile = null;
-        S.step = 0;
-        renderScreening();
-      });
-    }
-
-    /* Email */
-    var sendBtn = document.getElementById('rm-send');
-    if (sendBtn) {
-      sendBtn.addEventListener('click', function () {
-        var name  = (document.getElementById('rm-name')       || {}).value || '';
-        var email = (document.getElementById('rm-email-addr') || {}).value || '';
-        if (!name.trim() || !email.trim()) return;
-        sendBtn.disabled = true;
-        sendBtn.textContent = 'Sending…';
-        loadEmailJS(function () {
-          window.emailjs.init({ publicKey: EMAILJS_KEY });
-          window.emailjs.send(EMAILJS_SVC, EMAILJS_TPL, { message_html: buildEmailBody(name, email, p, S.answers, flags) })
-            .then(function () {
-              var cta = document.getElementById('rm-email-cta');
-              var ok  = document.getElementById('rm-email-ok');
-              if (cta) { cta.querySelector('.rm-email-row').style.display = 'none'; sendBtn.style.display = 'none'; }
-              if (ok)  ok.style.display = 'block';
-            }, function () {
-              sendBtn.disabled = false;
-              sendBtn.textContent = 'Send to Research Facilitator';
-            });
-        });
-      });
-    }
-  }
-
-  /* ── Email helpers ────────────────────────────────────────────────────── */
-  function loadEmailJS(cb) {
-    if (window.emailjs) { cb(); return; }
-    var s = document.createElement('script');
-    s.src = 'https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js';
-    s.onload = cb;
-    document.head.appendChild(s);
-  }
-
-  function buildEmailBody(name, email, p, a, flags) {
-    var tmap  = { interventional: 'Interventional', 'observational-prospective': 'Prospective Observational', retrospective: 'Retrospective / Secondary' };
-    var imap  = { drug: 'Drug / Biologic', device: 'Medical Device', nhp: 'Natural Health Product (NHP)', low: 'Low-risk behavioral / procedural' };
-    var smap  = { industry: 'Industry-sponsored', si: 'Sponsor-Investigator', grant: 'Grant-funded / Academic' };
-    var stmap = { idea: 'Early idea / concept', design: 'Protocol design and planning', submission: 'Submission', conduct: 'In conduct', closeout: 'Close-out' };
-    var phimap= { yes: 'Yes', no: 'No', unsure: 'Unsure' };
-    var popmap= { minors: 'Minors', incapable: 'Incapable adults', both: 'Minors and incapable adults', none: 'Standard adult population' };
-    var sitmap= { single: 'Single site (MUHC)', 'multi-lead': 'Multicentre — MUHC REB Lead', 'multi-cross': 'Multicentre — cross-provincial / international' };
-    var rows = [
-      ['Investigator', name + ' &lt;' + email + '&gt;'],
-      ['Stage', stmap[a.stage] || a.stage],
-      ['Training Level', 'Level ' + p.level],
-      ['Study type', tmap[a.type] || a.type],
-      a.intType ? ['Product type', imap[a.intType] || a.intType] : null,
-      ['Sponsorship', smap[a.sponsorship] || a.sponsorship],
-      ['Identifiable PHI', phimap[a.phi] || a.phi],
-      (a.phi === 'yes' || a.phi === 'unsure') ? ['Cross-border data', a.crossBorder === 'yes' ? 'Yes — ÉFVP required' : 'No'] : null,
-      ['Vulnerable populations', popmap[a.population] || a.population],
-      ['Sites', sitmap[a.sites] || a.sites]
-    ].filter(Boolean);
-
-    var h = '<div style="font-family:Arial,sans-serif;max-width:600px">';
-    h += '<div style="background:#007a6e;padding:24px 28px;border-radius:8px 8px 0 0"><h2 style="color:#fff;margin:0;font-size:18px">My Study Roadmap — New Submission</h2>';
-    h += '<p style="color:rgba(255,255,255,.8);margin:6px 0 0;font-size:13px">Submitted via the RI-MUHC Clinical Research Hub</p></div>';
-    h += '<div style="padding:24px 28px;background:#fff;border:1px solid #e5e5e5;border-top:none;border-radius:0 0 8px 8px">';
-    h += '<table style="width:100%;border-collapse:collapse;font-size:14px;margin-bottom:20px">';
-    rows.forEach(function (r) {
-      h += '<tr><td style="padding:7px 16px 7px 0;color:#888;font-weight:600;white-space:nowrap;vertical-align:top;font-size:13px">' + r[0] + '</td>';
-      h += '<td style="padding:7px 0;color:#111;font-size:14px">' + r[1] + '</td></tr>';
-    });
-    h += '</table>';
-    if (flags.length) {
-      h += '<div style="border-top:1px solid #f0f0f0;padding-top:16px"><p style="font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#999;margin:0 0 10px">Regulatory flags</p><ul style="margin:0;padding-left:18px;font-size:13.5px;color:#333">';
-      flags.forEach(function (f) { h += '<li style="margin-bottom:8px"><strong style="color:#111">' + f.title + '</strong><br>' + f.detail + '</li>'; });
-      h += '</ul></div>';
-    }
-    h += '</div></div>';
-    return h;
+    var eb = document.getElementById('rm-edit');
+    if (eb) eb.addEventListener('click', function () { reset(); renderScreening(); });
   }
 
   /* ── Init & SPA ───────────────────────────────────────────────────────── */
-  function init() {
-    reset();
-    renderScreening();
-  }
+  function init() { reset(); renderScreening(); }
 
   var _lastUrl = location.href;
   new MutationObserver(function () {
-    if (location.href !== _lastUrl) {
-      _lastUrl = location.href;
-      setTimeout(function () { tryMount(20); }, 120);
-    }
+    if (location.href !== _lastUrl) { _lastUrl = location.href; setTimeout(function () { tryMount(20); }, 120); }
   }).observe(document.body, { childList: true, subtree: true });
 
   function tryMount(n) {
