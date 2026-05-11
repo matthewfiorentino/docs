@@ -773,7 +773,7 @@
   /* ── Email — auto-send, fire and forget ──────────────────────────────── */
   function sendEmail() {
     var a = S.answers, p = S.profile, flags = getFlags(p);
-    var c = a._contact || {};
+    var submitterEmail = a._email || '';
     var title = a.studyTitle ? (' — ' + a.studyTitle) : '';
     var subject = '[RI-MUHC Roadmap] New study submission' + title;
     loadEmailJS(function () {
@@ -785,9 +785,9 @@
         message_html: buildEmailBody(a, p, flags)
       });
       /* Confirmation copy to submitter */
-      if (c.email) {
+      if (submitterEmail) {
         window.emailjs.send(EMAILJS_SVC, EMAILJS_TPL, {
-          to_email:     c.email,
+          to_email:     submitterEmail,
           subject:      'Your study roadmap has been received — RI-MUHC',
           message_html: buildConfirmBody(a, p)
         });
@@ -796,8 +796,7 @@
   }
 
   function buildConfirmBody(a, p) {
-    var c = a._contact || {};
-    var name = c.name ? c.name.split(' ')[0] : 'there';
+    var name = a._name ? a._name.split(' ')[0] : 'there';
     var title = a.studyTitle || 'your study';
     var levelNames = { 1: 'Level I — Drug / Biologic', 2: 'Level II — Medical Device', 3: 'Level III — Other Interventional', 4: 'Level IV — Prospective Observational', 5: 'Level V — Retrospective / Secondary' };
     var h = '<div style="font-family:sans-serif;max-width:600px;color:#111">';
@@ -894,7 +893,7 @@
 
     var h = '';
 
-    h += '<div class="rm-sent-chip"><div class="rm-sent-dot"></div>Your study profile has been sent to the Research Facilitator. A confirmation has been sent to ' + esc(S.answers._contact && S.answers._contact.email ? S.answers._contact.email : 'your email') + ' — expect a follow-up within 5 business days.</div>';
+    h += '<div class="rm-sent-chip"><div class="rm-sent-dot"></div>Your study profile has been sent to the Research Facilitator. A confirmation has been sent to ' + esc(S.answers._email || 'your email') + ' — expect a follow-up within 5 business days.</div>';
 
     h += '<div class="rm-profile-bar">';
     h += '<div class="rm-profile-meta">';
