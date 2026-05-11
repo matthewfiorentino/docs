@@ -141,7 +141,6 @@
                 "icon": "diagram-project",
                 "pages": [
                   "kb/my-roadmap",
-                  "kb/study-intake",
                   {
                     "group": "Study Planning",
                     "expanded": false,
@@ -793,7 +792,11 @@
     },
     {
       "source": "/kb/planning/study-intake",
-      "destination": "/kb/study-intake"
+      "destination": "/kb/my-roadmap"
+    },
+    {
+      "source": "/kb/study-intake",
+      "destination": "/kb/my-roadmap"
     },
     {
       "source": "/kb/submission/overview",
