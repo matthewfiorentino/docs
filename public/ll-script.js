@@ -3596,53 +3596,6 @@ function llInitialMode() {
   return 'kc';
 }
 
-/* ── Hide Mintlify chrome that conflicts with the Learning Lab shell ──
-   CSS-only fixes are unreliable because Mintlify doesn't guarantee a
-   stable #sidebar ID. Instead, we find the sidebar and title block by
-   DOM geometry at runtime.                                             */
-function llHideMintlifyChrome() {
-  var ll = document.querySelector('.ll');
-  if (!ll) { return; }
-
-  /* 1. Sidebar: find any narrow nav/aside element anchored to the left
-        edge of the viewport that is NOT inside our own .ll shell.      */
-  var navEls = document.querySelectorAll('nav, aside');
-  for (var i = 0; i < navEls.length; i++) {
-    var el = navEls[i];
-    if (ll.contains(el)) { continue; }
-    var r = el.getBoundingClientRect();
-    if (r.width > 0 && r.width < 350 && r.left < 80 && r.height > 100) {
-      el.style.setProperty('display', 'none', 'important');
-    }
-  }
-
-  /* 2. Title block: Mintlify renders frontmatter title + description as
-        siblings that precede our .ll div in the content container.
-        Hide any sibling that appears BEFORE .ll.                       */
-  var container = ll.parentElement;
-  if (container) {
-    var children = container.childNodes;
-    for (var j = 0; j < children.length; j++) {
-      var child = children[j];
-      if (child.nodeType !== 1) { continue; }
-      if (child === ll || child.contains(ll)) { continue; }
-      /* compareDocumentPosition flag 4 = child comes before ll */
-      if (child.compareDocumentPosition(ll) & 4) {
-        child.style.setProperty('display', 'none', 'important');
-      }
-    }
-  }
-
-  /* 3. Expand content-area to fill the freed sidebar space. */
-  var ca = document.getElementById('content-area');
-  if (ca) {
-    ca.style.setProperty('max-width', '100%', 'important');
-    ca.style.setProperty('width', '100%', 'important');
-    ca.style.setProperty('padding-left', '0', 'important');
-    ca.style.setProperty('padding-right', '0', 'important');
-  }
-}
-
 /* ── Boot ──────────────────────────────────────────────────────────────
    Mintlify can re-render the page on SPA navigation, which wipes our
    event listeners. Re-bind on each boot attempt. Guard against double-
@@ -3650,7 +3603,6 @@ function llHideMintlifyChrome() {
 function llBoot() {
   var pane = llPane();
   if (!pane) { return false; }       /* shell not in DOM yet */
-  llHideMintlifyChrome();
   /* Always (re)bind in case Mintlify re-mounted the shell */
   var btns = llRailBtns();
   for (var i = 0; i < btns.length; i++) {
