@@ -1592,7 +1592,7 @@ article {
 
 /* ── CIM full-width dark band ── */
 .ri-cim-band {
-    background: var(--ri-hero-accent);
+    background: var(--ri-navy);
     width: 100%;
     overflow: hidden;
 }
