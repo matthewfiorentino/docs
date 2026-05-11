@@ -106,10 +106,9 @@
       '.rm-level-callout { background: #f8f9f8; border: 1px solid #e5e5e5; border-radius: 9px; padding: 14px 16px; margin-bottom: 16px; }',
       '.rm-level-name { font-size: 13.5px; font-weight: 700; color: #111; margin-bottom: 2px; }',
       '.rm-level-path { font-size: 12px; color: #888; margin-bottom: 12px; }',
-      '.rm-level-reqs { margin: 0; padding: 0; list-style: none !important; display: flex; flex-direction: column; gap: 5px; }',
-      '.rm-level-reqs li { font-size: 13px; color: #444; display: flex; align-items: baseline; gap: 6px; list-style: none !important; }',
-      '.rm-level-reqs li::marker { display: none; content: ""; }',
-      '.rm-level-reqs li::before { content: "·"; color: #007a6e; font-weight: 700; flex-shrink: 0; }',
+      '.rm-level-reqs { display: flex; flex-direction: column; gap: 5px; }',
+      '.rm-level-req { font-size: 13px; color: #444; display: flex; align-items: baseline; gap: 6px; }',
+      '.rm-level-req::before { content: "·"; color: #007a6e; font-weight: 700; flex-shrink: 0; }',
       '.rm-level-reqs a { color: #007a6e; text-decoration: none; }',
       '.rm-level-reqs a:hover { text-decoration: underline; }',
       '.rm-level-where { color: #aaa; font-size: 11.5px; }',
@@ -422,11 +421,11 @@
     var h = '<div class="rm-level-callout">';
     h += '<div class="rm-level-name">' + (names[p.level] || 'Level ' + p.level) + '</div>';
     h += '<div class="rm-level-path">' + path + '</div>';
-    h += '<ul class="rm-level-reqs">';
+    h += '<div class="rm-level-reqs">';
     reqs.forEach(function (r) {
-      h += '<li><a href="' + r.href + '">' + r.text + '</a> <span class="rm-level-where">' + r.where + '</span></li>';
+      h += '<div class="rm-level-req"><a href="' + r.href + '">' + r.text + '</a> <span class="rm-level-where">' + r.where + '</span></div>';
     });
-    h += '</ul></div>';
+    h += '</div></div>';
     return h;
   }
 
