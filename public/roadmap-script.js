@@ -105,11 +105,18 @@
       '.rm-email-submit:disabled { background: #ccc; cursor: default; }',
       '.rm-email-ok { font-size: 13px; color: #007a6e; font-weight: 500; display: none; }',
 
+      /* Print button */
+      '.rm-print-btn { font-size: 12px; color: #999; background: none; border: 1px solid #e5e5e5; border-radius: 6px; cursor: pointer; padding: 5px 10px; font-family: inherit; transition: border-color .12s, color .12s; }',
+      '.rm-print-btn:hover { color: #444; border-color: #bbb; }',
+      '.rm-profile-actions { display: flex; align-items: center; gap: 8px; }',
+
       /* Print */
       '@media print {',
-      '  .rm-edit-btn, .rm-chevron, .rm-email-cta { display: none !important; }',
+      '  .rm-print-btn, .rm-edit-btn, .rm-chevron, .rm-email-cta { display: none !important; }',
       '  .rm-phase-body { display: flex !important; }',
-      '  .rm-phase-hdr { padding: 10px 0; }',
+      '  .rm-phase-hdr { padding: 10px 0; cursor: default; }',
+      '  .rm-phase { border-top: 1px solid #ddd; }',
+      '  #rm-root { max-width: 100%; }',
       '}',
     ].join('\n');
     document.head.appendChild(s);
@@ -329,10 +336,10 @@
 
     /* ── Phase 2 — Pre-Submission Documents ── */
     var ph2 = { id: 'p2', num: 'Phase 2', title: 'Pre-Submission Documents', items: [] };
-    ph2.items.push(it('p2-protocol',   'Finalize the study protocol — PI/QI signature required before submission'));
+    ph2.items.push(it('p2-protocol',   'Finalize the study protocol — PI/QI signature required before submission', 'Protocol & essential documents', '/kb/protocol-documents'));
     ph2.items.push(it('p2-icf',        'Prepare the Informed Consent Form using the MUHC REB template (editable Word; French translation follows English REB approval)', 'Consent', '/kb/consent'));
     if (p.needsHC)
-      ph2.items.push(it('p2-ib',       "Obtain the current Investigator's Brochure (IB) or Product Monograph — required before submission"));
+      ph2.items.push(it('p2-ib',       "Obtain the current Investigator's Brochure (IB) or Product Monograph — required before submission", 'Protocol & essential documents', '/kb/protocol-documents'));
     if (p.isDrug)
       ph2.items.push(it('p2-cta',      'Prepare the Health Canada Clinical Trial Application (CTA) package', 'SOP-CR-018', '/sops/cr-018'));
     if (p.isDevice)
@@ -340,9 +347,9 @@
     if (p.crossBorder)
       ph2.items.push(it('p2-efvp',     'Complete the ÉFVP — file F17 (screening) or F18 (non-screening) alongside your Nagano F11 submission', 'Privacy & data governance', '/kb/privacy'));
     if (p.minors)
-      ph2.items.push(it('p2-assent',   'Prepare age-appropriate assent form (ages 7–13) and separate parental/guardian consent form', 'Consent — minors', '/kb/consent'));
+      ph2.items.push(it('p2-assent',   'Prepare age-appropriate assent form (ages 7–13) and separate parental/guardian consent form', 'Pediatric research', '/kb/pediatric-research'));
     if (p.incapable)
-      ph2.items.push(it('p2-mandat',   'Prepare the Personne mandatée (mandatary) consent documentation', 'Vulnerable populations', '/kb/vulnerable-populations'));
+      ph2.items.push(it('p2-mandat',   'Prepare the Personne mandatée (mandatary) consent documentation', 'Consent for incapable adults', '/kb/vulnerable-populations'));
     if (p.phi)
       ph2.items.push(it('p2-dmp',      'Prepare a Data Management Plan — required in the REB submission', 'CORD', '/kb/cord'));
     ph2.items.push(it('p2-agreements', 'Research agreements initiated — contact the Research Agreements Office early in parallel with protocol development', 'Budgets & contracts', '/kb/budgets-contracts'));
@@ -350,7 +357,7 @@
 
     /* ── Phase 3 — Submission & Review ── */
     var ph3 = { id: 'p3', num: 'Phase 3', title: 'Submission & Review', items: [], emailCTA: true };
-    ph3.items.push(it('p3-nagano',  'Submit via Nagano F11 — triggers REB review and institutional feasibility review in parallel', 'Nagano guide', '/apps/nagano/overview'));
+    ph3.items.push(it('p3-nagano',  'Submit via Nagano F11 — triggers REB review and institutional feasibility review in parallel', 'Submitting via Nagano', '/kb/submitting-via-nagano'));
     if (p.isDrug)
       ph3.items.push(it('p3-hc-cta', 'Health Canada CTA filed and 30-day review period underway — may proceed after 30 days if no stop notice received', 'SOP-CR-018', '/sops/cr-018'));
     if (p.isDevice)
@@ -407,16 +414,9 @@
     return phases;
   }
 
-  /* ── Default open phases by stage ────────────────────────────────────── */
-  function defaultOpen(stage) {
-    var map = {
-      idea:       { p0: true, p1: true },
-      design:     { p0: true, p1: true, p2: true },
-      submission: { p0: true, p2: true, p3: true },
-      conduct:    { p4: true, p5: true },
-      closeout:   { p5: true, p6: true }
-    };
-    return map[stage] || { p0: true, p1: true };
+  /* ── Default open phases — all open ──────────────────────────────────── */
+  function defaultOpen() {
+    return { p0: true, p1: true, p2: true, p3: true, p4: true, p5: true, p6: true };
   }
 
   /* ── State ────────────────────────────────────────────────────────────── */
@@ -528,7 +528,7 @@
     h += '<div class="rm-chips">';
     chips.forEach(function (c) { h += '<span class="rm-chip' + (c.cls ? ' ' + c.cls : '') + '">' + c.text + '</span>'; });
     h += '</div></div>';
-    h += '<button class="rm-edit-btn" id="rm-edit">Edit answers</button>';
+    h += '<div class="rm-profile-actions"><button class="rm-print-btn" id="rm-print">Print</button><button class="rm-edit-btn" id="rm-edit">Edit answers</button></div>';
     h += '</div>';
 
     /* Flags */
@@ -614,6 +614,10 @@
         }
       });
     });
+
+    /* Print */
+    var printBtn = document.getElementById('rm-print');
+    if (printBtn) printBtn.addEventListener('click', function () { window.print(); });
 
     /* Edit / restart */
     var editBtn = document.getElementById('rm-edit');
