@@ -795,19 +795,64 @@
   }
 
   function buildConfirmBody(a, p) {
-    var name = a._name ? a._name.split(' ')[0] : 'there';
-    var title = a.studyTitle || 'your study';
-    var levelNames = { 1: 'Level I — Drug / Biologic', 2: 'Level II — Medical Device', 3: 'Level III — Other Interventional', 4: 'Level IV — Prospective Observational', 5: 'Level V — Retrospective / Secondary' };
-    var h = '<div style="font-family:sans-serif;max-width:600px;color:#111">';
-    h += '<p>Hi ' + esc(name) + ',</p>';
-    h += '<p>Your study profile for <strong>' + esc(title) + '</strong> has been received. The Research Facilitator will be in touch within 5 business days.</p>';
-    h += '<p>For your records:</p>';
-    h += '<ul style="padding-left:18px;font-size:14px;line-height:1.7">';
-    h += '<li><strong>Study level:</strong> ' + (levelNames[p.level] || 'Level ' + p.level) + '</li>';
-    h += '<li><strong>Stage:</strong> ' + (a.stage || '—') + '</li>';
-    h += '</ul>';
-    h += '<p style="margin-top:20px;font-size:13px;color:#888">RI-MUHC Clinical Research Hub · <a href="https://research.rimuhc.ca" style="color:#007a6e">research.rimuhc.ca</a></p>';
-    h += '</div>';
+    var flags  = getFlags(p);
+    var name   = a._name ? a._name.split(' ')[0] : 'there';
+    var title  = a.studyTitle || 'your study';
+    var stageMap = { idea: 'Early idea / concept', design: 'Protocol design and planning', submission: 'Submission', conduct: 'In conduct', closeout: 'Close-out' };
+    var typeMap  = { interventional: 'Interventional', 'observational-prospective': 'Prospective Observational', retrospective: 'Retrospective / Secondary' };
+    var intMap   = { drug: 'Drug / Biologic', device: 'Medical Device', nhp: 'Natural Health Product (NHP)', low: 'Low-risk behavioural / procedural' };
+    var sponMap  = { industry: 'Industry-sponsored', si: 'Sponsor-Investigator', grant: 'Grant-funded / Academic' };
+    var popMap   = { minors: 'Minors', incapable: 'Incapable adults', both: 'Minors and incapable adults', none: 'Standard adult population' };
+    var sitMap   = { single: 'Single site (MUHC)', 'multi-lead': 'Multicentre — MUHC REB Lead', 'multi-part': 'Multicentre — MUHC participating', 'multi-cross': 'Multicentre — cross-provincial / international' };
+    var expMap   = { first: 'First or second study of this type', some: '3–5 studies', extensive: 'Extensive — routine for this team' };
+    var cimMap   = { yes: 'Yes — fully/primarily through CIM', partial: 'Partially — specific CIM services', no: 'No', unsure: 'Unsure' };
+    var needMap  = { 'design-protocol': 'Protocol design or feasibility', regulatory: 'Regulatory submissions (Health Canada / Nagano)', training: 'Training and credentials', 'budget-contracts': 'Budget, contracts, or funding', 'team-setup': 'Hiring or team setup', data: 'Data management, REDCap, or privacy', 'cim-connect': 'Connect with CIM', 'conduct-support': 'Study conduct support', 'closeout-support': 'Close-out or amendments' };
+
+    var rows = [
+      ['Study title',    esc(title)],
+      ['Stage',          stageMap[a.stage] || a.stage],
+      ['Training level', 'Level ' + p.level],
+      ['Study type',     typeMap[a.type] || a.type],
+      a.intType     ? ['Product type',         intMap[a.intType] || a.intType] : null,
+      ['Sponsorship',    sponMap[a.sponsorship] || a.sponsorship],
+      ['Identifiable PHI', a.phi === 'yes' ? 'Yes' : a.phi === 'unsure' ? 'Unsure' : 'No'],
+      (a.phi === 'yes' || a.phi === 'unsure') ? ['Cross-border data', a.crossBorder === 'yes' ? 'Yes — ÉFVP required' : 'No'] : null,
+      ['Vulnerable populations', popMap[a.population] || a.population],
+      ['Sites',          sitMap[a.sites] || a.sites],
+      a.cim         ? ['CIM involvement',  cimMap[a.cim]] : null,
+      a.experience  ? ['Team experience',  expMap[a.experience]] : null,
+      a.naganoNum   ? ['Nagano number',    esc(a.naganoNum)] : null
+    ].filter(Boolean);
+
+    var needs = Array.isArray(a.supportNeeds) ? a.supportNeeds : [];
+
+    var h = '<div style="font-family:Arial,sans-serif;max-width:600px">';
+    h += '<div style="background:#007a6e;padding:24px 28px;border-radius:8px 8px 0 0">';
+    h += '<h2 style="color:#fff;margin:0;font-size:18px">Study Profile Received</h2>';
+    h += '<p style="color:rgba(255,255,255,.8);margin:6px 0 0;font-size:13px">RI-MUHC Clinical Research Hub</p></div>';
+    h += '<div style="padding:24px 28px;background:#fff;border:1px solid #e5e5e5;border-top:none;border-radius:0 0 8px 8px">';
+    h += '<p style="margin:0 0 20px;font-size:14px;color:#111">Hi ' + esc(name) + ', your study profile has been sent to the Research Facilitator, who will be in touch within 5 business days. Here is what we received:</p>';
+    h += '<table style="width:100%;border-collapse:collapse;margin-bottom:20px">';
+    rows.forEach(function (r) {
+      h += '<tr><td style="padding:7px 16px 7px 0;color:#888;font-weight:600;white-space:nowrap;vertical-align:top;font-size:13px">' + r[0] + '</td>';
+      h += '<td style="padding:7px 0;color:#111;font-size:14px">' + r[1] + '</td></tr>';
+    });
+    h += '</table>';
+    if (needs.length) {
+      h += '<div style="border-top:1px solid #f0f0f0;padding-top:16px;margin-bottom:16px">';
+      h += '<p style="font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#999;margin:0 0 8px">Support needed</p>';
+      h += '<ul style="margin:0;padding-left:18px;font-size:13.5px;color:#333">';
+      needs.forEach(function (n) { h += '<li style="margin-bottom:4px">' + (needMap[n] || n) + '</li>'; });
+      h += '</ul></div>';
+    }
+    if (flags.length) {
+      h += '<div style="border-top:1px solid #f0f0f0;padding-top:16px">';
+      h += '<p style="font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#999;margin:0 0 10px">Regulatory flags</p>';
+      h += '<ul style="margin:0;padding-left:18px;font-size:13.5px;color:#333">';
+      flags.forEach(function (f) { h += '<li style="margin-bottom:8px"><strong style="color:#111">' + f.title + '</strong><br>' + f.detail + '</li>'; });
+      h += '</ul></div>';
+    }
+    h += '</div></div>';
     return h;
   }
 
