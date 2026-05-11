@@ -6011,13 +6011,6 @@ function inspGoHub() {
 })();
 `;
 
-/* ────────────────────────────────────────────────────────────────────────
-   LL_SHELL_CSS — Minimalist shell, persistent left rail + content pane.
-   Loaded AFTER LL_CSS so its rules win on shared selectors.
-   The defensive `display:none !important` rules hide every legacy phase
-   and hero block; their DOM stays mounted so renderers can clone the
-   static Team Exercise and Document Review HTML on demand.
-──────────────────────────────────────────────────────────────────────── */
 export const LL_SHELL_CSS = `
 /* — Hide all legacy chrome — */
 .kp-hero, .kp-stage, .kp-phase, .kp-phase.phase-active { display: none !important; }
@@ -6095,9 +6088,6 @@ export const LL_SHELL_CSS = `
 }
 `;
 
-/* ────────────────────────────────────────────────────────────────────────
-   LL_SHELL_HTML — The persistent shell. All content renders into #ll-pane.
-──────────────────────────────────────────────────────────────────────── */
 export const LL_SHELL_HTML = `
 <div class="ll">
   <div class="ll-mobile-nav">
