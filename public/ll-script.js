@@ -3684,6 +3684,7 @@ function llDrRestoreSource() {
   var source = document.getElementById('kp-phase-docreview');
   if (source && source.parentNode !== _llDrSourceParent) {
     source.style.display = '';
+    source.classList.add('kp-phase');  /* restore so shell CSS hides it again */
     var navRow = source.querySelector('.kp-nav-row');
     if (navRow) { navRow.style.display = ''; }
     _llDrSourceParent.insertBefore(source, _llDrSourceNext || null);
@@ -3721,6 +3722,9 @@ function llDrOpenExercise(slug) {
   _llDrSourceNext   = source.nextSibling;
   var navRow = source.querySelector('.kp-nav-row');
   if (navRow) { navRow.style.display = 'none'; }
+  /* kp-phase has display:none !important in shell CSS — remove the class
+     so the element is visible when moved into the pane */
+  source.classList.remove('kp-phase');
   source.style.display = 'block';
   var pane = llPane();
   pane.innerHTML =
