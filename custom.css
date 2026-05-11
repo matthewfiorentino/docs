@@ -2,7 +2,7 @@
 /* ── Design tokens ── */
 :root {
     --ri-heading:      #150e51;
-    --ri-accent:       #008f82;
+    --ri-accent:       #1572a7;
     --ri-hero-accent:  #2b9ce2;
     --ri-accent-bright: #00c4b4;
     --ri-navy:    #2b2666;
@@ -10,7 +10,7 @@
     /* --background in HSL (no hsl() wrapper) so Mintlify's Tailwind gradient
        utilities resolve correctly — fixes the sidebar scroll-fade colour     */
     --background: 240 3% 97%;
-    --primary:    #008f82;
+    --primary:    #1572a7;
 }
 html.dark {
     --ri-heading: #00c4b4;
@@ -115,7 +115,7 @@ html.dark sidebar-group-header * {
 #sidebar-content a:hover span,
 #sidebar-content button:hover,
 #sidebar-content button:hover span {
-    color: #008f82 !important;
+    color: #1572a7 !important;
 }
 /* ── Sidebar — active page link → teal, normal weight ──
    No bold — active state is indicated by colour only.    */
@@ -123,13 +123,13 @@ html.dark sidebar-group-header * {
 #sidebar a[aria-selected="true"],
 #sidebar-content li[data-active] > a,
 #sidebar-content li[data-active] > a span {
-    color:       #008f82 !important;
+    color:       #1572a7 !important;
     font-weight: 400 !important;
 }
 /* ── Sidebar — expanded collapsible group → teal ── */
 #sidebar-content button[aria-expanded="true"],
 #sidebar-content button[aria-expanded="true"] span {
-    color: #008f82 !important;
+    color: #1572a7 !important;
 }
 /* ── Sidebar — tighten gap between top-level section groups ── */
 li[data-group-tag] {
@@ -155,7 +155,7 @@ li[data-group-tag]:first-child {
     letter-spacing: 0.02em !important;
     white-space: nowrap !important;
     background: rgba(0, 122, 110, 0.12) !important;
-    color: #008f82 !important;
+    color: #1572a7 !important;
 }
 html.dark .nav-tag-pill-text {
     background: rgba(0, 196, 180, 0.15) !important;
@@ -348,7 +348,7 @@ body:has(.ri-text-hero) main {
     line-height: 1.4;
 }
 .raci-a { background: #150e51; color: #fff; }
-.raci-r { background: #008f82; color: #fff; }
+.raci-r { background: #1572a7; color: #fff; }
 .raci-c { background: #e2e8f0; color: #334155; font-weight: 500; }
 .raci-i { background: #f1f5f9; color: #64748b; font-weight: 500; }
 html.dark .raci-c { background: #334155; color: #e2e8f0; }
@@ -392,13 +392,13 @@ html.dark .ri-update-desc { color: rgba(255,255,255,.55); }
 .ri-updates-more {
     display: inline-flex; align-items: center; gap: 6px;
     font-size: 13px; font-weight: 600;
-    color: var(--ri-accent, #008f82);
-    border: 1.5px solid var(--ri-accent, #008f82);
+    color: var(--ri-accent, #1572a7);
+    border: 1.5px solid var(--ri-accent, #1572a7);
     border-radius: 6px; padding: 7px 16px;
     text-decoration: none; margin-bottom: 16px;
     transition: background .15s, color .15s;
 }
-.ri-updates-more:hover { background: var(--ri-accent, #008f82); color: #fff !important; }
+.ri-updates-more:hover { background: var(--ri-accent, #1572a7); color: #fff !important; }
 html.dark .ri-updates-more { color: var(--ri-accent-bright, #00c4b4); border-color: var(--ri-accent-bright, #00c4b4); }
 html.dark .ri-updates-more:hover { background: var(--ri-accent-bright, #00c4b4); color: #150e51 !important; }
 /* ══════════════════════════════════════════════
@@ -409,7 +409,7 @@ html.dark .ri-updates-more:hover { background: var(--ri-accent-bright, #00c4b4);
 .ri-start-hero { margin-bottom: 2rem; }
 .ri-start-eyebrow {
     font-size: 11px; font-weight: 700; letter-spacing: 0.12em;
-    text-transform: uppercase; color: var(--ri-accent, #008f82); margin: 0 0 0.45rem;
+    text-transform: uppercase; color: var(--ri-accent, #1572a7); margin: 0 0 0.45rem;
 }
 .ri-start-title {
     font-size: 1.875rem; font-weight: 700; line-height: 1.1;
@@ -496,8 +496,8 @@ html.dark .ri-step-pill {
     font-size: 11px;
 }
 .ri-step-pill--end {
-    background: var(--ri-accent, #008f82);
-    border-color: var(--ri-accent, #008f82);
+    background: var(--ri-accent, #1572a7);
+    border-color: var(--ri-accent, #1572a7);
     color: #fff;
 }
 html.dark .ri-step-pill--end {
@@ -550,7 +550,7 @@ html.dark .ri-dual-obligations {
 }
 .ri-dual-eyebrow {
   font-size: 11px; font-weight: 700; letter-spacing: .12em;
-  text-transform: uppercase; color: #008f82; margin-bottom: 4px;
+  text-transform: uppercase; color: #1572a7; margin-bottom: 4px;
 }
 .ri-dual-title { font-size: 18px; font-weight: 700; color: #150e51; margin-bottom: 4px; }
 html.dark .ri-dual-title { color: #fff; }
@@ -566,7 +566,7 @@ html.dark .ri-dual-sub { color: rgba(255,255,255,.6); }
   align-items: stretch;
 }
 .ri-dual-lane--sponsor { background: #150e51; color: #fff; }
-.ri-dual-lane--qi      { background: #008f82; color: #fff; }
+.ri-dual-lane--qi      { background: #1572a7; color: #fff; }
 .ri-dual-lane-label {
   font-size: 11px; font-weight: 800; letter-spacing: .14em;
   text-transform: uppercase; opacity: .85;
@@ -611,7 +611,7 @@ html.dark .ri-dual-sub { color: rgba(255,255,255,.6); }
 .ri-callout--warn { background: #fff8ed; color: #78350f; }
 html.dark .ri-callout--note { background: rgba(0,122,110,.15); color: rgba(255,255,255,.8); }
 html.dark .ri-callout--warn { background: rgba(245,158,11,.12); color: rgba(255,255,255,.8); }
-.ri-callout a { color: #008f82 !important; text-decoration: underline; text-underline-offset: 3px; }
+.ri-callout a { color: #1572a7 !important; text-decoration: underline; text-underline-offset: 3px; }
 .ri-callout--warn a { color: #78350f !important; text-decoration: underline; text-underline-offset: 3px; font-weight: 600; }
 html.dark .ri-callout a { color: #00c4b4 !important; }
 /* Left column for stacking intake + orientation cards inside ri-guides-row */
@@ -1074,7 +1074,7 @@ html.dark .ri-hub-body hr {
 .ri-contact-btn {
     display: inline-block;
     background: #fff;
-    color: var(--ri-accent, #008f82) !important;
+    color: var(--ri-accent, #1572a7) !important;
     font-weight: 700; font-size: 14px;
     padding: 12px 24px;
     border-radius: 8px;
@@ -1315,7 +1315,7 @@ article {
    ══════════════════════════════════════════════ */
 .rc-wrap {
     --rc-navy:     #150e51;
-    --rc-teal:     #008f82;
+    --rc-teal:     #1572a7;
     --rc-teal-br:  #00c4b4;
     --rc-coral:    #e63946;
     --rc-purple:   #6366f1;
@@ -1627,7 +1627,7 @@ html.dark .ri-cim-body {
 }
 .ri-cim-btn {
     display: inline-block;
-    background: var(--ri-accent, #008f82);
+    background: var(--ri-accent, #1572a7);
     color: #fff !important;
     font-weight: 700;
     font-size: 14px;
@@ -1640,8 +1640,8 @@ html.dark .ri-cim-body {
 .ri-cim-btn:hover { opacity: .85; }
 .ri-cim-btn--outline {
     background: transparent;
-    border: 1.5px solid var(--ri-accent, #008f82);
-    color: var(--ri-accent, #008f82) !important;
+    border: 1.5px solid var(--ri-accent, #1572a7);
+    color: var(--ri-accent, #1572a7) !important;
 }
 .ri-cim-btn--outline:hover {
     opacity: .75;
@@ -1782,7 +1782,7 @@ html.dark .ri-svc-desc {
     font-size: 11px;
     text-transform: uppercase;
     letter-spacing: .06em;
-    color: #008f82;
+    color: #1572a7;
     margin-top: 3px;
 }
 html.dark .ri-cim-stat-n { color: #fff; }
@@ -1830,7 +1830,7 @@ html.dark .ri-svc-strip { background: rgba(255,255,255,.04); border-color: rgba(
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: .08em;
-    color: #008f82;
+    color: #1572a7;
     margin-bottom: 10px;
 }
 html.dark .ri-svc-strip-label { color: #00c4b4; }
@@ -1868,7 +1868,7 @@ html.dark .ri-svc-strip-desc { color: rgba(255,255,255,.5); }
     margin-top: 18px;
     font-size: 14px;
     font-weight: 700;
-    color: #008f82 !important;
+    color: #1572a7 !important;
 }
 
 /* Sub-service cards */
@@ -1897,7 +1897,7 @@ html.dark .ri-svc-sub:hover { background: rgba(0,196,180,.07); }
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: .06em;
-    color: #008f82;
+    color: #1572a7;
 }
 html.dark .ri-svc-sub-label { color: #00c4b4; }
 .ri-svc-sub-title {
@@ -1963,7 +1963,7 @@ html.dark .ri-flow-node--decision {
     border-color: var(--ri-heading);
 }
 .ri-flow-node--result {
-    background: var(--ri-accent, #008f82);
+    background: var(--ri-accent, #1572a7);
     color: #fff !important;
     font-weight: 600;
     font-size: 13px;
@@ -2034,7 +2034,7 @@ html.dark .ri-flow-down span {
     position: relative;
     width: 48px;
     height: 2px;
-    background: var(--ri-accent, #008f82);
+    background: var(--ri-accent, #1572a7);
     flex-shrink: 0;
 }
 .ri-flow-arrow-right::after {
@@ -2042,7 +2042,7 @@ html.dark .ri-flow-down span {
     position: absolute;
     right: 0;
     border: 5px solid transparent;
-    border-left: 7px solid var(--ri-accent, #008f82);
+    border-left: 7px solid var(--ri-accent, #1572a7);
 }
 .ri-flow-arrow-right span {
     position: absolute;
@@ -2051,7 +2051,7 @@ html.dark .ri-flow-down span {
     transform: translateX(-50%);
     font-size: 11px;
     font-weight: 700;
-    color: var(--ri-accent, #008f82);
+    color: var(--ri-accent, #1572a7);
     white-space: nowrap;
 }
 /* Mobile: stack vertically */
@@ -2063,14 +2063,14 @@ html.dark .ri-flow-down span {
     .ri-flow-arrow-right {
         width: 2px;
         height: 24px;
-        background: var(--ri-accent, #008f82);
+        background: var(--ri-accent, #1572a7);
     }
     .ri-flow-arrow-right::after {
         right: auto;
         bottom: 0;
         top: auto;
         border: 5px solid transparent;
-        border-top: 7px solid var(--ri-accent, #008f82);
+        border-top: 7px solid var(--ri-accent, #1572a7);
         border-left: 5px solid transparent;
     }
     .ri-flow-arrow-right span {
