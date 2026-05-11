@@ -773,10 +773,44 @@
   /* ── Email — auto-send, fire and forget ──────────────────────────────── */
   function sendEmail() {
     var a = S.answers, p = S.profile, flags = getFlags(p);
+    var c = a._contact || {};
+    var title = a.studyTitle ? (' — ' + a.studyTitle) : '';
+    var subject = '[RI-MUHC Roadmap] New study submission' + title;
     loadEmailJS(function () {
       window.emailjs.init({ publicKey: EMAILJS_KEY });
-      window.emailjs.send(EMAILJS_SVC, EMAILJS_TPL, { message_html: buildEmailBody(a, p, flags) });
+      /* Notify facilitator */
+      window.emailjs.send(EMAILJS_SVC, EMAILJS_TPL, {
+        to_email:     'matthew.fiorentino@muhc.mcgill.ca',
+        subject:      subject,
+        message_html: buildEmailBody(a, p, flags)
+      });
+      /* Confirmation copy to submitter */
+      if (c.email) {
+        window.emailjs.send(EMAILJS_SVC, EMAILJS_TPL, {
+          to_email:     c.email,
+          subject:      'Your study roadmap has been received — RI-MUHC',
+          message_html: buildConfirmBody(a, p)
+        });
+      }
     });
+  }
+
+  function buildConfirmBody(a, p) {
+    var c = a._contact || {};
+    var name = c.name ? c.name.split(' ')[0] : 'there';
+    var title = a.studyTitle || 'your study';
+    var levelNames = { 1: 'Level I — Drug / Biologic', 2: 'Level II — Medical Device', 3: 'Level III — Other Interventional', 4: 'Level IV — Prospective Observational', 5: 'Level V — Retrospective / Secondary' };
+    var h = '<div style="font-family:sans-serif;max-width:600px;color:#111">';
+    h += '<p>Hi ' + esc(name) + ',</p>';
+    h += '<p>Your study profile for <strong>' + esc(title) + '</strong> has been received. The Research Facilitator will be in touch within 5 business days.</p>';
+    h += '<p>For your records:</p>';
+    h += '<ul style="padding-left:18px;font-size:14px;line-height:1.7">';
+    h += '<li><strong>Study level:</strong> ' + (levelNames[p.level] || 'Level ' + p.level) + '</li>';
+    h += '<li><strong>Stage:</strong> ' + (a.stage || '—') + '</li>';
+    h += '</ul>';
+    h += '<p style="margin-top:20px;font-size:13px;color:#888">RI-MUHC Clinical Research Hub · <a href="https://research.rimuhc.ca" style="color:#007a6e">research.rimuhc.ca</a></p>';
+    h += '</div>';
+    return h;
   }
 
   function loadEmailJS(cb) {
