@@ -3594,7 +3594,137 @@ function llStubPane(pane, title, sub) {
 }
 function llRenderTeamExercises(pane)   { llStubPane(pane, 'Team Exercises',   'Case-based discussion exercises for team meetings or solo work. Reveal key points when ready.'); }
 function llRenderDocReview(pane)       { llStubPane(pane, 'Document Review',  'Constructed research documents with deliberate errors. Identify the issues; reveal the findings when ready.'); }
-function llRenderJudgementCalls(pane)  { llStubPane(pane, 'Judgement Calls',  'Realistic pressure scenarios where someone asks you to do something that may not be right. Three decision points per scenario.'); }
+/* ════════════════════════════════════════════════════════════════════════
+   JUDGEMENT CALLS — migrated to new shell
+════════════════════════════════════════════════════════════════════════ */
+
+var llJcActive = false;
+
+(function() {
+  var _origGoHub   = jcGoHub;
+  var _origGoRole  = jcGoRole;
+  var _origStart   = jcStartScenario;
+
+  jcGoHub  = function() { if (llJcActive) { llJcBackToRoles();      } else { _origGoHub();  } };
+  jcGoRole = function() { if (llJcActive) { llJcBackToScenarios();  } else { _origGoRole(); } };
+  jcStartScenario = function(id) { if (llJcActive) { llJcStartScenario(id); } else { _origStart(id); } };
+})();
+
+function llRenderJudgementCalls(pane) {
+  llJcActive = true;
+  var h = (window.location.hash || '').replace(/^#/, '');
+  var parts = h.split('/');
+  var p0 = parts[0] || '', p1 = parts[1] || '', p2 = parts[2] || '';
+  if (p0 === 'judgement-calls' && p1 && p2) { jcCurrentRoleId = p1; llJcStartScenario(p2); return; }
+  if (p0 === 'judgement-calls' && p1)        { llJcRenderRoleScenarios(p1); return; }
+  llJcRenderRoleGrid(pane);
+}
+
+function llJcRenderRoleGrid(pane) {
+  var html = '<h1>Judgement Calls</h1>';
+  html += '<div class="ll-pane-sub">Realistic pressure scenarios where someone asks you to do something that may not be right. Three decision points per scenario — choose your response, then see the analysis.</div>';
+  html += '<div class="ll-kc-topics">';
+  for (var r = 0; r < JC_ROLES.length; r++) {
+    var role = JC_ROLES[r];
+    var count = 0;
+    for (var s = 0; s < JC_SCENARIOS.length; s++) {
+      if (JC_SCENARIOS[s].role === role.id && JC_SCENARIOS[s].live) { count++; }
+    }
+    if (count === 0) { continue; }
+    html += '<div class="ll-kc-topic" onclick="llJcSelectRole(\'' + role.id + '\')">';
+    html +=   '<div class="ll-kc-topic-name">' + role.name + '</div>';
+    html +=   '<div class="ll-kc-topic-meta">' + count + ' scenario' + (count !== 1 ? 's' : '') + '</div>';
+    html += '</div>';
+  }
+  html += '</div>';
+  pane.innerHTML = html;
+}
+
+function llJcSelectRole(roleId) {
+  jcCurrentRoleId = roleId;
+  history.pushState(null, '', '#judgement-calls/' + roleId);
+  llJcRenderRoleScenarios(roleId);
+}
+
+function llJcRenderRoleScenarios(roleId) {
+  var role = null;
+  for (var r = 0; r < JC_ROLES.length; r++) { if (JC_ROLES[r].id === roleId) { role = JC_ROLES[r]; break; } }
+  var pane = llPane();
+  var html = '<div class="ll-kc-seq-nav">' +
+    '<button class="ll-back-btn" onclick="llJcBackToRoles()">&#8592; All roles</button>' +
+    '<span class="ll-kc-seq-badge">Judgement Calls</span>' +
+    '</div>' +
+    '<div class="ll-kc-seq-label">' + (role ? role.name : roleId) + '</div>';
+  html += '<div class="ll-jc-scenarios">';
+  for (var i = 0; i < JC_SCENARIOS.length; i++) {
+    var s = JC_SCENARIOS[i];
+    if (s.role !== roleId) { continue; }
+    if (!s.live) {
+      html += '<div class="ll-jc-scenario-coming">';
+      html +=   '<div class="ll-jc-scenario-topic">' + s.topic + '</div>';
+      html +=   '<div class="ll-kc-topic-name">' + s.title + '</div>';
+      html +=   '<div class="ll-kc-topic-meta">' + s.scenes + ' pressure points · Coming soon</div>';
+      html += '</div>';
+    } else {
+      html += '<div class="ll-jc-scenario" onclick="llJcStartScenario(\'' + s.id + '\')">';
+      html +=   '<div class="ll-jc-scenario-topic">' + s.topic + '</div>';
+      html +=   '<div class="ll-kc-topic-name">' + s.title + '</div>';
+      html +=   '<div class="ll-jc-scenario-desc">' + s.desc + '</div>';
+      html +=   '<div class="ll-kc-topic-meta">' + s.scenes + ' pressure points · ' + s.ref + '</div>';
+      html += '</div>';
+    }
+  }
+  html += '</div>';
+  pane.innerHTML = html;
+}
+
+function llJcStartScenario(id) {
+  var scenario = null;
+  for (var i = 0; i < JC_SCENARIOS.length; i++) {
+    if (JC_SCENARIOS[i].id === id && JC_SCENARIOS[i].live) { scenario = JC_SCENARIOS[i]; break; }
+  }
+  if (!scenario) { llJcBackToRoles(); return; }
+  jcCurrentScenario  = scenario;
+  jcCurrentRoleId    = scenario.role;
+  jcCurrentScene     = 0;
+  jcScores           = [];
+  jcGoodCount        = 0;
+  var pane = llPane();
+  pane.innerHTML = llJcScenarioHTML();
+  history.pushState(null, '', '#judgement-calls/' + jcCurrentRoleId + '/' + id);
+  jcRenderHeader();
+  jcRenderTracker();
+  jcRenderAllScenes();
+  jcShowScene(0);
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function llJcScenarioHTML() {
+  return '<div class="ll-kc-seq">' +
+    '<div class="ll-kc-seq-nav">' +
+      '<button class="ll-back-btn" onclick="llJcBackToScenarios()">&#8592; Scenarios</button>' +
+      '<span class="ll-kc-seq-badge">Judgement Calls</span>' +
+    '</div>' +
+    '<div id="jc-scenario-header"></div>' +
+    '<div id="jc-tracker"></div>' +
+    '<div id="jc-scenes"></div>' +
+    '<div id="jc-ending"></div>' +
+  '</div>';
+}
+
+function llJcBackToRoles() {
+  jcCurrentScenario = null;
+  jcCurrentRoleId   = '';
+  history.pushState(null, '', window.location.pathname + window.location.search);
+  llRoute('jc', { noHash: true });
+}
+
+function llJcBackToScenarios() {
+  var roleId = jcCurrentRoleId;
+  jcCurrentScenario = null;
+  history.pushState(null, '', '#judgement-calls/' + roleId);
+  llJcRenderRoleScenarios(roleId);
+}
 /* ════════════════════════════════════════════════════════════════════════
    INSPECTION PREP — migrated to new shell
 ════════════════════════════════════════════════════════════════════════ */
