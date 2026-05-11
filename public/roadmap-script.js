@@ -894,7 +894,7 @@
 
     var h = '';
 
-    h += '<div class="rm-sent-chip"><div class="rm-sent-dot"></div>Your study profile has been sent to the Research Facilitator — expect a follow-up within 5 business days.</div>';
+    h += '<div class="rm-sent-chip"><div class="rm-sent-dot"></div>Your study profile has been sent to the Research Facilitator. A confirmation has been sent to ' + esc(S.answers._contact && S.answers._contact.email ? S.answers._contact.email : 'your email') + ' — expect a follow-up within 5 business days.</div>';
 
     h += '<div class="rm-profile-bar">';
     h += '<div class="rm-profile-meta">';
