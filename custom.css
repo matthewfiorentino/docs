@@ -1658,7 +1658,7 @@ html.dark .ri-cim-body {
 
 /* ── CIM full-width dark band ── */
 .ri-cim-band {
-    background: #3d3880;
+    background: var(--ri-hero-accent);
     width: 100%;
 }
 .ri-cim-band-inner {
@@ -1673,10 +1673,11 @@ html.dark .ri-cim-body {
     font-size: 1.5rem;
     font-weight: 700;
 }
+.ri-cim-band .ri-cim-eyebrow { color: rgba(255,255,255,.8) !important; }
 .ri-cim-band .ri-cim-heading { color: #fff !important; }
 .ri-cim-band .ri-cim-body { color: rgba(255,255,255,.75) !important; }
 .ri-cim-band .ri-cim-stat-n { color: #fff !important; }
-.ri-cim-band .ri-cim-stat-l { color: #00c4b4 !important; }
+.ri-cim-band .ri-cim-stat-l { color: rgba(255,255,255,.8) !important; }
 .ri-cim-band .ri-cim-btn { background: #fff !important; color: #150e51 !important; }
 .ri-cim-band .ri-cim-btn--outline {
     background: transparent !important;
