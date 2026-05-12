@@ -1334,6 +1334,7 @@ function renderReviewTable(staffAmt, svcAmt, contAmt, ohAmt, rebAmt, rebInc, gra
   var cola  = document.getElementById('multiyear').value === 'yes';
   if (years > 1 && teTotal > 0) {
     html += '<div class="rv-section-head">Year-by-year staff costs</div>';
+    if (cola) html += '<div style="font-size:11px;color:#888;margin:-4px 0 8px">Includes 5% annual COLA per collective agreement projections</div>';
     html += '<div class="rv-yearly">';
     for (var y = 0; y < years; y++) {
       var yrAmt = cola ? teTotal * Math.pow(1.05, y) : teTotal;
