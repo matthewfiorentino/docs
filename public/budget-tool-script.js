@@ -2613,10 +2613,8 @@ function exportXLSX(btn) {
 
 function doExportXLSX() {
   var g = function(id) { var el = document.getElementById(id); return el ? el.value : ''; };
-  var funding    = g('funding-type');
-  var oh         = funding === 'found' ? (parseFloat(g('found-oh-pct')) || 27) / 100
-                 : funding === 'ind'   ? 0.30 : 0;
-  var contLevel  = g('cont-level');
+  // funding, oh, and contLevel are module-level globals set by selectFunding()/updateFoundOH()/selectCont()
+  // do NOT redeclare them here — that would shadow the globals with empty-string DOM reads
   var title      = g('study-title');
   var prot       = g('study-protocol');
   var years      = parseInt(g('study-years')) || 1;
