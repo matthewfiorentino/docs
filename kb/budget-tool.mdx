@@ -973,38 +973,38 @@ export const BT_HTML = `
     </section>
 
   </main>
-</div>
 
-<!-- Activity picker modal — rendered as native <dialog> (top layer, no z-index battles) -->
-<dialog id="act-picker" style="border:none;padding:0;width:min(680px,96vw);max-height:82vh;background:var(--white,#fff);flex-direction:column;overflow:hidden;border-radius:8px;box-shadow:0 20px 60px rgba(0,0,0,.22)">
-  <div style="background:var(--navy);padding:18px 20px;display:flex;align-items:center;justify-content:space-between;flex-shrink:0">
-    <div><div style="font-size:9px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.55);margin-bottom:4px">Work Plan</div><div id="ap-picker-title" style="font-size:16px;font-weight:700;color:#fff">Add activities from list</div></div>
-    <button onclick="closeActPicker()" style="background:none;border:none;color:rgba(255,255,255,.65);font-size:20px;cursor:pointer;padding:4px;line-height:1">&times;</button>
-  </div>
-  <div style="padding:12px 16px;border-bottom:1px solid var(--bdr-s);flex-shrink:0">
-    <input type="text" class="fi" id="act-picker-search" placeholder="Filter activities&hellip;" oninput="filterActPicker()" style="font-size:13px;max-width:340px">
-  </div>
-  <div id="act-picker-body" style="overflow-y:auto;flex:1;padding:0 0 8px"></div>
-  <div style="padding:10px 16px 12px;border-top:1px solid var(--bdr-s);background:var(--white);flex-shrink:0">
-    <div style="font-size:11px;font-weight:700;color:var(--textd);text-transform:uppercase;letter-spacing:.1em;margin-bottom:6px">Or add a custom activity</div>
-    <div style="display:flex;gap:8px;align-items:center">
-      <input type="text" id="ap-custom-name" class="fi" placeholder="Enter activity name&hellip;" style="font-size:13px;flex:1" onkeydown="if(event.key==='Enter'){addSelectedActivities();}">
-      <select id="ap-custom-type" class="fs" style="font-size:12px;width:140px;padding:6px 28px 6px 8px">
-        <option value="startup">Startup</option>
-        <option value="general" selected>General</option>
-        <option value="perpt">Per Participant</option>
-      </select>
+  <!-- Activity picker — inside #bt-root so CSS vars cascade; <dialog> renders in browser top layer -->
+  <dialog id="act-picker" style="border:none;padding:0;width:min(680px,96vw);max-height:82vh;background:var(--white);flex-direction:column;overflow:hidden;border-radius:8px;box-shadow:0 20px 60px rgba(0,0,0,.22)">
+    <div style="background:var(--navy);padding:18px 20px;display:flex;align-items:center;justify-content:space-between;flex-shrink:0">
+      <div><div style="font-size:9px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.55);margin-bottom:4px">Work Plan</div><div id="ap-picker-title" style="font-size:16px;font-weight:700;color:#fff">Add activities from list</div></div>
+      <button onclick="closeActPicker()" style="background:none;border:none;color:rgba(255,255,255,.65);font-size:20px;cursor:pointer;padding:4px;line-height:1">&times;</button>
     </div>
-  </div>
-  <div style="padding:14px 16px;border-top:2px solid var(--navy);background:var(--bg);display:flex;align-items:center;justify-content:space-between;flex-shrink:0;gap:12px">
-    <span id="act-picker-count" style="font-size:12px;color:var(--textd)">0 selected</span>
-    <div style="display:flex;gap:10px">
-      <button class="add-btn" style="border-color:var(--bdr);color:var(--textd);margin-top:0" onclick="closeActPicker()">Cancel</button>
-      <button class="add-btn" style="background:var(--teal);color:#fff;border-color:var(--teal);margin-top:0" onclick="addSelectedActivities()">Add selected</button>
+    <div style="padding:12px 16px;border-bottom:1px solid var(--bdr-s);flex-shrink:0">
+      <input type="text" class="fi" id="act-picker-search" placeholder="Filter activities&hellip;" oninput="filterActPicker()" style="font-size:13px;max-width:340px">
     </div>
-  </div>
+    <div id="act-picker-body" style="overflow-y:auto;flex:1;padding:0 0 8px"></div>
+    <div style="padding:10px 16px 12px;border-top:1px solid var(--bdr-s);background:var(--white);flex-shrink:0">
+      <div style="font-size:11px;font-weight:700;color:var(--textd);text-transform:uppercase;letter-spacing:.1em;margin-bottom:6px">Or add a custom activity</div>
+      <div style="display:flex;gap:8px;align-items:center">
+        <input type="text" id="ap-custom-name" class="fi" placeholder="Enter activity name&hellip;" style="font-size:13px;flex:1" onkeydown="if(event.key==='Enter'){addSelectedActivities();}">
+        <select id="ap-custom-type" class="fs" style="font-size:12px;width:140px;padding:6px 28px 6px 8px">
+          <option value="startup">Startup</option>
+          <option value="general" selected>General</option>
+          <option value="perpt">Per Participant</option>
+        </select>
+      </div>
+    </div>
+    <div style="padding:14px 16px;border-top:2px solid var(--navy);background:var(--bg);display:flex;align-items:center;justify-content:space-between;flex-shrink:0;gap:12px">
+      <span id="act-picker-count" style="font-size:12px;color:var(--textd)">0 selected</span>
+      <div style="display:flex;gap:10px">
+        <button class="add-btn" style="border-color:var(--bdr);color:var(--textd);margin-top:0" onclick="closeActPicker()">Cancel</button>
+        <button class="add-btn" style="background:var(--teal);color:#fff;border-color:var(--teal);margin-top:0" onclick="addSelectedActivities()">Add selected</button>
+      </div>
+    </div>
+  </dialog>
+  <div id="bt-tip"></div>
 </div>
-<div id="bt-tip"></div>
 `;
 
 export const BudgetTool = () => {
