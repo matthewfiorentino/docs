@@ -523,7 +523,7 @@ export const BT_HTML = `
           <option value="no">No &mdash; show for reference only</option>
         </select>
       </div>
-      <div class="reb-box" id="reb-box"></div>
+      <div class="reb-box" id="reb-box"><div class="reb-fee-row"><span class="reb-fn">Scientific review (one per project)</span><span class="reb-fa">$634</span></div><div class="reb-fee-row"><span class="reb-fn">Ethical review (one per project)</span><span class="reb-fa">$6,348</span></div><div class="reb-fee-row"><span class="reb-fn">Site authorization (1 institution)</span><span class="reb-fa">$1,904</span></div><div class="reb-total-row"><span class="reb-tl">REB total</span><span class="reb-ta">$8,886</span></div></div>
 
       <div class="sec-nav">
         <span class="sec-nav-spacer"></span>
@@ -852,6 +852,7 @@ export const BudgetTool = () => {
     const script = document.createElement('script');
     script.id = 'bt-script';
     script.src = '/budget-tool-script.js';
+    script.onload = () => { if (typeof btInit === 'function') btInit(); };
     document.body.appendChild(script);
     return () => {
       const s = document.getElementById('bt-script');

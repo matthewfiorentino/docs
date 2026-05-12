@@ -1929,8 +1929,7 @@ function syncStudySites() {
 // ════════════════════════════════════════
 // INIT
 // ════════════════════════════════════════
-// Script is injected dynamically via React useEffect, so DOMContentLoaded
-// has already fired. Check readyState and run immediately if DOM is ready.
+// Called by script.onload in the React useEffect — DOM is guaranteed ready.
 function btInit() {
   renderSvcs();
   calcPtCost();
@@ -1964,8 +1963,4 @@ function btInit() {
   });
 }
 
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', btInit);
-} else {
-  btInit();
-}
+// btInit() is called via script.onload in the React useEffect.
