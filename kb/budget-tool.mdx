@@ -852,7 +852,6 @@ export const BudgetTool = () => {
     const script = document.createElement('script');
     script.id = 'bt-script';
     script.src = '/budget-tool-script.js';
-    script.onload = () => { if (typeof btInit === 'function') btInit(); };
     document.body.appendChild(script);
     return () => {
       const s = document.getElementById('bt-script');

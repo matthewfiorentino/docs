@@ -1963,4 +1963,8 @@ function btInit() {
   });
 }
 
-// btInit() is called via script.onload in the React useEffect.
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', btInit);
+} else {
+  btInit();
+}
