@@ -104,7 +104,7 @@ export const BT_CSS = `
   transition: background .1s, color .1s;
 }
 .sid-btn:hover { background: var(--bg); }
-.sid-btn.active { background: var(--bg-low); color: var(--navy); font-weight: 700; }
+.sid-btn.active { background: var(--teal-l); color: var(--navy); font-weight: 700; border-left: 3px solid var(--teal); padding-left: 13px; }
 .sid-num { font-size: 11px; font-weight: 700; color: var(--textd); width: 16px; flex-shrink: 0; }
 .sid-btn.active .sid-num { color: var(--navy); }
 .sid-lbl { flex: 1; }
@@ -114,7 +114,7 @@ export const BT_CSS = `
   #bt-sidebar { grid-row: 2; grid-column: 1; position: sticky; top: 0; z-index: 5; height: auto; flex-direction: row; overflow-x: auto; overflow-y: visible; border-right: none; border-bottom: 1px solid var(--bdr-s); }
   .sid-list { display: flex; padding: 0; flex: none; }
   .sid-btn { flex-direction: column; gap: 2px; padding: 10px 12px; font-size: 11px; white-space: nowrap; }
-  .sid-btn.active { background: var(--bg-low); }
+  .sid-btn.active { background: var(--teal-l); border-left: none; border-bottom: 3px solid var(--teal); padding-left: 12px; }
   .sid-foot { display: none; }
   #bt-main { grid-row: 3; }
 }
@@ -127,7 +127,7 @@ export const BT_CSS = `
 @media (max-width: 699px) { .bt-section { padding: 20px 16px 40px; } }
 
 /* ── TYPOGRAPHY ── */
-.sec-label { font-size: 9px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: var(--textd); margin-bottom: 6px; }
+.sec-label { font-size: 10px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: var(--textd); margin-bottom: 6px; }
 .sec-h2 { font-size: 20px; font-weight: 800; color: var(--navy); margin-bottom: 6px; }
 .sec-desc { font-size: 13px; color: var(--textm); line-height: 1.65; margin-bottom: 24px; max-width: 640px; }
 .sub-head { font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--textd); margin: 24px 0 12px; padding-bottom: 8px; border-bottom: 1px solid var(--bdr-s); }
@@ -198,7 +198,7 @@ export const BT_CSS = `
 .mc-group-perpt   { color: var(--green); background: #f5fff9 !important; }
 .mc-chevron { font-size: 10px; margin-right: 6px; display: inline-block; transition: transform .15s; }
 .mc-collapsed .mc-chevron { transform: rotate(-90deg); }
-.mc-name-cell { position: sticky; left: 0; background: var(--white); z-index: 3; min-width: 180px; max-width: 260px; }
+.mc-name-cell { position: sticky; left: 0; background: var(--white); z-index: 3; min-width: 180px; max-width: 260px; box-shadow: 2px 0 4px -1px rgba(0,0,0,.06); }
 .mc-name-wrap { display: flex; align-items: center; gap: 4px; padding: 4px 6px; }
 .mc-type-sel { font-size: 10px; font-family: inherit; border: none; background: none; padding: 2px 4px; border-radius: 9999px; cursor: pointer; font-weight: 700; outline: none; flex-shrink: 0; }
 .mc-type-sel.mc-type-startup { background: var(--amber-l); color: #7a4f00; }
@@ -206,8 +206,9 @@ export const BT_CSS = `
 .mc-type-sel.mc-type-perpt   { background: var(--green-l); color: var(--green); }
 .mc-name-inp { border: none; background: none; font-size: 13px; font-family: inherit; color: var(--text); flex: 1; min-width: 80px; outline: none; padding: 3px 4px; }
 .mc-name-inp:focus { background: var(--teal-l); border-radius: 3px; }
-.mc-act-rm { font-size: 12px; color: var(--textd); background: none; border: none; cursor: pointer; padding: 2px 4px; flex-shrink: 0; opacity: 0; transition: opacity .1s; }
+.mc-act-rm { font-size: 12px; color: var(--textd); background: none; border: none; cursor: pointer; padding: 2px 4px; flex-shrink: 0; opacity: 0.35; transition: opacity .1s; }
 #te-matrix tr:hover .mc-act-rm { opacity: 1; }
+.mc-act-rm:focus-visible { opacity: 1; outline: 2px solid var(--teal); border-radius: 3px; }
 .mc-input-cell { text-align: center; padding: 6px 8px !important; }
 .mc-input-cell input { width: 80px; font-size: 13px; font-family: "Courier New", monospace; border: 1.5px solid var(--bdr); border-radius: 4px; background: var(--white); text-align: center; padding: 5px 4px; outline: none; color: var(--text); }
 .mc-input-cell input:focus { border-color: var(--teal); background: var(--teal-l); }
@@ -221,7 +222,7 @@ export const BT_CSS = `
 .mc-add-row button { width: 100%; padding: 7px 12px; background: none; border: none; cursor: pointer; font-size: 12px; color: var(--textd); font-family: inherit; text-align: left; }
 .mc-add-row button:hover { background: var(--teal-l); color: var(--teal); }
 #te-matrix tfoot td { padding: 9px 10px; background: var(--bg-low); font-size: 12px; font-weight: 700; color: var(--navy); text-align: center; border-top: 2px solid var(--navy); font-family: "Courier New", monospace; }
-#te-matrix tfoot td.mc-name-th { text-align: left; position: sticky; left: 0; background: var(--bg-low); font-size: 9px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--textd); font-family: inherit; }
+#te-matrix tfoot td.mc-name-th { text-align: left; position: sticky; left: 0; background: var(--bg-low); font-size: 10px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--textd); font-family: inherit; }
 
 /* ── TEMPLATE PICKER ── */
 .mc-tpl-picker { background: var(--white); border: 1px solid var(--bdr-s); border-radius: 8px; padding: 24px; text-align: center; }
@@ -247,7 +248,7 @@ export const BT_CSS = `
 .svc-qty input:disabled { background: var(--bg-mid); cursor: not-allowed; }
 .svc-sub { font-size: 12px; font-weight: 700; color: var(--navy); text-align: right; font-family: "Courier New", monospace; }
 .other-row { display: grid; grid-template-columns: 1fr 120px 30px; gap: 8px; align-items: center; padding: 8px 12px; border-bottom: 1px solid var(--bdr-s); background: var(--white); }
-.svc-top-head { font-size: 9px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: var(--teal); padding: 18px 0 8px; border-top: 1px solid var(--bdr-s); margin-top: 8px; }
+.svc-top-head { font-size: 10px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: var(--teal); padding: 18px 0 8px; border-top: 1px solid var(--bdr-s); margin-top: 8px; }
 .svc-top-head:first-child { margin-top: 0; border-top: none; padding-top: 4px; }
 .svc-acc-group { border-bottom: 1px solid var(--bdr-s); }
 .svc-acc-head { display: flex; align-items: center; justify-content: space-between; padding: 9px 12px; background: var(--bg-low); cursor: pointer; font-size: 11px; font-weight: 700; color: var(--navy); user-select: none; transition: background .1s; border-bottom: 1px solid var(--bdr-s); }
@@ -256,6 +257,7 @@ export const BT_CSS = `
 .svc-acc-head.svc-acc-open .svc-acc-chevron { transform: rotate(0deg); }
 .svc-acc-body { display: none; }
 .svc-cat-head { font-size: 9px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: var(--teal); padding: 18px 0 8px; border-top: 1px solid var(--bdr-s); margin-bottom: 0; margin-top: 8px; }
+.svc-group-head { font-size: 11px; font-weight: 600; color: var(--textm); margin: 16px 0 4px; padding-bottom: 4px; border-bottom: 1px solid var(--bdr-s); }
 #pt-cost-rows .svc-hdr { grid-template-columns: 1fr 100px 90px 80px 90px; }
 #pt-cost-rows .svc-row { grid-template-columns: 1fr 100px 90px 80px 90px; }
 #pt-cost-rows .pt-cell { display:flex;gap:4px;align-items:center;justify-content:flex-end; }
@@ -271,6 +273,14 @@ export const BT_CSS = `
   #pt-cost-rows .svc-hdr { grid-template-columns: 1fr 70px 60px 60px 70px; }
   #pt-cost-rows .svc-row { grid-template-columns: 1fr 70px 60px 60px 70px; }
   #pt-cost-rows .pt-cell input { width:44px; }
+}
+@media (max-width: 599px) {
+  #pt-cost-rows .svc-hdr { display: none; }
+  #pt-cost-rows .svc-row { grid-template-columns: 1fr auto; gap: 6px; row-gap: 6px; }
+  #pt-cost-rows .svc-name { grid-column: 1; }
+  #pt-cost-rows .svc-sub { grid-column: 2; text-align: right; }
+  #pt-cost-rows .pt-cell { grid-column: 1 / -1; justify-content: flex-start; flex-wrap: wrap; }
+  #pt-cost-rows .pt-cell input { width: 80px; }
 }
 #svc-lab .svc-row { display: grid; grid-template-columns: 1fr 130px 100px 110px; gap: 10px; align-items: center; padding: 7px 12px; border-bottom: 1px solid var(--bdr-s); background: var(--white); }
 #svc-lab .svc-name { font-size: 12px; }
@@ -309,7 +319,7 @@ export const BT_CSS = `
 .rv-row-strong { font-weight: 700; color: var(--navy); }
 .rv-row-strong span:last-child { font-family: "Courier New", monospace; }
 .rv-row span:last-child { font-family: "Courier New", monospace; font-size: 12px; font-weight: 700; color: var(--navy); }
-.rv-section-head { font-size: 9px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--textd); padding: 14px 0 6px; margin-top: 4px; }
+.rv-section-head { font-size: 10px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--textd); padding: 14px 0 6px; margin-top: 4px; }
 .rv-divider { height: 1px; background: var(--bdr-s); margin: 10px 0; }
 .rv-grand { display: flex; justify-content: space-between; align-items: baseline; padding: 14px 0 6px; border-top: 2px solid var(--navy); margin-top: 8px; font-weight: 800; font-size: 16px; color: var(--navy); }
 .rv-grand span:last-child { font-family: "Courier New", monospace; font-size: 22px; }
@@ -434,20 +444,18 @@ export const BT_HTML = `
       <div class="ci" id="pi-notice" style="display:none"><strong>Industry study:</strong> Include the PI salary line in Staff &amp; Salaries. For IIT and foundation studies, the PI is not typically budgeted.</div>
 
       <div id="found-oh-field" style="display:none;margin-bottom:18px">
-        <div class="ci"><strong>Foundation overhead rate:</strong> McGill OSR indirect costs policy: 27% on total direct costs for grants from non-profit organizations. Override below if your funder specifies a different rate.
-          <div style="display:flex;align-items:center;gap:10px;margin-top:10px">
-            <input type="text" inputmode="decimal" class="fi" id="found-oh-pct" value="27" oninput="updateFoundOH()" style="max-width:120px">
-            <span class="fh" style="margin:0">%</span>
-          </div>
+        <div class="ci"><strong>Foundation overhead rate:</strong> McGill OSR indirect costs policy: 27% on total direct costs for grants from non-profit organizations. Override below if your funder specifies a different rate.</div>
+        <div class="fg" style="max-width:200px;margin-top:10px">
+          <label class="fl" for="found-oh-pct">Overhead rate (%)</label>
+          <input type="text" inputmode="decimal" class="fi" id="found-oh-pct" value="27" oninput="updateFoundOH()">
         </div>
       </div>
 
       <div id="iit-oh-field" style="display:none;margin-bottom:18px">
-        <div class="ci"><strong>IIT overhead rate:</strong> Most IIT studies at RI-MUHC are 0%. Override below if your funder specifies a different rate (e.g. FRQS, NCI, PCORI grants with negotiated overhead).
-          <div style="display:flex;align-items:center;gap:10px;margin-top:10px">
-            <input type="text" inputmode="decimal" class="fi" id="iit-oh-pct" value="0" oninput="updateIITOH()" style="max-width:120px">
-            <span class="fh" style="margin:0">%</span>
-          </div>
+        <div class="ci"><strong>IIT overhead rate:</strong> Most IIT studies at RI-MUHC are 0%. Override below if your funder specifies a different rate (e.g. FRQS, NCI, PCORI grants with negotiated overhead).</div>
+        <div class="fg" style="max-width:200px;margin-top:10px">
+          <label class="fl" for="iit-oh-pct">Overhead rate (%)</label>
+          <input type="text" inputmode="decimal" class="fi" id="iit-oh-pct" value="0" oninput="updateIITOH()">
         </div>
       </div>
 
@@ -487,7 +495,7 @@ export const BT_HTML = `
 
       <div class="sub-head">REB Fees</div>
       <p class="sec-desc" style="margin-bottom:16px">REB fees are calculated from the MSSS fee schedule (April 2025). Renewals auto-suggest when you set study years.</p>
-      <div class="cn" id="reb-iit-note" style="display:none"><strong>IIT / Foundation study:</strong> The MSSS fee schedule applies to costs billed to a private company. Toggle inclusion below.</div>
+      <div class="ci" id="reb-iit-note" style="display:none"><strong>IIT / Foundation study:</strong> The MSSS fee schedule applies to costs billed to a private company. Toggle inclusion below.</div>
       <div class="frow" style="margin-bottom:16px">
         <div class="fg">
           <label class="fl">Annual renewals</label>
@@ -669,7 +677,7 @@ export const BT_HTML = `
       <div class="sub-head" style="margin-top:24px">Direct Costs</div>
 
       <div class="svc-cat-head">Participant Costs</div>
-      <div id="pt-n-banner" class="cn" style="margin:0;border-radius:0;font-size:12px;padding:10px 14px">Participant count is 0 — subtotals will show $0. Set the number of participants in <strong>Study Profile</strong> (Section 1) first.</div>
+      <div id="pt-n-banner" class="cn" style="font-size:12px;padding:10px 14px">Participant count is 0 — subtotals will show $0. Set the number of participants in <strong>Study Profile</strong> (Section 1) first.</div>
       <div id="pt-cost-rows">
       <div class="svc-hdr"><span>Item</span><span style="text-align:right">Per visit ($)</span><span style="text-align:right">Visits</span><span style="text-align:right">Participants</span><span style="text-align:right">Subtotal</span></div>
       <div class="svc-row">
@@ -796,7 +804,7 @@ export const BT_HTML = `
         <span class="svc-sub" id="sf-sub">$0</span>
       </div>
 
-      <div style="margin:10px 0 4px;font-size:12px;color:var(--textd);font-weight:500">Investigational product &amp; equipment</div>
+      <div class="svc-group-head">Investigational product &amp; equipment</div>
       <div class="svc-row">
         <span class="svc-name">Investigational product / IMP <span style="font-size:10px;color:var(--textd);font-weight:400">(drugs, devices, comparators — total study cost)</span></span>
         <span class="svc-price">&nbsp;</span>
@@ -810,7 +818,7 @@ export const BT_HTML = `
         <span class="svc-sub" id="equip-cost-sub">$0</span>
       </div>
 
-      <div style="margin:10px 0 4px;font-size:12px;color:var(--textd);font-weight:500">Software &amp; licensing</div>
+      <div class="svc-group-head">Software &amp; licensing</div>
       <div class="svc-row">
         <span class="svc-name">REDCap database license &amp; setup</span>
         <span class="svc-price">&nbsp;</span>
@@ -842,7 +850,7 @@ export const BT_HTML = `
         Add other cost
       </button>
 
-      <div style="margin:18px 0 4px;font-size:12px;color:var(--textd);font-weight:500">Site &amp; administrative</div>
+      <div class="svc-group-head">Site &amp; administrative</div>
       <div class="svc-row">
         <span class="svc-name">Study insurance <span style="font-size:10px;color:var(--textd);font-weight:400">(clinical trial indemnity — required for industry; recommended for IIT)</span></span>
         <span class="svc-price">&nbsp;</span>
@@ -939,17 +947,17 @@ export const BT_HTML = `
 
 <!-- Activity picker modal -->
 <div id="act-picker-overlay" style="display:none;position:fixed;inset:0;background:rgba(43,38,102,.55);z-index:900;backdrop-filter:blur(4px)" onclick="closeActPicker()"></div>
-<div id="act-picker" style="display:none;position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);width:min(680px,96vw);max-height:82vh;background:#fff;z-index:901;flex-direction:column;overflow:hidden;border-radius:8px;box-shadow:0 20px 60px rgba(0,0,0,.18)">
-  <div style="background:#2b2666;padding:18px 20px;display:flex;align-items:center;justify-content:space-between;flex-shrink:0">
+<div id="act-picker" style="display:none;position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);width:min(680px,96vw);max-height:82vh;background:var(--white);z-index:901;flex-direction:column;overflow:hidden;border-radius:8px;box-shadow:0 20px 60px rgba(0,0,0,.18)">
+  <div style="background:var(--navy);padding:18px 20px;display:flex;align-items:center;justify-content:space-between;flex-shrink:0">
     <div><div style="font-size:9px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.55);margin-bottom:4px">Work Plan</div><div id="ap-picker-title" style="font-size:16px;font-weight:700;color:#fff">Add activities from list</div></div>
     <button onclick="closeActPicker()" style="background:none;border:none;color:rgba(255,255,255,.65);font-size:20px;cursor:pointer;padding:4px;line-height:1">&times;</button>
   </div>
-  <div style="padding:12px 16px;border-bottom:1px solid #e5e5e5;flex-shrink:0">
+  <div style="padding:12px 16px;border-bottom:1px solid var(--bdr-s);flex-shrink:0">
     <input type="text" class="fi" id="act-picker-search" placeholder="Filter activities&hellip;" oninput="filterActPicker()" style="font-size:13px;max-width:340px">
   </div>
   <div id="act-picker-body" style="overflow-y:auto;flex:1;padding:0 0 8px"></div>
-  <div style="padding:10px 16px 12px;border-top:1px solid #e5e5e5;background:#fff;flex-shrink:0">
-    <div style="font-size:11px;font-weight:700;color:#888;text-transform:uppercase;letter-spacing:.1em;margin-bottom:6px">Or add a custom activity</div>
+  <div style="padding:10px 16px 12px;border-top:1px solid var(--bdr-s);background:var(--white);flex-shrink:0">
+    <div style="font-size:11px;font-weight:700;color:var(--textd);text-transform:uppercase;letter-spacing:.1em;margin-bottom:6px">Or add a custom activity</div>
     <div style="display:flex;gap:8px;align-items:center">
       <input type="text" id="ap-custom-name" class="fi" placeholder="Enter activity name&hellip;" style="font-size:13px;flex:1" onkeydown="if(event.key==='Enter'){addSelectedActivities();}">
       <select id="ap-custom-type" class="fs" style="font-size:12px;width:140px;padding:6px 28px 6px 8px">
@@ -959,11 +967,11 @@ export const BT_HTML = `
       </select>
     </div>
   </div>
-  <div style="padding:14px 16px;border-top:2px solid #2b2666;background:#f7f7f7;display:flex;align-items:center;justify-content:space-between;flex-shrink:0;gap:12px">
-    <span id="act-picker-count" style="font-size:12px;color:#888">0 selected</span>
+  <div style="padding:14px 16px;border-top:2px solid var(--navy);background:var(--bg);display:flex;align-items:center;justify-content:space-between;flex-shrink:0;gap:12px">
+    <span id="act-picker-count" style="font-size:12px;color:var(--textd)">0 selected</span>
     <div style="display:flex;gap:10px">
-      <button class="add-btn" style="border-color:#d0d0d0;color:#888;margin-top:0" onclick="closeActPicker()">Cancel</button>
-      <button class="add-btn" style="background:#007468;color:#fff;border-color:#007468;margin-top:0" onclick="addSelectedActivities()">Add selected</button>
+      <button class="add-btn" style="border-color:var(--bdr);color:var(--textd);margin-top:0" onclick="closeActPicker()">Cancel</button>
+      <button class="add-btn" style="background:var(--teal);color:#fff;border-color:var(--teal);margin-top:0" onclick="addSelectedActivities()">Add selected</button>
     </div>
   </div>
 </div>
