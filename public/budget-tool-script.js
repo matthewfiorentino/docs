@@ -2536,6 +2536,9 @@ function btInit() {
   calcREB();
   updateSummary();
   showSection('s-profile');
+  // Deferred update: Mintlify's React renderer can reset static DOM values after btInit fires.
+  // Running updateSummary again after the render cycle ensures the header total is correct on load.
+  setTimeout(function() { calcREB(); updateSummary(); }, 200);
   // beforeprint listener removed — PDF export deprecated in favour of CSV spreadsheet
   document.addEventListener('keydown', function(e) {
     if (e.key === 'Escape') {
