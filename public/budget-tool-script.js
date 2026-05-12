@@ -1366,7 +1366,6 @@ function updateSummary() {
   var titleEl  = document.getElementById('study-title');
   var bthTitle = document.getElementById('bth-title');
   var bthGrand = document.getElementById('bth-grand');
-  var bthLbl   = document.querySelector('#bt-header .bth-lbl');
   if (bthTitle) bthTitle.textContent = (titleEl && titleEl.value.trim()) ? titleEl.value.trim() : 'Untitled study';
   var bthLbl      = document.getElementById('bth-lbl');
   var bthColTotal = document.getElementById('bth-col-total');

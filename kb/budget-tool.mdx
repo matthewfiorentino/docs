@@ -35,7 +35,7 @@ export const BT_CSS = `
   --textd:    #888888;
   --bdr:      #d0d0d0;
   --bdr-s:    #e5e5e5;
-  --hdr-h:    48px;
+  --hdr-h:    54px;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
   font-size: 14px;
   color: var(--text);
@@ -56,25 +56,32 @@ export const BT_CSS = `
   grid-row: 1;
   display: flex;
   align-items: center;
-  gap: 16px;
-  padding: 0 20px;
+  gap: 0;
+  padding: 0 22px;
   background: var(--navy);
   color: #fff;
   height: var(--hdr-h);
 }
-.bth-brand { font-size: 11px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; color: rgba(255,255,255,.55); flex-shrink: 0; }
-.bth-study { font-size: 13px; font-weight: 600; color: rgba(255,255,255,.85); flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-.bth-total-wrap { display: flex; align-items: stretch; flex-shrink: 0; }
-.bth-col { display: flex; flex-direction: column; align-items: flex-end; justify-content: center; padding: 0 14px; }
-.bth-col + .bth-col { border-left: 1px solid rgba(255,255,255,.15); }
-.bth-lbl { font-size: 9px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: rgba(255,255,255,.45); margin-bottom: 2px; }
-.bth-amt { font-size: 20px; font-weight: 800; font-family: "Courier New", monospace; color: #fff; line-height: 1; }
-.bth-amt-sm { font-size: 15px; font-weight: 700; font-family: "Courier New", monospace; color: rgba(255,255,255,.75); line-height: 1; }
+/* Identity: stacked brand label above study title */
+.bth-identity { display: flex; flex-direction: column; justify-content: center; gap: 4px; flex: 1; min-width: 0; }
+.bth-brand { font-size: 8px; font-weight: 700; letter-spacing: .22em; text-transform: uppercase; color: rgba(255,255,255,.3); line-height: 1; }
+.bth-study { font-size: 14px; font-weight: 600; color: rgba(255,255,255,.9); line-height: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+/* Vertical hairline dividers between zones */
+.bth-sep { width: 1px; height: 26px; background: rgba(255,255,255,.13); flex-shrink: 0; margin: 0 20px; }
+/* Financial stats: single column, number-first */
+.bth-stats { display: flex; flex-direction: column; justify-content: center; align-items: flex-end; flex-shrink: 0; }
+.bth-amt { font-family: "Courier New", monospace; font-size: 22px; font-weight: 800; color: #fff; line-height: 1; }
+.bth-lbl { font-size: 8px; font-weight: 700; letter-spacing: .15em; text-transform: uppercase; color: rgba(255,255,255,.38); line-height: 1; margin-top: 4px; }
+/* Secondary total — appears below a hairline when multi-year */
+#bth-col-total { display: flex; flex-direction: column; align-items: flex-end; gap: 0; padding-top: 5px; border-top: 1px solid rgba(255,255,255,.12); margin-top: 4px; }
+.bth-amt-sm { font-family: "Courier New", monospace; font-size: 13px; font-weight: 700; color: rgba(255,255,255,.55); line-height: 1; }
+#bth-tot-lbl { font-size: 7px; font-weight: 700; letter-spacing: .15em; text-transform: uppercase; color: rgba(255,255,255,.28); line-height: 1; margin-top: 3px; }
+/* Actions */
 .bth-actions { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
-.bth-saved { font-size: 10px; color: rgba(255,255,255,.45); }
-.bth-btn { font-size: 11px; font-weight: 700; background: rgba(255,255,255,.15); border: 1px solid rgba(255,255,255,.2); color: #fff; padding: 5px 12px; border-radius: 4px; cursor: pointer; font-family: inherit; transition: background .12s; text-decoration: none; display: inline-flex; align-items: center; }
-.bth-btn:hover { background: rgba(255,255,255,.25); }
-@media (max-width: 699px) { .bth-study { display: none; } .bth-brand { display: none; } }
+.bth-saved { font-size: 10px; color: rgba(255,255,255,.4); }
+.bth-btn { font-size: 11px; font-weight: 600; background: transparent; border: 1px solid rgba(255,255,255,.2); color: rgba(255,255,255,.75); padding: 5px 12px; border-radius: 4px; cursor: pointer; font-family: inherit; transition: background .12s, color .12s; text-decoration: none; display: inline-flex; align-items: center; }
+.bth-btn:hover { background: rgba(255,255,255,.1); color: #fff; }
+@media (max-width: 699px) { .bth-identity { display: none; } .bth-sep { display: none; } .bth-sep ~ .bth-sep { display: none; } }
 
 /* ── TOOLTIP ── */
 #bt-tip { display:none; position:fixed; z-index:9999; background:#2b2666; color:#fff; font-size:12px; line-height:1.55; padding:9px 13px; border-radius:6px; max-width:260px; box-shadow:0 4px 18px rgba(0,0,0,.22); pointer-events:none; }
@@ -382,18 +389,20 @@ export const BT_HTML = `
 
   <!-- STICKY HEADER -->
   <header id="bt-header">
-    <span class="bth-brand">Clinical Research Budget</span>
-    <span class="bth-study" id="bth-title">Untitled study</span>
-    <div class="bth-total-wrap" id="bth-total-wrap">
-      <div class="bth-col" id="bth-col-main">
-        <span class="bth-lbl" id="bth-lbl">Grand total</span>
-        <span class="bth-amt" id="bth-grand">$0</span>
-      </div>
-      <div class="bth-col" id="bth-col-total" style="display:none">
-        <span class="bth-lbl" id="bth-tot-lbl">Total</span>
+    <div class="bth-identity">
+      <span class="bth-brand">Clinical Research Budget</span>
+      <span class="bth-study" id="bth-title">Untitled study</span>
+    </div>
+    <div class="bth-sep"></div>
+    <div class="bth-stats" id="bth-total-wrap">
+      <span class="bth-amt" id="bth-grand">$0</span>
+      <span class="bth-lbl" id="bth-lbl">Grand total</span>
+      <div id="bth-col-total" style="display:none">
         <span class="bth-amt-sm" id="bth-tot-amt">$0</span>
+        <span id="bth-tot-lbl">—</span>
       </div>
     </div>
+    <div class="bth-sep"></div>
     <div class="bth-actions">
       <label class="bth-btn" style="cursor:pointer">Load backup (.json)<input type="file" id="budget-file-input" accept=".json" style="display:none" onchange="importBudget(this)"></label>
       <button class="bth-btn" onclick="exportBudget()">Save a copy &#8595;</button>
