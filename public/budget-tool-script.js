@@ -282,7 +282,8 @@ function addStaffRow() {
   tr.id = 'sr-' + id;
   tr.setAttribute('data-staff-id', String(id));
   tr.innerHTML =
-    '<td><select class="fs" id="s-role-' + id + '" onchange="staffRoleChange(' + id + ')">' + roleOptions() + '</select></td>' +
+    '<td><select class="fs" id="s-role-' + id + '" onchange="staffRoleChange(' + id + ')">' + roleOptions() + '</select>' +
+    '<span id="s-note-' + id + '" style="display:none;font-size:11px;color:var(--teal);padding-top:2px"></span></td>' +
     '<td><input type="text" class="fi" id="s-name-' + id + '" placeholder="e.g. CRC_1" oninput="refreshMatrixColumnLabel(' + id + ')"></td>' +
     '<td><input type="text" inputmode="decimal" class="fi" id="s-sal-' + id + '" placeholder="0" oninput="staffSalChange(' + id + ')"></td>' +
     '<td class="st-fte-col"><input type="text" inputmode="decimal" class="fi" id="s-fte-' + id + '" value="100" oninput="updateSummary()"></td>' +
@@ -306,6 +307,17 @@ function staffRoleChange(id) {
   var r = ROLES[parseInt(v)];
   document.getElementById('s-sal-' + id).value = r.sal || '';
   staffCalc(id, r.sal || 0, r.hr || null);
+  // BCU rate note
+  var noteEl = document.getElementById('s-note-' + id);
+  if (noteEl) {
+    if (r.hr === 80) {
+      noteEl.textContent = 'Internal RI-MUHC rate ($80/hr). Confirm rate with BCU for industry-sponsored studies.';
+      noteEl.style.display = '';
+    } else {
+      noteEl.textContent = '';
+      noteEl.style.display = 'none';
+    }
+  }
 }
 
 function staffSalChange(id) {
@@ -349,12 +361,16 @@ function getStaffTotal() {
 
   var teTotal = getTEStaffTotal();
   if (teTotal > 0) {
+    var startupY1    = getTEStartupTotal();
+    var nonStartupY1 = teTotal - startupY1;
+    var nonStartupMulti;
     if (cola && years > 1) {
-      var teMultiYear = 0;
-      for (var y = 0; y < years; y++) teMultiYear += teTotal * Math.pow(1.05, y);
-      return teMultiYear;
+      nonStartupMulti = 0;
+      for (var y = 0; y < years; y++) nonStartupMulti += nonStartupY1 * Math.pow(1.05, y);
+    } else {
+      nonStartupMulti = nonStartupY1 * years;
     }
-    return teTotal * years;
+    return startupY1 + nonStartupMulti;
   }
 
   var total = 0;
@@ -629,8 +645,23 @@ function updateMatrixGroupHeaders() {
   if (el) el.textContent = n + (n === 1 ? ' participant' : ' participants');
   // Recalculate perpt row totals since N changed
   var rowIds = Object.keys(matrixData);
+  var hasPerpt = false;
   for (var i = 0; i < rowIds.length; i++) {
-    if (matrixData[rowIds[i]].type === 'perpt') updateMatrixRowTotal(rowIds[i]);
+    if (matrixData[rowIds[i]].type === 'perpt') { hasPerpt = true; updateMatrixRowTotal(rowIds[i]); }
+  }
+  // Amber banner when N=0 and perpt rows exist
+  var perptBanner = document.getElementById('mc-perpt-n-banner');
+  var perptBannerRow = document.getElementById('mc-perpt-n-banner-row');
+  if (perptBanner) {
+    if (hasPerpt && n === 0) {
+      perptBanner.className = 'cn';
+      perptBanner.innerHTML = 'Per Participant rows cost $0 — <a href="#" onclick="var el=document.getElementById(\'study-n\');if(el){el.scrollIntoView({behavior:\'smooth\',block:\'center\'});setTimeout(function(){el.focus();el.select();},350);}return false;" style="color:inherit;font-weight:700;text-decoration:underline">set participant count in Study Profile ↗</a>';
+      if (perptBannerRow) perptBannerRow.style.display = '';
+    } else {
+      perptBanner.className = '';
+      perptBanner.innerHTML = '';
+      if (perptBannerRow) perptBannerRow.style.display = 'none';
+    }
   }
   updateMatrixFooter();
 }
@@ -716,15 +747,7 @@ function getTEStartupTotal() {
 }
 
 function getStartupMultiYear() {
-  var years    = parseInt(document.getElementById('study-years').value) || 1;
-  var cola     = document.getElementById('multiyear').value === 'yes';
-  var startupY1 = getTEStartupTotal();
-  if (cola && years > 1) {
-    var total = 0;
-    for (var y = 0; y < years; y++) total += startupY1 * Math.pow(1.05, y);
-    return total;
-  }
-  return startupY1 * years;
+  return getTEStartupTotal(); // startup is a one-time Year 1 cost only
 }
 
 function applyTemplate(tplId) {
@@ -1141,6 +1164,26 @@ function calcPtCost() {
   var otherAmt = parseFloat(document.getElementById('pt-other-amt').value) || 0;
   var otherSub = document.getElementById('pt-other-sub');
   if (otherSub) otherSub.textContent = '$' + Math.round(otherAmt).toLocaleString();
+
+  // $500/year participant payment threshold warning
+  var stipWarn = document.getElementById('pt-stip-warn');
+  if (stipWarn && stipN > 0) {
+    var years = parseInt(document.getElementById('study-years').value) || 1;
+    var stipAmt2   = parseFloat(document.getElementById('pt-stip-amt').value)    || 0;
+    var stipVisits = parseFloat(document.getElementById('pt-stip-visits').value) || 0;
+    var annualStipend = stipAmt2 * stipVisits / years;
+    if (annualStipend > 500) {
+      stipWarn.className = 'cn';
+      stipWarn.innerHTML = 'Estimated $' + Math.round(annualStipend).toLocaleString() + '/participant/year — McGill policy cap is $500/year. Amounts above this threshold may require CRA reporting.';
+    } else {
+      stipWarn.className = '';
+      stipWarn.innerHTML = '';
+    }
+  } else if (stipWarn) {
+    stipWarn.className = '';
+    stipWarn.innerHTML = '';
+  }
+
   updateSummary();
 }
 
@@ -1221,7 +1264,7 @@ function calcREB() {
   html += '<div class="reb-total-row"><span class="reb-tl">REB total</span><span class="reb-ta">$' + rebTot.toLocaleString() + '</span></div>';
 
   var grandEst = (getStaffTotal() + getSvcTotal()) * (1 + oh + getContPct());
-  if (grandEst > 0 && grandEst < 19039) {
+  if (grandEst > 0 && grandEst < 19039 && funding === 'ind') {
     html += '<div style="padding:10px 18px;font-size:12px;color:var(--teal);border-top:1px solid var(--bdr-s);line-height:1.5">' +
       '<strong>Possible exemption:</strong> Your estimated total ($' + Math.round(grandEst).toLocaleString() + ') appears to be below the $19,039 MSSS threshold. Confirm with your REB.' +
       '</div>';
@@ -2350,12 +2393,15 @@ function exportCSV() {
     yrHeaders.push('Total');
     lines += row(yrHeaders);
 
-    // Staff escalates with COLA; all other costs are flat per year
-    var staffY1 = getTEStaffTotal() || (getStaffTotal() / years);
+    // Staff: startup is Year 1 only; non-startup escalates with COLA
+    var startupY1    = getTEStartupTotal();
+    var allStaffY1   = getTEStaffTotal() || (getStaffTotal() / years);
+    var nonStartupY1 = allStaffY1 - startupY1;
     var staffCols = ['Personnel'];
     var staffRunTotal = 0;
     for (var yy = 1; yy <= years; yy++) {
-      var yrStaff = cola ? staffY1 * Math.pow(1.05, yy - 1) : staffY1;
+      var nonStartupYn = cola ? nonStartupY1 * Math.pow(1.05, yy - 1) : nonStartupY1;
+      var yrStaff = (yy === 1 ? startupY1 : 0) + nonStartupYn;
       staffCols.push(fmt(yrStaff));
       staffRunTotal += yrStaff;
     }
@@ -2383,7 +2429,8 @@ function exportCSV() {
     var yrGrandTotal = 0;
     var nonStaffAnnual = (csvCimLab + csvPt + csvPP + csvKT + csvTravel + csvOther) / years;
     for (var yy = 1; yy <= years; yy++) {
-      var yrS    = cola ? staffY1 * Math.pow(1.05, yy - 1) : staffY1;
+      var nonSYn = cola ? nonStartupY1 * Math.pow(1.05, yy - 1) : nonStartupY1;
+      var yrS    = (yy === 1 ? startupY1 : 0) + nonSYn;
       var yrSub  = yrS + nonStaffAnnual;
       var yrOh   = yrSub * oh;
       var yrCont = yrSub * csvContPct;

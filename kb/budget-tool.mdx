@@ -434,7 +434,7 @@ export const BT_HTML = `
       <div class="ci" id="pi-notice" style="display:none"><strong>Industry study:</strong> Include the PI salary line in Staff &amp; Salaries. For IIT and foundation studies, the PI is not typically budgeted.</div>
 
       <div id="found-oh-field" style="display:none;margin-bottom:18px">
-        <div class="ci"><strong>Foundation overhead rate:</strong> McGill Research Finance default is 27%. Override below if your funder specifies a different rate.
+        <div class="ci"><strong>Foundation overhead rate:</strong> McGill OSR indirect costs policy: 27% on total direct costs for grants from non-profit organizations. Override below if your funder specifies a different rate.
           <div style="display:flex;align-items:center;gap:10px;margin-top:10px">
             <input type="text" inputmode="decimal" class="fi" id="found-oh-pct" value="27" oninput="updateFoundOH()" style="max-width:120px">
             <span class="fh" style="margin:0">%</span>
@@ -605,6 +605,7 @@ export const BT_HTML = `
             <tr class="mc-group-row" onclick="toggleMatrixGroup('perpt')">
               <td colspan="999" class="mc-group-perpt"><span class="mc-chevron">&#9660;</span>PER PARTICIPANT &mdash; <span id="mc-perpt-n">0 participants</span></td>
             </tr>
+            <tr id="mc-perpt-n-banner-row" style="display:none"><td colspan="999"><div id="mc-perpt-n-banner"></div></td></tr>
             <tr class="mc-add-row"><td colspan="999"><button onclick="openActPicker('perpt')">+ Add per-participant activity</button></td></tr>
           </tbody>
           <tfoot id="mc-tfoot">
@@ -661,7 +662,7 @@ export const BT_HTML = `
           <div class="svc-hdr"><span>Code / Test name</span><span>Unit price</span><span>Qty</span><span>Subtotal</span></div>
           <div id="svc-lab" style="max-height:420px;overflow-y:auto"></div>
           <div id="lab-empty" style="display:none;padding:14px 12px;font-size:13px;color:var(--textd);font-style:italic">No tests match your search.</div>
-          <div style="padding:10px 12px;background:var(--bg-low);border-top:1px solid var(--bdr-s);font-size:11px;color:var(--textd)">Prices: non-industry (&times;1.1) and industry/private (&times;1.5) from MUHC Laboratory pricelist 2023&ndash;2024.</div>
+          <div style="padding:10px 12px;background:var(--bg-low);border-top:1px solid var(--bdr-s);font-size:11px;color:var(--textd)">Prices: non-industry / researcher-funded (&times;1.1) and CIHR-sponsored (&times;1.5) from MUHC Laboratory pricelist 2023&ndash;2024. Pharma-sponsored studies: confirm lab pricing with MUHC laboratory directly.</div>
         </div>
       </div>
 
@@ -678,6 +679,7 @@ export const BT_HTML = `
         <div class="pt-cell"><span class="pt-lbl">&times;</span><input type="text" inputmode="decimal" min="0" value="0" id="pt-stip-n" data-synced="true" oninput="this.dataset.synced='false';calcPtCost()"><span class="pt-lbl">pts</span></div>
         <span class="svc-sub" id="pt-stip-sub">$0</span>
       </div>
+      <div style="grid-column:1/-1;padding:0 0 4px"><span id="pt-stip-warn" style="font-size:12px;padding:6px 10px;border-radius:6px;display:inline-block;margin-top:2px"></span></div>
       <div class="svc-row">
         <span class="svc-name">Transportation reimbursement</span>
         <div class="pt-cell"><input type="text" inputmode="decimal" min="0" value="0" id="pt-trans-amt" oninput="calcPtCost()"><span class="pt-lbl">/ visit</span></div>
@@ -895,6 +897,7 @@ export const BT_HTML = `
         <label class="fl">Override contingency rate (%)</label>
         <span class="fh">Leave blank to use the recommended midpoint.</span>
         <input type="text" inputmode="decimal" class="fi" id="cont-pct" placeholder="e.g. 10" oninput="updateSummary()">
+        <span class="fh" style="margin-top:4px;color:var(--teal)">Overrides card selection above when set.</span>
       </div>
       <div class="ct" style="margin-bottom:8px"><strong>Complexity guide:</strong> Low = observational, chart review. Moderate = prospective interventional, Phase II&ndash;III. High = Phase I, first-in-human, complex interventional.</div>
       <div class="ci" id="cont-ind-note" style="display:none;margin-bottom:24px"><strong>Industry study note:</strong> Contingency is calculated on direct costs only. If unplanned costs arise, the associated 30% overhead on those costs is not covered by this reserve. For studies with significant amendment risk, consider setting a higher rate or adding a manual buffer.</div>
