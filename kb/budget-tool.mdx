@@ -64,6 +64,8 @@ export const BT_CSS = `
 .tab-btn.active { color: #2b2666; border-bottom-color: #007468; }
 .tab-panel { display: none; padding: 28px 0 0; }
 .tab-panel.active { display: block; }
+.tab-dot { display:inline-block; width:5px; height:5px; border-radius:50%; background:#007468; margin-left:5px; vertical-align:middle; opacity:0; transition:opacity .15s; }
+.tab-dot.done { opacity:1; }
 
 /* ── TYPOGRAPHY ── */
 .sec-label { font-size: 9px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: #888; padding-bottom: 10px; border-bottom: 1px solid #e5e5e5; margin-bottom: 20px; }
@@ -97,11 +99,11 @@ export const BT_CSS = `
 .fcdesc { font-size: 11px; color: #888; }
 
 /* ── CALLOUTS ── */
-.cn { background: #fffbf0; border: 1px solid #e0d0aa; border-left-width: 3px; border-left-color: #c78a00; padding: 13px 16px; font-size: 13px; color: #5a3800; line-height: 1.65; margin-bottom: 20px; border-radius: 6px; }
+.cn { background: #fffbf0; border: 1px solid #e0d0aa; padding: 13px 16px; font-size: 13px; color: #5a3800; line-height: 1.65; margin-bottom: 20px; border-radius: 6px; }
 .cn strong { color: #3d2600; }
-.ci { background: #e5f3fb; border: 1px solid #b8d8f0; border-left-width: 3px; border-left-color: #2b9ce2; padding: 13px 16px; font-size: 13px; color: #444; line-height: 1.65; margin-bottom: 20px; border-radius: 6px; }
+.ci { background: #e5f3fb; border: 1px solid #b8d8f0; padding: 13px 16px; font-size: 13px; color: #444; line-height: 1.65; margin-bottom: 20px; border-radius: 6px; }
 .ci strong { color: #2b2666; }
-.ct { background: #f0faf9; border: 1px solid #b0d8d4; border-left-width: 3px; border-left-color: #007468; padding: 13px 16px; font-size: 13px; color: #444; line-height: 1.65; margin-bottom: 20px; border-radius: 6px; }
+.ct { background: #f0faf9; border: 1px solid #b0d8d4; padding: 13px 16px; font-size: 13px; color: #444; line-height: 1.65; margin-bottom: 20px; border-radius: 6px; }
 .ct strong { color: #007468; }
 
 /* ── STAFF ── */
@@ -157,7 +159,7 @@ export const BT_CSS = `
 
 /* ── SERVICES TABLE ── */
 .svc-cat { margin-bottom: 28px; }
-.svc-cat-head { font-size: 9px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: #fff; background: #2b2666; padding: 8px 12px; margin-bottom: 0; }
+.svc-cat-head { font-size: 9px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: #007468; padding: 18px 0 8px; border-top: 1px solid #e5e5e5; margin-bottom: 0; margin-top: 8px; }
 .svc-hdr { display: grid; grid-template-columns: 1fr 130px 100px 110px; gap: 10px; padding: 7px 12px; border-bottom: 1px solid #e5e5e5; background: #f0f0f0; }
 .svc-hdr span { font-size: 9px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: #888; }
 .svc-hdr span:nth-child(3), .svc-hdr span:nth-child(4) { text-align: right; }
@@ -227,14 +229,19 @@ export const BT_CSS = `
 .sum-gl { font-size: 12px; font-weight: 700; color: #2b2666; }
 .sum-ga { font-size: 20px; font-weight: 800; color: #2b2666; font-family: "Courier New", monospace; }
 .sum-foot { padding: 0 18px 18px; display: flex; flex-direction: column; gap: 8px; }
+.sum-yearly-btn { background:none; border:none; font-size:10px; color:#888; cursor:pointer; padding:2px 0; font-family:inherit; text-decoration:underline; text-align:left; }
+.sum-yearly-row { display:flex; justify-content:space-between; padding:3px 0; font-size:11px; border-bottom:1px solid #e5e5e5; }
+.sum-yearly-row:last-child { border-bottom:none; }
+.sum-yl { color:#888; }
+.sum-ya { color:#888; font-family:"Courier New",monospace; }
 .pbtn { display: flex; align-items: center; justify-content: center; gap: 8px; font-size: 11.5px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; color: #fff; background: #007468; border: none; padding: 12px 14px; cursor: pointer; font-family: inherit; transition: opacity .12s; width: 100%; border-radius: 6px; }
 .pbtn:hover { opacity: .88; }
 .xlink { display: flex; align-items: center; justify-content: center; gap: 7px; font-size: 11px; font-weight: 700; color: #888; border: 1.5px solid #e5e5e5; padding: 9px 12px; text-decoration: none; transition: border-color .12s, color .12s; border-radius: 6px; cursor: pointer; background: none; }
 .xlink:hover { border-color: #2b2666; color: #2b2666; }
 
 /* ── SERVICE ACCORDION ── */
-.svc-top-head { font-size: 9px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: #fff; background: #2b2666; padding: 9px 14px; margin-top: 4px; }
-.svc-top-head:first-child { margin-top: 0; }
+.svc-top-head { font-size: 9px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: #007468; padding: 18px 0 8px; border-top: 1px solid #e5e5e5; margin-top: 8px; }
+.svc-top-head:first-child { margin-top: 0; border-top: none; padding-top: 4px; }
 .svc-acc-group { border-bottom: 1px solid #e5e5e5; }
 .svc-acc-head { display: flex; align-items: center; justify-content: space-between; padding: 9px 12px; background: #f0f0f0; cursor: pointer; font-size: 11px; font-weight: 700; color: #2b2666; user-select: none; transition: background .1s; border-bottom: 1px solid #e5e5e5; }
 .svc-acc-head:hover { background: #e8e8e8; }
@@ -285,7 +292,7 @@ export const BT_CSS = `
   .tab-panel { display: block !important; }
   .sum-panel { display: block !important; position: static !important; border: 1px solid #c8c5d1; margin-top: 24px; page-break-inside: avoid; }
   .sum-head { background: #2b2666 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-  .svc-cat-head, .svc-top-head { background: #2b2666 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .svc-cat-head, .svc-top-head { color: #007468 !important; }
   .svc-acc-body { display: block !important; }
 }
 `;
@@ -303,10 +310,10 @@ export const BT_HTML = `
 <div id="bt-wrap">
   <div class="bt-tabs">
     <div class="tab-list">
-      <button class="tab-btn active" onclick="showTab(0)" id="tb0">1&thinsp;&middot;&thinsp;Study Setup</button>
-      <button class="tab-btn" onclick="showTab(1)" id="tb1">2&thinsp;&middot;&thinsp;Staff</button>
-      <button class="tab-btn" onclick="showTab(2)" id="tb2">3&thinsp;&middot;&thinsp;Time and Effort</button>
-      <button class="tab-btn" onclick="showTab(3)" id="tb3">4&thinsp;&middot;&thinsp;Services</button>
+      <button class="tab-btn active" onclick="showTab(0)" id="tb0">1&thinsp;&middot;&thinsp;Study Setup<span class="tab-dot" id="tdot0"></span></button>
+      <button class="tab-btn" onclick="showTab(1)" id="tb1">2&thinsp;&middot;&thinsp;Staff<span class="tab-dot" id="tdot1"></span></button>
+      <button class="tab-btn" onclick="showTab(2)" id="tb2">3&thinsp;&middot;&thinsp;Time and Effort<span class="tab-dot" id="tdot2"></span></button>
+      <button class="tab-btn" onclick="showTab(3)" id="tb3">4&thinsp;&middot;&thinsp;Services<span class="tab-dot" id="tdot3"></span></button>
       <button class="tab-btn" onclick="showTab(4)" id="tb4">5&thinsp;&middot;&thinsp;REB Fees</button>
       <button class="tab-btn" onclick="showTab(5)" id="tb5">6&thinsp;&middot;&thinsp;Contingency</button>
     </div>
@@ -347,12 +354,12 @@ export const BT_HTML = `
         <div class="fg">
           <label class="fl">Number of participating HSSN institutions</label>
           <span class="fh">Includes RI-MUHC. Used for REB fee calculation (max 10 for monitoring).</span>
-          <input type="number" class="fi" id="study-sites" value="1" min="1" max="15" oninput="calcREB()">
+          <input type="number" class="fi" id="study-sites" value="1" min="1" max="15" oninput="calcREB();syncStudyType()">
         </div>
       </div>
       <div class="fg">
         <label class="fl">Study type</label>
-        <select class="fs" id="study-type">
+        <select class="fs" id="study-type" onchange="syncStudySites()">
           <option value="single">Single site (RI-MUHC only)</option>
           <option value="multi">Multicentre (2 or more HSSN institutions)</option>
         </select>
@@ -409,6 +416,7 @@ export const BT_HTML = `
       <div class="sec-label">Step 4 of 6</div>
       <div class="sec-h2">Services and Other Costs</div>
       <p class="sec-desc">Enter the quantity of each service used across the full study. Industry-tier prices are applied automatically when Industry-Sponsored is selected in Setup.</p>
+      <div style="display:flex;justify-content:flex-end;margin-bottom:4px"><button onclick="expandAllSvc()" style="font-size:11px;color:#888;background:none;border:none;cursor:pointer;font-family:inherit;text-decoration:underline;padding:0">Expand all</button></div>
       <div id="svc-cim-accordion"></div>
       <div class="svc-top-head">MUHC Laboratory Tests</div>
       <div class="svc-acc-group" id="svc-grp-lab">
@@ -426,7 +434,7 @@ export const BT_HTML = `
       </div>
       <div class="svc-cat">
         <div class="svc-cat-head">Participant Costs</div>
-        <div class="ci" style="margin:0;border-left:none;border-radius:0;font-size:12px;padding:10px 14px">Costs below are multiplied by the number of participants entered in Study Setup (<span id="pt-n-display">0</span> participants). Enter per-visit amounts.</div>
+        <div class="ci" style="margin:0;border-radius:0;font-size:12px;padding:10px 14px">Costs below are multiplied by the number of participants entered in Study Setup (<span id="pt-n-display">0</span> participants). Enter per-visit amounts.</div>
         <div class="svc-hdr"><span>Item</span><span>Per visit (&times; participants)</span><span>Visits</span><span>Subtotal</span></div>
         <div class="svc-row">
           <span class="svc-name">Participant stipend / honorarium</span>
@@ -462,7 +470,7 @@ export const BT_HTML = `
           <span class="svc-sub" id="pt-park-sub">$0</span>
         </div>
         <div class="svc-row">
-          <div><span class="svc-name">Other participant costs</span><input type="text" class="fi" placeholder="Description (optional)" style="margin-top:4px;font-size:12px;padding:4px 8px"></div>
+          <div><span class="svc-name">Other participant costs<span style="font-size:10px;color:#888;font-weight:400;margin-left:6px">(flat study total, not per-participant)</span></span><input type="text" class="fi" placeholder="Description (optional)" style="margin-top:4px;font-size:12px;padding:4px 8px"></div>
           <span class="svc-price" id="pt-other-price">&nbsp;</span>
           <div class="svc-qty"><input type="number" min="0" value="0" id="pt-other-amt" oninput="calcPtCost()" style="width:100%;text-align:right;font-size:13px;border:1.5px solid #d0d0d0;padding:5px 8px;border-radius:6px;outline:none"></div>
           <span class="svc-sub" id="pt-other-sub">$0</span>
@@ -548,8 +556,8 @@ export const BT_HTML = `
       <div class="ct"><strong>Complexity guide:</strong> Low = observational, retrospective, chart review. Moderate = prospective interventional, Phase II&ndash;III, multi-visit. High = Phase I, first-in-human, complex interventional.</div>
       <div class="nav-btns">
         <button class="add-btn" onclick="showTab(4)"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg> Back</button>
-        <button class="pbtn" style="max-width:260px;margin-left:4px" onclick="window.print()"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg> Download budget summary</button>
       </div>
+      <div class="ct" style="margin-top:16px"><strong>Budget complete.</strong> Review the grand total in the summary panel, then use <strong>Download budget summary</strong> to export a PDF or <strong>Save progress</strong> to save a file you can reload later.</div>
     </div>
   </div>
 
@@ -566,7 +574,18 @@ export const BT_HTML = `
       <div class="sum-line"><span class="sll">REB fees</span><span id="sl-reb" class="slz">&mdash;</span></div>
       <div class="sum-divider"></div>
       <div class="sum-oh-row"><span class="sum-oh-l" id="sum-oh-lbl">Overhead (0%)</span><span class="sum-oh-a" id="sum-oh">$0</span></div>
+      <div id="sum-oh-split" style="display:none">
+        <div class="sum-oh-row" style="padding-left:10px"><span class="sum-oh-l" style="font-style:normal;font-size:11px">&rsaquo; Startup (0%)</span><span class="sum-oh-a" style="font-size:11px" id="sum-oh-startup">$0</span></div>
+        <div class="sum-oh-row" style="padding-left:10px"><span class="sum-oh-l" style="font-style:normal;font-size:11px">&rsaquo; General (30%)</span><span class="sum-oh-a" style="font-size:11px" id="sum-oh-general">$0</span></div>
+      </div>
       <div class="sum-grand"><span class="sum-gl">Grand total</span><span class="sum-ga" id="sum-grand">$0</span></div>
+      <div id="sum-cpp-row" style="display:none;margin-top:10px;padding-top:10px;border-top:1px solid #e5e5e5">
+        <div class="sum-oh-row"><span class="sum-oh-l">Per participant</span><span class="sum-oh-a" id="sum-cpp">&mdash;</span></div>
+      </div>
+      <div id="sum-yearly-wrap" style="display:none;margin-top:6px">
+        <button class="sum-yearly-btn" onclick="toggleYearly()" id="sum-yearly-btn">Show year-by-year &#9662;</button>
+        <div id="sum-yearly" style="display:none;margin-top:6px"></div>
+      </div>
     </div>
     <div class="sum-foot">
       <button class="pbtn" onclick="window.print()"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg> Download budget summary</button>

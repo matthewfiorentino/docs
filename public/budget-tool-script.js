@@ -973,12 +973,15 @@ function calcREB() {
   if (amends>0) html += rebRow('Major protocol amendments ('+amends+')', amAmt);
   html += '<div class="reb-total-row"><span class="reb-tl">REB total</span><span class="reb-ta">$'+rebTot.toLocaleString()+'</span></div>';
 
-  // Exemption threshold check
-  var grandTotal = getSvcTotal() + getStaffTotal();
-  if (grandTotal > 0 && grandTotal < 19039) {
+  // Exemption threshold check — use estimated grand total (staff + services + overhead + contingency)
+  var staffEst = getStaffTotal();
+  var svcEst   = getSvcTotal();
+  var subEst   = staffEst + svcEst;
+  var grandEst = subEst * (1 + oh + getContPct());
+  if (grandEst > 0 && grandEst < 19039) {
     html += '<div style="padding:10px 18px;font-size:12px;color:var(--teal);border-top:1px solid var(--bdr-soft);line-height:1.5">' +
-      '<strong>Possible exemption:</strong> Your total study costs ($'+Math.round(grandTotal).toLocaleString()+') appear to be below the $19,039 MSSS exemption threshold. ' +
-      'Institutions may refrain from billing these fees for grants or contracts below this amount. Confirm with your REB.' +
+      '<strong>Possible exemption:</strong> Your estimated total ($'+Math.round(grandEst).toLocaleString()+') appears to be below the $19,039 MSSS threshold. ' +
+      'Institutions may refrain from billing REB fees for grants or contracts below this amount. Confirm with your REB.' +
     '</div>';
   }
 
@@ -1036,8 +1039,16 @@ function updateSummary() {
   var rebAmt   = getRebAmt();
   var rebInc   = document.getElementById('reb-include').value==='yes';
 
-  var ohAmt  = subTotal * oh;
-  var grand  = subTotal + ohAmt + contAmt + (rebInc ? rebAmt : 0);
+  // Overhead: industry startup activities are carved out at 0%
+  var startupMultiYear = (funding === 'ind') ? getStartupMultiYear() : 0;
+  var ohAmt;
+  if (funding === 'ind' && startupMultiYear > 0) {
+    var eligibleForOH = Math.max(0, staffAmt - startupMultiYear) + svcAmt;
+    ohAmt = eligibleForOH * oh;
+  } else {
+    ohAmt = subTotal * oh;
+  }
+  var grand = subTotal + ohAmt + contAmt + (rebInc ? rebAmt : 0);
 
   var fmt = function(n) { return n>0 ? ('$'+Math.round(n).toLocaleString()) : null; };
   function setLine(id, val) {
@@ -1056,7 +1067,7 @@ function updateSummary() {
   var teEl   = document.getElementById('sl-te');
   if (teLine && teEl) {
     teLine.style.display = usingTE ? '' : 'none';
-    teEl.textContent = usingTE ? ('$'+Math.round(getTEStaffTotal()).toLocaleString()) : '';
+    teEl.textContent = usingTE ? ('$'+Math.round(teTotal).toLocaleString()) : '';
     teEl.className = usingTE ? 'sla' : 'slz';
   }
 
@@ -1071,23 +1082,61 @@ function updateSummary() {
   if (ohEl)  ohEl.textContent  = '$'+Math.round(ohAmt).toLocaleString();
   if (ohLbl) ohLbl.textContent = 'Overhead ('+Math.round(oh*100)+'%)';
 
+  // Industry startup carve-out split
+  var ohSplit = document.getElementById('sum-oh-split');
+  if (ohSplit) {
+    if (funding === 'ind' && startupMultiYear > 0) {
+      var ohStartupEl = document.getElementById('sum-oh-startup');
+      var ohGeneralEl = document.getElementById('sum-oh-general');
+      if (ohStartupEl) ohStartupEl.textContent = '$0';
+      if (ohGeneralEl) ohGeneralEl.textContent = '$'+Math.round(ohAmt).toLocaleString();
+      ohSplit.style.display = '';
+    } else {
+      ohSplit.style.display = 'none';
+    }
+  }
+
   var gs = '$'+Math.round(grand).toLocaleString();
   var gEl  = document.getElementById('sum-grand');
   var tpEl = document.getElementById('sum-top');
   if (gEl)  gEl.textContent  = gs;
   if (tpEl) tpEl.textContent = gs;
 
+  // Cost per participant
+  var n = parseInt(document.getElementById('study-n').value) || 0;
+  var cppRow = document.getElementById('sum-cpp-row');
+  var cppEl  = document.getElementById('sum-cpp');
+  if (cppRow && cppEl) {
+    if (n > 0 && grand > 0) {
+      cppRow.style.display = '';
+      cppEl.textContent = '$'+Math.round(grand/n).toLocaleString()+'/pt';
+    } else {
+      cppRow.style.display = 'none';
+    }
+  }
+
+  // Year-by-year breakdown
+  var years = parseInt(document.getElementById('study-years').value) || 1;
+  var yearlyWrap = document.getElementById('sum-yearly-wrap');
+  if (yearlyWrap) {
+    yearlyWrap.style.display = (years > 1 && teTotal > 0) ? '' : 'none';
+    renderYearlyBreakdown();
+  }
+
   // Sync participant count display in services tab
   var ptN = document.getElementById('pt-n-display');
-  if (ptN) ptN.textContent = parseInt(document.getElementById('study-n').value) || 0;
+  if (ptN) ptN.textContent = n;
 
   // Sync travel subtotals display
   updateTravelSubs();
 
   // CIHR summary (print)
-  var travelAmt = getTravelTotal();
-  var otherAmtVal = contAmt; // contingency goes into CIHR "other"; other costs already in svcAmt
-  updateCIHR(staffAmt, svcAmt, contAmt, travelAmt, 0);
+  var travelAmt    = getTravelTotal();
+  var otherFreeform = getOtherCostsTotal();
+  updateCIHR(staffAmt, svcAmt, contAmt, travelAmt, otherFreeform);
+
+  // Tab completion dots
+  updateTabDots(staffAmt, svcAmt);
 
   // Auto-save (debounced)
   scheduleAutoSave();
@@ -1269,10 +1318,10 @@ function getTravelTotal() {
 // ════════════════════════════════════════
 function updateCIHR(staffAmt, svcAmt, contAmt, travelAmt, otherAmt) {
   var personnel = staffAmt;
-  var matsup    = svcAmt - travelAmt;  // services + lab, minus travel
+  var matsup    = svcAmt - travelAmt - otherAmt;  // services + lab + participant costs, minus travel and freeform other
   var travel    = travelAmt;
   var kt        = 0;
-  var other     = contAmt + otherAmt;
+  var other     = contAmt + otherAmt;  // contingency + freeform other costs
   var total     = personnel + matsup + travel + kt + other;
 
   function fmt(n) { return '$' + Math.round(n).toLocaleString(); }
@@ -1457,9 +1506,20 @@ var ACT_GROUPS = [
 // ════════════════════════════════════════
 // ACTIVITY PICKER FUNCTIONS
 // ════════════════════════════════════════
+function getAddedActivityNames() {
+  var names = {};
+  var nameEls = document.querySelectorAll('[id^="te-name-"]');
+  for (var i = 0; i < nameEls.length; i++) {
+    var v = nameEls[i].value.trim().toLowerCase();
+    if (v) names[v] = true;
+  }
+  return names;
+}
+
 function buildActPicker() {
   var body = document.getElementById('act-picker-body');
   if (!body) return;
+  var addedNames = getAddedActivityNames();
   var html = '';
   for (var g = 0; g < ACT_GROUPS.length; g++) {
     var grp = ACT_GROUPS[g];
@@ -1471,9 +1531,12 @@ function buildActPicker() {
       '<div class="ap-group-items" id="apgi-' + g + '">';
     for (var i = 0; i < grp.items.length; i++) {
       var itemId = 'ap-' + g + '-' + i;
+      var alreadyAdded = addedNames[grp.items[i].toLowerCase()] ? true : false;
+      var badge = alreadyAdded ? '<span style="font-size:10px;color:#1d9e75;font-weight:700;flex-shrink:0;margin-left:auto;padding-left:10px">&#10003; Added</span>' : '';
       html += '<label class="ap-item" id="' + itemId + '" for="apc-' + g + '-' + i + '">' +
         '<input type="checkbox" id="apc-' + g + '-' + i + '" onchange="apSelChange()">' +
         '<span class="ap-item-name">' + grp.items[i] + '</span>' +
+        badge +
       '</label>';
     }
     html += '</div></div>';
@@ -1498,6 +1561,13 @@ function openActPicker() {
   picker.style.display  = 'flex';
   var searchEl = document.getElementById('act-picker-search');
   if (searchEl) { searchEl.value = ''; }
+  // Auto-open first group (Startup)
+  var firstItems = document.getElementById('apgi-0');
+  var firstHead  = document.querySelector('#apg-0 .ap-group-head');
+  if (firstItems && !firstItems.classList.contains('open')) {
+    firstItems.classList.add('open');
+    if (firstHead) firstHead.classList.add('open');
+  }
   apSelChange();
 }
 
@@ -1920,6 +1990,116 @@ document.addEventListener('DOMContentLoaded', function() {
   updateSummary();
   checkAutoSave();
 });
+
+// ════════════════════════════════════════
+// NEW HELPER FUNCTIONS
+// ════════════════════════════════════════
+
+function getOtherCostsTotal() {
+  var total = 0;
+  var oAmts = document.querySelectorAll('.oa');
+  for (var i = 0; i < oAmts.length; i++) total += parseFloat(oAmts[i].value) || 0;
+  return total;
+}
+
+function getStartupMultiYear() {
+  var years = parseInt(document.getElementById('study-years').value) || 1;
+  var cola  = document.getElementById('multiyear').value === 'yes';
+  var startupY1 = getTEStartupTotal();
+  if (cola && years > 1) {
+    var total = 0;
+    for (var y = 0; y < years; y++) total += startupY1 * Math.pow(1.05, y);
+    return total;
+  }
+  return startupY1 * years;
+}
+
+function syncStudyType() {
+  var sitesEl = document.getElementById('study-sites');
+  var typeEl  = document.getElementById('study-type');
+  if (!sitesEl || !typeEl) return;
+  var sites = parseInt(sitesEl.value) || 1;
+  typeEl.value = sites > 1 ? 'multi' : 'single';
+}
+
+function syncStudySites() {
+  var sitesEl = document.getElementById('study-sites');
+  var typeEl  = document.getElementById('study-type');
+  if (!sitesEl || !typeEl) return;
+  if (typeEl.value === 'multi') {
+    var current = parseInt(sitesEl.value) || 1;
+    if (current < 2) { sitesEl.value = 2; calcREB(); }
+  } else {
+    sitesEl.value = 1; calcREB();
+  }
+}
+
+function expandAllSvc() {
+  // Expand all CIM accordion groups
+  for (var g = 0; g < SVC_CIM_DATA.length; g++) {
+    var body = document.getElementById('svc-body-' + g);
+    var head = document.querySelector('#svc-grp-' + g + ' .svc-acc-head');
+    if (body && body.style.display === 'none') {
+      body.style.display = 'block';
+      if (head) head.classList.add('svc-acc-open');
+    }
+  }
+  // Expand pharma, IT, MUHC, lab
+  var extras = ['pharma', 'it', 'muhc', 'lab'];
+  for (var i = 0; i < extras.length; i++) {
+    var body = document.getElementById('svc-body-' + extras[i]);
+    var head = document.querySelector('#svc-grp-' + extras[i] + ' .svc-acc-head');
+    if (body && body.style.display === 'none') {
+      body.style.display = 'block';
+      if (head) head.classList.add('svc-acc-open');
+      if (extras[i] === 'lab' && !labRendered) renderLab();
+    }
+  }
+}
+
+function toggleYearly() {
+  var panel = document.getElementById('sum-yearly');
+  var btn   = document.getElementById('sum-yearly-btn');
+  if (!panel) return;
+  var isOpen = panel.style.display !== 'none';
+  panel.style.display = isOpen ? 'none' : 'block';
+  if (btn) btn.textContent = isOpen ? 'Show year-by-year ▾' : 'Hide year-by-year ▴';
+}
+
+function renderYearlyBreakdown() {
+  var panel = document.getElementById('sum-yearly');
+  if (!panel || panel.style.display === 'none') return;
+  var years = parseInt(document.getElementById('study-years').value) || 1;
+  var cola  = document.getElementById('multiyear').value === 'yes';
+  var teY1  = getTEStaffTotal();
+  if (!teY1 || years <= 1) return;
+
+  var html = '<div style="font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#888;padding-bottom:5px;border-bottom:1px solid #e5e5e5;margin-bottom:4px">Staff costs by year</div>';
+  for (var y = 0; y < years; y++) {
+    var yrAmt = cola ? teY1 * Math.pow(1.05, y) : teY1;
+    var pct   = cola && y > 0 ? ' <span style="color:#aaa;font-size:10px">(+' + (Math.round((Math.pow(1.05,y)-1)*1000)/10).toFixed(1) + '%)</span>' : '';
+    html += '<div class="sum-yearly-row"><span class="sum-yl">Year ' + (y+1) + pct + '</span><span class="sum-ya">$' + Math.round(yrAmt).toLocaleString() + '</span></div>';
+  }
+  html += '<div style="font-size:10px;color:#aaa;margin-top:6px;line-height:1.45">Services, REB fees, and contingency are study totals shown above.</div>';
+  panel.innerHTML = html;
+}
+
+function updateTabDots(staffAmt, svcAmt) {
+  var titleEl = document.getElementById('study-title');
+  var d0 = document.getElementById('tdot0');
+  if (d0) d0.classList.toggle('done', !!(titleEl && titleEl.value.trim()));
+
+  var staffRows = document.querySelectorAll('.staff-row');
+  var d1 = document.getElementById('tdot1');
+  if (d1) d1.classList.toggle('done', staffRows.length > 0 && staffAmt > 0);
+
+  var acts = document.querySelectorAll('.te-activity');
+  var d2 = document.getElementById('tdot2');
+  if (d2) d2.classList.toggle('done', acts.length > 0);
+
+  var d3 = document.getElementById('tdot3');
+  if (d3) d3.classList.toggle('done', svcAmt > 0);
+}
 
 function toggleDA(btn){
   var sub=btn.nextElementSibling;
