@@ -1370,8 +1370,8 @@ function updateSummary() {
   if (hdrYears > 1) {
     var perYear = grand / hdrYears;
     if (bthGrand) bthGrand.textContent = '$' + Math.round(perYear).toLocaleString();
-    if (bthLbl)   bthLbl.textContent   = hdrCola ? 'Avg / year (COLA)' : 'Per year';
-    if (bthSub) { bthSub.textContent = '× ' + hdrYears + ' yrs = $' + Math.round(grand).toLocaleString(); bthSub.style.display = ''; }
+    if (bthLbl)   bthLbl.textContent   = hdrCola ? 'Per year (avg, COLA)' : 'Per year';
+    if (bthSub) { bthSub.textContent = hdrYears + '-year total  $' + Math.round(grand).toLocaleString(); bthSub.style.display = ''; }
   } else {
     if (bthGrand) bthGrand.textContent = '$' + Math.round(grand).toLocaleString();
     if (bthLbl)   bthLbl.textContent   = 'Grand total';
