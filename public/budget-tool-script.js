@@ -1,4 +1,3 @@
-
 // ════════════════════════════════════════
 // DATA
 // ════════════════════════════════════════
@@ -37,254 +36,30 @@ var ROLES = [
   {r:'Summer student',                         lv:'—',  sal:29000}
 ];
 
-// ════════════════════════════════════════
-// CIM FEE SCHEDULE DATA
-// Each item: [description, non-industry price or null, industry price or null]
-// ════════════════════════════════════════
 var SVC_CIM_DATA = [
-  {
-    label: "ELECTROCARDIOGRAM",
-    group: "platform",
-    items: [
-      ["Supine 12-lead resting ECG - no physician interpretation", 16.0, 38.0],
-    ]
-  },
-  {
-    label: "VITAL SIGNS",
-    group: "platform",
-    items: [
-      ["Heart rate, blood pressure, SpO2, breathing frequency, temperature", null, 20.0],
-      ["Arterial stiffness - AtCor SphygmoCor XCEL et CvMS", 20.0, 82.0],
-      ["Blood perfusion and tcpO2/tcpCO2- Perimed PeriFlux 5000 doppler laser", 20.0, 82.0],
-      ["Flow-mediated dilation measures by ultrasound (coming soon)", null, 122.0],
-    ]
-  },
-  {
-    label: "NON-INVASIVE VASCULAR ASSESSMENTS",
-    group: "platform",
-    items: [
-      ["Retial vascular assessment- IMEDOS Static Vascular Analysis", null, 82.0],
-      ["Ankle-brachial blood pressure index- Huntleigh Dopplex", 20.0, 60.0],
-      ["24-hours blood pressure monitoring- Mobil-O-Graph PWA", 20.0, 60.0],
-      ["Spirometry - pre bronchodilator", 34.0, 43.0],
-      ["Add on spirometry - post bronchodilator", 17.0, 43.0],
-      ["Lung volumes by body plethysmography", 34.0, 43.0],
-      ["Lung diffusion capacity (DLCO)", 34.0, 43.0],
-      ["Complete pulmonary function testing (PFT)", 69.0, 129.0],
-      ["Airway resistance and impulse oscilometry", 23.0, 32.0],
-    ]
-  },
-  {
-    label: "PULMONARY FUNCTION TEST",
-    group: "platform",
-    items: [
-      ["Maximal inspiratory and expiratory pressures (MIP&MEP)", 23.0, 32.0],
-      ["Maximal voluntary ventilation (MVV)", 23.0, 32.0],
-      ["Multiple breath washout", null, 80.0],
-      ["Aerochamber", 6.0, 6.0],
-      ["Other (e.g. FeNO, nasal peak flow, holter, travel time) hourly rate", null, 61.0],
-      ["6-min walk test", null, 60.0],
-      ["Sit to stand test", null, 15.0],
-      ["4-square step test", null, 15.0],
-      ["Bailey-III screening test for infant and toddler development", null, 60.0],
-      ["Performance of upper limb (PUL) test", null, 60.0],
-      ["Short Physical Performance Battery (SPPB)", null, 60.0],
-      ["Hand grip strenght test", null, 15.0],
-      ["Cardio-pulmonary exercise test (CPET) with cycle ergometer", 137.0, 212.0],
-    ]
-  },
-  {
-    label: "FUNCTIONAL TEST and EXERCISE PHYSIOLOGY",
-    group: "platform",
-    items: [
-      ["Cardio-pulmonary exercise test (CPET) with treadmill", 137.0, 212.0],
-      ["Isokinetic cycle ergometer", null, 29.0],
-      ["Resting energy expenditure", 137.0, 212.0],
-      ["Exercise training equipment (per training session)", 5.0, null],
-      ["Other (travel time) hourly rate", null, 61.0],
-      ["Other (start-up, training) hourly rate", null, 61.0],
-      ["Other (inspiratory capacity data cleaning, data analysis) hourly rate", null, 61.0],
-      ["Other (questionnaires, data transfer) hourly rate", null, 61.0],
-    ]
-  },
-  {
-    label: "BIOELECTRICAL IMPEDANCE ANALYSIS (InBody570)",
-    group: "platform",
-    items: [
-      ["BIA total body composition", 15.0, 26.0],
-      ["DXA femur bone density", 65.0, 94.0],
-      ["DXA forearm bone density", 65.0, 94.0],
-    ]
-  },
-  {
-    label: "DUAL X-RAY ABSORPTIOMETRY",
-    group: "platform",
-    items: [
-      ["DXA spine bone density", 65.0, 94.0],
-      ["DXA total body composition", 65.0, 94.0],
-      ["DXA phantom", 65.0, 94.0],
-      ["pQCT tibia", 65.0, 94.0],
-    ]
-  },
-  {
-    label: "PERIPHERAL QUANTITATIVE COMPUTED TOMOGRAPHY (pQCT)",
-    group: "platform",
-    items: [
-      ["pQCT femur", 65.0, 94.0],
-      ["pQCT radius", 65.0, 94.0],
-    ]
-  },
-  {
-    label: "MAGNETIC RESONANCE IMAGING (MRI)",
-    group: "platform",
-    items: [
-      ["Head -", null, 550.0],
-      ["Head +", null, 675.0],
-      ["Technical assistance", null, 65.0],
-      ["Head -", null, 328.0],
-      ["Head +", null, 385.0],
-      ["Neck -", null, 328.0],
-      ["Neck +", null, 385.0],
-      ["Chest -", null, 328.0],
-      ["Chest +", null, 385.0],
-      ["Abdomen -", null, 328.0],
-      ["Abdomen +", null, 385.0],
-      ["Pelvis -", null, 328.0],
-      ["Pelvis +", null, 385.0],
-      ["Chest/abdomen -", null, 504.0],
-      ["Chest/abdomen +", null, 562.0],
-      ["Chest/abdomen-pelvis -", null, 504.0],
-      ["Chest/abdomen-pelvis +", null, 562.0],
-    ]
-  },
-  {
-    label: "COMPUTERIZED TOMOGRAPHY (CT) SCAN",
-    group: "platform",
-    items: [
-      ["Abdomen-pelvis -", null, 390.0],
-      ["Abdomen-pelvis +", null, 447.0],
-      ["Neck/chest/abdomen -", null, 603.0],
-      ["Neck/chest/abdomen +", null, 660.0],
-      ["Neck/chest/abdomen-pelvis -", null, 603.0],
-      ["Neck/chest/abdomen-pelvis +", null, 660.0],
-      ["Upper or lower extremity -", null, 328.0],
-      ["Upper or lower extremity +", null, 385.0],
-      ["Spine (each segment) -", null, 328.0],
-      ["Spine (each segment) +", null, 385.0],
-      ["Extra charge - multiphase CT", null, 104.0],
-      ["Other (e.g. anonymization and upload of images) hourly rate", null, 59.0],
-      ["DICOM image copy on a CD", null, 13.0],
-      ["Study start-up fee", null, 520.0],
-      ["Only radiologist reading fee - per body area", null, 156.0],
-      ["Blood draw - above 9 years old - vacutainers not included", null, 14.0],
-      ["Blood draw - above 9 years old - vacutainers included", null, 19.0],
-      ["Blood draw - below 9 years old - vacutainers not included", null, 19.0],
-      ["Blood draw - below 9 years old - vacutainers included", null, 23.0],
-      ["Extra charge - blood draw for venous blood gas", null, 14.0],
-      ["Extra charge - blood draw from IV line", null, 2.0],
-    ]
-  },
-  {
-    label: "SPECIMEN COLLECTION",
-    group: "platform",
-    items: [
-      ["Extra charge - IV catheter insertion", null, 9.0],
-      ["Phlebotomy kit preparation (each)", null, 5.0],
-      ["Nasopharyngeal swabs", null, 19.0],
-      ["Urine collection", null, 13.0],
-      ["Urine rapid test- kit not included (such as pregnancy or pH)", null, 19.0],
-      ["Dry ice", null, 41.0],
-      ["Specimen processing hourly rate", null, 55.0],
-      ["Specimen shipping services hourly rate", null, 55.0],
-      ["Ambiant shipping", null, 27.5],
-    ]
-  },
-  {
-    label: "SPECIMEN PROCESSING AND SHIPPING",
-    group: "platform",
-    items: [
-      ["Frozen shipping (dry ice sold separately)", null, 27.5],
-      ["Refrigerated shipping", null, 27.5],
-      ["Combo shipping (dry ice sold separately)", null, 41.25],
-      ["Other (travel time) hourly rate", null, 55.0],
-      ["Other (start-up, training) hourly rate", null, 55.0],
-    ]
-  },
-  {
-    label: "SLEEP LAB",
-    group: "platform",
-    items: [
-      ["Other (e.g. PSG analysis, data transfer) hourly rate", null, 61.0],
-    ]
-  },
-  {
-    label: "APHERESIS - Optia Terumo",
-    group: "platform",
-    items: [
-      ["Apheresis system (supply kits not included)", 55.0, null],
-    ]
-  },
-  {
-    label: "BRONCHOSCOPY / GASTROSCOPY / ENDOSCOPY",
-    group: "platform",
-    items: [
-      ["Bronchoscopy, Gastroscopy or Endoscopy", 437.0, 645.0],
-      ["Other (e.g. patient monitoring) hourly rate", null, 59.0],
-    ]
-  },
-  {
-    label: "OPERATING ROOM",
-    group: "platform",
-    items: [
-      ["14- Echocardiogram ultrasound machine (per exam)", 42.0, 61.0],
-      ["24- Data management", 47.0, 69.0],
-      ["3 - Add on charge for simple transthoracic echocardiogram image acquisition by technologist", 79.0, 114.0],
-    ]
-  },
-  {
-    label: "CARDIAC ECHO",
-    group: "platform",
-    items: [
-      ["7 - Add on charge for report simple echo measures", 105.0, 152.0],
-      ["9 - Add on charge for image upload", 32.0, 44.0],
-      ["10 - Add on charge for a copy of an exam on an external media (DVD, CD, USB key)", 13.0, 18.0],
-      ["11 - If needed, technical assistance (hourly rate)", 79.0, 110.0],
-      ["12 - If needed, manual anonymization of images (hourly rate)", 79.0, 110.0],
-      ["13 - If needed, training, start up activities, other (houly rate)", 79.0, 110.0],
-      ["Ethics submissions - Lead or single site", null, 1350.0],
-      ["Ethics submission - Particpating site", null, 785.0],
-    ]
-  },
-  {
-    label: "SUBMISSION SERVICES",
-    group: "support",
-    items: [
-      ["Annual renewal", null, 395.0],
-      ["Submission of annual renewals to REB approval", 165.0, null],
-      ["Negotiations of start up budget (1-2 arms)", null, 830.0],
-      ["Negotiations of start up budget (3 plus)", null, 1350.0],
-    ]
-  },
-  {
-    label: "BUDGET SERVICES",
-    group: "support",
-    items: [
-      ["Nurse", 68.0, 85.0],
-    ]
-  },
-  {
-    label: "TRIAL CONDUCT RESOURCES",
-    group: "support",
-    items: [
-      ["Coordinator", 58.0, 75.0],
-      ["Monitor", 62.0, 62.0],
-      ["Project Manager", 70.0, 70.0],
-    ]
-  },
+  {label:"ELECTROCARDIOGRAM",group:"platform",items:[["Supine 12-lead resting ECG - no physician interpretation",16.0,38.0]]},
+  {label:"VITAL SIGNS",group:"platform",items:[["Heart rate, blood pressure, SpO2, breathing frequency, temperature",null,20.0],["Arterial stiffness - AtCor SphygmoCor XCEL et CvMS",20.0,82.0],["Blood perfusion and tcpO2/tcpCO2- Perimed PeriFlux 5000 doppler laser",20.0,82.0],["Flow-mediated dilation measures by ultrasound (coming soon)",null,122.0]]},
+  {label:"NON-INVASIVE VASCULAR ASSESSMENTS",group:"platform",items:[["Retial vascular assessment- IMEDOS Static Vascular Analysis",null,82.0],["Ankle-brachial blood pressure index- Huntleigh Dopplex",20.0,60.0],["24-hours blood pressure monitoring- Mobil-O-Graph PWA",20.0,60.0],["Spirometry - pre bronchodilator",34.0,43.0],["Add on spirometry - post bronchodilator",17.0,43.0],["Lung volumes by body plethysmography",34.0,43.0],["Lung diffusion capacity (DLCO)",34.0,43.0],["Complete pulmonary function testing (PFT)",69.0,129.0],["Airway resistance and impulse oscilometry",23.0,32.0]]},
+  {label:"PULMONARY FUNCTION TEST",group:"platform",items:[["Maximal inspiratory and expiratory pressures (MIP&MEP)",23.0,32.0],["Maximal voluntary ventilation (MVV)",23.0,32.0],["Multiple breath washout",null,80.0],["Aerochamber",6.0,6.0],["Other (e.g. FeNO, nasal peak flow, holter, travel time) hourly rate",null,61.0],["6-min walk test",null,60.0],["Sit to stand test",null,15.0],["4-square step test",null,15.0],["Bailey-III screening test for infant and toddler development",null,60.0],["Performance of upper limb (PUL) test",null,60.0],["Short Physical Performance Battery (SPPB)",null,60.0],["Hand grip strenght test",null,15.0],["Cardio-pulmonary exercise test (CPET) with cycle ergometer",137.0,212.0]]},
+  {label:"FUNCTIONAL TEST and EXERCISE PHYSIOLOGY",group:"platform",items:[["Cardio-pulmonary exercise test (CPET) with treadmill",137.0,212.0],["Isokinetic cycle ergometer",null,29.0],["Resting energy expenditure",137.0,212.0],["Exercise training equipment (per training session)",5.0,null],["Other (travel time) hourly rate",null,61.0],["Other (start-up, training) hourly rate",null,61.0],["Other (inspiratory capacity data cleaning, data analysis) hourly rate",null,61.0],["Other (questionnaires, data transfer) hourly rate",null,61.0]]},
+  {label:"BIOELECTRICAL IMPEDANCE ANALYSIS (InBody570)",group:"platform",items:[["BIA total body composition",15.0,26.0],["DXA femur bone density",65.0,94.0],["DXA forearm bone density",65.0,94.0]]},
+  {label:"DUAL X-RAY ABSORPTIOMETRY",group:"platform",items:[["DXA spine bone density",65.0,94.0],["DXA total body composition",65.0,94.0],["DXA phantom",65.0,94.0],["pQCT tibia",65.0,94.0]]},
+  {label:"PERIPHERAL QUANTITATIVE COMPUTED TOMOGRAPHY (pQCT)",group:"platform",items:[["pQCT femur",65.0,94.0],["pQCT radius",65.0,94.0]]},
+  {label:"MAGNETIC RESONANCE IMAGING (MRI)",group:"platform",items:[["Head -",null,550.0],["Head +",null,675.0],["Technical assistance",null,65.0],["Head -",null,328.0],["Head +",null,385.0],["Neck -",null,328.0],["Neck +",null,385.0],["Chest -",null,328.0],["Chest +",null,385.0],["Abdomen -",null,328.0],["Abdomen +",null,385.0],["Pelvis -",null,328.0],["Pelvis +",null,385.0],["Chest/abdomen -",null,504.0],["Chest/abdomen +",null,562.0],["Chest/abdomen-pelvis -",null,504.0],["Chest/abdomen-pelvis +",null,562.0]]},
+  {label:"COMPUTERIZED TOMOGRAPHY (CT) SCAN",group:"platform",items:[["Abdomen-pelvis -",null,390.0],["Abdomen-pelvis +",null,447.0],["Neck/chest/abdomen -",null,603.0],["Neck/chest/abdomen +",null,660.0],["Neck/chest/abdomen-pelvis -",null,603.0],["Neck/chest/abdomen-pelvis +",null,660.0],["Upper or lower extremity -",null,328.0],["Upper or lower extremity +",null,385.0],["Spine (each segment) -",null,328.0],["Spine (each segment) +",null,385.0],["Extra charge - multiphase CT",null,104.0],["Other (e.g. anonymization and upload of images) hourly rate",null,59.0],["DICOM image copy on a CD",null,13.0],["Study start-up fee",null,520.0],["Only radiologist reading fee - per body area",null,156.0],["Blood draw - above 9 years old - vacutainers not included",null,14.0],["Blood draw - above 9 years old - vacutainers included",null,19.0],["Blood draw - below 9 years old - vacutainers not included",null,19.0],["Blood draw - below 9 years old - vacutainers included",null,23.0],["Extra charge - blood draw for venous blood gas",null,14.0],["Extra charge - blood draw from IV line",null,2.0]]},
+  {label:"SPECIMEN COLLECTION",group:"platform",items:[["Extra charge - IV catheter insertion",null,9.0],["Phlebotomy kit preparation (each)",null,5.0],["Nasopharyngeal swabs",null,19.0],["Urine collection",null,13.0],["Urine rapid test- kit not included (such as pregnancy or pH)",null,19.0],["Dry ice",null,41.0],["Specimen processing hourly rate",null,55.0],["Specimen shipping services hourly rate",null,55.0],["Ambiant shipping",null,27.5]]},
+  {label:"SPECIMEN PROCESSING AND SHIPPING",group:"platform",items:[["Frozen shipping (dry ice sold separately)",null,27.5],["Refrigerated shipping",null,27.5],["Combo shipping (dry ice sold separately)",null,41.25],["Other (travel time) hourly rate",null,55.0],["Other (start-up, training) hourly rate",null,55.0]]},
+  {label:"SLEEP LAB",group:"platform",items:[["Other (e.g. PSG analysis, data transfer) hourly rate",null,61.0]]},
+  {label:"APHERESIS - Optia Terumo",group:"platform",items:[["Apheresis system (supply kits not included)",55.0,null]]},
+  {label:"BRONCHOSCOPY / GASTROSCOPY / ENDOSCOPY",group:"platform",items:[["Bronchoscopy, Gastroscopy or Endoscopy",437.0,645.0],["Other (e.g. patient monitoring) hourly rate",null,59.0]]},
+  {label:"OPERATING ROOM",group:"platform",items:[["14- Echocardiogram ultrasound machine (per exam)",42.0,61.0],["24- Data management",47.0,69.0],["3 - Add on charge for simple transthoracic echocardiogram image acquisition by technologist",79.0,114.0]]},
+  {label:"CARDIAC ECHO",group:"platform",items:[["7 - Add on charge for report simple echo measures",105.0,152.0],["9 - Add on charge for image upload",32.0,44.0],["10 - Add on charge for a copy of an exam on an external media (DVD, CD, USB key)",13.0,18.0],["11 - If needed, technical assistance (hourly rate)",79.0,110.0],["12 - If needed, manual anonymization of images (hourly rate)",79.0,110.0],["13 - If needed, training, start up activities, other (houly rate)",79.0,110.0],["Ethics submissions - Lead or single site",null,1350.0],["Ethics submission - Particpating site",null,785.0]]},
+  {label:"SUBMISSION SERVICES",group:"support",items:[["Annual renewal",null,395.0],["Submission of annual renewals to REB approval",165.0,null],["Negotiations of start up budget (1-2 arms)",null,830.0],["Negotiations of start up budget (3 plus)",null,1350.0]]},
+  {label:"BUDGET SERVICES",group:"support",items:[["Nurse",68.0,85.0]]},
+  {label:"TRIAL CONDUCT RESOURCES",group:"support",items:[["Coordinator",58.0,75.0],["Monitor",62.0,62.0],["Project Manager",70.0,70.0]]}
 ];
 
 var SVC_PHARMA = [
-  // [name, non-industry price or null, industry price or null]
   ['Administrative start-up fee (industry)', null, 3163],
   ['Administrative start-up fee (non-industry)', 1582, null],
   ['Pharmacy unblinded CT', 586, 586],
@@ -306,7 +81,6 @@ var SVC_PHARMA = [
 ];
 
 var SVC_IT = [
-  // Computer Support
   ['Computer Support — Antivirus management', 65, 65],
   ['Computer Support — Baseline image', 130, 130],
   ['Computer Support — Data backup (one-time)', 65, 65],
@@ -317,7 +91,6 @@ var SVC_IT = [
   ['Computer Support — Storage space', 250, 250],
   ['Computer Support — Troubleshooting', 65, 65],
   ['Computer Support — Printing (per page)', 0.07, 0.07],
-  // Server Support
   ['Server Support — Antivirus management', 65, 65],
   ['Server Support — Data backup (one-time)', 85, 85],
   ['Server Support — Data restore (one-time)', 85, 85],
@@ -328,7 +101,6 @@ var SVC_IT = [
 ];
 
 var SVC_MUHC = [
-  // Industry-only - from MUHC Services Use Pricelist
   ['Administrative services (analytics extraction) — hourly', null, 200],
   ['Nursing services (outpatient, excl. oncology ODC) — hourly', null, 168.93],
   ['Inpatient admission (per day)', null, 6858]
@@ -338,30 +110,101 @@ var LAB_DATA = [["10000", "Cold agglutinins (screen) (qualitative) auto-controls
 
 var REB = {sci:634, eth:6348, annMon:634, siteAuth:1904, annAuth:634, amend:634};
 
+var ACT_GROUPS = [
+  {label:'Startup', cls:'startup-grp', type:'startup', items:['Review of Protocol','Source Document Preparation','Questionnaire Development','REB Document Preparation','Health Canada Regulatory Document Preparation and Submission','Budget Development and Negotiations','Contract Review, Negotiation, Amendment','Site Agreement Negotiation','Recruitment Planning','Time for site initiation visits','Study Finance Management and Financial Tracking','Equipment and Facilities Setup','Advertisement of the Study']},
+  {label:'General — Study Conduct', cls:'general-grp', type:'general', items:['Field Administration','Communication with Sponsor','Follow-up Unscheduled Visits','Query Resolutions','Monitoring Visit (internal team monitors)','FDA / Health Canada Audit','Adverse Events Review and Reporting','SAE Review and Reporting','Confirm Ongoing Consent','Medication Administration and Accountability','Distribute Questionnaire','Collect Questionnaire','Phone Call Visit: Visit Prep and Clean-Up','Phone Call Visit: Concomitant Meds, AEs, SAEs, Documentation','Phone Call Visit: Track Participants and Update Database','Phone Call Visit: Data Entry and Chart Review','Data Entry','CRF Completion']},
+  {label:'General — Closeout', cls:'general-grp', type:'general', items:['Site Closure','Site Close-out Visits (personnel time)','Verification that all source documents are complete','Reconciliation of study drug / device accountability','Final lab sample reconciliation and storage','Database lock, final QC checks, and validation','Archiving of study documents (personnel time)','Completion of eCRF / CTMS / eTMF close-out tasks','Submission of final reports to regulators, ethics boards, and sponsors','Ethics board notification of trial closure','Submission of final safety reports or study results to regulators','Staff time for close-out, data verification, and documentation','Shipping of samples, documents, or study materials back to sponsor or archive','Disposal or return of study product / devices','Final payments to vendors, labs, or service providers','Project Management (internal meetings, PM, and admin)']},
+  {label:'General — Training', cls:'general-grp', type:'general', items:['Primary team training','GCP training for site staff','Sponsor-required training modules','Protocol-specific training (lab procedures, patient assessments)','Site training','Training / Supervision of data entry']},
+  {label:'General — Data and Statistics (BCU)', cls:'general-grp', type:'general', items:['Logistical Consultation with Investigator / Sponsor; Project Management','Trial design development / Methodology','Development of Data Management Plan','Development of Statistical Analysis Plan','Development of Randomization Plan and Randomization Coding','CRF Development and User Guide Development','Design, Build, Test and Document eCRF Database','CRF Quality Control Review of Study Database','Data Clarification Items to Sites','MedDRA Coding of Adverse Events','Manage Local Lab Normal Ranges','DSMB Activities (safety evaluation plan, reports, meetings)','Import and Reconciliation of Results','Statistical Analysis Reports and Tables','Consultation / Supervision of Statistical Analysis','Review of Statistical Tables','Study Closure Activities (database lock and data archiving)','Manuscript Preparation / Review']},
+  {label:'Per Participant — Visit Activities', cls:'perpt-grp', type:'perpt', items:['Visit Preparations','Recruiting and Informed Consent','Chart Review','Screening — Review Eligibility Criteria','Medical History and Demographic Data Collection','Full Physical Examination (vital signs, weight, height)','Recording of Concomitant Medications','Blood Collection','Specimen Collection','Study Product Administration and Accountability','Adverse Events Review and Reporting (per visit)','Data Entry (per visit)','CRF Completion (per visit)']},
+  {label:'Per Participant — Equipment and Tests', cls:'perpt-grp', type:'perpt', items:['Electrocardiogram','MRI','CT Scan','Pulmonary Function Testing','Functional tests (Berg balance, sit to stand, other)','Muscle strength and endurance assessment (Biodex)','Bioelectrical impedance analysis','Dual X-ray Absorptiometry (DXA)','Bronchoscopy, Gastroscopy or Endoscopy','Sleep Lab','Operating Room','Out-patient Tests / Procedures','In-patient Tests / Procedures']}
+];
+
+var TEMPLATES = {
+  'ind-rct': {
+    funding: 'ind',
+    startup: ['Protocol review and feasibility assessment','REB/IRB initial submission','Site initiation visit — preparation','Delegation log and staff training','IP receipt and accountability setup','Clinical trial agreement and contract review','Regulatory authority notification (Health Canada CTA)','Quebec public trial registry submission'],
+    general: ['Safety monitoring and DSMB report preparation','Monitoring visit coordination (CRO/sponsor)','Data query resolution','Pharmacy/IP reconciliation','Protocol amendment management','Site close-out'],
+    perpt: ['Screening visit','Enrolment and randomisation','Study visit — scheduled assessment','IP dispensing and accountability','Adverse event review and reporting','Protocol deviation assessment','End of treatment visit','Follow-up contact']
+  },
+  'iit': {
+    funding: 'iit',
+    startup: ['Protocol development and writing','REB initial submission and revisions','DSMB establishment and first meeting','Grant application preparation','Quebec public trial registry submission','Study staff training'],
+    general: ['Interim analysis coordination','Monitoring visit (internal)','Annual REB renewal','DSMB annual report','Data management and query resolution','Publication preparation'],
+    perpt: ['Eligibility screening','Informed consent process','Baseline assessment','Randomisation','Treatment/intervention delivery','Follow-up visit — clinical assessment','Safety monitoring contact','End of study assessment']
+  },
+  'obs': {
+    funding: null,
+    startup: ['Protocol and statistical analysis plan','REB submission','Recruitment strategy and materials','Database build (REDCap or equivalent)'],
+    general: ['Data cleaning and lock','Statistical analysis','Annual REB renewal','Manuscript preparation'],
+    perpt: ['Recruitment and consent','Baseline questionnaire / assessment','Follow-up contact','Data entry and verification','Lost-to-follow-up tracing']
+  },
+  'chart': {
+    funding: null,
+    startup: ['REB submission (minimal risk)','Data access agreement with medical records','Case identification query (EMR/OACIS)','Data extraction template development'],
+    general: ['Data cleaning and query resolution','Statistical analysis','Manuscript preparation'],
+    perpt: ['Chart identification and eligibility check','Data abstraction — primary variables','Data abstraction — secondary variables','Source document verification (10% QC sample)','Inter-rater reliability assessment']
+  },
+  'phase1': {
+    funding: 'ind',
+    startup: ['Protocol development (Phase I dose escalation)','IND/CTA submission to Health Canada','REB submission','Pharmacy — IP preparation protocol and validation','Safety Review Committee establishment','DSMB charter','Site qualification visit preparation','Quebec public trial registry','Staff GCP training (refresher)'],
+    general: ['Dose escalation committee meetings','DSMB review','Safety data reconciliation','Health Canada GCP Inspection readiness','Regulatory correspondence','Site close-out and IP destruction accountability'],
+    perpt: ['Screening and eligibility (labs, ECG, imaging)','Enrolment and baseline','IP administration visit','Intensive PK/PD sampling','Safety assessment — AE/SAE review','Dose escalation committee data package preparation','End of study / safety follow-up','SAE narrative writing']
+  }
+};
+
 // ════════════════════════════════════════
 // STATE
 // ════════════════════════════════════════
-var funding   = null;
-var oh        = 0;
-var staffCtr  = 0;
-var otherCtr  = 0;
-var actCtr    = 0;
-var contLevel = 'mod';
-var CONT_DEF  = {low:9, mod:11, high:13.5};
+var funding     = null;
+var oh          = 0;
+var staffCtr    = 0;
+var otherCtr    = 0;
+var contLevel   = 'mod';
+var CONT_DEF    = {low:9, mod:11, high:13.5};
+var matrixData  = {};
+var matrixRowCtr = 0;
+var currentSection = 's-profile';
+var svcsRendered = false;
+var labRendered  = false;
+var AUTOSAVE_KEY = 'rimuhc_budget_v1';
+var autosaveTimer = null;
 
 // ════════════════════════════════════════
-// TABS
+// SECTION NAVIGATION
 // ════════════════════════════════════════
-function showTab(n) {
-  var ps = document.querySelectorAll('.tab-panel');
-  var ts = document.querySelectorAll('.tab-btn');
-  for (var i=0; i<ps.length; i++) {
-    ps[i].classList.remove('active');
-    ts[i].classList.remove('active');
+function showSection(id) {
+  currentSection = id;
+  var sections = document.querySelectorAll('.bt-section');
+  var buttons  = document.querySelectorAll('.sid-btn');
+  for (var i = 0; i < sections.length; i++) sections[i].classList.remove('active');
+  for (var i = 0; i < buttons.length; i++) buttons[i].classList.remove('active');
+  var s = document.getElementById(id);
+  var b = document.getElementById('sb-' + id);
+  if (s) s.classList.add('active');
+  if (b) b.classList.add('active');
+  updateSectionStatus();
+}
+
+function updateSectionStatus() {
+  var titleEl  = document.getElementById('study-title');
+  var staffIds = getActiveStaffIds();
+  var profileDone = !!(titleEl && titleEl.value.trim() && funding);
+  var teamDone    = staffIds.length > 0;
+  var workDone    = Object.keys(matrixData).length > 0;
+  var costsDone   = getSvcTotal() > 0;
+
+  function setSt(id, done, active) {
+    var el = document.getElementById(id);
+    if (!el) return;
+    el.textContent = done ? '✓' : (active ? '●' : '○');
+    el.style.color  = done ? 'var(--green)' : (active ? 'var(--teal)' : 'var(--textd)');
   }
-  ps[n].classList.add('active');
-  ts[n].classList.add('active');
-  window.scrollTo(0,0);
+  setSt('sst-profile', profileDone, currentSection === 's-profile');
+  setSt('sst-team',    teamDone,    currentSection === 's-team');
+  setSt('sst-work',    workDone,    currentSection === 's-work');
+  setSt('sst-costs',   costsDone,   currentSection === 's-costs');
+  setSt('sst-review',  false,       currentSection === 's-review');
 }
 
 // ════════════════════════════════════════
@@ -370,33 +213,48 @@ function showTab(n) {
 function selectFunding(type) {
   funding = type;
   var chips = ['iit','found','ind'];
-  for (var i=0; i<chips.length; i++) {
-    document.getElementById('fc-'+chips[i]).className = 'fund-card';
+  for (var i = 0; i < chips.length; i++) {
+    document.getElementById('fc-' + chips[i]).className = 'fund-card';
   }
-  document.getElementById('fc-'+type).className = 'fund-card sel-'+type;
-  if (type==='iit') {
-    oh=0;
-  } else if (type==='found') {
-    oh=0.15;
+  document.getElementById('fc-' + type).className = 'fund-card sel-' + type;
+
+  if (type === 'iit') {
+    oh = 0;
+  } else if (type === 'found') {
+    var foundPct = parseFloat(document.getElementById('found-oh-pct').value) || 27;
+    oh = foundPct / 100;
   } else {
-    oh=0.30;
+    oh = 0.30;
   }
-  document.getElementById('ind-note').style.display=(type==='ind')?'block':'none';
-  document.getElementById('pi-notice').style.display=(type==='ind')?'block':'none';
-  document.getElementById('reb-iit-note').style.display=(type!=='ind')?'block':'none';
+
+  var se = function(id, show) { var el = document.getElementById(id); if (el) el.style.display = show ? '' : 'none'; };
+  se('ind-note',        type === 'ind');
+  se('pi-notice',       type === 'ind');
+  se('pi-notice-team',  type === 'ind');
+  se('found-oh-field',  type === 'found');
+  se('reb-iit-note',    type !== 'ind');
+
   if (labRendered) updateLabPrices();
   updateTravelRows();
   renderSvcs();
   updateSummary();
 }
 
+function updateFoundOH() {
+  if (funding === 'found') {
+    var foundPct = parseFloat(document.getElementById('found-oh-pct').value) || 27;
+    oh = foundPct / 100;
+    updateSummary();
+  }
+}
+
 // ════════════════════════════════════════
-// STAFF
+// STAFF TABLE
 // ════════════════════════════════════════
 function roleOptions() {
-  var h = '<option value="">Select a role\u2026</option>';
-  for (var i=0; i<ROLES.length; i++) {
-    h += '<option value="'+i+'">'+ROLES[i].r+'</option>';
+  var h = '<option value="">Select a role…</option>';
+  for (var i = 0; i < ROLES.length; i++) {
+    h += '<option value="' + i + '">' + ROLES[i].r + '</option>';
   }
   return h;
 }
@@ -404,67 +262,45 @@ function roleOptions() {
 function addStaffRow() {
   staffCtr++;
   var id = staffCtr;
-  var d = document.createElement('div');
-  d.className = 'staff-row';
-  d.id = 'sr-'+id;
-  d.innerHTML =
-    '<div class="staff-rhead">' +
-      '<span class="staff-num">Staff member '+id+'</span>' +
-      '<button class="staff-rm" onclick="removeStaff('+id+')">Remove</button>' +
-    '</div>' +
-    '<div class="frow">' +
-      '<div class="fg"><label class="fl">Role</label>' +
-        '<select class="fs" id="s-role-'+id+'" onchange="staffRoleChange('+id+')">'+roleOptions()+'</select>' +
-      '</div>' +
-      '<div class="fg"><label class="fl">Name or label (optional)</label>' +
-        '<input type="text" class="fi" id="s-name-'+id+'" placeholder="e.g. CRC_1">' +
-      '</div>' +
-    '</div>' +
-    '<div class="frow3">' +
-      '<div class="fg"><label class="fl">Base salary ($)</label>' +
-        '<input type="number" class="fi" id="s-sal-'+id+'" min="0" placeholder="0" oninput="staffSalChange('+id+')">' +
-      '</div>' +
-      '<div class="fg"><label class="fl">% FTE on this study</label>' +
-        '<span class="fh">Used if Time and Effort is not filled in.</span>' +
-        '<input type="number" class="fi" id="s-fte-'+id+'" value="100" min="1" max="100" oninput="updateSummary()">' +
-      '</div>' +
-      '<div class="fg"><label class="fl">Direct hours (override)</label>' +
-        '<span class="fh">Overrides % FTE if filled. Skip if using T&amp;E tab.</span>' +
-        '<input type="number" class="fi" id="s-hrs-'+id+'" min="0" placeholder="Optional" oninput="updateSummary()">' +
-      '</div>' +
-    '</div>' +
-    '<div class="staff-calc">' +
-      '<div class="sc-item"><label>Benefits (19%)</label><div class="sc-val" id="sc-ben-'+id+'">—</div></div>' +
-      '<div class="sc-item"><label>Total incl. benefits</label><div class="sc-val" id="sc-tot-'+id+'">—</div></div>' +
-      '<div class="sc-item"><label>Hourly rate</label><div class="sc-val" id="sc-hr-'+id+'">—</div></div>' +
-      '<div class="sc-item"><label>FTE cost estimate</label><div class="sc-val" id="sc-cst-'+id+'">—</div></div>' +
-    '</div>';
-  document.getElementById('staff-list').appendChild(d);
+  var tr = document.createElement('tr');
+  tr.id = 'sr-' + id;
+  tr.setAttribute('data-staff-id', String(id));
+  tr.innerHTML =
+    '<td><select class="fs" id="s-role-' + id + '" onchange="staffRoleChange(' + id + ')">' + roleOptions() + '</select></td>' +
+    '<td><input type="text" class="fi" id="s-name-' + id + '" placeholder="e.g. CRC_1" oninput="refreshMatrixColumnLabel(' + id + ')"></td>' +
+    '<td><input type="text" inputmode="decimal" class="fi" id="s-sal-' + id + '" placeholder="0" oninput="staffSalChange(' + id + ')"></td>' +
+    '<td class="st-fte-col"><input type="text" inputmode="decimal" class="fi" id="s-fte-' + id + '" value="100" oninput="updateSummary()"></td>' +
+    '<td><span class="st-rate" id="sc-hr-' + id + '">—</span></td>' +
+    '<td class="st-rm"><button class="st-rm-btn" onclick="removeStaff(' + id + ')">×</button></td>';
+  document.getElementById('staff-tbody').appendChild(tr);
+  addMatrixColumn(String(id));
+  updateSummary();
 }
 
 function removeStaff(id) {
-  var el = document.getElementById('sr-'+id);
+  var el = document.getElementById('sr-' + id);
   if (el) el.parentNode.removeChild(el);
+  removeMatrixColumn(String(id));
   updateSummary();
 }
 
 function staffRoleChange(id) {
-  var v = document.getElementById('s-role-'+id).value;
-  if (v==='') return;
+  var v = document.getElementById('s-role-' + id).value;
+  if (v === '') return;
   var r = ROLES[parseInt(v)];
-  document.getElementById('s-sal-'+id).value = r.sal || '';
-  staffCalc(id, r.sal||0, r.hr||null);
+  document.getElementById('s-sal-' + id).value = r.sal || '';
+  staffCalc(id, r.sal || 0, r.hr || null);
 }
 
 function staffSalChange(id) {
-  staffCalc(id, parseFloat(document.getElementById('s-sal-'+id).value)||0, null);
+  staffCalc(id, parseFloat(document.getElementById('s-sal-' + id).value) || 0, null);
 }
 
 function getStaffHourlyRate(id) {
-  var sal = parseFloat(document.getElementById('s-sal-'+id).value)||0;
-  var rv  = document.getElementById('s-role-'+id).value;
-  var fixHr = (rv!=='') ? (ROLES[parseInt(rv)].hr||null) : null;
-  var tot = sal * 1.19;
+  var sal  = parseFloat(document.getElementById('s-sal-' + id).value) || 0;
+  var rv   = document.getElementById('s-role-' + id).value;
+  var fixHr = (rv !== '') ? (ROLES[parseInt(rv)].hr || null) : null;
+  var tot  = sal * 1.19;
   return fixHr ? fixHr : tot / 1820;
 }
 
@@ -472,383 +308,489 @@ function staffCalc(id, sal, fixedHr) {
   var ben = sal * 0.19;
   var tot = sal + ben;
   var hr  = fixedHr ? fixedHr : tot / 1820;
-  var se = function(eid, t) { var el=document.getElementById(eid); if(el) el.textContent=t; };
-  se('sc-ben-'+id, '$'+Math.round(ben).toLocaleString());
-  se('sc-tot-'+id, '$'+Math.round(tot).toLocaleString());
-  se('sc-hr-'+id,  '$'+hr.toFixed(2)+'/hr');
+  var hrEl = document.getElementById('sc-hr-' + id);
+  if (hrEl) hrEl.textContent = hr > 0 ? ('$' + hr.toFixed(2) + '/hr') : '—';
+  refreshMatrixColumnLabel(id);
   updateSummary();
 }
 
-// Returns FTE-based cost for a staff member (fallback when no T&E)
 function getStaffFTECost(id) {
-  var sal = parseFloat(document.getElementById('s-sal-'+id).value)||0;
-  var rv  = document.getElementById('s-role-'+id).value;
-  var fixHr = (rv!=='') ? (ROLES[parseInt(rv)].hr||null) : null;
-  var tot = sal * 1.19;
-  var hr  = fixHr ? fixHr : tot / 1820;
-  var hrsEl = document.getElementById('s-hrs-'+id);
-  var fteEl = document.getElementById('s-fte-'+id);
-  var hrs = (hrsEl && hrsEl.value) ? parseFloat(hrsEl.value) : null;
-  var fte = fteEl ? (parseFloat(fteEl.value)||100)/100 : 1;
-  return (hrs && hrs>0) ? hrs*hr : tot*fte;
+  var sal   = parseFloat(document.getElementById('s-sal-' + id).value) || 0;
+  var rv    = document.getElementById('s-role-' + id).value;
+  var fixHr = (rv !== '') ? (ROLES[parseInt(rv)].hr || null) : null;
+  var tot   = sal * 1.19;
+  var fteEl = document.getElementById('s-fte-' + id);
+  var fte   = fteEl ? (parseFloat(fteEl.value) || 100) / 100 : 1;
+  if (fixHr) return fixHr * 1820 * fte;
+  return tot * fte;
 }
 
 function getStaffTotal() {
-  var rows = document.querySelectorAll('.staff-row');
-  if (!rows.length) return 0;
-  var years = parseInt(document.getElementById('study-years').value)||1;
-  var cola  = document.getElementById('multiyear').value==='yes';
+  var staffIds = getActiveStaffIds();
+  if (!staffIds.length) return 0;
+  var years = parseInt(document.getElementById('study-years').value) || 1;
+  var cola  = document.getElementById('multiyear').value === 'yes';
 
-  // If T&E has activities, use T&E totals
   var teTotal = getTEStaffTotal();
   if (teTotal > 0) {
-    // Apply COLA and multi-year to T&E total
     if (cola && years > 1) {
       var teMultiYear = 0;
-      for (var y=0; y<years; y++) teMultiYear += teTotal * Math.pow(1.05, y);
+      for (var y = 0; y < years; y++) teMultiYear += teTotal * Math.pow(1.05, y);
       return teMultiYear;
     }
     return teTotal * years;
   }
 
-  // Fallback: FTE estimates
   var total = 0;
-  for (var i=0; i<rows.length; i++) {
-    var id = rows[i].id.replace('sr-','');
+  for (var i = 0; i < staffIds.length; i++) {
+    var id = staffIds[i];
     var yrCost = getStaffFTECost(id);
     var studyCost = 0;
-    if (cola && years>1) {
-      for (var y=0; y<years; y++) studyCost += yrCost * Math.pow(1.05,y);
+    if (cola && years > 1) {
+      for (var y = 0; y < years; y++) studyCost += yrCost * Math.pow(1.05, y);
     } else {
       studyCost = yrCost * years;
     }
-    var cEl = document.getElementById('sc-cst-'+id);
-    if (cEl) cEl.textContent = '$'+Math.round(studyCost).toLocaleString();
     total += studyCost;
   }
   return total;
 }
 
-// ════════════════════════════════════════
-// TIME AND EFFORT
-// ════════════════════════════════════════
 function getActiveStaffIds() {
-  var rows = document.querySelectorAll('.staff-row');
+  var rows = document.querySelectorAll('#staff-tbody tr[data-staff-id]');
   var ids = [];
-  for (var i=0; i<rows.length; i++) {
-    ids.push(rows[i].id.replace('sr-',''));
+  for (var i = 0; i < rows.length; i++) {
+    ids.push(rows[i].getAttribute('data-staff-id'));
   }
   return ids;
 }
 
 function getStaffLabel(id) {
-  var nameEl = document.getElementById('s-name-'+id);
-  var roleEl = document.getElementById('s-role-'+id);
+  var nameEl = document.getElementById('s-name-' + id);
+  var roleEl = document.getElementById('s-role-' + id);
   if (nameEl && nameEl.value.trim()) return nameEl.value.trim();
   if (roleEl && roleEl.value !== '') return ROLES[parseInt(roleEl.value)].r;
-  return 'Staff '+id;
+  return 'Staff ' + id;
 }
 
-function renderTE() {
-  var staffIds = getActiveStaffIds();
-  var noStaffMsg = document.getElementById('te-no-staff-msg');
-  var addBtn     = document.getElementById('te-add-btn');
-  var addCustom  = document.getElementById('te-add-custom-btn');
-  if (!staffIds.length) {
-    if (noStaffMsg) noStaffMsg.style.display = 'block';
-    if (addBtn)    addBtn.style.display    = 'none';
-    if (addCustom) addCustom.style.display = 'none';
-    return;
-  }
-  if (noStaffMsg) noStaffMsg.style.display = 'none';
-  if (addBtn)    addBtn.style.display    = '';
-  if (addCustom) addCustom.style.display = '';
+// ════════════════════════════════════════
+// WORK PLAN MATRIX
+// ════════════════════════════════════════
+function showMatrix() {
+  var wrap    = document.getElementById('mc-wrap');
+  var picker  = document.getElementById('mc-tpl-picker');
+  var actions = document.getElementById('mc-actions');
+  if (wrap)    wrap.style.display    = '';
+  if (picker)  picker.style.display  = 'none';
+  if (actions) actions.style.display = 'flex';
+}
 
-  // Re-render each existing activity's staff grid to pick up any staff changes
-  var acts = document.querySelectorAll('.te-activity');
-  for (var i=0; i<acts.length; i++) {
-    var actId = acts[i].id.replace('te-act-','');
-    renderActivityStaffGrid(actId, staffIds);
+function showTemplatePicker() {
+  var wrap    = document.getElementById('mc-wrap');
+  var picker  = document.getElementById('mc-tpl-picker');
+  var actions = document.getElementById('mc-actions');
+  if (wrap)    wrap.style.display    = 'none';
+  if (picker)  picker.style.display  = 'block';
+  if (actions) actions.style.display = 'none';
+}
+
+function hideTemplatePicker() {
+  showMatrix();
+}
+
+function addMatrixColumn(staffId) {
+  var label = getStaffLabel(staffId);
+  var hr    = getStaffHourlyRate(staffId);
+
+  var headRow = document.getElementById('mc-head-row');
+  if (headRow) {
+    var totalTh = headRow.querySelector('.mc-total-th');
+    var th = document.createElement('th');
+    th.id = 'mc-th-' + staffId;
+    th.setAttribute('data-staff-id', staffId);
+    th.style.minWidth = '90px';
+    th.textContent = label;
+    headRow.insertBefore(th, totalTh);
   }
+
+  var rateRow = document.getElementById('mc-rate-row');
+  if (rateRow) {
+    var totalRateTh = rateRow.querySelector('.mc-total-th');
+    var rateTh = document.createElement('th');
+    rateTh.id = 'mc-rate-' + staffId;
+    rateTh.setAttribute('data-staff-id', staffId);
+    rateTh.textContent = '$' + hr.toFixed(2) + '/hr';
+    rateRow.insertBefore(rateTh, totalRateTh);
+  }
+
+  var rowIds = Object.keys(matrixData);
+  for (var i = 0; i < rowIds.length; i++) {
+    var rowId = rowIds[i];
+    var tr = document.getElementById('mc-row-' + rowId);
+    if (!tr) continue;
+    var totalTd = tr.querySelector('.mc-computed');
+    var td = document.createElement('td');
+    td.className = 'mc-input-cell';
+    td.setAttribute('data-staff-id', staffId);
+    var inp = document.createElement('input');
+    inp.type = 'text';
+    inp.setAttribute('inputmode', 'decimal');
+    inp.id = 'mc-' + rowId + '-' + staffId;
+    inp.setAttribute('data-row', rowId);
+    inp.setAttribute('data-staff', staffId);
+    inp.setAttribute('oninput', 'calcMatrixCell("' + rowId + '","' + staffId + '")');
+    td.appendChild(inp);
+    tr.insertBefore(td, totalTd);
+  }
+
+  var tfootHrs  = document.getElementById('mc-tfoot-hrs');
+  var tfootCost = document.getElementById('mc-tfoot-cost');
+  if (tfootHrs) {
+    var grandTd = document.getElementById('mc-grand-hrs');
+    var fh = document.createElement('td');
+    fh.id = 'mc-fhrs-' + staffId;
+    fh.setAttribute('data-staff-id', staffId);
+    fh.textContent = '—';
+    tfootHrs.insertBefore(fh, grandTd);
+  }
+  if (tfootCost) {
+    var grandCostTd = document.getElementById('mc-grand-cost');
+    var fc = document.createElement('td');
+    fc.id = 'mc-fcost-' + staffId;
+    fc.setAttribute('data-staff-id', staffId);
+    fc.textContent = '—';
+    tfootCost.insertBefore(fc, grandCostTd);
+  }
+}
+
+function removeMatrixColumn(staffId) {
+  var th     = document.getElementById('mc-th-' + staffId);
+  var rateTh = document.getElementById('mc-rate-' + staffId);
+  var fhrs   = document.getElementById('mc-fhrs-' + staffId);
+  var fcost  = document.getElementById('mc-fcost-' + staffId);
+  if (th)     th.parentNode.removeChild(th);
+  if (rateTh) rateTh.parentNode.removeChild(rateTh);
+  if (fhrs)   fhrs.parentNode.removeChild(fhrs);
+  if (fcost)  fcost.parentNode.removeChild(fcost);
+
+  var rowIds = Object.keys(matrixData);
+  for (var i = 0; i < rowIds.length; i++) {
+    var rowId = rowIds[i];
+    var td = document.querySelector('#mc-row-' + rowId + ' td[data-staff-id="' + staffId + '"]');
+    if (td) td.parentNode.removeChild(td);
+    delete matrixData[rowId].hours[staffId];
+  }
+
+  for (var i = 0; i < rowIds.length; i++) updateMatrixRowTotal(rowIds[i]);
+  updateMatrixFooter();
+}
+
+function appendMatrixRow(rowId, type, name, isTemplate) {
+  var staffIds = getActiveStaffIds();
+  var tbody    = document.getElementById('mc-tbody-' + type);
+  if (!tbody) return;
+  var addRow = tbody.querySelector('.mc-add-row');
+
+  var tr = document.createElement('tr');
+  tr.id = 'mc-row-' + rowId;
+  tr.setAttribute('data-row-id', rowId);
+  tr.setAttribute('data-type', type);
+
+  var typeClsMap = {startup:'mc-type-startup', general:'mc-type-general', perpt:'mc-type-perpt'};
+  var nameTd = document.createElement('td');
+  nameTd.className = 'mc-name-cell';
+  var safeName = (name || '').replace(/"/g, '&quot;').replace(/</g, '&lt;');
+  nameTd.innerHTML =
+    '<div class="mc-name-wrap">' +
+      '<select class="mc-type-sel ' + (typeClsMap[type] || '') + '" id="mc-type-' + rowId + '" ' +
+        'onchange="changeRowType(\'' + rowId + '\',this.value)">' +
+        '<option value="startup"' + (type === 'startup' ? ' selected' : '') + '>Startup</option>' +
+        '<option value="general"' + (type === 'general' ? ' selected' : '') + '>General</option>' +
+        '<option value="perpt"'   + (type === 'perpt'   ? ' selected' : '') + '>Per pt</option>' +
+      '</select>' +
+      '<input type="text" class="mc-name-inp' + (isTemplate ? ' tpl-unreviewed' : '') + '" ' +
+        'id="mc-name-' + rowId + '" value="' + safeName + '" placeholder="Activity name" ' +
+        'oninput="updateMatrixRowName(\'' + rowId + '\',this.value)" ' +
+        'onfocus="this.classList.remove(\'tpl-unreviewed\')">' +
+      '<button class="mc-act-rm" onclick="removeMatrixRow(\'' + rowId + '\')" title="Remove">×</button>' +
+    '</div>';
+  tr.appendChild(nameTd);
+
+  for (var i = 0; i < staffIds.length; i++) {
+    var staffId = staffIds[i];
+    var inputTd = document.createElement('td');
+    inputTd.className = 'mc-input-cell';
+    inputTd.setAttribute('data-staff-id', staffId);
+    var inp = document.createElement('input');
+    inp.type = 'text';
+    inp.setAttribute('inputmode', 'decimal');
+    inp.id = 'mc-' + rowId + '-' + staffId;
+    inp.setAttribute('data-row', rowId);
+    inp.setAttribute('data-staff', staffId);
+    inp.setAttribute('oninput', 'calcMatrixCell("' + rowId + '","' + staffId + '")');
+    inputTd.appendChild(inp);
+    tr.appendChild(inputTd);
+  }
+
+  var totalTd = document.createElement('td');
+  totalTd.className = 'mc-computed';
+  totalTd.id = 'mc-rtot-' + rowId;
+  totalTd.textContent = '—';
+  tr.appendChild(totalTd);
+
+  if (addRow) tbody.insertBefore(tr, addRow);
+  else tbody.appendChild(tr);
+}
+
+function addMatrixRow(type, nameOpt, isTemplate) {
+  matrixRowCtr++;
+  var rowId = 'r' + matrixRowCtr;
+  matrixData[rowId] = {type: type, name: nameOpt || '', hours: {}};
+  appendMatrixRow(rowId, type, nameOpt || '', isTemplate);
+  showMatrix();
+  updateMatrixFooter();
+  updateSummary();
+  return rowId;
+}
+
+function removeMatrixRow(rowId) {
+  var row = document.getElementById('mc-row-' + rowId);
+  if (row) row.parentNode.removeChild(row);
+  delete matrixData[rowId];
+  updateMatrixFooter();
+  updateSummary();
+  if (Object.keys(matrixData).length === 0) showTemplatePicker();
+}
+
+function calcMatrixCell(rowId, staffId) {
+  var inp = document.getElementById('mc-' + rowId + '-' + staffId);
+  if (!inp || !matrixData[rowId]) return;
+  var hrs = parseFloat(inp.value) || 0;
+  matrixData[rowId].hours[staffId] = hrs > 0 ? inp.value : '';
+  updateMatrixRowTotal(rowId);
+  updateMatrixFooter();
   updateSummary();
 }
 
-function addActivity() {
-  actCtr++;
-  var id = actCtr;
-  var staffIds = getActiveStaffIds();
-
-  var d = document.createElement('div');
-  d.className = 'te-activity';
-  d.id = 'te-act-'+id;
-
-  var typeOpts = '<option value="general">General (flat study cost)</option>' +
-                 '<option value="perpt">Per participant</option>' +
-                 '<option value="startup">Startup (0% overhead)</option>';
-
-  d.innerHTML =
-    '<div class="te-act-head">' +
-      '<div style="display:flex;align-items:centre;gap:10px;flex:1;min-width:0">' +
-        '<input type="text" class="fi" id="te-name-'+id+'" placeholder="Activity name (e.g. Screening visit)" ' +
-          'style="font-size:13px;font-weight:700;padding:6px 10px;flex:1" oninput="updateTEActivity('+id+')">' +
-        '<select class="fs" id="te-type-'+id+'" style="width:200px;font-size:12px;padding:6px 28px 6px 10px" ' +
-          'onchange="updateTEActivity('+id+')">' + typeOpts + '</select>' +
-      '</div>' +
-      '<button class="staff-rm" onclick="removeActivity('+id+')" style="margin-left:12px;flex-shrink:0">Remove</button>' +
-    '</div>' +
-    '<div class="te-act-body" id="te-body-'+id+'"></div>';
-
-  document.getElementById('te-activity-list').appendChild(d);
-  renderActivityStaffGrid(id, staffIds);
-  updateSummary();
-}
-
-function renderActivityStaffGrid(id, staffIds) {
-  var body = document.getElementById('te-body-'+id);
-  if (!body) return;
-  if (!staffIds.length) {
-    body.innerHTML = '<div class="te-no-staff">No staff defined. Add staff in the Staff tab first.</div>';
-    return;
-  }
-
-  var html = '<div class="te-hdr">' +
-    '<span>Staff member</span><span>Rate</span><span>Hours</span><span>Cost</span>' +
-    '</div>';
-
-  for (var i=0; i<staffIds.length; i++) {
-    var sid = staffIds[i];
-    var label = getStaffLabel(sid);
-    var hr = getStaffHourlyRate(sid);
-    var hrStr = '$'+hr.toFixed(2)+'/hr';
-    // Preserve existing hours value if input already exists
-    var existingHrs = '';
-    var existingInput = document.getElementById('te-hrs-'+id+'-'+sid);
-    if (existingInput) existingHrs = existingInput.value;
-
-    html += '<div class="te-staff-row">' +
-      '<span class="te-staff-name">'+label+'</span>' +
-      '<span class="te-staff-rate">'+hrStr+'</span>' +
-      '<div class="te-staff-hrs">' +
-        '<input type="number" min="0" step="0.5" placeholder="0" ' +
-          'id="te-hrs-'+id+'-'+sid+'" value="'+existingHrs+'" ' +
-          'data-act="'+id+'" data-staff="'+sid+'" ' +
-          'oninput="calcTERow('+id+',\''+sid+'\')">' +
-      '</div>' +
-      '<span class="te-staff-cost" id="te-cost-'+id+'-'+sid+'">$0</span>' +
-    '</div>';
-  }
-
-  html += '<div class="te-act-total">' +
-    '<span class="te-act-total-label">Activity total</span>' +
-    '<span class="te-act-total-amt" id="te-act-total-'+id+'">$0</span>' +
-    '</div>';
-
-  body.innerHTML = html;
-
-  // Recalculate each row to restore costs after re-render
-  for (var j=0; j<staffIds.length; j++) {
-    calcTERow(id, staffIds[j]);
-  }
-}
-
-function calcTERow(actId, staffId) {
-  var hrsEl = document.getElementById('te-hrs-'+actId+'-'+staffId);
-  var costEl = document.getElementById('te-cost-'+actId+'-'+staffId);
-  if (!hrsEl || !costEl) return;
-  var hrs = parseFloat(hrsEl.value)||0;
-  var hr  = getStaffHourlyRate(staffId);
-  var cost = hrs * hr;
-  costEl.textContent = cost > 0 ? ('$'+Math.round(cost).toLocaleString()) : '$0';
-  updateTEActivity(actId);
-}
-
-function updateTEActivity(actId) {
-  // Recalculate activity total and update type badge
-  var staffIds = getActiveStaffIds();
+function updateMatrixRowTotal(rowId) {
+  var el  = document.getElementById('mc-rtot-' + rowId);
+  var row = matrixData[rowId];
+  if (!el || !row) return;
+  var nPt = parseInt(document.getElementById('study-n').value) || 0;
   var total = 0;
-  for (var i=0; i<staffIds.length; i++) {
-    var sid = staffIds[i];
-    var hrsEl = document.getElementById('te-hrs-'+actId+'-'+sid);
-    var hrs = hrsEl ? (parseFloat(hrsEl.value)||0) : 0;
-    total += hrs * getStaffHourlyRate(sid);
+  var sIds = Object.keys(row.hours);
+  for (var i = 0; i < sIds.length; i++) {
+    var hrs = parseFloat(row.hours[sIds[i]]) || 0;
+    total += hrs * getStaffHourlyRate(sIds[i]);
   }
-  var totEl = document.getElementById('te-act-total-'+actId);
-  if (totEl) totEl.textContent = '$'+Math.round(total).toLocaleString();
+  if (row.type === 'perpt') total *= nPt;
+  el.textContent = total > 0 ? ('$' + Math.round(total).toLocaleString()) : '—';
+}
 
-  // Update type badge in header
-  var typeEl = document.getElementById('te-type-'+actId);
-  var headEl = document.querySelector('#te-act-'+actId+' .te-act-head');
-  if (typeEl && headEl) {
-    // Remove old badge
-    var oldBadge = headEl.querySelector('.te-act-type');
-    if (oldBadge) oldBadge.parentNode.removeChild(oldBadge);
-    var typVal = typeEl.value;
-    var badge = document.createElement('span');
-    badge.className = 'te-act-type te-type-'+typVal;
-    badge.textContent = typVal==='general' ? 'General' : typVal==='perpt' ? 'Per participant' : 'Startup';
-    typeEl.parentNode.insertBefore(badge, typeEl.nextSibling);
+function updateMatrixFooter() {
+  var staffIds = getActiveStaffIds();
+  var nPt = parseInt(document.getElementById('study-n').value) || 0;
+  var grandHrs = 0, grandCost = 0;
+
+  for (var s = 0; s < staffIds.length; s++) {
+    var staffId  = staffIds[s];
+    var colHrs   = 0;
+    var colCost  = 0;
+    var rowIds   = Object.keys(matrixData);
+    for (var r = 0; r < rowIds.length; r++) {
+      var rowId = rowIds[r];
+      var row   = matrixData[rowId];
+      var hrs   = parseFloat(row.hours[staffId]) || 0;
+      var mult  = (row.type === 'perpt') ? nPt : 1;
+      colHrs  += hrs * mult;
+      colCost += hrs * getStaffHourlyRate(staffId) * mult;
+    }
+    var hrsCell  = document.getElementById('mc-fhrs-'  + staffId);
+    var costCell = document.getElementById('mc-fcost-' + staffId);
+    if (hrsCell)  hrsCell.textContent  = colHrs  > 0 ? (Math.round(colHrs * 10) / 10 + ' h') : '—';
+    if (costCell) costCell.textContent = colCost > 0 ? ('$' + Math.round(colCost).toLocaleString()) : '—';
+    grandHrs  += colHrs;
+    grandCost += colCost;
   }
+
+  var ghEl = document.getElementById('mc-grand-hrs');
+  var gcEl = document.getElementById('mc-grand-cost');
+  if (ghEl) ghEl.textContent = grandHrs  > 0 ? (Math.round(grandHrs * 10) / 10 + ' h') : '—';
+  if (gcEl) gcEl.textContent = grandCost > 0 ? ('$' + Math.round(grandCost).toLocaleString()) : '—';
+}
+
+function updateMatrixGroupHeaders() {
+  var n = parseInt(document.getElementById('study-n').value) || 0;
+  var el = document.getElementById('mc-perpt-n');
+  if (el) el.textContent = n + (n === 1 ? ' participant' : ' participants');
+  // Recalculate perpt row totals since N changed
+  var rowIds = Object.keys(matrixData);
+  for (var i = 0; i < rowIds.length; i++) {
+    if (matrixData[rowIds[i]].type === 'perpt') updateMatrixRowTotal(rowIds[i]);
+  }
+  updateMatrixFooter();
+}
+
+function toggleMatrixGroup(type) {
+  var tbody = document.getElementById('mc-tbody-' + type);
+  if (!tbody) return;
+  var isCollapsed = tbody.classList.toggle('mc-collapsed');
+  var rows = tbody.querySelectorAll('tr[data-row-id]');
+  for (var i = 0; i < rows.length; i++) {
+    rows[i].style.display = isCollapsed ? 'none' : '';
+  }
+}
+
+function changeRowType(rowId, newType) {
+  var row = matrixData[rowId];
+  if (!row) return;
+  var oldType = row.type;
+  if (oldType === newType) return;
+  row.type = newType;
+
+  var tr = document.getElementById('mc-row-' + rowId);
+  if (!tr) return;
+  tr.setAttribute('data-type', newType);
+
+  var newTbody = document.getElementById('mc-tbody-' + newType);
+  if (!newTbody) return;
+  var addRow = newTbody.querySelector('.mc-add-row');
+  if (addRow) newTbody.insertBefore(tr, addRow);
+  else newTbody.appendChild(tr);
+
+  var selEl = document.getElementById('mc-type-' + rowId);
+  if (selEl) {
+    var typeClsMap = {startup:'mc-type-startup', general:'mc-type-general', perpt:'mc-type-perpt'};
+    selEl.className = 'mc-type-sel ' + (typeClsMap[newType] || '');
+  }
+
+  updateMatrixRowTotal(rowId);
+  updateMatrixFooter();
   updateSummary();
 }
 
-function removeActivity(id) {
-  var el = document.getElementById('te-act-'+id);
-  if (el) el.parentNode.removeChild(el);
-  updateSummary();
+function updateMatrixRowName(rowId, name) {
+  if (matrixData[rowId]) matrixData[rowId].name = name;
 }
 
-// Returns total staff cost from T&E activities (one year, pre-COLA)
+function refreshMatrixColumnLabel(staffId) {
+  var label  = getStaffLabel(staffId);
+  var hr     = getStaffHourlyRate(staffId);
+  var thEl   = document.getElementById('mc-th-'   + staffId);
+  var rateEl = document.getElementById('mc-rate-' + staffId);
+  if (thEl)   thEl.textContent   = label;
+  if (rateEl) rateEl.textContent = '$' + hr.toFixed(2) + '/hr';
+}
+
 function getTEStaffTotal() {
-  var acts = document.querySelectorAll('.te-activity');
-  if (!acts.length) return 0;
-  var staffIds = getActiveStaffIds();
-  var nPt = parseInt(document.getElementById('study-n').value)||0;
+  var rowIds = Object.keys(matrixData);
+  if (!rowIds.length) return 0;
+  var nPt   = parseInt(document.getElementById('study-n').value) || 0;
   var total = 0;
-
-  for (var i=0; i<acts.length; i++) {
-    var actId = acts[i].id.replace('te-act-','');
-    var typeEl = document.getElementById('te-type-'+actId);
-    var type = typeEl ? typeEl.value : 'general';
-    var actTotal = 0;
-
-    for (var j=0; j<staffIds.length; j++) {
-      var sid = staffIds[j];
-      var hrsEl = document.getElementById('te-hrs-'+actId+'-'+sid);
-      var hrs = hrsEl ? (parseFloat(hrsEl.value)||0) : 0;
-      actTotal += hrs * getStaffHourlyRate(sid);
+  for (var i = 0; i < rowIds.length; i++) {
+    var row   = matrixData[rowIds[i]];
+    var sIds  = Object.keys(row.hours);
+    var rowT  = 0;
+    for (var j = 0; j < sIds.length; j++) {
+      rowT += (parseFloat(row.hours[sIds[j]]) || 0) * getStaffHourlyRate(sIds[j]);
     }
-
-    if (type === 'perpt') {
-      total += actTotal * nPt;
-    } else {
-      total += actTotal; // general and startup both count at face value here
-    }
+    total += (row.type === 'perpt') ? rowT * nPt : rowT;
   }
   return total;
 }
 
-// Returns startup-only total (for industry overhead carve-out reporting)
 function getTEStartupTotal() {
-  var acts = document.querySelectorAll('.te-activity');
-  if (!acts.length) return 0;
-  var staffIds = getActiveStaffIds();
-  var total = 0;
-  for (var i=0; i<acts.length; i++) {
-    var actId = acts[i].id.replace('te-act-','');
-    var typeEl = document.getElementById('te-type-'+actId);
-    if (!typeEl || typeEl.value !== 'startup') continue;
-    for (var j=0; j<staffIds.length; j++) {
-      var sid = staffIds[j];
-      var hrsEl = document.getElementById('te-hrs-'+actId+'-'+sid);
-      var hrs = hrsEl ? (parseFloat(hrsEl.value)||0) : 0;
-      total += hrs * getStaffHourlyRate(sid);
+  var rowIds = Object.keys(matrixData);
+  var total  = 0;
+  for (var i = 0; i < rowIds.length; i++) {
+    var row = matrixData[rowIds[i]];
+    if (row.type !== 'startup') continue;
+    var sIds = Object.keys(row.hours);
+    for (var j = 0; j < sIds.length; j++) {
+      total += (parseFloat(row.hours[sIds[j]]) || 0) * getStaffHourlyRate(sIds[j]);
     }
   }
   return total;
 }
 
-function updateTESummaryBox() {
-  var acts = document.querySelectorAll('.te-activity');
-  var box = document.getElementById('te-summary-box');
-  var linesEl = document.getElementById('te-summary-lines');
-  if (!acts.length || !box || !linesEl) {
-    if (box) box.style.display = 'none';
-    return;
+function getStartupMultiYear() {
+  var years    = parseInt(document.getElementById('study-years').value) || 1;
+  var cola     = document.getElementById('multiyear').value === 'yes';
+  var startupY1 = getTEStartupTotal();
+  if (cola && years > 1) {
+    var total = 0;
+    for (var y = 0; y < years; y++) total += startupY1 * Math.pow(1.05, y);
+    return total;
   }
-  box.style.display = 'block';
-  var staffIds = getActiveStaffIds();
-  var nPt = parseInt(document.getElementById('study-n').value)||0;
-  var startupTotal = 0, generalTotal = 0, perptTotal = 0, perptUnit = 0;
-
-  for (var i=0; i<acts.length; i++) {
-    var actId = acts[i].id.replace('te-act-','');
-    var typeEl = document.getElementById('te-type-'+actId);
-    var type = typeEl ? typeEl.value : 'general';
-    var actCost = 0;
-    for (var j=0; j<staffIds.length; j++) {
-      var sid = staffIds[j];
-      var hrsEl = document.getElementById('te-hrs-'+actId+'-'+sid);
-      var hrs = hrsEl ? (parseFloat(hrsEl.value)||0) : 0;
-      actCost += hrs * getStaffHourlyRate(sid);
-    }
-    if (type === 'startup') startupTotal += actCost;
-    else if (type === 'general') generalTotal += actCost;
-    else { perptUnit += actCost; perptTotal += actCost * nPt; }
-  }
-
-  var html = '';
-  if (startupTotal > 0) html += summaryRow('Startup activities', startupTotal);
-  if (generalTotal > 0) html += summaryRow('General study costs', generalTotal);
-  if (perptUnit > 0) {
-    html += summaryRow('Per-participant cost (unit)', perptUnit);
-    html += summaryRow('Per-participant &times; '+nPt+' participants', perptTotal);
-  }
-  var grandTE = startupTotal + generalTotal + perptTotal;
-  html += '<div style="display:flex;justify-content:space-between;padding:8px 0 0;margin-top:4px;border-top:2px solid var(--navy);font-size:13px">' +
-    '<strong style="color:var(--navy)">T&amp;E staff total (year 1)</strong>' +
-    '<strong style="color:var(--navy);font-family:\'Courier New\',monospace">$'+Math.round(grandTE).toLocaleString()+'</strong>' +
-    '</div>';
-  linesEl.innerHTML = html;
+  return startupY1 * years;
 }
 
-function summaryRow(label, amt) {
-  return '<div class="te-summary-row"><span class="te-summary-label">'+label+'</span>' +
-    '<span class="te-summary-amt">$'+Math.round(amt).toLocaleString()+'</span></div>';
+function applyTemplate(tplId) {
+  var tpl = TEMPLATES[tplId];
+  if (!tpl) return;
+
+  if (tpl.funding) selectFunding(tpl.funding);
+
+  matrixData    = {};
+  matrixRowCtr  = 0;
+  var tbodyIds = ['mc-tbody-startup','mc-tbody-general','mc-tbody-perpt'];
+  for (var t = 0; t < tbodyIds.length; t++) {
+    var tb = document.getElementById(tbodyIds[t]);
+    if (!tb) continue;
+    var rows = tb.querySelectorAll('tr[data-row-id]');
+    for (var i = 0; i < rows.length; i++) rows[i].parentNode.removeChild(rows[i]);
+  }
+
+  var types = ['startup', 'general', 'perpt'];
+  for (var t = 0; t < types.length; t++) {
+    var items = tpl[types[t]] || [];
+    for (var i = 0; i < items.length; i++) {
+      addMatrixRow(types[t], items[i], true);
+    }
+  }
+  showMatrix();
+  updateSummary();
 }
 
 // ════════════════════════════════════════
 // SERVICES
 // ════════════════════════════════════════
-var svcsRendered = false;
-
 function renderSvcs() {
   if (svcsRendered) { updateSvcPrices(); return; }
   svcsRendered = true;
-  var cont = document.getElementById('svc-cim-accordion');
+  var cont  = document.getElementById('svc-cim-accordion');
   if (!cont) return;
   var isInd = (funding === 'ind');
-  var html = '';
+  var html  = '';
 
-  html += '<div class="svc-top-head">CIM \u2014 Centre for Innovative Medicine</div>';
+  html += '<div class="svc-top-head">CIM — Centre for Innovative Medicine</div>';
   for (var g = 0; g < SVC_CIM_DATA.length; g++) {
     var grp = SVC_CIM_DATA[g];
     html += '<div class="svc-acc-group" id="svc-grp-' + g + '">';
-    html += '<div class="svc-acc-head" onclick="toggleSvcGroup(' + g + ')">' +
-              '<span>' + grp.label + '</span>' +
-              '<span class="svc-acc-chevron">\u25bc</span>' +
-            '</div>';
+    html += '<div class="svc-acc-head" onclick="toggleSvcGroup(' + g + ')"><span>' + grp.label + '</span><span class="svc-acc-chevron">▼</span></div>';
     html += '<div class="svc-acc-body" id="svc-body-' + g + '" style="display:none">';
     html += '<div class="svc-hdr"><span>Service</span><span>Unit price</span><span>Qty</span><span>Subtotal</span></div>';
-    for (var i = 0; i < grp.items.length; i++) { html += makeSvcRow(grp.items[i], isInd); }
+    for (var i = 0; i < grp.items.length; i++) html += makeSvcRow(grp.items[i], isInd);
     html += '</div></div>';
   }
 
   html += '<div class="svc-top-head">MUHC Pharmacy</div>';
-  html += '<div class="svc-acc-group" id="svc-grp-pharma">';
-  html += '<div class="svc-acc-head" onclick="toggleSvcGroup(&quot;pharma&quot;)">' +
-            '<span>Pharmacy Services</span><span class="svc-acc-chevron">\u25bc</span></div>';
-  html += '<div class="svc-acc-body" id="svc-body-pharma" style="display:none">';
-  html += '<div class="svc-hdr"><span>Service</span><span>Unit price</span><span>Qty</span><span>Subtotal</span></div>';
-  for (var i = 0; i < SVC_PHARMA.length; i++) { html += makeSvcRow(SVC_PHARMA[i], isInd); }
+  html += '<div class="svc-acc-group" id="svc-grp-pharma"><div class="svc-acc-head" onclick="toggleSvcGroup(&quot;pharma&quot;)"><span>Pharmacy Services</span><span class="svc-acc-chevron">▼</span></div>';
+  html += '<div class="svc-acc-body" id="svc-body-pharma" style="display:none"><div class="svc-hdr"><span>Service</span><span>Unit price</span><span>Qty</span><span>Subtotal</span></div>';
+  for (var i = 0; i < SVC_PHARMA.length; i++) html += makeSvcRow(SVC_PHARMA[i], isInd);
   html += '</div></div>';
 
   html += '<div class="svc-top-head">MUHC IT Services</div>';
-  html += '<div class="svc-acc-group" id="svc-grp-it">';
-  html += '<div class="svc-acc-head" onclick="toggleSvcGroup(&quot;it&quot;)">' +
-            '<span>IT Services</span><span class="svc-acc-chevron">\u25bc</span></div>';
-  html += '<div class="svc-acc-body" id="svc-body-it" style="display:none">';
-  html += '<div class="svc-hdr"><span>Service</span><span>Unit price</span><span>Qty</span><span>Subtotal</span></div>';
-  for (var i = 0; i < SVC_IT.length; i++) { html += makeSvcRow(SVC_IT[i], isInd); }
+  html += '<div class="svc-acc-group" id="svc-grp-it"><div class="svc-acc-head" onclick="toggleSvcGroup(&quot;it&quot;)"><span>IT Services</span><span class="svc-acc-chevron">▼</span></div>';
+  html += '<div class="svc-acc-body" id="svc-body-it" style="display:none"><div class="svc-hdr"><span>Service</span><span>Unit price</span><span>Qty</span><span>Subtotal</span></div>';
+  for (var i = 0; i < SVC_IT.length; i++) html += makeSvcRow(SVC_IT[i], isInd);
   html += '</div></div>';
 
   if (isInd) {
     html += '<div class="svc-top-head">MUHC Clinical Services <span style="font-size:9px;font-weight:700;letter-spacing:.07em;background:var(--amber-l);color:#7a4f00;padding:2px 7px;border-radius:9999px;margin-left:8px">INDUSTRY ONLY</span></div>';
-    html += '<div class="svc-acc-group" id="svc-grp-muhc">';
-    html += '<div class="svc-acc-head" onclick="toggleSvcGroup(&quot;muhc&quot;)">' +
-              '<span>MUHC Clinical Services</span><span class="svc-acc-chevron">\u25bc</span></div>';
-    html += '<div class="svc-acc-body" id="svc-body-muhc" style="display:none">';
-    html += '<div class="svc-hdr"><span>Service</span><span>Unit price</span><span>Qty</span><span>Subtotal</span></div>';
-    for (var i = 0; i < SVC_MUHC.length; i++) { html += makeSvcRow(SVC_MUHC[i], true); }
+    html += '<div class="svc-acc-group" id="svc-grp-muhc"><div class="svc-acc-head" onclick="toggleSvcGroup(&quot;muhc&quot;)"><span>MUHC Clinical Services</span><span class="svc-acc-chevron">▼</span></div>';
+    html += '<div class="svc-acc-body" id="svc-body-muhc" style="display:none"><div class="svc-hdr"><span>Service</span><span>Unit price</span><span>Qty</span><span>Subtotal</span></div>';
+    for (var i = 0; i < SVC_MUHC.length; i++) html += makeSvcRow(SVC_MUHC[i], true);
     html += '</div></div>';
   }
 
@@ -856,16 +798,14 @@ function renderSvcs() {
 }
 
 function makeSvcRow(it, isInd) {
-  var name    = it[0];
-  var priceNI = it[1];
-  var priceI  = it[2];
+  var name    = it[0], priceNI = it[1], priceI = it[2];
   var price   = isInd ? (priceI !== null && priceI !== undefined ? priceI : priceNI)
                       : (priceNI !== null && priceNI !== undefined ? priceNI : priceI);
-  var pStr = (price === null || price === undefined) ? 'Quote' : ('$' + price);
-  var dis  = (price === null || price === undefined) ? ' disabled' : '';
-  var dp   = (price === null || price === undefined) ? 0 : price;
-  var niStr  = (priceNI !== null && priceNI !== undefined) ? priceNI : '';
-  var indStr = (priceI  !== null && priceI  !== undefined) ? priceI  : '';
+  var pStr    = (price === null || price === undefined) ? 'Quote' : ('$' + price);
+  var dis     = (price === null || price === undefined) ? ' disabled' : '';
+  var dp      = (price === null || price === undefined) ? 0 : price;
+  var niStr   = (priceNI !== null && priceNI !== undefined) ? priceNI : '';
+  var indStr  = (priceI  !== null && priceI  !== undefined) ? priceI  : '';
   return '<div class="svc-row" data-ni="' + niStr + '" data-ind="' + indStr + '">' +
     '<span class="svc-name">' + name + '</span>' +
     '<span class="svc-price">' + pStr + '</span>' +
@@ -881,289 +821,122 @@ function toggleSvcGroup(id) {
   var closed = body.style.display === 'none';
   body.style.display = closed ? 'block' : 'none';
   if (head) head.classList.toggle('svc-acc-open', closed);
-  // Lazy render lab on first open
   if (id === 'lab' && closed && !labRendered) renderLab();
 }
 
 function svcCalc(inp) {
-  var price = parseFloat(inp.getAttribute('data-price'))||0;
-  var qty   = parseFloat(inp.value)||0;
+  var price = parseFloat(inp.getAttribute('data-price')) || 0;
+  var qty   = parseFloat(inp.value) || 0;
   var row   = inp.closest ? inp.closest('.svc-row') : inp.parentNode.parentNode;
   if (row) {
     var sub = row.querySelector('.svc-sub');
-    if (sub) sub.textContent = '$'+Math.round(price*qty).toLocaleString();
+    if (sub) sub.textContent = '$' + Math.round(price * qty).toLocaleString();
   }
   updateSummary();
 }
 
 function getSvcTotal() {
   var total = 0;
-  // All qty inputs in the services accordion (CIM, pharma, IT, MUHC clinical) - exclude lab rows and travel
   var inputs = document.querySelectorAll('#svc-cim-accordion .svc-qty input');
   for (var i = 0; i < inputs.length; i++) {
     total += (parseFloat(inputs[i].getAttribute('data-price')) || 0) * (parseFloat(inputs[i].value) || 0);
   }
-  // Other cost freeform amounts
   var oAmts = document.querySelectorAll('.oa');
-  for (var j = 0; j < oAmts.length; j++) {
-    total += parseFloat(oAmts[j].value) || 0;
-  }
-  // Lab tests
+  for (var j = 0; j < oAmts.length; j++) total += parseFloat(oAmts[j].value) || 0;
   total += getLabTotal();
-  // Participant costs
   total += getPtTotal();
-  // Travel
   total += getTravelTotal();
   return total;
 }
 
 function addOther() {
   otherCtr++;
-  var id = otherCtr;
+  var id   = otherCtr;
   var cont = document.getElementById('other-list');
-  var d = document.createElement('div');
+  var d    = document.createElement('div');
   d.className = 'other-row';
-  d.id = 'ot-'+id;
+  d.id = 'ot-' + id;
   d.innerHTML =
     '<input type="text" class="fi" style="font-size:12.5px;padding:6px 8px" placeholder="Description">' +
     '<input type="number" class="fi oa" min="0" value="0" placeholder="$" style="text-align:right;font-size:13px;padding:6px 8px" oninput="updateSummary()">' +
-    '<button class="staff-rm" onclick="removeOther('+id+')" style="white-space:nowrap">&times;</button>';
+    '<button class="st-rm-btn" onclick="removeOther(' + id + ')" style="white-space:nowrap">×</button>';
   cont.appendChild(d);
 }
 
 function removeOther(id) {
-  var el = document.getElementById('ot-'+id);
+  var el = document.getElementById('ot-' + id);
   if (el) el.parentNode.removeChild(el);
   updateSummary();
 }
 
-// ════════════════════════════════════════
-// REB
-// ════════════════════════════════════════
-function suggestRenewals() {
-  var years = parseInt(document.getElementById('study-years').value) || 1;
-  var renewalsEl = document.getElementById('reb-renewals');
-  if (renewalsEl && renewalsEl.value === '0' || renewalsEl.value === '') {
-    renewalsEl.value = Math.max(0, years - 1);
-    calcREB();
+function updateSvcPrices() {
+  var isInd = (funding === 'ind');
+  var rows  = document.querySelectorAll('#svc-cim-accordion .svc-row');
+  for (var i = 0; i < rows.length; i++) {
+    var r      = rows[i];
+    var inp    = r.querySelector('.svc-qty input');
+    var priceEl = r.querySelector('.svc-price');
+    if (!inp || !priceEl) continue;
+    var ni  = r.getAttribute('data-ni')  !== '' ? parseFloat(r.getAttribute('data-ni'))  : NaN;
+    var ind = r.getAttribute('data-ind') !== '' ? parseFloat(r.getAttribute('data-ind')) : NaN;
+    var price = isInd ? (!isNaN(ind) ? ind : ni) : (!isNaN(ni) ? ni : ind);
+    var pStr  = isNaN(price) ? 'Quote' : ('$' + price);
+    var dp    = isNaN(price) ? 0 : price;
+    priceEl.textContent = pStr;
+    inp.setAttribute('data-price', dp);
+    inp.disabled = isNaN(price) || price <= 0;
+    var sub = r.querySelector('.svc-sub');
+    if (sub) sub.textContent = '$' + Math.round((parseFloat(inp.value) || 0) * dp).toLocaleString();
   }
-}
-
-function calcREB() {
-  var sites    = Math.min(parseInt(document.getElementById('study-sites').value)||1, 15);
-  var renewals = parseInt(document.getElementById('reb-renewals').value)||0;
-  var amends   = parseInt(document.getElementById('reb-amendments').value)||0;
-  var capSites = Math.min(sites,10);
-  var sciRev   = REB.sci;
-  var ethRev   = REB.eth;
-  var siteAuth = REB.siteAuth * sites;
-  var annMon   = REB.annMon * capSites * renewals;
-  var annAuth  = REB.annAuth * sites * renewals;
-  var amAmt    = REB.amend * amends;
-  var rebTot   = sciRev + ethRev + siteAuth + annMon + annAuth + amAmt;
-
-  var html = '';
-  html += rebRow('Scientific review (one per project)', sciRev);
-  html += rebRow('Ethical review (one per project)', ethRev);
-  html += rebRow('Site authorization ('+sites+' institution'+(sites>1?'s':'')+')', siteAuth);
-  if (renewals>0) {
-    html += rebRow('Annual ethics monitoring ('+renewals+' renewal'+(renewals>1?'s':'')+' \u00d7 '+capSites+' site'+(capSites>1?'s':'')+')', annMon);
-    html += rebRow('Annual authorization monitoring ('+renewals+' \u00d7 '+sites+' site'+(sites>1?'s':'')+')', annAuth);
+  var muhcGrp = document.getElementById('svc-grp-muhc');
+  if (isInd && !muhcGrp) {
+    svcsRendered = false; renderSvcs();
+  } else if (!isInd && muhcGrp) {
+    var prev = muhcGrp.previousElementSibling;
+    muhcGrp.parentNode.removeChild(muhcGrp);
+    if (prev && prev.classList.contains('svc-top-head')) prev.parentNode.removeChild(prev);
   }
-  if (amends>0) html += rebRow('Major protocol amendments ('+amends+')', amAmt);
-  html += '<div class="reb-total-row"><span class="reb-tl">REB total</span><span class="reb-ta">$'+rebTot.toLocaleString()+'</span></div>';
-
-  // Exemption threshold check — use estimated grand total (staff + services + overhead + contingency)
-  var staffEst = getStaffTotal();
-  var svcEst   = getSvcTotal();
-  var subEst   = staffEst + svcEst;
-  var grandEst = subEst * (1 + oh + getContPct());
-  if (grandEst > 0 && grandEst < 19039) {
-    html += '<div style="padding:10px 18px;font-size:12px;color:var(--teal);border-top:1px solid var(--bdr-soft);line-height:1.5">' +
-      '<strong>Possible exemption:</strong> Your estimated total ($'+Math.round(grandEst).toLocaleString()+') appears to be below the $19,039 MSSS threshold. ' +
-      'Institutions may refrain from billing REB fees for grants or contracts below this amount. Confirm with your REB.' +
-    '</div>';
-  }
-
-  document.getElementById('reb-box').innerHTML = html;
   updateSummary();
 }
 
-function rebRow(label, amt) {
-  return '<div class="reb-fee-row"><span class="reb-fn">'+label+'</span><span class="reb-fa">$'+amt.toLocaleString()+'</span></div>';
-}
-
-function getRebAmt() {
-  var sites    = Math.min(parseInt(document.getElementById('study-sites').value)||1, 15);
-  var renewals = parseInt(document.getElementById('reb-renewals').value)||0;
-  var amends   = parseInt(document.getElementById('reb-amendments').value)||0;
-  var capSites = Math.min(sites,10);
-  return REB.sci + REB.eth + REB.siteAuth*sites + REB.annMon*capSites*renewals + REB.annAuth*sites*renewals + REB.amend*amends;
-}
-
-// ════════════════════════════════════════
-// CONTINGENCY
-// ════════════════════════════════════════
-function selectCont(lv) {
-  contLevel = lv;
-  var lvs = ['low','mod','high'];
-  for (var i=0; i<lvs.length; i++) document.getElementById('cc-'+lvs[i]).className = 'cont-card';
-  document.getElementById('cc-'+lv).className = 'cont-card cc-sel-'+lv;
-  document.getElementById('cont-pct').value = '';
-  updateSummary();
-}
-
-function getContPct() {
-  var ov = parseFloat(document.getElementById('cont-pct').value);
-  return (isNaN(ov)||ov<=0) ? CONT_DEF[contLevel]/100 : ov/100;
-}
-
-// ════════════════════════════════════════
-// SUMMARY
-// ════════════════════════════════════════
-function updateSummary() {
-  // COLA notice
-  var multiEl = document.getElementById('multiyear');
-  var colaEl  = document.getElementById('cola-notice');
-  if (multiEl && colaEl) colaEl.style.display = (multiEl.value==='yes') ? 'block' : 'none';
-
-  updateTESummaryBox();
-
-  var teTotal  = getTEStaffTotal();
-  var usingTE  = teTotal > 0;
-  var staffAmt = getStaffTotal();
-  var svcAmt   = getSvcTotal();
-  var contPct  = getContPct();
-  var subTotal = staffAmt + svcAmt;
-  var contAmt  = subTotal * contPct;
-  var rebAmt   = getRebAmt();
-  var rebInc   = document.getElementById('reb-include').value==='yes';
-
-  // Overhead: industry startup activities are carved out at 0%
-  var startupMultiYear = (funding === 'ind') ? getStartupMultiYear() : 0;
-  var ohAmt;
-  if (funding === 'ind' && startupMultiYear > 0) {
-    var eligibleForOH = Math.max(0, staffAmt - startupMultiYear) + svcAmt;
-    ohAmt = eligibleForOH * oh;
-  } else {
-    ohAmt = subTotal * oh;
-  }
-  var grand = subTotal + ohAmt + contAmt + (rebInc ? rebAmt : 0);
-
-  var fmt = function(n) { return n>0 ? ('$'+Math.round(n).toLocaleString()) : null; };
-  function setLine(id, val) {
-    var el = document.getElementById(id);
-    if (!el) return;
-    if (val) { el.textContent=val; el.className='sla'; }
-    else { el.textContent='\u2014'; el.className='slz'; }
-  }
-
-  setLine('sl-staff', fmt(staffAmt));
-  setLine('sl-svc',   fmt(svcAmt));
-  setLine('sl-cont',  fmt(contAmt));
-
-  // T&E sub-line
-  var teLine = document.getElementById('sl-te-line');
-  var teEl   = document.getElementById('sl-te');
-  if (teLine && teEl) {
-    teLine.style.display = usingTE ? '' : 'none';
-    teEl.textContent = usingTE ? ('$'+Math.round(teTotal).toLocaleString()) : '';
-    teEl.className = usingTE ? 'sla' : 'slz';
-  }
-
-  var rebEl = document.getElementById('sl-reb');
-  if (rebEl) {
-    rebEl.textContent = rebInc ? (fmt(rebAmt)||'\u2014') : ('$'+Math.round(rebAmt).toLocaleString()+' (ref)');
-    rebEl.className   = rebInc ? 'sla' : 'slz';
-  }
-
-  var ohEl  = document.getElementById('sum-oh');
-  var ohLbl = document.getElementById('sum-oh-lbl');
-  if (ohEl)  ohEl.textContent  = '$'+Math.round(ohAmt).toLocaleString();
-  if (ohLbl) ohLbl.textContent = 'Overhead ('+Math.round(oh*100)+'%)';
-
-  // Industry startup carve-out split
-  var ohSplit = document.getElementById('sum-oh-split');
-  if (ohSplit) {
-    if (funding === 'ind' && startupMultiYear > 0) {
-      var ohStartupEl = document.getElementById('sum-oh-startup');
-      var ohGeneralEl = document.getElementById('sum-oh-general');
-      if (ohStartupEl) ohStartupEl.textContent = '$0';
-      if (ohGeneralEl) ohGeneralEl.textContent = '$'+Math.round(ohAmt).toLocaleString();
-      ohSplit.style.display = '';
-    } else {
-      ohSplit.style.display = 'none';
+function expandAllSvc() {
+  for (var g = 0; g < SVC_CIM_DATA.length; g++) {
+    var body = document.getElementById('svc-body-' + g);
+    var head = document.querySelector('#svc-grp-' + g + ' .svc-acc-head');
+    if (body && body.style.display === 'none') {
+      body.style.display = 'block';
+      if (head) head.classList.add('svc-acc-open');
     }
   }
-
-  var gs = '$'+Math.round(grand).toLocaleString();
-  var gEl  = document.getElementById('sum-grand');
-  var tpEl = document.getElementById('sum-top');
-  if (gEl)  gEl.textContent  = gs;
-  if (tpEl) tpEl.textContent = gs;
-
-  // Cost per participant
-  var n = parseInt(document.getElementById('study-n').value) || 0;
-  var cppRow = document.getElementById('sum-cpp-row');
-  var cppEl  = document.getElementById('sum-cpp');
-  if (cppRow && cppEl) {
-    if (n > 0 && grand > 0) {
-      cppRow.style.display = '';
-      cppEl.textContent = '$'+Math.round(grand/n).toLocaleString()+'/pt';
-    } else {
-      cppRow.style.display = 'none';
+  var extras = ['pharma', 'it', 'muhc', 'lab'];
+  for (var i = 0; i < extras.length; i++) {
+    var body = document.getElementById('svc-body-' + extras[i]);
+    var head = document.querySelector('#svc-grp-' + extras[i] + ' .svc-acc-head');
+    if (body && body.style.display === 'none') {
+      body.style.display = 'block';
+      if (head) head.classList.add('svc-acc-open');
+      if (extras[i] === 'lab' && !labRendered) renderLab();
     }
   }
-
-  // Year-by-year breakdown
-  var years = parseInt(document.getElementById('study-years').value) || 1;
-  var yearlyWrap = document.getElementById('sum-yearly-wrap');
-  if (yearlyWrap) {
-    yearlyWrap.style.display = (years > 1 && teTotal > 0) ? '' : 'none';
-    renderYearlyBreakdown();
-  }
-
-  // Sync participant count display in services tab
-  var ptN = document.getElementById('pt-n-display');
-  if (ptN) ptN.textContent = n;
-
-  // Sync travel subtotals display
-  updateTravelSubs();
-
-  // CIHR summary (print)
-  var travelAmt    = getTravelTotal();
-  var otherFreeform = getOtherCostsTotal();
-  updateCIHR(staffAmt, svcAmt, contAmt, travelAmt, otherFreeform);
-
-  // Tab completion dots
-  updateTabDots(staffAmt, svcAmt);
-
-  // Auto-save (debounced)
-  scheduleAutoSave();
 }
 
 // ════════════════════════════════════════
 // LAB PRICELIST
 // ════════════════════════════════════════
-var labRendered = false;
-
 function renderLab() {
   if (labRendered) { updateLabPrices(); return; }
   labRendered = true;
-  var cont = document.getElementById('svc-lab');
+  var cont  = document.getElementById('svc-lab');
   if (!cont) return;
   var isInd = (funding === 'ind');
-  var html = '';
+  var html  = '';
   for (var i = 0; i < LAB_DATA.length; i++) {
-    var row = LAB_DATA[i];
-    var code = row[0];
-    var name = row[1];
-    var priceNI = row[2];
-    var priceI  = row[3];
-    var price   = isInd ? priceI : priceNI;
-    var pStr    = price > 0 ? ('$' + price.toFixed(2)) : 'Quote';
-    var dp      = price > 0 ? price : 0;
-    var dis     = price <= 0 ? ' disabled' : '';
+    var row    = LAB_DATA[i];
+    var code   = row[0], name = row[1], priceNI = row[2], priceI = row[3];
+    var price  = isInd ? priceI : priceNI;
+    var pStr   = price > 0 ? ('$' + price.toFixed(2)) : 'Quote';
+    var dp     = price > 0 ? price : 0;
+    var dis    = price <= 0 ? ' disabled' : '';
     html += '<div class="svc-row lab-row" data-code="' + code + '" data-name="' + name.toLowerCase() + '" data-ni="' + priceNI + '" data-i="' + priceI + '">' +
       '<span class="svc-name"><span class="svc-code">' + code + '</span>' + name + '</span>' +
       '<span class="svc-price lab-price">' + pStr + '</span>' +
@@ -1172,14 +945,15 @@ function renderLab() {
       '</div>';
   }
   cont.innerHTML = html;
-  document.getElementById('lab-count').textContent = LAB_DATA.length + ' tests';
+  var lcEl = document.getElementById('lab-count');
+  if (lcEl) lcEl.textContent = LAB_DATA.length + ' tests';
 }
 
 function updateLabPrices() {
   var isInd = (funding === 'ind');
-  var rows = document.querySelectorAll('.lab-row');
+  var rows  = document.querySelectorAll('.lab-row');
   for (var i = 0; i < rows.length; i++) {
-    var r     = rows[i];
+    var r       = rows[i];
     var priceNI = parseFloat(r.getAttribute('data-ni')) || 0;
     var priceI  = parseFloat(r.getAttribute('data-i'))  || 0;
     var price   = isInd ? priceI : priceNI;
@@ -1190,7 +964,6 @@ function updateLabPrices() {
     if (inp) {
       inp.setAttribute('data-price', price > 0 ? price : 0);
       inp.disabled = price <= 0;
-      // Recalc subtotal
       var sub = r.querySelector('.svc-sub');
       if (sub) sub.textContent = '$' + Math.round((parseFloat(inp.value) || 0) * (price > 0 ? price : 0)).toLocaleString();
     }
@@ -1198,22 +971,20 @@ function updateLabPrices() {
 }
 
 function filterLab() {
-  // Ensure lab is rendered and accordion open before filtering
   if (!labRendered) {
     renderLab();
-    // Open the accordion body so results are visible
     var body = document.getElementById('svc-body-lab');
     var head = document.querySelector('#svc-grp-lab .svc-acc-head');
     if (body) body.style.display = 'block';
     if (head) head.classList.add('svc-acc-open');
   }
-  var q = document.getElementById('lab-search').value.trim().toLowerCase();
+  var q    = document.getElementById('lab-search').value.trim().toLowerCase();
   var rows = document.querySelectorAll('.lab-row');
   var shown = 0;
   for (var i = 0; i < rows.length; i++) {
-    var r    = rows[i];
-    var code = r.getAttribute('data-code');
-    var name = r.getAttribute('data-name');
+    var r     = rows[i];
+    var code  = r.getAttribute('data-code');
+    var name  = r.getAttribute('data-name');
     var match = !q || code.indexOf(q) !== -1 || name.indexOf(q) !== -1;
     r.classList.toggle('lab-hidden', !match);
     if (match) shown++;
@@ -1222,13 +993,10 @@ function filterLab() {
   var emptyEl = document.getElementById('lab-empty');
   if (countEl) countEl.textContent = q ? (shown + ' of ' + LAB_DATA.length + ' tests') : (LAB_DATA.length + ' tests');
   if (emptyEl) emptyEl.style.display = (shown === 0 && q) ? 'block' : 'none';
-  // Scroll filtered results to top
-  var labCont = document.getElementById('svc-lab');
-  if (labCont) labCont.scrollTop = 0;
 }
 
 function getLabTotal() {
-  var total = 0;
+  var total  = 0;
   var inputs = document.querySelectorAll('.lab-row input');
   for (var i = 0; i < inputs.length; i++) {
     total += (parseFloat(inputs[i].getAttribute('data-price')) || 0) * (parseFloat(inputs[i].value) || 0);
@@ -1240,7 +1008,7 @@ function getLabTotal() {
 // PARTICIPANT COSTS
 // ════════════════════════════════════════
 function calcPtCost() {
-  var n = parseInt(document.getElementById('study-n').value) || 0;
+  var n   = parseInt(document.getElementById('study-n').value) || 0;
   var ptN = document.getElementById('pt-n-display');
   if (ptN) ptN.textContent = n;
 
@@ -1249,35 +1017,30 @@ function calcPtCost() {
     {amt:'pt-trans-amt', visits:'pt-trans-visits',  price:'pt-trans-price', sub:'pt-trans-sub'},
     {amt:'pt-park-amt',  visits:'pt-park-visits',   price:'pt-park-price',  sub:'pt-park-sub'}
   ];
-
   for (var i = 0; i < items.length; i++) {
     var it  = items[i];
     var amt    = parseFloat(document.getElementById(it.amt).value)    || 0;
     var visits = parseFloat(document.getElementById(it.visits).value) || 0;
-    var sub    = amt * visits * n;
     var priceEl = document.getElementById(it.price);
     var subEl   = document.getElementById(it.sub);
     if (priceEl) priceEl.textContent = '$' + amt.toFixed(2) + ' / visit';
-    if (subEl)   subEl.textContent   = '$' + Math.round(sub).toLocaleString();
+    if (subEl)   subEl.textContent   = '$' + Math.round(amt * visits * n).toLocaleString();
   }
-
-  // Other participant costs — flat, no N multiplier
   var otherAmt = parseFloat(document.getElementById('pt-other-amt').value) || 0;
   var otherSub = document.getElementById('pt-other-sub');
   if (otherSub) otherSub.textContent = '$' + Math.round(otherAmt).toLocaleString();
-
   updateSummary();
 }
 
 function getPtTotal() {
-  var n = parseInt(document.getElementById('study-n').value) || 0;
-  var stipAmt    = parseFloat(document.getElementById('pt-stip-amt').value)    || 0;
-  var stipV      = parseFloat(document.getElementById('pt-stip-visits').value) || 0;
-  var transAmt   = parseFloat(document.getElementById('pt-trans-amt').value)   || 0;
-  var transV     = parseFloat(document.getElementById('pt-trans-visits').value)|| 0;
-  var parkAmt    = parseFloat(document.getElementById('pt-park-amt').value)    || 0;
-  var parkV      = parseFloat(document.getElementById('pt-park-visits').value) || 0;
-  var otherAmt   = parseFloat(document.getElementById('pt-other-amt').value)   || 0;
+  var n      = parseInt(document.getElementById('study-n').value) || 0;
+  var stipAmt  = parseFloat(document.getElementById('pt-stip-amt').value)    || 0;
+  var stipV    = parseFloat(document.getElementById('pt-stip-visits').value) || 0;
+  var transAmt = parseFloat(document.getElementById('pt-trans-amt').value)   || 0;
+  var transV   = parseFloat(document.getElementById('pt-trans-visits').value)|| 0;
+  var parkAmt  = parseFloat(document.getElementById('pt-park-amt').value)    || 0;
+  var parkV    = parseFloat(document.getElementById('pt-park-visits').value) || 0;
+  var otherAmt = parseFloat(document.getElementById('pt-other-amt').value)   || 0;
   return (stipAmt * stipV * n) + (transAmt * transV * n) + (parkAmt * parkV * n) + otherAmt;
 }
 
@@ -1285,7 +1048,6 @@ function getPtTotal() {
 // TRAVEL
 // ════════════════════════════════════════
 function updateTravelRows() {
-  // Show monitoring visit row only for IIT
   var monRow = document.getElementById('tv-mon-row');
   if (monRow) monRow.style.display = (funding === 'iit') ? '' : 'none';
   updateTravelSubs();
@@ -1296,15 +1058,12 @@ function updateTravelSubs() {
   for (var i = 0; i < ids.length; i++) {
     var inp = document.getElementById(ids[i]);
     var sub = document.getElementById(ids[i] + '-sub');
-    if (inp && sub) {
-      var v = parseFloat(inp.value) || 0;
-      sub.textContent = '$' + Math.round(v).toLocaleString();
-    }
+    if (inp && sub) sub.textContent = '$' + Math.round(parseFloat(inp.value) || 0).toLocaleString();
   }
 }
 
 function getTravelTotal() {
-  var ids = ['tv-inv', 'tv-mon', 'tv-other'];
+  var ids   = ['tv-inv', 'tv-mon', 'tv-other'];
   var total = 0;
   for (var i = 0; i < ids.length; i++) {
     var inp = document.getElementById(ids[i]);
@@ -1314,14 +1073,255 @@ function getTravelTotal() {
 }
 
 // ════════════════════════════════════════
-// CIHR SUMMARY (print only)
+// REB
 // ════════════════════════════════════════
+function suggestRenewals() {
+  var years     = parseInt(document.getElementById('study-years').value) || 1;
+  var renewalsEl = document.getElementById('reb-renewals');
+  if (renewalsEl && (renewalsEl.value === '0' || renewalsEl.value === '')) {
+    renewalsEl.value = Math.max(0, years - 1);
+    calcREB();
+  }
+}
+
+function calcREB() {
+  var sites    = Math.min(parseInt(document.getElementById('study-sites').value) || 1, 15);
+  var renewals = parseInt(document.getElementById('reb-renewals').value) || 0;
+  var amends   = parseInt(document.getElementById('reb-amendments').value) || 0;
+  var capSites = Math.min(sites, 10);
+  var siteAuth = REB.siteAuth * sites;
+  var annMon   = REB.annMon * capSites * renewals;
+  var annAuth  = REB.annAuth * sites * renewals;
+  var amAmt    = REB.amend * amends;
+  var rebTot   = REB.sci + REB.eth + siteAuth + annMon + annAuth + amAmt;
+
+  var html = '';
+  html += rebRow('Scientific review (one per project)', REB.sci);
+  html += rebRow('Ethical review (one per project)', REB.eth);
+  html += rebRow('Site authorization (' + sites + ' institution' + (sites > 1 ? 's' : '') + ')', siteAuth);
+  if (renewals > 0) {
+    html += rebRow('Annual ethics monitoring (' + renewals + ' renewal' + (renewals > 1 ? 's' : '') + ' × ' + capSites + ' site' + (capSites > 1 ? 's' : '') + ')', annMon);
+    html += rebRow('Annual authorization monitoring (' + renewals + ' × ' + sites + ' site' + (sites > 1 ? 's' : '') + ')', annAuth);
+  }
+  if (amends > 0) html += rebRow('Major protocol amendments (' + amends + ')', amAmt);
+  html += '<div class="reb-total-row"><span class="reb-tl">REB total</span><span class="reb-ta">$' + rebTot.toLocaleString() + '</span></div>';
+
+  var grandEst = (getStaffTotal() + getSvcTotal()) * (1 + oh + getContPct());
+  if (grandEst > 0 && grandEst < 19039) {
+    html += '<div style="padding:10px 18px;font-size:12px;color:var(--teal);border-top:1px solid var(--bdr-soft);line-height:1.5">' +
+      '<strong>Possible exemption:</strong> Your estimated total ($' + Math.round(grandEst).toLocaleString() + ') appears to be below the $19,039 MSSS threshold. Confirm with your REB.' +
+      '</div>';
+  }
+
+  var boxEl = document.getElementById('reb-box');
+  if (boxEl) boxEl.innerHTML = html;
+  updateSummary();
+}
+
+function rebRow(label, amt) {
+  return '<div class="reb-fee-row"><span class="reb-fn">' + label + '</span><span class="reb-fa">$' + amt.toLocaleString() + '</span></div>';
+}
+
+function getRebAmt() {
+  var sites    = Math.min(parseInt(document.getElementById('study-sites').value) || 1, 15);
+  var renewals = parseInt(document.getElementById('reb-renewals').value) || 0;
+  var amends   = parseInt(document.getElementById('reb-amendments').value) || 0;
+  var capSites = Math.min(sites, 10);
+  return REB.sci + REB.eth + REB.siteAuth * sites + REB.annMon * capSites * renewals + REB.annAuth * sites * renewals + REB.amend * amends;
+}
+
+// ════════════════════════════════════════
+// CONTINGENCY
+// ════════════════════════════════════════
+function selectCont(lv) {
+  contLevel = lv;
+  var lvs = ['low', 'mod', 'high'];
+  for (var i = 0; i < lvs.length; i++) {
+    var el = document.getElementById('cc-' + lvs[i]);
+    if (el) el.className = 'cont-card';
+  }
+  var sel = document.getElementById('cc-' + lv);
+  if (sel) sel.className = 'cont-card cc-sel-' + lv;
+  var pctEl = document.getElementById('cont-pct');
+  if (pctEl) pctEl.value = '';
+  updateSummary();
+}
+
+function getContPct() {
+  var ov = parseFloat(document.getElementById('cont-pct').value);
+  return (isNaN(ov) || ov <= 0) ? CONT_DEF[contLevel] / 100 : ov / 100;
+}
+
+// ════════════════════════════════════════
+// SUMMARY + REVIEW
+// ════════════════════════════════════════
+function updateSummary() {
+  var multiEl = document.getElementById('multiyear');
+  var colaEl  = document.getElementById('cola-notice');
+  if (multiEl && colaEl) colaEl.style.display = (multiEl.value === 'yes') ? 'block' : 'none';
+
+  updateMatrixGroupHeaders();
+
+  var staffAmt = getStaffTotal();
+  var svcAmt   = getSvcTotal();
+  var contPct  = getContPct();
+  var subTotal = staffAmt + svcAmt;
+  var contAmt  = subTotal * contPct;
+  var rebAmt   = getRebAmt();
+  var rebIncEl = document.getElementById('reb-include');
+  var rebInc   = rebIncEl ? rebIncEl.value === 'yes' : true;
+
+  var startupMultiYear = (funding === 'ind') ? getStartupMultiYear() : 0;
+  var ohAmt;
+  if (funding === 'ind' && startupMultiYear > 0) {
+    ohAmt = Math.max(0, staffAmt - startupMultiYear) * oh + svcAmt * oh;
+  } else {
+    ohAmt = subTotal * oh;
+  }
+  var grand = subTotal + ohAmt + contAmt + (rebInc ? rebAmt : 0);
+
+  // Sticky header
+  var titleEl  = document.getElementById('study-title');
+  var bthTitle = document.getElementById('bth-title');
+  var bthGrand = document.getElementById('bth-grand');
+  if (bthTitle) bthTitle.textContent = (titleEl && titleEl.value.trim()) ? titleEl.value.trim() : 'Untitled study';
+  if (bthGrand) bthGrand.textContent = '$' + Math.round(grand).toLocaleString();
+
+  // Print header
+  var prtTitle = document.getElementById('prt-study-title');
+  var prtProto = document.getElementById('prt-protocol');
+  var prtDate  = document.getElementById('prt-date');
+  var protoEl  = document.getElementById('study-protocol');
+  if (prtTitle) prtTitle.textContent = (titleEl && titleEl.value.trim()) ? titleEl.value.trim() : 'Untitled study';
+  if (prtProto && protoEl) prtProto.textContent = protoEl.value || '—';
+  if (prtDate)  prtDate.textContent  = new Date().toLocaleDateString();
+
+  // Participant count in costs section
+  var n   = parseInt(document.getElementById('study-n').value) || 0;
+  var ptN = document.getElementById('pt-n-display');
+  if (ptN) ptN.textContent = n;
+
+  // Travel subtotals
+  updateTravelSubs();
+
+  // No-staff message
+  var staffIds  = getActiveStaffIds();
+  var noStaffMsg = document.getElementById('te-no-staff-msg');
+  if (noStaffMsg) noStaffMsg.style.display = staffIds.length ? 'none' : 'block';
+
+  // Review table
+  renderReviewTable(staffAmt, svcAmt, contAmt, ohAmt, rebAmt, rebInc, grand);
+
+  // CIHR
+  updateCIHR(staffAmt, svcAmt, contAmt, getTravelTotal(), getOtherCostsTotal());
+
+  // Section status
+  updateSectionStatus();
+
+  scheduleAutoSave();
+}
+
+function renderReviewTable(staffAmt, svcAmt, contAmt, ohAmt, rebAmt, rebInc, grand) {
+  var el = document.getElementById('rv-table');
+  if (!el) return;
+
+  // Recalculate if not passed
+  if (staffAmt === undefined) {
+    staffAmt = getStaffTotal();
+    svcAmt   = getSvcTotal();
+    contAmt  = (staffAmt + svcAmt) * getContPct();
+    rebAmt   = getRebAmt();
+    rebInc   = document.getElementById('reb-include').value === 'yes';
+    var startupMY = (funding === 'ind') ? getStartupMultiYear() : 0;
+    ohAmt = (funding === 'ind' && startupMY > 0)
+      ? (Math.max(0, staffAmt - startupMY) + svcAmt) * oh
+      : (staffAmt + svcAmt) * oh;
+    grand = staffAmt + svcAmt + ohAmt + contAmt + (rebInc ? rebAmt : 0);
+  }
+
+  var n      = parseInt(document.getElementById('study-n').value) || 0;
+  var teTotal = getTEStaffTotal();
+
+  function fmt(v) { return '$' + Math.round(v).toLocaleString(); }
+  function row(lbl, val, cls) {
+    return '<div class="rv-row' + (cls ? ' ' + cls : '') + '"><span>' + lbl + '</span><span>' + fmt(val) + '</span></div>';
+  }
+
+  var labAmt   = getLabTotal();
+  var ptAmt    = getPtTotal();
+  var travAmt  = getTravelTotal();
+  var otherAmt = getOtherCostsTotal();
+  var svcOnly  = Math.max(0, svcAmt - labAmt - ptAmt - travAmt - otherAmt);
+
+  var html = '';
+  html += '<div class="rv-section-head">Personnel</div>';
+  if (teTotal > 0) {
+    var startupMY = getStartupMultiYear();
+    html += row('Startup activities' + (funding === 'ind' ? ' (0% overhead)' : ''), startupMY);
+    html += row('General & per-participant activities', staffAmt - startupMY);
+    html += row('Staff subtotal', staffAmt, 'rv-row-strong');
+  } else {
+    html += row('Staff (FTE estimate)', staffAmt, 'rv-row-strong');
+  }
+
+  html += '<div class="rv-section-head">Study Costs</div>';
+  if (svcOnly  > 0) html += row('Institutional services', svcOnly);
+  if (labAmt   > 0) html += row('Laboratory tests', labAmt);
+  if (ptAmt    > 0) html += row('Participant costs', ptAmt);
+  if (travAmt  > 0) html += row('Travel', travAmt);
+  if (otherAmt > 0) html += row('Other costs', otherAmt);
+  if (svcAmt   > 0) html += row('Study costs subtotal', svcAmt, 'rv-row-strong');
+
+  html += '<div class="rv-divider"></div>';
+  html += row('Direct Cost Subtotal', staffAmt + svcAmt, 'rv-row-strong');
+  if (ohAmt > 0) html += row('Overhead (' + Math.round(oh * 100) + '%)', ohAmt);
+  html += row('Contingency (' + Math.round(getContPct() * 100) + '%)', contAmt);
+  if (rebAmt > 0) html += row('REB Fees' + (rebInc ? ' (included in total)' : ' (reference only)'), rebAmt, rebInc ? '' : 'rv-row-indent');
+  html += '<div class="rv-grand"><span>Grand Total</span><span>' + fmt(grand) + '</span></div>';
+  if (n > 0 && grand > 0) {
+    html += '<div class="rv-cpp">Per participant: ' + fmt(grand / n) + ' &bull; ' + n + ' participants</div>';
+  }
+
+  // Year-by-year breakdown
+  var years = parseInt(document.getElementById('study-years').value) || 1;
+  var cola  = document.getElementById('multiyear').value === 'yes';
+  if (years > 1 && teTotal > 0) {
+    html += '<div class="rv-section-head">Year-by-year staff costs</div>';
+    html += '<div class="rv-yearly">';
+    for (var y = 0; y < years; y++) {
+      var yrAmt = cola ? teTotal * Math.pow(1.05, y) : teTotal;
+      var pctStr = (cola && y > 0) ? ' (+' + ((Math.pow(1.05, y) - 1) * 100).toFixed(1) + '%)' : '';
+      html += '<div class="rv-yr-row"><span>Year ' + (y + 1) + pctStr + '</span><span>$' + Math.round(yrAmt).toLocaleString() + '</span></div>';
+    }
+    html += '</div>';
+  }
+
+  el.innerHTML = html;
+}
+
+function renderPrintSections() {
+  renderReviewTable();
+  var prtTitle = document.getElementById('prt-study-title');
+  var titleEl  = document.getElementById('study-title');
+  var prtDate  = document.getElementById('prt-date');
+  if (prtTitle && titleEl) prtTitle.textContent = titleEl.value.trim() || 'Untitled study';
+  if (prtDate) prtDate.textContent = new Date().toLocaleDateString();
+  var btPrint = document.getElementById('bt-print-header');
+  if (btPrint) btPrint.style.display = 'block';
+}
+
+function toggleCIHRFormat() {
+  var block = document.getElementById('cihr-block');
+  if (!block) return;
+  block.style.display = (block.style.display === 'none' || !block.style.display) ? 'block' : 'none';
+}
+
 function updateCIHR(staffAmt, svcAmt, contAmt, travelAmt, otherAmt) {
   var personnel = staffAmt;
-  var matsup    = svcAmt - travelAmt - otherAmt;  // services + lab + participant costs, minus travel and freeform other
+  var matsup    = svcAmt - travelAmt - otherAmt;
   var travel    = travelAmt;
   var kt        = 0;
-  var other     = contAmt + otherAmt;  // contingency + freeform other costs
+  var other     = contAmt + otherAmt;
   var total     = personnel + matsup + travel + kt + other;
 
   function fmt(n) { return '$' + Math.round(n).toLocaleString(); }
@@ -1334,181 +1334,12 @@ function updateCIHR(staffAmt, svcAmt, contAmt, travelAmt, otherAmt) {
   se('cihr-total',     total);
 }
 
-function updateSvcPrices() {
-  var isInd = (funding === 'ind');
-  var rows = document.querySelectorAll('#svc-cim-accordion .svc-row');
-  for (var i = 0; i < rows.length; i++) {
-    var r = rows[i];
-    var inp = r.querySelector('.svc-qty input');
-    var priceEl = r.querySelector('.svc-price');
-    if (!inp || !priceEl) continue;
-    var ni  = r.getAttribute('data-ni')  !== '' ? parseFloat(r.getAttribute('data-ni'))  : NaN;
-    var ind = r.getAttribute('data-ind') !== '' ? parseFloat(r.getAttribute('data-ind')) : NaN;
-    var price = isInd ? (!isNaN(ind) ? ind : ni) : (!isNaN(ni) ? ni : ind);
-    var pStr  = isNaN(price) ? 'Quote' : ('$' + price);
-    var dp    = isNaN(price) ? 0 : price;
-    priceEl.textContent = pStr;
-    inp.setAttribute('data-price', dp);
-    inp.disabled = isNaN(price) || price <= 0;
-    var sub = r.querySelector('.svc-sub');
-    if (sub) sub.textContent = '$' + Math.round((parseFloat(inp.value)||0) * dp).toLocaleString();
-  }
-  // Handle MUHC Clinical Services section (industry-only): full re-render if toggling
-  var muhcGrp = document.getElementById('svc-grp-muhc');
-  if (isInd && !muhcGrp) {
-    svcsRendered = false; renderSvcs();
-  } else if (!isInd && muhcGrp) {
-    var prev = muhcGrp.previousElementSibling;
-    muhcGrp.parentNode.removeChild(muhcGrp);
-    if (prev && prev.classList.contains('svc-top-head')) prev.parentNode.removeChild(prev);
-  }
-  updateSummary();
-}
-
 // ════════════════════════════════════════
-// ACTIVITY PICKER DATA
-// ════════════════════════════════════════
-var ACT_GROUPS = [
-  {
-    label: 'Startup', cls: 'startup-grp', type: 'startup',
-    items: [
-      'Review of Protocol',
-      'Source Document Preparation',
-      'Questionnaire Development',
-      'REB Document Preparation',
-      'Health Canada Regulatory Document Preparation and Submission',
-      'Budget Development and Negotiations',
-      'Contract Review, Negotiation, Amendment',
-      'Site Agreement Negotiation',
-      'Recruitment Planning',
-      'Time for site initiation visits',
-      'Study Finance Management and Financial Tracking',
-      'Equipment and Facilities Setup',
-      'Advertisement of the Study'
-    ]
-  },
-  {
-    label: 'General \u2014 Study Conduct', cls: 'general-grp', type: 'general',
-    items: [
-      'Field Administration',
-      'Communication with Sponsor',
-      'Follow-up Unscheduled Visits',
-      'Query Resolutions',
-      'Monitoring Visit (internal team monitors)',
-      'FDA / Health Canada Audit',
-      'Adverse Events Review and Reporting',
-      'SAE Review and Reporting',
-      'Confirm Ongoing Consent',
-      'Medication Administration and Accountability',
-      'Distribute Questionnaire',
-      'Collect Questionnaire',
-      'Phone Call Visit: Visit Prep and Clean-Up',
-      'Phone Call Visit: Concomitant Meds, AEs, SAEs, Documentation',
-      'Phone Call Visit: Track Participants and Update Database',
-      'Phone Call Visit: Data Entry and Chart Review',
-      'Data Entry',
-      'CRF Completion'
-    ]
-  },
-  {
-    label: 'General \u2014 Closeout', cls: 'general-grp', type: 'general',
-    items: [
-      'Site Closure',
-      'Site Close-out Visits (personnel time)',
-      'Verification that all source documents are complete',
-      'Reconciliation of study drug / device accountability',
-      'Final lab sample reconciliation and storage',
-      'Database lock, final QC checks, and validation',
-      'Archiving of study documents (personnel time)',
-      'Completion of eCRF / CTMS / eTMF close-out tasks',
-      'Submission of final reports to regulators, ethics boards, and sponsors',
-      'Ethics board notification of trial closure',
-      'Submission of final safety reports or study results to regulators',
-      'Staff time for close-out, data verification, and documentation',
-      'Shipping of samples, documents, or study materials back to sponsor or archive',
-      'Disposal or return of study product / devices',
-      'Final payments to vendors, labs, or service providers',
-      'Project Management (internal meetings, PM, and admin)'
-    ]
-  },
-  {
-    label: 'General \u2014 Training', cls: 'general-grp', type: 'general',
-    items: [
-      'Primary team training',
-      'GCP training for site staff',
-      'Sponsor-required training modules',
-      'Protocol-specific training (lab procedures, patient assessments)',
-      'Site training',
-      'Training / Supervision of data entry'
-    ]
-  },
-  {
-    label: 'General \u2014 Data and Statistics (BCU)', cls: 'general-grp', type: 'general',
-    items: [
-      'Logistical Consultation with Investigator / Sponsor; Project Management',
-      'Trial design development / Methodology',
-      'Development of Data Management Plan',
-      'Development of Statistical Analysis Plan',
-      'Development of Randomization Plan and Randomization Coding',
-      'CRF Development and User Guide Development',
-      'Design, Build, Test and Document eCRF Database',
-      'CRF Quality Control Review of Study Database',
-      'Data Clarification Items to Sites',
-      'MedDRA Coding of Adverse Events',
-      'Manage Local Lab Normal Ranges',
-      'DSMB Activities (safety evaluation plan, reports, meetings)',
-      'Import and Reconciliation of Results',
-      'Statistical Analysis Reports and Tables',
-      'Consultation / Supervision of Statistical Analysis',
-      'Review of Statistical Tables',
-      'Study Closure Activities (database lock and data archiving)',
-      'Manuscript Preparation / Review'
-    ]
-  },
-  {
-    label: 'Per Participant \u2014 Visit Activities', cls: 'perpt-grp', type: 'perpt',
-    items: [
-      'Visit Preparations',
-      'Recruiting and Informed Consent',
-      'Chart Review',
-      'Screening \u2014 Review Eligibility Criteria',
-      'Medical History and Demographic Data Collection',
-      'Full Physical Examination (vital signs, weight, height)',
-      'Recording of Concomitant Medications',
-      'Blood Collection',
-      'Specimen Collection',
-      'Study Product Administration and Accountability',
-      'Adverse Events Review and Reporting (per visit)',
-      'Data Entry (per visit)',
-      'CRF Completion (per visit)'
-    ]
-  },
-  {
-    label: 'Per Participant \u2014 Equipment and Tests', cls: 'perpt-grp', type: 'perpt',
-    items: [
-      'Electrocardiogram',
-      'MRI',
-      'CT Scan',
-      'Pulmonary Function Testing',
-      'Functional tests (Berg balance, sit to stand, other)',
-      'Muscle strength and endurance assessment (Biodex)',
-      'Bioelectrical impedance analysis',
-      'Dual X-ray Absorptiometry (DXA)',
-      'Bronchoscopy, Gastroscopy or Endoscopy',
-      'Sleep Lab',
-      'Operating Room',
-      'Out-patient Tests / Procedures',
-      'In-patient Tests / Procedures'
-    ]
-  }
-];
-
-// ════════════════════════════════════════
-// ACTIVITY PICKER FUNCTIONS
+// ACTIVITY PICKER
 // ════════════════════════════════════════
 function getAddedActivityNames() {
-  var names = {};
-  var nameEls = document.querySelectorAll('[id^="te-name-"]');
+  var names   = {};
+  var nameEls = document.querySelectorAll('[id^="mc-name-"]');
   for (var i = 0; i < nameEls.length; i++) {
     var v = nameEls[i].value.trim().toLowerCase();
     if (v) names[v] = true;
@@ -1525,19 +1356,14 @@ function buildActPicker() {
     var grp = ACT_GROUPS[g];
     html += '<div class="ap-group" id="apg-' + g + '">' +
       '<div class="ap-group-head ' + grp.cls + '" onclick="toggleApGroup(' + g + ')">' +
-        '<span>' + grp.label + '</span>' +
-        '<span class="ap-group-chevron">&#9660;</span>' +
-      '</div>' +
+      '<span>' + grp.label + '</span><span class="ap-group-chevron">&#9660;</span></div>' +
       '<div class="ap-group-items" id="apgi-' + g + '">';
     for (var i = 0; i < grp.items.length; i++) {
-      var itemId = 'ap-' + g + '-' + i;
       var alreadyAdded = addedNames[grp.items[i].toLowerCase()] ? true : false;
       var badge = alreadyAdded ? '<span style="font-size:10px;color:#1d9e75;font-weight:700;flex-shrink:0;margin-left:auto;padding-left:10px">&#10003; Added</span>' : '';
-      html += '<label class="ap-item" id="' + itemId + '" for="apc-' + g + '-' + i + '">' +
+      html += '<label class="ap-item" for="apc-' + g + '-' + i + '">' +
         '<input type="checkbox" id="apc-' + g + '-' + i + '" onchange="apSelChange()">' +
-        '<span class="ap-item-name">' + grp.items[i] + '</span>' +
-        badge +
-      '</label>';
+        '<span class="ap-item-name">' + grp.items[i] + '</span>' + badge + '</label>';
     }
     html += '</div></div>';
   }
@@ -1557,11 +1383,10 @@ function openActPicker() {
   var overlay = document.getElementById('act-picker-overlay');
   var picker  = document.getElementById('act-picker');
   buildActPicker();
-  overlay.style.display = 'block';
-  picker.style.display  = 'flex';
+  if (overlay) overlay.style.display = 'block';
+  if (picker)  picker.style.display  = 'flex';
   var searchEl = document.getElementById('act-picker-search');
-  if (searchEl) { searchEl.value = ''; }
-  // Auto-open first group (Startup)
+  if (searchEl) searchEl.value = '';
   var firstItems = document.getElementById('apgi-0');
   var firstHead  = document.querySelector('#apg-0 .ap-group-head');
   if (firstItems && !firstItems.classList.contains('open')) {
@@ -1572,15 +1397,16 @@ function openActPicker() {
 }
 
 function closeActPicker() {
-  document.getElementById('act-picker-overlay').style.display = 'none';
-  document.getElementById('act-picker').style.display = 'none';
+  var overlay = document.getElementById('act-picker-overlay');
+  var picker  = document.getElementById('act-picker');
+  if (overlay) overlay.style.display = 'none';
+  if (picker)  picker.style.display  = 'none';
 }
 
 function apSelChange() {
-  var checked = document.querySelectorAll('#act-picker-body input[type=checkbox]:checked');
-  var countEl = document.getElementById('act-picker-count');
-  if (countEl) countEl.textContent = checked.length + (checked.length === 1 ? ' selected' : ' selected');
-  // Toggle visual selection state
+  var checked  = document.querySelectorAll('#act-picker-body input[type=checkbox]:checked');
+  var countEl  = document.getElementById('act-picker-count');
+  if (countEl) countEl.textContent = checked.length + ' selected';
   var allItems = document.querySelectorAll('.ap-item');
   for (var i = 0; i < allItems.length; i++) {
     var cb = allItems[i].querySelector('input[type=checkbox]');
@@ -1589,19 +1415,18 @@ function apSelChange() {
 }
 
 function filterActPicker() {
-  var q = document.getElementById('act-picker-search').value.trim().toLowerCase();
+  var q        = document.getElementById('act-picker-search').value.trim().toLowerCase();
   var allItems = document.querySelectorAll('.ap-item');
   for (var i = 0; i < allItems.length; i++) {
-    var name = allItems[i].querySelector('.ap-item-name');
+    var name  = allItems[i].querySelector('.ap-item-name');
     var match = !q || (name && name.textContent.toLowerCase().indexOf(q) !== -1);
     allItems[i].classList.toggle('ap-hidden', !match);
   }
-  // Auto-open groups that have visible matches when searching
   if (q) {
     for (var g = 0; g < ACT_GROUPS.length; g++) {
       var groupItems = document.querySelectorAll('#apgi-' + g + ' .ap-item:not(.ap-hidden)');
-      var itemsEl = document.getElementById('apgi-' + g);
-      var head    = document.querySelector('#apg-' + g + ' .ap-group-head');
+      var itemsEl    = document.getElementById('apgi-' + g);
+      var head       = document.querySelector('#apg-' + g + ' .ap-group-head');
       if (groupItems.length > 0) {
         if (itemsEl) itemsEl.classList.add('open');
         if (head)    head.classList.add('open');
@@ -1611,68 +1436,42 @@ function filterActPicker() {
 }
 
 function addSelectedActivities() {
-  var staffIds = getActiveStaffIds();
-  var checked  = document.querySelectorAll('#act-picker-body input[type=checkbox]:checked');
+  var checked = document.querySelectorAll('#act-picker-body input[type=checkbox]:checked');
   if (!checked.length) { closeActPicker(); return; }
-
   for (var i = 0; i < checked.length; i++) {
     var cb     = checked[i];
     var label  = cb.parentNode.querySelector('.ap-item-name');
     var name   = label ? label.textContent : '';
-    // Determine group index to get type
-    var idParts = cb.id.replace('apc-','').split('-');
+    var idParts = cb.id.replace('apc-', '').split('-');
     var gIdx    = parseInt(idParts[0]);
     var type    = ACT_GROUPS[gIdx] ? ACT_GROUPS[gIdx].type : 'general';
-    addActivityWithData(name, type, staffIds);
+    addMatrixRow(type, name);
   }
   closeActPicker();
   updateSummary();
 }
 
-function addActivityWithData(name, type, staffIds) {
-  actCtr++;
-  var id = actCtr;
-  if (!staffIds) staffIds = getActiveStaffIds();
-
-  var typeOpts = '<option value="general"' + (type==='general'?' selected':'') + '>General (flat study cost)</option>' +
-                 '<option value="perpt"'  + (type==='perpt' ?' selected':'') + '>Per participant</option>' +
-                 '<option value="startup"'+ (type==='startup'?' selected':'') + '>Startup (0% overhead)</option>';
-
-  var d = document.createElement('div');
-  d.className = 'te-activity';
-  d.id = 'te-act-' + id;
-  d.innerHTML =
-    '<div class="te-act-head">' +
-      '<div style="display:flex;align-items:centre;gap:10px;flex:1;min-width:0">' +
-        '<input type="text" class="fi" id="te-name-' + id + '" ' +
-          'value="' + name.replace(/"/g,'&quot;') + '" ' +
-          'placeholder="Activity name" ' +
-          'style="font-size:13px;font-weight:700;padding:6px 10px;flex:1" oninput="updateTEActivity(' + id + ')">' +
-        '<select class="fs" id="te-type-' + id + '" style="width:200px;font-size:12px;padding:6px 28px 6px 10px" ' +
-          'onchange="updateTEActivity(' + id + ')">' + typeOpts + '</select>' +
-      '</div>' +
-      '<button class="staff-rm" onclick="removeActivity(' + id + ')" style="margin-left:12px;flex-shrink:0">Remove</button>' +
-    '</div>' +
-    '<div class="te-act-body" id="te-body-' + id + '"></div>';
-
-  document.getElementById('te-activity-list').appendChild(d);
-  renderActivityStaffGrid(id, staffIds);
-  // Trigger badge render
-  updateTEActivity(id);
-}
-
 // ════════════════════════════════════════
 // BUDGET STATE — SAVE / RESTORE / AUTOSAVE
 // ════════════════════════════════════════
-var AUTOSAVE_KEY = 'rimuhc_budget_v1';
-var autosaveTimer = null;
+function serializeMatrix() {
+  var result = [];
+  var rowIds = Object.keys(matrixData);
+  for (var i = 0; i < rowIds.length; i++) {
+    var rowId = rowIds[i];
+    var row   = matrixData[rowId];
+    var hrs   = {};
+    var sIds  = Object.keys(row.hours);
+    for (var j = 0; j < sIds.length; j++) hrs[sIds[j]] = row.hours[sIds[j]];
+    result.push({id: rowId, type: row.type, name: row.name, hours: hrs});
+  }
+  return result;
+}
 
 function getBudgetState() {
-  var state = { v: 1, saved: new Date().toISOString() };
+  var state = {v: 1, saved: new Date().toISOString()};
 
-  // Setup fields
-  var setupIds = ['study-title','study-protocol','study-years','study-n',
-                  'study-sites','study-type','multiyear'];
+  var setupIds = ['study-title','study-protocol','study-years','study-n','study-sites','study-type','multiyear','found-oh-pct'];
   state.setup = {};
   for (var i = 0; i < setupIds.length; i++) {
     var el = document.getElementById(setupIds[i]);
@@ -1680,67 +1479,42 @@ function getBudgetState() {
   }
   state.funding = funding;
 
-  // Staff rows
   state.staff = [];
-  var staffRows = document.querySelectorAll('.staff-row');
+  var staffRows = document.querySelectorAll('#staff-tbody tr[data-staff-id]');
   for (var i = 0; i < staffRows.length; i++) {
-    var id = staffRows[i].id.replace('sr-','');
+    var id = staffRows[i].getAttribute('data-staff-id');
     state.staff.push({
-      role: document.getElementById('s-role-'+id) ? document.getElementById('s-role-'+id).value : '',
-      name: document.getElementById('s-name-'+id) ? document.getElementById('s-name-'+id).value : '',
-      sal:  document.getElementById('s-sal-'+id)  ? document.getElementById('s-sal-'+id).value  : '',
-      fte:  document.getElementById('s-fte-'+id)  ? document.getElementById('s-fte-'+id).value  : '',
-      hrs:  document.getElementById('s-hrs-'+id)  ? document.getElementById('s-hrs-'+id).value  : ''
+      role: document.getElementById('s-role-' + id) ? document.getElementById('s-role-' + id).value : '',
+      name: document.getElementById('s-name-' + id) ? document.getElementById('s-name-' + id).value : '',
+      sal:  document.getElementById('s-sal-'  + id) ? document.getElementById('s-sal-'  + id).value : '',
+      fte:  document.getElementById('s-fte-'  + id) ? document.getElementById('s-fte-'  + id).value : '100'
     });
   }
 
-  // T&E activities
-  state.activities = [];
-  var acts = document.querySelectorAll('.te-activity');
-  for (var i = 0; i < acts.length; i++) {
-    var actId = acts[i].id.replace('te-act-','');
-    var act = {
-      name: document.getElementById('te-name-'+actId) ? document.getElementById('te-name-'+actId).value : '',
-      type: document.getElementById('te-type-'+actId) ? document.getElementById('te-type-'+actId).value : 'general',
-      hours: {}
-    };
-    var hrsInputs = acts[i].querySelectorAll('input[data-act]');
-    for (var j = 0; j < hrsInputs.length; j++) {
-      var sid = hrsInputs[j].getAttribute('data-staff');
-      act.hours[sid] = hrsInputs[j].value;
-    }
-    state.activities.push(act);
-  }
+  state.activities = serializeMatrix();
 
-  // Services: all svc-qty inputs in accordion (keyed by position index)
   state.svcQtys = [];
   var svcInputs = document.querySelectorAll('#svc-cim-accordion .svc-qty input');
   for (var i = 0; i < svcInputs.length; i++) {
-    if (parseFloat(svcInputs[i].value) > 0) {
-      state.svcQtys.push({idx: i, val: svcInputs[i].value});
-    }
+    if (parseFloat(svcInputs[i].value) > 0) state.svcQtys.push({idx: i, val: svcInputs[i].value});
   }
 
-  // Lab quantities (only non-zero)
   state.labQtys = [];
   var labInputs = document.querySelectorAll('.lab-row input');
   for (var i = 0; i < labInputs.length; i++) {
     if (parseFloat(labInputs[i].value) > 0) {
-      var row = labInputs[i].closest('.lab-row');
+      var row = labInputs[i].closest ? labInputs[i].closest('.lab-row') : labInputs[i].parentNode.parentNode;
       state.labQtys.push({code: row ? row.getAttribute('data-code') : i, val: labInputs[i].value});
     }
   }
 
-  // Participant costs
-  var ptIds = ['pt-stip-amt','pt-stip-visits','pt-trans-amt','pt-trans-visits',
-               'pt-park-amt','pt-park-visits','pt-other-amt'];
+  var ptIds = ['pt-stip-amt','pt-stip-visits','pt-trans-amt','pt-trans-visits','pt-park-amt','pt-park-visits','pt-other-amt'];
   state.participant = {};
   for (var i = 0; i < ptIds.length; i++) {
     var el = document.getElementById(ptIds[i]);
     if (el) state.participant[ptIds[i]] = el.value;
   }
 
-  // Travel
   state.travel = {};
   var tvIds = ['tv-inv','tv-mon','tv-other'];
   for (var i = 0; i < tvIds.length; i++) {
@@ -1748,25 +1522,19 @@ function getBudgetState() {
     if (el) state.travel[tvIds[i]] = el.value;
   }
 
-  // Other costs (freeform rows)
   state.others = [];
   var otherRows = document.querySelectorAll('#other-list .other-row');
   for (var i = 0; i < otherRows.length; i++) {
     var inputs = otherRows[i].querySelectorAll('input');
-    state.others.push({
-      desc: inputs[0] ? inputs[0].value : '',
-      amt:  inputs[1] ? inputs[1].value : '0'
-    });
+    state.others.push({desc: inputs[0] ? inputs[0].value : '', amt: inputs[1] ? inputs[1].value : '0'});
   }
 
-  // REB
   state.reb = {
     renewals:   document.getElementById('reb-renewals')   ? document.getElementById('reb-renewals').value   : '0',
     amendments: document.getElementById('reb-amendments') ? document.getElementById('reb-amendments').value : '0',
     include:    document.getElementById('reb-include')    ? document.getElementById('reb-include').value    : 'yes'
   };
 
-  // Contingency
   state.contingency = {
     level: contLevel,
     pct:   document.getElementById('cont-pct') ? document.getElementById('cont-pct').value : ''
@@ -1778,90 +1546,124 @@ function getBudgetState() {
 function setBudgetState(state) {
   if (!state || state.v !== 1) return;
 
-  // Setup
   if (state.setup) {
-    var setupIds = ['study-title','study-protocol','study-years','study-n',
-                    'study-sites','study-type','multiyear'];
+    var setupIds = ['study-title','study-protocol','study-years','study-n','study-sites','study-type','multiyear'];
     for (var i = 0; i < setupIds.length; i++) {
       var el = document.getElementById(setupIds[i]);
       if (el && state.setup[setupIds[i]] !== undefined) el.value = state.setup[setupIds[i]];
     }
+    if (state.setup['found-oh-pct']) {
+      var fohEl = document.getElementById('found-oh-pct');
+      if (fohEl) fohEl.value = state.setup['found-oh-pct'];
+    }
   }
 
-  // Funding
   if (state.funding) selectFunding(state.funding);
 
-  // Staff — clear default row and rebuild
-  var staffList = document.getElementById('staff-list');
-  staffList.innerHTML = '';
+  // Clear staff and matrix
+  var tbody = document.getElementById('staff-tbody');
+  if (tbody) tbody.innerHTML = '';
   staffCtr = 0;
+
+  // Clear matrix header columns
+  var headRow = document.getElementById('mc-head-row');
+  if (headRow) {
+    var oldCols = headRow.querySelectorAll('th[data-staff-id]');
+    for (var i = 0; i < oldCols.length; i++) oldCols[i].parentNode.removeChild(oldCols[i]);
+  }
+  var rateRow = document.getElementById('mc-rate-row');
+  if (rateRow) {
+    var oldRateCols = rateRow.querySelectorAll('th[data-staff-id]');
+    for (var i = 0; i < oldRateCols.length; i++) oldRateCols[i].parentNode.removeChild(oldRateCols[i]);
+  }
+  var tfootHrs  = document.getElementById('mc-tfoot-hrs');
+  var tfootCost = document.getElementById('mc-tfoot-cost');
+  if (tfootHrs)  { var fc = tfootHrs.querySelectorAll('td[data-staff-id]');  for (var i=0;i<fc.length;i++) fc[i].parentNode.removeChild(fc[i]); }
+  if (tfootCost) { var fc = tfootCost.querySelectorAll('td[data-staff-id]'); for (var i=0;i<fc.length;i++) fc[i].parentNode.removeChild(fc[i]); }
+
+  // Clear matrix data and activity rows
+  matrixData   = {};
+  matrixRowCtr = 0;
+  var tbodyIds = ['mc-tbody-startup','mc-tbody-general','mc-tbody-perpt'];
+  for (var t = 0; t < tbodyIds.length; t++) {
+    var mtb = document.getElementById(tbodyIds[t]);
+    if (!mtb) continue;
+    var rows = mtb.querySelectorAll('tr[data-row-id]');
+    for (var i = 0; i < rows.length; i++) rows[i].parentNode.removeChild(rows[i]);
+  }
+
+  // Restore staff
   if (state.staff && state.staff.length) {
     for (var i = 0; i < state.staff.length; i++) {
       addStaffRow();
       var id = staffCtr;
-      var s = state.staff[i];
-      if (s.role !== undefined && document.getElementById('s-role-'+id)) {
-        document.getElementById('s-role-'+id).value = s.role;
-        if (s.role !== '') staffRoleChange(id);
+      var s  = state.staff[i];
+      if (s.role !== undefined) {
+        var roleEl = document.getElementById('s-role-' + id);
+        if (roleEl) { roleEl.value = s.role; if (s.role !== '') staffRoleChange(id); }
       }
-      if (s.name !== undefined && document.getElementById('s-name-'+id)) document.getElementById('s-name-'+id).value = s.name;
-      if (s.sal  !== undefined && document.getElementById('s-sal-'+id))  { document.getElementById('s-sal-'+id).value = s.sal; staffSalChange(id); }
-      if (s.fte  !== undefined && document.getElementById('s-fte-'+id))  document.getElementById('s-fte-'+id).value = s.fte;
-      if (s.hrs  !== undefined && document.getElementById('s-hrs-'+id))  document.getElementById('s-hrs-'+id).value = s.hrs;
+      if (s.name !== undefined) { var nel = document.getElementById('s-name-' + id); if (nel) nel.value = s.name; }
+      if (s.sal  !== undefined) { var sel = document.getElementById('s-sal-'  + id); if (sel) { sel.value = s.sal; staffSalChange(id); } }
+      if (s.fte  !== undefined) { var fel = document.getElementById('s-fte-'  + id); if (fel) fel.value = s.fte || '100'; }
     }
-  } else {
-    addStaffRow();
   }
 
-  // T&E activities
-  var actList = document.getElementById('te-activity-list');
-  actList.innerHTML = '';
-  actCtr = 0;
+  // Restore activities
   if (state.activities && state.activities.length) {
-    var staffIds = getActiveStaffIds();
     for (var i = 0; i < state.activities.length; i++) {
-      var act = state.activities[i];
-      addActivityWithData(act.name, act.type, staffIds);
-      var id = actCtr;
-      // Restore hours — map by staff counter position
+      var act   = state.activities[i];
+      var rowId;
+      if (act.id) {
+        rowId = act.id;
+        var n = parseInt(act.id.replace('r', ''));
+        if (!isNaN(n) && n >= matrixRowCtr) matrixRowCtr = n;
+      } else {
+        matrixRowCtr++;
+        rowId = 'r' + matrixRowCtr;
+      }
+      matrixData[rowId] = {type: act.type || 'general', name: act.name || '', hours: {}};
+      appendMatrixRow(rowId, act.type || 'general', act.name || '');
       if (act.hours) {
-        for (var sid in act.hours) {
-          var hrsEl = document.getElementById('te-hrs-'+id+'-'+sid);
-          if (hrsEl) { hrsEl.value = act.hours[sid]; calcTERow(id, sid); }
+        var hKeys = Object.keys(act.hours);
+        for (var j = 0; j < hKeys.length; j++) {
+          var staffId = hKeys[j];
+          var hrs     = act.hours[staffId];
+          if (hrs && parseFloat(hrs) > 0) {
+            matrixData[rowId].hours[staffId] = hrs;
+            var inp = document.getElementById('mc-' + rowId + '-' + staffId);
+            if (inp) inp.value = hrs;
+          }
         }
       }
     }
+    showMatrix();
+    var rIds = Object.keys(matrixData);
+    for (var i = 0; i < rIds.length; i++) updateMatrixRowTotal(rIds[i]);
+    updateMatrixFooter();
   }
 
-  // Services — restore after renderSvcs has run
+  // Restore services
   if (state.svcQtys && state.svcQtys.length) {
     var svcInputs = document.querySelectorAll('#svc-cim-accordion .svc-qty input');
     for (var i = 0; i < state.svcQtys.length; i++) {
       var entry = state.svcQtys[i];
-      if (svcInputs[entry.idx]) {
-        svcInputs[entry.idx].value = entry.val;
-        svcCalc(svcInputs[entry.idx]);
-      }
+      if (svcInputs[entry.idx]) { svcInputs[entry.idx].value = entry.val; svcCalc(svcInputs[entry.idx]); }
     }
   }
 
-  // Lab — restore by code after lazy render
+  // Restore lab
   if (state.labQtys && state.labQtys.length) {
     if (!labRendered) renderLab();
     for (var i = 0; i < state.labQtys.length; i++) {
       var entry = state.labQtys[i];
-      var row = document.querySelector('.lab-row[data-code="'+entry.code+'"]');
-      if (row) {
-        var inp = row.querySelector('input');
-        if (inp) { inp.value = entry.val; svcCalc(inp); }
-      }
+      var row = document.querySelector('.lab-row[data-code="' + entry.code + '"]');
+      if (row) { var inp = row.querySelector('input'); if (inp) { inp.value = entry.val; svcCalc(inp); } }
     }
   }
 
-  // Participant costs
+  // Restore participant costs
   if (state.participant) {
-    var ptIds = ['pt-stip-amt','pt-stip-visits','pt-trans-amt','pt-trans-visits',
-                 'pt-park-amt','pt-park-visits','pt-other-amt'];
+    var ptIds = ['pt-stip-amt','pt-stip-visits','pt-trans-amt','pt-trans-visits','pt-park-amt','pt-park-visits','pt-other-amt'];
     for (var i = 0; i < ptIds.length; i++) {
       var el = document.getElementById(ptIds[i]);
       if (el && state.participant[ptIds[i]] !== undefined) el.value = state.participant[ptIds[i]];
@@ -1869,7 +1671,7 @@ function setBudgetState(state) {
     calcPtCost();
   }
 
-  // Travel
+  // Restore travel
   if (state.travel) {
     var tvIds = ['tv-inv','tv-mon','tv-other'];
     for (var i = 0; i < tvIds.length; i++) {
@@ -1878,21 +1680,21 @@ function setBudgetState(state) {
     }
   }
 
-  // Other costs
+  // Restore other costs
   if (state.others && state.others.length) {
     for (var i = 0; i < state.others.length; i++) {
       addOther();
-      var id = otherCtr;
-      var row = document.getElementById('ot-'+id);
-      if (row) {
-        var inputs = row.querySelectorAll('input');
+      var id   = otherCtr;
+      var oRow = document.getElementById('ot-' + id);
+      if (oRow) {
+        var inputs = oRow.querySelectorAll('input');
         if (inputs[0]) inputs[0].value = state.others[i].desc;
         if (inputs[1]) inputs[1].value = state.others[i].amt;
       }
     }
   }
 
-  // REB
+  // Restore REB
   if (state.reb) {
     if (document.getElementById('reb-renewals'))   document.getElementById('reb-renewals').value   = state.reb.renewals;
     if (document.getElementById('reb-amendments')) document.getElementById('reb-amendments').value = state.reb.amendments;
@@ -1900,28 +1702,30 @@ function setBudgetState(state) {
     calcREB();
   }
 
-  // Contingency
+  // Restore contingency
   if (state.contingency) {
     selectCont(state.contingency.level || 'mod');
-    if (state.contingency.pct && document.getElementById('cont-pct')) {
-      document.getElementById('cont-pct').value = state.contingency.pct;
+    if (state.contingency.pct) {
+      var pctEl = document.getElementById('cont-pct');
+      if (pctEl) pctEl.value = state.contingency.pct;
     }
   }
 
   updateSummary();
 }
 
-// ── Auto-save ──
 function autoSave() {
   try {
     var state = getBudgetState();
     localStorage.setItem(AUTOSAVE_KEY, JSON.stringify(state));
-    var notice = document.getElementById('autosave-notice');
-    if (notice) {
-      var t = new Date();
-      notice.textContent = 'Auto-saved ' + t.toLocaleTimeString([], {hour:'2-digit',minute:'2-digit'});
-      notice.style.display = 'block';
-    }
+    var t   = new Date();
+    var msg = 'Auto-saved ' + t.toLocaleTimeString([], {hour:'2-digit', minute:'2-digit'});
+    var n1  = document.getElementById('autosave-notice');
+    var n2  = document.getElementById('autosave-notice-rv');
+    var n3  = document.getElementById('bth-saved-hdr');
+    if (n1) { n1.textContent = msg; }
+    if (n2) { n2.textContent = msg; }
+    if (n3) { n3.textContent = msg; }
   } catch(e) {}
 }
 
@@ -1930,19 +1734,18 @@ function scheduleAutoSave() {
   autosaveTimer = setTimeout(autoSave, 1500);
 }
 
-// ── Export to JSON file ──
 function exportBudget() {
-  var state = getBudgetState();
-  var title = (document.getElementById('study-title').value || 'budget').replace(/[^a-z0-9]/gi,'_').toLowerCase();
-  var fname = 'rimuhc_budget_' + title + '.json';
-  var blob = new Blob([JSON.stringify(state, null, 2)], {type: 'application/json'});
-  var url  = URL.createObjectURL(blob);
-  var a    = document.createElement('a');
+  var state  = getBudgetState();
+  var titleEl = document.getElementById('study-title');
+  var title  = (titleEl && titleEl.value ? titleEl.value : 'budget').replace(/[^a-z0-9]/gi, '_').toLowerCase();
+  var fname  = 'rimuhc_budget_' + title + '.json';
+  var blob   = new Blob([JSON.stringify(state, null, 2)], {type: 'application/json'});
+  var url    = URL.createObjectURL(blob);
+  var a      = document.createElement('a');
   a.href = url; a.download = fname; a.click();
   URL.revokeObjectURL(url);
 }
 
-// ── Import from JSON file ──
 function importBudget(input) {
   var file = input.files[0];
   if (!file) return;
@@ -1951,8 +1754,11 @@ function importBudget(input) {
     try {
       var state = JSON.parse(e.target.result);
       setBudgetState(state);
-      var notice = document.getElementById('autosave-notice');
-      if (notice) { notice.textContent = 'Budget loaded from file'; notice.style.display = 'block'; }
+      var msg = 'Budget loaded from file';
+      var n1  = document.getElementById('autosave-notice');
+      var n2  = document.getElementById('autosave-notice-rv');
+      if (n1) n1.textContent = msg;
+      if (n2) n2.textContent = msg;
     } catch(err) {
       alert('Could not load file. Please make sure it is a valid budget file saved from this tool.');
     }
@@ -1961,7 +1767,6 @@ function importBudget(input) {
   reader.readAsText(file);
 }
 
-// ── Check for auto-saved state on load ──
 function checkAutoSave() {
   try {
     var saved = localStorage.getItem(AUTOSAVE_KEY);
@@ -1969,32 +1774,21 @@ function checkAutoSave() {
     var state = JSON.parse(saved);
     if (!state || !state.saved) return;
     var savedDate = new Date(state.saved);
-    var title = (state.setup && state.setup['study-title']) ? state.setup['study-title'] : 'untitled budget';
-    var msg = 'A saved budget was found: "' + title + '" (saved ' + savedDate.toLocaleString() + ').\n\nRestore it?';
+    var title     = (state.setup && state.setup['study-title']) ? state.setup['study-title'] : 'untitled budget';
+    var msg       = 'A saved budget was found: "' + title + '" (saved ' + savedDate.toLocaleString() + ').\n\nRestore it?';
     if (confirm(msg)) {
       setBudgetState(state);
-      var notice = document.getElementById('autosave-notice');
-      if (notice) { notice.textContent = 'Budget restored from auto-save'; notice.style.display = 'block'; }
+      var n1 = document.getElementById('autosave-notice');
+      var n2 = document.getElementById('autosave-notice-rv');
+      if (n1) n1.textContent = 'Budget restored from auto-save';
+      if (n2) n2.textContent = 'Budget restored from auto-save';
     }
   } catch(e) {}
 }
 
 // ════════════════════════════════════════
-// INIT
+// HELPERS
 // ════════════════════════════════════════
-document.addEventListener('DOMContentLoaded', function() {
-  renderSvcs();
-  calcREB();
-  addStaffRow();
-  calcPtCost();
-  updateSummary();
-  checkAutoSave();
-});
-
-// ════════════════════════════════════════
-// NEW HELPER FUNCTIONS
-// ════════════════════════════════════════
-
 function getOtherCostsTotal() {
   var total = 0;
   var oAmts = document.querySelectorAll('.oa');
@@ -2002,24 +1796,11 @@ function getOtherCostsTotal() {
   return total;
 }
 
-function getStartupMultiYear() {
-  var years = parseInt(document.getElementById('study-years').value) || 1;
-  var cola  = document.getElementById('multiyear').value === 'yes';
-  var startupY1 = getTEStartupTotal();
-  if (cola && years > 1) {
-    var total = 0;
-    for (var y = 0; y < years; y++) total += startupY1 * Math.pow(1.05, y);
-    return total;
-  }
-  return startupY1 * years;
-}
-
 function syncStudyType() {
   var sitesEl = document.getElementById('study-sites');
   var typeEl  = document.getElementById('study-type');
   if (!sitesEl || !typeEl) return;
-  var sites = parseInt(sitesEl.value) || 1;
-  typeEl.value = sites > 1 ? 'multi' : 'single';
+  typeEl.value = (parseInt(sitesEl.value) || 1) > 1 ? 'multi' : 'single';
 }
 
 function syncStudySites() {
@@ -2034,84 +1815,20 @@ function syncStudySites() {
   }
 }
 
-function expandAllSvc() {
-  // Expand all CIM accordion groups
-  for (var g = 0; g < SVC_CIM_DATA.length; g++) {
-    var body = document.getElementById('svc-body-' + g);
-    var head = document.querySelector('#svc-grp-' + g + ' .svc-acc-head');
-    if (body && body.style.display === 'none') {
-      body.style.display = 'block';
-      if (head) head.classList.add('svc-acc-open');
+// ════════════════════════════════════════
+// INIT
+// ════════════════════════════════════════
+document.addEventListener('DOMContentLoaded', function() {
+  renderSvcs();
+  calcREB();
+  calcPtCost();
+  updateSummary();
+  checkAutoSave();
+  window.addEventListener('beforeprint', renderPrintSections);
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+      closeActPicker();
+      document.activeElement.blur();
     }
-  }
-  // Expand pharma, IT, MUHC, lab
-  var extras = ['pharma', 'it', 'muhc', 'lab'];
-  for (var i = 0; i < extras.length; i++) {
-    var body = document.getElementById('svc-body-' + extras[i]);
-    var head = document.querySelector('#svc-grp-' + extras[i] + ' .svc-acc-head');
-    if (body && body.style.display === 'none') {
-      body.style.display = 'block';
-      if (head) head.classList.add('svc-acc-open');
-      if (extras[i] === 'lab' && !labRendered) renderLab();
-    }
-  }
-}
-
-function toggleYearly() {
-  var panel = document.getElementById('sum-yearly');
-  var btn   = document.getElementById('sum-yearly-btn');
-  if (!panel) return;
-  var isOpen = panel.style.display !== 'none';
-  panel.style.display = isOpen ? 'none' : 'block';
-  if (btn) btn.textContent = isOpen ? 'Show year-by-year ▾' : 'Hide year-by-year ▴';
-}
-
-function renderYearlyBreakdown() {
-  var panel = document.getElementById('sum-yearly');
-  if (!panel || panel.style.display === 'none') return;
-  var years = parseInt(document.getElementById('study-years').value) || 1;
-  var cola  = document.getElementById('multiyear').value === 'yes';
-  var teY1  = getTEStaffTotal();
-  if (!teY1 || years <= 1) return;
-
-  var html = '<div style="font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#888;padding-bottom:5px;border-bottom:1px solid #e5e5e5;margin-bottom:4px">Staff costs by year</div>';
-  for (var y = 0; y < years; y++) {
-    var yrAmt = cola ? teY1 * Math.pow(1.05, y) : teY1;
-    var pct   = cola && y > 0 ? ' <span style="color:#aaa;font-size:10px">(+' + (Math.round((Math.pow(1.05,y)-1)*1000)/10).toFixed(1) + '%)</span>' : '';
-    html += '<div class="sum-yearly-row"><span class="sum-yl">Year ' + (y+1) + pct + '</span><span class="sum-ya">$' + Math.round(yrAmt).toLocaleString() + '</span></div>';
-  }
-  html += '<div style="font-size:10px;color:#aaa;margin-top:6px;line-height:1.45">Services, REB fees, and contingency are study totals shown above.</div>';
-  panel.innerHTML = html;
-}
-
-function updateTabDots(staffAmt, svcAmt) {
-  var titleEl = document.getElementById('study-title');
-  var d0 = document.getElementById('tdot0');
-  if (d0) d0.classList.toggle('done', !!(titleEl && titleEl.value.trim()));
-
-  var staffRows = document.querySelectorAll('.staff-row');
-  var d1 = document.getElementById('tdot1');
-  if (d1) d1.classList.toggle('done', staffRows.length > 0 && staffAmt > 0);
-
-  var acts = document.querySelectorAll('.te-activity');
-  var d2 = document.getElementById('tdot2');
-  if (d2) d2.classList.toggle('done', acts.length > 0);
-
-  var d3 = document.getElementById('tdot3');
-  if (d3) d3.classList.toggle('done', svcAmt > 0);
-}
-
-function toggleDA(btn){
-  var sub=btn.nextElementSibling;
-  var isOpen=sub.classList.contains('open');
-  var allSubs=document.querySelectorAll('.da-sub.open');
-  var allBtns=document.querySelectorAll('.da-trigger.open');
-  for(var i=0;i<allSubs.length;i++){allSubs[i].classList.remove('open');}
-  for(var i=0;i<allBtns.length;i++){allBtns[i].classList.remove('open');}
-  if(!isOpen){sub.classList.add('open');btn.classList.add('open');}
-}
-function toggleDASec(btn){var body=btn.nextElementSibling;if(!body)return;var isOpen=body.classList.contains('open');body.classList.toggle('open',!isOpen);btn.classList.toggle('open',!isOpen);}
-document.addEventListener('keydown',function(e){if(e.key==='Escape'){document.activeElement.blur();}});
-
-
-
+  });
+});
