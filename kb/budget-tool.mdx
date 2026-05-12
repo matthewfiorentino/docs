@@ -497,7 +497,7 @@ export const BT_HTML = `
 
       <div class="sub-head">REB Fees</div>
       <p class="sec-desc" style="margin-bottom:16px">REB fees are calculated from the MSSS fee schedule (April 2025). Renewals auto-suggest when you set study years.</p>
-      <div class="ci" id="reb-iit-note" style="display:none"><strong>IIT / Foundation study:</strong> The MSSS fee schedule applies to costs billed to a private company. Toggle inclusion below.</div>
+      <div class="ci" id="reb-iit-note" style="display:none"><strong>IIT / Foundation study:</strong> REB fees are a real cost but some funders require them listed separately rather than included in the grant total. Check your funder's instructions, then set the option below.</div>
       <div class="frow" style="margin-bottom:16px">
         <div class="fg">
           <label class="fl">Annual renewals</label>
@@ -511,7 +511,7 @@ export const BT_HTML = `
         </div>
       </div>
       <div class="fg" style="max-width:300px">
-        <label class="fl">Include REB fees in total?</label>
+        <label class="fl">Include REB fees in the grand total?</label>
         <select class="fs" id="reb-include" onchange="updateSummary()">
           <option value="yes">Yes &mdash; include in total</option>
           <option value="no">No &mdash; show for reference only</option>
