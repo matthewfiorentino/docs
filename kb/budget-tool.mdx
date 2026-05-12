@@ -1,16 +1,12 @@
 ---
 title: "Clinical Trial Budget Tool"
 description: "Build a complete single-site clinical trial budget using RI-MUHC salary scales, CIM service prices, and the current REB fee schedule."
-mode: "custom"
+mode: "frame"
 ---
 
-<style>{`
-/* ══════════════════════════════════════════════════════
-   BUDGET TOOL — TOKENS + STYLES
-   Palette: minimalist white-surface, teal accent #007468,
-   navy #2b2666, matching My Study Roadmap / Learning Lab
-   ══════════════════════════════════════════════════════ */
+import { useEffect } from 'react'
 
+export const BT_CSS = `
 /* ── MINTLIFY DEFENSIVE RESETS ── */
 #bt-wrap ul, #bt-wrap ol { list-style: none !important; padding: 0 !important; margin: 0 !important; }
 #bt-wrap ul li::marker, #bt-wrap ol li::marker { content: "" !important; }
@@ -19,7 +15,6 @@ mode: "custom"
 #bt-wrap {
   --navy:        #2b2666;
   --teal:        #007468;
-  --teal-bright: #007468;
   --teal-ll:     #f0faf9;
   --sky:         #2b9ce2;
   --sky-l:       #e5f3fb;
@@ -38,7 +33,6 @@ mode: "custom"
   --textd:       #888888;
   --bdr:         #d0d0d0;
   --bdr-soft:    #e5e5e5;
-  --radius:      6px;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
   font-size: 14px;
   color: var(--text);
@@ -235,7 +229,7 @@ mode: "custom"
 .sum-foot { padding: 0 18px 18px; display: flex; flex-direction: column; gap: 8px; }
 .pbtn { display: flex; align-items: center; justify-content: center; gap: 8px; font-size: 11.5px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; color: #fff; background: #007468; border: none; padding: 12px 14px; cursor: pointer; font-family: inherit; transition: opacity .12s; width: 100%; border-radius: 6px; }
 .pbtn:hover { opacity: .88; }
-.xlink { display: flex; align-items: center; justify-content: center; gap: 7px; font-size: 11px; font-weight: 700; color: #888; border: 1.5px solid #e5e5e5; padding: 9px 12px; text-decoration: none; transition: border-color .12s, color .12s; border-radius: 6px; cursor: pointer; }
+.xlink { display: flex; align-items: center; justify-content: center; gap: 7px; font-size: 11px; font-weight: 700; color: #888; border: 1.5px solid #e5e5e5; padding: 9px 12px; text-decoration: none; transition: border-color .12s, color .12s; border-radius: 6px; cursor: pointer; background: none; }
 .xlink:hover { border-color: #2b2666; color: #2b2666; }
 
 /* ── SERVICE ACCORDION ── */
@@ -294,11 +288,12 @@ mode: "custom"
   .svc-cat-head, .svc-top-head { background: #2b2666 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
   .svc-acc-body { display: block !important; }
 }
-`}</style>
+`;
 
+export const BT_HTML = `
 <div class="bt-hero">
   <div class="bt-hero-inner">
-    <div class="bt-eyebrow">Knowledge Base — Study Planning</div>
+    <div class="bt-eyebrow">Knowledge Base &mdash; Study Planning</div>
     <h1 class="bt-h1">Clinical Trial Budget Tool</h1>
     <p class="bt-intro">Build a complete single-site clinical trial budget using RI-MUHC salary scales, CIM service prices, and the April 2025 REB fee schedule. Work through each tab in order, then download your budget summary as a PDF.</p>
     <div class="bt-meta">Fee data: January 2026 &nbsp;&middot;&nbsp; <a href="/kb/budget-reference">Budget reference and guidance &rarr;</a></div>
@@ -306,7 +301,6 @@ mode: "custom"
 </div>
 
 <div id="bt-wrap">
-
   <div class="bt-tabs">
     <div class="tab-list">
       <button class="tab-btn active" onclick="showTab(0)" id="tb0">1&thinsp;&middot;&thinsp;Study Setup</button>
@@ -317,12 +311,10 @@ mode: "custom"
       <button class="tab-btn" onclick="showTab(5)" id="tb5">6&thinsp;&middot;&thinsp;Contingency</button>
     </div>
 
-    <!-- TAB 1: STUDY SETUP -->
     <div class="tab-panel active" id="p0">
       <div class="sec-label">Step 1 of 6</div>
       <div class="sec-h2">Study Setup</div>
       <p class="sec-desc">Enter your study information. The funding type determines the overhead rate applied to all eligible costs and controls which fields are visible throughout the tool.</p>
-
       <div class="fg">
         <label class="fl">Study title</label>
         <input type="text" class="fi" id="study-title" placeholder="Enter the full protocol title">
@@ -337,28 +329,16 @@ mode: "custom"
           <input type="number" class="fi" id="study-years" value="1" min="1" max="10" oninput="updateSummary();suggestRenewals()">
         </div>
       </div>
-
       <div class="fg">
         <label class="fl">Funding type</label>
         <span class="fh">Sets overhead rate. Industry fields appear automatically when Industry-Sponsored is selected.</span>
         <div class="fund-grid">
-          <div class="fund-card" id="fc-iit" onclick="selectFunding('iit')">
-            <div class="fclabel">Investigator-Initiated (IIT)</div>
-            <div class="fcdesc">0% overhead</div>
-          </div>
-          <div class="fund-card" id="fc-found" onclick="selectFunding('found')">
-            <div class="fclabel">Foundation / Charity</div>
-            <div class="fcdesc">15% overhead</div>
-          </div>
-          <div class="fund-card" id="fc-ind" onclick="selectFunding('ind')">
-            <div class="fclabel">Industry-Sponsored</div>
-            <div class="fcdesc">30% overhead</div>
-          </div>
+          <div class="fund-card" id="fc-iit" onclick="selectFunding('iit')"><div class="fclabel">Investigator-Initiated (IIT)</div><div class="fcdesc">0% overhead</div></div>
+          <div class="fund-card" id="fc-found" onclick="selectFunding('found')"><div class="fclabel">Foundation / Charity</div><div class="fcdesc">15% overhead</div></div>
+          <div class="fund-card" id="fc-ind" onclick="selectFunding('ind')"><div class="fclabel">Industry-Sponsored</div><div class="fcdesc">30% overhead</div></div>
         </div>
       </div>
-
       <div class="ci" id="ind-note" style="display:none"><strong>Industry-sponsored:</strong> 30% overhead applies to eligible costs. The PI salary line is included. Startup activities are subject to 0% overhead &mdash; mark them as &ldquo;Startup&rdquo; in the Time and Effort tab.</div>
-
       <div class="frow">
         <div class="fg">
           <label class="fl">Expected number of participants</label>
@@ -370,7 +350,6 @@ mode: "custom"
           <input type="number" class="fi" id="study-sites" value="1" min="1" max="15" oninput="calcREB()">
         </div>
       </div>
-
       <div class="fg">
         <label class="fl">Study type</label>
         <select class="fs" id="study-type">
@@ -378,7 +357,6 @@ mode: "custom"
           <option value="multi">Multicentre (2 or more HSSN institutions)</option>
         </select>
       </div>
-
       <div class="fg">
         <label class="fl">Multi-year study COLA</label>
         <select class="fs" id="multiyear" onchange="updateSummary()">
@@ -386,104 +364,55 @@ mode: "custom"
           <option value="yes">Yes &mdash; apply 5% annual COLA to staff costs each year</option>
         </select>
       </div>
-
       <div class="nav-btns">
-        <button class="add-btn" onclick="showTab(1)">
-          Continue to Staff
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-        </button>
+        <button class="add-btn" onclick="showTab(1)">Continue to Staff <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></button>
       </div>
     </div>
 
-    <!-- TAB 2: STAFF -->
     <div class="tab-panel" id="p1">
       <div class="sec-label">Step 2 of 6</div>
       <div class="sec-h2">Staff and Salaries</div>
-      <p class="sec-desc">Add each staff member contributing to the study. Their hourly rates will be used in the Time and Effort tab to cost each activity. If you skip Time and Effort, enter % FTE here and costs will be estimated from that.</p>
-
+      <p class="sec-desc">Add each staff member contributing to the study. Their hourly rates will be used in the Time and Effort tab to cost each activity.</p>
       <div class="cn" id="cola-notice" style="display:none"><strong>Multi-year COLA:</strong> A 5% per-year compound increase will be applied to staff costs. Confirm study years in Setup.</div>
       <div class="ci" id="pi-notice" style="display:none"><strong>Industry study:</strong> Include the PI salary line. For IIT and foundation studies, the PI is not typically budgeted.</div>
-
       <div class="staff-list" id="staff-list"></div>
-
-      <button class="add-btn" onclick="addStaffRow()">
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-        Add staff member
-      </button>
-
+      <button class="add-btn" onclick="addStaffRow()"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg> Add staff member</button>
       <div class="ct" style="margin-top:20px"><strong>Salary scale:</strong> RI-MUHC annual midpoint salaries (1 FTE = 1,820 hrs/yr). Benefits fixed at 19%. Biostatistician: BCU (RI-MUHC) = $80/hr &bull; ACT-CTU OHRI = $250/hr.</div>
-
       <div class="nav-btns">
-        <button class="add-btn" onclick="showTab(0)">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
-          Back
-        </button>
-        <button class="add-btn" onclick="showTab(2);renderTE()">
-          Continue to Time and Effort
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-        </button>
+        <button class="add-btn" onclick="showTab(0)"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg> Back</button>
+        <button class="add-btn" onclick="showTab(2);renderTE()">Continue to Time and Effort <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></button>
       </div>
     </div>
 
-    <!-- TAB 3: TIME AND EFFORT -->
     <div class="tab-panel" id="p2">
       <div class="sec-label">Step 3 of 6</div>
       <div class="sec-h2">Time and Effort</div>
-      <p class="sec-desc">Add each study activity or visit type and enter the hours required from each staff member. Activities marked <strong>Per participant</strong> are multiplied by your participant count. <strong>Startup</strong> activities are flagged separately for the industry overhead carve-out. If you skip this tab, the tool uses % FTE estimates from the Staff tab.</p>
-
-      <div class="ci" id="te-no-staff-msg" style="display:none"><strong>No staff entered yet.</strong> Go back to the Staff tab and add your team first &mdash; their hourly rates will appear here.</div>
-
+      <p class="sec-desc">Add each study activity or visit type and enter the hours required from each staff member. Activities marked <strong>Per participant</strong> are multiplied by your participant count. <strong>Startup</strong> activities are flagged separately for the industry overhead carve-out.</p>
+      <div class="ci" id="te-no-staff-msg" style="display:none"><strong>No staff entered yet.</strong> Go back to the Staff tab and add your team first.</div>
       <div id="te-activity-list"></div>
-
       <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center">
-        <button class="add-btn" id="te-add-btn" onclick="openActPicker()">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
-          Add from list
-        </button>
-        <button class="add-btn" id="te-add-custom-btn" onclick="addActivity()">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-          Add custom activity
-        </button>
+        <button class="add-btn" id="te-add-btn" onclick="openActPicker()"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg> Add from list</button>
+        <button class="add-btn" id="te-add-custom-btn" onclick="addActivity()"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg> Add custom activity</button>
       </div>
-
       <div class="te-summary-box" id="te-summary-box" style="display:none">
         <div class="te-summary-head">Time and Effort summary</div>
         <div id="te-summary-lines"></div>
       </div>
-
-      <div class="ct" style="margin-top:20px">
-        <strong>Activity types:</strong>&nbsp;
-        <strong style="color:#7a4f00">Startup</strong> = site initiation, staff training, regulatory submissions (0% overhead for industry).&nbsp;
-        <strong style="color:#2b9ce2">General</strong> = flat study costs regardless of participant count.&nbsp;
-        <strong style="color:#1d9e75">Per participant</strong> = per-visit activities multiplied by expected N.
-      </div>
-
+      <div class="ct" style="margin-top:20px"><strong>Activity types:</strong> <strong style="color:#7a4f00">Startup</strong> = site initiation, training, regulatory (0% overhead for industry). <strong style="color:#2b9ce2">General</strong> = flat study costs. <strong style="color:#1d9e75">Per participant</strong> = per-visit activities multiplied by expected N.</div>
       <div class="nav-btns">
-        <button class="add-btn" onclick="showTab(1)">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
-          Back
-        </button>
-        <button class="add-btn" onclick="showTab(3)">
-          Continue to Services
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-        </button>
+        <button class="add-btn" onclick="showTab(1)"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg> Back</button>
+        <button class="add-btn" onclick="showTab(3)">Continue to Services <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></button>
       </div>
     </div>
 
-    <!-- TAB 4: SERVICES -->
     <div class="tab-panel" id="p3">
       <div class="sec-label">Step 4 of 6</div>
       <div class="sec-h2">Services and Other Costs</div>
       <p class="sec-desc">Enter the quantity of each service used across the full study. Industry-tier prices are applied automatically when Industry-Sponsored is selected in Setup.</p>
-
       <div id="svc-cim-accordion"></div>
-
       <div class="svc-top-head">MUHC Laboratory Tests</div>
       <div class="svc-acc-group" id="svc-grp-lab">
-        <div class="svc-acc-head" onclick="toggleSvcGroup('lab')">
-          <span>Laboratory Tests (1,967 tests)</span>
-          <span class="svc-acc-chevron">&#9660;</span>
-        </div>
+        <div class="svc-acc-head" onclick="toggleSvcGroup('lab')"><span>Laboratory Tests (1,967 tests)</span><span class="svc-acc-chevron">&#9660;</span></div>
         <div class="svc-acc-body" id="svc-body-lab" style="display:none">
           <div style="padding:12px 12px 4px;background:#f0f0f0;border-bottom:1px solid #e5e5e5;display:flex;align-items:center;gap:12px;flex-wrap:wrap">
             <input type="text" class="fi" id="lab-search" placeholder="Search by code or test name&hellip;" oninput="filterLab()" style="max-width:420px;font-size:13px;flex:1">
@@ -492,23 +421,18 @@ mode: "custom"
           <div class="svc-hdr"><span>Code / Test name</span><span>Unit price</span><span>Qty</span><span>Subtotal</span></div>
           <div id="svc-lab" style="max-height:420px;overflow-y:auto"></div>
           <div id="lab-empty" style="display:none;padding:14px 12px;font-size:13px;color:#888;font-style:italic">No tests match your search.</div>
-          <div style="padding:10px 12px;background:#f0f0f0;border-top:1px solid #e5e5e5;font-size:11px;color:#888">
-            Prices: non-industry (&times;1.1) and industry/private (&times;1.5) from MUHC Laboratory pricelist 2023&ndash;2024.
-          </div>
+          <div style="padding:10px 12px;background:#f0f0f0;border-top:1px solid #e5e5e5;font-size:11px;color:#888">Prices: non-industry (&times;1.1) and industry/private (&times;1.5) from MUHC Laboratory pricelist 2023&ndash;2024.</div>
         </div>
       </div>
-
       <div class="svc-cat">
         <div class="svc-cat-head">Participant Costs</div>
-        <div class="ci" style="margin:0;border-left:none;border-radius:0;font-size:12px;padding:10px 14px">
-          Costs below are multiplied by the number of participants entered in Study Setup (<span id="pt-n-display">0</span> participants). Enter per-visit amounts.
-        </div>
+        <div class="ci" style="margin:0;border-left:none;border-radius:0;font-size:12px;padding:10px 14px">Costs below are multiplied by the number of participants entered in Study Setup (<span id="pt-n-display">0</span> participants). Enter per-visit amounts.</div>
         <div class="svc-hdr"><span>Item</span><span>Per visit (&times; participants)</span><span>Visits</span><span>Subtotal</span></div>
         <div class="svc-row">
           <span class="svc-name">Participant stipend / honorarium</span>
           <span class="svc-price" id="pt-stip-price">$0 / visit</span>
           <div class="svc-qty" style="display:flex;gap:6px;align-items:center">
-            <input type="number" min="0" value="0" placeholder="$/visit" id="pt-stip-amt" oninput="calcPtCost()" style="width:70px;text-align:right;font-size:13px;border:1.5px solid #d0d0d0;padding:5px 6px;border-radius:6px;outline:none">
+            <input type="number" min="0" value="0" id="pt-stip-amt" oninput="calcPtCost()" style="width:70px;text-align:right;font-size:13px;border:1.5px solid #d0d0d0;padding:5px 6px;border-radius:6px;outline:none">
             <span style="font-size:11px;color:#888">&times;</span>
             <input type="number" min="0" value="1" id="pt-stip-visits" oninput="calcPtCost()" style="width:48px;text-align:right;font-size:13px;border:1.5px solid #d0d0d0;padding:5px 6px;border-radius:6px;outline:none">
             <span style="font-size:11px;color:#888">visits</span>
@@ -538,18 +462,12 @@ mode: "custom"
           <span class="svc-sub" id="pt-park-sub">$0</span>
         </div>
         <div class="svc-row">
-          <div>
-            <span class="svc-name">Other participant costs</span>
-            <input type="text" class="fi" placeholder="Description (optional)" style="margin-top:4px;font-size:12px;padding:4px 8px">
-          </div>
+          <div><span class="svc-name">Other participant costs</span><input type="text" class="fi" placeholder="Description (optional)" style="margin-top:4px;font-size:12px;padding:4px 8px"></div>
           <span class="svc-price" id="pt-other-price">&nbsp;</span>
-          <div class="svc-qty">
-            <input type="number" min="0" value="0" id="pt-other-amt" oninput="calcPtCost()" style="width:100%;text-align:right;font-size:13px;border:1.5px solid #d0d0d0;padding:5px 8px;border-radius:6px;outline:none">
-          </div>
+          <div class="svc-qty"><input type="number" min="0" value="0" id="pt-other-amt" oninput="calcPtCost()" style="width:100%;text-align:right;font-size:13px;border:1.5px solid #d0d0d0;padding:5px 8px;border-radius:6px;outline:none"></div>
           <span class="svc-sub" id="pt-other-sub">$0</span>
         </div>
       </div>
-
       <div class="svc-cat">
         <div class="svc-cat-head">Travel</div>
         <div class="svc-hdr"><span>Item</span><span>&nbsp;</span><span>Amount ($)</span><span>Subtotal</span></div>
@@ -572,40 +490,26 @@ mode: "custom"
           <span class="svc-sub" id="tv-other-sub">$0</span>
         </div>
       </div>
-
       <div class="svc-cat">
         <div class="svc-cat-head">Other Costs</div>
         <div id="other-list"></div>
-        <button class="add-btn" onclick="addOther()" style="margin:10px 0 0 12px">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-          Add other cost
-        </button>
+        <button class="add-btn" onclick="addOther()" style="margin:10px 0 0 12px"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg> Add other cost</button>
       </div>
-
       <div class="nav-btns">
-        <button class="add-btn" onclick="showTab(2)">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
-          Back
-        </button>
-        <button class="add-btn" onclick="showTab(4)">
-          Continue to REB Fees
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-        </button>
+        <button class="add-btn" onclick="showTab(2)"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg> Back</button>
+        <button class="add-btn" onclick="showTab(4)">Continue to REB Fees <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></button>
       </div>
     </div>
 
-    <!-- TAB 5: REB FEES -->
     <div class="tab-panel" id="p4">
       <div class="sec-label">Step 5 of 6</div>
       <div class="sec-h2">REB Fees</div>
-      <p class="sec-desc">REB fees are calculated from the MSSS fee schedule (effective April&nbsp;1, 2025). Site count is carried over from Study Setup. For IIT and foundation studies, these fees may not apply &mdash; use the toggle below to include or exclude them from your total.</p>
-
-      <div class="cn" id="reb-iit-note" style="display:none"><strong>IIT / Foundation study:</strong> The MSSS fee schedule applies to costs billed to a private company. These figures are shown for reference only and excluded from the total unless you select to include them below.</div>
-
+      <p class="sec-desc">REB fees are calculated from the MSSS fee schedule (effective April&nbsp;1, 2025). For IIT and foundation studies, use the toggle below to include or exclude them from your total.</p>
+      <div class="cn" id="reb-iit-note" style="display:none"><strong>IIT / Foundation study:</strong> The MSSS fee schedule applies to costs billed to a private company. Excluded from total unless you select to include them below.</div>
       <div class="frow" style="margin-bottom:16px">
         <div class="fg">
           <label class="fl">Number of annual renewals</label>
-          <span class="fh">REB renewal cycles over the study life (usually study years &minus; 1). Updates automatically when you set study years.</span>
+          <span class="fh">Usually study years &minus; 1. Updates automatically when you set study years.</span>
           <input type="number" class="fi" id="reb-renewals" value="0" min="0" oninput="calcREB()">
         </div>
         <div class="fg">
@@ -613,7 +517,6 @@ mode: "custom"
           <input type="number" class="fi" id="reb-amendments" value="0" min="0" oninput="calcREB()">
         </div>
       </div>
-
       <div class="fg">
         <label class="fl">Include REB fees in total?</label>
         <select class="fs" id="reb-include" onchange="updateSummary()">
@@ -621,128 +524,61 @@ mode: "custom"
           <option value="no">No &mdash; show for reference only</option>
         </select>
       </div>
-
       <div class="reb-box" id="reb-box"></div>
-
       <div class="nav-btns">
-        <button class="add-btn" onclick="showTab(3)">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
-          Back
-        </button>
-        <button class="add-btn" onclick="showTab(5)">
-          Continue to Contingency
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-        </button>
+        <button class="add-btn" onclick="showTab(3)"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg> Back</button>
+        <button class="add-btn" onclick="showTab(5)">Continue to Contingency <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></button>
       </div>
     </div>
 
-    <!-- TAB 6: CONTINGENCY -->
     <div class="tab-panel" id="p5">
       <div class="sec-label">Step 6 of 6</div>
       <div class="sec-h2">Contingency</div>
-      <p class="sec-desc">Select the complexity level that best describes your study. The recommended midpoint percentage is applied to the subtotal (staff + services) as a buffer for unforeseeable costs.</p>
-
+      <p class="sec-desc">Select the complexity level that best describes your study. The recommended midpoint percentage is applied to the subtotal as a buffer for unforeseeable costs.</p>
       <div class="cont-grid">
-        <div class="cont-card" id="cc-low" onclick="selectCont('low')">
-          <div class="cclabel">Low complexity</div>
-          <div class="ccrange">8 &ndash; 10%</div>
-          <div class="ccdef">Recommended: 9%</div>
-        </div>
-        <div class="cont-card cc-sel-mod" id="cc-mod" onclick="selectCont('mod')">
-          <div class="cclabel">Moderate complexity</div>
-          <div class="ccrange">10 &ndash; 12%</div>
-          <div class="ccdef">Recommended: 11%</div>
-        </div>
-        <div class="cont-card" id="cc-high" onclick="selectCont('high')">
-          <div class="cclabel">High complexity</div>
-          <div class="ccrange">12 &ndash; 15%</div>
-          <div class="ccdef">Recommended: 13.5%</div>
-        </div>
+        <div class="cont-card" id="cc-low" onclick="selectCont('low')"><div class="cclabel">Low complexity</div><div class="ccrange">8 &ndash; 10%</div><div class="ccdef">Recommended: 9%</div></div>
+        <div class="cont-card cc-sel-mod" id="cc-mod" onclick="selectCont('mod')"><div class="cclabel">Moderate complexity</div><div class="ccrange">10 &ndash; 12%</div><div class="ccdef">Recommended: 11%</div></div>
+        <div class="cont-card" id="cc-high" onclick="selectCont('high')"><div class="cclabel">High complexity</div><div class="ccrange">12 &ndash; 15%</div><div class="ccdef">Recommended: 13.5%</div></div>
       </div>
-
       <div class="fg">
         <label class="fl">Override contingency rate (%)</label>
         <span class="fh">Leave blank to use the recommended midpoint for your selected complexity level.</span>
         <input type="number" class="fi" id="cont-pct" placeholder="e.g. 10" min="0" max="30" step="0.5" style="max-width:180px" oninput="updateSummary()">
       </div>
-
-      <div class="ct"><strong>Complexity guide:</strong> Low = observational, retrospective, chart review. Moderate = prospective interventional, Phase II&ndash;III, multi-visit. High = Phase I, first-in-human, complex interventional (IP management, biologics, devices).</div>
-
+      <div class="ct"><strong>Complexity guide:</strong> Low = observational, retrospective, chart review. Moderate = prospective interventional, Phase II&ndash;III, multi-visit. High = Phase I, first-in-human, complex interventional.</div>
       <div class="nav-btns">
-        <button class="add-btn" onclick="showTab(4)">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
-          Back
-        </button>
-        <button class="pbtn" style="max-width:260px;margin-left:4px" onclick="window.print()">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
-          Download budget summary
-        </button>
+        <button class="add-btn" onclick="showTab(4)"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg> Back</button>
+        <button class="pbtn" style="max-width:260px;margin-left:4px" onclick="window.print()"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg> Download budget summary</button>
       </div>
     </div>
   </div>
 
-  <!-- SUMMARY PANEL -->
   <div class="sum-panel">
     <div class="sum-head">
       <div class="sum-title">Budget total</div>
       <div class="sum-total-big" id="sum-top">$0</div>
     </div>
     <div class="sum-body">
-      <div class="sum-line">
-        <span class="sll">Staff and salaries</span>
-        <span id="sl-staff" class="slz">&mdash;</span>
-      </div>
-      <div class="sum-line" id="sl-te-line" style="display:none">
-        <span class="sll" style="font-size:11px;color:#888;padding-left:10px">via Time and Effort</span>
-        <span id="sl-te" class="slz" style="font-size:11px"></span>
-      </div>
-      <div class="sum-line">
-        <span class="sll">Services and costs</span>
-        <span id="sl-svc" class="slz">&mdash;</span>
-      </div>
-      <div class="sum-line">
-        <span class="sll">Contingency</span>
-        <span id="sl-cont" class="slz">&mdash;</span>
-      </div>
-      <div class="sum-line">
-        <span class="sll">REB fees</span>
-        <span id="sl-reb" class="slz">&mdash;</span>
-      </div>
+      <div class="sum-line"><span class="sll">Staff and salaries</span><span id="sl-staff" class="slz">&mdash;</span></div>
+      <div class="sum-line" id="sl-te-line" style="display:none"><span class="sll" style="font-size:11px;color:#888;padding-left:10px">via Time and Effort</span><span id="sl-te" class="slz" style="font-size:11px"></span></div>
+      <div class="sum-line"><span class="sll">Services and costs</span><span id="sl-svc" class="slz">&mdash;</span></div>
+      <div class="sum-line"><span class="sll">Contingency</span><span id="sl-cont" class="slz">&mdash;</span></div>
+      <div class="sum-line"><span class="sll">REB fees</span><span id="sl-reb" class="slz">&mdash;</span></div>
       <div class="sum-divider"></div>
-      <div class="sum-oh-row">
-        <span class="sum-oh-l" id="sum-oh-lbl">Overhead (0%)</span>
-        <span class="sum-oh-a" id="sum-oh">$0</span>
-      </div>
-      <div class="sum-grand">
-        <span class="sum-gl">Grand total</span>
-        <span class="sum-ga" id="sum-grand">$0</span>
-      </div>
+      <div class="sum-oh-row"><span class="sum-oh-l" id="sum-oh-lbl">Overhead (0%)</span><span class="sum-oh-a" id="sum-oh">$0</span></div>
+      <div class="sum-grand"><span class="sum-gl">Grand total</span><span class="sum-ga" id="sum-grand">$0</span></div>
     </div>
     <div class="sum-foot">
-      <button class="pbtn" onclick="window.print()">
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
-        Download budget summary
-      </button>
+      <button class="pbtn" onclick="window.print()"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg> Download budget summary</button>
       <div style="display:flex;gap:6px">
-        <button class="xlink" style="flex:1;background:none" onclick="exportBudget()">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-          Save progress
-        </button>
-        <label class="xlink" style="flex:1;cursor:pointer;text-align:center" title="Load a previously saved budget file">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 5 17 10"/><line x1="12" y1="5" x2="12" y2="17"/></svg>
-          Load saved
-          <input type="file" id="budget-file-input" accept=".json" style="display:none" onchange="importBudget(this)">
-        </label>
+        <button class="xlink" style="flex:1" onclick="exportBudget()"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg> Save progress</button>
+        <label class="xlink" style="flex:1;text-align:center" title="Load a previously saved budget file"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 5 17 10"/><line x1="12" y1="5" x2="12" y2="17"/></svg> Load saved<input type="file" id="budget-file-input" accept=".json" style="display:none" onchange="importBudget(this)"></label>
       </div>
       <div id="autosave-notice" style="font-size:10px;color:#888;text-align:center;padding:2px 0;display:none"></div>
-      <a href="/budget-template.xlsx" class="xlink" download>
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-        Download Excel template
-      </a>
+      <a href="/budget-template.xlsx" class="xlink" download><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg> Download Excel template</a>
     </div>
   </div>
 
-  <!-- CIHR PRINT SUMMARY -->
   <div class="cihr-print-block" id="cihr-block">
     <div class="cihr-head">Budget Summary &mdash; CIHR Format</div>
     <div class="cihr-row"><span class="cihr-row-label">Personnel (staff and salaries)</span><span class="cihr-row-amt" id="cihr-personnel">$0</span></div>
@@ -752,17 +588,12 @@ mode: "custom"
     <div class="cihr-row"><span class="cihr-row-label">Other (contingency + other costs)</span><span class="cihr-row-amt" id="cihr-other">$0</span></div>
     <div class="cihr-row cihr-total"><span class="cihr-row-label">Total</span><span class="cihr-row-amt" id="cihr-total">$0</span></div>
   </div>
-
 </div>
 
-<!-- ACTIVITY PICKER MODAL -->
 <div id="act-picker-overlay" style="display:none;position:fixed;inset:0;background:rgba(43,38,102,.55);z-index:900;backdrop-filter:blur(4px)" onclick="closeActPicker()"></div>
 <div id="act-picker" style="display:none;position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);width:min(680px,96vw);max-height:82vh;background:#fff;z-index:901;flex-direction:column;overflow:hidden;border-radius:8px;box-shadow:0 20px 60px rgba(0,0,0,.18)">
   <div style="background:#2b2666;padding:18px 20px;display:flex;align-items:center;justify-content:space-between;flex-shrink:0">
-    <div>
-      <div style="font-size:9px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.55);margin-bottom:4px">Time and Effort</div>
-      <div style="font-size:16px;font-weight:700;color:#fff">Add activities from list</div>
-    </div>
+    <div><div style="font-size:9px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.55);margin-bottom:4px">Time and Effort</div><div style="font-size:16px;font-weight:700;color:#fff">Add activities from list</div></div>
     <button onclick="closeActPicker()" style="background:none;border:none;color:rgba(255,255,255,.65);font-size:20px;cursor:pointer;padding:4px;line-height:1">&times;</button>
   </div>
   <div style="padding:12px 16px;border-bottom:1px solid #e5e5e5;flex-shrink:0">
@@ -777,5 +608,28 @@ mode: "custom"
     </div>
   </div>
 </div>
+`;
 
-<script src="/budget-tool-script.js"></script>
+export const BudgetTool = () => {
+  useEffect(() => {
+    const existing = document.getElementById('bt-script');
+    if (existing) existing.remove();
+    const script = document.createElement('script');
+    script.id = 'bt-script';
+    script.src = '/budget-tool-script.js';
+    document.body.appendChild(script);
+    return () => {
+      const s = document.getElementById('bt-script');
+      if (s) s.remove();
+    };
+  }, []);
+
+  return (
+    <>
+      <style dangerouslySetInnerHTML={{__html: BT_CSS}} />
+      <div dangerouslySetInnerHTML={{__html: BT_HTML}} />
+    </>
+  );
+};
+
+<BudgetTool />
