@@ -85,6 +85,9 @@ export const BT_CSS = `
 
 /* ── TOOLTIP ── */
 #bt-tip { display:none; position:fixed; z-index:9999; background:#2b2666; color:#fff; font-size:12px; line-height:1.55; padding:9px 13px; border-radius:6px; max-width:260px; box-shadow:0 4px 18px rgba(0,0,0,.22); pointer-events:none; }
+/* Activity picker dialog */
+#act-picker[open] { display:flex; }
+#act-picker::backdrop { background:rgba(43,38,102,.55); backdrop-filter:blur(4px); }
 .tip-icon { cursor:pointer; color:var(--textd); font-weight:400; font-style:normal; user-select:none; }
 
 /* ── SIDEBAR ── */
@@ -901,7 +904,7 @@ export const BT_HTML = `
         <div class="svc-cat-head">Industry startup carve-out</div>
         <div class="svc-hdr" style="margin-top:0"><span>Item</span><span>&nbsp;</span><span>Amount ($)</span><span>Subtotal</span></div>
         <div class="svc-row">
-          <span class="svc-name">Startup services (0% OH) <span style="font-size:10px;color:var(--textd);font-weight:400" data-tip="Services performed at study startup — protocol-validation CIM tests, pharmacy setup, baseline lab draws — that are exempt from industry overhead. This amount is subtracted from the overhead base, mirroring the Work Plan Startup row carve-out for staff.">&#9432;</span></span>
+          <span class="svc-name">Startup services (0% OH) <span class="tip-icon" data-tip="Services performed at study startup — protocol-validation CIM tests, pharmacy setup, baseline lab draws — that are exempt from industry overhead. This amount is subtracted from the overhead base, mirroring the Work Plan Startup row carve-out for staff." onclick="showTip(this)">ⓘ</span></span>
           <span class="svc-price">&nbsp;</span>
           <div class="svc-qty"><input type="text" inputmode="decimal" min="0" value="0" id="startup-svc" oninput="updateStartupSvcSub()" style="width:100%;text-align:right;font-size:13px;border:1.5px solid var(--bdr);padding:5px 8px;border-radius:6px;outline:none"></div>
           <span class="svc-sub" id="startup-svc-sub">$0</span>
@@ -972,9 +975,8 @@ export const BT_HTML = `
   </main>
 </div>
 
-<!-- Activity picker modal -->
-<div id="act-picker-overlay" style="display:none;position:fixed;inset:0;background:rgba(43,38,102,.55);z-index:99998;backdrop-filter:blur(4px)" onclick="closeActPicker()"></div>
-<div id="act-picker" style="display:none;position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);width:min(680px,96vw);max-height:82vh;background:var(--white);z-index:99999;flex-direction:column;overflow:hidden;border-radius:8px;box-shadow:0 20px 60px rgba(0,0,0,.18)">
+<!-- Activity picker modal — rendered as native <dialog> (top layer, no z-index battles) -->
+<dialog id="act-picker" style="border:none;padding:0;width:min(680px,96vw);max-height:82vh;background:var(--white,#fff);flex-direction:column;overflow:hidden;border-radius:8px;box-shadow:0 20px 60px rgba(0,0,0,.22)">
   <div style="background:var(--navy);padding:18px 20px;display:flex;align-items:center;justify-content:space-between;flex-shrink:0">
     <div><div style="font-size:9px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.55);margin-bottom:4px">Work Plan</div><div id="ap-picker-title" style="font-size:16px;font-weight:700;color:#fff">Add activities from list</div></div>
     <button onclick="closeActPicker()" style="background:none;border:none;color:rgba(255,255,255,.65);font-size:20px;cursor:pointer;padding:4px;line-height:1">&times;</button>

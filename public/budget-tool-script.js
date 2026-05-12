@@ -1665,18 +1665,14 @@ function toggleApGroup(g) {
 
 function openActPicker(typeFilter) {
   actPickerTypeFilter = typeFilter || null;
-  var overlay = document.getElementById('act-picker-overlay');
-  var picker  = document.getElementById('act-picker');
+  var picker = document.getElementById('act-picker');
   buildActPicker();
-  if (overlay) overlay.style.display = 'block';
-  if (picker)  picker.style.display  = 'flex';
   var searchEl = document.getElementById('act-picker-search');
   if (searchEl) searchEl.value = '';
   var customEl = document.getElementById('ap-custom-name');
   if (customEl) customEl.value = '';
   var customTypeEl = document.getElementById('ap-custom-type');
   if (customTypeEl) customTypeEl.value = typeFilter || 'general';
-  // Update title
   var titleEl = document.getElementById('ap-picker-title');
   if (titleEl) {
     if (typeFilter === 'startup') titleEl.textContent = 'Add startup activities';
@@ -1684,7 +1680,6 @@ function openActPicker(typeFilter) {
     else if (typeFilter === 'perpt') titleEl.textContent = 'Add per-participant activities';
     else titleEl.textContent = 'Add activities from list';
   }
-  // Expand groups that match the filter; collapse others
   for (var g = 0; g < ACT_GROUPS.length; g++) {
     var items = document.getElementById('apgi-' + g);
     var head  = document.querySelector('#apg-' + g + ' .ap-group-head');
@@ -1694,13 +1689,12 @@ function openActPicker(typeFilter) {
     if (head) head.classList.toggle('open', matches);
   }
   apSelChange();
+  if (picker && picker.showModal) picker.showModal();
 }
 
 function closeActPicker() {
-  var overlay = document.getElementById('act-picker-overlay');
-  var picker  = document.getElementById('act-picker');
-  if (overlay) overlay.style.display = 'none';
-  if (picker)  picker.style.display  = 'none';
+  var picker = document.getElementById('act-picker');
+  if (picker && picker.close) picker.close();
 }
 
 function apSelChange() {
