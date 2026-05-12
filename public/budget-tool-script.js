@@ -823,18 +823,59 @@ function svcCalc(inp) {
   updateSummary();
 }
 
-function getSvcTotal() {
+function getCIMLabTotal() {
   var total = 0;
   var inputs = document.querySelectorAll('#svc-cim-accordion .svc-qty input');
   for (var i = 0; i < inputs.length; i++) {
     total += (parseFloat(inputs[i].getAttribute('data-price')) || 0) * (parseFloat(inputs[i].value) || 0);
   }
+  total += getLabTotal();
+  return total;
+}
+
+function getKTTotal() {
+  var ids = ['kt-pub', 'kt-conf', 'kt-mat', 'kt-events'];
+  var total = 0;
+  for (var i = 0; i < ids.length; i++) {
+    var el = document.getElementById(ids[i]);
+    total += el ? (parseFloat(el.value) || 0) : 0;
+  }
+  return total;
+}
+
+function getPPTotal() {
+  var ids = ['pp-hon', 'pp-travel', 'pp-training', 'pp-meetings'];
+  var total = 0;
+  for (var i = 0; i < ids.length; i++) {
+    var el = document.getElementById(ids[i]);
+    total += el ? (parseFloat(el.value) || 0) : 0;
+  }
+  return total;
+}
+
+function getSvcTotal() {
+  var total = getCIMLabTotal();
   var oAmts = document.querySelectorAll('.oa');
   for (var j = 0; j < oAmts.length; j++) total += parseFloat(oAmts[j].value) || 0;
-  total += getLabTotal();
   total += getPtTotal();
   total += getTravelTotal();
+  total += getKTTotal();
+  total += getPPTotal();
   return total;
+}
+
+function updateSimpleSub(inputId, subId) {
+  var inp = document.getElementById(inputId);
+  var sub = document.getElementById(subId);
+  if (inp && sub) sub.textContent = '$' + Math.round(parseFloat(inp.value) || 0).toLocaleString();
+  updateSummary();
+}
+
+function updateSfSub() {
+  var inp = document.getElementById('sf-cost');
+  var sub = document.getElementById('sf-sub');
+  if (inp && sub) sub.textContent = '$' + Math.round(parseFloat(inp.value) || 0).toLocaleString();
+  updateSummary();
 }
 
 function addOther() {
@@ -1144,11 +1185,26 @@ function getContPct() {
 // ════════════════════════════════════════
 // SUMMARY + REVIEW
 // ════════════════════════════════════════
+function refreshSimpleSubs() {
+  var pairs = [
+    ['pp-hon','pp-hon-sub'], ['pp-travel','pp-travel-sub'], ['pp-training','pp-training-sub'], ['pp-meetings','pp-meetings-sub'],
+    ['kt-pub','kt-pub-sub'], ['kt-conf','kt-conf-sub'], ['kt-mat','kt-mat-sub'], ['kt-events','kt-events-sub'],
+    ['sf-cost','sf-sub'],
+    ['sw-redcap','sw-redcap-sub'], ['sw-translation','sw-translation-sub'], ['sw-recruit','sw-recruit-sub'], ['sw-other','sw-other-sub']
+  ];
+  for (var i = 0; i < pairs.length; i++) {
+    var inp = document.getElementById(pairs[i][0]);
+    var sub = document.getElementById(pairs[i][1]);
+    if (inp && sub) sub.textContent = '$' + Math.round(parseFloat(inp.value) || 0).toLocaleString();
+  }
+}
+
 function updateSummary() {
   var multiEl = document.getElementById('multiyear');
   var colaEl  = document.getElementById('cola-notice');
   if (multiEl && colaEl) colaEl.style.display = (multiEl.value === 'yes') ? 'block' : 'none';
 
+  refreshSimpleSubs();
   updateMatrixGroupHeaders();
 
   var staffAmt = getStaffTotal();
@@ -1238,7 +1294,9 @@ function renderReviewTable(staffAmt, svcAmt, contAmt, ohAmt, rebAmt, rebInc, gra
   var ptAmt    = getPtTotal();
   var travAmt  = getTravelTotal();
   var otherAmt = getOtherCostsTotal();
-  var svcOnly  = Math.max(0, svcAmt - labAmt - ptAmt - travAmt - otherAmt);
+  var ktAmt    = getKTTotal();
+  var ppAmt    = getPPTotal();
+  var cimAmt   = Math.max(0, getCIMLabTotal() - labAmt);  // CIM/pharma/IT only
 
   var html = '';
   html += '<div class="rv-section-head">Personnel</div>';
@@ -1252,10 +1310,12 @@ function renderReviewTable(staffAmt, svcAmt, contAmt, ohAmt, rebAmt, rebInc, gra
   }
 
   html += '<div class="rv-section-head">Study Costs</div>';
-  if (svcOnly  > 0) html += row('Institutional services', svcOnly);
+  if (cimAmt   > 0) html += row('Institutional services (CIM, pharmacy, IT)', cimAmt);
   if (labAmt   > 0) html += row('Laboratory tests', labAmt);
   if (ptAmt    > 0) html += row('Participant costs', ptAmt);
-  if (travAmt  > 0) html += row('Travel', travAmt);
+  if (ppAmt    > 0) html += row('Patient Partners & Engagement', ppAmt);
+  if (travAmt  > 0) html += row('Travel (operational)', travAmt);
+  if (ktAmt    > 0) html += row('Knowledge Translation', ktAmt);
   if (otherAmt > 0) html += row('Other costs', otherAmt);
   if (svcAmt   > 0) html += row('Study costs subtotal', svcAmt, 'rv-row-strong');
 
@@ -1305,8 +1365,8 @@ function toggleCIHRFormat() {
 
 function updateCIHR(staffAmt, svcAmt, contAmt, travelAmt, otherAmt, ptAmt) {
   var personnel = staffAmt;
-  var matsup    = svcAmt;
-  var kt        = 0;
+  var matsup    = getCIMLabTotal();
+  var kt        = getKTTotal() + getPPTotal();
   var other     = contAmt + travelAmt + otherAmt + (ptAmt || 0);
   var total     = personnel + matsup + kt + other;
 
@@ -1527,6 +1587,27 @@ function getBudgetState() {
     if (el) state.travel[tvIds[i]] = el.value;
   }
 
+  var ktIds = ['kt-pub','kt-conf','kt-mat','kt-events'];
+  state.kt = {};
+  for (var i = 0; i < ktIds.length; i++) {
+    var el = document.getElementById(ktIds[i]);
+    if (el) state.kt[ktIds[i]] = el.value;
+  }
+
+  var ppIds = ['pp-hon','pp-travel','pp-training','pp-meetings'];
+  state.pp = {};
+  for (var i = 0; i < ppIds.length; i++) {
+    var el = document.getElementById(ppIds[i]);
+    if (el) state.pp[ppIds[i]] = el.value;
+  }
+
+  var directIds = ['sf-cost','sw-redcap','sw-translation','sw-recruit','sw-other'];
+  state.direct = {};
+  for (var i = 0; i < directIds.length; i++) {
+    var el = document.getElementById(directIds[i]);
+    if (el) state.direct[directIds[i]] = el.value;
+  }
+
   state.others = [];
   var otherRows = document.querySelectorAll('#other-list .other-row');
   for (var i = 0; i < otherRows.length; i++) {
@@ -1677,6 +1758,33 @@ function setBudgetState(state) {
     for (var i = 0; i < tvIds.length; i++) {
       var el = document.getElementById(tvIds[i]);
       if (el && state.travel[tvIds[i]] !== undefined) el.value = state.travel[tvIds[i]];
+    }
+  }
+
+  // Restore KT
+  if (state.kt) {
+    var ktIds = ['kt-pub','kt-conf','kt-mat','kt-events'];
+    for (var i = 0; i < ktIds.length; i++) {
+      var el = document.getElementById(ktIds[i]);
+      if (el && state.kt[ktIds[i]] !== undefined) el.value = state.kt[ktIds[i]];
+    }
+  }
+
+  // Restore patient partners
+  if (state.pp) {
+    var ppIds = ['pp-hon','pp-travel','pp-training','pp-meetings'];
+    for (var i = 0; i < ppIds.length; i++) {
+      var el = document.getElementById(ppIds[i]);
+      if (el && state.pp[ppIds[i]] !== undefined) el.value = state.pp[ppIds[i]];
+    }
+  }
+
+  // Restore direct costs (screening failures, software, etc.)
+  if (state.direct) {
+    var directIds = ['sf-cost','sw-redcap','sw-translation','sw-recruit','sw-other'];
+    for (var i = 0; i < directIds.length; i++) {
+      var el = document.getElementById(directIds[i]);
+      if (el && state.direct[directIds[i]] !== undefined) el.value = state.direct[directIds[i]];
     }
   }
 

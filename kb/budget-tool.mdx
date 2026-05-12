@@ -723,6 +723,34 @@ export const BT_HTML = `
         <span class="svc-sub" id="pt-other-sub">$0</span>
       </div>
 
+      <div class="svc-cat-head">Patient Partners &amp; Engagement</div>
+      <div class="ci" style="margin:0;border-radius:0;font-size:12px;padding:10px 14px">Costs for patient or community partners involved in research design, conduct, or knowledge translation (distinct from enrolled study participants). Include for CIHR iKT grants.</div>
+      <div class="svc-hdr"><span>Item</span><span>&nbsp;</span><span>Amount ($)</span><span>Subtotal</span></div>
+      <div class="svc-row">
+        <span class="svc-name">Patient partner honoraria (meetings)</span>
+        <span class="svc-price">&nbsp;</span>
+        <div class="svc-qty"><input type="text" inputmode="decimal" min="0" value="0" id="pp-hon" oninput="updateSimpleSub('pp-hon','pp-hon-sub')" style="width:100%;text-align:right;font-size:13px;border:1.5px solid var(--bdr);padding:5px 8px;border-radius:6px;outline:none"></div>
+        <span class="svc-sub" id="pp-hon-sub">$0</span>
+      </div>
+      <div class="svc-row">
+        <span class="svc-name">Patient partner travel &amp; accommodation</span>
+        <span class="svc-price">&nbsp;</span>
+        <div class="svc-qty"><input type="text" inputmode="decimal" min="0" value="0" id="pp-travel" oninput="updateSimpleSub('pp-travel','pp-travel-sub')" style="width:100%;text-align:right;font-size:13px;border:1.5px solid var(--bdr);padding:5px 8px;border-radius:6px;outline:none"></div>
+        <span class="svc-sub" id="pp-travel-sub">$0</span>
+      </div>
+      <div class="svc-row">
+        <span class="svc-name">Training &amp; capacity building (materials, facilitator)</span>
+        <span class="svc-price">&nbsp;</span>
+        <div class="svc-qty"><input type="text" inputmode="decimal" min="0" value="0" id="pp-training" oninput="updateSimpleSub('pp-training','pp-training-sub')" style="width:100%;text-align:right;font-size:13px;border:1.5px solid var(--bdr);padding:5px 8px;border-radius:6px;outline:none"></div>
+        <span class="svc-sub" id="pp-training-sub">$0</span>
+      </div>
+      <div class="svc-row">
+        <span class="svc-name">Meeting costs (venue, catering)</span>
+        <span class="svc-price">&nbsp;</span>
+        <div class="svc-qty"><input type="text" inputmode="decimal" min="0" value="0" id="pp-meetings" oninput="updateSimpleSub('pp-meetings','pp-meetings-sub')" style="width:100%;text-align:right;font-size:13px;border:1.5px solid var(--bdr);padding:5px 8px;border-radius:6px;outline:none"></div>
+        <span class="svc-sub" id="pp-meetings-sub">$0</span>
+      </div>
+
       <div class="svc-cat-head">Travel</div>
       <div class="svc-hdr"><span>Item</span><span>&nbsp;</span><span>Amount ($)</span><span>Subtotal</span></div>
       <div class="svc-row">
@@ -744,7 +772,70 @@ export const BT_HTML = `
         <span class="svc-sub" id="tv-other-sub">$0</span>
       </div>
 
+      <div class="svc-cat-head">Knowledge Translation</div>
+      <div class="ci" style="margin:0;border-radius:0;font-size:12px;padding:10px 14px">Dissemination costs are a separate CIHR budget category (Knowledge Translation). Conference travel for presenting results belongs here, not under Travel above (which is for operational/monitoring travel).</div>
+      <div class="svc-hdr"><span>Item</span><span>&nbsp;</span><span>Amount ($)</span><span>Subtotal</span></div>
+      <div class="svc-row">
+        <span class="svc-name">Open access / publication fees</span>
+        <span class="svc-price">&nbsp;</span>
+        <div class="svc-qty"><input type="text" inputmode="decimal" min="0" value="0" id="kt-pub" oninput="updateSimpleSub('kt-pub','kt-pub-sub')" style="width:100%;text-align:right;font-size:13px;border:1.5px solid var(--bdr);padding:5px 8px;border-radius:6px;outline:none"></div>
+        <span class="svc-sub" id="kt-pub-sub">$0</span>
+      </div>
+      <div class="svc-row">
+        <span class="svc-name">Conference travel &amp; registration (dissemination)</span>
+        <span class="svc-price">&nbsp;</span>
+        <div class="svc-qty"><input type="text" inputmode="decimal" min="0" value="0" id="kt-conf" oninput="updateSimpleSub('kt-conf','kt-conf-sub')" style="width:100%;text-align:right;font-size:13px;border:1.5px solid var(--bdr);padding:5px 8px;border-radius:6px;outline:none"></div>
+        <span class="svc-sub" id="kt-conf-sub">$0</span>
+      </div>
+      <div class="svc-row">
+        <span class="svc-name">KT materials (guidelines, pamphlets, infographics)</span>
+        <span class="svc-price">&nbsp;</span>
+        <div class="svc-qty"><input type="text" inputmode="decimal" min="0" value="0" id="kt-mat" oninput="updateSimpleSub('kt-mat','kt-mat-sub')" style="width:100%;text-align:right;font-size:13px;border:1.5px solid var(--bdr);padding:5px 8px;border-radius:6px;outline:none"></div>
+        <span class="svc-sub" id="kt-mat-sub">$0</span>
+      </div>
+      <div class="svc-row">
+        <span class="svc-name">Stakeholder workshops &amp; events</span>
+        <span class="svc-price">&nbsp;</span>
+        <div class="svc-qty"><input type="text" inputmode="decimal" min="0" value="0" id="kt-events" oninput="updateSimpleSub('kt-events','kt-events-sub')" style="width:100%;text-align:right;font-size:13px;border:1.5px solid var(--bdr);padding:5px 8px;border-radius:6px;outline:none"></div>
+        <span class="svc-sub" id="kt-events-sub">$0</span>
+      </div>
+
       <div class="svc-cat-head">Other Costs</div>
+      <div class="svc-hdr" style="margin-top:0"><span>Item</span><span>&nbsp;</span><span>Amount ($)</span><span>Subtotal</span></div>
+
+      <div class="svc-row">
+        <span class="svc-name">Screening failures <span style="font-size:10px;color:var(--textd);font-weight:400" data-tip="Budget for participants who are assessed but do not proceed to enrolment. Include staff time (in Work Plan) and any tests or procedures done at screening. Typical failure rates: 10–20% for most RCTs; 30–50% for Phase I or narrow-eligibility studies.">&#9432;</span></span>
+        <span class="svc-price">&nbsp;</span>
+        <div class="svc-qty"><input type="text" inputmode="decimal" min="0" value="0" id="sf-cost" class="oa" oninput="updateSfSub()" style="width:100%;text-align:right;font-size:13px;border:1.5px solid var(--bdr);padding:5px 8px;border-radius:6px;outline:none"></div>
+        <span class="svc-sub" id="sf-sub">$0</span>
+      </div>
+
+      <div style="margin:10px 0 4px;font-size:12px;color:var(--textd);font-weight:500">Software &amp; licensing</div>
+      <div class="svc-row">
+        <span class="svc-name">REDCap database license &amp; setup</span>
+        <span class="svc-price">&nbsp;</span>
+        <div class="svc-qty"><input type="text" inputmode="decimal" min="0" value="0" id="sw-redcap" class="oa" oninput="updateSummary()" style="width:100%;text-align:right;font-size:13px;border:1.5px solid var(--bdr);padding:5px 8px;border-radius:6px;outline:none"></div>
+        <span class="svc-sub" id="sw-redcap-sub">$0</span>
+      </div>
+      <div class="svc-row">
+        <span class="svc-name">Translation services (consent forms, questionnaires)</span>
+        <span class="svc-price">&nbsp;</span>
+        <div class="svc-qty"><input type="text" inputmode="decimal" min="0" value="0" id="sw-translation" class="oa" oninput="updateSummary()" style="width:100%;text-align:right;font-size:13px;border:1.5px solid var(--bdr);padding:5px 8px;border-radius:6px;outline:none"></div>
+        <span class="svc-sub" id="sw-translation-sub">$0</span>
+      </div>
+      <div class="svc-row">
+        <span class="svc-name">Advertising &amp; participant recruitment (ads, flyers, outreach)</span>
+        <span class="svc-price">&nbsp;</span>
+        <div class="svc-qty"><input type="text" inputmode="decimal" min="0" value="0" id="sw-recruit" class="oa" oninput="updateSummary()" style="width:100%;text-align:right;font-size:13px;border:1.5px solid var(--bdr);padding:5px 8px;border-radius:6px;outline:none"></div>
+        <span class="svc-sub" id="sw-recruit-sub">$0</span>
+      </div>
+      <div class="svc-row">
+        <span class="svc-name">Other software, licensing &amp; subscriptions</span>
+        <span class="svc-price">&nbsp;</span>
+        <div class="svc-qty"><input type="text" inputmode="decimal" min="0" value="0" id="sw-other" class="oa" oninput="updateSummary()" style="width:100%;text-align:right;font-size:13px;border:1.5px solid var(--bdr);padding:5px 8px;border-radius:6px;outline:none"></div>
+        <span class="svc-sub" id="sw-other-sub">$0</span>
+      </div>
+
       <div id="other-list"></div>
       <button class="add-btn" onclick="addOther()" style="margin:10px 0 0">
         <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
@@ -789,7 +880,7 @@ export const BT_HTML = `
         <div class="cihr-row"><span class="cihr-row-label">Knowledge Translation <span style="font-weight:400;color:#888;font-size:10px">(publications, conferences, dissemination)</span></span><span class="cihr-row-amt" id="cihr-kt">$0</span></div>
         <div class="cihr-row"><span class="cihr-row-label">Other <span style="font-weight:400;color:#888;font-size:10px">(participant costs, travel, contingency, other)</span></span><span class="cihr-row-amt" id="cihr-other">$0</span></div>
         <div class="cihr-row cihr-total"><span class="cihr-row-label">Total (before overhead)</span><span class="cihr-row-amt" id="cihr-total">$0</span></div>
-        <div style="font-size:10px;color:#888;margin-top:10px;line-height:1.6">CIHR does not use a separate Travel category — travel is classified under Knowledge Translation (dissemination/conference travel) or Other (monitoring, site visits). KT costs entered here are $0 unless you add dissemination line items in Other Costs. CIHR requires amounts in multiples of $5,000.</div>
+        <div style="font-size:10px;color:#888;margin-top:10px;line-height:1.6">CIHR does not use a separate Travel category. Operational travel (monitoring, site visits) maps to Other; dissemination travel maps to Knowledge Translation — enter it in the Knowledge Translation section of Study Costs. Patient Partner costs are mapped to Knowledge Translation. CIHR requires amounts in multiples of $5,000.</div>
       </div>
 
       <div class="sub-head">Export</div>
