@@ -223,7 +223,9 @@ export const BT_CSS = `
 .mc-input-cell input { width: 80px; font-size: 13px; font-family: "Courier New", monospace; border: 1.5px solid var(--bdr); border-radius: 4px; background: var(--white); text-align: center; padding: 5px 4px; outline: none; color: var(--text); }
 .mc-input-cell input:focus { border-color: var(--teal); background: var(--teal-l); }
 .mc-input-cell input.tpl-unreviewed { color: var(--textd); font-style: italic; }
-.mc-computed { background: var(--bg-low); text-align: right; padding: 8px 10px !important; font-size: 12px; font-weight: 700; font-family: "Courier New", monospace; color: var(--navy); cursor: default; }
+.mc-computed { background: var(--bg-low); text-align: right; padding: 8px 10px !important; font-size: 12px; font-weight: 700; font-family: "Courier New", monospace; color: var(--navy); cursor: default; position: sticky; right: 0; z-index: 2; }
+#te-matrix th.mc-total-th { position: sticky; right: 0; z-index: 6; background: var(--bg-low); }
+#te-matrix tfoot td:last-child { position: sticky; right: 0; background: var(--bg-low); z-index: 2; }
 .mc-add-row td { background: var(--bg); padding: 0; }
 .mc-add-row button { width: 100%; padding: 7px 12px; background: none; border: none; cursor: pointer; font-size: 12px; color: var(--textd); font-family: inherit; text-align: left; }
 .mc-add-row button:hover { background: var(--teal-l); color: var(--teal); }
@@ -340,8 +342,16 @@ export const BT_CSS = `
 .ap-group-chevron { font-size: 12px; opacity: .6; transition: transform .15s; flex-shrink: 0; }
 .ap-group-head.open .ap-group-chevron { transform: rotate(180deg); }
 
-/* ── CIHR PRINT ── */
-.cihr-print-block { display: none; }
+/* ── SECTION NAV ── */
+.sec-nav { display: flex; justify-content: space-between; align-items: center; padding: 24px 0 0; border-top: 1px solid var(--bdr-s); margin-top: 32px; }
+.sec-nav-btn { background: none; border: 1.5px solid var(--bdr); padding: 9px 18px; border-radius: 6px; cursor: pointer; font-family: inherit; font-size: 12px; font-weight: 700; color: var(--textm); transition: border-color .12s, color .12s; }
+.sec-nav-btn:hover { border-color: var(--navy); color: var(--navy); }
+.sec-nav-btn.sec-nav-next { border-color: var(--teal); color: var(--teal); }
+.sec-nav-btn.sec-nav-next:hover { background: var(--teal); color: #fff; }
+.sec-nav-spacer { flex: 1; }
+
+/* ── CIHR BLOCK (inline, inside Review section) ── */
+.cihr-print-block { display: none; margin-top: 24px; padding: 20px; border: 1px solid var(--bdr-s); border-radius: 6px; background: var(--white); }
 
 /* ── PRINT STYLES ── */
 @media print {
@@ -359,7 +369,6 @@ export const BT_CSS = `
   .page-break { page-break-before: always; }
   #prt-personnel-section { page-break-before: always; }
   .svc-acc-body { display: block !important; }
-  .cihr-print-block { display: block; margin-top: 32px; padding-top: 20px; border-top: 3px solid #2b2666; }
   .cihr-head { font-size: 11px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: #2b2666; margin-bottom: 12px; }
   .cihr-row { display: flex; justify-content: space-between; padding: 5px 0; border-bottom: 1px solid #e5e5e5; font-size: 12px; }
   .cihr-row.cihr-total { border-top: 2px solid #2b2666; border-bottom: none; font-weight: 700; font-size: 13px; margin-top: 4px; padding-top: 8px; }
@@ -480,7 +489,7 @@ export const BT_HTML = `
 
       <div class="frow">
         <div class="fg">
-          <label class="fl">Number of HSSN institutions</label>
+          <label class="fl">Number of HSSN institutions <span title="Health and Social Services Network — the Quebec hospital network. Includes RI-MUHC and any affiliated sites. Used to calculate REB monitoring fees for multicentre studies." style="cursor:help;color:var(--textd);font-weight:400">ⓘ</span></label>
           <span class="fh">Includes RI-MUHC. Used for REB fees (max 10 for monitoring).</span>
           <input type="text" inputmode="decimal" class="fi" id="study-sites" value="1" oninput="calcREB();syncStudyType()">
         </div>
@@ -494,7 +503,7 @@ export const BT_HTML = `
       </div>
 
       <div class="fg">
-        <label class="fl">Multi-year staff COLA</label>
+        <label class="fl">Multi-year staff COLA <span title="Cost of Living Adjustment — applies a 5% annual increase to staff costs each year of the study." style="cursor:help;color:var(--textd);font-weight:400">ⓘ</span></label>
         <select class="fs" id="multiyear" onchange="updateSummary()">
           <option value="no">No (or single year)</option>
           <option value="yes">Yes &mdash; apply 5% annual COLA to staff costs each year</option>
@@ -523,6 +532,11 @@ export const BT_HTML = `
         </select>
       </div>
       <div class="reb-box" id="reb-box"></div>
+
+      <div class="sec-nav">
+        <span class="sec-nav-spacer"></span>
+        <button class="sec-nav-btn sec-nav-next" onclick="showSection('s-team')">Staff &amp; Salaries &#8594;</button>
+      </div>
     </section>
 
     <!-- ══════════════════════════════════════ -->
@@ -542,9 +556,9 @@ export const BT_HTML = `
             <tr>
               <th style="min-width:200px">Role</th>
               <th style="min-width:130px">Name (optional)</th>
-              <th style="width:120px">Salary ($)</th>
-              <th class="st-fte-col" style="width:90px">FTE %</th>
-              <th style="width:110px">Rate / hr</th>
+              <th style="width:120px">Annual salary</th>
+              <th class="st-fte-col" style="width:90px" title="Full-time equivalent. 100% = 1,820 hrs/yr at RI-MUHC.">FTE %</th>
+              <th style="width:110px" title="Calculated as: (annual salary × 1.19 benefits) ÷ 1,820 hrs">Rate / hr</th>
               <th style="width:40px"></th>
             </tr>
           </thead>
@@ -558,6 +572,11 @@ export const BT_HTML = `
       </button>
 
       <div class="ct" style="margin-top:20px"><strong>Salary scale:</strong> RI-MUHC annual midpoints (1 FTE = 1,820 hrs/yr). Benefits at 19% &mdash; validate this rate with RI-MUHC Research Finance (Quebec employer obligations may be 25&ndash;30%). Biostatistician: BCU (RI-MUHC) = $80/hr &bull; ACT-CTU OHRI = $250/hr.</div>
+
+      <div class="sec-nav">
+        <button class="sec-nav-btn" onclick="showSection('s-profile')">&#8592; Study Profile</button>
+        <button class="sec-nav-btn sec-nav-next" onclick="showSection('s-work')">Work Plan &#8594;</button>
+      </div>
     </section>
 
     <!-- ══════════════════════════════════════ -->
@@ -640,6 +659,11 @@ export const BT_HTML = `
       </div>
 
       <div class="ct" style="margin-top:16px"><strong>Activity types:</strong> <strong style="color:#7a4f00">Startup</strong> = site initiation, training, regulatory (0% OH for industry). <strong style="color:var(--sky)">General</strong> = flat study costs. <strong style="color:var(--green)">Per participant</strong> = per-visit activities multiplied by expected N. Use the type badge on each row to reassign.</div>
+
+      <div class="sec-nav">
+        <button class="sec-nav-btn" onclick="showSection('s-team')">&#8592; Staff &amp; Salaries</button>
+        <button class="sec-nav-btn sec-nav-next" onclick="showSection('s-costs')">Study Costs &#8594;</button>
+      </div>
     </section>
 
     <!-- ══════════════════════════════════════ -->
@@ -741,6 +765,11 @@ export const BT_HTML = `
         <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
         Add other cost
       </button>
+
+      <div class="sec-nav">
+        <button class="sec-nav-btn" onclick="showSection('s-work')">&#8592; Work Plan</button>
+        <button class="sec-nav-btn sec-nav-next" onclick="showSection('s-review')">Review &amp; Export &#8594;</button>
+      </div>
     </section>
 
     <!-- ══════════════════════════════════════ -->
@@ -767,13 +796,24 @@ export const BT_HTML = `
       <div class="sub-head">Budget Breakdown</div>
       <div id="rv-table" style="background:var(--white);border:1px solid var(--bdr-s);border-radius:6px;padding:16px 20px;margin-bottom:20px"></div>
 
+      <!-- CIHR budget mapping (shown when toggled) -->
+      <div class="cihr-print-block" id="cihr-block" style="display:none">
+        <div class="cihr-head">Budget Summary &mdash; CIHR Format</div>
+        <div class="cihr-row"><span class="cihr-row-label">Personnel (staff and salaries)</span><span class="cihr-row-amt" id="cihr-personnel">$0</span></div>
+        <div class="cihr-row"><span class="cihr-row-label">Materials and Supplies (services and laboratory)</span><span class="cihr-row-amt" id="cihr-matsup">$0</span></div>
+        <div class="cihr-row"><span class="cihr-row-label">Travel</span><span class="cihr-row-amt" id="cihr-travel">$0</span></div>
+        <div class="cihr-row"><span class="cihr-row-label">Knowledge Translation</span><span class="cihr-row-amt" id="cihr-kt">$0</span></div>
+        <div class="cihr-row"><span class="cihr-row-label">Other (contingency + other costs)</span><span class="cihr-row-amt" id="cihr-other">$0</span></div>
+        <div class="cihr-row cihr-total"><span class="cihr-row-label">Total</span><span class="cihr-row-amt" id="cihr-total">$0</span></div>
+      </div>
+
       <div class="sub-head">Export</div>
       <div class="rv-export-grid" style="margin-bottom:16px">
         <button class="pbtn" onclick="renderPrintSections();window.print()">
           <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
-          Download PDF
+          Print / Save PDF
         </button>
-        <button class="pbtn pbtn-sec" onclick="toggleCIHRFormat()">CIHR Format</button>
+        <button class="pbtn pbtn-sec" onclick="toggleCIHRFormat()">CIHR Budget View</button>
         <button class="xlink" onclick="exportBudget()">
           <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
           Save JSON
@@ -784,22 +824,16 @@ export const BT_HTML = `
           <input type="file" id="budget-file-input-rv" accept=".json" style="display:none" onchange="importBudget(this)">
         </label>
       </div>
-      <div id="autosave-notice-rv" style="font-size:11px;color:var(--textd);margin-bottom:8px"></div>
+      <div id="autosave-notice-rv" style="display:none"></div>
       <div class="ct"><strong>Budget reference:</strong> See the <a href="/kb/budget-reference" style="color:var(--teal)">Budget Reference and Guidance page</a> for justification language, overhead policy notes, and CIHR budget category guidance.</div>
+
+      <div class="sec-nav">
+        <button class="sec-nav-btn" onclick="showSection('s-costs')">&#8592; Study Costs</button>
+        <span class="sec-nav-spacer"></span>
+      </div>
     </section>
 
   </main>
-</div>
-
-<!-- CIHR print block -->
-<div class="cihr-print-block" id="cihr-block" style="display:none">
-  <div class="cihr-head">Budget Summary &mdash; CIHR Format</div>
-  <div class="cihr-row"><span class="cihr-row-label">Personnel (staff and salaries)</span><span class="cihr-row-amt" id="cihr-personnel">$0</span></div>
-  <div class="cihr-row"><span class="cihr-row-label">Materials and Supplies (services and laboratory)</span><span class="cihr-row-amt" id="cihr-matsup">$0</span></div>
-  <div class="cihr-row"><span class="cihr-row-label">Travel</span><span class="cihr-row-amt" id="cihr-travel">$0</span></div>
-  <div class="cihr-row"><span class="cihr-row-label">Knowledge Translation</span><span class="cihr-row-amt" id="cihr-kt">$0</span></div>
-  <div class="cihr-row"><span class="cihr-row-label">Other (contingency + other costs)</span><span class="cihr-row-amt" id="cihr-other">$0</span></div>
-  <div class="cihr-row cihr-total"><span class="cihr-row-label">Total</span><span class="cihr-row-amt" id="cihr-total">$0</span></div>
 </div>
 
 <!-- Activity picker modal -->
