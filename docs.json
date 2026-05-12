@@ -191,7 +191,13 @@
                       "kb/funding-applications",
                       "kb/budgets-contracts",
                       "kb/budget-negotiation",
-                      "kb/budget-tool",
+                      {
+                        "group": "Clinical Trial Budget Tool",
+                        "pages": [
+                          "kb/budget-tool",
+                          "kb/budget-reference"
+                        ]
+                      },
                       "kb/clinical-trial-agreements",
                       "kb/research-grants"
                     ]

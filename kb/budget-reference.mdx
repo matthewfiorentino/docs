@@ -1,0 +1,122 @@
+---
+title: "Budget Reference and Guidance"
+description: "Justification language, overhead policy notes, CIHR budget category guidance, and REB fee schedule reference for the RI-MUHC Clinical Trial Budget Tool."
+---
+
+This page is a reference companion to the [Clinical Trial Budget Tool](/kb/budget-tool). Use it when writing budget justifications for grant applications, sponsor negotiations, or institutional approvals.
+
+---
+
+## Overhead rates
+
+Overhead (indirect cost recovery) is applied to direct costs depending on the funding source. Set the funding type in the tool's Study Profile section — the rate updates automatically throughout.
+
+| Funding type | Overhead rate | Notes |
+|---|---|---|
+| Investigator-Initiated Trial (IIT) | 0% | Standard RI-MUHC policy for PI-led research |
+| Foundation / Charity | 27% (configurable) | McGill Research Finance default; adjust to match your specific funder agreement |
+| Industry-Sponsored | 30% | Standard industry rate; startup activities (REB, site initiation) are carved out at 0% overhead |
+
+**Industry overhead carve-out:** Startup activities for industry studies are excluded from overhead because they represent site preparation costs that are typically negotiated separately with the sponsor. This is standard practice in CTAs at academic medical centres.
+
+**Foundation rate note:** 27% is the McGill Research Finance default. Some foundation funders cap indirect costs at 15–20%. Always verify the funder's indirect cost policy before finalizing the budget. The tool allows you to override this field.
+
+**Benefits rate:** The tool applies a 19% benefits multiplier to annual salaries to calculate hourly rates. Quebec statutory obligations (QPP, QPIP, EI, FSF) plus RREGOP pension are estimated at 25–30% for most RI-MUHC positions. Validate the correct rate with RI-MUHC Research Finance before submitting a finalized budget. The multiplier is a single constant in the tool and is straightforward to update once confirmed.
+
+---
+
+## Justification language by cost category
+
+### Staff and salaries
+
+> *[Role] will dedicate [X]% FTE / [Y] hours per year to [study title]. Salary is based on the RI-MUHC annual midpoint for [role level] ($[amount]), plus a [19]% benefits loading, for a total annual cost of $[amount]. [For multi-year studies: A 5% annual cost-of-living adjustment is applied in Years 2 and beyond, consistent with collective agreement projections.]*
+
+**Tips:**
+- Name the specific activities the person will perform (e.g., REB coordination, data entry, participant visits)
+- For CIHR applications, ensure staff costs appear under **Salaries and Stipends**
+- PI salary is typically excluded from IIT budgets (PI effort is implicit); include it for industry studies where a PI salary line is required
+
+---
+
+### CIM platform services
+
+> *[Service name] will be performed at the RI-MUHC Clinical Investigation and Management (CIM) platform. The per-procedure cost of $[X] is based on the current CIM price schedule ([non-industry / industry] rate). [Y] procedures per participant × [N] participants = [total] procedures, for a total cost of $[amount].*
+
+---
+
+### MUHC laboratory tests
+
+> *Laboratory analyses will be performed by the MUHC clinical laboratories at the standard research rate. [Test name] is priced at $[X] per sample. [Y] samples per participant × [N] participants = [total] samples, for a total of $[amount].*
+
+---
+
+### Participant costs
+
+> *Participants will receive a $[X] transportation reimbursement and a $[Y] parking voucher per visit to offset out-of-pocket costs associated with study participation. This amount reflects actual costs and is not considered compensation. [Z] visits per participant × [N] participants = [total] reimbursements, for a total cost of $[amount].*
+
+**Note:** Participant stipends (as opposed to cost reimbursements) require separate ethics justification and may be subject to CRA reporting thresholds.
+
+---
+
+### Travel
+
+> *[Investigator/coordinator] travel to [destination] is required for [purpose: e.g., sponsor investigator meeting, DSMB meeting, monitoring visit]. Estimated cost: $[X] × [Y] trips = $[amount], based on [economy airfare / mileage / hotel] estimates.*
+
+For CIHR applications: dissemination travel (conferences, stakeholder meetings) should be classified under **Knowledge Translation**. Operational travel (monitoring, site visits) is classified under **Other**.
+
+---
+
+### Contingency
+
+> *A [X]% contingency reserve is included to cover unforeseen costs associated with protocol amendments, unexpected laboratory or service price adjustments, and unanticipated regulatory requirements. This rate is consistent with [RI-MUHC / CIHR / institutional] guidelines for [low / moderate / high] complexity studies.*
+
+Suggested rates: Low complexity 9%, Moderate 11%, High 13.5%.
+
+---
+
+## CIHR budget category mapping
+
+CIHR Project Grant applications use five standardized budget categories. The table below shows how costs built in the tool map to CIHR's categories. The **CIHR Budget View** toggle in the tool's Review section generates this mapping automatically.
+
+| CIHR category | What goes here | Tool section |
+|---|---|---|
+| Salaries and Stipends | All personnel costs (staff, students, postdocs) | Work Plan — all activity types |
+| Consumables | Materials, supplies, CIM services, lab tests, pharmacy | Study Costs — Priced Services |
+| Equipment (Non-consumables) | Items with useful life >1 year and unit cost ≥$2,000 | Other Costs (add as a line item) |
+| Knowledge Translation | Publications, conference travel, open-access fees, stakeholder briefings, patient partner engagement | Other Costs (add as a line item) |
+| Other | Participant costs, monitoring travel, contingency, other direct costs | Study Costs — Direct Costs; contingency applied in Review |
+
+**CIHR formatting requirements:**
+- All amounts in Canadian dollars
+- Total must be a multiple of $5,000 (round up)
+- Include applicable provincial and federal taxes at after-rebate rates
+- Each line item requires a justification narrative
+
+---
+
+## REB fee schedule (MSSS, April 2025)
+
+REB fees are calculated automatically in the Study Profile section based on the MSSS fee schedule (effective April 2025). Fees apply to studies reviewed by a Quebec REB under the MSSS authority.
+
+| Fee type | Amount |
+|---|---|
+| Initial submission — scientific review | $634 |
+| Initial submission — ethics review | $6,348 |
+| Annual renewal (monitoring) | $634 per site per year |
+| Site authorization (multicentre) | $1,904 per additional site |
+| Annual renewal — participating site | $634 per site per year |
+| Major amendment | $634 per amendment |
+
+**Multicentre studies:** The tool calculates fees for up to 10 HSSN institutions. Enter the number of participating sites in the Study Profile; fees scale automatically.
+
+**Including REB fees in the budget total:** Use the toggle in Study Profile to include or exclude REB fees from the grand total. Some funders do not permit REB fees as a direct cost; others require them to be listed separately. When excluded from the funded total, note in your budget justification that REB fees will be covered by the institution or a separate operational fund.
+
+---
+
+## Offline version
+
+Prefer to work in a spreadsheet? Download the Excel version of the budget template — it covers the same cost categories and salary scales but requires manual calculations.
+
+[Download Excel budget template](https://raw.githubusercontent.com/matthewfiorentino/docs/main/public/downloads/budget-template.xlsx)
+
+Note: the Excel file and the web tool are maintained separately. The web tool reflects the most current salary scales and service prices.
