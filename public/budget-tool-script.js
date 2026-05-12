@@ -1172,16 +1172,21 @@ function calcPtCost() {
     var stipAmt2   = parseFloat(document.getElementById('pt-stip-amt').value)    || 0;
     var stipVisits = parseFloat(document.getElementById('pt-stip-visits').value) || 0;
     var annualStipend = stipAmt2 * stipVisits / years;
+    var stipWarnRow = document.getElementById('pt-stip-warn-row');
     if (annualStipend > 500) {
       stipWarn.className = 'cn';
       stipWarn.innerHTML = 'Estimated $' + Math.round(annualStipend).toLocaleString() + '/participant/year — McGill policy cap is $500/year. Amounts above this threshold may require CRA reporting.';
+      if (stipWarnRow) stipWarnRow.style.display = '';
     } else {
       stipWarn.className = '';
       stipWarn.innerHTML = '';
+      if (stipWarnRow) stipWarnRow.style.display = 'none';
     }
   } else if (stipWarn) {
+    var stipWarnRow2 = document.getElementById('pt-stip-warn-row');
     stipWarn.className = '';
     stipWarn.innerHTML = '';
+    if (stipWarnRow2) stipWarnRow2.style.display = 'none';
   }
 
   updateSummary();
