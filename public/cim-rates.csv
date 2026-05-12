@@ -1,0 +1,117 @@
+Group,Service,Non-Industry,Industry
+"ELECTROCARDIOGRAM","Supine 12-lead resting ECG - no physician interpretation",38,80
+"VITAL SIGNS","Heart rate, blood pressure, SpO2, breathing frequency, temperature",20,30
+"VITAL SIGNS","Arterial stiffness - AtCor SphygmoCor XCEL et CvMS",82,200
+"VITAL SIGNS","Blood perfusion and tcpO2/tcpCO2- Perimed PeriFlux 5000 doppler laser",82,200
+"VITAL SIGNS","Flow-mediated dilation measures by ultrasound (coming soon)",122,250
+"NON-INVASIVE VASCULAR ASSESSMENTS","Retial vascular assessment- IMEDOS Static Vascular Analysis",82,200
+"NON-INVASIVE VASCULAR ASSESSMENTS","Ankle-brachial blood pressure index- Huntleigh Dopplex",60,100
+"NON-INVASIVE VASCULAR ASSESSMENTS","24-hours blood pressure monitoring- Mobil-O-Graph PWA",60,75
+"NON-INVASIVE VASCULAR ASSESSMENTS","Spirometry - pre bronchodilator",43,90
+"NON-INVASIVE VASCULAR ASSESSMENTS","Add on spirometry - post bronchodilator",43,80
+"NON-INVASIVE VASCULAR ASSESSMENTS","Lung volumes by body plethysmography",43,90
+"NON-INVASIVE VASCULAR ASSESSMENTS","Lung diffusion capacity (DLCO)",43,90
+"NON-INVASIVE VASCULAR ASSESSMENTS","Complete pulmonary function testing (PFT)",129,235
+"NON-INVASIVE VASCULAR ASSESSMENTS","Airway resistance and impulse oscilometry",32,45
+"PULMONARY FUNCTION TEST","Maximal inspiratory and expiratory pressures (MIP&MEP)",32,45
+"PULMONARY FUNCTION TEST","Maximal voluntary ventilation (MVV)",32,45
+"PULMONARY FUNCTION TEST","Multiple breath washout",80,150
+"PULMONARY FUNCTION TEST","Aerochamber",6,8
+"PULMONARY FUNCTION TEST","Other (e.g. FeNO, nasal peak flow, holter, travel time) hourly rate",61,82
+"PULMONARY FUNCTION TEST","6-min walk test",60,170
+"PULMONARY FUNCTION TEST","Sit to stand test",15,30
+"PULMONARY FUNCTION TEST","4-square step test",15,30
+"PULMONARY FUNCTION TEST","Bailey-III screening test for infant and toddler development",60,300
+"PULMONARY FUNCTION TEST","Performance of upper limb (PUL) test",60,100
+"PULMONARY FUNCTION TEST","Short Physical Performance Battery (SPPB)",60,82
+"PULMONARY FUNCTION TEST","Hand grip strenght test",15,40
+"PULMONARY FUNCTION TEST","Cardio-pulmonary exercise test (CPET) with cycle ergometer",212,354
+"FUNCTIONAL TEST and EXERCISE PHYSIOLOGY","Cardio-pulmonary exercise test (CPET) with treadmill",212,354
+"FUNCTIONAL TEST and EXERCISE PHYSIOLOGY","Isokinetic cycle ergometer",29,64
+"FUNCTIONAL TEST and EXERCISE PHYSIOLOGY","Resting energy expenditure",212,354
+"FUNCTIONAL TEST and EXERCISE PHYSIOLOGY","Other (travel time) hourly rate",61,82
+"FUNCTIONAL TEST and EXERCISE PHYSIOLOGY","Other (start-up, training) hourly rate",61,82
+"FUNCTIONAL TEST and EXERCISE PHYSIOLOGY","Other (inspiratory capacity data cleaning, data analysis) hourly rate",61,82
+"FUNCTIONAL TEST and EXERCISE PHYSIOLOGY","Other (questionnaires, data transfer) hourly rate",61,82
+"BIOELECTRICAL IMPEDANCE ANALYSIS InBody570","BIA total body composition",26,45
+"BIOELECTRICAL IMPEDANCE ANALYSIS InBody570","DXA femur bone density",94,138
+"BIOELECTRICAL IMPEDANCE ANALYSIS InBody570","DXA forearm bone density",94,138
+"DUAL X-RAY ABSORPTIOMETRY","DXA spine bone density",94,138
+"DUAL X-RAY ABSORPTIOMETRY","DXA total body composition",94,138
+"DUAL X-RAY ABSORPTIOMETRY","DXA phantom",94,138
+"DUAL X-RAY ABSORPTIOMETRY","pQCT tibia",94,138
+"PERIPHERAL QUANTITATIVE COMPUTED TOMOGRAPHY","pQCT femur",94,138
+"PERIPHERAL QUANTITATIVE COMPUTED TOMOGRAPHY","pQCT radius",94,138
+"PERIPHERAL QUANTITATIVE COMPUTED TOMOGRAPHY","Head -",550,1300
+"MAGNETIC RESONANCE IMAGING (MRI) Philips 3T 2","Head +",675,1450
+"MAGNETIC RESONANCE IMAGING (MRI) Philips 3T 2","Technical assistance",65,85
+"MAGNETIC RESONANCE IMAGING (MRI) Philips 3T 2","Head -",328,475
+"MAGNETIC RESONANCE IMAGING (MRI) Philips 3T 2","Head +",385,575
+"MAGNETIC RESONANCE IMAGING (MRI) Philips 3T 2","Neck -",328,475
+"MAGNETIC RESONANCE IMAGING (MRI) Philips 3T 2","Neck +",385,575
+"MAGNETIC RESONANCE IMAGING (MRI) Philips 3T 2","Chest -",328,550
+"MAGNETIC RESONANCE IMAGING (MRI) Philips 3T 2","Chest +",385,650
+"MAGNETIC RESONANCE IMAGING (MRI) Philips 3T 2","Abdomen -",328,550
+"MAGNETIC RESONANCE IMAGING (MRI) Philips 3T 2","Abdomen +",385,650
+"MAGNETIC RESONANCE IMAGING (MRI) Philips 3T 2","Pelvis -",328,550
+"MAGNETIC RESONANCE IMAGING (MRI) Philips 3T 2","Pelvis +",385,650
+"MAGNETIC RESONANCE IMAGING (MRI) Philips 3T 2","Chest/abdomen -",504,700
+"MAGNETIC RESONANCE IMAGING (MRI) Philips 3T 2","Chest/abdomen +",562,800
+"MAGNETIC RESONANCE IMAGING (MRI) Philips 3T 2","Chest/abdomen-pelvis -",504,950
+"MAGNETIC RESONANCE IMAGING (MRI) Philips 3T 2","Chest/abdomen-pelvis +",562,1050
+"COMPUTERIZED TOMOGRAPHY (CT) SCAN Philips iCT 2","Abdomen-pelvis -",390,700
+"COMPUTERIZED TOMOGRAPHY (CT) SCAN Philips iCT 2","Abdomen-pelvis +",447,800
+"COMPUTERIZED TOMOGRAPHY (CT) SCAN Philips iCT 2","Neck/chest/abdomen -",603,1150
+"COMPUTERIZED TOMOGRAPHY (CT) SCAN Philips iCT 2","Neck/chest/abdomen +",660,1250
+"COMPUTERIZED TOMOGRAPHY (CT) SCAN Philips iCT 2","Neck/chest/abdomen-pelvis -",603,1375
+"COMPUTERIZED TOMOGRAPHY (CT) SCAN Philips iCT 2","Neck/chest/abdomen-pelvis +",660,1575
+"COMPUTERIZED TOMOGRAPHY (CT) SCAN Philips iCT 2","Upper or lower extremity -",328,425
+"COMPUTERIZED TOMOGRAPHY (CT) SCAN Philips iCT 2","Upper or lower extremity +",385,525
+"COMPUTERIZED TOMOGRAPHY (CT) SCAN Philips iCT 2","Spine (each segment) -",328,400
+"COMPUTERIZED TOMOGRAPHY (CT) SCAN Philips iCT 2","Spine (each segment) +",385,500
+"COMPUTERIZED TOMOGRAPHY (CT) SCAN Philips iCT 2","Extra charge - multiphase CT",104,160
+"COMPUTERIZED TOMOGRAPHY (CT) SCAN Philips iCT 2","Other (e.g. anonymization and upload of images) hourly rate",59,79
+"COMPUTERIZED TOMOGRAPHY (CT) SCAN Philips iCT 2","DICOM image copy on a CD",13,14
+"COMPUTERIZED TOMOGRAPHY (CT) SCAN Philips iCT 2","Study start-up fee",520,788
+"COMPUTERIZED TOMOGRAPHY (CT) SCAN Philips iCT 2","Only radiologist reading fee - per body area",156,156
+"COMPUTERIZED TOMOGRAPHY (CT) SCAN Philips iCT 2","Blood draw - above 9 years old - vacutainers not included",14,26
+"COMPUTERIZED TOMOGRAPHY (CT) SCAN Philips iCT 2","Blood draw - above 9 years old - vacutainers included",19,31
+"COMPUTERIZED TOMOGRAPHY (CT) SCAN Philips iCT 2","Blood draw - below 9 years old - vacutainers not included",19,31
+"COMPUTERIZED TOMOGRAPHY (CT) SCAN Philips iCT 2","Blood draw - below 9 years old - vacutainers included",23,35
+"COMPUTERIZED TOMOGRAPHY (CT) SCAN Philips iCT 2","Extra charge - blood draw for venous blood gas",14,19
+"COMPUTERIZED TOMOGRAPHY (CT) SCAN Philips iCT 2","Extra charge - blood draw from IV line",2,3
+"SPECIMEN COLLECTION","Extra charge - IV catheter insertion",9,12
+"SPECIMEN COLLECTION","Phlebotomy kit preparation (each)",5,8
+"SPECIMEN COLLECTION","Nasopharyngeal swabs",19,31
+"SPECIMEN COLLECTION","Urine collection",13,18
+"SPECIMEN COLLECTION","Urine rapid test- kit not included (such as pregnancy or pH)",19,26
+"SPECIMEN COLLECTION","Dry ice",41,47
+"SPECIMEN COLLECTION","Specimen processing hourly rate",55,72
+"SPECIMEN COLLECTION","Specimen shipping services hourly rate",55,72
+"SPECIMEN COLLECTION","Ambiant shipping",27.5,36
+"SPECIMEN PROCESSING AND SHIPPING","Frozen shipping (dry ice sold separately)",27.5,36
+"SPECIMEN PROCESSING AND SHIPPING","Refrigerated shipping",27.5,36
+"SPECIMEN PROCESSING AND SHIPPING","Combo shipping (dry ice sold separately)",41.25,54
+"SPECIMEN PROCESSING AND SHIPPING","Other (travel time) hourly rate",55,72
+"SPECIMEN PROCESSING AND SHIPPING","Other (start-up, training) hourly rate",55,72
+"SLEEP LAB","Other (e.g. PSG analysis, data transfer) hourly rate",61,82
+"BRONCHOSCOPY- GASTROSCOPY- ENDOSCOPY","Bronchoscopy, Gastroscopy or Endoscopy",645,840
+"BRONCHOSCOPY- GASTROSCOPY- ENDOSCOPY","Other (e.g. patient monitoring) hourly rate",59,79
+"OPERATING ROOM","14- Echocardiogram ultrasound machine (per exam)",61,
+"OPERATING ROOM","24- Data management",69,
+"OPERATING ROOM","3 - Add on charge for simple transthoracic echocardiogram image acquisition by technologist",114,
+"CARDIAC ECHO 3","7 - Add on charge for report simple echo measures",152,
+"CARDIAC ECHO 3","9 - Add on charge for image upload",44,
+"CARDIAC ECHO 3","10 - Add on charge for a copy of an exam on an external media (DVD, CD, USB key)",18,
+"CARDIAC ECHO 3","11 - If needed, technical assistance (hourly rate)",110,
+"CARDIAC ECHO 3","12 - If needed, manual anonymization of images (hourly rate)",110,
+"CARDIAC ECHO 3","13 - If needed, training, start up activities, other (houly rate)",110,
+"Corelab activity","Ethics submissions - Lead or single site",1350,
+"Corelab activity","Ethics submission - Particpating site",785,
+"SUBMISSION SERVICES","Annual renewal",395,
+"SUBMISSION SERVICES","Negotiations of start up budget (1-2 arms)",830,
+"SUBMISSION SERVICES","Negotiations of start up budget (3 plus)",1350,
+"BUDGET SERVICES","Nurse",85,
+"TRIAL CONDUCT RESSOURCES","Coordinator",75,
+"TRIAL CONDUCT RESSOURCES","Monitor",62,
+"TRIAL CONDUCT RESSOURCES","Project Manager",70,
