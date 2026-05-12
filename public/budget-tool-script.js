@@ -1363,19 +1363,23 @@ function updateSummary() {
   var bthGrand = document.getElementById('bth-grand');
   var bthLbl   = document.querySelector('#bt-header .bth-lbl');
   if (bthTitle) bthTitle.textContent = (titleEl && titleEl.value.trim()) ? titleEl.value.trim() : 'Untitled study';
-  var bthLbl = document.getElementById('bth-lbl');
-  var bthSub = document.getElementById('bth-sub');
-  var hdrYears = parseInt((document.getElementById('study-years') || {}).value) || 1;
-  var hdrCola  = document.getElementById('multiyear') && document.getElementById('multiyear').value === 'yes';
+  var bthLbl      = document.getElementById('bth-lbl');
+  var bthColTotal = document.getElementById('bth-col-total');
+  var bthTotLbl   = document.getElementById('bth-tot-lbl');
+  var bthTotAmt   = document.getElementById('bth-tot-amt');
+  var hdrYears    = parseInt((document.getElementById('study-years') || {}).value) || 1;
+  var hdrCola     = document.getElementById('multiyear') && document.getElementById('multiyear').value === 'yes';
   if (hdrYears > 1) {
     var perYear = grand / hdrYears;
-    if (bthGrand) bthGrand.textContent = '$' + Math.round(perYear).toLocaleString();
-    if (bthLbl)   bthLbl.textContent   = hdrCola ? 'Per year (avg, COLA)' : 'Per year';
-    if (bthSub) { bthSub.textContent = hdrYears + '-year total  $' + Math.round(grand).toLocaleString(); bthSub.style.display = ''; }
+    if (bthGrand)    bthGrand.textContent    = '$' + Math.round(perYear).toLocaleString();
+    if (bthLbl)      bthLbl.textContent      = hdrCola ? 'Per year (avg)' : 'Per year';
+    if (bthTotAmt)   bthTotAmt.textContent   = '$' + Math.round(grand).toLocaleString();
+    if (bthTotLbl)   bthTotLbl.textContent   = hdrYears + '-year total';
+    if (bthColTotal) bthColTotal.style.display = '';
   } else {
-    if (bthGrand) bthGrand.textContent = '$' + Math.round(grand).toLocaleString();
-    if (bthLbl)   bthLbl.textContent   = 'Grand total';
-    if (bthSub)   bthSub.style.display = 'none';
+    if (bthGrand)    bthGrand.textContent    = '$' + Math.round(grand).toLocaleString();
+    if (bthLbl)      bthLbl.textContent      = 'Grand total';
+    if (bthColTotal) bthColTotal.style.display = 'none';
   }
 
   // COLA auto-suggest: when years > 1 and COLA is off, show a soft prompt

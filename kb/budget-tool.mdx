@@ -64,10 +64,12 @@ export const BT_CSS = `
 }
 .bth-brand { font-size: 11px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; color: rgba(255,255,255,.55); flex-shrink: 0; }
 .bth-study { font-size: 13px; font-weight: 600; color: rgba(255,255,255,.85); flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-.bth-total-wrap { display: flex; flex-direction: column; align-items: flex-end; flex-shrink: 0; }
-.bth-lbl { font-size: 9px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: rgba(255,255,255,.45); }
+.bth-total-wrap { display: flex; align-items: stretch; flex-shrink: 0; }
+.bth-col { display: flex; flex-direction: column; align-items: flex-end; justify-content: center; padding: 0 14px; }
+.bth-col + .bth-col { border-left: 1px solid rgba(255,255,255,.15); }
+.bth-lbl { font-size: 9px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: rgba(255,255,255,.45); margin-bottom: 2px; }
 .bth-amt { font-size: 20px; font-weight: 800; font-family: "Courier New", monospace; color: #fff; line-height: 1; }
-.bth-sub { font-size: 11px; color: rgba(255,255,255,.6); margin-top: 3px; text-align: right; }
+.bth-amt-sm { font-size: 15px; font-weight: 700; font-family: "Courier New", monospace; color: rgba(255,255,255,.75); line-height: 1; }
 .bth-actions { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
 .bth-saved { font-size: 10px; color: rgba(255,255,255,.45); }
 .bth-btn { font-size: 11px; font-weight: 700; background: rgba(255,255,255,.15); border: 1px solid rgba(255,255,255,.2); color: #fff; padding: 5px 12px; border-radius: 4px; cursor: pointer; font-family: inherit; transition: background .12s; text-decoration: none; display: inline-flex; align-items: center; }
@@ -378,10 +380,15 @@ export const BT_HTML = `
   <header id="bt-header">
     <span class="bth-brand">Clinical Research Budget</span>
     <span class="bth-study" id="bth-title">Untitled study</span>
-    <div class="bth-total-wrap">
-      <span class="bth-lbl" id="bth-lbl">Grand total</span>
-      <span class="bth-amt" id="bth-grand">$0</span>
-      <span class="bth-sub" id="bth-sub" style="display:none"></span>
+    <div class="bth-total-wrap" id="bth-total-wrap">
+      <div class="bth-col" id="bth-col-main">
+        <span class="bth-lbl" id="bth-lbl">Grand total</span>
+        <span class="bth-amt" id="bth-grand">$0</span>
+      </div>
+      <div class="bth-col" id="bth-col-total" style="display:none">
+        <span class="bth-lbl" id="bth-tot-lbl">Total</span>
+        <span class="bth-amt-sm" id="bth-tot-amt">$0</span>
+      </div>
     </div>
     <div class="bth-actions">
       <label class="bth-btn" style="cursor:pointer">Load backup (.json)<input type="file" id="budget-file-input" accept=".json" style="display:none" onchange="importBudget(this)"></label>
