@@ -1014,6 +1014,12 @@ function calcSfCost() {
   var failures = n * (rate / 100) / (1 - rate / 100);
   var sfEl = document.getElementById('sf-cost');
   if (sfEl) { sfEl.value = Math.round(failures * ppCost); updateSfSub(); }
+  var calcHint = document.getElementById('sf-calc-hint');
+  if (calcHint) {
+    var failRounded = Math.round(failures * 10) / 10;
+    calcHint.textContent = 'Based on ' + n + ' enrolled: ' + failRounded + ' failures × $' + Math.round(ppCost).toLocaleString() + ' = $' + Math.round(failures * ppCost).toLocaleString();
+    calcHint.style.display = '';
+  }
 }
 
 function updateEquipSub() {
