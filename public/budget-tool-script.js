@@ -1762,6 +1762,99 @@ function importBudget(input) {
   reader.readAsText(file);
 }
 
+function exportCSV() {
+  var esc = function(v) { var s = String(v === null || v === undefined ? '' : v); return s.indexOf(',') !== -1 || s.indexOf('"') !== -1 || s.indexOf('\n') !== -1 ? '"' + s.replace(/"/g, '""') + '"' : s; };
+  var row = function(cells) { return cells.map(esc).join(',') + '\r\n'; };
+  var lines = '';
+
+  // Study info
+  var titleEl = document.getElementById('study-title');
+  var protEl  = document.getElementById('study-protocol');
+  var title   = titleEl ? titleEl.value : '';
+  var prot    = protEl  ? protEl.value  : '';
+  lines += row(['RI-MUHC Clinical Research Budget']);
+  lines += row(['Study', title]);
+  lines += row(['Protocol', prot]);
+  lines += row(['Generated', new Date().toLocaleDateString()]);
+  lines += '\r\n';
+
+  // Staff
+  lines += row(['STAFF & SALARIES']);
+  lines += row(['Role', 'Annual Salary', 'Rate/hr']);
+  var staffRows = document.querySelectorAll('#staff-table tbody tr');
+  for (var i = 0; i < staffRows.length; i++) {
+    var roleEl = staffRows[i].querySelector('.st-role');
+    var salEl  = staffRows[i].querySelector('.st-sal');
+    var rateEl = staffRows[i].querySelector('.st-rate');
+    if (!roleEl) continue;
+    lines += row([
+      roleEl.textContent.trim(),
+      salEl  ? salEl.value  : '',
+      rateEl ? rateEl.textContent.trim() : ''
+    ]);
+  }
+  lines += '\r\n';
+
+  // Work plan
+  lines += row(['WORK PLAN']);
+  var staffIds = Object.keys(matrixData.length ? {} : {});
+  // Build staff column headers from matrix th elements
+  var headThs = document.querySelectorAll('#mc-head-row th[data-staff-id]');
+  var staffHeaders = [];
+  for (var j = 0; j < headThs.length; j++) {
+    var rawText = headThs[j].textContent.replace(/hrs.*$/i, '').trim();
+    staffHeaders.push(rawText);
+  }
+  var headerRow = ['Type', 'Activity'].concat(staffHeaders).concat(['Cost']);
+  lines += row(headerRow);
+
+  var rowIds = Object.keys(matrixData);
+  var nPt    = parseInt((document.getElementById('study-n') || {}).value) || 0;
+  for (var r = 0; r < rowIds.length; r++) {
+    var rid  = rowIds[r];
+    var mrow = matrixData[rid];
+    var typeLabel = mrow.type === 'startup' ? 'Startup' : mrow.type === 'perpt' ? 'Per Participant' : 'General';
+    var cells = [typeLabel, mrow.name];
+    var rowHrs = 0;
+    for (var j = 0; j < headThs.length; j++) {
+      var sid  = headThs[j].getAttribute('data-staff-id');
+      var hrs  = parseFloat(mrow.hours[sid]) || 0;
+      cells.push(hrs || '');
+      rowHrs += hrs;
+    }
+    var inputEl = document.getElementById('mc-row-' + rid);
+    var costEl  = inputEl ? inputEl.querySelector('.mc-computed') : null;
+    cells.push(costEl ? costEl.textContent.trim() : '');
+    lines += row(cells);
+  }
+  lines += '\r\n';
+
+  // Summary
+  lines += row(['BUDGET SUMMARY']);
+  var summaryRows = [
+    ['Staff (Work Plan)', document.getElementById('rv-staff')],
+    ['Services & Laboratory', document.getElementById('rv-svc')],
+    ['Participant Costs', document.getElementById('rv-pt')],
+    ['Travel', document.getElementById('rv-travel')],
+    ['Other Costs', document.getElementById('rv-other')],
+    ['Overhead', document.getElementById('rv-oh')],
+    ['Contingency', document.getElementById('rv-cont')],
+    ['REB Fees', document.getElementById('rv-reb')],
+    ['Grand Total', document.getElementById('rv-grand')]
+  ];
+  for (var k = 0; k < summaryRows.length; k++) {
+    var el = summaryRows[k][1];
+    lines += row([summaryRows[k][0], el ? el.textContent.trim() : '']);
+  }
+
+  var fname = 'rimuhc_budget_' + (title || 'export').replace(/[^a-z0-9]/gi, '_').toLowerCase() + '.csv';
+  var blob  = new Blob([lines], {type: 'text/csv;charset=utf-8;'});
+  var url   = URL.createObjectURL(blob);
+  var a     = document.createElement('a');
+  a.href = url; a.download = fname; a.click();
+  URL.revokeObjectURL(url);
+}
+
 function checkAutoSave() {
   try {
     var saved = localStorage.getItem(AUTOSAVE_KEY);

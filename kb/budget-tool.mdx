@@ -402,7 +402,7 @@ export const BT_HTML = `
       <span class="bth-amt" id="bth-grand">$0</span>
     </div>
     <div class="bth-actions">
-      <label class="bth-btn" style="cursor:pointer">Load a copy<input type="file" id="budget-file-input" accept=".json" style="display:none" onchange="importBudget(this)"></label>
+      <label class="bth-btn" style="cursor:pointer">Load backup (.json)<input type="file" id="budget-file-input" accept=".json" style="display:none" onchange="importBudget(this)"></label>
       <button class="bth-btn" onclick="exportBudget()">Save a copy &#8595;</button>
     </div>
   </header>
@@ -806,7 +806,12 @@ export const BT_HTML = `
           Print / Save PDF
         </button>
         <button class="pbtn pbtn-sec" onclick="toggleCIHRFormat()">CIHR Budget View</button>
+        <button class="pbtn pbtn-sec" onclick="exportCSV()">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Download as spreadsheet
+        </button>
       </div>
+      <p style="font-size:11px;color:var(--textd);margin:0 0 16px">Spreadsheet is for sharing only — use <strong>Save a copy</strong> in the header to save a file you can reload.</p>
       <div class="ct"><strong>Budget reference:</strong> See the <a href="/kb/budget-reference" style="color:var(--teal)">Budget Reference and Guidance page</a> for justification language, overhead policy notes, and CIHR budget category guidance.</div>
 
       <div class="sec-nav">
