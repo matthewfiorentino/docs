@@ -1100,9 +1100,17 @@ function getLabTotal() {
 // PARTICIPANT COSTS
 // ════════════════════════════════════════
 function calcPtCost() {
-  var n   = parseInt(document.getElementById('study-n').value) || 0;
-  var ptN = document.getElementById('pt-n-display');
-  if (ptN) ptN.textContent = n;
+  var n      = parseInt(document.getElementById('study-n').value) || 0;
+  var banner = document.getElementById('pt-n-banner');
+  if (banner) {
+    if (n === 0) {
+      banner.className = 'cn';
+      banner.innerHTML = 'Participant count is 0 — subtotals will show $0. Set the number of participants in <strong>Study Profile</strong> (Section 1) first.';
+    } else {
+      banner.className = 'ci';
+      banner.innerHTML = 'Costs below are multiplied by <strong>' + n + ' participant' + (n === 1 ? '' : 's') + '</strong>. Enter per-visit amounts.';
+    }
+  }
 
   var items = [
     {amt:'pt-stip-amt',  visits:'pt-stip-visits',  price:'pt-stip-price',  sub:'pt-stip-sub'},
