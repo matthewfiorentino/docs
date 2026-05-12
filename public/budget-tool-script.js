@@ -555,17 +555,49 @@ function appendMatrixRow(rowId, type, name, isTemplate) {
   var totalTd = document.createElement('td');
   totalTd.className = 'mc-computed';
   totalTd.id = 'mc-rtot-' + rowId;
-  totalTd.textContent = '—';
+  if (type === 'perpt') {
+    var globalN0 = parseInt((document.getElementById('study-n') || {}).value) || 0;
+    totalTd.innerHTML =
+      '<span id="mc-rtot-cost-' + rowId + '">—</span>' +
+      '<div class="mc-perpt-n-row">' +
+        '<input type="text" inputmode="decimal" class="mc-perpt-n-inp" id="mc-n-' + rowId + '" ' +
+          'value="' + globalN0 + '" data-synced="true" ' +
+          'oninput="setMatrixRowN(\'' + rowId + '\',this.value)">' +
+        '<span class="mc-perpt-n-lbl">pts</span>' +
+      '</div>';
+  } else {
+    totalTd.textContent = '—';
+  }
   tr.appendChild(totalTd);
 
   if (addRow) tbody.insertBefore(tr, addRow);
   else tbody.appendChild(tr);
 }
 
+function getRowN(rowId) {
+  var row = matrixData[rowId];
+  if (!row || row.type !== 'perpt') return 1;
+  if (row.nSynced === false) return row.n !== undefined ? row.n : 0;
+  return parseInt((document.getElementById('study-n') || {}).value) || 0;
+}
+
+function setMatrixRowN(rowId, value) {
+  if (!matrixData[rowId]) return;
+  matrixData[rowId].n = parseInt(value) || 0;
+  matrixData[rowId].nSynced = false;
+  var inp = document.getElementById('mc-n-' + rowId);
+  if (inp) inp.setAttribute('data-synced', 'false');
+  updateMatrixRowTotal(rowId);
+  updateMatrixFooter();
+  updateSummary();
+}
+
 function addMatrixRow(type, nameOpt, isTemplate) {
   matrixRowCtr++;
   var rowId = 'r' + matrixRowCtr;
-  matrixData[rowId] = {type: type, name: nameOpt || '', hours: {}};
+  var entry = {type: type, name: nameOpt || '', hours: {}};
+  if (type === 'perpt') { entry.nSynced = true; entry.n = parseInt((document.getElementById('study-n') || {}).value) || 0; }
+  matrixData[rowId] = entry;
   appendMatrixRow(rowId, type, nameOpt || '', isTemplate);
   showMatrix();
   updateMatrixFooter();
@@ -596,20 +628,20 @@ function updateMatrixRowTotal(rowId) {
   var el  = document.getElementById('mc-rtot-' + rowId);
   var row = matrixData[rowId];
   if (!el || !row) return;
-  var nPt = parseInt(document.getElementById('study-n').value) || 0;
   var total = 0;
   var sIds = Object.keys(row.hours);
   for (var i = 0; i < sIds.length; i++) {
     var hrs = parseFloat(row.hours[sIds[i]]) || 0;
     total += hrs * getStaffHourlyRate(sIds[i]);
   }
-  if (row.type === 'perpt') total *= nPt;
-  el.textContent = total > 0 ? ('$' + Math.round(total).toLocaleString()) : '—';
+  if (row.type === 'perpt') total *= getRowN(rowId);
+  var display = total > 0 ? ('$' + Math.round(total).toLocaleString()) : '—';
+  var costSpan = document.getElementById('mc-rtot-cost-' + rowId);
+  if (costSpan) costSpan.textContent = display; else el.textContent = display;
 }
 
 function updateMatrixFooter() {
   var staffIds = getActiveStaffIds();
-  var nPt = parseInt(document.getElementById('study-n').value) || 0;
   var grandHrs = 0, grandCost = 0;
 
   for (var s = 0; s < staffIds.length; s++) {
@@ -621,7 +653,7 @@ function updateMatrixFooter() {
       var rowId = rowIds[r];
       var row   = matrixData[rowId];
       var hrs   = parseFloat(row.hours[staffId]) || 0;
-      var mult  = (row.type === 'perpt') ? nPt : 1;
+      var mult  = (row.type === 'perpt') ? getRowN(rowId) : 1;
       colHrs  += hrs * mult;
       colCost += hrs * getStaffHourlyRate(staffId) * mult;
     }
@@ -643,11 +675,20 @@ function updateMatrixGroupHeaders() {
   var n = parseInt(document.getElementById('study-n').value) || 0;
   var el = document.getElementById('mc-perpt-n');
   if (el) el.textContent = n + (n === 1 ? ' participant' : ' participants');
-  // Recalculate perpt row totals since N changed
+  // Sync N inputs for still-synced perpt rows; recalculate all perpt row totals
   var rowIds = Object.keys(matrixData);
   var hasPerpt = false;
   for (var i = 0; i < rowIds.length; i++) {
-    if (matrixData[rowIds[i]].type === 'perpt') { hasPerpt = true; updateMatrixRowTotal(rowIds[i]); }
+    var rr = matrixData[rowIds[i]];
+    if (rr.type === 'perpt') {
+      hasPerpt = true;
+      if (rr.nSynced !== false) {
+        rr.n = n;
+        var nInp = document.getElementById('mc-n-' + rowIds[i]);
+        if (nInp) nInp.value = n;
+      }
+      updateMatrixRowTotal(rowIds[i]);
+    }
   }
   // Amber banner when N=0 and perpt rows exist
   var perptBanner = document.getElementById('mc-perpt-n-banner');
@@ -683,6 +724,15 @@ function changeRowType(rowId, newType) {
   if (oldType === newType) return;
   row.type = newType;
 
+  // Update per-row N tracking
+  if (newType === 'perpt') {
+    row.nSynced = true;
+    row.n = parseInt((document.getElementById('study-n') || {}).value) || 0;
+  } else {
+    delete row.nSynced;
+    delete row.n;
+  }
+
   var tr = document.getElementById('mc-row-' + rowId);
   if (!tr) return;
   tr.setAttribute('data-type', newType);
@@ -697,6 +747,25 @@ function changeRowType(rowId, newType) {
   if (selEl) {
     var typeClsMap = {startup:'mc-type-startup', general:'mc-type-general', perpt:'mc-type-perpt'};
     selEl.className = 'mc-type-sel ' + (typeClsMap[newType] || '');
+  }
+
+  // Rebuild the total cell when switching to/from perpt
+  var totalTd = document.getElementById('mc-rtot-' + rowId);
+  if (totalTd) {
+    if (newType === 'perpt') {
+      var globalN1 = parseInt((document.getElementById('study-n') || {}).value) || 0;
+      totalTd.innerHTML =
+        '<span id="mc-rtot-cost-' + rowId + '">—</span>' +
+        '<div class="mc-perpt-n-row">' +
+          '<input type="text" inputmode="decimal" class="mc-perpt-n-inp" id="mc-n-' + rowId + '" ' +
+            'value="' + globalN1 + '" data-synced="true" ' +
+            'oninput="setMatrixRowN(\'' + rowId + '\',this.value)">' +
+          '<span class="mc-perpt-n-lbl">pts</span>' +
+        '</div>';
+    } else {
+      totalTd.innerHTML = '';
+      totalTd.textContent = '—';
+    }
   }
 
   updateMatrixRowTotal(rowId);
@@ -718,7 +787,6 @@ function refreshMatrixColumnLabel(staffId) {
 function getTEStaffTotal() {
   var rowIds = Object.keys(matrixData);
   if (!rowIds.length) return 0;
-  var nPt   = parseInt(document.getElementById('study-n').value) || 0;
   var total = 0;
   for (var i = 0; i < rowIds.length; i++) {
     var row   = matrixData[rowIds[i]];
@@ -727,7 +795,7 @@ function getTEStaffTotal() {
     for (var j = 0; j < sIds.length; j++) {
       rowT += (parseFloat(row.hours[sIds[j]]) || 0) * getStaffHourlyRate(sIds[j]);
     }
-    total += (row.type === 'perpt') ? rowT * nPt : rowT;
+    total += (row.type === 'perpt') ? rowT * getRowN(rowIds[i]) : rowT;
   }
   return total;
 }
@@ -1702,7 +1770,9 @@ function serializeMatrix() {
     var hrs   = {};
     var sIds  = Object.keys(row.hours);
     for (var j = 0; j < sIds.length; j++) hrs[sIds[j]] = row.hours[sIds[j]];
-    result.push({id: rowId, type: row.type, name: row.name, hours: hrs});
+    var entry = {id: rowId, type: row.type, name: row.name, hours: hrs};
+    if (row.type === 'perpt') { entry.n = row.n; entry.nSynced = row.nSynced !== false; }
+    result.push(entry);
   }
   return result;
 }
@@ -1888,8 +1958,18 @@ function setBudgetState(state) {
         matrixRowCtr++;
         rowId = 'r' + matrixRowCtr;
       }
-      matrixData[rowId] = {type: act.type || 'general', name: act.name || '', hours: {}};
-      appendMatrixRow(rowId, act.type || 'general', act.name || '');
+      var actType = act.type || 'general';
+      var actEntry = {type: actType, name: act.name || '', hours: {}};
+      if (actType === 'perpt') {
+        actEntry.nSynced = act.nSynced !== false;
+        actEntry.n = act.n !== undefined ? act.n : (parseInt((document.getElementById('study-n') || {}).value) || 0);
+      }
+      matrixData[rowId] = actEntry;
+      appendMatrixRow(rowId, actType, act.name || '');
+      if (actType === 'perpt' && act.nSynced === false && act.n !== undefined) {
+        var nInpR = document.getElementById('mc-n-' + rowId);
+        if (nInpR) { nInpR.value = act.n; nInpR.setAttribute('data-synced', 'false'); }
+      }
       if (act.hours) {
         var hKeys = Object.keys(act.hours);
         for (var j = 0; j < hKeys.length; j++) {
@@ -2159,6 +2239,7 @@ function exportCSV() {
   for (var j = 0; j < headThs.length; j++) {
     wpHeaders.push(headThs[j].textContent.replace(/hrs.*$/i, '').trim() + ' (hrs)');
   }
+  wpHeaders.push('Participants (N)');
   wpHeaders.push('Annual Cost');
   lines += row(wpHeaders);
 
@@ -2175,7 +2256,9 @@ function exportCSV() {
       cells.push(hrs || '');
       rowCost += hrs * getStaffHourlyRate(colSid);
     }
-    if (mrow.type === 'perpt') rowCost *= nPt;
+    var rowN = (mrow.type === 'perpt') ? getRowN(rid) : '';
+    if (mrow.type === 'perpt') rowCost *= getRowN(rid);
+    cells.push(rowN);
     cells.push(rowCost > 0 ? fmt(rowCost) : '');
     lines += row(cells);
   }

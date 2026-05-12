@@ -226,6 +226,11 @@ export const BT_CSS = `
 .mc-th-unit { display: block; font-size: 9px; font-weight: 400; color: var(--textd); margin-top: 2px; }
 .mc-input-cell input.tpl-unreviewed { color: var(--textd); font-style: italic; }
 .mc-computed { background: var(--bg-low); text-align: right; padding: 8px 10px !important; font-size: 12px; font-weight: 700; font-family: "Courier New", monospace; color: var(--navy); cursor: default; position: sticky; right: 0; z-index: 2; }
+.mc-perpt-n-row { display: flex; align-items: center; justify-content: flex-end; gap: 3px; margin-top: 5px; padding-top: 4px; border-top: 1px solid var(--bdr-s); }
+.mc-perpt-n-inp { width: 46px; font-size: 11px; font-family: "Courier New", monospace; text-align: center; border: 1px solid var(--bdr); border-radius: 3px; padding: 2px 4px; color: var(--textd); background: var(--white); outline: none; font-weight: 400; cursor: text; }
+.mc-perpt-n-inp:focus { border-color: var(--teal); }
+.mc-perpt-n-inp[data-synced="false"] { border-color: var(--sky); color: var(--navy); }
+.mc-perpt-n-lbl { font-size: 10px; color: var(--textd); white-space: nowrap; }
 #te-matrix th.mc-total-th { position: sticky; right: 0; z-index: 6; background: var(--bg-low); }
 #te-matrix tfoot td:last-child { position: sticky; right: 0; background: var(--bg-low); z-index: 2; }
 .mc-add-row td { background: var(--bg); padding: 0; }
