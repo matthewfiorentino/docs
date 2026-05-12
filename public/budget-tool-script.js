@@ -232,12 +232,14 @@ function selectFunding(type) {
   }
 
   var se = function(id, show) { var el = document.getElementById(id); if (el) el.style.display = show ? '' : 'none'; };
-  se('ind-note',        type === 'ind');
-  se('pi-notice',       type === 'ind');
-  se('pi-notice-team',  type === 'ind');
-  se('found-oh-field',  type === 'found');
-  se('iit-oh-field',    type === 'iit');
-  se('reb-iit-note',    type !== 'ind');
+  se('ind-note',          type === 'ind');
+  se('pi-notice',         type === 'ind');
+  se('pi-notice-team',    type === 'ind');
+  se('found-oh-field',    type === 'found');
+  se('iit-oh-field',      type === 'iit');
+  se('startup-svc-field', type === 'ind');
+  se('cont-ind-note',     type === 'ind');
+  se('reb-iit-note',      type !== 'ind');
 
   if (labRendered) updateLabPrices();
   updateTravelRows();
@@ -918,6 +920,18 @@ function getEquipCost() {
   return el ? (parseFloat(el.value) || 0) : 0;
 }
 
+function getStartupSvcTotal() {
+  var el = document.getElementById('startup-svc');
+  return el ? (parseFloat(el.value) || 0) : 0;
+}
+
+function updateStartupSvcSub() {
+  var inp = document.getElementById('startup-svc');
+  var sub = document.getElementById('startup-svc-sub');
+  if (inp && sub) sub.textContent = '$' + Math.round(parseFloat(inp.value) || 0).toLocaleString();
+  updateSummary();
+}
+
 function addOther() {
   otherCtr++;
   var id   = otherCtr;
@@ -1261,9 +1275,10 @@ function updateSummary() {
   var rebInc   = rebIncEl ? rebIncEl.value === 'yes' : true;
 
   var startupMultiYear = (funding === 'ind') ? getStartupMultiYear() : 0;
+  var startupSvc       = (funding === 'ind') ? getStartupSvcTotal() : 0;
   var ohAmt;
-  if (funding === 'ind' && startupMultiYear > 0) {
-    ohAmt = Math.max(0, staffAmt - startupMultiYear) * oh + svcAmt * oh;
+  if (funding === 'ind' && (startupMultiYear > 0 || startupSvc > 0)) {
+    ohAmt = Math.max(0, staffAmt - startupMultiYear) * oh + Math.max(0, svcAmt - startupSvc) * oh;
   } else {
     ohAmt = subTotal * oh;
   }
@@ -1321,9 +1336,10 @@ function renderReviewTable(staffAmt, svcAmt, contAmt, ohAmt, rebAmt, rebInc, gra
     contAmt  = (staffAmt + svcAmt) * getContPct();
     rebAmt   = getRebAmt();
     rebInc   = document.getElementById('reb-include').value === 'yes';
-    var startupMY = (funding === 'ind') ? getStartupMultiYear() : 0;
-    ohAmt = (funding === 'ind' && startupMY > 0)
-      ? (Math.max(0, staffAmt - startupMY) + svcAmt) * oh
+    var startupMY  = (funding === 'ind') ? getStartupMultiYear() : 0;
+    var startupSv  = (funding === 'ind') ? getStartupSvcTotal()  : 0;
+    ohAmt = (funding === 'ind' && (startupMY > 0 || startupSv > 0))
+      ? (Math.max(0, staffAmt - startupMY) * oh + Math.max(0, svcAmt - startupSv) * oh)
       : (staffAmt + svcAmt) * oh;
     grand = staffAmt + svcAmt + ohAmt + contAmt + (rebInc ? rebAmt : 0);
   }
@@ -1355,15 +1371,17 @@ function renderReviewTable(staffAmt, svcAmt, contAmt, ohAmt, rebAmt, rebInc, gra
     html += row('Staff (FTE estimate)', staffAmt, 'rv-row-strong');
   }
 
+  var startupSvcAmt = getStartupSvcTotal();
   html += '<div class="rv-section-head">Study Costs</div>';
-  if (cimAmt   > 0) html += row('Institutional services (CIM, pharmacy, IT)', cimAmt);
-  if (labAmt   > 0) html += row('Laboratory tests', labAmt);
-  if (ptAmt    > 0) html += row('Participant costs', ptAmt);
-  if (ppAmt    > 0) html += row('Patient Partners & Engagement', ppAmt);
-  if (travAmt  > 0) html += row('Travel (operational)', travAmt);
-  if (ktAmt    > 0) html += row('Knowledge Translation', ktAmt);
-  if (otherAmt > 0) html += row('Other costs', otherAmt);
-  if (svcAmt   > 0) html += row('Study costs subtotal', svcAmt, 'rv-row-strong');
+  if (cimAmt        > 0) html += row('Institutional services (CIM, pharmacy, IT)', cimAmt);
+  if (labAmt        > 0) html += row('Laboratory tests', labAmt);
+  if (ptAmt         > 0) html += row('Participant costs', ptAmt);
+  if (ppAmt         > 0) html += row('Patient Partners & Engagement', ppAmt);
+  if (travAmt       > 0) html += row('Travel (operational)', travAmt);
+  if (ktAmt         > 0) html += row('Knowledge Translation', ktAmt);
+  if (otherAmt      > 0) html += row('Other costs', otherAmt);
+  if (startupSvcAmt > 0) html += row('Startup services (0% overhead)', startupSvcAmt, 'rv-row-indent');
+  if (svcAmt        > 0) html += row('Study costs subtotal', svcAmt, 'rv-row-strong');
 
   html += '<div class="rv-divider"></div>';
   html += row('Direct Cost Subtotal', staffAmt + svcAmt, 'rv-row-strong');
@@ -1654,7 +1672,7 @@ function getBudgetState() {
     if (el) state.pp[ppIds[i]] = el.value;
   }
 
-  var directIds = ['sf-cost','sw-redcap','sw-translation','sw-recruit','sw-other','imp-cost','equip-cost','insure-cost','closeout-cost','profsvc-cost','sf-rate','sf-pp-cost'];
+  var directIds = ['sf-cost','sw-redcap','sw-translation','sw-recruit','sw-other','imp-cost','equip-cost','insure-cost','closeout-cost','profsvc-cost','startup-svc','sf-rate','sf-pp-cost'];
   state.direct = {};
   for (var i = 0; i < directIds.length; i++) {
     var el = document.getElementById(directIds[i]);
@@ -1843,7 +1861,7 @@ function setBudgetState(state) {
 
   // Restore direct costs (screening failures, software, etc.)
   if (state.direct) {
-    var directIds = ['sf-cost','sw-redcap','sw-translation','sw-recruit','sw-other','imp-cost','equip-cost','insure-cost','closeout-cost','profsvc-cost','sf-rate','sf-pp-cost'];
+    var directIds = ['sf-cost','sw-redcap','sw-translation','sw-recruit','sw-other','imp-cost','equip-cost','insure-cost','closeout-cost','profsvc-cost','startup-svc','sf-rate','sf-pp-cost'];
     for (var i = 0; i < directIds.length; i++) {
       var el = document.getElementById(directIds[i]);
       if (el && state.direct[directIds[i]] !== undefined) el.value = state.direct[directIds[i]];
@@ -1976,7 +1994,11 @@ function exportCSV() {
   lines += row(['Multi-year COLA',   cola ? 'Yes (5%/year)' : 'No']);
   lines += row(['Contingency',       contPctLabel]);
   if (funding === 'found') lines += row(['Foundation overhead', foundOhPct + '%']);
-  if (funding === 'ind')   lines += row(['Overhead rate', '30%']);
+  if (funding === 'ind') {
+    var earlyStartupSvc = getStartupSvcTotal();
+    lines += row(['Overhead rate', '30%']);
+    if (earlyStartupSvc > 0) lines += row(['Startup services carve-out (0% OH)', fmt(earlyStartupSvc)]);
+  }
   if (funding === 'cihr')  lines += row(['Overhead rate', '0% (CIHR)']);
   if (funding === 'iit')   lines += row(['Overhead rate', '0% (IIT)']);
   lines += row(['REB fees in total', rebInc ? 'Yes' : 'No']);
@@ -2222,9 +2244,10 @@ function exportCSV() {
   var csvSub    = csvStaff + csvCimLab + csvPt + csvTravel + csvKT + csvPP + csvOther + csvEquip;
   var csvContPct= getContPct();
   var csvCont   = csvSub * csvContPct;
-  var csvStartup= (funding === 'ind') ? getStartupMultiYear() : 0;
-  var csvOhAmt  = (funding === 'ind' && csvStartup > 0)
-    ? (Math.max(0, csvStaff - csvStartup) + csvCimLab + csvPt + csvTravel + csvOther + csvKT + csvPP + csvEquip) * oh
+  var csvStartup    = (funding === 'ind') ? getStartupMultiYear() : 0;
+  var csvStartupSvc = (funding === 'ind') ? getStartupSvcTotal()  : 0;
+  var csvOhAmt  = (funding === 'ind' && (csvStartup > 0 || csvStartupSvc > 0))
+    ? (Math.max(0, csvStaff - csvStartup) * oh + Math.max(0, csvCimLab + csvPt + csvTravel + csvOther + csvKT + csvPP + csvEquip - csvStartupSvc) * oh)
     : csvSub * oh;
   var csvGrand  = csvSub + csvOhAmt + csvCont + (rebInc ? rebTotal : 0);
   var csvRounded= Math.ceil(csvGrand / 5000) * 5000;
