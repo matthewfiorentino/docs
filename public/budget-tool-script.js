@@ -1929,7 +1929,9 @@ function syncStudySites() {
 // ════════════════════════════════════════
 // INIT
 // ════════════════════════════════════════
-document.addEventListener('DOMContentLoaded', function() {
+// Script is injected dynamically via React useEffect, so DOMContentLoaded
+// has already fired. Check readyState and run immediately if DOM is ready.
+function btInit() {
   renderSvcs();
   calcREB();
   calcPtCost();
@@ -1958,4 +1960,10 @@ document.addEventListener('DOMContentLoaded', function() {
     var active = matrix.querySelectorAll('.mc-col-active');
     for (var i = 0; i < active.length; i++) active[i].classList.remove('mc-col-active');
   });
-});
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', btInit);
+} else {
+  btInit();
+}
