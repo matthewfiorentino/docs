@@ -2199,7 +2199,7 @@ function exportCSV() {
   // ── SECTION 2: Staff & Salaries ───────────────────────────────
   lines += head('SECTION 2 — STAFF & SALARIES');
   var staffIds = getActiveStaffIds();
-  var staffColHeaders = ['Role', 'Name', 'Annual Salary', 'FTE %', 'Benefits (19%)', 'Annual FTE Cost'];
+  var staffColHeaders = ['Role', 'Name', 'Annual Salary', 'FTE %', 'Hourly Rate', 'Benefits (19%)', 'Annual FTE Cost'];
   if (years > 1) {
     for (var yy = 1; yy <= years; yy++) staffColHeaders.push('Year ' + yy);
   }
@@ -2219,7 +2219,9 @@ function exportCSV() {
     var isFixHr = roleEl && roleEl.value !== '' && ROLES[parseInt(roleEl.value)].hr;
     var annFTE  = getStaffFTECost(sid);
     var benef   = isFixHr ? '' : fmt(salVal * 0.19);
-    var staffCells = [roleVal, nameVal, isFixHr ? '' : fmt(salVal), fteVal + '%', benef, fmt(annFTE)];
+    var hrRate  = getStaffHourlyRate(sid);
+    var hrRateFmt = hrRate > 0 ? '$' + hrRate.toFixed(2) + '/hr' : '—';
+    var staffCells = [roleVal, nameVal, isFixHr ? '' : fmt(salVal), fteVal + '%', hrRateFmt, benef, fmt(annFTE)];
     var staffTotal = 0;
     if (years > 1) {
       for (var yy = 1; yy <= years; yy++) {
@@ -2233,6 +2235,7 @@ function exportCSV() {
     staffCells.push(fmt(staffTotal));
     lines += row(staffCells);
   }
+  lines += row(['Note: Hourly rate = Annual Salary × 1.19 (employer benefits) ÷ 1,820 hrs/yr (35 hrs/week × 52 weeks). BCU and OHRI Biostats rates are fixed and do not use this formula.']);
   lines += blank();
 
   // ── SECTION 3: Work Plan ──────────────────────────────────────
