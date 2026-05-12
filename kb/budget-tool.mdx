@@ -219,9 +219,9 @@ export const BT_CSS = `
 .mc-name-inp:focus { background: var(--teal-l); border-radius: 3px; }
 .mc-act-rm { font-size: 12px; color: var(--textd); background: none; border: none; cursor: pointer; padding: 2px 4px; flex-shrink: 0; opacity: 0; transition: opacity .1s; }
 #te-matrix tr:hover .mc-act-rm { opacity: 1; }
-.mc-input-cell { text-align: center; }
-.mc-input-cell input { width: 80px; font-size: 13px; font-family: "Courier New", monospace; border: none; background: none; text-align: center; padding: 8px 4px; outline: none; color: var(--text); }
-.mc-input-cell input:focus { background: var(--teal-l); border-radius: 3px; }
+.mc-input-cell { text-align: center; padding: 6px 8px !important; }
+.mc-input-cell input { width: 80px; font-size: 13px; font-family: "Courier New", monospace; border: 1.5px solid var(--bdr); border-radius: 4px; background: var(--white); text-align: center; padding: 5px 4px; outline: none; color: var(--text); }
+.mc-input-cell input:focus { border-color: var(--teal); background: var(--teal-l); }
 .mc-input-cell input.tpl-unreviewed { color: var(--textd); font-style: italic; }
 .mc-computed { background: var(--bg-low); text-align: right; padding: 8px 10px !important; font-size: 12px; font-weight: 700; font-family: "Courier New", monospace; color: var(--navy); cursor: default; }
 .mc-add-row td { background: var(--bg); padding: 0; }
@@ -404,7 +404,7 @@ export const BT_HTML = `
         <span class="sid-num">1</span><span class="sid-lbl">Study Profile</span><span class="sid-status" id="sst-profile">&#9675;</span>
       </button>
       <button class="sid-btn" id="sb-s-team" onclick="showSection('s-team')">
-        <span class="sid-num">2</span><span class="sid-lbl">Budget Team</span><span class="sid-status" id="sst-team">&#9675;</span>
+        <span class="sid-num">2</span><span class="sid-lbl">Staff &amp; Salaries</span><span class="sid-status" id="sst-team">&#9675;</span>
       </button>
       <button class="sid-btn" id="sb-s-work" onclick="showSection('s-work')">
         <span class="sid-num">3</span><span class="sid-lbl">Work Plan</span><span class="sid-status" id="sst-work">&#9675;</span>
@@ -456,7 +456,7 @@ export const BT_HTML = `
       </div>
 
       <div class="ci" id="ind-note" style="display:none"><strong>Industry-sponsored:</strong> 30% overhead applies to eligible direct costs. Startup T&amp;E activities are carved out at 0% overhead. Mark them as &ldquo;Startup&rdquo; in the Work Plan.</div>
-      <div class="ci" id="pi-notice" style="display:none"><strong>Industry study:</strong> Include the PI salary line in Budget Team. For IIT and foundation studies, the PI is not typically budgeted.</div>
+      <div class="ci" id="pi-notice" style="display:none"><strong>Industry study:</strong> Include the PI salary line in Staff &amp; Salaries. For IIT and foundation studies, the PI is not typically budgeted.</div>
 
       <div id="found-oh-field" style="display:none;margin-bottom:18px">
         <div class="ci"><strong>Foundation overhead rate:</strong> McGill Research Finance default is 27%. Override below if your funder specifies a different rate.
@@ -526,15 +526,15 @@ export const BT_HTML = `
     </section>
 
     <!-- ══════════════════════════════════════ -->
-    <!-- SECTION 2: BUDGET TEAM                -->
+    <!-- SECTION 2: STAFF & SALARIES           -->
     <!-- ══════════════════════════════════════ -->
     <section class="bt-section" id="s-team">
       <div class="sec-label">Section 2 of 5</div>
-      <h2 class="sec-h2">Budget Team</h2>
-      <p class="sec-desc">Add each staff member contributing to the study. Their hourly rates propagate automatically to the Work Plan matrix. The matrix is the primary source for hours; the FTE% here is a fallback if the Work Plan is empty.</p>
+      <h2 class="sec-h2">Staff &amp; Salaries</h2>
+      <p class="sec-desc">Add each staff member who will work on this study. Their hourly rates populate automatically as columns in the Work Plan matrix. The FTE% shown here is a reference — actual hours come from the matrix.</p>
 
       <div class="cn" id="cola-notice" style="display:none"><strong>Multi-year COLA active:</strong> 5% annual staff cost increase will be applied. Confirm study years in Study Profile.</div>
-      <div class="ci" id="pi-notice-team" style="display:none"><strong>Industry study:</strong> Include the PI salary line.</div>
+      <div class="ci" id="pi-notice-team" style="display:none"><strong>Industry study:</strong> Include the principal investigator&rsquo;s salary line.</div>
 
       <div style="overflow-x:auto;margin-bottom:12px">
         <table id="staff-table">
@@ -566,16 +566,16 @@ export const BT_HTML = `
     <section class="bt-section" id="s-work">
       <div class="sec-label">Section 3 of 5</div>
       <h2 class="sec-h2">Work Plan</h2>
-      <p class="sec-desc">Enter hours per activity per staff member. Rows are grouped by type: <strong style="color:#7a4f00">Startup</strong> (0% OH for industry), <strong style="color:var(--sky)">General</strong> (flat study cost), and <strong style="color:var(--green)">Per Participant</strong> (multiplied by participant count). Add staff in Section 2 first &mdash; they appear as columns here.</p>
-      <div class="ci" id="te-no-staff-msg" style="display:none"><strong>No staff added yet.</strong> Go to Budget Team (Section 2) and add your team first.</div>
+      <p class="sec-desc">Enter hours per activity per staff member. Rows are grouped by type: <strong style="color:#7a4f00">Startup</strong> (0% overhead for industry), <strong style="color:var(--sky)">General</strong> (flat study cost), and <strong style="color:var(--green)">Per Participant</strong> (multiplied by participant count). Add staff in Staff &amp; Salaries first &mdash; they appear as columns here.</p>
+      <div class="ci" id="te-no-staff-msg" style="display:none"><strong>No staff added yet.</strong> Go to Staff &amp; Salaries (Section 2) and add your team first.</div>
 
       <!-- Template picker (shown when matrix is empty) -->
       <div id="mc-tpl-picker" class="mc-tpl-picker" style="margin-bottom:20px">
         <div class="mc-tpl-head">Choose a starting template</div>
         <p class="mc-tpl-sub">Pre-populates common activities for your study type. You can add, remove, and rename any row.</p>
         <div class="mc-tpl-grid">
-          <button class="mc-tpl-btn" onclick="applyTemplate('ind-rct')"><strong>Industry-Sponsored RCT</strong><span>Sponsor-funded multicenter trial</span></button>
-          <button class="mc-tpl-btn" onclick="applyTemplate('iit')"><strong>IIT / CIHR Trial</strong><span>PI-led investigator-initiated trial</span></button>
+          <button class="mc-tpl-btn" onclick="applyTemplate('iit')"><strong>Investigator-Initiated Trial</strong><span>IIT / CIHR &mdash; PI-led, 0% overhead</span></button>
+          <button class="mc-tpl-btn" onclick="applyTemplate('ind-rct')"><strong>Industry-Sponsored Trial</strong><span>Randomized controlled trial (RCT), sponsor-funded</span></button>
           <button class="mc-tpl-btn" onclick="applyTemplate('obs')"><strong>Observational / Cohort</strong><span>Prospective or retrospective cohort</span></button>
           <button class="mc-tpl-btn" onclick="applyTemplate('chart')"><strong>Retrospective Chart Review</strong><span>Medical record abstraction study</span></button>
           <button class="mc-tpl-btn" onclick="applyTemplate('phase1')"><strong>Phase I / First-in-Human</strong><span>Dose-escalation, regulatory-heavy</span></button>
