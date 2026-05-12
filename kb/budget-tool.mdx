@@ -348,6 +348,9 @@ export const BT_CSS = `
 .sec-nav-btn.sec-nav-next:hover { background: var(--teal); color: #fff; }
 .sec-nav-spacer { flex: 1; }
 
+/* ── PRINT HEADER (hidden on screen, revealed only by @media print) ── */
+#bt-print-header { display: none !important; }
+
 /* ── CIHR BLOCK (inline, inside Review section) ── */
 .cihr-print-block { display: none; margin-top: 24px; padding: 20px; border: 1px solid var(--bdr-s); border-radius: 6px; background: var(--white); }
 
@@ -787,13 +790,13 @@ export const BT_HTML = `
 
       <!-- CIHR budget mapping (shown when toggled) -->
       <div class="cihr-print-block" id="cihr-block" style="display:none">
-        <div class="cihr-head">Budget Summary &mdash; CIHR Format</div>
-        <div class="cihr-row"><span class="cihr-row-label">Personnel (staff and salaries)</span><span class="cihr-row-amt" id="cihr-personnel">$0</span></div>
-        <div class="cihr-row"><span class="cihr-row-label">Materials and Supplies (services and laboratory)</span><span class="cihr-row-amt" id="cihr-matsup">$0</span></div>
-        <div class="cihr-row"><span class="cihr-row-label">Travel</span><span class="cihr-row-amt" id="cihr-travel">$0</span></div>
-        <div class="cihr-row"><span class="cihr-row-label">Knowledge Translation</span><span class="cihr-row-amt" id="cihr-kt">$0</span></div>
-        <div class="cihr-row"><span class="cihr-row-label">Other (contingency + other costs)</span><span class="cihr-row-amt" id="cihr-other">$0</span></div>
-        <div class="cihr-row cihr-total"><span class="cihr-row-label">Total</span><span class="cihr-row-amt" id="cihr-total">$0</span></div>
+        <div class="cihr-head">Budget Summary &mdash; CIHR Category Mapping</div>
+        <div class="cihr-row"><span class="cihr-row-label">Salaries and Stipends</span><span class="cihr-row-amt" id="cihr-personnel">$0</span></div>
+        <div class="cihr-row"><span class="cihr-row-label">Consumables (materials, supplies, services, laboratory)</span><span class="cihr-row-amt" id="cihr-matsup">$0</span></div>
+        <div class="cihr-row"><span class="cihr-row-label">Knowledge Translation <span style="font-weight:400;color:#888;font-size:10px">(publications, conferences, dissemination)</span></span><span class="cihr-row-amt" id="cihr-kt">$0</span></div>
+        <div class="cihr-row"><span class="cihr-row-label">Other <span style="font-weight:400;color:#888;font-size:10px">(participant costs, travel, contingency, other)</span></span><span class="cihr-row-amt" id="cihr-other">$0</span></div>
+        <div class="cihr-row cihr-total"><span class="cihr-row-label">Total (before overhead)</span><span class="cihr-row-amt" id="cihr-total">$0</span></div>
+        <div style="font-size:10px;color:#888;margin-top:10px;line-height:1.6">CIHR does not use a separate Travel category — travel is classified under Knowledge Translation (dissemination/conference travel) or Other (monitoring, site visits). KT costs entered here are $0 unless you add dissemination line items in Other Costs. CIHR requires amounts in multiples of $5,000.</div>
       </div>
 
       <div class="sub-head">Export</div>

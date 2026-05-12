@@ -1202,7 +1202,7 @@ function updateSummary() {
   renderReviewTable(staffAmt, svcAmt, contAmt, ohAmt, rebAmt, rebInc, grand);
 
   // CIHR
-  updateCIHR(staffAmt, svcAmt, contAmt, getTravelTotal(), getOtherCostsTotal());
+  updateCIHR(staffAmt, svcAmt, contAmt, getTravelTotal(), getOtherCostsTotal(), getPtTotal());
 
   // Section status
   updateSectionStatus();
@@ -1303,19 +1303,17 @@ function toggleCIHRFormat() {
   block.style.display = (block.style.display === 'none' || !block.style.display) ? 'block' : 'none';
 }
 
-function updateCIHR(staffAmt, svcAmt, contAmt, travelAmt, otherAmt) {
+function updateCIHR(staffAmt, svcAmt, contAmt, travelAmt, otherAmt, ptAmt) {
   var personnel = staffAmt;
-  var matsup    = svcAmt - travelAmt - otherAmt;
-  var travel    = travelAmt;
+  var matsup    = svcAmt;
   var kt        = 0;
-  var other     = contAmt + otherAmt;
-  var total     = personnel + matsup + travel + kt + other;
+  var other     = contAmt + travelAmt + otherAmt + (ptAmt || 0);
+  var total     = personnel + matsup + kt + other;
 
   function fmt(n) { return '$' + Math.round(n).toLocaleString(); }
   var se = function(id, v) { var el = document.getElementById(id); if (el) el.textContent = fmt(v); };
   se('cihr-personnel', personnel);
   se('cihr-matsup',    matsup);
-  se('cihr-travel',    travel);
   se('cihr-kt',        kt);
   se('cihr-other',     other);
   se('cihr-total',     total);
