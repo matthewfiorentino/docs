@@ -1937,6 +1937,7 @@ function btInit() {
   calcPtCost();
   selectCont('mod');
   updateSummary();
+  showSection('s-profile');
   window.addEventListener('beforeprint', renderPrintSections);
   document.addEventListener('keydown', function(e) {
     if (e.key === 'Escape') {

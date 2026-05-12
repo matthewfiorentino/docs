@@ -41,11 +41,13 @@ export const BT_CSS = `
   color: var(--text);
 }
 
-/* ── LAYOUT: CSS GRID (sticky requires no overflow:auto on ancestors) ── */
+/* ── LAYOUT: CSS GRID ── */
 #bt-root {
   display: grid;
   grid-template-rows: var(--hdr-h) 1fr;
   grid-template-columns: 200px 1fr;
+  height: 100svh;
+  overflow: hidden;
 }
 
 /* ── STICKY HEADER ── */
@@ -82,10 +84,6 @@ export const BT_CSS = `
 #bt-sidebar {
   grid-row: 2;
   grid-column: 1;
-  position: sticky;
-  top: var(--hdr-h);
-  align-self: start;
-  height: calc(100vh - var(--hdr-h));
   overflow-y: auto;
   background: var(--white);
   border-right: 1px solid var(--bdr-s);
@@ -115,7 +113,7 @@ export const BT_CSS = `
 .sid-lbl { flex: 1; }
 .sid-status { font-size: 12px; flex-shrink: 0; }
 @media (max-width: 899px) {
-  #bt-root { grid-template-columns: 1fr; grid-template-rows: var(--hdr-h) auto 1fr; }
+  #bt-root { grid-template-columns: 1fr; grid-template-rows: var(--hdr-h) auto 1fr; height: auto; overflow: visible; }
   #bt-header { position: static; }
   #bt-sidebar { grid-row: 2; grid-column: 1; position: sticky; top: 0; z-index: 5; height: auto; flex-direction: row; overflow-x: auto; overflow-y: visible; border-right: none; border-bottom: 1px solid var(--bdr-s); }
   .sid-list { display: flex; padding: 0; flex: none; }
@@ -127,7 +125,7 @@ export const BT_CSS = `
 }
 
 /* ── MAIN ── */
-#bt-main { grid-row: 2; grid-column: 2; background: var(--bg); }
+#bt-main { grid-row: 2; grid-column: 2; background: var(--bg); overflow-y: auto; min-height: 0; }
 @media (max-width: 899px) { #bt-main { grid-column: 1; } }
 .bt-section { display: none; padding: 28px 32px 60px; max-width: 1100px; }
 .bt-section.active { display: block; }
