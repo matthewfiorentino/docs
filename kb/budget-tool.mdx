@@ -1,0 +1,781 @@
+---
+title: "Clinical Trial Budget Tool"
+description: "Build a complete single-site clinical trial budget using RI-MUHC salary scales, CIM service prices, and the current REB fee schedule."
+mode: "custom"
+---
+
+<style>{`
+/* ══════════════════════════════════════════════════════
+   BUDGET TOOL — TOKENS + STYLES
+   Palette: minimalist white-surface, teal accent #007468,
+   navy #2b2666, matching My Study Roadmap / Learning Lab
+   ══════════════════════════════════════════════════════ */
+
+/* ── MINTLIFY DEFENSIVE RESETS ── */
+#bt-wrap ul, #bt-wrap ol { list-style: none !important; padding: 0 !important; margin: 0 !important; }
+#bt-wrap ul li::marker, #bt-wrap ol li::marker { content: "" !important; }
+
+/* ── TOKENS ── */
+#bt-wrap {
+  --navy:        #2b2666;
+  --teal:        #007468;
+  --teal-bright: #007468;
+  --teal-ll:     #f0faf9;
+  --sky:         #2b9ce2;
+  --sky-l:       #e5f3fb;
+  --amber:       #c78a00;
+  --amber-l:     #fffbf0;
+  --coral:       #ff537f;
+  --coral-l:     #fff0f4;
+  --green:       #1d9e75;
+  --green-l:     #e5f5ee;
+  --bg:          #f7f7f7;
+  --bg-low:      #f0f0f0;
+  --bg-high:     #e8e8e8;
+  --white:       #ffffff;
+  --text:        #111111;
+  --textm:       #444444;
+  --textd:       #888888;
+  --bdr:         #d0d0d0;
+  --bdr-soft:    #e5e5e5;
+  --radius:      6px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+  font-size: 14px;
+  color: var(--text);
+  box-sizing: border-box;
+}
+#bt-wrap *, #bt-wrap *::before, #bt-wrap *::after { box-sizing: border-box; }
+
+/* ── HERO ── */
+.bt-hero { background: #fff; border-bottom: 1px solid #e5e5e5; padding: 36px 0 0; }
+.bt-hero-inner { max-width: 1200px; margin: 0 auto; padding: 0 32px 32px; }
+.bt-eyebrow { font-size: 9px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: #007468; margin-bottom: 12px; }
+.bt-h1 { font-size: clamp(22px, 3vw, 32px); font-weight: 800; color: #2b2666; letter-spacing: -.02em; line-height: 1.2; margin-bottom: 10px; }
+.bt-intro { font-size: 14px; color: #444; max-width: 680px; line-height: 1.7; margin-bottom: 14px; }
+.bt-meta { font-size: 11px; color: #888; }
+.bt-meta a { color: #007468; text-decoration: none; }
+.bt-meta a:hover { text-decoration: underline; }
+
+/* ── LAYOUT ── */
+#bt-wrap { max-width: 1200px; margin: 0 auto; padding: 0 32px 80px; display: grid; grid-template-columns: 1fr 300px; gap: 32px; align-items: start; }
+@media (max-width: 1023px) { #bt-wrap { grid-template-columns: 1fr; padding: 0 20px 60px; } }
+@media (max-width: 599px) { #bt-wrap { padding: 0 16px 48px; } }
+
+/* ── TABS ── */
+.bt-tabs { margin-top: 28px; }
+.tab-list { display: flex; gap: 0; border-bottom: 2px solid #e5e5e5; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+.tab-list::-webkit-scrollbar { display: none; }
+.tab-btn { flex-shrink: 0; font-size: 11.5px; font-weight: 700; letter-spacing: .02em; color: #888; background: none; border: none; border-bottom: 2px solid transparent; padding: 10px 16px; cursor: pointer; transition: color .12s, border-color .12s; font-family: inherit; margin-bottom: -2px; white-space: nowrap; }
+.tab-btn:hover { color: #2b2666; }
+.tab-btn.active { color: #2b2666; border-bottom-color: #007468; }
+.tab-panel { display: none; padding: 28px 0 0; }
+.tab-panel.active { display: block; }
+
+/* ── TYPOGRAPHY ── */
+.sec-label { font-size: 9px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: #888; padding-bottom: 10px; border-bottom: 1px solid #e5e5e5; margin-bottom: 20px; }
+.sec-h2 { font-size: 17px; font-weight: 700; color: #2b2666; margin-bottom: 6px; }
+.sec-desc { font-size: 13px; color: #444; line-height: 1.65; margin-bottom: 24px; }
+
+/* ── FORM ── */
+.fg { margin-bottom: 18px; }
+.fl { display: block; font-size: 12px; font-weight: 700; color: #111; margin-bottom: 5px; }
+.fh { display: block; font-size: 11px; color: #888; margin-bottom: 5px; line-height: 1.45; }
+.fi { width: 100%; font-size: 14px; font-family: inherit; color: #111; background: #fff; border: 1.5px solid #d0d0d0; padding: 9px 12px; outline: none; transition: border-color .12s; border-radius: 6px; }
+.fi:focus { border-color: #007468; }
+.fs { width: 100%; font-size: 14px; font-family: inherit; color: #111; background: #fff; border: 1.5px solid #d0d0d0; padding: 9px 12px; outline: none; appearance: none; -webkit-appearance: none; cursor: pointer; transition: border-color .12s; border-radius: 6px; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%23888' d='M6 8L0 0h12z'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 12px center; }
+.fs:focus { border-color: #007468; }
+.frow { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.frow3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
+@media (max-width: 699px) { .frow, .frow3 { grid-template-columns: 1fr; } }
+
+/* ── FUNDING SELECTOR ── */
+.fund-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1px; background: #e5e5e5; border: 1.5px solid #e5e5e5; border-radius: 6px; overflow: hidden; margin-bottom: 0; }
+@media (max-width: 599px) { .fund-grid { grid-template-columns: 1fr; } }
+.fund-card { background: #fff; padding: 16px; cursor: pointer; transition: background .12s; }
+.fund-card:hover { background: #f0f0f0; }
+.fund-card.sel-iit { background: #e5f5ee; outline: 2px solid #1d9e75; outline-offset: -2px; }
+.fund-card.sel-iit .fclabel { color: #1d9e75; }
+.fund-card.sel-found { background: #e5f3fb; outline: 2px solid #2b9ce2; outline-offset: -2px; }
+.fund-card.sel-found .fclabel { color: #2b9ce2; }
+.fund-card.sel-ind { background: #fffbf0; outline: 2px solid #c78a00; outline-offset: -2px; }
+.fund-card.sel-ind .fclabel { color: #7a4f00; }
+.fclabel { font-size: 12px; font-weight: 700; color: #2b2666; margin-bottom: 3px; }
+.fcdesc { font-size: 11px; color: #888; }
+
+/* ── CALLOUTS ── */
+.cn { background: #fffbf0; border: 1px solid #e0d0aa; border-left-width: 3px; border-left-color: #c78a00; padding: 13px 16px; font-size: 13px; color: #5a3800; line-height: 1.65; margin-bottom: 20px; border-radius: 6px; }
+.cn strong { color: #3d2600; }
+.ci { background: #e5f3fb; border: 1px solid #b8d8f0; border-left-width: 3px; border-left-color: #2b9ce2; padding: 13px 16px; font-size: 13px; color: #444; line-height: 1.65; margin-bottom: 20px; border-radius: 6px; }
+.ci strong { color: #2b2666; }
+.ct { background: #f0faf9; border: 1px solid #b0d8d4; border-left-width: 3px; border-left-color: #007468; padding: 13px 16px; font-size: 13px; color: #444; line-height: 1.65; margin-bottom: 20px; border-radius: 6px; }
+.ct strong { color: #007468; }
+
+/* ── STAFF ── */
+.staff-list { display: flex; flex-direction: column; gap: 1px; }
+.staff-row { background: #fff; border: 1px solid #e5e5e5; padding: 16px; border-radius: 6px; }
+.staff-rhead { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; }
+.staff-num { font-size: 10px; font-weight: 700; letter-spacing: .1em; color: #888; text-transform: uppercase; }
+.staff-rm { font-size: 11px; font-weight: 700; color: #ff537f; background: none; border: none; cursor: pointer; padding: 2px 0; font-family: inherit; }
+.staff-rm:hover { text-decoration: underline; }
+.staff-calc { display: grid; grid-template-columns: repeat(4,1fr); gap: 10px; padding: 12px; margin-top: 12px; border-top: 1px solid #e5e5e5; background: #f0f0f0; border-radius: 0 0 6px 6px; }
+.sc-item label { font-size: 9px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: #888; display: block; margin-bottom: 4px; }
+.sc-val { font-size: 14px; font-weight: 700; color: #2b2666; font-family: "Courier New", monospace; }
+@media (max-width: 699px) { .staff-calc { grid-template-columns: 1fr 1fr; } }
+.add-btn { display: inline-flex; align-items: center; gap: 7px; font-size: 12px; font-weight: 700; color: #007468; background: none; border: 1.5px solid #007468; padding: 8px 14px; cursor: pointer; transition: background .12s, color .12s; font-family: inherit; margin-top: 10px; border-radius: 6px; }
+.add-btn:hover { background: #007468; color: #fff; }
+
+/* ── TIME AND EFFORT ── */
+.te-activity { background: #fff; border: 1px solid #e5e5e5; margin-bottom: 1px; border-radius: 6px; overflow: hidden; }
+.te-act-head { display: flex; align-items: center; justify-content: space-between; padding: 12px 14px; border-bottom: 1px solid #e5e5e5; background: #f0f0f0; }
+.te-act-name { font-size: 13px; font-weight: 700; color: #2b2666; }
+.te-act-type { font-size: 10px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; padding: 2px 8px; border-radius: 9999px; }
+.te-type-startup { background: #fffbf0; color: #7a4f00; }
+.te-type-general { background: #e5f3fb; color: #2b9ce2; }
+.te-type-perpt { background: #e5f5ee; color: #1d9e75; }
+.te-act-body { padding: 12px 14px; }
+.te-staff-grid { display: grid; gap: 0; }
+.te-staff-row { display: grid; grid-template-columns: 1fr 100px 80px 100px; gap: 8px; align-items: center; padding: 6px 0; border-bottom: 1px solid #e5e5e5; font-size: 12.5px; }
+.te-staff-row:last-child { border-bottom: none; }
+.te-staff-name { color: #444; font-weight: 600; }
+.te-staff-rate { color: #888; font-family: "Courier New", monospace; font-size: 11px; }
+.te-staff-hrs input { width: 100%; font-size: 13px; font-family: inherit; border: 1.5px solid #d0d0d0; padding: 4px 8px; text-align: right; border-radius: 6px; outline: none; }
+.te-staff-hrs input:focus { border-color: #007468; }
+.te-staff-cost { font-size: 12px; font-weight: 700; color: #2b2666; text-align: right; font-family: "Courier New", monospace; }
+.te-act-total { display: flex; justify-content: space-between; align-items: baseline; padding: 8px 0 0; margin-top: 4px; border-top: 1px solid #e5e5e5; font-size: 12px; }
+.te-act-total-label { color: #888; }
+.te-act-total-amt { font-weight: 700; color: #2b2666; font-family: "Courier New", monospace; }
+.te-hdr { display: grid; grid-template-columns: 1fr 100px 80px 100px; gap: 8px; padding: 6px 0 8px; border-bottom: 2px solid #e5e5e5; margin-bottom: 0; }
+.te-hdr span { font-size: 9px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: #888; }
+.te-hdr span:nth-child(2), .te-hdr span:nth-child(3), .te-hdr span:nth-child(4) { text-align: right; }
+.te-summary-row { display: flex; justify-content: space-between; padding: 5px 0; border-bottom: 1px solid #e5e5e5; font-size: 13px; }
+.te-summary-row:last-child { border-bottom: none; }
+.te-summary-label { color: #444; }
+.te-summary-amt { font-weight: 700; color: #2b2666; font-family: "Courier New", monospace; }
+.te-summary-box { background: #f0f0f0; border: 1px solid #e5e5e5; padding: 14px 16px; margin-top: 20px; border-radius: 6px; }
+.te-summary-head { font-size: 9px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: #888; margin-bottom: 10px; padding-bottom: 8px; border-bottom: 1px solid #e5e5e5; }
+.te-no-staff { font-size: 13px; color: #888; font-style: italic; padding: 16px 0; }
+@media (max-width: 699px) {
+  .te-staff-row { grid-template-columns: 1fr 70px 100px; }
+  .te-staff-rate { display: none; }
+  .te-hdr { grid-template-columns: 1fr 70px 100px; }
+  .te-hdr span:nth-child(2) { display: none; }
+}
+
+/* ── SERVICES TABLE ── */
+.svc-cat { margin-bottom: 28px; }
+.svc-cat-head { font-size: 9px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: #fff; background: #2b2666; padding: 8px 12px; margin-bottom: 0; }
+.svc-hdr { display: grid; grid-template-columns: 1fr 130px 100px 110px; gap: 10px; padding: 7px 12px; border-bottom: 1px solid #e5e5e5; background: #f0f0f0; }
+.svc-hdr span { font-size: 9px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: #888; }
+.svc-hdr span:nth-child(3), .svc-hdr span:nth-child(4) { text-align: right; }
+.svc-row { display: grid; grid-template-columns: 1fr 130px 100px 110px; gap: 10px; align-items: center; padding: 8px 12px; border-bottom: 1px solid #e5e5e5; background: #fff; }
+.svc-row:last-child { border-bottom: none; }
+.svc-name { font-size: 12.5px; color: #444; line-height: 1.4; }
+.svc-price { font-size: 12px; color: #888; font-family: "Courier New", monospace; }
+.svc-qty input { width: 100%; font-size: 13px; font-family: inherit; border: 1.5px solid #d0d0d0; padding: 5px 8px; text-align: right; border-radius: 6px; outline: none; background: #fff; }
+.svc-qty input:focus { border-color: #007468; }
+.svc-qty input:disabled { background: #e8e8e8; cursor: not-allowed; }
+.svc-sub { font-size: 12px; font-weight: 700; color: #2b2666; text-align: right; font-family: "Courier New", monospace; }
+@media (max-width: 699px) {
+  .svc-hdr { grid-template-columns: 1fr 80px 80px; }
+  .svc-hdr span:nth-child(2) { display: none; }
+  .svc-row { grid-template-columns: 1fr 80px 80px; }
+  .svc-price { display: none; }
+  .svc-name { font-size: 12px; }
+}
+.other-row { display: grid; grid-template-columns: 1fr 120px 30px; gap: 8px; align-items: center; padding: 8px 12px; border-bottom: 1px solid #e5e5e5; background: #fff; }
+.other-row:last-child { border-bottom: none; }
+
+/* ── REB ── */
+.reb-box { background: #fff; border: 1px solid #e5e5e5; padding: 0; overflow: hidden; border-radius: 6px; }
+.reb-fee-row { display: flex; justify-content: space-between; align-items: baseline; padding: 10px 18px; border-bottom: 1px solid #e5e5e5; font-size: 13.5px; }
+.reb-fee-row:last-of-type { border-bottom: none; }
+.reb-fn { color: #444; line-height: 1.4; }
+.reb-fa { font-weight: 700; color: #2b2666; font-family: "Courier New", monospace; white-space: nowrap; margin-left: 16px; }
+.reb-total-row { display: flex; justify-content: space-between; align-items: baseline; padding: 14px 18px; border-top: 2px solid #2b2666; background: #f0f0f0; }
+.reb-tl { font-size: 13px; font-weight: 700; color: #2b2666; }
+.reb-ta { font-size: 18px; font-weight: 800; color: #2b2666; font-family: "Courier New", monospace; }
+
+/* ── CONTINGENCY ── */
+.cont-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1px; background: #e5e5e5; border: 1.5px solid #e5e5e5; border-radius: 6px; overflow: hidden; margin-bottom: 16px; }
+@media (max-width: 599px) { .cont-grid { grid-template-columns: 1fr; } }
+.cont-card { background: #fff; padding: 16px; cursor: pointer; transition: background .12s; }
+.cont-card:hover { background: #f0f0f0; }
+.cont-card.cc-sel-low { background: #e5f5ee; outline: 2px solid #1d9e75; outline-offset: -2px; }
+.cont-card.cc-sel-low .cclabel { color: #1d9e75; }
+.cont-card.cc-sel-mod { background: #fffbf0; outline: 2px solid #c78a00; outline-offset: -2px; }
+.cont-card.cc-sel-mod .cclabel { color: #7a4f00; }
+.cont-card.cc-sel-high { background: #fff0f4; outline: 2px solid #ff537f; outline-offset: -2px; }
+.cont-card.cc-sel-high .cclabel { color: #ff537f; }
+.cclabel { font-size: 12px; font-weight: 700; color: #2b2666; margin-bottom: 3px; }
+.ccrange { font-size: 11px; color: #888; margin-bottom: 2px; }
+.ccdef { font-size: 10px; color: #888; font-style: italic; }
+
+/* ── NAV BUTTONS ── */
+.nav-btns { margin-top: 24px; display: flex; gap: 12px; flex-wrap: wrap; padding-top: 24px; border-top: 1px solid #e5e5e5; }
+
+/* ── SUMMARY PANEL ── */
+.sum-panel { position: sticky; top: 80px; background: #fff; border: 1.5px solid #e5e5e5; overflow: hidden; border-radius: 8px; }
+@media (max-width: 1023px) { .sum-panel { position: static; margin-top: 32px; } }
+.sum-head { background: #2b2666; padding: 18px 20px; }
+.sum-title { font-size: 10px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: rgba(255,255,255,.65); margin-bottom: 6px; }
+.sum-total-big { font-size: 30px; font-weight: 800; color: #fff; font-family: "Courier New", monospace; line-height: 1; }
+.sum-body { padding: 14px 18px; }
+.sum-line { display: flex; justify-content: space-between; align-items: baseline; padding: 6px 0; border-bottom: 1px solid #e5e5e5; font-size: 12.5px; }
+.sum-line:last-of-type { border-bottom: none; }
+.sll { color: #444; }
+.sla { font-weight: 700; color: #2b2666; font-family: "Courier New", monospace; font-size: 12px; }
+.slz { color: #888; font-style: italic; font-size: 12px; }
+.sum-divider { height: 1px; background: #e5e5e5; margin: 10px 0; }
+.sum-oh-row { display: flex; justify-content: space-between; align-items: baseline; padding: 5px 0; font-size: 12px; }
+.sum-oh-l { color: #888; font-style: italic; }
+.sum-oh-a { color: #888; font-family: "Courier New", monospace; }
+.sum-grand { display: flex; justify-content: space-between; align-items: baseline; padding: 12px 0 0; border-top: 2px solid #2b2666; margin-top: 8px; }
+.sum-gl { font-size: 12px; font-weight: 700; color: #2b2666; }
+.sum-ga { font-size: 20px; font-weight: 800; color: #2b2666; font-family: "Courier New", monospace; }
+.sum-foot { padding: 0 18px 18px; display: flex; flex-direction: column; gap: 8px; }
+.pbtn { display: flex; align-items: center; justify-content: center; gap: 8px; font-size: 11.5px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; color: #fff; background: #007468; border: none; padding: 12px 14px; cursor: pointer; font-family: inherit; transition: opacity .12s; width: 100%; border-radius: 6px; }
+.pbtn:hover { opacity: .88; }
+.xlink { display: flex; align-items: center; justify-content: center; gap: 7px; font-size: 11px; font-weight: 700; color: #888; border: 1.5px solid #e5e5e5; padding: 9px 12px; text-decoration: none; transition: border-color .12s, color .12s; border-radius: 6px; cursor: pointer; }
+.xlink:hover { border-color: #2b2666; color: #2b2666; }
+
+/* ── SERVICE ACCORDION ── */
+.svc-top-head { font-size: 9px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: #fff; background: #2b2666; padding: 9px 14px; margin-top: 4px; }
+.svc-top-head:first-child { margin-top: 0; }
+.svc-acc-group { border-bottom: 1px solid #e5e5e5; }
+.svc-acc-head { display: flex; align-items: center; justify-content: space-between; padding: 9px 12px; background: #f0f0f0; cursor: pointer; font-size: 11px; font-weight: 700; color: #2b2666; user-select: none; transition: background .1s; border-bottom: 1px solid #e5e5e5; }
+.svc-acc-head:hover { background: #e8e8e8; }
+.svc-acc-chevron { font-size: 10px; color: #888; transition: transform .15s; flex-shrink: 0; margin-left: 8px; display: inline-block; transform: rotate(-90deg); }
+.svc-acc-head.svc-acc-open .svc-acc-chevron { transform: rotate(0deg); }
+.svc-acc-body { display: none; }
+
+/* ── ACTIVITY PICKER ── */
+.ap-group { border-bottom: 1px solid #e5e5e5; }
+.ap-group-head { padding: 10px 16px; font-size: 9px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; display: flex; align-items: center; justify-content: space-between; cursor: pointer; user-select: none; }
+.ap-group-head.startup-grp { background: #fffbf0; color: #7a4f00; }
+.ap-group-head.general-grp { background: #e5f3fb; color: #2b9ce2; }
+.ap-group-head.perpt-grp { background: #e5f5ee; color: #1d9e75; }
+.ap-group-items { display: none; }
+.ap-group-items.open { display: block; }
+.ap-item { display: flex; align-items: flex-start; gap: 10px; padding: 8px 16px; border-bottom: 1px solid #e5e5e5; cursor: pointer; transition: background .1s; }
+.ap-item:last-child { border-bottom: none; }
+.ap-item:hover { background: #f0f0f0; }
+.ap-item.ap-sel { background: #e5f3fb; }
+.ap-item input[type=checkbox] { width: 15px; height: 15px; accent-color: #007468; flex-shrink: 0; cursor: pointer; margin-top: 2px; }
+.ap-item-name { font-size: 12.5px; color: #444; line-height: 1.4; }
+.ap-item.ap-hidden { display: none; }
+.ap-group-chevron { font-size: 12px; opacity: .6; transition: transform .15s; flex-shrink: 0; }
+.ap-group-head.open .ap-group-chevron { transform: rotate(180deg); }
+
+/* ── LAB SEARCH ── */
+#svc-lab .svc-row { display: grid; grid-template-columns: 1fr 130px 100px 110px; gap: 10px; align-items: center; padding: 7px 12px; border-bottom: 1px solid #e5e5e5; background: #fff; }
+#svc-lab .svc-row:last-child { border-bottom: none; }
+#svc-lab .svc-name { font-size: 12px; color: #444; }
+#svc-lab .svc-name .svc-code { font-size: 10px; color: #888; font-family: "Courier New", monospace; display: block; }
+#svc-lab .svc-row.lab-hidden { display: none !important; }
+@media (max-width: 699px) {
+  #svc-lab .svc-row { grid-template-columns: 1fr 70px 90px; }
+  #svc-lab .svc-price { display: none; }
+}
+
+/* ── CIHR PRINT ── */
+.cihr-print-block { display: none; }
+@media print {
+  .cihr-print-block { display: block; margin-top: 32px; padding-top: 20px; border-top: 3px solid #2b2666; }
+  .cihr-head { font-size: 11px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: #2b2666; margin-bottom: 12px; }
+  .cihr-row { display: flex; justify-content: space-between; padding: 5px 0; border-bottom: 1px solid #e5e5e5; font-size: 12px; }
+  .cihr-row.cihr-total { border-top: 2px solid #2b2666; border-bottom: none; font-weight: 700; font-size: 13px; margin-top: 4px; padding-top: 8px; }
+  .cihr-row-label { color: #444; }
+  .cihr-row-amt { font-family: "Courier New", monospace; font-weight: 700; color: #2b2666; }
+  .sum-foot, .tab-list, .add-btn, .staff-rm, .nav-btns { display: none !important; }
+  #bt-wrap { display: block !important; }
+  .tab-panel { display: block !important; }
+  .sum-panel { display: block !important; position: static !important; border: 1px solid #c8c5d1; margin-top: 24px; page-break-inside: avoid; }
+  .sum-head { background: #2b2666 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .svc-cat-head, .svc-top-head { background: #2b2666 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .svc-acc-body { display: block !important; }
+}
+`}</style>
+
+<div class="bt-hero">
+  <div class="bt-hero-inner">
+    <div class="bt-eyebrow">Knowledge Base — Study Planning</div>
+    <h1 class="bt-h1">Clinical Trial Budget Tool</h1>
+    <p class="bt-intro">Build a complete single-site clinical trial budget using RI-MUHC salary scales, CIM service prices, and the April 2025 REB fee schedule. Work through each tab in order, then download your budget summary as a PDF.</p>
+    <div class="bt-meta">Fee data: January 2026 &nbsp;&middot;&nbsp; <a href="/kb/budget-reference">Budget reference and guidance &rarr;</a></div>
+  </div>
+</div>
+
+<div id="bt-wrap">
+
+  <div class="bt-tabs">
+    <div class="tab-list">
+      <button class="tab-btn active" onclick="showTab(0)" id="tb0">1&thinsp;&middot;&thinsp;Study Setup</button>
+      <button class="tab-btn" onclick="showTab(1)" id="tb1">2&thinsp;&middot;&thinsp;Staff</button>
+      <button class="tab-btn" onclick="showTab(2)" id="tb2">3&thinsp;&middot;&thinsp;Time and Effort</button>
+      <button class="tab-btn" onclick="showTab(3)" id="tb3">4&thinsp;&middot;&thinsp;Services</button>
+      <button class="tab-btn" onclick="showTab(4)" id="tb4">5&thinsp;&middot;&thinsp;REB Fees</button>
+      <button class="tab-btn" onclick="showTab(5)" id="tb5">6&thinsp;&middot;&thinsp;Contingency</button>
+    </div>
+
+    <!-- TAB 1: STUDY SETUP -->
+    <div class="tab-panel active" id="p0">
+      <div class="sec-label">Step 1 of 6</div>
+      <div class="sec-h2">Study Setup</div>
+      <p class="sec-desc">Enter your study information. The funding type determines the overhead rate applied to all eligible costs and controls which fields are visible throughout the tool.</p>
+
+      <div class="fg">
+        <label class="fl">Study title</label>
+        <input type="text" class="fi" id="study-title" placeholder="Enter the full protocol title">
+      </div>
+      <div class="frow">
+        <div class="fg">
+          <label class="fl">Protocol number</label>
+          <input type="text" class="fi" id="study-protocol" placeholder="e.g. MUHC-2025-001">
+        </div>
+        <div class="fg">
+          <label class="fl">Number of study years</label>
+          <input type="number" class="fi" id="study-years" value="1" min="1" max="10" oninput="updateSummary();suggestRenewals()">
+        </div>
+      </div>
+
+      <div class="fg">
+        <label class="fl">Funding type</label>
+        <span class="fh">Sets overhead rate. Industry fields appear automatically when Industry-Sponsored is selected.</span>
+        <div class="fund-grid">
+          <div class="fund-card" id="fc-iit" onclick="selectFunding('iit')">
+            <div class="fclabel">Investigator-Initiated (IIT)</div>
+            <div class="fcdesc">0% overhead</div>
+          </div>
+          <div class="fund-card" id="fc-found" onclick="selectFunding('found')">
+            <div class="fclabel">Foundation / Charity</div>
+            <div class="fcdesc">15% overhead</div>
+          </div>
+          <div class="fund-card" id="fc-ind" onclick="selectFunding('ind')">
+            <div class="fclabel">Industry-Sponsored</div>
+            <div class="fcdesc">30% overhead</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="ci" id="ind-note" style="display:none"><strong>Industry-sponsored:</strong> 30% overhead applies to eligible costs. The PI salary line is included. Startup activities are subject to 0% overhead &mdash; mark them as &ldquo;Startup&rdquo; in the Time and Effort tab.</div>
+
+      <div class="frow">
+        <div class="fg">
+          <label class="fl">Expected number of participants</label>
+          <input type="number" class="fi" id="study-n" value="0" min="0" oninput="updateSummary();calcPtCost()">
+        </div>
+        <div class="fg">
+          <label class="fl">Number of participating HSSN institutions</label>
+          <span class="fh">Includes RI-MUHC. Used for REB fee calculation (max 10 for monitoring).</span>
+          <input type="number" class="fi" id="study-sites" value="1" min="1" max="15" oninput="calcREB()">
+        </div>
+      </div>
+
+      <div class="fg">
+        <label class="fl">Study type</label>
+        <select class="fs" id="study-type">
+          <option value="single">Single site (RI-MUHC only)</option>
+          <option value="multi">Multicentre (2 or more HSSN institutions)</option>
+        </select>
+      </div>
+
+      <div class="fg">
+        <label class="fl">Multi-year study COLA</label>
+        <select class="fs" id="multiyear" onchange="updateSummary()">
+          <option value="no">No (or single year)</option>
+          <option value="yes">Yes &mdash; apply 5% annual COLA to staff costs each year</option>
+        </select>
+      </div>
+
+      <div class="nav-btns">
+        <button class="add-btn" onclick="showTab(1)">
+          Continue to Staff
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- TAB 2: STAFF -->
+    <div class="tab-panel" id="p1">
+      <div class="sec-label">Step 2 of 6</div>
+      <div class="sec-h2">Staff and Salaries</div>
+      <p class="sec-desc">Add each staff member contributing to the study. Their hourly rates will be used in the Time and Effort tab to cost each activity. If you skip Time and Effort, enter % FTE here and costs will be estimated from that.</p>
+
+      <div class="cn" id="cola-notice" style="display:none"><strong>Multi-year COLA:</strong> A 5% per-year compound increase will be applied to staff costs. Confirm study years in Setup.</div>
+      <div class="ci" id="pi-notice" style="display:none"><strong>Industry study:</strong> Include the PI salary line. For IIT and foundation studies, the PI is not typically budgeted.</div>
+
+      <div class="staff-list" id="staff-list"></div>
+
+      <button class="add-btn" onclick="addStaffRow()">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        Add staff member
+      </button>
+
+      <div class="ct" style="margin-top:20px"><strong>Salary scale:</strong> RI-MUHC annual midpoint salaries (1 FTE = 1,820 hrs/yr). Benefits fixed at 19%. Biostatistician: BCU (RI-MUHC) = $80/hr &bull; ACT-CTU OHRI = $250/hr.</div>
+
+      <div class="nav-btns">
+        <button class="add-btn" onclick="showTab(0)">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+          Back
+        </button>
+        <button class="add-btn" onclick="showTab(2);renderTE()">
+          Continue to Time and Effort
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- TAB 3: TIME AND EFFORT -->
+    <div class="tab-panel" id="p2">
+      <div class="sec-label">Step 3 of 6</div>
+      <div class="sec-h2">Time and Effort</div>
+      <p class="sec-desc">Add each study activity or visit type and enter the hours required from each staff member. Activities marked <strong>Per participant</strong> are multiplied by your participant count. <strong>Startup</strong> activities are flagged separately for the industry overhead carve-out. If you skip this tab, the tool uses % FTE estimates from the Staff tab.</p>
+
+      <div class="ci" id="te-no-staff-msg" style="display:none"><strong>No staff entered yet.</strong> Go back to the Staff tab and add your team first &mdash; their hourly rates will appear here.</div>
+
+      <div id="te-activity-list"></div>
+
+      <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center">
+        <button class="add-btn" id="te-add-btn" onclick="openActPicker()">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+          Add from list
+        </button>
+        <button class="add-btn" id="te-add-custom-btn" onclick="addActivity()">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          Add custom activity
+        </button>
+      </div>
+
+      <div class="te-summary-box" id="te-summary-box" style="display:none">
+        <div class="te-summary-head">Time and Effort summary</div>
+        <div id="te-summary-lines"></div>
+      </div>
+
+      <div class="ct" style="margin-top:20px">
+        <strong>Activity types:</strong>&nbsp;
+        <strong style="color:#7a4f00">Startup</strong> = site initiation, staff training, regulatory submissions (0% overhead for industry).&nbsp;
+        <strong style="color:#2b9ce2">General</strong> = flat study costs regardless of participant count.&nbsp;
+        <strong style="color:#1d9e75">Per participant</strong> = per-visit activities multiplied by expected N.
+      </div>
+
+      <div class="nav-btns">
+        <button class="add-btn" onclick="showTab(1)">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+          Back
+        </button>
+        <button class="add-btn" onclick="showTab(3)">
+          Continue to Services
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- TAB 4: SERVICES -->
+    <div class="tab-panel" id="p3">
+      <div class="sec-label">Step 4 of 6</div>
+      <div class="sec-h2">Services and Other Costs</div>
+      <p class="sec-desc">Enter the quantity of each service used across the full study. Industry-tier prices are applied automatically when Industry-Sponsored is selected in Setup.</p>
+
+      <div id="svc-cim-accordion"></div>
+
+      <div class="svc-top-head">MUHC Laboratory Tests</div>
+      <div class="svc-acc-group" id="svc-grp-lab">
+        <div class="svc-acc-head" onclick="toggleSvcGroup('lab')">
+          <span>Laboratory Tests (1,967 tests)</span>
+          <span class="svc-acc-chevron">&#9660;</span>
+        </div>
+        <div class="svc-acc-body" id="svc-body-lab" style="display:none">
+          <div style="padding:12px 12px 4px;background:#f0f0f0;border-bottom:1px solid #e5e5e5;display:flex;align-items:center;gap:12px;flex-wrap:wrap">
+            <input type="text" class="fi" id="lab-search" placeholder="Search by code or test name&hellip;" oninput="filterLab()" style="max-width:420px;font-size:13px;flex:1">
+            <span id="lab-count" style="font-size:11px;color:#888;flex-shrink:0"></span>
+          </div>
+          <div class="svc-hdr"><span>Code / Test name</span><span>Unit price</span><span>Qty</span><span>Subtotal</span></div>
+          <div id="svc-lab" style="max-height:420px;overflow-y:auto"></div>
+          <div id="lab-empty" style="display:none;padding:14px 12px;font-size:13px;color:#888;font-style:italic">No tests match your search.</div>
+          <div style="padding:10px 12px;background:#f0f0f0;border-top:1px solid #e5e5e5;font-size:11px;color:#888">
+            Prices: non-industry (&times;1.1) and industry/private (&times;1.5) from MUHC Laboratory pricelist 2023&ndash;2024.
+          </div>
+        </div>
+      </div>
+
+      <div class="svc-cat">
+        <div class="svc-cat-head">Participant Costs</div>
+        <div class="ci" style="margin:0;border-left:none;border-radius:0;font-size:12px;padding:10px 14px">
+          Costs below are multiplied by the number of participants entered in Study Setup (<span id="pt-n-display">0</span> participants). Enter per-visit amounts.
+        </div>
+        <div class="svc-hdr"><span>Item</span><span>Per visit (&times; participants)</span><span>Visits</span><span>Subtotal</span></div>
+        <div class="svc-row">
+          <span class="svc-name">Participant stipend / honorarium</span>
+          <span class="svc-price" id="pt-stip-price">$0 / visit</span>
+          <div class="svc-qty" style="display:flex;gap:6px;align-items:center">
+            <input type="number" min="0" value="0" placeholder="$/visit" id="pt-stip-amt" oninput="calcPtCost()" style="width:70px;text-align:right;font-size:13px;border:1.5px solid #d0d0d0;padding:5px 6px;border-radius:6px;outline:none">
+            <span style="font-size:11px;color:#888">&times;</span>
+            <input type="number" min="0" value="1" id="pt-stip-visits" oninput="calcPtCost()" style="width:48px;text-align:right;font-size:13px;border:1.5px solid #d0d0d0;padding:5px 6px;border-radius:6px;outline:none">
+            <span style="font-size:11px;color:#888">visits</span>
+          </div>
+          <span class="svc-sub" id="pt-stip-sub">$0</span>
+        </div>
+        <div class="svc-row">
+          <span class="svc-name">Transportation reimbursement</span>
+          <span class="svc-price" id="pt-trans-price">$0 / visit</span>
+          <div class="svc-qty" style="display:flex;gap:6px;align-items:center">
+            <input type="number" min="0" value="0" id="pt-trans-amt" oninput="calcPtCost()" style="width:70px;text-align:right;font-size:13px;border:1.5px solid #d0d0d0;padding:5px 6px;border-radius:6px;outline:none">
+            <span style="font-size:11px;color:#888">&times;</span>
+            <input type="number" min="0" value="1" id="pt-trans-visits" oninput="calcPtCost()" style="width:48px;text-align:right;font-size:13px;border:1.5px solid #d0d0d0;padding:5px 6px;border-radius:6px;outline:none">
+            <span style="font-size:11px;color:#888">visits</span>
+          </div>
+          <span class="svc-sub" id="pt-trans-sub">$0</span>
+        </div>
+        <div class="svc-row">
+          <span class="svc-name">Parking reimbursement</span>
+          <span class="svc-price" id="pt-park-price">$0 / visit</span>
+          <div class="svc-qty" style="display:flex;gap:6px;align-items:center">
+            <input type="number" min="0" value="0" id="pt-park-amt" oninput="calcPtCost()" style="width:70px;text-align:right;font-size:13px;border:1.5px solid #d0d0d0;padding:5px 6px;border-radius:6px;outline:none">
+            <span style="font-size:11px;color:#888">&times;</span>
+            <input type="number" min="0" value="1" id="pt-park-visits" oninput="calcPtCost()" style="width:48px;text-align:right;font-size:13px;border:1.5px solid #d0d0d0;padding:5px 6px;border-radius:6px;outline:none">
+            <span style="font-size:11px;color:#888">visits</span>
+          </div>
+          <span class="svc-sub" id="pt-park-sub">$0</span>
+        </div>
+        <div class="svc-row">
+          <div>
+            <span class="svc-name">Other participant costs</span>
+            <input type="text" class="fi" placeholder="Description (optional)" style="margin-top:4px;font-size:12px;padding:4px 8px">
+          </div>
+          <span class="svc-price" id="pt-other-price">&nbsp;</span>
+          <div class="svc-qty">
+            <input type="number" min="0" value="0" id="pt-other-amt" oninput="calcPtCost()" style="width:100%;text-align:right;font-size:13px;border:1.5px solid #d0d0d0;padding:5px 8px;border-radius:6px;outline:none">
+          </div>
+          <span class="svc-sub" id="pt-other-sub">$0</span>
+        </div>
+      </div>
+
+      <div class="svc-cat">
+        <div class="svc-cat-head">Travel</div>
+        <div class="svc-hdr"><span>Item</span><span>&nbsp;</span><span>Amount ($)</span><span>Subtotal</span></div>
+        <div class="svc-row">
+          <span class="svc-name">Investigator / CRC travel (flights, per diems, hotel)</span>
+          <span class="svc-price">&nbsp;</span>
+          <div class="svc-qty"><input type="number" min="0" value="0" id="tv-inv" oninput="updateSummary()" style="width:100%;text-align:right;font-size:13px;border:1.5px solid #d0d0d0;padding:5px 8px;border-radius:6px;outline:none"></div>
+          <span class="svc-sub" id="tv-inv-sub">$0</span>
+        </div>
+        <div class="svc-row" id="tv-mon-row" style="display:none">
+          <span class="svc-name">Monitoring visit travel <span style="font-size:11px;color:#888">(IIT &mdash; sponsor-side monitoring)</span></span>
+          <span class="svc-price">&nbsp;</span>
+          <div class="svc-qty"><input type="number" min="0" value="0" id="tv-mon" oninput="updateSummary()" style="width:100%;text-align:right;font-size:13px;border:1.5px solid #d0d0d0;padding:5px 8px;border-radius:6px;outline:none"></div>
+          <span class="svc-sub" id="tv-mon-sub">$0</span>
+        </div>
+        <div class="svc-row">
+          <span class="svc-name">Other travel</span>
+          <span class="svc-price">&nbsp;</span>
+          <div class="svc-qty"><input type="number" min="0" value="0" id="tv-other" oninput="updateSummary()" style="width:100%;text-align:right;font-size:13px;border:1.5px solid #d0d0d0;padding:5px 8px;border-radius:6px;outline:none"></div>
+          <span class="svc-sub" id="tv-other-sub">$0</span>
+        </div>
+      </div>
+
+      <div class="svc-cat">
+        <div class="svc-cat-head">Other Costs</div>
+        <div id="other-list"></div>
+        <button class="add-btn" onclick="addOther()" style="margin:10px 0 0 12px">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          Add other cost
+        </button>
+      </div>
+
+      <div class="nav-btns">
+        <button class="add-btn" onclick="showTab(2)">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+          Back
+        </button>
+        <button class="add-btn" onclick="showTab(4)">
+          Continue to REB Fees
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- TAB 5: REB FEES -->
+    <div class="tab-panel" id="p4">
+      <div class="sec-label">Step 5 of 6</div>
+      <div class="sec-h2">REB Fees</div>
+      <p class="sec-desc">REB fees are calculated from the MSSS fee schedule (effective April&nbsp;1, 2025). Site count is carried over from Study Setup. For IIT and foundation studies, these fees may not apply &mdash; use the toggle below to include or exclude them from your total.</p>
+
+      <div class="cn" id="reb-iit-note" style="display:none"><strong>IIT / Foundation study:</strong> The MSSS fee schedule applies to costs billed to a private company. These figures are shown for reference only and excluded from the total unless you select to include them below.</div>
+
+      <div class="frow" style="margin-bottom:16px">
+        <div class="fg">
+          <label class="fl">Number of annual renewals</label>
+          <span class="fh">REB renewal cycles over the study life (usually study years &minus; 1). Updates automatically when you set study years.</span>
+          <input type="number" class="fi" id="reb-renewals" value="0" min="0" oninput="calcREB()">
+        </div>
+        <div class="fg">
+          <label class="fl">Major protocol amendments</label>
+          <input type="number" class="fi" id="reb-amendments" value="0" min="0" oninput="calcREB()">
+        </div>
+      </div>
+
+      <div class="fg">
+        <label class="fl">Include REB fees in total?</label>
+        <select class="fs" id="reb-include" onchange="updateSummary()">
+          <option value="yes">Yes &mdash; include in total</option>
+          <option value="no">No &mdash; show for reference only</option>
+        </select>
+      </div>
+
+      <div class="reb-box" id="reb-box"></div>
+
+      <div class="nav-btns">
+        <button class="add-btn" onclick="showTab(3)">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+          Back
+        </button>
+        <button class="add-btn" onclick="showTab(5)">
+          Continue to Contingency
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- TAB 6: CONTINGENCY -->
+    <div class="tab-panel" id="p5">
+      <div class="sec-label">Step 6 of 6</div>
+      <div class="sec-h2">Contingency</div>
+      <p class="sec-desc">Select the complexity level that best describes your study. The recommended midpoint percentage is applied to the subtotal (staff + services) as a buffer for unforeseeable costs.</p>
+
+      <div class="cont-grid">
+        <div class="cont-card" id="cc-low" onclick="selectCont('low')">
+          <div class="cclabel">Low complexity</div>
+          <div class="ccrange">8 &ndash; 10%</div>
+          <div class="ccdef">Recommended: 9%</div>
+        </div>
+        <div class="cont-card cc-sel-mod" id="cc-mod" onclick="selectCont('mod')">
+          <div class="cclabel">Moderate complexity</div>
+          <div class="ccrange">10 &ndash; 12%</div>
+          <div class="ccdef">Recommended: 11%</div>
+        </div>
+        <div class="cont-card" id="cc-high" onclick="selectCont('high')">
+          <div class="cclabel">High complexity</div>
+          <div class="ccrange">12 &ndash; 15%</div>
+          <div class="ccdef">Recommended: 13.5%</div>
+        </div>
+      </div>
+
+      <div class="fg">
+        <label class="fl">Override contingency rate (%)</label>
+        <span class="fh">Leave blank to use the recommended midpoint for your selected complexity level.</span>
+        <input type="number" class="fi" id="cont-pct" placeholder="e.g. 10" min="0" max="30" step="0.5" style="max-width:180px" oninput="updateSummary()">
+      </div>
+
+      <div class="ct"><strong>Complexity guide:</strong> Low = observational, retrospective, chart review. Moderate = prospective interventional, Phase II&ndash;III, multi-visit. High = Phase I, first-in-human, complex interventional (IP management, biologics, devices).</div>
+
+      <div class="nav-btns">
+        <button class="add-btn" onclick="showTab(4)">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+          Back
+        </button>
+        <button class="pbtn" style="max-width:260px;margin-left:4px" onclick="window.print()">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+          Download budget summary
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- SUMMARY PANEL -->
+  <div class="sum-panel">
+    <div class="sum-head">
+      <div class="sum-title">Budget total</div>
+      <div class="sum-total-big" id="sum-top">$0</div>
+    </div>
+    <div class="sum-body">
+      <div class="sum-line">
+        <span class="sll">Staff and salaries</span>
+        <span id="sl-staff" class="slz">&mdash;</span>
+      </div>
+      <div class="sum-line" id="sl-te-line" style="display:none">
+        <span class="sll" style="font-size:11px;color:#888;padding-left:10px">via Time and Effort</span>
+        <span id="sl-te" class="slz" style="font-size:11px"></span>
+      </div>
+      <div class="sum-line">
+        <span class="sll">Services and costs</span>
+        <span id="sl-svc" class="slz">&mdash;</span>
+      </div>
+      <div class="sum-line">
+        <span class="sll">Contingency</span>
+        <span id="sl-cont" class="slz">&mdash;</span>
+      </div>
+      <div class="sum-line">
+        <span class="sll">REB fees</span>
+        <span id="sl-reb" class="slz">&mdash;</span>
+      </div>
+      <div class="sum-divider"></div>
+      <div class="sum-oh-row">
+        <span class="sum-oh-l" id="sum-oh-lbl">Overhead (0%)</span>
+        <span class="sum-oh-a" id="sum-oh">$0</span>
+      </div>
+      <div class="sum-grand">
+        <span class="sum-gl">Grand total</span>
+        <span class="sum-ga" id="sum-grand">$0</span>
+      </div>
+    </div>
+    <div class="sum-foot">
+      <button class="pbtn" onclick="window.print()">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+        Download budget summary
+      </button>
+      <div style="display:flex;gap:6px">
+        <button class="xlink" style="flex:1;background:none" onclick="exportBudget()">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Save progress
+        </button>
+        <label class="xlink" style="flex:1;cursor:pointer;text-align:center" title="Load a previously saved budget file">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 5 17 10"/><line x1="12" y1="5" x2="12" y2="17"/></svg>
+          Load saved
+          <input type="file" id="budget-file-input" accept=".json" style="display:none" onchange="importBudget(this)">
+        </label>
+      </div>
+      <div id="autosave-notice" style="font-size:10px;color:#888;text-align:center;padding:2px 0;display:none"></div>
+      <a href="/budget-template.xlsx" class="xlink" download>
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+        Download Excel template
+      </a>
+    </div>
+  </div>
+
+  <!-- CIHR PRINT SUMMARY -->
+  <div class="cihr-print-block" id="cihr-block">
+    <div class="cihr-head">Budget Summary &mdash; CIHR Format</div>
+    <div class="cihr-row"><span class="cihr-row-label">Personnel (staff and salaries)</span><span class="cihr-row-amt" id="cihr-personnel">$0</span></div>
+    <div class="cihr-row"><span class="cihr-row-label">Materials and Supplies (services and laboratory)</span><span class="cihr-row-amt" id="cihr-matsup">$0</span></div>
+    <div class="cihr-row"><span class="cihr-row-label">Travel</span><span class="cihr-row-amt" id="cihr-travel">$0</span></div>
+    <div class="cihr-row"><span class="cihr-row-label">Knowledge Translation</span><span class="cihr-row-amt" id="cihr-kt">$0</span></div>
+    <div class="cihr-row"><span class="cihr-row-label">Other (contingency + other costs)</span><span class="cihr-row-amt" id="cihr-other">$0</span></div>
+    <div class="cihr-row cihr-total"><span class="cihr-row-label">Total</span><span class="cihr-row-amt" id="cihr-total">$0</span></div>
+  </div>
+
+</div>
+
+<!-- ACTIVITY PICKER MODAL -->
+<div id="act-picker-overlay" style="display:none;position:fixed;inset:0;background:rgba(43,38,102,.55);z-index:900;backdrop-filter:blur(4px)" onclick="closeActPicker()"></div>
+<div id="act-picker" style="display:none;position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);width:min(680px,96vw);max-height:82vh;background:#fff;z-index:901;flex-direction:column;overflow:hidden;border-radius:8px;box-shadow:0 20px 60px rgba(0,0,0,.18)">
+  <div style="background:#2b2666;padding:18px 20px;display:flex;align-items:center;justify-content:space-between;flex-shrink:0">
+    <div>
+      <div style="font-size:9px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.55);margin-bottom:4px">Time and Effort</div>
+      <div style="font-size:16px;font-weight:700;color:#fff">Add activities from list</div>
+    </div>
+    <button onclick="closeActPicker()" style="background:none;border:none;color:rgba(255,255,255,.65);font-size:20px;cursor:pointer;padding:4px;line-height:1">&times;</button>
+  </div>
+  <div style="padding:12px 16px;border-bottom:1px solid #e5e5e5;flex-shrink:0">
+    <input type="text" class="fi" id="act-picker-search" placeholder="Filter activities&hellip;" oninput="filterActPicker()" style="font-size:13px;max-width:340px">
+  </div>
+  <div id="act-picker-body" style="overflow-y:auto;flex:1;padding:0 0 8px"></div>
+  <div style="padding:14px 16px;border-top:2px solid #2b2666;background:#f7f7f7;display:flex;align-items:center;justify-content:space-between;flex-shrink:0;gap:12px">
+    <span id="act-picker-count" style="font-size:12px;color:#888">0 selected</span>
+    <div style="display:flex;gap:10px">
+      <button class="add-btn" style="border-color:#d0d0d0;color:#888;margin-top:0" onclick="closeActPicker()">Cancel</button>
+      <button class="add-btn" style="background:#007468;color:#fff;border-color:#007468;margin-top:0" onclick="addSelectedActivities()">Add selected activities</button>
+    </div>
+  </div>
+</div>
+
+<script src="/budget-tool-script.js"></script>
