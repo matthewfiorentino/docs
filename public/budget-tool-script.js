@@ -2588,6 +2588,602 @@ function exportCSV() {
   URL.revokeObjectURL(url);
 }
 
+// ── XLSX EXPORT ──────────────────────────────────────────────────────────────
+
+function exportXLSX(btn) {
+  if (btn) { btn.disabled = true; btn.textContent = 'Preparing…'; }
+  function restore() { if (btn) { btn.disabled = false; btn.innerHTML = '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg> Download spreadsheet (.xlsx)'; } }
+  if (typeof ExcelJS === 'undefined') {
+    var s = document.createElement('script');
+    s.src = 'https://cdn.jsdelivr.net/npm/exceljs@4.4.0/dist/exceljs.min.js';
+    s.onload  = function() { doExportXLSX(); restore(); };
+    s.onerror = function() { restore(); alert('Could not load the Excel library. Check your connection, or use the CSV export (exportCSV) as a fallback.'); };
+    document.head.appendChild(s);
+  } else {
+    doExportXLSX();
+    restore();
+  }
+}
+
+function doExportXLSX() {
+  var g = function(id) { var el = document.getElementById(id); return el ? el.value : ''; };
+  var funding    = g('funding-type');
+  var oh         = funding === 'found' ? (parseFloat(g('found-oh-pct')) || 27) / 100
+                 : funding === 'ind'   ? 0.30 : 0;
+  var contLevel  = g('cont-level');
+  var title      = g('study-title');
+  var prot       = g('study-protocol');
+  var years      = parseInt(g('study-years')) || 1;
+  var nPt        = parseInt(g('study-n'))     || 0;
+  var sites      = Math.min(parseInt(g('study-sites')) || 1, 15);
+  var cola       = g('multiyear') === 'yes';
+  var studyType  = g('study-type');
+  var studyTypeLabel = studyType === 'obs' ? 'Observational' : studyType === 'int' ? 'Interventional' : studyType || '';
+  var fundingLabel   = funding === 'cihr' ? 'CIHR' : funding === 'found' ? 'Foundation' : funding === 'iit' ? 'IIT' : funding === 'ind' ? 'Industry' : (funding || '');
+  var contPctLabel   = Math.round(getContPct() * 100) + '% (' + (contLevel === 'low' ? 'Low' : contLevel === 'high' ? 'High' : 'Moderate') + ')';
+  var foundOhPct     = funding === 'found' ? (parseFloat(g('found-oh-pct')) || 27) : Math.round(oh * 100);
+  var rebIncEl       = document.getElementById('reb-include');
+  var rebInc         = rebIncEl ? rebIncEl.value === 'yes' : true;
+
+  // ── Styles ──────────────────────────────────────────────────
+  var NAVY = 'FF2B2666', TEAL = 'FF007468', TEAL_L = 'FFF0FAF9';
+  var WHITE = 'FFFFFFFF', GRAY = 'FFF7F7F7', BDR = 'FFD0D0D0';
+  var SKY = 'FF2B9CE2', AMBER = 'FFCCA700';
+  function bdr() { var t = {style:'thin',color:{argb:BDR}}; return {top:t,bottom:t,left:t,right:t}; }
+  var S = {
+    title:  {font:{bold:true,size:12,color:{argb:WHITE},name:'Calibri'}, fill:{type:'pattern',pattern:'solid',fgColor:{argb:NAVY}}, alignment:{vertical:'middle',horizontal:'left'}, border:bdr()},
+    hdr:    {font:{bold:true,size:10,color:{argb:WHITE},name:'Calibri'}, fill:{type:'pattern',pattern:'solid',fgColor:{argb:TEAL}}, alignment:{vertical:'middle',horizontal:'left'}, border:bdr()},
+    data:   {font:{size:10,name:'Calibri'}, alignment:{vertical:'middle',horizontal:'left'}, border:bdr()},
+    num:    {font:{size:10,name:'Calibri'}, alignment:{vertical:'middle',horizontal:'right'}, border:bdr()},
+    key:    {font:{bold:true,size:10,name:'Calibri'}, fill:{type:'pattern',pattern:'solid',fgColor:{argb:GRAY}}, alignment:{vertical:'middle',horizontal:'left'}, border:bdr()},
+    val:    {font:{size:10,name:'Calibri'}, alignment:{vertical:'middle',horizontal:'left'}, border:bdr()},
+    grp:    {font:{bold:true,size:10,color:{argb:NAVY},name:'Calibri'}, fill:{type:'pattern',pattern:'solid',fgColor:{argb:GRAY}}, alignment:{vertical:'middle',horizontal:'left'}, border:bdr()},
+    sub:    {font:{bold:true,size:10,name:'Calibri'}, fill:{type:'pattern',pattern:'solid',fgColor:{argb:TEAL_L}}, alignment:{vertical:'middle',horizontal:'left'}, border:bdr()},
+    subN:   {font:{bold:true,size:10,name:'Calibri'}, fill:{type:'pattern',pattern:'solid',fgColor:{argb:TEAL_L}}, alignment:{vertical:'middle',horizontal:'right'}, border:bdr()},
+    grand:  {font:{bold:true,size:11,color:{argb:WHITE},name:'Calibri'}, fill:{type:'pattern',pattern:'solid',fgColor:{argb:NAVY}}, alignment:{vertical:'middle',horizontal:'left'}, border:bdr()},
+    grandN: {font:{bold:true,size:11,color:{argb:WHITE},name:'Calibri'}, fill:{type:'pattern',pattern:'solid',fgColor:{argb:NAVY}}, alignment:{vertical:'middle',horizontal:'right'}, border:bdr()},
+    note:   {font:{italic:true,size:9,color:{argb:'FF888888'},name:'Calibri'}, alignment:{wrapText:true,vertical:'middle',horizontal:'left'}}
+  };
+  var MONEY = '"$"#,##0';
+  function ap(cell, st) {
+    if (!st) return;
+    if (st.font)      cell.font      = st.font;
+    if (st.fill)      cell.fill      = st.fill;
+    if (st.alignment) cell.alignment = st.alignment;
+    if (st.border)    cell.border    = st.border;
+  }
+
+  // ── Row helpers ──────────────────────────────────────────────
+  function titleRow(ws, text, nc) {
+    var rd = [text]; for (var i = 1; i < nc; i++) rd.push(null);
+    var r = ws.addRow(rd); r.height = 24;
+    if (nc > 1) ws.mergeCells(r.number, 1, r.number, nc);
+    ap(r.getCell(1), S.title); return r;
+  }
+  function grpRow(ws, text, nc) {
+    var rd = [text]; for (var i = 1; i < nc; i++) rd.push(null);
+    var r = ws.addRow(rd); r.height = 18;
+    if (nc > 1) ws.mergeCells(r.number, 1, r.number, nc);
+    ap(r.getCell(1), S.grp); return r;
+  }
+  function hdrRow(ws, headers) {
+    var r = ws.addRow(headers); r.height = 20;
+    r.eachCell({includeEmpty:true}, function(cell) { ap(cell, S.hdr); }); return r;
+  }
+  function kvRow(ws, key, val) {
+    var r = ws.addRow([key, val]); r.height = 17;
+    ap(r.getCell(1), S.key); ap(r.getCell(2), S.val);
+    if (typeof val === 'number') { r.getCell(2).numFmt = MONEY; r.getCell(2).alignment = {vertical:'middle',horizontal:'right'}; }
+    return r;
+  }
+  function blankRow(ws) { ws.addRow([]).height = 8; }
+  function freeze(ws, n) { ws.views = [{state:'frozen', ySplit:n}]; }
+  function noteRow(ws, text, nc) {
+    var rd = [text]; for (var i = 1; i < nc; i++) rd.push(null);
+    var r = ws.addRow(rd); r.height = 30;
+    if (nc > 1) ws.mergeCells(r.number, 1, r.number, nc);
+    ap(r.getCell(1), S.note); return r;
+  }
+
+  var wb = new ExcelJS.Workbook();
+  wb.creator = 'RI-MUHC Research Budget Tool';
+  wb.created = new Date();
+
+  // ════════════════════════════════════════════════════════════════
+  // SHEET 1 — STUDY PROFILE
+  // ════════════════════════════════════════════════════════════════
+  var ws1 = wb.addWorksheet('Study Profile', {tabColor:{argb:NAVY}});
+  ws1.columns = [{width:34},{width:48}];
+  titleRow(ws1, 'RI-MUHC CLINICAL RESEARCH BUDGET — STUDY PROFILE', 2);
+  kvRow(ws1, 'Generated', new Date().toLocaleDateString('en-CA'));
+  blankRow(ws1);
+  kvRow(ws1, 'Study title',           title || '—');
+  kvRow(ws1, 'Protocol number',       prot  || '—');
+  kvRow(ws1, 'Funding type',          fundingLabel);
+  kvRow(ws1, 'Study type',            studyTypeLabel);
+  kvRow(ws1, 'Number of years',       years);
+  kvRow(ws1, 'Expected participants', nPt);
+  kvRow(ws1, 'Number of sites',       sites);
+  kvRow(ws1, 'Multi-year COLA',       cola ? 'Yes (5%/year)' : 'No');
+  kvRow(ws1, 'Contingency',           contPctLabel);
+  if (funding === 'found') kvRow(ws1, 'Foundation overhead', foundOhPct + '%');
+  if (funding === 'ind') {
+    kvRow(ws1, 'Overhead rate', '30%');
+    var earlyStartupSvc = getStartupSvcTotal();
+    if (earlyStartupSvc > 0) kvRow(ws1, 'Startup services carve-out (0% OH)', earlyStartupSvc);
+  }
+  if (funding === 'cihr') kvRow(ws1, 'Overhead rate', '0% (CIHR)');
+  if (funding === 'iit')  kvRow(ws1, 'Overhead rate', '0% (IIT)');
+  kvRow(ws1, 'REB fees included in total', rebInc ? 'Yes' : 'No');
+  freeze(ws1, 1);
+
+  // ════════════════════════════════════════════════════════════════
+  // SHEET 2 — STAFF
+  // ════════════════════════════════════════════════════════════════
+  var ws2 = wb.addWorksheet('Staff', {tabColor:{argb:TEAL}});
+  var staffIds = getActiveStaffIds();
+  var s2hdrs = ['Role','Name','Annual Salary','FTE %','Hourly Rate','Benefits (19%)','Annual FTE Cost'];
+  var s2widths = [26,20,15,8,13,15,15];
+  if (years > 1) { for (var yy = 1; yy <= years; yy++) { s2hdrs.push('Year '+yy); s2widths.push(13); } }
+  s2hdrs.push('Total (' + (years > 1 ? years + '-yr' : '1-yr') + ')'); s2widths.push(14);
+  ws2.columns = s2widths.map(function(w) { return {width:w}; });
+  titleRow(ws2, 'STAFF & SALARIES', s2hdrs.length);
+  hdrRow(ws2, s2hdrs);
+  // Money cols (1-indexed): salary=3, benefits=6, annFTE=7, year cols start at 8, total is last
+  var s2moneyCols = [3,6,7];
+  for (var yy = 1; yy <= years; yy++) s2moneyCols.push(7 + yy);
+  s2moneyCols.push(7 + years + 1);
+
+  for (var si = 0; si < staffIds.length; si++) {
+    var sid    = staffIds[si];
+    var roleEl = document.getElementById('s-role-' + sid);
+    var nameEl = document.getElementById('s-name-' + sid);
+    var salEl  = document.getElementById('s-sal-'  + sid);
+    var fteEl  = document.getElementById('s-fte-'  + sid);
+    var roleVal = roleEl && roleEl.value !== '' ? ROLES[parseInt(roleEl.value)].r : '—';
+    var nameVal = nameEl ? nameEl.value : '';
+    var salVal  = parseFloat(salEl ? salEl.value : 0) || 0;
+    var fteVal  = parseFloat(fteEl ? fteEl.value : 100) || 100;
+    var isFixHr = roleEl && roleEl.value !== '' && ROLES[parseInt(roleEl.value)].hr;
+    var annFTE  = getStaffFTECost(sid);
+    var hrRate  = getStaffHourlyRate(sid);
+    var vals    = [roleVal, nameVal, isFixHr ? null : salVal, fteVal / 100, hrRate || null, isFixHr ? null : salVal * 0.19, annFTE];
+    var staffTot = 0;
+    if (years > 1) {
+      for (var yy = 1; yy <= years; yy++) {
+        var yrCost = cola ? annFTE * Math.pow(1.05, yy - 1) : annFTE;
+        vals.push(yrCost); staffTot += yrCost;
+      }
+    } else { staffTot = annFTE; }
+    vals.push(staffTot);
+    var sr = ws2.addRow(vals); sr.height = 17;
+    sr.eachCell({includeEmpty:true}, function(cell, ci) {
+      if (s2moneyCols.indexOf(ci) >= 0 && typeof cell.value === 'number') { ap(cell, S.num); cell.numFmt = MONEY; }
+      else if (ci === 4 && typeof cell.value === 'number') { ap(cell, S.num); cell.numFmt = '0%'; }
+      else if (ci === 5 && typeof cell.value === 'number') { ap(cell, S.num); cell.numFmt = '"$"#,##0.00'; }
+      else { ap(cell, S.data); }
+    });
+  }
+  noteRow(ws2, 'Note: Hourly rate = Annual Salary × 1.19 (employer benefits) ÷ 1,820 hrs/yr (35 hrs/week × 52 weeks). BCU and OHRI Biostats rates are fixed and do not use this formula.', s2hdrs.length);
+  freeze(ws2, 2);
+
+  // ════════════════════════════════════════════════════════════════
+  // SHEET 3 — WORK PLAN
+  // ════════════════════════════════════════════════════════════════
+  var ws3 = wb.addWorksheet('Work Plan', {tabColor:{argb:SKY}});
+  var headThs = document.querySelectorAll('#mc-head-row th[data-staff-id]');
+  var wp3hdrs = ['Type','Activity'];
+  var wp3widths = [16, 34];
+  for (var j = 0; j < headThs.length; j++) {
+    wp3hdrs.push(headThs[j].textContent.replace(/hrs.*$/i,'').trim() + ' (hrs)');
+    wp3widths.push(14);
+  }
+  wp3hdrs.push('Participants (N)'); wp3widths.push(14);
+  wp3hdrs.push('Annual Cost');      wp3widths.push(14);
+  ws3.columns = wp3widths.map(function(w) { return {width:w}; });
+  var wpCostCol = wp3hdrs.length;
+  var wpNCol    = wp3hdrs.length - 1;
+  titleRow(ws3, 'WORK PLAN', wp3hdrs.length);
+  hdrRow(ws3, wp3hdrs);
+  var rowIds = Object.keys(matrixData);
+  var prevType = null;
+  var typeLabels = {startup:'STARTUP — 0% overhead for industry', general:'GENERAL — flat study costs', perpt:'PER PARTICIPANT — hours/participant × N'};
+  for (var r = 0; r < rowIds.length; r++) {
+    var rid  = rowIds[r];
+    var mrow = matrixData[rid];
+    if (mrow.type !== prevType) { grpRow(ws3, typeLabels[mrow.type] || mrow.type, wp3hdrs.length); prevType = mrow.type; }
+    var tLbl = mrow.type === 'startup' ? 'Startup' : mrow.type === 'perpt' ? 'Per Participant' : 'General';
+    var wpVals = [tLbl, mrow.name || ''];
+    var rowCost = 0;
+    for (var j = 0; j < headThs.length; j++) {
+      var colSid = headThs[j].getAttribute('data-staff-id');
+      var hrs    = parseFloat(mrow.hours[colSid]) || 0;
+      wpVals.push(hrs || null);
+      rowCost += hrs * getStaffHourlyRate(colSid);
+    }
+    var rowN = (mrow.type === 'perpt') ? getRowN(rid) : null;
+    if (mrow.type === 'perpt') rowCost *= getRowN(rid);
+    wpVals.push(rowN); wpVals.push(rowCost > 0 ? rowCost : null);
+    var wr = ws3.addRow(wpVals); wr.height = 17;
+    wr.eachCell({includeEmpty:true}, function(cell, ci) {
+      if (ci === wpCostCol && typeof cell.value === 'number') { ap(cell, S.num); cell.numFmt = MONEY; }
+      else if (ci >= 3 && typeof cell.value === 'number') { ap(cell, S.num); }
+      else { ap(cell, S.data); }
+    });
+  }
+  freeze(ws3, 2);
+
+  // ════════════════════════════════════════════════════════════════
+  // SHEET 4 — SERVICES & LAB
+  // ════════════════════════════════════════════════════════════════
+  var ws4 = wb.addWorksheet('Services & Lab', {tabColor:{argb:TEAL}});
+  ws4.columns = [{width:24},{width:48},{width:14},{width:10},{width:14}];
+  titleRow(ws4, 'CIM & INSTITUTIONAL SERVICES / LABORATORY TESTS', 5);
+
+  grpRow(ws4, 'CIM & INSTITUTIONAL SERVICES', 5);
+  hdrRow(ws4, ['Category','Service','Unit Price','Quantity','Subtotal']);
+  var cimInputs = document.querySelectorAll('#svc-cim-accordion .svc-qty input');
+  var hasCIM = false;
+  for (var ci = 0; ci < cimInputs.length; ci++) {
+    var qty = parseFloat(cimInputs[ci].value) || 0;
+    if (qty <= 0) continue;
+    hasCIM = true;
+    var price = parseFloat(cimInputs[ci].getAttribute('data-price')) || 0;
+    var svcRow = cimInputs[ci].closest ? cimInputs[ci].closest('.svc-row') : null;
+    var svcName = svcRow && svcRow.querySelector('.svc-name') ? svcRow.querySelector('.svc-name').textContent.trim() : '';
+    var grpEl   = svcRow && svcRow.closest ? svcRow.closest('.svc-acc-group') : null;
+    var grpName = grpEl && grpEl.querySelector('.svc-acc-head span') ? grpEl.querySelector('.svc-acc-head span').textContent.trim() : 'CIM Services';
+    var cr = ws4.addRow([grpName, svcName, price > 0 ? price : null, qty, price > 0 ? price * qty : null]);
+    cr.height = 17;
+    cr.eachCell({includeEmpty:true}, function(cell,ci2){ if((ci2===3||ci2===5)&&typeof cell.value==='number'){ap(cell,S.num);cell.numFmt=MONEY;}else if(ci2===4&&typeof cell.value==='number'){ap(cell,S.num);}else{ap(cell,S.data);} });
+    if (!price) ws4.getRow(ws4.rowCount).getCell(3).value = 'Quote required';
+  }
+  if (!hasCIM) { var noCIM = ws4.addRow(['(no services entered)','','','','']); noCIM.height=17; noCIM.eachCell(function(c){ap(c,S.data);}); }
+
+  blankRow(ws4);
+  grpRow(ws4, 'LABORATORY TESTS — MUHC pricelist 2023–2024', 5);
+  hdrRow(ws4, ['Code','Test Name','Unit Price','Quantity','Subtotal']);
+  var labInputs = document.querySelectorAll('.lab-row input');
+  var hasLab = false;
+  for (var li = 0; li < labInputs.length; li++) {
+    var labQty = parseFloat(labInputs[li].value) || 0;
+    if (labQty <= 0) continue;
+    hasLab = true;
+    var labPrice  = parseFloat(labInputs[li].getAttribute('data-price')) || 0;
+    var labRowEl  = labInputs[li].closest ? labInputs[li].closest('.lab-row') : null;
+    var labCode   = labRowEl ? (labRowEl.getAttribute('data-code') || '') : '';
+    var labNameEl = labRowEl ? labRowEl.querySelector('.svc-name') : null;
+    var labName   = labNameEl ? labNameEl.textContent.replace(labCode,'').trim() : '';
+    var lr = ws4.addRow([labCode, labName, labPrice, labQty, labPrice * labQty]);
+    lr.height = 17;
+    lr.eachCell({includeEmpty:true}, function(cell,ci3){ if((ci3===3||ci3===5)&&typeof cell.value==='number'){ap(cell,S.num);cell.numFmt=MONEY;}else if(ci3===4&&typeof cell.value==='number'){ap(cell,S.num);}else{ap(cell,S.data);} });
+  }
+  if (!hasLab) { var noLab = ws4.addRow(['(no lab tests entered)','','','','']); noLab.height=17; noLab.eachCell(function(c){ap(c,S.data);}); }
+  freeze(ws4, 1);
+
+  // ════════════════════════════════════════════════════════════════
+  // SHEET 5 — PARTICIPANT COSTS
+  // ════════════════════════════════════════════════════════════════
+  var ws5 = wb.addWorksheet('Participant Costs', {tabColor:{argb:AMBER}});
+  ws5.columns = [{width:36},{width:16},{width:10},{width:16},{width:14}];
+  var stipAmt  = parseFloat(g('pt-stip-amt'))    || 0;
+  var stipV    = parseFloat(g('pt-stip-visits')) || 0;
+  var stipN    = parseInt(g('pt-stip-n'))        || 0;
+  var transAmt = parseFloat(g('pt-trans-amt'))   || 0;
+  var transV   = parseFloat(g('pt-trans-visits'))|| 0;
+  var transN   = parseInt(g('pt-trans-n'))       || 0;
+  var parkAmt  = parseFloat(g('pt-park-amt'))    || 0;
+  var parkV    = parseFloat(g('pt-park-visits')) || 0;
+  var parkN    = parseInt(g('pt-park-n'))        || 0;
+  var ptOther     = parseFloat(g('pt-other-amt'))  || 0;
+  var ptOtherDesc = (g('pt-other-desc') || '').trim();
+  titleRow(ws5, 'PARTICIPANT COSTS', 5);
+  hdrRow(ws5, ['Item','Per-visit Amount','Visits','Participants (N)','Subtotal']);
+  function ptRow(label, amt, visits, n, sub) {
+    var r = ws5.addRow([label, amt||null, visits||null, n||null, sub||null]); r.height = 17;
+    r.eachCell({includeEmpty:true}, function(cell,ci){ if((ci===2||ci===5)&&typeof cell.value==='number'){ap(cell,S.num);cell.numFmt=MONEY;}else if((ci===3||ci===4)&&typeof cell.value==='number'){ap(cell,S.num);}else{ap(cell,S.data);} });
+  }
+  if (stipAmt > 0)  ptRow('Stipend / honorarium', stipAmt, stipV, stipN, stipAmt * stipV * stipN);
+  if (transAmt > 0) ptRow('Transportation reimbursement', transAmt, transV, transN, transAmt * transV * transN);
+  if (parkAmt > 0)  ptRow('Parking reimbursement', parkAmt, parkV, parkN, parkAmt * parkV * parkN);
+  if (ptOther > 0) {
+    var por = ws5.addRow([ptOtherDesc || 'Other participant costs', null, null, null, ptOther]); por.height=17;
+    por.eachCell({includeEmpty:true}, function(cell,ci){if(ci===5&&typeof cell.value==='number'){ap(cell,S.num);cell.numFmt=MONEY;}else{ap(cell,S.data);}});
+  }
+  if (!stipAmt && !transAmt && !parkAmt && !ptOther) { var noPt = ws5.addRow(['(no participant costs entered)','','','','']); noPt.height=17; noPt.eachCell(function(c){ap(c,S.data);}); }
+  var ptTotR = ws5.addRow(['TOTAL',null,null,null,getPtTotal()]); ptTotR.height=18;
+  ptTotR.eachCell({includeEmpty:true}, function(cell,ci){ap(cell,ci===5?S.grandN:S.grand);if(typeof cell.value==='number')cell.numFmt=MONEY;});
+  freeze(ws5, 2);
+
+  // ════════════════════════════════════════════════════════════════
+  // SHEET 6 — OTHER COSTS
+  // ════════════════════════════════════════════════════════════════
+  var ws6 = wb.addWorksheet('Other Costs', {tabColor:{argb:'FF5B4FCF'}});
+  ws6.columns = [{width:46},{width:16}];
+  titleRow(ws6, 'OTHER COSTS', 2);
+  var ppHon      = parseFloat(g('pp-hon'))       || 0;
+  var ppTravel   = parseFloat(g('pp-travel'))    || 0;
+  var ppTrain    = parseFloat(g('pp-training'))  || 0;
+  var ppMeetings = parseFloat(g('pp-meetings'))  || 0;
+  var ktPub    = parseFloat(g('kt-pub'))    || 0;
+  var ktConf   = parseFloat(g('kt-conf'))   || 0;
+  var ktMat    = parseFloat(g('kt-mat'))    || 0;
+  var ktEvents = parseFloat(g('kt-events')) || 0;
+  var tvInv    = parseFloat(g('tv-inv'))    || 0;
+  var tvMon    = parseFloat(g('tv-mon'))    || 0;
+  var tvOther  = parseFloat(g('tv-other'))  || 0;
+  var sfCost        = parseFloat(g('sf-cost'))         || 0;
+  var swRedcap      = parseFloat(g('sw-redcap'))        || 0;
+  var swTrans       = parseFloat(g('sw-translation'))   || 0;
+  var swRecruit     = parseFloat(g('sw-recruit'))       || 0;
+  var swOther       = parseFloat(g('sw-other'))         || 0;
+  var impCostVal    = parseFloat(g('imp-cost'))          || 0;
+  var equipCostVal  = getEquipCost();
+  var insureCostVal = parseFloat(g('insure-cost'))       || 0;
+  var closeoutVal   = parseFloat(g('closeout-cost'))     || 0;
+  var profSvcVal    = parseFloat(g('profsvc-cost'))      || 0;
+  var otherRows     = document.querySelectorAll('#other-list .other-row');
+
+  function otherSection(label, items) {
+    grpRow(ws6, label, 2);
+    var hasAny = false;
+    for (var i = 0; i < items.length; i++) {
+      if (items[i][1] > 0) {
+        hasAny = true;
+        var or = ws6.addRow([items[i][0], items[i][1]]); or.height=17;
+        or.eachCell({includeEmpty:true}, function(cell,ci){if(ci===2&&typeof cell.value==='number'){ap(cell,S.num);cell.numFmt=MONEY;}else{ap(cell,S.data);}});
+      }
+    }
+    if (!hasAny) { var nr = ws6.addRow(['(none entered)','']); nr.height=17; nr.eachCell(function(c){ap(c,S.data);}); }
+    blankRow(ws6);
+  }
+
+  otherSection('PATIENT PARTNERS & ENGAGEMENT', [['Patient partner honoraria',ppHon],['Patient partner travel',ppTravel],['Training / capacity building',ppTrain],['Meetings / workshops',ppMeetings]]);
+  otherSection('KNOWLEDGE TRANSLATION', [['Open-access publication fees',ktPub],['Conference travel & registration',ktConf],['KT materials & design',ktMat],['Stakeholder events / meetings',ktEvents]]);
+  otherSection('OPERATIONAL TRAVEL', [['Investigator / CRC travel',tvInv],['Monitoring visits (IIT)',tvMon],['Other operational travel',tvOther]]);
+
+  grpRow(ws6, 'OTHER DIRECT COSTS', 2);
+  var odItems = [['Screening failures',sfCost],['REDCap license / data management',swRedcap],['Translation services',swTrans],['Recruitment advertising',swRecruit],['Other software / tools',swOther],['Investigational product (IMP)',impCostVal],['Equipment & non-consumables',equipCostVal],['Study insurance',insureCostVal],['Study closeout',closeoutVal],['Professional services (CRO, adjudication, central lab)',profSvcVal]];
+  var hasOD = false;
+  for (var i = 0; i < odItems.length; i++) {
+    if (odItems[i][1] > 0) {
+      hasOD = true;
+      var odr = ws6.addRow([odItems[i][0], odItems[i][1]]); odr.height=17;
+      odr.eachCell({includeEmpty:true}, function(cell,ci){if(ci===2&&typeof cell.value==='number'){ap(cell,S.num);cell.numFmt=MONEY;}else{ap(cell,S.data);}});
+    }
+  }
+  for (var oi = 0; oi < otherRows.length; oi++) {
+    var descInp = otherRows[oi].querySelector('input[type="text"]');
+    var amtInp  = otherRows[oi].querySelector('input.oa');
+    var desc    = descInp ? descInp.value.trim() : '';
+    var amt     = parseFloat(amtInp ? amtInp.value : 0) || 0;
+    if (amt > 0) {
+      hasOD = true;
+      var custR = ws6.addRow([desc || 'Custom cost', amt]); custR.height=17;
+      custR.eachCell({includeEmpty:true}, function(cell,ci){if(ci===2&&typeof cell.value==='number'){ap(cell,S.num);cell.numFmt=MONEY;}else{ap(cell,S.data);}});
+    }
+  }
+  if (!hasOD) { var noOD = ws6.addRow(['(none entered)','']); noOD.height=17; noOD.eachCell(function(c){ap(c,S.data);}); }
+  freeze(ws6, 1);
+
+  // ════════════════════════════════════════════════════════════════
+  // SHEET 7 — REB FEES
+  // ════════════════════════════════════════════════════════════════
+  var ws7 = wb.addWorksheet('REB Fees', {tabColor:{argb:'FFCF3D3D'}});
+  ws7.columns = [{width:48},{width:12},{width:32},{width:12}];
+  var rebSites2   = sites;
+  var rebRenewals = parseInt(g('reb-renewals'))   || 0;
+  var rebAmends2  = parseInt(g('reb-amendments')) || 0;
+  var rebCapSites = Math.min(rebSites2, 10);
+  var rebSciAmt   = REB.sci, rebEthAmt = REB.eth;
+  var rebSiteAmt  = REB.siteAuth * rebSites2;
+  var rebAnnMon   = REB.annMon  * rebCapSites * rebRenewals;
+  var rebAnnAuth  = REB.annAuth * rebSites2   * rebRenewals;
+  var rebAmendAmt = REB.amend   * rebAmends2;
+  var rebTotal    = rebSciAmt + rebEthAmt + rebSiteAmt + rebAnnMon + rebAnnAuth + rebAmendAmt;
+  titleRow(ws7, 'REB FEES — MSSS April 2025 Schedule', 4);
+  hdrRow(ws7, ['Item','Rate','Quantity','Amount']);
+  function rebDR(label, rate, qty, amt) {
+    var r = ws7.addRow([label, rate, qty, amt]); r.height=17;
+    r.eachCell({includeEmpty:true}, function(cell,ci){if((ci===2||ci===4)&&typeof cell.value==='number'){ap(cell,S.num);cell.numFmt=MONEY;}else{ap(cell,S.data);}});
+  }
+  rebDR('Scientific review', REB.sci, '1 per project', rebSciAmt);
+  rebDR('Ethical review', REB.eth, '1 per project', rebEthAmt);
+  rebDR('Site authorization (fee #2)', REB.siteAuth, rebSites2 + ' site' + (rebSites2>1?'s':''), rebSiteAmt);
+  if (rebRenewals > 0) {
+    rebDR('Annual ethics monitoring (fee #3, cap 10 sites)', REB.annMon, rebRenewals+'×'+rebCapSites+' site'+(rebCapSites>1?'s':''), rebAnnMon);
+    rebDR('Annual authorization monitoring (fee #6)', REB.annAuth, rebRenewals+'×'+rebSites2+' site'+(rebSites2>1?'s':''), rebAnnAuth);
+  }
+  if (rebAmends2 > 0) rebDR('Major protocol amendments', REB.amend, rebAmends2, rebAmendAmt);
+  var rebTotRow = ws7.addRow(['REB TOTAL',null,null,rebTotal]); rebTotRow.height=18;
+  rebTotRow.eachCell({includeEmpty:true}, function(cell,ci){ap(cell,ci===4?S.grandN:S.grand);if(typeof cell.value==='number')cell.numFmt=MONEY;});
+  blankRow(ws7);
+  noteRow(ws7, 'Included in grand total: ' + (rebInc ? 'Yes' : 'No — listed separately'), 4);
+  freeze(ws7, 2);
+
+  // ════════════════════════════════════════════════════════════════
+  // SHEET 8 — BUDGET SUMMARY
+  // ════════════════════════════════════════════════════════════════
+  var ws8 = wb.addWorksheet('Budget Summary', {tabColor:{argb:NAVY}});
+  var isMulti = years > 1;
+  ws8.columns = isMulti ? [{width:40},{width:18},{width:18}] : [{width:40},{width:18}];
+  var s8nc  = isMulti ? 3 : 2;
+  var s8mc  = isMulti ? [2,3] : [2];
+
+  var csvStaff   = getStaffTotal();
+  var csvCimLab  = getCIMLabTotal();
+  var csvPt      = getPtTotal();
+  var csvTravel  = getTravelTotal();
+  var csvKT      = getKTTotal();
+  var csvPP      = getPPTotal();
+  var csvOther   = getOtherCostsTotal();
+  var csvEquip   = getEquipCost();
+  var csvSub     = csvStaff + csvCimLab + csvPt + csvTravel + csvKT + csvPP + csvOther + csvEquip;
+  var csvContPct = getContPct();
+  var csvCont    = csvSub * csvContPct;
+  var csvStartup    = (funding === 'ind') ? getStartupMultiYear() : 0;
+  var csvStartupSvc = (funding === 'ind') ? getStartupSvcTotal()  : 0;
+  var csvOhAmt = (funding === 'ind' && (csvStartup > 0 || csvStartupSvc > 0))
+    ? (Math.max(0, csvStaff - csvStartup) * oh + Math.max(0, csvCimLab + csvPt + csvTravel + csvOther + csvKT + csvPP + csvEquip - csvStartupSvc) * oh)
+    : csvSub * oh;
+  var csvGrand   = csvSub + csvOhAmt + csvCont + (rebInc ? rebTotal : 0);
+  var csvRounded = Math.ceil(csvGrand / 5000) * 5000;
+  var csvPerPt   = nPt > 0 ? csvGrand / nPt : 0;
+
+  titleRow(ws8, 'BUDGET SUMMARY', s8nc);
+  hdrRow(ws8, isMulti ? ['Category','Per Year (avg)','Total'] : ['Category','Amount']);
+
+  function s8row(label, total, st, isOneTime) {
+    var perYr = (isMulti && !isOneTime) ? total / years : null;
+    var vals  = isMulti ? [label, perYr, total] : [label, total];
+    var r = ws8.addRow(vals); r.height = 17;
+    var rowSt = st || S.data;
+    r.eachCell({includeEmpty:true}, function(cell,ci) {
+      if (s8mc.indexOf(ci) >= 0 && typeof cell.value === 'number') {
+        ap(cell, rowSt === S.sub ? S.subN : rowSt === S.grand ? S.grandN : S.num);
+        cell.numFmt = MONEY;
+      } else { ap(cell, rowSt); }
+    });
+  }
+
+  s8row('Personnel (work plan)',          csvStaff);
+  s8row('CIM & institutional services',   csvCimLab);
+  s8row('Equipment & non-consumables',    csvEquip);
+  s8row('Participant costs',              csvPt);
+  s8row('Patient partners & engagement',  csvPP);
+  s8row('Knowledge translation',          csvKT);
+  s8row('Operational travel',             csvTravel);
+  s8row('Other direct costs',             csvOther);
+  s8row('Direct cost subtotal',           csvSub,    S.sub);
+  s8row('Overhead (' + Math.round(oh*100) + '%)', csvOhAmt);
+  s8row('Contingency (' + Math.round(csvContPct*100) + '% — ' + (contLevel==='low'?'Low':contLevel==='high'?'High':'Moderate') + ')', csvCont);
+  s8row(rebInc ? 'REB fees (included — one-time)' : 'REB fees (reference — not in total)', rebTotal, null, true);
+  blankRow(ws8);
+  s8row('GRAND TOTAL', csvGrand, S.grand);
+  var roundR = ws8.addRow(isMulti ? ['CIHR-rounded total (nearest $5,000)', null, csvRounded] : ['CIHR-rounded total (nearest $5,000)', csvRounded]);
+  roundR.height=17;
+  roundR.eachCell({includeEmpty:true}, function(cell,ci){if(s8mc.indexOf(ci)>=0&&typeof cell.value==='number'){ap(cell,S.subN);cell.numFmt=MONEY;}else{ap(cell,S.sub);}});
+  if (nPt > 0) {
+    var ppR = ws8.addRow(isMulti ? ['Per-participant cost', null, csvPerPt] : ['Per-participant cost', csvPerPt]);
+    ppR.height=17;
+    ppR.eachCell({includeEmpty:true}, function(cell,ci){if(s8mc.indexOf(ci)>=0&&typeof cell.value==='number'){ap(cell,S.num);cell.numFmt=MONEY;}else{ap(cell,S.data);}});
+  }
+  blankRow(ws8);
+
+  // CIHR mapping sub-section
+  grpRow(ws8, 'CIHR CATEGORY MAPPING', s8nc);
+  hdrRow(ws8, isMulti ? ['CIHR Category','Includes','Amount'] : ['CIHR Category','Amount']);
+  var s8mc2 = isMulti ? [3] : [2];
+  var customOtherAmt = 0;
+  for (var oi2 = 0; oi2 < otherRows.length; oi2++) {
+    customOtherAmt += parseFloat((otherRows[oi2].querySelector('input.oa') || {}).value) || 0;
+  }
+  var cihrPersonnel = csvStaff;
+  var cihrConsumab  = csvCimLab + sfCost + swRedcap + swTrans + swRecruit + swOther + impCostVal;
+  var cihrEquip2    = equipCostVal;
+  var cihrKT        = csvKT + csvPP;
+  var cihrOther     = csvCont + csvTravel + csvPt + customOtherAmt + insureCostVal + closeoutVal + profSvcVal;
+  var cihrTotal     = cihrPersonnel + cihrConsumab + cihrEquip2 + cihrKT + cihrOther;
+  var cihrRounded   = Math.ceil(cihrTotal / 5000) * 5000;
+
+  function cihrRow(label, includes, amt, st) {
+    var vals = isMulti ? [label, includes, amt] : [label, amt];
+    var r = ws8.addRow(vals); r.height = 17;
+    var rowSt = st || S.data;
+    r.eachCell({includeEmpty:true}, function(cell,ci){
+      if (s8mc2.indexOf(ci)>=0&&typeof cell.value==='number'){ap(cell,rowSt===S.grand?S.grandN:rowSt===S.sub?S.subN:S.num);cell.numFmt=MONEY;}
+      else{ap(cell,rowSt);}
+    });
+  }
+  cihrRow('Salaries & Stipends', 'All personnel (work plan)', cihrPersonnel);
+  cihrRow('Consumables', 'CIM + lab + REDCap + translation + recruitment + screening + other software + IMP', cihrConsumab);
+  cihrRow('Non-consumables', 'Equipment owned by research team', cihrEquip2);
+  cihrRow('Knowledge Translation', 'KT costs + patient partners', cihrKT);
+  cihrRow('Other', 'Participant costs + travel + contingency + insurance + closeout + professional services + custom rows', cihrOther);
+  cihrRow('CIHR Total (before overhead)', '', cihrTotal, S.sub);
+  cihrRow('CIHR-rounded (nearest $5,000)', '', cihrRounded, S.sub);
+  noteRow(ws8, 'Note: Overhead and REB fees are entered separately in ResearchNet. The CIHR total above excludes them.', s8nc);
+  freeze(ws8, 2);
+
+  // ════════════════════════════════════════════════════════════════
+  // SHEET 9 — YEAR BY YEAR (conditional)
+  // ════════════════════════════════════════════════════════════════
+  if (years > 1) {
+    var ws9 = wb.addWorksheet('Year by Year', {tabColor:{argb:SKY}});
+    var y9nc = years + 2;
+    var y9widths = [{width:30}];
+    for (var yy = 1; yy <= years; yy++) y9widths.push({width:14});
+    y9widths.push({width:14});
+    ws9.columns = y9widths;
+    var y9numCols = [];
+    for (var c = 2; c <= y9nc; c++) y9numCols.push(c);
+    var y9hdrs = ['Cost Category'];
+    for (var yy = 1; yy <= years; yy++) y9hdrs.push('Year ' + yy);
+    y9hdrs.push('Total');
+    titleRow(ws9, 'YEAR-BY-YEAR BREAKDOWN', y9nc);
+    hdrRow(ws9, y9hdrs);
+
+    var startupY1 = getTEStartupTotal();
+    var wkY1      = getTEStaffTotal();
+    var allStaffY1;
+    if (wkY1 > 0) {
+      allStaffY1 = wkY1;
+    } else {
+      var s9ids = getActiveStaffIds(); allStaffY1 = 0;
+      for (var kk = 0; kk < s9ids.length; kk++) allStaffY1 += getStaffFTECost(s9ids[kk]);
+    }
+    var nonStartupY1 = allStaffY1 - startupY1;
+    var staffVals9 = ['Personnel']; var staffTot9 = 0;
+    for (var yy = 1; yy <= years; yy++) {
+      var nonSYn = cola ? nonStartupY1 * Math.pow(1.05, yy-1) : nonStartupY1;
+      var yrStaff = (yy===1 ? startupY1 : 0) + nonSYn;
+      staffVals9.push(yrStaff); staffTot9 += yrStaff;
+    }
+    staffVals9.push(staffTot9);
+    var sR9 = ws9.addRow(staffVals9); sR9.height=17;
+    sR9.eachCell({includeEmpty:true}, function(cell,ci){if(y9numCols.indexOf(ci)>=0&&typeof cell.value==='number'){ap(cell,S.num);cell.numFmt=MONEY;}else{ap(cell,S.data);}});
+
+    var flatRows9 = [['CIM & services',csvCimLab],['Participant costs',csvPt],['Patient partners',csvPP],['Knowledge translation',csvKT],['Operational travel',csvTravel],['Other direct costs',csvOther]];
+    for (var fi = 0; fi < flatRows9.length; fi++) {
+      var fv = [flatRows9[fi][0] + ' (flat/yr)'];
+      var fAnn = flatRows9[fi][1] / years;
+      for (var yy = 1; yy <= years; yy++) fv.push(fAnn);
+      fv.push(flatRows9[fi][1]);
+      var fR = ws9.addRow(fv); fR.height=17;
+      fR.eachCell({includeEmpty:true}, function(cell,ci){if(y9numCols.indexOf(ci)>=0&&typeof cell.value==='number'){ap(cell,S.num);cell.numFmt=MONEY;}else{ap(cell,S.data);}});
+    }
+
+    var nonStaffAnn = (csvCimLab + csvPt + csvPP + csvKT + csvTravel + csvOther) / years;
+    var gVals9 = ['GRAND TOTAL']; var gTot9 = 0;
+    for (var yy = 1; yy <= years; yy++) {
+      var nonSYn2 = cola ? nonStartupY1 * Math.pow(1.05, yy-1) : nonStartupY1;
+      var yrS2    = (yy===1 ? startupY1 : 0) + nonSYn2;
+      var yrSub2  = yrS2 + nonStaffAnn;
+      var yrTot2  = yrSub2 + yrSub2 * oh + yrSub2 * csvContPct;
+      gVals9.push(yrTot2); gTot9 += yrTot2;
+    }
+    if (rebInc) gTot9 += rebTotal;
+    gVals9.push(gTot9);
+    var gR9 = ws9.addRow(gVals9); gR9.height=18;
+    gR9.eachCell({includeEmpty:true}, function(cell,ci){ap(cell,y9numCols.indexOf(ci)>=0?S.grandN:S.grand);if(typeof cell.value==='number')cell.numFmt=MONEY;});
+    if (cola) noteRow(ws9, 'Note: Personnel escalates at 5%/year (COLA). All other costs are shown as annual averages.', y9nc);
+    freeze(ws9, 2);
+  }
+
+  // ── Download ────────────────────────────────────────────────────
+  var fname = 'rimuhc_budget_' + (title || 'export').replace(/[^a-z0-9]/gi, '_').toLowerCase() + '.xlsx';
+  wb.xlsx.writeBuffer().then(function(buffer) {
+    var blob = new Blob([buffer], {type:'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'});
+    var url  = URL.createObjectURL(blob);
+    var a    = document.createElement('a');
+    a.href = url; a.download = fname; a.click();
+    URL.revokeObjectURL(url);
+  }).catch(function(err) {
+    console.error('XLSX export error:', err);
+    alert('Export failed. Please try again or use the CSV export as a fallback (call exportCSV() from the browser console).');
+  });
+}
+
 function checkAutoSave() {
   try {
     var saved = localStorage.getItem(AUTOSAVE_KEY);
