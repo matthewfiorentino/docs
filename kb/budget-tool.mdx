@@ -781,12 +781,13 @@ export const BT_HTML = `
       <div class="svc-hdr" style="margin-top:0"><span>Item</span><span>&nbsp;</span><span>Amount ($)</span><span>Subtotal</span></div>
 
       <div class="svc-row">
-        <span class="svc-name">Screening failures <span style="font-size:10px;color:var(--textd);font-weight:400" data-tip="Budget for participants who are assessed but do not proceed to enrolment. Include staff time (in Work Plan) and any tests or procedures done at screening. Typical failure rates: 10–20% for most RCTs; 30–50% for Phase I or narrow-eligibility studies.">&#9432;</span>
+        <span class="svc-name">Screening failures <span class="tip-icon" data-tip="Budget for participants who are assessed but do not proceed to enrolment. Include staff time (in Work Plan) and any tests or procedures done at screening. Typical failure rates: 10–20% for most RCTs; 30–50% for Phase I or narrow-eligibility studies." onclick="showTip(this)">ⓘ</span>
           <div style="display:flex;gap:6px;margin-top:5px;align-items:center;flex-wrap:wrap">
             <input type="text" inputmode="decimal" class="fi" id="sf-rate" placeholder="Failure rate %" oninput="calcSfCost()" style="font-size:12px;padding:4px 8px;max-width:110px">
             <span style="font-size:11px;color:var(--textd)">×</span>
             <input type="text" inputmode="decimal" class="fi" id="sf-pp-cost" placeholder="$ per failure" oninput="calcSfCost()" style="font-size:12px;padding:4px 8px;max-width:110px">
             <span style="font-size:10px;color:var(--textd)">(or enter total directly)</span>
+            <span id="sf-n-hint" style="display:none;font-size:10px;color:#c0392b">Set participant count in Study Profile first.</span>
           </div>
         </span>
         <span class="svc-price">&nbsp;</span>

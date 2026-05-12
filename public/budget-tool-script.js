@@ -897,15 +897,23 @@ function updateSfSub() {
 }
 
 function calcSfCost() {
-  var rate    = parseFloat(document.getElementById('sf-rate')    ? document.getElementById('sf-rate').value    : 0) || 0;
-  var ppCost  = parseFloat(document.getElementById('sf-pp-cost') ? document.getElementById('sf-pp-cost').value : 0) || 0;
-  var n       = parseInt(document.getElementById('study-n').value) || 0;
-  if (rate > 0 && ppCost > 0 && n > 0) {
-    var screened  = n / (1 - rate / 100);
-    var failures  = screened - n;
-    var sfEl = document.getElementById('sf-cost');
-    if (sfEl) { sfEl.value = Math.round(failures * ppCost); updateSfSub(); }
+  var rateRaw = (document.getElementById('sf-rate')    ? document.getElementById('sf-rate').value    : '');
+  var costRaw = (document.getElementById('sf-pp-cost') ? document.getElementById('sf-pp-cost').value : '');
+  var rate    = parseFloat(rateRaw)  || 0;
+  var ppCost  = parseFloat(costRaw)  || 0;
+  var n       = parseInt((document.getElementById('study-n') || {}).value) || 0;
+  if (rate <= 0 || ppCost <= 0) return;
+  if (n <= 0) {
+    var hint = document.getElementById('sf-n-hint');
+    if (hint) hint.style.display = '';
+    return;
   }
+  var hint2 = document.getElementById('sf-n-hint');
+  if (hint2) hint2.style.display = 'none';
+  if (rate >= 100) return;
+  var failures = n * (rate / 100) / (1 - rate / 100);
+  var sfEl = document.getElementById('sf-cost');
+  if (sfEl) { sfEl.value = Math.round(failures * ppCost); updateSfSub(); }
 }
 
 function updateEquipSub() {
