@@ -1154,9 +1154,9 @@ article {
 /* ── Homepage footer ── */
 .ri-home-footer {
     background-color: #150e51;
-    background-image: url('/images/footer.png');
+    background-image: linear-gradient(to bottom, var(--ri-navy) 64px, transparent 64px), url('/images/footer.png');
     background-size: cover;
-    background-position: center 80px;
+    background-position: center;
     padding: 64px 8vw 40px;
     margin-top: 0;
     border-top: 1px solid rgba(255,255,255,.1);
