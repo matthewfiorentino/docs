@@ -341,49 +341,16 @@ export const BT_CSS = `
 .sec-nav-btn.sec-nav-next:hover { background: var(--teal); color: #fff; }
 .sec-nav-spacer { flex: 1; }
 
-/* ── PRINT HEADER (hidden on screen, revealed only by @media print) ── */
-#bt-print-header { display: none !important; }
-
 /* ── CIHR BLOCK (inline, inside Review section) ── */
 .cihr-print-block { display: none; margin-top: 24px; padding: 20px; border: 1px solid var(--bdr-s); border-radius: 6px; background: var(--white); }
-
-/* ── PRINT STYLES ── */
-@media print {
-  #bt-header, #bt-sidebar { display: none !important; }
-  #bt-root { display: block !important; }
-  #bt-main { background: white; }
-  .bt-section { display: block !important; padding: 0 !important; max-width: none !important; }
-  #bt-print-header { display: block !important; margin-bottom: 24px; padding-bottom: 16px; border-bottom: 2px solid #2b2666; }
-  .prt-brand { font-size: 10px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: #007468; margin-bottom: 4px; }
-  .prt-title { font-size: 18px; font-weight: 800; color: #2b2666; margin-bottom: 6px; }
-  .prt-meta { font-size: 11px; color: #888; display: flex; gap: 20px; }
-  .mc-scroll-wrap { overflow: visible; }
-  #te-matrix th:first-child, #te-matrix td:first-child { position: static; }
-  .no-print { display: none !important; }
-  .page-break { page-break-before: always; }
-  #prt-personnel-section { page-break-before: always; }
-  .svc-acc-body { display: block !important; }
-  .cihr-head { font-size: 11px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: #2b2666; margin-bottom: 12px; }
-  .cihr-row { display: flex; justify-content: space-between; padding: 5px 0; border-bottom: 1px solid #e5e5e5; font-size: 12px; }
-  .cihr-row.cihr-total { border-top: 2px solid #2b2666; border-bottom: none; font-weight: 700; font-size: 13px; margin-top: 4px; padding-top: 8px; }
-  .cihr-row-label { color: #444; }
-  .cihr-row-amt { font-family: "Courier New", monospace; font-weight: 700; color: #2b2666; }
-  @page { margin: 2cm; }
-}
+.cihr-head { font-size: 11px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--navy); margin-bottom: 12px; }
+.cihr-row { display: flex; justify-content: space-between; padding: 5px 0; border-bottom: 1px solid var(--bdr-s); font-size: 12px; }
+.cihr-row.cihr-total { border-top: 2px solid var(--navy); border-bottom: none; font-weight: 700; font-size: 13px; margin-top: 4px; padding-top: 8px; }
+.cihr-row-label { color: var(--textm); }
+.cihr-row-amt { font-family: "Courier New", monospace; font-weight: 700; color: var(--navy); }
 `;
 
 export const BT_HTML = `
-<!-- Print header (hidden on screen, visible on print) -->
-<div id="bt-print-header" style="display:none">
-  <div class="prt-brand">RI-MUHC Research Institute</div>
-  <div class="prt-title" id="prt-study-title">Budget</div>
-  <div class="prt-meta">
-    <span>Protocol: <span id="prt-protocol">&mdash;</span></span>
-    <span>Generated: <span id="prt-date"></span></span>
-    <span>Version 1</span>
-  </div>
-</div>
-
 <div id="bt-root">
 
   <!-- STICKY HEADER -->
@@ -538,6 +505,7 @@ export const BT_HTML = `
       <p class="sec-desc">Add everyone who will work on this study. Once you add a person, they appear as a column in the Work Plan where you enter how many hours they spend on each activity. Salaries come from RI-MUHC annual midpoints &mdash; edit the salary directly if your situation differs.</p>
 
       <div class="cn" id="cola-notice" style="display:none"><strong>Multi-year COLA active:</strong> 5% annual staff cost increase will be applied. Confirm study years in Study Profile.</div>
+      <div class="ci" id="cola-hint" style="display:none"><strong>Tip:</strong> Your study spans multiple years. Enable Multi-year COLA (above) to apply the 5% annual staff cost increase required by the RI-MUHC collective agreement.</div>
       <div class="ci" id="pi-notice-team" style="display:none"><strong>Industry study:</strong> Include the principal investigator&rsquo;s salary line.</div>
 
       <div style="overflow-x:auto;margin-bottom:12px">
@@ -717,7 +685,7 @@ export const BT_HTML = `
         <span class="svc-sub" id="pt-park-sub">$0</span>
       </div>
       <div class="svc-row">
-        <div><span class="svc-name">Other participant costs <span style="font-size:10px;color:var(--textd);font-weight:400">(flat study total)</span></span><input type="text" class="fi" placeholder="Description (optional)" style="margin-top:4px;font-size:12px;padding:4px 8px"></div>
+        <div><span class="svc-name">Other participant costs <span style="font-size:10px;color:var(--textd);font-weight:400">(flat study total)</span></span><input type="text" id="pt-other-desc" class="fi" placeholder="Description (optional)" style="margin-top:4px;font-size:12px;padding:4px 8px"></div>
         <span class="svc-price">&nbsp;</span>
         <div class="svc-qty"><input type="text" inputmode="decimal" min="0" value="0" id="pt-other-amt" oninput="calcPtCost()" style="width:100%;text-align:right;font-size:13px;border:1.5px solid var(--bdr);padding:5px 8px;border-radius:6px;outline:none"></div>
         <span class="svc-sub" id="pt-other-sub">$0</span>
@@ -854,7 +822,7 @@ export const BT_HTML = `
     <section class="bt-section" id="s-review">
       <div class="sec-label">Section 5 of 5</div>
       <h2 class="sec-h2">Review &amp; Export</h2>
-      <p class="sec-desc">Review the full budget breakdown, adjust contingency, and export your budget as a PDF or JSON file.</p>
+      <p class="sec-desc">Review the full budget breakdown, adjust contingency, and export your budget as a spreadsheet or JSON backup.</p>
 
       <div class="sub-head">Contingency</div>
       <div class="cont-grid">
@@ -879,23 +847,19 @@ export const BT_HTML = `
         <div class="cihr-row"><span class="cihr-row-label">Consumables (materials, supplies, services, laboratory)</span><span class="cihr-row-amt" id="cihr-matsup">$0</span></div>
         <div class="cihr-row"><span class="cihr-row-label">Knowledge Translation <span style="font-weight:400;color:#888;font-size:10px">(publications, conferences, dissemination)</span></span><span class="cihr-row-amt" id="cihr-kt">$0</span></div>
         <div class="cihr-row"><span class="cihr-row-label">Other <span style="font-weight:400;color:#888;font-size:10px">(participant costs, travel, contingency, other)</span></span><span class="cihr-row-amt" id="cihr-other">$0</span></div>
-        <div class="cihr-row cihr-total"><span class="cihr-row-label">Total (before overhead)</span><span class="cihr-row-amt" id="cihr-total">$0</span></div>
+        <div class="cihr-row cihr-total"><span class="cihr-row-label">Total (direct costs + contingency, before overhead)</span><span class="cihr-row-amt" id="cihr-total">$0</span></div>
         <div style="font-size:10px;color:#888;margin-top:10px;line-height:1.6">CIHR does not use a separate Travel category. Operational travel (monitoring, site visits) maps to Other; dissemination travel maps to Knowledge Translation — enter it in the Knowledge Translation section of Study Costs. Patient Partner costs are mapped to Knowledge Translation. CIHR requires amounts in multiples of $5,000.</div>
       </div>
 
       <div class="sub-head">Export</div>
       <div class="rv-export-grid" style="margin-bottom:16px">
-        <button class="pbtn" onclick="renderPrintSections();window.print()">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
-          Print / Save PDF
+        <button class="pbtn" onclick="exportCSV()">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Download spreadsheet (.csv)
         </button>
         <button class="pbtn pbtn-sec" onclick="toggleCIHRFormat()">CIHR Budget View</button>
-        <button class="pbtn pbtn-sec" onclick="exportCSV()">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-          Download as spreadsheet
-        </button>
       </div>
-      <p style="font-size:11px;color:var(--textd);margin:0 0 16px">Spreadsheet is for sharing only — use <strong>Save a copy</strong> in the header to save a file you can reload.</p>
+      <p style="font-size:11px;color:var(--textd);margin:0 0 16px">Spreadsheet includes full line-item detail, REB fee breakdown, CIHR category mapping, and year-by-year costs. Use <strong>Save a copy</strong> in the header to save a file you can reload into this tool.</p>
       <div class="ct"><strong>Writing a grant application?</strong> See <a href="/kb/budget-justifications" style="color:var(--teal)">Writing Budget Justifications</a> for how to turn these numbers into the narrative text that CIHR and foundation funders require.</div>
 
       <div class="sec-nav">
