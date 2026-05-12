@@ -20,6 +20,7 @@ var ROLES = [
   {r:'Monitor',                                lv:'—',  sal:85000},
   {r:'Programmer',                             lv:'8',  sal:55692},
   {r:'Methodologist',                          lv:'10', sal:69852},
+  {r:'Biostatistician',                        lv:'10', sal:69852},
   {r:'Biostatistician – BCU (RI-MUHC, $80/hr)',lv:'—',  sal:0, hr:80},
   {r:'Biostatistician – ACT-CTU OHRI ($250/hr)',lv:'—', sal:0, hr:250},
   {r:'Senior Program Analyst',                 lv:'9',  sal:62390},
@@ -31,8 +32,8 @@ var ROLES = [
   {r:'Clinical Research Clerk',                lv:'2',  sal:34980},
   {r:'Clerical Assistant',                     lv:'1',  sal:29375},
   {r:'Postdoc',                                lv:'—',  sal:70000},
-  {r:'PhD student',                            lv:'—',  sal:30000},
-  {r:'Masters student',                        lv:'—',  sal:28500},
+  {r:'PhD student',                            lv:'—',  sal:29731},
+  {r:'Masters student',                        lv:'—',  sal:28231},
   {r:'Summer student',                         lv:'—',  sal:29000}
 ];
 
@@ -221,7 +222,8 @@ function selectFunding(type) {
   document.getElementById('fc-' + type).className = 'fund-card sel-' + type;
 
   if (type === 'iit') {
-    oh = 0;
+    var iitPct = parseFloat(document.getElementById('iit-oh-pct') ? document.getElementById('iit-oh-pct').value : 0) || 0;
+    oh = iitPct / 100;
   } else if (type === 'found') {
     var foundPct = parseFloat(document.getElementById('found-oh-pct').value) || 27;
     oh = foundPct / 100;
@@ -234,6 +236,7 @@ function selectFunding(type) {
   se('pi-notice',       type === 'ind');
   se('pi-notice-team',  type === 'ind');
   se('found-oh-field',  type === 'found');
+  se('iit-oh-field',    type === 'iit');
   se('reb-iit-note',    type !== 'ind');
 
   if (labRendered) updateLabPrices();
@@ -246,6 +249,15 @@ function updateFoundOH() {
   if (funding === 'found') {
     var foundPct = parseFloat(document.getElementById('found-oh-pct').value) || 27;
     oh = foundPct / 100;
+    updateSummary();
+  }
+}
+
+function updateIITOH() {
+  if (funding === 'iit') {
+    var iitPctEl = document.getElementById('iit-oh-pct');
+    var pct = iitPctEl ? (parseFloat(iitPctEl.value) || 0) : 0;
+    oh = pct / 100;
     updateSummary();
   }
 }
@@ -714,6 +726,9 @@ function getStartupMultiYear() {
 }
 
 function applyTemplate(tplId) {
+  if (Object.keys(matrixData).length > 0) {
+    if (!confirm('Applying a template will reset the Work Plan. Continue?')) return;
+  }
   var tpl = TEMPLATES[tplId];
   if (!tpl) return;
 
@@ -861,6 +876,7 @@ function getSvcTotal() {
   total += getTravelTotal();
   total += getKTTotal();
   total += getPPTotal();
+  total += getEquipCost();
   return total;
 }
 
@@ -876,6 +892,30 @@ function updateSfSub() {
   var sub = document.getElementById('sf-sub');
   if (inp && sub) sub.textContent = '$' + Math.round(parseFloat(inp.value) || 0).toLocaleString();
   updateSummary();
+}
+
+function calcSfCost() {
+  var rate    = parseFloat(document.getElementById('sf-rate')    ? document.getElementById('sf-rate').value    : 0) || 0;
+  var ppCost  = parseFloat(document.getElementById('sf-pp-cost') ? document.getElementById('sf-pp-cost').value : 0) || 0;
+  var n       = parseInt(document.getElementById('study-n').value) || 0;
+  if (rate > 0 && ppCost > 0 && n > 0) {
+    var screened  = n / (1 - rate / 100);
+    var failures  = screened - n;
+    var sfEl = document.getElementById('sf-cost');
+    if (sfEl) { sfEl.value = Math.round(failures * ppCost); updateSfSub(); }
+  }
+}
+
+function updateEquipSub() {
+  var inp = document.getElementById('equip-cost');
+  var sub = document.getElementById('equip-cost-sub');
+  if (inp && sub) sub.textContent = '$' + Math.round(parseFloat(inp.value) || 0).toLocaleString();
+  updateSummary();
+}
+
+function getEquipCost() {
+  var el = document.getElementById('equip-cost');
+  return el ? (parseFloat(el.value) || 0) : 0;
 }
 
 function addOther() {
@@ -1079,7 +1119,7 @@ function getPtTotal() {
 // ════════════════════════════════════════
 function updateTravelRows() {
   var monRow = document.getElementById('tv-mon-row');
-  if (monRow) monRow.style.display = (funding === 'iit') ? '' : 'none';
+  if (monRow) monRow.style.display = '';
   updateTravelSubs();
 }
 
@@ -1190,7 +1230,11 @@ function refreshSimpleSubs() {
     ['pp-hon','pp-hon-sub'], ['pp-travel','pp-travel-sub'], ['pp-training','pp-training-sub'], ['pp-meetings','pp-meetings-sub'],
     ['kt-pub','kt-pub-sub'], ['kt-conf','kt-conf-sub'], ['kt-mat','kt-mat-sub'], ['kt-events','kt-events-sub'],
     ['sf-cost','sf-sub'],
-    ['sw-redcap','sw-redcap-sub'], ['sw-translation','sw-translation-sub'], ['sw-recruit','sw-recruit-sub'], ['sw-other','sw-other-sub']
+    ['sw-redcap','sw-redcap-sub'], ['sw-translation','sw-translation-sub'], ['sw-recruit','sw-recruit-sub'], ['sw-other','sw-other-sub'],
+    ['imp-cost',      'imp-cost-sub'],
+    ['insure-cost',   'insure-cost-sub'],
+    ['closeout-cost', 'closeout-cost-sub'],
+    ['profsvc-cost',  'profsvc-cost-sub']
   ];
   for (var i = 0; i < pairs.length; i++) {
     var inp = document.getElementById(pairs[i][0]);
@@ -1357,25 +1401,29 @@ function toggleCIHRFormat() {
 
 function updateCIHR(staffAmt, svcAmt, contAmt, travelAmt, otherAmt, ptAmt) {
   var personnel = staffAmt;
-  // Consumables = CIM/lab + REDCap + translation + recruitment + screening failures + other SW
   var sfCostVal   = parseFloat((document.getElementById('sf-cost')        || {}).value) || 0;
   var redcapVal   = parseFloat((document.getElementById('sw-redcap')      || {}).value) || 0;
   var transVal    = parseFloat((document.getElementById('sw-translation')  || {}).value) || 0;
   var recruitVal  = parseFloat((document.getElementById('sw-recruit')      || {}).value) || 0;
   var swOtherVal  = parseFloat((document.getElementById('sw-other')        || {}).value) || 0;
-  var matsup    = getCIMLabTotal() + sfCostVal + redcapVal + transVal + recruitVal + swOtherVal;
+  var impVal      = parseFloat((document.getElementById('imp-cost')        || {}).value) || 0;
+  var insureVal   = parseFloat((document.getElementById('insure-cost')     || {}).value) || 0;
+  var closeoutVal = parseFloat((document.getElementById('closeout-cost')   || {}).value) || 0;
+  var profSvcVal  = parseFloat((document.getElementById('profsvc-cost')    || {}).value) || 0;
+  var matsup    = getCIMLabTotal() + sfCostVal + redcapVal + transVal + recruitVal + swOtherVal + impVal;
+  var equip     = getEquipCost();
   var kt        = getKTTotal() + getPPTotal();
-  // Custom other rows only (excludes the named fields already counted in matsup)
   var customOther = 0;
   var otherRowEls = document.querySelectorAll('#other-list .other-row input.oa');
   for (var i = 0; i < otherRowEls.length; i++) customOther += parseFloat(otherRowEls[i].value) || 0;
-  var other     = contAmt + travelAmt + customOther + (ptAmt || 0);
-  var total     = personnel + matsup + kt + other;
+  var other     = contAmt + travelAmt + customOther + (ptAmt || 0) + insureVal + closeoutVal + profSvcVal;
+  var total     = personnel + matsup + equip + kt + other;
 
   function fmt(n) { return '$' + Math.round(n).toLocaleString(); }
   var se = function(id, v) { var el = document.getElementById(id); if (el) el.textContent = fmt(v); };
   se('cihr-personnel', personnel);
   se('cihr-matsup',    matsup);
+  se('cihr-equip',     equip);
   se('cihr-kt',        kt);
   se('cihr-other',     other);
   se('cihr-total',     total);
@@ -1541,7 +1589,7 @@ function serializeMatrix() {
 function getBudgetState() {
   var state = {v: 1, saved: new Date().toISOString()};
 
-  var setupIds = ['study-title','study-protocol','study-years','study-n','study-sites','study-type','multiyear','found-oh-pct'];
+  var setupIds = ['study-title','study-protocol','study-years','study-n','study-sites','study-type','multiyear','found-oh-pct','iit-oh-pct'];
   state.setup = {};
   for (var i = 0; i < setupIds.length; i++) {
     var el = document.getElementById(setupIds[i]);
@@ -1606,12 +1654,17 @@ function getBudgetState() {
     if (el) state.pp[ppIds[i]] = el.value;
   }
 
-  var directIds = ['sf-cost','sw-redcap','sw-translation','sw-recruit','sw-other'];
+  var directIds = ['sf-cost','sw-redcap','sw-translation','sw-recruit','sw-other','imp-cost','equip-cost','insure-cost','closeout-cost','profsvc-cost','sf-rate','sf-pp-cost'];
   state.direct = {};
   for (var i = 0; i < directIds.length; i++) {
     var el = document.getElementById(directIds[i]);
     if (el) state.direct[directIds[i]] = el.value;
   }
+
+  state.sfCalc = {
+    rate: document.getElementById('sf-rate')    ? document.getElementById('sf-rate').value    : '',
+    ppCost: document.getElementById('sf-pp-cost') ? document.getElementById('sf-pp-cost').value : ''
+  };
 
   state.others = [];
   var otherRows = document.querySelectorAll('#other-list .other-row');
@@ -1646,6 +1699,10 @@ function setBudgetState(state) {
     if (state.setup['found-oh-pct']) {
       var fohEl = document.getElementById('found-oh-pct');
       if (fohEl) fohEl.value = state.setup['found-oh-pct'];
+    }
+    if (state.setup['iit-oh-pct'] !== undefined) {
+      var iohEl = document.getElementById('iit-oh-pct');
+      if (iohEl) iohEl.value = state.setup['iit-oh-pct'];
     }
   }
 
@@ -1786,11 +1843,16 @@ function setBudgetState(state) {
 
   // Restore direct costs (screening failures, software, etc.)
   if (state.direct) {
-    var directIds = ['sf-cost','sw-redcap','sw-translation','sw-recruit','sw-other'];
+    var directIds = ['sf-cost','sw-redcap','sw-translation','sw-recruit','sw-other','imp-cost','equip-cost','insure-cost','closeout-cost','profsvc-cost','sf-rate','sf-pp-cost'];
     for (var i = 0; i < directIds.length; i++) {
       var el = document.getElementById(directIds[i]);
       if (el && state.direct[directIds[i]] !== undefined) el.value = state.direct[directIds[i]];
     }
+  }
+
+  if (state.sfCalc) {
+    var srEl = document.getElementById('sf-rate');    if (srEl && state.sfCalc.rate   !== undefined) srEl.value = state.sfCalc.rate;
+    var scEl = document.getElementById('sf-pp-cost'); if (scEl && state.sfCalc.ppCost !== undefined) scEl.value = state.sfCalc.ppCost;
   }
 
   // Restore other costs
@@ -2095,11 +2157,21 @@ function exportCSV() {
   var swTrans  = parseFloat(g('sw-translation'))   || 0;
   var swRecruit= parseFloat(g('sw-recruit'))       || 0;
   var swOther  = parseFloat(g('sw-other'))         || 0;
+  var impCostVal   = parseFloat(g('imp-cost'))      || 0;
+  var equipCostVal = getEquipCost();
+  var insureCostVal= parseFloat(g('insure-cost'))   || 0;
+  var closeoutVal  = parseFloat(g('closeout-cost')) || 0;
+  var profSvcVal   = parseFloat(g('profsvc-cost'))  || 0;
   if (sfCost > 0)    lines += row(['Screening failures', fmt(sfCost)]);
   if (swRedcap > 0)  lines += row(['REDCap license / data management', fmt(swRedcap)]);
   if (swTrans > 0)   lines += row(['Translation services', fmt(swTrans)]);
   if (swRecruit > 0) lines += row(['Recruitment advertising', fmt(swRecruit)]);
   if (swOther > 0)   lines += row(['Other software / tools', fmt(swOther)]);
+  if (impCostVal > 0)    lines += row(['Investigational product (IMP)', fmt(impCostVal)]);
+  if (equipCostVal > 0)  lines += row(['Equipment & non-consumables', fmt(equipCostVal)]);
+  if (insureCostVal > 0) lines += row(['Study insurance', fmt(insureCostVal)]);
+  if (closeoutVal > 0)   lines += row(['Study closeout', fmt(closeoutVal)]);
+  if (profSvcVal > 0)    lines += row(['Professional services (CRO, adjudication, central lab)', fmt(profSvcVal)]);
   var otherRows = document.querySelectorAll('#other-list .other-row');
   var hasCustom = false;
   for (var oi = 0; oi < otherRows.length; oi++) {
@@ -2146,12 +2218,13 @@ function exportCSV() {
   var csvKT     = getKTTotal();
   var csvPP     = getPPTotal();
   var csvOther  = getOtherCostsTotal();
-  var csvSub    = csvStaff + csvCimLab + csvPt + csvTravel + csvKT + csvPP + csvOther;
+  var csvEquip  = getEquipCost();
+  var csvSub    = csvStaff + csvCimLab + csvPt + csvTravel + csvKT + csvPP + csvOther + csvEquip;
   var csvContPct= getContPct();
   var csvCont   = csvSub * csvContPct;
   var csvStartup= (funding === 'ind') ? getStartupMultiYear() : 0;
   var csvOhAmt  = (funding === 'ind' && csvStartup > 0)
-    ? (Math.max(0, csvStaff - csvStartup) + csvCimLab + csvPt + csvTravel + csvOther + csvKT + csvPP) * oh
+    ? (Math.max(0, csvStaff - csvStartup) + csvCimLab + csvPt + csvTravel + csvOther + csvKT + csvPP + csvEquip) * oh
     : csvSub * oh;
   var csvGrand  = csvSub + csvOhAmt + csvCont + (rebInc ? rebTotal : 0);
   var csvRounded= Math.ceil(csvGrand / 5000) * 5000;
@@ -2162,6 +2235,7 @@ function exportCSV() {
   lines += row(['Category', 'Amount']);
   lines += row(['Personnel (work plan)',                  fmt(csvStaff)]);
   lines += row(['CIM & institutional services',          fmt(csvCimLab)]);
+  lines += row(['Equipment & non-consumables',           fmt(csvEquip)]);
   lines += row(['Participant costs',                     fmt(csvPt)]);
   lines += row(['Patient partners & engagement',         fmt(csvPP)]);
   lines += row(['Knowledge translation',                 fmt(csvKT)]);
@@ -2178,25 +2252,29 @@ function exportCSV() {
   lines += blank();
 
   // ── SECTION 13: CIHR Category Mapping ────────────────────────
-  // Consumables include CIM/Lab + REDCap + translation + recruitment + screening failures + other SW
+  // Consumables include CIM/Lab + REDCap + translation + recruitment + screening failures + other SW + IMP
+  // Non-consumables = equipment
   // (not operational travel, contingency, custom other rows — those stay in Other)
   var cihrPersonnel  = csvStaff;
-  var cihrConsumab   = csvCimLab + sfCost + swRedcap + swTrans + swRecruit + swOther;
+  var cihrConsumab   = csvCimLab + sfCost + swRedcap + swTrans + swRecruit + swOther + impCostVal;
+  var cihrEquip      = equipCostVal;
   var cihrKT         = csvKT + csvPP;
   var customOtherAmt = 0;
   for (var oi2 = 0; oi2 < otherRows.length; oi2++) {
     var amtInp2 = otherRows[oi2].querySelector('input.oa');
     customOtherAmt += parseFloat(amtInp2 ? amtInp2.value : 0) || 0;
   }
-  var cihrOther      = csvCont + csvTravel + csvPt + customOtherAmt;
-  var cihrTotal      = cihrPersonnel + cihrConsumab + cihrKT + cihrOther;
+  var customOtherAmt2 = customOtherAmt;
+  var cihrOther      = csvCont + csvTravel + csvPt + customOtherAmt2 + insureCostVal + closeoutVal + profSvcVal;
+  var cihrTotal      = cihrPersonnel + cihrConsumab + cihrEquip + cihrKT + cihrOther;
   var cihrRounded    = Math.ceil(cihrTotal / 5000) * 5000;
   lines += head('SECTION 13 — CIHR CATEGORY MAPPING');
   lines += row(['CIHR Category', 'Includes', 'Amount']);
   lines += row(['Salaries & Stipends', 'All personnel (work plan)', fmt(cihrPersonnel)]);
-  lines += row(['Consumables', 'CIM + lab + REDCap + translation + recruitment + screening failures + other software', fmt(cihrConsumab)]);
+  lines += row(['Consumables', 'CIM + lab + REDCap + translation + recruitment + screening failures + other software + IMP', fmt(cihrConsumab)]);
+  lines += row(['Non-consumables', 'Equipment owned by research team', fmt(cihrEquip)]);
   lines += row(['Knowledge Translation', 'KT costs + patient partners', fmt(cihrKT)]);
-  lines += row(['Other', 'Participant costs + operational travel + contingency + custom other rows', fmt(cihrOther)]);
+  lines += row(['Other', 'Participant costs + operational travel + contingency + insurance + closeout + professional services + custom other rows', fmt(cihrOther)]);
   lines += row(['CIHR Total (before overhead)',  '', fmt(cihrTotal)]);
   lines += row(['CIHR-rounded (nearest $5,000)', '', fmt(cihrRounded)]);
   lines += row(['Note: Overhead and REB fees are entered separately in ResearchNet', '', '']);
