@@ -709,7 +709,7 @@ function updateMatrixGroupHeaders() {
   if (perptBanner) {
     if (hasPerpt && n === 0) {
       perptBanner.className = 'cn';
-      perptBanner.innerHTML = 'Per Participant rows cost $0 — <a href="#" onclick="var el=document.getElementById(\'study-n\');if(el){el.scrollIntoView({behavior:\'smooth\',block:\'center\'});setTimeout(function(){el.focus();el.select();},350);}return false;" style="color:inherit;font-weight:700;text-decoration:underline">set participant count in Study Profile ↗</a>';
+      perptBanner.innerHTML = 'Per Participant rows cost $0 — <a href="#" onclick="showSection(\'s-profile\');setTimeout(function(){var el=document.getElementById(\'study-n\');if(el){el.focus();el.select();}},50);return false;" style="color:inherit;font-weight:700;text-decoration:underline">set participant count in Study Profile ↗</a>';
       if (perptBannerRow) perptBannerRow.style.display = '';
     } else {
       perptBanner.className = '';
@@ -1222,7 +1222,7 @@ function calcPtCost() {
   if (banner) {
     if (!globalN) {
       banner.className = 'cn';
-      banner.innerHTML = 'Participant count is 0 — subtotals will show $0. <a href="#" onclick="var el=document.getElementById(\'study-n\');if(el){el.scrollIntoView({behavior:\'smooth\',block:\'center\'});setTimeout(function(){el.focus();el.select();},350);}return false;" style="color:inherit;font-weight:700;text-decoration:underline">Set participant count in Study Profile ↗</a>';
+      banner.innerHTML = 'Participant count is 0 — subtotals will show $0. <a href="#" onclick="showSection(\'s-profile\');setTimeout(function(){var el=document.getElementById(\'study-n\');if(el){el.focus();el.select();}},50);return false;" style="color:inherit;font-weight:700;text-decoration:underline">Set participant count in Study Profile ↗</a>';
     } else {
       banner.className = 'ci';
       banner.innerHTML = 'Per-visit costs are multiplied by the participant count on each row. Counts default to <strong>' + globalN + '</strong> from Study Profile — edit per row if not all participants apply.';
