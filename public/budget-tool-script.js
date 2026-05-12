@@ -1105,12 +1105,14 @@ function calcPtCost() {
   if (banner) {
     if (n === 0) {
       banner.className = 'cn';
-      banner.innerHTML = 'Participant count is 0 — subtotals will show $0. Set the number of participants in <strong>Study Profile</strong> (Section 1) first.';
+      banner.innerHTML = 'Participant count is 0 — subtotals will show $0. <a href="#" onclick="var el=document.getElementById(\'study-n\');if(el){el.scrollIntoView({behavior:\'smooth\',block:\'center\'});setTimeout(function(){el.focus();el.select();},350);}return false;" style="color:inherit;font-weight:700;text-decoration:underline">Set participant count in Study Profile ↗</a>';
     } else {
       banner.className = 'ci';
-      banner.innerHTML = 'Costs below are multiplied by <strong>' + n + ' participant' + (n === 1 ? '' : 's') + '</strong>. Enter per-visit amounts.';
+      banner.innerHTML = 'Costs are multiplied by <strong>' + n + ' participant' + (n === 1 ? '' : 's') + '</strong>. Enter a per-visit amount and visit count for each item.';
     }
   }
+  var hdr = document.getElementById('pt-hdr-n');
+  if (hdr) hdr.textContent = n > 0 ? 'Per visit (× ' + n + ' participants)' : 'Per visit (× participants)';
 
   var items = [
     {amt:'pt-stip-amt',  visits:'pt-stip-visits',  price:'pt-stip-price',  sub:'pt-stip-sub'},
