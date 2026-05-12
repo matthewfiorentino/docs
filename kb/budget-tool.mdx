@@ -222,6 +222,8 @@ export const BT_CSS = `
 .mc-input-cell { text-align: center; padding: 6px 8px !important; }
 .mc-input-cell input { width: 80px; font-size: 13px; font-family: "Courier New", monospace; border: 1.5px solid var(--bdr); border-radius: 4px; background: var(--white); text-align: center; padding: 5px 4px; outline: none; color: var(--text); }
 .mc-input-cell input:focus { border-color: var(--teal); background: var(--teal-l); }
+.mc-input-cell.mc-col-active { background: #eef5ff !important; }
+.mc-th-unit { display: block; font-size: 9px; font-weight: 400; color: var(--textd); margin-top: 2px; }
 .mc-input-cell input.tpl-unreviewed { color: var(--textd); font-style: italic; }
 .mc-computed { background: var(--bg-low); text-align: right; padding: 8px 10px !important; font-size: 12px; font-weight: 700; font-family: "Courier New", monospace; color: var(--navy); cursor: default; position: sticky; right: 0; z-index: 2; }
 #te-matrix th.mc-total-th { position: sticky; right: 0; z-index: 6; background: var(--bg-low); }
@@ -394,7 +396,7 @@ export const BT_HTML = `
 
   <!-- STICKY HEADER -->
   <header id="bt-header">
-    <span class="bth-brand">RI-MUHC Budget</span>
+    <span class="bth-brand">Clinical Research Budget</span>
     <span class="bth-study" id="bth-title">Untitled study</span>
     <div class="bth-total-wrap">
       <span class="bth-lbl">Grand total</span>
@@ -402,7 +404,7 @@ export const BT_HTML = `
     </div>
     <div class="bth-actions">
       <span class="bth-saved" id="bth-saved-hdr"></span>
-      <button class="bth-btn" onclick="exportBudget()">Save &#8595;</button>
+      <button class="bth-btn" onclick="exportBudget()" title="Download a backup file you can reload later">Save backup &#8595;</button>
     </div>
   </header>
 
@@ -427,8 +429,9 @@ export const BT_HTML = `
     </div>
     <div class="sid-foot">
       <div id="autosave-notice"></div>
-      <button class="sid-save-btn" onclick="exportBudget()">Save JSON</button>
-      <label class="sid-load-lbl">Load saved<input type="file" id="budget-file-input" accept=".json" style="display:none" onchange="importBudget(this)"></label>
+      <button class="sid-save-btn" onclick="exportBudget()">Download backup</button>
+      <label class="sid-load-lbl">Load backup<input type="file" id="budget-file-input" accept=".json" style="display:none" onchange="importBudget(this)"></label>
+      <div style="font-size:10px;color:var(--textd);line-height:1.4">Saves a file you can reload later.</div>
     </div>
   </nav>
 
@@ -545,7 +548,7 @@ export const BT_HTML = `
     <section class="bt-section" id="s-team">
       <div class="sec-label">Section 2 of 5</div>
       <h2 class="sec-h2">Staff &amp; Salaries</h2>
-      <p class="sec-desc">Add each staff member who will work on this study. Their hourly rates populate automatically as columns in the Work Plan matrix. The FTE% shown here is a reference — actual hours come from the matrix.</p>
+      <p class="sec-desc">Add everyone who will work on this study. Once you add a person, they appear as a column in the Work Plan where you enter how many hours they spend on each activity. Salaries come from RI-MUHC annual midpoints &mdash; edit the salary directly if your situation differs.</p>
 
       <div class="cn" id="cola-notice" style="display:none"><strong>Multi-year COLA active:</strong> 5% annual staff cost increase will be applied. Confirm study years in Study Profile.</div>
       <div class="ci" id="pi-notice-team" style="display:none"><strong>Industry study:</strong> Include the principal investigator&rsquo;s salary line.</div>
@@ -609,10 +612,10 @@ export const BT_HTML = `
             <tr id="mc-head-row">
               <th class="mc-name-th" style="text-align:left">Activity</th>
               <!-- staff columns inserted here -->
-              <th class="mc-total-th" style="width:90px">Total</th>
+              <th class="mc-total-th" style="width:90px">Cost</th>
             </tr>
             <tr class="mc-rate-row" id="mc-rate-row">
-              <th class="mc-name-th"></th>
+              <th class="mc-name-th" style="font-size:10px;font-style:italic;color:var(--textd)">&#8595; enter hours</th>
               <!-- rate cells inserted here -->
               <th class="mc-total-th"></th>
             </tr>
@@ -816,11 +819,11 @@ export const BT_HTML = `
         <button class="pbtn pbtn-sec" onclick="toggleCIHRFormat()">CIHR Budget View</button>
         <button class="xlink" onclick="exportBudget()">
           <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-          Save JSON
+          Download backup
         </button>
         <label class="xlink">
           <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 5 17 10"/><line x1="12" y1="5" x2="12" y2="17"/></svg>
-          Load saved
+          Load backup
           <input type="file" id="budget-file-input-rv" accept=".json" style="display:none" onchange="importBudget(this)">
         </label>
       </div>

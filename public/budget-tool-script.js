@@ -409,7 +409,7 @@ function addMatrixColumn(staffId) {
     th.id = 'mc-th-' + staffId;
     th.setAttribute('data-staff-id', staffId);
     th.style.minWidth = '90px';
-    th.textContent = label;
+    th.innerHTML = label + '<span class="mc-th-unit">hrs</span>';
     headRow.insertBefore(th, totalTh);
   }
 
@@ -1822,6 +1822,7 @@ document.addEventListener('DOMContentLoaded', function() {
   renderSvcs();
   calcREB();
   calcPtCost();
+  selectCont('mod');
   updateSummary();
   checkAutoSave();
   window.addEventListener('beforeprint', renderPrintSections);
@@ -1830,5 +1831,21 @@ document.addEventListener('DOMContentLoaded', function() {
       closeActPicker();
       document.activeElement.blur();
     }
+  });
+  // Column highlight: tint active column cells when an input is focused
+  document.addEventListener('focusin', function(e) {
+    var matrix = document.getElementById('te-matrix');
+    if (!matrix || !matrix.contains(e.target)) return;
+    var td = e.target.closest ? e.target.closest('td[data-staff-id]') : null;
+    if (!td) return;
+    var sid = td.getAttribute('data-staff-id');
+    var cells = matrix.querySelectorAll('td.mc-input-cell[data-staff-id="' + sid + '"]');
+    for (var i = 0; i < cells.length; i++) cells[i].classList.add('mc-col-active');
+  });
+  document.addEventListener('focusout', function(e) {
+    var matrix = document.getElementById('te-matrix');
+    if (!matrix) return;
+    var active = matrix.querySelectorAll('.mc-col-active');
+    for (var i = 0; i < active.length; i++) active[i].classList.remove('mc-col-active');
   });
 });
