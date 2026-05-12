@@ -1363,10 +1363,19 @@ function updateSummary() {
   var bthGrand = document.getElementById('bth-grand');
   var bthLbl   = document.querySelector('#bt-header .bth-lbl');
   if (bthTitle) bthTitle.textContent = (titleEl && titleEl.value.trim()) ? titleEl.value.trim() : 'Untitled study';
-  if (bthGrand) bthGrand.textContent = '$' + Math.round(grand).toLocaleString();
-  if (bthLbl) {
-    var hdrYears = parseInt((document.getElementById('study-years') || {}).value) || 1;
-    bthLbl.textContent = hdrYears > 1 ? 'Grand total (' + hdrYears + ' years)' : 'Grand total';
+  var bthLbl = document.getElementById('bth-lbl');
+  var bthSub = document.getElementById('bth-sub');
+  var hdrYears = parseInt((document.getElementById('study-years') || {}).value) || 1;
+  var hdrCola  = document.getElementById('multiyear') && document.getElementById('multiyear').value === 'yes';
+  if (hdrYears > 1) {
+    var perYear = grand / hdrYears;
+    if (bthGrand) bthGrand.textContent = '$' + Math.round(perYear).toLocaleString();
+    if (bthLbl)   bthLbl.textContent   = hdrCola ? 'Avg / year (COLA)' : 'Per year';
+    if (bthSub) { bthSub.textContent = '× ' + hdrYears + ' yrs = $' + Math.round(grand).toLocaleString(); bthSub.style.display = ''; }
+  } else {
+    if (bthGrand) bthGrand.textContent = '$' + Math.round(grand).toLocaleString();
+    if (bthLbl)   bthLbl.textContent   = 'Grand total';
+    if (bthSub)   bthSub.style.display = 'none';
   }
 
   // COLA auto-suggest: when years > 1 and COLA is off, show a soft prompt
