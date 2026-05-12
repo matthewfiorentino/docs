@@ -1065,9 +1065,9 @@ function getTravelTotal() {
 // REB
 // ════════════════════════════════════════
 function suggestRenewals() {
-  var years     = parseInt(document.getElementById('study-years').value) || 1;
+  var years      = parseInt(document.getElementById('study-years').value) || 1;
   var renewalsEl = document.getElementById('reb-renewals');
-  if (renewalsEl && (renewalsEl.value === '0' || renewalsEl.value === '')) {
+  if (renewalsEl) {
     renewalsEl.value = Math.max(0, years - 1);
     calcREB();
   }
@@ -1097,7 +1097,7 @@ function calcREB() {
 
   var grandEst = (getStaffTotal() + getSvcTotal()) * (1 + oh + getContPct());
   if (grandEst > 0 && grandEst < 19039) {
-    html += '<div style="padding:10px 18px;font-size:12px;color:var(--teal);border-top:1px solid var(--bdr-soft);line-height:1.5">' +
+    html += '<div style="padding:10px 18px;font-size:12px;color:var(--teal);border-top:1px solid var(--bdr-s);line-height:1.5">' +
       '<strong>Possible exemption:</strong> Your estimated total ($' + Math.round(grandEst).toLocaleString() + ') appears to be below the $19,039 MSSS threshold. Confirm with your REB.' +
       '</div>';
   }
@@ -1933,9 +1933,10 @@ function syncStudySites() {
 // has already fired. Check readyState and run immediately if DOM is ready.
 function btInit() {
   renderSvcs();
-  calcREB();
   calcPtCost();
   selectCont('mod');
+  suggestRenewals();
+  calcREB();
   updateSummary();
   showSection('s-profile');
   window.addEventListener('beforeprint', renderPrintSections);
