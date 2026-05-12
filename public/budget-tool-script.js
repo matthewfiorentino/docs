@@ -2431,8 +2431,19 @@ function exportCSV() {
     lines += row(yrHeaders);
 
     // Staff: startup is Year 1 only; non-startup escalates with COLA
+    // allStaffY1 must be the raw single-year cost — NOT getStaffTotal()/years,
+    // which already includes the COLA sum and would double-escalate if divided then re-compounded.
     var startupY1    = getTEStartupTotal();
-    var allStaffY1   = getTEStaffTotal() || (getStaffTotal() / years);
+    var wkY1 = getTEStaffTotal();
+    var allStaffY1;
+    if (wkY1 > 0) {
+      allStaffY1 = wkY1; // Work Plan: already gives Y1 cost
+    } else {
+      // FTE path: sum single-year FTE costs directly (no multi-year factor)
+      var s14ids = getActiveStaffIds();
+      allStaffY1 = 0;
+      for (var kk = 0; kk < s14ids.length; kk++) allStaffY1 += getStaffFTECost(s14ids[kk]);
+    }
     var nonStartupY1 = allStaffY1 - startupY1;
     var staffCols = ['Personnel'];
     var staffRunTotal = 0;
