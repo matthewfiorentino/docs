@@ -1099,34 +1099,44 @@ function getLabTotal() {
 // ════════════════════════════════════════
 // PARTICIPANT COSTS
 // ════════════════════════════════════════
+function syncPtRowN() {
+  var n = parseInt(document.getElementById('study-n').value) || 0;
+  var ids = ['pt-stip-n','pt-trans-n','pt-park-n'];
+  for (var i = 0; i < ids.length; i++) {
+    var el = document.getElementById(ids[i]);
+    if (el && el.dataset.synced !== 'false') { el.value = n; }
+  }
+}
+
 function calcPtCost() {
-  var n      = parseInt(document.getElementById('study-n').value) || 0;
-  var banner = document.getElementById('pt-n-banner');
+  var globalN = parseInt(document.getElementById('study-n').value) || 0;
+  var banner  = document.getElementById('pt-n-banner');
+  var stipN   = parseInt((document.getElementById('pt-stip-n')  || {}).value) || 0;
+  var transN  = parseInt((document.getElementById('pt-trans-n') || {}).value) || 0;
+  var parkN   = parseInt((document.getElementById('pt-park-n')  || {}).value) || 0;
+  var anyN    = stipN || transN || parkN || globalN;
   if (banner) {
-    if (n === 0) {
+    if (!globalN) {
       banner.className = 'cn';
       banner.innerHTML = 'Participant count is 0 — subtotals will show $0. <a href="#" onclick="var el=document.getElementById(\'study-n\');if(el){el.scrollIntoView({behavior:\'smooth\',block:\'center\'});setTimeout(function(){el.focus();el.select();},350);}return false;" style="color:inherit;font-weight:700;text-decoration:underline">Set participant count in Study Profile ↗</a>';
     } else {
       banner.className = 'ci';
-      banner.innerHTML = 'Costs are multiplied by <strong>' + n + ' participant' + (n === 1 ? '' : 's') + '</strong>. Enter a per-visit amount and visit count for each item.';
+      banner.innerHTML = 'Per-visit costs are multiplied by the participant count on each row. Counts default to <strong>' + globalN + '</strong> from Study Profile — edit per row if not all participants apply.';
     }
   }
-  var hdr = document.getElementById('pt-hdr-n');
-  if (hdr) hdr.textContent = n > 0 ? 'Per visit (× ' + n + ' participants)' : 'Per visit (× participants)';
 
   var items = [
-    {amt:'pt-stip-amt',  visits:'pt-stip-visits',  price:'pt-stip-price',  sub:'pt-stip-sub'},
-    {amt:'pt-trans-amt', visits:'pt-trans-visits',  price:'pt-trans-price', sub:'pt-trans-sub'},
-    {amt:'pt-park-amt',  visits:'pt-park-visits',   price:'pt-park-price',  sub:'pt-park-sub'}
+    {amt:'pt-stip-amt',  visits:'pt-stip-visits', n:'pt-stip-n',  sub:'pt-stip-sub'},
+    {amt:'pt-trans-amt', visits:'pt-trans-visits', n:'pt-trans-n', sub:'pt-trans-sub'},
+    {amt:'pt-park-amt',  visits:'pt-park-visits',  n:'pt-park-n',  sub:'pt-park-sub'}
   ];
   for (var i = 0; i < items.length; i++) {
-    var it  = items[i];
+    var it     = items[i];
     var amt    = parseFloat(document.getElementById(it.amt).value)    || 0;
     var visits = parseFloat(document.getElementById(it.visits).value) || 0;
-    var priceEl = document.getElementById(it.price);
-    var subEl   = document.getElementById(it.sub);
-    if (priceEl) priceEl.textContent = '$' + amt.toFixed(2) + ' / visit';
-    if (subEl)   subEl.textContent   = '$' + Math.round(amt * visits * n).toLocaleString();
+    var rowN   = parseInt(document.getElementById(it.n).value)        || 0;
+    var subEl  = document.getElementById(it.sub);
+    if (subEl) subEl.textContent = '$' + Math.round(amt * visits * rowN).toLocaleString();
   }
   var otherAmt = parseFloat(document.getElementById('pt-other-amt').value) || 0;
   var otherSub = document.getElementById('pt-other-sub');
@@ -1135,15 +1145,17 @@ function calcPtCost() {
 }
 
 function getPtTotal() {
-  var n      = parseInt(document.getElementById('study-n').value) || 0;
   var stipAmt  = parseFloat(document.getElementById('pt-stip-amt').value)    || 0;
   var stipV    = parseFloat(document.getElementById('pt-stip-visits').value) || 0;
+  var stipN    = parseInt(document.getElementById('pt-stip-n').value)        || 0;
   var transAmt = parseFloat(document.getElementById('pt-trans-amt').value)   || 0;
   var transV   = parseFloat(document.getElementById('pt-trans-visits').value)|| 0;
+  var transN   = parseInt(document.getElementById('pt-trans-n').value)       || 0;
   var parkAmt  = parseFloat(document.getElementById('pt-park-amt').value)    || 0;
   var parkV    = parseFloat(document.getElementById('pt-park-visits').value) || 0;
+  var parkN    = parseInt(document.getElementById('pt-park-n').value)        || 0;
   var otherAmt = parseFloat(document.getElementById('pt-other-amt').value)   || 0;
-  return (stipAmt * stipV * n) + (transAmt * transV * n) + (parkAmt * parkV * n) + otherAmt;
+  return (stipAmt * stipV * stipN) + (transAmt * transV * transN) + (parkAmt * parkV * parkN) + otherAmt;
 }
 
 // ════════════════════════════════════════
@@ -1662,11 +1674,14 @@ function getBudgetState() {
     }
   }
 
-  var ptIds = ['pt-stip-amt','pt-stip-visits','pt-trans-amt','pt-trans-visits','pt-park-amt','pt-park-visits','pt-other-amt','pt-other-desc'];
+  var ptIds = ['pt-stip-amt','pt-stip-visits','pt-stip-n','pt-trans-amt','pt-trans-visits','pt-trans-n','pt-park-amt','pt-park-visits','pt-park-n','pt-other-amt','pt-other-desc'];
   state.participant = {};
   for (var i = 0; i < ptIds.length; i++) {
     var el = document.getElementById(ptIds[i]);
-    if (el) state.participant[ptIds[i]] = el.value;
+    if (el) {
+      state.participant[ptIds[i]] = el.value;
+      if (el.dataset && el.dataset.synced !== undefined) state.participant[ptIds[i] + '__synced'] = el.dataset.synced;
+    }
   }
 
   state.travel = {};
@@ -1842,10 +1857,13 @@ function setBudgetState(state) {
 
   // Restore participant costs
   if (state.participant) {
-    var ptIds = ['pt-stip-amt','pt-stip-visits','pt-trans-amt','pt-trans-visits','pt-park-amt','pt-park-visits','pt-other-amt','pt-other-desc'];
+    var ptIds = ['pt-stip-amt','pt-stip-visits','pt-stip-n','pt-trans-amt','pt-trans-visits','pt-trans-n','pt-park-amt','pt-park-visits','pt-park-n','pt-other-amt','pt-other-desc'];
     for (var i = 0; i < ptIds.length; i++) {
       var el = document.getElementById(ptIds[i]);
-      if (el && state.participant[ptIds[i]] !== undefined) el.value = state.participant[ptIds[i]];
+      if (el && state.participant[ptIds[i]] !== undefined) {
+        el.value = state.participant[ptIds[i]];
+        if (el.dataset && state.participant[ptIds[i] + '__synced'] !== undefined) el.dataset.synced = state.participant[ptIds[i] + '__synced'];
+      }
     }
     calcPtCost();
   }
@@ -2136,14 +2154,17 @@ function exportCSV() {
   lines += row(['Item', 'Per-visit Amount', 'Visits', 'Participants (N)', 'Subtotal']);
   var stipAmt  = parseFloat(g('pt-stip-amt'))   || 0;
   var stipV    = parseFloat(g('pt-stip-visits')) || 0;
+  var stipN    = parseInt(g('pt-stip-n'))        || 0;
   var transAmt = parseFloat(g('pt-trans-amt'))   || 0;
   var transV   = parseFloat(g('pt-trans-visits'))|| 0;
+  var transN   = parseInt(g('pt-trans-n'))       || 0;
   var parkAmt  = parseFloat(g('pt-park-amt'))    || 0;
   var parkV    = parseFloat(g('pt-park-visits')) || 0;
+  var parkN    = parseInt(g('pt-park-n'))        || 0;
   var ptOther  = parseFloat(g('pt-other-amt'))   || 0;
-  if (stipAmt > 0)  lines += row(['Stipend / honorarium', fmt(stipAmt),  stipV,  nPt, fmt(stipAmt * stipV * nPt)]);
-  if (transAmt > 0) lines += row(['Transportation reimbursement', fmt(transAmt), transV, nPt, fmt(transAmt * transV * nPt)]);
-  if (parkAmt > 0)  lines += row(['Parking reimbursement', fmt(parkAmt), parkV, nPt, fmt(parkAmt * parkV * nPt)]);
+  if (stipAmt > 0)  lines += row(['Stipend / honorarium', fmt(stipAmt),  stipV,  stipN,  fmt(stipAmt * stipV * stipN)]);
+  if (transAmt > 0) lines += row(['Transportation reimbursement', fmt(transAmt), transV, transN, fmt(transAmt * transV * transN)]);
+  if (parkAmt > 0)  lines += row(['Parking reimbursement', fmt(parkAmt), parkV, parkN, fmt(parkAmt * parkV * parkN)]);
   var ptOtherDesc = (g('pt-other-desc') || '').trim();
   if (ptOther > 0)  lines += row([ptOtherDesc || 'Other participant costs', '—', '—', '—', fmt(ptOther)]);
   if (!stipAmt && !transAmt && !parkAmt && !ptOther) lines += row(['(no participant costs entered)', '', '', '', '']);
@@ -2461,6 +2482,7 @@ function syncStudySites() {
 // Called by script.onload in the React useEffect — DOM is guaranteed ready.
 function btInit() {
   renderSvcs();
+  syncPtRowN();
   calcPtCost();
   selectCont('mod');
   suggestRenewals();
