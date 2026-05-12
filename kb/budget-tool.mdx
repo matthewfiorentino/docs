@@ -12,13 +12,13 @@ export const BT_CSS = `
 #bt-root ul li::marker, #bt-root ol li::marker { content:""!important; }
 #bt-root *, #bt-root *::before, #bt-root *::after { box-sizing:border-box; }
 
-/* ── TOKENS ── */
+/* ── TOKENS — map to site CSS variables where available ── */
 #bt-root {
-  --navy:     #2b2666;
-  --teal:     #007468;
-  --teal-l:   #f0faf9;
+  --navy:     var(--ri-navy,    #2b2666);
+  --teal:     var(--ri-accent,  #007468);
+  --teal-l:   var(--ri-accent-light, #f0faf9);
   --teal-d:   #005a52;
-  --sky:      #2b9ce2;
+  --sky:      var(--ri-blue,   #2b9ce2);
   --sky-l:    #e5f3fb;
   --amber:    #c78a00;
   --amber-l:  #fffbf0;
@@ -35,8 +35,7 @@ export const BT_CSS = `
   --textd:    #888888;
   --bdr:      #d0d0d0;
   --bdr-s:    #e5e5e5;
-  --hdr-h:    54px;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+  --hdr-h:    64px;
   font-size: 14px;
   color: var(--text);
 }
@@ -57,31 +56,32 @@ export const BT_CSS = `
   display: flex;
   align-items: center;
   gap: 0;
-  padding: 0 22px;
+  padding: 0 24px;
   background: var(--navy);
   color: #fff;
   height: var(--hdr-h);
+  border-bottom: 2px solid var(--teal);
 }
-/* Identity: stacked brand label above study title */
-.bth-identity { display: flex; flex-direction: column; justify-content: center; gap: 4px; flex: 1; min-width: 0; }
-.bth-brand { font-size: 8px; font-weight: 700; letter-spacing: .22em; text-transform: uppercase; color: rgba(255,255,255,.3); line-height: 1; }
-.bth-study { font-size: 14px; font-weight: 600; color: rgba(255,255,255,.9); line-height: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-/* Vertical hairline dividers between zones */
-.bth-sep { width: 1px; height: 26px; background: rgba(255,255,255,.13); flex-shrink: 0; margin: 0 20px; }
-/* Financial stats: single column, number-first */
-.bth-stats { display: flex; flex-direction: column; justify-content: center; align-items: flex-end; flex-shrink: 0; }
-.bth-amt { font-family: "Courier New", monospace; font-size: 22px; font-weight: 800; color: #fff; line-height: 1; }
-.bth-lbl { font-size: 8px; font-weight: 700; letter-spacing: .15em; text-transform: uppercase; color: rgba(255,255,255,.38); line-height: 1; margin-top: 4px; }
-/* Secondary total — appears below a hairline when multi-year */
-#bth-col-total { display: flex; flex-direction: column; align-items: flex-end; gap: 0; padding-top: 5px; border-top: 1px solid rgba(255,255,255,.12); margin-top: 4px; }
-.bth-amt-sm { font-family: "Courier New", monospace; font-size: 13px; font-weight: 700; color: rgba(255,255,255,.55); line-height: 1; }
-#bth-tot-lbl { font-size: 7px; font-weight: 700; letter-spacing: .15em; text-transform: uppercase; color: rgba(255,255,255,.28); line-height: 1; margin-top: 3px; }
+/* Left: two-line stacked identity */
+.bth-identity { flex: 1; min-width: 0; display: flex; flex-direction: column; justify-content: center; gap: 5px; }
+.bth-brand { font-size: 8px; font-weight: 700; letter-spacing: .22em; text-transform: uppercase; color: rgba(255,255,255,.28); line-height: 1; }
+.bth-study { font-size: 15px; font-weight: 600; color: rgba(255,255,255,.92); line-height: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+/* Thin vertical rules between zones */
+.bth-sep { width: 1px; height: 28px; background: rgba(255,255,255,.13); flex-shrink: 0; margin: 0 22px; }
+/* Financial stats: side-by-side columns */
+.bth-stats { display: flex; align-items: stretch; flex-shrink: 0; }
+.bth-stat-col { display: flex; flex-direction: column; align-items: flex-end; justify-content: center; padding: 0 22px; gap: 5px; }
+.bth-stat-col + .bth-stat-col { border-left: 1px solid rgba(255,255,255,.13); }
+#bth-col-total { display: flex; } /* shown when JS clears inline display:none */
+.bth-amt { font-family: "Courier New", monospace; font-size: 24px; font-weight: 800; color: #fff; line-height: 1; }
+.bth-lbl { font-size: 8px; font-weight: 700; letter-spacing: .15em; text-transform: uppercase; color: rgba(255,255,255,.36); line-height: 1; }
+.bth-amt-sm { font-family: "Courier New", monospace; font-size: 16px; font-weight: 700; color: rgba(255,255,255,.65); line-height: 1; }
 /* Actions */
 .bth-actions { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
 .bth-saved { font-size: 10px; color: rgba(255,255,255,.4); }
-.bth-btn { font-size: 11px; font-weight: 600; background: transparent; border: 1px solid rgba(255,255,255,.2); color: rgba(255,255,255,.75); padding: 5px 12px; border-radius: 4px; cursor: pointer; font-family: inherit; transition: background .12s, color .12s; text-decoration: none; display: inline-flex; align-items: center; }
+.bth-btn { font-size: 11px; font-weight: 600; background: transparent; border: 1px solid rgba(255,255,255,.22); color: rgba(255,255,255,.72); padding: 6px 13px; border-radius: 5px; cursor: pointer; font-family: inherit; transition: background .15s, color .15s; text-decoration: none; display: inline-flex; align-items: center; }
 .bth-btn:hover { background: rgba(255,255,255,.1); color: #fff; }
-@media (max-width: 699px) { .bth-identity { display: none; } .bth-sep { display: none; } .bth-sep ~ .bth-sep { display: none; } }
+@media (max-width: 699px) { .bth-identity { display: none; } .bth-sep { display: none; } }
 
 /* ── TOOLTIP ── */
 #bt-tip { display:none; position:fixed; z-index:9999; background:#2b2666; color:#fff; font-size:12px; line-height:1.55; padding:9px 13px; border-radius:6px; max-width:260px; box-shadow:0 4px 18px rgba(0,0,0,.22); pointer-events:none; }
@@ -395,11 +395,13 @@ export const BT_HTML = `
     </div>
     <div class="bth-sep"></div>
     <div class="bth-stats" id="bth-total-wrap">
-      <span class="bth-amt" id="bth-grand">$0</span>
-      <span class="bth-lbl" id="bth-lbl">Grand total</span>
-      <div id="bth-col-total" style="display:none">
+      <div class="bth-stat-col" id="bth-col-main">
+        <span class="bth-amt" id="bth-grand">$0</span>
+        <span class="bth-lbl" id="bth-lbl">Grand total</span>
+      </div>
+      <div class="bth-stat-col" id="bth-col-total" style="display:none">
         <span class="bth-amt-sm" id="bth-tot-amt">$0</span>
-        <span id="bth-tot-lbl">—</span>
+        <span class="bth-lbl" id="bth-tot-lbl">—</span>
       </div>
     </div>
     <div class="bth-sep"></div>
