@@ -232,12 +232,12 @@ export const BT_CSS = `
 .mc-th-unit { display: block; font-size: 10px; font-weight: 400; color: var(--textd); margin-top: 1px; letter-spacing: 0; text-transform: none; }
 .mc-input-cell input.tpl-unreviewed { color: var(--textd); font-style: italic; }
 .mc-computed { background: var(--bg-low); text-align: right; padding: 8px 12px !important; font-size: 12px; font-weight: 700; font-family: "Courier New", monospace; color: var(--navy); cursor: default; position: sticky; right: 0; z-index: 2; border-left: 1px solid var(--bdr-s); }
-.mc-rtot-sub { font-size: 10px; font-weight: 400; color: var(--textd); margin-top: 2px; font-family: "Courier New", monospace; white-space: nowrap; }
-.mc-perpt-n-row { display: flex; align-items: center; justify-content: flex-end; gap: 3px; margin-top: 5px; padding-top: 4px; border-top: 1px solid var(--bdr-s); }
-.mc-perpt-n-inp { width: 46px; font-size: 11px; font-family: "Courier New", monospace; text-align: center; border: 1.5px solid var(--bdr); border-radius: 6px; padding: 2px 4px; color: var(--textd); background: var(--white); outline: none; font-weight: 400; cursor: text; }
-.mc-perpt-n-inp:focus { border-color: var(--teal); }
-.mc-perpt-n-inp[data-synced="false"] { border-color: var(--sky); color: var(--navy); }
-.mc-perpt-n-lbl { font-size: 10px; color: var(--textd); white-space: nowrap; }
+#te-matrix th.mc-participants-th { text-align: center; width: 90px; min-width: 80px; }
+#te-matrix td.mc-participants-td { text-align: center; padding: 6px 8px; vertical-align: middle; }
+.mc-participants-inp { width: 66px; font-size: 12px; font-family: "Courier New", monospace; text-align: center; border: 1.5px solid var(--bdr); border-radius: 6px; padding: 5px 6px; color: var(--textm); background: var(--white); outline: none; display: block; margin: 0 auto; }
+.mc-participants-inp:focus { border-color: var(--teal); background: var(--teal-l); }
+.mc-participants-inp[data-synced="false"] { border-color: var(--sky); color: var(--navy); background: var(--sky-l); }
+.mc-participants-dash { color: var(--textd); font-size: 12px; }
 #te-matrix th.mc-total-th { position: sticky; right: 0; z-index: 6; background: var(--bg-low); border-left: 1px solid var(--bdr-s); }
 #te-matrix tfoot td:last-child { position: sticky; right: 0; background: var(--bg-low); z-index: 2; border-left: 1px solid var(--bdr-s); }
 .mc-add-row td { background: var(--white); padding: 0; border-bottom: 1px solid var(--bdr-s); }
@@ -628,6 +628,7 @@ export const BT_HTML = `
             <tr id="mc-head-row">
               <th class="mc-name-th" style="text-align:left">Activity</th>
               <!-- staff columns inserted here -->
+              <th class="mc-participants-th">Participants<span class="mc-th-unit">overridable per row</span></th>
               <th class="mc-total-th" style="width:110px">Cost</th>
             </tr>
           </thead>
@@ -654,11 +655,13 @@ export const BT_HTML = `
             <tr id="mc-tfoot-hrs">
               <td class="mc-name-th">Total hours</td>
               <!-- column totals inserted here -->
+              <td id="mc-participants-ftr-hrs"></td>
               <td id="mc-grand-hrs">—</td>
             </tr>
             <tr id="mc-tfoot-cost">
               <td class="mc-name-th">Total cost</td>
               <!-- column costs inserted here -->
+              <td id="mc-participants-ftr-cost"></td>
               <td id="mc-grand-cost">—</td>
             </tr>
           </tfoot>

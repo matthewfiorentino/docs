@@ -436,13 +436,13 @@ function addMatrixColumn(staffId) {
 
   var headRow = document.getElementById('mc-head-row');
   if (headRow) {
-    var totalTh = headRow.querySelector('.mc-total-th');
+    var thAnchor = headRow.querySelector('.mc-participants-th') || headRow.querySelector('.mc-total-th');
     var th = document.createElement('th');
     th.id = 'mc-th-' + staffId;
     th.setAttribute('data-staff-id', staffId);
     th.style.minWidth = '90px';
     th.innerHTML = label + '<span class="mc-th-unit">hrs &middot; $' + hr.toFixed(2) + '/hr</span>';
-    headRow.insertBefore(th, totalTh);
+    headRow.insertBefore(th, thAnchor);
   }
 
   var rowIds = Object.keys(matrixData);
@@ -450,7 +450,7 @@ function addMatrixColumn(staffId) {
     var rowId = rowIds[i];
     var tr = document.getElementById('mc-row-' + rowId);
     if (!tr) continue;
-    var totalTd = tr.querySelector('.mc-computed');
+    var tdAnchor = tr.querySelector('.mc-participants-td') || tr.querySelector('.mc-computed');
     var td = document.createElement('td');
     td.className = 'mc-input-cell';
     td.setAttribute('data-staff-id', staffId);
@@ -462,13 +462,13 @@ function addMatrixColumn(staffId) {
     inp.setAttribute('data-staff', staffId);
     inp.setAttribute('oninput', 'calcMatrixCell("' + rowId + '","' + staffId + '")');
     td.appendChild(inp);
-    tr.insertBefore(td, totalTd);
+    tr.insertBefore(td, tdAnchor);
   }
 
   var tfootHrs  = document.getElementById('mc-tfoot-hrs');
   var tfootCost = document.getElementById('mc-tfoot-cost');
   if (tfootHrs) {
-    var grandTd = document.getElementById('mc-grand-hrs');
+    var grandTd = document.getElementById('mc-participants-ftr-hrs') || document.getElementById('mc-grand-hrs');
     var fh = document.createElement('td');
     fh.id = 'mc-fhrs-' + staffId;
     fh.setAttribute('data-staff-id', staffId);
@@ -476,7 +476,7 @@ function addMatrixColumn(staffId) {
     tfootHrs.insertBefore(fh, grandTd);
   }
   if (tfootCost) {
-    var grandCostTd = document.getElementById('mc-grand-cost');
+    var grandCostTd = document.getElementById('mc-participants-ftr-cost') || document.getElementById('mc-grand-cost');
     var fc = document.createElement('td');
     fc.id = 'mc-fcost-' + staffId;
     fc.setAttribute('data-staff-id', staffId);
@@ -526,7 +526,7 @@ function appendMatrixRow(rowId, type, name, isTemplate) {
         'onchange="changeRowType(\'' + rowId + '\',this.value)">' +
         '<option value="startup"' + (type === 'startup' ? ' selected' : '') + '>Startup</option>' +
         '<option value="general"' + (type === 'general' ? ' selected' : '') + '>General</option>' +
-        '<option value="perpt"'   + (type === 'perpt'   ? ' selected' : '') + '>Per pt</option>' +
+        '<option value="perpt"'   + (type === 'perpt'   ? ' selected' : '') + '>Per participant</option>' +
       '</select>' +
       '<input type="text" class="mc-name-inp' + (isTemplate ? ' tpl-unreviewed' : '') + '" ' +
         'id="mc-name-' + rowId + '" value="' + safeName + '" placeholder="Activity name" ' +
@@ -552,22 +552,24 @@ function appendMatrixRow(rowId, type, name, isTemplate) {
     tr.appendChild(inputTd);
   }
 
+  var participantsTd = document.createElement('td');
+  participantsTd.className = 'mc-participants-td';
+  participantsTd.id = 'mc-ptd-' + rowId;
+  if (type === 'perpt') {
+    var globalN0 = parseInt((document.getElementById('study-n') || {}).value) || 0;
+    participantsTd.innerHTML =
+      '<input type="text" inputmode="decimal" class="mc-participants-inp" id="mc-n-' + rowId + '" ' +
+        'value="' + globalN0 + '" data-synced="true" ' +
+        'oninput="setMatrixRowN(\'' + rowId + '\',this.value)">';
+  } else {
+    participantsTd.innerHTML = '<span class="mc-participants-dash">—</span>';
+  }
+  tr.appendChild(participantsTd);
+
   var totalTd = document.createElement('td');
   totalTd.className = 'mc-computed';
   totalTd.id = 'mc-rtot-' + rowId;
-  if (type === 'perpt') {
-    var globalN0 = parseInt((document.getElementById('study-n') || {}).value) || 0;
-    totalTd.innerHTML =
-      '<span id="mc-rtot-cost-' + rowId + '">—</span>' +
-      '<div class="mc-perpt-n-row">' +
-        '<input type="text" inputmode="decimal" class="mc-perpt-n-inp" id="mc-n-' + rowId + '" ' +
-          'value="' + globalN0 + '" data-synced="true" ' +
-          'oninput="setMatrixRowN(\'' + rowId + '\',this.value)">' +
-        '<span class="mc-perpt-n-lbl">pts</span>' +
-      '</div>';
-  } else {
-    totalTd.textContent = '—';
-  }
+  totalTd.innerHTML = '<span id="mc-rtot-cost-' + rowId + '">—</span>';
   tr.appendChild(totalTd);
 
   if (addRow) tbody.insertBefore(tr, addRow);
@@ -639,14 +641,8 @@ function updateMatrixRowTotal(rowId) {
   if (row.type === 'perpt') {
     var n = getRowN(rowId);
     var total = rawCost * n;
-    var hrsLabel = hrsPerPt > 0 ? ((Math.round(hrsPerPt * 10) / 10) + 'h/pt × ' + n) : '—';
     var costLabel = total > 0 ? ('$' + Math.round(total).toLocaleString()) : '$0';
-    if (costSpan) {
-      costSpan.textContent = costLabel;
-      var subLine = el.querySelector('.mc-rtot-sub');
-      if (!subLine) { subLine = document.createElement('div'); subLine.className = 'mc-rtot-sub'; el.appendChild(subLine); }
-      subLine.textContent = hrsLabel;
-    } else { el.textContent = costLabel; }
+    if (costSpan) costSpan.textContent = costLabel; else el.textContent = costLabel;
   } else {
     var display = rawCost > 0 ? ('$' + Math.round(rawCost).toLocaleString()) : '—';
     if (costSpan) costSpan.textContent = display; else el.textContent = display;
@@ -762,23 +758,23 @@ function changeRowType(rowId, newType) {
     selEl.className = 'mc-type-sel ' + (typeClsMap[newType] || '');
   }
 
-  // Rebuild the total cell when switching to/from perpt
-  var totalTd = document.getElementById('mc-rtot-' + rowId);
-  if (totalTd) {
+  // Rebuild the participants cell when switching to/from perpt
+  var participantsTd = document.getElementById('mc-ptd-' + rowId);
+  if (participantsTd) {
     if (newType === 'perpt') {
       var globalN1 = parseInt((document.getElementById('study-n') || {}).value) || 0;
-      totalTd.innerHTML =
-        '<span id="mc-rtot-cost-' + rowId + '">—</span>' +
-        '<div class="mc-perpt-n-row">' +
-          '<input type="text" inputmode="decimal" class="mc-perpt-n-inp" id="mc-n-' + rowId + '" ' +
-            'value="' + globalN1 + '" data-synced="true" ' +
-            'oninput="setMatrixRowN(\'' + rowId + '\',this.value)">' +
-          '<span class="mc-perpt-n-lbl">pts</span>' +
-        '</div>';
+      participantsTd.innerHTML =
+        '<input type="text" inputmode="decimal" class="mc-participants-inp" id="mc-n-' + rowId + '" ' +
+          'value="' + globalN1 + '" data-synced="true" ' +
+          'oninput="setMatrixRowN(\'' + rowId + '\',this.value)">';
     } else {
-      totalTd.innerHTML = '';
-      totalTd.textContent = '—';
+      participantsTd.innerHTML = '<span class="mc-participants-dash">—</span>';
     }
+  }
+  // Ensure cost cell has the cost span
+  var totalTd = document.getElementById('mc-rtot-' + rowId);
+  if (totalTd && !document.getElementById('mc-rtot-cost-' + rowId)) {
+    totalTd.innerHTML = '<span id="mc-rtot-cost-' + rowId + '">—</span>';
   }
 
   updateMatrixRowTotal(rowId);
