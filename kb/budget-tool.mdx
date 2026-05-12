@@ -70,9 +70,13 @@ export const BT_CSS = `
 .bth-amt { font-size: 20px; font-weight: 800; font-family: "Courier New", monospace; color: #fff; line-height: 1; }
 .bth-actions { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
 .bth-saved { font-size: 10px; color: rgba(255,255,255,.45); }
-.bth-btn { font-size: 11px; font-weight: 700; background: rgba(255,255,255,.15); border: 1px solid rgba(255,255,255,.2); color: #fff; padding: 5px 12px; border-radius: 4px; cursor: pointer; font-family: inherit; transition: background .12s; }
+.bth-btn { font-size: 11px; font-weight: 700; background: rgba(255,255,255,.15); border: 1px solid rgba(255,255,255,.2); color: #fff; padding: 5px 12px; border-radius: 4px; cursor: pointer; font-family: inherit; transition: background .12s; text-decoration: none; display: inline-flex; align-items: center; }
 .bth-btn:hover { background: rgba(255,255,255,.25); }
 @media (max-width: 699px) { .bth-study { display: none; } .bth-brand { display: none; } }
+
+/* ── TOOLTIP ── */
+#bt-tip { display:none; position:fixed; z-index:9999; background:#2b2666; color:#fff; font-size:12px; line-height:1.55; padding:9px 13px; border-radius:6px; max-width:260px; box-shadow:0 4px 18px rgba(0,0,0,.22); pointer-events:none; }
+.tip-icon { cursor:pointer; color:var(--textd); font-weight:400; font-style:normal; user-select:none; }
 
 /* ── SIDEBAR ── */
 #bt-sidebar {
@@ -110,12 +114,6 @@ export const BT_CSS = `
 .sid-btn.active .sid-num { color: var(--navy); }
 .sid-lbl { flex: 1; }
 .sid-status { font-size: 12px; flex-shrink: 0; }
-.sid-foot { padding: 12px 16px; border-top: 1px solid var(--bdr-s); display: flex; flex-direction: column; gap: 6px; }
-.sid-save-btn { font-size: 11px; font-weight: 700; color: var(--teal); background: none; border: 1.5px solid var(--teal); padding: 6px 10px; border-radius: 5px; cursor: pointer; font-family: inherit; }
-.sid-save-btn:hover { background: var(--teal); color: #fff; }
-.sid-load-lbl { font-size: 11px; font-weight: 700; color: var(--textd); border: 1.5px solid var(--bdr); padding: 6px 10px; border-radius: 5px; cursor: pointer; text-align: center; }
-.sid-load-lbl:hover { border-color: var(--navy); color: var(--navy); }
-#autosave-notice { font-size: 10px; color: var(--textd); min-height: 14px; }
 @media (max-width: 899px) {
   #bt-root { grid-template-columns: 1fr; grid-template-rows: var(--hdr-h) auto 1fr; }
   #bt-header { position: static; }
@@ -403,8 +401,8 @@ export const BT_HTML = `
       <span class="bth-amt" id="bth-grand">$0</span>
     </div>
     <div class="bth-actions">
-      <span class="bth-saved" id="bth-saved-hdr"></span>
-      <button class="bth-btn" onclick="exportBudget()" title="Download a backup file you can reload later">Save backup &#8595;</button>
+      <label class="bth-btn" style="cursor:pointer">Load a copy<input type="file" id="budget-file-input" accept=".json" style="display:none" onchange="importBudget(this)"></label>
+      <button class="bth-btn" onclick="exportBudget()">Save a copy &#8595;</button>
     </div>
   </header>
 
@@ -426,12 +424,6 @@ export const BT_HTML = `
       <button class="sid-btn" id="sb-s-review" onclick="showSection('s-review')">
         <span class="sid-num">5</span><span class="sid-lbl">Review</span><span class="sid-status" id="sst-review">&#9675;</span>
       </button>
-    </div>
-    <div class="sid-foot">
-      <div id="autosave-notice"></div>
-      <button class="sid-save-btn" onclick="exportBudget()">Download backup</button>
-      <label class="sid-load-lbl">Load backup<input type="file" id="budget-file-input" accept=".json" style="display:none" onchange="importBudget(this)"></label>
-      <div style="font-size:10px;color:var(--textd);line-height:1.4">Saves a file you can reload later.</div>
     </div>
   </nav>
 
@@ -492,7 +484,7 @@ export const BT_HTML = `
 
       <div class="frow">
         <div class="fg">
-          <label class="fl">Number of HSSN institutions <span title="Health and Social Services Network — the Quebec hospital network. Includes RI-MUHC and any affiliated sites. Used to calculate REB monitoring fees for multicentre studies." style="cursor:help;color:var(--textd);font-weight:400">ⓘ</span></label>
+          <label class="fl">Number of HSSN institutions <span class="tip-icon" data-tip="Health and Social Services Network — the Quebec hospital network. Includes RI-MUHC and any affiliated sites. Used to calculate REB monitoring fees for multicentre studies." onclick="showTip(this)">ⓘ</span></label>
           <span class="fh">Includes RI-MUHC. Used for REB fees (max 10 for monitoring).</span>
           <input type="text" inputmode="decimal" class="fi" id="study-sites" value="1" oninput="calcREB();syncStudyType()">
         </div>
@@ -506,7 +498,7 @@ export const BT_HTML = `
       </div>
 
       <div class="fg">
-        <label class="fl">Multi-year staff COLA <span title="Cost of Living Adjustment — applies a 5% annual increase to staff costs each year of the study." style="cursor:help;color:var(--textd);font-weight:400">ⓘ</span></label>
+        <label class="fl">Multi-year staff COLA <span class="tip-icon" data-tip="Cost of Living Adjustment — applies a 5% annual increase to staff costs each year of the study." onclick="showTip(this)">ⓘ</span></label>
         <select class="fs" id="multiyear" onchange="updateSummary()">
           <option value="no">No (or single year)</option>
           <option value="yes">Yes &mdash; apply 5% annual COLA to staff costs each year</option>
@@ -818,17 +810,7 @@ export const BT_HTML = `
           Print / Save PDF
         </button>
         <button class="pbtn pbtn-sec" onclick="toggleCIHRFormat()">CIHR Budget View</button>
-        <button class="xlink" onclick="exportBudget()">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-          Download backup
-        </button>
-        <label class="xlink">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 5 17 10"/><line x1="12" y1="5" x2="12" y2="17"/></svg>
-          Load backup
-          <input type="file" id="budget-file-input-rv" accept=".json" style="display:none" onchange="importBudget(this)">
-        </label>
       </div>
-      <div id="autosave-notice-rv" style="display:none"></div>
       <div class="ct"><strong>Budget reference:</strong> See the <a href="/kb/budget-reference" style="color:var(--teal)">Budget Reference and Guidance page</a> for justification language, overhead policy notes, and CIHR budget category guidance.</div>
 
       <div class="sec-nav">
@@ -863,6 +845,7 @@ export const BT_HTML = `
     </div>
   </div>
 </div>
+<div id="bt-tip"></div>
 `;
 
 export const BudgetTool = () => {

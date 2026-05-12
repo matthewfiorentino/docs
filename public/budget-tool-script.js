@@ -1220,8 +1220,6 @@ function updateSummary() {
 
   // Section status
   updateSectionStatus();
-
-  scheduleAutoSave();
 }
 
 function renderReviewTable(staffAmt, svcAmt, contAmt, ohAmt, rebAmt, rebInc, grand) {
@@ -1777,11 +1775,6 @@ function importBudget(input) {
     try {
       var state = JSON.parse(e.target.result);
       setBudgetState(state);
-      var msg = 'Budget loaded from file';
-      var n1  = document.getElementById('autosave-notice');
-      var n2  = document.getElementById('autosave-notice-rv');
-      if (n1) n1.textContent = msg;
-      if (n2) n2.textContent = msg;
     } catch(err) {
       alert('Could not load file. Please make sure it is a valid budget file saved from this tool.');
     }
@@ -1819,6 +1812,29 @@ function getOtherCostsTotal() {
   return total;
 }
 
+// ════════════════════════════════════════
+// TOOLTIPS
+// ════════════════════════════════════════
+function showTip(el) {
+  var tip = document.getElementById('bt-tip');
+  if (!tip) return;
+  var text = el.getAttribute('data-tip');
+  if (!text) return;
+  tip.textContent = text;
+  tip.style.display = 'block';
+  var rect = el.getBoundingClientRect();
+  var left = Math.max(8, Math.min(rect.left - 4, window.innerWidth - 272));
+  tip.style.top  = (rect.bottom + 8) + 'px';
+  tip.style.left = left + 'px';
+  setTimeout(function() {
+    document.addEventListener('click', hideTip, { once: true });
+  }, 0);
+}
+function hideTip() {
+  var tip = document.getElementById('bt-tip');
+  if (tip) tip.style.display = 'none';
+}
+
 function syncStudyType() {
   var sitesEl = document.getElementById('study-sites');
   var typeEl  = document.getElementById('study-type');
@@ -1847,7 +1863,6 @@ document.addEventListener('DOMContentLoaded', function() {
   calcPtCost();
   selectCont('mod');
   updateSummary();
-  checkAutoSave();
   window.addEventListener('beforeprint', renderPrintSections);
   document.addEventListener('keydown', function(e) {
     if (e.key === 'Escape') {
