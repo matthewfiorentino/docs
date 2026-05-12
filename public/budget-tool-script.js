@@ -126,7 +126,7 @@ var TEMPLATES = {
     funding: 'ind',
     startup: ['Protocol review and feasibility assessment','REB initial submission','Site initiation visit — preparation','Delegation log and staff training','IP receipt and accountability setup','Clinical trial agreement and contract review','Regulatory authority notification (Health Canada CTA)','Quebec public trial registry submission'],
     general: ['Safety monitoring and DSMB report preparation','Monitoring visit coordination (CRO/sponsor)','Data query resolution','Pharmacy/IP reconciliation','Protocol amendment management','Site close-out'],
-    perpt: ['Screening visit','Enrolment and randomisation','Study visit — scheduled assessment','IP dispensing and accountability','Adverse event review and reporting','Protocol deviation assessment','End of treatment visit','Follow-up contact']
+    perpt: ['Screening visit','Enrolment and randomization','Study visit — scheduled assessment','IP dispensing and accountability','Adverse event review and reporting','Protocol deviation assessment','End of treatment visit','Follow-up contact']
   },
   'iit': {
     funding: 'iit',
@@ -2392,7 +2392,7 @@ function exportCSV() {
   var closeoutVal  = parseFloat(g('closeout-cost')) || 0;
   var profSvcVal   = parseFloat(g('profsvc-cost'))  || 0;
   if (sfCost > 0)    lines += row(['Screening failures', fmt(sfCost)]);
-  if (swRedcap > 0)  lines += row(['REDCap license / data management', fmt(swRedcap)]);
+  if (swRedcap > 0)  lines += row(['REDCap licence / data management', fmt(swRedcap)]);
   if (swTrans > 0)   lines += row(['Translation services', fmt(swTrans)]);
   if (swRecruit > 0) lines += row(['Recruitment advertising', fmt(swRecruit)]);
   if (swOther > 0)   lines += row(['Other software / tools', fmt(swOther)]);
