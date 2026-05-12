@@ -32,7 +32,7 @@ export const BT_CSS = `
   --white:    #ffffff;
   --text:     #111111;
   --textm:    #444444;
-  --textd:    #888888;
+  --textd:    #666666;
   --bdr:      #d0d0d0;
   --bdr-s:    #e5e5e5;
   --hdr-h:    64px;
@@ -119,7 +119,7 @@ export const BT_CSS = `
 .sid-btn.active .sid-num { color: var(--navy); }
 .sid-lbl { flex: 1; }
 @media (max-width: 899px) {
-  #bt-root { grid-template-columns: 1fr; grid-template-rows: var(--hdr-h) auto 1fr; height: auto; overflow: visible; }
+  #bt-root { grid-template-columns: 1fr; grid-template-rows: var(--hdr-h) auto 1fr; height: 100svh; overflow: hidden; }
   #bt-header { position: static; }
   #bt-sidebar { grid-row: 2; grid-column: 1; position: sticky; top: 0; z-index: 5; height: auto; flex-direction: row; overflow-x: auto; overflow-y: visible; border-right: none; border-bottom: 1px solid var(--bdr-s); }
   .sid-list { display: flex; padding: 0; flex: none; }
@@ -247,7 +247,7 @@ export const BT_CSS = `
 
 /* ── SERVICES ── */
 .svc-hdr { display: grid; grid-template-columns: 1fr 130px 100px 110px; gap: 10px; padding: 7px 12px; border-bottom: 1px solid var(--bdr-s); background: var(--bg-low); }
-.svc-hdr span { font-size: 9px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--textd); }
+.svc-hdr span { font-size: 11px; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; color: var(--textd); }
 .svc-hdr span:nth-child(3), .svc-hdr span:nth-child(4) { text-align: right; }
 .svc-row { display: grid; grid-template-columns: 1fr 130px 100px 110px; gap: 10px; align-items: center; padding: 8px 12px; border-bottom: 1px solid var(--bdr-s); background: var(--white); }
 .svc-row:last-child { border-bottom: none; }
@@ -266,23 +266,21 @@ export const BT_CSS = `
 .svc-acc-chevron { font-size: 10px; color: var(--textd); transition: transform .15s; flex-shrink: 0; margin-left: 8px; display: inline-block; transform: rotate(-90deg); }
 .svc-acc-head.svc-acc-open .svc-acc-chevron { transform: rotate(0deg); }
 .svc-acc-body { display: none; }
-.svc-cat-head { font-size: 9px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: var(--teal); padding: 18px 0 8px; border-top: 1px solid var(--bdr-s); margin-bottom: 0; margin-top: 8px; }
+.svc-cat-head { font-size: 11px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--teal); padding: 18px 0 8px; border-top: 1px solid var(--bdr-s); margin-bottom: 0; margin-top: 8px; }
 .svc-group-head { font-size: 11px; font-weight: 600; color: var(--textm); margin: 16px 0 4px; padding-bottom: 4px; border-bottom: 1px solid var(--bdr-s); }
-#pt-cost-rows .svc-hdr { grid-template-columns: 1fr 100px 90px 80px 90px; column-gap: 8px; }
-#pt-cost-rows .svc-row { grid-template-columns: 1fr 100px 90px 80px 90px; column-gap: 8px; }
-#pt-cost-rows .pt-cell { display:flex;gap:4px;align-items:center;justify-content:flex-end; }
-#pt-cost-rows .pt-cell input { width:60px;text-align:right;font-size:13px;font-family:inherit;border:1.5px solid var(--bdr);padding:5px 6px;border-radius:6px;outline:none;background:var(--white); }
+#pt-cost-rows .svc-hdr { grid-template-columns: 1fr 110px 100px 110px 110px; column-gap: 10px; }
+#pt-cost-rows .svc-row { grid-template-columns: 1fr 110px 100px 110px 110px; column-gap: 10px; }
+#pt-cost-rows .pt-cell { display:flex;align-items:center;justify-content:flex-end; }
+#pt-cost-rows .pt-cell input { width:100%;text-align:right;font-size:13px;font-family:inherit;border:1.5px solid var(--bdr);padding:5px 8px;border-radius:6px;outline:none;background:var(--white); }
 #pt-cost-rows .pt-cell input:focus { border-color:var(--teal); }
-#pt-cost-rows .pt-cell .pt-lbl { font-size:11px;color:var(--textd);white-space:nowrap; }
 #pt-cost-rows .pt-cell input[data-synced="false"] { border-color:var(--sky); }
 @media (max-width: 699px) {
   .svc-hdr { grid-template-columns: 1fr 80px 80px; }
   .svc-hdr span:nth-child(2) { display: none; }
   .svc-row { grid-template-columns: 1fr 80px 80px; }
   .svc-price { display: none; }
-  #pt-cost-rows .svc-hdr { grid-template-columns: 1fr 70px 60px 60px 70px; }
-  #pt-cost-rows .svc-row { grid-template-columns: 1fr 70px 60px 60px 70px; }
-  #pt-cost-rows .pt-cell input { width:44px; }
+  #pt-cost-rows .svc-hdr { grid-template-columns: 1fr 80px 75px 80px 80px; }
+  #pt-cost-rows .svc-row { grid-template-columns: 1fr 80px 75px 80px 80px; }
 }
 @media (max-width: 599px) {
   #pt-cost-rows .svc-hdr { display: none; }
@@ -703,27 +701,27 @@ export const BT_HTML = `
       <div class="svc-cat-head">Participant Costs</div>
       <div id="pt-n-banner" class="cn" style="font-size:12px;padding:10px 14px">Participant count is 0 — subtotals will show $0. Set the number of participants in <strong>Study Profile</strong> (Section 1) first.</div>
       <div id="pt-cost-rows">
-      <div class="svc-hdr"><span>Item</span><span style="text-align:right">Per visit ($)</span><span style="text-align:right">Visits</span><span style="text-align:right">Participants</span><span style="text-align:right">Subtotal</span></div>
+      <div class="svc-hdr"><span>Item</span><span style="text-align:right">Rate / visit ($)</span><span style="text-align:right">No. of visits</span><span style="text-align:right">Participants (N)</span><span style="text-align:right">Subtotal</span></div>
       <div class="svc-row">
         <span class="svc-name">Participant stipend / honorarium</span>
-        <div class="pt-cell"><input type="text" inputmode="decimal" min="0" value="0" id="pt-stip-amt" oninput="calcPtCost()"><span class="pt-lbl">/ visit</span></div>
-        <div class="pt-cell"><span class="pt-lbl">&times;</span><input type="text" inputmode="decimal" min="0" value="1" id="pt-stip-visits" oninput="calcPtCost()"><span class="pt-lbl">visits</span></div>
-        <div class="pt-cell"><span class="pt-lbl">&times;</span><input type="text" inputmode="decimal" min="0" value="0" id="pt-stip-n" data-synced="true" oninput="this.dataset.synced='false';calcPtCost()"><span class="pt-lbl">pts</span></div>
+        <div class="pt-cell"><input type="text" inputmode="decimal" min="0" value="0" id="pt-stip-amt" oninput="calcPtCost()"></div>
+        <div class="pt-cell"><input type="text" inputmode="decimal" min="0" value="1" id="pt-stip-visits" oninput="calcPtCost()"></div>
+        <div class="pt-cell"><input type="text" inputmode="decimal" min="0" value="0" id="pt-stip-n" data-synced="true" oninput="this.dataset.synced='false';calcPtCost()"></div>
         <span class="svc-sub" id="pt-stip-sub">$0</span>
       </div>
       <div id="pt-stip-warn-row" style="grid-column:1/-1;display:none"><span id="pt-stip-warn" style="font-size:12px;padding:6px 10px;border-radius:6px;display:inline-block;margin:2px 0 4px"></span></div>
       <div class="svc-row">
         <span class="svc-name">Transportation reimbursement</span>
-        <div class="pt-cell"><input type="text" inputmode="decimal" min="0" value="0" id="pt-trans-amt" oninput="calcPtCost()"><span class="pt-lbl">/ visit</span></div>
-        <div class="pt-cell"><span class="pt-lbl">&times;</span><input type="text" inputmode="decimal" min="0" value="1" id="pt-trans-visits" oninput="calcPtCost()"><span class="pt-lbl">visits</span></div>
-        <div class="pt-cell"><span class="pt-lbl">&times;</span><input type="text" inputmode="decimal" min="0" value="0" id="pt-trans-n" data-synced="true" oninput="this.dataset.synced='false';calcPtCost()"><span class="pt-lbl">pts</span></div>
+        <div class="pt-cell"><input type="text" inputmode="decimal" min="0" value="0" id="pt-trans-amt" oninput="calcPtCost()"></div>
+        <div class="pt-cell"><input type="text" inputmode="decimal" min="0" value="1" id="pt-trans-visits" oninput="calcPtCost()"></div>
+        <div class="pt-cell"><input type="text" inputmode="decimal" min="0" value="0" id="pt-trans-n" data-synced="true" oninput="this.dataset.synced='false';calcPtCost()"></div>
         <span class="svc-sub" id="pt-trans-sub">$0</span>
       </div>
       <div class="svc-row">
         <span class="svc-name">Parking reimbursement</span>
-        <div class="pt-cell"><input type="text" inputmode="decimal" min="0" value="0" id="pt-park-amt" oninput="calcPtCost()"><span class="pt-lbl">/ visit</span></div>
-        <div class="pt-cell"><span class="pt-lbl">&times;</span><input type="text" inputmode="decimal" min="0" value="1" id="pt-park-visits" oninput="calcPtCost()"><span class="pt-lbl">visits</span></div>
-        <div class="pt-cell"><span class="pt-lbl">&times;</span><input type="text" inputmode="decimal" min="0" value="0" id="pt-park-n" data-synced="true" oninput="this.dataset.synced='false';calcPtCost()"><span class="pt-lbl">pts</span></div>
+        <div class="pt-cell"><input type="text" inputmode="decimal" min="0" value="0" id="pt-park-amt" oninput="calcPtCost()"></div>
+        <div class="pt-cell"><input type="text" inputmode="decimal" min="0" value="1" id="pt-park-visits" oninput="calcPtCost()"></div>
+        <div class="pt-cell"><input type="text" inputmode="decimal" min="0" value="0" id="pt-park-n" data-synced="true" oninput="this.dataset.synced='false';calcPtCost()"></div>
         <span class="svc-sub" id="pt-park-sub">$0</span>
       </div>
       <div class="svc-row" style="grid-template-columns:1fr 280px 90px">
