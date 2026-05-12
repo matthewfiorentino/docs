@@ -169,6 +169,8 @@ var svcsRendered = false;
 var labRendered  = false;
 var AUTOSAVE_KEY = 'rimuhc_budget_v1';
 var autosaveTimer = null;
+var svcAllExpanded = false;
+var actPickerTypeFilter = null;
 
 // ════════════════════════════════════════
 // SECTION NAVIGATION
@@ -899,23 +901,24 @@ function updateSvcPrices() {
   updateSummary();
 }
 
-function expandAllSvc() {
-  for (var g = 0; g < SVC_CIM_DATA.length; g++) {
-    var body = document.getElementById('svc-body-' + g);
-    var head = document.querySelector('#svc-grp-' + g + ' .svc-acc-head');
-    if (body && body.style.display === 'none') {
+function toggleAllSvc() {
+  svcAllExpanded = !svcAllExpanded;
+  var btn = document.getElementById('svc-expand-btn');
+  if (btn) btn.textContent = svcAllExpanded ? 'Collapse all' : 'Expand all';
+  var allIds = [];
+  for (var g = 0; g < SVC_CIM_DATA.length; g++) allIds.push(String(g));
+  allIds = allIds.concat(['pharma', 'it', 'muhc', 'lab']);
+  for (var i = 0; i < allIds.length; i++) {
+    var body = document.getElementById('svc-body-' + allIds[i]);
+    var head = document.querySelector('#svc-grp-' + allIds[i] + ' .svc-acc-head');
+    if (!body) continue;
+    if (svcAllExpanded) {
       body.style.display = 'block';
       if (head) head.classList.add('svc-acc-open');
-    }
-  }
-  var extras = ['pharma', 'it', 'muhc', 'lab'];
-  for (var i = 0; i < extras.length; i++) {
-    var body = document.getElementById('svc-body-' + extras[i]);
-    var head = document.querySelector('#svc-grp-' + extras[i] + ' .svc-acc-head');
-    if (body && body.style.display === 'none') {
-      body.style.display = 'block';
-      if (head) head.classList.add('svc-acc-open');
-      if (extras[i] === 'lab' && !labRendered) renderLab();
+      if (allIds[i] === 'lab' && !labRendered) renderLab();
+    } else {
+      body.style.display = 'none';
+      if (head) head.classList.remove('svc-acc-open');
     }
   }
 }
@@ -1379,7 +1382,8 @@ function toggleApGroup(g) {
   if (head) head.classList.toggle('open', !isOpen);
 }
 
-function openActPicker() {
+function openActPicker(typeFilter) {
+  actPickerTypeFilter = typeFilter || null;
   var overlay = document.getElementById('act-picker-overlay');
   var picker  = document.getElementById('act-picker');
   buildActPicker();
@@ -1387,11 +1391,24 @@ function openActPicker() {
   if (picker)  picker.style.display  = 'flex';
   var searchEl = document.getElementById('act-picker-search');
   if (searchEl) searchEl.value = '';
-  var firstItems = document.getElementById('apgi-0');
-  var firstHead  = document.querySelector('#apg-0 .ap-group-head');
-  if (firstItems && !firstItems.classList.contains('open')) {
-    firstItems.classList.add('open');
-    if (firstHead) firstHead.classList.add('open');
+  var customEl = document.getElementById('ap-custom-name');
+  if (customEl) customEl.value = '';
+  // Update title
+  var titleEl = document.getElementById('ap-picker-title');
+  if (titleEl) {
+    if (typeFilter === 'startup') titleEl.textContent = 'Add startup activities';
+    else if (typeFilter === 'general') titleEl.textContent = 'Add general activities';
+    else if (typeFilter === 'perpt') titleEl.textContent = 'Add per-participant activities';
+    else titleEl.textContent = 'Add activities from list';
+  }
+  // Expand groups that match the filter; collapse others
+  for (var g = 0; g < ACT_GROUPS.length; g++) {
+    var items = document.getElementById('apgi-' + g);
+    var head  = document.querySelector('#apg-' + g + ' .ap-group-head');
+    if (!items) continue;
+    var matches = !typeFilter || ACT_GROUPS[g].type === typeFilter;
+    items.classList.toggle('open', matches);
+    if (head) head.classList.toggle('open', matches);
   }
   apSelChange();
 }
@@ -1436,8 +1453,10 @@ function filterActPicker() {
 }
 
 function addSelectedActivities() {
-  var checked = document.querySelectorAll('#act-picker-body input[type=checkbox]:checked');
-  if (!checked.length) { closeActPicker(); return; }
+  var checked  = document.querySelectorAll('#act-picker-body input[type=checkbox]:checked');
+  var customEl = document.getElementById('ap-custom-name');
+  var customName = customEl ? customEl.value.trim() : '';
+  if (!checked.length && !customName) { closeActPicker(); return; }
   for (var i = 0; i < checked.length; i++) {
     var cb     = checked[i];
     var label  = cb.parentNode.querySelector('.ap-item-name');
@@ -1446,6 +1465,10 @@ function addSelectedActivities() {
     var gIdx    = parseInt(idParts[0]);
     var type    = ACT_GROUPS[gIdx] ? ACT_GROUPS[gIdx].type : 'general';
     addMatrixRow(type, name);
+  }
+  if (customName) {
+    var customType = actPickerTypeFilter || 'general';
+    addMatrixRow(customType, customName);
   }
   closeActPicker();
   updateSummary();
