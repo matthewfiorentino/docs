@@ -411,18 +411,8 @@ function addMatrixColumn(staffId) {
     th.id = 'mc-th-' + staffId;
     th.setAttribute('data-staff-id', staffId);
     th.style.minWidth = '90px';
-    th.innerHTML = label + '<span class="mc-th-unit">hrs</span>';
+    th.innerHTML = label + '<span class="mc-th-unit">hrs &middot; $' + hr.toFixed(2) + '/hr</span>';
     headRow.insertBefore(th, totalTh);
-  }
-
-  var rateRow = document.getElementById('mc-rate-row');
-  if (rateRow) {
-    var totalRateTh = rateRow.querySelector('.mc-total-th');
-    var rateTh = document.createElement('th');
-    rateTh.id = 'mc-rate-' + staffId;
-    rateTh.setAttribute('data-staff-id', staffId);
-    rateTh.textContent = '$' + hr.toFixed(2) + '/hr';
-    rateRow.insertBefore(rateTh, totalRateTh);
   }
 
   var rowIds = Object.keys(matrixData);
@@ -467,11 +457,9 @@ function addMatrixColumn(staffId) {
 
 function removeMatrixColumn(staffId) {
   var th     = document.getElementById('mc-th-' + staffId);
-  var rateTh = document.getElementById('mc-rate-' + staffId);
   var fhrs   = document.getElementById('mc-fhrs-' + staffId);
   var fcost  = document.getElementById('mc-fcost-' + staffId);
   if (th)     th.parentNode.removeChild(th);
-  if (rateTh) rateTh.parentNode.removeChild(rateTh);
   if (fhrs)   fhrs.parentNode.removeChild(fhrs);
   if (fcost)  fcost.parentNode.removeChild(fcost);
 
@@ -676,12 +664,10 @@ function updateMatrixRowName(rowId, name) {
 }
 
 function refreshMatrixColumnLabel(staffId) {
-  var label  = getStaffLabel(staffId);
-  var hr     = getStaffHourlyRate(staffId);
-  var thEl   = document.getElementById('mc-th-'   + staffId);
-  var rateEl = document.getElementById('mc-rate-' + staffId);
-  if (thEl)   thEl.textContent   = label;
-  if (rateEl) rateEl.textContent = '$' + hr.toFixed(2) + '/hr';
+  var label = getStaffLabel(staffId);
+  var hr    = getStaffHourlyRate(staffId);
+  var thEl  = document.getElementById('mc-th-' + staffId);
+  if (thEl) thEl.innerHTML = label + '<span class="mc-th-unit">hrs &middot; $' + hr.toFixed(2) + '/hr</span>';
 }
 
 function getTEStaffTotal() {
@@ -1591,11 +1577,6 @@ function setBudgetState(state) {
   if (headRow) {
     var oldCols = headRow.querySelectorAll('th[data-staff-id]');
     for (var i = 0; i < oldCols.length; i++) oldCols[i].parentNode.removeChild(oldCols[i]);
-  }
-  var rateRow = document.getElementById('mc-rate-row');
-  if (rateRow) {
-    var oldRateCols = rateRow.querySelectorAll('th[data-staff-id]');
-    for (var i = 0; i < oldRateCols.length; i++) oldRateCols[i].parentNode.removeChild(oldRateCols[i]);
   }
   var tfootHrs  = document.getElementById('mc-tfoot-hrs');
   var tfootCost = document.getElementById('mc-tfoot-cost');

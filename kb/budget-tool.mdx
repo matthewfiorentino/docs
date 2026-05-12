@@ -196,8 +196,6 @@ export const BT_CSS = `
 #te-matrix { width: 100%; border-collapse: collapse; min-width: 500px; }
 #te-matrix thead th { background: var(--bg-low); padding: 8px 10px; font-size: 11px; font-weight: 700; color: var(--navy); border-bottom: 2px solid var(--bdr); text-align: center; white-space: nowrap; position: sticky; top: 0; z-index: 5; }
 #te-matrix thead th.mc-name-th { text-align: left; position: sticky; left: 0; z-index: 10; background: var(--bg-low); min-width: 180px; max-width: 260px; }
-#te-matrix thead tr.mc-rate-row th { font-size: 10px; font-weight: 400; color: var(--textd); font-family: "Courier New", monospace; background: var(--bg-low); border-bottom: 1px solid var(--bdr-s); padding: 4px 10px; top: 36px; }
-#te-matrix thead tr.mc-rate-row th.mc-name-th { position: sticky; left: 0; z-index: 10; }
 #te-matrix td { padding: 0; border-bottom: 1px solid var(--bdr-s); vertical-align: middle; }
 #te-matrix tbody tr:last-child td { border-bottom: none; }
 .mc-group-row td { background: var(--bg); padding: 7px 12px; font-size: 10px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--textm); cursor: pointer; user-select: none; }
@@ -606,11 +604,6 @@ export const BT_HTML = `
               <th class="mc-name-th" style="text-align:left">Activity</th>
               <!-- staff columns inserted here -->
               <th class="mc-total-th" style="width:90px">Cost</th>
-            </tr>
-            <tr class="mc-rate-row" id="mc-rate-row">
-              <th class="mc-name-th" style="font-size:10px;font-style:italic;color:var(--textd)">&#8595; enter hours</th>
-              <!-- rate cells inserted here -->
-              <th class="mc-total-th"></th>
             </tr>
           </thead>
           <tbody id="mc-tbody-startup">
