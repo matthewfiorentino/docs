@@ -628,16 +628,29 @@ function updateMatrixRowTotal(rowId) {
   var el  = document.getElementById('mc-rtot-' + rowId);
   var row = matrixData[rowId];
   if (!el || !row) return;
-  var total = 0;
+  var hrsPerPt = 0, rawCost = 0;
   var sIds = Object.keys(row.hours);
   for (var i = 0; i < sIds.length; i++) {
     var hrs = parseFloat(row.hours[sIds[i]]) || 0;
-    total += hrs * getStaffHourlyRate(sIds[i]);
+    hrsPerPt += hrs;
+    rawCost  += hrs * getStaffHourlyRate(sIds[i]);
   }
-  if (row.type === 'perpt') total *= getRowN(rowId);
-  var display = total > 0 ? ('$' + Math.round(total).toLocaleString()) : '—';
   var costSpan = document.getElementById('mc-rtot-cost-' + rowId);
-  if (costSpan) costSpan.textContent = display; else el.textContent = display;
+  if (row.type === 'perpt') {
+    var n = getRowN(rowId);
+    var total = rawCost * n;
+    var hrsLabel = hrsPerPt > 0 ? ((Math.round(hrsPerPt * 10) / 10) + 'h/pt × ' + n) : '—';
+    var costLabel = total > 0 ? ('$' + Math.round(total).toLocaleString()) : '$0';
+    if (costSpan) {
+      costSpan.textContent = costLabel;
+      var subLine = el.querySelector('.mc-rtot-sub');
+      if (!subLine) { subLine = document.createElement('div'); subLine.className = 'mc-rtot-sub'; el.appendChild(subLine); }
+      subLine.textContent = hrsLabel;
+    } else { el.textContent = costLabel; }
+  } else {
+    var display = rawCost > 0 ? ('$' + Math.round(rawCost).toLocaleString()) : '—';
+    if (costSpan) costSpan.textContent = display; else el.textContent = display;
+  }
 }
 
 function updateMatrixFooter() {

@@ -229,6 +229,7 @@ export const BT_CSS = `
 .mc-th-unit { display: block; font-size: 9px; font-weight: 400; color: var(--textd); margin-top: 2px; }
 .mc-input-cell input.tpl-unreviewed { color: var(--textd); font-style: italic; }
 .mc-computed { background: var(--bg-low); text-align: right; padding: 8px 10px !important; font-size: 12px; font-weight: 700; font-family: "Courier New", monospace; color: var(--navy); cursor: default; position: sticky; right: 0; z-index: 2; }
+.mc-rtot-sub { font-size: 9px; font-weight: 400; color: var(--textd); margin-top: 2px; font-family: "Courier New", monospace; white-space: nowrap; }
 .mc-perpt-n-row { display: flex; align-items: center; justify-content: flex-end; gap: 3px; margin-top: 5px; padding-top: 4px; border-top: 1px solid var(--bdr-s); }
 .mc-perpt-n-inp { width: 46px; font-size: 11px; font-family: "Courier New", monospace; text-align: center; border: 1px solid var(--bdr); border-radius: 3px; padding: 2px 4px; color: var(--textd); background: var(--white); outline: none; font-weight: 400; cursor: text; }
 .mc-perpt-n-inp:focus { border-color: var(--teal); }
@@ -600,7 +601,7 @@ export const BT_HTML = `
     <section class="bt-section" id="s-work">
       <div class="sec-label">Section 3 of 5</div>
       <h2 class="sec-h2">Work Plan</h2>
-      <p class="sec-desc">Enter hours per activity per staff member. Rows are grouped by type: <strong style="color:#7a4f00">Startup</strong> (0% overhead for industry), <strong style="color:var(--sky)">General</strong> (flat study cost), and <strong style="color:var(--green)">Per Participant</strong> (multiplied by participant count). Add staff in Staff &amp; Salaries first &mdash; they appear as columns here.</p>
+      <p class="sec-desc">Enter staff hours per activity. <strong style="color:#7a4f00">Startup</strong> rows = one-time hours at site initiation (0% OH for industry). <strong style="color:var(--sky)">General</strong> rows = annual hours across the whole study. <strong style="color:var(--green)">Per Participant</strong> rows = hours <em>per participant</em> for that activity — multiplied by each row's participant count to give the total cost. Add staff in Staff &amp; Salaries first — they appear as columns here.</p>
       <div class="ci" id="te-no-staff-msg" style="display:none"><strong>No staff added yet.</strong> Go to Staff &amp; Salaries (Section 2) and add your team first.</div>
 
       <!-- Template picker (shown when matrix is empty) -->
@@ -624,7 +625,7 @@ export const BT_HTML = `
             <tr id="mc-head-row">
               <th class="mc-name-th" style="text-align:left">Activity</th>
               <!-- staff columns inserted here -->
-              <th class="mc-total-th" style="width:90px">Cost</th>
+              <th class="mc-total-th" style="width:110px">Cost</th>
             </tr>
           </thead>
           <tbody id="mc-tbody-startup">
@@ -641,7 +642,7 @@ export const BT_HTML = `
           </tbody>
           <tbody id="mc-tbody-perpt">
             <tr class="mc-group-row" onclick="toggleMatrixGroup('perpt')">
-              <td colspan="999" class="mc-group-perpt"><span class="mc-chevron">&#9660;</span>PER PARTICIPANT &mdash; <span id="mc-perpt-n">0 participants</span></td>
+              <td colspan="999" class="mc-group-perpt"><span class="mc-chevron">&#9660;</span>PER PARTICIPANT &mdash; hours/participant &times; <span id="mc-perpt-n">0 participants</span></td>
             </tr>
             <tr id="mc-perpt-n-banner-row" style="display:none"><td colspan="999"><div id="mc-perpt-n-banner"></div></td></tr>
             <tr class="mc-add-row"><td colspan="999"><button onclick="openActPicker('perpt')">+ Add per-participant activity</button></td></tr>
@@ -669,7 +670,7 @@ export const BT_HTML = `
         <button class="add-btn" style="border-color:var(--bdr);color:var(--textm);font-size:11px" onclick="showSection('s-work');document.getElementById('mc-tpl-picker').style.display='block'">Reset from template</button>
       </div>
 
-      <div class="ct" style="margin-top:16px"><strong>Activity types:</strong> <strong style="color:#7a4f00">Startup</strong> = site initiation, training, regulatory (0% OH for industry). <strong style="color:var(--sky)">General</strong> = flat study costs. <strong style="color:var(--green)">Per participant</strong> = per-visit activities multiplied by expected N. Use the type badge on each row to reassign.</div>
+      <div class="ct" style="margin-top:16px"><strong>Activity types:</strong> <strong style="color:#7a4f00">Startup</strong> — one-time site initiation hours (0% OH for industry). <strong style="color:var(--sky)">General</strong> — annual staff hours for the whole study. <strong style="color:var(--green)">Per Participant</strong> — enter hours <em>per participant</em> for this activity; the row cost = hours/pt × rate × N. The N input in the Cost column can be overridden per row (e.g. adverse event review affects fewer participants than a routine visit). Use the type badge on each row to reassign.</div>
 
       <div class="sec-nav">
         <button class="sec-nav-btn" onclick="showSection('s-team')">&#8592; Staff &amp; Salaries</button>
