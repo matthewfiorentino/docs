@@ -108,7 +108,6 @@ export const BT_CSS = `
 .sid-num { font-size: 11px; font-weight: 700; color: var(--textd); width: 16px; flex-shrink: 0; }
 .sid-btn.active .sid-num { color: var(--navy); }
 .sid-lbl { flex: 1; }
-.sid-status { font-size: 12px; flex-shrink: 0; }
 @media (max-width: 899px) {
   #bt-root { grid-template-columns: 1fr; grid-template-rows: var(--hdr-h) auto 1fr; height: auto; overflow: visible; }
   #bt-header { position: static; }
@@ -116,7 +115,6 @@ export const BT_CSS = `
   .sid-list { display: flex; padding: 0; flex: none; }
   .sid-btn { flex-direction: column; gap: 2px; padding: 10px 12px; font-size: 11px; white-space: nowrap; }
   .sid-btn.active { background: var(--bg-low); }
-  .sid-status { display: none; }
   .sid-foot { display: none; }
   #bt-main { grid-row: 3; }
 }
@@ -406,19 +404,19 @@ export const BT_HTML = `
   <nav id="bt-sidebar">
     <div class="sid-list">
       <button class="sid-btn active" id="sb-s-profile" onclick="showSection('s-profile')">
-        <span class="sid-num">1</span><span class="sid-lbl">Study Profile</span><span class="sid-status" id="sst-profile">&#9675;</span>
+        <span class="sid-num">1</span><span class="sid-lbl">Study Profile</span>
       </button>
       <button class="sid-btn" id="sb-s-team" onclick="showSection('s-team')">
-        <span class="sid-num">2</span><span class="sid-lbl">Staff &amp; Salaries</span><span class="sid-status" id="sst-team">&#9675;</span>
+        <span class="sid-num">2</span><span class="sid-lbl">Staff &amp; Salaries</span>
       </button>
       <button class="sid-btn" id="sb-s-work" onclick="showSection('s-work')">
-        <span class="sid-num">3</span><span class="sid-lbl">Work Plan</span><span class="sid-status" id="sst-work">&#9675;</span>
+        <span class="sid-num">3</span><span class="sid-lbl">Work Plan</span>
       </button>
       <button class="sid-btn" id="sb-s-costs" onclick="showSection('s-costs')">
-        <span class="sid-num">4</span><span class="sid-lbl">Study Costs</span><span class="sid-status" id="sst-costs">&#9675;</span>
+        <span class="sid-num">4</span><span class="sid-lbl">Study Costs</span>
       </button>
       <button class="sid-btn" id="sb-s-review" onclick="showSection('s-review')">
-        <span class="sid-num">5</span><span class="sid-lbl">Review</span><span class="sid-status" id="sst-review">&#9675;</span>
+        <span class="sid-num">5</span><span class="sid-lbl">Review</span>
       </button>
     </div>
   </nav>
