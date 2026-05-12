@@ -1430,12 +1430,22 @@ function renderReviewTable(staffAmt, svcAmt, contAmt, ohAmt, rebAmt, rebInc, gra
     grand = staffAmt + svcAmt + ohAmt + contAmt + (rebInc ? rebAmt : 0);
   }
 
-  var n      = parseInt(document.getElementById('study-n').value) || 0;
+  var n       = parseInt(document.getElementById('study-n').value) || 0;
   var teTotal = getTEStaffTotal();
+  var years   = parseInt(document.getElementById('study-years').value) || 1;
+  var cola    = document.getElementById('multiyear').value === 'yes';
+  var multi   = years > 1;
 
   function fmt(v) { return '$' + Math.round(v).toLocaleString(); }
-  function row(lbl, val, cls) {
-    return '<div class="rv-row' + (cls ? ' ' + cls : '') + '"><span>' + lbl + '</span><span>' + fmt(val) + '</span></div>';
+  function amts(total, perYear) {
+    if (!multi) return '<span>' + fmt(total) + '</span>';
+    var yrStr = (perYear === null) ? '—' : fmt(perYear);
+    return '<div class="rv-amounts"><span class="rv-yr">' + yrStr + '</span><span>' + fmt(total) + '</span></div>';
+  }
+  function row(lbl, total, perYear, cls) {
+    if (typeof perYear === 'string') { cls = perYear; perYear = total / years; }
+    if (perYear === undefined) perYear = total / years;
+    return '<div class="rv-row' + (cls ? ' ' + cls : '') + '"><span>' + lbl + '</span>' + amts(total, perYear) + '</div>';
   }
 
   var labAmt   = getLabTotal();
@@ -1444,17 +1454,18 @@ function renderReviewTable(staffAmt, svcAmt, contAmt, ohAmt, rebAmt, rebInc, gra
   var otherAmt = getOtherCostsTotal();
   var ktAmt    = getKTTotal();
   var ppAmt    = getPPTotal();
-  var cimAmt   = Math.max(0, getCIMLabTotal() - labAmt);  // CIM/pharma/IT only
+  var cimAmt   = Math.max(0, getCIMLabTotal() - labAmt);
 
   var html = '';
+  if (multi) html += '<div class="rv-col-hdr"><span>Per year</span><span>Total</span></div>';
   html += '<div class="rv-section-head">Personnel</div>';
   if (teTotal > 0) {
     var startupMY = getStartupMultiYear();
-    html += row('Startup activities' + (funding === 'ind' ? ' (0% overhead)' : ''), startupMY);
-    html += row('General & per-participant activities', staffAmt - startupMY);
-    html += row('Staff subtotal', staffAmt, 'rv-row-strong');
+    html += row('Startup activities' + (funding === 'ind' ? ' (0% overhead)' : ''), startupMY, startupMY);
+    html += row('General & per-participant activities', staffAmt - startupMY, (staffAmt - startupMY) / years);
+    html += row('Staff subtotal', staffAmt, (staffAmt - startupMY) / years + startupMY / years, 'rv-row-strong');
   } else {
-    html += row('Staff (FTE estimate)', staffAmt, 'rv-row-strong');
+    html += row('Staff (FTE estimate)', staffAmt, undefined, 'rv-row-strong');
   }
 
   var startupSvcAmt = getStartupSvcTotal();
@@ -1466,25 +1477,27 @@ function renderReviewTable(staffAmt, svcAmt, contAmt, ohAmt, rebAmt, rebInc, gra
   if (travAmt       > 0) html += row('Travel (operational)', travAmt);
   if (ktAmt         > 0) html += row('Knowledge Translation', ktAmt);
   if (otherAmt      > 0) html += row('Other costs', otherAmt);
-  if (startupSvcAmt > 0) html += row('Startup services (0% overhead)', startupSvcAmt, 'rv-row-indent');
-  if (svcAmt        > 0) html += row('Study costs subtotal', svcAmt, 'rv-row-strong');
+  if (startupSvcAmt > 0) html += row('Startup services (0% overhead)', startupSvcAmt, startupSvcAmt / years, 'rv-row-indent');
+  if (svcAmt        > 0) html += row('Study costs subtotal', svcAmt, undefined, 'rv-row-strong');
 
   html += '<div class="rv-divider"></div>';
-  html += row('Direct Cost Subtotal', staffAmt + svcAmt, 'rv-row-strong');
+  html += row('Direct Cost Subtotal', staffAmt + svcAmt, undefined, 'rv-row-strong');
   if (ohAmt > 0) html += row('Overhead (' + Math.round(oh * 100) + '%)', ohAmt);
   html += row('Contingency (' + Math.round(getContPct() * 100) + '%)', contAmt);
-  if (rebAmt > 0) html += row('REB Fees' + (rebInc ? ' (included in total)' : ' (reference only)'), rebAmt, rebInc ? '' : 'rv-row-indent');
-  html += '<div class="rv-grand"><span>Grand Total</span><span>' + fmt(grand) + '</span></div>';
+  if (rebAmt > 0) {
+    var rebRow = '<div class="rv-row' + (rebInc ? '' : ' rv-row-indent') + '"><span>REB Fees' + (rebInc ? ' (included in total)' : ' (reference only)') + '</span>' + amts(rebAmt, null) + '</div>';
+    html += rebRow;
+  }
+  var grandPerYear = (grand - (rebInc ? rebAmt : 0)) / years;
+  html += '<div class="rv-grand"><span>Grand Total</span>' + amts(grand, rebInc ? grandPerYear : grand / years) + '</div>';
   if (n > 0 && grand > 0) {
     html += '<div class="rv-cpp">Per participant: ' + fmt(grand / n) + ' &bull; ' + n + ' participants</div>';
   }
 
-  // Year-by-year breakdown
-  var years = parseInt(document.getElementById('study-years').value) || 1;
-  var cola  = document.getElementById('multiyear').value === 'yes';
-  if (years > 1 && teTotal > 0) {
-    html += '<div class="rv-section-head">Year-by-year staff costs</div>';
-    if (cola) html += '<div style="font-size:11px;color:#888;margin:-4px 0 8px">Includes 5% annual COLA per collective agreement projections</div>';
+  // Year-by-year staff breakdown (COLA detail)
+  if (multi && teTotal > 0) {
+    html += '<div class="rv-section-head">Year-by-year staff costs' + (cola ? ' (COLA escalation)' : '') + '</div>';
+    if (cola) html += '<div style="font-size:11px;color:#888;margin:-4px 0 8px">5% annual increase per collective agreement projections</div>';
     html += '<div class="rv-yearly">';
     for (var y = 0; y < years; y++) {
       var yrAmt = cola ? teTotal * Math.pow(1.05, y) : teTotal;
@@ -2350,21 +2363,27 @@ function exportCSV() {
 
   // ── SECTION 12: Budget Summary ────────────────────────────────
   lines += head('SECTION 12 — BUDGET SUMMARY');
-  lines += row(['Category', 'Amount']);
-  lines += row(['Personnel (work plan)',                  fmt(csvStaff)]);
-  lines += row(['CIM & institutional services',          fmt(csvCimLab)]);
-  lines += row(['Equipment & non-consumables',           fmt(csvEquip)]);
-  lines += row(['Participant costs',                     fmt(csvPt)]);
-  lines += row(['Patient partners & engagement',         fmt(csvPP)]);
-  lines += row(['Knowledge translation',                 fmt(csvKT)]);
-  lines += row(['Operational travel',                    fmt(csvTravel)]);
-  lines += row(['Other direct costs',                    fmt(csvOther)]);
-  lines += row(['Direct cost subtotal',                  fmt(csvSub)]);
-  lines += row(['Overhead (' + Math.round(oh * 100) + '%)', fmt(csvOhAmt)]);
-  lines += row(['Contingency (' + Math.round(csvContPct * 100) + '% — ' + (contLevel === 'low' ? 'Low' : contLevel === 'high' ? 'High' : 'Moderate') + ')', fmt(csvCont)]);
-  if (rebInc) lines += row(['REB fees (included)',       fmt(rebTotal)]);
-  else        lines += row(['REB fees (reference only — not in total)', fmt(rebTotal)]);
-  lines += row(['GRAND TOTAL',                           fmt(csvGrand)]);
+  var csvMulti = years > 1;
+  function s12row(label, total, isOneTime) {
+    var perYr = isOneTime ? '—' : fmt(total / years);
+    return csvMulti ? row([label, perYr, fmt(total)]) : row([label, fmt(total)]);
+  }
+  lines += csvMulti ? row(['Category', 'Per year (avg)', 'Total']) : row(['Category', 'Amount']);
+  lines += s12row('Personnel (work plan)',                  csvStaff);
+  lines += s12row('CIM & institutional services',          csvCimLab);
+  lines += s12row('Equipment & non-consumables',           csvEquip);
+  lines += s12row('Participant costs',                     csvPt);
+  lines += s12row('Patient partners & engagement',         csvPP);
+  lines += s12row('Knowledge translation',                 csvKT);
+  lines += s12row('Operational travel',                    csvTravel);
+  lines += s12row('Other direct costs',                    csvOther);
+  lines += s12row('Direct cost subtotal',                  csvSub);
+  lines += s12row('Overhead (' + Math.round(oh * 100) + '%)', csvOhAmt);
+  lines += s12row('Contingency (' + Math.round(csvContPct * 100) + '% — ' + (contLevel === 'low' ? 'Low' : contLevel === 'high' ? 'High' : 'Moderate') + ')', csvCont);
+  if (rebInc) lines += s12row('REB fees (included — one-time)',       rebTotal, true);
+  else        lines += s12row('REB fees (reference only — not in total)', rebTotal, true);
+  var csvGrandNoReb = csvGrand - (rebInc ? rebTotal : 0);
+  lines += csvMulti ? row(['GRAND TOTAL', fmt(csvGrandNoReb / years) + ' (excl. REB)', fmt(csvGrand)]) : row(['GRAND TOTAL', fmt(csvGrand)]);
   lines += row(['CIHR-rounded total (nearest $5,000)',   fmt(csvRounded)]);
   if (nPt > 0) lines += row(['Per-participant cost',     fmt(csvPerPt)]);
   lines += blank();

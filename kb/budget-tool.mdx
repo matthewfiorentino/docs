@@ -316,16 +316,20 @@ export const BT_CSS = `
 .ccdef { font-size: 10px; color: var(--textd); font-style: italic; }
 
 /* ── REVIEW / BUDGET TABLE ── */
-.rv-row { display: flex; justify-content: space-between; padding: 7px 0; border-bottom: 1px solid var(--bdr-s); font-size: 13px; }
+.rv-row { display: flex; justify-content: space-between; align-items: baseline; padding: 7px 0; border-bottom: 1px solid var(--bdr-s); font-size: 13px; }
 .rv-row:last-child { border-bottom: none; }
 .rv-row-indent { padding-left: 16px; font-size: 12px; color: var(--textm); }
 .rv-row-strong { font-weight: 700; color: var(--navy); }
-.rv-row-strong span:last-child { font-family: "Courier New", monospace; }
-.rv-row span:last-child { font-family: "Courier New", monospace; font-size: 12px; font-weight: 700; color: var(--navy); }
+.rv-amounts { display: flex; gap: 20px; align-items: baseline; flex-shrink: 0; }
+.rv-amounts span { font-family: "Courier New", monospace; font-size: 12px; font-weight: 700; color: var(--navy); }
+.rv-amounts .rv-yr { color: var(--textm); }
+.rv-col-hdr { display: flex; justify-content: flex-end; gap: 20px; font-size: 9px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--textd); padding: 10px 0 4px; }
+.rv-col-hdr span { min-width: 72px; text-align: right; }
 .rv-section-head { font-size: 10px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--textd); padding: 14px 0 6px; margin-top: 4px; }
 .rv-divider { height: 1px; background: var(--bdr-s); margin: 10px 0; }
 .rv-grand { display: flex; justify-content: space-between; align-items: baseline; padding: 14px 0 6px; border-top: 2px solid var(--navy); margin-top: 8px; font-weight: 800; font-size: 16px; color: var(--navy); }
-.rv-grand span:last-child { font-family: "Courier New", monospace; font-size: 22px; }
+.rv-grand .rv-amounts span { font-size: 15px; }
+.rv-grand .rv-amounts span:last-child { font-size: 22px; }
 .rv-cpp { font-size: 12px; color: var(--textm); padding: 6px 0; }
 .rv-yearly { font-size: 11px; color: var(--textd); margin-top: 10px; }
 .rv-yr-row { display: flex; justify-content: space-between; padding: 4px 0; border-bottom: 1px solid var(--bdr-s); font-size: 11px; }
