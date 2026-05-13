@@ -141,27 +141,35 @@
     }
 
     // Reference table toggle
-    document.getElementById('rc-ref-btn').addEventListener('click', function () {
-      var tbl = document.getElementById('rc-ref-table');
-      var open = tbl.classList.toggle('open');
-      this.textContent = open
-        ? 'Hide reference table ▴'
-        : 'View published screen failure rates by therapeutic area ▾';
-    });
+    var refBtn = document.getElementById('rc-ref-btn');
+    if (refBtn) {
+      refBtn.addEventListener('click', function () {
+        var tbl = document.getElementById('rc-ref-table');
+        var open = tbl.classList.toggle('open');
+        this.textContent = open
+          ? 'Hide reference table ▴'
+          : 'View published screen failure rates by therapeutic area ▾';
+      });
+    }
 
     // Calculate button
-    document.getElementById('rc-calc-btn').addEventListener('click', function () {
+    var calcBtn = document.getElementById('rc-calc-btn');
+    if (calcBtn) calcBtn.addEventListener('click', function () {
       var n        = parseFloat(document.getElementById('rc-n').value);
       var elig     = parseFloat(document.getElementById('rc-elig').value);
       var sf       = parseFloat(document.getElementById('rc-sf').value);
       var winMonths = parseFloat(document.getElementById('rc-window').value);
 
       if (!n || !elig || sf === '' || isNaN(sf) || !winMonths) {
-        alert('Please fill in all four fields before calculating.');
+        var out = document.getElementById('rc-output');
+        out.innerHTML = '<div class="rc-warning">Please fill in all four fields before calculating.</div>';
+        out.classList.add('visible');
         return;
       }
       if (sf < 0 || sf >= 100) {
-        alert('Screen failure rate must be between 0 and 99%.');
+        var out2 = document.getElementById('rc-output');
+        out2.innerHTML = '<div class="rc-warning">Screen failure rate must be between 0 and 99%.</div>';
+        out2.classList.add('visible');
         return;
       }
       renderOutput(calculate(n, elig, sf, winMonths));
@@ -175,16 +183,18 @@
     });
 
     // Reset button
-    document.getElementById('rc-reset-btn').addEventListener('click', function () {
+    var resetBtn = document.getElementById('rc-reset-btn');
+    if (resetBtn) resetBtn.addEventListener('click', function () {
       ['rc-n', 'rc-elig', 'rc-sf', 'rc-window'].forEach(function (id) {
-        document.getElementById(id).value = '';
+        var el = document.getElementById(id);
+        if (el) el.value = '';
       });
       var out = document.getElementById('rc-output');
-      out.innerHTML = '';
-      out.classList.remove('visible');
-      document.getElementById('rc-ref-table').classList.remove('open');
-      document.getElementById('rc-ref-btn').textContent =
-        'View published screen failure rates by therapeutic area ▾';
+      if (out) { out.innerHTML = ''; out.classList.remove('visible'); }
+      var tbl = document.getElementById('rc-ref-table');
+      if (tbl) tbl.classList.remove('open');
+      var rb = document.getElementById('rc-ref-btn');
+      if (rb) rb.textContent = 'View published screen failure rates by therapeutic area ▾';
     });
   }
 
