@@ -269,7 +269,7 @@ export const BT_CSS = `
 .svc-qty input:focus { border-color: var(--teal); }
 .svc-qty input:disabled { background: var(--bg-mid); cursor: not-allowed; }
 .svc-sub { font-size: 12px; font-weight: 700; color: var(--navy); text-align: right; font-family: "Courier New", monospace; }
-.other-row { display: grid; grid-template-columns: 1fr 120px 30px; gap: 8px; align-items: center; padding: 8px 12px; border-bottom: 1px solid var(--bdr-s); background: var(--white); }
+.other-row { display: grid; grid-template-columns: 1fr 120px 80px 30px; gap: 8px; align-items: center; padding: 8px 12px; border-bottom: 1px solid var(--bdr-s); background: var(--white); }
 .svc-top-head { font-size: 10px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: var(--teal); padding: 18px 0 8px; border-top: 1px solid var(--bdr-s); margin-top: 8px; }
 .svc-top-head:first-child { margin-top: 0; border-top: none; padding-top: 4px; }
 .svc-acc-group { border-bottom: 1px solid var(--bdr-s); }
@@ -882,12 +882,6 @@ export const BT_HTML = `
         <span class="svc-sub" id="sw-other-sub">$0</span>
       </div>
 
-      <div id="other-list"></div>
-      <button class="add-btn" onclick="addOther()" style="margin:10px 0 0">
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-        Add other cost
-      </button>
-
       <div class="svc-group-head">Site &amp; administrative</div>
       <div class="svc-row">
         <span class="svc-name">Study insurance <span style="font-size:10px;color:var(--textd);font-weight:400">(clinical trial indemnity — required for industry; recommended for IIT)</span></span>
@@ -907,6 +901,13 @@ export const BT_HTML = `
         <div class="svc-qty"><input type="text" inputmode="decimal" min="0" value="0" id="profsvc-cost" class="oa" oninput="updateSummary()" style="width:100%;text-align:right;font-size:13px;border:1.5px solid var(--bdr);padding:5px 8px;border-radius:6px;outline:none"></div>
         <span class="svc-sub" id="profsvc-cost-sub">$0</span>
       </div>
+
+      <div class="svc-group-head">Custom / miscellaneous</div>
+      <div id="other-list"></div>
+      <button class="add-btn" onclick="addOther()" style="margin:10px 12px">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        Add other cost
+      </button>
 
       <div id="startup-svc-field" style="display:none;margin-top:18px">
         <div class="svc-cat-head">Industry startup carve-out</div>

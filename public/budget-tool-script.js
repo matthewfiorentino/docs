@@ -1054,6 +1054,14 @@ function updateStartupSvcSub() {
   updateSummary();
 }
 
+function updateOtherSub(inp) {
+  var row = inp.closest('.other-row');
+  if (!row) return;
+  var sub = row.querySelector('.svc-sub');
+  if (sub) sub.textContent = '$' + (parseFloat(inp.value) || 0).toLocaleString();
+  updateSummary();
+}
+
 function addOther() {
   otherCtr++;
   var id   = otherCtr;
@@ -1063,7 +1071,8 @@ function addOther() {
   d.id = 'ot-' + id;
   d.innerHTML =
     '<input type="text" class="fi" style="font-size:12.5px;padding:6px 8px" placeholder="Description">' +
-    '<input type="number" class="fi oa" min="0" value="0" placeholder="$" style="text-align:right;font-size:13px;padding:6px 8px" oninput="updateSummary()">' +
+    '<input type="number" class="fi oa" min="0" value="0" placeholder="$" style="text-align:right;font-size:13px;padding:6px 8px" oninput="updateOtherSub(this)">' +
+    '<span class="svc-sub">$0</span>' +
     '<button class="st-rm-btn" onclick="removeOther(' + id + ')" style="white-space:nowrap">×</button>';
   cont.appendChild(d);
 }
