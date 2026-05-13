@@ -192,13 +192,6 @@
                       "kb/funding-applications",
                       "kb/budgets-contracts",
                       "kb/budget-negotiation",
-                      {
-                        "group": "Research Budget Tool",
-                        "pages": [
-                          "kb/budget-tool",
-                          "kb/budget-justifications"
-                        ]
-                      },
                       "kb/clinical-trial-agreements",
                       "kb/research-grants"
                     ]
