@@ -1,0 +1,351 @@
+---
+title: "Is It Research?"
+sidebarTitle: "Is It Research?"
+description: "Determine whether your project is research requiring REB review, or QA/QI exempt under TCPS2 Article 2.5. Interactive screening tool, with routing to next steps."
+keywords: ["is it research", "QA/QI", "quality improvement", "quality assurance", "REB exemption", "TCPS2 Article 2.5", "REB review needed", "research determination", "exemption letter", "research vs QI"]
+boost: 3
+---
+
+import { useEffect } from 'react'
+
+Before you spend time planning a study, answer one question first: **does this project need REB review at all?** Most clinical research does. Some projects that look like research — chart reviews, process audits, evaluations of standard care — qualify as **quality assurance or quality improvement (QA/QI)** under [TCPS2 Article 2.5](https://ethics.gc.ca/eng/tcps2-eptc2_2022_chapter2-chapitre2.html) and are exempt from REB review. Submitting a QA/QI project for ethics review costs time and creates the wrong file in the wrong place. Skipping ethics review for what is actually research is far worse — the work cannot be published, cannot be funded, and may need to be redone.
+
+The MUHC Centre for Applied Ethics (CAE) publishes a [Research vs QA/QI Screening Tool](https://muhc.ca/cae/page/templates-consent-forms) (Word document) that is the canonical version of this decision aid. The interactive tool on this page replicates the same logic so you can work through it in your browser, generate a completed form, and email it directly to the REB if needed.
+
+<Tip>
+  Already confident this is research? Skip to [My Study Roadmap](/kb/my-roadmap) to generate your personalized startup checklist.
+</Tip>
+
+## The distinction
+
+**Research** is defined by TCPS2 as *"an undertaking intended to extend knowledge through a disciplined inquiry and/or systematic investigation."* The aim is **generalizable knowledge** — findings that can withstand the scrutiny of the relevant research community and inform practice beyond the local setting. Research involving human participants requires REB review and approval at the MUHC.
+
+**Quality assurance / quality improvement** projects aim to **introduce changes that improve patient outcomes, system performance, or professional development at the local institution**. They often implement already-established best practices using methods like Plan-Do-Study-Act cycles, and place no additional burden on participants beyond standard care. Under [TCPS2 Article 2.5](https://ethics.gc.ca/eng/tcps2-eptc2_2022_chapter2-chapitre2.html), QA/QI projects are **exempt from REB review**.
+
+<Note>
+  Research and QA/QI sit on a continuum. A single project can carry features of both. The screening tool below was designed to help with this exact ambiguity. **The MUHC REB retains the right to make the ultimate determination** regardless of what the tool indicates.
+</Note>
+
+A few common questions before you start:
+
+<AccordionGroup>
+  <Accordion title="Can a retrospective chart review be QA/QI?">
+    Sometimes. The objective and intent of the project are the determining factors. Many chart-review projects are in fact **Health Records Research (HRR)** and must be submitted to the REB via Nagano using the [CAE HRR protocol template](https://muhc.ca/cae/page/templates-consent-forms). Complete the screening tool to decide.
+  </Accordion>
+  <Accordion title="Do I automatically need REB review if I intend to publish?">
+    No. Per TCPS2, *"intent or ability to publish findings are not factors that determine whether an activity is research requiring ethics review."* Some QA/QI projects are publishable; some research projects are not. Publishability is independent of the research-versus-QA/QI question.
+  </Accordion>
+  <Accordion title="Who is ultimately responsible for the decision?">
+    The TCPS2 instructs the REB to be consulted *"when in doubt."* You are responsible for the accuracy and completeness of the responses you provide here. The REB makes the final determination if your project is submitted.
+  </Accordion>
+  <Accordion title="What if my project starts as QA/QI and evolves into research?">
+    You are responsible for obtaining REB review at the point of change. An exemption letter for the original QA/QI scope does not extend to the new research aspects.
+  </Accordion>
+  <Accordion title="Special considerations for QA/QI projects">
+    Even when exempt from REB review, QA/QI projects must respect three additional obligations:
+    - **Patient health information without consent** requires a **Privacy Impact Assessment (EFVP / évaluation des facteurs relatifs à la vie privée)**. Initiate directly with [efvp@muhc.mcgill.ca](mailto:efvp@muhc.mcgill.ca).
+    - **Hospital resources** require authorization from the appropriate responsible authorities. Initiate directly.
+    - **Eeyou/Eenou (Cree) populations**: declare the project to the Cree Board of Health and Social Services of James Bay at [18ctr.research.committee@ssss.gouv.qc.ca](mailto:18ctr.research.committee@ssss.gouv.qc.ca).
+  </Accordion>
+</AccordionGroup>
+
+## Screening tool
+
+Optional project details at the top — these are only used to build the completed form you can email to the REB. Then answer the 12 yes/no questions. The first four are decisive: a single YES means REB submission is required. The remaining eight are weighted: more YES in Group B leans toward research; more YES in Group C leans toward QA/QI.
+
+export const CSS = `
+#iir-root {
+  --navy:    #2b2666;
+  --teal:    #007468;
+  --teal-l:  #f0faf9;
+  --teal-d:  #005a52;
+  --green:   #1d9e75;
+  --green-l: #e5f5ee;
+  --amber:   #b97800;
+  --amber-l: #fff8e6;
+  --red:     #c0392b;
+  --red-l:   #fdf0ee;
+  --text:    #111;
+  --textm:   #444;
+  --textd:   #666;
+  --bdr:     #d0d0d0;
+  --bdr-s:   #e8e8e8;
+  --bg:      #f7f7f7;
+  --white:   #fff;
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 14px;
+  color: var(--text);
+  margin: 24px 0 8px;
+}
+#iir-root *, #iir-root *::before, #iir-root *::after { box-sizing: border-box; }
+#iir-root .iir-section {
+  background: var(--white);
+  border: 1px solid var(--bdr-s);
+  border-radius: 8px;
+  padding: 18px 20px;
+  margin-bottom: 14px;
+}
+#iir-root .iir-proj-hdr {
+  display: flex; align-items: center; gap: 8px;
+  cursor: pointer; user-select: none;
+  font-size: 13px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: .08em; color: var(--navy);
+}
+#iir-root .iir-disclose { font-size: 14px; color: var(--textm); }
+#iir-root .iir-proj-body { display: none; margin-top: 14px; }
+#iir-root .iir-proj-body.open { display: block; }
+#iir-root .iir-proj-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px 16px; }
+@media (max-width: 600px) { #iir-root .iir-proj-grid { grid-template-columns: 1fr; } }
+#iir-root .iir-proj-fullspan { grid-column: 1 / -1; }
+#iir-root label.iir-field-label { display: block; font-size: 12px; font-weight: 600; color: var(--textm); margin-bottom: 4px; }
+#iir-root input[type="text"], #iir-root input[type="email"], #iir-root textarea {
+  width: 100%; padding: 8px 10px; border: 1px solid var(--bdr);
+  border-radius: 6px; font-size: 13px; color: var(--text);
+  background: var(--white); outline: none;
+  font-family: inherit; resize: vertical;
+}
+#iir-root textarea { min-height: 60px; }
+#iir-root input:focus, #iir-root textarea:focus { border-color: var(--teal); }
+#iir-root .iir-q-group { margin-bottom: 18px; }
+#iir-root .iir-q-group:last-child { margin-bottom: 0; }
+#iir-root .iir-q-group-hdr {
+  display: flex; align-items: center; gap: 10px;
+  font-size: 14px; font-weight: 700; color: var(--navy);
+  margin-bottom: 10px; padding-bottom: 6px; border-bottom: 1px solid var(--bdr-s);
+}
+#iir-root .iir-q-group-letter {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 24px; height: 24px; border-radius: 12px;
+  font-size: 12px; font-weight: 700; color: #fff;
+}
+#iir-root .iir-letter-a { background: var(--red); }
+#iir-root .iir-letter-b { background: var(--teal); }
+#iir-root .iir-letter-c { background: var(--green); }
+#iir-root .iir-q-group-note { font-weight: 400; font-size: 12px; color: var(--textd); margin-left: auto; font-style: italic; }
+#iir-root .iir-q-row {
+  display: grid;
+  grid-template-columns: 28px 1fr auto;
+  gap: 12px;
+  align-items: start;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--bdr-s);
+}
+#iir-root .iir-q-row:last-child { border-bottom: none; }
+#iir-root .iir-q-num {
+  width: 24px; height: 24px; border-radius: 12px;
+  background: var(--bg); color: var(--textm);
+  font-size: 12px; font-weight: 700;
+  display: inline-flex; align-items: center; justify-content: center;
+  margin-top: 1px;
+}
+#iir-root .iir-q-text { font-size: 13.5px; line-height: 1.55; color: var(--text); }
+#iir-root .iir-q-answer { display: flex; gap: 6px; flex-shrink: 0; }
+#iir-root .iir-radio {
+  display: inline-flex; align-items: center;
+  padding: 5px 12px; border: 1px solid var(--bdr); border-radius: 6px;
+  font-size: 12px; font-weight: 600; color: var(--textm);
+  cursor: pointer; background: var(--white);
+  transition: border-color .15s, background .15s, color .15s;
+}
+#iir-root .iir-radio:hover { border-color: var(--teal); }
+#iir-root .iir-radio input { display: none; }
+#iir-root .iir-radio input:checked + span { color: var(--white); }
+#iir-root .iir-radio:has(input[value="yes"]:checked) { background: var(--teal); border-color: var(--teal); color: var(--white); }
+#iir-root .iir-radio:has(input[value="no"]:checked)  { background: var(--textm); border-color: var(--textm); color: var(--white); }
+#iir-root .iir-q-row.answered-yes { background: rgba(0, 116, 104, 0.03); }
+#iir-root .iir-q-row.answered-no  { background: rgba(0, 0, 0, 0.015); }
+#iir-root .iir-actions-top {
+  display: flex; gap: 10px; flex-wrap: wrap; margin-top: 14px;
+}
+#iir-root .iir-submit-btn {
+  background: var(--teal); color: #fff; border: none; border-radius: 6px;
+  padding: 10px 22px; font-size: 14px; font-weight: 600; cursor: pointer;
+  transition: background .15s;
+}
+#iir-root .iir-submit-btn:hover { background: var(--teal-d); }
+#iir-root .iir-reset-top-btn {
+  background: none; border: 1px solid var(--bdr); border-radius: 6px;
+  padding: 9px 16px; font-size: 13px; color: var(--textm); cursor: pointer;
+  transition: border-color .15s, color .15s;
+}
+#iir-root .iir-reset-top-btn:hover { border-color: var(--teal); color: var(--teal); }
+#iir-root .iir-output { display: none; }
+#iir-root .iir-output.visible { display: block; margin-top: 18px; }
+#iir-root .iir-banner {
+  border-radius: 8px; padding: 16px 20px;
+  display: flex; align-items: flex-start; gap: 14px; margin-bottom: 14px;
+  border: 1px solid;
+}
+#iir-root .iir-banner.green { background: var(--green-l); border-color: #a8dfc8; }
+#iir-root .iir-banner.amber { background: var(--amber-l); border-color: #f0c87a; }
+#iir-root .iir-banner.red   { background: var(--red-l);   border-color: #f0b8b2; }
+#iir-root .iir-banner-icon {
+  flex-shrink: 0; width: 32px; height: 32px; border-radius: 16px;
+  display: inline-flex; align-items: center; justify-content: center;
+  font-size: 18px; font-weight: 700; color: #fff;
+}
+#iir-root .iir-banner.green .iir-banner-icon { background: var(--green); }
+#iir-root .iir-banner.amber .iir-banner-icon { background: var(--amber); }
+#iir-root .iir-banner.red   .iir-banner-icon { background: var(--red); }
+#iir-root .iir-banner-body { flex: 1; }
+#iir-root .iir-banner-title { font-size: 16px; font-weight: 700; margin: 0 0 6px; }
+#iir-root .iir-banner.green .iir-banner-title { color: #0f6b4a; }
+#iir-root .iir-banner.amber .iir-banner-title { color: #7a5000; }
+#iir-root .iir-banner.red   .iir-banner-title { color: #7a1a10; }
+#iir-root .iir-banner-body p { margin: 0 0 8px; font-size: 13.5px; line-height: 1.55; color: var(--textm); }
+#iir-root .iir-banner-body p:last-child { margin-bottom: 0; }
+#iir-root .iir-result-subhdr { font-weight: 600; color: var(--text) !important; margin-top: 10px !important; }
+#iir-root .iir-trigger-list { margin: 4px 0 8px 0; padding-left: 22px; font-size: 13px; color: var(--textm); }
+#iir-root .iir-trigger-list li { margin-bottom: 4px; line-height: 1.5; }
+#iir-root .iir-next {
+  background: var(--white);
+  border: 1px solid var(--bdr-s);
+  border-radius: 6px;
+  padding: 14px 16px; margin-top: 12px;
+}
+#iir-root .iir-next-title {
+  font-size: 12px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: .07em; color: var(--navy); margin-bottom: 8px;
+}
+#iir-root .iir-next ol { margin: 0; padding-left: 20px; font-size: 13px; line-height: 1.65; color: var(--textm); }
+#iir-root .iir-next ol li { margin-bottom: 6px; }
+#iir-root .iir-next a, #iir-root .iir-disclaimer a { color: var(--teal); }
+#iir-root .iir-actions { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 12px; }
+#iir-root .iir-action-btn {
+  border: 1px solid var(--bdr); border-radius: 6px;
+  padding: 9px 16px; font-size: 13px; font-weight: 600; cursor: pointer;
+  background: var(--white); color: var(--textm);
+  transition: border-color .15s, color .15s, background .15s;
+}
+#iir-root .iir-action-btn:hover { border-color: var(--teal); color: var(--teal); }
+#iir-root .iir-action-primary { background: var(--teal); border-color: var(--teal); color: #fff; }
+#iir-root .iir-action-primary:hover { background: var(--teal-d); border-color: var(--teal-d); color: #fff; }
+#iir-root .iir-action-secondary { background: none; color: var(--textd); }
+#iir-root .iir-disclaimer {
+  background: var(--bg); border-radius: 6px; padding: 11px 14px;
+  font-size: 12px; color: var(--textm); line-height: 1.55;
+}
+#iir-root .iir-warning {
+  background: var(--amber-l); border: 1px solid #f0c87a; border-radius: 6px;
+  padding: 13px 16px; font-size: 13px; color: var(--textm); line-height: 1.55;
+}
+#iir-root .iir-warning strong { color: var(--navy); }
+`;
+
+export const ToolHTML = `
+<div id="iir-root">
+  <div class="iir-section">
+    <div class="iir-proj-hdr" id="iir-proj-hdr">
+      <span class="iir-disclose">▸</span>
+      Project details (optional — used to generate the completed form)
+    </div>
+    <div class="iir-proj-body" id="iir-proj-body">
+      <div class="iir-proj-grid">
+        <div>
+          <label class="iir-field-label" for="iir-title">Project title</label>
+          <input type="text" id="iir-title" autocomplete="off">
+        </div>
+        <div>
+          <label class="iir-field-label" for="iir-leader">Project leader</label>
+          <input type="text" id="iir-leader" autocomplete="off">
+        </div>
+        <div>
+          <label class="iir-field-label" for="iir-dept">Department / affiliation</label>
+          <input type="text" id="iir-dept" autocomplete="off">
+        </div>
+        <div>
+          <label class="iir-field-label" for="iir-email">Project leader email</label>
+          <input type="email" id="iir-email" autocomplete="off">
+        </div>
+        <div class="iir-proj-fullspan">
+          <label class="iir-field-label" for="iir-collabs">Collaborators (name and affiliation)</label>
+          <input type="text" id="iir-collabs" autocomplete="off">
+        </div>
+        <div class="iir-proj-fullspan">
+          <label class="iir-field-label" for="iir-target">Target population, process, program, or system</label>
+          <input type="text" id="iir-target" autocomplete="off">
+        </div>
+        <div class="iir-proj-fullspan">
+          <label class="iir-field-label" for="iir-bg">Background</label>
+          <textarea id="iir-bg"></textarea>
+        </div>
+        <div class="iir-proj-fullspan">
+          <label class="iir-field-label" for="iir-obj">Objective</label>
+          <textarea id="iir-obj"></textarea>
+        </div>
+        <div class="iir-proj-fullspan">
+          <label class="iir-field-label" for="iir-meth">Methods</label>
+          <textarea id="iir-meth"></textarea>
+        </div>
+        <div class="iir-proj-fullspan">
+          <label class="iir-field-label" for="iir-risks">Risks</label>
+          <textarea id="iir-risks"></textarea>
+        </div>
+        <div class="iir-proj-fullspan">
+          <label class="iir-field-label" for="iir-use">How will the results of the project be used at the MUHC?</label>
+          <textarea id="iir-use"></textarea>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="iir-section">
+    <div id="iir-questions"></div>
+    <div class="iir-actions-top">
+      <button class="iir-submit-btn" id="iir-submit-btn" type="button">Get my recommendation</button>
+      <button class="iir-reset-top-btn" id="iir-reset-top-btn" type="button">Reset</button>
+    </div>
+  </div>
+
+  <div class="iir-output" id="iir-output"></div>
+</div>
+`;
+
+export const IsItResearchTool = () => {
+  useEffect(() => {
+    const existing = document.getElementById('iir-script');
+    if (existing) existing.remove();
+    const script = document.createElement('script');
+    script.id = 'iir-script';
+    script.src = '/is-it-research-script.js';
+    document.body.appendChild(script);
+    return () => {
+      const s = document.getElementById('iir-script');
+      if (s) s.remove();
+    };
+  }, []);
+
+  return (
+    <>
+      <style dangerouslySetInnerHTML={{__html: CSS}} />
+      <div dangerouslySetInnerHTML={{__html: ToolHTML}} />
+    </>
+  );
+};
+
+<IsItResearchTool />
+
+## After the tool
+
+Depending on what the tool recommended, your next stop is one of:
+
+<CardGroup cols={2}>
+  <Card title="Likely research — start your submission" icon="paper-plane" href="/kb/submission-overview">
+    Begin Nagano submission preparation, confirm your ethics route, and generate a personalized roadmap.
+  </Card>
+  <Card title="Likely QA/QI — exemption letter" icon="file-circle-check" href="mailto:reb@muhc.mcgill.ca?subject=Request%20for%20REB%20exemption%20letter">
+    Email the completed screening form to the REB with subject "Request for REB exemption letter."
+  </Card>
+  <Card title="Need an EFVP" icon="lock" href="mailto:efvp@muhc.mcgill.ca">
+    QA/QI projects accessing patient health information without consent must initiate a Privacy Impact Assessment directly.
+  </Card>
+  <Card title="Unclear — REB consultation" icon="circle-question" href="mailto:reb@muhc.mcgill.ca">
+    Email the completed form to the REB for a determination. Allow time for the response.
+  </Card>
+</CardGroup>
+
+## Authoritative source
+
+This tool replicates the MUHC Centre for Applied Ethics **Research vs Quality Assurance/Improvement (QA/QI) Screening Tool**. The canonical Word document is published on the [CAE Templates page](https://muhc.ca/cae/page/templates-consent-forms) and is the version the REB references when issuing exemption letters. If you need a signed paper copy of your completed form, download the CAE document directly.
+
+For questions about whether a project requires REB review, contact the REB at extension 36077 or [reb@muhc.mcgill.ca](mailto:reb@muhc.mcgill.ca). Ethical concerns related to QA/QI projects (not requiring REB review) should be directed to the [Centre for Applied Ethics](mailto:cae@muhc.mcgill.ca).

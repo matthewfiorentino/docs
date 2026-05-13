@@ -140,6 +140,7 @@
                 "group": "Your Study, Step by Step",
                 "icon": "diagram-project",
                 "pages": [
+                  "kb/is-it-research",
                   "kb/my-roadmap",
                   {
                     "group": "Study Planning",
