@@ -198,9 +198,14 @@
     });
   }
 
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', init);
-  } else {
+  var _rcAttempts = 0;
+  function rcTryInit() {
+    _rcAttempts++;
+    if (!document.getElementById('rc-calc-btn')) {
+      if (_rcAttempts < 40) setTimeout(rcTryInit, 75);
+      return;
+    }
     init();
   }
+  rcTryInit();
 })();
