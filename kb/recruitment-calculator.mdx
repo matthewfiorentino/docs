@@ -220,9 +220,6 @@ export const RecruitmentCalculator = () => {
     const script = document.createElement('script');
     script.id = 'rc-script';
     script.src = '/recruitment-calc-script.js';
-    script.onload = function () {
-      if (window.rcInit) window.rcInit();
-    };
     document.body.appendChild(script);
     return () => {
       const s = document.getElementById('rc-script');
