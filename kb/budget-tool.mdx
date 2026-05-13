@@ -506,15 +506,15 @@ export const BT_HTML = `
 
       <div class="frow">
         <div class="fg">
-          <label class="fl">Number of HSSN institutions <span class="tip-icon" data-tip="Health and Social Services Network — the Quebec hospital network. Includes RI-MUHC and any affiliated sites. Used to calculate REB monitoring fees for multicentre studies." onclick="showTip(this)">ⓘ</span></label>
-          <span class="fh">Includes RI-MUHC. Used for REB fees (max 10 for monitoring).</span>
+          <label class="fl">Number of participating institutions <span class="tip-icon" data-tip="Quebec public health institutions (établissements) within the RSSS participating in the study. RI-MUHC counts as one. Used to calculate MSSS REB site authorization and annual monitoring fees. Fee #3 (ethics monitoring) is capped at 10 institutions; fee #6 (authorization monitoring) applies to all sites." onclick="showTip(this)">ⓘ</span></label>
+          <span class="fh">Includes RI-MUHC. Used for MSSS REB fees (fee #3 capped at 10 sites).</span>
           <input type="text" inputmode="decimal" class="fi" id="study-sites" value="1" oninput="calcREB();syncStudyType()">
         </div>
         <div class="fg">
           <label class="fl">Study type</label>
           <select class="fs" id="study-type" onchange="syncStudySites()">
             <option value="single">Single site (RI-MUHC only)</option>
-            <option value="multi">Multicentre (2+ HSSN institutions)</option>
+            <option value="multi">Multicentre (2+ institutions)</option>
           </select>
         </div>
       </div>
