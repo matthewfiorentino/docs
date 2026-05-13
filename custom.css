@@ -65,12 +65,16 @@ article a strong, article a b,
     color:       var(--ri-accent) !important;
     font-weight: 600 !important;
 }
-/* Teal dot pseudo-element on active li (li has position:relative in mint) */
+/* Teal dot — sits inside padding-left on the ul so overflow:auto on
+   #table-of-contents doesn't clip it                                  */
+#table-of-contents-content {
+    padding-left: 14px !important;
+}
 #table-of-contents-content li.toc-item[data-active-deepest="true"]::before {
     content:       '';
     display:       block;
     position:      absolute;
-    left:          -10px;
+    left:          -12px;
     top:           50%;
     transform:     translateY(-50%);
     width:         6px;
@@ -164,34 +168,25 @@ li[data-group-tag]:first-child {
     color: #007468 !important;
 }
 
-/* ── Navbar — tab strip ──
-   mint theme: tabs live in .nav-tabs container with class nav-tabs-item link.
-   Menu-enabled tabs are <button aria-haspopup="menu">.                        */
+/* ── Navbar — tab strip underline ──
+   mint theme: tabs are a.link inside .nav-tabs. We only add the underline
+   indicator — no font-weight override (mint's font-medium at 500 is fine). */
 .nav-tabs a.link,
 .nav-tabs button[aria-haspopup="menu"]:not(#localization-select-trigger) {
-    background:     transparent !important;
-    border-radius:  0 !important;
     border-bottom:  2px solid transparent !important;
     padding-bottom: 2px !important;
-    color:          #150e51 !important;
-    font-size:      13px !important;
-    font-weight:    600 !important;
-    transition:     color 0.15s, border-bottom-color 0.15s !important;
+    transition:     border-bottom-color 0.15s !important;
 }
 .nav-tabs a.link:hover,
 .nav-tabs button[aria-haspopup="menu"]:not(#localization-select-trigger):hover {
-    background:          transparent !important;
-    color:               #150e51 !important;
     border-bottom-color: #150e51 !important;
 }
 .nav-tabs a.link[data-active="true"],
 .nav-tabs a.link[aria-current="page"],
 .nav-tabs button[aria-haspopup="menu"]:not(#localization-select-trigger)[data-active="true"],
 .nav-tabs button[aria-haspopup="menu"]:not(#localization-select-trigger)[data-state="open"] {
-    background:          transparent !important;
-    color:               #150e51 !important;
     border-bottom-color: #150e51 !important;
-    font-weight:         700 !important;
+    font-weight:         600 !important;
 }
 /* ── Contact — outlined navy button ── */
 li.navbar-link a[href="/contacts"] {
@@ -210,28 +205,13 @@ li.navbar-link a[href="/contacts"]:hover {
     color:      #fff !important;
     opacity:    1 !important;
 }
-/* ── Portal — coral fill, inverts to outlined on hover ──
-   mint theme: the visual background is rendered by an inner <span class="absolute
-   inset-0 bg-primary-dark rounded-xl"> — we override the span, not the <a>.     */
-#topbar-cta-button a {
-    color:         #fff !important;
-    border-radius: 4px !important;
-    font-weight:   700 !important;
-    font-size:     13px !important;
-    padding:       5px 13px !important;
-    transition:    color 0.15s !important;
-}
+/* ── Portal — coral fill ──
+   mint theme: visual background is an inner <span class="absolute inset-0
+   bg-primary-dark rounded-xl">. Override the span; let mint's native
+   group-hover:opacity-[0.9] handle hover (subtle dim, no color swap).  */
 #topbar-cta-button a span.absolute {
     background:    #ff537f !important;
     border-radius: 4px !important;
-    transition:    background 0.15s !important;
-}
-#topbar-cta-button a:hover span.absolute {
-    background: #fff !important;
-    opacity:    1 !important;
-}
-#topbar-cta-button a:hover {
-    color: #2b2666 !important;
 }
 /* ── Tables ── */
 .prose table,
