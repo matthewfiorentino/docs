@@ -1,0 +1,734 @@
+(function () {
+  'use strict';
+
+  // ── SCREEN FAILURE REFERENCE DATA ────────────────────────────────────────
+  const SF_REFS = [
+    {
+      area: 'Cross-therapeutic average (industry-sponsored)',
+      range: '~36%',
+      source: 'Tufts CSDD',
+      citation: 'Getz KA et al., 2019'
+    },
+    {
+      area: 'CNS / Neuroscience',
+      range: '~57%',
+      source: 'Tufts CSDD',
+      citation: 'Getz KA et al., 2019'
+    },
+    {
+      area: 'Alzheimer\'s disease (mild)',
+      range: '~44%',
+      source: 'Goldman et al.',
+      citation: 'Goldman D et al., 2020'
+    },
+    {
+      area: 'Alzheimer\'s disease (preclinical)',
+      range: '~88%',
+      source: 'Goldman et al.',
+      citation: 'Goldman D et al., 2020'
+    },
+    {
+      area: 'Oncology — head & neck (curative intent)',
+      range: '~57%',
+      source: 'Bashir et al.',
+      citation: 'Bashir B et al., PMC9934872'
+    },
+    {
+      area: 'Oncology — head & neck (palliative intent)',
+      range: '~29%',
+      source: 'Bashir et al.',
+      citation: 'Bashir B et al., PMC9934872'
+    },
+    {
+      area: 'Oncology — lung (palliative intent)',
+      range: '~45%',
+      source: 'Bashir et al.',
+      citation: 'Bashir B et al., PMC9934872'
+    },
+    {
+      area: 'GU cancers — prostate (Phase II/III)',
+      range: '~25–28%',
+      source: 'Sfakianos et al.',
+      citation: 'Sfakianos GP et al., 2018'
+    },
+    {
+      area: 'Phase I (healthy volunteers)',
+      range: '~62%',
+      source: 'PMC8576730',
+      citation: 'Zhao Z et al., 2022'
+    }
+  ];
+
+  // ── CSS ───────────────────────────────────────────────────────────────────
+  const CSS = `
+#rc-root {
+  --navy:    #2b2666;
+  --teal:    #007468;
+  --teal-l:  #f0faf9;
+  --teal-d:  #005a52;
+  --green:   #1d9e75;
+  --green-l: #e5f5ee;
+  --amber:   #b97800;
+  --amber-l: #fff8e6;
+  --red:     #c0392b;
+  --red-l:   #fdf0ee;
+  --text:    #111;
+  --textm:   #444;
+  --textd:   #666;
+  --bdr:     #d0d0d0;
+  --bdr-s:   #e8e8e8;
+  --bg:      #f7f7f7;
+  --white:   #fff;
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 14px;
+  color: var(--text);
+  max-width: 820px;
+  margin: 0 auto;
+  padding: 32px 24px 64px;
+}
+#rc-root *, #rc-root *::before, #rc-root *::after { box-sizing: border-box; }
+#rc-root h1 {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--navy);
+  margin: 0 0 6px;
+}
+#rc-root .rc-sub {
+  font-size: 13px;
+  color: var(--textd);
+  margin: 0 0 28px;
+  line-height: 1.5;
+}
+#rc-root .rc-section {
+  background: var(--white);
+  border: 1px solid var(--bdr-s);
+  border-radius: 8px;
+  padding: 20px 24px;
+  margin-bottom: 16px;
+}
+#rc-root .rc-section-title {
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  color: var(--navy);
+  margin: 0 0 16px;
+}
+#rc-root .rc-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+@media (max-width: 560px) {
+  #rc-root .rc-grid { grid-template-columns: 1fr; }
+}
+#rc-root label {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--textm);
+  margin-bottom: 5px;
+}
+#rc-root label span.rc-hint {
+  font-weight: 400;
+  color: var(--textd);
+  font-size: 11px;
+  display: block;
+  margin-top: 2px;
+}
+#rc-root input[type="number"] {
+  width: 100%;
+  padding: 8px 10px;
+  border: 1px solid var(--bdr);
+  border-radius: 6px;
+  font-size: 14px;
+  color: var(--text);
+  background: var(--white);
+  outline: none;
+  transition: border-color .15s;
+}
+#rc-root input[type="number"]:focus {
+  border-color: var(--teal);
+}
+#rc-root input[type="number"]::placeholder { color: #bbb; }
+#rc-root .rc-sf-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+#rc-root .rc-sf-row input { flex: 0 0 100px; }
+#rc-root .rc-sf-pct {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--textm);
+}
+#rc-root .rc-ref-toggle {
+  background: none;
+  border: none;
+  color: var(--teal);
+  font-size: 12px;
+  cursor: pointer;
+  padding: 0;
+  margin-top: 6px;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+#rc-root .rc-ref-table {
+  display: none;
+  margin-top: 12px;
+  border: 1px solid var(--bdr-s);
+  border-radius: 6px;
+  overflow: hidden;
+}
+#rc-root .rc-ref-table.open { display: block; }
+#rc-root .rc-ref-table table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12px;
+}
+#rc-root .rc-ref-table th {
+  background: var(--bg);
+  padding: 8px 10px;
+  text-align: left;
+  font-weight: 600;
+  color: var(--textm);
+  border-bottom: 1px solid var(--bdr-s);
+}
+#rc-root .rc-ref-table td {
+  padding: 7px 10px;
+  border-bottom: 1px solid var(--bdr-s);
+  color: var(--text);
+  vertical-align: top;
+}
+#rc-root .rc-ref-table tr:last-child td { border-bottom: none; }
+#rc-root .rc-ref-table .rc-range {
+  font-weight: 700;
+  color: var(--navy);
+  white-space: nowrap;
+}
+#rc-root .rc-ref-table .rc-cite {
+  color: var(--textd);
+  font-style: italic;
+}
+#rc-root .rc-calc-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--teal);
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 10px 20px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background .15s;
+  margin-top: 4px;
+}
+#rc-root .rc-calc-btn:hover { background: var(--teal-d); }
+#rc-root .rc-output { display: none; }
+#rc-root .rc-output.visible { display: block; }
+#rc-root .rc-status-bar {
+  border-radius: 8px;
+  padding: 16px 20px;
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  margin-bottom: 16px;
+}
+#rc-root .rc-status-bar.green { background: var(--green-l); border: 1px solid #a8dfc8; }
+#rc-root .rc-status-bar.amber { background: var(--amber-l); border: 1px solid #f0c87a; }
+#rc-root .rc-status-bar.red   { background: var(--red-l);   border: 1px solid #f0b8b2; }
+#rc-root .rc-status-icon { font-size: 22px; line-height: 1; flex-shrink: 0; margin-top: 1px; }
+#rc-root .rc-status-text .rc-status-title {
+  font-weight: 700;
+  font-size: 15px;
+  margin: 0 0 3px;
+}
+#rc-root .rc-status-bar.green .rc-status-title { color: #0f6b4a; }
+#rc-root .rc-status-bar.amber .rc-status-title { color: #7a5000; }
+#rc-root .rc-status-bar.red   .rc-status-title { color: #7a1a10; }
+#rc-root .rc-status-text .rc-status-desc {
+  font-size: 13px;
+  color: var(--textm);
+  margin: 0;
+  line-height: 1.5;
+}
+#rc-root .rc-metrics {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-bottom: 16px;
+}
+@media (max-width: 600px) {
+  #rc-root .rc-metrics { grid-template-columns: 1fr 1fr; }
+}
+#rc-root .rc-metric {
+  background: var(--white);
+  border: 1px solid var(--bdr-s);
+  border-radius: 8px;
+  padding: 14px 16px;
+}
+#rc-root .rc-metric-label {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .07em;
+  color: var(--textd);
+  margin-bottom: 5px;
+}
+#rc-root .rc-metric-value {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--navy);
+  line-height: 1.1;
+}
+#rc-root .rc-metric-sub {
+  font-size: 11px;
+  color: var(--textd);
+  margin-top: 3px;
+}
+#rc-root .rc-chart-section {
+  background: var(--white);
+  border: 1px solid var(--bdr-s);
+  border-radius: 8px;
+  padding: 20px 24px;
+  margin-bottom: 16px;
+}
+#rc-root .rc-chart-title {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--navy);
+  margin: 0 0 16px;
+}
+#rc-root .rc-bar-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+#rc-root .rc-bar-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--textm);
+  width: 130px;
+  flex-shrink: 0;
+  text-align: right;
+}
+#rc-root .rc-bar-track {
+  flex: 1;
+  height: 24px;
+  background: var(--bg);
+  border-radius: 4px;
+  position: relative;
+  overflow: visible;
+}
+#rc-root .rc-bar-fill {
+  height: 100%;
+  border-radius: 4px;
+  position: relative;
+  transition: width .4s ease;
+  max-width: 100%;
+}
+#rc-root .rc-bar-fill.optimistic { background: var(--teal); }
+#rc-root .rc-bar-fill.conservative { background: var(--amber); }
+#rc-root .rc-bar-fill.window { background: #dde; }
+#rc-root .rc-bar-val {
+  position: absolute;
+  right: -52px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 12px;
+  font-weight: 700;
+  white-space: nowrap;
+  color: var(--textm);
+}
+#rc-root .rc-bar-val.over {
+  color: var(--red);
+}
+#rc-root .rc-chart-legend {
+  display: flex;
+  gap: 20px;
+  margin-top: 14px;
+  flex-wrap: wrap;
+}
+#rc-root .rc-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: var(--textm);
+}
+#rc-root .rc-legend-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 3px;
+  flex-shrink: 0;
+}
+#rc-root .rc-note {
+  background: var(--teal-l);
+  border-left: 3px solid var(--teal);
+  border-radius: 0 6px 6px 0;
+  padding: 12px 16px;
+  font-size: 13px;
+  color: var(--textm);
+  line-height: 1.5;
+  margin-bottom: 16px;
+}
+#rc-root .rc-note strong { color: var(--navy); }
+#rc-root .rc-warning {
+  background: var(--amber-l);
+  border-left: 3px solid var(--amber);
+  border-radius: 0 6px 6px 0;
+  padding: 12px 16px;
+  font-size: 13px;
+  color: #5a3a00;
+  line-height: 1.5;
+  margin-bottom: 16px;
+}
+#rc-root .rc-reset-btn {
+  background: none;
+  border: 1px solid var(--bdr);
+  border-radius: 6px;
+  padding: 8px 16px;
+  font-size: 13px;
+  color: var(--textm);
+  cursor: pointer;
+  transition: border-color .15s, color .15s;
+}
+#rc-root .rc-reset-btn:hover { border-color: var(--teal); color: var(--teal); }
+`;
+
+  // ── HTML ──────────────────────────────────────────────────────────────────
+  function buildHTML() {
+    const refRows = SF_REFS.map(r => `
+      <tr>
+        <td>${r.area}</td>
+        <td class="rc-range">${r.range}</td>
+        <td class="rc-cite">${r.citation}</td>
+      </tr>`).join('');
+
+    return `
+<div id="rc-root">
+  <h1>Recruitment Realism Calculator</h1>
+  <p class="rc-sub">
+    Enter your study's key recruitment parameters. The calculator applies the
+    40–45 productive recruitment weeks per year reality and the
+    "halve-your-projection" heuristic documented in
+    <a href="/kb/recruitment-enrollment#recruitment-realism" style="color:var(--teal)">Recruitment, Screening, and Enrollment</a>
+    to show you both an optimistic and a conservative estimate — before you commit to a sponsor or funder.
+  </p>
+
+  <div class="rc-section">
+    <div class="rc-section-title">Your study parameters</div>
+    <div class="rc-grid">
+      <div>
+        <label>
+          Target participants to enrol
+          <span class="rc-hint">The total N enrolled required by the protocol</span>
+        </label>
+        <input type="number" id="rc-n" min="1" placeholder="e.g. 30">
+      </div>
+      <div>
+        <label>
+          Eligible patients seen per month
+          <span class="rc-hint">From an OACIS query, clinic volumes, or a prior OACIS search</span>
+        </label>
+        <input type="number" id="rc-elig" min="1" placeholder="e.g. 10">
+      </div>
+      <div>
+        <label>
+          Expected screen failure rate (%)
+          <span class="rc-hint">What percentage of screened patients will not enrol?</span>
+        </label>
+        <div class="rc-sf-row">
+          <input type="number" id="rc-sf" min="0" max="99" placeholder="e.g. 40">
+          <span class="rc-sf-pct">%</span>
+        </div>
+        <button class="rc-ref-toggle" id="rc-ref-btn" type="button">
+          View published screen failure rates by therapeutic area ▾
+        </button>
+        <div class="rc-ref-table" id="rc-ref-table">
+          <table>
+            <thead>
+              <tr>
+                <th>Therapeutic area</th>
+                <th>Published range</th>
+                <th>Source</th>
+              </tr>
+            </thead>
+            <tbody>${refRows}</tbody>
+          </table>
+        </div>
+      </div>
+      <div>
+        <label>
+          Recruitment window (months)
+          <span class="rc-hint">The recruitment period in your protocol or grant timeline</span>
+        </label>
+        <input type="number" id="rc-window" min="1" placeholder="e.g. 18">
+      </div>
+    </div>
+    <div style="margin-top:16px;display:flex;gap:10px;flex-wrap:wrap;align-items:center;">
+      <button class="rc-calc-btn" id="rc-calc-btn" type="button">Calculate</button>
+      <button class="rc-reset-btn" id="rc-reset-btn" type="button">Reset</button>
+    </div>
+  </div>
+
+  <div class="rc-output" id="rc-output"></div>
+</div>`;
+  }
+
+  // ── CALCULATIONS ──────────────────────────────────────────────────────────
+  function calculate(n, eligPerMonth, sfPct, windowMonths) {
+    const sfRate = sfPct / 100;
+    const enrollRate = 1 - sfRate;
+
+    // Patients needed to screen
+    const toScreen = Math.ceil(n / enrollRate);
+
+    // Productive months available (44 productive weeks / 52 = 0.846)
+    const productiveMonths = windowMonths * (44 / 52);
+
+    // Monthly enrolment rate (eligible × enrol rate)
+    const monthlyEnrol = eligPerMonth * enrollRate;
+
+    // Optimistic: how many months at full pace
+    const optimisticMonths = toScreen / eligPerMonth;
+
+    // Conservative: halve-your-projection
+    const conservativeMonths = optimisticMonths * 2;
+
+    // Productive-adjusted months to target
+    const productiveAdjMonths = toScreen / (eligPerMonth * (44 / 52));
+
+    // Status
+    let status;
+    if (conservativeMonths <= windowMonths) {
+      status = 'green';
+    } else if (optimisticMonths <= windowMonths) {
+      status = 'amber';
+    } else {
+      status = 'red';
+    }
+
+    return {
+      toScreen,
+      monthlyEnrol: monthlyEnrol.toFixed(1),
+      productiveMonths: Math.round(productiveMonths),
+      optimisticMonths: Math.round(optimisticMonths * 10) / 10,
+      conservativeMonths: Math.round(conservativeMonths * 10) / 10,
+      productiveAdjMonths: Math.round(productiveAdjMonths * 10) / 10,
+      windowMonths,
+      status,
+      sfPct,
+      n,
+      eligPerMonth
+    };
+  }
+
+  // ── FORMAT HELPERS ────────────────────────────────────────────────────────
+  function formatMonthsFromNow(months) {
+    const d = new Date();
+    d.setMonth(d.getMonth() + Math.round(months));
+    return d.toLocaleDateString('en-CA', { month: 'long', year: 'numeric' });
+  }
+
+  function pluralMonths(n) {
+    const r = Math.round(n * 10) / 10;
+    return r === 1 ? '1 month' : `${r} months`;
+  }
+
+  // ── RENDER OUTPUT ─────────────────────────────────────────────────────────
+  function renderOutput(r) {
+    const statusConfig = {
+      green: {
+        icon: '✓',
+        title: 'Your timeline is realistic',
+        desc: `Both the optimistic (${pluralMonths(r.optimisticMonths)}) and conservative (${pluralMonths(r.conservativeMonths)}) estimates fit within your ${pluralMonths(r.windowMonths)} recruitment window. This is the exception, not the rule — confirm your eligible patient count with an OACIS query before committing.`
+      },
+      amber: {
+        icon: '⚠',
+        title: 'Your optimistic estimate fits — your conservative estimate does not',
+        desc: `The optimistic projection (${pluralMonths(r.optimisticMonths)}) fits your window, but the conservative estimate (${pluralMonths(r.conservativeMonths)}) does not. Experience shows actual accrual averages roughly half of projected. Consider extending your recruitment window or reducing your target N.`
+      },
+      red: {
+        icon: '✗',
+        title: 'Your timeline is not achievable at this enrolment rate',
+        desc: `Even the optimistic projection (${pluralMonths(r.optimisticMonths)}) exceeds your ${pluralMonths(r.windowMonths)} window. The conservative estimate is ${pluralMonths(r.conservativeMonths)}. You need more eligible patients per month, a lower screen failure rate, a longer window, or a reduced target N.`
+      }
+    };
+
+    const sc = statusConfig[r.status];
+
+    // Bar chart scale: use max of (conservative, window) as 100%
+    const scaleMax = Math.max(r.conservativeMonths, r.windowMonths) * 1.05;
+    const optPct   = Math.min((r.optimisticMonths / scaleMax) * 100, 100);
+    const conPct   = Math.min((r.conservativeMonths / scaleMax) * 100, 100);
+    const winPct   = Math.min((r.windowMonths / scaleMax) * 100, 100);
+
+    const optOver  = r.optimisticMonths > r.windowMonths;
+    const conOver  = r.conservativeMonths > r.windowMonths;
+
+    const halveNote = r.sfPct < 20
+      ? `<div class="rc-note"><strong>Note on screen failure rate:</strong> Your entered rate of ${r.sfPct}% is lower than the cross-therapeutic average of ~36% for industry-sponsored trials. Verify this reflects local data from a prior OACIS search, not an optimistic assumption.</div>`
+      : '';
+
+    const productiveNote = `<div class="rc-note"><strong>Productive recruitment weeks:</strong> The calculator uses 44 productive recruitment weeks per year (not 52), reflecting the impact of clinical commitments, holidays, competing studies, and site activation ramp-up time. This is the figure cited in RI-MUHC operational guidance.</div>`;
+
+    const html = `
+<div class="rc-status-bar ${r.status}">
+  <div class="rc-status-icon">${sc.icon}</div>
+  <div class="rc-status-text">
+    <div class="rc-status-title">${sc.title}</div>
+    <p class="rc-status-desc">${sc.desc}</p>
+  </div>
+</div>
+
+<div class="rc-metrics">
+  <div class="rc-metric">
+    <div class="rc-metric-label">Patients to screen</div>
+    <div class="rc-metric-value">${r.toScreen.toLocaleString()}</div>
+    <div class="rc-metric-sub">to enrol ${r.n} at ${r.sfPct}% screen failure</div>
+  </div>
+  <div class="rc-metric">
+    <div class="rc-metric-label">Monthly enrolment rate</div>
+    <div class="rc-metric-value">${r.monthlyEnrol}</div>
+    <div class="rc-metric-sub">participants per month (optimistic)</div>
+  </div>
+  <div class="rc-metric">
+    <div class="rc-metric-label">Productive months available</div>
+    <div class="rc-metric-value">${r.productiveMonths}</div>
+    <div class="rc-metric-sub">of ${r.windowMonths} total (44 weeks/year)</div>
+  </div>
+  <div class="rc-metric">
+    <div class="rc-metric-label">Optimistic LPI</div>
+    <div class="rc-metric-value">${pluralMonths(r.optimisticMonths)}</div>
+    <div class="rc-metric-sub">${formatMonthsFromNow(r.optimisticMonths)}</div>
+  </div>
+  <div class="rc-metric">
+    <div class="rc-metric-label">Conservative LPI</div>
+    <div class="rc-metric-value">${pluralMonths(r.conservativeMonths)}</div>
+    <div class="rc-metric-sub">${formatMonthsFromNow(r.conservativeMonths)} — halved projection</div>
+  </div>
+  <div class="rc-metric">
+    <div class="rc-metric-label">Your window</div>
+    <div class="rc-metric-value">${pluralMonths(r.windowMonths)}</div>
+    <div class="rc-metric-sub">recruitment period in protocol / grant</div>
+  </div>
+</div>
+
+<div class="rc-chart-section">
+  <div class="rc-chart-title">Projection vs recruitment window</div>
+  <div class="rc-bar-row">
+    <div class="rc-bar-label">Optimistic</div>
+    <div class="rc-bar-track">
+      <div class="rc-bar-fill optimistic" style="width:${optPct}%">
+        <span class="rc-bar-val${optOver ? ' over' : ''}">${pluralMonths(r.optimisticMonths)}</span>
+      </div>
+    </div>
+  </div>
+  <div class="rc-bar-row">
+    <div class="rc-bar-label">Conservative</div>
+    <div class="rc-bar-track">
+      <div class="rc-bar-fill conservative" style="width:${conPct}%">
+        <span class="rc-bar-val${conOver ? ' over' : ''}">${pluralMonths(r.conservativeMonths)}</span>
+      </div>
+    </div>
+  </div>
+  <div class="rc-bar-row">
+    <div class="rc-bar-label">Your window</div>
+    <div class="rc-bar-track">
+      <div class="rc-bar-fill window" style="width:${winPct}%">
+        <span class="rc-bar-val">${pluralMonths(r.windowMonths)}</span>
+      </div>
+    </div>
+  </div>
+  <div class="rc-chart-legend">
+    <div class="rc-legend-item"><div class="rc-legend-dot" style="background:#007468"></div> Optimistic (full accrual pace)</div>
+    <div class="rc-legend-item"><div class="rc-legend-dot" style="background:#b97800"></div> Conservative (halved projection)</div>
+    <div class="rc-legend-item"><div class="rc-legend-dot" style="background:#dde"></div> Your recruitment window</div>
+  </div>
+</div>
+
+${halveNote}
+${productiveNote}
+
+<div class="rc-warning">
+  <strong>What to do with this number.</strong> The conservative estimate is not a worst case — it is the historically observed average for experienced sites. If the conservative estimate does not fit your window, renegotiate before you commit: extend the timeline, reduce target N with the sponsor, or identify additional recruitment sources. Sponsors track enrolment performance; sites with consistent records receive preferential consideration in future trials.
+</div>`;
+
+    document.getElementById('rc-output').innerHTML = html;
+    document.getElementById('rc-output').classList.add('visible');
+    document.getElementById('rc-output').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+
+  // ── INIT ──────────────────────────────────────────────────────────────────
+  function init() {
+    // Inject CSS
+    const styleEl = document.createElement('style');
+    styleEl.id = 'rc-style';
+    styleEl.textContent = CSS;
+    document.head.appendChild(styleEl);
+
+    // Find mount point
+    const mount = document.getElementById('rc-mount');
+    if (!mount) return;
+    mount.innerHTML = buildHTML();
+
+    // Reference table toggle
+    document.getElementById('rc-ref-btn').addEventListener('click', function () {
+      const tbl = document.getElementById('rc-ref-table');
+      const open = tbl.classList.toggle('open');
+      this.textContent = open
+        ? 'Hide reference table ▴'
+        : 'View published screen failure rates by therapeutic area ▾';
+    });
+
+    // Calculate button
+    document.getElementById('rc-calc-btn').addEventListener('click', function () {
+      const n      = parseFloat(document.getElementById('rc-n').value);
+      const elig   = parseFloat(document.getElementById('rc-elig').value);
+      const sf     = parseFloat(document.getElementById('rc-sf').value);
+      const window = parseFloat(document.getElementById('rc-window').value);
+
+      if (!n || !elig || sf === '' || isNaN(sf) || !window) {
+        alert('Please fill in all four fields before calculating.');
+        return;
+      }
+      if (sf < 0 || sf >= 100) {
+        alert('Screen failure rate must be between 0 and 99%.');
+        return;
+      }
+
+      const result = calculate(n, elig, sf, window);
+      renderOutput(result);
+    });
+
+    // Allow Enter key in inputs
+    ['rc-n', 'rc-elig', 'rc-sf', 'rc-window'].forEach(id => {
+      document.getElementById(id).addEventListener('keydown', function (e) {
+        if (e.key === 'Enter') document.getElementById('rc-calc-btn').click();
+      });
+    });
+
+    // Reset button
+    document.getElementById('rc-reset-btn').addEventListener('click', function () {
+      ['rc-n', 'rc-elig', 'rc-sf', 'rc-window'].forEach(id => {
+        document.getElementById(id).value = '';
+      });
+      const out = document.getElementById('rc-output');
+      out.innerHTML = '';
+      out.classList.remove('visible');
+      document.getElementById('rc-ref-table').classList.remove('open');
+      document.getElementById('rc-ref-btn').textContent =
+        'View published screen failure rates by therapeutic area ▾';
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+})();

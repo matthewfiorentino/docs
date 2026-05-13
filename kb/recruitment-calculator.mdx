@@ -1,0 +1,26 @@
+---
+title: "Recruitment Realism Calculator"
+description: "Translate your eligible-patient estimate into a defensible enrolment projection — with screen failure adjustment, productive-weeks correction, and the halve-your-projection sanity check."
+mode: "frame"
+---
+
+import { useEffect } from 'react'
+
+export const RecruitmentCalculator = () => {
+  useEffect(() => {
+    const existing = document.getElementById('rc-script');
+    if (existing) existing.remove();
+    const script = document.createElement('script');
+    script.id = 'rc-script';
+    script.src = '/recruitment-calc-script.js';
+    document.body.appendChild(script);
+    return () => {
+      const s = document.getElementById('rc-script');
+      if (s) s.remove();
+    };
+  }, []);
+
+  return <div id="rc-mount" />;
+};
+
+<RecruitmentCalculator />
