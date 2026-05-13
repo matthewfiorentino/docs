@@ -37,9 +37,9 @@
     var cYes = QUESTIONS.C.filter(function (q) { return a[q.id] === 'yes'; }).length;
 
     var aAnswered = QUESTIONS.A.filter(function (q) { return a[q.id] !== null; }).length;
-    var bAnswered = QUESTIONS.B.filter(function (q) { return a[q.id] !== null; }).length;
-    var cAnswered = QUESTIONS.C.filter(function (q) { return a[q.id] !== null; }).length;
-    var totalAnswered = aAnswered + bAnswered + cAnswered;
+    var totalAnswered = aAnswered +
+      QUESTIONS.B.filter(function (q) { return a[q.id] !== null; }).length +
+      QUESTIONS.C.filter(function (q) { return a[q.id] !== null; }).length;
 
     if (totalAnswered === 0) {
       return { status: 'empty' };
@@ -59,11 +59,7 @@
     }
 
     if (bYes === 0 && cYes === 0) {
-      return {
-        status: 'unclear-no-signal',
-        bYes: bYes,
-        cYes: cYes
-      };
+      return { status: 'unclear-no-signal', bYes: bYes, cYes: cYes };
     }
 
     if (bYes >= cYes + 2) {
@@ -75,77 +71,9 @@
     return { status: 'unclear-mixed', bYes: bYes, cYes: cYes };
   }
 
-  function buildEmailBody(a, result) {
-    var title = document.getElementById('iir-title').value.trim() || '[not provided]';
-    var leader = document.getElementById('iir-leader').value.trim() || '[not provided]';
-    var dept = document.getElementById('iir-dept').value.trim() || '[not provided]';
-    var email = document.getElementById('iir-email').value.trim() || '[not provided]';
-    var collabs = document.getElementById('iir-collabs').value.trim() || '[not provided]';
-    var target = document.getElementById('iir-target').value.trim() || '[not provided]';
-    var bg = document.getElementById('iir-bg').value.trim() || '[not provided]';
-    var obj = document.getElementById('iir-obj').value.trim() || '[not provided]';
-    var meth = document.getElementById('iir-meth').value.trim() || '[not provided]';
-    var risks = document.getElementById('iir-risks').value.trim() || '[not provided]';
-    var use = document.getElementById('iir-use').value.trim() || '[not provided]';
-
-    var lines = [];
-    lines.push('RESEARCH vs QA/QI SCREENING TOOL — completed form');
-    lines.push('Submitted from the RI-MUHC Clinical Research Hub');
-    lines.push('');
-    lines.push('1. Project title: ' + title);
-    lines.push('2. Project leader: ' + leader);
-    lines.push('3. Department / affiliation: ' + dept);
-    lines.push('4. Project leader email: ' + email);
-    lines.push('5. Collaborators: ' + collabs);
-    lines.push('6. Target population / process / program / system: ' + target);
-    lines.push('');
-    lines.push('7. Project summary');
-    lines.push('   Background: ' + bg);
-    lines.push('   Objective: ' + obj);
-    lines.push('   Methods: ' + meth);
-    lines.push('   Risks: ' + risks);
-    lines.push('   How results will be used at the MUHC: ' + use);
-    lines.push('');
-    lines.push('SCREENING QUESTIONS');
-    lines.push('');
-    lines.push('Definitive REB triggers (any YES → REB submission required):');
-    QUESTIONS.A.forEach(function (q, i) {
-      lines.push('  ' + (i + 1) + '. ' + q.text);
-      lines.push('     Answer: ' + (a[q.id] ? a[q.id].toUpperCase() : '[not answered]'));
-    });
-    lines.push('');
-    lines.push('Suggestive of research:');
-    QUESTIONS.B.forEach(function (q, i) {
-      lines.push('  ' + (i + 5) + '. ' + q.text);
-      lines.push('     Answer: ' + (a[q.id] ? a[q.id].toUpperCase() : '[not answered]'));
-    });
-    lines.push('');
-    lines.push('Suggestive of QA/QI:');
-    QUESTIONS.C.forEach(function (q) {
-      lines.push('  ' + q.id.substring(1) + '. ' + q.text);
-      lines.push('     Answer: ' + (a[q.id] ? a[q.id].toUpperCase() : '[not answered]'));
-    });
-    lines.push('');
-    lines.push('TOOL RECOMMENDATION');
-    lines.push(resultPlainText(result));
-    lines.push('');
-    lines.push('Note: this tool replicates the MUHC CAE Research vs QA/QI Screening Tool. The MUHC REB retains the right to make the ultimate determination regarding the need for REB review, regardless of the results implied by use of the screening tool.');
-    return lines.join('\n');
-  }
-
-  function resultPlainText(r) {
-    switch (r.status) {
-      case 'reb-required':   return 'REB review required (Group A trigger).';
-      case 'likely-research':return 'Likely research (Group B yes: ' + r.bYes + ', Group C yes: ' + r.cYes + '). Recommend submitting via Nagano.';
-      case 'likely-qaqi':    return 'Likely QA/QI (Group B yes: ' + r.bYes + ', Group C yes: ' + r.cYes + '). Recommend contacting CAE for an exemption letter if needed.';
-      case 'unclear-mixed':  return 'Mixed signals (Group B yes: ' + r.bYes + ', Group C yes: ' + r.cYes + '). Email this completed form to reb@muhc.mcgill.ca for a determination.';
-      case 'unclear-no-signal': return 'No clear signal yet (Group A all NO; Groups B and C both 0 YES). Re-read the questions or email this completed form to reb@muhc.mcgill.ca.';
-      default: return 'Indeterminate.';
-    }
-  }
-
   function renderResult(r) {
     var out = document.getElementById('iir-output');
+
     if (r.status === 'empty') {
       out.innerHTML = '<div class="iir-warning"><strong>Answer at least the first four questions</strong> before requesting a recommendation.</div>';
       out.classList.add('visible');
@@ -169,6 +97,7 @@
         '<p class="iir-result-subhdr">Trigger' + (r.triggers.length > 1 ? 's' : '') + ' identified:</p>' +
         '<ul class="iir-trigger-list">' + triggerList + '</ul>' +
         nextStepsResearch();
+
     } else if (r.status === 'likely-research') {
       bannerClass = 'amber';
       bannerIcon = '→';
@@ -176,6 +105,7 @@
       bodyHtml =
         '<p>Your answers lean toward research (' + r.bYes + ' research-suggestive YES, ' + r.cYes + ' QA/QI-suggestive YES). No definitive triggers, but the pattern is consistent with a project that should be submitted to the REB.</p>' +
         nextStepsResearch();
+
     } else if (r.status === 'likely-qaqi') {
       bannerClass = 'green';
       bannerIcon = '✓';
@@ -183,7 +113,8 @@
       bodyHtml =
         '<p>Your answers lean toward QA/QI (' + r.bYes + ' research-suggestive YES, ' + r.cYes + ' QA/QI-suggestive YES). The project appears to be QA/QI rather than research, and likely does not require REB review under TCPS2 Article 2.5.</p>' +
         nextStepsQaQi();
-    } else if (r.status === 'unclear-mixed' || r.status === 'unclear-no-signal') {
+
+    } else {
       bannerClass = 'amber';
       bannerIcon = '?';
       bannerTitle = 'Unclear — REB consultation recommended';
@@ -191,7 +122,7 @@
         ? 'Mixed signals (' + r.bYes + ' research-suggestive YES, ' + r.cYes + ' QA/QI-suggestive YES).'
         : 'No clear signal: Group A all NO, and no YES answers in Groups B or C.';
       bodyHtml =
-        '<p>' + summary + ' The TCPS2 principle "when in doubt, consult the REB" applies. Email the completed screening form to reb@muhc.mcgill.ca for a determination.</p>' +
+        '<p>' + summary + ' The TCPS2 principle "when in doubt, consult the REB" applies. Contact the REB directly to request a determination.</p>' +
         nextStepsUnclear();
     }
 
@@ -203,51 +134,14 @@
           bodyHtml +
         '</div>' +
       '</div>' +
-      '<div class="iir-actions">' +
-        '<button class="iir-action-btn iir-action-primary" id="iir-email-btn" type="button">Email completed form to REB</button>' +
-        '<button class="iir-action-btn" id="iir-copy-btn" type="button">Copy summary to clipboard</button>' +
-        '<button class="iir-action-btn iir-action-secondary" id="iir-reset-btn" type="button">Reset</button>' +
+      '<div class="iir-result-actions">' +
+        '<button class="iir-reset-result-btn" id="iir-reset-result-btn" type="button">Reset</button>' +
       '</div>' +
       '<div class="iir-disclaimer"><strong>This tool is an aid, not an authority.</strong> The MUHC REB retains the right to make the ultimate determination regarding the need for REB review, regardless of what this tool indicates. The MUHC CAE\'s <a href="https://muhc.ca/cae/page/templates-consent-forms" target="_blank" rel="noopener">Research vs QA/QI Screening Tool</a> is the canonical version.</div>';
 
     out.classList.add('visible');
 
-    var emailBtn = document.getElementById('iir-email-btn');
-    var copyBtn = document.getElementById('iir-copy-btn');
-    var resetBtn = document.getElementById('iir-reset-btn');
-
-    emailBtn.addEventListener('click', function () {
-      var ans = answers();
-      var body = buildEmailBody(ans, r);
-      var subject = r.status === 'likely-qaqi'
-        ? 'Request for REB exemption letter'
-        : 'Research vs QA/QI screening — request for determination';
-      var mailto = 'mailto:reb@muhc.mcgill.ca?subject=' + encodeURIComponent(subject) +
-                   '&body=' + encodeURIComponent(body);
-      window.location.href = mailto;
-    });
-
-    copyBtn.addEventListener('click', function () {
-      var ans = answers();
-      var body = buildEmailBody(ans, r);
-      if (navigator.clipboard && navigator.clipboard.writeText) {
-        navigator.clipboard.writeText(body).then(function () {
-          copyBtn.textContent = 'Copied ✓';
-          setTimeout(function () { copyBtn.textContent = 'Copy summary to clipboard'; }, 2000);
-        });
-      } else {
-        var ta = document.createElement('textarea');
-        ta.value = body;
-        document.body.appendChild(ta);
-        ta.select();
-        try { document.execCommand('copy'); copyBtn.textContent = 'Copied ✓'; }
-        catch (e) { copyBtn.textContent = 'Copy failed'; }
-        document.body.removeChild(ta);
-        setTimeout(function () { copyBtn.textContent = 'Copy summary to clipboard'; }, 2000);
-      }
-    });
-
-    resetBtn.addEventListener('click', resetAll);
+    document.getElementById('iir-reset-result-btn').addEventListener('click', resetAll);
 
     out.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
@@ -257,7 +151,7 @@
       '<div class="iir-next-title">What to do next</div>' +
       '<ol>' +
         '<li>Begin your Nagano submission via <a href="/kb/submission-overview">Study Submission and Review</a>.</li>' +
-        '<li>Use the <a href="/kb/my-roadmap">My Study Roadmap</a> intake to generate a personalized startup checklist.</li>' +
+        '<li>Use <a href="/kb/my-roadmap">My Study Roadmap</a> to generate a personalized startup checklist.</li>' +
         '<li>Confirm which ethics route applies (single-site, multi-site Quebec, multi-provincial) on the Submission Overview page.</li>' +
         '<li>Start from the <a href="https://muhc.ca/cae/page/templates-consent-forms" target="_blank" rel="noopener">MUHC CAE consent and protocol templates</a> when drafting your study documents.</li>' +
       '</ol>' +
@@ -268,11 +162,11 @@
     return '<div class="iir-next">' +
       '<div class="iir-next-title">What to do next</div>' +
       '<ol>' +
-        '<li>If you need an REB exemption letter (e.g., for publication), email the completed screening form to <a href="mailto:reb@muhc.mcgill.ca?subject=Request%20for%20REB%20exemption%20letter">reb@muhc.mcgill.ca</a> with the subject "Request for REB exemption letter."</li>' +
-        '<li>If your project will access patient health information without consent, initiate an <strong>EFVP (Privacy Impact Assessment)</strong> directly with <a href="mailto:efvp@muhc.mcgill.ca">efvp@muhc.mcgill.ca</a>.</li>' +
+        '<li>If you need an REB exemption letter (e.g., for publication), download the <a href="https://muhc.ca/cae/page/templates-consent-forms" target="_blank" rel="noopener">CAE Research vs QA/QI Screening Tool</a> Word document, complete it, and email it to <a href="mailto:reb@muhc.mcgill.ca">reb@muhc.mcgill.ca</a> with the subject "Request for REB exemption letter."</li>' +
+        '<li>If your project will access patient health information without consent, initiate a <strong>Privacy Impact Assessment (EFVP)</strong> directly with <a href="mailto:efvp@muhc.mcgill.ca">efvp@muhc.mcgill.ca</a>.</li>' +
         '<li>If your project will use hospital resources, obtain authorization from the appropriate department(s) directly.</li>' +
         '<li>If your project involves Eeyou/Eenou (Cree) populations, declare it to the Cree Board of Health and Social Services of James Bay at <a href="mailto:18ctr.research.committee@ssss.gouv.qc.ca">18ctr.research.committee@ssss.gouv.qc.ca</a>.</li>' +
-        '<li>Ethical concerns related to QA/QI should be directed to the MUHC Centre for Applied Ethics at <a href="mailto:cae@muhc.mcgill.ca">cae@muhc.mcgill.ca</a> — not the REB.</li>' +
+        '<li>Ethical concerns related to QA/QI should be directed to the MUHC Centre for Applied Ethics at <a href="mailto:cae@muhc.mcgill.ca">cae@muhc.mcgill.ca</a>.</li>' +
         '<li>If your project later evolves into research, you are responsible for obtaining REB review at that point. The exemption letter will not apply to the new aspects.</li>' +
       '</ol>' +
     '</div>';
@@ -282,8 +176,8 @@
     return '<div class="iir-next">' +
       '<div class="iir-next-title">What to do next</div>' +
       '<ol>' +
-        '<li>Click <strong>Email completed form to REB</strong> below — this opens a pre-filled message to <a href="mailto:reb@muhc.mcgill.ca">reb@muhc.mcgill.ca</a> with all your answers.</li>' +
-        '<li>The REB will review and make a determination.</li>' +
+        '<li>Download the <a href="https://muhc.ca/cae/page/templates-consent-forms" target="_blank" rel="noopener">CAE Research vs QA/QI Screening Tool</a> Word document, complete it with your project details, and email it to <a href="mailto:reb@muhc.mcgill.ca">reb@muhc.mcgill.ca</a> for a determination.</li>' +
+        '<li>The REB will review and respond.</li>' +
         '<li>While you wait, you can begin reviewing the <a href="/kb/planning-overview">Study Planning Overview</a> so the rest of your planning is not blocked.</li>' +
       '</ol>' +
     '</div>';
@@ -291,26 +185,23 @@
 
   function resetAll() {
     QUESTIONS.A.concat(QUESTIONS.B, QUESTIONS.C).forEach(function (q) {
-      var inputs = document.querySelectorAll('input[name="' + q.id + '"]');
-      inputs.forEach(function (i) { i.checked = false; });
-    });
-    ['iir-title','iir-leader','iir-dept','iir-email','iir-collabs','iir-target','iir-bg','iir-obj','iir-meth','iir-risks','iir-use'].forEach(function (id) {
-      var el = document.getElementById(id);
-      if (el) el.value = '';
+      document.querySelectorAll('input[name="' + q.id + '"]').forEach(function (i) { i.checked = false; });
     });
     var out = document.getElementById('iir-output');
     out.innerHTML = '';
     out.classList.remove('visible');
-    document.querySelectorAll('.iir-q-row').forEach(function (row) { row.classList.remove('answered-yes', 'answered-no'); });
-    window.scrollTo({ top: document.getElementById('iir-root').offsetTop - 20, behavior: 'smooth' });
+    document.querySelectorAll('.iir-q-row').forEach(function (row) {
+      row.classList.remove('answered-yes', 'answered-no');
+    });
+    var root = document.getElementById('iir-root');
+    if (root) window.scrollTo({ top: root.offsetTop - 20, behavior: 'smooth' });
   }
 
   function buildQuestionsHtml() {
-    function block(group, items, startIdx) {
-      var rows = items.map(function (q, i) {
-        var n = startIdx + i;
+    function block(items, startIdx) {
+      return items.map(function (q, i) {
         return '<div class="iir-q-row" data-qid="' + q.id + '">' +
-          '<div class="iir-q-num">' + n + '</div>' +
+          '<div class="iir-q-num">' + (startIdx + i) + '</div>' +
           '<div class="iir-q-text">' + q.text + '</div>' +
           '<div class="iir-q-answer">' +
             '<label class="iir-radio"><input type="radio" name="' + q.id + '" value="yes"><span>Yes</span></label>' +
@@ -318,22 +209,20 @@
           '</div>' +
         '</div>';
       }).join('');
-      return rows;
     }
-    var html = '';
-    html += '<div class="iir-q-group">';
-    html += '<div class="iir-q-group-hdr"><span class="iir-q-group-letter iir-letter-a">A</span> Definitive REB triggers <span class="iir-q-group-note">any YES = REB submission required</span></div>';
-    html += block('A', QUESTIONS.A, 1);
-    html += '</div>';
-    html += '<div class="iir-q-group">';
-    html += '<div class="iir-q-group-hdr"><span class="iir-q-group-letter iir-letter-b">B</span> Suggestive of research <span class="iir-q-group-note">YES answers point to research</span></div>';
-    html += block('B', QUESTIONS.B, 5);
-    html += '</div>';
-    html += '<div class="iir-q-group">';
-    html += '<div class="iir-q-group-hdr"><span class="iir-q-group-letter iir-letter-c">C</span> Suggestive of QA/QI <span class="iir-q-group-note">YES answers point to QA/QI</span></div>';
-    html += block('C', QUESTIONS.C, 8);
-    html += '</div>';
-    return html;
+
+    return '<div class="iir-q-group">' +
+        '<div class="iir-q-group-hdr"><span class="iir-q-group-letter iir-letter-a">A</span> Definitive REB triggers <span class="iir-q-group-note">any YES = REB submission required</span></div>' +
+        block(QUESTIONS.A, 1) +
+      '</div>' +
+      '<div class="iir-q-group">' +
+        '<div class="iir-q-group-hdr"><span class="iir-q-group-letter iir-letter-b">B</span> Suggestive of research <span class="iir-q-group-note">YES answers point to research</span></div>' +
+        block(QUESTIONS.B, 5) +
+      '</div>' +
+      '<div class="iir-q-group">' +
+        '<div class="iir-q-group-hdr"><span class="iir-q-group-letter iir-letter-c">C</span> Suggestive of QA/QI <span class="iir-q-group-note">YES answers point to QA/QI</span></div>' +
+        block(QUESTIONS.C, 8) +
+      '</div>';
   }
 
   function init() {
@@ -350,20 +239,10 @@
     });
 
     document.getElementById('iir-submit-btn').addEventListener('click', function () {
-      var r = evaluate(answers());
-      renderResult(r);
+      renderResult(evaluate(answers()));
     });
 
     document.getElementById('iir-reset-top-btn').addEventListener('click', resetAll);
-
-    var projHdr = document.getElementById('iir-proj-hdr');
-    var projBody = document.getElementById('iir-proj-body');
-    if (projHdr && projBody) {
-      projHdr.addEventListener('click', function () {
-        var open = projBody.classList.toggle('open');
-        projHdr.querySelector('.iir-disclose').textContent = open ? '▾' : '▸';
-      });
-    }
   }
 
   var _attempts = 0;

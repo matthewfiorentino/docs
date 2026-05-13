@@ -10,7 +10,7 @@ import { useEffect } from 'react'
 
 Before you spend time planning a study, answer one question first: **does this project need REB review at all?** Most clinical research does. Some projects that look like research — chart reviews, process audits, evaluations of standard care — qualify as **quality assurance or quality improvement (QA/QI)** under [TCPS2 Article 2.5](https://ethics.gc.ca/eng/tcps2-eptc2_2022_chapter2-chapitre2.html) and are exempt from REB review. Submitting a QA/QI project for ethics review costs time and creates the wrong file in the wrong place. Skipping ethics review for what is actually research is far worse — the work cannot be published, cannot be funded, and may need to be redone.
 
-The MUHC Centre for Applied Ethics (CAE) publishes a [Research vs QA/QI Screening Tool](https://muhc.ca/cae/page/templates-consent-forms) (Word document) that is the canonical version of this decision aid. The interactive tool on this page replicates the same logic so you can work through it in your browser, generate a completed form, and email it directly to the REB if needed.
+The MUHC Centre for Applied Ethics (CAE) publishes a [Research vs QA/QI Screening Tool](https://muhc.ca/cae/page/templates-consent-forms) (Word document) that is the canonical version of this decision aid. The interactive tool on this page replicates the same logic so you can work through it in your browser.
 
 <Tip>
   Already confident this is research? Skip to [My Study Roadmap](/kb/my-roadmap) to generate your personalized startup checklist.
@@ -51,7 +51,7 @@ A few common questions before you start:
 
 ## Screening tool
 
-Optional project details at the top — these are only used to build the completed form you can email to the REB. Then answer the 12 yes/no questions. The first four are decisive: a single YES means REB submission is required. The remaining eight are weighted: more YES in Group B leans toward research; more YES in Group C leans toward QA/QI.
+Answer the 12 yes/no questions. The first four are decisive: a single YES means REB submission is required. The remaining eight are weighted — more YES in Group B leans toward research; more YES in Group C leans toward QA/QI.
 
 export const CSS = `
 #iir-root {
@@ -85,27 +85,6 @@ export const CSS = `
   padding: 18px 20px;
   margin-bottom: 14px;
 }
-#iir-root .iir-proj-hdr {
-  display: flex; align-items: center; gap: 8px;
-  cursor: pointer; user-select: none;
-  font-size: 13px; font-weight: 700; text-transform: uppercase;
-  letter-spacing: .08em; color: var(--navy);
-}
-#iir-root .iir-disclose { font-size: 14px; color: var(--textm); }
-#iir-root .iir-proj-body { display: none; margin-top: 14px; }
-#iir-root .iir-proj-body.open { display: block; }
-#iir-root .iir-proj-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px 16px; }
-@media (max-width: 600px) { #iir-root .iir-proj-grid { grid-template-columns: 1fr; } }
-#iir-root .iir-proj-fullspan { grid-column: 1 / -1; }
-#iir-root label.iir-field-label { display: block; font-size: 12px; font-weight: 600; color: var(--textm); margin-bottom: 4px; }
-#iir-root input[type="text"], #iir-root input[type="email"], #iir-root textarea {
-  width: 100%; padding: 8px 10px; border: 1px solid var(--bdr);
-  border-radius: 6px; font-size: 13px; color: var(--text);
-  background: var(--white); outline: none;
-  font-family: inherit; resize: vertical;
-}
-#iir-root textarea { min-height: 60px; }
-#iir-root input:focus, #iir-root textarea:focus { border-color: var(--teal); }
 #iir-root .iir-q-group { margin-bottom: 18px; }
 #iir-root .iir-q-group:last-child { margin-bottom: 0; }
 #iir-root .iir-q-group-hdr {
@@ -210,17 +189,13 @@ export const CSS = `
 #iir-root .iir-next ol { margin: 0; padding-left: 20px; font-size: 13px; line-height: 1.65; color: var(--textm); }
 #iir-root .iir-next ol li { margin-bottom: 6px; }
 #iir-root .iir-next a, #iir-root .iir-disclaimer a { color: var(--teal); }
-#iir-root .iir-actions { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 12px; }
-#iir-root .iir-action-btn {
-  border: 1px solid var(--bdr); border-radius: 6px;
-  padding: 9px 16px; font-size: 13px; font-weight: 600; cursor: pointer;
-  background: var(--white); color: var(--textm);
-  transition: border-color .15s, color .15s, background .15s;
+#iir-root .iir-result-actions { margin-bottom: 12px; }
+#iir-root .iir-reset-result-btn {
+  background: none; border: 1px solid var(--bdr); border-radius: 6px;
+  padding: 9px 16px; font-size: 13px; color: var(--textm); cursor: pointer;
+  transition: border-color .15s, color .15s;
 }
-#iir-root .iir-action-btn:hover { border-color: var(--teal); color: var(--teal); }
-#iir-root .iir-action-primary { background: var(--teal); border-color: var(--teal); color: #fff; }
-#iir-root .iir-action-primary:hover { background: var(--teal-d); border-color: var(--teal-d); color: #fff; }
-#iir-root .iir-action-secondary { background: none; color: var(--textd); }
+#iir-root .iir-reset-result-btn:hover { border-color: var(--teal); color: var(--teal); }
 #iir-root .iir-disclaimer {
   background: var(--bg); border-radius: 6px; padding: 11px 14px;
   font-size: 12px; color: var(--textm); line-height: 1.55;
@@ -234,61 +209,6 @@ export const CSS = `
 
 export const ToolHTML = `
 <div id="iir-root">
-  <div class="iir-section">
-    <div class="iir-proj-hdr" id="iir-proj-hdr">
-      <span class="iir-disclose">▸</span>
-      Project details (optional — used to generate the completed form)
-    </div>
-    <div class="iir-proj-body" id="iir-proj-body">
-      <div class="iir-proj-grid">
-        <div>
-          <label class="iir-field-label" for="iir-title">Project title</label>
-          <input type="text" id="iir-title" autocomplete="off">
-        </div>
-        <div>
-          <label class="iir-field-label" for="iir-leader">Project leader</label>
-          <input type="text" id="iir-leader" autocomplete="off">
-        </div>
-        <div>
-          <label class="iir-field-label" for="iir-dept">Department / affiliation</label>
-          <input type="text" id="iir-dept" autocomplete="off">
-        </div>
-        <div>
-          <label class="iir-field-label" for="iir-email">Project leader email</label>
-          <input type="email" id="iir-email" autocomplete="off">
-        </div>
-        <div class="iir-proj-fullspan">
-          <label class="iir-field-label" for="iir-collabs">Collaborators (name and affiliation)</label>
-          <input type="text" id="iir-collabs" autocomplete="off">
-        </div>
-        <div class="iir-proj-fullspan">
-          <label class="iir-field-label" for="iir-target">Target population, process, program, or system</label>
-          <input type="text" id="iir-target" autocomplete="off">
-        </div>
-        <div class="iir-proj-fullspan">
-          <label class="iir-field-label" for="iir-bg">Background</label>
-          <textarea id="iir-bg"></textarea>
-        </div>
-        <div class="iir-proj-fullspan">
-          <label class="iir-field-label" for="iir-obj">Objective</label>
-          <textarea id="iir-obj"></textarea>
-        </div>
-        <div class="iir-proj-fullspan">
-          <label class="iir-field-label" for="iir-meth">Methods</label>
-          <textarea id="iir-meth"></textarea>
-        </div>
-        <div class="iir-proj-fullspan">
-          <label class="iir-field-label" for="iir-risks">Risks</label>
-          <textarea id="iir-risks"></textarea>
-        </div>
-        <div class="iir-proj-fullspan">
-          <label class="iir-field-label" for="iir-use">How will the results of the project be used at the MUHC?</label>
-          <textarea id="iir-use"></textarea>
-        </div>
-      </div>
-    </div>
-  </div>
-
   <div class="iir-section">
     <div id="iir-questions"></div>
     <div class="iir-actions-top">
@@ -333,19 +253,19 @@ Depending on what the tool recommended, your next stop is one of:
   <Card title="Likely research — start your submission" icon="paper-plane" href="/kb/submission-overview">
     Begin Nagano submission preparation, confirm your ethics route, and generate a personalized roadmap.
   </Card>
-  <Card title="Likely QA/QI — exemption letter" icon="file-circle-check" href="mailto:reb@muhc.mcgill.ca?subject=Request%20for%20REB%20exemption%20letter">
-    Email the completed screening form to the REB with subject "Request for REB exemption letter."
+  <Card title="Likely QA/QI — exemption letter" icon="file-circle-check" href="https://muhc.ca/cae/page/templates-consent-forms">
+    Download the CAE Screening Tool Word document, complete it, and email it to the REB if you need a formal exemption letter.
   </Card>
   <Card title="Need an EFVP" icon="lock" href="mailto:efvp@muhc.mcgill.ca">
     QA/QI projects accessing patient health information without consent must initiate a Privacy Impact Assessment directly.
   </Card>
   <Card title="Unclear — REB consultation" icon="circle-question" href="mailto:reb@muhc.mcgill.ca">
-    Email the completed form to the REB for a determination. Allow time for the response.
+    Download the CAE Screening Tool, complete it, and email it to the REB for a determination.
   </Card>
 </CardGroup>
 
 ## Authoritative source
 
-This tool replicates the MUHC Centre for Applied Ethics **Research vs Quality Assurance/Improvement (QA/QI) Screening Tool**. The canonical Word document is published on the [CAE Templates page](https://muhc.ca/cae/page/templates-consent-forms) and is the version the REB references when issuing exemption letters. If you need a signed paper copy of your completed form, download the CAE document directly.
+This tool replicates the MUHC Centre for Applied Ethics **Research vs Quality Assurance/Improvement (QA/QI) Screening Tool**. The canonical Word document is published on the [CAE Templates page](https://muhc.ca/cae/page/templates-consent-forms) and is the version the REB references when issuing exemption letters. If you need to submit a completed form to the REB — for an exemption letter or a formal determination — download and complete the CAE document directly.
 
 For questions about whether a project requires REB review, contact the REB at extension 36077 or [reb@muhc.mcgill.ca](mailto:reb@muhc.mcgill.ca). Ethical concerns related to QA/QI projects (not requiring REB review) should be directed to the [Centre for Applied Ethics](mailto:cae@muhc.mcgill.ca).
