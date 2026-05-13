@@ -52,25 +52,31 @@ article a strong, article a b,
     color: inherit !important;
 }
 /* ── "On this page" TOC ──
-   Mintlify's native tracker is a <span> inside div.relative that slides by
-   animating its `top` style. The span uses bg-primary via Tailwind, but
-   Mintlify's Tailwind config expects --primary as an HSL triplet, not hex,
-   so the dot renders transparent. We force-colour it directly.
-   toc-item is a CSS CLASS on <li>, not a custom element.                    */
+   mint theme: no sliding dot span. Active state is driven by data-active-deepest
+   on li.toc-item, set by toc-fix.js. We add a pseudo-element dot and teal colour.
+   toc-item is a CSS CLASS on <li>, not a custom element.                          */
 /* Font size reduction */
 #table-of-contents-content a {
     font-size:   12px !important;
     line-height: 1.4 !important;
 }
-/* Native sliding dot — force our accent colour so it's visible */
-#table-of-contents div.relative > span {
-    background-color: var(--ri-accent) !important;
-    width:            6px !important;
-    height:           6px !important;
-}
-/* Bold the active item (colour is handled by Mintlify's text-primary class) */
+/* Active item — teal text + bold */
 #table-of-contents-content li.toc-item[data-active-deepest="true"] a {
+    color:       var(--ri-accent) !important;
     font-weight: 600 !important;
+}
+/* Teal dot pseudo-element on active li (li has position:relative in mint) */
+#table-of-contents-content li.toc-item[data-active-deepest="true"]::before {
+    content:       '';
+    display:       block;
+    position:      absolute;
+    left:          -10px;
+    top:           50%;
+    transform:     translateY(-50%);
+    width:         6px;
+    height:        6px;
+    border-radius: 50%;
+    background:    var(--ri-accent);
 }
 /* ── Sidebar — base type: page links (<a>) and collapsible group buttons ── */
 #sidebar-content a,
@@ -159,10 +165,10 @@ li[data-group-tag]:first-child {
 }
 
 /* ── Navbar — tab strip ──
-   Regular tabs are <a class="link">. Menu-enabled tabs are
-   <button aria-haspopup="menu"> with Tailwind utility classes.   */
-#navbar nav a.link,
-#navbar nav button[aria-haspopup="menu"]:not(#localization-select-trigger) {
+   mint theme: tabs live in .nav-tabs container with class nav-tabs-item link.
+   Menu-enabled tabs are <button aria-haspopup="menu">.                        */
+.nav-tabs a.link,
+.nav-tabs button[aria-haspopup="menu"]:not(#localization-select-trigger) {
     background:     transparent !important;
     border-radius:  0 !important;
     border-bottom:  2px solid transparent !important;
@@ -172,16 +178,16 @@ li[data-group-tag]:first-child {
     font-weight:    600 !important;
     transition:     color 0.15s, border-bottom-color 0.15s !important;
 }
-#navbar nav a.link:hover,
-#navbar nav button[aria-haspopup="menu"]:not(#localization-select-trigger):hover {
+.nav-tabs a.link:hover,
+.nav-tabs button[aria-haspopup="menu"]:not(#localization-select-trigger):hover {
     background:          transparent !important;
     color:               #150e51 !important;
     border-bottom-color: #150e51 !important;
 }
-#navbar nav a.link[data-active="true"],
-#navbar nav a.link[aria-current="page"],
-#navbar nav button[aria-haspopup="menu"]:not(#localization-select-trigger)[data-active="true"],
-#navbar nav button[aria-haspopup="menu"]:not(#localization-select-trigger)[data-state="open"] {
+.nav-tabs a.link[data-active="true"],
+.nav-tabs a.link[aria-current="page"],
+.nav-tabs button[aria-haspopup="menu"]:not(#localization-select-trigger)[data-active="true"],
+.nav-tabs button[aria-haspopup="menu"]:not(#localization-select-trigger)[data-state="open"] {
     background:          transparent !important;
     color:               #150e51 !important;
     border-bottom-color: #150e51 !important;
@@ -204,22 +210,28 @@ li.navbar-link a[href="/contacts"]:hover {
     color:      #fff !important;
     opacity:    1 !important;
 }
-/* ── Portal — coral fill, inverts to outlined on hover ── */
+/* ── Portal — coral fill, inverts to outlined on hover ──
+   mint theme: the visual background is rendered by an inner <span class="absolute
+   inset-0 bg-primary-dark rounded-xl"> — we override the span, not the <a>.     */
 #topbar-cta-button a {
-    background:    #ff537f !important;
     color:         #fff !important;
-    border:        1.5px solid #ff537f !important;
     border-radius: 4px !important;
     font-weight:   700 !important;
     font-size:     13px !important;
     padding:       5px 13px !important;
-    transition:    background 0.15s, color 0.15s !important;
+    transition:    color 0.15s !important;
 }
-#topbar-cta-button a:hover,
-#topbar-cta-button a:hover * {
+#topbar-cta-button a span.absolute {
+    background:    #ff537f !important;
+    border-radius: 4px !important;
+    transition:    background 0.15s !important;
+}
+#topbar-cta-button a:hover span.absolute {
     background: #fff !important;
-    color:      #2b2666 !important;
     opacity:    1 !important;
+}
+#topbar-cta-button a:hover {
+    color: #2b2666 !important;
 }
 /* ── Tables ── */
 .prose table,
