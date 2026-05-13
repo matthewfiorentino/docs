@@ -38,8 +38,8 @@
     };
   }
 
-  function formatMonthsFromNow(months) {
-    var d = new Date();
+  function formatMonthsFrom(months, startDate) {
+    var d = new Date(startDate.getFullYear(), startDate.getMonth(), 1);
     d.setMonth(d.getMonth() + Math.round(months));
     return d.toLocaleDateString('en-CA', { month: 'long', year: 'numeric' });
   }
@@ -49,7 +49,7 @@
     return r === 1 ? '1 month' : r + ' months';
   }
 
-  function renderOutput(r) {
+  function renderOutput(r, startDate) {
     var titles = {
       green: 'Your timeline is realistic',
       amber: 'Your optimistic estimate fits — your conservative estimate does not',
@@ -86,8 +86,8 @@
         '<div class="rc-metric"><div class="rc-metric-label">Patients to screen</div><div class="rc-metric-value">' + r.toScreen.toLocaleString() + '</div><div class="rc-metric-sub">to enrol ' + r.n + ' at ' + r.sfPct + '% screen failure</div></div>' +
         '<div class="rc-metric"><div class="rc-metric-label">Monthly enrolment rate</div><div class="rc-metric-value">' + r.monthlyEnrol + '</div><div class="rc-metric-sub">participants per month (optimistic)</div></div>' +
         '<div class="rc-metric"><div class="rc-metric-label">Productive months available</div><div class="rc-metric-value">' + r.productiveMonths + '</div><div class="rc-metric-sub">of ' + r.windowMonths + ' total (44 weeks/year)</div></div>' +
-        '<div class="rc-metric"><div class="rc-metric-label">Optimistic estimate</div><div class="rc-metric-value">' + pluralMonths(r.optimisticMonths) + '</div><div class="rc-metric-sub">last patient in — ' + formatMonthsFromNow(r.optimisticMonths) + '</div></div>' +
-        '<div class="rc-metric"><div class="rc-metric-label">Conservative estimate</div><div class="rc-metric-value">' + pluralMonths(r.conservativeMonths) + '</div><div class="rc-metric-sub">last patient in — ' + formatMonthsFromNow(r.conservativeMonths) + ' (halved)</div></div>' +
+        '<div class="rc-metric"><div class="rc-metric-label">Optimistic estimate</div><div class="rc-metric-value">' + pluralMonths(r.optimisticMonths) + '</div><div class="rc-metric-sub">last patient in — ' + formatMonthsFrom(r.optimisticMonths, startDate) + '</div></div>' +
+        '<div class="rc-metric"><div class="rc-metric-label">Conservative estimate</div><div class="rc-metric-value">' + pluralMonths(r.conservativeMonths) + '</div><div class="rc-metric-sub">last patient in — ' + formatMonthsFrom(r.conservativeMonths, startDate) + ' (halved)</div></div>' +
         '<div class="rc-metric"><div class="rc-metric-label">Your window</div><div class="rc-metric-value">' + pluralMonths(r.windowMonths) + '</div><div class="rc-metric-sub">recruitment period in protocol / grant</div></div>' +
       '</div>' +
 
@@ -135,6 +135,8 @@
       var elig      = parseFloat(document.getElementById('rc-elig').value);
       var sf        = parseFloat(document.getElementById('rc-sf').value);
       var winMonths = parseFloat(document.getElementById('rc-window').value);
+      var startVal  = document.getElementById('rc-start').value;
+      var startDate = startVal ? new Date(startVal + '-02') : new Date();
       var out = document.getElementById('rc-output');
 
       if (!n || !elig || isNaN(sf) || !winMonths) {
@@ -147,7 +149,7 @@
         out.classList.add('visible');
         return;
       }
-      renderOutput(calculate(n, elig, sf, winMonths));
+      renderOutput(calculate(n, elig, sf, winMonths), startDate);
     });
 
     ['rc-n', 'rc-elig', 'rc-sf', 'rc-window'].forEach(function (id) {
@@ -157,7 +159,7 @@
     });
 
     document.getElementById('rc-reset-btn').addEventListener('click', function () {
-      ['rc-n', 'rc-elig', 'rc-sf', 'rc-window'].forEach(function (id) {
+      ['rc-n', 'rc-elig', 'rc-sf', 'rc-window', 'rc-start'].forEach(function (id) {
         document.getElementById(id).value = '';
       });
       var out = document.getElementById('rc-output');

@@ -50,12 +50,14 @@ export const RC_CSS = `
 @media (max-width: 560px) { #rc-root .rc-grid { grid-template-columns: 1fr; } }
 #rc-root label { display: block; font-size: 12px; font-weight: 600; color: var(--textm); margin-bottom: 5px; }
 #rc-root label span.rc-hint { font-weight: 400; color: var(--textd); font-size: 11px; display: block; margin-top: 2px; }
-#rc-root input[type="number"] {
+#rc-root input[type="number"],
+#rc-root input[type="month"] {
   width: 100%; padding: 8px 10px; border: 1px solid var(--bdr);
   border-radius: 6px; font-size: 14px; color: var(--text);
   background: var(--white); outline: none; transition: border-color .15s;
 }
-#rc-root input[type="number"]:focus { border-color: var(--teal); }
+#rc-root input[type="number"]:focus,
+#rc-root input[type="month"]:focus { border-color: var(--teal); }
 #rc-root input[type="number"]::placeholder { color: #bbb; }
 #rc-root .rc-sf-row { display: flex; align-items: center; gap: 10px; }
 #rc-root .rc-sf-row input { flex: 0 0 100px; }
@@ -201,6 +203,13 @@ export const RC_HTML = `
           <span class="rc-hint">The recruitment period in your protocol or grant timeline</span>
         </label>
         <input type="number" id="rc-window" min="1" placeholder="e.g. 18">
+      </div>
+      <div>
+        <label>
+          Expected recruitment start
+          <span class="rc-hint">When you expect to begin enrolling — defaults to this month if left blank</span>
+        </label>
+        <input type="month" id="rc-start">
       </div>
     </div>
     <div style="margin-top:16px;display:flex;gap:10px;flex-wrap:wrap;align-items:center;">
