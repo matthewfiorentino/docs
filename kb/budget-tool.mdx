@@ -158,6 +158,8 @@ export const BT_CSS = `
 @media (max-width: 699px) { .frow, .frow3 { grid-template-columns: 1fr; } }
 .add-btn { display: inline-flex; align-items: center; gap: 7px; font-size: 12px; font-weight: 700; color: var(--teal); background: none; border: 1.5px solid var(--teal); padding: 8px 14px; cursor: pointer; transition: background .12s, color .12s; font-family: inherit; border-radius: 6px; }
 .add-btn:hover { background: var(--teal); color: #fff; }
+.secondary-btn { display: inline-flex; align-items: center; gap: 7px; font-size: 12px; font-weight: 500; color: var(--textm); background: none; border: 1.5px solid var(--bdr); padding: 7px 12px; cursor: pointer; transition: background .12s, border-color .12s, color .12s; font-family: inherit; border-radius: 6px; }
+.secondary-btn:hover { background: var(--bg-low); border-color: var(--bdr-s); color: var(--text); }
 
 /* ── FUNDING CARDS ── */
 .fund-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1px; background: var(--bdr-s); border: 1.5px solid var(--bdr-s); border-radius: 6px; overflow: hidden; margin-bottom: 0; }
@@ -673,7 +675,7 @@ export const BT_HTML = `
           <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
           Add from activity list
         </button>
-        <button class="add-btn" style="border-color:var(--bdr);color:var(--textm);font-size:11px" onclick="showSection('s-work');document.getElementById('mc-tpl-picker').style.display='block'">Reset from template</button>
+        <button class="secondary-btn" onclick="showSection('s-work');document.getElementById('mc-tpl-picker').style.display='block'">Reset from template</button>
       </div>
 
       <div class="ct" style="margin-top:16px"><strong>Activity types:</strong> <strong style="color:#7a4f00">Startup</strong> — one-time site initiation hours (0% OH for industry). <strong style="color:var(--sky)">General</strong> — annual staff hours for the whole study. <strong style="color:var(--green)">Per Participant</strong> — enter hours <em>per participant</em> for this activity; the row cost = hours/pt × rate × N. The N input in the Cost column can be overridden per row (e.g. adverse event review affects fewer participants than a routine visit). Use the type badge on each row to reassign.</div>
