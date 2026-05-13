@@ -57,7 +57,7 @@
     };
     var icons = { green: '✓', amber: '⚠', red: '✗' };
     var descs = {
-      green: 'Both the optimistic (' + pluralMonths(r.optimisticMonths) + ') and conservative (' + pluralMonths(r.conservativeMonths) + ') estimates fit within your ' + pluralMonths(r.windowMonths) + ' recruitment window. This is the exception, not the rule — confirm your eligible patient count with an OACIS query before committing.',
+      green: 'Both the optimistic (' + pluralMonths(r.optimisticMonths) + ') and conservative (' + pluralMonths(r.conservativeMonths) + ') estimates fit within your ' + pluralMonths(r.windowMonths) + ' recruitment window. This is the exception, not the rule — verify your eligible patient estimate against actual clinic volumes before committing.',
       amber: 'The optimistic projection (' + pluralMonths(r.optimisticMonths) + ') fits your window, but the conservative estimate (' + pluralMonths(r.conservativeMonths) + ') does not. Experience shows actual accrual averages roughly half of projected. Consider extending your recruitment window or reducing your target N.',
       red: 'Even the optimistic projection (' + pluralMonths(r.optimisticMonths) + ') exceeds your ' + pluralMonths(r.windowMonths) + ' window. The conservative estimate is ' + pluralMonths(r.conservativeMonths) + '. You need more eligible patients per month, a lower screen failure rate, a longer window, or a reduced target N.'
     };
@@ -70,7 +70,7 @@
     var conOver = r.conservativeMonths > r.windowMonths;
 
     var halveNote = r.sfPct < 20
-      ? '<div class="rc-note"><strong>Note on screen failure rate:</strong> Your entered rate of ' + r.sfPct + '% is lower than the cross-therapeutic average of ~36% for industry-sponsored trials. Verify this reflects local data from a prior OACIS search, not an optimistic assumption.</div>'
+      ? '<div class="rc-note"><strong>Note on screen failure rate:</strong> Your entered rate of ' + r.sfPct + '% is lower than the cross-therapeutic average of ~36% for industry-sponsored trials. Verify this reflects local screening data, not an optimistic assumption.</div>'
       : '';
 
     var html =
@@ -86,8 +86,8 @@
         '<div class="rc-metric"><div class="rc-metric-label">Patients to screen</div><div class="rc-metric-value">' + r.toScreen.toLocaleString() + '</div><div class="rc-metric-sub">to enrol ' + r.n + ' at ' + r.sfPct + '% screen failure</div></div>' +
         '<div class="rc-metric"><div class="rc-metric-label">Monthly enrolment rate</div><div class="rc-metric-value">' + r.monthlyEnrol + '</div><div class="rc-metric-sub">participants per month (optimistic)</div></div>' +
         '<div class="rc-metric"><div class="rc-metric-label">Productive months available</div><div class="rc-metric-value">' + r.productiveMonths + '</div><div class="rc-metric-sub">of ' + r.windowMonths + ' total (44 weeks/year)</div></div>' +
-        '<div class="rc-metric"><div class="rc-metric-label">Optimistic LPI</div><div class="rc-metric-value">' + pluralMonths(r.optimisticMonths) + '</div><div class="rc-metric-sub">' + formatMonthsFromNow(r.optimisticMonths) + '</div></div>' +
-        '<div class="rc-metric"><div class="rc-metric-label">Conservative LPI</div><div class="rc-metric-value">' + pluralMonths(r.conservativeMonths) + '</div><div class="rc-metric-sub">' + formatMonthsFromNow(r.conservativeMonths) + ' — halved projection</div></div>' +
+        '<div class="rc-metric"><div class="rc-metric-label">Optimistic estimate</div><div class="rc-metric-value">' + pluralMonths(r.optimisticMonths) + '</div><div class="rc-metric-sub">last patient in — ' + formatMonthsFromNow(r.optimisticMonths) + '</div></div>' +
+        '<div class="rc-metric"><div class="rc-metric-label">Conservative estimate</div><div class="rc-metric-value">' + pluralMonths(r.conservativeMonths) + '</div><div class="rc-metric-sub">last patient in — ' + formatMonthsFromNow(r.conservativeMonths) + ' (halved)</div></div>' +
         '<div class="rc-metric"><div class="rc-metric-label">Your window</div><div class="rc-metric-value">' + pluralMonths(r.windowMonths) + '</div><div class="rc-metric-sub">recruitment period in protocol / grant</div></div>' +
       '</div>' +
 
@@ -105,7 +105,7 @@
 
       halveNote +
 
-      '<div class="rc-note"><strong>Productive recruitment weeks:</strong> The calculator uses 44 productive recruitment weeks per year (not 52), reflecting the impact of clinical commitments, holidays, competing studies, and site activation ramp-up time. This is the figure cited in RI-MUHC operational guidance.</div>' +
+      '<div class="rc-note"><strong>Productive recruitment weeks:</strong> The productive months figure above is based on 44 weeks per year — not 52 — reflecting clinical commitments, holidays, competing studies, and site activation ramp-up. The conservative estimate\'s \xd72 multiplier independently captures these reductions in pace and is the figure you should plan against.</div>' +
 
       '<div class="rc-warning"><strong>What to do with this number.</strong> The conservative estimate is not a worst case — it is the historically observed average for experienced sites. If the conservative estimate does not fit your window, renegotiate before you commit: extend the timeline, reduce target N with the sponsor, or identify additional recruitment sources. Sponsors track enrolment performance; sites with consistent records receive preferential consideration in future trials.</div>';
 
