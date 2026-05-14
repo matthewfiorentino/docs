@@ -391,16 +391,28 @@ export const RolePanel = ({ role }) => (
 
 export const RoleExplorer = () => {
   const [role, setRole] = useState('pi');
+  const containerRef = useRef(null);
   const active = ROLES.find(r => r.id === role);
+
+  const handleRoleSwitch = (id) => {
+    setRole(id);
+    if (containerRef.current) {
+      const rect = containerRef.current.getBoundingClientRect();
+      if (rect.top < 80) {
+        containerRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
+  };
+
   return (
-    <div className="ri-sh">
+    <div className="ri-sh" ref={containerRef}>
       <div className="ri-sh-tabs-wrap">
         <div className="ri-sh-tabs">
           {ROLES.map(r => (
             <button
               key={r.id}
               className={`ri-sh-tab${role === r.id ? ' ri-sh-tab--active' : ''}`}
-              onClick={() => setRole(r.id)}
+              onClick={() => handleRoleSwitch(r.id)}
             >
               <Icon icon={r.icon} className="ri-sh-tab-icon" />
               <span>{r.title}</span>
