@@ -170,6 +170,16 @@ li[data-group-tag]:first-child {
     color: #007468 !important;
 }
 
+/* ── Homepage — suppress active tab styling ──
+   toc-fix.js sets data-page="home" on <html> when on /. CSS takes over from
+   there so Mintlify's active-tab classes/attrs can't re-assert bold or colour. */
+html[data-page="home"] .nav-tabs a.link,
+html[data-page="home"] .nav-tabs button.link {
+    color:               inherit !important;
+    font-weight:         inherit !important;
+    border-bottom-color: transparent !important;
+}
+
 /* ── Navbar — tab strip underline ──
    mint theme: tabs are a.link inside .nav-tabs.
    Active: teal text + 1px teal underline. No font-weight change.

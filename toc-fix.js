@@ -21,38 +21,44 @@
   'use strict';
 
   /* ─── Fix: sidebar group toggle buttons should not navigate ──────────────
-     Mintlify's React onClick for collapsible group buttons calls both
-     setState (toggle) AND router.push(firstChildUrl). We want the toggle but
-     not the navigation. Intercept history.pushState and suppress calls that
-     arrive within 300 ms of a toggle-button click.                          */
-  (function () {
-    var lastToggleMs = 0;
+     Mintlify's React onClick calls both setState (toggle) AND router.push.
+     We intercept history.pushState. Problem: Next.js re-patches pushState
+     after our script runs, overwriting a simple assignment. Fix: use a
+     re-applying wrapper that survives Next.js's own patching cycle.         */
+  var lastToggleMs = 0;
 
-    /* capture phase — fires before React's delegated handlers */
-    document.addEventListener('click', function (e) {
-      if (e.target.closest('button[aria-label^="Toggle"]')) {
-        lastToggleMs = Date.now();
-      }
-    }, true);
+  document.addEventListener('click', function (e) {
+    if (e.target.closest('button[aria-label^="Toggle"]')) {
+      lastToggleMs = Date.now();
+    }
+  }, true); /* capture — before React's delegated handlers */
 
-    var _origPush = history.pushState.bind(history);
+  function applyPushStatePatch() {
+    if (history.pushState && history.pushState._riPatch) return; /* already ours */
+    var orig = history.pushState;
     history.pushState = function (state, title, url) {
-      if (Date.now() - lastToggleMs < 300) return; /* suppress */
-      return _origPush(state, title, url);
+      if (Date.now() - lastToggleMs < 300) return; /* suppress toggle nav */
+      return orig.apply(history, arguments);
     };
-  }());
+    history.pushState._riPatch = true;
+  }
 
-  /* ─── Fix: Knowledge Base tab should not appear active on the homepage ───
-     index.mdx lives at / and is not inside any tab's pages list, so Mintlify
-     defaults to marking the first tab (KB) active. Clear it on the homepage. */
-  function clearNavTabsOnHome() {
-    if (location.pathname !== '/') return;
-    requestAnimationFrame(function () {
-      document.querySelectorAll('.nav-tabs a.link, .nav-tabs button.link').forEach(function (el) {
-        el.removeAttribute('data-active');
-        el.removeAttribute('aria-current');
-      });
-    });
+  /* Apply now and after Next.js initialisation cycles */
+  applyPushStatePatch();
+  [100, 500, 1500, 3000].forEach(function (ms) {
+    setTimeout(applyPushStatePatch, ms);
+  });
+
+  /* ─── Fix: homepage — no nav tab should appear active ────────────────────
+     index.mdx is not in any tab's pages list so Mintlify defaults to marking
+     the first tab (KB) active. We set data-page="home" on <html> and CSS
+     suppresses all active tab styling while that attribute is present.       */
+  function applyPageAttr() {
+    if (location.pathname === '/') {
+      document.documentElement.setAttribute('data-page', 'home');
+    } else {
+      document.documentElement.removeAttribute('data-page');
+    }
   }
 
   /** Fraction of viewport height.  Heading must be ABOVE this to be active. */
@@ -173,16 +179,16 @@
     if (location.href !== lastUrl) {
       lastUrl  = location.href;
       attached = false; /* reset so scroll listener re-attaches cleanly */
-      clearNavTabsOnHome();
+      applyPageAttr();
       waitForToc(10);
     }
   }).observe(document.body, { childList: true, subtree: true });
 
   /* Initial page load */
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', function () { clearNavTabsOnHome(); waitForToc(10); });
+    document.addEventListener('DOMContentLoaded', function () { applyPageAttr(); waitForToc(10); });
   } else {
-    clearNavTabsOnHome();
+    applyPageAttr();
     waitForToc(10);
   }
 
