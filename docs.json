@@ -3,8 +3,8 @@
   "theme": "mint",
   "name": "RI-MUHC Clinical Research Hub",
   "colors": {
-    "primary": "#007468",
-    "light": "#00c4b4",
+    "primary": "#2b9ce2",
+    "light": "#74c0f8",
     "dark": "#150e51"
   },
   "metadata": {
