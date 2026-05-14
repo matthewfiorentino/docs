@@ -1,7 +1,6 @@
 ---
 title: "Learning Lab — Practice Tools for Clinical Research"
 sidebarTitle: "Learning Lab"
-description: "Applied practice tools for RI-MUHC clinical research staff — knowledge checks, team exercises, document review, judgement calls, and inspection prep."
 mode: "wide"
 keywords: ["practice", "scenarios", "knowledge check", "team exercise", "inspection prep", "judgment calls"]
 ---
@@ -6272,6 +6271,10 @@ export const LL_SHELL_CSS = `
 .ll-about-card-use strong { color: var(--ll-text-2); font-weight: 600; }
 @media (max-width: 699px) { .ll-about-grid { grid-template-columns: 1fr; } }
 
+/* Hide redundant Mintlify page title block — learning lab has its own header */
+.eyebrow { display: none !important; }
+div:has(> h1.tracking-tight) { display: none !important; }
+
 /* Hide Mintlify floating AI chat — intrudes on the learning lab's own UI */
 .chat-assistant-floating-input { display: none !important; }
 `;
@@ -6291,7 +6294,7 @@ export const LL_SHELL_HTML = `
   </div>
   <div class="ll-wrap">
     <aside class="ll-rail" aria-label="Learning Lab modes">
-      <button class="ll-rail-home" data-mode="about" type="button">Learning Lab</button>
+      <button class="ll-rail-home" data-mode="about" type="button">Overview</button>
       <nav class="ll-rail-nav">
         <button class="ll-rail-btn" data-mode="kc"   type="button">Knowledge Checks</button>
         <button class="ll-rail-btn" data-mode="te"   type="button">Team Exercises</button>
