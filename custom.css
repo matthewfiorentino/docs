@@ -159,9 +159,13 @@ li[data-group-tag]:first-child {
     gap: 0 !important;
 }
 /* ── Sidebar — tag pills (frontmatter tag: "New" / "Updated" / etc.) ──
-   Mintlify renders tag text inside .nav-tag-pill-text with Tailwind classes
-   that depend on --primary being HSL. We override to ensure visible pills.  */
-.nav-tag-pill-text {
+   Mintlify renders different pill types with different classes depending on
+   the tag value. We target .nav-tag-pill-text AND any element inside a
+   nav-tag pill container to catch all variants (New, Updated, Beta, etc.).  */
+.nav-tag-pill-text,
+[class*="nav-tag-pill"] span,
+[class*="NavTagPill"] span,
+[class*="sidebar"] [class*="tag"] {
     display: inline-block !important;
     font-size: 9.5px !important;
     font-weight: 700 !important;
@@ -171,7 +175,12 @@ li[data-group-tag]:first-child {
     letter-spacing: 0.02em !important;
     white-space: nowrap !important;
     background: rgba(255, 83, 127, 0.12) !important;
-    color: #ff537f !important;
+    color: #c43060 !important;
+}
+/* Mintlify may also use text-primary Tailwind class on pill text */
+#sidebar-content [class*="text-primary"]:not(a):not(button) {
+    color: #c43060 !important;
+    background: rgba(255, 83, 127, 0.12) !important;
 }
 
 /* ── Homepage — suppress active tab styling ──
@@ -1379,61 +1388,25 @@ article {
     .ri-home-footer-inner { padding: 36px 24px; gap: 32px; border-radius: 18px; }
     .ri-home-footer-cols { grid-template-columns: 1fr; gap: 24px; }
 }
-/* ── Article / global footer — align with homepage footer style ──
-   Mintlify renders the global footer from docs.json footer.links + socials.
-   We give it the same dark-navy treatment as .ri-home-footer, then organise
-   logos, links, and copyright consistently.                                   */
-footer:not(.ri-home-footer) {
-    background-color: #150e51 !important;
-    background-image: url('/images/footer.png') !important;
-    background-size: cover !important;
-    background-position: center !important;
-    color: rgba(255,255,255,0.75) !important;
-    padding: 64px 6vw 48px !important;
-}
-footer:not(.ri-home-footer) a {
-    color: rgba(255,255,255,0.75) !important;
-    text-decoration: none !important;
-    transition: color .12s !important;
-}
-footer:not(.ri-home-footer) a:hover {
-    color: #fff !important;
-}
-/* Logo image in Mintlify footer */
-footer:not(.ri-home-footer) img {
-    filter: brightness(0) invert(1) !important;
-    opacity: 0.85 !important;
-    height: 48px !important;
-    width: auto !important;
-}
-/* Link group headers ("Clinical Research Hub", etc.) */
-footer:not(.ri-home-footer) h2,
-footer:not(.ri-home-footer) [class*="footer-group-title"],
-footer:not(.ri-home-footer) [class*="group-title"] {
+/* ── Article / global footer — light styling only, white background ──
+   Keep Mintlify's default white footer. We just tighten the typography and
+   make group headers consistent with the rest of the site.                    */
+footer [class*="footer-group-title"],
+footer [class*="group"] > p:first-child,
+footer h3 {
     font-size: 11px !important;
     font-weight: 700 !important;
     letter-spacing: 0.1em !important;
     text-transform: uppercase !important;
-    color: rgba(255,255,255,0.45) !important;
-    margin-bottom: 12px !important;
+    color: #6b7280 !important;
 }
-/* Copyright line */
-footer:not(.ri-home-footer) [class*="copyright"],
-footer:not(.ri-home-footer) p:last-child {
-    font-size: 12px !important;
-    color: rgba(255,255,255,0.40) !important;
-    margin-top: 40px !important;
-    border-top: 1px solid rgba(255,255,255,0.10) !important;
-    padding-top: 24px !important;
+footer a {
+    font-size: 14px !important;
+    color: #374151 !important;
+    transition: color .12s !important;
 }
-/* Social icon links */
-footer:not(.ri-home-footer) svg {
-    color: rgba(255,255,255,0.55) !important;
-    fill: rgba(255,255,255,0.55) !important;
-}
-footer:not(.ri-home-footer) [class*="social"]:hover svg {
-    color: #fff !important;
-    fill: #fff !important;
+footer a:hover {
+    color: var(--ri-blue) !important;
 }
 /* ── SOP meta bar ── */
 .ri-sop-meta {
