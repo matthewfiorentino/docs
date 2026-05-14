@@ -195,9 +195,9 @@ li[data-group-tag]:first-child {
     background: transparent !important;
 }
 
-/* 2. All tabs: bump to medium weight for better presence (matches Lovable/Pinecone). */
+/* 2. All tabs: semi-bold for better presence. */
 .nav-tabs a.link {
-    font-weight: 500 !important;
+    font-weight: 600 !important;
 }
 
 /* 3. Active tab: brand blue at 600 weight, no fake-bold text-shadow. */
