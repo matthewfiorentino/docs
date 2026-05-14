@@ -6271,6 +6271,9 @@ export const LL_SHELL_CSS = `
 .ll-about-card-use { font-size: 12.5px; color: var(--ll-text-3); line-height: 1.5; }
 .ll-about-card-use strong { color: var(--ll-text-2); font-weight: 600; }
 @media (max-width: 699px) { .ll-about-grid { grid-template-columns: 1fr; } }
+
+/* Hide Mintlify floating AI chat — intrudes on the learning lab's own UI */
+.chat-assistant-floating-input { display: none !important; }
 `;
 
 export const LL_SHELL_HTML = `
