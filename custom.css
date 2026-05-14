@@ -1262,26 +1262,22 @@ article {
     width: auto;
     display: block;
 }
-.ri-home-footer-tagline {
-    font-size: 14px;
-    line-height: 1.55;
+.ri-home-footer-copyright {
+    font-size: 12px;
+    line-height: 1.5;
     color: #6b7280;
-    max-width: 280px;
-    margin-top: 12px;
+    max-width: 320px;
+    margin-top: auto;
+    padding-top: 16px;
+}
+.ri-home-footer-copyright-sep {
+    margin: 0 6px;
+    color: #cbd5e1;
 }
 .ri-home-footer-cols {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 40px;
-}
-.ri-home-footer-baseline {
-    max-width: 1240px;
-    margin: 24px auto 0;
-    padding: 0 12px;
-    font-size: 12px;
-    color: rgba(255,255,255,0.78);
-    text-align: center;
-    letter-spacing: 0.02em;
 }
 [data-ri-footer-logos="true"] {
     display: flex !important;
