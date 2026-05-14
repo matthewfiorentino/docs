@@ -210,32 +210,11 @@
 
   /* Initial page load */
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', function () { applyPageAttr(); waitForToc(10); initCounters(); initNavTagFix(); });
+    document.addEventListener('DOMContentLoaded', function () { applyPageAttr(); waitForToc(10); initCounters(); });
   } else {
     applyPageAttr();
     waitForToc(10);
     initCounters();
-    initNavTagFix();
-  }
-
-  /* ─── Fix: sidebar nav-tag pills — force coral color/bg ─────────────────
-     Mintlify JS sets inline style.color on [data-nav-tag] spans after CSS
-     loads, which overrides even !important stylesheet rules.  We stamp the
-     correct values directly on element.style so our color wins.             */
-  function fixNavTagPills() {
-    document.querySelectorAll('[data-nav-tag]').forEach(function (el) {
-      el.style.setProperty('color', '#c43060', 'important');
-      el.style.setProperty('background', 'rgba(255,83,127,0.12)', 'important');
-    });
-  }
-
-  /* Run on initial render and re-run whenever the sidebar DOM changes
-     (SPA nav reloads sidebar content between pages).                       */
-  function initNavTagFix() {
-    fixNavTagPills();
-    new MutationObserver(function () {
-      fixNavTagPills();
-    }).observe(document.body, { childList: true, subtree: true });
   }
 
   /* ─── Stat counter animation ─────────────────────────────────────────── */
