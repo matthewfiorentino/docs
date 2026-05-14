@@ -224,11 +224,12 @@ export const RC_HTML = `
 
 export const RecruitmentCalculator = () => {
   useEffect(() => {
-    let alive = true;
-    fetch('/recruitment-calc-script.js')
-      .then(r => r.text())
-      .then(code => { if (alive) (new Function(code))(); });
-    return () => { alive = false; };
+    if (!document.getElementById('rc-script')) {
+      const s = document.createElement('script');
+      s.id = 'rc-script';
+      s.src = '/recruitment-calc-script.js';
+      document.body.appendChild(s);
+    }
   }, []);
 
   return (

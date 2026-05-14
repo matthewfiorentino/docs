@@ -3330,3 +3330,12 @@ if (document.readyState === 'loading') {
 } else {
   btInit();
 }
+
+/* SPA re-navigation: watch for a new #bt-root replacing the old one */
+(function() {
+  var _btRoot = null;
+  new MutationObserver(function() {
+    var root = document.getElementById('bt-root');
+    if (root && root !== _btRoot) { _btRoot = root; btInit(); }
+  }).observe(document.documentElement, { childList: true, subtree: true });
+})();
