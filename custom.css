@@ -1229,6 +1229,18 @@ article {
 [data-component="callout"] {
     border-radius: 8px !important;
 }
+/* Override Mintlify's default green Tip → blue to match brand */
+[data-type="tip"],
+[data-component="callout"][data-type="tip"] {
+    background-color: rgba(43, 156, 226, 0.08) !important;
+    border-color: rgba(43, 156, 226, 0.30) !important;
+    color: #0a3a66 !important;
+}
+[data-type="tip"] svg,
+[data-component="callout"][data-type="tip"] svg {
+    color: #2b9ce2 !important;
+    stroke: #2b9ce2 !important;
+}
 /* ── Steps ── */
 [data-component="step"] [data-step-number],
 .step-number {
