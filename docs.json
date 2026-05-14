@@ -49,6 +49,9 @@
       "href": "https://portal.rimuhc.ca"
     }
   },
+  "interaction": {
+    "drilldown": false
+  },
   "navigation": {
     "languages": [
       {

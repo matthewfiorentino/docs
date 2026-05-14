@@ -50,14 +50,38 @@
   });
 
   /* ─── Fix: homepage — no nav tab should appear active ────────────────────
-     index.mdx is not in any tab's pages list so Mintlify defaults to marking
-     the first tab (KB) active. We set data-page="home" on <html> and CSS
-     suppresses all active tab styling while that attribute is present.       */
+     index.mdx is not in any tab's pages list so Mintlify marks the first tab
+     active by default. We set data-page="home" on <html> (CSS uses this) and
+     also watch .nav-tabs directly for attribute changes Mintlify re-applies.  */
+  function clearHomeTabs() {
+    document.querySelectorAll('.nav-tabs a.link').forEach(function (el) {
+      el.removeAttribute('data-active');
+      el.removeAttribute('aria-current');
+    });
+  }
+
+  var navTabsObserver = null;
+
   function applyPageAttr() {
     if (location.pathname === '/') {
       document.documentElement.setAttribute('data-page', 'home');
+      clearHomeTabs();
+      /* Watch the nav tabs and re-clear if Mintlify re-asserts active state */
+      if (!navTabsObserver) {
+        var navTabs = document.querySelector('.nav-tabs');
+        if (navTabs) {
+          navTabsObserver = new MutationObserver(function () {
+            if (location.pathname === '/') clearHomeTabs();
+          });
+          navTabsObserver.observe(navTabs, { attributes: true, subtree: true, attributeFilter: ['data-active', 'aria-current', 'class'] });
+        }
+      }
     } else {
       document.documentElement.removeAttribute('data-page');
+      if (navTabsObserver) {
+        navTabsObserver.disconnect();
+        navTabsObserver = null;
+      }
     }
   }
 

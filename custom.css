@@ -174,9 +174,11 @@ li[data-group-tag]:first-child {
    toc-fix.js sets data-page="home" on <html> when on /. CSS takes over from
    there so Mintlify's active-tab classes/attrs can't re-assert bold or colour. */
 html[data-page="home"] .nav-tabs a.link,
-html[data-page="home"] .nav-tabs button.link {
-    color:               inherit !important;
-    font-weight:         inherit !important;
+html[data-page="home"] .nav-tabs a.link *,
+html[data-page="home"] .nav-tabs button.link,
+html[data-page="home"] .nav-tabs button.link * {
+    color:               unset !important;
+    font-weight:         400 !important;
     border-bottom-color: transparent !important;
 }
 
