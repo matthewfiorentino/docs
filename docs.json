@@ -40,13 +40,15 @@
     "links": [
       {
         "label": "Contacts",
-        "href": "/contacts"
+        "href": "/contacts",
+        "icon": "people-group"
       }
     ],
     "primary": {
       "type": "button",
       "label": "RI Portal",
-      "href": "https://portal.rimuhc.ca"
+      "href": "https://portal.rimuhc.ca",
+      "icon": "arrow-up-right-from-square"
     }
   },
   "interaction": {
