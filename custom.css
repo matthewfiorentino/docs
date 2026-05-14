@@ -170,8 +170,8 @@ li[data-group-tag]:first-child {
     border-radius: 4px !important;
     letter-spacing: 0.02em !important;
     white-space: nowrap !important;
-    background: rgba(43, 156, 226, 0.12) !important;
-    color: #2b9ce2 !important;
+    background: rgba(255, 83, 127, 0.12) !important;
+    color: #ff537f !important;
 }
 
 /* ── Homepage — suppress active tab styling ──
@@ -1247,6 +1247,41 @@ article {
     border-color: var(--ri-accent) !important;
     color:        var(--ri-accent) !important;
 }
+/* ── Prev / Next page navigation — card style ── */
+[data-component="prev-next"] {
+    margin-top: 48px !important;
+    gap: 16px !important;
+}
+[data-component="prev-next"] a,
+[data-component-part="prev-next-link"] {
+    background: #fff !important;
+    border: 1px solid rgba(0,0,0,0.09) !important;
+    border-radius: 14px !important;
+    padding: 20px 24px !important;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 4px 16px rgba(0,0,0,0.05) !important;
+    transition: border-color .15s, box-shadow .15s, transform .12s !important;
+    text-decoration: none !important;
+}
+[data-component="prev-next"] a:hover,
+[data-component-part="prev-next-link"]:hover {
+    border-color: rgba(43, 156, 226, 0.45) !important;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.04), 0 8px 24px rgba(43,156,226,0.10) !important;
+    transform: translateY(-1px) !important;
+}
+[data-component-part="prev-next-direction"] {
+    font-size: 11px !important;
+    font-weight: 700 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.08em !important;
+    color: #9ca3af !important;
+    margin-bottom: 6px !important;
+}
+[data-component-part="prev-next-title"] {
+    font-size: 15px !important;
+    font-weight: 600 !important;
+    color: #150e51 !important;
+    line-height: 1.35 !important;
+}
 /* ── Homepage footer ── */
 .ri-home-footer {
     background-color: #150e51;
@@ -1344,6 +1379,62 @@ article {
     .ri-home-footer { padding: 40px 4vw; }
     .ri-home-footer-inner { padding: 36px 24px; gap: 32px; border-radius: 18px; }
     .ri-home-footer-cols { grid-template-columns: 1fr; gap: 24px; }
+}
+/* ── Article / global footer — align with homepage footer style ──
+   Mintlify renders the global footer from docs.json footer.links + socials.
+   We give it the same dark-navy treatment as .ri-home-footer, then organise
+   logos, links, and copyright consistently.                                   */
+footer:not(.ri-home-footer) {
+    background-color: #150e51 !important;
+    background-image: url('/images/footer.png') !important;
+    background-size: cover !important;
+    background-position: center !important;
+    color: rgba(255,255,255,0.75) !important;
+    padding: 64px 6vw 48px !important;
+}
+footer:not(.ri-home-footer) a {
+    color: rgba(255,255,255,0.75) !important;
+    text-decoration: none !important;
+    transition: color .12s !important;
+}
+footer:not(.ri-home-footer) a:hover {
+    color: #fff !important;
+}
+/* Logo image in Mintlify footer */
+footer:not(.ri-home-footer) img {
+    filter: brightness(0) invert(1) !important;
+    opacity: 0.85 !important;
+    height: 48px !important;
+    width: auto !important;
+}
+/* Link group headers ("Clinical Research Hub", etc.) */
+footer:not(.ri-home-footer) h2,
+footer:not(.ri-home-footer) [class*="footer-group-title"],
+footer:not(.ri-home-footer) [class*="group-title"] {
+    font-size: 11px !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.1em !important;
+    text-transform: uppercase !important;
+    color: rgba(255,255,255,0.45) !important;
+    margin-bottom: 12px !important;
+}
+/* Copyright line */
+footer:not(.ri-home-footer) [class*="copyright"],
+footer:not(.ri-home-footer) p:last-child {
+    font-size: 12px !important;
+    color: rgba(255,255,255,0.40) !important;
+    margin-top: 40px !important;
+    border-top: 1px solid rgba(255,255,255,0.10) !important;
+    padding-top: 24px !important;
+}
+/* Social icon links */
+footer:not(.ri-home-footer) svg {
+    color: rgba(255,255,255,0.55) !important;
+    fill: rgba(255,255,255,0.55) !important;
+}
+footer:not(.ri-home-footer) [class*="social"]:hover svg {
+    color: #fff !important;
+    fill: #fff !important;
 }
 /* ── SOP meta bar ── */
 .ri-sop-meta {
