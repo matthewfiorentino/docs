@@ -158,32 +158,18 @@ li[data-group-tag]:first-child {
 #sidebar-content ul {
     gap: 0 !important;
 }
-/* ── Sidebar — tag pills (frontmatter tag: "New" / "Updated" / etc.) ──
-   Mintlify renders different pill types with different classes depending on
-   the tag value. We target .nav-tag-pill-text AND any element inside a
-   nav-tag pill container to catch all variants (New, Updated, Beta, etc.).  */
-.nav-tag-pill-text,
-[class*="nav-tag-pill"] span,
-[class*="NavTagPill"] span,
-[class*="sidebar"] [class*="tag"] {
-    display: inline-block !important;
+/* ── Sidebar — tag pills (frontmatter tag: "New" / "Updated" / "Beta" / etc.) ──
+   Mintlify always renders pills with data-nav-tag attribute — the most precise
+   selector available. Catches every tag type automatically, no false positives. */
+[data-nav-tag] {
+    background: rgba(255, 83, 127, 0.12) !important;
+    color: #c43060 !important;
+    padding: 2px 6px !important;
+    border-radius: 4px !important;
     font-size: 9.5px !important;
     font-weight: 700 !important;
-    line-height: 1 !important;
-    padding: 2.5px 6px !important;
-    border-radius: 4px !important;
-    letter-spacing: 0.02em !important;
+    line-height: 1.2 !important;
     white-space: nowrap !important;
-    background: rgba(255, 83, 127, 0.12) !important;
-    color: #c43060 !important;
-}
-/* Mintlify renders "Updated" / "Beta" / other variants using bg-primary/10
-   on a <span>. Pills are always spans; active-page links are <a> elements —
-   scoping to span prevents the coral bleeding onto active sidebar links.     */
-#sidebar-content li span[class*="bg-primary"],
-#sidebar-content li span[class*="text-primary"] {
-    background: rgba(255, 83, 127, 0.12) !important;
-    color: #c43060 !important;
 }
 
 /* ── Navbar — tab interactions ─────────────────────────────────────────────
