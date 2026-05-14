@@ -1188,6 +1188,10 @@ button:has(img[alt="Quebec"]) {
 img.nav-logo {
     height: 38px !important;
     width:  auto !important;
+    transition: opacity 0.15s ease;
+}
+:has(> img.nav-logo):hover img.nav-logo {
+    opacity: 0.72;
 }
 /* ── Navbar responsive tightening ──────────────────────────────────────────
    Logo stays fixed; nav items tighten instead.
