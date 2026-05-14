@@ -107,6 +107,9 @@
 
     /* Accent stays the same — brand blue reads well on navy */
     --ri-accent: #2b9ce2;
+
+    /* Page background — push Mintlify's near-black toward brand navy */
+    --background: 248 65% 11%;
 }
 
 /* ── Dark mode component fixes ── */
@@ -135,6 +138,37 @@
     border-radius: 10px;
     padding: 20px;
 }
+
+/* Body background — fallback if --background HSL override doesn't reach all surfaces */
+.dark body {
+    background-color: hsl(248, 65%, 11%) !important;
+}
+
+/* Contact band — replace the light pastel gradient with a dark navy one */
+.dark .ri-contact-band {
+    background:
+        radial-gradient(ellipse 55% 85% at 2% 50%,  rgba(43, 156, 226, 0.18) 0%, transparent 70%),
+        radial-gradient(ellipse 42% 58% at 98% 12%, rgba(144, 57, 249, 0.14) 0%, transparent 65%),
+        radial-gradient(ellipse 60% 65% at 96% 96%, rgba(255, 83, 127, 0.16) 0%, transparent 65%),
+        hsl(248, 65%, 11%) !important;
+}
+.dark .ri-contact-heading,
+.dark .ri-contact-body,
+.dark .ri-faq-label,
+.dark .ri-faq-body { color: var(--ri-text-body) !important; }
+.dark .ri-contact-heading { color: var(--ri-text) !important; }
+.dark .ri-contact-link { color: var(--ri-blue) !important; }
+
+/* CANTRAIN callout — hardcoded border and text color */
+.dark .ri-cantrain-callout {
+    border-color: var(--ri-border);
+}
+.dark .ri-cantrain-text {
+    color: var(--ri-text-body);
+}
+
+/* Hardcoded border on the cantrain callout */
+.dark .ri-cantrain-callout { border-color: rgba(255,255,255,0.12); }
 
 /* ── Font ── */
 body,
