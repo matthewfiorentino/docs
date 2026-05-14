@@ -206,48 +206,41 @@ html[data-page="home"] .nav-tabs button.link * {
     border-bottom-color: var(--ri-accent) !important;
     color:               var(--ri-accent) !important;
 }
-/* ── Contact — white fill, navy border; inverts on hover ── */
+/* ── Contact — plain text link, no box ── */
 li.navbar-link a[href="/contacts"] {
-    background:      #fff !important;
-    color:           #2b2666 !important;
-    border:          1.5px solid #2b2666 !important;
-    border-radius:   7px !important;
-    font-size:       13px !important;
-    font-weight:     500 !important;
-    padding:         5px 14px !important;
+    background:      transparent !important;
+    color:           #6b7280 !important;
+    border:          none !important;
+    border-radius:   0 !important;
+    font-size:       14px !important;
+    font-weight:     400 !important;
+    padding:         0 !important;
     text-decoration: none !important;
-    transition:      background 0.15s, color 0.15s !important;
+    transition:      color 0.15s !important;
 }
 li.navbar-link a[href="/contacts"]:hover {
-    background: #2b2666 !important;
-    color:      #fff !important;
+    color: var(--ri-accent) !important;
 }
-/* ── Portal — navy fill, white text; inverts on hover ──
-   mint theme: visual background is inner <span class="absolute inset-0">.
-   We set navy on the span, add a matching border on the <a>, and invert
-   both on hover. overflow:hidden clips the span corners to the <a> radius. */
+/* ── Portal — coral fill, white text, dims on hover ──
+   mint: visual background is inner <span class="absolute inset-0">.
+   overflow:hidden clips the span to the <a> border-radius.           */
 #topbar-cta-button a {
-    border:        1.5px solid #2b2666 !important;
+    border:        none !important;
     border-radius: 7px !important;
     overflow:      hidden !important;
-    transition:    color 0.15s !important;
 }
 #topbar-cta-button a span.absolute {
-    background:  #2b2666 !important;
-    transition:  background 0.15s !important;
+    background:  #ff537f !important;
+    transition:  opacity 0.15s !important;
 }
 #topbar-cta-button a,
 #topbar-cta-button a * {
     color:       #fff !important;
     font-weight: 500 !important;
+    opacity:     1 !important;
 }
 #topbar-cta-button a:hover span.absolute {
-    background: #fff !important;
-}
-#topbar-cta-button a:hover,
-#topbar-cta-button a:hover * {
-    color:   #2b2666 !important;
-    opacity: 1 !important;
+    opacity: 0.85 !important;
 }
 /* ── Tables ── */
 .prose table,
