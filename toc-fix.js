@@ -240,7 +240,7 @@
   }
 
   function initCounters() {
-    var selectors = '.ri-cim-stat-n, .ri-svc-strip-stat';
+    var selectors = '.ri-svc-strip-stat';
     var els = Array.from(document.querySelectorAll(selectors));
     if (!els.length) {
       setTimeout(initCounters, 600);
