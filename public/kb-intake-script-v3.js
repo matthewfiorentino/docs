@@ -1042,7 +1042,7 @@ function buildEmailHtml(a, d, payload) {
     for (var i = 0; i < rows.length; i++) content += rows[i];
     if (!content) return '';
     return '<div style="margin-bottom:24px">' +
-           '<div style="font-size:11px;font-weight:700;color:#007468;letter-spacing:.08em;text-transform:uppercase;margin-bottom:8px;border-bottom:1px solid #e8e8e8;padding-bottom:6px">' + title + '</div>' +
+           '<div style="font-size:11px;font-weight:700;color:#2b9ce2;letter-spacing:.08em;text-transform:uppercase;margin-bottom:8px;border-bottom:1px solid #e8e8e8;padding-bottom:6px">' + title + '</div>' +
            '<table style="border-collapse:collapse;width:100%"><tbody>' + content + '</tbody></table>' +
            '</div>';
   }
@@ -1060,7 +1060,7 @@ function buildEmailHtml(a, d, payload) {
   var flagsHtml = '';
   if (d.flags && d.flags.length > 0) {
     var toneColor = { coral: '#c0392b', sky: '#2471a3', amber: '#d68910' };
-    flagsHtml += '<div style="margin-bottom:24px"><div style="font-size:11px;font-weight:700;color:#007468;letter-spacing:.08em;text-transform:uppercase;margin-bottom:8px;border-bottom:1px solid #e8e8e8;padding-bottom:6px">REGULATORY FLAGS</div>';
+    flagsHtml += '<div style="margin-bottom:24px"><div style="font-size:11px;font-weight:700;color:#2b9ce2;letter-spacing:.08em;text-transform:uppercase;margin-bottom:8px;border-bottom:1px solid #e8e8e8;padding-bottom:6px">REGULATORY FLAGS</div>';
     for (var fi = 0; fi < d.flags.length; fi++) {
       var fl = d.flags[fi];
       var col = toneColor[fl.tone] || '#555';
@@ -1180,7 +1180,7 @@ function buildEmailHtml(a, d, payload) {
       if (!hasContent) return '';
 
       var body = '<div style="margin-bottom:24px;padding:16px 18px;background:#f8f8f8;border-radius:8px;border:1px solid #e8e8e8">';
-      body += '<div style="font-size:11px;font-weight:700;color:#007468;letter-spacing:.08em;text-transform:uppercase;margin-bottom:12px;padding-bottom:6px;border-bottom:1px solid #e0e0e0">GUIDANCE SURFACED TO RESEARCHER</div>';
+      body += '<div style="font-size:11px;font-weight:700;color:#2b9ce2;letter-spacing:.08em;text-transform:uppercase;margin-bottom:12px;padding-bottom:6px;border-bottom:1px solid #e0e0e0">GUIDANCE SURFACED TO RESEARCHER</div>';
       if (nextSteps.length)    body += listSection('Next steps', nextSteps);
       if (guidance.length)     body += listSection('What to plan for', guidance);
       if (supportLinks.length) body += listSection('Resources for support needs', supportLinks);
@@ -1236,7 +1236,7 @@ function buildConfirmationEmailHtml(a, d, payload) {
   function emailSection(title, content) {
     if (!content) return '';
     return '<div style="margin-bottom:22px">' +
-      '<div style="font-size:11px;font-weight:700;color:#007468;letter-spacing:.08em;text-transform:uppercase;margin-bottom:8px;padding-bottom:6px;border-bottom:1px solid #e8e8e8">' + title + '</div>' +
+      '<div style="font-size:11px;font-weight:700;color:#2b9ce2;letter-spacing:.08em;text-transform:uppercase;margin-bottom:8px;padding-bottom:6px;border-bottom:1px solid #e8e8e8">' + title + '</div>' +
       content +
       '</div>';
   }
@@ -1270,7 +1270,7 @@ function buildConfirmationEmailHtml(a, d, payload) {
 
     // Closing
     '<hr style="border:none;border-top:1px solid #ebebeb;margin:24px 0 20px;">' +
-    '<p style="font-size:13px;color:#888;line-height:1.6;margin:0;">In the meantime, the <a href="' + IK_BASE_URL + '" style="color:#007468;text-decoration:none;font-weight:600;">RI-MUHC Clinical Research Hub</a> has guidance for every stage of your study — from design through close-out. Feel free to explore while you wait.</p>' +
+    '<p style="font-size:13px;color:#888;line-height:1.6;margin:0;">In the meantime, the <a href="' + IK_BASE_URL + '" style="color:#2b9ce2;text-decoration:none;font-weight:600;">RI-MUHC Clinical Research Hub</a> has guidance for every stage of your study — from design through close-out. Feel free to explore while you wait.</p>' +
 
     '</div>' + // end body card
 

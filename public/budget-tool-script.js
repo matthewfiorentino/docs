@@ -2652,7 +2652,7 @@ function doExportXLSX() {
   var rebInc         = rebIncEl ? rebIncEl.value === 'yes' : true;
 
   // ── Styles ──────────────────────────────────────────────────
-  var NAVY = 'FF2B2666', TEAL = 'FF007468', TEAL_L = 'FFF0FAF9';
+  var NAVY = 'FF2B2666', TEAL = 'FF2B9CE2', TEAL_L = 'FFE8F4FC';
   var WHITE = 'FFFFFFFF', GRAY = 'FFF7F7F7', BDR = 'FFD0D0D0';
   var SKY = 'FF2B9CE2', AMBER = 'FFCCA700';
   function bdr() { var t = {style:'thin',color:{argb:BDR}}; return {top:t,bottom:t,left:t,right:t}; }

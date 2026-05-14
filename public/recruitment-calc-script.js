@@ -97,7 +97,7 @@
         '<div class="rc-bar-row"><div class="rc-bar-label">Conservative</div><div class="rc-bar-track"><div class="rc-bar-fill conservative" style="width:' + conPct + '%"></div></div><div class="rc-bar-val' + (conOver ? ' over' : '') + '">' + pluralMonths(r.conservativeMonths) + '</div></div>' +
         '<div class="rc-bar-row"><div class="rc-bar-label">Your window</div><div class="rc-bar-track"><div class="rc-bar-fill window" style="width:' + winPct + '%"></div></div><div class="rc-bar-val">' + pluralMonths(r.windowMonths) + '</div></div>' +
         '<div class="rc-chart-legend">' +
-          '<div class="rc-legend-item"><div class="rc-legend-dot" style="background:#007468"></div> Optimistic (full accrual pace)</div>' +
+          '<div class="rc-legend-item"><div class="rc-legend-dot" style="background:#2b9ce2"></div> Optimistic (full accrual pace)</div>' +
           '<div class="rc-legend-item"><div class="rc-legend-dot" style="background:#b97800"></div> Conservative (halved projection)</div>' +
           '<div class="rc-legend-item"><div class="rc-legend-dot" style="background:#c8c8d8"></div> Your recruitment window</div>' +
         '</div>' +

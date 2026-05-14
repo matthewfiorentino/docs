@@ -170,7 +170,7 @@ li[data-group-tag]:first-child {
     border-radius: 4px !important;
     letter-spacing: 0.02em !important;
     white-space: nowrap !important;
-    background: rgba(0, 122, 110, 0.12) !important;
+    background: rgba(43, 156, 226, 0.12) !important;
     color: #2b9ce2 !important;
 }
 
@@ -641,7 +641,7 @@ body:has(.ri-text-hero) main {
 }
 /* Callout boxes (replaces <Note> and <Warning> inside JSX panels) */
 .ri-callout { padding: 16px; border-radius: 8px; font-size: 14px; line-height: 1.6; margin-bottom: 1.5rem; border: 1px solid; }
-.ri-callout--note     { background: #f0faf9; color: #005a50; border-color: #b0d8d4; }
+.ri-callout--note     { background: #eef5fc; color: #0a3a66; border-color: #b3d4f0; }
 .ri-callout--warn     { background: #fffbf0; color: #6b4500; border-color: #e0d0aa; }
 .ri-callout--attention{ background: #fff0f4; color: #8a1840; border-color: #e0b0c0; }
 .ri-callout a { color: var(--ri-accent) !important; text-decoration: underline; text-underline-offset: 3px; }
@@ -703,15 +703,15 @@ body:has(.ri-text-hero) main {
 }
 .ri-guides-row .ri-orientation-banner {
     margin: 0 !important;
-    background: #f7faf9;
-    border-color: rgba(0, 122, 110, 0.15);
+    background: rgba(43, 156, 226, 0.03);
+    border-color: rgba(43, 156, 226, 0.15);
     justify-content: center;
     transition: background .15s, border-color .15s, box-shadow .15s;
 }
 .ri-guides-row .ri-orientation-banner:hover {
-    background: #edf7f5;
+    background: rgba(43, 156, 226, 0.06);
     border-color: var(--ri-accent);
-    box-shadow: 0 2px 8px rgba(0, 122, 110, 0.1);
+    box-shadow: 0 2px 8px rgba(43, 156, 226, 0.1);
 }
 
 .ri-guides-stack {
@@ -1622,7 +1622,10 @@ article {
 
 /* ── Updates / changelog date pill ── */
 .update-container .bg-primary\/10 {
-    background-color: rgba(0, 122, 110, 0.18) !important;
+    background-color: rgba(43, 156, 226, 0.10) !important;
+}
+.update-container .text-primary {
+    color: #2b9ce2 !important;
 }
 
 /* ── CIM band: feature section (Lovable "Meet" pattern) ── */
