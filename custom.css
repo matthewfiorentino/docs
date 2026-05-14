@@ -1340,12 +1340,12 @@ article {
     gap: 14px;
 }
 .ri-home-footer-institute-logo {
-    height: 38px;
-    width: auto;
+    width: 180px;
+    height: auto;
 }
 .ri-home-footer-logo {
-    height: 38px;
-    width: auto;
+    width: 180px;
+    height: auto;
     display: block;
 }
 .ri-home-footer-copyright {
