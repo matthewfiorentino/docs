@@ -3639,7 +3639,7 @@ function llRenderAbout(pane) {
       id: 'jc', colour: '#9039f9', bg: 'rgba(144,57,249,0.10)',
       name: 'Judgement Calls', count: '6 scenarios \xb7 3 decision points each',
       desc: 'Scenarios where a colleague, PI, or sponsor pressures you to do something that isn’t right. Three decision points per case — choose your response and see what it means for the study.',
-      icon: '<line x1="12" y1="3" x2="12" y2="21"/><path d="M3 9h18M3 15h18"/><path d="M5 3h14M5 21h14"/><path d="m3 9 3-6M18 3l3 6M3 15l3 6M18 21l3-6"/>'
+      icon: '<path d="M12 2L3 7v5c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7L12 2z"/>'
     },
     {
       id: 'insp', colour: '#ef4444', bg: 'rgba(239,68,68,0.10)',
