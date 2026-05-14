@@ -891,7 +891,7 @@ function buildSupportLinks(a, d) {
     },
     'data': function() {
       links.push('<strong>Data management, REDCap, and privacy</strong>');
-      links.push('CORD — REDCap builds, CRF design, and data management planning: <a href="/kb/cord">CORD &rarr;</a>');
+      links.push('CORD (Capture and Optimization of Research Data) — REDCap builds, CRF design, and data management planning: <a href="/kb/cord">CORD &rarr;</a>');
       links.push('MUHC patient data — retrospective access across 5 sites: <a href="/kb/data-warehouse">MUHC patient data &rarr;</a>');
       if (d.isCrossBorder || d.hasPHI) {
         links.push('Privacy impact assessment (ÉFVP) — required before cross-border data sharing: <a href="/kb/privacy">Privacy &amp; data governance &rarr;</a>');
