@@ -5,7 +5,13 @@
   "colors": {
     "primary": "#2b9ce2",
     "light": "#74c0f8",
-    "dark": "#150e51"
+    "dark": "#2b9ce2"
+  },
+  "background": {
+    "color": {
+      "light": "#ffffff",
+      "dark": "#0e0b30"
+    }
   },
   "metadata": {
     "timestamp": true

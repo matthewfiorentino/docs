@@ -69,47 +69,45 @@
    Page background (#150e51) is set in docs.json colors.dark.
    These override the custom-component tokens only.                          */
 .dark {
-    /* Text */
-    --ri-heading:        #e8e4ff;
-    --ri-text:           #f1f0ff;
-    --ri-text-body:      #cbc8f0;
-    --ri-text-secondary: #a9a5d8;
-    --ri-text-muted:     #7e7ab0;
+    /* Text — plain white/grey, not brand-tinted */
+    --ri-heading:        #ffffff;
+    --ri-text:           #f0f0f0;
+    --ri-text-body:      #d1d5db;
+    --ri-text-secondary: #9ca3af;
+    --ri-text-muted:     #6b7280;
     --ri-text-overlay-strong: rgba(255,255,255,0.85);
     --ri-text-overlay:        rgba(255,255,255,0.70);
     --ri-text-overlay-soft:   rgba(255,255,255,0.45);
 
-    /* Surfaces — layered above the #150e51 page bg */
-    --ri-surface:        #1e1854;
-    --ri-surface-subtle: #241e6b;
-    --ri-surface-low:    #19144a;
+    /* Surfaces — layered navy above the #0e0b30 page background */
+    --ri-surface:        #1a1650;
+    --ri-surface-subtle: #201b60;
+    --ri-surface-low:    #160f42;
 
     /* Borders & shadows */
     --ri-border:         rgba(255,255,255,0.10);
     --ri-border-subtle:  rgba(255,255,255,0.06);
-    --ri-shadow-xs:      0 1px 3px rgba(0,0,0,0.30), 0 4px 12px rgba(0,0,0,0.20);
-    --ri-shadow-sm:      0 1px 3px rgba(0,0,0,0.30), 0 8px 24px rgba(0,0,0,0.25);
-    --ri-shadow-md:      0 1px 3px rgba(0,0,0,0.30), 0 10px 30px rgba(0,0,0,0.30);
-    --ri-shadow-card:    0 4px 14px rgba(0,0,0,0.35);
-    --ri-shadow-hover:   0 6px 28px rgba(43,156,226,0.25);
-    --ri-shadow-lift:    0 10px 30px rgba(0,0,0,0.50);
+    --ri-shadow-xs:      0 1px 3px rgba(0,0,0,0.40), 0 4px 12px rgba(0,0,0,0.25);
+    --ri-shadow-sm:      0 1px 3px rgba(0,0,0,0.40), 0 8px 24px rgba(0,0,0,0.30);
+    --ri-shadow-md:      0 1px 3px rgba(0,0,0,0.40), 0 10px 30px rgba(0,0,0,0.35);
+    --ri-shadow-card:    0 4px 14px rgba(0,0,0,0.40);
+    --ri-shadow-hover:   0 6px 28px rgba(48,255,237,0.15);
+    --ri-shadow-lift:    0 10px 30px rgba(0,0,0,0.60);
+
+    /* Accents — turquoise as the dark-mode highlight colour */
+    --ri-accent:      #2b9ce2;
+    --ri-teal-dim:    rgba(48,255,237,0.80);   /* softer turquoise for text */
 
     /* Callout tints — dark versions */
     --ri-callout-note-bg:          rgba(43,156,226,0.12);
-    --ri-callout-note-text:        #a8d4f5;
+    --ri-callout-note-text:        #93c5fd;
     --ri-callout-note-border:      rgba(43,156,226,0.30);
     --ri-callout-warn-bg:          rgba(255,180,0,0.10);
-    --ri-callout-warn-text:        #f5d080;
+    --ri-callout-warn-text:        #fcd34d;
     --ri-callout-warn-border:      rgba(255,180,0,0.25);
     --ri-callout-attention-bg:     rgba(255,83,127,0.10);
-    --ri-callout-attention-text:   #f5a0b8;
+    --ri-callout-attention-text:   #fda4af;
     --ri-callout-attention-border: rgba(255,83,127,0.25);
-
-    /* Accent stays the same — brand blue reads well on navy */
-    --ri-accent: #2b9ce2;
-
-    /* Page background — push Mintlify's near-black toward brand navy */
-    --background: 248 65% 11%;
 }
 
 /* ── Dark mode component fixes ── */
