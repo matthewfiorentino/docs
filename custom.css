@@ -2126,20 +2126,29 @@ article {
     flex: 0 0 auto;
     white-space: nowrap;
 }
-.ri-sh-tab-icon,
-.ri-sh-tab-icon svg,
-.ri-sh-tab > svg,
-.ri-sh-tab > i,
-.ri-sh-tab .fa,
-.ri-sh-tab .svg-inline--fa {
+/* Mintlify renders FA icons as <svg class="icon"> with mask-image + bg-color.
+   We need to set mask-size so the full glyph fits the 24x24 box, and override
+   bg-color to drive the icon color (Tailwind bg-gray-800 sets it by default). */
+.ri-sh-tab .icon,
+.ri-sh-tab svg.icon,
+.ri-sh-tab-icon {
     width: 24px !important;
     height: 24px !important;
-    font-size: 24px !important;
-    line-height: 1 !important;
     flex-shrink: 0;
-    overflow: visible !important;
     display: block !important;
     vertical-align: middle !important;
+    mask-size: contain !important;
+    -webkit-mask-size: contain !important;
+    background-color: #6b7280 !important;
+    transition: background-color .15s;
+}
+.ri-sh-tab:hover .icon,
+.ri-sh-tab:hover svg.icon {
+    background-color: #0a0a0a !important;
+}
+.ri-sh-tab--active .icon,
+.ri-sh-tab--active svg.icon {
+    background-color: #0a0a0a !important;
 }
 .ri-sh-tab:hover { color: #0a0a0a; }
 .ri-sh-tab--active,
