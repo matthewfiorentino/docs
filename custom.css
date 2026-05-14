@@ -550,21 +550,26 @@ body:has(.ri-text-hero) main {
     .ri-step-pill { width: 96px; font-size: 11.5px; }
 }
 /* Detail card grid */
-.ri-dcard-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 1.5rem; }
+.ri-dcard-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-bottom: 1.5rem; }
 .ri-dcard {
-    display: flex; flex-direction: column; gap: 6px; padding: 16px 18px;
-    border: 1px solid rgba(0,0,0,.08); border-radius: 10px;
-    text-decoration: none; background: #fff;
-    transition: border-color .15s, box-shadow .15s, transform .15s;
+    display: flex; flex-direction: column; gap: 8px; padding: 22px 24px;
+    border: 1px solid rgba(0,0,0,.08); border-radius: 14px;
+    text-decoration: none !important; background: #fff;
+    transition: border-color .15s, background .15s, transform .15s, box-shadow .15s;
 }
-
-.ri-dcard:hover { border-color: var(--ri-accent); }
+.ri-dcard:hover {
+    border-color: var(--ri-blue);
+    background: rgba(43, 156, 226, 0.04);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 14px rgba(0,0,0,0.06);
+}
 .ri-dcard-title {
-    font-size: 14px; font-weight: 700; color: var(--ri-heading);
+    font-size: 14.5px; font-weight: 700; color: #0a0a0a;
     display: flex; align-items: baseline; justify-content: space-between; gap: 8px;
+    margin-bottom: 2px;
+    letter-spacing: -.005em;
 }
-
-.ri-dcard-desc { font-size: 13px; line-height: 1.55; color: #666; }
+.ri-dcard-desc { font-size: 13.5px; line-height: 1.6; color: #4b5563; }
 
 @media (max-width: 900px) { .ri-dcard-grid { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 560px) { .ri-dcard-grid { grid-template-columns: 1fr; } }
@@ -648,41 +653,45 @@ body:has(.ri-text-hero) main {
     flex-direction: column;
     gap: 12px;
 }
-.ri-guides-left-col .ri-intake-entry {
-    flex: 1;
-    border-radius: 10px;
-}
-/* Intake entry — coral card, full surface is a link */
+/* Intake entry — primary CTA card (step 1 for PI). Soft blue tint, blue accent. */
 .ri-intake-entry {
     display: flex; flex-direction: column; align-items: flex-start;
-    flex: 1; padding: 16px 20px; border-radius: 10px;
-    border: 1px solid var(--ri-hero-accent);
-    background: var(--ri-hero-accent); text-decoration: none;
-    transition: background .15s, box-shadow .15s;
+    padding: 24px 26px; border-radius: 14px;
+    border: 1px solid rgba(43, 156, 226, 0.28);
+    background: rgba(43, 156, 226, 0.05);
+    text-decoration: none !important;
+    transition: border-color .15s, background .15s, transform .15s, box-shadow .15s;
 }
-.ri-intake-entry:hover { filter: brightness(.9); }
-.ri-ie-label { font-size: 14px; font-weight: 700; color: #fff; margin-bottom: 6px; }
-.ri-ie-desc { font-size: 13px; line-height: 1.55; color: rgba(255,255,255,.88); flex: 1; }
+.ri-intake-entry:hover {
+    border-color: var(--ri-blue);
+    background: rgba(43, 156, 226, 0.10);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 14px rgba(43, 156, 226, 0.14);
+}
+.ri-ie-label { font-size: 15px; font-weight: 700; color: #0a0a0a; margin-bottom: 8px; letter-spacing: -.005em; }
+.ri-ie-desc { font-size: 14px; line-height: 1.6; color: #4b5563; flex: 1; }
 .ri-ie-link {
-    font-size: 13px; font-weight: 600; color: #fff;
-    margin-top: 14px; display: inline-block;
+    font-size: 14px; font-weight: 700; color: var(--ri-blue);
+    margin-top: 16px; display: inline-block;
 }
-/* Orientation banner — light grey card, same flex-1 width as intake entry */
+/* Orientation banner — neutral white card, same shape as intake */
 .ri-orientation-banner {
     display: flex; flex-direction: column; align-items: flex-start;
-    flex: 1; padding: 16px 20px; border-radius: 10px;
+    padding: 24px 26px; border-radius: 14px;
     border: 1px solid rgba(0,0,0,.08);
-    background: #f7f8fa; text-decoration: none; margin-bottom: 0;
-    transition: background .15s, border-color .15s;
+    background: #fff;
+    text-decoration: none !important; margin-bottom: 0;
+    transition: border-color .15s, background .15s, transform .15s, box-shadow .15s;
 }
-
-.ri-orientation-banner:hover { background: #f0faf8; border-color: var(--ri-accent); }
-
-.ri-pb-label { font-size: 14px; font-weight: 700; color: var(--ri-heading); margin-bottom: 6px; }
-
-.ri-pb-desc { font-size: 13px; line-height: 1.5; color: #666; flex: 1; }
-
-.ri-pb-arrow { font-size: 13px; font-weight: 600; color: var(--ri-accent); margin-top: 14px; display: inline-block; }
+.ri-orientation-banner:hover {
+    border-color: var(--ri-blue);
+    background: rgba(43, 156, 226, 0.04);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 14px rgba(0,0,0,0.06);
+}
+.ri-pb-label { font-size: 15px; font-weight: 700; color: #0a0a0a; margin-bottom: 8px; letter-spacing: -.005em; }
+.ri-pb-desc { font-size: 14px; line-height: 1.6; color: #4b5563; flex: 1; }
+.ri-pb-arrow { font-size: 14px; font-weight: 700; color: var(--ri-blue); margin-top: 16px; display: inline-block; }
 /* Spacing: orientation banner when directly inside a role panel (not inside ri-pi-top-row) */
 .ri-role-panel > .ri-orientation-banner { margin-top: 1.75rem; margin-bottom: 1.5rem; }
 /* Orientation card alongside guide cards — side-by-side layout */
@@ -2182,8 +2191,8 @@ article {
 .ri-guides-numbered {
     display: flex;
     flex-direction: column;
-    gap: 32px;
-    margin-top: 32px;
+    gap: 40px;
+    margin-top: 36px;
 }
 .ri-guide-row {
     display: grid;
