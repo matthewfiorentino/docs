@@ -2127,9 +2127,16 @@ article {
     flex: 0 0 auto;
     white-space: nowrap;
 }
-.ri-sh-tab-icon {
-    width: 22px;
-    height: 22px;
+.ri-sh-tab-icon,
+.ri-sh-tab-icon svg,
+.ri-sh-tab .fa,
+.ri-sh-tab svg {
+    width: 28px !important;
+    height: 28px !important;
+    font-size: 28px !important;
+    line-height: 1 !important;
+    flex-shrink: 0;
+    overflow: visible;
 }
 .ri-sh-tab:hover { color: #0a0a0a; }
 .ri-sh-tab--active,
