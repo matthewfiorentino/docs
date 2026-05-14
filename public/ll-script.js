@@ -1991,8 +1991,11 @@ window.addEventListener('popstate', function(e) {
 });
 
 function loadInclude(url, id, cb) {
+  // Guard: only fetch when the target element exists on this page.
+  if (!document.getElementById(id)) return;
   fetch(url).then(function(r) { return r.text(); }).then(function(html) {
     var el = document.getElementById(id);
+    if (!el) return;
     el.innerHTML = html;
     var scripts = el.querySelectorAll('script');
     for (var i = 0; i < scripts.length; i++) {

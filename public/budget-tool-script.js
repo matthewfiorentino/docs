@@ -3286,6 +3286,8 @@ function syncStudySites() {
 // ════════════════════════════════════════
 // Called by script.onload in the React useEffect — DOM is guaranteed ready.
 function btInit() {
+  // Guard: only run when the budget-tool DOM is present (script loads globally).
+  if (!document.getElementById('study-n')) return;
   renderSvcs();
   syncPtRowN();
   calcPtCost();
