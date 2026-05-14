@@ -186,41 +186,34 @@ li[data-group-tag]:first-child {
     color: #c43060 !important;
 }
 
-/* ── Navbar — tab hover: color-only (Stripe / Vercel pattern) ──
-   Hover darkens text to near-black. Active shows brand-blue text + a 2px
-   inset bottom shadow acting as an underline. inset box-shadow doesn't
-   affect layout so there's no interaction with the navbar divider.         */
-.nav-tabs a.link,
-.nav-tabs button[aria-haspopup="menu"]:not(#localization-select-trigger) {
-    border-bottom: none !important;
-    margin-bottom: 0 !important;
-    background:    transparent !important;
-    transition:    color 0.15s !important;
-}
-.nav-tabs a.link:hover,
-.nav-tabs button[aria-haspopup="menu"]:not(#localization-select-trigger):hover {
-    color: #0a0a0a !important;
-}
-.nav-tabs a.link[data-active="true"],
-.nav-tabs a.link[aria-current="page"],
-.nav-tabs button[aria-haspopup="menu"]:not(#localization-select-trigger)[data-active="true"],
-.nav-tabs button[aria-haspopup="menu"]:not(#localization-select-trigger)[data-state="open"] {
-    color:      var(--ri-accent) !important;
-    font-weight: 500 !important;
-    box-shadow:  inset 0 -2px 0 var(--ri-accent) !important;
+/* ── Navbar — tab interactions ─────────────────────────────────────────────
+   Mintlify active state: encoded in Tailwind classes only (no data-active).
+   The active tab's child <div> has bg-primary; inactive child <div> has
+   group-hover:bg-gray-200. We detect via :has() and suppress accordingly.  */
+
+/* 1. Remove the gray group-hover underline that appears on hover — we want
+      color-change only, not a flicker underline. bg-primary child (active
+      tab's underline) is left untouched so the blue line stays on live pages. */
+.nav-tabs .nav-tabs-item > div:not([class*="bg-primary"]) {
+    background: transparent !important;
 }
 
-/* ── Homepage — suppress active tab: placed AFTER the active rule so it wins ──
-   With !important, CSS order beats specificity. Putting this block last means
-   it overrides the active + hover rules above when the hero is on the page.   */
-body:has(.ri-text-hero) .nav-tabs a.link,
-body:has(.ri-text-hero) .nav-tabs a.link *,
-body:has(.ri-text-hero) .nav-tabs button[aria-haspopup="menu"]:not(#localization-select-trigger),
-body:has(.ri-text-hero) .nav-tabs button[aria-haspopup="menu"]:not(#localization-select-trigger) * {
-    color:      #6b7280 !important;
-    font-weight: 400 !important;
-    background:  transparent !important;
-    box-shadow:  none !important;
+/* 2. Active tab: swap Mintlify's dark-gray + text-shadow fake-bold for our
+      brand blue. Detected via the child div that carries bg-primary.          */
+.nav-tabs a.link:has(> div[class*="bg-primary"]) {
+    color:       var(--ri-accent) !important;
+    text-shadow: none !important;
+}
+
+/* 3. Homepage only: make the (incorrectly) active KB tab look like a normal
+      inactive tab — reset colour, remove fake-bold, hide the blue underline.
+      Only the active tab is touched; other tabs are already inactive-styled. */
+body:has(.ri-text-hero) .nav-tabs a.link:has(> div[class*="bg-primary"]) {
+    color:       #4b5563 !important;
+    text-shadow: none !important;
+}
+body:has(.ri-text-hero) .nav-tabs .nav-tabs-item > div[class*="bg-primary"] {
+    background: transparent !important;
 }
 /* ── Contact — plain text link, no box ── */
 li.navbar-link a[href="/contacts"] {
