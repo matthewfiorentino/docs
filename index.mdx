@@ -203,23 +203,39 @@ export const RolePanel = ({ role }) => (
           <div className="ri-callout ri-callout--warn">
             A study cannot begin until the <strong>Personne mandatée</strong> grants <a href="/kb/submission-overview">MUHC Authorization</a>. REB approval alone does not authorize research activities — both approvals must be in your ISF before any study procedures begin.
           </div>
-          <div className="ri-guides-row">
-            <div className="ri-guides-left-col">
-              <a href="/kb/my-roadmap" className="ri-intake-entry">
-                <div className="ri-ie-label">Tell us about your study</div>
-                <div className="ri-ie-desc">Answer a few questions and get a personalized, phase-by-phase roadmap — every step you need to take, in order, for your specific study.</div>
-                <div className="ri-ie-link">Get my roadmap →</div>
-              </a>
-              <a href="/kb/roles/pi-orientation" className="ri-orientation-banner">
-                <div className="ri-pb-label">Investigator Orientation</div>
-                <div className="ri-pb-desc">Prerequisites, training levels, what only you sign, how your study begins, and links to the operational guides by study type.</div>
-                <div className="ri-pb-arrow">Get started →</div>
-              </a>
+          <div className="ri-guides-numbered">
+            <div className="ri-guide-step">
+              <div className="ri-guide-step-num">1</div>
+              <div className="ri-guide-step-body">
+                <div className="ri-guide-step-label">Start here</div>
+                <a href="/kb/my-roadmap" className="ri-intake-entry">
+                  <div className="ri-ie-label">Tell us about your study</div>
+                  <div className="ri-ie-desc">Answer a few questions and get a personalized, phase-by-phase roadmap — every step you need to take, in order, for your specific study.</div>
+                  <div className="ri-ie-link">Get my roadmap →</div>
+                </a>
+              </div>
             </div>
-            <div className="ri-guides-stack">
-              <DetailCard href="/kb/roles/pi-guide" title="Investigator Guide — Interventional (I–III)" desc="Stage-by-stage operations for drug trials, device studies, and NHP studies — team structure, RACI responsibilities, and your obligations from submission through close-out." />
-              <DetailCard href="/kb/roles/pi-guide-iv" title="Investigator Guide — Observational (IV)" desc="Investigator obligations for prospective observational, educational, and non-invasive intervention studies — consent, team oversight, and data integrity." />
-              <DetailCard href="/kb/roles/pi-guide-v" title="Investigator Guide — Retrospective (V)" desc="Investigator obligations for retrospective chart review and anonymized biobank studies — the ÉFVP consent waiver decision, data access authorization, and REB maintenance." />
+            <div className="ri-guide-step">
+              <div className="ri-guide-step-num">2</div>
+              <div className="ri-guide-step-body">
+                <div className="ri-guide-step-label">Read your orientation</div>
+                <a href="/kb/roles/pi-orientation" className="ri-orientation-banner">
+                  <div className="ri-pb-label">Investigator Orientation</div>
+                  <div className="ri-pb-desc">Prerequisites, training levels, what only you sign, how your study begins, and links to the operational guides by study type.</div>
+                  <div className="ri-pb-arrow">Get started →</div>
+                </a>
+              </div>
+            </div>
+            <div className="ri-guide-step">
+              <div className="ri-guide-step-num">3</div>
+              <div className="ri-guide-step-body">
+                <div className="ri-guide-step-label">Pick the guide for your study type</div>
+                <div className="ri-dcard-grid">
+                  <DetailCard href="/kb/roles/pi-guide" title="Investigator Guide — Interventional (I–III)" desc="Stage-by-stage operations for drug trials, device studies, and NHP studies — team structure, RACI responsibilities, and your obligations from submission through close-out." />
+                  <DetailCard href="/kb/roles/pi-guide-iv" title="Investigator Guide — Observational (IV)" desc="Investigator obligations for prospective observational, educational, and non-invasive intervention studies — consent, team oversight, and data integrity." />
+                  <DetailCard href="/kb/roles/pi-guide-v" title="Investigator Guide — Retrospective (V)" desc="Investigator obligations for retrospective chart review and anonymized biobank studies — the ÉFVP consent waiver decision, data access authorization, and REB maintenance." />
+                </div>
+              </div>
             </div>
           </div>
         </>
@@ -239,16 +255,28 @@ export const RolePanel = ({ role }) => (
           <div className="ri-callout ri-callout--warn">
             No team member may perform any study task before they appear on the Task Delegation Log, their training is documented, and the QI/PI has countersigned their entry.
           </div>
-          <div className="ri-guides-row">
-            <a href="/kb/roles/crc-orientation" className="ri-orientation-banner">
-              <div className="ri-pb-label">CRC Orientation</div>
-              <div className="ri-pb-desc">Institutional onboarding, training progression, competency domains, and links to the operational guides by study type.</div>
-              <div className="ri-pb-arrow">Get started →</div>
-            </a>
-            <div className="ri-guides-stack">
-              <DetailCard href="/kb/roles/crc-guide" title="CRC Guide — Interventional (I–III)" desc="Operational reference for drug trials, medical device studies, and natural health products. Stage-by-stage procedures and domain-specific guidance." />
-              <DetailCard href="/kb/roles/crc-guide-iv" title="CRC Guide — Observational (IV)" desc="Consent, recruitment, data management, privacy, REB processes, and documentation for prospective observational and non-invasive intervention studies." />
-              <DetailCard href="/kb/roles/crc-guide-v" title="CRC Guide — Retrospective (V)" desc="REB submission, data extraction, privacy compliance, and documentation for retrospective chart review and anonymized biobank studies." />
+          <div className="ri-guides-numbered">
+            <div className="ri-guide-step">
+              <div className="ri-guide-step-num">1</div>
+              <div className="ri-guide-step-body">
+                <div className="ri-guide-step-label">Read your orientation</div>
+                <a href="/kb/roles/crc-orientation" className="ri-orientation-banner">
+                  <div className="ri-pb-label">CRC Orientation</div>
+                  <div className="ri-pb-desc">Institutional onboarding, training progression, competency domains, and links to the operational guides by study type.</div>
+                  <div className="ri-pb-arrow">Get started →</div>
+                </a>
+              </div>
+            </div>
+            <div className="ri-guide-step">
+              <div className="ri-guide-step-num">2</div>
+              <div className="ri-guide-step-body">
+                <div className="ri-guide-step-label">Pick the guide for your study type</div>
+                <div className="ri-dcard-grid">
+                  <DetailCard href="/kb/roles/crc-guide" title="CRC Guide — Interventional (I–III)" desc="Operational reference for drug trials, medical device studies, and natural health products. Stage-by-stage procedures and domain-specific guidance." />
+                  <DetailCard href="/kb/roles/crc-guide-iv" title="CRC Guide — Observational (IV)" desc="Consent, recruitment, data management, privacy, REB processes, and documentation for prospective observational and non-invasive intervention studies." />
+                  <DetailCard href="/kb/roles/crc-guide-v" title="CRC Guide — Retrospective (V)" desc="REB submission, data extraction, privacy compliance, and documentation for retrospective chart review and anonymized biobank studies." />
+                </div>
+              </div>
             </div>
           </div>
         </>
@@ -265,14 +293,26 @@ export const RolePanel = ({ role }) => (
             { label: "Complete protocol-specific training" },
             { label: "Nursing study tasks begin", end: true },
           ]} />
-          <div className="ri-guides-row">
-            <a href="/kb/roles/nurse-orientation" className="ri-orientation-banner">
-              <div className="ri-pb-label">Research Nurse Orientation</div>
-              <div className="ri-pb-desc">OIIQ obligations, reserved acts, dual accountability, specialized competencies, and link to the operational guide.</div>
-              <div className="ri-pb-arrow">Get started →</div>
-            </a>
-            <div className="ri-guides-stack">
-              <DetailCard href="/kb/roles/nurse-guide" title="Nurse Guide — Interventional (I–III)" desc="IP administration, specimen collection, clinical monitoring, AE assessment, and between-visit procedures — the nursing-specific operational layer for drug, device, and NHP studies." />
+          <div className="ri-guides-numbered">
+            <div className="ri-guide-step">
+              <div className="ri-guide-step-num">1</div>
+              <div className="ri-guide-step-body">
+                <div className="ri-guide-step-label">Read your orientation</div>
+                <a href="/kb/roles/nurse-orientation" className="ri-orientation-banner">
+                  <div className="ri-pb-label">Research Nurse Orientation</div>
+                  <div className="ri-pb-desc">OIIQ obligations, reserved acts, dual accountability, specialized competencies, and link to the operational guide.</div>
+                  <div className="ri-pb-arrow">Get started →</div>
+                </a>
+              </div>
+            </div>
+            <div className="ri-guide-step">
+              <div className="ri-guide-step-num">2</div>
+              <div className="ri-guide-step-body">
+                <div className="ri-guide-step-label">Operational guide</div>
+                <div className="ri-dcard-grid">
+                  <DetailCard href="/kb/roles/nurse-guide" title="Nurse Guide — Interventional (I–III)" desc="IP administration, specimen collection, clinical monitoring, AE assessment, and between-visit procedures — the nursing-specific operational layer for drug, device, and NHP studies." />
+                </div>
+              </div>
             </div>
           </div>
         </>
@@ -288,10 +328,13 @@ export const RolePanel = ({ role }) => (
             { label: "Complete protocol-specific training" },
             { label: "Study tasks begin", end: true },
           ]} />
-          <div className="ri-dcard-grid">
-            <DetailCard href="/kb/clinical-research-101" title="Clinical Research 101" desc="Frameworks, roles, regulatory history from Nuremberg to ICH GCP, and Quebec-specific obligations — the starting point for anyone new to clinical research." />
-            <DetailCard href="/kb/roles/onboarding-trainees" title="Joining as a trainee" desc="Eligibility, affiliation agreement process, training obligations, and the scope of tasks that can and cannot be delegated to trainees." />
-            <DetailCard href="/kb/glossary" title="Glossary" desc="Terms, acronyms, and definitions used across the Hub." />
+          <div className="ri-resources-group">
+            <div className="ri-resources-label">Resources for getting started</div>
+            <div className="ri-dcard-grid">
+              <DetailCard href="/kb/clinical-research-101" title="Clinical Research 101" desc="Frameworks, roles, regulatory history from Nuremberg to ICH GCP, and Quebec-specific obligations — the starting point for anyone new to clinical research." />
+              <DetailCard href="/kb/roles/onboarding-trainees" title="Joining as a trainee" desc="Eligibility, affiliation agreement process, training obligations, and the scope of tasks that can and cannot be delegated to trainees." />
+              <DetailCard href="/kb/glossary" title="Glossary" desc="Terms, acronyms, and definitions used across the Hub." />
+            </div>
           </div>
         </>
       )}
@@ -306,10 +349,13 @@ export const RolePanel = ({ role }) => (
             { label: "PI adds you to the Task Delegation Log" },
             { label: "Study tasks begin", end: true },
           ]} />
-          <div className="ri-dcard-grid">
-            <DetailCard href="/kb/clinical-research-101" title="Clinical Research 101" desc="Frameworks, roles, regulatory history from Nuremberg to ICH GCP, and Quebec-specific obligations — the starting point for anyone new to clinical research." />
-            <DetailCard href="/kb/roles/onboarding-volunteers" title="Joining as a volunteer" desc="Volunteer agreement requirements, scope limitations, confidentiality obligations, and the process for becoming affiliated with the RI-MUHC as a volunteer." />
-            <DetailCard href="/kb/glossary" title="Glossary" desc="Terms, acronyms, and definitions used across the Hub." />
+          <div className="ri-resources-group">
+            <div className="ri-resources-label">Resources for getting started</div>
+            <div className="ri-dcard-grid">
+              <DetailCard href="/kb/clinical-research-101" title="Clinical Research 101" desc="Frameworks, roles, regulatory history from Nuremberg to ICH GCP, and Quebec-specific obligations — the starting point for anyone new to clinical research." />
+              <DetailCard href="/kb/roles/onboarding-volunteers" title="Joining as a volunteer" desc="Volunteer agreement requirements, scope limitations, confidentiality obligations, and the process for becoming affiliated with the RI-MUHC as a volunteer." />
+              <DetailCard href="/kb/glossary" title="Glossary" desc="Terms, acronyms, and definitions used across the Hub." />
+            </div>
           </div>
         </>
       )}
@@ -322,10 +368,13 @@ export const RolePanel = ({ role }) => (
             { label: "Access coordinated with QI/PI" },
             { label: "Observation begins", end: true },
           ]} />
-          <div className="ri-dcard-grid">
-            <DetailCard href="/kb/clinical-research-101" title="Clinical Research 101" desc="Frameworks, roles, regulatory history from Nuremberg to ICH GCP, and Quebec-specific obligations — the starting point for anyone new to clinical research." />
-            <DetailCard href="/kb/roles/onboarding-observers" title="Joining as an observer" desc="Observer agreement requirements, access limitations, what observers may and may not do during study visits, and how the observer role differs from study team membership." />
-            <DetailCard href="/kb/glossary" title="Glossary" desc="Terms, acronyms, and definitions used across the Hub." />
+          <div className="ri-resources-group">
+            <div className="ri-resources-label">Resources for getting started</div>
+            <div className="ri-dcard-grid">
+              <DetailCard href="/kb/clinical-research-101" title="Clinical Research 101" desc="Frameworks, roles, regulatory history from Nuremberg to ICH GCP, and Quebec-specific obligations — the starting point for anyone new to clinical research." />
+              <DetailCard href="/kb/roles/onboarding-observers" title="Joining as an observer" desc="Observer agreement requirements, access limitations, what observers may and may not do during study visits, and how the observer role differs from study team membership." />
+              <DetailCard href="/kb/glossary" title="Glossary" desc="Terms, acronyms, and definitions used across the Hub." />
+            </div>
           </div>
         </>
       )}
@@ -333,11 +382,11 @@ export const RolePanel = ({ role }) => (
   </div>
 );
 
-export const RoleExplorerTabs = () => {
+export const RoleExplorer = () => {
   const [role, setRole] = useState('pi');
   const active = ROLES.find(r => r.id === role);
   return (
-    <div className="ri-sh-a">
+    <div className="ri-sh">
       <div className="ri-sh-tabs">
         {ROLES.map(r => (
           <button
@@ -349,75 +398,18 @@ export const RoleExplorerTabs = () => {
           </button>
         ))}
       </div>
-      <div className="ri-sh-a-card">
-        <div className="ri-sh-a-photo" style={{ backgroundImage: `url('${active.img}')` }}>
-          <div className="ri-sh-a-photo-overlay" />
-          <div className="ri-sh-a-photo-label">
-            <div className="ri-sh-a-photo-eyebrow">Your role</div>
-            <div className="ri-sh-a-photo-title">{active.title}</div>
-            <div className="ri-sh-a-photo-sub">{active.sub}</div>
+      <div className="ri-sh-card">
+        <div className="ri-sh-banner" style={{ backgroundImage: `url('${active.img}')` }}>
+          <div className="ri-sh-banner-overlay" />
+          <div className="ri-sh-banner-label">
+            <div className="ri-sh-banner-eyebrow">Your role</div>
+            <div className="ri-sh-banner-title">{active.title}</div>
+            <div className="ri-sh-banner-sub">{active.sub}</div>
           </div>
         </div>
-        <div className="ri-sh-a-content">
+        <div className="ri-sh-content">
           <RolePanel role={role} />
         </div>
-      </div>
-    </div>
-  );
-};
-
-export const RoleExplorerGrid = () => {
-  const [role, setRole] = useState('pi');
-  return (
-    <div className="ri-sh-b">
-      <div className="ri-sh-b-grid">
-        {ROLES.map(r => (
-          <button
-            key={r.id}
-            className={`ri-sh-b-card${role === r.id ? ' ri-sh-b-card--active' : ''}`}
-            onClick={() => setRole(r.id)}
-            style={{ backgroundImage: `url('${r.img}')` }}
-          >
-            <div className="ri-sh-b-card-overlay" />
-            <div className="ri-sh-b-card-body">
-              <div className="ri-sh-b-card-title">{r.title}</div>
-              <div className="ri-sh-b-card-sub">{r.sub}</div>
-              <div className="ri-sh-b-card-cta">{role === r.id ? '✓ Selected' : 'View orientation →'}</div>
-            </div>
-          </button>
-        ))}
-      </div>
-      <RolePanel role={role} />
-    </div>
-  );
-};
-
-export const RoleExplorerSidebar = () => {
-  const [role, setRole] = useState('pi');
-  const active = ROLES.find(r => r.id === role);
-  return (
-    <div className="ri-sh-c">
-      <nav className="ri-sh-c-sidebar">
-        {ROLES.map(r => (
-          <button
-            key={r.id}
-            className={`ri-sh-c-nav-item${role === r.id ? ' ri-sh-c-nav-item--active' : ''}`}
-            onClick={() => setRole(r.id)}
-          >
-            <div className="ri-sh-c-nav-title">{r.title}</div>
-            <div className="ri-sh-c-nav-sub">{r.sub}</div>
-          </button>
-        ))}
-      </nav>
-      <div className="ri-sh-c-content">
-        <div className="ri-sh-c-header" style={{ backgroundImage: `url('${active.img}')` }}>
-          <div className="ri-sh-c-header-overlay" />
-          <div className="ri-sh-c-header-text">
-            <div className="ri-sh-c-header-eyebrow">Your role</div>
-            <div className="ri-sh-c-header-title">{active.title}</div>
-          </div>
-        </div>
-        <RolePanel role={role} />
       </div>
     </div>
   );
@@ -445,20 +437,7 @@ export const RoleExplorerSidebar = () => {
   <p className="ri-start-sub">Your entry point depends on your role.</p>
 </div>
 
-<div className="ri-sh-option">
-  <span className="ri-sh-option-badge">Option A · Tabbed feature card</span>
-  <RoleExplorerTabs />
-</div>
-
-<div className="ri-sh-option">
-  <span className="ri-sh-option-badge">Option B · Photo card grid</span>
-  <RoleExplorerGrid />
-</div>
-
-<div className="ri-sh-option">
-  <span className="ri-sh-option-badge">Option C · Sidebar selector</span>
-  <RoleExplorerSidebar />
-</div>
+<RoleExplorer />
 
 </div>
 
