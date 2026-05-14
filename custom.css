@@ -928,13 +928,13 @@ body:has(.ri-text-hero) main {
     margin: 0;
     padding: 120px 8vw 120px;
     width: 100%;
-    background-color: #fff;
-    background-image: url('/images/hub_hero_white.jpg');
+    background-color: var(--ri-navy);
+    background-image: url('/images/hub_hero_4.jpg');
     background-size: cover;
     background-position: center 50%;
     background-repeat: no-repeat;
     background-attachment: fixed;
-    color: var(--ri-navy);
+    color: #fff;
     position: relative;
     will-change: background-position;
 }
@@ -947,7 +947,7 @@ body:has(.ri-text-hero) main {
     margin: 0 0 18px;
 }
 .ri-text-hero h1 {
-    color: #0a0a0a !important;
+    color: #fff !important;
     font-size: clamp(38px, 4.2vw, 62px);
     font-weight: 800; letter-spacing: -.03em;
     line-height: 1.05; margin: 0 0 24px;
@@ -956,7 +956,7 @@ body:has(.ri-text-hero) main {
     color: var(--ri-blue) !important;
 }
 .ri-text-hero-desc {
-    color: #374151;
+    color: rgba(255,255,255,.82);
     font-size: 18px; line-height: 1.6;
     margin: 0 0 36px;
 }
@@ -964,34 +964,34 @@ body:has(.ri-text-hero) main {
 .ri-hero-palette { display: flex; gap: 5px; align-items: center; margin-top: 20px; }
 .ri-hero-palette span { display: block; width: 20px; height: 3px; border-radius: 2px; }
 .ri-text-hero-btn-primary {
-    background: var(--ri-navy); color: #fff !important;
+    background: var(--ri-blue); color: #fff !important;
     padding: 13px 26px; border-radius: 8px;
     font-weight: 700; font-size: 14px;
     text-decoration: none !important;
     transition: opacity .15s;
 }
-.ri-text-hero-btn-primary:hover { opacity: .85; }
+.ri-text-hero-btn-primary:hover { opacity: .88; }
 .ri-text-hero-btn-secondary {
-    background: transparent; color: var(--ri-navy) !important;
+    background: rgba(255,255,255,.08); color: #fff !important;
     padding: 12px 24px; border-radius: 8px;
     font-weight: 600; font-size: 14px;
     text-decoration: none !important;
-    border: 1px solid rgba(43, 38, 102, 0.22);
+    border: 1px solid rgba(255,255,255,.28);
     transition: background .15s, border-color .15s;
 }
 .ri-text-hero-btn-secondary:hover {
-    background: rgba(43, 38, 102, 0.05);
-    border-color: rgba(43, 38, 102, 0.4);
+    background: rgba(255,255,255,.14);
+    border-color: rgba(255,255,255,.45);
 }
 /* Hero search hint */
 .ri-text-hero-search-hint {
     margin-top: 16px;
-    font-size: 12px; color: rgba(43, 38, 102, 0.40);
+    font-size: 12px; color: rgba(255,255,255,.50);
 }
 .ri-kbd {
     display: inline-block;
-    background: rgba(43, 38, 102, 0.06); color: rgba(43, 38, 102, 0.50);
-    border: 1px solid rgba(43, 38, 102, 0.14);
+    background: rgba(255,255,255,.12); color: rgba(255,255,255,.75);
+    border: 1px solid rgba(255,255,255,.20);
     border-radius: 4px;
     padding: 1px 5px; font-size: 11px; font-family: inherit;
     letter-spacing: .02em;
