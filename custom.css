@@ -2102,10 +2102,11 @@ article {
     width: 22px;
     height: 22px;
 }
-.ri-sh-tab:hover { color: var(--ri-blue); }
-.ri-sh-tab--active {
-    color: var(--ri-navy);
-    border-bottom-color: var(--ri-navy);
+.ri-sh-tab:hover { color: #0a0a0a; }
+.ri-sh-tab--active,
+.ri-sh-tab--active:hover {
+    color: #0a0a0a !important;
+    border-bottom-color: #0a0a0a !important;
     font-weight: 600;
 }
 
