@@ -248,11 +248,6 @@ li.navbar-link a[href="/contacts"]:hover {
 #topbar-cta-button a:hover span.absolute {
     opacity: 0.85 !important;
 }
-/* ── Mermaid diagrams ── */
-/* Give the pan container full width so translate() has room and doesn't immediately clip */
-.mermaid { width: 100% !important; overflow: visible !important; }
-/* Allow LR diagrams to render at natural size with horizontal scroll on the wrapper */
-.mermaid svg { max-width: none !important; }
 
 /* ── Tables ── */
 .prose table,
