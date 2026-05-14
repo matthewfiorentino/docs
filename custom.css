@@ -2127,9 +2127,9 @@ article {
 .ri-sh-tab-icon svg,
 .ri-sh-tab .fa,
 .ri-sh-tab svg {
-    width: 28px !important;
-    height: 28px !important;
-    font-size: 28px !important;
+    width: 24px !important;
+    height: 24px !important;
+    font-size: 24px !important;
     line-height: 1 !important;
     flex-shrink: 0;
     overflow: visible;
@@ -2142,17 +2142,16 @@ article {
     font-weight: 600;
 }
 
-/* The card containing the role content — shadow only, no border, floats lightly */
+/* No card wrapper — content flows directly on the page background */
 .ri-sh-card {
-    background: #fff;
-    border-radius: 20px;
-    overflow: hidden;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 12px 36px rgba(0,0,0,0.07);
+    background: transparent;
+    border-radius: 0;
+    box-shadow: none;
 }
 
-/* Full-width content; no photo banner */
+/* Full-width content; no photo banner, no card */
 .ri-sh-content {
-    padding: 44px 48px 48px;
+    padding: 16px 0 0;
     min-height: 760px;
 }
 .ri-sh-content .ri-role-panel { animation: none; }
