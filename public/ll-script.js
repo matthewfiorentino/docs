@@ -2589,7 +2589,7 @@ var JC_SCENARIOS = [
     id: 'cra-pressure',
     role: 'crc',
     topic: 'Data Integrity \u00b7 Protocol Compliance \u00b7 PI Oversight',
-    title: 'The Monitoring Visit',
+    title: 'Handling CRA Pressure on a Monitoring Visit',
     desc: 'A sponsor CRA is on-site and needs to close her visit today. Three requests that each cross a line.',
     scenes: 3,
     ref: 'SOP-CR-013, 014, 002',
@@ -2653,7 +2653,7 @@ var JC_SCENARIOS = [
   {
     id:'feasibility-call', role:'pi',
     topic:'Recruitment \u00b7 Consent \u00b7 Conflict of Interest',
-    title:'The Feasibility Call',
+    title:'Sponsor Pressure on Enrolment Decisions',
     desc:'A sponsor PM calls to discuss your underperforming enrolment numbers. Three suggestions that each sound reasonable.',
     scenes:3, ref:'SOP-CR-004, 008, 009', live:true,
     intro:'The sponsor\u2019s project manager has scheduled a call to discuss enrolment strategy. Your site is at 11 of 20 with four months left.',
@@ -2709,7 +2709,7 @@ var JC_SCENARIOS = [
   {
     id:'saturday-call', role:'nurse',
     topic:'SAE Reporting \u00b7 Delegation \u00b7 Data Integrity',
-    title:'The Saturday Night Call',
+    title:'Weekend SAE With the PI Unavailable',
     desc:'Weekend on-call. A participant is hospitalized. The PI doesn\u2019t want to be disturbed. Three decisions before Monday.',
     scenes:3, ref:'SOP-CR-012, 002, 014', live:true,
     intro:'It is Saturday at 8:15 PM. You are on call. A participant has been hospitalized. The PI is at a family event. The sub-investigator is reachable by phone.',
@@ -2765,7 +2765,7 @@ var JC_SCENARIOS = [
   {
     id:'predecessor-files', role:'ra',
     topic:'Data Integrity \u00b7 Delegation \u00b7 Research Integrity',
-    title:'The Previous CRC\u2019s Files',
+    title:'Discrepancies in a Predecessor\u2019s Files',
     desc:'You\u2019re three months in. While filing documents, you discover your predecessor signed checklists for visits she didn\u2019t attend.',
     scenes:3, ref:'SOP-CR-002, 014, 015', live:true,
     intro:'You replaced \u00c9milie, a well-liked CRC who left for another institution. Your PI trained you personally and frequently mentions how smoothly she ran the study. A monitoring visit is next week.',
@@ -2821,7 +2821,7 @@ var JC_SCENARIOS = [
   {
     id:'close-out', role:'pm',
     topic:'Study Close-Out \u00b7 Protocol Deviations \u00b7 Consent',
-    title:'The Close-Out',
+    title:'Study Close-Out Under Sponsor Deadline',
     desc:'The sponsor needs the site file closed by end of June. Three open items that can\u2019t be rushed.',
     scenes:3, ref:'SOP-CR-016, 026, 008', live:true,
     intro:'The last participant completed their final visit six weeks ago. The sponsor\u2019s regulatory submission is in August and they need the site file closed by end of June.',
@@ -2933,7 +2933,7 @@ var JC_SCENARIOS = [
   {
     id:'consent-conversation', role:'crc',
     topic:'Consent \u00b7 Capacity \u00b7 Quebec Civil Code',
-    title:'The Consent Conversation',
+    title:'Consent Capacity in Cognitive Decline',
     desc:'A participant shows signs of cognitive decline. Her daughter wants to keep her enrolled. Quebec law has specific rules here.',
     scenes:3, ref:'SOP-CR-008, CCQ Art. 21/24', live:true,
     intro:'Mrs. Ouellet, 74, enrolled 8 months ago when her cognition was intact. At today\u2019s visit, she seems noticeably confused. Her daughter Julie is in the waiting room.',
@@ -2968,7 +2968,7 @@ var JC_SCENARIOS = [
   {
     id:'sponsor-inv-study', role:'pi',
     topic:'Sponsor-Investigator Obligations \u00b7 IP Management \u00b7 Safety Reporting',
-    title:'The Sponsor-Investigator Study',
+    title:'Running a Sponsor-Investigator Trial',
     desc:'You hold the CTA for your own trial. Your CRC just surfaced a backlog of compliance failures. Nobody is watching you the way a sponsor would.',
     scenes:3, ref:'SOP-CR-018, 010, 012', live:true,
     intro:'You are running your own investigator-initiated Phase II trial. You hold the CTA. 14 participants, single site. Your CIHR grant runs out in 4 months.',
@@ -3003,7 +3003,7 @@ var JC_SCENARIOS = [
   {
     id:'multi-site-call', role:'crc',
     topic:'Multi-Site Coordination \u00b7 Deviation Classification \u00b7 Competing Authorities',
-    title:'The Multi-Site Call',
+    title:'Multi-Site Disagreement Before a DSMB',
     desc:'A participating site disagrees with your PI about a deviation classification. The DSMB meets in two weeks.',
     scenes:3, ref:'SOP-CR-026, 014, 010', live:true,
     intro:'You are coordinating site CRC for a multi-centre Phase III oncology trial with 8 sites across Canada. The DSMB meets in two weeks.',
