@@ -2109,7 +2109,10 @@ article {
 }
 
 /* Full-width content below the banner */
-.ri-sh-content { padding: 44px 48px 48px; }
+.ri-sh-content {
+    padding: 44px 48px 48px;
+    min-height: 720px; /* hold a stable height so the card doesn't jump when switching roles */
+}
 .ri-sh-content .ri-role-panel { animation: none; }
 
 /* Numbered guide hierarchy inside the role panel */
@@ -2118,6 +2121,11 @@ article {
     flex-direction: column;
     gap: 32px;
     margin-top: 32px;
+}
+.ri-guide-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
 }
 .ri-guide-step {
     display: grid;
@@ -2167,9 +2175,10 @@ article {
 }
 
 @media (max-width: 760px) {
-    .ri-sh-content { padding: 32px 24px 36px; }
+    .ri-sh-content { padding: 32px 24px 36px; min-height: 0; }
     .ri-sh-banner { height: 180px; }
     .ri-sh-banner-label { left: 24px; right: 24px; bottom: 22px; }
+    .ri-guide-row { grid-template-columns: 1fr; gap: 32px; }
     .ri-guide-step { grid-template-columns: 36px 1fr; gap: 12px; }
     .ri-guide-step-num { width: 30px; height: 30px; font-size: 13px; }
     .ri-guide-step-body .ri-dcard-grid { grid-template-columns: 1fr; }
