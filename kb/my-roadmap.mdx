@@ -12,16 +12,11 @@ import { useEffect } from 'react'
 
 export const StudyRoadmap = () => {
   useEffect(() => {
-    const existing = document.getElementById('roadmap-script');
-    if (existing) existing.remove();
-    const script = document.createElement('script');
-    script.id = 'roadmap-script';
-    script.src = '/roadmap-script.js';
-    document.body.appendChild(script);
-    return () => {
-      const s = document.getElementById('roadmap-script');
-      if (s) s.remove();
-    };
+    let alive = true;
+    fetch('/roadmap-script.js')
+      .then(r => r.text())
+      .then(code => { if (alive) (new Function(code))(); });
+    return () => { alive = false; };
   }, []);
   return <div id="rm-root" />;
 };

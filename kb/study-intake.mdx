@@ -236,16 +236,11 @@ export const INTAKE_HTML = `
 
 export const StudyIntake = () => {
   useEffect(() => {
-    const existing = document.getElementById('intake-script');
-    if (existing) existing.remove();
-    const script = document.createElement('script');
-    script.id = 'intake-script';
-    script.src = '/kb-intake-script-v3.js';
-    document.body.appendChild(script);
-    return () => {
-      const s = document.getElementById('intake-script');
-      if (s) s.remove();
-    };
+    let alive = true;
+    fetch('/kb-intake-script-v3.js')
+      .then(r => r.text())
+      .then(code => { if (alive) (new Function(code))(); });
+    return () => { alive = false; };
   }, []);
   return (
     <>
