@@ -183,41 +183,41 @@ li[data-group-tag]:first-child {
     background: rgba(255, 83, 127, 0.12) !important;
 }
 
-/* ── Homepage — suppress active tab styling ──
-   Pure CSS: detect the homepage by the presence of the hero element.
-   This is more reliable than JS-timing the data-page attribute approach. */
-body:has(.ri-text-hero) .nav-tabs a.link,
-body:has(.ri-text-hero) .nav-tabs a.link *,
-body:has(.ri-text-hero) .nav-tabs button[aria-haspopup="menu"]:not(#localization-select-trigger),
-body:has(.ri-text-hero) .nav-tabs button[aria-haspopup="menu"]:not(#localization-select-trigger) * {
-    color:       #374151 !important;
-    font-weight: 400 !important;
-    background:  transparent !important;
-}
-
-/* ── Navbar — tab hover: background pill (no underline) ──
-   Removes the border-bottom / margin-bottom trick entirely.
-   Hover shows a subtle fill chip; active shows blue text + slightly
-   stronger fill. No underline means no interaction with the navbar divider. */
+/* ── Navbar — tab hover: color-only (Stripe / Vercel pattern) ──
+   Hover darkens text to near-black. Active shows brand-blue text + a 2px
+   inset bottom shadow acting as an underline. inset box-shadow doesn't
+   affect layout so there's no interaction with the navbar divider.         */
 .nav-tabs a.link,
 .nav-tabs button[aria-haspopup="menu"]:not(#localization-select-trigger) {
-    border-radius: 6px !important;
-    padding:       4px 10px !important;
+    border-bottom: none !important;
     margin-bottom: 0 !important;
-    transition:    background 0.15s, color 0.15s !important;
+    background:    transparent !important;
+    transition:    color 0.15s !important;
 }
 .nav-tabs a.link:hover,
 .nav-tabs button[aria-haspopup="menu"]:not(#localization-select-trigger):hover {
-    background: rgba(0, 0, 0, 0.06) !important;
-    color:      #0a0a0a !important;
+    color: #0a0a0a !important;
 }
 .nav-tabs a.link[data-active="true"],
 .nav-tabs a.link[aria-current="page"],
 .nav-tabs button[aria-haspopup="menu"]:not(#localization-select-trigger)[data-active="true"],
 .nav-tabs button[aria-haspopup="menu"]:not(#localization-select-trigger)[data-state="open"] {
-    background: rgba(43, 156, 226, 0.10) !important;
     color:      var(--ri-accent) !important;
     font-weight: 500 !important;
+    box-shadow:  inset 0 -2px 0 var(--ri-accent) !important;
+}
+
+/* ── Homepage — suppress active tab: placed AFTER the active rule so it wins ──
+   With !important, CSS order beats specificity. Putting this block last means
+   it overrides the active + hover rules above when the hero is on the page.   */
+body:has(.ri-text-hero) .nav-tabs a.link,
+body:has(.ri-text-hero) .nav-tabs a.link *,
+body:has(.ri-text-hero) .nav-tabs button[aria-haspopup="menu"]:not(#localization-select-trigger),
+body:has(.ri-text-hero) .nav-tabs button[aria-haspopup="menu"]:not(#localization-select-trigger) * {
+    color:      #6b7280 !important;
+    font-weight: 400 !important;
+    background:  transparent !important;
+    box-shadow:  none !important;
 }
 /* ── Contact — plain text link, no box ── */
 li.navbar-link a[href="/contacts"] {
