@@ -39,7 +39,7 @@
   "navbar": {
     "links": [
       {
-        "label": "Contact",
+        "label": "Contacts",
         "href": "/contacts"
       }
     ],
@@ -636,7 +636,7 @@
             "href": "/cim/services"
           },
           {
-            "label": "Contact",
+            "label": "Contacts",
             "href": "/contacts"
           },
           {
