@@ -31,6 +31,7 @@
     --ri-text-muted:     #6b7280;   /* metadata, timestamps, labels */
 
     /* ── Surfaces ── */
+    --ri-white:          #ffffff;   /* always white — text on dark buttons/badges */
     --ri-surface:        #ffffff;   /* card and panel backgrounds */
     --ri-surface-subtle: #f8f9fb;   /* slightly off-white surfaces */
     --ri-surface-low:    #f4f6f9;   /* lightest gray tint */
@@ -63,6 +64,69 @@
     --ri-callout-attention-text:   #8a1840;
     --ri-callout-attention-border: #e0b0c0;
 }
+
+/* ── Dark mode token overrides ──────────────────────────────────────────────
+   Page background (#150e51) is set in docs.json colors.dark.
+   These override the custom-component tokens only.                          */
+[data-theme="dark"] {
+    /* Text */
+    --ri-heading:        #e8e4ff;
+    --ri-text:           #f1f0ff;
+    --ri-text-body:      #cbc8f0;
+    --ri-text-secondary: #a9a5d8;
+    --ri-text-muted:     #7e7ab0;
+    --ri-text-overlay-strong: rgba(255,255,255,0.85);
+    --ri-text-overlay:        rgba(255,255,255,0.70);
+    --ri-text-overlay-soft:   rgba(255,255,255,0.45);
+
+    /* Surfaces — layered above the #150e51 page bg */
+    --ri-surface:        #1e1854;
+    --ri-surface-subtle: #241e6b;
+    --ri-surface-low:    #19144a;
+
+    /* Borders & shadows */
+    --ri-border:         rgba(255,255,255,0.10);
+    --ri-border-subtle:  rgba(255,255,255,0.06);
+    --ri-shadow-xs:      0 1px 3px rgba(0,0,0,0.30), 0 4px 12px rgba(0,0,0,0.20);
+    --ri-shadow-sm:      0 1px 3px rgba(0,0,0,0.30), 0 8px 24px rgba(0,0,0,0.25);
+    --ri-shadow-md:      0 1px 3px rgba(0,0,0,0.30), 0 10px 30px rgba(0,0,0,0.30);
+    --ri-shadow-card:    0 4px 14px rgba(0,0,0,0.35);
+    --ri-shadow-hover:   0 6px 28px rgba(43,156,226,0.25);
+    --ri-shadow-lift:    0 10px 30px rgba(0,0,0,0.50);
+
+    /* Callout tints — dark versions */
+    --ri-callout-note-bg:          rgba(43,156,226,0.12);
+    --ri-callout-note-text:        #a8d4f5;
+    --ri-callout-note-border:      rgba(43,156,226,0.30);
+    --ri-callout-warn-bg:          rgba(255,180,0,0.10);
+    --ri-callout-warn-text:        #f5d080;
+    --ri-callout-warn-border:      rgba(255,180,0,0.25);
+    --ri-callout-attention-bg:     rgba(255,83,127,0.10);
+    --ri-callout-attention-text:   #f5a0b8;
+    --ri-callout-attention-border: rgba(255,83,127,0.25);
+
+    /* Accent stays the same — brand blue reads well on navy */
+    --ri-accent: #2b9ce2;
+}
+
+/* ── Dark mode component fixes ── */
+/* Sidebar/nav active states need extra contrast on dark */
+[data-theme="dark"] .ri-sh-tab--active {
+    color: var(--ri-blue) !important;
+    border-bottom-color: var(--ri-blue) !important;
+}
+
+/* Role cards already have photo overlays — keep their text white */
+[data-theme="dark"] .ri-role-card-title,
+[data-theme="dark"] .ri-role-card-sub,
+[data-theme="dark"] .ri-role-badge {
+    color: var(--ri-white) !important;
+}
+
+/* RACI/dual-lane: keep white text on brand-colored backgrounds */
+[data-theme="dark"] .raci-c { background: rgba(255,255,255,0.10); color: var(--ri-text-body); }
+[data-theme="dark"] .raci-i { background: rgba(255,255,255,0.06); color: var(--ri-text-muted); }
+
 /* ── Font ── */
 body,
 button,
@@ -371,7 +435,7 @@ body:has(.ri-text-hero) main {
 .ri-hero-bleed p,
 .ri-hero-bleed strong,
 .ri-hero-bleed b {
-    color: var(--ri-surface) !important;
+    color: var(--ri-white) !important;
 }
 /* Page hero banner — used at top of section landing pages
    to differentiate them from regular article pages.
@@ -398,8 +462,8 @@ body:has(.ri-text-hero) main {
     white-space: nowrap;
     line-height: 1.4;
 }
-.raci-a { background: var(--ri-heading); color: var(--ri-surface); }
-.raci-r { background: var(--ri-blue); color: var(--ri-surface); }
+.raci-a { background: var(--ri-heading); color: var(--ri-white); }
+.raci-r { background: var(--ri-blue); color: var(--ri-white); }
 .raci-c { background: #e2e8f0; color: #334155; font-weight: 500; }
 .raci-i { background: #f1f5f9; color: #64748b; font-weight: 500; }
 
@@ -447,7 +511,7 @@ body:has(.ri-text-hero) main {
     text-decoration: none; margin-bottom: 16px;
     transition: background .15s, color .15s;
 }
-.ri-updates-more:hover { background: var(--ri-accent, #2b9ce2); color: var(--ri-surface) !important; }
+.ri-updates-more:hover { background: var(--ri-accent, #2b9ce2); color: var(--ri-white) !important; }
 
 /* ══════════════════════════════════════════════
    HOME PAGE — START HERE / ROLE SELECTOR
@@ -502,10 +566,10 @@ body:has(.ri-text-hero) main {
     display: flex; flex-direction: column; justify-content: flex-end;
     padding: 16px 15px;
 }
-.ri-role-card-title { font-size: 14px; font-weight: 700; color: var(--ri-surface); line-height: 1.25; margin-bottom: 4px; }
+.ri-role-card-title { font-size: 14px; font-weight: 700; color: var(--ri-white); line-height: 1.25; margin-bottom: 4px; }
 .ri-role-card-sub { font-size: 11px; color: rgba(255,255,255,.8); line-height: 1.4; margin-bottom: 6px; }
 .ri-role-card-cta {
-    font-size: 11px; font-weight: 600; color: var(--ri-surface);
+    font-size: 11px; font-weight: 600; color: var(--ri-white);
     opacity: 0; transition: opacity .2s; letter-spacing: .04em;
 }
 .ri-role-card:hover .ri-role-card-cta,
@@ -581,7 +645,7 @@ body:has(.ri-text-hero) main {
     content: '\2713';
     background: var(--ri-blue);
     border-color: var(--ri-blue);
-    color: var(--ri-surface);
+    color: var(--ri-white);
 }
 .ri-step-check { display: none; }
 .ri-step-sep {
@@ -672,8 +736,8 @@ body:has(.ri-text-hero) main {
   border-radius: 10px;
   align-items: stretch;
 }
-.ri-dual-lane--sponsor { background: var(--ri-heading); color: var(--ri-surface); }
-.ri-dual-lane--qi      { background: var(--ri-blue); color: var(--ri-surface); }
+.ri-dual-lane--sponsor { background: var(--ri-heading); color: var(--ri-white); }
+.ri-dual-lane--qi      { background: var(--ri-blue); color: var(--ri-white); }
 .ri-dual-lane-label {
   font-size: 11px; font-weight: 800; letter-spacing: .14em;
   text-transform: uppercase; opacity: .85;
@@ -1059,7 +1123,7 @@ body:has(.ri-text-hero) main {
     background-position: center 50%;
     background-repeat: no-repeat;
     background-attachment: fixed;
-    color: var(--ri-surface);
+    color: var(--ri-white);
     position: relative;
     will-change: background-position;
 }
@@ -1072,7 +1136,7 @@ body:has(.ri-text-hero) main {
     margin: 0 0 18px;
 }
 .ri-text-hero h1 {
-    color: var(--ri-surface) !important;
+    color: var(--ri-white) !important;
     font-size: clamp(38px, 4.2vw, 62px);
     font-weight: 800; letter-spacing: -.03em;
     line-height: 1.05; margin: 0 0 24px;
@@ -1089,7 +1153,7 @@ body:has(.ri-text-hero) main {
 .ri-hero-palette { display: flex; gap: 5px; align-items: center; margin-top: 20px; }
 .ri-hero-palette span { display: block; width: 20px; height: 3px; border-radius: 2px; }
 .ri-text-hero-btn-primary {
-    background: var(--ri-blue); color: var(--ri-surface) !important;
+    background: var(--ri-blue); color: var(--ri-white) !important;
     padding: 13px 26px; border-radius: 8px;
     font-weight: 700; font-size: 14px;
     text-decoration: none !important;
@@ -1097,7 +1161,7 @@ body:has(.ri-text-hero) main {
 }
 .ri-text-hero-btn-primary:hover { opacity: .88; }
 .ri-text-hero-btn-secondary {
-    background: rgba(255,255,255,.08); color: var(--ri-surface) !important;
+    background: rgba(255,255,255,.08); color: var(--ri-white) !important;
     padding: 12px 24px; border-radius: 8px;
     font-weight: 600; font-size: 14px;
     text-decoration: none !important;
@@ -1173,7 +1237,7 @@ body:has(.ri-text-hero) main {
 .ri-contact-btn {
     display: inline-block;
     background: var(--ri-navy);
-    color: var(--ri-surface) !important;
+    color: var(--ri-white) !important;
     font-weight: 700; font-size: 14px;
     padding: 13px 26px;
     border-radius: 8px;
@@ -1492,7 +1556,7 @@ footer a:hover {
     white-space: nowrap;
     transition: background .15s, color .15s;
 }
-.ri-print-btn:hover { background: var(--ri-accent); color: var(--ri-surface); }
+.ri-print-btn:hover { background: var(--ri-accent); color: var(--ri-white); }
 /* ── Print styles ── */
 @media print {
     #navbar, #sidebar, #topbar-cta-button, .ri-print-btn { display: none !important; }
@@ -1832,7 +1896,7 @@ footer a:hover {
 .ri-cim-btn {
     display: inline-block;
     background: var(--ri-navy);
-    color: var(--ri-surface) !important;
+    color: var(--ri-white) !important;
     font-weight: 700;
     font-size: 14px;
     padding: 12px 24px;
@@ -2103,7 +2167,7 @@ footer a:hover {
 }
 .ri-flow-node--start {
     background: var(--ri-heading, #150e51);
-    color: var(--ri-surface) !important;
+    color: var(--ri-white) !important;
     font-weight: 700;
     font-size: 15px;
     border-radius: 24px;
@@ -2120,7 +2184,7 @@ footer a:hover {
 
 .ri-flow-node--result {
     background: var(--ri-accent, #2b9ce2);
-    color: var(--ri-surface) !important;
+    color: var(--ri-white) !important;
     font-weight: 600;
     font-size: 13px;
     max-width: 240px;
@@ -2443,5 +2507,5 @@ footer a:hover {
   background-color: var(--ri-blue) !important;
 }
 .chat-assistant-send-button:not([disabled]) svg {
-  color: var(--ri-surface) !important;
+  color: var(--ri-white) !important;
 }
