@@ -2102,12 +2102,6 @@ article {
     gap: 4px;
     overflow-x: auto;
     margin-bottom: 32px;
-    position: sticky;
-    top: 76px;
-    z-index: 10;
-    background: rgba(255,255,255,0.92);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
     padding: 8px 0 0;
     scrollbar-width: none;
 }
