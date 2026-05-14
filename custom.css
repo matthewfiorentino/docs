@@ -52,9 +52,9 @@ article a strong, article a b,
     color: inherit !important;
 }
 /* ── "On this page" TOC ──
-   mint theme: no sliding dot span. Active state is driven by data-active-deepest
-   on li.toc-item, set by toc-fix.js. We add a pseudo-element dot and teal colour.
-   toc-item is a CSS CLASS on <li>, not a custom element.                          */
+   mint theme: active state driven by data-active-deepest on li.toc-item (set by
+   toc-fix.js). A real injected #toc-dot div slides between sections via CSS
+   transition — pseudo-elements can't transition between parent elements.        */
 /* Font size reduction */
 #table-of-contents-content a {
     font-size:   12px !important;
@@ -65,22 +65,24 @@ article a strong, article a b,
     color:       var(--ri-accent) !important;
     font-weight: 600 !important;
 }
-/* Teal dot — sits inside padding-left on the ul so overflow:auto on
-   #table-of-contents doesn't clip it                                  */
+/* Container: padding-left creates room for the injected dot; position:relative
+   anchors it. overflow:auto on #table-of-contents would clip a negative-left
+   pseudo-element, so the dot lives inside the padding instead.                  */
 #table-of-contents-content {
     padding-left: 14px !important;
+    position:     relative !important;
 }
-#table-of-contents-content li.toc-item[data-active-deepest="true"]::before {
-    content:       '';
-    display:       block;
-    position:      absolute;
-    left:          -12px;
-    top:           50%;
-    transform:     translateY(-50%);
-    width:         6px;
-    height:        6px;
-    border-radius: 50%;
-    background:    var(--ri-accent);
+/* Injected sliding dot — toc-fix.js creates <div id="toc-dot"> and sets top */
+#toc-dot {
+    position:       absolute;
+    left:           2px;
+    width:          6px;
+    height:         6px;
+    border-radius:  50%;
+    background:     var(--ri-accent);
+    transform:      translateY(-50%);
+    transition:     top 0.22s cubic-bezier(0.4, 0, 0.2, 1);
+    pointer-events: none;
 }
 /* ── Sidebar — base type: page links (<a>) and collapsible group buttons ── */
 #sidebar-content a,
@@ -169,49 +171,60 @@ li[data-group-tag]:first-child {
 }
 
 /* ── Navbar — tab strip underline ──
-   mint theme: tabs are a.link inside .nav-tabs. We only add the underline
-   indicator — no font-weight override (mint's font-medium at 500 is fine). */
+   mint theme: tabs are a.link inside .nav-tabs.
+   Active: teal text + 1px teal underline. No font-weight change.         */
 .nav-tabs a.link,
 .nav-tabs button[aria-haspopup="menu"]:not(#localization-select-trigger) {
-    border-bottom:  2px solid transparent !important;
+    border-bottom:  1px solid transparent !important;
     padding-bottom: 2px !important;
-    transition:     border-bottom-color 0.15s !important;
+    transition:     border-bottom-color 0.15s, color 0.15s !important;
 }
 .nav-tabs a.link:hover,
 .nav-tabs button[aria-haspopup="menu"]:not(#localization-select-trigger):hover {
-    border-bottom-color: #150e51 !important;
+    border-bottom-color: var(--ri-accent) !important;
 }
 .nav-tabs a.link[data-active="true"],
 .nav-tabs a.link[aria-current="page"],
 .nav-tabs button[aria-haspopup="menu"]:not(#localization-select-trigger)[data-active="true"],
 .nav-tabs button[aria-haspopup="menu"]:not(#localization-select-trigger)[data-state="open"] {
-    border-bottom-color: #150e51 !important;
-    font-weight:         600 !important;
+    border-bottom-color: var(--ri-accent) !important;
+    color:               var(--ri-accent) !important;
 }
-/* ── Contact — outlined navy button ── */
+/* ── Contact — plain text link, teal underline on hover ── */
 li.navbar-link a[href="/contacts"] {
-    background:    #fff !important;
-    color:         #2b2666 !important;
-    border:        1.5px solid #2b2666 !important;
-    border-radius: 4px !important;
-    font-size:     13px !important;
-    font-weight:   600 !important;
-    padding:       5px 13px !important;
-    opacity:       1 !important;
-    transition:    background 0.15s, color 0.15s !important;
+    background:      transparent !important;
+    color:           #4b5563 !important;
+    border:          none !important;
+    border-bottom:   1px solid transparent !important;
+    border-radius:   0 !important;
+    font-size:       14px !important;
+    font-weight:     500 !important;
+    padding:         0 2px !important;
+    opacity:         1 !important;
+    text-decoration: none !important;
+    transition:      border-bottom-color 0.15s, color 0.15s !important;
 }
 li.navbar-link a[href="/contacts"]:hover {
-    background: #2b2666 !important;
-    color:      #fff !important;
-    opacity:    1 !important;
+    background:          transparent !important;
+    color:               var(--ri-accent) !important;
+    border-bottom-color: var(--ri-accent) !important;
+    opacity:             1 !important;
 }
-/* ── Portal — coral fill ──
-   mint theme: visual background is an inner <span class="absolute inset-0
-   bg-primary-dark rounded-xl">. Override the span; let mint's native
-   group-hover:opacity-[0.9] handle hover (subtle dim, no color swap).  */
+/* ── Portal — coral plain text link, no box or fill ──
+   Remove the inner pill span's background; override link and descendant
+   text colour to coral.                                                   */
 #topbar-cta-button a span.absolute {
-    background:    #ff537f !important;
-    border-radius: 4px !important;
+    background: transparent !important;
+}
+#topbar-cta-button a,
+#topbar-cta-button a * {
+    color:       #ff537f !important;
+    font-weight: 600 !important;
+}
+#topbar-cta-button a:hover,
+#topbar-cta-button a:hover * {
+    color:   #ff537f !important;
+    opacity: 0.7 !important;
 }
 /* ── Tables ── */
 .prose table,
@@ -1078,6 +1091,11 @@ button:has(img[alt="Quebec"]) {
 :has(> img.nav-logo) {
     flex-shrink: 0 !important;
     min-width:   fit-content !important;
+}
+/* ── Logo — increase from Tailwind h-7 (28px) to 38px ── */
+img.nav-logo {
+    height: 38px !important;
+    width:  auto !important;
 }
 /* ── Navbar responsive tightening ──────────────────────────────────────────
    Logo stays fixed; nav items tighten instead.

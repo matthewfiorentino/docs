@@ -38,20 +38,42 @@
       .filter(Boolean);
   }
 
+  /* ─── Ensure the injected sliding dot div exists ────────────────────── */
+  function ensureDot() {
+    var dot = document.getElementById('toc-dot');
+    if (!dot) {
+      var container = document.getElementById('table-of-contents-content');
+      if (!container) return null;
+      dot = document.createElement('div');
+      dot.id = 'toc-dot';
+      container.appendChild(dot);
+    }
+    return dot;
+  }
+
+  /* ─── Walk offsetParent chain to get top relative to an ancestor ─────── */
+  function offsetTopFrom(el, ancestor) {
+    var top = 0;
+    while (el && el !== ancestor) {
+      top += el.offsetTop;
+      el   = el.offsetParent;
+    }
+    return top;
+  }
+
   /* ─── Apply the correct active state ─────────────────────────────────── */
   function applyActive(items, activeIdx) {
-    var dot    = document.querySelector('#table-of-contents div.relative > span');
-    var dotPar = dot ? dot.parentElement : null;
+    var dot       = ensureDot();
+    var container = document.getElementById('table-of-contents-content');
 
     items.forEach(function (item, i) {
       if (i === activeIdx) {
         item.li.setAttribute('data-active-deepest', 'true');
         item.li.setAttribute('data-active',         'true');
-        /* Reposition the native sliding dot */
-        if (dot && dotPar) {
-          var aRect = item.a.getBoundingClientRect();
-          var pRect = dotPar.getBoundingClientRect();
-          dot.style.top = (aRect.top - pRect.top + aRect.height / 2) + 'px';
+        /* Slide the injected dot to the vertical centre of the active link */
+        if (dot && container) {
+          var linkTop = offsetTopFrom(item.a, container);
+          dot.style.top = (linkTop + item.a.offsetHeight / 2) + 'px';
         }
       } else {
         item.li.removeAttribute('data-active-deepest');
