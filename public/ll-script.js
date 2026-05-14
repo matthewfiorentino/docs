@@ -1229,7 +1229,7 @@ var KP_INSPECTION = [
     prep:'Which version is in the ISF? Which version is on the wall? Do they match? Does the approval letter specifically reference this material?',
     model:'The recruitment poster in use is version [X], dated [date]. The REB approval is here — approval letter dated [date], referencing this poster version. The poster currently displayed matches the approved version.',
     gap:'An approved poster in the ISF that differs from what is posted; an approval letter that doesn’t specifically reference the recruitment material; or no REB approval for materials clearly in use. Recruitment materials updated without returning to the REB.',
-    ref:'ICH E6(R3) §2.4, §1.3.7 · TCPS2 Art. 3.1' },
+    ref:'ICH E6(R3) §2.4 · TCPS2 Art. 3.1 · GUI-0100 (recruitment materials)' },
 
   { id:'insp-rec-4', type:'inspection', topic:'Recruitment and Screening', topicId:'recruitment', applies:'all',
     q:'PT-007 enrolled with an HbA1c of 8.1% from your MUHC lab. I see an outside lab result of 7.9% from 3 weeks earlier. Why is this participant enrolled?',
