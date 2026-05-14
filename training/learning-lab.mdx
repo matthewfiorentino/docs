@@ -6237,7 +6237,30 @@ export const LL_SHELL_CSS = `
 #ll-pane .jc-choice:hover { transform: none; }
 #ll-pane .kp-back:hover { transform: none; }
 #ll-pane .kp-dr-hub-card.active:hover { transform: translateY(-2px); box-shadow: 0 3px 10px rgba(0,0,0,.06); }
-#ll-pane .kp-dr-findings-head { border-top-color: #e5e5e5; }
+/* DR: findings panel sticks to pane bottom so table + finding are both visible */
+#ll-pane .kp-dr-findings.visible {
+  position: sticky;
+  bottom: 0;
+  background: var(--ll-bg, #fff);
+  border-top: 1.5px solid var(--ll-bdr);
+  box-shadow: 0 -4px 16px rgba(0,0,0,0.06);
+  z-index: 5;
+  max-height: 44vh;
+  overflow-y: auto;
+}
+#ll-pane .kp-dr-findings-head {
+  border-top: none;
+  padding: 12px 0 8px;
+  margin-bottom: 10px;
+  position: sticky;
+  top: 0;
+  background: var(--ll-bg, #fff);
+  z-index: 1;
+}
+/* Compact table to reduce horizontal scroll */
+#ll-pane .kp-dr-table { font-size: 11.5px; }
+#ll-pane .kp-dr-table th { padding: 7px 10px; font-size: 9px; }
+#ll-pane .kp-dr-row td { padding: 8px 10px; }
 
 /* ══ INSPECTION PREP — single column, less vertical mass ══════════════ */
 #ll-pane .kp-insp-cols { display: flex; flex-direction: column; min-height: unset; }
@@ -6250,17 +6273,33 @@ export const LL_SHELL_CSS = `
   #ll-pane .kp-insp-left { border-bottom: 1px solid var(--bdr-soft); }
 }
 
-/* ══ TEAM EXERCISES — more breathing room and visual separation ════════ */
-#ll-pane .te-block { margin-top: 28px; border-radius: 6px; overflow: hidden; }
-#ll-pane .te-situation { padding: 26px 28px; }
-#ll-pane .te-situation-eyebrow { margin-bottom: 12px; }
-#ll-pane .te-q-text { padding: 22px 28px; font-size: 14.5px; line-height: 1.65; }
-#ll-pane .te-kp-toggle { padding: 14px 28px; }
-#ll-pane .te-kp-body { padding: 22px 28px 26px; background: #f9f9f9; }
-#ll-pane .te-roster-item { padding: 14px 18px; border-radius: 6px; }
-#ll-pane .te-case-intro p { font-size: 14.5px; line-height: 1.75; }
-#ll-pane .te-reflection { padding: 22px 28px; border-radius: 6px; }
-#ll-pane .te-print-bar { border-radius: 4px; }
+/* ══ TEAM EXERCISES — flow, rhythm, visual separation ═════════════════ */
+/* Section heads: bigger, clearer anchors */
+#ll-pane .te-section-head {
+  font-size: 12px;
+  letter-spacing: .08em;
+  color: var(--ll-text-2);
+  border-bottom: 1.5px solid var(--ll-bdr);
+  padding-bottom: 8px;
+  margin-top: 44px;
+  margin-bottom: 18px;
+  max-width: none;
+}
+/* Blocks: lighter border, more vertical rhythm */
+#ll-pane .te-block { margin-top: 0; margin-bottom: 4px; border-color: var(--ll-bdr); border-radius: 6px; overflow: hidden; }
+#ll-pane .te-situation { padding: 18px 22px; }
+#ll-pane .te-situation-eyebrow { margin-bottom: 10px; }
+/* Question items: clean separation, generous text area */
+#ll-pane .te-question { border-top-color: var(--ll-bdr); }
+#ll-pane .te-q-text { padding: 18px 22px; font-size: 14px; line-height: 1.65; }
+#ll-pane .te-kp-toggle { padding: 11px 22px; }
+#ll-pane .te-kp-body { padding: 18px 22px 22px; background: #f8f9fa; }
+/* Roster and intro */
+#ll-pane .te-roster-item { padding: 12px 16px; border-radius: 6px; }
+#ll-pane .te-case-intro p { font-size: 14px; line-height: 1.75; }
+#ll-pane .te-reflection { padding: 18px 22px; border-radius: 6px; }
+/* Print bar: less prominent */
+#ll-pane .te-print-bar { border-radius: 4px; margin-bottom: 24px; opacity: 0.8; }
 
 /* ══ QUESTION CARD TYPOGRAPHY ════════════════════════════════════════ */
 #ll-pane .kp-qcard-type { display: none; }
@@ -6282,7 +6321,7 @@ export const LL_SHELL_CSS = `
 #ll-pane .kp-dr-study-field span { color: #888; }
 
 /* ══ TEAM EXERCISES — situation accent ══════════════════════════════ */
-#ll-pane .te-situation { border-left: 3px solid var(--ll-accent); }
+#ll-pane .te-situation { border-left: 3px solid var(--ll-accent); border-bottom: 1px solid var(--ll-bdr); }
 #ll-pane .te-situation-eyebrow { font-size: 11px; letter-spacing: .12em; }
 
 /* ══ SEE ALSO strip (end of KC / Insp sessions) ═════════════════════ */
