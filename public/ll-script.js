@@ -1595,9 +1595,9 @@ function kpSeqRender() {
     html += '<button class="kp-qcard-reveal-btn inspection-btn" id="kp-reveal-btn" onclick="kpSeqReveal()">Show model response</button>';
     html += '<div class="kp-qcard-rat inspection-rat" id="kp-qcard-rat">' +
       '<div class="kp-qcard-rat-label">Model response</div>' +
-      '<div class="kp-qcard-rat-text">' + q.model + '</div>' +
-      '<div class="kp-insp-gap"><div class="kp-insp-gap-label">Common gap</div><div class="kp-insp-gap-text">' + q.gap + '</div></div>' +
-      (q.ref ? '<div class="kp-qcard-rat-ref">\u2192 ' + q.ref + '</div>' : '') +
+      '<div class="kp-qcard-rat-text">' + llLinkifyCitations(q.model) + '</div>' +
+      '<div class="kp-insp-gap"><div class="kp-insp-gap-label">Common gap</div><div class="kp-insp-gap-text">' + llLinkifyCitations(q.gap) + '</div></div>' +
+      (q.ref ? '<div class="kp-qcard-rat-ref">\u2192 ' + llLinkifyCitations(q.ref) + '</div>' : '') +
       '</div>';
     html += '</div>';
     html += '</div>';
@@ -1612,16 +1612,16 @@ function kpSeqRender() {
     html += '</div>';
     html += '<div class="kp-qcard-rat check-rat" id="kp-qcard-rat">' +
       '<div class="kp-qcard-rat-label">Answer \u2014 ' + keys[q.correct] + ' is correct</div>' +
-      '<div class="kp-qcard-rat-text">' + q.rationale + '</div>' +
-      '<div class="kp-qcard-rat-ref">\u2192 ' + q.ref + '</div></div>';
+      '<div class="kp-qcard-rat-text">' + llLinkifyCitations(q.rationale) + '</div>' +
+      '<div class="kp-qcard-rat-ref">\u2192 ' + llLinkifyCitations(q.ref) + '</div></div>';
   } else {
     html += '<div class="kp-qcard-q">' + q.q + '</div>';
     html += '<div class="kp-qcard-reveal-wrap">' +
       '<button class="kp-qcard-reveal-btn" id="kp-reveal-btn" onclick="kpSeqReveal()">Think it through</button></div>';
     html += '<div class="kp-qcard-rat scenario-rat" id="kp-qcard-rat">' +
       '<div class="kp-qcard-rat-label">' + (q.group ? 'What happens next' : 'Rationale') + '</div>' +
-      '<div class="kp-qcard-rat-text">' + q.rationale + '</div>' +
-      (q.ref ? '<div class="kp-qcard-rat-ref">\u2192 ' + q.ref + '</div>' : '') +
+      '<div class="kp-qcard-rat-text">' + llLinkifyCitations(q.rationale) + '</div>' +
+      (q.ref ? '<div class="kp-qcard-rat-ref">\u2192 ' + llLinkifyCitations(q.ref) + '</div>' : '') +
       '</div>';
   }
 
@@ -2485,6 +2485,7 @@ function kpDrRenderFinding() {
   /* render finding card */
   var fc = document.getElementById('kp-dr-finding-card');
   if (!fc) { return; }
+  var _lk = (typeof llLinkifyCitations === 'function') ? llLinkifyCitations : function (s) { return s; };
   fc.innerHTML =
     '<div class="kp-dr-finding ' + f.type + '">' +
       '<div class="kp-dr-finding-head">' +
@@ -2494,9 +2495,9 @@ function kpDrRenderFinding() {
       '</div>' +
       '<div class="kp-dr-finding-body">' +
         '<div class="kp-dr-finding-problem">' + f.problem + '</div>' +
-        '<div class="kp-dr-finding-why">' + f.why + '</div>' +
-        '<div class="kp-dr-finding-fix">' + f.fix + '</div>' +
-        '<div class="kp-dr-finding-ref">→ ' + f.ref + '</div>' +
+        '<div class="kp-dr-finding-why">' + _lk(f.why) + '</div>' +
+        '<div class="kp-dr-finding-fix">' + _lk(f.fix) + '</div>' +
+        '<div class="kp-dr-finding-ref">→ ' + _lk(f.ref) + '</div>' +
       '</div>' +
     '</div>';
 
@@ -3242,7 +3243,7 @@ function jcChoose(sceneIdx, choiceIdx) {
   if (choice.quality === 'good') { jcGoodCount++; }
   document.getElementById('jc-choices-' + sceneIdx).style.display = 'none';
   var arrow = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>';
-  var fbHtml = '<div class="jc-feedback ' + choice.quality + '"><span class="jc-fb-label">' + choice.label + '</span>' + choice.feedback + '</div>';
+  var fbHtml = '<div class="jc-feedback ' + choice.quality + '"><span class="jc-fb-label">' + choice.label + '</span>' + llLinkifyCitations(choice.feedback) + '</div>';
   if (sceneIdx < total - 1) {
     fbHtml += '<button class="jc-continue" onclick="jcNextScene(' + sceneIdx + ')">Continue ' + arrow + '</button>';
   } else {
@@ -3415,9 +3416,9 @@ function inspRenderCard() {
   html += '<button class="kp-qcard-reveal-btn inspection-btn" id="insp-reveal-btn" onclick="inspReveal()">Show model response</button>';
   html += '<div class="kp-qcard-rat inspection-rat" id="insp-rat" style="display:none">';
   html += '<div class="kp-qcard-rat-label">Model response</div>';
-  html += '<div class="kp-qcard-rat-text">' + q.model + '</div>';
-  html += '<div class="kp-insp-gap"><div class="kp-insp-gap-label">Common gap</div><div class="kp-insp-gap-text">' + q.gap + '</div></div>';
-  if (q.ref) { html += '<div class="kp-qcard-rat-ref">\u2192 ' + q.ref + '</div>'; }
+  html += '<div class="kp-qcard-rat-text">' + llLinkifyCitations(q.model) + '</div>';
+  html += '<div class="kp-insp-gap"><div class="kp-insp-gap-label">Common gap</div><div class="kp-insp-gap-text">' + llLinkifyCitations(q.gap) + '</div></div>';
+  if (q.ref) { html += '<div class="kp-qcard-rat-ref">\u2192 ' + llLinkifyCitations(q.ref) + '</div>'; }
   html += '</div>';
   html += '</div>';
   html += '</div>';
@@ -4049,6 +4050,53 @@ function llRelativeTime(ts) {
   return Math.floor(day / 7) + ' w ago';
 }
 
+/* ── Citation hyperlinking helper (Phase B audit) ────────────────────────
+   Wraps plain-text regulatory citations in <a> tags at render time.
+   Single source of truth for canonical authority URLs.
+   Order matters: most-specific patterns first.                          */
+var LL_CITE_LINKS = [
+  { rx: /ICH\s+E6\s*\(R3\)/g,
+    url: 'https://database.ich.org/sites/default/files/ICH_E6(R3)_Step4_FinalGuideline_2025_0106.pdf' },
+  { rx: /ICH\s+E6\s*\(R2\)/g,
+    url: 'https://database.ich.org/sites/default/files/E6_R2_Addendum.pdf' },
+  { rx: /ICH\s+E2A/g,
+    url: 'https://database.ich.org/sites/default/files/E2A_Guideline.pdf' },
+  { rx: /GUI-?0100/g,
+    url: 'https://www.canada.ca/en/health-canada/services/drugs-health-products/compliance-enforcement/good-clinical-practices/guidance-documents/guidance-drugs-clinical-trials-human-subjects-gui-0100.html' },
+  { rx: /(?:Health\s+Canada\s+|HC\s+)?Div(?:ision)?\s*5/g,
+    url: 'https://laws-lois.justice.gc.ca/eng/regulations/C.R.C.,_c._870/index.html' },
+  { rx: /C\.05\.\d{3}(?:\([a-z]\))?(?:[–-]\d+)?/g,
+    url: 'https://laws-lois.justice.gc.ca/eng/regulations/C.R.C.,_c._870/index.html' },
+  { rx: /TCPS\s*2(?:\s*\(2022\))?/g,
+    url: 'https://ethics.gc.ca/eng/tcps2-eptc2_2022_chapter3-chapitre3.html' },
+  { rx: /Civil\s+Code(?:\s+Art\.?\s*\d+(?:[–-]\d+)?)?/g,
+    url: 'https://www.legisquebec.gouv.qc.ca/en/document/cs/ccq-1991' },
+  { rx: /Loi\s*25(?:\s*\(P-39\.1\))?/g,
+    url: 'https://www.legisquebec.gouv.qc.ca/en/document/cs/p-39.1' },
+  { rx: /ISO\s*14155(?::\d{4})?/g,
+    url: 'https://www.iso.org/standard/71690.html' },
+  { rx: /21\s*CFR\s*Part\s*11/g,
+    url: 'https://www.ecfr.gov/current/title-21/chapter-I/subchapter-A/part-11' },
+  { rx: /Declaration\s+of\s+Helsinki/g,
+    url: 'https://www.wma.net/policies-post/wma-declaration-of-helsinki-ethical-principles-for-medical-research-involving-human-subjects/' }
+];
+
+function llLinkifyCitations(s) {
+  if (!s) return s;
+  /* Split around existing anchors so we don't double-link inside <a>...</a> */
+  var parts = s.split(/(<a [^>]*>[\s\S]*?<\/a>)/);
+  for (var p = 0; p < parts.length; p++) {
+    if (parts[p].indexOf('<a ') === 0) continue;
+    for (var i = 0; i < LL_CITE_LINKS.length; i++) {
+      var L = LL_CITE_LINKS[i];
+      parts[p] = parts[p].replace(L.rx, function (match) {
+        return '<a href="' + L.url + '" target="_blank" rel="noopener">' + match + '</a>';
+      });
+    }
+  }
+  return parts.join('');
+}
+
 /* ════════════════════════════════════════════════════════════════════════
    END Phase 1 redesign block
 ════════════════════════════════════════════════════════════════════════ */
@@ -4296,6 +4344,13 @@ function llTeOpenExercise(slug) {
       '<span class="ll-kc-seq-badge">Team Exercises</span>' +
     '</div>';
   llPane().innerHTML = navHTML + clone.innerHTML;
+  /* Linkify regulatory citations inside cloned TE content */
+  if (typeof llLinkifyCitations === 'function') {
+    var refSpans = llPane().querySelectorAll('.te-kp-ref, .kp-dr-ref, .kp-source-ref');
+    for (var rs = 0; rs < refSpans.length; rs++) {
+      refSpans[rs].innerHTML = llLinkifyCitations(refSpans[rs].innerHTML);
+    }
+  }
   history.pushState(null, '', '#team/' + slug);
   llPaneTop();
 }
