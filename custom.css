@@ -1188,7 +1188,7 @@ article {
 /* ── Homepage footer ── */
 .ri-home-footer {
     background-color: #150e51;
-    background-image: linear-gradient(rgba(20, 14, 81, 0.88), rgba(20, 14, 81, 0.88)), url('/images/hub_hero_white.jpg');
+    background-image: url('/images/footer.png');
     background-size: cover;
     background-position: center;
     padding: 100px 8vw 80px;
