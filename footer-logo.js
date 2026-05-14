@@ -25,7 +25,7 @@
     rimuhcLink.target = '_blank';
     rimuhcLink.rel = 'noopener noreferrer';
     var rimuhcImg = document.createElement('img');
-    rimuhcImg.src = '/logo/rimuhc-footer-blue.png';
+    rimuhcImg.src = '/logo/RIMUHC_logo_footer1.png';
     rimuhcImg.alt = 'RI-MUHC';
     rimuhcImg.className = 'ri-footer-logo-rimuhc';
     rimuhcLink.appendChild(rimuhcImg);
@@ -36,7 +36,7 @@
     instLink.target = '_blank';
     instLink.rel = 'noopener noreferrer';
     var instImg = document.createElement('img');
-    instImg.src = '/logo/institute-dark.png';
+    instImg.src = '/logo/RIMUHC_logo_footer2.png';
     instImg.alt = 'Research Institute of the McGill University Health Centre';
     instImg.className = 'ri-footer-logo-institute';
     instLink.appendChild(instImg);
