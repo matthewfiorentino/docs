@@ -68,7 +68,7 @@
 /* ── Dark mode token overrides ──────────────────────────────────────────────
    Page background (#150e51) is set in docs.json colors.dark.
    These override the custom-component tokens only.                          */
-[data-theme="dark"] {
+.dark {
     /* Text */
     --ri-heading:        #e8e4ff;
     --ri-text:           #f1f0ff;
@@ -111,26 +111,26 @@
 
 /* ── Dark mode component fixes ── */
 /* Sidebar/nav active states need extra contrast on dark */
-[data-theme="dark"] .ri-sh-tab--active {
+.dark .ri-sh-tab--active {
     color: var(--ri-blue) !important;
     border-bottom-color: var(--ri-blue) !important;
 }
 
 /* Role cards already have photo overlays — keep their text white */
-[data-theme="dark"] .ri-role-card-title,
-[data-theme="dark"] .ri-role-card-sub,
-[data-theme="dark"] .ri-role-badge {
+.dark .ri-role-card-title,
+.dark .ri-role-card-sub,
+.dark .ri-role-badge {
     color: var(--ri-white) !important;
 }
 
 /* RACI/dual-lane: keep white text on brand-colored backgrounds */
-[data-theme="dark"] .raci-c { background: rgba(255,255,255,0.10); color: var(--ri-text-body); }
-[data-theme="dark"] .raci-i { background: rgba(255,255,255,0.06); color: var(--ri-text-muted); }
+.dark .raci-c { background: rgba(255,255,255,0.10); color: var(--ri-text-body); }
+.dark .raci-i { background: rgba(255,255,255,0.06); color: var(--ri-text-muted); }
 
 /* Mermaid diagrams: node colors are baked into SVG fill attributes by Mermaid's
    renderer and can't use CSS variables. Wrap in a light card so dark-filled nodes
    remain visible regardless of page theme.                                        */
-[data-theme="dark"] .mermaid {
+.dark .mermaid {
     background: #f8f9fb;
     border-radius: 10px;
     padding: 20px;
