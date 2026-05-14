@@ -2155,7 +2155,7 @@ article {
 /* Full-width content; no photo banner, no card */
 .ri-sh-content {
     padding: 16px 0 0;
-    min-height: 760px;
+    min-height: 1000px; /* anchored to PI's natural height so all panels are the same size — prevents page-end gap below footer when shorter roles are shown */
 }
 .ri-sh-content .ri-role-panel { animation: none; }
 
