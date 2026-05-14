@@ -177,10 +177,13 @@ li[data-group-tag]:first-child {
     background: rgba(255, 83, 127, 0.12) !important;
     color: #c43060 !important;
 }
-/* Mintlify may also use text-primary Tailwind class on pill text */
-#sidebar-content [class*="text-primary"]:not(a):not(button) {
-    color: #c43060 !important;
+/* Mintlify renders "Updated" / "Beta" / other variants using bg-primary/10
+   directly on the element (no nav-tag-pill-text class). Catch all pill-like
+   elements in sidebar list items that use the primary colour system.         */
+#sidebar-content li [class*="bg-primary"],
+#sidebar-content li [class*="text-primary"]:not(a):not(button) {
     background: rgba(255, 83, 127, 0.12) !important;
+    color: #c43060 !important;
 }
 
 /* ── Navbar — tab hover: color-only (Stripe / Vercel pattern) ──
