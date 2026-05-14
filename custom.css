@@ -171,6 +171,17 @@ li[data-group-tag]:first-child {
     line-height: 1.2 !important;
     white-space: nowrap !important;
 }
+/* Explicit per-value overrides — belt-and-suspenders in case Mintlify applies
+   inline styles or a later rule overrides the generic [data-nav-tag] rule. */
+[data-nav-tag="Updated"],
+[data-nav-tag="New"],
+[data-nav-tag="Beta"],
+[data-nav-tag="Deprecated"],
+[data-nav-tag="Soon"],
+[data-nav-tag="experimental"] {
+    color: #c43060 !important;
+    background: rgba(255, 83, 127, 0.12) !important;
+}
 
 /* ── Navbar — tab interactions ─────────────────────────────────────────────
    Mintlify active state: encoded in Tailwind classes only (no data-active).
