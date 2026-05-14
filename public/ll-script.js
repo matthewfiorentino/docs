@@ -1584,7 +1584,7 @@ function kpSeqRender() {
     html += '<div class="kp-insp-cols">';
     /* Left col — the question */
     html += '<div class="kp-insp-left">';
-    html += '<div class="kp-insp-prompt">The inspector asks:</div>';
+    html += '<div class="kp-insp-prompt">Inspector asks:</div>';
     html += '<div class="kp-insp-q">' + q.q + '</div>';
     html += '</div>';
     /* Right col — prep note + reveal */
@@ -2698,9 +2698,9 @@ var JC_SCENARIOS = [
        ]}
     ],
     endings:{
-      3:{label:'Strong',title:'You maintained scientific and ethical standards under genuine commercial pressure.',text:'Honest feasibility, respect for refusals, and clinically grounded decisions \u2014 these are what protect both participants and data quality.'},
-      2:{label:'Competent with gaps',title:'You got the key decisions right but left room in one area.',text:'Review the feedback \u2014 the issue is usually not the immediate decision but the precedent it sets for future conversations with the sponsor.'},
-      1:{label:'Needs development',title:'The enrolment pressure shaped more of your decisions than it should have.',text:'None of Claire\u2019s suggestions were unreasonable on the surface \u2014 that\u2019s what makes this difficult. Would you document your reasoning for each decision, and would it hold up in a review?'},
+      3:{label:'Strong',title:'You maintained scientific and ethical standards under genuine commercial pressure.',text:'Honest feasibility, respect for refusals, and clinically grounded decisions. That combination is what protects both participants and data quality.'},
+      2:{label:'Competent with gaps',title:'You got the key decisions right but left room in one area.',text:'Review the feedback. The issue is usually not the immediate decision but the precedent it sets for future conversations with the sponsor.'},
+      1:{label:'Needs development',title:'The enrolment pressure shaped more of your decisions than it should have.',text:'None of Claire\u2019s suggestions were unreasonable on the surface. That is what makes this difficult. Would you document your reasoning for each decision, and would it hold up in a review?'},
       0:{label:'Critical concern',title:'Every decision was commercially sensible and regulatorily problematic.',text:'Enrolment pressure is the most common driver of eligibility deviations, dual-role conflicts, and over-committed feasibility projections at academic sites.'}
     }
   },
@@ -2754,9 +2754,9 @@ var JC_SCENARIOS = [
        ]}
     ],
     endings:{
-      3:{label:'Strong',title:'You navigated a weekend SAE with the PI unavailable.',text:'You correctly identified a severity-based expectedness issue and handled an ambiguous instruction about documentation by clarifying rather than assuming. These are the situations where the regulatory framework is tested \u2014 not in a classroom, but at 10:30 on a Saturday night.'},
-      2:{label:'Competent with gaps',title:'You handled most of this well, but one decision could have created a problem.',text:'Weekend SAE management is one of the highest-pressure situations in clinical research \u2014 the combination of time pressure, PI unavailability, and incomplete information makes every shortcut tempting.'},
-      1:{label:'Needs development',title:'The pressure of a weekend call shaped too many of your decisions.',text:'The awareness clock, the expectedness determination, and the documentation integrity are three distinct obligations \u2014 review the feedback on each one.'},
+      3:{label:'Strong',title:'You handled a weekend SAE with the PI unavailable.',text:'You correctly identified a severity-based expectedness issue and handled an ambiguous instruction about documentation by clarifying rather than assuming. These are the situations that test the regulatory framework: not in a classroom, but at 10:30 on a Saturday night.'},
+      2:{label:'Competent with gaps',title:'You handled most of this well, but one decision could have created a problem.',text:'Weekend SAE management is one of the highest-pressure situations in clinical research. The combination of time pressure, PI unavailability, and incomplete information makes every shortcut tempting.'},
+      1:{label:'Needs development',title:'The pressure of a weekend call shaped too many of your decisions.',text:'The awareness clock, the expectedness determination, and the documentation integrity are three distinct obligations. Review the feedback on each one.'},
       0:{label:'Critical concern',title:'An incorrectly timed report, a questionable expectedness classification, and a falsified awareness date.',text:'Each of these would be a separate finding in an inspection. Weekend pressure explains why these errors happen; it does not make them defensible.'}
     }
   },
@@ -2810,9 +2810,9 @@ var JC_SCENARIOS = [
        ]}
     ],
     endings:{
-      3:{label:'Strong',title:'You identified a pattern, escalated properly, and navigated the personal dynamics professionally.',text:'Raising concerns about a colleague\u2019s work \u2014 especially one your PI respects \u2014 is one of the hardest things in clinical research. You handled it without either backing down or making it adversarial.'},
-      2:{label:'Competent with gaps',title:'You caught the problem and made some of the right moves.',text:'Review the feedback \u2014 the gap is usually between recognizing the issue and following through on the escalation.'},
-      1:{label:'Needs development',title:'The personal dynamics shaped your decisions more than the evidence did.',text:'A respected predecessor, a supportive PI, a monitoring visit next week \u2014 these are the situations where documentation errors become institutional problems.'},
+      3:{label:'Strong',title:'You identified a pattern, escalated properly, and handled the personal dynamics professionally.',text:'Raising concerns about a colleague\u2019s work, especially one your PI respects, is one of the hardest situations in clinical research. You worked through it without backing down or making it adversarial.'},
+      2:{label:'Competent with gaps',title:'You caught the problem and made some of the right moves.',text:'Review the feedback. The gap is usually between recognizing the issue and following through on the escalation.'},
+      1:{label:'Needs development',title:'The personal dynamics shaped your decisions more than the evidence did.',text:'A respected predecessor, a supportive PI, a monitoring visit next week: these are the conditions in which documentation errors become institutional problems.'},
       0:{label:'Critical concern',title:'You found a pattern of discrepancies and chose not to pursue any of them.',text:'If the monitor identifies what you already identified, the site\u2019s position is significantly worse than if it had self-reported. The personal discomfort of escalation is real, but it\u2019s temporary.'}
     }
   },
@@ -2866,7 +2866,7 @@ var JC_SCENARIOS = [
        ]}
     ],
     endings:{
-      3:{label:'Strong',title:'You managed close-out pressure without cutting corners.',text:'Independent PI assessment of a major deviation, genuine PI review of monitoring reports, and proper resolution of an ambiguous withdrawal \u2014 you kept all three clean.'},
+      3:{label:'Strong',title:'You managed close-out pressure without cutting corners.',text:'You kept all three clean: independent PI assessment of a major deviation, genuine PI review of monitoring reports, and proper resolution of an ambiguous withdrawal.'},
       2:{label:'Competent with gaps',title:'You handled most of the close-out correctly.',text:'One decision could create a problem in the regulatory file. Close-out errors are particularly costly because they go directly into the submission archive.'},
       1:{label:'Needs development',title:'The deadline pressure drove too many of your decisions.',text:'Close-out feels administrative, but the signatures, assessments, and records you finalize now become the permanent regulatory record.'},
       0:{label:'Critical concern',title:'A deviation closed on the sponsor\u2019s assessment, an unread report signed, and an ambiguous withdrawal resolved by assumption.',text:'Each of these would be an audit finding. The sponsor\u2019s August deadline is their constraint, not your standard.'}
@@ -2877,8 +2877,8 @@ var JC_SCENARIOS = [
   {
     id:'query-storm', role:'data',
     topic:'Data Integrity \u00b7 Delegation \u00b7 PI Oversight',
-    title:'The Query Storm',
-    desc:'140 queries, 48 hours to database lock. Some of them aren\u2019t yours to answer.',
+    title:'Queries Before Database Lock',
+    desc:'140 sponsor queries arrive 48 hours before lock. Some of them sit outside your delegated scope.',
     scenes:3, ref:'SOP-CR-014, 002', live:true,
     intro:'Database lock is Monday. It\u2019s Thursday afternoon and the sponsor has just sent 140 data queries. The PI is in clinic all day Friday.',
     learner:{name:'L\u00e9a',role:'Data Analyst on a Phase III respiratory trial. Database lock is Monday.'},
@@ -2957,7 +2957,7 @@ var JC_SCENARIOS = [
       ]}
     ],
     endings:{
-      3:{label:'Strong',title:'You identified a capacity concern, navigated Quebec\u2019s substitute consent requirements, and respected a participant\u2019s objection.',text:'Consent in cognitive decline studies is one of the most legally complex areas in clinical research. The Quebec Civil Code requirements are specific and differ from what many protocols assume.'},
+      3:{label:'Strong',title:'You identified a capacity concern, applied Quebec\u2019s substitute consent requirements, and respected a participant\u2019s objection.',text:'Consent in cognitive decline studies is one of the most legally complex areas in clinical research. The Quebec Civil Code requirements are specific and differ from what many protocols assume.'},
       2:{label:'Competent with gaps',title:'You got most of this right, but one decision left a gap.',text:'Review the Civil Code requirements: Article 21 for substitute consent, Article 24 for participant objection.'},
       1:{label:'Needs development',title:'The personal dynamics shaped your decisions more than the legal framework did.',text:'A caring daughter, a participant who seemed willing this morning \u2014 none of these override the Civil Code.'},
       0:{label:'Critical concern',title:'You continued procedures with questionable capacity, accepted proxy consent without verification, and proceeded over an expressed objection.',text:'Each is a serious consent violation under Quebec law.'}
@@ -3027,7 +3027,7 @@ var JC_SCENARIOS = [
       ]}
     ],
     endings:{
-      3:{label:'Strong',title:'You navigated a PI disagreement, protected the DSMB review, and identified a systemic risk across sites.',text:'Multi-site coordination at the CRC level requires judgement that goes beyond your own site\u2019s obligations.'},
+      3:{label:'Strong',title:'You held the line on a PI disagreement, protected the DSMB review, and identified a systemic risk across sites.',text:'Multi-site coordination at the CRC level requires judgement that goes beyond your own site\u2019s obligations.'},
       2:{label:'Competent with gaps',title:'You handled most of the multi-site dynamics well.',text:'One decision either deferred a judgement you should have made or accepted a framing you should have questioned.'},
       1:{label:'Needs development',title:'Competing pressures shaped too many of your decisions.',text:'PI disagreements, DSMB deadlines, sponsor expectations \u2014 these are where coordinating-site CRC judgement matters most.'},
       0:{label:'Critical concern',title:'An overridden site PI, a misrepresented deviation log, and an unescalated systemic risk.',text:'The coordinating CRC role exists precisely to prevent these outcomes.'}
@@ -3407,7 +3407,7 @@ function inspRenderCard() {
   html += '<div class="kp-insp-cols">';
   /* Left — question */
   html += '<div class="kp-insp-left">';
-  html += '<div class="kp-insp-prompt">The inspector asks:</div>';
+  html += '<div class="kp-insp-prompt">Inspector asks:</div>';
   html += '<div class="kp-insp-q">' + q.q + '</div>';
   html += '</div>';
   /* Right — prep + reveal */
@@ -3592,7 +3592,7 @@ var LL_TRACKS = [
     moment:'apply',
     audience:'solo',
     durationMin:12,
-    desc:'A short warm-up before walking into a consent visit. Three atoms, three angles on the same job.',
+    desc:'A short warm-up before walking into a consent visit. Three items covering the same topic from different angles.',
     items:[
       { mode:'kc',   ref:'consent',              label:'Quick check — 5 consent MCQs' },
       { mode:'jc',   ref:'consent-conversation', label:'Judgement call — Consent under pressure' },
@@ -3605,7 +3605,7 @@ var LL_TRACKS = [
     moment:'change',
     audience:'solo',
     durationMin:25,
-    desc:'Walk the highest-risk areas the way an inspector would. Five atoms; pause and finish later if needed.',
+    desc:'Walk the highest-risk areas the way an inspector would. Five items; pause and finish later if needed.',
     items:[
       { mode:'insp', ref:'delegation', label:'Delegation walkthrough' },
       { mode:'insp', ref:'consent',    label:'Consent walkthrough' },
@@ -3680,7 +3680,7 @@ var llProgress = {
   clear: function() { try { localStorage.removeItem(LL_PROGRESS_KEY); } catch (e) {} }
 };
 
-/* ── LL_LIBRARY: derived atom index ──────────────────────────────────── */
+/* ── LL_LIBRARY: derived item index ──────────────────────────────────── */
 var LL_LIBRARY = [];
 
 function llBuildLibrary() {
@@ -3924,7 +3924,7 @@ function llRenderSearch(pane, query, filters) {
   if (filters.topicId && LL_TOPIC_LABEL[filters.topicId]) { titleBits.push(LL_TOPIC_LABEL[filters.topicId]); }
   if (query) { titleBits.push('“' + query + '”'); }
   var h1 = titleBits.length ? titleBits.join(' · ') : 'Search';
-  var sub = results.length + ' atom' + (results.length === 1 ? '' : 's') + ' match. Click to open in the right mode.';
+  var sub = results.length + ' result' + (results.length === 1 ? '' : 's') + '. Click to open.';
   var html = '<h1>' + h1 + '</h1><div class="ll-pane-sub">' + sub + '</div>';
   if (results.length === 0) {
     html += '<div class="ll-stub" style="padding:24px 0">No matches. Try a broader term or pick a different doorway from <a href="#" onclick="event.preventDefault();llRoute(\'about\');return false">Overview</a>.</div>';
@@ -3945,7 +3945,7 @@ function llRenderTrack(pane, trackId) {
   var pct = track.items.length ? Math.round((step / track.items.length) * 100) : 0;
   var html = '<h1>' + track.title + '</h1>';
   html += '<div class="ll-pane-sub">' + track.desc + '</div>';
-  html += '<div class="ll-track-meta">' + track.durationMin + ' min total · ' + track.items.length + ' atoms · ' + (track.audience === 'team' ? 'Facilitator' : 'Solo') + '</div>';
+  html += '<div class="ll-track-meta">' + track.durationMin + ' min · ' + (track.audience === 'team' ? 'Facilitator session' : 'Solo practice') + '</div>';
   html += '<div class="ll-track-progress"><div class="ll-track-progress-bar" style="width:' + pct + '%"></div></div>';
   html += '<div class="ll-track-progress-label">' + step + ' of ' + track.items.length + ' complete</div>';
   html += '<ol class="ll-track-steps">';
@@ -3993,8 +3993,8 @@ function llRenderTrack(pane, trackId) {
 /* ── Render: a moment-of-need doorway (chip grid) ───────────────────── */
 function llRenderDoorway(pane, moment) {
   var meta = {
-    apply:  { title:'I’m about to…', sub:'Pick the task you’re about to do. Each chip opens a focused atom.' },
-    solve:  { title:'Something happened…', sub:'Pick what’s going on. We’ll route you to a scenario or atom that fits.' },
+    apply:  { title:'I’m about to…', sub:'Pick the task you’re about to do. Each chip opens a focused practice item.' },
+    solve:  { title:'Something happened…', sub:'Pick what’s going on. The chip will open a relevant scenario or practice item.' },
     change: { title:'What changed…', sub:'New SOPs, refreshed regs, jurisdiction shifts. Surface the right items here.' }
   }[moment] || { title: moment, sub: '' };
   var html = '<h1>' + meta.title + '</h1><div class="ll-pane-sub">' + meta.sub + '</div>';
@@ -4257,7 +4257,7 @@ function llRenderAbout(pane) {
   /* Tracks */
   html += '<div class="ll-tracks">';
   html += '<div class="ll-section-head">Practice paths <span class="ll-section-head-count">' + LL_TRACKS.length + ' available</span></div>';
-  html += '<div class="ll-section-sub">Short threads of atoms bound by a shared task. Pause anywhere; come back where you left off.</div>';
+  html += '<div class="ll-section-sub">Short sequences of practice items grouped around a single task. Pause anywhere and resume later.</div>';
   html += '<div class="ll-track-grid">';
   for (var t = 0; t < LL_TRACKS.length; t++) {
     var tr = LL_TRACKS[t];
@@ -4291,14 +4291,14 @@ function llStubPane(pane, title, sub) {
 ════════════════════════════════════════════════════════════════════════ */
 
 var LL_TE_EXERCISES = [
-  { slug:'delegation', topic:'Delegation and Team Roles',        title:"Who’s Responsible for What?",          meta:'4 situations · SOP-CR-002' },
-  { slug:'consent',    topic:'Informed Consent Process',         title:'Did We Actually Consent This Participant?', meta:'4 situations · SOP-CR-008' },
-  { slug:'sae',        topic:'SAE and Adverse Event Reporting',  title:'The Friday Afternoon Cascade',              meta:'4 situations · SOP-CR-012' },
-  { slug:'deviations', topic:'Protocol Deviations',              title:'How Bad Is It?',                            meta:'5 issues · ICH E6(R3)' },
-  { slug:'monitoring', topic:'Monitoring and Inspection Readiness', title:'The Inspector Is Coming',                meta:'6 questions · ICH E6(R3)' },
-  { slug:'data',       topic:'Data Integrity',                   title:'What Is the Real Record?',                  meta:'5 situations · ALCOA+' },
-  { slug:'recruitment',topic:'Recruitment and Screening',        title:'Who Can We Enroll — and How?',         meta:'5 situations · ICH E6(R3)' },
-  { slug:'gcp',        topic:'GCP Principles',                   title:'Why Are We Doing This?',                    meta:'5 comments · ICH E6(R3)' }
+  { slug:'delegation', topic:'Delegation and Team Roles',        title:'Delegation Boundaries on the Study Team',   meta:'4 situations · SOP-CR-002' },
+  { slug:'consent',    topic:'Informed Consent Process',         title:'Verifying a Consent Was Properly Obtained', meta:'4 situations · SOP-CR-008' },
+  { slug:'sae',        topic:'SAE and Adverse Event Reporting',  title:'Working Through an SAE Cascade',            meta:'4 situations · SOP-CR-012' },
+  { slug:'deviations', topic:'Protocol Deviations',              title:'Classifying Protocol Deviations',           meta:'5 issues · ICH E6(R3)' },
+  { slug:'monitoring', topic:'Monitoring and Inspection Readiness', title:'Preparing for an Inspection',             meta:'6 questions · ICH E6(R3)' },
+  { slug:'data',       topic:'Data Integrity',                   title:'Identifying the Source Record',             meta:'5 situations · ALCOA+' },
+  { slug:'recruitment',topic:'Recruitment and Screening',        title:'Recruitment and Eligibility Decisions',     meta:'5 situations · ICH E6(R3)' },
+  { slug:'gcp',        topic:'GCP Principles',                   title:'Working with GCP Principles in Practice',   meta:'5 comments · ICH E6(R3)' }
 ];
 
 var llTeCurrentSlug = '';
