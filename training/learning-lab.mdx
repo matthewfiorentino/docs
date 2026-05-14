@@ -1981,7 +1981,7 @@ export const LL_HTML_2 = `  <div class="te-block">
         <div class="te-kp-body">
           <p>The surface answer is &ldquo;it&rsquo;s required by GCP.&rdquo; The deeper answer: the delegation log exists because every person who performs a study task on a participant is influencing that participant&rsquo;s safety and the reliability of the data. Without documented authorization: there is no evidence the person is qualified; there is no accountability chain if something goes wrong; and there is no basis for the PI to actually oversee their team.</p>
           <p>For participants: they are subjected to procedures by someone whose qualifications cannot be verified. For data: entries by unauthorized people cannot be attributed. For the site: <strong>data collected before delegation is documented cannot be defended in an inspection or litigation.</strong> Starting before the paperwork is done puts the first participant interactions on an unauthenticated foundation.</p>
-          <span class="te-kp-ref">ICH E6(R3) &sect;2.3 &middot; GCP Principle 5 (Qualified people) &middot; C.05.010(g)</span>
+          <span class="te-kp-ref">ICH E6(R3) &sect;2.3 &middot; GCP Principle 5 (Qualified Individuals) &middot; C.05.010(g)</span>
         </div>
       </li>
     </ul>
@@ -2041,7 +2041,7 @@ export const LL_HTML_2 = `  <div class="te-block">
         <div class="te-kp-body">
           <p>Wrong in two ways. First: passing a sponsor monitoring visit is not the same as being GCP-compliant. Monitors check what they check &mdash; they don&rsquo;t catch everything, and what they miss doesn&rsquo;t disappear. Second: the site has independent obligations to Health Canada that exist regardless of the sponsor&rsquo;s monitoring. Health Canada can inspect at any time and is not bound by what the sponsor&rsquo;s CRA did or didn&rsquo;t catch.</p>
           <p>The correct framing: <strong>&ldquo;We maintain GCP compliance because we are independently regulated parties with obligations to our participants, to Health Canada, and to the integrity of the data. The sponsor&rsquo;s monitoring is a useful quality check &mdash; but our compliance doesn&rsquo;t depend on whether they&rsquo;re watching.&rdquo;</strong></p>
-          <span class="te-kp-ref">ICH E6(R3) GCP Principle 2 (QA/QC) &middot; C.05.012 &middot; Health Canada inspection authority</span>
+          <span class="te-kp-ref">ICH E6(R3) GCP Principle 6 (Quality by Design) &middot; C.05.012 &middot; Health Canada inspection authority</span>
         </div>
       </li>
     </ul>
@@ -2062,7 +2062,7 @@ export const LL_HTML_2 = `  <div class="te-block">
           <p>For a cardiovascular drug trial, the things that could directly harm a participant: enrolling someone with contraindicated cardiac function (eligibility deviation &rarr; patient safety); missing a serious drug toxicity because SAE reporting was delayed; administering the wrong dose because IP accountability records were confused; continuing treatment in a participant who is deteriorating because no one escalated.</p>
           <p>The things that are regulatory obligations but less directly harmful in themselves: late CRF entry, IB filing gaps, delegation log maintenance issues.</p>
           <p>The insight Karin&rsquo;s question opens: <strong>the regulatory framework is largely designed around the things that matter most for participant safety.</strong> When staff understand why a requirement exists, they are less likely to rationalize workarounds. The paperwork exists because something real is at stake.</p>
-          <span class="te-kp-ref">ICH E6(R3) GCP Principle 6 (Critical to Quality) &middot; Principle 3 (Participant Rights)</span>
+          <span class="te-kp-ref">ICH E6(R3) GCP Principle 6 (Quality by Design — Critical-to-Quality factors) &middot; Principle 1 (Ethical Conduct)</span>
         </div>
       </li>
     </ul>
@@ -2754,7 +2754,7 @@ var KP_POOL = [
     opts:['The rights of participants may be balanced against scientific interests on a case-by-case basis','The rights, safety, and well-being of trial participants must take precedence over all other interests','Scientific integrity takes precedence when results could benefit many future patients','Participant rights are primarily the sponsor\u2019s responsibility, not the investigator\u2019s'],
     correct:1,
     rationale:'This is Principle 1 of ICH E6(R3), directly restating the Declaration of Helsinki: the rights, safety, and well-being of trial participants must take precedence over the interests of science and society. This is non-negotiable and applies to all parties \u2014 sponsor, investigator, and CRO alike.',
-    ref:'<a href="/kb/governance/regulatory-framework">Regulatory Framework</a> \u00b7 ICH E6(R3) Principle 1' },
+    ref:'<a href="/kb/governance/regulatory-framework">Regulatory Framework</a> \u00b7 ICH E6(R3) Principle 1 (Ethical Conduct)' },
 
   { id:'gcp-c4', type:'check', topic:'GCP Principles', topicId:'gcp', applies:'interventional',
     q:'What does \u201crisk-based monitoring\u201d mean under ICH E6(R3)?',
@@ -3316,7 +3316,7 @@ export const LL_JS_2 = `    ref:'<a href="/sops/cr-008">SOP-CR-008 \u00a75.3.1</
     opts:['To standardize documentation requirements across jurisdictions','To provide a unified standard ensuring participant rights/safety/wellbeing are protected and clinical trial results are reliable','To define the roles of sponsors and investigators','To facilitate drug approval submissions to regulatory authorities'],
     correct:1,
     rationale:'ICH E6(R3) defines GCP as an international ethical, scientific, and quality standard for the conduct of trials that involve human participants. Its dual purpose is to assure (1) that the rights, safety, and well-being of trial participants are protected, and (2) that clinical trial results are reliable. Both goals are equally weighted \u2014 a trial that protects participants but generates unreliable data has also failed GCP.',
-    ref:'ICH E6(R3) Introduction' },
+    ref:'ICH E6(R3) Introduction · <a href="/kb/governance/regulatory-framework">Regulatory Framework</a>' },
 
   { id:'gcp-c7', type:'check', topic:'GCP Principles', topicId:'gcp', applies:'interventional',
     q:'What is the structure of ICH E6(R3) compared to E6(R2)?',
@@ -3330,21 +3330,21 @@ export const LL_JS_2 = `    ref:'<a href="/sops/cr-008">SOP-CR-008 \u00a75.3.1</
     opts:['They may still produce valid data if the endpoint is objective','They are unethical, waste resources, and may yield unreliable results that place participant safety at risk','They require additional monitoring but are otherwise acceptable','They are acceptable only in early-phase trials'],
     correct:1,
     rationale:'ICH E6(R3) is explicit: trials with inadequate design and/or poorly conducted trials may place participant safety at risk, yield inadequate or unreliable results, and are unethical. They waste resources and the efforts of investigators and participants. This framing makes quality not just a regulatory requirement but an ethical obligation.',
-    ref:'ICH E6(R3) Principles Introduction' },
+    ref:'ICH E6(R3) Principles Introduction · <a href="/kb/governance/regulatory-framework">Regulatory Framework</a>' },
 
   { id:'gcp-c9', type:'check', topic:'GCP Principles', topicId:'gcp', applies:'interventional',
     q:'Under ICH E6(R3), what is the sponsor\u2019s obligation when tasks are delegated to a Contract Research Organization (CRO)?',
     opts:['Once delegated, the CRO assumes full responsibility and the sponsor has no further obligations','The sponsor retains overall responsibility for the quality and integrity of the trial data; they must ensure oversight of all subcontracted functions','The sponsor\u2019s obligations are transferred to the CRO by written agreement','The sponsor is only responsible for tasks not delegated to the CRO'],
     correct:1,
     rationale:'ICH E6(R3) Principle 9 and Annex 1 are clear: when a sponsor delegates trial-related duties to a CRO, the sponsor retains overall responsibility for the quality and integrity of trial data. The sponsor must ensure oversight of all trial-related duties and functions carried out by the CRO, including those the CRO further subcontracts. Delegation reduces workload but does not transfer responsibility.',
-    ref:'ICH E6(R3) Principle 9 \u00b7 <a href="/kb/governance/regulatory-framework">Regulatory Framework</a>' },
+    ref:'ICH E6(R3) Principle 9 (Reliable Results) \u00b7 <a href="/kb/governance/regulatory-framework">Regulatory Framework</a>' },
 
   { id:'gcp-c10', type:'check', topic:'GCP Principles', topicId:'gcp', applies:'interventional',
     q:'What does ICH E6(R3) require regarding the qualifications of individuals conducting a trial?',
     opts:['All team members must hold GCP certification from an accredited provider','Each individual involved in the conduct of the trial must be qualified by education, training, and experience to perform their respective tasks','Only the principal investigator requires documented qualifications','Qualifications are set by the sponsor; the guideline does not specify requirements'],
     correct:1,
     rationale:'ICH E6(R3) Principle 7 states that clinical trials should be designed and conducted by qualified individuals. Each person involved in trial conduct must be qualified by education, training, and experience to perform their tasks. This principle underpins the delegation framework in [SOP-CR-002](/sops/cr-002) and the training requirements in [SOP-CR-003](/sops/cr-003) \u2014 qualification must be documented before delegation.',
-    ref:'ICH E6(R3) Principle 7 \u00b7 <a href="/sops/cr-002">SOP-CR-002</a>' },
+    ref:'ICH E6(R3) Principle 7 (Risk-Proportionate Processes) \u00b7 <a href="/sops/cr-002">SOP-CR-002</a>' },
 
   /* ── HEALTH CANADA DIV 5: 6 additional checks (hc-c5 to hc-c10) ── */
   { id:'hc-c5', type:'check', topic:'Health Canada Division 5', topicId:'div5', applies:'interventional',
@@ -3804,22 +3804,22 @@ export const LL_JS_3 = `    gap:'"The CRC handled it and the PI reviewed and sig
     q:'What are the things on this trial that, if they went wrong, would most directly affect participant safety?',
     prep:'Can you identify the study-specific critical-to-quality elements? Not a generic list — the specific criteria and procedures that matter most for this particular study.',
     model:'The things most critical for participant safety on this trial: the eligibility criteria — specifically [name the safety-relevant exclusions], because the protocol was designed around a specific risk profile; SAE reporting, because timely accurate safety data is the most important signal we generate; and IP accountability, because administering the wrong dose would directly harm the participant. Source documentation and consent records are critical for being able to reconstruct what happened if something goes wrong.',
-    gap:'Reciting a generic list of GCP obligations without connecting them to the specific risks of this particular study. This tests whether the site has internalized E6(R3) Principle 6 (Critical to Quality) or is simply following a checklist.',
-    ref:'ICH E6(R3) GCP Principle 6 · ICH E6(R3) §2.4, §2.7, §2.10' },
+    gap:'Reciting a generic list of GCP obligations without connecting them to the specific risks of this particular study. This tests whether the site has internalized E6(R3) Principle 6 (Quality by Design — Critical-to-Quality factors) or is simply following a checklist.',
+    ref:'ICH E6(R3) GCP Principle 6 (Quality by Design) · ICH E6(R3) §2.4, §2.7, §2.10' },
 
   { id:'insp-gcp-3', type:'inspection', topic:'GCP Principles', topicId:'gcp', applies:'interventional',
     q:'If you identified a problem — something that wasn't right — what would you do? Walk me through your escalation process.',
     prep:'Do you know your escalation path? Who do you call first? What do you do if the PI is unreachable? How do you handle a safety concern vs. a documentation gap?',
     model:'First: document what I observed contemporaneously — a note to file with date and what I found. Then escalate to the PI immediately for significant issues (safety concern, eligibility problem, data integrity issue). If the PI is unreachable, contact [sub-investigator on delegation log]. For potential misconduct or fraud: MUHC Research Integrity process. For any participant safety concern, a physician must be involved before further study activities occur with that participant.',
     gap:'"I would tell my supervisor." Without specifics, without knowledge of the escalation pathway, and without distinguishing between issue types. Sites without a documented and communicated escalation process.',
-    ref:'ICH E6(R3) §2.3.1, §2.7.1 · GCP Principle 4 (Quality Systems) · C.05.010' },
+    ref:'ICH E6(R3) §2.3.1, §2.7.1 · GCP Principle 10 (Defined Roles and Responsibilities) · C.05.010' },
 
   { id:'insp-gcp-4', type:'inspection', topic:'GCP Principles', topicId:'gcp', applies:'interventional',
     q:'How do your GCP training records demonstrate that your team is qualified to conduct this trial?',
     prep:'Where are the GCP certificates? When were they last updated? Are they E6(R3)? Is protocol training documented and dated before each person's first activity?',
     model:'GCP training records are in the ISF under [tab]. Each staff member has a current GCP certificate — for most staff, that's the N2/CITI-Canada GCP Basic course covering ICH E6(R3) as of the [year] update. Protocol training is documented separately — here is the protocol training log signed by Dr. [PI] for each staff member, completed before they began study activities. Task-specific training links to the delegation log entries.',
     gap:'Producing GCP certificates but unable to demonstrate training was completed before activities began; outdated certificates (E6(R2) with no E6(R3) update); or unable to link training records to delegation log entries. Health Canada adopted E6(R3) in April 2026 — E6(R2)-only training is no longer current.',
-    ref:'ICH E6(R3) §2.3.2 · GCP Principle 5 (Qualified People) · GUI-0100' },
+    ref:'ICH E6(R3) §2.3.2 · GCP Principle 5 (Qualified Individuals) · GUI-0100' },
 
   { id:'insp-gcp-5', type:'inspection', topic:'GCP Principles', topicId:'gcp', applies:'interventional',
     q:'What is your understanding of the difference between your obligations under ICH E6(R3) and under Health Canada Division 5? Are there situations where they differ?',
@@ -4853,17 +4853,17 @@ export const LL_JS_4 = `      { type:'error', who:'Kevin Tremblay',
         problem:'First study activity: January 12, 2026. Delegation log entry: January 15, 2026. Marco performed study activities 3 days before he was authorized.',
         why:'Any data or activities from January 12–14 were performed without GCP authorization. This applies regardless of how experienced the CRC is — an uninspected 3-day gap at study activation cannot be retroactively remedied.',
         fix:'Delegation log entries must be completed before the person begins any study activity. The entries for those 3 days should be disclosed as a deviation with a CAPA.',
-        ref:'ICH E6(R3) §2.3 · GCP Principle 5 · C.05.010(g)' },
+        ref:'ICH E6(R3) §2.3 · GCP Principle 5 (Qualified Individuals) ·C.05.010(g)' },
       { type:'error', who:'Patrick Chen — no GCP certificate',
         problem:'No GCP certificate on file. Patrick has been performing study activities since December 14, 2025 — over 3 months without any documented GCP training.',
         why:'GCP training is a basic requirement for everyone performing study tasks. No certificate means there is no evidence Patrick was trained before performing study activities. He also has a retroactive delegation issue: first activity December 14, 2025; delegation log entry January 8, 2026.',
         fix:'Patrick must complete GCP training immediately. The absence of training must be documented and reported. CAPA: implement a pre-activation checklist requiring GCP certificate before delegation log entry.',
-        ref:'ICH E6(R3) §2.3.2 · GCP Principle 5 · GUI-0100' },
+        ref:'ICH E6(R3) §2.3.2 · GCP Principle 5 (Qualified Individuals) ·GUI-0100' },
       { type:'error', who:'Dr. Patel, Marco Ricci, Dr. Beaumont — E6(R2) certificates, not E6(R3)',
         problem:'Three team members hold ICH GCP E6(R2) certificates. Health Canada adopted E6(R3) effective April 1, 2026. None of the three has completed an E6(R3) update.',
         why:'E6(R3) introduced significant changes — risk-based monitoring, updated data governance, revised delegation and oversight requirements. Certificates covering only R2 do not reflect the current regulatory standard. GCP certificates are also generally expected to be renewed every 2–3 years; Dr. Patel’s is from 2019 (7 years old) and Dr. Beaumont’s from 2021 (5 years old).',
         fix:'All three should complete the N2/CITI-Canada GCP E6(R3) update course before their next delegated activities. This should be tracked in the ISF training log.',
-        ref:'GCP Principle 5 (Qualified People) · Health Canada GUI-0100 · ICH E6(R3) §2.3.2' },
+        ref:'GCP Principle 5 (Qualified Individuals) · Health Canada GUI-0100 · ICH E6(R3) §2.3.2' },
       { type:'error', who:'Dr. Patel — self-signed protocol training log',
         problem:'The PI signed her own protocol training log.',
         why:'A training record attributable only to the person being trained does not constitute independent verification — ALCOA+ Attributable. Inspectors will question whether the PI’s training was actually conducted and reviewed.',
@@ -5178,11 +5178,11 @@ export const LL_JS_5 = `          { text: 'The source document is the original r
         dialogue: '<p>Last thing. I’ve got three monitoring visit reports that need the PI’s co-signature before I can close this visit in our system. Dr. Andersen is in clinic until 6 — any chance you can get him to sign them now? He can read through them later, I just need the signatures today.</p><p>I know it’s a lot to ask, but my flight’s at 7 and I really need to close this visit out.</p>',
         choices: [
           { text: 'I’ll run them down to clinic. He trusts us — I’m sure he’ll sign if I explain you need them today.', quality: 'fail', label: 'A signature without review is a false record',
-            feedback: '<p>If Dr. Andersen signs documents he has not read, his signature attests to something that is not true — that he has reviewed and agrees with the content. <strong>This is a data integrity issue regardless of whether the documents turn out to be accurate.</strong></p><p>The PI’s signature on monitoring visit reports is not a formality. It confirms that the PI is aware of the monitor’s findings, agrees with the resolution of any queries, and takes responsibility for any follow-up actions. Signing blind undermines the PI’s oversight role — one of the foundational requirements of GCP.</p><p>“He trusts us” is exactly the reasoning that leads to clustered retroactive signatures — a common audit finding at academic sites.</p><span class="jc-fb-ref">ICH E6(R3) §2.3.1 (PI oversight), GCP Principle 10 · ALCOA+ · [SOP-CR-002](/sops/cr-002), [SOP-CR-013](/sops/cr-013)</span>' },
+            feedback: '<p>If Dr. Andersen signs documents he has not read, his signature attests to something that is not true — that he has reviewed and agrees with the content. <strong>This is a data integrity issue regardless of whether the documents turn out to be accurate.</strong></p><p>The PI’s signature on monitoring visit reports is not a formality. It confirms that the PI is aware of the monitor’s findings, agrees with the resolution of any queries, and takes responsibility for any follow-up actions. Signing blind undermines the PI’s oversight role — one of the foundational requirements of GCP.</p><p>“He trusts us” is exactly the reasoning that leads to clustered retroactive signatures — a common audit finding at academic sites.</p><span class="jc-fb-ref">ICH E6(R3) §2.3.1 (PI oversight) · GCP Principle 10 (Defined Roles and Responsibilities) · ALCOA+ · [SOP-CR-002](/sops/cr-002), [SOP-CR-013](/sops/cr-013)</span>' },
           { text: 'I can ask him, but I can’t promise he’ll sign without reading them. Would it help if I got him to sign two of the three?', quality: 'partial', label: 'Right instinct, but negotiating weakens your position',
-            feedback: '<p>You correctly flagged that the PI should read before signing. But <strong>offering to get him to sign two of the three is still asking him to sign documents without adequate review time.</strong> The problem is not the number of documents — it is whether the PI has actually reviewed what he is signing.</p><p>Negotiating a partial compromise (“two of three”) signals that the principle is flexible. It is not. The CRA’s timeline is a logistical constraint, not a reason to weaken PI oversight. If the sponsor’s system cannot accommodate a PI who reviews documents before signing them, that is a process issue for the sponsor to resolve.</p><span class="jc-fb-ref">ICH E6(R3) §2.3.1 · GCP Principle 10 · [SOP-CR-002](/sops/cr-002), [SOP-CR-013](/sops/cr-013)</span>' },
+            feedback: '<p>You correctly flagged that the PI should read before signing. But <strong>offering to get him to sign two of the three is still asking him to sign documents without adequate review time.</strong> The problem is not the number of documents — it is whether the PI has actually reviewed what he is signing.</p><p>Negotiating a partial compromise (“two of three”) signals that the principle is flexible. It is not. The CRA’s timeline is a logistical constraint, not a reason to weaken PI oversight. If the sponsor’s system cannot accommodate a PI who reviews documents before signing them, that is a process issue for the sponsor to resolve.</p><span class="jc-fb-ref">ICH E6(R3) §2.3.1 · GCP Principle 10 (Defined Roles and Responsibilities) · [SOP-CR-002](/sops/cr-002), [SOP-CR-013](/sops/cr-013)</span>' },
           { text: 'I can’t ask him to sign documents he hasn’t reviewed — his signature means he’s read and agreed, and that has to be true when he signs it. I’ll put them on his desk with a note. If your system needs them today, that’s a timeline issue on the sponsor side, not a reason to short-circuit PI review.', quality: 'good', label: 'Correct',
-            feedback: '<p>This is the right response. You protected the integrity of the PI’s signature, correctly identified that the sponsor’s timeline does not override the requirement for genuine review, and offered a practical next step (documents on his desk) without compromising the principle.</p><p>Framing it as “a timeline issue on the sponsor side” is important — it names the real source of the pressure without being adversarial. The CRA’s flight schedule is not your problem to solve by cutting corners.</p><span class="jc-fb-ref">ICH E6(R3) §2.3.1 (PI oversight) · GCP Principle 10 · [SOP-CR-002](/sops/cr-002), [SOP-CR-013](/sops/cr-013)</span>' }
+            feedback: '<p>This is the right response. You protected the integrity of the PI’s signature, correctly identified that the sponsor’s timeline does not override the requirement for genuine review, and offered a practical next step (documents on his desk) without compromising the principle.</p><p>Framing it as “a timeline issue on the sponsor side” is important — it names the real source of the pressure without being adversarial. The CRA’s flight schedule is not your problem to solve by cutting corners.</p><span class="jc-fb-ref">ICH E6(R3) §2.3.1 (PI oversight) · GCP Principle 10 (Defined Roles and Responsibilities) · [SOP-CR-002](/sops/cr-002), [SOP-CR-013](/sops/cr-013)</span>' }
         ]
       }
     ],
@@ -5211,11 +5211,11 @@ export const LL_JS_5 = `          { text: 'The source document is the original r
        dialogue:'<p>You’re at 11 of 20 with four months left. One thing other sites have found helpful: when a screening value is borderline, repeating it within the protocol’s retest window often brings it into range.</p><p>Your CRC flagged a participant this week with an HbA1c of 7.8 — the cutoff is 8.0. Would you consider rescreening next week?</p>',
        choices:[
          {text:'Good idea — I’ll have Marco schedule her for a retest next week.',quality:'fail',label:'Rescreening without clinical justification',
-          feedback:'<p>Agreeing to rescreen without clinical justification is enrolment-driven, not clinically indicated. The protocol’s retest provision exists for cases where there is a clinical reason to believe the initial value may not be representative — recent illness, lab error, fasting status. “The sponsor suggested it” is not a clinical rationale.</p><span class="jc-fb-ref">ICH E6(R3) Principle 3 · TCPS2 Art. 3.1 · [SOP-CR-009](/sops/cr-009)</span>'},
+          feedback:'<p>Agreeing to rescreen without clinical justification is enrolment-driven, not clinically indicated. The protocol’s retest provision exists for cases where there is a clinical reason to believe the initial value may not be representative — recent illness, lab error, fasting status. “The sponsor suggested it” is not a clinical rationale.</p><span class="jc-fb-ref">ICH E6(R3) Principle 3 (Independent Review) · TCPS2 Art. 3.1 · [SOP-CR-009](/sops/cr-009)</span>'},
          {text:'The protocol allows retesting, so I don’t see why not — we retest borderline values all the time.',quality:'partial',label:'Protocol permits it, but that’s not the question',
           feedback:'<p>The protocol allowing retesting doesn’t mean retesting is always appropriate. “We do it all the time” is a practice pattern, not a clinical rationale for this specific participant. If retesting becomes routine for every borderline value, an auditor will see a pattern that looks like enrolment-driven rescreening.</p><span class="jc-fb-ref">ICH E6(R3) §3.2 · [SOP-CR-009](/sops/cr-009)</span>'},
          {text:'I’d need to review her chart first — there might be a clinical reason to retest, but I can’t commit to it on this call.',quality:'good',label:'Correct',
-          feedback:'<p>You’re leaving the door open for a clinically justified retest while making clear that the decision is medical, not logistical. If you review the chart and find a clinical reason, a retest is defensible. If there’s no basis, the answer is no.</p><span class="jc-fb-ref">ICH E6(R3) Principle 3 · [SOP-CR-004](/sops/cr-004) · [SOP-CR-009](/sops/cr-009)</span>'}
+          feedback:'<p>You’re leaving the door open for a clinically justified retest while making clear that the decision is medical, not logistical. If you review the chart and find a clinical reason, a retest is defensible. If there’s no basis, the answer is no.</p><span class="jc-fb-ref">ICH E6(R3) Principle 3 (Independent Review) · [SOP-CR-004](/sops/cr-004) · [SOP-CR-009](/sops/cr-009)</span>'}
        ]},
       {label:'Pressure point 2 — The dual role',
        narration:'Claire moves on to the screening pipeline.',
@@ -5293,7 +5293,7 @@ export const LL_JS_5 = `          { text: 'The source document is the original r
          {text:'Reply: “The timeline is clean — awareness documented at 8:15 PM Saturday, Dr. Côté assessed by phone same evening, form initiated tonight. No gap to explain.”',quality:'good',label:'Correct',
           feedback:'<p>You’ve clarified the situation without making it a confrontation. The documentation already tells a strong story: the site became aware Saturday evening, escalated to a qualified physician the same night, and initiated the form before midnight. By replying with the actual timeline, you’re showing Dr. Morin that the documentation is already tight — which is probably what he wanted to hear.</p><span class="jc-fb-ref">ALCOA+ · ICH E6(R3) §4 · [SOP-CR-014](/sops/cr-014)</span>'},
          {text:'He probably just means document it well — but to be safe, I’ll use Monday as the awareness date so there’s no gap to explain.',quality:'fail',label:'Interpreting ambiguity toward falsification',
-          feedback:'<p>Interpreting an ambiguous instruction in the direction that falsifies a record is not “playing it safe.” Recording Monday as the awareness date when you became aware Saturday evening is falsification regardless of what Dr. Morin meant. Inspectors routinely cross-reference SAE awareness dates against phone logs, email timestamps, and hospital admission records.</p><span class="jc-fb-ref">ALCOA+ · C.05.012 · ICH E6(R3) Principle 10</span>'},
+          feedback:'<p>Interpreting an ambiguous instruction in the direction that falsifies a record is not “playing it safe.” Recording Monday as the awareness date when you became aware Saturday evening is falsification regardless of what Dr. Morin meant. Inspectors routinely cross-reference SAE awareness dates against phone logs, email timestamps, and hospital admission records.</p><span class="jc-fb-ref">ALCOA+ · C.05.012 · ICH E6(R3) GCP Principle 10 (Defined Roles and Responsibilities)</span>'},
          {text:'Don’t respond to the text — just document everything correctly with the Saturday date and let him review it Monday.',quality:'partial',label:'Correct action, but silence leaves ambiguity',
           feedback:'<p>Documenting correctly is the essential part. But not responding to an ambiguous instruction from the PI leaves a gap. If Dr. Morin did mean “change the date,” he’ll discover Monday that you didn’t — and that conversation will be harder. If he just meant “document it well,” a quick confirmation resolves the ambiguity.</p><span class="jc-fb-ref">ALCOA+ · [SOP-CR-002](/sops/cr-002)</span>'}
        ]}
@@ -5393,7 +5393,7 @@ export const LL_JS_5 = `          { text: 'The source document is the original r
          {text:'Dr. Martin has told me he hasn’t reviewed it yet. I’ll schedule a 30-minute block with him this week specifically for this review, and I’ll let you know once he’s signed after reading it. If that pushes past Friday, I’ll give you a firm date.',quality:'good',label:'Correct',
           feedback:'<p>You’re being transparent about the reason for the delay, proposing a concrete solution — dedicated time for actual review — and offering a firm date rather than a vague promise. James will appreciate a realistic timeline more than another commitment you can’t keep.</p><span class="jc-fb-ref">ICH E6(R3) §2.3.1 · [SOP-CR-013](/sops/cr-013) · [SOP-CR-016](/sops/cr-016)</span>'},
          {text:'I’ll get him to sign it by Friday — I’ll put it on his desk with a sticky note.',quality:'fail',label:'If the PI hasn’t read it, a signature is meaningless',
-          feedback:'<p>If Dr. Martin hasn’t read the report, getting his signature by Friday means asking him to sign a document he hasn’t reviewed. His signature attests that he has read it, agrees with the findings, and accepts the action items. Signing unread documents is a data integrity issue and one of the most common PI oversight findings.</p><span class="jc-fb-ref">ICH E6(R3) §2.3.1 · GCP Principle 10 · ALCOA+ · [SOP-CR-013](/sops/cr-013)</span>'},
+          feedback:'<p>If Dr. Martin hasn’t read the report, getting his signature by Friday means asking him to sign a document he hasn’t reviewed. His signature attests that he has read it, agrees with the findings, and accepts the action items. Signing unread documents is a data integrity issue and one of the most common PI oversight findings.</p><span class="jc-fb-ref">ICH E6(R3) §2.3.1 · GCP Principle 10 (Defined Roles and Responsibilities) · ALCOA+ · [SOP-CR-013](/sops/cr-013)</span>'},
          {text:'I’ll talk to him — he’s been busy but I’m sure he can review it this week.',quality:'partial',label:'Three previous promises didn’t work',
           feedback:'<p>“I’m sure he can review it” is an optimistic commitment based on three previous failures. You’re not giving James a firm date, and you’re not addressing the underlying problem. If he doesn’t review it by Friday, you’ll be back on another call making the same promise.</p><span class="jc-fb-ref">SOP-CR-013 · [SOP-CR-016](/sops/cr-016)</span>'}
        ]},
