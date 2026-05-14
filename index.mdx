@@ -184,12 +184,12 @@ export const DetailCard = ({ href, title, desc }) => (
 );
 
 export const ROLES = [
-  { id: 'pi',        title: 'Investigator',       sub: 'Planning or launching a study',      img: '/images/roles/card_PI.jpg' },
-  { id: 'crc',       title: 'Coordinator / CRC',  sub: 'Joining or managing a study team',   img: '/images/roles/card_coordinator.jpg' },
-  { id: 'nurse',     title: 'Research Nurse',     sub: 'Licensed nurse on a study team',     img: '/images/roles/card_nurse.jpg' },
-  { id: 'trainee',   title: 'Research Trainee',   sub: 'Student or trainee on a study team', img: '/images/roles/card_trainee.jpg' },
-  { id: 'volunteer', title: 'Research Volunteer', sub: 'Volunteering on a study',            img: '/images/roles/card_volunteer.jpg' },
-  { id: 'observer',  title: 'Observer',           sub: 'Observing research activities',      img: '/images/roles/card_observer.jpg' },
+  { id: 'pi',        icon: 'microscope',       title: 'Investigator',       sub: 'Planning or launching a study' },
+  { id: 'crc',       icon: 'clipboard-list',   title: 'Coordinator / CRC',  sub: 'Joining or managing a study team' },
+  { id: 'nurse',     icon: 'stethoscope',      title: 'Research Nurse',     sub: 'Licensed nurse on a study team' },
+  { id: 'trainee',   icon: 'graduation-cap',   title: 'Research Trainee',   sub: 'Student or trainee on a study team' },
+  { id: 'volunteer', icon: 'heart-handshake',  title: 'Research Volunteer', sub: 'Volunteering on a study' },
+  { id: 'observer',  icon: 'eye',              title: 'Observer',           sub: 'Observing research activities' },
 ];
 
 export const RolePanel = ({ role }) => (
@@ -401,20 +401,22 @@ export const RoleExplorer = () => {
             className={`ri-sh-tab${role === r.id ? ' ri-sh-tab--active' : ''}`}
             onClick={() => setRole(r.id)}
           >
-            {r.title}
+            <Icon icon={r.icon} className="ri-sh-tab-icon" />
+            <span>{r.title}</span>
           </button>
         ))}
       </div>
       <div className="ri-sh-card">
-        <div className="ri-sh-banner" style={{ backgroundImage: `url('${active.img}')` }}>
-          <div className="ri-sh-banner-overlay" />
-          <div className="ri-sh-banner-label">
-            <div className="ri-sh-banner-eyebrow">Your role</div>
-            <div className="ri-sh-banner-title">{active.title}</div>
-            <div className="ri-sh-banner-sub">{active.sub}</div>
-          </div>
-        </div>
         <div className="ri-sh-content">
+          <div className="ri-sh-header">
+            <div className="ri-sh-header-icon">
+              <Icon icon={active.icon} />
+            </div>
+            <div className="ri-sh-header-text">
+              <div className="ri-sh-header-eyebrow">Your role</div>
+              <div className="ri-sh-header-title">{active.title}</div>
+            </div>
+          </div>
           <RolePanel role={role} />
         </div>
       </div>
