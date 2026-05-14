@@ -6093,7 +6093,8 @@ export const LL_SHELL_CSS = `
 /* — Print — */
 @media print {
   .ll-topnav { display: none !important; }
-  .ll-pane { padding: 0; }
+  .ll { height: auto !important; display: block !important; }
+  .ll-pane { height: auto !important; overflow: visible !important; padding: 0; }
 }
 
 /* ── Knowledge Checks ─────────────────────────────────────────────── */
