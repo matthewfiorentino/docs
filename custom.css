@@ -1254,13 +1254,14 @@ article {
     border-color: var(--ri-accent) !important;
     color:        var(--ri-accent) !important;
 }
-/* ── Prev / Next page navigation — card style ── */
-[data-component="prev-next"] {
+/* ── Prev / Next page navigation — card style ──
+   Mintlify mint theme renders this as <div id="pagination"> containing two
+   <a> elements. Selector confirmed via DOM inspection.                     */
+#pagination {
     margin-top: 48px !important;
     gap: 16px !important;
 }
-[data-component="prev-next"] a,
-[data-component-part="prev-next-link"] {
+#pagination a {
     background: #fff !important;
     border: 1px solid rgba(0,0,0,0.09) !important;
     border-radius: 14px !important;
@@ -1268,26 +1269,34 @@ article {
     box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 4px 16px rgba(0,0,0,0.05) !important;
     transition: border-color .15s, box-shadow .15s, transform .12s !important;
     text-decoration: none !important;
+    align-items: flex-start !important;
 }
-[data-component="prev-next"] a:hover,
-[data-component-part="prev-next-link"]:hover {
+#pagination a:hover {
     border-color: rgba(43, 156, 226, 0.45) !important;
     box-shadow: 0 2px 6px rgba(0,0,0,0.04), 0 8px 24px rgba(43,156,226,0.10) !important;
     transform: translateY(-1px) !important;
 }
-[data-component-part="prev-next-direction"] {
+/* Page title — first div inside the space-y-1 wrapper */
+#pagination a div[class*="font-medium"][class*="text-gray-9"],
+#pagination a div[class*="font-medium"]:first-child {
+    font-size: 15px !important;
+    font-weight: 600 !important;
+    color: #150e51 !important;
+    line-height: 1.35 !important;
+    margin-bottom: 6px !important;
+}
+/* Direction row ("Previous" / "Next" + chevron) */
+#pagination a div[class*="text-sm"][class*="text-gray-5"],
+#pagination a div[class*="gap-x"] {
     font-size: 11px !important;
     font-weight: 700 !important;
     text-transform: uppercase !important;
     letter-spacing: 0.08em !important;
     color: #9ca3af !important;
-    margin-bottom: 6px !important;
 }
-[data-component-part="prev-next-title"] {
-    font-size: 15px !important;
-    font-weight: 600 !important;
-    color: #150e51 !important;
-    line-height: 1.35 !important;
+#pagination a svg {
+    color: #9ca3af !important;
+    stroke: #9ca3af !important;
 }
 /* ── Homepage footer ── */
 .ri-home-footer {
