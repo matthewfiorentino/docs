@@ -36,19 +36,8 @@ textarea {
 h1, h2, h3, h4, h5, h6, #page-title, strong, b {
     color: var(--ri-heading) !important;
 }
-/* ── Page eyebrow (parent section/group label above the H1) ──
-   Mintlify mint theme renders a small uppercase label above the page title.
-   Make it light blue (matches the Lovable pattern). Broad selectors so we
-   catch whichever Mintlify is using; harmless if some don't match. */
-#page-eyebrow,
-#header-prose-eyebrow,
-[data-page-eyebrow],
-#page-context,
-#header-context,
-.page-eyebrow,
-.page-context-section,
-#page-title-wrapper > *:first-child:not(h1):not(#page-title),
-#header-prose > *:first-child:not(h1):not(#page-title):not(p) {
+/* ── Page eyebrow (section/group label above the H1) — light blue ── */
+.eyebrow {
     color: var(--ri-blue) !important;
 }
 /* ── Links ── */
