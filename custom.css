@@ -2368,9 +2368,22 @@ footer a:hover {
 @media (max-width: 760px) {
     .ri-sh-content { padding: 32px 24px 36px; min-height: 0; }
     .ri-sh-header { margin-bottom: 24px; padding-bottom: 24px; }
-    .ri-sh-tab { padding: 10px 14px 14px; font-size: 12.5px; }
     .ri-guide-row { grid-template-columns: 1fr; gap: 32px; }
     .ri-guide-step { grid-template-columns: 36px 1fr; gap: 12px; }
     .ri-guide-step-num { width: 30px; height: 30px; font-size: 13px; }
     .ri-guide-step-body .ri-dcard-grid { grid-template-columns: 1fr; }
+
+    /* Tabs: wrap to 2 rows of 3 instead of horizontal scroll */
+    .ri-sh-tabs-wrap::after { display: none; }
+    .ri-sh-tabs {
+        flex-wrap: wrap;
+        overflow-x: visible;
+        gap: 6px;
+    }
+    .ri-sh-tab {
+        flex: 1 1 calc(33.33% - 6px);
+        min-width: calc(33.33% - 6px);
+        padding: 10px 8px 12px;
+        font-size: 12px;
+    }
 }
