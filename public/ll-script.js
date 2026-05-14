@@ -3649,19 +3649,16 @@ function llRenderAbout(pane) {
     }
   ];
   var html = '<div class="ll-about">';
-  html += '<div class="ll-about-hero">';
   html += '<h1>Learning Lab</h1>';
-  html += '<p>Training tools for RI-MUHC clinical research staff. Use them solo or run them as team exercises. Progress is not saved between sessions.</p>';
-  html += '</div>';
+  html += '<div class="ll-pane-sub">Training tools for RI-MUHC clinical research staff — use them solo or as team exercises.</div>';
   html += '<div class="ll-about-grid">';
   for (var i = 0; i < modes.length; i++) {
     var m = modes[i];
-    html += '<div class="ll-about-card" style="border-top:3px solid ' + m.colour + '" onclick="llRoute(\'' + m.id + '\')">';
+    html += '<div class="ll-about-card" onclick="llRoute(\'' + m.id + '\')">';
     html +=   '<div class="ll-about-icon-wrap" style="background:' + m.bg + '">';
     html +=     '<svg viewBox="0 0 24 24" style="stroke:' + m.colour + '" aria-hidden="true">' + m.icon + '</svg>';
     html +=   '</div>';
     html +=   '<div class="ll-about-card-name">' + m.name + '</div>';
-    html +=   '<div class="ll-about-card-badge">' + m.count + '</div>';
     html +=   '<div class="ll-about-card-desc">' + m.desc + '</div>';
     html += '</div>';
   }
