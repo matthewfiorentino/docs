@@ -6036,8 +6036,8 @@ export const LL_SHELL_CSS = `
 .ll a:hover { text-decoration: underline; }
 
 /* — Layout: rail + pane — */
-.ll-wrap { display: grid; grid-template-columns: 252px 1fr; gap: 0; max-width: 1180px; margin: 0 auto; }
-.ll-rail { padding: 36px 24px 36px 32px; border-right: 1px solid var(--ll-bdr); position: sticky; top: 64px; height: calc(100vh - 64px); overflow-y: auto; }
+.ll-wrap { display: grid; grid-template-columns: 200px 1fr; gap: 0; }
+.ll-rail { padding: 28px 16px 28px 20px; border-right: 1px solid var(--ll-bdr); position: sticky; top: 64px; height: calc(100vh - 64px); overflow-y: auto; }
 .ll-pane { padding: 36px 40px 80px; min-width: 0; }
 
 /* — Rail header — */
@@ -6070,7 +6070,7 @@ export const LL_SHELL_CSS = `
 .ll-stub { padding: 60px 0; color: var(--ll-text-3); font-size: 14px; }
 
 /* — Mobile breakpoint — */
-@media (max-width: 899px) {
+@media (max-width: 1024px) {
   .ll-wrap { grid-template-columns: 1fr; }
   .ll-rail { display: none; }
   .ll-mobile-nav { display: block; }
