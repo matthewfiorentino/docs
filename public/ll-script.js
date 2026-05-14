@@ -3526,6 +3526,522 @@ var llCurrentMode = '';   /* active mode id */
 var llRouting     = false;
 var llBooted      = false;
 
+/* ════════════════════════════════════════════════════════════════════════
+   LIBRARY · PROGRESS · TRIGGERS · TRACKS · SEARCH (Phase 1 redesign)
+   The Lab is scoped to Apply / Solve / Change moments-of-need.
+   Atoms live in their original data structures; LL_LIBRARY indexes them
+   for search/filter/recommend. llProgress persists per-item state to
+   localStorage so 8-minute sessions can resume.
+════════════════════════════════════════════════════════════════════════ */
+
+/* Topic display labels (re-used across renderers) */
+var LL_TOPIC_LABEL = {
+  sae:'SAE & Adverse Events', consent:'Informed Consent', delegation:'Roles & Delegation',
+  recruitment:'Recruitment & Screening', deviations:'Protocol Deviations',
+  monitoring:'Monitoring & Audits', gcp:'GCP Principles', div5:'Health Canada Div 5',
+  tcps2:'TCPS2', data:'Data Integrity', iso14155:'ISO 14155'
+};
+
+/* Default role tagging by topic — Phase 1 default; refine per-item later */
+var LL_ROLES_BY_TOPIC = {
+  sae:        ['crc','pi','nurse'],
+  consent:    ['crc','pi','nurse','ra'],
+  delegation: ['crc','pi','pm'],
+  recruitment:['crc','pi','ra'],
+  deviations: ['crc','pi','pm'],
+  monitoring: ['crc','pi','pm'],
+  gcp:        ['crc','pi','nurse','ra','pm','data'],
+  div5:       ['pi','pm'],
+  tcps2:      ['crc','pi','pm'],
+  data:       ['crc','data','ra'],
+  iso14155:   ['crc','pi','pm']
+};
+
+/* Trigger chips for the three moment-of-need doorways.
+   Each chip routes to a search-results page filtered by topic + moment + optional kind. */
+var LL_TRIGGERS = [
+  /* I'm about to… (Apply) */
+  { id:'about-to-consent',    moment:'apply', topicId:'consent',    label:'Consent a participant' },
+  { id:'about-to-sae',        moment:'apply', topicId:'sae',        label:'Report an SAE' },
+  { id:'about-to-monitor',    moment:'apply', topicId:'monitoring', label:'Prep a monitoring visit' },
+  { id:'about-to-deviation',  moment:'apply', topicId:'deviations', label:'File a deviation' },
+  { id:'about-to-delegation', moment:'apply', topicId:'delegation', label:'Add staff to the log' },
+  { id:'about-to-recruit',    moment:'apply', topicId:'recruitment',label:'Screen a participant' },
+  { id:'about-to-team',       moment:'apply', topicId:null,         label:'Brief the team (30 min)', kind:'team-exercise' },
+  /* Something happened… (Solve) */
+  { id:'happened-withdrew',   moment:'solve', topicId:'consent',    label:'Participant withdrew', kind:'scenario' },
+  { id:'happened-sae-late',   moment:'solve', topicId:'sae',        label:'SAE reported late' },
+  { id:'happened-cra-finding',moment:'solve', topicId:'monitoring', label:'Monitor flagged a finding' },
+  { id:'happened-bad-data',   moment:'solve', topicId:'data',       label:'Source/eCRF mismatch' },
+  { id:'happened-pi-away',    moment:'solve', topicId:'delegation', label:'PI unreachable' },
+  { id:'happened-bad-consent',moment:'solve', topicId:'consent',    label:'Consent looks invalid' },
+  /* What changed… (Change) */
+  { id:'changed-tcps2',       moment:'change', topicId:'tcps2',     label:'TCPS2 / REB rules' },
+  { id:'changed-div5',        moment:'change', topicId:'div5',      label:'Health Canada Div 5' },
+  { id:'changed-iso',         moment:'change', topicId:'iso14155',  label:'ISO 14155 (devices)' },
+  { id:'changed-gcp',         moment:'change', topicId:'gcp',       label:'GCP refresher' },
+  { id:'changed-insp',        moment:'change', topicId:null,        label:'Pre-inspection sweep', kind:'inspection-card' }
+];
+
+/* Phase 1 Tracks — moment- and audience-shaped paths, not novice arcs */
+var LL_TRACKS = [
+  {
+    id:'consent-visit-prep',
+    title:'Consent visit prep',
+    moment:'apply',
+    audience:'solo',
+    durationMin:12,
+    desc:'A short warm-up before walking into a consent visit. Three atoms, three angles on the same job.',
+    items:[
+      { mode:'kc',   ref:'consent',              label:'Quick check — 5 consent MCQs' },
+      { mode:'jc',   ref:'consent-conversation', label:'Judgement call — Consent under pressure' },
+      { mode:'insp', ref:'consent',              label:'Inspection-style review' }
+    ]
+  },
+  {
+    id:'pre-audit',
+    title:'Pre-audit checkup',
+    moment:'change',
+    audience:'solo',
+    durationMin:25,
+    desc:'Walk the highest-risk areas the way an inspector would. Five atoms; pause and finish later if needed.',
+    items:[
+      { mode:'insp', ref:'delegation', label:'Delegation walkthrough' },
+      { mode:'insp', ref:'consent',    label:'Consent walkthrough' },
+      { mode:'insp', ref:'sae',        label:'SAE walkthrough' },
+      { mode:'insp', ref:'monitoring', label:'Monitoring walkthrough' },
+      { mode:'dr',   ref:'monitoring', label:'Document review' }
+    ]
+  },
+  {
+    id:'team-30min',
+    title:'30-min team practice',
+    moment:'apply',
+    audience:'team',
+    durationMin:30,
+    desc:'A facilitated team session: one team exercise, one judgement scenario, ten-minute debrief. Bring it up on a screen and run it together.',
+    items:[
+      { mode:'te', ref:'monitoring',   label:'Team exercise — The Inspector Is Coming' },
+      { mode:'jc', ref:'cra-pressure', label:'Judgement call — The Monitoring Visit' }
+    ]
+  }
+];
+
+/* ── llProgress: localStorage CRUD ───────────────────────────────────── */
+var LL_PROGRESS_KEY  = 'rimuhcLearningLab_v1';
+var LL_PROGRESS_MAX_ITEMS = 200; /* cap to keep storage bounded */
+
+var llProgress = {
+  _read: function() {
+    try { return JSON.parse(localStorage.getItem(LL_PROGRESS_KEY) || '{}'); }
+    catch (e) { return {}; }
+  },
+  _write: function(data) {
+    try { localStorage.setItem(LL_PROGRESS_KEY, JSON.stringify(data)); } catch (e) {}
+  },
+  mark: function(key, patch) {
+    var d = this._read();
+    var prev = d[key] || { firstSeen: Date.now() };
+    var next = { firstSeen: prev.firstSeen, lastSeen: Date.now() };
+    for (var k in prev)  { if (prev.hasOwnProperty(k))  next[k] = prev[k]; }
+    for (var k2 in patch){ if (patch.hasOwnProperty(k2)) next[k2] = patch[k2]; }
+    next.lastSeen = Date.now();
+    d[key] = next;
+    var keys = Object.keys(d);
+    if (keys.length > LL_PROGRESS_MAX_ITEMS) {
+      keys.sort(function(a,b){ return (d[a].lastSeen||0)-(d[b].lastSeen||0); });
+      for (var i = 0; i < keys.length - LL_PROGRESS_MAX_ITEMS; i++) { delete d[keys[i]]; }
+    }
+    this._write(d);
+  },
+  get: function(key) { return this._read()[key] || null; },
+  recent: function(n) {
+    var d = this._read();
+    var out = [];
+    for (var k in d) {
+      if (!d.hasOwnProperty(k)) continue;
+      if (k.indexOf('__') === 0) continue; /* skip reserved keys */
+      out.push({ key:k, data:d[k] });
+    }
+    out.sort(function(a,b){ return (b.data.lastSeen||0) - (a.data.lastSeen||0); });
+    return out.slice(0, n || 3);
+  },
+  trackStep: function(trackId) {
+    var d = this._read();
+    var rec = d['__track_' + trackId];
+    return rec ? rec.step || 0 : 0;
+  },
+  setTrackStep: function(trackId, step) {
+    var d = this._read();
+    d['__track_' + trackId] = { step: step, lastSeen: Date.now() };
+    this._write(d);
+  },
+  clear: function() { try { localStorage.removeItem(LL_PROGRESS_KEY); } catch (e) {} }
+};
+
+/* ── LL_LIBRARY: derived atom index ──────────────────────────────────── */
+var LL_LIBRARY = [];
+
+function llBuildLibrary() {
+  LL_LIBRARY = [];
+
+  /* KC items — MCQs */
+  for (var i = 0; i < KP_POOL.length; i++) {
+    var q = KP_POOL[i];
+    if (!q || !q.id) continue;
+    LL_LIBRARY.push({
+      id: q.id,
+      kind: 'mcq',
+      title: (q.q || '').replace(/<[^>]+>/g,'').slice(0, 110),
+      topicId: q.topicId,
+      topicLabel: q.topic || LL_TOPIC_LABEL[q.topicId] || '',
+      moment: ['apply','solve'],
+      roles: LL_ROLES_BY_TOPIC[q.topicId] || ['crc','pi'],
+      durationMin: 2,
+      applies: q.applies || 'all',
+      ref: q.ref || '',
+      mode: 'kc',
+      openRef: q.topicId,
+      searchText: (q.q || '') + ' ' + (q.rationale || '') + ' ' + (q.ref || '')
+    });
+  }
+
+  /* Inspection cards */
+  for (var j = 0; j < KP_INSPECTION.length; j++) {
+    var ic = KP_INSPECTION[j];
+    if (!ic || !ic.id) continue;
+    LL_LIBRARY.push({
+      id: ic.id,
+      kind: 'inspection-card',
+      title: (ic.q || '').replace(/<[^>]+>/g,'').slice(0, 110),
+      topicId: ic.topicId,
+      topicLabel: ic.topic || LL_TOPIC_LABEL[ic.topicId] || '',
+      moment: ['change','solve'],
+      roles: LL_ROLES_BY_TOPIC[ic.topicId] || ['crc','pi'],
+      durationMin: 4,
+      applies: ic.applies || 'all',
+      ref: ic.ref || '',
+      mode: 'insp',
+      openRef: ic.topicId,
+      searchText: (ic.q || '') + ' ' + (ic.model || '') + ' ' + (ic.gap || '') + ' ' + (ic.ref || '')
+    });
+  }
+
+  /* JC scenarios */
+  for (var k = 0; k < JC_SCENARIOS.length; k++) {
+    var sc = JC_SCENARIOS[k];
+    if (!sc || !sc.id || sc.live === false) continue;
+    var topicId = (sc.topic || '').toLowerCase().indexOf('consent') >= 0 ? 'consent'
+                : (sc.topic || '').toLowerCase().indexOf('sae') >= 0 ? 'sae'
+                : (sc.topic || '').toLowerCase().indexOf('deviation') >= 0 ? 'deviations'
+                : (sc.topic || '').toLowerCase().indexOf('recruit') >= 0 ? 'recruitment'
+                : (sc.topic || '').toLowerCase().indexOf('monitor') >= 0 ? 'monitoring'
+                : (sc.topic || '').toLowerCase().indexOf('data') >= 0 ? 'data'
+                : (sc.topic || '').toLowerCase().indexOf('delegat') >= 0 ? 'delegation'
+                : null;
+    LL_LIBRARY.push({
+      id: sc.id,
+      kind: 'scenario',
+      title: sc.title || sc.id,
+      topicId: topicId,
+      topicLabel: sc.topic || (topicId ? LL_TOPIC_LABEL[topicId] : ''),
+      moment: ['solve','apply'],
+      roles: [sc.role || 'crc'],
+      durationMin: 12,
+      applies: 'all',
+      ref: sc.ref || '',
+      mode: 'jc',
+      openRef: sc.id,
+      searchText: (sc.title || '') + ' ' + (sc.desc || '') + ' ' + (sc.intro || '') + ' ' + (sc.topic || '')
+    });
+  }
+
+  /* TE exercises */
+  for (var t = 0; t < LL_TE_EXERCISES.length; t++) {
+    var te = LL_TE_EXERCISES[t];
+    LL_LIBRARY.push({
+      id: 'te-' + te.slug,
+      kind: 'team-exercise',
+      title: te.title,
+      topicId: te.slug,
+      topicLabel: te.topic,
+      moment: ['apply'],
+      roles: LL_ROLES_BY_TOPIC[te.slug] || ['crc','pi'],
+      durationMin: 20,
+      applies: 'all',
+      ref: te.meta || '',
+      mode: 'te',
+      openRef: te.slug,
+      audience: 'team',
+      searchText: te.topic + ' ' + te.title + ' ' + te.meta
+    });
+  }
+
+  /* DR exercises */
+  if (typeof KP_DR_EXERCISES === 'object' && KP_DR_EXERCISES) {
+    for (var slug in KP_DR_EXERCISES) {
+      if (!KP_DR_EXERCISES.hasOwnProperty(slug)) continue;
+      var dr = KP_DR_EXERCISES[slug];
+      LL_LIBRARY.push({
+        id: 'dr-' + slug,
+        kind: 'doc-review',
+        title: dr.title || slug,
+        topicId: slug,
+        topicLabel: dr.topicLabel || LL_TOPIC_LABEL[slug] || '',
+        moment: ['solve','change'],
+        roles: LL_ROLES_BY_TOPIC[slug] || ['crc','monitor'],
+        durationMin: 8,
+        applies: 'all',
+        ref: dr.ref || '',
+        mode: 'dr',
+        openRef: slug,
+        searchText: (dr.title || '') + ' ' + (dr.intro || '') + ' ' + (dr.subtitle || '')
+      });
+    }
+  }
+}
+
+/* ── Search ─────────────────────────────────────────────────────────── */
+function llSearch(query, filters) {
+  filters = filters || {};
+  var q = (query || '').trim().toLowerCase();
+  var out = [];
+  for (var i = 0; i < LL_LIBRARY.length; i++) {
+    var it = LL_LIBRARY[i];
+    if (filters.topicId && it.topicId !== filters.topicId) continue;
+    if (filters.kind && it.kind !== filters.kind) continue;
+    if (filters.moment) {
+      var hit = false;
+      for (var m = 0; m < it.moment.length; m++) { if (it.moment[m] === filters.moment) { hit = true; break; } }
+      if (!hit) continue;
+    }
+    if (q) {
+      var hay = (it.title + ' ' + it.topicLabel + ' ' + (it.searchText || '') + ' ' + (it.ref || '')).toLowerCase();
+      if (hay.indexOf(q) < 0) continue;
+    }
+    out.push(it);
+  }
+  return out;
+}
+
+/* ── Universal opener — given a library item, route to the right mode ─ */
+function llOpenLibraryItem(itemId, opts) {
+  opts = opts || {};
+  var item = null;
+  for (var i = 0; i < LL_LIBRARY.length; i++) {
+    if (LL_LIBRARY[i].id === itemId) { item = LL_LIBRARY[i]; break; }
+  }
+  if (!item) return;
+  /* Mark progress on open */
+  llProgress.mark(item.id, { kind: item.kind, title: item.title, topicId: item.topicId, mode: item.mode, openRef: item.openRef });
+  /* Persist track context if provided so renderers can show the banner */
+  if (opts.trackId) {
+    window.llCurrentTrackId   = opts.trackId;
+    window.llCurrentTrackStep = opts.trackStep || 0;
+    /* Advance the persisted step so the track view shows this item as complete on return */
+    var advance = (opts.trackStep || 0) + 1;
+    if (llProgress.trackStep(opts.trackId) < advance) { llProgress.setTrackStep(opts.trackId, advance); }
+  } else {
+    window.llCurrentTrackId = null;
+    window.llCurrentTrackStep = 0;
+  }
+  /* Route */
+  if (item.mode === 'kc') {
+    llRoute('kc');
+    /* Defer to allow renderer to mount, then start the topic */
+    setTimeout(function(){ if (typeof llKcStartTopic === 'function') { llKcStartTopic(item.openRef); } }, 30);
+  } else if (item.mode === 'te') {
+    llRoute('te');
+    setTimeout(function(){ if (typeof llTeOpenExercise === 'function') { llTeOpenExercise(item.openRef); } }, 30);
+  } else if (item.mode === 'dr') {
+    llRoute('dr');
+    setTimeout(function(){ if (typeof llDrOpenExercise === 'function') { llDrOpenExercise(item.openRef); } }, 30);
+  } else if (item.mode === 'jc') {
+    llRoute('jc');
+    setTimeout(function(){ if (typeof llJcStartScenario === 'function') { llJcStartScenario(item.openRef); } }, 30);
+  } else if (item.mode === 'insp') {
+    llRoute('insp');
+    setTimeout(function(){ if (typeof llInspStartTopic === 'function') { llInspStartTopic(item.openRef); } }, 30);
+  }
+}
+
+/* ── Resume from any progress key (library item OR synthetic kc-/insp-/te-/dr- key) ─ */
+function llResumeFromKey(key) {
+  /* Library hit first */
+  for (var i = 0; i < LL_LIBRARY.length; i++) {
+    if (LL_LIBRARY[i].id === key) { llOpenLibraryItem(key); return; }
+  }
+  /* Fall back to stored progress data */
+  var rec = llProgress.get(key);
+  if (!rec || !rec.mode || !rec.openRef) return;
+  if (rec.mode === 'kc')   { llRoute('kc');   setTimeout(function(){ if (typeof llKcStartTopic==='function')    llKcStartTopic(rec.openRef);    }, 30); }
+  else if (rec.mode === 'te')   { llRoute('te');   setTimeout(function(){ if (typeof llTeOpenExercise==='function')  llTeOpenExercise(rec.openRef);  }, 30); }
+  else if (rec.mode === 'dr')   { llRoute('dr');   setTimeout(function(){ if (typeof llDrOpenExercise==='function')  llDrOpenExercise(rec.openRef);  }, 30); }
+  else if (rec.mode === 'jc')   { llRoute('jc');   setTimeout(function(){ if (typeof llJcStartScenario==='function') llJcStartScenario(rec.openRef); }, 30); }
+  else if (rec.mode === 'insp') { llRoute('insp'); setTimeout(function(){ if (typeof llInspStartTopic==='function')  llInspStartTopic(rec.openRef);  }, 30); }
+}
+
+/* ── Kind label + colour for cards ──────────────────────────────────── */
+var LL_KIND_META = {
+  'mcq':             { label: 'MCQ',          colour: '#2b9ce2' },
+  'team-exercise':   { label: 'Team',         colour: '#10b981' },
+  'doc-review':      { label: 'Doc review',   colour: '#f59e0b' },
+  'scenario':        { label: 'Scenario',     colour: '#9039f9' },
+  'inspection-card': { label: 'Inspection',   colour: '#ef4444' }
+};
+
+function llCardHTML(item, opts) {
+  opts = opts || {};
+  var meta = LL_KIND_META[item.kind] || { label: item.kind, colour: '#888' };
+  var dur = item.durationMin ? (' · ' + item.durationMin + ' min') : '';
+  var topic = item.topicLabel ? ('<span class="ll-card-topic">' + item.topicLabel + '</span>') : '';
+  var onclick = opts.trackId
+    ? 'llOpenLibraryItem(\'' + item.id + '\', {trackId:\'' + opts.trackId + '\', trackStep:' + (opts.trackStep || 0) + '})'
+    : 'llOpenLibraryItem(\'' + item.id + '\')';
+  return '<div class="ll-card" onclick="' + onclick + '">' +
+           '<div class="ll-card-tag" style="background:' + meta.colour + '">' + meta.label + dur + '</div>' +
+           '<div class="ll-card-title">' + item.title + '</div>' +
+           topic +
+         '</div>';
+}
+
+/* ── Render: search results ─────────────────────────────────────────── */
+function llRenderSearch(pane, query, filters) {
+  filters = filters || {};
+  var results = llSearch(query, filters);
+  var titleBits = [];
+  if (filters.moment) {
+    titleBits.push({apply:'I’m about to…', solve:'Something happened…', change:'What changed…'}[filters.moment] || filters.moment);
+  }
+  if (filters.topicId && LL_TOPIC_LABEL[filters.topicId]) { titleBits.push(LL_TOPIC_LABEL[filters.topicId]); }
+  if (query) { titleBits.push('“' + query + '”'); }
+  var h1 = titleBits.length ? titleBits.join(' · ') : 'Search';
+  var sub = results.length + ' atom' + (results.length === 1 ? '' : 's') + ' match. Click to open in the right mode.';
+  var html = '<h1>' + h1 + '</h1><div class="ll-pane-sub">' + sub + '</div>';
+  if (results.length === 0) {
+    html += '<div class="ll-stub" style="padding:24px 0">No matches. Try a broader term or pick a different doorway from <a href="#" onclick="event.preventDefault();llRoute(\'about\');return false">Overview</a>.</div>';
+  } else {
+    html += '<div class="ll-card-grid">';
+    for (var i = 0; i < results.length; i++) { html += llCardHTML(results[i]); }
+    html += '</div>';
+  }
+  pane.innerHTML = html;
+}
+
+/* ── Render: track ──────────────────────────────────────────────────── */
+function llRenderTrack(pane, trackId) {
+  var track = null;
+  for (var i = 0; i < LL_TRACKS.length; i++) { if (LL_TRACKS[i].id === trackId) { track = LL_TRACKS[i]; break; } }
+  if (!track) { pane.innerHTML = '<div class="ll-stub">Track not found.</div>'; return; }
+  var step = llProgress.trackStep(trackId);
+  var pct = track.items.length ? Math.round((step / track.items.length) * 100) : 0;
+  var html = '<h1>' + track.title + '</h1>';
+  html += '<div class="ll-pane-sub">' + track.desc + '</div>';
+  html += '<div class="ll-track-meta">' + track.durationMin + ' min total · ' + track.items.length + ' atoms · ' + (track.audience === 'team' ? 'Facilitator' : 'Solo') + '</div>';
+  html += '<div class="ll-track-progress"><div class="ll-track-progress-bar" style="width:' + pct + '%"></div></div>';
+  html += '<div class="ll-track-progress-label">' + step + ' of ' + track.items.length + ' complete</div>';
+  html += '<ol class="ll-track-steps">';
+  for (var s = 0; s < track.items.length; s++) {
+    var it = track.items[s];
+    /* Find the library entry — KC/insp keyed by topicId, te/dr by slug prefix, jc by id */
+    var libItem = null;
+    var lookupId = it.mode === 'te' ? 'te-' + it.ref
+                 : it.mode === 'dr' ? 'dr-' + it.ref
+                 : null;
+    if (lookupId) {
+      for (var li = 0; li < LL_LIBRARY.length; li++) { if (LL_LIBRARY[li].id === lookupId) { libItem = LL_LIBRARY[li]; break; } }
+    } else if (it.mode === 'jc') {
+      for (var lj = 0; lj < LL_LIBRARY.length; lj++) { if (LL_LIBRARY[lj].id === it.ref) { libItem = LL_LIBRARY[lj]; break; } }
+    }
+    var done = s < step;
+    var current = s === step;
+    var stepClass = 'll-track-step' + (done ? ' done' : '') + (current ? ' current' : '');
+    var label = libItem ? libItem.title : it.label;
+    var kindLabel = libItem ? (LL_KIND_META[libItem.kind] ? LL_KIND_META[libItem.kind].label : it.mode.toUpperCase()) : it.mode.toUpperCase();
+    var dur = libItem && libItem.durationMin ? (' · ~' + libItem.durationMin + ' min') : '';
+    var act = '';
+    if (libItem) {
+      act = ' onclick="llOpenLibraryItem(\'' + libItem.id + '\', {trackId:\'' + trackId + '\', trackStep:' + s + '})"';
+    } else if (it.mode === 'kc' || it.mode === 'insp') {
+      /* Topic-level open: route then start topic */
+      var fn = it.mode === 'kc' ? 'llKcStartTopic' : 'llInspStartTopic';
+      act = ' onclick="llProgress.setTrackStep(\'' + trackId + '\', ' + s + ');window.llCurrentTrackId=\'' + trackId + '\';window.llCurrentTrackStep=' + s + ';llRoute(\'' + it.mode + '\');setTimeout(function(){' + fn + '(\'' + it.ref + '\')},30)"';
+    }
+    html += '<li class="' + stepClass + '"' + act + '>';
+    html +=   '<div class="ll-track-step-num">' + (done ? '✓' : (s + 1)) + '</div>';
+    html +=   '<div class="ll-track-step-body">';
+    html +=     '<div class="ll-track-step-kind">' + kindLabel + dur + '</div>';
+    html +=     '<div class="ll-track-step-label">' + label + '</div>';
+    html +=   '</div>';
+    html += '</li>';
+  }
+  html += '</ol>';
+  if (step > 0) {
+    html += '<div style="margin-top:16px"><button class="ll-back-btn" onclick="llProgress.setTrackStep(\'' + trackId + '\',0);llRoute(\'track\',{trackId:\'' + trackId + '\'})">Reset progress</button></div>';
+  }
+  pane.innerHTML = html;
+}
+
+/* ── Render: a moment-of-need doorway (chip grid) ───────────────────── */
+function llRenderDoorway(pane, moment) {
+  var meta = {
+    apply:  { title:'I’m about to…', sub:'Pick the task you’re about to do. Each chip opens a focused atom.' },
+    solve:  { title:'Something happened…', sub:'Pick what’s going on. We’ll route you to a scenario or atom that fits.' },
+    change: { title:'What changed…', sub:'New SOPs, refreshed regs, jurisdiction shifts. Surface the right items here.' }
+  }[moment] || { title: moment, sub: '' };
+  var html = '<h1>' + meta.title + '</h1><div class="ll-pane-sub">' + meta.sub + '</div>';
+  html += '<div class="ll-chips">';
+  for (var i = 0; i < LL_TRIGGERS.length; i++) {
+    var tr = LL_TRIGGERS[i];
+    if (tr.moment !== moment) continue;
+    html += '<button class="ll-chip" onclick="llRoute(\'search\',{triggerId:\'' + tr.id + '\'})">' + tr.label + '</button>';
+  }
+  html += '</div>';
+  html += '<div style="margin-top:18px"><button class="ll-back-btn" onclick="llRoute(\'about\')">&#8592; Back to Overview</button></div>';
+  pane.innerHTML = html;
+}
+
+/* ── Continue widget HTML (used inside Overview) ────────────────────── */
+function llContinueWidgetHTML() {
+  var recent = llProgress.recent(3);
+  if (!recent.length) return '';
+  var html = '<div class="ll-continue">';
+  html += '<div class="ll-continue-head">Continue where you left off</div>';
+  html += '<div class="ll-continue-list">';
+  for (var i = 0; i < recent.length; i++) {
+    var r = recent[i];
+    var item = null;
+    for (var li = 0; li < LL_LIBRARY.length; li++) { if (LL_LIBRARY[li].id === r.key) { item = LL_LIBRARY[li]; break; } }
+    var title = (item && item.title) || (r.data && r.data.title) || r.key;
+    var kindMeta = item ? (LL_KIND_META[item.kind] || { label:item.kind, colour:'#888' }) : { label: r.data && r.data.kind ? r.data.kind : '', colour:'#888' };
+    var when = llRelativeTime(r.data.lastSeen);
+    html += '<button class="ll-continue-item" onclick="llResumeFromKey(\'' + r.key + '\')">';
+    html +=   '<span class="ll-continue-tag" style="background:' + kindMeta.colour + '">' + kindMeta.label + '</span>';
+    html +=   '<span class="ll-continue-title">' + title + '</span>';
+    html +=   '<span class="ll-continue-when">' + when + '</span>';
+    html += '</button>';
+  }
+  html += '</div></div>';
+  return html;
+}
+
+function llRelativeTime(ts) {
+  if (!ts) return '';
+  var diff = Date.now() - ts;
+  var min = Math.floor(diff / 60000);
+  if (min < 1) return 'just now';
+  if (min < 60) return min + ' min ago';
+  var hr = Math.floor(min / 60);
+  if (hr < 24) return hr + ' h ago';
+  var day = Math.floor(hr / 24);
+  if (day < 7) return day + ' d ago';
+  return Math.floor(day / 7) + ' w ago';
+}
+
+/* ════════════════════════════════════════════════════════════════════════
+   END Phase 1 redesign block
+════════════════════════════════════════════════════════════════════════ */
+
 function llPane()      { return document.getElementById('ll-pane'); }
 function llRailBtns()  { return document.querySelectorAll('.ll-tab'); }
 function llMobileSel() { return document.getElementById('ll-mobile-select'); }
@@ -3556,7 +4072,18 @@ function llRoute(modeId, opts) {
   if (!opts.noHash) {
     var noHashModes = { about: true, kc: true };
     var newHash = noHashModes[modeId] ? '' : modeId;
-    if (window.location.hash.replace(/^#/, '').split('/')[0] !== newHash) {
+    /* Encode parameters for the parametric modes */
+    if (modeId === 'search') {
+      if (opts.triggerId)  newHash = 'search?trigger=' + encodeURIComponent(opts.triggerId);
+      else if (opts.query) newHash = 'search?q=' + encodeURIComponent(opts.query);
+      else                 newHash = 'search';
+    } else if (modeId === 'doorway' && opts.moment) {
+      newHash = 'doorway/' + opts.moment;
+    } else if (modeId === 'track' && opts.trackId) {
+      newHash = 'track/' + opts.trackId;
+    }
+    var currentHash = window.location.hash.replace(/^#/, '');
+    if (currentHash !== newHash) {
       if (newHash) { history.pushState(null, '', '#' + newHash); }
       else         { history.pushState(null, '', window.location.pathname + window.location.search); }
     }
@@ -3570,13 +4097,35 @@ function llRoute(modeId, opts) {
   var pane = llPane();
   if (!pane) { llRouting = false; return; }
   switch (modeId) {
-    case 'about': llRenderAbout(pane);                 break;
-    case 'kc':   llRenderKnowledgeChecks(pane, opts); break;
-    case 'te':   llRenderTeamExercises(pane, opts);   break;
-    case 'dr':   llRenderDocReview(pane, opts);       break;
-    case 'jc':   llRenderJudgementCalls(pane, opts);  break;
-    case 'insp': llRenderInspectionPrep(pane, opts);  break;
-    default:     pane.innerHTML = '<div class="ll-stub">Unknown mode.</div>';
+    case 'about':   llRenderAbout(pane);                 break;
+    case 'kc':      llRenderKnowledgeChecks(pane, opts); break;
+    case 'te':      llRenderTeamExercises(pane, opts);   break;
+    case 'dr':      llRenderDocReview(pane, opts);       break;
+    case 'jc':      llRenderJudgementCalls(pane, opts);  break;
+    case 'insp':    llRenderInspectionPrep(pane, opts);  break;
+    case 'search': {
+      var q = opts.query || '';
+      var filters = {};
+      if (opts.moment)  filters.moment  = opts.moment;
+      if (opts.topicId) filters.topicId = opts.topicId;
+      if (opts.kind)    filters.kind    = opts.kind;
+      if (opts.triggerId) {
+        for (var ti = 0; ti < LL_TRIGGERS.length; ti++) {
+          if (LL_TRIGGERS[ti].id === opts.triggerId) {
+            var trg = LL_TRIGGERS[ti];
+            if (trg.moment)  filters.moment  = trg.moment;
+            if (trg.topicId) filters.topicId = trg.topicId;
+            if (trg.kind)    filters.kind    = trg.kind;
+            break;
+          }
+        }
+      }
+      llRenderSearch(pane, q, filters);
+      break;
+    }
+    case 'doorway': llRenderDoorway(pane, opts.moment || 'apply'); break;
+    case 'track':   llRenderTrack(pane, opts.trackId); break;
+    default:        pane.innerHTML = '<div class="ll-stub">Unknown mode.</div>';
   }
   pane.scrollTop = 0;
   llRouting = false;
@@ -3616,53 +4165,77 @@ function llSeeAlsoStrip(topicId, currentMode) {
 }
 
 function llRenderAbout(pane) {
-  var modes = [
-    {
-      id: 'kc', colour: '#2b9ce2', bg: 'rgba(43,156,226,0.10)',
-      name: 'Knowledge Checks', count: '158 questions \xb7 11 topics',
-      desc: '158 multiple-choice questions across 11 study topics. Immediate feedback and SOP references after each answer — useful for sharpening recall before a visit, audit, or certification renewal.',
-      icon: '<path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/>'
-    },
-    {
-      id: 'te', colour: '#10b981', bg: 'rgba(16,185,129,0.10)',
-      name: 'Team Exercises', count: '8 exercises',
-      desc: 'Eight scenario exercises covering common study situations. Work through the case independently, or run it as a 20–30 min team exercise with discussion before the reveal.',
-      icon: '<path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>'
-    },
-    {
-      id: 'dr', colour: '#f59e0b', bg: 'rgba(245,158,11,0.10)',
-      name: 'Document Review', count: '8 exercises \xb7 case files',
-      desc: 'Constructed study documents — protocols, consent forms, case files — each containing deliberate errors. Find the issues yourself, then step through the annotated findings.',
-      icon: '<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/>'
-    },
-    {
-      id: 'jc', colour: '#9039f9', bg: 'rgba(144,57,249,0.10)',
-      name: 'Judgement Calls', count: '6 scenarios \xb7 3 decision points each',
-      desc: 'Scenarios where a colleague, PI, or sponsor pressures you to do something that isn’t right. Three decision points per case — choose your response and see what it means for the study.',
-      icon: '<path d="M12 2L3 7v5c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7L12 2z"/>'
-    },
-    {
-      id: 'insp', colour: '#ef4444', bg: 'rgba(239,68,68,0.10)',
-      name: 'Inspection Prep', count: '8 topics \xb7 40 questions',
-      desc: 'Forty questions across 8 study areas, formatted like a real monitoring visit. Formulate your answer before the model response appears.',
-      icon: '<circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>'
-    }
+  var doorways = [
+    { moment:'apply',  title:"I'm about to…",      sub:'Quick prep for a task you’re about to do.',
+      colour:'#2b9ce2', bg:'rgba(43,156,226,0.10)',
+      icon:'<path d="M5 12h14M13 6l6 6-6 6"/>' },
+    { moment:'solve',  title:'Something happened…', sub:'A problem just landed. Think it through.',
+      colour:'#ef4444', bg:'rgba(239,68,68,0.10)',
+      icon:'<circle cx="12" cy="12" r="9"/><path d="M12 8v4M12 16h.01"/>' },
+    { moment:'change', title:'What changed…',       sub:'New SOPs, new regs, jurisdiction shifts.',
+      colour:'#9039f9', bg:'rgba(144,57,249,0.10)',
+      icon:'<path d="M3 12a9 9 0 1 0 3-6.7"/><polyline points="3 4 3 10 9 10"/>' }
   ];
+
   var html = '<div class="ll-about">';
   html += '<h1>Learning Lab</h1>';
-  html += '<div class="ll-pane-sub">Training tools for RI-MUHC clinical research staff — use them solo or as team exercises.</div>';
-  html += '<div class="ll-about-grid">';
-  for (var i = 0; i < modes.length; i++) {
-    var m = modes[i];
-    html += '<div class="ll-about-card" onclick="llRoute(\'' + m.id + '\')">';
-    html +=   '<div class="ll-about-icon-wrap" style="background:' + m.bg + '">';
-    html +=     '<svg viewBox="0 0 24 24" style="stroke:' + m.colour + '" aria-hidden="true">' + m.icon + '</svg>';
+  html += '<div class="ll-pane-sub">Bite-sized practice for the moment of need — not novice training. Atoms, not courses.</div>';
+
+  /* Continue widget */
+  html += llContinueWidgetHTML();
+
+  /* Three doorways */
+  html += '<div class="ll-doorways">';
+  for (var i = 0; i < doorways.length; i++) {
+    var d = doorways[i];
+    html += '<div class="ll-doorway" onclick="llRoute(\'doorway\',{moment:\'' + d.moment + '\'})">';
+    html +=   '<div class="ll-doorway-icon" style="background:' + d.bg + '">';
+    html +=     '<svg viewBox="0 0 24 24" style="stroke:' + d.colour + '" aria-hidden="true">' + d.icon + '</svg>';
     html +=   '</div>';
-    html +=   '<div class="ll-about-card-name">' + m.name + '</div>';
-    html +=   '<div class="ll-about-card-desc">' + m.desc + '</div>';
+    html +=   '<div class="ll-doorway-title">' + d.title + '</div>';
+    html +=   '<div class="ll-doorway-sub">' + d.sub + '</div>';
+    html += '</div>';
+  }
+  html += '</div>';
+
+  /* Tracks */
+  html += '<div class="ll-tracks">';
+  html += '<div class="ll-section-head">Curated tracks</div>';
+  html += '<div class="ll-section-sub">Threads of atoms bound by a shared task. Step through, or pause and resume.</div>';
+  html += '<div class="ll-track-grid">';
+  for (var t = 0; t < LL_TRACKS.length; t++) {
+    var tr = LL_TRACKS[t];
+    var step = llProgress.trackStep(tr.id);
+    var pct = tr.items.length ? Math.round((step / tr.items.length) * 100) : 0;
+    var aud = tr.audience === 'team' ? '<span class="ll-track-pill ll-track-pill-team">Team</span>' : '<span class="ll-track-pill">Solo</span>';
+    html += '<div class="ll-track-card" onclick="llRoute(\'track\',{trackId:\'' + tr.id + '\'})">';
+    html +=   '<div class="ll-track-card-head">' + aud + '<span class="ll-track-card-dur">' + tr.durationMin + ' min</span></div>';
+    html +=   '<div class="ll-track-card-title">' + tr.title + '</div>';
+    html +=   '<div class="ll-track-card-desc">' + tr.desc + '</div>';
+    if (step > 0) {
+      html += '<div class="ll-track-progress" style="margin-top:10px"><div class="ll-track-progress-bar" style="width:' + pct + '%"></div></div>';
+      html += '<div class="ll-track-progress-label" style="font-size:11px">' + step + ' of ' + tr.items.length + '</div>';
+    }
     html += '</div>';
   }
   html += '</div></div>';
+
+  /* Browse-by-mode escape hatch (the legacy mode tabs still work; this is for users who came in via Phase 0) */
+  html += '<details class="ll-browse-modes"><summary>Browse by interaction type</summary>';
+  html += '<div class="ll-browse-modes-grid">';
+  var modes = [
+    { id:'kc',   label:'Knowledge Checks (MCQ)',    colour:'#2b9ce2' },
+    { id:'te',   label:'Team Exercises',            colour:'#10b981' },
+    { id:'dr',   label:'Document Review',           colour:'#f59e0b' },
+    { id:'jc',   label:'Judgement Calls',           colour:'#9039f9' },
+    { id:'insp', label:'Inspection Prep',           colour:'#ef4444' }
+  ];
+  for (var mi = 0; mi < modes.length; mi++) {
+    html += '<button class="ll-browse-mode-btn" style="border-left:3px solid ' + modes[mi].colour + '" onclick="llRoute(\'' + modes[mi].id + '\')">' + modes[mi].label + '</button>';
+  }
+  html += '</div></details>';
+
+  html += '</div>';
   pane.innerHTML = html;
 }
 
@@ -3717,6 +4290,11 @@ function llTeOpenExercise(slug) {
   var source = document.getElementById('kp-phase-te-' + slug);
   if (!source) { return; }
   llTeCurrentSlug = slug;
+  if (typeof llProgress !== 'undefined') {
+    var teTitle = '';
+    for (var teIdx = 0; teIdx < LL_TE_EXERCISES.length; teIdx++) { if (LL_TE_EXERCISES[teIdx].slug === slug) { teTitle = LL_TE_EXERCISES[teIdx].title; break; } }
+    llProgress.mark('te-' + slug, { kind:'team-exercise', title: teTitle, topicId: slug, mode:'te', openRef: slug });
+  }
   var clone = source.cloneNode(true);
   var navRow = clone.querySelector('.kp-nav-row');
   if (navRow) { navRow.parentNode.removeChild(navRow); }
@@ -3795,6 +4373,9 @@ function llDrRenderList(pane) {
 function llDrOpenExercise(slug) {
   var source = document.getElementById('kp-phase-docreview');
   if (!source) { return; }
+  if (typeof llProgress !== 'undefined' && typeof KP_DR_EXERCISES !== 'undefined' && KP_DR_EXERCISES[slug]) {
+    llProgress.mark('dr-' + slug, { kind:'doc-review', title: KP_DR_EXERCISES[slug].title || slug, topicId: slug, mode:'dr', openRef: slug });
+  }
   _llDrSourceParent = source.parentNode;
   _llDrSourceNext   = source.nextSibling;
   var navRow = source.querySelector('.kp-nav-row');
@@ -3911,6 +4492,9 @@ function llJcStartScenario(id) {
   for (var i = 0; i < JC_SCENARIOS.length; i++) {
     if (JC_SCENARIOS[i].id === id && JC_SCENARIOS[i].live) { scenario = JC_SCENARIOS[i]; break; }
   }
+  if (scenario && typeof llProgress !== 'undefined') {
+    llProgress.mark(id, { kind:'scenario', title: scenario.title || id, topicId: null, mode:'jc', openRef: id });
+  }
   if (!scenario) { llJcBackToRoles(); return; }
   jcCurrentScenario  = scenario;
   jcCurrentRoleId    = scenario.role;
@@ -3988,6 +4572,11 @@ function llInspRenderTopicList(pane) {
 }
 
 function llInspStartTopic(topicId) {
+  if (typeof llProgress !== 'undefined') {
+    var inspName = '';
+    for (var iti = 0; iti < INSP_TOPICS.length; iti++) { if (INSP_TOPICS[iti].id === topicId) { inspName = INSP_TOPICS[iti].name; break; } }
+    llProgress.mark('insp-' + topicId, { kind:'inspection-card', title:'Inspection prep — ' + inspName, topicId: topicId, mode:'insp', openRef: topicId });
+  }
   inspCurrentTopicId = topicId;
   inspQueue = inspBuildQueue(topicId);
   inspIndex = 0;
@@ -4084,6 +4673,9 @@ function llKcStartTopic(topicId) {
   var topic = null;
   for (var i = 0; i < KP_TOPICS.length; i++) { if (KP_TOPICS[i].id === topicId) { topic = KP_TOPICS[i]; break; } }
   if (!topic) { return; }
+  if (typeof llProgress !== 'undefined') {
+    llProgress.mark('kc-' + topicId, { kind:'mcq', title:'Knowledge check — ' + topic.name, topicId: topicId, mode:'kc', openRef: topicId });
+  }
   var intl = (kpStudyType !== 'observational');
   var queue = [];
   for (var j = 0; j < KP_POOL.length; j++) {
@@ -4187,7 +4779,9 @@ function llInitialMode() {
   var h = (window.location.hash || '').replace(/^#/, '');
   if (!h) { return 'about'; }
   var p0 = h.split('/')[0];
-  /* New short hashes */
+  /* Phase 1 hashes */
+  if (p0 === 'search' || p0 === 'doorway' || p0 === 'track' || p0 === 'about') { return p0; }
+  /* Mode short hashes */
   if (p0 === 'kc' || p0 === 'te' || p0 === 'dr' || p0 === 'jc' || p0 === 'insp') { return p0; }
   /* Legacy hash compatibility */
   if (p0 === 'practice' || p0 === 'browse' || p0 === 'shuffle') { return 'kc'; }
@@ -4196,6 +4790,29 @@ function llInitialMode() {
   if (p0 === 'judgement-calls')                                 { return 'jc'; }
   if (p0 === 'inspection-prep')                                 { return 'insp'; }
   return 'kc';
+}
+
+/* Phase 1 hash parser — supports search?q=... and doorway/{moment} and track/{id} */
+function llHashOpts() {
+  var h = (window.location.hash || '').replace(/^#/, '');
+  if (!h) return {};
+  var parts = h.split('/');
+  var p0 = parts[0];
+  if (p0 === 'doorway' && parts[1]) return { moment: parts[1] };
+  if (p0 === 'track'   && parts[1]) return { trackId: parts[1] };
+  if (p0 === 'search') {
+    var qm = h.indexOf('?');
+    if (qm < 0) return {};
+    var query = '';
+    var rest = h.substring(qm + 1).split('&');
+    for (var i = 0; i < rest.length; i++) {
+      var kv = rest[i].split('=');
+      if (kv[0] === 'q')         query = decodeURIComponent(kv[1] || '');
+      else if (kv[0] === 'trigger') { return { triggerId: decodeURIComponent(kv[1] || '') }; }
+    }
+    return { query: query };
+  }
+  return {};
 }
 
 /* ── Boot ──────────────────────────────────────────────────────────────
@@ -4209,6 +4826,8 @@ function llBoot() {
   _llDrSourceNext   = null;
   var pane = llPane();
   if (!pane) { return false; }       /* shell not in DOM yet */
+  /* Build the library index on every boot (data is static; cheap to rebuild) */
+  llBuildLibrary();
   /* Always (re)bind in case Mintlify re-mounted the shell */
   var btns = llRailBtns();
   for (var i = 0; i < btns.length; i++) {
@@ -4225,12 +4844,33 @@ function llBoot() {
   if (msel) {
     msel.addEventListener('change', function (e) { llRoute(e.target.value); });
   }
+  /* Global search input */
+  var searchInput = document.getElementById('ll-search-input');
+  if (searchInput && !searchInput.__llBound) {
+    searchInput.__llBound = true;
+    var debounce = null;
+    searchInput.addEventListener('input', function (e) {
+      var v = e.target.value || '';
+      if (debounce) clearTimeout(debounce);
+      debounce = setTimeout(function () {
+        if (v.length === 0) { llRoute('about'); return; }
+        llRoute('search', { query: v });
+      }, 180);
+    });
+    searchInput.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') { e.target.value = ''; llRoute('about'); }
+    });
+  }
   /* popstate — re-route to current hash without pushing a new one */
   window.addEventListener('popstate', function () {
-    llRoute(llInitialMode(), { noHash: true });
+    var opts = llHashOpts();
+    opts.noHash = true;
+    llRoute(llInitialMode(), opts);
   });
   llBooted = true;
-  llRoute(llInitialMode(), { noHash: true });
+  var initOpts = llHashOpts();
+  initOpts.noHash = true;
+  llRoute(llInitialMode(), initOpts);
   return true;
 }
 
