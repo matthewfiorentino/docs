@@ -2935,7 +2935,7 @@ var JC_SCENARIOS = [
     topic:'Consent \u00b7 Capacity \u00b7 Quebec Civil Code',
     title:'Consent Capacity in Cognitive Decline',
     desc:'A participant shows signs of cognitive decline. Her daughter wants to keep her enrolled. Quebec law has specific rules here.',
-    scenes:3, ref:'SOP-CR-008, CCQ Art. 21/24', live:true,
+    scenes:3, ref:'SOP-CR-008 · CCQ Art. 21, 24', live:true,
     intro:'Mrs. Ouellet, 74, enrolled 8 months ago when her cognition was intact. At today\u2019s visit, she seems noticeably confused. Her daughter Julie is in the waiting room.',
     learner:{name:'Sophie',role:'CRC on a 12-month observational study of cognitive decline in older adults.'},
     npc:{name:'Julie Ouellet',role:'Mrs. Ouellet\u2019s daughter. Caring, involved, wants her mother to continue.'},
@@ -3286,6 +3286,19 @@ function jcShowEnding() {
   rw.style.marginTop = '32px';
   var restartSvg = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M1 4v6h6M23 20v-6h-6"/><path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10m22 4l-4.64 4.36A9 9 0 0 1 3.51 15"/></svg>';
   rw.innerHTML = '<button class="jc-restart" onclick="jcRestartScenario()">' + restartSvg + ' Try again</button><button class="kp-back" style="margin-left:20px" onclick="jcGoRole()">Back to scenarios</button>';
+  /* Append next-best-item recommendations grouped by this scenario's topic */
+  if (typeof llNextBestHTML === 'function') {
+    var libItem = null;
+    for (var li = 0; li < LL_LIBRARY.length; li++) { if (LL_LIBRARY[li].id === jcCurrentScenario.id) { libItem = LL_LIBRARY[li]; break; } }
+    if (libItem && libItem.topicId) {
+      var nb = llNextBestHTML(libItem.topicId, 'scenario');
+      if (nb) {
+        var nbWrap = document.createElement('div');
+        nbWrap.innerHTML = nb;
+        rw.appendChild(nbWrap);
+      }
+    }
+  }
   document.getElementById('jc-scenes').appendChild(rw);
   var endEl = document.getElementById('jc-ending');
   llPaneScrollToEl(endEl, 24);
@@ -3384,6 +3397,8 @@ function inspRenderCard() {
   var wrap = document.getElementById('insp-card-wrap');
   if (inspIndex >= inspQueue.length) {
     /* Done — show completion and back */
+    var inspNextBest = (typeof llNextBestHTML === 'function' && inspCurrentTopicId)
+      ? llNextBestHTML(inspCurrentTopicId, 'inspection-card') : '';
     wrap.innerHTML = '<div style="max-width:680px">' +
       '<div style="border:2px solid var(--navy);padding:24px;margin-bottom:24px">' +
       '<div style="font-size:9px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--sky);margin-bottom:10px">Complete</div>' +
@@ -3392,6 +3407,7 @@ function inspRenderCard() {
       '</div>' +
       '<button class="jc-restart" onclick="inspRestart()" style="margin-right:16px"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M1 4v6h6M23 20v-6h-6"/><path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10m22 4l-4.64 4.36A9 9 0 0 1 3.51 15"/></svg> Try again</button>' +
       '<button class="kp-back" style="margin-left:4px" onclick="inspGoHub()">Back to topics</button>' +
+      inspNextBest +
       '</div>';
     return;
   }
@@ -3680,6 +3696,56 @@ var llProgress = {
   clear: function() { try { localStorage.removeItem(LL_PROGRESS_KEY); } catch (e) {} }
 };
 
+/* ── llBookmarks: per-item save toggle (localStorage) ───────────────── */
+var LL_BOOKMARKS_KEY = 'rimuhcLearningLab_bookmarks_v1';
+var llBookmarks = {
+  _read: function () {
+    try { return JSON.parse(localStorage.getItem(LL_BOOKMARKS_KEY) || '[]'); }
+    catch (e) { return []; }
+  },
+  _write: function (arr) {
+    try { localStorage.setItem(LL_BOOKMARKS_KEY, JSON.stringify(arr)); } catch (e) {}
+  },
+  has: function (key) {
+    var a = this._read();
+    for (var i = 0; i < a.length; i++) { if (a[i] === key) return true; }
+    return false;
+  },
+  toggle: function (key) {
+    var a = this._read();
+    var idx = -1;
+    for (var i = 0; i < a.length; i++) { if (a[i] === key) { idx = i; break; } }
+    if (idx >= 0) { a.splice(idx, 1); }
+    else { a.unshift(key); if (a.length > 200) a.length = 200; }
+    this._write(a);
+    return idx < 0;
+  },
+  list: function () { return this._read(); }
+};
+
+/* Toggle handler used by inline onclick — refreshes the star icon and any
+   visible Saved widget without a full re-render. */
+function llToggleBookmark(key, btn) {
+  var nowSaved = llBookmarks.toggle(key);
+  if (btn) {
+    btn.setAttribute('aria-pressed', nowSaved ? 'true' : 'false');
+    btn.classList.toggle('saved', nowSaved);
+    btn.title = nowSaved ? 'Saved — click to remove' : 'Save for later';
+  }
+}
+
+/* Star button HTML (call from any item renderer) */
+function llBookmarkBtnHTML(key) {
+  var saved = llBookmarks.has(key);
+  var label = saved ? 'Saved — click to remove' : 'Save for later';
+  return '<button class="ll-save-btn' + (saved ? ' saved' : '') +
+         '" aria-pressed="' + (saved ? 'true' : 'false') +
+         '" title="' + label + '" aria-label="' + label +
+         '" onclick="event.stopPropagation();llToggleBookmark(\'' + key + '\', this)">' +
+         '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>' +
+         '</button>';
+}
+
 /* ── LL_LIBRARY: derived item index ──────────────────────────────────── */
 var LL_LIBRARY = [];
 
@@ -3866,6 +3932,61 @@ function llOpenLibraryItem(itemId, opts) {
   }
 }
 
+/* ── Next-best-item recommender ──────────────────────────────────────
+   Given a topic + interaction-kind context, suggest 2-3 related items
+   from a different interaction-kind. Renders as a simple card row at
+   the end of any item view.                                          */
+function llRecommendNext(topicId, currentKind, max) {
+  max = max || 3;
+  if (!topicId || !LL_LIBRARY.length) return [];
+  var pool = [];
+  for (var i = 0; i < LL_LIBRARY.length; i++) {
+    var it = LL_LIBRARY[i];
+    if (it.topicId !== topicId) continue;
+    if (currentKind && it.kind === currentKind) continue;
+    pool.push(it);
+  }
+  /* Prefer kinds the user hasn't seen recently for this topic.
+     Simple heuristic: items not in llProgress get priority. */
+  var unseen = [], seen = [];
+  for (var p = 0; p < pool.length; p++) {
+    if (llProgress.get(pool[p].id)) seen.push(pool[p]);
+    else unseen.push(pool[p]);
+  }
+  var ordered = unseen.concat(seen);
+  /* Dedupe by kind so we don't suggest 3 of the same kind */
+  var out = [], kindsUsed = {};
+  for (var o = 0; o < ordered.length && out.length < max; o++) {
+    var k = ordered[o].kind;
+    if (kindsUsed[k]) continue;
+    kindsUsed[k] = true;
+    out.push(ordered[o]);
+  }
+  return out;
+}
+
+function llNextBestHTML(topicId, currentKind) {
+  var recs = llRecommendNext(topicId, currentKind, 3);
+  if (!recs.length) return '';
+  var html = '<div class="ll-next-best">';
+  html += '<div class="ll-next-best-head">Continue with this topic</div>';
+  html += '<div class="ll-next-best-list">';
+  for (var i = 0; i < recs.length; i++) {
+    var it = recs[i];
+    var meta = LL_KIND_META[it.kind] || { label: it.kind, icon: '<circle cx="12" cy="12" r="9"/>' };
+    var dur = it.durationMin ? ('&nbsp;·&nbsp;' + it.durationMin + ' min') : '';
+    html += '<button class="ll-next-best-item" onclick="llOpenLibraryItem(\'' + it.id + '\')">';
+    html +=   '<svg class="ll-next-best-icon" viewBox="0 0 24 24" aria-hidden="true">' + meta.icon + '</svg>';
+    html +=   '<span class="ll-next-best-meta">';
+    html +=     '<span class="ll-next-best-kind">' + meta.label + dur + '</span>';
+    html +=     '<span class="ll-next-best-title">' + it.title + '</span>';
+    html +=   '</span>';
+    html += '</button>';
+  }
+  html += '</div></div>';
+  return html;
+}
+
 /* ── Resume from any progress key (library item OR synthetic kc-/insp-/te-/dr- key) ─ */
 function llResumeFromKey(key) {
   /* Library hit first */
@@ -3933,6 +4054,44 @@ function llRenderSearch(pane, query, filters) {
     for (var i = 0; i < results.length; i++) { html += llCardHTML(results[i]); }
     html += '</div>';
   }
+  pane.innerHTML = html;
+}
+
+/* ── Render: topic page ──────────────────────────────────────────────
+   One page per topicId showing every item across interaction kinds,
+   grouped by kind so the user sees the full coverage at a glance.   */
+function llRenderTopic(pane, topicId) {
+  if (!topicId) { pane.innerHTML = '<div class="ll-stub">No topic specified.</div>'; return; }
+  var topicLabel = LL_TOPIC_LABEL[topicId] || topicId;
+  var items = llSearch('', { topicId: topicId });
+
+  /* Group by kind in a stable display order */
+  var kindOrder = ['mcq', 'inspection-card', 'scenario', 'team-exercise', 'doc-review'];
+  var byKind = {};
+  for (var i = 0; i < items.length; i++) {
+    (byKind[items[i].kind] = byKind[items[i].kind] || []).push(items[i]);
+  }
+
+  var html = '<h1>' + topicLabel + '</h1>';
+  html += '<div class="ll-pane-sub">' + items.length + ' practice item' + (items.length === 1 ? '' : 's') + ' across ' +
+    Object.keys(byKind).length + ' interaction type' + (Object.keys(byKind).length === 1 ? '' : 's') + '.</div>';
+
+  for (var k = 0; k < kindOrder.length; k++) {
+    var kind = kindOrder[k];
+    if (!byKind[kind]) continue;
+    var kindMeta = LL_KIND_META[kind] || { label: kind, icon: '<circle cx="12" cy="12" r="9"/>' };
+    html += '<div class="ll-topic-section">';
+    html += '<div class="ll-topic-section-head">' +
+              '<svg viewBox="0 0 24 24" aria-hidden="true">' + kindMeta.icon + '</svg>' +
+              kindMeta.label + ' <span class="ll-topic-section-count">' + byKind[kind].length + '</span>' +
+            '</div>';
+    html += '<div class="ll-card-grid">';
+    for (var c = 0; c < byKind[kind].length; c++) { html += llCardHTML(byKind[kind][c]); }
+    html += '</div>';
+    html += '</div>';
+  }
+
+  html += '<div style="margin-top:24px"><button class="ll-back-btn" onclick="llRoute(\'about\')">&#8592; Lab home</button></div>';
   pane.innerHTML = html;
 }
 
@@ -4010,6 +4169,36 @@ function llRenderDoorway(pane, moment) {
 }
 
 /* ── Continue widget HTML (used inside Overview) ────────────────────── */
+/* ── Saved-items widget (Overview) ──────────────────────────────────── */
+function llSavedWidgetHTML() {
+  var keys = llBookmarks.list();
+  if (!keys.length) return '';
+  var html = '<div class="ll-saved">';
+  html += '<div class="ll-saved-head">Saved for later</div>';
+  html += '<div class="ll-saved-list">';
+  var shown = 0;
+  for (var i = 0; i < keys.length && shown < 5; i++) {
+    var key = keys[i];
+    var item = null;
+    for (var li = 0; li < LL_LIBRARY.length; li++) { if (LL_LIBRARY[li].id === key) { item = LL_LIBRARY[li]; break; } }
+    var rec = llProgress.get(key);
+    var title = (item && item.title) || (rec && rec.title) || key;
+    var kind = item ? item.kind : (rec && rec.kind);
+    var kindMeta = (kind && LL_KIND_META[kind]) ? LL_KIND_META[kind] : { label: kind || 'Item', icon: '<circle cx="12" cy="12" r="9"/>' };
+    html += '<button class="ll-saved-item" onclick="llResumeFromKey(\'' + key + '\')">';
+    html +=   '<svg class="ll-saved-icon" viewBox="0 0 24 24" aria-hidden="true">' + kindMeta.icon + '</svg>';
+    html +=   '<span class="ll-saved-meta">';
+    html +=     '<span class="ll-saved-kind">' + kindMeta.label + '</span>';
+    html +=     '<span class="ll-saved-title">' + title + '</span>';
+    html +=   '</span>';
+    html +=   '<span class="ll-saved-remove" onclick="event.stopPropagation();llToggleBookmark(\'' + key + '\');llRoute(\'about\')" title="Remove" aria-label="Remove">×</span>';
+    html += '</button>';
+    shown++;
+  }
+  html += '</div></div>';
+  return html;
+}
+
 function llContinueWidgetHTML() {
   var recent = llProgress.recent(3);
   if (!recent.length) return '';
@@ -4134,6 +4323,8 @@ function llRoute(modeId, opts) {
       newHash = 'doorway/' + opts.moment;
     } else if (modeId === 'track' && opts.trackId) {
       newHash = 'track/' + opts.trackId;
+    } else if (modeId === 'topic' && opts.topicId) {
+      newHash = 'topic/' + opts.topicId;
     }
     var currentHash = window.location.hash.replace(/^#/, '');
     if (currentHash !== newHash) {
@@ -4178,6 +4369,7 @@ function llRoute(modeId, opts) {
     }
     case 'doorway': llRenderDoorway(pane, opts.moment || 'apply'); break;
     case 'track':   llRenderTrack(pane, opts.trackId); break;
+    case 'topic':   llRenderTopic(pane, opts.topicId); break;
     default:        pane.innerHTML = '<div class="ll-stub">Unknown mode.</div>';
   }
   pane.scrollTop = 0;
@@ -4237,8 +4429,9 @@ function llRenderAbout(pane) {
   html += '<h1>Practice when it counts.</h1>';
   html += '<div class="ll-pane-sub">Bite-sized practice for the moment of need. Pick a doorway, search the library, or pick up a track you started.</div>';
 
-  /* Continue widget */
+  /* Continue + Saved widgets */
   html += llContinueWidgetHTML();
+  html += llSavedWidgetHTML();
 
   /* Three doorways */
   html += '<div class="ll-doorways">';
@@ -4253,6 +4446,18 @@ function llRenderAbout(pane) {
     html += '</button>';
   }
   html += '</div>';
+
+  /* Browse by topic — quiet chip strip */
+  var topicOrder = ['consent', 'sae', 'delegation', 'deviations', 'monitoring', 'data', 'recruitment', 'gcp', 'tcps2', 'div5', 'iso14155'];
+  html += '<div class="ll-topics-strip">';
+  html += '<div class="ll-section-head" style="font-size:13px;margin-bottom:6px">Browse by topic</div>';
+  html += '<div class="ll-topics-strip-chips">';
+  for (var to = 0; to < topicOrder.length; to++) {
+    var tid = topicOrder[to];
+    if (!LL_TOPIC_LABEL[tid]) continue;
+    html += '<button class="ll-topic-chip" onclick="llRoute(\'topic\',{topicId:\'' + tid + '\'})">' + LL_TOPIC_LABEL[tid] + '</button>';
+  }
+  html += '</div></div>';
 
   /* Tracks */
   html += '<div class="ll-tracks">';
@@ -4342,6 +4547,7 @@ function llTeOpenExercise(slug) {
     '<div class="ll-kc-seq-nav" style="margin-bottom:24px">' +
       '<button class="ll-back-btn" onclick="llTeBackToList()">&#8592; All exercises</button>' +
       '<span class="ll-kc-seq-badge">Team Exercises</span>' +
+      llBookmarkBtnHTML('te-' + slug) +
     '</div>';
   llPane().innerHTML = navHTML + clone.innerHTML;
   /* Linkify regulatory citations inside cloned TE content */
@@ -4436,6 +4642,7 @@ function llDrOpenExercise(slug) {
     '<div class="ll-kc-seq-nav" style="margin-bottom:24px">' +
       '<button class="ll-back-btn" onclick="llDrBackToList()">&#8592; All exercises</button>' +
       '<span class="ll-kc-seq-badge">Document Review</span>' +
+      llBookmarkBtnHTML('dr-' + slug) +
     '</div>';
   pane.appendChild(source);
   kpDrExerciseId = slug;
@@ -4559,10 +4766,12 @@ function llJcStartScenario(id) {
 }
 
 function llJcScenarioHTML() {
+  var bk = jcCurrentScenario ? llBookmarkBtnHTML(jcCurrentScenario.id) : '';
   return '<div class="ll-kc-seq">' +
     '<div class="ll-kc-seq-nav">' +
       '<button class="ll-back-btn" onclick="llJcBackToScenarios()">&#8592; Scenarios</button>' +
       '<span class="ll-kc-seq-badge">Judgement Calls</span>' +
+      bk +
     '</div>' +
     '<div id="jc-scenario-header"></div>' +
     '<div id="jc-tracker"></div>' +
@@ -4640,10 +4849,12 @@ function llInspStartTopic(topicId) {
 }
 
 function llInspSeqHTML(topicName) {
+  var bk = inspCurrentTopicId ? llBookmarkBtnHTML('insp-' + inspCurrentTopicId) : '';
   return '<div class="ll-kc-seq">' +
     '<div class="ll-kc-seq-nav">' +
       '<button class="ll-back-btn" onclick="llInspBackToTopics()">&#8592; Topics</button>' +
       '<span class="ll-kc-seq-badge">Inspection Prep</span>' +
+      bk +
     '</div>' +
     '<div class="ll-kc-seq-label">' + topicName + '</div>' +
     '<div id="insp-card-wrap"></div>' +
@@ -4764,10 +4975,12 @@ function llKcStartShuffle() {
 }
 
 function llKcSeqHTML(label) {
+  var bk = kpBrowseTopicId ? llBookmarkBtnHTML('kc-' + kpBrowseTopicId) : '';
   return '<div class="ll-kc-seq">' +
     '<div class="ll-kc-seq-nav">' +
       '<button class="ll-back-btn" onclick="llKcBackToTopics()">&#8592; Topics</button>' +
       '<span class="ll-kc-seq-badge">' + (kpStudyType === 'observational' ? 'Observational' : 'Interventional') + '</span>' +
+      bk +
     '</div>' +
     '<div class="ll-kc-seq-label">' + label + '</div>' +
     '<div class="kp-seq-progress-row">' +
@@ -4795,7 +5008,7 @@ function llKcRenderEnd() {
   if (kpMode === 'browse') {
     for (var i = 0; i < KP_TOPICS.length; i++) { if (KP_TOPICS[i].id === kpBrowseTopicId) { topicName = KP_TOPICS[i].name; break; } }
   }
-  var seeAlso = (kpMode === 'browse' && kpBrowseTopicId) ? llSeeAlsoStrip(kpBrowseTopicId, 'kc') : '';
+  var nextBest = (kpMode === 'browse' && kpBrowseTopicId) ? llNextBestHTML(kpBrowseTopicId, 'mcq') : '';
   pane.innerHTML =
     '<div class="ll-kc-end">' +
       '<div class="ll-kc-end-eyebrow">' + (kpMode === 'shuffle' ? 'Shuffle complete' : 'Topic complete') + '</div>' +
@@ -4811,7 +5024,7 @@ function llKcRenderEnd() {
         '<button class="ll-kc-end-back" onclick="llKcBackToTopics()">&#8592; Back to topics</button>' +
       '</div>' +
     '</div>' +
-    seeAlso;
+    nextBest;
 }
 
 function llKcRetry()        { llKcStartTopic(kpBrowseTopicId); }
@@ -4827,7 +5040,7 @@ function llInitialMode() {
   if (!h) { return 'about'; }
   var p0 = h.split('/')[0];
   /* Phase 1 hashes */
-  if (p0 === 'search' || p0 === 'doorway' || p0 === 'track' || p0 === 'about') { return p0; }
+  if (p0 === 'search' || p0 === 'doorway' || p0 === 'track' || p0 === 'topic' || p0 === 'about') { return p0; }
   /* Mode short hashes */
   if (p0 === 'kc' || p0 === 'te' || p0 === 'dr' || p0 === 'jc' || p0 === 'insp') { return p0; }
   /* Legacy hash compatibility */
@@ -4847,6 +5060,7 @@ function llHashOpts() {
   var p0 = parts[0];
   if (p0 === 'doorway' && parts[1]) return { moment: parts[1] };
   if (p0 === 'track'   && parts[1]) return { trackId: parts[1] };
+  if (p0 === 'topic'   && parts[1]) return { topicId: parts[1] };
   if (p0 === 'search') {
     var qm = h.indexOf('?');
     if (qm < 0) return {};

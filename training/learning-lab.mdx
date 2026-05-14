@@ -5480,7 +5480,7 @@ export const LL_JS_5 = `          { text: 'The source document is the original r
     topic:'Consent · Capacity · Quebec Civil Code',
     title:'Consent Capacity in Cognitive Decline',
     desc:'A participant shows signs of cognitive decline. Her daughter wants to keep her enrolled. Quebec law has specific rules here.',
-    scenes:3, ref:'[SOP-CR-008](/sops/cr-008), CCQ Art. 21/24', live:true,
+    scenes:3, ref:'[SOP-CR-008](/sops/cr-008) · CCQ Art. 21, 24', live:true,
     intro:'Mrs. Ouellet, 74, enrolled 8 months ago when her cognition was intact. At today’s visit, she seems noticeably confused. Her daughter Julie is in the waiting room.',
     learner:{name:'Sophie',role:'CRC on a 12-month observational study of cognitive decline in older adults.'},
     npc:{name:'Julie Ouellet',role:'Mrs. Ouellet’s daughter. Caring, involved, wants her mother to continue.'},
@@ -6241,6 +6241,97 @@ export const LL_SHELL_CSS = `
 .ll-continue-kind { font-size: 10.5px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--ll-text-3); margin-bottom: 2px; }
 .ll-continue-title { font-size: 13.5px; color: var(--ll-text); line-height: 1.4; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .ll-continue-when { font-size: 11.5px; color: var(--ll-text-3); flex-shrink: 0; }
+
+/* ── Saved-items widget (Overview) ───────────────────────────────────── */
+.ll-saved { margin: 0 0 28px; }
+.ll-saved-head {
+  display: flex; align-items: center; gap: 6px;
+  font-size: 11px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase;
+  color: var(--ll-text-3); margin-bottom: 10px;
+}
+.ll-saved-list { display: flex; flex-direction: column; gap: 6px; }
+.ll-saved-item {
+  display: flex; align-items: center; gap: 12px;
+  padding: 12px 14px; border: 1px solid var(--ll-bdr); border-radius: 10px;
+  background: var(--ll-bg); cursor: pointer; font: inherit; text-align: left; width: 100%;
+  transition: border-color .15s, background .15s;
+}
+.ll-saved-item:hover { border-color: var(--ll-accent); background: var(--ll-accent-soft); }
+.ll-saved-icon { flex-shrink: 0; width: 18px; height: 18px; stroke: var(--ll-text-2); fill: none; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+.ll-saved-meta { display: flex; flex-direction: column; flex: 1; min-width: 0; }
+.ll-saved-kind { font-size: 10.5px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--ll-text-3); margin-bottom: 2px; }
+.ll-saved-title { font-size: 13.5px; color: var(--ll-text); line-height: 1.4; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.ll-saved-remove {
+  font-size: 18px; line-height: 1; color: var(--ll-text-3); padding: 0 6px;
+  flex-shrink: 0; transition: color .15s;
+}
+.ll-saved-remove:hover { color: #b05555; }
+
+/* ── Save (bookmark) star button ─────────────────────────────────────── */
+.ll-save-btn {
+  margin-left: auto;
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 32px; height: 32px;
+  background: none; border: 1px solid var(--ll-bdr); border-radius: 8px;
+  cursor: pointer; transition: border-color .15s, background .15s;
+}
+.ll-save-btn svg {
+  width: 15px; height: 15px;
+  fill: none; stroke: var(--ll-text-3);
+  stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round;
+  transition: fill .15s, stroke .15s;
+}
+.ll-save-btn:hover { border-color: var(--ll-accent); }
+.ll-save-btn:hover svg { stroke: var(--ll-accent); }
+.ll-save-btn.saved { border-color: var(--ll-accent); background: var(--ll-accent-soft); }
+.ll-save-btn.saved svg { fill: var(--ll-accent); stroke: var(--ll-accent); }
+
+/* ── Browse-by-topic chip strip (Overview) ───────────────────────────── */
+.ll-topics-strip { margin: 4px 0 28px; }
+.ll-topics-strip-chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.ll-topic-chip {
+  font: inherit; font-size: 12.5px; color: var(--ll-text-2);
+  background: var(--ll-bg); border: 1px solid var(--ll-bdr);
+  padding: 6px 12px; border-radius: 999px; cursor: pointer;
+  transition: border-color .15s, background .15s, color .15s;
+}
+.ll-topic-chip:hover { border-color: var(--ll-accent); background: var(--ll-accent-soft); color: var(--ll-accent); }
+
+/* ── Topic page (sections by interaction kind) ───────────────────────── */
+.ll-topic-section { margin: 22px 0 8px; }
+.ll-topic-section-head {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 13px; font-weight: 700; color: var(--ll-text);
+  letter-spacing: -.005em; margin-bottom: 10px;
+}
+.ll-topic-section-head svg {
+  width: 15px; height: 15px;
+  stroke: var(--ll-text-2); fill: none;
+  stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round;
+}
+.ll-topic-section-count {
+  font-size: 11px; font-weight: 600; color: var(--ll-text-3);
+  margin-left: 4px;
+}
+
+/* ── Next-best-item recommender (end-of-item) ────────────────────────── */
+.ll-next-best { margin: 32px 0 8px; padding-top: 22px; border-top: 1px solid var(--ll-bdr); }
+.ll-next-best-head {
+  font-size: 11px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase;
+  color: var(--ll-text-3); margin-bottom: 12px;
+}
+.ll-next-best-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 10px; }
+.ll-next-best-item {
+  display: flex; align-items: flex-start; gap: 12px;
+  padding: 12px 14px; border: 1px solid var(--ll-bdr); border-radius: 10px;
+  background: var(--ll-bg); cursor: pointer; font: inherit; text-align: left;
+  transition: border-color .15s, background .15s;
+}
+.ll-next-best-item:hover { border-color: var(--ll-accent); background: var(--ll-accent-soft); }
+.ll-next-best-icon { flex-shrink: 0; width: 18px; height: 18px; stroke: var(--ll-text-2); fill: none; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; margin-top: 2px; }
+.ll-next-best-meta { display: flex; flex-direction: column; flex: 1; min-width: 0; }
+.ll-next-best-kind { font-size: 10.5px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--ll-text-3); margin-bottom: 4px; }
+.ll-next-best-title { font-size: 13px; color: var(--ll-text); line-height: 1.45; }
 
 /* ── Section heads (Overview) ────────────────────────────────────────── */
 .ll-section-head { display: flex; align-items: baseline; gap: 10px; font-size: 17px; font-weight: 700; color: var(--ll-text); letter-spacing: -.01em; margin-bottom: 4px; }
