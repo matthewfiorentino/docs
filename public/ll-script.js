@@ -1658,7 +1658,7 @@ function kpSeqReveal() {
   var btn = document.getElementById('kp-reveal-btn');
   var rat = document.getElementById('kp-qcard-rat');
   var nw  = document.getElementById('kp-next-wrap');
-  if (rat) { rat.classList.add('visible'); }
+  if (rat) { rat.classList.add('visible'); setTimeout(function() { rat.scrollIntoView({ behavior: 'smooth', block: 'nearest' }); }, 50); }
   if (nw)  { nw.classList.add('visible'); }
   if (btn) { btn.textContent = 'Hide rationale'; btn.onclick = kpSeqHideReveal; }
 }
@@ -3265,7 +3265,7 @@ function jcNextScene(currentIdx) {
   jcCurrentScene = currentIdx + 1;
   jcShowScene(jcCurrentScene);
   var el = document.getElementById('jc-scene-' + jcCurrentScene);
-  window.scrollTo({ top: el.offsetTop - 24, behavior: 'smooth' });
+  llPaneScrollToEl(el, 24);
 }
 
 function jcShowEnding() {
@@ -3287,7 +3287,7 @@ function jcShowEnding() {
   rw.innerHTML = '<button class="jc-restart" onclick="jcRestartScenario()">' + restartSvg + ' Try again</button><button class="kp-back" style="margin-left:20px" onclick="jcGoRole()">Back to scenarios</button>';
   document.getElementById('jc-scenes').appendChild(rw);
   var endEl = document.getElementById('jc-ending');
-  window.scrollTo({ top: endEl.offsetTop - 24, behavior: 'smooth' });
+  llPaneScrollToEl(endEl, 24);
 }
 
 function jcRestartScenario() {
@@ -3295,7 +3295,7 @@ function jcRestartScenario() {
   var rw = document.getElementById('jc-restart-wrap');
   if (rw) { rw.parentNode.removeChild(rw); }
   jcStartScenario(id);
-  window.scrollTo({ top: 0, behavior: 'smooth' });
+  llPaneTop();
 }
 
 
@@ -3435,7 +3435,7 @@ function inspReveal() {
   var rat = document.getElementById('insp-rat');
   var btn = document.getElementById('insp-reveal-btn');
   var next = document.getElementById('insp-next-wrap');
-  if (rat) { rat.style.display = 'block'; }
+  if (rat) { rat.style.display = 'block'; setTimeout(function() { rat.scrollIntoView({ behavior: 'smooth', block: 'nearest' }); }, 50); }
   if (btn) { btn.style.display = 'none'; }
   if (next) { next.style.display = 'block'; }
 }
@@ -3443,13 +3443,13 @@ function inspReveal() {
 function inspNext() {
   inspIndex++;
   inspRenderCard();
-  window.scrollTo({ top: 0, behavior: 'smooth' });
+  llPaneTop();
 }
 
 function inspRestart() {
   inspIndex = 0;
   inspRenderCard();
-  window.scrollTo({ top: 0, behavior: 'smooth' });
+  llPaneTop();
 }
 
 function inspGoHub() {
@@ -3529,6 +3529,12 @@ var llBooted      = false;
 function llPane()      { return document.getElementById('ll-pane'); }
 function llRailBtns()  { return document.querySelectorAll('.ll-tab'); }
 function llMobileSel() { return document.getElementById('ll-mobile-select'); }
+function llPaneTop()   { var p = llPane(); if (p) p.scrollTo({ top: 0, behavior: 'smooth' }); }
+function llPaneScrollToEl(el, offset) {
+  var p = llPane(); if (!p || !el) return;
+  var pRect = p.getBoundingClientRect(), eRect = el.getBoundingClientRect();
+  p.scrollTo({ top: p.scrollTop + (eRect.top - pRect.top) - (offset || 24), behavior: 'smooth' });
+}
 
 /* Top-level orchestrator. modeId is required; sub state lives in mode renderers. */
 function llRoute(modeId, opts) {
@@ -3722,7 +3728,7 @@ function llTeOpenExercise(slug) {
     '</div>';
   llPane().innerHTML = navHTML + clone.innerHTML;
   history.pushState(null, '', '#team/' + slug);
-  window.scrollTo({ top: 0, behavior: 'smooth' });
+  llPaneTop();
 }
 
 function llTeBackToList() {
@@ -3809,7 +3815,7 @@ function llDrOpenExercise(slug) {
   kpDrCurrentExercise = KP_DR_EXERCISES[slug];
   kpDrSetup(slug);
   history.pushState(null, '', '#docreview/' + slug);
-  window.scrollTo({ top: 0, behavior: 'smooth' });
+  llPaneTop();
 }
 
 function llDrBackToList() {
@@ -3919,7 +3925,7 @@ function llJcStartScenario(id) {
   jcRenderTracker();
   jcRenderAllScenes();
   jcShowScene(0);
-  window.scrollTo({ top: 0, behavior: 'smooth' });
+  llPaneTop();
 }
 
 function llJcScenarioHTML() {
@@ -3995,7 +4001,7 @@ function llInspStartTopic(topicId) {
   history.pushState(null, '', '#inspection-prep/' + topicId);
   llInspActive = true;
   inspRenderCard();
-  window.scrollTo({ top: 0, behavior: 'smooth' });
+  llPaneTop();
 }
 
 function llInspSeqHTML(topicName) {
