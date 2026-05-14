@@ -195,18 +195,24 @@ li[data-group-tag]:first-child {
     background: transparent !important;
 }
 
-/* 2. Active tab: swap Mintlify's dark-gray + text-shadow fake-bold for our
-      brand blue. Detected via the child div that carries bg-primary.          */
+/* 2. All tabs: bump to medium weight for better presence (matches Lovable/Pinecone). */
+.nav-tabs a.link {
+    font-weight: 500 !important;
+}
+
+/* 3. Active tab: brand blue at 600 weight, no fake-bold text-shadow. */
 .nav-tabs a.link:has(> div[class*="bg-primary"]) {
     color:       var(--ri-accent) !important;
+    font-weight: 600 !important;
     text-shadow: none !important;
 }
 
-/* 3. Homepage only: make the (incorrectly) active KB tab look like a normal
-      inactive tab — reset colour, remove fake-bold, hide the blue underline.
+/* 4. Homepage only: make the (incorrectly) active KB tab look like a normal
+      inactive tab — reset colour/weight, remove fake-bold, hide blue underline.
       Only the active tab is touched; other tabs are already inactive-styled. */
 body:has(.ri-text-hero) .nav-tabs a.link:has(> div[class*="bg-primary"]) {
     color:       #4b5563 !important;
+    font-weight: 500 !important;
     text-shadow: none !important;
 }
 body:has(.ri-text-hero) .nav-tabs .nav-tabs-item > div[class*="bg-primary"] {
