@@ -115,6 +115,9 @@
   }
 
   function init() {
+    var root = document.getElementById('rc-root');
+    if (!root || root._rcInited) return;
+    root._rcInited = true;
     var tbody = document.getElementById('rc-ref-body');
     if (tbody) {
       tbody.innerHTML = SF_REFS.map(function (r) {
@@ -171,23 +174,18 @@
     });
   }
 
+  /* Expose for direct call from the React component (SPA nav + onload) */
+  window.__rcInit = function() { init(); };
+
   var _rcAttempts = 0;
-  var _rcRoot = null;
   function rcTryInit() {
     _rcAttempts++;
     if (!document.getElementById('rc-calc-btn')) {
       if (_rcAttempts < 40) setTimeout(rcTryInit, 75);
       return;
     }
-    _rcRoot = document.getElementById('rc-root');
     init();
   }
   rcTryInit();
-
-  /* SPA re-navigation: watch for a new #rc-root replacing the old one */
-  new MutationObserver(function() {
-    var root = document.getElementById('rc-root');
-    if (root && root !== _rcRoot) { _rcRoot = root; init(); }
-  }).observe(document.documentElement, { childList: true, subtree: true });
 
 })();

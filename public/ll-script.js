@@ -4229,6 +4229,8 @@ function llBoot() {
   return true;
 }
 
+window.__llInit = function() { llBoot(); };
+
 /* Boot on initial load — try immediately, then poll briefly in case
    Mintlify hasn't committed the shell HTML to the DOM yet. */
 (function llBootLoop() {

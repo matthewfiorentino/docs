@@ -1023,6 +1023,8 @@
   /* ── Init & SPA ───────────────────────────────────────────────────────── */
   function init() { reset(); renderScreening(); }
 
+  window.__rmInit = function() { init(); };
+
   var _lastUrl = location.href;
   new MutationObserver(function () {
     if (location.href !== _lastUrl) { _lastUrl = location.href; setTimeout(function () { tryMount(20); }, 120); }

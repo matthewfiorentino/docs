@@ -6307,10 +6307,12 @@ export const LL_SHELL_HTML = `
 
 export const LearningLab = () => {
   useEffect(() => {
-    if (!document.getElementById('ll-script')) {
+    if (typeof window.__llInit === 'function') {
+      window.__llInit();
+    } else {
       const s = document.createElement('script');
-      s.id = 'll-script';
       s.src = '/ll-script.js';
+      s.onload = () => window.__llInit && window.__llInit();
       document.body.appendChild(s);
     }
   }, []);

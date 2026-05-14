@@ -3286,8 +3286,9 @@ function syncStudySites() {
 // ════════════════════════════════════════
 // Called by script.onload in the React useEffect — DOM is guaranteed ready.
 function btInit() {
-  // Guard: only run when the budget-tool DOM is present (script loads globally).
-  if (!document.getElementById('study-n')) return;
+  var root = document.getElementById('bt-root');
+  if (!root || root._btInited) return;
+  root._btInited = true;
   renderSvcs();
   syncPtRowN();
   calcPtCost();
@@ -3325,17 +3326,15 @@ function btInit() {
   });
 }
 
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', btInit);
-} else {
+window.__btInit = function() { btInit(); };
+
+var _btAttempts = 0;
+function btTryInit() {
+  _btAttempts++;
+  if (!document.getElementById('bt-root')) {
+    if (_btAttempts < 40) setTimeout(btTryInit, 75);
+    return;
+  }
   btInit();
 }
-
-/* SPA re-navigation: watch for a new #bt-root replacing the old one */
-(function() {
-  var _btRoot = null;
-  new MutationObserver(function() {
-    var root = document.getElementById('bt-root');
-    if (root && root !== _btRoot) { _btRoot = root; btInit(); }
-  }).observe(document.documentElement, { childList: true, subtree: true });
-})();
+btTryInit();

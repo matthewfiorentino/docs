@@ -236,10 +236,12 @@ export const INTAKE_HTML = `
 
 export const StudyIntake = () => {
   useEffect(() => {
-    if (!document.getElementById('intake-script')) {
+    if (typeof window.ikRenderForm === 'function') {
+      window.ikRenderForm();
+    } else {
       const s = document.createElement('script');
-      s.id = 'intake-script';
       s.src = '/kb-intake-script-v3.js';
+      s.onload = () => window.ikRenderForm && window.ikRenderForm();
       document.body.appendChild(s);
     }
   }, []);

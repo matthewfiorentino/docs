@@ -12,10 +12,12 @@ import { useEffect } from 'react'
 
 export const StudyRoadmap = () => {
   useEffect(() => {
-    if (!document.getElementById('roadmap-script')) {
+    if (typeof window.__rmInit === 'function') {
+      window.__rmInit();
+    } else {
       const s = document.createElement('script');
-      s.id = 'roadmap-script';
       s.src = '/roadmap-script.js';
+      s.onload = () => window.__rmInit && window.__rmInit();
       document.body.appendChild(s);
     }
   }, []);

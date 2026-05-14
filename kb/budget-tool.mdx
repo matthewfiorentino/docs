@@ -1020,10 +1020,12 @@ export const BT_HTML = `
 
 export const BudgetTool = () => {
   useEffect(() => {
-    if (!document.getElementById('bt-script')) {
+    if (typeof window.__btInit === 'function') {
+      window.__btInit();
+    } else {
       const s = document.createElement('script');
-      s.id = 'bt-script';
       s.src = '/budget-tool-script.js';
+      s.onload = () => window.__btInit && window.__btInit();
       document.body.appendChild(s);
     }
   }, []);
