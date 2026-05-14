@@ -1365,25 +1365,7 @@ article {
     grid-template-columns: repeat(3, 1fr);
     gap: 40px;
 }
-[data-ri-footer-logos="true"] {
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: flex-start !important;
-    gap: 8px !important;
-}
-.ri-footer-original-hidden {
-    display: none !important;
-}
-.ri-footer-logo-rimuhc {
-    display: block;
-    width: 220px;
-    height: auto;
-}
-.ri-footer-logo-institute {
-    display: block;
-    width: 220px;
-    height: auto;
-}
+
 .ri-home-footer-col { display: flex; flex-direction: column; gap: 10px; min-width: 160px; }
 .ri-home-footer-head {
     font-size: 11px;
