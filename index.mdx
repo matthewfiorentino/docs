@@ -394,17 +394,19 @@ export const RoleExplorer = () => {
   const active = ROLES.find(r => r.id === role);
   return (
     <div className="ri-sh">
-      <div className="ri-sh-tabs">
-        {ROLES.map(r => (
-          <button
-            key={r.id}
-            className={`ri-sh-tab${role === r.id ? ' ri-sh-tab--active' : ''}`}
-            onClick={() => setRole(r.id)}
-          >
-            <Icon icon={r.icon} className="ri-sh-tab-icon" />
-            <span>{r.title}</span>
-          </button>
-        ))}
+      <div className="ri-sh-tabs-wrap">
+        <div className="ri-sh-tabs">
+          {ROLES.map(r => (
+            <button
+              key={r.id}
+              className={`ri-sh-tab${role === r.id ? ' ri-sh-tab--active' : ''}`}
+              onClick={() => setRole(r.id)}
+            >
+              <Icon icon={r.icon} className="ri-sh-tab-icon" />
+              <span>{r.title}</span>
+            </button>
+          ))}
+        </div>
       </div>
       <div className="ri-sh-card">
         <div className="ri-sh-content">
