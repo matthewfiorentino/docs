@@ -6034,52 +6034,63 @@ export const LL_SHELL_CSS = `
 .ll a { color: var(--ll-accent); text-decoration: none; }
 .ll a:hover { text-decoration: underline; }
 
-/* — Layout: rail + pane — */
-.ll-wrap { display: grid; grid-template-columns: 200px 1fr; gap: 0; }
-.ll-rail { padding: 28px 16px 28px 20px; border-right: 1px solid var(--ll-bdr); position: sticky; top: 64px; height: calc(100vh - 64px); overflow-y: auto; }
-.ll-pane { padding: 36px 40px 80px; min-width: 0; }
-
-/* — Rail header — */
-.ll-rail-home { display: block; width: 100%; text-align: left; background: none; border: none; cursor: pointer; font: inherit; font-size: 17px; font-weight: 700; color: var(--ll-text); letter-spacing: -.01em; padding: 0 0 20px; margin-bottom: 4px; transition: color .15s; }
-.ll-rail-home:hover { color: var(--ll-accent); }
-
-/* — Rail mode buttons — */
-.ll-rail-nav { display: flex; flex-direction: column; gap: 2px; margin-bottom: 28px; }
-.ll-rail-btn { display: block; width: 100%; padding: 9px 12px; border: none; background: none; cursor: pointer; font: inherit; font-size: 13.5px; color: var(--ll-text-2); text-align: left; border-radius: 6px; transition: background .15s, color .15s; }
-.ll-rail-btn:hover { background: #f7f7f7; color: var(--ll-text); }
-.ll-rail-btn.active { background: var(--ll-accent-soft); color: var(--ll-accent); font-weight: 600; }
-
-/* — Rail footer — */
-.ll-rail-footer { font-size: 12px; color: var(--ll-text-3); padding-top: 20px; border-top: 1px solid var(--ll-bdr); }
-.ll-rail-footer a { color: var(--ll-text-3); }
-.ll-rail-footer a:hover { color: var(--ll-accent); }
-
-/* — Mobile dropdown (hidden on desktop) — */
-.ll-mobile-nav { display: none; padding: 16px 20px; border-bottom: 1px solid var(--ll-bdr); background: #fff; position: sticky; top: 64px; z-index: 10; }
-.ll-mobile-select-wrap { position: relative; }
-.ll-mobile-select-wrap::after { content: "\\25BE"; position: absolute; right: 16px; top: 50%; transform: translateY(-50%); font-size: 12px; color: var(--ll-text-2); pointer-events: none; }
-.ll-mobile-select { width: 100%; padding: 10px 14px 10px 14px; padding-right: 38px; font: inherit; font-size: 14px; color: var(--ll-text); background: #fff; border: 1px solid var(--ll-bdr); border-radius: var(--ll-radius); appearance: none; -webkit-appearance: none; cursor: pointer; }
-.ll-mobile-select:focus { outline: none; border-color: var(--ll-accent); }
+/* — Top tab navigation — */
+.ll-topnav {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid var(--ll-bdr);
+  background: var(--ll-bg);
+  position: sticky;
+  top: 64px;
+  z-index: 10;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.ll-topnav::-webkit-scrollbar { display: none; }
+.ll-topnav-note {
+  margin-left: auto;
+  padding: 0 20px;
+  font-size: 11.5px;
+  color: var(--ll-text-3);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.ll-tab {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 14px 22px 12px;
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  color: var(--ll-text-2);
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  font-family: inherit;
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: color .15s, border-color .15s;
+  margin-bottom: -1px;
+}
+.ll-tab svg { width: 20px; height: 20px; stroke: var(--ll-text-3); fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0; transition: stroke .15s; }
+.ll-tab:hover { color: var(--ll-text); }
+.ll-tab:hover svg { stroke: var(--ll-text); }
+.ll-tab.active { color: var(--ll-accent); border-bottom-color: var(--ll-accent); font-weight: 600; }
+.ll-tab.active svg { stroke: var(--ll-accent); }
 
 /* — Pane — */
+.ll-pane { padding: 28px 40px 80px; }
 .ll-pane h1 { font-size: 22px; font-weight: 700; letter-spacing: -.01em; color: var(--ll-text); margin: 0 0 6px; }
 .ll-pane-sub { font-size: 14px; color: var(--ll-text-2); margin-bottom: 24px; line-height: 1.65; max-width: 620px; }
 
 /* — Stub placeholders (will be replaced as each mode is migrated) — */
 .ll-stub { padding: 60px 0; color: var(--ll-text-3); font-size: 14px; }
 
-/* — Mobile breakpoint — */
-@media (max-width: 1024px) {
-  .ll-wrap { grid-template-columns: 1fr; }
-  .ll-rail { display: none; }
-  .ll-mobile-nav { display: block; }
-  .ll-pane { padding: 28px 20px 80px; }
-}
-
 /* — Print — */
 @media print {
-  .ll-rail, .ll-mobile-nav { display: none !important; }
-  .ll-wrap { grid-template-columns: 1fr; }
+  .ll-topnav { display: none !important; }
   .ll-pane { padding: 0; }
 }
 
@@ -6281,31 +6292,35 @@ div:has(> h1.tracking-tight) { display: none !important; }
 
 export const LL_SHELL_HTML = `
 <div class="ll">
-  <div class="ll-mobile-nav">
-    <div class="ll-mobile-select-wrap">
-      <select class="ll-mobile-select" id="ll-mobile-select" aria-label="Learning Lab mode">
-        <option value="kc">Knowledge Checks</option>
-        <option value="te">Team Exercises</option>
-        <option value="dr">Document Review</option>
-        <option value="jc">Judgement Calls</option>
-        <option value="insp">Inspection Prep</option>
-      </select>
-    </div>
-  </div>
-  <div class="ll-wrap">
-    <aside class="ll-rail" aria-label="Learning Lab modes">
-      <button class="ll-rail-btn" data-mode="about" type="button">Overview</button>
-      <nav class="ll-rail-nav">
-        <button class="ll-rail-btn" data-mode="kc"   type="button">Knowledge Checks</button>
-        <button class="ll-rail-btn" data-mode="te"   type="button">Team Exercises</button>
-        <button class="ll-rail-btn" data-mode="dr"   type="button">Document Review</button>
-        <button class="ll-rail-btn" data-mode="jc"   type="button">Judgement Calls</button>
-        <button class="ll-rail-btn" data-mode="insp" type="button">Inspection Prep</button>
-      </nav>
-      <div class="ll-rail-footer">Progress is not saved.</div>
-    </aside>
-    <main class="ll-pane" id="ll-pane" role="main" aria-live="polite">
-      <div class="ll-stub">Loading…</div>
+  <nav class="ll-topnav" aria-label="Learning Lab modes">
+    <button class="ll-tab" data-mode="about" type="button">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+      <span>Overview</span>
+    </button>
+    <button class="ll-tab" data-mode="kc" type="button">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+      <span>Knowledge Checks</span>
+    </button>
+    <button class="ll-tab" data-mode="te" type="button">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+      <span>Team Exercises</span>
+    </button>
+    <button class="ll-tab" data-mode="dr" type="button">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+      <span>Document Review</span>
+    </button>
+    <button class="ll-tab" data-mode="jc" type="button">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><line x1="12" y1="3" x2="12" y2="21"/><path d="M3 9h18M3 15h18"/><path d="M5 3h14M5 21h14"/><path d="m3 9 3-6M18 3l3 6M3 15l3 6M18 21l3-6"/></svg>
+      <span>Judgement Calls</span>
+    </button>
+    <button class="ll-tab" data-mode="insp" type="button">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <span>Inspection Prep</span>
+    </button>
+    <div class="ll-topnav-note">Progress is not saved.</div>
+  </nav>
+  <main class="ll-pane" id="ll-pane" role="main" aria-live="polite">
+    <div class="ll-stub">Loading…</div>
     </main>
   </div>
 </div>

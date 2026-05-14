@@ -3527,7 +3527,7 @@ var llRouting     = false;
 var llBooted      = false;
 
 function llPane()      { return document.getElementById('ll-pane'); }
-function llRailBtns()  { return document.querySelectorAll('.ll-rail-btn'); }
+function llRailBtns()  { return document.querySelectorAll('.ll-tab'); }
 function llMobileSel() { return document.getElementById('ll-mobile-select'); }
 
 /* Top-level orchestrator. modeId is required; sub state lives in mode renderers. */
