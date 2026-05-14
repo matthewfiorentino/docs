@@ -178,44 +178,20 @@ export const DetailCard = ({ href, title, desc }) => (
   </a>
 );
 
-export const StartHere = () => {
-  const [role, setRole] = useState('pi');
-  const roles = [
-    { id: 'pi',        title: 'Investigator',           sub: 'Planning or launching a study',      img: '/images/roles/card_PI.jpg' },
-    { id: 'crc',       title: 'Coordinator / CRC',     sub: 'Joining or managing a study team',   img: '/images/roles/card_coordinator.jpg' },
-    { id: 'nurse',     title: 'Research Nurse',         sub: 'Licensed nurse on a study team',     img: '/images/roles/card_nurse.jpg' },
-    { id: 'trainee',   title: 'Research Trainee',       sub: 'Student or trainee on a study team', img: '/images/roles/card_trainee.jpg' },
-    { id: 'volunteer', title: 'Research Volunteer',     sub: 'Volunteering on a study',            img: '/images/roles/card_volunteer.jpg' },
-    { id: 'observer',  title: 'Observer',               sub: 'Observing research activities',      img: '/images/roles/card_observer.jpg' },
-  ];
-  return (
-    <div className="ri-start-here" id="start-here">
+export const ROLES = [
+  { id: 'pi',        title: 'Investigator',       sub: 'Planning or launching a study',      img: '/images/roles/card_PI.jpg' },
+  { id: 'crc',       title: 'Coordinator / CRC',  sub: 'Joining or managing a study team',   img: '/images/roles/card_coordinator.jpg' },
+  { id: 'nurse',     title: 'Research Nurse',     sub: 'Licensed nurse on a study team',     img: '/images/roles/card_nurse.jpg' },
+  { id: 'trainee',   title: 'Research Trainee',   sub: 'Student or trainee on a study team', img: '/images/roles/card_trainee.jpg' },
+  { id: 'volunteer', title: 'Research Volunteer', sub: 'Volunteering on a study',            img: '/images/roles/card_volunteer.jpg' },
+  { id: 'observer',  title: 'Observer',           sub: 'Observing research activities',      img: '/images/roles/card_observer.jpg' },
+];
 
-      <div className="ri-start-hero">
-        <h2 className="ri-start-title">Where do I start?</h2>
-        <p className="ri-start-sub">Your entry point depends on your role.</p>
-      </div>
-
-      <div className="ri-role-cards">
-        {roles.map(r => (
-          <button
-            key={r.id}
-            className={`ri-role-card${role === r.id ? ' ri-role-card--active' : ''}`}
-            onClick={() => setRole(r.id)}
-            style={{ backgroundImage: `url('${r.img}')` }}
-          >
-            <div className="ri-role-card-overlay" />
-            <div className="ri-role-card-body">
-              <div className="ri-role-card-title">{r.title}</div>
-              <div className="ri-role-card-sub">{r.sub}</div>
-              <div className="ri-role-card-cta">{role === r.id ? '✓ Selected' : 'View orientation →'}</div>
-            </div>
-          </button>
-        ))}
-      </div>
+export const RolePanel = ({ role }) => (
+  <div className="ri-role-panel">
 
       {role === 'pi' && (
-        <div className="ri-role-panel">
+        <>
           <p className="ri-role-framing">As PI or QI, you carry ultimate regulatory and scientific accountability for your study at the RI-MUHC — from the first feasibility conversation through close-out and archiving. That means protocol design, team delegation, Health Canada submissions if your study involves an investigational product, annual REB renewals, and MUHC Authorization before any study activity can begin.</p>
           <StepTrack steps={[
             { label: "Assess feasibility" },
@@ -246,11 +222,11 @@ export const StartHere = () => {
               <DetailCard href="/kb/roles/pi-guide-v" title="Investigator Guide — Retrospective (V)" desc="Investigator obligations for retrospective chart review and anonymized biobank studies — the ÉFVP consent waiver decision, data access authorization, and REB maintenance." />
             </div>
           </div>
-        </div>
+        </>
       )}
 
       {role === 'crc' && (
-        <div className="ri-role-panel">
+        <>
           <p className="ri-role-framing">Coordinators are the operational core of clinical research at the RI-MUHC. You manage day-to-day study activity — participant recruitment and screening, data collection, regulatory documentation, sponsor communication, and keeping the Investigator Site File inspection-ready. Your authorized scope is defined by your study level and by what the QI/PI delegates on the Task Delegation Log. You cannot begin any study task until you appear on the TDL with your training documented and the QI/PI's countersignature in place.</p>
           <StepTrack steps={[
             { label: "Identify your study level (I–V)" },
@@ -275,11 +251,11 @@ export const StartHere = () => {
               <DetailCard href="/kb/roles/crc-guide-v" title="CRC Guide — Retrospective (V)" desc="REB submission, data extraction, privacy compliance, and documentation for retrospective chart review and anonymized biobank studies." />
             </div>
           </div>
-        </div>
+        </>
       )}
 
       {role === 'nurse' && (
-        <div className="ri-role-panel">
+        <>
           <p className="ri-role-framing">Research nurses bring regulated clinical expertise to studies involving patient care, IV administration, biological specimen collection, or any act reserved under the Code des professions. Not all acts permissible in a clinical setting are authorized within a research protocol — your scope must be explicitly confirmed with the QI through the delegation process and documented on the Task Delegation Log before any study tasks begin. The training requirements you must meet depend on the study level.</p>
           <StepTrack steps={[
             { label: "Confirm OIIQ licence + CPR" },
@@ -299,11 +275,11 @@ export const StartHere = () => {
               <DetailCard href="/kb/roles/nurse-guide" title="Nurse Guide — Interventional (I–III)" desc="IP administration, specimen collection, clinical monitoring, AE assessment, and between-visit procedures — the nursing-specific operational layer for drug, device, and NHP studies." />
             </div>
           </div>
-        </div>
+        </>
       )}
 
       {role === 'trainee' && (
-        <div className="ri-role-panel">
+        <>
           <p className="ri-role-framing">Research trainees — graduate students, postdoctoral fellows, and other trainees registered in an academic program — can be delegated study tasks, but only after a formal affiliation agreement with the RI-MUHC is in place. That agreement is a prerequisite to appearing on the Task Delegation Log. Trainees without valid academic insurance, or who are not affiliated through the HR Service Centre, cannot perform study tasks regardless of their academic standing.</p>
           <StepTrack steps={[
             { label: "Fulfill training and compliance requirements" },
@@ -317,11 +293,11 @@ export const StartHere = () => {
             <DetailCard href="/kb/roles/onboarding-trainees" title="Joining as a trainee" desc="Eligibility, affiliation agreement process, training obligations, and the scope of tasks that can and cannot be delegated to trainees." />
             <DetailCard href="/kb/glossary" title="Glossary" desc="Terms, acronyms, and definitions used across the Hub." />
           </div>
-        </div>
+        </>
       )}
 
       {role === 'volunteer' && (
-        <div className="ri-role-panel">
+        <>
           <p className="ri-role-framing">Research volunteers contribute to studies in a non-employment capacity. A signed volunteer agreement processed through the HR Service Centre is required before a volunteer can access RI-MUHC facilities or appear on the Task Delegation Log. The scope of tasks that can be delegated to volunteers is limited — volunteers cannot perform acts requiring professional licensing or specialized clinical training.</p>
           <StepTrack steps={[
             { label: "Supervisor's Authorization form signed by PI" },
@@ -335,11 +311,11 @@ export const StartHere = () => {
             <DetailCard href="/kb/roles/onboarding-volunteers" title="Joining as a volunteer" desc="Volunteer agreement requirements, scope limitations, confidentiality obligations, and the process for becoming affiliated with the RI-MUHC as a volunteer." />
             <DetailCard href="/kb/glossary" title="Glossary" desc="Terms, acronyms, and definitions used across the Hub." />
           </div>
-        </div>
+        </>
       )}
 
       {role === 'observer' && (
-        <div className="ri-role-panel">
+        <>
           <p className="ri-role-framing">Observers may attend and observe study activities but may not perform study tasks, handle investigational products, access participant records independently, or appear on the Task Delegation Log in a task-performing capacity. An observer agreement is required before any observation begins. Observers do not replace or supplement the study team — the scope is strictly witnessing and learning.</p>
           <StepTrack steps={[
             { label: "Observer agreement signed" },
@@ -351,9 +327,98 @@ export const StartHere = () => {
             <DetailCard href="/kb/roles/onboarding-observers" title="Joining as an observer" desc="Observer agreement requirements, access limitations, what observers may and may not do during study visits, and how the observer role differs from study team membership." />
             <DetailCard href="/kb/glossary" title="Glossary" desc="Terms, acronyms, and definitions used across the Hub." />
           </div>
-        </div>
+        </>
       )}
 
+  </div>
+);
+
+export const RoleExplorerTabs = () => {
+  const [role, setRole] = useState('pi');
+  const active = ROLES.find(r => r.id === role);
+  return (
+    <div className="ri-sh-a">
+      <div className="ri-sh-tabs">
+        {ROLES.map(r => (
+          <button
+            key={r.id}
+            className={`ri-sh-tab${role === r.id ? ' ri-sh-tab--active' : ''}`}
+            onClick={() => setRole(r.id)}
+          >
+            {r.title}
+          </button>
+        ))}
+      </div>
+      <div className="ri-sh-a-card">
+        <div className="ri-sh-a-photo" style={{ backgroundImage: `url('${active.img}')` }}>
+          <div className="ri-sh-a-photo-overlay" />
+          <div className="ri-sh-a-photo-label">
+            <div className="ri-sh-a-photo-eyebrow">Your role</div>
+            <div className="ri-sh-a-photo-title">{active.title}</div>
+            <div className="ri-sh-a-photo-sub">{active.sub}</div>
+          </div>
+        </div>
+        <div className="ri-sh-a-content">
+          <RolePanel role={role} />
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export const RoleExplorerGrid = () => {
+  const [role, setRole] = useState('pi');
+  return (
+    <div className="ri-sh-b">
+      <div className="ri-sh-b-grid">
+        {ROLES.map(r => (
+          <button
+            key={r.id}
+            className={`ri-sh-b-card${role === r.id ? ' ri-sh-b-card--active' : ''}`}
+            onClick={() => setRole(r.id)}
+            style={{ backgroundImage: `url('${r.img}')` }}
+          >
+            <div className="ri-sh-b-card-overlay" />
+            <div className="ri-sh-b-card-body">
+              <div className="ri-sh-b-card-title">{r.title}</div>
+              <div className="ri-sh-b-card-sub">{r.sub}</div>
+              <div className="ri-sh-b-card-cta">{role === r.id ? '✓ Selected' : 'View orientation →'}</div>
+            </div>
+          </button>
+        ))}
+      </div>
+      <RolePanel role={role} />
+    </div>
+  );
+};
+
+export const RoleExplorerSidebar = () => {
+  const [role, setRole] = useState('pi');
+  const active = ROLES.find(r => r.id === role);
+  return (
+    <div className="ri-sh-c">
+      <nav className="ri-sh-c-sidebar">
+        {ROLES.map(r => (
+          <button
+            key={r.id}
+            className={`ri-sh-c-nav-item${role === r.id ? ' ri-sh-c-nav-item--active' : ''}`}
+            onClick={() => setRole(r.id)}
+          >
+            <div className="ri-sh-c-nav-title">{r.title}</div>
+            <div className="ri-sh-c-nav-sub">{r.sub}</div>
+          </button>
+        ))}
+      </nav>
+      <div className="ri-sh-c-content">
+        <div className="ri-sh-c-header" style={{ backgroundImage: `url('${active.img}')` }}>
+          <div className="ri-sh-c-header-overlay" />
+          <div className="ri-sh-c-header-text">
+            <div className="ri-sh-c-header-eyebrow">Your role</div>
+            <div className="ri-sh-c-header-title">{active.title}</div>
+          </div>
+        </div>
+        <RolePanel role={role} />
+      </div>
     </div>
   );
 };
@@ -375,7 +440,25 @@ export const StartHere = () => {
 
 <div className="ri-hub-body">
 
-<StartHere />
+<div className="ri-sh-section-head" id="start-here">
+  <h2 className="ri-start-title">Where do I start?</h2>
+  <p className="ri-start-sub">Your entry point depends on your role.</p>
+</div>
+
+<div className="ri-sh-option">
+  <span className="ri-sh-option-badge">Option A · Tabbed feature card</span>
+  <RoleExplorerTabs />
+</div>
+
+<div className="ri-sh-option">
+  <span className="ri-sh-option-badge">Option B · Photo card grid</span>
+  <RoleExplorerGrid />
+</div>
+
+<div className="ri-sh-option">
+  <span className="ri-sh-option-badge">Option C · Sidebar selector</span>
+  <RoleExplorerSidebar />
+</div>
 
 </div>
 
