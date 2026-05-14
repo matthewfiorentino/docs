@@ -426,7 +426,13 @@ export const RoleExplorer = () => {
             <div className="ri-sh-header-eyebrow">Your role</div>
             <div className="ri-sh-header-title">{active.title}</div>
           </div>
-          <RolePanel role={role} />
+          <div className="ri-role-panels-stack">
+            {ROLES.map(r => (
+              <div key={r.id} className={r.id === role ? 'ri-role-panel-slot' : 'ri-role-panel-slot ri-role-panel-slot--hidden'} aria-hidden={r.id !== role}>
+                <RolePanel role={r.id} />
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </div>
