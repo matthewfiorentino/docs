@@ -4,7 +4,30 @@ title: "RI-MUHC Clinical Research Hub"
 mode: "custom"
 ---
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
+
+export const StatCounter = ({ value, prefix = '', suffix = '', duration = 1400 }) => {
+  const ref = useRef();
+  const [current, setCurrent] = useState(0);
+  useEffect(() => {
+    if (!ref.current) return;
+    const io = new IntersectionObserver(([entry]) => {
+      if (!entry.isIntersecting) return;
+      const start = performance.now();
+      const step = (now) => {
+        const t = Math.min((now - start) / duration, 1);
+        setCurrent(value * (1 - Math.pow(1 - t, 3)));
+        if (t < 1) requestAnimationFrame(step);
+      };
+      requestAnimationFrame(step);
+      io.disconnect();
+    }, { threshold: 0.4 });
+    io.observe(ref.current);
+    return () => io.disconnect();
+  }, []);
+  const decimals = value % 1 !== 0 ? 1 : 0;
+  return <span ref={ref}>{prefix}{current.toFixed(decimals)}{suffix}</span>;
+};
 
 export const UpdateBar = ({ tag, tagClass, title, desc, date }) => (
   <div className="ri-update-bar">
@@ -357,22 +380,33 @@ export const StartHere = () => {
 </div>
 
 <div className="ri-cim-band">
-<div className="ri-cim-split">
-  <div className="ri-cim-photo">
-    <img src="/images/cim-research-team.jpg" alt="Research team collaborating in a clinical laboratory" />
-  </div>
-  <div className="ri-cim-text">
-    <div className="ri-cim-eyebrow">Centre for Innovative Medicine</div>
-    <div className="ri-cim-heading">Dedicated clinical trial infrastructure</div>
-    <div className="ri-cim-stats">
-      <div className="ri-cim-stat"><span className="ri-cim-stat-n">~100</span><span className="ri-cim-stat-l">active trials</span></div>
-      <div className="ri-cim-stat"><span className="ri-cim-stat-n">300+</span><span className="ri-cim-stat-l">patients enrolled</span></div>
-      <div className="ri-cim-stat"><span className="ri-cim-stat-n">2</span><span className="ri-cim-stat-l">MUHC sites</span></div>
+<div className="ri-cim-band-inner">
+  <div className="ri-cim-eyebrow">Centre for Innovative Medicine</div>
+  <h2 className="ri-cim-section-heading">Dedicated clinical trial infrastructure</h2>
+  <div className="ri-cim-split">
+    <div className="ri-cim-photo">
+      <img src="/images/cim-research-team.jpg" alt="Research team collaborating in a clinical laboratory" />
     </div>
-    <div className="ri-cim-body">Research nursing, coordination, monitoring, Phase I overnight pods, oncology infusion, functional testing, specimen processing, and regulatory support — at the Glen and Montreal General.</div>
-    <div className="ri-cim-actions">
-      <a href="/cim/services" className="ri-cim-btn">Explore CIM services</a>
-      <a href="/cim/planning" className="ri-cim-btn ri-cim-btn--outline">Plan your study with CIM</a>
+    <div className="ri-cim-text">
+      <div className="ri-cim-body">Research nursing, coordination, monitoring, Phase I overnight pods, oncology infusion, functional testing, specimen processing, and regulatory support — at the Glen and Montreal General.</div>
+      <div className="ri-cim-actions">
+        <a href="/cim/services" className="ri-cim-btn">Explore CIM services</a>
+        <a href="/cim/planning" className="ri-cim-btn ri-cim-btn--outline">Plan your study with CIM</a>
+      </div>
+    </div>
+  </div>
+  <div className="ri-cim-stats-row">
+    <div className="ri-cim-stat-card">
+      <div className="ri-cim-stat-n"><StatCounter value={100} prefix="~" /></div>
+      <div className="ri-cim-stat-l">active trials</div>
+    </div>
+    <div className="ri-cim-stat-card">
+      <div className="ri-cim-stat-n"><StatCounter value={300} suffix="+" /></div>
+      <div className="ri-cim-stat-l">patients enrolled</div>
+    </div>
+    <div className="ri-cim-stat-card">
+      <div className="ri-cim-stat-n"><StatCounter value={2} /></div>
+      <div className="ri-cim-stat-l">MUHC sites</div>
     </div>
   </div>
 </div>
@@ -384,61 +418,59 @@ export const StartHere = () => {
 
 Expert consulting and data services available to all RI-MUHC researchers — engage early in your study planning.
 
-<div className="ri-svc-editorial">
+<div className="ri-svc-grid">
 
-<a href="/kb/bcu" className="ri-svc-strip">
-  <img className="ri-svc-strip-photo" src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=700&h=500&q=80&auto=format&fit=crop" alt="Data analysis" />
-  <div className="ri-svc-strip-body">
-    <div className="ri-svc-strip-label">Biostatistics Consulting Unit</div>
-    <div className="ri-svc-strip-stat">400+</div>
-    <div className="ri-svc-strip-stat-sub">completed projects — including Lancet, JAMA, and Nature publications</div>
-    <div className="ri-svc-strip-title">Statistical support from grant to publication</div>
-    <div className="ri-svc-strip-desc">Sample size calculations, statistical analysis plans, clinical trial biostatistics, and DSMB reports — across Phase II–IV trials, epidemiological studies, and large administrative databases. 72% of clients return for a second project. 4 free hours for early-career researchers per grant application.</div>
-    <span className="ri-svc-strip-cta">Request a consultation</span>
+<a href="/kb/bcu" className="ri-svc-card">
+  <img className="ri-svc-card-photo" src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=700&h=500&q=80&auto=format&fit=crop" alt="Data analysis" />
+  <div className="ri-svc-card-body">
+    <div className="ri-svc-card-label">Biostatistics Consulting Unit</div>
+    <div className="ri-svc-card-stat"><StatCounter value={400} suffix="+" /></div>
+    <div className="ri-svc-card-stat-sub">completed projects — including Lancet, JAMA, and Nature publications</div>
+    <div className="ri-svc-card-title">Statistical support from grant to publication</div>
+    <div className="ri-svc-card-desc">Sample size calculations, statistical analysis plans, clinical trial biostatistics, and DSMB reports — across Phase II–IV trials, epidemiological studies, and large administrative databases. 72% of clients return for a second project. 4 free hours for early-career researchers per grant application.</div>
+    <span className="ri-svc-card-cta">Request a consultation →</span>
   </div>
 </a>
 
-<a href="/kb/data-warehouse" className="ri-svc-strip ri-svc-strip--reverse">
-  <img className="ri-svc-strip-photo" src="https://images.unsplash.com/photo-1576671081837-49000212a370?w=700&h=500&q=80&auto=format&fit=crop" alt="Clinical research laboratory" />
-  <div className="ri-svc-strip-body">
-    <div className="ri-svc-strip-label">MUHC Data Warehouse</div>
-    <div className="ri-svc-strip-stat">4.9M</div>
-    <div className="ri-svc-strip-stat-sub">patients · 7.5B facts across 400+ tables</div>
-    <div className="ri-svc-strip-title">Retrospective research at scale</div>
-    <div className="ri-svc-strip-desc">ER, OR, Lab, Pharmacy, Cancer Registry, Archives — integrated from 18+ MUHC hospital systems, most going back to 2008. The DW team supports researchers from feasibility consultation through variable selection and data extraction.</div>
-    <span className="ri-svc-strip-cta">Explore the data</span>
+<a href="/kb/data-warehouse" className="ri-svc-card">
+  <img className="ri-svc-card-photo" src="https://images.unsplash.com/photo-1576671081837-49000212a370?w=700&h=500&q=80&auto=format&fit=crop" alt="Clinical research laboratory" />
+  <div className="ri-svc-card-body">
+    <div className="ri-svc-card-label">MUHC Data Warehouse</div>
+    <div className="ri-svc-card-stat"><StatCounter value={4.9} suffix="M" /></div>
+    <div className="ri-svc-card-stat-sub">patients · 7.5B facts across 400+ tables</div>
+    <div className="ri-svc-card-title">Retrospective research at scale</div>
+    <div className="ri-svc-card-desc">ER, OR, Lab, Pharmacy, Cancer Registry, Archives — integrated from 18+ MUHC hospital systems, most going back to 2008. The DW team supports researchers from feasibility consultation through variable selection and data extraction.</div>
+    <span className="ri-svc-card-cta">Explore the data →</span>
   </div>
 </a>
 
-
-<a href="/kb/cord" className="ri-svc-strip">
-  <img className="ri-svc-strip-photo" src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=700&h=500&q=80&auto=format&fit=crop" alt="Data management" />
-  <div className="ri-svc-strip-body">
-    <div className="ri-svc-strip-label">CORD — Research Data Management</div>
-    <div className="ri-svc-strip-title">Your REDCap database, built right the first time</div>
-    <div className="ri-svc-strip-desc">CRF design review, data dictionary build, REDCap project setup, and ongoing data management — validated for 21 CFR Part 11. Database architecture decisions are the hardest to change after data collection begins. Engage CORD at the design stage, before your protocol is finalized.</div>
-    <span className="ri-svc-strip-cta">Start your database build</span>
+<a href="/kb/cord" className="ri-svc-card">
+  <img className="ri-svc-card-photo" src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=700&h=500&q=80&auto=format&fit=crop" alt="Data management" />
+  <div className="ri-svc-card-body">
+    <div className="ri-svc-card-label">CORD — Research Data Management</div>
+    <div className="ri-svc-card-title">Your REDCap database, built right the first time</div>
+    <div className="ri-svc-card-desc">CRF design review, data dictionary build, REDCap project setup, and ongoing data management — validated for 21 CFR Part 11. Database architecture decisions are the hardest to change after data collection begins. Engage CORD at the design stage, before your protocol is finalized.</div>
+    <span className="ri-svc-card-cta">Start your database build →</span>
   </div>
 </a>
 
-
-<a href="/kb/study-design" className="ri-svc-strip ri-svc-strip--reverse">
-  <img className="ri-svc-strip-photo" src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=700&h=500&q=80&auto=format&fit=crop" alt="Research team discussion" />
-  <div className="ri-svc-strip-body">
-    <div className="ri-svc-strip-label">Study Design & Methodology</div>
-    <div className="ri-svc-strip-title">Research question to submission-ready protocol</div>
-    <div className="ri-svc-strip-desc">Protocol-level methodology support — research question framing, study design optimization, and feasibility review — before decisions are hard to reverse. Works alongside BCU on the analytical side and CORD on the data side for a complete design-stage team.</div>
-    <span className="ri-svc-strip-cta">Explore design support</span>
+<a href="/kb/study-design" className="ri-svc-card">
+  <img className="ri-svc-card-photo" src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=700&h=500&q=80&auto=format&fit=crop" alt="Research team discussion" />
+  <div className="ri-svc-card-body">
+    <div className="ri-svc-card-label">Study Design & Methodology</div>
+    <div className="ri-svc-card-title">Research question to submission-ready protocol</div>
+    <div className="ri-svc-card-desc">Protocol-level methodology support — research question framing, study design optimization, and feasibility review — before decisions are hard to reverse. Works alongside BCU on the analytical side and CORD on the data side for a complete design-stage team.</div>
+    <span className="ri-svc-card-cta">Explore design support →</span>
   </div>
 </a>
 
-<a href="/kb/study-design" className="ri-svc-strip">
-  <img className="ri-svc-strip-photo" src="https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?w=700&h=500&q=80&auto=format&fit=crop" alt="Clinical trial review" />
-  <div className="ri-svc-strip-body">
-    <div className="ri-svc-strip-label">ACT-CTU — Accelerating Clinical Trials</div>
-    <div className="ri-svc-strip-title">Independent protocol review before you submit</div>
-    <div className="ri-svc-strip-desc">Protocol review sessions, access to the OHRI Methods Unit for additional methodology depth, and connections to seed funding for early-stage studies. An independent read on your protocol before REB submission can catch problems that are expensive to fix later.</div>
-    <span className="ri-svc-strip-cta">Book a protocol review</span>
+<a href="/kb/study-design" className="ri-svc-card">
+  <img className="ri-svc-card-photo" src="https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?w=700&h=500&q=80&auto=format&fit=crop" alt="Clinical trial review" />
+  <div className="ri-svc-card-body">
+    <div className="ri-svc-card-label">ACT-CTU — Accelerating Clinical Trials</div>
+    <div className="ri-svc-card-title">Independent protocol review before you submit</div>
+    <div className="ri-svc-card-desc">Protocol review sessions, access to the OHRI Methods Unit for additional methodology depth, and connections to seed funding for early-stage studies. An independent read on your protocol before REB submission can catch problems that are expensive to fix later.</div>
+    <span className="ri-svc-card-cta">Book a protocol review →</span>
   </div>
 </a>
 
