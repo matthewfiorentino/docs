@@ -248,6 +248,10 @@ li.navbar-link a[href="/contacts"]:hover {
 #topbar-cta-button a:hover span.absolute {
     opacity: 0.85 !important;
 }
+/* ── Mermaid diagrams — horizontal scroll so LR diagrams render at full size ── */
+.mermaid { overflow-x: auto; }
+.mermaid svg { min-width: max-content; }
+
 /* ── Tables ── */
 .prose table,
 article table {
