@@ -6145,15 +6145,44 @@ export const LL_SHELL_CSS = `
 .ll-jc-scenario-coming { padding: 16px 18px; border: 1px solid var(--ll-bdr); border-radius: var(--ll-radius); opacity: .45; }
 .ll-jc-scenario-topic { font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--ll-text-3); margin-bottom: 5px; }
 .ll-jc-scenario-desc { font-size: 13px; color: var(--ll-text-2); margin: 4px 0 8px; line-height: 1.5; }
-/* About */
-.ll-about { max-width: 640px; }
-.ll-about-desc { font-size: 14.5px; color: var(--ll-text-2); line-height: 1.75; margin-bottom: 32px; }
-.ll-about-modes { list-style: none; padding: 0; margin: 0 0 32px; border-top: 1px solid var(--ll-bdr); }
-.ll-about-mode { display: flex; gap: 14px; padding: 14px 0; border-bottom: 1px solid var(--ll-bdr); align-items: baseline; }
-.ll-about-mode-name { font-size: 13.5px; font-weight: 600; color: var(--ll-text); min-width: 160px; flex-shrink: 0; }
-.ll-about-mode-desc { font-size: 13px; color: var(--ll-text-3); line-height: 1.5; }
-.ll-about-cta { padding: 10px 22px; background: var(--ll-accent); color: #fff; border: none; border-radius: var(--ll-radius); cursor: pointer; font: inherit; font-size: 14px; font-weight: 600; transition: opacity .15s; }
-.ll-about-cta:hover { opacity: .85; }
+/* About — hero + card grid */
+.ll-about-hero {
+  margin: -28px -40px 0;
+  padding: 32px 40px 28px;
+  background:
+    radial-gradient(ellipse 70% 100% at 0% 50%,  rgba(43,156,226,0.18) 0%, transparent 70%),
+    radial-gradient(ellipse 50% 80%  at 100% 0%,  rgba(144,57,249,0.14) 0%, transparent 65%),
+    radial-gradient(ellipse 55% 70%  at 90% 100%, rgba(255,83,127,0.16) 0%, transparent 65%),
+    #ffffff;
+  border-bottom: 1px solid var(--ll-bdr);
+}
+.ll-about-hero h1 { font-size: 22px; font-weight: 700; color: var(--ll-text); margin: 0 0 8px; }
+.ll-about-hero p  { font-size: 14px; color: var(--ll-text-2); margin: 0; line-height: 1.6; max-width: 580px; }
+.ll-about-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 16px;
+  padding: 28px 0 60px;
+}
+.ll-about-card {
+  border: 1px solid var(--ll-bdr);
+  border-radius: 10px;
+  padding: 20px;
+  cursor: pointer;
+  background: var(--ll-bg);
+  box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+  transition: box-shadow .18s, transform .18s;
+}
+.ll-about-card:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.10); transform: translateY(-2px); }
+.ll-about-icon-wrap {
+  width: 48px; height: 48px; border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 14px;
+}
+.ll-about-icon-wrap svg { width: 24px; height: 24px; fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+.ll-about-card-name  { font-size: 15px; font-weight: 600; color: var(--ll-text); margin-bottom: 6px; }
+.ll-about-card-badge { display: inline-block; font-size: 11.5px; color: var(--ll-text-3); background: #f4f4f4; border-radius: 20px; padding: 2px 10px; margin-bottom: 10px; }
+.ll-about-card-desc  { font-size: 13.5px; color: var(--ll-text-2); line-height: 1.55; }
 
 /* ══ PALETTE HARMONIZATION ════════════════════════════════════════════
    Redefine legacy vars at #ll-pane scope so all old content

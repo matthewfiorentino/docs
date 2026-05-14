@@ -3618,49 +3618,51 @@ function llSeeAlsoStrip(topicId, currentMode) {
 function llRenderAbout(pane) {
   var modes = [
     {
-      id: 'kc', name: 'Knowledge Checks', count: '158 questions \xb7 11 topics',
-      desc: 'Multiple-choice questions with immediate feedback and SOP references across all key study areas.',
-      solo: 'Test recall before a monitoring visit, audit, or certification renewal.',
-      team: 'Assign topics by study level. Use one topic as a 5-minute team warmup before a meeting.'
+      id: 'kc', colour: '#2b9ce2', bg: 'rgba(43,156,226,0.10)',
+      name: 'Knowledge Checks', count: '158 questions \xb7 11 topics',
+      desc: '158 multiple-choice questions across 11 study topics. Immediate feedback and SOP references after each answer — useful for sharpening recall before a visit, audit, or certification renewal.',
+      icon: '<path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/>'
     },
     {
-      id: 'te', name: 'Team Exercises', count: '8 case-based exercises',
-      desc: 'Scenario cases where you work through a real-world situation, then reveal the key points and analysis.',
-      solo: 'Read the case and answer the questions before revealing the structured analysis.',
-      team: 'Facilitate as a 20–30 min team case study. Print without key points so discussion happens before the reveal.'
+      id: 'te', colour: '#10b981', bg: 'rgba(16,185,129,0.10)',
+      name: 'Team Exercises', count: '8 exercises',
+      desc: 'Eight scenario exercises covering common study situations. Work through the case independently, or run it as a 20–30 min team exercise with discussion before the reveal.',
+      icon: '<path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>'
     },
     {
-      id: 'dr', name: 'Document Review', count: '8 exercises \xb7 constructed case files',
-      desc: 'Research documents with deliberate errors — identify the issues, then step through annotated findings.',
-      solo: 'Build the habit of spotting documentation problems before they become inspection findings.',
-      team: 'Use as onboarding exercises for new CRCs or RAs joining a study team.'
+      id: 'dr', colour: '#f59e0b', bg: 'rgba(245,158,11,0.10)',
+      name: 'Document Review', count: '8 exercises \xb7 case files',
+      desc: 'Constructed study documents — protocols, consent forms, case files — each containing deliberate errors. Find the issues yourself, then step through the annotated findings.',
+      icon: '<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/>'
     },
     {
-      id: 'jc', name: 'Judgement Calls', count: '6 scenarios \xb7 3 decision points each',
-      desc: 'Realistic pressure scenarios where someone asks you to do something that may not be right.',
-      solo: 'Work through each decision point before reading the analysis. Notice which pressures feel most compelling.',
-      team: 'Debrief as a group after each scenario. Particularly useful for fellows, residents, and new staff.'
+      id: 'jc', colour: '#9039f9', bg: 'rgba(144,57,249,0.10)',
+      name: 'Judgement Calls', count: '6 scenarios \xb7 3 decision points each',
+      desc: 'Scenarios where a colleague, PI, or sponsor pressures you to do something that isn’t right. Three decision points per case — choose your response and see what it means for the study.',
+      icon: '<line x1="12" y1="3" x2="12" y2="21"/><path d="M3 9h18M3 15h18"/><path d="M5 3h14M5 21h14"/><path d="m3 9 3-6M18 3l3 6M3 15l3 6M18 21l3-6"/>'
     },
     {
-      id: 'insp', name: 'Inspection Prep', count: '8 topics \xb7 40 questions',
-      desc: 'Inspector-style questions across key study areas. Formulate your answer before seeing the model response.',
-      solo: 'Work through a topic before a scheduled monitoring visit or audit.',
-      team: 'Run as mock Q&A — one person plays inspector, others respond. Rotate the inspector role.'
+      id: 'insp', colour: '#ef4444', bg: 'rgba(239,68,68,0.10)',
+      name: 'Inspection Prep', count: '8 topics \xb7 40 questions',
+      desc: 'Forty questions across 8 study areas, formatted like a real monitoring visit. Formulate your answer before the model response appears.',
+      icon: '<circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>'
     }
   ];
-  var html = '<div class="ll-about"><h1>Learning Lab</h1>';
-  html += '<p class="ll-about-intro">Applied practice tools for RI-MUHC clinical research staff — from quick knowledge checks to inspection readiness. Use the modes independently or deploy them as team exercises. Progress is not saved between sessions.</p>';
+  var html = '<div class="ll-about">';
+  html += '<div class="ll-about-hero">';
+  html += '<h1>Learning Lab</h1>';
+  html += '<p>Training tools for RI-MUHC clinical research staff. Use them solo or run them as team exercises. Progress is not saved between sessions.</p>';
+  html += '</div>';
   html += '<div class="ll-about-grid">';
   for (var i = 0; i < modes.length; i++) {
     var m = modes[i];
-    html += '<div class="ll-about-card" onclick="llRoute(\'' + m.id + '\')">';
-    html +=   '<div class="ll-about-card-name">' + m.name + '</div>';
-    html +=   '<div class="ll-about-card-count">' + m.count + '</div>';
-    html +=   '<div class="ll-about-card-desc">' + m.desc + '</div>';
-    html +=   '<div class="ll-about-card-uses">';
-    html +=     '<div class="ll-about-card-use"><strong>Solo:</strong> ' + m.solo + '</div>';
-    html +=     '<div class="ll-about-card-use"><strong>With your team:</strong> ' + m.team + '</div>';
+    html += '<div class="ll-about-card" style="border-top:3px solid ' + m.colour + '" onclick="llRoute(\'' + m.id + '\')">';
+    html +=   '<div class="ll-about-icon-wrap" style="background:' + m.bg + '">';
+    html +=     '<svg viewBox="0 0 24 24" style="stroke:' + m.colour + '" aria-hidden="true">' + m.icon + '</svg>';
     html +=   '</div>';
+    html +=   '<div class="ll-about-card-name">' + m.name + '</div>';
+    html +=   '<div class="ll-about-card-badge">' + m.count + '</div>';
+    html +=   '<div class="ll-about-card-desc">' + m.desc + '</div>';
     html += '</div>';
   }
   html += '</div></div>';
