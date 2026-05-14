@@ -981,7 +981,7 @@ body:has(.ri-text-hero) main {
     padding: 120px 8vw 120px;
     width: 100%;
     background-color: var(--ri-navy);
-    background-image: url('/images/hub_hero_4.jpg');
+    background-image: url('/images/hub_hero_wide.jpg');
     background-size: cover;
     background-position: center 50%;
     background-repeat: no-repeat;
