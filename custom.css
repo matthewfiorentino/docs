@@ -414,15 +414,15 @@ body:has(.ri-text-hero) main {
     text-transform: uppercase; color: var(--ri-accent, #2b9ce2); margin: 0 0 0.45rem;
 }
 .ri-start-title {
-    font-size: 1.875rem; font-weight: 700; line-height: 1.1;
-    color: var(--ri-heading, #150e51); margin: 0 0 0.55rem;
+    font-size: clamp(2.2rem, 3.5vw, 3.2rem); font-weight: 800; line-height: 1.05;
+    color: #0a0a0a; margin: 0 0 0.55rem; letter-spacing: -.02em;
 }
 .ri-start-sub { font-size: 16px; line-height: 1.5; color: #555; margin: 0; }
 
 /* Apply the same heading style to all homepage section H2s */
 .ri-hub-body h2 {
-    font-size: 1.875rem; font-weight: 700; line-height: 1.1;
-    color: var(--ri-heading, #150e51);
+    font-size: clamp(2.2rem, 3.5vw, 3.2rem); font-weight: 800; line-height: 1.05;
+    color: #0a0a0a; letter-spacing: -.02em;
 }
 
 /* Role photo card grid */
@@ -926,18 +926,18 @@ body:has(.ri-text-hero) main {
    ══════════════════════════════════════════════ */
 .ri-text-hero {
     margin: 0;
-    padding: 80px 8vw 64px;
+    padding: 96px 8vw 80px;
     width: 100%;
-    background:
-        radial-gradient(ellipse 55% 85% at 2% 50%, rgba(43, 156, 226, 0.22) 0%, transparent 70%),
-        radial-gradient(ellipse 42% 58% at 98% 12%, rgba(144, 57, 249, 0.16) 0%, transparent 65%),
-        radial-gradient(ellipse 60% 65% at 96% 96%, rgba(255, 83, 127, 0.24) 0%, transparent 65%),
-        #ffffff;
+    background-color: #fff;
+    background-image: url('/images/hub_hero_white.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     color: var(--ri-navy);
     position: relative;
 }
 @media (max-width: 768px) {
-    .ri-text-hero { padding: 48px 6vw 40px; }
+    .ri-text-hero { padding: 56px 6vw 48px; background-image: none; }
 }
 .ri-text-hero-eyebrow {
     font-size: 11px; font-weight: 700; letter-spacing: .15em;
@@ -945,30 +945,30 @@ body:has(.ri-text-hero) main {
     margin: 0 0 18px;
 }
 .ri-text-hero h1 {
-    color: var(--ri-navy) !important;
-    font-size: clamp(26px, 2.6vw, 36px);
-    font-weight: 800; letter-spacing: -.02em;
-    line-height: 1.1; margin: 0 0 22px;
+    color: #0a0a0a !important;
+    font-size: clamp(38px, 4.2vw, 62px);
+    font-weight: 800; letter-spacing: -.03em;
+    line-height: 1.05; margin: 0 0 24px;
 }
 .ri-hero-accent {
-    color: var(--ri-hero-accent) !important;
+    color: var(--ri-blue) !important;
 }
 .ri-text-hero-desc {
-    color: #4b5563;
-    font-size: 16px; line-height: 1.65;
-    margin: 0 0 34px;
+    color: #374151;
+    font-size: 18px; line-height: 1.6;
+    margin: 0 0 36px;
 }
 .ri-text-hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
 .ri-hero-palette { display: flex; gap: 5px; align-items: center; margin-top: 20px; }
 .ri-hero-palette span { display: block; width: 20px; height: 3px; border-radius: 2px; }
 .ri-text-hero-btn-primary {
-    background: var(--ri-hero-accent); color: #fff !important;
-    padding: 12px 24px; border-radius: 8px;
+    background: var(--ri-navy); color: #fff !important;
+    padding: 13px 26px; border-radius: 8px;
     font-weight: 700; font-size: 14px;
     text-decoration: none !important;
     transition: opacity .15s;
 }
-.ri-text-hero-btn-primary:hover { opacity: .9; }
+.ri-text-hero-btn-primary:hover { opacity: .85; }
 .ri-text-hero-btn-secondary {
     background: transparent; color: var(--ri-navy) !important;
     padding: 12px 24px; border-radius: 8px;
@@ -998,7 +998,11 @@ body:has(.ri-text-hero) main {
    HOME PAGE — CONTACT BAND
    ══════════════════════════════════════════════ */
 .ri-contact-band {
-    background: var(--ri-navy);
+    background:
+        radial-gradient(ellipse 65% 90% at 5% 60%, rgba(43, 156, 226, 0.65) 0%, transparent 65%),
+        radial-gradient(ellipse 55% 75% at 95% 15%, rgba(144, 57, 249, 0.50) 0%, transparent 60%),
+        radial-gradient(ellipse 70% 80% at 85% 95%, rgba(255, 83, 127, 0.65) 0%, transparent 65%),
+        #2b2666;
     width: 100%;
 }
 .ri-contact-band-inner {
@@ -1703,29 +1707,34 @@ article {
     }
 }
 
-/* ── CIM stat chips ── */
+/* ── CIM stat cards ── */
 .ri-cim-stats {
-    display: flex;
-    gap: 28px;
-    margin: 12px 0 16px;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin: 24px 0 20px;
 }
 .ri-cim-stat {
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
+    background: rgba(255,255,255,0.10);
+    border: 1px solid rgba(255,255,255,0.14);
+    border-radius: 14px;
+    padding: 20px 18px 16px;
+    min-height: 120px;
 }
 .ri-cim-stat-n {
-    font-size: 3rem;
+    font-size: clamp(2rem, 2.8vw, 2.8rem);
     font-weight: 800;
-    color: #150e51;
     line-height: 1;
 }
 .ri-cim-stat-l {
     font-size: 11px;
     text-transform: uppercase;
     letter-spacing: .06em;
-    color: #2b9ce2;
-    margin-top: 3px;
+    margin-top: 12px;
+    opacity: 0.75;
 }
 
 /* ── Editorial service strips ── */
@@ -1775,11 +1784,11 @@ article {
 }
 
 .ri-svc-strip-stat {
-    font-size: 3rem;
+    font-size: clamp(3rem, 4vw, 4.5rem);
     font-weight: 800;
     color: var(--ri-heading);
     line-height: 1;
-    margin-bottom: 3px;
+    margin-bottom: 4px;
 }
 
 .ri-svc-strip-stat-sub {
