@@ -206,41 +206,48 @@ html[data-page="home"] .nav-tabs button.link * {
     border-bottom-color: var(--ri-accent) !important;
     color:               var(--ri-accent) !important;
 }
-/* ── Contact — plain text link, teal underline on hover ── */
+/* ── Contact — white fill, navy border; inverts on hover ── */
 li.navbar-link a[href="/contacts"] {
-    background:      transparent !important;
-    color:           #4b5563 !important;
-    border:          none !important;
-    border-bottom:   1px solid transparent !important;
-    border-radius:   0 !important;
-    font-size:       14px !important;
+    background:      #fff !important;
+    color:           #2b2666 !important;
+    border:          1.5px solid #2b2666 !important;
+    border-radius:   7px !important;
+    font-size:       13px !important;
     font-weight:     500 !important;
-    padding:         0 2px !important;
-    opacity:         1 !important;
+    padding:         5px 14px !important;
     text-decoration: none !important;
-    transition:      border-bottom-color 0.15s, color 0.15s !important;
+    transition:      background 0.15s, color 0.15s !important;
 }
 li.navbar-link a[href="/contacts"]:hover {
-    background:          transparent !important;
-    color:               var(--ri-accent) !important;
-    border-bottom-color: var(--ri-accent) !important;
-    opacity:             1 !important;
+    background: #2b2666 !important;
+    color:      #fff !important;
 }
-/* ── Portal — coral plain text link, no box or fill ──
-   Remove the inner pill span's background; override link and descendant
-   text colour to coral.                                                   */
+/* ── Portal — navy fill, white text; inverts on hover ──
+   mint theme: visual background is inner <span class="absolute inset-0">.
+   We set navy on the span, add a matching border on the <a>, and invert
+   both on hover. overflow:hidden clips the span corners to the <a> radius. */
+#topbar-cta-button a {
+    border:        1.5px solid #2b2666 !important;
+    border-radius: 7px !important;
+    overflow:      hidden !important;
+    transition:    color 0.15s !important;
+}
 #topbar-cta-button a span.absolute {
-    background: transparent !important;
+    background:  #2b2666 !important;
+    transition:  background 0.15s !important;
 }
 #topbar-cta-button a,
 #topbar-cta-button a * {
-    color:       #ff537f !important;
-    font-weight: 600 !important;
+    color:       #fff !important;
+    font-weight: 500 !important;
+}
+#topbar-cta-button a:hover span.absolute {
+    background: #fff !important;
 }
 #topbar-cta-button a:hover,
 #topbar-cta-button a:hover * {
-    color:   #ff537f !important;
-    opacity: 0.7 !important;
+    color:   #2b2666 !important;
+    opacity: 1 !important;
 }
 /* ── Tables ── */
 .prose table,
