@@ -175,40 +175,40 @@ li[data-group-tag]:first-child {
 }
 
 /* ── Homepage — suppress active tab styling ──
-   toc-fix.js sets data-page="home" on <html> when on /. CSS takes over from
-   there so Mintlify's active-tab classes/attrs can't re-assert bold or colour. */
-html[data-page="home"] .nav-tabs a.link,
-html[data-page="home"] .nav-tabs a.link *,
-html[data-page="home"] .nav-tabs button.link,
-html[data-page="home"] .nav-tabs button.link * {
-    color:               unset !important;
-    font-weight:         400 !important;
-    border-bottom-color: transparent !important;
+   Pure CSS: detect the homepage by the presence of the hero element.
+   This is more reliable than JS-timing the data-page attribute approach. */
+body:has(.ri-text-hero) .nav-tabs a.link,
+body:has(.ri-text-hero) .nav-tabs a.link *,
+body:has(.ri-text-hero) .nav-tabs button[aria-haspopup="menu"]:not(#localization-select-trigger),
+body:has(.ri-text-hero) .nav-tabs button[aria-haspopup="menu"]:not(#localization-select-trigger) * {
+    color:       #374151 !important;
+    font-weight: 400 !important;
+    background:  transparent !important;
 }
 
-/* ── Navbar — tab strip underline ──
-   mint theme: tabs are a.link inside .nav-tabs.
-   Active: teal text + 1px teal underline. No font-weight change.
-   margin-bottom: -1px pulls each tab down so its border-bottom sits exactly
-   on the navbar's grey divider line, covering it rather than floating above it
-   (which would cause a doubled teal+grey look on hover).                    */
+/* ── Navbar — tab hover: background pill (no underline) ──
+   Removes the border-bottom / margin-bottom trick entirely.
+   Hover shows a subtle fill chip; active shows blue text + slightly
+   stronger fill. No underline means no interaction with the navbar divider. */
 .nav-tabs a.link,
 .nav-tabs button[aria-haspopup="menu"]:not(#localization-select-trigger) {
-    border-bottom:  1px solid transparent !important;
-    padding-bottom: 2px !important;
-    margin-bottom:  -1px !important;
-    transition:     border-bottom-color 0.15s, color 0.15s !important;
+    border-radius: 6px !important;
+    padding:       4px 10px !important;
+    margin-bottom: 0 !important;
+    transition:    background 0.15s, color 0.15s !important;
 }
 .nav-tabs a.link:hover,
 .nav-tabs button[aria-haspopup="menu"]:not(#localization-select-trigger):hover {
-    border-bottom-color: var(--ri-accent) !important;
+    background: rgba(0, 0, 0, 0.06) !important;
+    color:      #0a0a0a !important;
 }
 .nav-tabs a.link[data-active="true"],
 .nav-tabs a.link[aria-current="page"],
 .nav-tabs button[aria-haspopup="menu"]:not(#localization-select-trigger)[data-active="true"],
 .nav-tabs button[aria-haspopup="menu"]:not(#localization-select-trigger)[data-state="open"] {
-    border-bottom-color: var(--ri-accent) !important;
-    color:               var(--ri-accent) !important;
+    background: rgba(43, 156, 226, 0.10) !important;
+    color:      var(--ri-accent) !important;
+    font-weight: 500 !important;
 }
 /* ── Contact — plain text link, no box ── */
 li.navbar-link a[href="/contacts"] {
