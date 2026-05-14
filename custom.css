@@ -928,17 +928,16 @@ body:has(.ri-text-hero) main {
     margin: 0;
     padding: 80px 8vw 64px;
     width: 100%;
-    background-color: var(--ri-navy);
-    background-image: url('/images/hub_hero_4.jpg');
-    background-size: cover;
-    background-position: center right;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    color: #fff;
+    background:
+        radial-gradient(ellipse 55% 85% at 2% 50%, rgba(43, 156, 226, 0.22) 0%, transparent 70%),
+        radial-gradient(ellipse 42% 58% at 98% 12%, rgba(144, 57, 249, 0.16) 0%, transparent 65%),
+        radial-gradient(ellipse 60% 65% at 96% 96%, rgba(255, 83, 127, 0.24) 0%, transparent 65%),
+        #ffffff;
+    color: var(--ri-navy);
     position: relative;
 }
 @media (max-width: 768px) {
-    .ri-text-hero { background-image: none; padding: 48px 6vw 40px; }
+    .ri-text-hero { padding: 48px 6vw 40px; }
 }
 .ri-text-hero-eyebrow {
     font-size: 11px; font-weight: 700; letter-spacing: .15em;
@@ -946,7 +945,7 @@ body:has(.ri-text-hero) main {
     margin: 0 0 18px;
 }
 .ri-text-hero h1 {
-    color: #fff !important;
+    color: var(--ri-navy) !important;
     font-size: clamp(26px, 2.6vw, 36px);
     font-weight: 800; letter-spacing: -.02em;
     line-height: 1.1; margin: 0 0 22px;
@@ -955,7 +954,7 @@ body:has(.ri-text-hero) main {
     color: var(--ri-hero-accent) !important;
 }
 .ri-text-hero-desc {
-    color: rgba(255,255,255,.78);
+    color: #4b5563;
     font-size: 16px; line-height: 1.65;
     margin: 0 0 34px;
 }
@@ -971,26 +970,26 @@ body:has(.ri-text-hero) main {
 }
 .ri-text-hero-btn-primary:hover { opacity: .9; }
 .ri-text-hero-btn-secondary {
-    background: rgba(255,255,255,.08); color: #fff !important;
+    background: transparent; color: var(--ri-navy) !important;
     padding: 12px 24px; border-radius: 8px;
     font-weight: 600; font-size: 14px;
     text-decoration: none !important;
-    border: 1px solid rgba(255,255,255,.22);
+    border: 1px solid rgba(43, 38, 102, 0.22);
     transition: background .15s, border-color .15s;
 }
 .ri-text-hero-btn-secondary:hover {
-    background: rgba(255,255,255,.14);
-    border-color: rgba(255,255,255,.4);
+    background: rgba(43, 38, 102, 0.05);
+    border-color: rgba(43, 38, 102, 0.4);
 }
 /* Hero search hint */
 .ri-text-hero-search-hint {
     margin-top: 16px;
-    font-size: 12px; color: rgba(255,255,255,.45);
+    font-size: 12px; color: rgba(43, 38, 102, 0.40);
 }
 .ri-kbd {
     display: inline-block;
-    background: rgba(255,255,255,.12); color: rgba(255,255,255,.7);
-    border: 1px solid rgba(255,255,255,.18);
+    background: rgba(43, 38, 102, 0.06); color: rgba(43, 38, 102, 0.50);
+    border: 1px solid rgba(43, 38, 102, 0.14);
     border-radius: 4px;
     padding: 1px 5px; font-size: 11px; font-family: inherit;
     letter-spacing: .02em;
