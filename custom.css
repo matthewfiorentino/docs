@@ -2391,3 +2391,10 @@ footer a:hover {
         font-size: 12px;
     }
 }
+
+/* ── Chat assistant send button ──────────────────────────────────────────
+   bg-primary/30 requires --primary in RGB channel format to apply opacity;
+   ours is hex so the button renders transparent. Fix directly. */
+.chat-assistant-send-button {
+  background-color: rgba(43, 156, 226, 0.3) !important;
+}
