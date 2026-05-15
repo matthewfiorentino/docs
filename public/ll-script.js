@@ -3856,7 +3856,7 @@ function llBuildLibrary() {
       LL_LIBRARY.push({
         id: 'dr-' + slug,
         kind: 'doc-review',
-        title: dr.title || slug,
+        title: dr.title || ('Document review — ' + (LL_TOPIC_LABEL[slug] || slug)),
         topicId: slug,
         topicLabel: dr.topicLabel || LL_TOPIC_LABEL[slug] || '',
         moment: ['solve','change'],
