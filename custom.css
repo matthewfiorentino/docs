@@ -634,7 +634,7 @@ body:has(.ri-text-hero) main {
 }
 .ri-role-panel { animation: ri-fade-up .22s ease both; }
 .ri-role-panel-slot--hidden .ri-role-panel { animation: none; }
-.ri-role-framing { font-size: 16px; line-height: 1.65; color: var(--ri-text-body); margin: 0 0 1.5rem; max-width: 680px; }
+.ri-role-framing { font-size: 16px; line-height: 1.65; color: var(--ri-text-body); margin: 0 0 2rem; max-width: 680px; }
 
 /* Detail card grid */
 .ri-dcard-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-bottom: 1.5rem; }
