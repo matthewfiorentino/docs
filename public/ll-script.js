@@ -1077,7 +1077,7 @@ var KP_INSPECTION = [
     prep:'Where is the contemporaneous documentation? Is there a study log entry, email, or source document note timed to the actual day the site learned of the event?',
     model:'The SAE report is here. The site awareness date is [date]. The contemporaneous documentation is the study log entry from [date] at [time], recording the call from the participant’s family. The SAE form was initiated the same day and submitted to the sponsor within [X] hours per our protocol. Dr. [name]’s causality assessment is documented here, signed and dated [date].',
     gap:'“The awareness date is when we filled in the form.” No supporting documentation of the original notification. Or a study log entry that was clearly written after the fact. The SAE form date used as a proxy for awareness date is a common finding.',
-    ref:'ICH E6(R3) §2.7.2 · ALCOA+ (contemporaneous) · C.05.014' },
+    ref:'ICH E6(R3) §2.7.2 · ALCOA+ · C.05.014' },
 
   { id:'insp-sae-2', type:'inspection', topic:'Adverse Events and SAE Reporting', topicId:'sae', applies:'interventional',
     q:'This SAE was assessed as “not related.” The IB version in the participant’s file is version 4.1. I see the sponsor sent version 5.0 two months before this event, which added this type of event to the known reactions list. Did your site receive version 5.0?',
@@ -1195,7 +1195,7 @@ var KP_INSPECTION = [
     prep:'Look at those three notes before the inspector does. Are they individualized? If similar, can you explain what is genuinely different?',
     model:'[If individualized:] Here are the three notes. Each reflects individual clinical findings — some standard procedural language is similar but participant-specific observations are individualized. [If copies:] I need to be transparent — these notes have identical text. This was an error — our CRC used one note as a template. The visits occurred and data was collected, but the notes don’t reflect individual findings. Our CAPA is [describe].',
     gap:'Template note copying across participant files, particularly at high visit volumes. Standard language for procedures is acceptable; copying participant-specific observations is not.',
-    ref:'ALCOA+ (Accurate, Contemporaneous) · ICH E6(R3) §2.12' },
+    ref:'ALCOA+ · ICH E6(R3) §2.12' },
   { id:'insp-dat-4', type:'inspection', topic:'Data Integrity', topicId:'data', applies:'all',
     q:'Your eCRF system — is it validated? Show me the validation documentation and demonstrate the audit trail function.',
     prep:'Where is the validation documentation in the ISF? Can you demonstrate the audit trail live?',
@@ -1207,7 +1207,7 @@ var KP_INSPECTION = [
     prep:'Do you know what happened? Is there a Note to File? A deviation report? Can you explain this without saying “we forgot”?',
     model:'The Week 12 blood draw was not obtained — the participant declined. [If Note to File:] Here is a Note to File documenting this, signed by [PI/CRC] on [date]. The event is also a logged deviation — here is the entry and CAPA. [If no Note to File:] We need to create one. Our procedure now requires a CRF notation and Note to File for any missing required data.',
     gap:'“We forgot to fill it in.” Or: “Nothing happened that visit.” Blank required CRF fields are not invisible — they require explanation, especially for primary or safety endpoints.',
-    ref:'ALCOA+ (Complete) · ICH E6(R3) §2.12 · C.05.012' },
+    ref:'ALCOA+ · ICH E6(R3) §2.12 · C.05.012' },
 
   /* ── RECRUITMENT AND SCREENING: 5 prompts ── */
   { id:'insp-rec-1', type:'inspection', topic:'Recruitment and Screening', topicId:'recruitment', applies:'all',
@@ -1236,7 +1236,7 @@ var KP_INSPECTION = [
     prep:'Where is the 7.9% result documented? Is it on the eligibility checklist? Is there documented protocol justification for the repeat test?',
     model:'The protocol section [X] allows a repeat screening test at the MUHC lab when an outside result is borderline due to inter-laboratory variability. The outside lab value of 7.9% is documented here in the participant file. Dr. Pham reviewed it and authorized a repeat per protocol section [X]. Both results appear on the eligibility checklist with their dates and lab sources, along with Dr. Pham’s authorization.',
     gap:'“We repeated the test and it was in range.” Without documentation of the first result or protocol justification for repeating. Recording only the qualifying value while omitting the borderline result creates an incomplete eligibility record.',
-    ref:'Protocol eligibility procedures · ICH E6(R3) §2.4.1 · ALCOA+ (Complete)' },
+    ref:'Protocol eligibility procedures · ICH E6(R3) §2.4.1 · ALCOA+' },
 
   { id:'insp-rec-5', type:'inspection', topic:'Recruitment and Screening', topicId:'recruitment', applies:'all',
     q:'How are you using OACIS to identify potential participants? Is there REB authorization for this activity?',
@@ -2108,7 +2108,7 @@ var KP_DR_EXERCISES = {
         problem:'Participant signed May 14. PI signed May 18 — four days later.',
         why:'This creates a documentation anomaly: the PI’s signature implies review and approval, but it occurred 4 days after the participant signed. A monitor seeing this pattern will ask whether the PI was present for the consent discussion, and what the PI signature actually represents.',
         fix:'If the PI signature indicates review of the consent process (not presence during the discussion), that should be clearly defined in the protocol or SOP. The delay is more explainable in that context — but it still looks like a retrospective endorsement and requires explanation.',
-        ref:'ICH E6(R3) §2.8.5 · SOP-CR-008 · ALCOA+ (contemporaneous)' },
+        ref:'ICH E6(R3) §2.8.5 · SOP-CR-008 · ALCOA+' },
       { type:'flag', who:'André Tremblay (CRC)',
         problem:'A CRC conducted the consent discussion for a participant with mild Alzheimer’s disease.',
         why:'For a study involving participants with cognitive impairment, the consent discussion by a CRC rather than a physician warrants scrutiny. Was André delegated for consent? Is he qualified under applicable law for this population? The delegation log should confirm authorization.',
@@ -2127,7 +2127,7 @@ var KP_DR_EXERCISES = {
         problem:'Site awareness date recorded as March 17 (Monday) — but Sophie received the voicemail on Friday March 14 at 4:48 PM.',
         why:'Writing Monday as the awareness date when the site became aware on Friday is falsification of a regulatory record. The reporting clock under the protocol and under Division 5 both run from awareness date. Recording Monday makes the timeline appear compliant when it may not be.',
         fix:'The awareness date should be March 14. The form can note that the PI was unreachable, a sub-investigator was contacted by phone for preliminary assessment, and the form was completed Monday. Both dates should be accurate with the reason for the gap explained.',
-        ref:'ICH E6(R3) §2.7.2 · ALCOA+ (contemporaneous, accurate) · C.05.014' },
+        ref:'ICH E6(R3) §2.7.2 · ALCOA+ · C.05.014' },
       { type:'error', who:'Relatedness assessed by CRC',
         problem:'The relatedness assessment (“possibly related”) is entered by Sophie Martin, CRC.',
         why:'Causality assessment is a medical judgment that must be made by a qualified physician. Sophie is delegated for SAE documentation and source record completion — not medical assessment. Dr. Beaumont gave a verbal assessment but it is not documented and she did not sign the field.',
@@ -2142,7 +2142,7 @@ var KP_DR_EXERCISES = {
         problem:'Dr. Ndiaye signed March 21 — 7 days after site awareness on March 14.',
         why:'The SAE was submitted to the sponsor on March 18 (Tuesday) without any physician signature — Dr. Beaumont verbally assessed but did not sign anything. The form was submitted without complete medical authorization. Dr. Ndiaye’s signature 7 days later raises the question of who authorized the submission.',
         fix:'The preliminary SAE form should have been submitted with a note identifying Dr. Beaumont’s verbal assessment and indicating the form was pending formal physician signature. Dr. Beaumont should have signed the form when she returned Monday, not Dr. Ndiaye a week later.',
-        ref:'ICH E6(R3) §2.7.2 · SOP-CR-012 · ALCOA+ (attributable)' },
+        ref:'ICH E6(R3) §2.7.2 · SOP-CR-012 · ALCOA+' },
       { type:'error', who:'REB notification',
         problem:'No REB notification submitted as of March 21 — 7 days after site awareness.',
         why:'The MUHC REB has its own SAE/SUSAR notification requirements that run independently of the sponsor’s Health Canada reporting obligations. The site cannot wait for the sponsor to file before notifying the REB. Given that this event may be a SUSAR under the correct IB version, the urgency is heightened.',
@@ -2225,7 +2225,7 @@ var KP_DR_EXERCISES = {
         problem:'“The CRC was not able to process the SAE until Monday.” Processing capacity does not change awareness.',
         why:'The site awareness date is when the CRC received the call — Friday at 4:48 PM. The response implicitly acknowledges the Monday date is wrong, without acknowledging that this is incorrect documentation of a regulatory record. This is a more serious framing problem than the original error.',
         fix:'“We acknowledge the site awareness date should be March 14, the date the CRC received the call. The March 17 entry was an error. We have filed a corrected SAE narrative noting the actual awareness date of March 14 and confirming our reporting obligations were met within the required timeline from that date. CAPA: revised SAE procedure requiring immediate source document notation of all participant communications including date and time of awareness.”',
-        ref:'ICH E6(R3) §2.7.2 · ALCOA+ (accurate, contemporaneous) · C.05.014' }
+        ref:'ICH E6(R3) §2.7.2 · ALCOA+ · C.05.014' }
     ]
   },
 
@@ -2239,27 +2239,27 @@ var KP_DR_EXERCISES = {
         problem:'168 mmHg crossed out in red marker, 142 written above. No initials, no date, no reason. OACIS shows 168. CRF shows 142.',
         why:'ALCOA+ Attributable: who made the correction is unknown. Accurate: the change contradicts both OACIS and the original worksheet entry. The only consistent value across all sources is 168 — the “correction” appears to have introduced an error on the primary efficacy endpoint.',
         fix:'Single line through 168, initials, date, reason. Then investigate where 142 came from. If 168 is correct, the CRF must be corrected with documented rationale. This discrepancy on the primary endpoint cannot be left unexplained.',
-        ref:'ALCOA+ (Attributable, Accurate, Original) · ICH E6(R3) §2.12' },
+        ref:'ALCOA+ · ICH E6(R3) §2.12' },
       { type:'error', who:'CRF — 4-day entry delay',
         problem:'Visit date March 15; CRF entered March 19. No explanation for the delay.',
         why:'ALCOA+ Contemporaneous: the delay combined with source/CRF discrepancies and an unexplained correction suggests the CRF may have been entered from memory, not from a contemporaneous source.',
         fix:'CRF entry delays should be noted. All entries should derive from contemporaneous source documents — not from memory reconstructed days later.',
-        ref:'ALCOA+ (Contemporaneous) · ICH E6(R3) §2.12' },
+        ref:'ALCOA+ · ICH E6(R3) §2.12' },
       { type:'error', who:'Worksheet — Concomitant medications blank',
         problem:'Worksheet field is blank. CRF says “None.”',
         why:'ALCOA+ Complete and Accurate: a blank source cannot verify a CRF entry of “None.” “None” is a positive assertion that requires documentation.',
         fix:'Source documents must be completed at the visit. A blank source field is not the same as documented “None.”',
-        ref:'ALCOA+ (Complete, Accurate) · ICH E6(R3) §2.12' },
+        ref:'ALCOA+ · ICH E6(R3) §2.12' },
       { type:'error', who:'Worksheet — No signature or date',
         problem:'No handwritten signature and no date. Only a typed name: “Visit conducted by: F. Martin CRC.”',
         why:'ALCOA+ Attributable: a typed name without a handwritten signature does not satisfy attributability requirements. Source documents must be signed and dated at creation.',
         fix:'All source documents must be signed (handwritten) and dated at the time of creation.',
-        ref:'ALCOA+ (Attributable) · ICH E6(R3) §2.12' },
+        ref:'ALCOA+ · ICH E6(R3) §2.12' },
       { type:'flag', who:'CRF — PI review timing',
         problem:'PI reviewed and initialled March 22 — 7 days after the visit, 3 days after CRF entry.',
         why:'Combined with the unattributed correction and the source/CRF discrepancy, this raises a question: did Dr. Khalil actively review the 142 entry knowing OACIS showed 168? The delayed review suggests signing off rather than substantive oversight.',
         fix:'PI review should be timely and substantive. Evidence of active PI engagement with primary endpoint data should be visible in the record.',
-        ref:'ICH E6(R3) §2.1, §2.3 · ALCOA+ (Attributable)' }
+        ref:'ICH E6(R3) §2.1, §2.3 · ALCOA+' }
     ]
   },
 
@@ -2288,12 +2288,12 @@ var KP_DR_EXERCISES = {
         problem:'The eligibility checklist shows only 8.1% (MUHC lab). The outside lab result of 7.9% from 3 weeks prior is not documented.',
         why:'Both results must appear on the checklist for a complete eligibility record, regardless of which value is used. Recording only the qualifying result while omitting the borderline result is an ALCOA+ Complete violation and creates an indefensible gap if the enrollment is ever questioned.',
         fix:'Both the 7.9% (outside lab, date) and 8.1% (MUHC lab, date) should appear on the checklist, with documented protocol justification for using the MUHC result.',
-        ref:'ALCOA+ (Complete) · ICH E6(R3) §2.4.1' },
+        ref:'ALCOA+ · ICH E6(R3) §2.4.1' },
       { type:'error', who:'PT-007 checklist — no source references',
         problem:'No criterion has a source reference. It is impossible to verify how any eligibility determination was made.',
         why:'An inspector cannot assess whether PT-007 genuinely met all eligibility criteria. For Inclusion 2 (Type 2 diabetes ≥1 year): which OACIS record? For Exclusion 1 (no insulin): self-report, medication list, or clinical record? Every criterion requires a traceable source.',
         fix:'Each criterion entry should reference the specific source document, date, and value that supports the determination.',
-        ref:'ICH E6(R3) §2.4.1 · ALCOA+ (Attributable, Accurate)' },
+        ref:'ICH E6(R3) §2.4.1 · ALCOA+' },
       { type:'error', who:'PT-007 checklist — no PI review',
         problem:'The PI review field is blank. Only Marco Ricci (CRC) has confirmed eligibility.',
         why:'Eligibility determination for a study with specific laboratory thresholds requires PI review and sign-off before enrollment. A CRC confirming eligibility without documented PI review is working outside the appropriate scope of delegation for this type of clinical judgment.',
@@ -2327,7 +2327,7 @@ var KP_DR_EXERCISES = {
         problem:'The PI signed her own protocol training log.',
         why:'A training record attributable only to the person being trained does not constitute independent verification — ALCOA+ Attributable. Inspectors will question whether the PI’s training was actually conducted and reviewed.',
         fix:'Protocol training for the PI should be verified by the sponsor representative or an institutional training coordinator, not self-certified.',
-        ref:'ALCOA+ (Attributable) · ICH E6(R3) §2.3.2 · GUI-0100' },
+        ref:'ALCOA+ · ICH E6(R3) §2.3.2 · GUI-0100' },
       { type:'flag', who:'Quality culture pattern',
         problem:'Reading the table as a whole: retroactive delegation for the CRC; no GCP certificate for an RA performing study tasks since activation; outdated training for the QI and sub-investigator; self-certified PI training.',
         why:'An inspector reviewing this table would not treat these as isolated administrative gaps. Together they suggest a site where training and qualification documentation are managed reactively — and where the oversight function (the PI verifying that their team is qualified) may not be functioning as intended.',
@@ -2607,7 +2607,7 @@ var JC_SCENARIOS = [
           { text: 'Sure, it\u2019s obviously just a typo. Let me grab the correction fluid.', quality: 'fail', label: 'This compromises the source record',
             feedback: '<p>White-out (correction fluid) is <strong>never acceptable</strong> in source documents. It destroys the original entry, making it impossible to reconstruct what was initially recorded. The original value may actually be correct \u2014 a diastolic of 94 is clinically different from 84 and could affect safety assessments and eligibility.</p><p>Before correcting anything, you need to verify which value is accurate by checking the device printout or repeating the measurement. If a correction is needed, it must follow the single-line method: cross out the error with a single line (so the original remains legible), write the correct value, and add the date, your initials, and a brief reason.</p><span class="jc-fb-ref">ICH E6(R3) \u00a74 Data Governance, ALCOA+ principles \u00b7 21 CFR Part 11 \u00b7 SOP-CR-014</span>' },
           { text: 'I don\u2019t think we should white it out \u2014 that doesn\u2019t feel right. Can we just fix the eCRF instead?', quality: 'partial', label: 'Right instinct, incomplete reasoning',
-            feedback: '<p>You correctly identified that white-out is wrong, but <strong>jumping to fix the eCRF assumes the eCRF value is the error</strong>. You don\u2019t actually know which number is correct yet. The source document records 94; the eCRF says 84. The discrepancy could be a transcription error in either direction.</p><p>The correct first step is to verify the original measurement \u2014 check the device printout or automated monitor record. Only then can you determine which document needs correction, and the correction must use proper single-line method with date, initials, and reason.</p><span class="jc-fb-ref">ICH E6(R3) \u00a74 Data Governance, ALCOA+ (original, accurate) \u00b7 SOP-CR-014</span>' },
+            feedback: '<p>You correctly identified that white-out is wrong, but <strong>jumping to fix the eCRF assumes the eCRF value is the error</strong>. You don\u2019t actually know which number is correct yet. The source document records 94; the eCRF says 84. The discrepancy could be a transcription error in either direction.</p><p>The correct first step is to verify the original measurement \u2014 check the device printout or automated monitor record. Only then can you determine which document needs correction, and the correction must use proper single-line method with date, initials, and reason.</p><span class="jc-fb-ref">ICH E6(R3) \u00a74 Data Governance, ALCOA+ \u00b7 SOP-CR-014</span>' },
           { text: 'The source document is the original record \u2014 94 might actually be the correct value. I need to check the monitor printout from the device before we decide which number to correct, and either way the correction has to be single-line with date, initials, and reason.', quality: 'good', label: 'Correct',
             feedback: '<p>This is the right response. You identified that the source document might actually hold the correct value, that verification against the device record comes first, and that any correction \u2014 to either the source or the eCRF \u2014 must follow proper correction procedures.</p><p>A CRA asking you to white-out a source entry is a significant red flag. Even well-intentioned monitors sometimes prioritize data matching over data integrity. Your job is to protect the original record.</p><span class="jc-fb-ref">ICH E6(R3) \u00a74 Data Governance, ALCOA+ principles \u00b7 21 CFR Part 11 \u00b7 SOP-CR-014</span>' }
         ]
@@ -3766,7 +3766,7 @@ function llBuildLibrary() {
       title: llShortenForCard(q.q),
       topicId: q.topicId,
       topicLabel: q.topic || LL_TOPIC_LABEL[q.topicId] || '',
-      moment: ['apply','solve'],
+      moment: (q.topicId === 'tcps2' || q.topicId === 'div5' || q.topicId === 'iso14155') ? ['apply','solve','change'] : ['apply','solve'],
       roles: LL_ROLES_BY_TOPIC[q.topicId] || ['crc','pi'],
       durationMin: 2,
       applies: q.applies || 'all',
@@ -4182,7 +4182,7 @@ function llRenderDoorway(pane, moment, triggerId, opts) {
   var meta = {
     apply:  { title:'About to do something', sub:'Pick the task you’re about to do.' },
     solve:  { title:'Something just happened', sub:'Pick what just came up.' },
-    change: { title:'Something changed',     sub:'New SOPs, refreshed regulations, jurisdiction shifts.' }
+    change: { title:'Something changed',     sub:'Refresh your knowledge when a guideline or regulation updates. Key change: ICH E6(R3) adopted in Canada April 2026.' }
   }[moment] || { title: moment, sub: '' };
 
   var html = '<h1>' + meta.title + '</h1><div class="ll-pane-sub">' + meta.sub + '</div>';
