@@ -3740,6 +3740,22 @@ var LL_LIBRARY = [];
 function llBuildLibrary() {
   LL_LIBRARY = [];
 
+  /* Helper: generate a short, card-friendly title from a long question.
+     Strips HTML, prefers the first sentence (split on ?/.); falls back
+     to a clean word-boundary truncation around 80 chars. */
+  function llShortenForCard(s) {
+    var t = (s || '').replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim();
+    if (t.length <= 80) return t;
+    /* Try first sentence */
+    var sentenceEnd = t.search(/[?.!](?:\s|$)/);
+    if (sentenceEnd > 0 && sentenceEnd <= 100) return t.slice(0, sentenceEnd + 1);
+    /* Fall back to word-boundary cut */
+    var cut = t.slice(0, 80);
+    var lastSpace = cut.lastIndexOf(' ');
+    if (lastSpace > 40) cut = cut.slice(0, lastSpace);
+    return cut + '…';
+  }
+
   /* KC items — MCQs */
   for (var i = 0; i < KP_POOL.length; i++) {
     var q = KP_POOL[i];
@@ -3747,7 +3763,7 @@ function llBuildLibrary() {
     LL_LIBRARY.push({
       id: q.id,
       kind: 'mcq',
-      title: (q.q || '').replace(/<[^>]+>/g,'').slice(0, 110),
+      title: llShortenForCard(q.q),
       topicId: q.topicId,
       topicLabel: q.topic || LL_TOPIC_LABEL[q.topicId] || '',
       moment: ['apply','solve'],
@@ -3768,7 +3784,7 @@ function llBuildLibrary() {
     LL_LIBRARY.push({
       id: ic.id,
       kind: 'inspection-card',
-      title: (ic.q || '').replace(/<[^>]+>/g,'').slice(0, 110),
+      title: llShortenForCard(ic.q),
       topicId: ic.topicId,
       topicLabel: ic.topic || LL_TOPIC_LABEL[ic.topicId] || '',
       moment: ['change','solve'],
@@ -3879,7 +3895,26 @@ function llSearch(query, filters) {
   return out;
 }
 
-/* ── Universal opener — given a library item, route to the right mode ─ */
+/* ── In-Lab navigation depth + smart-back helper ──────────────────────
+   Track how many in-Lab navigations the user has done so item back-
+   buttons can fall back to a sensible destination on deep-link entry. */
+window.__llNavDepth = window.__llNavDepth || 0;
+
+/* Smart back: history.back() if we have in-session history,
+   otherwise route to the given fallback (default: library).        */
+function llBackTo(fallback) {
+  if (window.__llNavDepth > 0) {
+    /* popstate handler will decrement on the resulting back event */
+    history.back();
+  } else {
+    llRoute(fallback || 'library');
+  }
+}
+
+/* ── Universal opener — given a library item, render directly ────────
+   Skips the legacy mode-hub render so users can never accidentally land
+   on an orphaned hub. The inner start function takes over the pane.
+   Pushes a history entry so browser back returns to the calling surface. */
 function llOpenLibraryItem(itemId, opts) {
   opts = opts || {};
   var item = null;
@@ -3896,23 +3931,34 @@ function llOpenLibraryItem(itemId, opts) {
     window.llCurrentTrackId = null;
     window.llCurrentTrackStep = 0;
   }
-  /* Route */
-  if (item.mode === 'kc') {
-    llRoute('kc');
-    /* Defer to allow renderer to mount, then start the topic */
-    setTimeout(function(){ if (typeof llKcStartTopic === 'function') { llKcStartTopic(item.openRef); } }, 30);
-  } else if (item.mode === 'te') {
-    llRoute('te');
-    setTimeout(function(){ if (typeof llTeOpenExercise === 'function') { llTeOpenExercise(item.openRef); } }, 30);
-  } else if (item.mode === 'dr') {
-    llRoute('dr');
-    setTimeout(function(){ if (typeof llDrOpenExercise === 'function') { llDrOpenExercise(item.openRef); } }, 30);
-  } else if (item.mode === 'jc') {
-    llRoute('jc');
-    setTimeout(function(){ if (typeof llJcStartScenario === 'function') { llJcStartScenario(item.openRef); } }, 30);
-  } else if (item.mode === 'insp') {
-    llRoute('insp');
-    setTimeout(function(){ if (typeof llInspStartTopic === 'function') { llInspStartTopic(item.openRef); } }, 30);
+  /* History-push policy:
+     - KC inner function does not push, so we push #item/<id> ourselves.
+     - TE / DR / JC / Insp inner functions push their own item-specific
+       hash (#team/<slug>, #docreview/<slug>, etc). We increment the
+       nav-depth counter to stay accurate.
+     - Skip both when called from URL parse to avoid double-push. */
+  llCurrentMode = item.mode;
+  if (item.mode === 'kc' && typeof llKcStartTopic === 'function') {
+    if (!opts.skipPush) {
+      var kcHash = 'item/' + item.id;
+      if (window.location.hash.replace(/^#/, '') !== kcHash) {
+        history.pushState(null, '', '#' + kcHash);
+        window.__llNavDepth++;
+      }
+    }
+    llKcStartTopic(item.openRef);
+  } else if (item.mode === 'te'   && typeof llTeOpenExercise   === 'function') {
+    llTeOpenExercise(item.openRef);
+    if (!opts.skipPush) { window.__llNavDepth++; }
+  } else if (item.mode === 'dr'   && typeof llDrOpenExercise   === 'function') {
+    llDrOpenExercise(item.openRef);
+    if (!opts.skipPush) { window.__llNavDepth++; }
+  } else if (item.mode === 'jc'   && typeof llJcStartScenario  === 'function') {
+    llJcStartScenario(item.openRef);
+    if (!opts.skipPush) { window.__llNavDepth++; }
+  } else if (item.mode === 'insp' && typeof llInspStartTopic   === 'function') {
+    llInspStartTopic(item.openRef);
+    if (!opts.skipPush) { window.__llNavDepth++; }
   }
 }
 
@@ -4000,18 +4046,30 @@ function llCardHTML(item, opts) {
 function llRenderSearch(pane, query, filters) {
   filters = filters || {};
   var results = llSearch(query, filters);
-  var titleBits = [];
-  if (filters.moment) {
-    titleBits.push({apply:'I’m about to…', solve:'Something happened…', change:'What changed…'}[filters.moment] || filters.moment);
+  /* Pick the most-specific filter for h1; show the others as small tags */
+  var h1, tags = [];
+  if (query) {
+    h1 = '“' + query + '”';
+    if (filters.topicId && LL_TOPIC_LABEL[filters.topicId]) tags.push(LL_TOPIC_LABEL[filters.topicId]);
+    if (filters.moment)  tags.push({apply:'Apply',solve:'Solve',change:'Change'}[filters.moment] || filters.moment);
+  } else if (filters.topicId && LL_TOPIC_LABEL[filters.topicId]) {
+    h1 = LL_TOPIC_LABEL[filters.topicId];
+    if (filters.moment)  tags.push({apply:'Apply',solve:'Solve',change:'Change'}[filters.moment] || filters.moment);
+  } else if (filters.moment) {
+    h1 = {apply:'Apply',solve:'Solve',change:'Change'}[filters.moment] || filters.moment;
+  } else {
+    h1 = 'Search';
   }
-  if (filters.topicId && LL_TOPIC_LABEL[filters.topicId]) { titleBits.push(LL_TOPIC_LABEL[filters.topicId]); }
-  if (query) { titleBits.push('“' + query + '”'); }
-  var h1 = titleBits.length ? titleBits.join(' · ') : 'Search';
-  var sub = results.length + ' result' + (results.length === 1 ? '' : 's');
-  var html = '<div class="ll-breadcrumb"><button class="ll-back-btn" onclick="llRoute(\'about\')">&#8592; Lab home</button></div>';
-  html += '<h1>' + h1 + '</h1><div class="ll-pane-sub">' + sub + '</div>';
+  var html = '<div class="ll-breadcrumb"><button class="ll-back-btn" onclick="llBackTo(\'about\')">&#8592; Lab home</button></div>';
+  html += '<h1>' + h1 + '</h1>';
+  if (tags.length) {
+    html += '<div class="ll-search-tags">';
+    for (var t = 0; t < tags.length; t++) html += '<span class="ll-search-tag">' + tags[t] + '</span>';
+    html += '</div>';
+  }
+  html += '<div class="ll-pane-sub">' + results.length + ' result' + (results.length === 1 ? '' : 's') + '</div>';
   if (results.length === 0) {
-    html += '<div class="ll-stub" style="padding:24px 0">No matches.</div>';
+    html += '<div class="ll-stub" style="padding:24px 0">No matches. Try a broader term or browse the <a href="#" onclick="event.preventDefault();llRoute(\'library\');return false">Library</a>.</div>';
   } else {
     html += '<div class="ll-card-grid">';
     for (var i = 0; i < results.length; i++) { html += llCardHTML(results[i]); }
@@ -4035,7 +4093,7 @@ function llRenderTopic(pane, topicId) {
     (byKind[items[i].kind] = byKind[items[i].kind] || []).push(items[i]);
   }
 
-  var html = '<div class="ll-breadcrumb"><button class="ll-back-btn" onclick="llRoute(\'library\')">&#8592; Library</button></div>';
+  var html = '<div class="ll-breadcrumb"><button class="ll-back-btn" onclick="llBackTo(\'library\')">&#8592; Library</button></div>';
   html += '<h1>' + topicLabel + '</h1>';
   html += '<div class="ll-pane-sub">' + items.length + ' item' + (items.length === 1 ? '' : 's') + '.</div>';
 
@@ -4085,7 +4143,8 @@ function llRenderTrack(pane, trackId) {
       act = ' onclick="llOpenLibraryItem(\'' + libItem.id + '\', {trackId:\'' + trackId + '\', trackStep:' + s + '})"';
     } else if (it.mode === 'kc' || it.mode === 'insp') {
       var fn = it.mode === 'kc' ? 'llKcStartTopic' : 'llInspStartTopic';
-      act = ' onclick="window.llCurrentTrackId=\'' + trackId + '\';window.llCurrentTrackStep=' + s + ';llRoute(\'' + it.mode + '\');setTimeout(function(){' + fn + '(\'' + it.ref + '\')},30)"';
+      /* Same pattern as llOpenLibraryItem: call inner directly, no mode-hub render */
+      act = ' onclick="window.llCurrentTrackId=\'' + trackId + '\';window.llCurrentTrackStep=' + s + ';' + fn + '(\'' + it.ref + '\');window.__llNavDepth=(window.__llNavDepth||0)+1"';
     }
     html += '<li class="ll-track-step"' + act + '>';
     html +=   '<div class="ll-track-step-num">' + (s + 1) + '</div>';
@@ -4096,7 +4155,7 @@ function llRenderTrack(pane, trackId) {
     html += '</li>';
   }
   html += '</ol>';
-  html += '<div style="margin-top:24px"><button class="ll-back-btn" onclick="llRoute(\'about\')">&#8592; Lab home</button></div>';
+  html += '<div style="margin-top:24px"><button class="ll-back-btn" onclick="llBackTo(\'about\')">&#8592; Lab home</button></div>';
   pane.innerHTML = html;
 }
 
@@ -4105,11 +4164,25 @@ function llRenderTrack(pane, trackId) {
    same surface, so the back button from any opened item returns to
    the doorway (not to a separate library-looking page). The doorway
    accepts an optional triggerId to render a chip as already selected. */
-function llRenderDoorway(pane, moment, triggerId) {
+/* Cap inline results at this many; deeper sets get a "Show all" reveal */
+var LL_DOORWAY_RESULT_CAP = 12;
+
+/* Compute results for a trigger (used both by chip-count and by render) */
+function llTriggerResults(trigger) {
+  if (!trigger) return [];
+  var filters = {};
+  if (trigger.moment)  filters.moment  = trigger.moment;
+  if (trigger.topicId) filters.topicId = trigger.topicId;
+  if (trigger.kind)    filters.kind    = trigger.kind;
+  return llSearch('', filters);
+}
+
+function llRenderDoorway(pane, moment, triggerId, opts) {
+  opts = opts || {};
   var meta = {
-    apply:  { title:'I’m about to…', sub:'Pick the task you’re about to do.' },
-    solve:  { title:'Something happened…', sub:'Pick what just came up.' },
-    change: { title:'What changed…', sub:'New SOPs, refreshed regulations, jurisdiction shifts.' }
+    apply:  { title:'About to do something', sub:'Pick the task you’re about to do.' },
+    solve:  { title:'Something just happened', sub:'Pick what just came up.' },
+    change: { title:'Something changed',     sub:'New SOPs, refreshed regulations, jurisdiction shifts.' }
   }[moment] || { title: moment, sub: '' };
 
   var html = '<h1>' + meta.title + '</h1><div class="ll-pane-sub">' + meta.sub + '</div>';
@@ -4118,9 +4191,10 @@ function llRenderDoorway(pane, moment, triggerId) {
     var tr = LL_TRIGGERS[i];
     if (tr.moment !== moment) continue;
     var isSelected = triggerId === tr.id;
+    var count = llTriggerResults(tr).length;
     html += '<button class="ll-chip' + (isSelected ? ' selected' : '') +
       '" onclick="llRoute(\'doorway\',{moment:\'' + moment + '\',triggerId:\'' + tr.id + '\',replace:true})">' +
-      tr.label + '</button>';
+      tr.label + '<span class="ll-chip-count">' + count + '</span></button>';
   }
   html += '</div>';
 
@@ -4128,49 +4202,72 @@ function llRenderDoorway(pane, moment, triggerId) {
   if (triggerId) {
     var trigger = null;
     for (var ti = 0; ti < LL_TRIGGERS.length; ti++) { if (LL_TRIGGERS[ti].id === triggerId) { trigger = LL_TRIGGERS[ti]; break; } }
-    var filters = {};
-    if (trigger) {
-      if (trigger.moment)  filters.moment  = trigger.moment;
-      if (trigger.topicId) filters.topicId = trigger.topicId;
-      if (trigger.kind)    filters.kind    = trigger.kind;
-    }
-    var results = llSearch('', filters);
+    var results = llTriggerResults(trigger);
+    var capExceeded = !opts.showAll && results.length > LL_DOORWAY_RESULT_CAP;
+    var displayResults = capExceeded ? results.slice(0, LL_DOORWAY_RESULT_CAP) : results;
+
     html += '<div class="ll-doorway-results">';
     html += '<div class="ll-section-head" style="font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--ll-text-3);margin-bottom:10px">' +
-      results.length + ' item' + (results.length === 1 ? '' : 's') + ' for "' + (trigger ? trigger.label : '') + '"</div>';
+      results.length + ' item' + (results.length === 1 ? '' : 's') +
+      (capExceeded ? ' (showing first ' + LL_DOORWAY_RESULT_CAP + ')' : '') +
+      '</div>';
     if (results.length === 0) {
-      html += '<div class="ll-stub" style="padding:14px 0">No items yet. Try another chip above.</div>';
+      html += '<div class="ll-stub" style="padding:14px 0">No items match this yet. Try another chip above, or browse the <a href="#" onclick="event.preventDefault();llRoute(\'library\');return false">Library</a>.</div>';
     } else {
       html += '<div class="ll-card-grid">';
-      for (var r = 0; r < results.length; r++) { html += llCardHTML(results[r]); }
+      for (var r = 0; r < displayResults.length; r++) { html += llCardHTML(displayResults[r]); }
       html += '</div>';
+      if (capExceeded) {
+        /* "Show all" expands by re-rendering with no cap; uses a flag in opts */
+        html += '<div style="margin-top:14px"><button class="ll-doorway-showall" ' +
+          'onclick="llRoute(\'doorway\',{moment:\'' + moment + '\',triggerId:\'' + triggerId + '\',showAll:true,replace:true})">' +
+          'Show all ' + results.length + ' items →</button></div>';
+      }
     }
     html += '</div>';
   }
 
-  html += '<div style="margin-top:18px"><button class="ll-back-btn" onclick="llRoute(\'about\')">&#8592; Lab home</button></div>';
+  html += '<div style="margin-top:18px"><button class="ll-back-btn" onclick="llBackTo(\'about\')">&#8592; Lab home</button></div>';
+  pane.innerHTML = html;
+}
+
+/* ── Render: Tracks list (curated solo paths) ──────────────────────── */
+function llRenderTracksList(pane) {
+  var html = '<h1>Practice paths</h1>';
+  html += '<div class="ll-pane-sub">Curated sequences for working through a single task end-to-end.</div>';
+  html += '<div class="ll-track-grid">';
+  for (var t = 0; t < LL_TRACKS.length; t++) {
+    var tr = LL_TRACKS[t];
+    html += '<button class="ll-track-card" onclick="llRoute(\'track\',{trackId:\'' + tr.id + '\'})">';
+    html +=   '<div class="ll-track-card-title">' + tr.title + '</div>';
+    html +=   '<div class="ll-track-card-desc">' + tr.desc + '</div>';
+    html +=   '<div class="ll-track-card-meta">' + tr.durationMin + ' min · ' + tr.items.length + ' steps</div>';
+    html += '</button>';
+  }
+  html += '</div>';
+  html += '<div style="margin-top:24px"><button class="ll-back-btn" onclick="llBackTo(\'about\')">&#8592; Lab home</button></div>';
   pane.innerHTML = html;
 }
 
 /* ── Render: facilitator Sessions list ──────────────────────────────── */
 function llRenderSessionsList(pane) {
   var html = '<h1>Facilitated sessions</h1>';
-  html += '<div class="ll-pane-sub">Packs for team meetings. Timing cues and facilitator notes per item; printable.</div>';
+  html += '<div class="ll-pane-sub">Packs for team meetings, with facilitator notes and timing.</div>';
   html += '<div class="ll-sessions-grid">';
   for (var i = 0; i < LL_SESSIONS.length; i++) {
     var s = LL_SESSIONS[i];
     html += '<button class="ll-session-card" onclick="llRoute(\'session\',{sessionId:\'' + s.id + '\'})">';
     html +=   '<div class="ll-session-card-head">';
     html +=     '<span class="ll-session-card-dur">' + s.durationMin + ' min</span>';
-    html +=     '<span class="ll-session-card-aud">' + s.audience + '</span>';
     html +=   '</div>';
     html +=   '<div class="ll-session-card-title">' + s.title + '</div>';
+    html +=   '<div class="ll-session-card-aud">For: ' + s.audience + '</div>';
     html +=   '<div class="ll-session-card-overview">' + s.overview + '</div>';
     html +=   '<div class="ll-session-card-meta">' + s.items.length + ' items · ' + s.reflection.length + ' reflection prompt' + (s.reflection.length === 1 ? '' : 's') + '</div>';
     html += '</button>';
   }
   html += '</div>';
-  html += '<div style="margin-top:24px"><button class="ll-back-btn" onclick="llRoute(\'about\')">&#8592; Lab home</button></div>';
+  html += '<div style="margin-top:24px"><button class="ll-back-btn" onclick="llBackTo(\'about\')">&#8592; Lab home</button></div>';
   pane.innerHTML = html;
 }
 
@@ -4212,9 +4309,9 @@ function llRenderSession(pane, sessionId) {
     if (libItem) {
       openAct = 'llOpenLibraryItem(\'' + libItem.id + '\')';
     } else if (it.mode === 'kc') {
-      openAct = 'llRoute(\'kc\');setTimeout(function(){llKcStartTopic(\'' + it.ref + '\')},30)';
+      openAct = 'llKcStartTopic(\'' + it.ref + '\');window.__llNavDepth=(window.__llNavDepth||0)+1';
     } else if (it.mode === 'insp') {
-      openAct = 'llRoute(\'insp\');setTimeout(function(){llInspStartTopic(\'' + it.ref + '\')},30)';
+      openAct = 'llInspStartTopic(\'' + it.ref + '\');window.__llNavDepth=(window.__llNavDepth||0)+1';
     }
 
     html += '<li class="ll-session-item">';
@@ -4254,46 +4351,72 @@ function llRenderSession(pane, sessionId) {
   pane.innerHTML = html;
 }
 
-/* ── Render: library (topic index — grid of topic cards) ─────────────── */
+/* ── Render: library (topic index — grouped by Core / Jurisdiction) ─── */
+var LL_TOPIC_GROUPS = {
+  core:         ['consent', 'sae', 'delegation', 'deviations', 'monitoring', 'data', 'recruitment', 'gcp'],
+  jurisdiction: ['tcps2', 'div5', 'iso14155']
+};
+
+/* Short labels for the kind breakdown on Library cards */
+var LL_KIND_SHORT = {
+  'mcq':             'MCQ',
+  'inspection-card': 'inspection prep',
+  'scenario':        'scenarios',
+  'team-exercise':   'team exercises',
+  'doc-review':      'doc reviews'
+};
+
 function llRenderLibrary(pane) {
-  var topicOrder = ['consent', 'sae', 'delegation', 'deviations', 'monitoring', 'data', 'recruitment', 'gcp', 'tcps2', 'div5', 'iso14155'];
   var byTopic = {};
   for (var i = 0; i < LL_LIBRARY.length; i++) {
     var it = LL_LIBRARY[i];
     var tid = it.topicId || 'other';
     (byTopic[tid] = byTopic[tid] || []).push(it);
   }
+  var topicCount = Object.keys(byTopic).filter(function(k){return k!=='other';}).length;
   var html = '<h1>Library</h1>';
-  html += '<div class="ll-pane-sub">' + LL_LIBRARY.length + ' items across ' + Object.keys(byTopic).filter(function(k){return k!=='other';}).length + ' topics.</div>';
-  html += '<div class="ll-topic-grid">';
-  for (var t = 0; t < topicOrder.length; t++) {
-    var tid2 = topicOrder[t];
-    if (!byTopic[tid2]) continue;
-    var topicLabel = LL_TOPIC_LABEL[tid2] || tid2;
-    /* Count items by kind for the per-topic breakdown line */
-    var kindCounts = {};
-    for (var ki = 0; ki < byTopic[tid2].length; ki++) {
-      var k = byTopic[tid2][ki].kind;
-      kindCounts[k] = (kindCounts[k] || 0) + 1;
+  html += '<div class="ll-pane-sub">' + LL_LIBRARY.length + ' items across ' + topicCount + ' topics.</div>';
+
+  function renderTopicGroup(label, ids) {
+    var rendered = '';
+    var anyShown = 0;
+    for (var t = 0; t < ids.length; t++) {
+      var tid = ids[t];
+      if (!byTopic[tid]) continue;
+      anyShown++;
+      var topicLabel = LL_TOPIC_LABEL[tid] || tid;
+      /* Per-kind breakdown */
+      var kindCounts = {};
+      for (var ki = 0; ki < byTopic[tid].length; ki++) {
+        var k = byTopic[tid][ki].kind;
+        kindCounts[k] = (kindCounts[k] || 0) + 1;
+      }
+      var breakdown = [];
+      var kindOrder = ['mcq','inspection-card','scenario','team-exercise','doc-review'];
+      for (var ko = 0; ko < kindOrder.length; ko++) {
+        var kk = kindOrder[ko];
+        if (!kindCounts[kk]) continue;
+        breakdown.push(kindCounts[kk] + ' ' + (LL_KIND_SHORT[kk] || kk));
+      }
+      rendered += '<button class="ll-topic-card" onclick="llRoute(\'topic\',{topicId:\'' + tid + '\'})">';
+      rendered +=   '<div class="ll-topic-card-head">';
+      rendered +=     '<div class="ll-topic-card-title">' + topicLabel + '</div>';
+      rendered +=     '<div class="ll-topic-card-count">' + byTopic[tid].length + '</div>';
+      rendered +=   '</div>';
+      rendered +=   '<div class="ll-topic-card-breakdown">' + breakdown.join(' · ') + '</div>';
+      rendered += '</button>';
     }
-    var breakdown = [];
-    var kindOrder = ['mcq','inspection-card','scenario','team-exercise','doc-review'];
-    for (var ko = 0; ko < kindOrder.length; ko++) {
-      var kk = kindOrder[ko];
-      if (!kindCounts[kk]) continue;
-      var label = (LL_KIND_META[kk] && LL_KIND_META[kk].label) || kk;
-      breakdown.push(kindCounts[kk] + ' ' + label.toLowerCase());
-    }
-    html += '<button class="ll-topic-card" onclick="llRoute(\'topic\',{topicId:\'' + tid2 + '\'})">';
-    html +=   '<div class="ll-topic-card-head">';
-    html +=     '<div class="ll-topic-card-title">' + topicLabel + '</div>';
-    html +=     '<div class="ll-topic-card-count">' + byTopic[tid2].length + '</div>';
-    html +=   '</div>';
-    html +=   '<div class="ll-topic-card-breakdown">' + breakdown.join(' · ') + '</div>';
-    html += '</button>';
+    if (!anyShown) return '';
+    return '<div class="ll-topic-group">' +
+           '<div class="ll-section-head" style="font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--ll-text-3);margin:18px 0 10px">' + label + '</div>' +
+           '<div class="ll-topic-grid">' + rendered + '</div>' +
+           '</div>';
   }
-  html += '</div>';
-  html += '<div style="margin-top:24px"><button class="ll-back-btn" onclick="llRoute(\'about\')">&#8592; Lab home</button></div>';
+
+  html += renderTopicGroup('Core topics', LL_TOPIC_GROUPS.core);
+  html += renderTopicGroup('Jurisdiction overlays', LL_TOPIC_GROUPS.jurisdiction);
+
+  html += '<div style="margin-top:24px"><button class="ll-back-btn" onclick="llBackTo(\'about\')">&#8592; Lab home</button></div>';
   pane.innerHTML = html;
 }
 
@@ -4391,12 +4514,15 @@ function llRoute(modeId, opts) {
       newHash = 'sessions';
     } else if (modeId === 'session' && opts.sessionId) {
       newHash = 'session/' + opts.sessionId;
+    } else if (modeId === 'tracks') {
+      newHash = 'tracks';
     }
     var currentHash = window.location.hash.replace(/^#/, '');
     if (currentHash !== newHash) {
       var historyMethod = opts.replace ? 'replaceState' : 'pushState';
       if (newHash) { history[historyMethod](null, '', '#' + newHash); }
       else         { history[historyMethod](null, '', window.location.pathname + window.location.search); }
+      if (!opts.replace) { window.__llNavDepth = (window.__llNavDepth || 0) + 1; }
     }
   }
 
@@ -4434,12 +4560,14 @@ function llRoute(modeId, opts) {
       llRenderSearch(pane, q, filters);
       break;
     }
-    case 'doorway': llRenderDoorway(pane, opts.moment || 'apply', opts.triggerId || null); break;
+    case 'doorway': llRenderDoorway(pane, opts.moment || 'apply', opts.triggerId || null, { showAll: !!opts.showAll }); break;
     case 'track':   llRenderTrack(pane, opts.trackId); break;
     case 'topic':   llRenderTopic(pane, opts.topicId); break;
     case 'library': llRenderLibrary(pane); break;
     case 'sessions': llRenderSessionsList(pane); break;
     case 'session': llRenderSession(pane, opts.sessionId); break;
+    case 'tracks':  llRenderTracksList(pane); break;
+    case 'item':    llOpenLibraryItem(opts.itemId, { skipPush: true }); break;
     default:        pane.innerHTML = '<div class="ll-stub">Unknown mode.</div>';
   }
   pane.scrollTop = 0;
@@ -4520,31 +4648,35 @@ function llRenderAbout(pane) {
   html += '<button class="ll-library-tile" onclick="llRoute(\'library\')">';
   html +=   '<div class="ll-library-tile-body">';
   html +=     '<div class="ll-library-tile-title">Library</div>';
-  html +=     '<div class="ll-library-tile-sub">' + LL_LIBRARY.length + ' items, organised by topic.</div>';
+  html +=     '<div class="ll-library-tile-sub">All practice items, organised by topic.</div>';
+  html +=   '</div>';
+  html +=   '<svg class="ll-library-tile-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>';
+  html += '</button>';
+  html += '<button class="ll-library-tile" onclick="llRoute(\'tracks\')">';
+  html +=   '<div class="ll-library-tile-body">';
+  html +=     '<div class="ll-library-tile-title">Practice paths</div>';
+  html +=     '<div class="ll-library-tile-sub">Curated sequences for working through one task end-to-end.</div>';
   html +=   '</div>';
   html +=   '<svg class="ll-library-tile-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>';
   html += '</button>';
   html += '<button class="ll-library-tile" onclick="llRoute(\'sessions\')">';
   html +=   '<div class="ll-library-tile-body">';
   html +=     '<div class="ll-library-tile-title">Facilitated sessions</div>';
-  html +=     '<div class="ll-library-tile-sub">15, 30, and 60-minute packs for team meetings. Printable.</div>';
+  html +=     '<div class="ll-library-tile-sub">15, 30, and 60-minute packs for team meetings.</div>';
   html +=   '</div>';
   html +=   '<svg class="ll-library-tile-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>';
   html += '</button>';
   html += '</div>';
 
-  /* Tracks */
-  html += '<div class="ll-tracks">';
-  html += '<div class="ll-section-head">Practice paths <span class="ll-section-head-count">' + LL_TRACKS.length + '</span></div>';
-  html += '<div class="ll-track-grid">';
-  for (var t = 0; t < LL_TRACKS.length; t++) {
-    var tr = LL_TRACKS[t];
-    var aud = tr.audience === 'team' ? '<span class="ll-track-pill ll-track-pill-team">Team</span>' : '<span class="ll-track-pill">Solo</span>';
-    html += '<button class="ll-track-card" onclick="llRoute(\'track\',{trackId:\'' + tr.id + '\'})">';
-    html +=   '<div class="ll-track-card-head">' + aud + '<span class="ll-track-card-dur">' + tr.durationMin + ' min</span></div>';
-    html +=   '<div class="ll-track-card-title">' + tr.title + '</div>';
-    html +=   '<div class="ll-track-card-desc">' + tr.desc + '</div>';
-    html += '</button>';
+  /* Topic chip strip — quick affordance */
+  var topicOrder = ['consent', 'sae', 'delegation', 'deviations', 'monitoring', 'data', 'recruitment', 'gcp', 'tcps2', 'div5', 'iso14155'];
+  html += '<div class="ll-topics-strip" style="margin-top:24px">';
+  html += '<div class="ll-section-head" style="font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--ll-text-3);margin-bottom:8px">Topics</div>';
+  html += '<div class="ll-topics-strip-chips">';
+  for (var to = 0; to < topicOrder.length; to++) {
+    var tid = topicOrder[to];
+    if (!LL_TOPIC_LABEL[tid]) continue;
+    html += '<button class="ll-topic-chip" onclick="llRoute(\'topic\',{topicId:\'' + tid + '\'})">' + LL_TOPIC_LABEL[tid] + '</button>';
   }
   html += '</div></div>';
 
@@ -4579,7 +4711,8 @@ function llRenderTeamExercises(pane) {
   var h = (window.location.hash || '').replace(/^#/, '');
   var parts = h.split('/');
   if (parts[0] === 'team' && parts[1]) { llTeOpenExercise(parts[1]); return; }
-  llTeRenderList(pane);
+  /* Bare #te has no destination — redirect to Library */
+  llRoute('library');
 }
 
 function llTeRenderList(pane) {
@@ -4607,7 +4740,7 @@ function llTeOpenExercise(slug) {
   if (navRow) { navRow.parentNode.removeChild(navRow); }
   var navHTML =
     '<div class="ll-kc-seq-nav" style="margin-bottom:24px">' +
-      '<button class="ll-back-btn" onclick="llTeBackToList()">&#8592; All exercises</button>' +
+      '<button class="ll-back-btn" onclick="llTeBackToList()">&#8592; Back</button>' +
       '<span class="ll-kc-seq-badge">Team Exercises</span>' +
     '</div>';
   llPane().innerHTML = navHTML + clone.innerHTML;
@@ -4624,8 +4757,7 @@ function llTeOpenExercise(slug) {
 
 function llTeBackToList() {
   llTeCurrentSlug = '';
-  history.pushState(null, '', window.location.pathname + window.location.search);
-  llRoute('te', { noHash: true });
+  llBackTo('library');
 }
 /* ════════════════════════════════════════════════════════════════════════
    DOCUMENT REVIEW — migrated to new shell
@@ -4664,7 +4796,7 @@ function llRenderDocReview(pane) {
   var h = (window.location.hash || '').replace(/^#/, '');
   var parts = h.split('/');
   if (parts[0] === 'docreview' && parts[1]) { llDrOpenExercise(parts[1]); return; }
-  llDrRenderList(pane);
+  llRoute('library');
 }
 
 function llDrRenderList(pane) {
@@ -4698,7 +4830,7 @@ function llDrOpenExercise(slug) {
   var pane = llPane();
   pane.innerHTML =
     '<div class="ll-kc-seq-nav" style="margin-bottom:24px">' +
-      '<button class="ll-back-btn" onclick="llDrBackToList()">&#8592; All exercises</button>' +
+      '<button class="ll-back-btn" onclick="llDrBackToList()">&#8592; Back</button>' +
       '<span class="ll-kc-seq-badge">Document Review</span>' +
     '</div>';
   pane.appendChild(source);
@@ -4711,8 +4843,7 @@ function llDrOpenExercise(slug) {
 
 function llDrBackToList() {
   llDrRestoreSource();
-  history.pushState(null, '', window.location.pathname + window.location.search);
-  llRoute('dr', { noHash: true });
+  llBackTo('library');
 }
 /* ════════════════════════════════════════════════════════════════════════
    JUDGEMENT CALLS — migrated to new shell
@@ -4737,7 +4868,7 @@ function llRenderJudgementCalls(pane) {
   var p0 = parts[0] || '', p1 = parts[1] || '', p2 = parts[2] || '';
   if (p0 === 'judgement-calls' && p1 && p2) { jcCurrentRoleId = p1; llJcStartScenario(p2); return; }
   if (p0 === 'judgement-calls' && p1)        { llJcRenderRoleScenarios(p1); return; }
-  llJcRenderRoleGrid(pane);
+  llRoute('library');
 }
 
 function llJcRenderRoleGrid(pane) {
@@ -4771,7 +4902,7 @@ function llJcRenderRoleScenarios(roleId) {
   for (var r = 0; r < JC_ROLES.length; r++) { if (JC_ROLES[r].id === roleId) { role = JC_ROLES[r]; break; } }
   var pane = llPane();
   var html = '<div class="ll-kc-seq-nav">' +
-    '<button class="ll-back-btn" onclick="llJcBackToRoles()">&#8592; All roles</button>' +
+    '<button class="ll-back-btn" onclick="llJcBackToRoles()">&#8592; Back</button>' +
     '<span class="ll-kc-seq-badge">Judgement Calls</span>' +
     '</div>' +
     '<div class="ll-kc-seq-label">' + (role ? role.name : roleId) + '</div>';
@@ -4822,7 +4953,7 @@ function llJcStartScenario(id) {
 function llJcScenarioHTML() {
   return '<div class="ll-kc-seq">' +
     '<div class="ll-kc-seq-nav">' +
-      '<button class="ll-back-btn" onclick="llJcBackToScenarios()">&#8592; Scenarios</button>' +
+      '<button class="ll-back-btn" onclick="llJcBackToScenarios()">&#8592; Back</button>' +
       '<span class="ll-kc-seq-badge">Judgement Calls</span>' +
     '</div>' +
     '<div id="jc-scenario-header"></div>' +
@@ -4835,15 +4966,12 @@ function llJcScenarioHTML() {
 function llJcBackToRoles() {
   jcCurrentScenario = null;
   jcCurrentRoleId   = '';
-  history.pushState(null, '', window.location.pathname + window.location.search);
-  llRoute('jc', { noHash: true });
+  llBackTo('library');
 }
 
 function llJcBackToScenarios() {
-  var roleId = jcCurrentRoleId;
   jcCurrentScenario = null;
-  history.pushState(null, '', '#judgement-calls/' + roleId);
-  llJcRenderRoleScenarios(roleId);
+  llBackTo('library');
 }
 /* ════════════════════════════════════════════════════════════════════════
    INSPECTION PREP — migrated to new shell
@@ -4861,7 +4989,7 @@ function llRenderInspectionPrep(pane) {
   var parts = h.split('/');
   var p0 = parts[0] || '', p1 = parts[1] || '';
   if (p0 === 'inspection-prep' && p1) { llInspStartTopic(p1); return; }
-  llInspRenderTopicList(pane);
+  llRoute('library');
 }
 
 function llInspRenderTopicList(pane) {
@@ -4898,7 +5026,7 @@ function llInspStartTopic(topicId) {
 function llInspSeqHTML(topicName) {
   return '<div class="ll-kc-seq">' +
     '<div class="ll-kc-seq-nav">' +
-      '<button class="ll-back-btn" onclick="llInspBackToTopics()">&#8592; Topics</button>' +
+      '<button class="ll-back-btn" onclick="llInspBackToTopics()">&#8592; Back</button>' +
       '<span class="ll-kc-seq-badge">Inspection Prep</span>' +
     '</div>' +
     '<div class="ll-kc-seq-label">' + topicName + '</div>' +
@@ -4909,8 +5037,7 @@ function llInspSeqHTML(topicName) {
 function llInspBackToTopics() {
   llInspActive = false;
   inspCurrentTopicId = '';
-  history.pushState(null, '', window.location.pathname + window.location.search);
-  llRoute('insp', { noHash: true });
+  llBackTo('library');
 }
 
 /* ════════════════════════════════════════════════════════════════════════
@@ -4935,7 +5062,7 @@ function llRenderKnowledgeChecks(pane) {
   }
   if (p0 === 'shuffle' && p1) { kpStudyType = p1; llKcStartShuffle(); return; }
   if (p0 === 'browse' && p2)  { llKcStartTopic(p2); return; }
-  llKcRenderGrid(pane);
+  llRoute('library');
 }
 
 function llKcRenderGrid(pane) {
@@ -5019,7 +5146,7 @@ function llKcStartShuffle() {
 function llKcSeqHTML(label) {
   return '<div class="ll-kc-seq">' +
     '<div class="ll-kc-seq-nav">' +
-      '<button class="ll-back-btn" onclick="llKcBackToTopics()">&#8592; Topics</button>' +
+      '<button class="ll-back-btn" onclick="llKcBackToTopics()">&#8592; Back</button>' +
       '<span class="ll-kc-seq-badge">' + (kpStudyType === 'observational' ? 'Observational' : 'Interventional') + '</span>' +
     '</div>' +
     '<div class="ll-kc-seq-label">' + label + '</div>' +
@@ -5070,8 +5197,7 @@ function llKcRenderEnd() {
 function llKcRetry()        { llKcStartTopic(kpBrowseTopicId); }
 function llKcBackToTopics() {
   llKcActive = false;
-  history.pushState(null, '', window.location.pathname + window.location.search);
-  llRoute('kc', { noHash: true });
+  llBackTo('library');
 }
 
 /* ── Initial mode from hash, with legacy hash compatibility ──────────── */
@@ -5080,7 +5206,7 @@ function llInitialMode() {
   if (!h) { return 'about'; }
   var p0 = h.split('/')[0];
   /* Phase 1 hashes */
-  if (p0 === 'search' || p0 === 'doorway' || p0 === 'track' || p0 === 'topic' || p0 === 'library' || p0 === 'sessions' || p0 === 'session' || p0 === 'about') { return p0; }
+  if (p0 === 'search' || p0 === 'doorway' || p0 === 'track' || p0 === 'tracks' || p0 === 'topic' || p0 === 'library' || p0 === 'sessions' || p0 === 'session' || p0 === 'item' || p0 === 'about') { return p0; }
   /* Mode short hashes */
   if (p0 === 'kc' || p0 === 'te' || p0 === 'dr' || p0 === 'jc' || p0 === 'insp') { return p0; }
   /* Legacy hash compatibility */
@@ -5104,6 +5230,8 @@ function llHashOpts() {
   if (p0 === 'library')             return {};
   if (p0 === 'sessions')            return {};
   if (p0 === 'session' && parts[1]) return { sessionId: parts[1] };
+  if (p0 === 'tracks')              return {};
+  if (p0 === 'item'    && parts[1]) return { itemId: parts[1] };
   if (p0 === 'search') {
     var qm = h.indexOf('?');
     if (qm < 0) return {};
@@ -5165,8 +5293,10 @@ function llBoot() {
       if (e.key === 'Escape') { e.target.value = ''; llRoute('about'); }
     });
   }
-  /* popstate — re-route to current hash without pushing a new one */
+  /* popstate — re-route to current hash without pushing a new one.
+     Decrements nav depth so llBackTo can tell when in-Lab history is exhausted. */
   window.addEventListener('popstate', function () {
+    if (window.__llNavDepth > 0) { window.__llNavDepth--; }
     var opts = llHashOpts();
     opts.noHash = true;
     llRoute(llInitialMode(), opts);
