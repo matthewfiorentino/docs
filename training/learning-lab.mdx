@@ -364,9 +364,6 @@ export const LL_CSS = `:root {
 .kp-dr-casefile p:last-child { margin-bottom: 0; }
 .kp-dr-casefile strong { color: var(--navy); }
 @media (max-width: 699px) { .kp-dr-hub-grid { grid-template-columns: 1fr; } }
-#kp-phase-team-hub .kp-dr-eyebrow { color: var(--fuchsia); }
-#kp-phase-team-hub .kp-dr-hub-topic { color: var(--fuchsia); }
-#kp-phase-team-hub .kp-dr-hub-cta { color: var(--fuchsia); }
 #kp-phase-jc-hub .kp-dr-eyebrow { color: var(--rose); }
 #kp-phase-jc-hub .kp-dr-hub-accent { background: var(--rose); }
 #kp-phase-jc-hub .kp-dr-hub-topic { color: var(--rose); }
@@ -379,7 +376,6 @@ export const LL_CSS = `:root {
 #kp-phase-insp-hub .kp-dr-hub-accent { background: var(--sky); }
 #kp-phase-insp-hub .kp-dr-hub-topic { color: var(--sky); }
 #kp-phase-insp-hub .kp-dr-hub-cta { color: var(--sky); }
-#kp-phase-team-hub .kp-dr-hub-card.active:hover { border-color: var(--fuchsia); }
 @media (max-width: 640px) { .kp-landing-grid { grid-template-columns: 1fr; max-width: 100%; } .kp-topic-grid { grid-template-columns: 1fr; } .kp-mode-grid { grid-template-columns: 1fr; max-width: 100%; } .kp-stage { padding: 24px 20px 40px; } }
 .te-print-bar { display: flex; align-items: center; gap: 10px; padding: 14px 18px; background: var(--bg-low); border: 1px solid var(--bdr-soft); margin-bottom: 40px; max-width: 720px; }
 .te-print-bar p { font-size: 13px; color: var(--textm); margin: 0; flex: 1; }
@@ -801,102 +797,6 @@ export const LL_HTML_1 = `
   </div>
 
   
-  <div class="kp-phase" id="kp-phase-team-hub">
-    <div class="kp-nav-row">
-    <button class="kp-back" onclick="kpGoHome()">
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
-      Learning Lab
-    </button>
-    </div>
-    <div class="kp-dr-hub-header">
-      <div class="kp-dr-eyebrow">Team Exercises</div>
-      <div class="kp-dr-title">Case-based discussion exercises</div>
-      <div class="kp-dr-sub">Work through real scenarios solo or with your team. Key points are hidden until you’re ready to reveal them. Print without key points for group use.</div>
-    </div>
-    <div class="kp-dr-hub-grid">
-
-      <div class="kp-dr-hub-card active" onclick="kpStartTeamExercise('delegation')">
-        <div class="kp-dr-hub-topic">Delegation and Team Roles</div>
-        <div class="kp-dr-hub-title">Delegation Boundaries on the Study Team</div>
-        <div class="kp-dr-hub-desc">Four situations: undelegated consent, verbal authorization to a junior team member, phlebotomy team delegation, and retrospective PI signatures &mdash; each one a different way the accountability chain breaks down.</div>
-        <div class="kp-dr-hub-meta">
-          <span class="kp-dr-hub-count">4 situations · [SOP-CR-002](/sops/cr-002)</span>
-          <span class="kp-dr-hub-cta">Open →</span>
-        </div>
-      </div>
-
-      <div class="kp-dr-hub-card active" onclick="kpStartTeamExercise('consent')">
-        <div class="kp-dr-hub-topic">Informed Consent Process</div>
-        <div class="kp-dr-hub-title">Verifying a Consent Was Properly Obtained</div>
-        <div class="kp-dr-hub-desc">Four situations covering undue influence, re-consent obligations, fluctuating capacity, and data withdrawal conversations.</div>
-        <div class="kp-dr-hub-meta">
-          <span class="kp-dr-hub-count">4 situations · [SOP-CR-008](/sops/cr-008)</span>
-          <span class="kp-dr-hub-cta">Open →</span>
-        </div>
-      </div>
-
-      <div class="kp-dr-hub-card active" onclick="kpStartTeamExercise('sae')">
-        <div class="kp-dr-hub-topic">SAE and Adverse Event Reporting</div>
-        <div class="kp-dr-hub-title">Working Through an SAE Cascade</div>
-        <div class="kp-dr-hub-desc">Four situations: site awareness date, a phone assessment arrangement, writing the wrong awareness date, and sponsor pressure on causality &mdash; building to SUSAR classification.</div>
-        <div class="kp-dr-hub-meta">
-          <span class="kp-dr-hub-count">4 situations &middot; [SOP-CR-012](/sops/cr-012)</span>
-          <span class="kp-dr-hub-cta">Open &rarr;</span>
-        </div>
-      </div>
-
-      <div class="kp-dr-hub-card active" onclick="kpStartTeamExercise('deviations')">
-        <div class="kp-dr-hub-topic">Protocol Deviations</div>
-        <div class="kp-dr-hub-title">Classifying Protocol Deviations</div>
-        <div class="kp-dr-hub-desc">Five issues from a routine file review: one that isn&rsquo;t a deviation, two that are more serious than they appear, and one that connects to a prior exercise.</div>
-        <div class="kp-dr-hub-meta">
-          <span class="kp-dr-hub-count">5 issues &middot; ICH E6(R3)</span>
-          <span class="kp-dr-hub-cta">Open &rarr;</span>
-        </div>
-      </div>
-
-      <div class="kp-dr-hub-card active" onclick="kpStartTeamExercise('monitoring')">
-        <div class="kp-dr-hub-topic">Monitoring and Inspection Readiness</div>
-        <div class="kp-dr-hub-title">Preparing for an Inspection</div>
-        <div class="kp-dr-hub-desc">Six questions covering ISF readiness, preparation priorities, open queries, the IB chain, PI role, and contesting an observation at the closing meeting.</div>
-        <div class="kp-dr-hub-meta">
-          <span class="kp-dr-hub-count">6 questions &middot; ICH E6(R3)</span>
-          <span class="kp-dr-hub-cta">Open &rarr;</span>
-        </div>
-      </div>
-
-      <div class="kp-dr-hub-card active" onclick="kpStartTeamExercise('data')">
-        <div class="kp-dr-hub-topic">Data Integrity</div>
-        <div class="kp-dr-hub-title">Identifying the Source Record</div>
-        <div class="kp-dr-hub-desc">Five situations: an unexplained correction, copied visit notes, a backdated reconstruction, a blank CRF field, and a missing audit trail. None involve intent &mdash; all are violations.</div>
-        <div class="kp-dr-hub-meta">
-          <span class="kp-dr-hub-count">5 situations &middot; ALCOA+</span>
-          <span class="kp-dr-hub-cta">Open &rarr;</span>
-        </div>
-      </div>
-
-      <div class="kp-dr-hub-card active" onclick="kpStartTeamExercise('recruitment')">
-        <div class="kp-dr-hub-topic">Recruitment and Screening</div>
-        <div class="kp-dr-hub-title">Recruitment and Eligibility Decisions</div>
-        <div class="kp-dr-hub-desc">Five situations: OACIS pre-screening, blood draw before consent, borderline eligibility, compensation concern, and sponsor enrollment pressure.</div>
-        <div class="kp-dr-hub-meta">
-          <span class="kp-dr-hub-count">5 situations &middot; ICH E6(R3)</span>
-          <span class="kp-dr-hub-cta">Open &rarr;</span>
-        </div>
-      </div>
-
-      <div class="kp-dr-hub-card active" onclick="kpStartTeamExercise('gcp')">
-        <div class="kp-dr-hub-topic">GCP Principles</div>
-        <div class="kp-dr-hub-title">Working with GCP Principles in Practice</div>
-        <div class="kp-dr-hub-desc">Five comments from a new study team &mdash; a new RA who wants to skip the paperwork, a nurse confused about three records, a seasoned physician asking what GCP adds, a PI who thinks monitoring visits are enough.</div>
-        <div class="kp-dr-hub-meta">
-          <span class="kp-dr-hub-count">5 comments &middot; ICH E6(R3)</span>
-          <span class="kp-dr-hub-cta">Open &rarr;</span>
-        </div>
-      </div>
-
-    </div>
-  </div>
 
 
 
@@ -5100,13 +5000,7 @@ function kpDrMarkRows() {
   /* auto-count active hub cards on landing */
   document.addEventListener('DOMContentLoaded', function() {
     kpRouteFromHash();
-    var teHub = document.getElementById('kp-phase-team-hub');
     var drHub = document.getElementById('kp-phase-docreview-hub');
-    if (teHub) {
-      var teCount = teHub.querySelectorAll('.kp-dr-hub-card.active').length;
-      var teEl = document.getElementById('stat-te-count');
-      if (teEl) { teEl.textContent = teCount; }
-    }
     if (drHub) {
       var drCount = drHub.querySelectorAll('.kp-dr-hub-card.active').length;
       var drEl = document.getElementById('stat-dr-count');

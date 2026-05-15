@@ -2565,13 +2565,7 @@ function kpDrMarkRows() {
      functions, halting the rest of the script. */
   (function() {
     try {
-      var teHub = document.getElementById('kp-phase-team-hub');
       var drHub = document.getElementById('kp-phase-docreview-hub');
-      if (teHub) {
-        var teCount = teHub.querySelectorAll('.kp-dr-hub-card.active').length;
-        var teEl = document.getElementById('stat-te-count');
-        if (teEl) { teEl.textContent = teCount; }
-      }
       if (drHub) {
         var drCount = drHub.querySelectorAll('.kp-dr-hub-card.active').length;
         var drEl = document.getElementById('stat-dr-count');
@@ -3494,12 +3488,6 @@ function llRefreshStats() {
     if (el) { el.textContent = KP_TOPICS.filter(function(t) { return t.live; }).length; }
     el = document.getElementById('stat-questions');
     if (el) { el.textContent = KP_POOL.length + '+'; }
-    /* team exercises */
-    var teHub = document.getElementById('kp-phase-team-hub');
-    if (teHub) {
-      el = document.getElementById('stat-te-count');
-      if (el) { el.textContent = teHub.querySelectorAll('.kp-dr-hub-card.active').length; }
-    }
     /* document review */
     var drHub = document.getElementById('kp-phase-docreview-hub');
     if (drHub) {
@@ -4372,14 +4360,6 @@ var LL_TOPIC_GROUPS = {
 };
 
 /* Short labels for the kind breakdown on Library cards */
-var LL_KIND_SHORT = {
-  'mcq':             'MCQ',
-  'inspection-card': 'inspection prep',
-  'scenario':        'scenarios',
-  'team-exercise':   'team exercises',
-  'doc-review':      'doc reviews'
-};
-
 function llRenderLibrary(pane) {
   var byTopic = {};
   for (var i = 0; i < LL_LIBRARY.length; i++) {
