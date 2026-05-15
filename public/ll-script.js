@@ -3629,16 +3629,103 @@ var LL_TRACKS = [
       { mode:'dr',   ref:'monitoring', label:'Document review' }
     ]
   },
+  /* (Team-facilitated content moved to LL_SESSIONS — Tracks are now solo-only) */
+];
+
+/* ════════════════════════════════════════════════════════════════════════
+   FACILITATOR SESSIONS
+   Pre-baked packs designed to run in a team meeting. Each item carries a
+   timing cue and a brief facilitator note (setup, watch-for, prompt).
+   The Sessions surface renders these with print-ready styling.
+════════════════════════════════════════════════════════════════════════ */
+var LL_SESSIONS = [
   {
-    id:'team-30min',
-    title:'30-min team practice',
-    moment:'apply',
-    audience:'team',
-    durationMin:30,
-    desc:'A facilitated team session: one team exercise, one judgement scenario, ten-minute debrief. Bring it up on a screen and run it together.',
-    items:[
-      { mode:'te', ref:'monitoring',   label:'Team exercise — The Inspector Is Coming' },
-      { mode:'jc', ref:'cra-pressure', label:'Judgement call — The Monitoring Visit' }
+    id: 'pre-monitoring-15',
+    title: 'Pre-monitoring-visit huddle',
+    durationMin: 15,
+    audience: 'CRC and PI / sub-investigator',
+    overview: 'A short warm-up to run with the monitoring CRC and the PI before a sponsor visit. Surfaces the most common pressure points before they happen for real.',
+    items: [
+      {
+        mode: 'kc', ref: 'monitoring',
+        title: 'Knowledge check on monitoring (5 questions)',
+        timing: '5 min',
+        setup: 'Project on screen and answer aloud as a group. Don\'t reveal the rationale until each person has taken a position.',
+        watch: 'Disagreement is the useful signal. If everyone gets the same answer immediately, the question may be too easy for this team.'
+      },
+      {
+        mode: 'jc', ref: 'cra-pressure',
+        title: 'Scenario: Handling CRA Pressure on a Monitoring Visit',
+        timing: '8 min',
+        setup: 'Read the intro and the first pressure point aloud. Ask "what would you say?" before showing the choices.',
+        watch: 'The "partial" choices are the teaching moments. Press the team on what makes a partial response not enough.'
+      }
+    ],
+    reflection: [
+      'Who at our site would actually handle each of these requests if they arrived in a real visit?',
+      'Where is our position documented? Could a new CRC find it?'
+    ]
+  },
+  {
+    id: 'after-hours-sae-30',
+    title: 'After-hours SAE coverage',
+    durationMin: 30,
+    audience: 'CRC, research nurse, PI, sub-investigator',
+    overview: 'A 30-minute team session on SAE management when the PI is unreachable. Pairs the team-discussion exercise with a single decision-pressure scenario.',
+    items: [
+      {
+        mode: 'te', ref: 'sae',
+        title: 'Team exercise: Working Through an SAE Cascade',
+        timing: '15 min',
+        setup: 'Read each situation aloud and discuss before revealing the key points. The exercise prints well — handouts work better than screens for this one.',
+        watch: 'Listen for assumptions about who is on the delegation log for after-hours coverage. The exercise often surfaces gaps in the actual coverage plan.'
+      },
+      {
+        mode: 'jc', ref: 'saturday-call',
+        title: 'Scenario: Weekend SAE With the PI Unavailable',
+        timing: '12 min',
+        setup: 'Run as a single sequence. Pause after each pressure point to discuss the choices before the team picks one.',
+        watch: 'Pressure point 3 (the documentation request) is where the team\'s real norms come out. Spend extra time here if the discussion gets uncomfortable.'
+      }
+    ],
+    reflection: [
+      'What is our actual after-hours coverage plan? Who is on call when, and how do they reach the PI?',
+      'If a CRC took an SAE call tonight, would they know exactly which sub-investigator to escalate to?'
+    ]
+  },
+  {
+    id: 'consent-deep-60',
+    title: 'Consent practice for a vulnerable population',
+    durationMin: 60,
+    audience: 'Whole study team',
+    overview: 'A 60-minute deep-practice session on informed consent in a study with cognitively vulnerable participants. Combines team discussion, decision-pressure scenario, and a document review.',
+    items: [
+      {
+        mode: 'te', ref: 'consent',
+        title: 'Team exercise: Verifying a Consent Was Properly Obtained',
+        timing: '15 min',
+        setup: 'Discuss each situation as a team before reading the key points. Print copies if the room is over four people.',
+        watch: 'The team will sometimes treat the consent form as the entire process. Push back: ask what conversation must happen alongside the signature.'
+      },
+      {
+        mode: 'jc', ref: 'consent-conversation',
+        title: 'Scenario: Consent Capacity in Cognitive Decline',
+        timing: '15 min',
+        setup: 'Read each pressure point aloud. The Quebec Civil Code references matter here; pause and confirm everyone understands the substitute-consent rule before moving on.',
+        watch: 'Pressure point 3 (the participant\'s objection) is where teams sometimes side with the proxy. The legal answer is unambiguous; the discomfort is the teaching point.'
+      },
+      {
+        mode: 'dr', ref: 'consent',
+        title: 'Document review: a problematic consent form',
+        timing: '20 min',
+        setup: 'Project the case file. Ask the team to identify findings before stepping through the annotated answers.',
+        watch: 'Six findings is more than most teams catch on first pass. The point is not to identify all six — it is to develop the habit of looking for them.'
+      }
+    ],
+    reflection: [
+      'In a study with cognitively vulnerable participants, who at our site is qualified under Quebec law to assess capacity? How is that documented?',
+      'Where does our consent process write down what to do when a participant who previously consented appears to lose capacity?',
+      'Would our consent forms pass the same review the team just did?'
     ]
   }
 ];
@@ -4066,6 +4153,109 @@ function llRenderDoorway(pane, moment, triggerId) {
   pane.innerHTML = html;
 }
 
+/* ── Render: facilitator Sessions list ──────────────────────────────── */
+function llRenderSessionsList(pane) {
+  var html = '<h1>Facilitator Sessions</h1>';
+  html += '<div class="ll-pane-sub">Pre-baked packs for running practice in a team meeting. Each pack lays out the items in order with timing cues and notes for the person facilitating.</div>';
+  html += '<div class="ll-sessions-grid">';
+  for (var i = 0; i < LL_SESSIONS.length; i++) {
+    var s = LL_SESSIONS[i];
+    html += '<button class="ll-session-card" onclick="llRoute(\'session\',{sessionId:\'' + s.id + '\'})">';
+    html +=   '<div class="ll-session-card-head">';
+    html +=     '<span class="ll-session-card-dur">' + s.durationMin + ' min</span>';
+    html +=     '<span class="ll-session-card-aud">' + s.audience + '</span>';
+    html +=   '</div>';
+    html +=   '<div class="ll-session-card-title">' + s.title + '</div>';
+    html +=   '<div class="ll-session-card-overview">' + s.overview + '</div>';
+    html +=   '<div class="ll-session-card-meta">' + s.items.length + ' items · ' + s.reflection.length + ' reflection prompt' + (s.reflection.length === 1 ? '' : 's') + '</div>';
+    html += '</button>';
+  }
+  html += '</div>';
+  html += '<div style="margin-top:24px"><button class="ll-back-btn" onclick="llRoute(\'about\')">&#8592; Lab home</button></div>';
+  pane.innerHTML = html;
+}
+
+/* ── Render: a single Facilitator Session ───────────────────────────── */
+function llRenderSession(pane, sessionId) {
+  var session = null;
+  for (var i = 0; i < LL_SESSIONS.length; i++) { if (LL_SESSIONS[i].id === sessionId) { session = LL_SESSIONS[i]; break; } }
+  if (!session) { pane.innerHTML = '<div class="ll-stub">Session not found.</div>'; return; }
+
+  var html = '<div class="ll-session">';
+
+  /* Print-only header repeated on each printed page */
+  html += '<div class="ll-session-print-head">' + session.title + ' · Facilitator pack</div>';
+
+  /* Session header */
+  html += '<h1>' + session.title + '</h1>';
+  html += '<div class="ll-session-meta">' + session.durationMin + ' min · ' + session.audience + '</div>';
+  html += '<div class="ll-session-overview">' + session.overview + '</div>';
+
+  /* Action row: print + open all */
+  html += '<div class="ll-session-actions">';
+  html += '<button class="ll-session-action" onclick="window.print()">Print this pack</button>';
+  html += '</div>';
+
+  /* Items, numbered with timing + facilitator notes */
+  html += '<ol class="ll-session-items">';
+  for (var n = 0; n < session.items.length; n++) {
+    var it = session.items[n];
+    /* Resolve to library item where possible */
+    var libItem = null;
+    var libId = it.mode === 'te' ? 'te-' + it.ref
+              : it.mode === 'dr' ? 'dr-' + it.ref
+              : it.ref;
+    for (var li = 0; li < LL_LIBRARY.length; li++) { if (LL_LIBRARY[li].id === libId) { libItem = LL_LIBRARY[li]; break; } }
+    var kindMeta = libItem ? (LL_KIND_META[libItem.kind] || { label: libItem.kind, icon: '<circle cx="12" cy="12" r="9"/>' }) : { label: it.mode.toUpperCase(), icon: '<circle cx="12" cy="12" r="9"/>' };
+
+    /* Build the open action */
+    var openAct = '';
+    if (libItem) {
+      openAct = 'llOpenLibraryItem(\'' + libItem.id + '\')';
+    } else if (it.mode === 'kc') {
+      openAct = 'llRoute(\'kc\');setTimeout(function(){llKcStartTopic(\'' + it.ref + '\')},30)';
+    } else if (it.mode === 'insp') {
+      openAct = 'llRoute(\'insp\');setTimeout(function(){llInspStartTopic(\'' + it.ref + '\')},30)';
+    }
+
+    html += '<li class="ll-session-item">';
+    html +=   '<div class="ll-session-item-head">';
+    html +=     '<div class="ll-session-item-num">' + (n + 1) + '</div>';
+    html +=     '<div class="ll-session-item-head-meta">';
+    html +=       '<div class="ll-session-item-kind">';
+    html +=         '<svg viewBox="0 0 24 24" aria-hidden="true">' + kindMeta.icon + '</svg>';
+    html +=         kindMeta.label + ' · ' + it.timing;
+    html +=       '</div>';
+    html +=       '<div class="ll-session-item-title">' + it.title + '</div>';
+    html +=     '</div>';
+    if (openAct) {
+      html +=   '<button class="ll-session-item-open" onclick="' + openAct + '">Open →</button>';
+    }
+    html +=   '</div>';
+    html +=   '<div class="ll-session-item-notes">';
+    html +=     '<div class="ll-session-note"><span class="ll-session-note-label">Setup</span><span class="ll-session-note-text">' + it.setup + '</span></div>';
+    html +=     '<div class="ll-session-note"><span class="ll-session-note-label">Watch for</span><span class="ll-session-note-text">' + it.watch + '</span></div>';
+    html +=   '</div>';
+    html += '</li>';
+  }
+  html += '</ol>';
+
+  /* Reflection prompts */
+  html += '<div class="ll-session-reflection">';
+  html += '<div class="ll-section-head">Reflection prompts</div>';
+  html += '<div class="ll-section-sub">Use these to close the session. The aim is not consensus — it is to leave the team with something to follow up on.</div>';
+  html += '<ul class="ll-session-reflection-list">';
+  for (var r = 0; r < session.reflection.length; r++) {
+    html += '<li>' + session.reflection[r] + '</li>';
+  }
+  html += '</ul>';
+  html += '</div>';
+
+  html += '<div style="margin-top:28px" class="ll-no-print"><button class="ll-back-btn" onclick="llRoute(\'sessions\')">&#8592; All sessions</button></div>';
+  html += '</div>';
+  pane.innerHTML = html;
+}
+
 /* ── Render: full library (all items grouped by topic) ───────────────── */
 function llRenderLibrary(pane) {
   var topicOrder = ['consent', 'sae', 'delegation', 'deviations', 'monitoring', 'data', 'recruitment', 'gcp', 'tcps2', 'div5', 'iso14155'];
@@ -4194,6 +4384,10 @@ function llRoute(modeId, opts) {
       newHash = 'topic/' + opts.topicId;
     } else if (modeId === 'library') {
       newHash = 'library';
+    } else if (modeId === 'sessions') {
+      newHash = 'sessions';
+    } else if (modeId === 'session' && opts.sessionId) {
+      newHash = 'session/' + opts.sessionId;
     }
     var currentHash = window.location.hash.replace(/^#/, '');
     if (currentHash !== newHash) {
@@ -4241,6 +4435,8 @@ function llRoute(modeId, opts) {
     case 'track':   llRenderTrack(pane, opts.trackId); break;
     case 'topic':   llRenderTopic(pane, opts.topicId); break;
     case 'library': llRenderLibrary(pane); break;
+    case 'sessions': llRenderSessionsList(pane); break;
+    case 'session': llRenderSession(pane, opts.sessionId); break;
     default:        pane.innerHTML = '<div class="ll-stub">Unknown mode.</div>';
   }
   pane.scrollTop = 0;
@@ -4315,15 +4511,24 @@ function llRenderAbout(pane) {
   }
   html += '</div>';
 
-  /* Library tile — peer to the doorways but framed as the alternative */
+  /* Library + Sessions — peers to the doorways but framed as alternative entries */
   html += '<div class="ll-section-head" style="font-size:13px;margin:32px 0 8px">Or browse on your own</div>';
+  html += '<div class="ll-alt-tiles">';
   html += '<button class="ll-library-tile" onclick="llRoute(\'library\')">';
   html +=   '<div class="ll-library-tile-body">';
   html +=     '<div class="ll-library-tile-title">Browse the full library</div>';
-  html +=     '<div class="ll-library-tile-sub">Every practice item, grouped by topic and interaction type. ' + LL_LIBRARY.length + ' items across the full catalogue.</div>';
+  html +=     '<div class="ll-library-tile-sub">Every practice item, grouped by topic and interaction type. ' + LL_LIBRARY.length + ' items in the catalogue.</div>';
   html +=   '</div>';
   html +=   '<svg class="ll-library-tile-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>';
   html += '</button>';
+  html += '<button class="ll-library-tile" onclick="llRoute(\'sessions\')">';
+  html +=   '<div class="ll-library-tile-body">';
+  html +=     '<div class="ll-library-tile-title">Run a facilitated session</div>';
+  html +=     '<div class="ll-library-tile-sub">Pre-baked 15, 30, and 60-minute packs for team meetings. Includes facilitator notes, timing cues, and printable handouts.</div>';
+  html +=   '</div>';
+  html +=   '<svg class="ll-library-tile-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>';
+  html += '</button>';
+  html += '</div>';
 
   /* Browse-by-topic chip strip — quick-access shortcut to topic pages */
   html += '<div class="ll-topics-strip" style="margin-top:14px">';
@@ -4885,7 +5090,7 @@ function llInitialMode() {
   if (!h) { return 'about'; }
   var p0 = h.split('/')[0];
   /* Phase 1 hashes */
-  if (p0 === 'search' || p0 === 'doorway' || p0 === 'track' || p0 === 'topic' || p0 === 'library' || p0 === 'about') { return p0; }
+  if (p0 === 'search' || p0 === 'doorway' || p0 === 'track' || p0 === 'topic' || p0 === 'library' || p0 === 'sessions' || p0 === 'session' || p0 === 'about') { return p0; }
   /* Mode short hashes */
   if (p0 === 'kc' || p0 === 'te' || p0 === 'dr' || p0 === 'jc' || p0 === 'insp') { return p0; }
   /* Legacy hash compatibility */
@@ -4907,6 +5112,8 @@ function llHashOpts() {
   if (p0 === 'track'   && parts[1]) return { trackId: parts[1] };
   if (p0 === 'topic'   && parts[1]) return { topicId: parts[1] };
   if (p0 === 'library')             return {};
+  if (p0 === 'sessions')            return {};
+  if (p0 === 'session' && parts[1]) return { sessionId: parts[1] };
   if (p0 === 'search') {
     var qm = h.indexOf('?');
     if (qm < 0) return {};
