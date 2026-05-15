@@ -313,22 +313,23 @@ export const RoleExplorer = () => {
 
   return (
     <div className="ri-sh" ref={containerRef}>
-      <div className="ri-sh-tabs-wrap">
-        <div className="ri-sh-tabs">
+      <div className="ri-sh-layout">
+        <nav className="ri-sh-nav">
           {ROLES.map(r => (
             <button
               key={r.id}
-              className={`ri-sh-tab${role === r.id ? ' ri-sh-tab--active' : ''}`}
+              className={`ri-sh-nav-item${role === r.id ? ' ri-sh-nav-item--active' : ''}`}
               onClick={() => handleRoleSwitch(r.id)}
             >
-              <Icon icon={r.icon} className="ri-sh-tab-icon" />
-              <span>{r.title}</span>
+              <Icon icon={r.icon} className="ri-sh-nav-icon" />
+              <div className="ri-sh-nav-labels">
+                <div className="ri-sh-nav-title">{r.title}</div>
+                <div className="ri-sh-nav-sub">{r.sub}</div>
+              </div>
             </button>
           ))}
-        </div>
-      </div>
-      <div className="ri-sh-card">
-        <div className="ri-sh-content">
+        </nav>
+        <div className="ri-sh-panel">
           <div className="ri-sh-header">
             <div className="ri-sh-header-eyebrow">Your role</div>
             <div className="ri-sh-header-title">{active.title}</div>
