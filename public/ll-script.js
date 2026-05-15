@@ -4007,10 +4007,11 @@ function llRenderSearch(pane, query, filters) {
   if (filters.topicId && LL_TOPIC_LABEL[filters.topicId]) { titleBits.push(LL_TOPIC_LABEL[filters.topicId]); }
   if (query) { titleBits.push('“' + query + '”'); }
   var h1 = titleBits.length ? titleBits.join(' · ') : 'Search';
-  var sub = results.length + ' result' + (results.length === 1 ? '' : 's') + '. Click to open.';
-  var html = '<h1>' + h1 + '</h1><div class="ll-pane-sub">' + sub + '</div>';
+  var sub = results.length + ' result' + (results.length === 1 ? '' : 's');
+  var html = '<div class="ll-breadcrumb"><button class="ll-back-btn" onclick="llRoute(\'about\')">&#8592; Lab home</button></div>';
+  html += '<h1>' + h1 + '</h1><div class="ll-pane-sub">' + sub + '</div>';
   if (results.length === 0) {
-    html += '<div class="ll-stub" style="padding:24px 0">No matches. Try a broader term or pick a different doorway from <a href="#" onclick="event.preventDefault();llRoute(\'about\');return false">Overview</a>.</div>';
+    html += '<div class="ll-stub" style="padding:24px 0">No matches.</div>';
   } else {
     html += '<div class="ll-card-grid">';
     for (var i = 0; i < results.length; i++) { html += llCardHTML(results[i]); }
@@ -4034,9 +4035,9 @@ function llRenderTopic(pane, topicId) {
     (byKind[items[i].kind] = byKind[items[i].kind] || []).push(items[i]);
   }
 
-  var html = '<h1>' + topicLabel + '</h1>';
-  html += '<div class="ll-pane-sub">' + items.length + ' practice item' + (items.length === 1 ? '' : 's') + ' across ' +
-    Object.keys(byKind).length + ' interaction type' + (Object.keys(byKind).length === 1 ? '' : 's') + '.</div>';
+  var html = '<div class="ll-breadcrumb"><button class="ll-back-btn" onclick="llRoute(\'library\')">&#8592; Library</button></div>';
+  html += '<h1>' + topicLabel + '</h1>';
+  html += '<div class="ll-pane-sub">' + items.length + ' item' + (items.length === 1 ? '' : 's') + '.</div>';
 
   for (var k = 0; k < kindOrder.length; k++) {
     var kind = kindOrder[k];
@@ -4052,8 +4053,6 @@ function llRenderTopic(pane, topicId) {
     html += '</div>';
     html += '</div>';
   }
-
-  html += '<div style="margin-top:24px"><button class="ll-back-btn" onclick="llRoute(\'about\')">&#8592; Lab home</button></div>';
   pane.innerHTML = html;
 }
 
@@ -4108,9 +4107,9 @@ function llRenderTrack(pane, trackId) {
    accepts an optional triggerId to render a chip as already selected. */
 function llRenderDoorway(pane, moment, triggerId) {
   var meta = {
-    apply:  { title:'I’m about to…', sub:'Pick the task you’re about to do. The chips below filter the practice items that match.' },
-    solve:  { title:'Something happened…', sub:'Pick what just came up. The chips below filter the matching scenarios and practice items.' },
-    change: { title:'What changed…', sub:'New SOPs, refreshed regulations, jurisdiction shifts. The chips below filter the relevant items.' }
+    apply:  { title:'I’m about to…', sub:'Pick the task you’re about to do.' },
+    solve:  { title:'Something happened…', sub:'Pick what just came up.' },
+    change: { title:'What changed…', sub:'New SOPs, refreshed regulations, jurisdiction shifts.' }
   }[moment] || { title: moment, sub: '' };
 
   var html = '<h1>' + meta.title + '</h1><div class="ll-pane-sub">' + meta.sub + '</div>';
@@ -4155,8 +4154,8 @@ function llRenderDoorway(pane, moment, triggerId) {
 
 /* ── Render: facilitator Sessions list ──────────────────────────────── */
 function llRenderSessionsList(pane) {
-  var html = '<h1>Facilitator Sessions</h1>';
-  html += '<div class="ll-pane-sub">Pre-baked packs for running practice in a team meeting. Each pack lays out the items in order with timing cues and notes for the person facilitating.</div>';
+  var html = '<h1>Facilitated sessions</h1>';
+  html += '<div class="ll-pane-sub">Packs for team meetings. Timing cues and facilitator notes per item; printable.</div>';
   html += '<div class="ll-sessions-grid">';
   for (var i = 0; i < LL_SESSIONS.length; i++) {
     var s = LL_SESSIONS[i];
@@ -4243,7 +4242,6 @@ function llRenderSession(pane, sessionId) {
   /* Reflection prompts */
   html += '<div class="ll-session-reflection">';
   html += '<div class="ll-section-head">Reflection prompts</div>';
-  html += '<div class="ll-section-sub">Use these to close the session. The aim is not consensus — it is to leave the team with something to follow up on.</div>';
   html += '<ul class="ll-session-reflection-list">';
   for (var r = 0; r < session.reflection.length; r++) {
     html += '<li>' + session.reflection[r] + '</li>';
@@ -4256,7 +4254,7 @@ function llRenderSession(pane, sessionId) {
   pane.innerHTML = html;
 }
 
-/* ── Render: full library (all items grouped by topic) ───────────────── */
+/* ── Render: library (topic index — grid of topic cards) ─────────────── */
 function llRenderLibrary(pane) {
   var topicOrder = ['consent', 'sae', 'delegation', 'deviations', 'monitoring', 'data', 'recruitment', 'gcp', 'tcps2', 'div5', 'iso14155'];
   var byTopic = {};
@@ -4266,30 +4264,35 @@ function llRenderLibrary(pane) {
     (byTopic[tid] = byTopic[tid] || []).push(it);
   }
   var html = '<h1>Library</h1>';
-  html += '<div class="ll-pane-sub">Every practice item in the Lab, grouped by topic. ' + LL_LIBRARY.length + ' items across ' +
-    Object.keys(byTopic).length + ' topics.</div>';
+  html += '<div class="ll-pane-sub">' + LL_LIBRARY.length + ' items across ' + Object.keys(byTopic).filter(function(k){return k!=='other';}).length + ' topics.</div>';
+  html += '<div class="ll-topic-grid">';
   for (var t = 0; t < topicOrder.length; t++) {
     var tid2 = topicOrder[t];
     if (!byTopic[tid2]) continue;
     var topicLabel = LL_TOPIC_LABEL[tid2] || tid2;
-    html += '<div class="ll-topic-section">';
-    html += '<div class="ll-topic-section-head">' + topicLabel +
-            ' <span class="ll-topic-section-count">' + byTopic[tid2].length + '</span>' +
-            ' <button class="ll-topic-section-link" onclick="llRoute(\'topic\',{topicId:\'' + tid2 + '\'})">Open topic →</button>' +
-            '</div>';
-    html += '<div class="ll-card-grid">';
-    for (var c = 0; c < byTopic[tid2].length; c++) { html += llCardHTML(byTopic[tid2][c]); }
-    html += '</div>';
-    html += '</div>';
+    /* Count items by kind for the per-topic breakdown line */
+    var kindCounts = {};
+    for (var ki = 0; ki < byTopic[tid2].length; ki++) {
+      var k = byTopic[tid2][ki].kind;
+      kindCounts[k] = (kindCounts[k] || 0) + 1;
+    }
+    var breakdown = [];
+    var kindOrder = ['mcq','inspection-card','scenario','team-exercise','doc-review'];
+    for (var ko = 0; ko < kindOrder.length; ko++) {
+      var kk = kindOrder[ko];
+      if (!kindCounts[kk]) continue;
+      var label = (LL_KIND_META[kk] && LL_KIND_META[kk].label) || kk;
+      breakdown.push(kindCounts[kk] + ' ' + label.toLowerCase());
+    }
+    html += '<button class="ll-topic-card" onclick="llRoute(\'topic\',{topicId:\'' + tid2 + '\'})">';
+    html +=   '<div class="ll-topic-card-head">';
+    html +=     '<div class="ll-topic-card-title">' + topicLabel + '</div>';
+    html +=     '<div class="ll-topic-card-count">' + byTopic[tid2].length + '</div>';
+    html +=   '</div>';
+    html +=   '<div class="ll-topic-card-breakdown">' + breakdown.join(' · ') + '</div>';
+    html += '</button>';
   }
-  /* Catch-all for items that didn't map to a known topic */
-  if (byTopic.other && byTopic.other.length) {
-    html += '<div class="ll-topic-section">';
-    html += '<div class="ll-topic-section-head">Other <span class="ll-topic-section-count">' + byTopic.other.length + '</span></div>';
-    html += '<div class="ll-card-grid">';
-    for (var co = 0; co < byTopic.other.length; co++) { html += llCardHTML(byTopic.other[co]); }
-    html += '</div></div>';
-  }
+  html += '</div>';
   html += '<div style="margin-top:24px"><button class="ll-back-btn" onclick="llRoute(\'about\')">&#8592; Lab home</button></div>';
   pane.innerHTML = html;
 }
@@ -4494,10 +4497,10 @@ function llRenderAbout(pane) {
 
   var html = '';
   html += '<h1>Learning Lab</h1>';
-  html += '<div class="ll-pane-sub">Practice for the moment of need. Choose how you want to start: by what you’re about to do, or by browsing the full library of items.</div>';
+  html += '<div class="ll-pane-sub">Practice for the moment of need.</div>';
 
   /* Three moment-of-need doorways */
-  html += '<div class="ll-section-head" style="font-size:13px;margin-bottom:8px">Start by what you’re doing</div>';
+  html += '<div class="ll-section-head" style="font-size:13px;margin-bottom:8px">Start with a moment of need</div>';
   html += '<div class="ll-doorways">';
   for (var i = 0; i < doorways.length; i++) {
     var d = doorways[i];
@@ -4512,40 +4515,27 @@ function llRenderAbout(pane) {
   html += '</div>';
 
   /* Library + Sessions — peers to the doorways but framed as alternative entries */
-  html += '<div class="ll-section-head" style="font-size:13px;margin:32px 0 8px">Or browse on your own</div>';
+  html += '<div class="ll-section-head" style="font-size:13px;margin:32px 0 8px">Browse</div>';
   html += '<div class="ll-alt-tiles">';
   html += '<button class="ll-library-tile" onclick="llRoute(\'library\')">';
   html +=   '<div class="ll-library-tile-body">';
-  html +=     '<div class="ll-library-tile-title">Browse the full library</div>';
-  html +=     '<div class="ll-library-tile-sub">Every practice item, grouped by topic and interaction type. ' + LL_LIBRARY.length + ' items in the catalogue.</div>';
+  html +=     '<div class="ll-library-tile-title">Library</div>';
+  html +=     '<div class="ll-library-tile-sub">' + LL_LIBRARY.length + ' items, organised by topic.</div>';
   html +=   '</div>';
   html +=   '<svg class="ll-library-tile-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>';
   html += '</button>';
   html += '<button class="ll-library-tile" onclick="llRoute(\'sessions\')">';
   html +=   '<div class="ll-library-tile-body">';
-  html +=     '<div class="ll-library-tile-title">Run a facilitated session</div>';
-  html +=     '<div class="ll-library-tile-sub">Pre-baked 15, 30, and 60-minute packs for team meetings. Includes facilitator notes, timing cues, and printable handouts.</div>';
+  html +=     '<div class="ll-library-tile-title">Facilitated sessions</div>';
+  html +=     '<div class="ll-library-tile-sub">15, 30, and 60-minute packs for team meetings. Printable.</div>';
   html +=   '</div>';
   html +=   '<svg class="ll-library-tile-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>';
   html += '</button>';
   html += '</div>';
 
-  /* Browse-by-topic chip strip — quick-access shortcut to topic pages */
-  html += '<div class="ll-topics-strip" style="margin-top:14px">';
-  html += '<div class="ll-section-head" style="font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--ll-text-3);margin-bottom:8px">Or jump to a topic</div>';
-  html += '<div class="ll-topics-strip-chips">';
-  var topicOrder = ['consent', 'sae', 'delegation', 'deviations', 'monitoring', 'data', 'recruitment', 'gcp', 'tcps2', 'div5', 'iso14155'];
-  for (var to = 0; to < topicOrder.length; to++) {
-    var tid = topicOrder[to];
-    if (!LL_TOPIC_LABEL[tid]) continue;
-    html += '<button class="ll-topic-chip" onclick="llRoute(\'topic\',{topicId:\'' + tid + '\'})">' + LL_TOPIC_LABEL[tid] + '</button>';
-  }
-  html += '</div></div>';
-
   /* Tracks */
   html += '<div class="ll-tracks">';
-  html += '<div class="ll-section-head">Practice paths <span class="ll-section-head-count">' + LL_TRACKS.length + ' available</span></div>';
-  html += '<div class="ll-section-sub">Short sequences of practice items grouped around a single task.</div>';
+  html += '<div class="ll-section-head">Practice paths <span class="ll-section-head-count">' + LL_TRACKS.length + '</span></div>';
   html += '<div class="ll-track-grid">';
   for (var t = 0; t < LL_TRACKS.length; t++) {
     var tr = LL_TRACKS[t];
