@@ -638,6 +638,7 @@ body:has(.ri-text-hero) main {
 
 /* Detail card grid */
 .ri-dcard-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-bottom: 1.5rem; }
+.ri-role-panel .ri-dcard-grid { margin-top: 2rem; }
 .ri-dcard {
     display: flex; flex-direction: column; gap: 8px; padding: 22px 24px;
     border: 1px solid var(--ri-border); border-radius: 14px;
