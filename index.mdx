@@ -194,12 +194,11 @@ export const RolePanel = ({ role }) => (
           </div>
           <div className="ri-panel-grid">
             <div className="ri-panel-col">
+              <p className="ri-panel-framing-sub">The QI is personally accountable for this study — from CTA filing and team oversight through close-out.</p>
               <a href="/kb/roles/pi-orientation" className="ri-orientation-banner">
                 <div className="ri-pb-label">Investigator Orientation</div>
-                <div className="ri-pb-desc">Walk through the full setup sequence — delegation, CTA submission, first participant, and ongoing oversight obligations.</div>
                 <div className="ri-pb-arrow">Get started →</div>
               </a>
-              <p className="ri-panel-framing-sub">The QI is personally accountable for this study — from CTA filing and team oversight through close-out.</p>
             </div>
             <div className="ri-panel-col">
               <div className="ri-guides-label">Guides by study type</div>
@@ -220,12 +219,11 @@ export const RolePanel = ({ role }) => (
           </div>
           <div className="ri-panel-grid">
             <div className="ri-panel-col">
+              <p className="ri-panel-framing-sub">The CRC manages day-to-day study operations and is the primary point of contact for participants, the sponsor, and the REB.</p>
               <a href="/kb/roles/crc-orientation" className="ri-orientation-banner">
                 <div className="ri-pb-label">CRC Orientation</div>
-                <div className="ri-pb-desc">Your end-to-end operational reference. Protocol startup, consent, safety reporting, and close-out across all study types.</div>
                 <div className="ri-pb-arrow">Get started →</div>
               </a>
-              <p className="ri-panel-framing-sub">The CRC manages day-to-day study operations and is the primary point of contact for participants, the sponsor, and the REB.</p>
             </div>
             <div className="ri-panel-col">
               <div className="ri-guides-label">Guides by study type</div>
@@ -241,14 +239,16 @@ export const RolePanel = ({ role }) => (
 
       {role === 'nurse' && (
         <>
+          <div className="ri-callout ri-callout--warn">
+            No team member may perform any study task before they appear on the Task Delegation Log, their training is documented, and the QI/PI has countersigned their entry.
+          </div>
           <div className="ri-panel-grid">
             <div className="ri-panel-col">
+              <p className="ri-panel-framing-sub">Research nurses carry out protocol-specified clinical procedures under dual accountability to the study team and their professional licensing body.</p>
               <a href="/kb/roles/nurse-orientation" className="ri-orientation-banner">
                 <div className="ri-pb-label">Research Nurse Orientation</div>
-                <div className="ri-pb-desc">Procedures, documentation requirements, and dual-accountability points for research nurses at MUHC.</div>
                 <div className="ri-pb-arrow">Get started →</div>
               </a>
-              <p className="ri-panel-framing-sub">Research nurses carry out protocol-specified clinical procedures under dual accountability to the study team and their professional licensing body.</p>
             </div>
             <div className="ri-panel-col">
               <div className="ri-guides-label">Operational guide</div>
@@ -331,7 +331,6 @@ export const RoleExplorer = () => {
         </nav>
         <div className="ri-sh-panel">
           <div className="ri-sh-header">
-            <div className="ri-sh-header-eyebrow">Your role</div>
             <div className="ri-sh-header-title">{active.title}</div>
           </div>
           <div className="ri-role-panels-stack">
