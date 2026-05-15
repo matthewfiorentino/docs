@@ -634,7 +634,7 @@ body:has(.ri-text-hero) main {
 }
 .ri-role-panel { animation: ri-fade-up .22s ease both; }
 .ri-role-panel-slot--hidden .ri-role-panel { animation: none; }
-.ri-role-framing { font-size: 16px; line-height: 1.65; color: var(--ri-text-body); margin: 0 0 1.75rem; max-width: 680px; }
+.ri-role-framing { font-size: 16px; line-height: 1.65; color: var(--ri-text-body); margin: 0 0 1rem; max-width: 680px; }
 
 /* Detail card grid */
 .ri-dcard-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-bottom: 1.5rem; }
@@ -2357,7 +2357,7 @@ footer a:hover {
     grid-template-columns: 58fr 42fr;
     gap: 28px;
     align-items: start;
-    margin-top: 24px;
+    margin-top: 16px;
 }
 .ri-panel-col {
     display: flex;
@@ -2383,15 +2383,13 @@ footer a:hover {
     display: flex;
     flex-direction: column;
     gap: 3px;
-    padding: 14px 12px 14px 16px;
-    border-left: 2px solid transparent;
+    padding: 14px 12px;
     border-bottom: 1px solid var(--ri-border-subtle);
     text-decoration: none !important;
-    transition: border-left-color .15s, background .15s;
+    transition: background .15s;
 }
 .ri-guide-item:hover {
-    border-left-color: var(--ri-blue);
-    background: rgba(43, 156, 226, 0.04);
+    background: rgba(43, 156, 226, 0.05);
 }
 .ri-guide-item-type {
     font-size: 11px;
