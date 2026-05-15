@@ -634,7 +634,7 @@ body:has(.ri-text-hero) main {
 }
 .ri-role-panel { animation: ri-fade-up .22s ease both; }
 .ri-role-panel-slot--hidden .ri-role-panel { animation: none; }
-.ri-role-framing { font-size: 16px; line-height: 1.65; color: var(--ri-text-body); margin: 0 0 1rem; max-width: 680px; }
+.ri-role-framing { font-size: 16px; line-height: 1.65; color: var(--ri-text-body); margin: 0 0 1.5rem; max-width: 680px; }
 
 /* Detail card grid */
 .ri-dcard-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-bottom: 1.5rem; }
@@ -2314,14 +2314,14 @@ footer a:hover {
 
 /* Full-width content; no photo banner, no card */
 .ri-sh-content {
-    padding: 16px 0 0;
+    padding: 8px 0 0;
     min-height: 420px;
 }
 .ri-sh-content .ri-role-panel { animation: none; }
 
 /* In-card role header — eyebrow + title (icon dropped, already shown in tab) */
 .ri-sh-header {
-    margin-bottom: 28px;
+    margin-bottom: 20px;
     padding-bottom: 28px;
     border-bottom: 1px solid var(--ri-border-subtle);
 }
