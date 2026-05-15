@@ -636,97 +636,6 @@ body:has(.ri-text-hero) main {
 .ri-role-panel-slot--hidden .ri-role-panel { animation: none; }
 .ri-role-framing { font-size: 16px; line-height: 1.65; color: var(--ri-text-body); margin: 0 0 1.75rem; max-width: 680px; }
 
-/* Numbered horizontal stepper */
-.ri-step-track {
-    display: flex;
-    align-items: flex-start;
-    gap: 0;
-    padding: 1.75rem 0 1rem;
-    margin-bottom: 2rem;
-    counter-reset: ri-step;
-}
-.ri-step-pill {
-    counter-increment: ri-step;
-    flex: 0 0 auto;
-    width: 120px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 12px;
-    background: none;
-    border: none;
-    border-radius: 0;
-    padding: 0;
-    font-size: 12.5px;
-    font-weight: 500;
-    color: var(--ri-text-secondary);
-    line-height: 1.35;
-    text-align: center;
-}
-.ri-step-pill::before {
-    content: counter(ri-step);
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    background: var(--ri-surface);
-    border: 2px solid rgba(0,0,0,0.15);
-    color: var(--ri-text-muted);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 13px;
-    font-weight: 700;
-    flex-shrink: 0;
-}
-.ri-step-pill--end {
-    color: var(--ri-navy);
-    font-weight: 600;
-}
-.ri-step-pill--end::before {
-    content: '\2713';
-    background: var(--ri-blue);
-    border-color: var(--ri-blue);
-    color: var(--ri-white);
-}
-.ri-step-check { display: none; }
-.ri-step-sep {
-    flex: 1;
-    min-width: 16px;
-    height: 2px;
-    background: rgba(0,0,0,0.10);
-    margin-top: 15px;
-    align-self: flex-start;
-}
-@media (max-width: 760px) {
-    .ri-step-track {
-        flex-direction: column;
-        gap: 0;
-        padding: 1rem 0 0.75rem;
-        overflow-x: visible;
-    }
-    .ri-step-pill {
-        flex-direction: row;
-        width: auto;
-        text-align: left;
-        gap: 14px;
-        padding: 6px 0;
-        font-size: 13px;
-        align-items: center;
-        justify-content: flex-start;
-    }
-    .ri-step-pill::before {
-        flex-shrink: 0;
-    }
-    /* Separator becomes a short vertical line aligned under the circle */
-    .ri-step-sep {
-        width: 2px;
-        height: 16px;
-        min-width: 0;
-        flex: none;
-        margin: 0 0 0 15px;
-        align-self: auto;
-    }
-}
 /* Detail card grid */
 .ri-dcard-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-bottom: 1.5rem; }
 .ri-dcard {
@@ -831,28 +740,7 @@ body:has(.ri-text-hero) main {
     flex-direction: column;
     gap: 12px;
 }
-/* Intake entry — primary CTA card (step 1 for PI). Soft blue tint, blue accent. */
-.ri-intake-entry {
-    display: flex; flex-direction: column; align-items: flex-start;
-    padding: 24px 26px; border-radius: 14px;
-    border: 1px solid rgba(43, 156, 226, 0.28);
-    background: rgba(43, 156, 226, 0.05);
-    text-decoration: none !important;
-    transition: border-color .15s, background .15s, transform .15s, box-shadow .15s;
-}
-.ri-intake-entry:hover {
-    border-color: var(--ri-blue);
-    background: rgba(43, 156, 226, 0.10);
-    transform: translateY(-1px);
-    box-shadow: 0 4px 14px rgba(43, 156, 226, 0.14);
-}
-.ri-ie-label { font-size: 15px; font-weight: 700; color: var(--ri-text); margin-bottom: 8px; letter-spacing: -.005em; }
-.ri-ie-desc { font-size: 14px; line-height: 1.6; color: var(--ri-text-secondary); flex: 1; }
-.ri-ie-link {
-    font-size: 14px; font-weight: 700; color: var(--ri-blue);
-    margin-top: 16px; display: inline-block;
-}
-/* Orientation banner — neutral white card, same shape as intake */
+/* Orientation banner — neutral white card */
 .ri-orientation-banner {
     display: flex; flex-direction: column; align-items: flex-start;
     padding: 24px 26px; border-radius: 14px;
@@ -2453,73 +2341,20 @@ footer a:hover {
     color: var(--ri-text);
 }
 
-/* Numbered guide hierarchy inside the role panel */
-.ri-guides-numbered {
-    display: flex;
-    flex-direction: column;
-    gap: 40px;
-    margin-top: 36px;
-}
-.ri-guide-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 24px;
-}
-.ri-guide-step {
-    display: grid;
-    grid-template-columns: 44px 1fr;
-    gap: 18px;
-    align-items: start;
-}
-.ri-guide-step-num {
-    width: 36px;
-    height: 36px;
-    border-radius: 50%;
-    background: rgba(43, 156, 226, 0.10);
-    color: var(--ri-blue);
-    font-size: 15px;
-    font-weight: 700;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: 4px;
-}
-.ri-guide-step-body { min-width: 0; }
-.ri-guide-step-label {
-    font-size: 12px;
+/* Section label above guide card grids */
+.ri-guides-label {
+    font-size: 11px;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: .12em;
-    color: var(--ri-blue);
-    margin-bottom: 12px;
-}
-.ri-guide-step-body .ri-intake-entry,
-.ri-guide-step-body .ri-orientation-banner { margin-bottom: 0; }
-.ri-guide-step-body .ri-dcard-grid {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 12px;
-    margin-top: 0;
-}
-
-/* Resources group (Trainee, Volunteer, Observer) */
-.ri-resources-group { margin-top: 32px; }
-.ri-resources-label {
-    font-size: 12px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: .12em;
-    color: var(--ri-blue);
-    margin-bottom: 14px;
+    color: var(--ri-text-muted);
+    margin: 20px 0 10px;
 }
 
 @media (max-width: 760px) {
     /* min-height removed — grid stack handles equal height */
     .ri-sh-content { padding: 32px 24px 36px; min-height: 0; }
     .ri-sh-header { margin-bottom: 24px; padding-bottom: 24px; }
-    .ri-guide-row { grid-template-columns: 1fr; gap: 32px; }
-    .ri-guide-step { grid-template-columns: 36px 1fr; gap: 12px; }
-    .ri-guide-step-num { width: 30px; height: 30px; font-size: 13px; }
-    .ri-guide-step-body .ri-dcard-grid { grid-template-columns: 1fr; }
 
     /* Tabs: wrap to 2 rows of 3 instead of horizontal scroll */
     .ri-sh-tabs-wrap::after { display: none; }

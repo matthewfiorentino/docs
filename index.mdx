@@ -161,25 +161,10 @@ export const FeatureEntry = ({ href, icon, title, desc }) => (
   </a>
 );
 
-export const StepTrack = ({ steps }) => (
-  <div className="ri-step-track">
-    {steps.flatMap((step, i) => {
-      const pill = (
-        <div key={`s${i}`} className={`ri-step-pill${step.end ? ' ri-step-pill--end' : ''}`}>
-          {step.end && <span className="ri-step-check" aria-hidden="true">✓</span>}{step.label}
-        </div>
-      );
-      return i < steps.length - 1
-        ? [pill, <div key={`c${i}`} className="ri-step-sep" aria-hidden="true" />]
-        : [pill];
-    })}
-  </div>
-);
-
 export const DetailCard = ({ href, title, desc }) => (
   <a href={href} className="ri-dcard">
     <div className="ri-dcard-title">{title}</div>
-    <div className="ri-dcard-desc">{desc}</div>
+    {desc && <div className="ri-dcard-desc">{desc}</div>}
   </a>
 );
 
@@ -197,191 +182,85 @@ export const RolePanel = ({ role }) => (
 
       {role === 'pi' && (
         <>
-          <p className="ri-role-framing">As PI or QI, you carry ultimate regulatory and scientific accountability for your study at the RI-MUHC — from the first feasibility conversation through close-out and archiving. That means protocol design, team delegation, Health Canada submissions if your study involves an investigational product, annual REB renewals, and MUHC Authorization before any study activity can begin.</p>
-          <StepTrack steps={[
-            { label: "Assess feasibility" },
-            { label: "Design your study" },
-            { label: "Fulfill training and compliance requirements" },
-            { label: "Prepare your submission" },
-            { label: "Submit via Nagano", end: true },
-          ]} />
+          <p className="ri-role-framing">The QI is personally accountable for this study — from CTA filing and team oversight through close-out.</p>
           <div className="ri-callout ri-callout--warn">
             A study cannot begin until the <strong>Personne mandatée</strong> grants <a href="/kb/submission-overview">MUHC Authorization</a>. REB approval alone does not authorize research activities — both approvals must be in your ISF before any study procedures begin.
           </div>
-          <div className="ri-guides-numbered">
-            <div className="ri-guide-row">
-              <div className="ri-guide-step">
-                <div className="ri-guide-step-num">1</div>
-                <div className="ri-guide-step-body">
-                  <div className="ri-guide-step-label">Start here</div>
-                  <a href="/kb/my-roadmap" className="ri-intake-entry">
-                    <div className="ri-ie-label">Tell us about your study</div>
-                    <div className="ri-ie-desc">Answer a few questions and get a personalized, phase-by-phase roadmap — every step you need to take, in order, for your specific study.</div>
-                    <div className="ri-ie-link">Get my roadmap →</div>
-                  </a>
-                </div>
-              </div>
-              <div className="ri-guide-step">
-                <div className="ri-guide-step-num">2</div>
-                <div className="ri-guide-step-body">
-                  <div className="ri-guide-step-label">Read your orientation</div>
-                  <a href="/kb/roles/pi-orientation" className="ri-orientation-banner">
-                    <div className="ri-pb-label">Investigator Orientation</div>
-                    <div className="ri-pb-desc">Prerequisites, training levels, what only you sign, how your study begins, and links to the operational guides by study type.</div>
-                    <div className="ri-pb-arrow">Get started →</div>
-                  </a>
-                </div>
-              </div>
-            </div>
-            <div className="ri-guide-step">
-              <div className="ri-guide-step-num">3</div>
-              <div className="ri-guide-step-body">
-                <div className="ri-guide-step-label">Pick the guide for your study type</div>
-                <div className="ri-dcard-grid">
-                  <DetailCard href="/kb/roles/pi-guide" title="Investigator Guide — Interventional (I–III)" desc="Stage-by-stage operations for drug trials, device studies, and NHP studies — team structure, RACI responsibilities, and your obligations from submission through close-out." />
-                  <DetailCard href="/kb/roles/pi-guide-iv" title="Investigator Guide — Observational (IV)" desc="Investigator obligations for prospective observational, educational, and non-invasive intervention studies — consent, team oversight, and data integrity." />
-                  <DetailCard href="/kb/roles/pi-guide-v" title="Investigator Guide — Retrospective (V)" desc="Investigator obligations for retrospective chart review and anonymized biobank studies — the ÉFVP consent waiver decision, data access authorization, and REB maintenance." />
-                </div>
-              </div>
-            </div>
+          <a href="/kb/roles/pi-orientation" className="ri-orientation-banner">
+            <div className="ri-pb-label">Investigator Orientation</div>
+            <div className="ri-pb-arrow">Get started →</div>
+          </a>
+          <div className="ri-guides-label">Guides by study type</div>
+          <div className="ri-dcard-grid">
+            <DetailCard href="/kb/roles/pi-guide" title="Investigator Guide — Interventional (I–III)" desc="Drug, device & NHP trials" />
+            <DetailCard href="/kb/roles/pi-guide-iv" title="Investigator Guide — Observational (IV)" desc="Prospective & non-invasive studies" />
+            <DetailCard href="/kb/roles/pi-guide-v" title="Investigator Guide — Retrospective (V)" desc="Chart review & biobank studies" />
           </div>
         </>
       )}
 
       {role === 'crc' && (
         <>
-          <p className="ri-role-framing">Coordinators are the operational core of clinical research at the RI-MUHC. You manage day-to-day study activity — participant recruitment and screening, data collection, regulatory documentation, sponsor communication, and keeping the Investigator Site File inspection-ready. Your authorized scope is defined by your study level and by what the QI/PI delegates on the Task Delegation Log. You cannot begin any study task until you appear on the TDL with your training documented and the QI/PI's countersignature in place.</p>
-          <StepTrack steps={[
-            { label: "Identify your study level (I–V)" },
-            { label: "Fulfill training and compliance requirements" },
-            { label: "PI/QI adds you to the TDL" },
-            { label: "Site activation confirmed" },
-            { label: "Complete protocol-specific training" },
-            { label: "First study tasks begin", end: true },
-          ]} />
+          <p className="ri-role-framing">The CRC manages day-to-day study operations and is the primary point of contact for participants, the sponsor, and the REB.</p>
           <div className="ri-callout ri-callout--warn">
             No team member may perform any study task before they appear on the Task Delegation Log, their training is documented, and the QI/PI has countersigned their entry.
           </div>
-          <div className="ri-guides-numbered">
-            <div className="ri-guide-step">
-              <div className="ri-guide-step-num">1</div>
-              <div className="ri-guide-step-body">
-                <div className="ri-guide-step-label">Read your orientation</div>
-                <a href="/kb/roles/crc-orientation" className="ri-orientation-banner">
-                  <div className="ri-pb-label">CRC Orientation</div>
-                  <div className="ri-pb-desc">Institutional onboarding, training progression, competency domains, and links to the operational guides by study type.</div>
-                  <div className="ri-pb-arrow">Get started →</div>
-                </a>
-              </div>
-            </div>
-            <div className="ri-guide-step">
-              <div className="ri-guide-step-num">2</div>
-              <div className="ri-guide-step-body">
-                <div className="ri-guide-step-label">Pick the guide for your study type</div>
-                <div className="ri-dcard-grid">
-                  <DetailCard href="/kb/roles/crc-guide" title="CRC Guide — Interventional (I–III)" desc="Operational reference for drug trials, medical device studies, and natural health products. Stage-by-stage procedures and domain-specific guidance." />
-                  <DetailCard href="/kb/roles/crc-guide-iv" title="CRC Guide — Observational (IV)" desc="Consent, recruitment, data management, privacy, REB processes, and documentation for prospective observational and non-invasive intervention studies." />
-                  <DetailCard href="/kb/roles/crc-guide-v" title="CRC Guide — Retrospective (V)" desc="REB submission, data extraction, privacy compliance, and documentation for retrospective chart review and anonymized biobank studies." />
-                </div>
-              </div>
-            </div>
+          <a href="/kb/roles/crc-orientation" className="ri-orientation-banner">
+            <div className="ri-pb-label">CRC Orientation</div>
+            <div className="ri-pb-arrow">Get started →</div>
+          </a>
+          <div className="ri-guides-label">Guides by study type</div>
+          <div className="ri-dcard-grid">
+            <DetailCard href="/kb/roles/crc-guide" title="CRC Guide — Interventional (I–III)" desc="Drug, device & NHP trials" />
+            <DetailCard href="/kb/roles/crc-guide-iv" title="CRC Guide — Observational (IV)" desc="Prospective & non-invasive studies" />
+            <DetailCard href="/kb/roles/crc-guide-v" title="CRC Guide — Retrospective (V)" desc="Chart review & biobank studies" />
           </div>
         </>
       )}
 
       {role === 'nurse' && (
         <>
-          <p className="ri-role-framing">Research nurses bring regulated clinical expertise to studies involving patient care, IV administration, biological specimen collection, or any act reserved under the Code des professions. Not all acts permissible in a clinical setting are authorized within a research protocol — your scope must be explicitly confirmed with the QI through the delegation process and documented on the Task Delegation Log before any study tasks begin. The training requirements you must meet depend on the study level.</p>
-          <StepTrack steps={[
-            { label: "Confirm OIIQ licence + CPR" },
-            { label: "Fulfill training and compliance requirements" },
-            { label: "Delegation scope confirmed with QI" },
-            { label: "Added to Task Delegation Log" },
-            { label: "Complete protocol-specific training" },
-            { label: "Nursing study tasks begin", end: true },
-          ]} />
-          <div className="ri-guides-numbered">
-            <div className="ri-guide-step">
-              <div className="ri-guide-step-num">1</div>
-              <div className="ri-guide-step-body">
-                <div className="ri-guide-step-label">Read your orientation</div>
-                <a href="/kb/roles/nurse-orientation" className="ri-orientation-banner">
-                  <div className="ri-pb-label">Research Nurse Orientation</div>
-                  <div className="ri-pb-desc">OIIQ obligations, reserved acts, dual accountability, specialized competencies, and link to the operational guide.</div>
-                  <div className="ri-pb-arrow">Get started →</div>
-                </a>
-              </div>
-            </div>
-            <div className="ri-guide-step">
-              <div className="ri-guide-step-num">2</div>
-              <div className="ri-guide-step-body">
-                <div className="ri-guide-step-label">Operational guide</div>
-                <div className="ri-dcard-grid">
-                  <DetailCard href="/kb/roles/nurse-guide" title="Nurse Guide — Interventional (I–III)" desc="IP administration, specimen collection, clinical monitoring, AE assessment, and between-visit procedures — the nursing-specific operational layer for drug, device, and NHP studies." />
-                </div>
-              </div>
-            </div>
+          <p className="ri-role-framing">Research nurses carry out protocol-specified clinical procedures under dual accountability to the study team and their professional licensing body.</p>
+          <a href="/kb/roles/nurse-orientation" className="ri-orientation-banner">
+            <div className="ri-pb-label">Research Nurse Orientation</div>
+            <div className="ri-pb-arrow">Get started →</div>
+          </a>
+          <div className="ri-guides-label">Operational guide</div>
+          <div className="ri-dcard-grid">
+            <DetailCard href="/kb/roles/nurse-guide" title="Nurse Guide — Interventional (I–III)" desc="Drug, device & NHP trials" />
           </div>
         </>
       )}
 
       {role === 'trainee' && (
         <>
-          <p className="ri-role-framing">Research trainees — graduate students, postdoctoral fellows, and other trainees registered in an academic program — can be delegated study tasks, but only after a formal affiliation agreement with the RI-MUHC is in place. That agreement is a prerequisite to appearing on the Task Delegation Log. Trainees without valid academic insurance, or who are not affiliated through the HR Service Centre, cannot perform study tasks regardless of their academic standing.</p>
-          <StepTrack steps={[
-            { label: "Fulfill training and compliance requirements" },
-            { label: "Sign the Confidentiality and Security Agreement" },
-            { label: "PI adds you to the Task Delegation Log" },
-            { label: "Complete protocol-specific training" },
-            { label: "Study tasks begin", end: true },
-          ]} />
-          <div className="ri-resources-group">
-            <div className="ri-resources-label">Resources for getting started</div>
-            <div className="ri-dcard-grid">
-              <DetailCard href="/kb/clinical-research-101" title="Clinical Research 101" desc="Frameworks, roles, regulatory history from Nuremberg to ICH GCP, and Quebec-specific obligations — the starting point for anyone new to clinical research." />
-              <DetailCard href="/kb/roles/onboarding-trainees" title="Joining as a trainee" desc="Eligibility, affiliation agreement process, training obligations, and the scope of tasks that can and cannot be delegated to trainees." />
-              <DetailCard href="/kb/glossary" title="Glossary" desc="Terms, acronyms, and definitions used across the Hub." />
-            </div>
+          <p className="ri-role-framing">Trainees may be delegated study tasks appropriate to their training level, with the QI/PI responsible for supervision.</p>
+          <div className="ri-dcard-grid">
+            <DetailCard href="/kb/clinical-research-101" title="Clinical Research 101" />
+            <DetailCard href="/kb/roles/onboarding-trainees" title="Joining as a trainee" />
+            <DetailCard href="/kb/glossary" title="Glossary" />
           </div>
         </>
       )}
 
       {role === 'volunteer' && (
         <>
-          <p className="ri-role-framing">Research volunteers contribute to studies in a non-employment capacity. A signed volunteer agreement processed through the HR Service Centre is required before a volunteer can access RI-MUHC facilities or appear on the Task Delegation Log. The scope of tasks that can be delegated to volunteers is limited — volunteers cannot perform acts requiring professional licensing or specialized clinical training.</p>
-          <StepTrack steps={[
-            { label: "Supervisor's Authorization form signed by PI" },
-            { label: "Sign the Confidentiality and Security Agreement" },
-            { label: "Provide proof of eligibility to work in Canada" },
-            { label: "PI adds you to the Task Delegation Log" },
-            { label: "Study tasks begin", end: true },
-          ]} />
-          <div className="ri-resources-group">
-            <div className="ri-resources-label">Resources for getting started</div>
-            <div className="ri-dcard-grid">
-              <DetailCard href="/kb/clinical-research-101" title="Clinical Research 101" desc="Frameworks, roles, regulatory history from Nuremberg to ICH GCP, and Quebec-specific obligations — the starting point for anyone new to clinical research." />
-              <DetailCard href="/kb/roles/onboarding-volunteers" title="Joining as a volunteer" desc="Volunteer agreement requirements, scope limitations, confidentiality obligations, and the process for becoming affiliated with the RI-MUHC as a volunteer." />
-              <DetailCard href="/kb/glossary" title="Glossary" desc="Terms, acronyms, and definitions used across the Hub." />
-            </div>
+          <p className="ri-role-framing">Research volunteers may assist with defined non-clinical tasks under direct supervision of a delegated team member.</p>
+          <div className="ri-dcard-grid">
+            <DetailCard href="/kb/clinical-research-101" title="Clinical Research 101" />
+            <DetailCard href="/kb/roles/onboarding-volunteers" title="Joining as a volunteer" />
+            <DetailCard href="/kb/glossary" title="Glossary" />
           </div>
         </>
       )}
 
       {role === 'observer' && (
         <>
-          <p className="ri-role-framing">Observers may attend and observe study activities but may not perform study tasks, handle investigational products, access participant records independently, or appear on the Task Delegation Log in a task-performing capacity. An observer agreement is required before any observation begins. Observers do not replace or supplement the study team — the scope is strictly witnessing and learning.</p>
-          <StepTrack steps={[
-            { label: "Observer agreement signed" },
-            { label: "Access coordinated with QI/PI" },
-            { label: "Observation begins", end: true },
-          ]} />
-          <div className="ri-resources-group">
-            <div className="ri-resources-label">Resources for getting started</div>
-            <div className="ri-dcard-grid">
-              <DetailCard href="/kb/clinical-research-101" title="Clinical Research 101" desc="Frameworks, roles, regulatory history from Nuremberg to ICH GCP, and Quebec-specific obligations — the starting point for anyone new to clinical research." />
-              <DetailCard href="/kb/roles/onboarding-observers" title="Joining as an observer" desc="Observer agreement requirements, access limitations, what observers may and may not do during study visits, and how the observer role differs from study team membership." />
-              <DetailCard href="/kb/glossary" title="Glossary" desc="Terms, acronyms, and definitions used across the Hub." />
-            </div>
+          <p className="ri-role-framing">Observers may attend study activities under a signed observer agreement but may not perform or assist with any study procedures.</p>
+          <div className="ri-dcard-grid">
+            <DetailCard href="/kb/clinical-research-101" title="Clinical Research 101" />
+            <DetailCard href="/kb/roles/onboarding-observers" title="Joining as an observer" />
+            <DetailCard href="/kb/glossary" title="Glossary" />
           </div>
         </>
       )}
