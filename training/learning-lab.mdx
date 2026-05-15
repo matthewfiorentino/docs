@@ -4820,7 +4820,7 @@ export const LL_JS_4 = `      { type:'error', who:'Kevin Tremblay',
         why:'Vague reasons accumulate across the log, preventing any meaningful pattern analysis. An inspector reviewing a log where half the failures say “didn’t qualify” will not be able to assess site eligibility practices.',
         fix:'Same as SF-001 — document the specific criterion that was not met with the relevant value.',
         ref:'ICH E6(R3) §2.4.2 · C.05.012' },
-      { type:'error', who:'SF-014 — “Declined” mislabeled',
+      { type:'error', who:'SF-014 — “Declined” mislabelled',
         problem:'“Declined” is not a screen failure reason — it is an eligible-but-declined entry. Mixing these in the same column obscures important recruitment data.',
         why:'The distinction matters: a high rate of eligible-but-declined participants signals a recruitment or consent process problem. A high screen failure rate signals a protocol feasibility or population problem. Conflating them hides both signals.',
         fix:'Screen failure logs should distinguish: failed eligibility criteria; eligible but declined to consent; eligible and consented but not enrolled for other reasons.',
@@ -6338,11 +6338,8 @@ export const LL_SHELL_CSS = `
   transition: border-color .2s ease, transform .2s ease, box-shadow .2s ease;
 }
 .ll-topic-card:hover { border-color: var(--ll-accent); transform: translateY(-1px); box-shadow: 0 4px 14px rgba(17,17,17,0.04); }
-.ll-topic-card-head { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; margin-bottom: 6px; }
-.ll-topic-card-title { font-size: 15.5px; font-weight: 700; color: var(--ll-text); letter-spacing: -.005em; }
-.ll-topic-card-count { font-size: 13px; font-weight: 700; color: var(--ll-text-3); flex-shrink: 0; transition: color .15s; }
-.ll-topic-card:hover .ll-topic-card-count { color: var(--ll-accent); }
-.ll-topic-card-breakdown { font-size: 12px; color: var(--ll-text-3); line-height: 1.45; }
+.ll-topic-card-title { font-size: 15.5px; font-weight: 700; color: var(--ll-text); letter-spacing: -.005em; margin-bottom: 6px; }
+.ll-topic-card-desc { font-size: 12px; color: var(--ll-text-3); line-height: 1.5; }
 
 /* ── Breadcrumb / back row above page H1 ─────────────────────────────── */
 .ll-breadcrumb { margin-bottom: 14px; }

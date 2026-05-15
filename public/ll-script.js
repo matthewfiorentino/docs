@@ -2279,7 +2279,7 @@ var KP_DR_EXERCISES = {
         why:'Vague reasons accumulate across the log, preventing any meaningful pattern analysis. An inspector reviewing a log where half the failures say “didn’t qualify” will not be able to assess site eligibility practices.',
         fix:'Same as SF-001 — document the specific criterion that was not met with the relevant value.',
         ref:'ICH E6(R3) §2.4.2 · C.05.012' },
-      { type:'error', who:'SF-014 — “Declined” mislabeled',
+      { type:'error', who:'SF-014 — “Declined” mislabelled',
         problem:'“Declined” is not a screen failure reason — it is an eligible-but-declined entry. Mixing these in the same column obscures important recruitment data.',
         why:'The distinction matters: a high rate of eligible-but-declined participants signals a recruitment or consent process problem. A high screen failure rate signals a protocol feasibility or population problem. Conflating them hides both signals.',
         fix:'Screen failure logs should distinguish: failed eligibility criteria; eligible but declined to consent; eligible and consented but not enrolled for other reasons.',
@@ -3558,6 +3558,20 @@ var LL_TOPIC_LABEL = {
   tcps2:'TCPS2', data:'Data Integrity', iso14155:'ISO 14155'
 };
 
+var LL_TOPIC_DESC = {
+  consent:    'Capacity assessment, re-consent triggers, withdrawal rights, and what makes a consent defensible under Quebec law.',
+  sae:        'Awareness date rules, relatedness assessment, SAE vs SUSAR classification, and timelines for Health Canada and REB reporting.',
+  delegation: 'Keeping the delegation log current, scope of authorized tasks, and what monitors look for in delegation documentation.',
+  recruitment:'Eligibility criteria, screening number integrity, pre-screening under Loi 25, and enrolment documentation.',
+  deviations: 'Classification, reporting timelines, CAPA requirements, and the difference between a deviation and an amendment.',
+  monitoring: 'Source data verification, monitoring visit preparation, responding to findings, and inspection readiness.',
+  gcp:        'The 11 ICH E6(R3) principles in practice — how they apply to day-to-day site decisions.',
+  data:       'ALCOA+ in source records, eCRF audit trails, correction procedures, and what constitutes a data integrity finding.',
+  tcps2:      'Research ethics under Canada\'s Tri-Council Policy — REB requirements, consent, privacy, and special populations.',
+  div5:       'Canadian regulatory requirements for drug trials — CTA filing, QI obligations, and where Division 5 differs from ICH GCP.',
+  iso14155:   'GCP for medical device trials — where device-specific requirements diverge from drug trial standards.'
+};
+
 /* Default role tagging by topic — Phase 1 default; refine per-item later */
 var LL_ROLES_BY_TOPIC = {
   sae:        ['crc','pi','nurse'],
@@ -4375,7 +4389,7 @@ function llRenderLibrary(pane) {
   }
   var topicCount = Object.keys(byTopic).filter(function(k){return k!=='other';}).length;
   var html = '<h1>Library</h1>';
-  html += '<div class="ll-pane-sub">' + LL_LIBRARY.length + ' items across ' + topicCount + ' topics.</div>';
+  html += '<div class="ll-pane-sub">Browse by topic, or use the search bar to find something specific.</div>';
 
   function renderTopicGroup(label, ids) {
     var rendered = '';
@@ -4391,19 +4405,10 @@ function llRenderLibrary(pane) {
         var k = byTopic[tid][ki].kind;
         kindCounts[k] = (kindCounts[k] || 0) + 1;
       }
-      var breakdown = [];
-      var kindOrder = ['mcq','inspection-card','scenario','team-exercise','doc-review'];
-      for (var ko = 0; ko < kindOrder.length; ko++) {
-        var kk = kindOrder[ko];
-        if (!kindCounts[kk]) continue;
-        breakdown.push(kindCounts[kk] + ' ' + (LL_KIND_SHORT[kk] || kk));
-      }
+      var desc = LL_TOPIC_DESC[tid] || '';
       rendered += '<button class="ll-topic-card" onclick="llRoute(\'topic\',{topicId:\'' + tid + '\'})">';
-      rendered +=   '<div class="ll-topic-card-head">';
-      rendered +=     '<div class="ll-topic-card-title">' + topicLabel + '</div>';
-      rendered +=     '<div class="ll-topic-card-count">' + byTopic[tid].length + '</div>';
-      rendered +=   '</div>';
-      rendered +=   '<div class="ll-topic-card-breakdown">' + breakdown.join(' · ') + '</div>';
+      rendered +=   '<div class="ll-topic-card-title">' + topicLabel + '</div>';
+      if (desc) rendered += '<div class="ll-topic-card-desc">' + desc + '</div>';
       rendered += '</button>';
     }
     if (!anyShown) return '';
@@ -4648,7 +4653,7 @@ function llRenderAbout(pane) {
   html += '<button class="ll-library-tile" onclick="llRoute(\'library\')">';
   html +=   '<div class="ll-library-tile-body">';
   html +=     '<div class="ll-library-tile-title">Library</div>';
-  html +=     '<div class="ll-library-tile-sub">All practice items, organised by topic.</div>';
+  html +=     '<div class="ll-library-tile-sub">All practice items, organized by topic.</div>';
   html +=   '</div>';
   html +=   '<svg class="ll-library-tile-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>';
   html += '</button>';
@@ -5068,7 +5073,7 @@ function llRenderKnowledgeChecks(pane) {
 function llKcRenderGrid(pane) {
   var intl = (kpStudyType !== 'observational');
   var html = '<h1>Knowledge Checks</h1>';
-  html += '<div class="ll-pane-sub">Multiple-choice questions with immediate feedback across ' + KP_TOPICS.filter(function(t){ return t.live && (intl || t.applies !== 'interventional'); }).length + ' topics. Browse by topic or shuffle for a randomised mix.</div>';
+  html += '<div class="ll-pane-sub">Multiple-choice questions with immediate feedback across ' + KP_TOPICS.filter(function(t){ return t.live && (intl || t.applies !== 'interventional'); }).length + ' topics. Browse by topic or shuffle for a randomized mix.</div>';
   html += '<div class="ll-kc-controls">';
   html +=   '<div class="ll-kc-pills">';
   html +=     '<button class="ll-kc-pill' + ( intl ? ' active' : '') + '" onclick="llKcSetStudyType(\'interventional\')">Interventional</button>';
@@ -5169,7 +5174,7 @@ function llKcRenderEnd() {
   } else if (seqCorrect >= Math.ceil(seqChecks * 0.6)) {
     feedback = 'A few gaps worth revisiting. Read through the rationale on the ones you missed — the SOP links are there if you want to go deeper.';
   } else {
-    feedback = 'This material takes repetition. Try again and focus on the rationale — understanding the reasoning is more useful than memorising answers.';
+    feedback = 'This material takes repetition. Try again and focus on the rationale — understanding the reasoning is more useful than memorizing answers.';
   }
   var topicName = '';
   if (kpMode === 'browse') {
