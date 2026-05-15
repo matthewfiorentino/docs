@@ -758,8 +758,8 @@ body:has(.ri-text-hero) main {
 .ri-pb-label { font-size: 15px; font-weight: 700; color: var(--ri-text); margin-bottom: 8px; letter-spacing: -.005em; }
 .ri-pb-desc { font-size: 14px; line-height: 1.6; color: var(--ri-text-secondary); flex: 1; }
 .ri-pb-arrow { font-size: 14px; font-weight: 700; color: var(--ri-blue); margin-top: 16px; display: inline-block; }
-/* Spacing: orientation banner when directly inside a role panel (not inside ri-pi-top-row) */
-.ri-role-panel > .ri-orientation-banner { margin-top: 1.75rem; margin-bottom: 1.5rem; }
+/* Orientation banner margin reset — spacing handled by panel grid gap */
+.ri-role-panel > .ri-orientation-banner { margin: 0; }
 /* Orientation card alongside guide cards — side-by-side layout */
 .ri-guides-row {
     display: grid;
@@ -2315,7 +2315,7 @@ footer a:hover {
 /* Full-width content; no photo banner, no card */
 .ri-sh-content {
     padding: 16px 0 0;
-    min-height: 1000px; /* anchored to PI's natural height so all panels are the same size — prevents page-end gap below footer when shorter roles are shown */
+    min-height: 420px;
 }
 .ri-sh-content .ri-role-panel { animation: none; }
 
@@ -2348,13 +2348,71 @@ footer a:hover {
     text-transform: uppercase;
     letter-spacing: .12em;
     color: var(--ri-text-muted);
-    margin: 20px 0 10px;
+    margin: 0 0 10px;
+}
+
+/* ── Two-column role panel layout ── */
+.ri-panel-grid {
+    display: grid;
+    grid-template-columns: 58fr 42fr;
+    gap: 28px;
+    align-items: start;
+    margin-top: 24px;
+}
+.ri-panel-col {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+/* Muted framing line below orientation card */
+.ri-panel-framing-sub {
+    font-size: 13.5px;
+    line-height: 1.65;
+    color: var(--ri-text-muted);
+    margin: 0;
+}
+
+/* Guide item list — right column */
+.ri-guide-list {
+    display: flex;
+    flex-direction: column;
+    border-top: 1px solid var(--ri-border-subtle);
+}
+.ri-guide-item {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    padding: 14px 12px 14px 16px;
+    border-left: 2px solid transparent;
+    border-bottom: 1px solid var(--ri-border-subtle);
+    text-decoration: none !important;
+    transition: border-left-color .15s, background .15s;
+}
+.ri-guide-item:hover {
+    border-left-color: var(--ri-blue);
+    background: rgba(43, 156, 226, 0.04);
+}
+.ri-guide-item-type {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    color: var(--ri-text-muted);
+}
+.ri-guide-item-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--ri-text);
 }
 
 @media (max-width: 760px) {
     /* min-height removed — grid stack handles equal height */
     .ri-sh-content { padding: 32px 24px 36px; min-height: 0; }
     .ri-sh-header { margin-bottom: 24px; padding-bottom: 24px; }
+
+    /* Role panel: two-column grid stacks vertically */
+    .ri-panel-grid { grid-template-columns: 1fr; gap: 20px; }
 
     /* Tabs: wrap to 2 rows of 3 instead of horizontal scroll */
     .ri-sh-tabs-wrap::after { display: none; }
