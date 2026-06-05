@@ -1,0 +1,116 @@
+---
+title: "Layout Lab"
+mode: "custom"
+---
+
+export const CimDoors = () => (
+  <div className="hp-doors">
+    <div className="hp-door">
+      <div className="hp-door__lab">Turnkey</div>
+      <div className="hp-door__h">Run your whole trial</div>
+      <p className="hp-door__p">The CIM provides the full team — nursing, coordination, monitoring, regulatory, and budget — and runs your study end to end.</p>
+      <a href="/cim/planning" className="hp-cta">Plan your study</a>
+    </div>
+    <div className="hp-door">
+      <div className="hp-door__lab">À la carte</div>
+      <div className="hp-door__h">Book a single service</div>
+      <p className="hp-door__p">Use only what you need — a technical platform, the Infusion Centre, or ethics and budget support.</p>
+      <a href="/cim/services" className="hp-cta">Browse CIM services</a>
+    </div>
+  </div>
+);
+
+export const CimExtras = () => (
+  <>
+    <div className="hp-cim-block" style={{ marginTop: '34px' }}>
+      <div className="hp-cim-block__lab">Phase I unit — the CIM's primary mandate</div>
+      <ul className="hp-list hp-list--2col">
+        <li>8 negative-pressure pods for first-in-human trials</li>
+        <li>Formal in-patient admission &amp; overnight monitoring</li>
+        <li>Gene &amp; cell therapy, incl. non-oncology CAR-T</li>
+        <li>Dedicated apheresis &amp; infusion nursing</li>
+      </ul>
+    </div>
+    <div className="hp-stats">
+      <div className="hp-stat"><div className="hp-stat__n">138+</div><div className="hp-stat__l">active trials</div></div>
+      <div className="hp-stat"><div className="hp-stat__n">55%</div><div className="hp-stat__l">Phase I growth</div></div>
+      <div className="hp-stat"><div className="hp-stat__n">15+</div><div className="hp-stat__l">therapeutic areas</div></div>
+    </div>
+  </>
+);
+
+{/* hidden trigger so the homepage-scoped CSS (body:has(.ri-text-hero)) applies here */}
+<div className="ri-text-hero" style={{ display: 'none' }} />
+
+<div className="hpx-label">Direction A — Swiss numbered index (colour as accent)</div>
+<section className="hpx hpx--a">
+  <div className="hpx__in">
+    <div className="hpx-a__head">
+      <span className="hpx-a__num">04</span>
+      <div>
+        <div className="hp-eyebrow">Centre for Innovative Medicine</div>
+        <h2 className="hp-anno">Built for <span className="hp-mark hp-mark--sky">Phase I</span> and industry trials.</h2>
+      </div>
+    </div>
+    <div className="hpx-a__rule" />
+    <div className="hpx-a__body">
+      <p className="hp-lede">The CIM is the RI-MUHC's dedicated clinical trials unit — the nurses, coordinators, monitors, and regulatory and budget specialists to run a study end to end.</p>
+      <div>
+        <CimDoors />
+        <CimExtras />
+      </div>
+    </div>
+  </div>
+</section>
+
+<div className="hpx-label">Direction B — Colour poster header + white content</div>
+<section className="hpx hpx--b hpx--b-crimson">
+  <div className="hpx-b__poster">
+    <div className="hpx__in hpx-b__grid">
+      <span className="hpx-b__slash">/ 04 — Centre for Innovative Medicine</span>
+      <h2 className="hp-anno hpx-b__h">Built for <span className="hp-mark-rail">Phase I</span> &amp; industry trials.</h2>
+      <div className="hpx-b__dotfield" aria-hidden="true" />
+      <p className="hp-lede hpx-b__lede">The CIM is the RI-MUHC's dedicated clinical trials unit — the nurses, coordinators, monitors, and regulatory and budget specialists to run a study end to end.</p>
+      <span className="hpx-b__corner">RI-MUHC · Clinical Research Hub</span>
+    </div>
+  </div>
+  <div className="hpx-b__body">
+    <div className="hpx__in">
+      <CimDoors />
+      <CimExtras />
+    </div>
+  </div>
+</section>
+
+<div className="hpx-label">Direction C — Asymmetric anchor (refined)</div>
+<section className="hpx hpx--c">
+  <div className="hpx-c__grid">
+    <div className="hpx-c__anchor">
+      <div className="hpx-c__acronym">CIM</div>
+      <div className="hpx-c__fullname">Centre for Innovative Medicine</div>
+    </div>
+    <div className="hpx-c__head">
+      <h2 className="hp-anno">Built for <span className="hp-mark-rail">Phase I</span> and industry trials.</h2>
+      <p className="hp-lede">The CIM is the RI-MUHC's dedicated clinical trials unit — the nurses, coordinators, monitors, and regulatory and budget specialists to run a study end to end.</p>
+    </div>
+    <div className="hpx-c__content">
+      <CimDoors />
+      <div className="hpx-c__caps">
+        <div className="hpx-c__caps-lab">Phase I unit — the CIM's primary mandate</div>
+        <ul className="hp-list hp-list--2col">
+          <li>8 negative-pressure pods for first-in-human trials</li>
+          <li>Formal in-patient admission &amp; overnight monitoring</li>
+          <li>Gene &amp; cell therapy, incl. non-oncology CAR-T</li>
+          <li>Dedicated apheresis &amp; infusion nursing</li>
+        </ul>
+      </div>
+      <div className="hpx-c__stats">
+        <div className="hpx-c__stat2"><span className="n">138+</span><span className="l">active trials</span></div>
+        <div className="hpx-c__stat2"><span className="n">55%</span><span className="l">Phase I patient growth</span></div>
+        <div className="hpx-c__stat2"><span className="n">15+</span><span className="l">therapeutic areas</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div style={{ height: '80px' }} />

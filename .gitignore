@@ -1,2 +1,7 @@
 graphify-out/
 *.py
+PROJECT_CONTEXT.md
+
+_backups/
+*.bak
+*.bak-frame

@@ -408,11 +408,11 @@ export const BT_HTML = `
     <div class="bth-sep"></div>
     <div class="bth-stats" id="bth-total-wrap">
       <div class="bth-stat-col" id="bth-col-main">
-        <span class="bth-amt" id="bth-grand">$0</span>
+        <span class="bth-amt" id="bth-grand">\$0</span>
         <span class="bth-lbl" id="bth-lbl">Grand total</span>
       </div>
       <div class="bth-stat-col" id="bth-col-total" style="display:none">
-        <span class="bth-amt-sm" id="bth-tot-amt">$0</span>
+        <span class="bth-amt-sm" id="bth-tot-amt">\$0</span>
         <span class="bth-lbl" id="bth-tot-lbl">—</span>
       </div>
     </div>
@@ -540,7 +540,7 @@ export const BT_HTML = `
         </div>
         <div class="fg">
           <label class="fl">Major amendments</label>
-          <span class="fh">$634 per amendment &mdash; fixed MSSS fee schedule rate (April 2025).</span>
+          <span class="fh">\$634 per amendment &mdash; fixed MSSS fee schedule rate (April 2025).</span>
           <input type="text" inputmode="decimal" class="fi" id="reb-amendments" value="0" oninput="calcREB()">
         </div>
       </div>
@@ -551,7 +551,7 @@ export const BT_HTML = `
           <option value="no">No &mdash; show for reference only</option>
         </select>
       </div>
-      <div class="reb-box" id="reb-box"><div class="reb-fee-row"><span class="reb-fn">Scientific review (one per project)</span><span class="reb-fa">$634</span></div><div class="reb-fee-row"><span class="reb-fn">Ethical review (one per project)</span><span class="reb-fa">$6,348</span></div><div class="reb-fee-row"><span class="reb-fn">Site authorization (1 institution)</span><span class="reb-fa">$1,904</span></div><div class="reb-total-row"><span class="reb-tl">REB total</span><span class="reb-ta">$8,886</span></div></div>
+      <div class="reb-box" id="reb-box"><div class="reb-fee-row"><span class="reb-fn">Scientific review (one per project)</span><span class="reb-fa">\$634</span></div><div class="reb-fee-row"><span class="reb-fn">Ethical review (one per project)</span><span class="reb-fa">\$6,348</span></div><div class="reb-fee-row"><span class="reb-fn">Site authorization (1 institution)</span><span class="reb-fa">\$1,904</span></div><div class="reb-total-row"><span class="reb-tl">REB total</span><span class="reb-ta">\$8,886</span></div></div>
 
       <div class="sec-nav">
         <span class="sec-nav-spacer"></span>
@@ -592,7 +592,7 @@ export const BT_HTML = `
         Add team member
       </button>
 
-      <div class="ct" style="margin-top:20px"><strong>Salary scale:</strong> RI-MUHC annual midpoints (1 FTE = 1,820 hrs/yr). Benefits at 19% &mdash; validate this rate with RI-MUHC People &amp; Culture (Quebec employer obligations may be 25&ndash;30%). Biostatistician: BCU (RI-MUHC) = $80/hr &bull; ACT-CTU OHRI = $250/hr.</div>
+      <div class="ct" style="margin-top:20px"><strong>Salary scale:</strong> RI-MUHC annual midpoints (1 FTE = 1,820 hrs/yr). Benefits at 19% &mdash; validate this rate with RI-MUHC People &amp; Culture (Quebec employer obligations may be 25&ndash;30%). Biostatistician: BCU (RI-MUHC) = \$80/hr &bull; ACT-CTU OHRI = \$250/hr.</div>
 
       <div class="sec-nav">
         <button class="sec-nav-btn" onclick="showSection('s-profile')">&#8592; Study Profile</button>
@@ -716,7 +716,7 @@ export const BT_HTML = `
       <div class="sub-head" style="margin-top:24px">Direct Costs</div>
 
       <div class="svc-cat-head">Participant Costs</div>
-      <div id="pt-n-banner" class="cn" style="font-size:12px;padding:10px 14px">Participant count is 0 — subtotals will show $0. Set the number of participants in <strong>Study Profile</strong> (Section 1) first.</div>
+      <div id="pt-n-banner" class="cn" style="font-size:12px;padding:10px 14px">Participant count is 0 — subtotals will show \$0. Set the number of participants in <strong>Study Profile</strong> (Section 1) first.</div>
       <div id="pt-cost-rows">
       <div class="svc-hdr"><span>Item</span><span style="text-align:right">Rate / visit ($)</span><span style="text-align:right">No. of visits</span><span style="text-align:right">Participants (N)</span><span style="text-align:right">Subtotal</span></div>
       <div class="svc-row">
@@ -724,7 +724,7 @@ export const BT_HTML = `
         <div class="pt-cell"><input type="text" inputmode="decimal" min="0" value="0" id="pt-stip-amt" oninput="calcPtCost()"></div>
         <div class="pt-cell"><input type="text" inputmode="decimal" min="0" value="1" id="pt-stip-visits" oninput="calcPtCost()"></div>
         <div class="pt-cell"><input type="text" inputmode="decimal" min="0" value="0" id="pt-stip-n" data-synced="true" oninput="this.dataset.synced='false';calcPtCost()"></div>
-        <span class="svc-sub" id="pt-stip-sub">$0</span>
+        <span class="svc-sub" id="pt-stip-sub">\$0</span>
       </div>
       <div id="pt-stip-warn-row" style="grid-column:1/-1;display:none"><span id="pt-stip-warn" style="font-size:12px;padding:6px 10px;border-radius:6px;display:inline-block;margin:2px 0 4px"></span></div>
       <div class="svc-row">
@@ -732,19 +732,19 @@ export const BT_HTML = `
         <div class="pt-cell"><input type="text" inputmode="decimal" min="0" value="0" id="pt-trans-amt" oninput="calcPtCost()"></div>
         <div class="pt-cell"><input type="text" inputmode="decimal" min="0" value="1" id="pt-trans-visits" oninput="calcPtCost()"></div>
         <div class="pt-cell"><input type="text" inputmode="decimal" min="0" value="0" id="pt-trans-n" data-synced="true" oninput="this.dataset.synced='false';calcPtCost()"></div>
-        <span class="svc-sub" id="pt-trans-sub">$0</span>
+        <span class="svc-sub" id="pt-trans-sub">\$0</span>
       </div>
       <div class="svc-row">
         <span class="svc-name">Parking reimbursement</span>
         <div class="pt-cell"><input type="text" inputmode="decimal" min="0" value="0" id="pt-park-amt" oninput="calcPtCost()"></div>
         <div class="pt-cell"><input type="text" inputmode="decimal" min="0" value="1" id="pt-park-visits" oninput="calcPtCost()"></div>
         <div class="pt-cell"><input type="text" inputmode="decimal" min="0" value="0" id="pt-park-n" data-synced="true" oninput="this.dataset.synced='false';calcPtCost()"></div>
-        <span class="svc-sub" id="pt-park-sub">$0</span>
+        <span class="svc-sub" id="pt-park-sub">\$0</span>
       </div>
       <div class="svc-row" style="grid-template-columns:1fr 280px 90px">
         <div><span class="svc-name">Other participant costs <span style="font-size:10px;color:var(--textd);font-weight:400">(flat study total)</span></span><input type="text" id="pt-other-desc" class="fi" placeholder="Description (optional)" style="margin-top:4px;font-size:12px;padding:4px 8px"></div>
         <div class="svc-qty" style="display:flex;justify-content:flex-end"><input type="text" inputmode="decimal" min="0" value="0" id="pt-other-amt" oninput="calcPtCost()" style="width:80px;text-align:right;font-size:13px;border:1.5px solid var(--bdr);padding:5px 8px;border-radius:6px;outline:none"></div>
-        <span class="svc-sub" id="pt-other-sub">$0</span>
+        <span class="svc-sub" id="pt-other-sub">\$0</span>
       </div>
       </div>
 
@@ -755,25 +755,25 @@ export const BT_HTML = `
         <span class="svc-name">Patient partner honoraria (meetings)</span>
         <span class="svc-price">&nbsp;</span>
         <div class="svc-qty"><input type="text" inputmode="decimal" min="0" value="0" id="pp-hon" oninput="updateSimpleSub('pp-hon','pp-hon-sub')" style="width:100%;text-align:right;font-size:13px;border:1.5px solid var(--bdr);padding:5px 8px;border-radius:6px;outline:none"></div>
-        <span class="svc-sub" id="pp-hon-sub">$0</span>
+        <span class="svc-sub" id="pp-hon-sub">\$0</span>
       </div>
       <div class="svc-row">
         <span class="svc-name">Patient partner travel &amp; accommodation</span>
         <span class="svc-price">&nbsp;</span>
         <div class="svc-qty"><input type="text" inputmode="decimal" min="0" value="0" id="pp-travel" oninput="updateSimpleSub('pp-travel','pp-travel-sub')" style="width:100%;text-align:right;font-size:13px;border:1.5px solid var(--bdr);padding:5px 8px;border-radius:6px;outline:none"></div>
-        <span class="svc-sub" id="pp-travel-sub">$0</span>
+        <span class="svc-sub" id="pp-travel-sub">\$0</span>
       </div>
       <div class="svc-row">
         <span class="svc-name">Training &amp; capacity building (materials, facilitator)</span>
         <span class="svc-price">&nbsp;</span>
         <div class="svc-qty"><input type="text" inputmode="decimal" min="0" value="0" id="pp-training" oninput="updateSimpleSub('pp-training','pp-training-sub')" style="width:100%;text-align:right;font-size:13px;border:1.5px solid var(--bdr);padding:5px 8px;border-radius:6px;outline:none"></div>
-        <span class="svc-sub" id="pp-training-sub">$0</span>
+        <span class="svc-sub" id="pp-training-sub">\$0</span>
       </div>
       <div class="svc-row">
         <span class="svc-name">Meeting costs (venue, catering)</span>
         <span class="svc-price">&nbsp;</span>
         <div class="svc-qty"><input type="text" inputmode="decimal" min="0" value="0" id="pp-meetings" oninput="updateSimpleSub('pp-meetings','pp-meetings-sub')" style="width:100%;text-align:right;font-size:13px;border:1.5px solid var(--bdr);padding:5px 8px;border-radius:6px;outline:none"></div>
-        <span class="svc-sub" id="pp-meetings-sub">$0</span>
+        <span class="svc-sub" id="pp-meetings-sub">\$0</span>
       </div>
 
       <div class="svc-cat-head">Travel</div>
@@ -782,19 +782,19 @@ export const BT_HTML = `
         <span class="svc-name">Investigator / CRC travel (flights, per diems, hotel)</span>
         <span class="svc-price">&nbsp;</span>
         <div class="svc-qty"><input type="text" inputmode="decimal" min="0" value="0" id="tv-inv" oninput="updateSummary()" style="width:100%;text-align:right;font-size:13px;border:1.5px solid var(--bdr);padding:5px 8px;border-radius:6px;outline:none"></div>
-        <span class="svc-sub" id="tv-inv-sub">$0</span>
+        <span class="svc-sub" id="tv-inv-sub">\$0</span>
       </div>
       <div class="svc-row" id="tv-mon-row">
         <span class="svc-name">Monitoring visit travel <span style="font-size:10px;color:var(--textd);font-weight:400">(on-site monitoring, sponsor visits, site initiation travel)</span></span>
         <span class="svc-price">&nbsp;</span>
         <div class="svc-qty"><input type="text" inputmode="decimal" min="0" value="0" id="tv-mon" oninput="updateSummary()" style="width:100%;text-align:right;font-size:13px;border:1.5px solid var(--bdr);padding:5px 8px;border-radius:6px;outline:none"></div>
-        <span class="svc-sub" id="tv-mon-sub">$0</span>
+        <span class="svc-sub" id="tv-mon-sub">\$0</span>
       </div>
       <div class="svc-row">
         <span class="svc-name">Other travel</span>
         <span class="svc-price">&nbsp;</span>
         <div class="svc-qty"><input type="text" inputmode="decimal" min="0" value="0" id="tv-other" oninput="updateSummary()" style="width:100%;text-align:right;font-size:13px;border:1.5px solid var(--bdr);padding:5px 8px;border-radius:6px;outline:none"></div>
-        <span class="svc-sub" id="tv-other-sub">$0</span>
+        <span class="svc-sub" id="tv-other-sub">\$0</span>
       </div>
 
       <div class="svc-cat-head">Knowledge Translation</div>
@@ -804,25 +804,25 @@ export const BT_HTML = `
         <span class="svc-name">Open access / publication fees</span>
         <span class="svc-price">&nbsp;</span>
         <div class="svc-qty"><input type="text" inputmode="decimal" min="0" value="0" id="kt-pub" oninput="updateSimpleSub('kt-pub','kt-pub-sub')" style="width:100%;text-align:right;font-size:13px;border:1.5px solid var(--bdr);padding:5px 8px;border-radius:6px;outline:none"></div>
-        <span class="svc-sub" id="kt-pub-sub">$0</span>
+        <span class="svc-sub" id="kt-pub-sub">\$0</span>
       </div>
       <div class="svc-row">
         <span class="svc-name">Conference travel &amp; registration (dissemination)</span>
         <span class="svc-price">&nbsp;</span>
         <div class="svc-qty"><input type="text" inputmode="decimal" min="0" value="0" id="kt-conf" oninput="updateSimpleSub('kt-conf','kt-conf-sub')" style="width:100%;text-align:right;font-size:13px;border:1.5px solid var(--bdr);padding:5px 8px;border-radius:6px;outline:none"></div>
-        <span class="svc-sub" id="kt-conf-sub">$0</span>
+        <span class="svc-sub" id="kt-conf-sub">\$0</span>
       </div>
       <div class="svc-row">
         <span class="svc-name">KT materials (guidelines, pamphlets, infographics)</span>
         <span class="svc-price">&nbsp;</span>
         <div class="svc-qty"><input type="text" inputmode="decimal" min="0" value="0" id="kt-mat" oninput="updateSimpleSub('kt-mat','kt-mat-sub')" style="width:100%;text-align:right;font-size:13px;border:1.5px solid var(--bdr);padding:5px 8px;border-radius:6px;outline:none"></div>
-        <span class="svc-sub" id="kt-mat-sub">$0</span>
+        <span class="svc-sub" id="kt-mat-sub">\$0</span>
       </div>
       <div class="svc-row">
         <span class="svc-name">Stakeholder workshops &amp; events</span>
         <span class="svc-price">&nbsp;</span>
         <div class="svc-qty"><input type="text" inputmode="decimal" min="0" value="0" id="kt-events" oninput="updateSimpleSub('kt-events','kt-events-sub')" style="width:100%;text-align:right;font-size:13px;border:1.5px solid var(--bdr);padding:5px 8px;border-radius:6px;outline:none"></div>
-        <span class="svc-sub" id="kt-events-sub">$0</span>
+        <span class="svc-sub" id="kt-events-sub">\$0</span>
       </div>
 
       <div class="svc-cat-head">Other Costs</div>
@@ -841,7 +841,7 @@ export const BT_HTML = `
         </span>
         <span class="svc-price">&nbsp;</span>
         <div class="svc-qty"><input type="text" inputmode="decimal" min="0" value="0" id="sf-cost" class="oa" oninput="updateSfSub()" style="width:100%;text-align:right;font-size:13px;border:1.5px solid var(--bdr);padding:5px 8px;border-radius:6px;outline:none"></div>
-        <span class="svc-sub" id="sf-sub">$0</span>
+        <span class="svc-sub" id="sf-sub">\$0</span>
       </div>
 
       <div class="svc-group-head">Investigational product &amp; equipment</div>
@@ -849,13 +849,13 @@ export const BT_HTML = `
         <span class="svc-name">Investigational product / IMP <span style="font-size:10px;color:var(--textd);font-weight:400">(drugs, devices, comparators — total study cost)</span></span>
         <span class="svc-price">&nbsp;</span>
         <div class="svc-qty"><input type="text" inputmode="decimal" min="0" value="0" id="imp-cost" class="oa" oninput="updateSummary()" style="width:100%;text-align:right;font-size:13px;border:1.5px solid var(--bdr);padding:5px 8px;border-radius:6px;outline:none"></div>
-        <span class="svc-sub" id="imp-cost-sub">$0</span>
+        <span class="svc-sub" id="imp-cost-sub">\$0</span>
       </div>
       <div class="svc-row">
         <span class="svc-name">Equipment &amp; non-consumables <span style="font-size:10px;color:var(--textd);font-weight:400">(study-specific; partial depreciation only)</span></span>
         <span class="svc-price">&nbsp;</span>
         <div class="svc-qty"><input type="text" inputmode="decimal" min="0" value="0" id="equip-cost" oninput="updateEquipSub()" style="width:100%;text-align:right;font-size:13px;border:1.5px solid var(--bdr);padding:5px 8px;border-radius:6px;outline:none"></div>
-        <span class="svc-sub" id="equip-cost-sub">$0</span>
+        <span class="svc-sub" id="equip-cost-sub">\$0</span>
       </div>
 
       <div class="svc-group-head">Software &amp; licensing</div>
@@ -863,25 +863,25 @@ export const BT_HTML = `
         <span class="svc-name">REDCap database licence &amp; setup</span>
         <span class="svc-price">&nbsp;</span>
         <div class="svc-qty"><input type="text" inputmode="decimal" min="0" value="0" id="sw-redcap" class="oa" oninput="updateSummary()" style="width:100%;text-align:right;font-size:13px;border:1.5px solid var(--bdr);padding:5px 8px;border-radius:6px;outline:none"></div>
-        <span class="svc-sub" id="sw-redcap-sub">$0</span>
+        <span class="svc-sub" id="sw-redcap-sub">\$0</span>
       </div>
       <div class="svc-row">
         <span class="svc-name">Translation services (consent forms, questionnaires)</span>
         <span class="svc-price">&nbsp;</span>
         <div class="svc-qty"><input type="text" inputmode="decimal" min="0" value="0" id="sw-translation" class="oa" oninput="updateSummary()" style="width:100%;text-align:right;font-size:13px;border:1.5px solid var(--bdr);padding:5px 8px;border-radius:6px;outline:none"></div>
-        <span class="svc-sub" id="sw-translation-sub">$0</span>
+        <span class="svc-sub" id="sw-translation-sub">\$0</span>
       </div>
       <div class="svc-row">
         <span class="svc-name">Advertising &amp; participant recruitment (ads, flyers, outreach)</span>
         <span class="svc-price">&nbsp;</span>
         <div class="svc-qty"><input type="text" inputmode="decimal" min="0" value="0" id="sw-recruit" class="oa" oninput="updateSummary()" style="width:100%;text-align:right;font-size:13px;border:1.5px solid var(--bdr);padding:5px 8px;border-radius:6px;outline:none"></div>
-        <span class="svc-sub" id="sw-recruit-sub">$0</span>
+        <span class="svc-sub" id="sw-recruit-sub">\$0</span>
       </div>
       <div class="svc-row">
         <span class="svc-name">Other software, licensing &amp; subscriptions</span>
         <span class="svc-price">&nbsp;</span>
         <div class="svc-qty"><input type="text" inputmode="decimal" min="0" value="0" id="sw-other" class="oa" oninput="updateSummary()" style="width:100%;text-align:right;font-size:13px;border:1.5px solid var(--bdr);padding:5px 8px;border-radius:6px;outline:none"></div>
-        <span class="svc-sub" id="sw-other-sub">$0</span>
+        <span class="svc-sub" id="sw-other-sub">\$0</span>
       </div>
 
       <div class="svc-group-head">Site &amp; administrative</div>
@@ -889,19 +889,19 @@ export const BT_HTML = `
         <span class="svc-name">Study insurance <span style="font-size:10px;color:var(--textd);font-weight:400">(clinical trial indemnity — required for industry; recommended for IIT)</span></span>
         <span class="svc-price">&nbsp;</span>
         <div class="svc-qty"><input type="text" inputmode="decimal" min="0" value="0" id="insure-cost" class="oa" oninput="updateSummary()" style="width:100%;text-align:right;font-size:13px;border:1.5px solid var(--bdr);padding:5px 8px;border-radius:6px;outline:none"></div>
-        <span class="svc-sub" id="insure-cost-sub">$0</span>
+        <span class="svc-sub" id="insure-cost-sub">\$0</span>
       </div>
       <div class="svc-row">
         <span class="svc-name">Study closeout <span style="font-size:10px;color:var(--textd);font-weight:400">(archiving, site closure visits, final vendor payments)</span></span>
         <span class="svc-price">&nbsp;</span>
         <div class="svc-qty"><input type="text" inputmode="decimal" min="0" value="0" id="closeout-cost" class="oa" oninput="updateSummary()" style="width:100%;text-align:right;font-size:13px;border:1.5px solid var(--bdr);padding:5px 8px;border-radius:6px;outline:none"></div>
-        <span class="svc-sub" id="closeout-cost-sub">$0</span>
+        <span class="svc-sub" id="closeout-cost-sub">\$0</span>
       </div>
       <div class="svc-row">
         <span class="svc-name">Professional services <span style="font-size:10px;color:var(--textd);font-weight:400">(CRO, adjudication committee, central reading lab, medical monitoring)</span></span>
         <span class="svc-price">&nbsp;</span>
         <div class="svc-qty"><input type="text" inputmode="decimal" min="0" value="0" id="profsvc-cost" class="oa" oninput="updateSummary()" style="width:100%;text-align:right;font-size:13px;border:1.5px solid var(--bdr);padding:5px 8px;border-radius:6px;outline:none"></div>
-        <span class="svc-sub" id="profsvc-cost-sub">$0</span>
+        <span class="svc-sub" id="profsvc-cost-sub">\$0</span>
       </div>
 
       <div class="svc-group-head">Custom / miscellaneous</div>
@@ -918,7 +918,7 @@ export const BT_HTML = `
           <span class="svc-name">Startup services (0% OH) <span class="tip-icon" data-tip="Services performed at study startup — protocol-validation CIM tests, pharmacy setup, baseline lab draws — that are exempt from industry overhead. This amount is subtracted from the overhead base, mirroring the Work Plan Startup row carve-out for staff." onclick="showTip(this)">ⓘ</span></span>
           <span class="svc-price">&nbsp;</span>
           <div class="svc-qty"><input type="text" inputmode="decimal" min="0" value="0" id="startup-svc" oninput="updateStartupSvcSub()" style="width:100%;text-align:right;font-size:13px;border:1.5px solid var(--bdr);padding:5px 8px;border-radius:6px;outline:none"></div>
-          <span class="svc-sub" id="startup-svc-sub">$0</span>
+          <span class="svc-sub" id="startup-svc-sub">\$0</span>
         </div>
       </div>
 
@@ -957,13 +957,13 @@ export const BT_HTML = `
       <!-- CIHR budget mapping (shown when toggled) -->
       <div class="cihr-print-block" id="cihr-block" style="display:none">
         <div class="cihr-head">Budget Summary &mdash; CIHR Category Mapping</div>
-        <div class="cihr-row"><span class="cihr-row-label">Salaries and Stipends</span><span class="cihr-row-amt" id="cihr-personnel">$0</span></div>
-        <div class="cihr-row"><span class="cihr-row-label">Consumables (materials, supplies, services, laboratory)</span><span class="cihr-row-amt" id="cihr-matsup">$0</span></div>
-        <div class="cihr-row"><span class="cihr-row-label">Non-consumables <span style="font-weight:400;color:#888;font-size:10px">(equipment owned by research team)</span></span><span class="cihr-row-amt" id="cihr-equip">$0</span></div>
-        <div class="cihr-row"><span class="cihr-row-label">Knowledge Translation <span style="font-weight:400;color:#888;font-size:10px">(publications, conferences, dissemination)</span></span><span class="cihr-row-amt" id="cihr-kt">$0</span></div>
-        <div class="cihr-row"><span class="cihr-row-label">Other <span style="font-weight:400;color:#888;font-size:10px">(participant costs, travel, contingency, other)</span></span><span class="cihr-row-amt" id="cihr-other">$0</span></div>
-        <div class="cihr-row cihr-total"><span class="cihr-row-label">Total (direct costs + contingency, before overhead)</span><span class="cihr-row-amt" id="cihr-total">$0</span></div>
-        <div style="font-size:10px;color:#888;margin-top:10px;line-height:1.6">CIHR does not use a separate Travel category. Operational travel (monitoring, site visits) maps to Other; dissemination travel maps to Knowledge Translation — enter it in the Knowledge Translation section of Study Costs. Patient Partner costs are mapped to Knowledge Translation. Equipment enters Non-consumables. CIHR requires the grant total to be a multiple of $5,000 — round up to the nearest $5,000 when entering in ResearchNet (e.g. $342,150 → $345,000). The CIHR-rounded total appears in Section 12 of the CSV export.</div>
+        <div class="cihr-row"><span class="cihr-row-label">Salaries and Stipends</span><span class="cihr-row-amt" id="cihr-personnel">\$0</span></div>
+        <div class="cihr-row"><span class="cihr-row-label">Consumables (materials, supplies, services, laboratory)</span><span class="cihr-row-amt" id="cihr-matsup">\$0</span></div>
+        <div class="cihr-row"><span class="cihr-row-label">Non-consumables <span style="font-weight:400;color:#888;font-size:10px">(equipment owned by research team)</span></span><span class="cihr-row-amt" id="cihr-equip">\$0</span></div>
+        <div class="cihr-row"><span class="cihr-row-label">Knowledge Translation <span style="font-weight:400;color:#888;font-size:10px">(publications, conferences, dissemination)</span></span><span class="cihr-row-amt" id="cihr-kt">\$0</span></div>
+        <div class="cihr-row"><span class="cihr-row-label">Other <span style="font-weight:400;color:#888;font-size:10px">(participant costs, travel, contingency, other)</span></span><span class="cihr-row-amt" id="cihr-other">\$0</span></div>
+        <div class="cihr-row cihr-total"><span class="cihr-row-label">Total (direct costs + contingency, before overhead)</span><span class="cihr-row-amt" id="cihr-total">\$0</span></div>
+        <div style="font-size:10px;color:#888;margin-top:10px;line-height:1.6">CIHR does not use a separate Travel category. Operational travel (monitoring, site visits) maps to Other; dissemination travel maps to Knowledge Translation — enter it in the Knowledge Translation section of Study Costs. Patient Partner costs are mapped to Knowledge Translation. Equipment enters Non-consumables. CIHR requires the grant total to be a multiple of \$5,000 — round up to the nearest \$5,000 when entering in ResearchNet (e.g. \$342,150 → \$345,000). The CIHR-rounded total appears in Section 12 of the CSV export.</div>
       </div>
 
       <div class="sub-head">Export</div>

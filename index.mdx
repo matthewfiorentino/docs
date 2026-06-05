@@ -1,517 +1,155 @@
 ---
-timestamp: false
-title: "RI-MUHC Clinical Research Hub"
-mode: "custom"
+title: "Welcome to the Clinical Research Hub"
+sidebarTitle: "Welcome"
+description: "The central resource for clinical research at the RI-MUHC — operational guidance, regulatory references, SOPs, training, and application guides, organized by your role on a study team."
+keywords: ["Clinical Research Hub", "welcome", "getting started", "by role", "navigation"]
 ---
 
-import { useState, useEffect, useRef } from 'react'
-
-export const StatCounter = ({ value, prefix = '', suffix = '', duration = 1400 }) => {
-  const ref = useRef();
-  const [current, setCurrent] = useState(0);
-  useEffect(() => {
-    if (!ref.current) return;
-    let isVisible = false;
-    const io = new IntersectionObserver(([entry]) => {
-      if (entry.isIntersecting && !isVisible) {
-        isVisible = true;
-        setCurrent(0);
-        const start = performance.now();
-        const step = (now) => {
-          const t = Math.min((now - start) / duration, 1);
-          setCurrent(value * (1 - Math.pow(1 - t, 3)));
-          if (t < 1) requestAnimationFrame(step);
-        };
-        requestAnimationFrame(step);
-      } else if (!entry.isIntersecting) {
-        isVisible = false;
-      }
-    }, { threshold: 0.4 });
-    io.observe(ref.current);
-    return () => io.disconnect();
-  }, [value]);
-  const decimals = value % 1 !== 0 ? 1 : 0;
-  return <span ref={ref}>{prefix}{current.toFixed(decimals)}{suffix}</span>;
-};
-
-export const UpdateBar = ({ tag, tagClass, title, desc, date }) => (
-  <div className="ri-update-bar">
-    <div className="ri-update-header">
-      <span className="ri-update-date">{date}</span>
-      {tag && <span className={`ri-update-tag ${tagClass}`}>{tag}</span>}
-    </div>
-    <div className="ri-update-title">{title}</div>
-    <div className="ri-update-desc">{desc}</div>
-  </div>
-);
-
-export const LiveUpdates = () => {
-  const [items, setItems] = useState([]);
-  const [done, setDone] = useState(false);
-  const [debug, setDebug] = useState('');
-
-  useEffect(() => {
-    fetch('/kb/updates/rss.xml')
-      .then(r => {
-        if (!r.ok) throw new Error(`HTTP ${r.status} from /kb/updates/rss.xml`);
-        return r.text();
-      })
-      .then(xml => {
-        const doc = new DOMParser().parseFromString(xml, 'text/xml');
-        const parseErr = doc.querySelector('parsererror');
-        if (parseErr) throw new Error('XML parse error: ' + parseErr.textContent.slice(0, 80));
-        const els = Array.from(doc.getElementsByTagName('item'));
-        if (!els.length) {
-          setDebug('Feed loaded but no items found.');
-          setDone(true);
-          return;
-        }
-        const CONTENT_NS = 'http://purl.org/rss/1.0/modules/content/';
-        const parsed = els.slice(0, 2).map(el => {
-          const g = tag => el.getElementsByTagName(tag)[0]?.textContent?.trim() || '';
-          const label = g('title');
-          const html = el.getElementsByTagNameNS(CONTENT_NS, 'encoded')[0]?.textContent?.trim() || '';
-          const inner = new DOMParser().parseFromString(html, 'text/html');
-          const headingEl = inner.querySelector('h1,h2,h3,h4,h5,h6');
-          const title = headingEl?.textContent?.trim() || label;
-          if (headingEl) headingEl.remove();
-          const rawDesc = inner.body.textContent.replace(/\s+/g, ' ').trim();
-          const desc = rawDesc.length > 160 ? rawDesc.slice(0, 157) + '…' : rawDesc;
-          const tag = g('category');
-          return { title, desc, date: label };
-        }).filter(p => p.title);
-        setItems(parsed);
-        setDone(true);
-      })
-      .catch(err => {
-        setDebug(err.message);
-        setDone(true);
-      });
-  }, []);
-
-  if (!done) return <div className="ri-updates-loading">Loading…</div>;
-  if (debug) return <div className="ri-updates-loading">Updates unavailable — {debug}.</div>;
-  if (!items.length) return <a href="/kb/updates" className="ri-updates-more">See all updates →</a>;
-
-  return (
-    <div>
-      <div className="ri-updates">
-        {items.map((item, i) => (
-          <UpdateBar
-            key={i}
-            date={item.date}
-            title={item.title}
-            desc={item.desc}
-          />
-        ))}
-      </div>
-      <a href="/kb/updates" className="ri-updates-more">See all updates →</a>
-    </div>
-  );
-};
-
-export const SearchHint = () => {
-  const [search, setSearch] = useState('⌘K');
-  const [ai, setAi] = useState('⌘I');
-  useEffect(() => {
-    if (!/Mac|iPhone|iPad|iPod/.test(navigator.platform)) {
-      setSearch('Ctrl+K'); setAi('Ctrl+I');
-    }
-  }, []);
-  return (
-    <div className="ri-text-hero-search-hint">
-      <kbd className="ri-kbd">{search}</kbd> search &nbsp;·&nbsp; <kbd className="ri-kbd">{ai}</kbd> ask AI
-    </div>
-  );
-};
-
-export const Phase = ({ num, title, cards }) => (
-  <div className="ri-phase">
-    <div className="ri-phase-num">{num}</div>
-    <div className="ri-phase-body">
-      <div className="ri-phase-title">{title}</div>
-      <div className="ri-phase-cards">
-        {cards.map((c, i) => (
-          <a key={i} href={c.href} className="ri-phase-card">
-            <Icon icon={c.icon} className="ri-phase-card-icon" /> {c.label}
-          </a>
-        ))}
-      </div>
+<div className="ri-hero">
+  <div className="ri-hero-media">
+    <img src="/images/photos/hero-consult.jpg" alt="A physician consulting with a patient at the RI-MUHC" />
+    <div className="ri-hero-inner">
+      <h1 className="ri-hero-title">Clinical Research Hub</h1>
+      <div className="ri-hero-sub">The central resource for clinical research at The Institute — guidance, SOPs, training, and tools, organized by your role.</div>
+      <div className="ri-hero-logo" aria-hidden="true"></div>
     </div>
   </div>
-);
+  <div className="ri-hero-gel" aria-hidden="true">
+    <div className="ri-gel-sq"></div>
+    <div className="ri-gel-sq"></div>
+    <div className="ri-gel-sq"></div>
+    <div className="ri-gel-sq"></div>
+    <div className="ri-gel-sq"></div>
+    <div className="ri-gel-sq"></div>
+  </div>
+  <div className="ri-hero-gel-b" aria-hidden="true">
+    <div className="ri-gel-sq"></div>
+    <div className="ri-gel-sq"></div>
+    <div className="ri-gel-sq"></div>
+    <div className="ri-gel-sq"></div>
+    <div className="ri-gel-sq"></div>
+    <div className="ri-gel-sq"></div>
+    <div className="ri-gel-sq"></div>
+    <div className="ri-gel-sq"></div>
+    <div className="ri-gel-sq"></div>
+    <div className="ri-gel-sq"></div>
+    <div className="ri-gel-sq"></div>
+    <div className="ri-gel-sq"></div>
+    <div className="ri-gel-sq"></div>
+    <div className="ri-gel-sq"></div>
+    <div className="ri-gel-sq"></div>
+    <div className="ri-gel-sq"></div>
+    <div className="ri-gel-sq"></div>
+    <div className="ri-gel-sq"></div>
+    <div className="ri-gel-sq"></div>
+    <div className="ri-gel-sq"></div>
+    <div className="ri-gel-sq"></div>
+    <div className="ri-gel-sq"></div>
+    <div className="ri-gel-sq"></div>
+    <div className="ri-gel-sq"></div>
+    <div className="ri-gel-sq"></div>
+    <div className="ri-gel-sq"></div>
+    <div className="ri-gel-sq"></div>
+    <div className="ri-gel-sq"></div>
+  </div>
+</div>
 
-export const ResourceCard = ({ icon, href, title, desc }) => (
-  <a href={href} className="ri-resource-card">
-    <Icon icon={icon} className="ri-resource-icon" />
-    <div className="ri-resource-title">{title}</div>
-    <div className="ri-resource-desc">{desc}</div>
+## Choose your role
+
+Each role opens an orientation guide — your responsibilities, required training and credentials, and where to begin. This is the place to start.
+
+<div className="ri-role-tiles">
+  <a className="ri-role-tile ri-role-tile--investigator" href="/roles/investigator">
+    <span className="ri-role-tile-title">Investigator</span>
+    <span className="ri-role-tile-desc">What to settle before you begin, the documents only you sign, and the operational guides by study type.</span>
   </a>
-);
-
-export const FeatureEntry = ({ href, icon, title, desc }) => (
-  <a href={href} className="ri-feature-card">
-    <div className="ri-feature-content">
-      <div className="ri-feature-header">
-        <Icon icon={icon} className="ri-feature-icon" />
-        <div className="ri-feature-title">{title}</div>
-      </div>
-      <div className="ri-feature-desc">{desc}</div>
-    </div>
+  <a className="ri-role-tile ri-role-tile--coordinator" href="/roles/coordinator">
+    <span className="ri-role-tile-title">Coordinator</span>
+    <span className="ri-role-tile-desc">Institutional onboarding, the training pathway, competency domains, and where your scope ends.</span>
   </a>
-);
-
-export const DetailCard = ({ href, title, desc }) => (
-  <a href={href} className="ri-dcard">
-    <div className="ri-dcard-title">{title}</div>
-    {desc && <div className="ri-dcard-desc">{desc}</div>}
+  <a className="ri-role-tile ri-role-tile--nurse" href="/roles/nurse">
+    <span className="ri-role-tile-title">Research Nurse</span>
+    <span className="ri-role-tile-desc">OIIQ obligations, reserved acts, dual accountability, and specialized competencies.</span>
   </a>
-);
-
-export const GuideItem = ({ href, type, title }) => (
-  <a href={href} className="ri-guide-item">
-    <span className="ri-guide-item-type">{type}</span>
-    <span className="ri-guide-item-title">{title}</span>
+  <a className="ri-role-tile ri-role-tile--trainee" href="/roles/trainee">
+    <span className="ri-role-tile-title">Trainee</span>
+    <span className="ri-role-tile-desc">Affiliation, what you can be delegated, and the rules specific to fellows and residents.</span>
   </a>
-);
-
-export const ROLES = [
-  { id: 'pi',        icon: 'stethoscope',         title: 'Investigator',       sub: 'Planning or launching a study' },
-  { id: 'crc',       icon: 'clipboard-list',      title: 'Coordinator / CRC',  sub: 'Joining or managing a study team' },
-  { id: 'nurse',     icon: 'syringe',             title: 'Research Nurse',     sub: 'Licensed nurse on a study team' },
-  { id: 'trainee',   icon: 'graduation-cap',      title: 'Research Trainee',   sub: 'Student or trainee on a study team' },
-  { id: 'volunteer', icon: 'hand-holding-heart',  title: 'Research Volunteer', sub: 'Volunteering on a study' },
-  { id: 'observer',  icon: 'eye',                 title: 'Observer',           sub: 'Observing research activities' },
-];
-
-export const RolePanel = ({ role }) => (
-  <div className="ri-role-panel">
-
-      {role === 'pi' && (
-        <>
-          <div className="ri-callout ri-callout--warn">
-            A study cannot begin until the <strong>Personne mandatée</strong> grants <a href="/kb/submission-overview">MUHC Authorization</a>. REB approval alone does not authorize research activities — both approvals must be in your ISF before any study procedures begin.
-          </div>
-          <div className="ri-panel-grid">
-            <div className="ri-panel-col">
-              <p className="ri-panel-framing-sub">The QI is personally accountable for this study — from CTA filing and team oversight through close-out.</p>
-              <a href="/kb/roles/pi-orientation" className="ri-orientation-banner">
-                <div className="ri-pb-label">Investigator Orientation</div>
-                <div className="ri-pb-arrow">Get started →</div>
-              </a>
-            </div>
-            <div className="ri-panel-col">
-              <div className="ri-guides-label">Guides by study type</div>
-              <div className="ri-guide-list">
-                <GuideItem href="/kb/roles/pi-guide" type="Interventional (I–III)" title="Drug, device & NHP trials" />
-                <GuideItem href="/kb/roles/pi-guide-iv" type="Observational (IV)" title="Prospective & non-invasive studies" />
-                <GuideItem href="/kb/roles/pi-guide-v" type="Retrospective (V)" title="Chart review & biobank studies" />
-              </div>
-            </div>
-          </div>
-        </>
-      )}
-
-      {role === 'crc' && (
-        <>
-          <div className="ri-callout ri-callout--warn">
-            No team member may perform any study task before they appear on the Task Delegation Log, their training is documented, and the QI/PI has countersigned their entry.
-          </div>
-          <div className="ri-panel-grid">
-            <div className="ri-panel-col">
-              <p className="ri-panel-framing-sub">The CRC manages day-to-day study operations and is the primary point of contact for participants, the sponsor, and the REB.</p>
-              <a href="/kb/roles/crc-orientation" className="ri-orientation-banner">
-                <div className="ri-pb-label">CRC Orientation</div>
-                <div className="ri-pb-arrow">Get started →</div>
-              </a>
-            </div>
-            <div className="ri-panel-col">
-              <div className="ri-guides-label">Guides by study type</div>
-              <div className="ri-guide-list">
-                <GuideItem href="/kb/roles/crc-guide" type="Interventional (I–III)" title="Drug, device & NHP trials" />
-                <GuideItem href="/kb/roles/crc-guide-iv" type="Observational (IV)" title="Prospective & non-invasive studies" />
-                <GuideItem href="/kb/roles/crc-guide-v" type="Retrospective (V)" title="Chart review & biobank studies" />
-              </div>
-            </div>
-          </div>
-        </>
-      )}
-
-      {role === 'nurse' && (
-        <>
-          <div className="ri-callout ri-callout--warn">
-            No team member may perform any study task before they appear on the Task Delegation Log, their training is documented, and the QI/PI has countersigned their entry.
-          </div>
-          <div className="ri-panel-grid">
-            <div className="ri-panel-col">
-              <p className="ri-panel-framing-sub">Research nurses carry out protocol-specified clinical procedures under dual accountability to the study team and their professional licensing body.</p>
-              <a href="/kb/roles/nurse-orientation" className="ri-orientation-banner">
-                <div className="ri-pb-label">Research Nurse Orientation</div>
-                <div className="ri-pb-arrow">Get started →</div>
-              </a>
-            </div>
-            <div className="ri-panel-col">
-              <div className="ri-guides-label">Operational guide</div>
-              <div className="ri-guide-list">
-                <GuideItem href="/kb/roles/nurse-guide" type="Interventional (I–III)" title="Drug, device & NHP trials" />
-              </div>
-            </div>
-          </div>
-        </>
-      )}
-
-      {role === 'trainee' && (
-        <>
-          <p className="ri-role-framing">Trainees may be delegated study tasks appropriate to their training level, with the QI/PI responsible for supervision.</p>
-          <div className="ri-dcard-grid">
-            <DetailCard href="/kb/clinical-research-101" title="Clinical Research 101" desc="A foundational overview of clinical research regulations, roles, and the study lifecycle at MUHC." />
-            <DetailCard href="/kb/roles/onboarding-trainees" title="Joining as a trainee" desc="What you can do as a trainee, supervision requirements, and how to get set up before your first task." />
-            <DetailCard href="/kb/glossary" title="Glossary" desc="Definitions for abbreviations and terms used across the Hub and in clinical research." />
-          </div>
-        </>
-      )}
-
-      {role === 'volunteer' && (
-        <>
-          <p className="ri-role-framing">Research volunteers may assist with defined non-clinical tasks under direct supervision of a delegated team member.</p>
-          <div className="ri-dcard-grid">
-            <DetailCard href="/kb/clinical-research-101" title="Clinical Research 101" desc="A foundational overview of clinical research regulations, roles, and the study lifecycle at MUHC." />
-            <DetailCard href="/kb/roles/onboarding-volunteers" title="Joining as a volunteer" desc="Non-clinical roles available to volunteers, supervisor requirements, and the onboarding process." />
-            <DetailCard href="/kb/glossary" title="Glossary" desc="Definitions for abbreviations and terms used across the Hub and in clinical research." />
-          </div>
-        </>
-      )}
-
-      {role === 'observer' && (
-        <>
-          <p className="ri-role-framing">Observers may attend study activities under a signed observer agreement but may not perform or assist with any study procedures.</p>
-          <div className="ri-dcard-grid">
-            <DetailCard href="/kb/clinical-research-101" title="Clinical Research 101" desc="A foundational overview of clinical research regulations, roles, and the study lifecycle at MUHC." />
-            <DetailCard href="/kb/roles/onboarding-observers" title="Joining as an observer" desc="Observer agreement requirements, what you may and may not do, and how to arrange access." />
-            <DetailCard href="/kb/glossary" title="Glossary" desc="Definitions for abbreviations and terms used across the Hub and in clinical research." />
-          </div>
-        </>
-      )}
-
-  </div>
-);
-
-export const RoleExplorer = () => {
-  const [role, setRole] = useState('pi');
-  const containerRef = useRef(null);
-  const active = ROLES.find(r => r.id === role);
-
-  const handleRoleSwitch = (id) => {
-    setRole(id);
-    if (containerRef.current) {
-      const rect = containerRef.current.getBoundingClientRect();
-      if (rect.top < 80) {
-        containerRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
-    }
-  };
-
-  return (
-    <div className="ri-sh" ref={containerRef}>
-      <div className="ri-sh-layout">
-        <nav className="ri-sh-nav">
-          {ROLES.map(r => (
-            <button
-              key={r.id}
-              className={`ri-sh-nav-item${role === r.id ? ' ri-sh-nav-item--active' : ''}`}
-              onClick={() => handleRoleSwitch(r.id)}
-            >
-              <Icon icon={r.icon} className="ri-sh-nav-icon" />
-              <div className="ri-sh-nav-labels">
-                <div className="ri-sh-nav-title">{r.title}</div>
-                <div className="ri-sh-nav-sub">{r.sub}</div>
-              </div>
-            </button>
-          ))}
-        </nav>
-        <div className="ri-sh-panel">
-          <div className="ri-sh-header">
-            <div className="ri-sh-header-title">{active.title}</div>
-          </div>
-          <div className="ri-role-panels-stack">
-            {ROLES.map(r => (
-              <div key={r.id} className={r.id === role ? 'ri-role-panel-slot' : 'ri-role-panel-slot ri-role-panel-slot--hidden'} aria-hidden={r.id !== role}>
-                <RolePanel role={r.id} />
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-};
-
-{/* ── HERO ── */}
-<div className="ri-text-hero">
-  <div className="ri-text-hero-content">
-    <h1>Clinical research<br/>at <span className="ri-hero-accent">The Institute</span> —<br/>from concept to close-out.</h1>
-    <p className="ri-text-hero-desc">
-      Regulatory pathways, expert services, training requirements,<br/>and planning support for every stage.
-    </p>
-    <div className="ri-text-hero-actions">
-      <a href="/kb/my-roadmap" className="ri-text-hero-btn-primary">Tell us about your study</a>
-      <a href="/kb/introduction" className="ri-text-hero-btn-secondary">Browse the knowledge base</a>
-    </div>
-    <SearchHint />
-  </div>
+  <a className="ri-role-tile ri-role-tile--volunteer" href="/roles/volunteer">
+    <span className="ri-role-tile-title">Volunteer</span>
+    <span className="ri-role-tile-desc">What you can and can't do, eligibility, and your confidentiality obligations.</span>
+  </a>
+  <a className="ri-role-tile ri-role-tile--observer" href="/roles/observer">
+    <span className="ri-role-tile-title">Observer</span>
+    <span className="ri-role-tile-desc">What you may and may not do, confidentiality, and international-visitor requirements.</span>
+  </a>
 </div>
 
-<div className="ri-hub-body">
+## Planning a study?
 
-<div className="ri-sh-section-head" id="start-here">
-  <h2 className="ri-start-title">Where do I start?</h2>
-  <p className="ri-start-sub">How you engage with clinical research at the RI-MUHC depends on your role. Find yours below to see your onboarding sequence, training requirements, and the operational guides built for your work on a study team.</p>
+<Card title="My Study Roadmap" icon="rocket" href="/my-roadmap">
+  Answer a few questions about your planned study and get a personalized, phase-by-phase plan — every step you need to take, in order. It also notifies the Research Facilitator, who follows up to help you put it into action.
+</Card>
+
+## Research support and infrastructure
+
+The Institute's research centres and platforms support your study from design through analysis — most are open to any RI-MUHC researcher, and the strongest time to engage them is during study design. Not sure who you need? The [Design Stage Support](/kb/study-design) guide maps the right specialist to each part of your study.
+
+<div className="ri-support-cards">
+<CardGroup cols={2}>
+  <Card title="Centre for Innovative Medicine (CIM)" icon="hospital" href="/cim/services">
+    Dedicated clinical research infrastructure and staff — specialized nursing, coordination, monitoring, Phase I capacity, and technical platforms at the Glen and Montreal General. Open to any RI-MUHC researcher.
+  </Card>
+  <Card title="ACT-CTU — Design Stage Support" icon="compass-drafting" href="/kb/study-design">
+    Accelerating Clinical Trials at the Institute — protocol review, methodology support, the Novel Trial Methods Hub, and connections to seed funding for early-stage investigator-led studies.
+  </Card>
+  <Card title="Biostatistics (BCU)" icon="chart-line" href="/kb/bcu">
+    A service of the Centre for Outcomes Research and Evaluation (CORE). Sample size, randomization, analysis plans, and DSMB support across the full study lifecycle.
+  </Card>
+  <Card title="Data Management (CORD)" icon="database" href="/kb/cord">
+    A service of the Centre for Outcomes Research and Evaluation (CORE). REDCap database builds, CRF review, and data management. REDCap is validated for 21 CFR Part 11 compliance.
+  </Card>
+  <Card title="MUHC Data Warehouse" icon="server" href="/kb/data-warehouse">
+    A service of the Division of Digital and Information Technology. Clinical and administrative data from 18+ MUHC hospital systems — for retrospective research and feasibility.
+  </Card>
+</CardGroup>
 </div>
 
-<RoleExplorer />
+## What the site covers
 
-</div>
+Beyond Getting Started, the Hub has five more sections, each accessible from the tabs at the top of any page.
 
-<div className="ri-cim-band">
-<div className="ri-cim-band-inner">
-  <div className="ri-cim-eyebrow">Centre for Innovative Medicine</div>
-  <h2 className="ri-cim-section-heading">Dedicated clinical trial infrastructure</h2>
-  <div className="ri-cim-split">
-    <div className="ri-cim-photo">
-      <img src="/images/cim-research-team.jpg" alt="Research team collaborating in a clinical laboratory" />
-    </div>
-    <div className="ri-cim-text">
-      <div className="ri-cim-body">Research nursing, coordination, monitoring, Phase I overnight pods, oncology infusion, functional testing, specimen processing, and regulatory support — at the Glen and Montreal General.</div>
-      <div className="ri-cim-actions">
-        <a href="/cim/services" className="ri-cim-btn">Explore CIM services</a>
-        <a href="/cim/planning" className="ri-cim-btn ri-cim-btn--outline">Plan your study with CIM</a>
-      </div>
-    </div>
-  </div>
-  <div className="ri-cim-stats-row">
-    <div className="ri-cim-stat-card">
-      <div className="ri-cim-stat-n"><StatCounter value={138} suffix="+" /></div>
-      <div className="ri-cim-stat-l">active trials</div>
-    </div>
-    <div className="ri-cim-stat-card">
-      <div className="ri-cim-stat-n"><StatCounter value={55} suffix="%" /></div>
-      <div className="ri-cim-stat-l">Phase 1 patient growth</div>
-    </div>
-    <div className="ri-cim-stat-card">
-      <div className="ri-cim-stat-n"><StatCounter value={15} suffix="+" /></div>
-      <div className="ri-cim-stat-l">therapeutic areas</div>
-    </div>
-  </div>
-</div>
-</div>
+<CardGroup cols={2}>
+  <Card title="Knowledge Base" icon="book-open" href="/kb/study-lifecycle">
+    The operational core — every stage of a study from feasibility and design through submission, activation, recruitment, conduct, and close-out. Plus 101 articles, a glossary, and the governance framework.
+  </Card>
+  <Card title="Clinical Research SOPs" icon="file-shield" href="/sops/overview">
+    The full text of every RI-MUHC Clinical Research Standard Operating Procedure — organized by topic, with overviews and full documents including appendices and templates.
+  </Card>
+  <Card title="Training and Learning" icon="graduation-cap" href="/training/compliance-requirements">
+    Compliance requirements by study level, research privileges and external certifications (ICH GCP, Health Canada Division 5, ISO 14155), and the Learning Lab — interactive practice exercises.
+  </Card>
+  <Card title="Centre for Innovative Medicine" icon="flask" href="/cim/services">
+    Clinical trial management, research staff, and specialized infrastructure at the Glen and Montreal General. Services for researchers and resources for CIM staff.
+  </Card>
+  <Card title="Applications" icon="grid-2" href="/apps/nagano/overview">
+    Guides for the platforms used in clinical research at the RI-MUHC — Nagano, CTMS, TalentLMS, REDCap, OACIS, and CrossLab.
+  </Card>
+</CardGroup>
 
-<div className="ri-hub-body">
+The Knowledge Base is organized around the stages of a study — see [The Study Lifecycle](/kb/study-lifecycle) for the stage-by-stage overview, or [My Study Roadmap](/my-roadmap) for a plan tailored to yours.
 
-## Research support services
+## Practice and learn
 
-Expert consulting and data services available to all RI-MUHC researchers — engage early in your study planning.
+<CardGroup cols={2}>
+  <Card title="Learning Lab" icon="flask-vial" href="/training/learning-lab">
+    Interactive practice — knowledge checks, team exercises, document review, judgement calls, and inspection prep, browsable by topic and study type.
+  </Card>
+  <Card title="Community Connect" icon="users" href="/kb/community-connect">
+    Sessions held approximately monthly on clinical research topics, hosted by the Research Facilitator with subject matter experts. Recorded for later viewing.
+  </Card>
+</CardGroup>
 
-<div className="ri-svc-grid">
+## Can't find what you need?
 
-<a href="/kb/bcu" className="ri-svc-card">
-  <img className="ri-svc-card-photo" src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=700&h=500&q=80&auto=format&fit=crop" alt="Data analysis" />
-  <div className="ri-svc-card-body">
-    <div className="ri-svc-card-label">Biostatistics Consulting Unit (BCU)</div>
-    <div className="ri-svc-card-stat"><StatCounter value={400} suffix="+" /></div>
-    <div className="ri-svc-card-stat-sub">completed projects — including Lancet, JAMA, and Nature publications</div>
-    <div className="ri-svc-card-title">Statistical support from grant to publication</div>
-    <div className="ri-svc-card-desc">Sample size calculations, statistical analysis plans, clinical trial biostatistics, and DSMB reports — across Phase II–IV trials, epidemiological studies, and large administrative databases. 72% of clients return for a second project. 4 free hours for early-career researchers per grant application.</div>
-    <span className="ri-svc-card-cta">Request a consultation →</span>
-  </div>
-</a>
-
-<a href="/kb/data-warehouse" className="ri-svc-card">
-  <img className="ri-svc-card-photo" src="https://images.unsplash.com/photo-1576671081837-49000212a370?w=700&h=500&q=80&auto=format&fit=crop" alt="Clinical research laboratory" />
-  <div className="ri-svc-card-body">
-    <div className="ri-svc-card-label">MUHC Data Warehouse</div>
-    <div className="ri-svc-card-stat"><StatCounter value={4.9} suffix="M" /></div>
-    <div className="ri-svc-card-stat-sub">patients · 7.5B facts across 400+ tables</div>
-    <div className="ri-svc-card-title">Retrospective research at scale</div>
-    <div className="ri-svc-card-desc">ER, OR, Lab, Pharmacy, Cancer Registry, Archives — integrated from 18+ MUHC hospital systems, most going back to 2008. The DW team supports researchers from feasibility consultation through variable selection and data extraction.</div>
-    <span className="ri-svc-card-cta">Explore the data →</span>
-  </div>
-</a>
-
-<a href="/kb/cord" className="ri-svc-card">
-  <img className="ri-svc-card-photo" src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=700&h=500&q=80&auto=format&fit=crop" alt="Data management" />
-  <div className="ri-svc-card-body">
-    <div className="ri-svc-card-label">Capture and Optimization of Research Data (CORD)</div>
-    <div className="ri-svc-card-title">Your REDCap database, built right the first time</div>
-    <div className="ri-svc-card-desc">CRF design review, data dictionary build, REDCap project setup, and ongoing data management — validated for 21 CFR Part 11. Database architecture decisions are the hardest to change after data collection begins. Engage CORD at the design stage, before your protocol is finalized.</div>
-    <span className="ri-svc-card-cta">Start your database build →</span>
-  </div>
-</a>
-
-<a href="/kb/study-design" className="ri-svc-card">
-  <img className="ri-svc-card-photo" src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=700&h=500&q=80&auto=format&fit=crop" alt="Research team discussion" />
-  <div className="ri-svc-card-body">
-    <div className="ri-svc-card-label">Study Design & Methodology</div>
-    <div className="ri-svc-card-title">Research question to submission-ready protocol</div>
-    <div className="ri-svc-card-desc">Protocol-level methodology support — research question framing, study design optimization, and feasibility review — before decisions are hard to reverse. Works alongside BCU on the analytical side and CORD on the data side for a complete design-stage team.</div>
-    <span className="ri-svc-card-cta">Explore design support →</span>
-  </div>
-</a>
-
-<a href="/kb/study-design" className="ri-svc-card">
-  <img className="ri-svc-card-photo" src="https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?w=700&h=500&q=80&auto=format&fit=crop" alt="Clinical trial review" />
-  <div className="ri-svc-card-body">
-    <div className="ri-svc-card-label">ACT-CTU — Accelerating Clinical Trials</div>
-    <div className="ri-svc-card-title">Independent protocol review before you submit</div>
-    <div className="ri-svc-card-desc">Protocol review sessions, access to the OHRI Methods Unit for additional methodology depth, and connections to seed funding for early-stage studies. An independent read on your protocol before REB submission can catch problems that are expensive to fix later.</div>
-    <span className="ri-svc-card-cta">Book a protocol review →</span>
-  </div>
-</a>
-
-</div>
-
-</div>
-
-<div className="ri-contact-band">
-  <div className="ri-contact-band-inner">
-    <div className="ri-contact-primary">
-      <div className="ri-contact-heading">Questions about your study?</div>
-      <div className="ri-contact-body">The Research Facilitator is your first contact for study setup, regulatory questions, and institutional processes at the RI-MUHC.</div>
-      <a href="/contacts" className="ri-contact-btn">Get in touch</a>
-    </div>
-    <div className="ri-contact-divider" aria-hidden="true" />
-    <div className="ri-contact-faq-callout">
-      <div className="ri-contact-faq-heading">Looking for a quick answer?</div>
-      <div className="ri-contact-faq-body">The FAQ covers the most common questions about getting started, submissions, training, privacy, and services — with links to the full detail.</div>
-      <a href="/kb/faq" className="ri-contact-faq-link">Browse the FAQ →</a>
-    </div>
-  </div>
-</div>
-
-<div className="ri-home-footer">
-  <div className="ri-home-footer-inner">
-    <div className="ri-home-footer-logo-col">
-      <a href="https://rimuhc.ca" target="_blank" rel="noopener noreferrer"><img src="/logo/RIMUHC_logo_footer1.png" alt="RI-MUHC" className="ri-home-footer-logo" /></a>
-      <a href="https://rimuhc.ca" target="_blank" rel="noopener noreferrer"><img src="/logo/RIMUHC_logo_footer2.png" alt="Research Institute of the McGill University Health Centre" className="ri-home-footer-institute-logo" /></a>
-      <div className="ri-home-footer-copyright">Research Institute of the McGill University Health Centre<br />© 2026 All rights reserved</div>
-    </div>
-    <div className="ri-home-footer-cols">
-      <div className="ri-home-footer-col">
-        <div className="ri-home-footer-head">Browse</div>
-        <a href="/kb/introduction" className="ri-home-footer-link">Knowledge Base</a>
-        <a href="/sops/overview" className="ri-home-footer-link">Clinical Research SOPs</a>
-        <a href="/training/compliance-requirements" className="ri-home-footer-link">Training and Learning</a>
-        <a href="/cim/services" className="ri-home-footer-link">Centre for Innovative Medicine</a>
-      </div>
-      <div className="ri-home-footer-col">
-        <div className="ri-home-footer-head">Community</div>
-        <a href="/kb/updates" className="ri-home-footer-link">Latest Updates</a>
-        <a href="/kb/community-connect" className="ri-home-footer-link">Community Connect</a>
-      </div>
-      <div className="ri-home-footer-col">
-        <div className="ri-home-footer-head">Connect</div>
-        <a href="/contacts" className="ri-home-footer-link">Contact</a>
-        <a href="https://portal.rimuhc.ca" className="ri-home-footer-link">RI-MUHC Portal ↗</a>
-      </div>
-    </div>
-  </div>
-</div>
+Contact the Research Facilitator at **research.facilitator@muhc.mcgill.ca** for personalized guidance on any aspect of clinical research at The Institute. For compliance questions, contact QA at **QAclinicalresearch@muhc.mcgill.ca**.

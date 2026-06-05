@@ -34,8 +34,8 @@
   },
   "favicon": "/logo/muhc-crest.png",
   "logo": {
-    "light": "/logo/RIMUHC_logo_nav.png",
-    "dark": "/logo/rimuhc-light.png",
+    "light": "/logo/ri-logo.svg",
+    "dark": "/logo/ri-logo.svg",
     "href": "/"
   },
   "appearance": {
@@ -72,15 +72,63 @@
         ],
         "tabs": [
           {
-            "tab": "Knowledge Base",
+            "tab": "Getting Started",
             "groups": [
               {
-                "group": "About this site",
+                "group": "Start Here",
+                "icon": "house",
                 "pages": [
-                  "kb/introduction"
-                ],
-                "icon": "house"
+                  "index",
+                  "is-it-research",
+                  "my-roadmap"
+                ]
               },
+              {
+                "group": "Choose Your Role",
+                "icon": "users",
+                "pages": [
+                  {
+                    "group": "Investigator",
+                    "root": "roles/investigator",
+                    "pages": [
+                      "roles/pi-guide",
+                      "roles/pi-guide-iv",
+                      "roles/pi-guide-v"
+                    ]
+                  },
+                  {
+                    "group": "Coordinator",
+                    "root": "roles/coordinator",
+                    "pages": [
+                      "roles/crc-guide",
+                      "roles/crc-guide-iv",
+                      "roles/crc-guide-v"
+                    ]
+                  },
+                  {
+                    "group": "Research Nurse",
+                    "root": "roles/nurse",
+                    "pages": [
+                      "roles/nurse-guide"
+                    ]
+                  },
+                  "roles/trainee",
+                  "roles/volunteer",
+                  "roles/observer"
+                ]
+              },
+              {
+                "group": "Help",
+                "icon": "circle-question",
+                "pages": [
+                  "faq"
+                ]
+              }
+            ]
+          },
+          {
+            "tab": "Knowledge Base",
+            "groups": [
               {
                 "group": "Community",
                 "icon": "comments",
@@ -90,59 +138,13 @@
                 ]
               },
               {
-                "group": "Getting Started",
+                "group": "Foundations",
                 "icon": "rocket",
                 "pages": [
-                  {
-                    "group": "Clinical Research 101",
-                    "expanded": false,
-                    "pages": [
-                      "kb/clinical-research-101",
-                      "kb/trial-design",
-                      "kb/gcp-quality-by-design",
-                      "kb/study-lifecycle"
-                    ]
-                  },
-                  {
-                    "group": "Onboarding Guides",
-                    "expanded": false,
-                    "pages": [
-                      {
-                        "group": "Investigator",
-                        "pages": [
-                          "kb/roles/pi-orientation",
-                          "kb/roles/pi-guide",
-                          "kb/roles/pi-guide-iv",
-                          "kb/roles/pi-guide-v"
-                        ]
-                      },
-                      {
-                        "group": "Clinical Research Coordinator",
-                        "pages": [
-                          "kb/roles/crc-orientation",
-                          "kb/roles/crc-guide",
-                          "kb/roles/crc-guide-iv",
-                          "kb/roles/crc-guide-v"
-                        ]
-                      },
-                      {
-                        "group": "Research Nurse",
-                        "pages": [
-                          "kb/roles/nurse-orientation",
-                          "kb/roles/nurse-guide"
-                        ]
-                      },
-                      {
-                        "group": "Students, Trainees & Visitors",
-                        "pages": [
-                          "kb/roles/onboarding-trainees",
-                          "kb/roles/onboarding-volunteers",
-                          "kb/roles/onboarding-observers"
-                        ]
-                      }
-                    ]
-                  },
-                  "kb/faq",
+                  "kb/clinical-research-101",
+                  "kb/trial-design",
+                  "kb/gcp-quality-by-design",
+                  "kb/study-lifecycle",
                   "kb/glossary"
                 ]
               },
@@ -150,8 +152,6 @@
                 "group": "Your Study, Step by Step",
                 "icon": "diagram-project",
                 "pages": [
-                  "kb/is-it-research",
-                  "kb/my-roadmap",
                   {
                     "group": "Study Planning",
                     "expanded": false,
@@ -623,7 +623,7 @@
           },
           {
             "label": "Knowledge Base",
-            "href": "/kb/introduction"
+            "href": "/kb/clinical-research-101"
           },
           {
             "label": "Clinical Research SOPs",
@@ -658,6 +658,122 @@
     }
   },
   "redirects": [
+    {
+      "source": "/roles/pi-orientation",
+      "destination": "/roles/investigator"
+    },
+    {
+      "source": "/roles/crc-orientation",
+      "destination": "/roles/coordinator"
+    },
+    {
+      "source": "/roles/nurse-orientation",
+      "destination": "/roles/nurse"
+    },
+    {
+      "source": "/roles/onboarding-trainees",
+      "destination": "/roles/trainee"
+    },
+    {
+      "source": "/roles/onboarding-volunteers",
+      "destination": "/roles/volunteer"
+    },
+    {
+      "source": "/roles/onboarding-observers",
+      "destination": "/roles/observer"
+    },
+    {
+      "source": "/kb/introduction",
+      "destination": "/"
+    },
+    {
+      "source": "/kb/faq",
+      "destination": "/faq"
+    },
+    {
+      "source": "/kb/is-it-research",
+      "destination": "/is-it-research"
+    },
+    {
+      "source": "/kb/my-roadmap",
+      "destination": "/my-roadmap"
+    },
+    {
+      "source": "/home/investigator",
+      "destination": "/roles/investigator"
+    },
+    {
+      "source": "/home/coordinator",
+      "destination": "/roles/coordinator"
+    },
+    {
+      "source": "/home/nurse",
+      "destination": "/roles/nurse"
+    },
+    {
+      "source": "/home/trainee",
+      "destination": "/roles/trainee"
+    },
+    {
+      "source": "/home/volunteer",
+      "destination": "/roles/volunteer"
+    },
+    {
+      "source": "/home/observer",
+      "destination": "/roles/observer"
+    },
+    {
+      "source": "/kb/roles/pi-orientation",
+      "destination": "/roles/investigator"
+    },
+    {
+      "source": "/kb/roles/pi-guide",
+      "destination": "/roles/pi-guide"
+    },
+    {
+      "source": "/kb/roles/pi-guide-iv",
+      "destination": "/roles/pi-guide-iv"
+    },
+    {
+      "source": "/kb/roles/pi-guide-v",
+      "destination": "/roles/pi-guide-v"
+    },
+    {
+      "source": "/kb/roles/crc-orientation",
+      "destination": "/roles/coordinator"
+    },
+    {
+      "source": "/kb/roles/crc-guide",
+      "destination": "/roles/crc-guide"
+    },
+    {
+      "source": "/kb/roles/crc-guide-iv",
+      "destination": "/roles/crc-guide-iv"
+    },
+    {
+      "source": "/kb/roles/crc-guide-v",
+      "destination": "/roles/crc-guide-v"
+    },
+    {
+      "source": "/kb/roles/nurse-orientation",
+      "destination": "/roles/nurse"
+    },
+    {
+      "source": "/kb/roles/nurse-guide",
+      "destination": "/roles/nurse-guide"
+    },
+    {
+      "source": "/kb/roles/onboarding-trainees",
+      "destination": "/roles/trainee"
+    },
+    {
+      "source": "/kb/roles/onboarding-volunteers",
+      "destination": "/roles/volunteer"
+    },
+    {
+      "source": "/kb/roles/onboarding-observers",
+      "destination": "/roles/observer"
+    },
     {
       "source": "/kb/conduct/biological-specimens",
       "destination": "/kb/biological-specimens"
@@ -804,15 +920,15 @@
     },
     {
       "source": "/kb/planning/study-intake",
-      "destination": "/kb/my-roadmap"
+      "destination": "/my-roadmap"
     },
     {
       "source": "/kb/study-intake",
-      "destination": "/kb/my-roadmap"
+      "destination": "/my-roadmap"
     },
     {
       "source": "/training/study-classifier",
-      "destination": "/kb/my-roadmap"
+      "destination": "/my-roadmap"
     },
     {
       "source": "/kb/submission/overview",
@@ -1060,15 +1176,15 @@
     },
     {
       "source": "/kb/roles/pi-pathway",
-      "destination": "/kb/roles/pi-orientation"
+      "destination": "/roles/investigator"
     },
     {
       "source": "/kb/roles/crc-pathway",
-      "destination": "/kb/roles/crc-orientation"
+      "destination": "/roles/coordinator"
     },
     {
       "source": "/kb/roles/nurse-pathway",
-      "destination": "/kb/roles/nurse-orientation"
+      "destination": "/roles/nurse"
     }
   ]
 }
