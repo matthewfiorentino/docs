@@ -536,137 +536,88 @@ body:has(.ri-text-hero, .ri-hub) main {
 }
 
 /* ══════════════════════════════════════════════
-   WELCOME — HERO: inset photo (text overlaid) on white,
-   framed by DNA gel bars on the right + bottom.
+   WELCOME — HERO: people cutout over a uniform brand-colour
+   square grid; dark text on white.
    ══════════════════════════════════════════════ */
 .ri-hero {
     position: relative;
-    border-radius: 0;
     margin: -0.5rem 0 2.5rem;
     background: #ffffff;
-    display: grid;
-    grid-template-columns: 1fr 46px;
-    grid-template-rows: 316px 46px;   /* 316 = 6 squares (46) + 5 gaps (8) */
-    gap: 8px;
-}
-/* Photo cell — the text is overlaid on top of it */
-.ri-hero-media {
-    grid-area: 1 / 1;
-    position: relative;
+    height: 480px;
     overflow: hidden;
 }
-/* Mintlify wraps the MDX <img> in react-medium-image-zoom spans
-   ([data-rmiz] > [data-rmiz-content] > img), which stay inline and float the
-   image down inside the cell. Force the wrappers + image to fill it so the
-   photo's top is flush with the square column. */
-.ri-hero-media { font-size: 0; line-height: 0; }
-.ri-hero-media [data-rmiz],
-.ri-hero-media [data-rmiz-content] {
-    display: block !important;
-    width: 100% !important;
-    height: 100% !important;
-    line-height: 0 !important;
-}
-.ri-hero-media img {
-    width: 100% !important;
-    height: 100% !important;
-    object-fit: cover !important;
-    object-position: center 20% !important;
-    display: block !important;
-}
-/* Navy gradient scrim — dark behind the text on the left, fading to clear on
-   the right so the physician + patient stay visible. Keeps white text legible. */
-.ri-hero-media::after {
-    content: '';
+/* Uniform square grid, behind the people */
+.ri-hero-grid {
     position: absolute;
-    inset: 0;
-    z-index: 0;
-    pointer-events: none;
-    background: linear-gradient(to right,
-        rgba(43, 38, 102, 0.70) 0%,
-        rgba(43, 38, 102, 0.60) 34%,
-        rgba(43, 38, 102, 0.30) 52%,
-        rgba(43, 38, 102, 0.00) 66%);
+    right: 0; top: 0; bottom: 0;
+    width: 58%;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 84px);
+    grid-auto-rows: 84px;
+    gap: 8px;
+    align-content: start;
+    justify-content: end;
+    overflow: hidden;
 }
-/* RI-MUHC shield + white wordmark, beneath the hero text (on the dark scrim) */
-.ri-hero-logo {
-    flex: none;
-    align-self: flex-start;
-    width: 240px;
-    height: 43px;
-    margin-top: 22px;
-    background: url('/logo/rimuhc-shield-white.png') no-repeat left center / contain;
-    pointer-events: none;
+.ri-hero-grid span { display: block; }
+/* 6 brand colours in hue order (cool → warm) so the grid reads as a colour scale */
+.ri-hero-grid span:nth-child(6n+1) { background: #30ffed; }  /* teal */
+.ri-hero-grid span:nth-child(6n+2) { background: #2b9ce2; }  /* blue */
+.ri-hero-grid span:nth-child(6n+3) { background: #74c0f8; }  /* light blue */
+.ri-hero-grid span:nth-child(6n+4) { background: #9039f9; }  /* purple */
+.ri-hero-grid span:nth-child(6n+5) { background: #ff62ed; }  /* magenta */
+.ri-hero-grid span:nth-child(6n)   { background: #ff537f; }  /* coral */
+/* Top-left cell removed — negative space */
+.ri-hero-grid span:nth-child(1) { background: transparent; }
+/* People cutout (cropped tight), big, anchored bottom-right */
+.ri-hero-photo {
+    position: absolute;
+    right: 0; top: 0; bottom: 0;
+    width: 58%;
+    z-index: 2;
+    background: url('/images/photos/hero-people.png') no-repeat right bottom / contain;
 }
+/* Text — dark on white, left */
 .ri-hero-inner {
     position: absolute;
-    inset: 0;
-    z-index: 1;
-    padding: 44px;
+    left: 4px; top: 50%;
+    transform: translateY(-50%);
+    z-index: 3;
+    max-width: 42%;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    max-width: 58%;
 }
-/* Suppress Mintlify's heading permalink icon inside the hero */
 #content-area .ri-hero-title a { display: none !important; }
 #content-area .ri-hero-title {
     font-family: 'Barlow Condensed', 'Arial Narrow', Arial, sans-serif !important;
-    font-size: clamp(2.3rem, 4.4vw, 3.1rem) !important;
+    font-size: clamp(2.3rem, 4.4vw, 3.2rem) !important;
     font-weight: 700 !important;
     line-height: 1.02 !important;
     letter-spacing: -0.005em !important;
-    color: #ffffff !important;
+    color: #2b2666 !important;
     margin: 0 0 16px !important;
 }
 .ri-hero-sub {
     font-size: 16px;
-    font-weight: 600;
+    font-weight: 500;
     line-height: 1.55;
-    color: #ffffff;
+    color: #1a1a1a;
     margin: 0;
+    max-width: 420px;
 }
-/* Square chips framing the photo — a column on the right, a row on the bottom.
-   8px grid gap = the gap from the photo AND between chips. Overflow clips
-   overfilled chips so the rows always read as a full edge. */
-/* Right column: 6 squares fill the 316px exactly → flush top + bottom */
-.ri-hero-gel {
-    grid-area: 1 / 2;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    gap: 8px;
+.ri-hero-logo {
+    width: 220px;
+    height: 44px;
+    margin-top: 24px;
+    background: url('/logo/RIMUHC_logo_nav.png') no-repeat left center / contain;
+    pointer-events: none;
 }
-/* Bottom row: auto-fill square columns, space-between → first chip flush-left
-   (under the image), last chip flush-right (aligned with the column). Overflow
-   clips any overfilled chips that wrap. */
-.ri-hero-gel-b {
-    grid-area: 2 / 1 / 3 / 2;
-    overflow: hidden;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, 46px);
-    grid-auto-rows: 46px;
-    justify-content: space-between;
-    gap: 8px;
-}
-.ri-gel-sq { width: 46px; height: 46px; flex: none; background-color: var(--sqc); }
-/* Colour cycle (period 7) ordered by HUE so the frame reads as a sequential
-   colour scale: green → cyan → blue → light-blue → purple → magenta → pink.
-   (Amber removed — not a brand colour.) */
-.ri-gel-sq:nth-child(7n+1) { --sqc: #c3e88d; }  /* lime  */
-.ri-gel-sq:nth-child(7n+2) { --sqc: #30ffed; }  /* teal  */
-.ri-gel-sq:nth-child(7n+3) { --sqc: #2b9ce2; }  /* blue  */
-.ri-gel-sq:nth-child(7n+4) { --sqc: #74c0f8; }  /* light blue */
-.ri-gel-sq:nth-child(7n+5) { --sqc: #9039f9; }  /* purple */
-.ri-gel-sq:nth-child(7n+6) { --sqc: #ff62ed; }  /* magenta */
-.ri-gel-sq:nth-child(7n)   { --sqc: #ff537f; }  /* coral / pink */
-
-@media (max-width: 700px) {
-    .ri-hero { grid-template-columns: 1fr; grid-template-rows: 240px 46px; }
-    .ri-hero-media { min-height: 240px; }
-    .ri-hero-inner { max-width: 74%; padding: 26px; }
-    .ri-hero-gel { display: none; }
-    .ri-hero-gel-b { grid-area: 2 / 1 / 3 / 2; }
+@media (max-width: 760px) {
+    .ri-hero { height: auto; display: flex; flex-direction: column; }
+    .ri-hero-grid { display: none; }
+    .ri-hero-inner { position: relative; order: -1; transform: none; left: 0; top: 0; max-width: none; padding: 24px 4px 4px; }
+    .ri-hero-photo { position: relative; width: 100%; height: 320px; }
 }
 
 /* ══════════════════════════════════════════════
@@ -680,7 +631,7 @@ body:has(.ri-text-hero, .ri-hub) main {
 .ri-support-cards .card:nth-child(2) { --c: #9039f9; --t: #ffffff; }  /* ACT-CTU — purple */
 .ri-support-cards .card:nth-child(3) { --c: #ff537f; --t: #ffffff; }  /* BCU — coral */
 .ri-support-cards .card:nth-child(4) { --c: #ff62ed; --t: #ffffff; }  /* CORD — magenta */
-.ri-support-cards .card:nth-child(5) { --c: #ffb400; --t: #2b2666; }  /* Data Warehouse — amber, dark text */
+.ri-support-cards .card:nth-child(5) { --c: #30ffed; --t: #2b2666; }  /* Data Warehouse — teal, dark text */
 
 .ri-support-cards .card,
 .ri-support-cards .card > *,
@@ -712,6 +663,31 @@ body:has(.ri-text-hero, .ri-hub) main {
     transform: translateY(-3px) !important;
     box-shadow: none !important;
 }
+
+/* ══════════════════════════════════════════════
+   WELCOME — "What the site covers" tinted index panel
+   ══════════════════════════════════════════════ */
+.ri-site-index {
+    background: rgba(43, 38, 102, 0.045);
+    padding: 12px 18px;
+    margin: 16px 0 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+.ri-site-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 13px;
+    padding: 11px 10px;
+    text-decoration: none !important;
+    transition: background 0.12s ease;
+}
+.ri-site-item:hover { background: rgba(43, 38, 102, 0.06); }
+.ri-site-item svg { flex: none; margin-top: 1px; }
+.ri-site-text { display: flex; flex-direction: column; gap: 1px; min-width: 0; }
+.ri-site-label { font-weight: 600; color: var(--ri-navy); line-height: 1.3; }
+.ri-site-desc { color: #5b6472; font-size: 13.5px; line-height: 1.45; }
 
 /* ══════════════════════════════════════════════
    WELCOME — ROLE PHOTO TILES
