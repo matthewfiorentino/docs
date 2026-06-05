@@ -632,6 +632,8 @@ body:has(.ri-text-hero, .ri-hub) main {
 .ri-support-cards .card:nth-child(3) { --c: #ff537f; --t: #ffffff; }  /* BCU — coral */
 .ri-support-cards .card:nth-child(4) { --c: #ff62ed; --t: #ffffff; }  /* CORD — magenta */
 .ri-support-cards .card:nth-child(5) { --c: #30ffed; --t: #2b2666; }  /* Data Warehouse — teal, dark text */
+/* CIM spans both columns so the 5 cards lay out evenly (1 full + two pairs) */
+.ri-support-cards .card:nth-child(1) { grid-column: 1 / -1; }
 
 .ri-support-cards .card,
 .ri-support-cards .card > *,
