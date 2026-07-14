@@ -417,7 +417,8 @@
                 "icon": "lightbulb",
                 "pages": [
                   "training/learning-lab",
-                  "training/cantrain"
+                  "training/cantrain",
+                  "training/supplementary-training"
                 ]
               }
             ]
