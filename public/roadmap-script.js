@@ -347,23 +347,23 @@
     if (p.crossBorder)
       f.push({ tone: 'coral', title: 'Cross-border data — ÉFVP required',
         detail: 'A Privacy Impact Assessment must be completed before any data transfer. File F17 or F18 alongside your Nagano F11 submission.',
-        href: '/kb/privacy' });
+        href: '/kb/recruitment/privacy' });
     else if (p.phi)
       f.push({ tone: 'amber', title: 'Identifiable health information — Loi 25 obligations',
         detail: 'A data management and privacy plan is required in your REB application. Any breach must be reported to the CAI within 72 hours.',
-        href: '/kb/privacy' });
+        href: '/kb/recruitment/privacy' });
     if (p.minors)
       f.push({ tone: 'sky', title: 'Minors — Civil Code Art. 21',
         detail: 'Parental or guardian consent required. Assent for children aged 7–13; minors 14+ may consent alone if REB determines minimal risk.',
-        href: '/kb/pediatric-research' });
+        href: '/kb/recruitment/pediatric-research' });
     if (p.incapable)
       f.push({ tone: 'coral', title: 'Adults unable to consent — Personne mandatée required',
         detail: 'Authorization from a mandatary, tutor, or curator is required. Risk must not be disproportionate to expected benefit.',
-        href: '/kb/vulnerable-populations' });
+        href: '/kb/recruitment/vulnerable-populations' });
     if (p.isSI && p.needsHC)
       f.push({ tone: 'amber', title: 'Sponsor-Investigator — dual regulatory obligations',
         detail: 'You hold both Sponsor and QI/PI responsibilities. The 100-series SOPs apply. Engage QA early in planning.',
-        href: '/kb/sponsor-investigator' });
+        href: '/kb/planning/sponsor-investigator' });
     if (p.multiLead)
       f.push({ tone: 'sky', title: 'Multicentre — MUHC is the Quebec REB Lead',
         detail: 'Submit study documents via Nagano on behalf of all participating RSSS sites.' });
@@ -460,53 +460,53 @@
 
     /* Phase 1 — Study Design & Planning */
     var ph1 = { id: 'p1', num: 'Phase 1', title: 'Study Design & Planning', items: [] };
-    ph1.items.push(it('p1-lifecycle',   'Review the study lifecycle — understand what lies ahead at each stage', 'Study lifecycle', '/kb/study-lifecycle'));
-    ph1.items.push(it('p1-feasibility', 'Conduct a feasibility assessment — site capacity, patient population, realistic timelines', 'Feasibility', '/kb/feasibility'));
+    ph1.items.push(it('p1-lifecycle',   'Review the study lifecycle — understand what lies ahead at each stage', 'Study lifecycle', '/kb/foundations/study-lifecycle'));
+    ph1.items.push(it('p1-feasibility', 'Conduct a feasibility assessment — site capacity, patient population, realistic timelines', 'Feasibility', '/kb/planning/feasibility'));
     if (p.isInterv || p.isObs)
-      ph1.items.push(it('p1-design',    'Develop or review the study design and protocol structure', 'Study design', '/kb/study-design'));
+      ph1.items.push(it('p1-design',    'Develop or review the study design and protocol structure', 'Study design', '/kb/design-support/study-design'));
     if (p.isObs || p.isRetro)
-      ph1.items.push(it('p1-bcu',       'Consult BCU (Biostatistics & Clinical Epidemiology) for study design and statistical planning', 'BCU', '/kb/bcu'));
+      ph1.items.push(it('p1-bcu',       'Consult BCU (Biostatistics & Clinical Epidemiology) for study design and statistical planning', 'BCU', '/kb/design-support/bcu'));
     if (p.isRetro)
-      ph1.items.push(it('p1-dw',        'Check the MUHC Data Warehouse for variable availability and cohort feasibility before finalizing the protocol', 'MUHC Data Warehouse', '/kb/data-warehouse'));
-    ph1.items.push(it('p1-budget',      'Develop the study budget — include REB fees, pharmacy, indirect costs, and screen-failure buffer', 'Budgets & contracts', '/kb/budget-negotiation'));
+      ph1.items.push(it('p1-dw',        'Check the MUHC Data Warehouse for variable availability and cohort feasibility before finalizing the protocol', 'MUHC Data Warehouse', '/kb/design-support/data-warehouse'));
+    ph1.items.push(it('p1-budget',      'Develop the study budget — include REB fees, pharmacy, indirect costs, and screen-failure buffer', 'Budgets & contracts', '/kb/funding/budget-negotiation'));
     if (p.isIndustry)
-      ph1.items.push(it('p1-cta-neg',   'Negotiate the Clinical Trial Agreement with the sponsor — allow 60–90 days', 'Clinical trial agreements', '/kb/clinical-trial-agreements'));
+      ph1.items.push(it('p1-cta-neg',   'Negotiate the Clinical Trial Agreement with the sponsor — allow 60–90 days', 'Clinical trial agreements', '/kb/funding/clinical-trial-agreements'));
     if (p.isSI)
-      ph1.items.push(it('p1-si',        'Review Sponsor-Investigator obligations — the 100-series SOPs apply to your study', 'Sponsor-Investigator', '/kb/sponsor-investigator'));
+      ph1.items.push(it('p1-si',        'Review Sponsor-Investigator obligations — the 100-series SOPs apply to your study', 'Sponsor-Investigator', '/kb/planning/sponsor-investigator'));
     if (p.needsHC)
-      ph1.items.push(it('p1-hc-plan',   'Plan the Health Canada filing timeline — allow minimum 30 days for HC review, running in parallel with REB', 'Regulatory requirements', '/kb/regulations'));
+      ph1.items.push(it('p1-hc-plan',   'Plan the Health Canada filing timeline — allow minimum 30 days for HC review, running in parallel with REB', 'Regulatory requirements', '/kb/planning/regulations'));
     if (p.crossBorder)
-      ph1.items.push(it('p1-efvp-plan', 'Plan the ÉFVP (Privacy Impact Assessment) — allow 4–8 weeks to complete before submission', 'Privacy & data governance', '/kb/privacy'));
+      ph1.items.push(it('p1-efvp-plan', 'Plan the ÉFVP (Privacy Impact Assessment) — allow 4–8 weeks to complete before submission', 'Privacy & data governance', '/kb/recruitment/privacy'));
     if (p.phi)
-      ph1.items.push(it('p1-data-plan', 'Plan the data management approach — REDCap build, CRF design, storage and access controls', 'CORD', '/kb/cord'));
+      ph1.items.push(it('p1-data-plan', 'Plan the data management approach — REDCap build, CRF design, storage and access controls', 'CORD', '/kb/design-support/cord'));
     if (p.hasCIM)
       ph1.items.push(it('p1-cim',       'Engage CIM during the design phase — well before your Nagano submission', 'Planning with CIM', '/cim/planning'));
     phases.push(ph1);
 
     /* Phase 2 — Pre-Submission Documents */
     var ph2 = { id: 'p2', num: 'Phase 2', title: 'Pre-Submission Documents', items: [] };
-    ph2.items.push(it('p2-protocol',   'Finalize the study protocol — PI/QI signature required before submission', 'Protocol & essential documents', '/kb/protocol-documents'));
-    ph2.items.push(it('p2-icf',        'Prepare the Informed Consent Form using the MUHC REB template (editable Word; French translation follows English REB approval)', 'Consent', '/kb/consent'));
+    ph2.items.push(it('p2-protocol',   'Finalize the study protocol — PI/QI signature required before submission', 'Protocol & essential documents', '/kb/site-activation/protocol-documents'));
+    ph2.items.push(it('p2-icf',        'Prepare the Informed Consent Form using the MUHC REB template (editable Word; French translation follows English REB approval)', 'Consent', '/kb/recruitment/consent'));
     if (p.needsHC)
-      ph2.items.push(it('p2-ib',       "Obtain the current Investigator's Brochure (IB) or Product Monograph — required before submission", 'Protocol & essential documents', '/kb/protocol-documents'));
+      ph2.items.push(it('p2-ib',       "Obtain the current Investigator's Brochure (IB) or Product Monograph — required before submission", 'Protocol & essential documents', '/kb/site-activation/protocol-documents'));
     if (p.isDrug)
       ph2.items.push(it('p2-cta',      'Prepare the Health Canada Clinical Trial Application (CTA) package', 'SOP-CR-018', '/sops/cr-018'));
     if (p.isDevice)
       ph2.items.push(it('p2-ita',      'Prepare the Health Canada Investigational Testing Authorization (ITA) submission', 'SOP-CR-024', '/sops/cr-024'));
     if (p.crossBorder)
-      ph2.items.push(it('p2-efvp',     'Complete the ÉFVP — file F17 (screening) or F18 (non-screening) alongside your Nagano F11 submission', 'Privacy & data governance', '/kb/privacy'));
+      ph2.items.push(it('p2-efvp',     'Complete the ÉFVP — file F17 (screening) or F18 (non-screening) alongside your Nagano F11 submission', 'Privacy & data governance', '/kb/recruitment/privacy'));
     if (p.minors)
-      ph2.items.push(it('p2-assent',   'Prepare age-appropriate assent form (ages 7–13) and separate parental/guardian consent form', 'Pediatric research', '/kb/pediatric-research'));
+      ph2.items.push(it('p2-assent',   'Prepare age-appropriate assent form (ages 7–13) and separate parental/guardian consent form', 'Pediatric research', '/kb/recruitment/pediatric-research'));
     if (p.incapable)
-      ph2.items.push(it('p2-mandat',   'Prepare the Personne mandatée (mandatary) consent documentation', 'Consent for incapable adults', '/kb/vulnerable-populations'));
+      ph2.items.push(it('p2-mandat',   'Prepare the Personne mandatée (mandatary) consent documentation', 'Consent for incapable adults', '/kb/recruitment/vulnerable-populations'));
     if (p.phi)
-      ph2.items.push(it('p2-dmp',      'Prepare a Data Management Plan — required in the REB submission', 'CORD', '/kb/cord'));
-    ph2.items.push(it('p2-agreements', 'Research agreements initiated — contact the Research Agreements Office early in parallel with protocol development', 'Budgets & contracts', '/kb/budgets-contracts'));
+      ph2.items.push(it('p2-dmp',      'Prepare a Data Management Plan — required in the REB submission', 'CORD', '/kb/design-support/cord'));
+    ph2.items.push(it('p2-agreements', 'Research agreements initiated — contact the Research Agreements Office early in parallel with protocol development', 'Budgets & contracts', '/kb/funding/budgets-contracts'));
     phases.push(ph2);
 
     /* Phase 3 — Submission & Review */
     var ph3 = { id: 'p3', num: 'Phase 3', title: 'Submission & Review', items: [] };
-    ph3.items.push(it('p3-nagano',  'Submit via Nagano F11 — triggers REB review and institutional feasibility review in parallel', 'Submitting via Nagano', '/kb/submitting-via-nagano'));
+    ph3.items.push(it('p3-nagano',  'Submit via Nagano F11 — triggers REB review and institutional feasibility review in parallel', 'Submitting via Nagano', '/kb/submission/submitting-via-nagano'));
     if (p.isDrug)
       ph3.items.push(it('p3-hc-cta', 'Health Canada CTA filed and 30-day review period underway — may proceed after 30 days if no stop notice received', 'SOP-CR-018', '/sops/cr-018'));
     if (p.isDevice)
@@ -524,21 +524,21 @@
     var ph4 = { id: 'p4', num: 'Phase 4', title: 'Activation', items: [] };
     ph4.items.push(it('p4-auth',    'MUHC Authorization letter received — all review streams must be complete before any study activity begins'));
     ph4.items.push(it('p4-tdl',     'Delegation Log finalized — all team members trained, credentialed, and signed', 'SOP-CR-002', '/sops/cr-002'));
-    ph4.items.push(it('p4-isf',     'Investigator Site File opened and organized with all essential documents', 'ISF', '/kb/isf'));
+    ph4.items.push(it('p4-isf',     'Investigator Site File opened and organized with all essential documents', 'ISF', '/kb/site-activation/isf'));
     if (p.isIndustry)
       ph4.items.push(it('p4-go',    "Sponsor's Go Letter received — participant enrolment may not begin until this is in hand"));
     if (p.isDrug)
       ph4.items.push(it('p4-pharm', 'Pharmacy agreement in place — investigational product accountability system established', 'SOP-CR-010', '/sops/cr-010'));
     if (p.isSI)
-      ph4.items.push(it('p4-mon',   'Independent monitor engaged — must not appear on the site Delegation Log', 'Sponsor-Investigator', '/kb/sponsor-investigator'));
+      ph4.items.push(it('p4-mon',   'Independent monitor engaged — must not appear on the site Delegation Log', 'Sponsor-Investigator', '/kb/planning/sponsor-investigator'));
     if (p.hasCIM)
       ph4.items.push(it('p4-cim',   'CIM activation confirmed — pharmacy, nursing, and platform agreements in place', 'CIM services', '/cim/services'));
     phases.push(ph4);
 
     /* Phase 5 — Conduct */
     var ph5 = { id: 'p5', num: 'Phase 5', title: 'Conduct', items: [] };
-    ph5.items.push(it('p5-consent',    'Ongoing consent — reconsent participants when the protocol or ICF changes', 'Consent', '/kb/consent'));
-    ph5.items.push(it('p5-source',     'Source documentation maintained per GCP — legible, contemporaneous, attributable', 'Data integrity', '/kb/data-integrity'));
+    ph5.items.push(it('p5-consent',    'Ongoing consent — reconsent participants when the protocol or ICF changes', 'Consent', '/kb/recruitment/consent'));
+    ph5.items.push(it('p5-source',     'Source documentation maintained per GCP — legible, contemporaneous, attributable', 'Data integrity', '/kb/conduct/data-documentation/data-integrity'));
     ph5.items.push(it('p5-deviations', 'Protocol deviations identified and reported promptly per SOP', 'SOP-CR-015', '/sops/cr-015'));
     ph5.items.push(it('p5-training',   'Team training records kept current — the 90-day rule applies to amendments'));
     if (p.level <= 3)
@@ -546,21 +546,21 @@
     if (p.needsHC)
       ph5.items.push(it('p5-ip',       'Investigational product accountability — dispensing records, returns, and reconciliation maintained', 'SOP-CR-010', '/sops/cr-010'));
     if (p.isSI)
-      ph5.items.push(it('p5-dsur',     'Annual Development Safety Update Report (DSUR) prepared and submitted to Health Canada', 'Sponsor-Investigator', '/kb/sponsor-investigator'));
+      ph5.items.push(it('p5-dsur',     'Annual Development Safety Update Report (DSUR) prepared and submitted to Health Canada', 'Sponsor-Investigator', '/kb/planning/sponsor-investigator'));
     if (p.phi)
-      ph5.items.push(it('p5-breach',   'Any privacy breach reported to the CAI and affected participants within 72 hours (Loi 25)', 'Privacy & data governance', '/kb/privacy'));
+      ph5.items.push(it('p5-breach',   'Any privacy breach reported to the CAI and affected participants within 72 hours (Loi 25)', 'Privacy & data governance', '/kb/recruitment/privacy'));
     phases.push(ph5);
 
     /* Phase 6 — Close-Out */
     var ph6 = { id: 'p6', num: 'Phase 6', title: 'Close-Out', items: [] };
-    ph6.items.push(it('p6-visit',   'Close-out visit conducted (if required by sponsor or protocol) and sponsor notified', 'Close-out guide', '/kb/close-out'));
-    ph6.items.push(it('p6-reb',     'Final close-out report submitted to the REB via Nagano', 'Close-out guide', '/kb/close-out'));
+    ph6.items.push(it('p6-visit',   'Close-out visit conducted (if required by sponsor or protocol) and sponsor notified', 'Close-out guide', '/kb/close-out/close-out'));
+    ph6.items.push(it('p6-reb',     'Final close-out report submitted to the REB via Nagano', 'Close-out guide', '/kb/close-out/close-out'));
     if (p.isDrug)
       ph6.items.push(it('p6-hc',    'Health Canada close-out letter submitted within 15 days of the last participant visit'));
-    ph6.items.push(it('p6-archive', 'Essential documents archived — minimum 15 years for regulated studies', 'ISF & retention', '/kb/isf'));
+    ph6.items.push(it('p6-archive', 'Essential documents archived — minimum 15 years for regulated studies', 'ISF & retention', '/kb/site-activation/isf'));
     if (p.level <= 4)
-      ph6.items.push(it('p6-reg',   'Trial registration updated with results — required by most funders and journals', 'Publications', '/kb/publications'));
-    ph6.items.push(it('p6-publish', 'Consider publishing your findings — plan authorship, lay summary, and results disclosure', 'Publications', '/kb/publications'));
+      ph6.items.push(it('p6-reg',   'Trial registration updated with results — required by most funders and journals', 'Publications', '/kb/close-out/publications'));
+    ph6.items.push(it('p6-publish', 'Consider publishing your findings — plan authorship, lay summary, and results disclosure', 'Publications', '/kb/close-out/publications'));
     phases.push(ph6);
 
     return phases;

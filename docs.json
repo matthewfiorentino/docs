@@ -20,7 +20,7 @@
     "/custom.css"
   ],
   "banner": {
-    "content": "**GCP certificates before Oct 27, 2025 are no longer valid** — Health Canada adopted ICH E6(R3) on April 1, 2026. Renew before your next submission. [See what's changed →](/kb/updates)",
+    "content": "**GCP certificates before Oct 27, 2025 are no longer valid** — Health Canada adopted ICH E6(R3) on April 1, 2026. Renew before your next submission. [See what's changed →](/kb/community/updates)",
     "dismissible": true
   },
   "integrations": {
@@ -133,19 +133,19 @@
                 "group": "Community",
                 "icon": "comments",
                 "pages": [
-                  "kb/updates",
-                  "kb/community-connect"
+                  "kb/community/updates",
+                  "kb/community/community-connect"
                 ]
               },
               {
                 "group": "Foundations",
                 "icon": "rocket",
                 "pages": [
-                  "kb/clinical-research-101",
-                  "kb/trial-design",
-                  "kb/gcp-quality-by-design",
-                  "kb/study-lifecycle",
-                  "kb/glossary"
+                  "kb/foundations/clinical-research-101",
+                  "kb/foundations/trial-design",
+                  "kb/foundations/gcp-quality-by-design",
+                  "kb/foundations/study-lifecycle",
+                  "kb/foundations/glossary"
                 ]
               },
               {
@@ -156,123 +156,123 @@
                     "group": "Study Planning",
                     "expanded": false,
                     "pages": [
-                      "kb/planning-overview",
-                      "kb/feasibility",
-                      "kb/sponsored-trials",
-                      "kb/sponsor-investigator",
-                      "kb/iit-startup",
-                      "kb/regulations",
-                      "kb/ai-in-clinical-research"
+                      "kb/planning/planning-overview",
+                      "kb/planning/feasibility",
+                      "kb/planning/sponsored-trials",
+                      "kb/planning/sponsor-investigator",
+                      "kb/planning/iit-startup",
+                      "kb/planning/regulations",
+                      "kb/planning/ai-in-clinical-research"
                     ]
                   },
                   {
                     "group": "Study Design",
                     "expanded": false,
                     "pages": [
-                      "kb/patient-engagement",
-                      "kb/dct-design",
-                      "kb/real-world-evidence",
-                      "kb/multi-centric",
-                      "kb/cross-border-studies"
+                      "kb/design/patient-engagement",
+                      "kb/design/dct-design",
+                      "kb/design/real-world-evidence",
+                      "kb/design/multi-centric",
+                      "kb/design/cross-border-studies"
                     ]
                   },
                   {
                     "group": "Design Support",
                     "expanded": false,
                     "pages": [
-                      "kb/study-design",
-                      "kb/bcu",
-                      "kb/cord",
-                      "kb/data-warehouse"
+                      "kb/design-support/study-design",
+                      "kb/design-support/bcu",
+                      "kb/design-support/cord",
+                      "kb/design-support/data-warehouse"
                     ]
                   },
                   {
                     "group": "Building Your Team",
                     "expanded": false,
                     "pages": [
-                      "kb/building-your-team",
-                      "kb/hiring-hr-support",
-                      "kb/edi"
+                      "kb/team/building-your-team",
+                      "kb/team/hiring-hr-support",
+                      "kb/team/edi"
                     ]
                   },
                   {
                     "group": "Funding, Budgets and Agreements",
                     "expanded": false,
                     "pages": [
-                      "kb/funding-applications",
-                      "kb/budgets-contracts",
-                      "kb/budget-negotiation",
-                      "kb/clinical-trial-agreements",
-                      "kb/research-grants"
+                      "kb/funding/funding-applications",
+                      "kb/funding/budgets-contracts",
+                      "kb/funding/budget-negotiation",
+                      "kb/funding/clinical-trial-agreements",
+                      "kb/funding/research-grants"
                     ]
                   },
                   {
                     "group": "Submission and Review",
                     "expanded": false,
                     "pages": [
-                      "kb/submission-overview",
-                      "kb/preparing",
-                      "kb/submitting-via-nagano",
-                      "kb/tracking-responding",
-                      "kb/study-review"
+                      "kb/submission/submission-overview",
+                      "kb/submission/preparing",
+                      "kb/submission/submitting-via-nagano",
+                      "kb/submission/tracking-responding",
+                      "kb/submission/study-review"
                     ]
                   },
                   {
                     "group": "Site Activation",
                     "expanded": false,
                     "pages": [
-                      "kb/site-setup",
-                      "kb/protocol-documents",
-                      "kb/isf"
+                      "kb/site-activation/site-setup",
+                      "kb/site-activation/protocol-documents",
+                      "kb/site-activation/isf"
                     ]
                   },
                   {
                     "group": "Recruitment and Enrollment",
                     "expanded": false,
                     "pages": [
-                      "kb/recruitment-enrollment",
-                      "kb/recruitment-calculator",
-                      "kb/consent",
-                      "kb/consent-templates",
-                      "kb/pediatric-research",
-                      "kb/vulnerable-populations",
-                      "kb/indigenous-research-ethics",
-                      "kb/privacy"
+                      "kb/recruitment/recruitment-enrollment",
+                      "kb/recruitment/recruitment-calculator",
+                      "kb/recruitment/consent",
+                      "kb/recruitment/consent-templates",
+                      "kb/recruitment/pediatric-research",
+                      "kb/recruitment/vulnerable-populations",
+                      "kb/recruitment/indigenous-research-ethics",
+                      "kb/recruitment/privacy"
                     ]
                   },
                   {
                     "group": "Study Conduct",
                     "expanded": false,
                     "pages": [
-                      "kb/conduct-overview",
+                      "kb/conduct/conduct-overview",
                       {
                         "group": "Data and Documentation",
                         "expanded": false,
                         "pages": [
-                          "kb/data-integrity",
-                          "kb/data-security",
-                          "kb/edc-query-management"
+                          "kb/conduct/data-documentation/data-integrity",
+                          "kb/conduct/data-documentation/data-security",
+                          "kb/conduct/data-documentation/edc-query-management"
                         ]
                       },
                       {
                         "group": "Study Operations",
                         "expanded": false,
                         "pages": [
-                          "kb/decentralized-trials",
-                          "kb/investigational-products",
-                          "kb/biological-specimens",
-                          "kb/team-management"
+                          "kb/conduct/study-operations/decentralized-trials",
+                          "kb/conduct/study-operations/investigational-products",
+                          "kb/conduct/study-operations/biological-specimens",
+                          "kb/conduct/study-operations/team-management"
                         ]
                       },
                       {
                         "group": "Safety Reporting and Compliance",
                         "expanded": false,
                         "pages": [
-                          "kb/reportable-events",
-                          "kb/deviation-management",
-                          "kb/study-amendments",
-                          "kb/monitoring-audits",
-                          "kb/hc-inspection-guide"
+                          "kb/conduct/safety-reporting/reportable-events",
+                          "kb/conduct/safety-reporting/deviation-management",
+                          "kb/conduct/safety-reporting/study-amendments",
+                          "kb/conduct/safety-reporting/monitoring-audits",
+                          "kb/conduct/safety-reporting/hc-inspection-guide"
                         ]
                       }
                     ]
@@ -281,8 +281,8 @@
                     "group": "Close-Out and Archiving",
                     "expanded": false,
                     "pages": [
-                      "kb/close-out",
-                      "kb/publications"
+                      "kb/close-out/close-out",
+                      "kb/close-out/publications"
                     ]
                   }
                 ]
@@ -777,147 +777,131 @@
     },
     {
       "source": "/kb/conduct/biological-specimens",
-      "destination": "/kb/biological-specimens"
+      "destination": "/kb/conduct/study-operations/biological-specimens"
     },
     {
       "source": "/kb/conduct/close-out",
-      "destination": "/kb/close-out"
+      "destination": "/kb/close-out/close-out"
     },
     {
       "source": "/kb/conduct/consent",
-      "destination": "/kb/consent"
+      "destination": "/kb/recruitment/consent"
     },
     {
       "source": "/kb/conduct/data-integrity",
-      "destination": "/kb/data-integrity"
+      "destination": "/kb/conduct/data-documentation/data-integrity"
     },
     {
       "source": "/kb/conduct/data-security",
-      "destination": "/kb/data-security"
+      "destination": "/kb/conduct/data-documentation/data-security"
     },
     {
       "source": "/kb/conduct/decentralized-trials",
-      "destination": "/kb/decentralized-trials"
+      "destination": "/kb/conduct/study-operations/decentralized-trials"
     },
     {
       "source": "/kb/conduct/hc-inspection-guide",
-      "destination": "/kb/hc-inspection-guide"
+      "destination": "/kb/conduct/safety-reporting/hc-inspection-guide"
     },
     {
       "source": "/kb/conduct/investigational-products",
-      "destination": "/kb/investigational-products"
+      "destination": "/kb/conduct/study-operations/investigational-products"
     },
     {
       "source": "/kb/conduct/isf",
-      "destination": "/kb/isf"
+      "destination": "/kb/site-activation/isf"
     },
     {
       "source": "/kb/conduct/monitoring-audits",
-      "destination": "/kb/monitoring-audits"
+      "destination": "/kb/conduct/safety-reporting/monitoring-audits"
     },
     {
       "source": "/kb/conduct/overview",
-      "destination": "/kb/conduct-overview"
+      "destination": "/kb/conduct/conduct-overview"
     },
     {
       "source": "/kb/conduct/pediatric-research",
-      "destination": "/kb/pediatric-research"
+      "destination": "/kb/recruitment/pediatric-research"
     },
     {
       "source": "/kb/conduct/privacy",
-      "destination": "/kb/privacy"
+      "destination": "/kb/recruitment/privacy"
     },
     {
       "source": "/kb/conduct/protocol-documents",
-      "destination": "/kb/protocol-documents"
+      "destination": "/kb/site-activation/protocol-documents"
     },
     {
       "source": "/kb/conduct/publications",
-      "destination": "/kb/publications"
+      "destination": "/kb/close-out/publications"
     },
     {
       "source": "/kb/conduct/recruitment-enrollment",
-      "destination": "/kb/recruitment-enrollment"
+      "destination": "/kb/recruitment/recruitment-enrollment"
     },
     {
       "source": "/kb/conduct/reportable-events",
-      "destination": "/kb/reportable-events"
+      "destination": "/kb/conduct/safety-reporting/reportable-events"
     },
     {
       "source": "/kb/conduct/site-setup",
-      "destination": "/kb/site-setup"
+      "destination": "/kb/site-activation/site-setup"
     },
     {
       "source": "/kb/conduct/team-management",
-      "destination": "/kb/team-management"
+      "destination": "/kb/conduct/study-operations/team-management"
     },
     {
       "source": "/kb/conduct/vulnerable-populations",
-      "destination": "/kb/vulnerable-populations"
+      "destination": "/kb/recruitment/vulnerable-populations"
     },
     {
       "source": "/kb/planning/bcu",
-      "destination": "/kb/bcu"
+      "destination": "/kb/design-support/bcu"
     },
     {
       "source": "/kb/planning/budgets-contracts",
-      "destination": "/kb/budgets-contracts"
+      "destination": "/kb/funding/budgets-contracts"
     },
     {
       "source": "/kb/planning/building-your-team",
-      "destination": "/kb/building-your-team"
+      "destination": "/kb/team/building-your-team"
     },
     {
       "source": "/kb/planning/cord",
-      "destination": "/kb/cord"
+      "destination": "/kb/design-support/cord"
     },
     {
       "source": "/kb/planning/data-warehouse",
-      "destination": "/kb/data-warehouse"
+      "destination": "/kb/design-support/data-warehouse"
     },
     {
       "source": "/kb/planning/dct-design",
-      "destination": "/kb/dct-design"
+      "destination": "/kb/design/dct-design"
     },
     {
       "source": "/kb/planning/edi",
-      "destination": "/kb/edi"
-    },
-    {
-      "source": "/kb/planning/feasibility",
-      "destination": "/kb/feasibility"
+      "destination": "/kb/team/edi"
     },
     {
       "source": "/kb/planning/hiring-hr-support",
-      "destination": "/kb/hiring-hr-support"
+      "destination": "/kb/team/hiring-hr-support"
     },
     {
       "source": "/kb/planning/multi-centric",
-      "destination": "/kb/multi-centric"
+      "destination": "/kb/design/multi-centric"
     },
     {
       "source": "/kb/planning/overview",
-      "destination": "/kb/planning-overview"
-    },
-    {
-      "source": "/kb/planning/regulations",
-      "destination": "/kb/regulations"
+      "destination": "/kb/planning/planning-overview"
     },
     {
       "source": "/kb/planning/research-grants",
-      "destination": "/kb/research-grants"
-    },
-    {
-      "source": "/kb/planning/sponsor-investigator",
-      "destination": "/kb/sponsor-investigator"
-    },
-    {
-      "source": "/kb/planning/sponsored-trials",
-      "destination": "/kb/sponsored-trials"
+      "destination": "/kb/funding/research-grants"
     },
     {
       "source": "/kb/planning/study-design",
-      "destination": "/kb/study-design"
+      "destination": "/kb/design-support/study-design"
     },
     {
       "source": "/kb/planning/study-intake",
@@ -933,23 +917,7 @@
     },
     {
       "source": "/kb/submission/overview",
-      "destination": "/kb/submission-overview"
-    },
-    {
-      "source": "/kb/submission/preparing",
-      "destination": "/kb/preparing"
-    },
-    {
-      "source": "/kb/submission/study-review",
-      "destination": "/kb/study-review"
-    },
-    {
-      "source": "/kb/submission/submitting-via-nagano",
-      "destination": "/kb/submitting-via-nagano"
-    },
-    {
-      "source": "/kb/submission/tracking-responding",
-      "destination": "/kb/tracking-responding"
+      "destination": "/kb/submission/submission-overview"
     },
     {
       "source": "/sops/cr-001-overview",
@@ -1186,6 +1154,262 @@
     {
       "source": "/kb/roles/nurse-pathway",
       "destination": "/roles/nurse"
+    },
+    {
+      "source": "/kb/updates",
+      "destination": "/kb/community/updates"
+    },
+    {
+      "source": "/kb/community-connect",
+      "destination": "/kb/community/community-connect"
+    },
+    {
+      "source": "/kb/clinical-research-101",
+      "destination": "/kb/foundations/clinical-research-101"
+    },
+    {
+      "source": "/kb/trial-design",
+      "destination": "/kb/foundations/trial-design"
+    },
+    {
+      "source": "/kb/gcp-quality-by-design",
+      "destination": "/kb/foundations/gcp-quality-by-design"
+    },
+    {
+      "source": "/kb/study-lifecycle",
+      "destination": "/kb/foundations/study-lifecycle"
+    },
+    {
+      "source": "/kb/glossary",
+      "destination": "/kb/foundations/glossary"
+    },
+    {
+      "source": "/kb/planning-overview",
+      "destination": "/kb/planning/planning-overview"
+    },
+    {
+      "source": "/kb/feasibility",
+      "destination": "/kb/planning/feasibility"
+    },
+    {
+      "source": "/kb/sponsored-trials",
+      "destination": "/kb/planning/sponsored-trials"
+    },
+    {
+      "source": "/kb/sponsor-investigator",
+      "destination": "/kb/planning/sponsor-investigator"
+    },
+    {
+      "source": "/kb/iit-startup",
+      "destination": "/kb/planning/iit-startup"
+    },
+    {
+      "source": "/kb/regulations",
+      "destination": "/kb/planning/regulations"
+    },
+    {
+      "source": "/kb/ai-in-clinical-research",
+      "destination": "/kb/planning/ai-in-clinical-research"
+    },
+    {
+      "source": "/kb/patient-engagement",
+      "destination": "/kb/design/patient-engagement"
+    },
+    {
+      "source": "/kb/dct-design",
+      "destination": "/kb/design/dct-design"
+    },
+    {
+      "source": "/kb/real-world-evidence",
+      "destination": "/kb/design/real-world-evidence"
+    },
+    {
+      "source": "/kb/multi-centric",
+      "destination": "/kb/design/multi-centric"
+    },
+    {
+      "source": "/kb/cross-border-studies",
+      "destination": "/kb/design/cross-border-studies"
+    },
+    {
+      "source": "/kb/study-design",
+      "destination": "/kb/design-support/study-design"
+    },
+    {
+      "source": "/kb/bcu",
+      "destination": "/kb/design-support/bcu"
+    },
+    {
+      "source": "/kb/cord",
+      "destination": "/kb/design-support/cord"
+    },
+    {
+      "source": "/kb/data-warehouse",
+      "destination": "/kb/design-support/data-warehouse"
+    },
+    {
+      "source": "/kb/building-your-team",
+      "destination": "/kb/team/building-your-team"
+    },
+    {
+      "source": "/kb/hiring-hr-support",
+      "destination": "/kb/team/hiring-hr-support"
+    },
+    {
+      "source": "/kb/edi",
+      "destination": "/kb/team/edi"
+    },
+    {
+      "source": "/kb/funding-applications",
+      "destination": "/kb/funding/funding-applications"
+    },
+    {
+      "source": "/kb/budgets-contracts",
+      "destination": "/kb/funding/budgets-contracts"
+    },
+    {
+      "source": "/kb/budget-negotiation",
+      "destination": "/kb/funding/budget-negotiation"
+    },
+    {
+      "source": "/kb/clinical-trial-agreements",
+      "destination": "/kb/funding/clinical-trial-agreements"
+    },
+    {
+      "source": "/kb/research-grants",
+      "destination": "/kb/funding/research-grants"
+    },
+    {
+      "source": "/kb/budget-tool",
+      "destination": "/kb/funding/budget-tool"
+    },
+    {
+      "source": "/kb/budget-justifications",
+      "destination": "/kb/funding/budget-justifications"
+    },
+    {
+      "source": "/kb/submission-overview",
+      "destination": "/kb/submission/submission-overview"
+    },
+    {
+      "source": "/kb/preparing",
+      "destination": "/kb/submission/preparing"
+    },
+    {
+      "source": "/kb/submitting-via-nagano",
+      "destination": "/kb/submission/submitting-via-nagano"
+    },
+    {
+      "source": "/kb/tracking-responding",
+      "destination": "/kb/submission/tracking-responding"
+    },
+    {
+      "source": "/kb/study-review",
+      "destination": "/kb/submission/study-review"
+    },
+    {
+      "source": "/kb/site-setup",
+      "destination": "/kb/site-activation/site-setup"
+    },
+    {
+      "source": "/kb/protocol-documents",
+      "destination": "/kb/site-activation/protocol-documents"
+    },
+    {
+      "source": "/kb/isf",
+      "destination": "/kb/site-activation/isf"
+    },
+    {
+      "source": "/kb/recruitment-enrollment",
+      "destination": "/kb/recruitment/recruitment-enrollment"
+    },
+    {
+      "source": "/kb/recruitment-calculator",
+      "destination": "/kb/recruitment/recruitment-calculator"
+    },
+    {
+      "source": "/kb/consent",
+      "destination": "/kb/recruitment/consent"
+    },
+    {
+      "source": "/kb/consent-templates",
+      "destination": "/kb/recruitment/consent-templates"
+    },
+    {
+      "source": "/kb/pediatric-research",
+      "destination": "/kb/recruitment/pediatric-research"
+    },
+    {
+      "source": "/kb/vulnerable-populations",
+      "destination": "/kb/recruitment/vulnerable-populations"
+    },
+    {
+      "source": "/kb/indigenous-research-ethics",
+      "destination": "/kb/recruitment/indigenous-research-ethics"
+    },
+    {
+      "source": "/kb/privacy",
+      "destination": "/kb/recruitment/privacy"
+    },
+    {
+      "source": "/kb/conduct-overview",
+      "destination": "/kb/conduct/conduct-overview"
+    },
+    {
+      "source": "/kb/data-integrity",
+      "destination": "/kb/conduct/data-documentation/data-integrity"
+    },
+    {
+      "source": "/kb/data-security",
+      "destination": "/kb/conduct/data-documentation/data-security"
+    },
+    {
+      "source": "/kb/edc-query-management",
+      "destination": "/kb/conduct/data-documentation/edc-query-management"
+    },
+    {
+      "source": "/kb/decentralized-trials",
+      "destination": "/kb/conduct/study-operations/decentralized-trials"
+    },
+    {
+      "source": "/kb/investigational-products",
+      "destination": "/kb/conduct/study-operations/investigational-products"
+    },
+    {
+      "source": "/kb/biological-specimens",
+      "destination": "/kb/conduct/study-operations/biological-specimens"
+    },
+    {
+      "source": "/kb/team-management",
+      "destination": "/kb/conduct/study-operations/team-management"
+    },
+    {
+      "source": "/kb/reportable-events",
+      "destination": "/kb/conduct/safety-reporting/reportable-events"
+    },
+    {
+      "source": "/kb/deviation-management",
+      "destination": "/kb/conduct/safety-reporting/deviation-management"
+    },
+    {
+      "source": "/kb/study-amendments",
+      "destination": "/kb/conduct/safety-reporting/study-amendments"
+    },
+    {
+      "source": "/kb/monitoring-audits",
+      "destination": "/kb/conduct/safety-reporting/monitoring-audits"
+    },
+    {
+      "source": "/kb/hc-inspection-guide",
+      "destination": "/kb/conduct/safety-reporting/hc-inspection-guide"
+    },
+    {
+      "source": "/kb/close-out",
+      "destination": "/kb/close-out/close-out"
+    },
+    {
+      "source": "/kb/publications",
+      "destination": "/kb/close-out/publications"
     }
   ]
 }

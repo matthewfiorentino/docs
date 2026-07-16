@@ -1,0 +1,133 @@
+---
+title: "Study Amendments"
+description: "When and how to amend a protocol, ICF, or IB — amendment types, regulatory sequencing, re-consent requirements, and Nagano submission workflow."
+keywords: ["protocol amendment", "ICF amendment", "IB update", "re-consent", "substantial amendment", "administrative amendment", "CR-026", "CR-007"]
+---
+
+A protocol amendment is any change to the REB-approved study documents after initial approval. Amendments are routine — they happen in most studies, sometimes multiple times. What matters is that they follow the correct sequence: Health Canada authorization (where required) and <Tooltip tip="The ethics committee that reviews and approves research involving human participants. Also called CER at French-language institutions." headline="Research Ethics Board (REB)" cta="Full definition" href="/kb/foundations/glossary#reb">REB</Tooltip> approval before implementation at the site.
+
+<Warning>
+Implementing a protocol amendment before REB approval is a protocol deviation. The only exception is a change made to eliminate an immediate safety risk to participants — and even then, the REB must be notified at the earliest opportunity (per TCPS2 Article 6.16) and a CTA amendment filed with Health Canada within 15 calendar days (per C.05.010). See [SOP-CR-026](/sops/cr-026) §5.3.1 for institutional procedures.
+</Warning>
+
+## What triggers an amendment
+
+Amendments arise from different sources throughout the study. Understanding the trigger helps determine the type of amendment and the urgency of the submission.
+
+| Trigger | Examples | Typical urgency |
+|---|---|---|
+| **Safety signals** | New adverse event data, SUSAR requiring protocol change, updated <Tooltip tip="Compilation of clinical and nonclinical data on the investigational product relevant to the study." headline="Investigator's Brochure (IB)" cta="Full definition" href="/kb/foundations/glossary#ib">IB</Tooltip> with changed risk profile | High — may require immediate safety measures before formal amendment |
+| **Enrollment challenges** | Eligibility criteria too restrictive, recruitment slower than projected | Moderate — plan ahead to avoid enrollment gaps |
+| **Operational issues** | Visit window impractical, assessment tool unavailable, site logistics | Moderate — address before the issue generates repeated deviations |
+| **Regulatory requirements** | Health Canada request, REB condition of approval | Variable — depends on the request |
+| **Data or statistical considerations** | Interim analysis results, sample size re-estimation, endpoint change | Variable — often sponsor-driven |
+| **Administrative changes** | Sponsor contact information, <Tooltip tip="The physician responsible to the sponsor for the conduct of a clinical trial at the site. One QI per study per Canadian site." headline="Qualified Investigator (QI)" cta="Full definition" href="/kb/foundations/glossary#qi">QI</Tooltip>/PI change, site address change | Low — but still requires REB notification |
+
+## Amendment types
+
+### Changes requiring a CTA amendment (CTA-A)
+
+For Health Canada-regulated studies, a CTA amendment (CTA-A) must be filed for changes that affect drug quality, safety, or that alter participant risk. This includes changes to eligibility criteria, dosing, study endpoints, addition of new procedures, or changes to the investigational product. Health Canada applies the same 30-day NOL mechanism used for original CTAs. The amendment cannot be implemented until the NOL is received — unless the change is needed to eliminate an immediate hazard.
+
+### Notification-only changes
+
+Changes that do not affect participant safety or risk — sponsor contact updates, minor formatting corrections, typographical fixes — can be implemented immediately with written notification to Health Canada within 15 calendar days. The REB still requires notification of these changes, though the review process is typically faster.
+
+<Note>
+Some sponsors and international frameworks use the terms "substantial" and "administrative" to classify amendments — this is primarily EU/EMA terminology. In the Canadian framework, the relevant distinction is whether a CTA-A is required (prior HC authorization) or whether notification to HC is sufficient.
+</Note>
+
+### IB updates
+
+An updated Investigator's Brochure from the sponsor is not itself a protocol amendment, but it may trigger one. When a new IB is received, the QI/PI must review it and assess whether the new safety information affects the risk-benefit profile for enrolled participants. If it does, this may require a protocol amendment, an <Tooltip tip="The written document providing the participant with information essential to making an informed decision. Both parties must sign." headline="Informed Consent Form (ICF)" cta="Full definition" href="/kb/foundations/glossary#icf">ICF</Tooltip> revision, or both.
+
+<Note>
+Filing an updated IB without reviewing it for new safety signals is a compliance gap — and a common Health Canada inspection finding. Document the QI/PI's review and assessment in the <Tooltip tip="The QI's collection of documentation demonstrating compliance, study integrity, and participant safety." headline="Investigator Site File (ISF)" cta="Full definition" href="/kb/foundations/glossary#isf">ISF</Tooltip>, even if no action is required.
+</Note>
+
+## Regulatory sequencing
+
+For Health Canada-regulated studies, both regulatory and ethics approvals are required before implementation. Health Canada review (CTA-A) and REB review can proceed in parallel — there is no mandated sequence — but both must be obtained before the amendment takes effect at the site.
+
+```mermaid
+flowchart TD
+    A[Sponsor prepares\namendment package] --> B[CTA-A to\nHealth Canada]
+    A --> C[Amendment to\nREB via Nagano]
+    B --> D[NOL received\n30-day review]
+    C --> E[REB approval\nletter]
+    D --> F{Both approvals\nin hand}
+    E --> F
+    F --> G[Sponsor Go Letter\nif applicable]
+    G --> H[Implement at site]
+```
+
+<Steps>
+  <Step title="Sponsor prepares the amendment package">
+    For industry-sponsored studies, the sponsor prepares the amended documents and distributes them to all sites. For Sponsor-Investigator studies, the QI/PI prepares the amendment.
+  </Step>
+  <Step title="Health Canada and REB submissions (in parallel)">
+    The sponsor submits a CTA-A to Health Canada; the site submits the amendment through <Tooltip tip="The RI-MUHC's electronic study submission and management platform. All studies requiring MUHC Authorization are submitted through Nagano." headline="Nagano (RI-MUHC)" cta="Full definition" href="/kb/foundations/glossary#nagano">Nagano</Tooltip> for REB review. These reviews can run simultaneously. Include the amended documents with tracked changes and a summary of changes for both submissions.
+
+    Health Canada applies the same 30-day NOL process used for original CTAs. The REB reviews and either approves, requests modifications, or rejects.
+  </Step>
+  <Step title="Both approvals in hand">
+    Implementation cannot proceed until you have both Health Canada's NOL (for regulated studies) and the REB's written approval letter specifying the approved versions and dates.
+  </Step>
+  <Step title="Receive Sponsor's Go Letter (if applicable)">
+    For industry-sponsored studies, the sponsor issues a Go Letter confirming that both approvals are in place and the site may implement the amendment. The Go Letter is an operational step, not a regulatory requirement — but do not implement until it is received.
+  </Step>
+  <Step title="Implement at the site">
+    Update all documents to the approved version. Remove superseded versions from circulation. Train the team on the changes. Update the ISF. Begin using the new documents.
+  </Step>
+</Steps>
+
+## Re-consent
+
+Not every amendment requires participants to re-sign the consent form. But any amendment that changes the information a reasonable person would consider important to their decision to continue participating does require re-consent.
+
+**Re-consent is required when:**
+- New risks or side effects are added
+- Study procedures change in a way that affects participant burden
+- The risk-benefit profile changes based on new safety data
+- Eligibility criteria change and affect the basis on which a participant originally enrolled
+
+**Re-consent is typically not required when:**
+- The change is administrative (sponsor contact info, minor formatting)
+- The amendment narrows eligibility for new participants but does not affect already-enrolled participants
+- The change is to data analysis methods that do not affect the participant experience
+
+When re-consent is required, document the process for each participant: the date of re-consent, the ICF version signed, and confirmation that the participant was given time to consider the new information. Participants who decline to re-consent must be managed per the protocol's withdrawal procedures.
+
+<Warning>
+A participant who has not been re-consented on a current ICF version is participating on an outdated consent. If this is discovered during a monitoring visit, it will be flagged as a deviation. Track ICF versions and re-consent status for all active participants whenever a new version is approved.
+</Warning>
+
+## Multi-site coordination
+
+For multi-centric studies, amendment implementation must be synchronized across sites to the extent possible. Practical considerations:
+
+- **REB timelines vary.** Quebec sites submit through their local REB; other provinces may have different review timelines. The sponsor may stagger implementation across sites.
+- **Version alignment.** All sites should be using the same protocol version within a reasonable timeframe. Track which version each site is operating under.
+- **Communication with the sponsor.** Confirm with the sponsor's monitor when the amendment is implemented at your site. The sponsor tracks implementation dates across all sites for regulatory reporting.
+
+## Filing and documentation
+
+All amendment-related documents must be filed in the ISF:
+
+- The amended documents (tracked changes version and clean version)
+- The REB approval letter specifying approved versions
+- The Health Canada acknowledgment (if applicable)
+- The Sponsor's Go Letter (if applicable)
+- Training documentation confirming the team reviewed the changes
+- Re-consent tracking records (if applicable)
+- Superseded document versions (marked "SUPERSEDED," retained in the ISF — not discarded)
+
+---
+
+## Related resources
+
+- [Protocol and Study Documents](/kb/site-activation/protocol-documents) — version control, essential documents, protocol management
+- [Reportable Events and Protocol Deviations](/kb/conduct/safety-reporting/reportable-events) — deviation classification when amendments are implemented prematurely
+- [The Investigator Site File](/kb/site-activation/isf) — ISF structure and filing requirements
+- [SOP-CR-026](/sops/cr-026) — Ongoing REB Review (amendment submission requirements)
+- [SOP-CR-007](/sops/cr-007) — Initial REB Review, COI, and Clinical Trial Registration

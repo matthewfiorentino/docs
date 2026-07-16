@@ -1,0 +1,89 @@
+---
+title: "International and Cross-Border Studies"
+description: "Regulatory, privacy, and logistical considerations when participating in studies that span Canada and other jurisdictions."
+keywords: ["cross-border", "international study", "IND", "CTA", "PIPEDA", "Law 25", "GDPR", "IP shipment", "customs"]
+---
+
+Multi-centric studies increasingly span national borders — a Canadian site participating in a US-sponsored trial, a European collaboration, or a study with sites across multiple regulatory jurisdictions. This page covers the regulatory, privacy, and logistical considerations specific to cross-border research. For multi-site studies within Quebec, see [Multi-Centric Studies in Quebec](/kb/design/multi-centric).
+
+## Regulatory requirements
+
+### Canada and the United States
+
+A Canadian site must file a Clinical Trial Application (CTA) with Health Canada regardless of whether the sponsor holds a US IND (Investigational New Drug application) with the FDA. The two are independent regulatory submissions:
+
+- **CTA to Health Canada:** Required under Part C, Division 5 of the Food and Drug Regulations. Health Canada reviews and issues a No Objection Letter (NOL) within 30 calendar days.
+- **IND to the FDA:** A separate submission governed by 21 CFR Part 312. Canadian data generated under a Health Canada CTA can be submitted to the FDA in support of a US IND.
+
+Ethics review in Canada proceeds in parallel with the Health Canada CTA review — unlike the US, where IRB approval is typically required before IND submission.
+
+### Canada and the European Union
+
+Studies involving EU sites operate under the EU Clinical Trials Regulation (CTR 536/2014), which differs from the Canadian framework in several ways — centralized authorization through CTIS (Clinical Trials Information System), a single assessment process across member states, and distinct timelines. Canadian sites are not subject to EU regulation, but the sponsor may impose EU-aligned requirements across all sites to maintain consistency.
+
+### Quebec within Canada
+
+Quebec's ethics review system is distinct from other provinces. The MSSS multicentre research ethics review mechanism (in effect since 2015) provides a single ethics review by a CER évaluateur (REB of Record) for all public health network sites in Quebec, with each site conducting a separate site-specific assessment (examen de convenance).
+
+Clinical Trials Ontario (CTO) operates a streamlined single-REB review model for multi-site studies within Ontario. CTO and the Quebec MSSS mechanism are not interoperable — a study spanning both provinces requires separate ethics processes for Ontario sites (CTO) and Quebec sites (MSSS mechanism).
+
+## Data transfer and privacy
+
+Cross-border data transfer is one of the most complex aspects of international studies. Three privacy frameworks commonly intersect:
+
+### PIPEDA (federal)
+
+Canada's Personal Information Protection and Electronic Documents Act requires organizations to ensure "comparable" protection through contractual measures when transferring personal information outside Canada. Participants must be informed that their data may be processed abroad.
+
+### Quebec Law 25
+
+Quebec's privacy legislation imposes additional requirements beyond PIPEDA for cross-border transfers:
+
+- A **privacy impact assessment (PIA)** must be conducted before transferring personal information outside Quebec
+- A **written agreement** with the recipient organization is required
+- The **adequacy of the receiving jurisdiction's legal framework** must be assessed on a case-by-case basis — Quebec does not maintain a list of "adequate" jurisdictions
+- These requirements apply even for transfers to other Canadian provinces
+
+<Warning>
+Do not assume PIPEDA compliance covers Quebec-specific requirements. Law 25 has its own cross-border transfer provisions that apply independently. Consult the RI-MUHC privacy office when planning data transfers outside Quebec.
+</Warning>
+
+### GDPR (EU collaboration)
+
+When collaborating with European sites, both GDPR and Canadian privacy requirements must be satisfied. Canada's PIPEDA has GDPR adequacy status, meaning EU-to-Canada transfers under PIPEDA are generally permitted. However, Quebec's Law 25 has not separately received EU adequacy status — the practical impact of this distinction depends on the specific data flows and should be assessed with legal counsel.
+
+## Investigational product shipment
+
+Importing clinical trial drugs into Canada is regulated under the Food and Drugs Act. Requirements for cross-border IP shipment:
+
+- A copy of the **No Objection Letter (NOL)** from Health Canada must accompany the drug shipment
+- The shipment may only be sent to a **qualified investigator** for use in an authorized clinical trial
+- Documentation accompanying the shipment must include: the NOL, product labelling, and shipping records
+- Diversion into the commercial market is prohibited
+- CBSA Memorandum D19-9-1 governs the administration of health product imports at the border
+
+For shipments involving temperature-sensitive IP, ensure the cold chain is maintained throughout customs clearance. Plan for potential customs delays — particularly for first-time shipments to a new site or when using a new shipping route.
+
+### Exporting specimens
+
+Biological specimens shipped internationally are subject to both Canadian export requirements (Transportation of Dangerous Goods Act for ground transport, IATA regulations for air transport) and the importing country's requirements. See [Management of Biological Specimens](/kb/conduct/study-operations/biological-specimens) for TDG/IATA certification requirements.
+
+## Practical considerations
+
+| Area | What to plan for |
+|---|---|
+| **Time zones** | Monitoring visits, sponsor calls, and safety reporting deadlines may reference a different time zone. Confirm which timezone governs reporting clocks. |
+| **Language** | Quebec consent forms must be available in French. International sponsors may not have French translations ready — build translation time into the timeline. |
+| **Currency** | Clinical trial budgets with international sponsors are often denominated in USD or EUR. Address currency risk and conversion timing in the CTA. |
+| **Insurance** | Confirm the sponsor's clinical trial insurance covers Canadian sites and is valid under Quebec law. |
+| **Regulatory reporting** | The site reports to Health Canada; the sponsor reports to other jurisdictions' regulators. Confirm that the sponsor's safety reporting covers all jurisdictions. |
+
+---
+
+## Related resources
+
+- [Multi-Centric Studies in Quebec](/kb/design/multi-centric) — Quebec-specific multi-site ethics and regulatory framework
+- [Privacy and Confidentiality](/kb/recruitment/privacy) — Quebec privacy framework and Law 25
+- [Regulations and Guidelines](/kb/planning/regulations) — Health Canada regulatory framework
+- [Management of Biological Specimens](/kb/conduct/study-operations/biological-specimens) — specimen shipping and TDG/IATA requirements
+- [Reviewing Clinical Trial Agreements](/kb/funding/clinical-trial-agreements) — CTA clauses relevant to international studies

@@ -17,7 +17,7 @@ var KP_POOL = [
     opts:['7 calendar days','15 calendar days','30 calendar days','It depends on the sponsor\u2019s timeline'],
     correct:1,
     rationale:'15 calendar days for non-fatal, non-life-threatening SAEs. The 7-day window applies only to fatal or life-threatening unexpected SAEs (SUSAR-level), followed by a complete written report within 8 additional calendar days. The clock starts at site awareness \u2014 PI availability is irrelevant.',
-    ref:'<a href="/sops/cr-012">SOP-CR-012 \u00a75.5.2\u20135.5.3</a> \u00b7 <a href="/kb/reportable-events">Reportable Events</a>' },
+    ref:'<a href="/sops/cr-012">SOP-CR-012 \u00a75.5.2\u20135.5.3</a> \u00b7 <a href="/kb/conduct/safety-reporting/reportable-events">Reportable Events</a>' },
 
   { id:'sae-c2', type:'check', topic:'Adverse Events / SAE', topicId:'sae', applies:'interventional',
     q:'All SAEs must be reported to the sponsor within how many hours of the QI/PI awareness date?',
@@ -69,7 +69,7 @@ var KP_POOL = [
     opts:['Revise the assessment as requested \u2014 the sponsor\'s medical monitor has more context about the drug\'s safety profile across all sites','Ask the assessing investigator to reconsider, explaining the sponsor\'s reasoning, and change it only if they agree after independent review','Change it to \u201cunrelated\u201d in the eCRF but keep the original in the source file as a backup','Refuse outright and file a complaint against the sponsor with Health Canada'],
     ans:1,
     rationale:'You do not change the relatedness assessment at the sponsor\u2019s request. The clinical judgment belongs to the investigator who assessed the event. If the sponsor disagrees, the correct mechanism is a written query explaining their reasoning, which the investigator reviews and may respond to with documented rationale. Any change must be audit-trailed; the original assessment must be preserved. Changing a clinical assessment under sponsor pressure is a GCP violation and a data integrity issue. Document this conversation.',
-    ref:'<a href="/sops/cr-012">SOP-CR-012</a> \u00b7 <a href="/kb/data-integrity">Data Integrity</a>' },
+    ref:'<a href="/sops/cr-012">SOP-CR-012</a> \u00b7 <a href="/kb/conduct/data-documentation/data-integrity">Data Integrity</a>' },
 
   /* standalone scenarios */
   { id:'sae-s2', type:'check', topic:'Adverse Events / SAE', topicId:'sae', applies:'interventional',
@@ -77,7 +77,7 @@ var KP_POOL = [
     opts:['No \u2014 the coordinating centre handles all regulatory reporting for multi-site trials','Yes \u2014 notify the MUHC REB via Nagano, document the event in the ISF, and ensure the local QI/PI has assessed participant safety','Only if the participant was hospitalized at the MUHC \u2014 otherwise the event occurred at another institution','Send the coordinating centre your documentation and ask them to include it in their report'],
     ans:1,
     rationale:'Yes. The local QI/PI remains responsible for participant safety at this site and for local REB notification. Even where the lead site handles Health Canada reporting, your site must still notify the MUHC REB via Nagano (3H form) and document the event in your ISF. For the Quebec multi-centrique process, you may also need to notify the MUHC personne mandat\u00e9e. The coordinating centre\u2019s role does not discharge your local regulatory obligations.',
-    ref:'<a href="/sops/cr-012">SOP-CR-012 \u00a75.5.8, 5.9.3</a> \u00b7 <a href="/kb/multi-centric">Multi-Centric Studies</a>' },
+    ref:'<a href="/sops/cr-012">SOP-CR-012 \u00a75.5.8, 5.9.3</a> \u00b7 <a href="/kb/design/multi-centric">Multi-Centric Studies</a>' },
 
   { id:'sae-s3', type:'check', topic:'Adverse Events / SAE', topicId:'sae', applies:'interventional',
     q:'A participant completes all study procedures and enters the follow-up period. Three weeks later they are hospitalized for an event the PI considers possibly related to the study drug. The PI says \u201cthey\u2019re off-study, we don\u2019t need to report.\u201d Are they right?',
@@ -112,14 +112,14 @@ var KP_POOL = [
     opts:['14 years','16 years','18 years','21 years'],
     correct:2,
     rationale:'Per SOP-CR-008 section 5.8.1 and the Civil Code of Quebec (CCQ, a.21), the age of full consent to research participation in Quebec is 18 years. A minor who is 14 years or older may consent to minimal-risk research only if the REB specifically approves this. Otherwise, consent must be obtained from the person with parental authority or the tutor.',
-    ref:'<a href="/sops/cr-008">SOP-CR-008 \u00a75.8.1\u20135.8.2</a> \u00b7 <a href="/kb/consent">Consent in Quebec</a>' },
+    ref:'<a href="/sops/cr-008">SOP-CR-008 \u00a75.8.1\u20135.8.2</a> \u00b7 <a href="/kb/recruitment/consent">Consent in Quebec</a>' },
 
   { id:'ic-c4', type:'check', topic:'Informed Consent', topicId:'consent', applies:'all',
     q:'According to TCPS2, what does \u201cfree and informed consent\u201d require?',
     opts:['A signed form and verbal confirmation','Voluntary participation based on as full an understanding as reasonably possible of purpose, risks, and benefits','Completion of a standardized quiz to confirm understanding','Consent given at least 48 hours before any procedure'],
     correct:1,
     rationale:'TCPS2 Chapter 3 defines consent as free, informed, and ongoing. \u201cFree\u201d means voluntary, without coercion or undue influence. \u201cInformed\u201d means based on as complete an understanding as is reasonably possible of the research, its risks, and potential benefits. Consent is ongoing \u2014 it can be withdrawn at any time and must be refreshed when material new information becomes available.',
-    ref:'<a href="/kb/consent">Consent in Quebec</a> \u00b7 TCPS2 Ch. 3' },
+    ref:'<a href="/kb/recruitment/consent">Consent in Quebec</a> \u00b7 TCPS2 Ch. 3' },
 
   { id:'ic-c5', type:'check', topic:'Informed Consent', topicId:'consent', applies:'all',
     q:'When must a participant be re-consented following an ICF amendment?',
@@ -181,7 +181,7 @@ var KP_POOL = [
     opts:['Backdate the delegation log to cover the period when the task was performed, then notify the monitor it has been corrected','Acknowledge the finding, investigate when and why it occurred, update the log with the correct date, file a note-to-file, and complete a deviation report','Explain to the monitor that the person was verbally authorized by the PI and that the log is just a formality','Remove the data collected by the undelegated team member from the study records'],
     ans:1,
     rationale:'This is a protocol deviation and a GCP finding. First, acknowledge the finding. Investigate when the undelegated task occurred and who performed it. If the PI did intend to delegate the task to this person, update the delegation log with the correct date and document the retrospective correction with a note-to-file explaining what happened. If the person should not have been performing the task at all, complete a deviation report and CAPA as required. Do not falsely backdate the delegation log.',
-    ref:'<a href="/sops/cr-002">SOP-CR-002</a> \u00b7 <a href="/kb/data-integrity">Data Integrity</a>' },
+    ref:'<a href="/sops/cr-002">SOP-CR-002</a> \u00b7 <a href="/kb/conduct/data-documentation/data-integrity">Data Integrity</a>' },
 
 
   /* ══════════════════════════════════════════════════════════════
@@ -216,7 +216,7 @@ var KP_POOL = [
     opts:['Conducting more site visits for high-risk participants','Tailoring the monitoring plan to the specific risks to data integrity and participant protection in the trial','Monitoring only the primary endpoint data','Reducing all monitoring to remote-only visits'],
     correct:1,
     rationale:'Risk-based monitoring (RBM) under E6(R3) means tailoring the monitoring strategy to the specific human subject protection and data integrity risks of each trial. This may include centralized data analytics, remote source data review, and targeted on-site visits \u2014 rather than defaulting to 100% on-site source data verification for every data point. The monitoring plan must be documented and focus on critical data and processes.',
-    ref:'<a href="/kb/monitoring-audits">Monitoring, Audits and Inspections</a> \u00b7 ICH E6(R3)' },
+    ref:'<a href="/kb/conduct/safety-reporting/monitoring-audits">Monitoring, Audits and Inspections</a> \u00b7 ICH E6(R3)' },
 
   { id:'gcp-s1', type:'check', topic:'GCP Principles', topicId:'gcp', applies:'interventional',
     q:'A sponsor\u2019s monitor arrives for a source data verification visit and asks to review a participant\u2019s full hospital medical record, including records unrelated to the study. Your site\u2019s ICF states that participants consent to study-related records access only. What do you do?',
@@ -306,14 +306,14 @@ var KP_POOL = [
     opts:['Accurate, Legible, Complete, Original, Auditable, plus Complete, Consistent, Enduring, Available','Attributable, Legible, Contemporaneous, Original, Accurate, plus Complete, Consistent, Enduring, Available','Authorized, Legible, Correct, Original, Archived, plus Checked, Compliant, Endorsed, Audited','Accurate, Labelled, Chronological, Organized, Archived, plus Checked, Certified, Endorsed, Accessible'],
     correct:1,
     rationale:'ALCOA+ is the foundational framework for good documentation practices in clinical research: Attributable (who recorded/changed and when), Legible (readable), Contemporaneous (recorded at the time of the action), Original (first recording or certified copy), Accurate (correct, truthful) \u2014 plus the extended elements: Complete, Consistent, Enduring, Available. Per SOP-CR-014, all data collection must follow ALCOA+ principles.',
-    ref:'<a href="/sops/cr-014">SOP-CR-014 \u00a75.4.2</a> \u00b7 <a href="/kb/data-integrity">Data Integrity</a>' },
+    ref:'<a href="/sops/cr-014">SOP-CR-014 \u00a75.4.2</a> \u00b7 <a href="/kb/conduct/data-documentation/data-integrity">Data Integrity</a>' },
 
   { id:'data-c2', type:'check', topic:'Data Integrity', topicId:'data', applies:'all',
     q:'How must an error in a source document be corrected in a paper-based study?',
     opts:['Use correction fluid (white-out) to neatly cover the error and write the correct value','Scribble out the error so it cannot be read, write the correction, and initial','Draw a single line through the error without obscuring it, write the correction beside it, then initial, date, and explain','Delete the document and re-create it with the correct data'],
     correct:2,
     rationale:'Per SOP-CR-014 section 5.6.2 and GCP documentation standards, corrections must preserve the original entry (never use correction fluid or scribble), be traceable, and be explained. The correct method is: single line through the error (original still legible), correction written alongside, initialled and dated by an authorized person, with an explanation where needed. This maintains the audit trail.',
-    ref:'<a href="/sops/cr-014">SOP-CR-014 \u00a75.6.2</a> \u00b7 <a href="/kb/data-integrity">Data Integrity</a>' },
+    ref:'<a href="/sops/cr-014">SOP-CR-014 \u00a75.6.2</a> \u00b7 <a href="/kb/conduct/data-documentation/data-integrity">Data Integrity</a>' },
 
   { id:'data-c3', type:'check', topic:'Data Integrity', topicId:'data', applies:'all',
     q:'A source document has a blank field for a test result that was not obtained at the visit. What is the correct approach?',
@@ -327,7 +327,7 @@ var KP_POOL = [
     opts:['This is normal \u2014 many sites have one person who completes all forms for efficiency','Investigate immediately: determine who actually recorded each entry, review delegation logs, and escalate to the QI/PI if intentional falsification is suspected','Ask the team members to re-write their entries in their own handwriting going forward','Inform the monitor that handwriting analysis is outside the scope of a monitoring visit'],
     ans:1,
     rationale:'This is a potential data integrity violation and a serious GCP finding. Source documents must be attributable \u2014 the person who recorded the data must be identifiable, and the record must reflect who actually made the entry. If entries attributed to one person are actually written by another, this could indicate falsification of records. Investigate immediately: speak with the team members, review delegation logs, and determine whether there is an innocent explanation (e.g., a supervisor completing forms on behalf of a trained delegate). If deliberate falsification is suspected, escalate to the QI/PI and the institution\u2019s research integrity office.',
-    ref:'<a href="/kb/data-integrity">Data Integrity</a> \u00b7 <a href="/sops/cr-014">SOP-CR-014</a>' },
+    ref:'<a href="/kb/conduct/data-documentation/data-integrity">Data Integrity</a> \u00b7 <a href="/sops/cr-014">SOP-CR-014</a>' },
 
 
   /* ══════════════════════════════════════════════════════════════
@@ -460,7 +460,7 @@ var KP_POOL = [
     opts:['It remains minor as long as each individual instance is minor \u2014 severity is assessed per occurrence','It should be reassessed as major \u2014 a pattern of repeated identical deviations indicates a systemic process failure requiring a CAPA and REB reporting','Combine all six into a single minor deviation entry to simplify documentation','Stop enrolling and close the study until the process is corrected'],
     ans:1,
     rationale:'No \u2014 a pattern of repeated deviations changes the severity assessment. SOP-CR-026 requires that deviations be assessed to identify trends. Six consecutive occurrences of the same eligibility gap is no longer an isolated minor deviation; it indicates a systemic process failure that may have enrolled participants who were not properly confirmed as eligible. This should be reassessed as major, reported to the REB promptly, and a CAPA must be developed and implemented. The fact that each instance was assessed individually as minor does not protect against a trend-level finding during an audit.',
-    ref:'<a href="/sops/cr-026">SOP-CR-026 \u00a75.3.3</a> \u00b7 <a href="/kb/data-integrity">Data Integrity</a>' },
+    ref:'<a href="/sops/cr-026">SOP-CR-026 \u00a75.3.3</a> \u00b7 <a href="/kb/conduct/data-documentation/data-integrity">Data Integrity</a>' },
 
   { id:'dev-s3', type:'check', topic:'Protocol Deviations', topicId:'deviations', applies:'all',
     q:'The sponsor sends a written instruction allowing sites to skip a non-critical assessment at one visit for logistical reasons, saying sites can implement it immediately. Can you proceed without REB approval?',

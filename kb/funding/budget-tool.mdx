@@ -1,0 +1,1041 @@
+---
+title: "Budget Tool"
+description: "Build a complete research study budget using RI-MUHC salary scales, CIM service prices, and the current REB fee schedule."
+mode: "frame"
+---
+
+import { useEffect } from 'react'
+
+export const BT_CSS = `
+/* ── RESETS ── */
+#bt-root ul, #bt-root ol { list-style:none!important; padding:0!important; margin:0!important; }
+#bt-root ul li::marker, #bt-root ol li::marker { content:""!important; }
+#bt-root *, #bt-root *::before, #bt-root *::after { box-sizing:border-box; }
+
+/* ── TOKENS — map to site CSS variables where available ── */
+#bt-root {
+  --navy:     var(--ri-navy,    #2b2666);
+  --teal:     var(--ri-accent,  #2b9ce2);
+  --teal-l:   var(--ri-accent-light, #e8f4fc);
+  --teal-d:   #1a5e8a;
+  --sky:      var(--ri-blue,   #2b9ce2);
+  --sky-l:    #e5f3fb;
+  --amber:    #c78a00;
+  --amber-l:  #fffbf0;
+  --coral:    #ff537f;
+  --coral-l:  #fff0f4;
+  --green:    #1d9e75;
+  --green-l:  #e5f5ee;
+  --bg:       #f7f7f7;
+  --bg-low:   #f0f0f0;
+  --bg-mid:   #e8e8e8;
+  --white:    #ffffff;
+  --text:     #111111;
+  --textm:    #444444;
+  --textd:    #666666;
+  --bdr:      #d0d0d0;
+  --bdr-s:    #e5e5e5;
+  --hdr-h:    64px;
+  font-size: 14px;
+  color: var(--text);
+}
+
+/* ── LAYOUT: CSS GRID ── */
+#bt-root {
+  display: grid;
+  grid-template-rows: var(--hdr-h) 1fr;
+  grid-template-columns: 200px 1fr;
+  height: 100svh;
+  overflow: hidden;
+}
+
+/* ── STICKY HEADER ── */
+#bt-header {
+  grid-column: 1 / -1;
+  grid-row: 1;
+  display: flex;
+  align-items: center;
+  gap: 0;
+  padding: 0 24px;
+  background: var(--navy);
+  color: #fff;
+  height: var(--hdr-h);
+  border-bottom: 2px solid var(--teal);
+}
+/* Left: two-line stacked identity */
+.bth-identity { flex: 1; min-width: 0; display: flex; flex-direction: column; justify-content: center; gap: 5px; }
+.bth-brand { font-size: 8px; font-weight: 700; letter-spacing: .22em; text-transform: uppercase; color: rgba(255,255,255,.28); line-height: 1; }
+.bth-study { font-size: 15px; font-weight: 600; color: rgba(255,255,255,.92); line-height: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+/* Thin vertical rules between zones */
+.bth-sep { width: 1px; height: 28px; background: rgba(255,255,255,.13); flex-shrink: 0; margin: 0 22px; }
+/* Financial stats: side-by-side columns */
+.bth-stats { display: flex; align-items: stretch; flex-shrink: 0; }
+.bth-stat-col { display: flex; flex-direction: column; align-items: flex-end; justify-content: center; padding: 0 22px; gap: 5px; }
+.bth-stat-col + .bth-stat-col { border-left: 1px solid rgba(255,255,255,.13); }
+#bth-col-total { display: flex; } /* shown when JS clears inline display:none */
+.bth-amt { font-family: "Courier New", monospace; font-size: 24px; font-weight: 800; color: #fff; line-height: 1; }
+.bth-lbl { font-size: 8px; font-weight: 700; letter-spacing: .15em; text-transform: uppercase; color: rgba(255,255,255,.36); line-height: 1; }
+.bth-amt-sm { font-family: "Courier New", monospace; font-size: 16px; font-weight: 700; color: rgba(255,255,255,.65); line-height: 1; }
+/* Actions */
+.bth-actions { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
+.bth-saved { font-size: 10px; color: rgba(255,255,255,.4); }
+.bth-btn { font-size: 11px; font-weight: 600; background: transparent; border: 1px solid rgba(255,255,255,.22); color: rgba(255,255,255,.72); padding: 6px 13px; border-radius: 5px; cursor: pointer; font-family: inherit; transition: background .15s, color .15s; text-decoration: none; display: inline-flex; align-items: center; }
+.bth-btn:hover { background: rgba(255,255,255,.1); color: #fff; }
+@media (max-width: 699px) { .bth-identity { display: none; } .bth-sep { display: none; } }
+
+/* ── TOOLTIP ── */
+#bt-tip { display:none; position:fixed; z-index:9999; background:#2b2666; color:#fff; font-size:12px; line-height:1.55; padding:9px 13px; border-radius:6px; max-width:260px; box-shadow:0 4px 18px rgba(0,0,0,.22); pointer-events:none; }
+/* Activity picker dialog */
+#act-picker[open] { display:flex; }
+#act-picker::backdrop { background:rgba(43,38,102,.55); backdrop-filter:blur(4px); }
+.tip-icon { cursor:pointer; color:var(--textd); font-weight:400; font-style:normal; user-select:none; }
+
+/* ── SIDEBAR ── */
+#bt-sidebar {
+  grid-row: 2;
+  grid-column: 1;
+  overflow-y: auto;
+  background: var(--white);
+  border-right: 1px solid var(--bdr-s);
+  display: flex;
+  flex-direction: column;
+}
+.sid-list { padding: 12px 0; flex: 1; }
+.sid-btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 10px 16px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 12.5px;
+  color: var(--textm);
+  text-align: left;
+  transition: background .1s, color .1s;
+}
+.sid-btn:hover { background: var(--bg); }
+.sid-btn.active { background: var(--teal-l); color: var(--navy); font-weight: 700; border-left: 3px solid var(--teal); padding-left: 13px; }
+.sid-num { font-size: 11px; font-weight: 700; color: var(--textd); width: 16px; flex-shrink: 0; }
+.sid-btn.active .sid-num { color: var(--navy); }
+.sid-lbl { flex: 1; }
+@media (max-width: 899px) {
+  #bt-root { grid-template-columns: 1fr; grid-template-rows: var(--hdr-h) auto 1fr; height: 100svh; overflow: hidden; }
+  #bt-header { position: static; }
+  #bt-sidebar { grid-row: 2; grid-column: 1; position: sticky; top: 0; z-index: 5; height: auto; flex-direction: row; overflow-x: auto; overflow-y: visible; border-right: none; border-bottom: 1px solid var(--bdr-s); }
+  .sid-list { display: flex; padding: 0; flex: none; }
+  .sid-btn { flex-direction: column; gap: 2px; padding: 10px 12px; font-size: 11px; white-space: nowrap; }
+  .sid-btn.active { background: var(--teal-l); border-left: none; border-bottom: 3px solid var(--teal); padding-left: 12px; }
+  .sid-foot { display: none; }
+  #bt-main { grid-row: 3; }
+}
+
+/* ── MAIN ── */
+#bt-main { grid-row: 2; grid-column: 2; background: var(--bg); overflow-y: auto; min-height: 0; }
+@media (max-width: 899px) { #bt-main { grid-column: 1; } }
+.bt-section { display: none; padding: 28px 32px 60px; max-width: 1100px; }
+.bt-section.active { display: block; }
+@media (max-width: 699px) { .bt-section { padding: 20px 16px 40px; } }
+
+/* ── TYPOGRAPHY ── */
+.sec-label { font-size: 10px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: var(--textd); margin-bottom: 6px; }
+.sec-h2 { font-size: 20px; font-weight: 800; color: var(--navy); margin-bottom: 6px; }
+.sec-desc { font-size: 13px; color: var(--textm); line-height: 1.65; margin-bottom: 24px; max-width: 640px; }
+.sub-head { font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--textd); margin: 24px 0 12px; padding-bottom: 8px; border-bottom: 1px solid var(--bdr-s); }
+
+/* ── FORM ── */
+.fg { margin-bottom: 18px; }
+.fl { display: block; font-size: 12px; font-weight: 700; color: var(--text); margin-bottom: 5px; }
+.fh { display: block; font-size: 11px; color: var(--textd); margin-bottom: 5px; line-height: 1.45; }
+.fi { width: 100%; font-size: 14px; font-family: inherit; color: var(--text); background: var(--white); border: 1.5px solid var(--bdr); padding: 9px 12px; outline: none; transition: border-color .12s; border-radius: 6px; }
+.fi:focus { border-color: var(--teal); }
+.fs { width: 100%; font-size: 14px; font-family: inherit; color: var(--text); background: var(--white); border: 1.5px solid var(--bdr); padding: 9px 12px; outline: none; appearance: none; -webkit-appearance: none; cursor: pointer; transition: border-color .12s; border-radius: 6px; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%23888' d='M6 8L0 0h12z'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 12px center; }
+.fs:focus { border-color: var(--teal); }
+.frow { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.frow3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
+@media (max-width: 699px) { .frow, .frow3 { grid-template-columns: 1fr; } }
+.add-btn { display: inline-flex; align-items: center; gap: 7px; font-size: 12px; font-weight: 700; color: var(--teal); background: none; border: 1.5px solid var(--teal); padding: 8px 14px; cursor: pointer; transition: background .12s, color .12s; font-family: inherit; border-radius: 6px; }
+.add-btn:hover { background: var(--teal); color: #fff; }
+.secondary-btn { display: inline-flex; align-items: center; gap: 7px; font-size: 12px; font-weight: 500; color: var(--textm); background: none; border: 1.5px solid var(--bdr); padding: 7px 12px; cursor: pointer; transition: background .12s, border-color .12s, color .12s; font-family: inherit; border-radius: 6px; }
+.secondary-btn:hover { background: var(--bg-low); border-color: var(--bdr-s); color: var(--text); }
+
+/* ── FUNDING CARDS ── */
+.fund-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1px; background: var(--bdr-s); border: 1.5px solid var(--bdr-s); border-radius: 6px; overflow: hidden; margin-bottom: 0; }
+@media (max-width: 599px) { .fund-grid { grid-template-columns: 1fr; } }
+.fund-card { background: var(--white); padding: 16px; cursor: pointer; transition: background .12s; }
+.fund-card:hover { background: var(--bg-low); }
+.fund-card.sel-iit { background: var(--green-l); outline: 2px solid var(--green); outline-offset: -2px; }
+.fund-card.sel-iit .fclabel { color: var(--green); }
+.fund-card.sel-found { background: var(--sky-l); outline: 2px solid var(--sky); outline-offset: -2px; }
+.fund-card.sel-found .fclabel { color: var(--sky); }
+.fund-card.sel-ind { background: var(--amber-l); outline: 2px solid var(--amber); outline-offset: -2px; }
+.fund-card.sel-ind .fclabel { color: #7a4f00; }
+.fclabel { font-size: 12px; font-weight: 700; color: var(--navy); margin-bottom: 3px; }
+.fcdesc { font-size: 11px; color: var(--textd); }
+
+/* ── CALLOUTS ── */
+.cn { background: var(--amber-l); border: 1px solid #e0d0aa; padding: 13px 16px; font-size: 13px; color: #5a3800; line-height: 1.65; margin-bottom: 20px; border-radius: 6px; }
+.cn strong { color: #3d2600; }
+.ci { background: var(--sky-l); border: 1px solid #b8d8f0; padding: 13px 16px; font-size: 13px; color: var(--textm); line-height: 1.65; margin-bottom: 20px; border-radius: 6px; }
+.ci strong { color: var(--navy); }
+.ct { background: var(--teal-l); border: 1px solid #b3d4f0; padding: 13px 16px; font-size: 13px; color: var(--textm); line-height: 1.65; margin-bottom: 20px; border-radius: 6px; }
+.ct strong { color: var(--teal); }
+
+/* ── STAFF TABLE ── */
+#staff-table { width: 100%; border-collapse: collapse; background: var(--white); border: 1px solid var(--bdr-s); border-radius: 6px; overflow: hidden; }
+#staff-table thead th { font-size: 9px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--textd); padding: 9px 10px; background: var(--bg-low); border-bottom: 1px solid var(--bdr-s); text-align: left; }
+#staff-table tbody tr { border-bottom: 1px solid var(--bdr-s); }
+#staff-table tbody tr:last-child { border-bottom: none; }
+#staff-table td { padding: 8px 10px; vertical-align: middle; }
+#staff-table .fi, #staff-table .fs { font-size: 13px; padding: 6px 8px; }
+#staff-table .fs { padding-right: 28px; }
+.st-rate { font-size: 13px; font-weight: 700; color: var(--navy); font-family: "Courier New", monospace; white-space: nowrap; }
+.st-rm { text-align: center; }
+.st-rm-btn { font-size: 13px; font-weight: 700; color: var(--coral); background: none; border: none; cursor: pointer; padding: 2px 6px; font-family: inherit; }
+.st-rm-btn:hover { text-decoration: underline; }
+@media (max-width: 699px) {
+  #staff-table .st-fte-col { display: none; }
+}
+
+/* ── WORK PLAN MATRIX ── */
+.mc-scroll-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; border: 1px solid var(--bdr-s); border-radius: 6px; background: var(--white); }
+#te-matrix { width: 100%; border-collapse: collapse; min-width: 500px; }
+#te-matrix thead th { background: var(--bg-low); padding: 8px 10px; font-size: 10px; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; color: var(--textd); border-bottom: 1px solid var(--bdr-s); text-align: center; white-space: nowrap; position: sticky; top: 0; z-index: 5; }
+#te-matrix thead th.mc-name-th { text-align: left; position: sticky; left: 0; z-index: 10; background: var(--bg-low); min-width: 180px; max-width: 260px; }
+#te-matrix td { padding: 0; border-bottom: 1px solid var(--bdr-s); vertical-align: middle; }
+#te-matrix tbody tr:last-child td { border-bottom: none; }
+.mc-group-row td { padding: 8px 12px; font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; cursor: pointer; user-select: none; border-bottom: 1px solid var(--bdr-s); }
+.mc-group-startup { color: #7a4f00; background: #fffdf5 !important; }
+.mc-group-startup:hover { background: #fff8e6 !important; }
+.mc-group-general { color: var(--sky); background: #f5faff !important; }
+.mc-group-general:hover { background: #eaf4fd !important; }
+.mc-group-perpt   { color: var(--green); background: #f5fff9 !important; }
+.mc-group-perpt:hover   { background: #e8faef !important; }
+.mc-chevron { font-size: 10px; margin-right: 6px; display: inline-block; transition: transform .15s; }
+.mc-collapsed .mc-chevron { transform: rotate(-90deg); }
+.mc-name-cell { position: sticky; left: 0; background: var(--white); z-index: 3; min-width: 180px; max-width: 260px; box-shadow: 2px 0 4px -1px rgba(0,0,0,.05); }
+.mc-name-wrap { display: flex; align-items: center; gap: 4px; padding: 5px 8px; }
+.mc-type-sel { font-size: 10px; font-family: inherit; border: none; background: none; padding: 2px 4px; border-radius: 9999px; cursor: pointer; font-weight: 700; outline: none; flex-shrink: 0; }
+.mc-type-sel.mc-type-startup { background: var(--amber-l); color: #7a4f00; }
+.mc-type-sel.mc-type-general { background: var(--sky-l); color: var(--sky); }
+.mc-type-sel.mc-type-perpt   { background: var(--green-l); color: var(--green); }
+.mc-name-inp { border: none; background: none; font-size: 12.5px; font-family: inherit; color: var(--textm); flex: 1; min-width: 80px; outline: none; padding: 3px 4px; }
+.mc-name-inp:focus { background: var(--teal-l); border-radius: 3px; }
+.mc-act-rm { font-size: 12px; color: var(--textd); background: none; border: none; cursor: pointer; padding: 2px 4px; flex-shrink: 0; opacity: 0; transition: opacity .1s; }
+#te-matrix tr:hover .mc-act-rm { opacity: 0.5; }
+#te-matrix tr:hover .mc-act-rm:hover { opacity: 1; }
+.mc-act-rm:focus-visible { opacity: 1; outline: 2px solid var(--teal); border-radius: 3px; }
+.mc-input-cell { text-align: center; padding: 5px 8px !important; }
+.mc-input-cell input { width: 80px; font-size: 13px; font-family: "Courier New", monospace; border: 1.5px solid var(--bdr); border-radius: 6px; background: var(--white); text-align: center; padding: 5px 6px; outline: none; color: var(--text); }
+.mc-input-cell input:focus { border-color: var(--teal); background: var(--teal-l); }
+.mc-input-cell.mc-col-active { background: #eef5ff !important; }
+.mc-th-unit { display: block; font-size: 10px; font-weight: 400; color: var(--textd); margin-top: 1px; letter-spacing: 0; text-transform: none; }
+.mc-input-cell input.tpl-unreviewed { color: var(--textd); font-style: italic; }
+.mc-computed { background: var(--bg-low); text-align: right; padding: 8px 12px !important; font-size: 12px; font-weight: 700; font-family: "Courier New", monospace; color: var(--navy); cursor: default; position: sticky; right: 0; z-index: 2; border-left: 1px solid var(--bdr-s); }
+#te-matrix th.mc-participants-th { text-align: center; width: 90px; min-width: 80px; }
+#te-matrix td.mc-participants-td { text-align: center; padding: 6px 8px; vertical-align: middle; }
+.mc-participants-inp { width: 66px; font-size: 12px; font-family: "Courier New", monospace; text-align: center; border: 1.5px solid var(--bdr); border-radius: 6px; padding: 5px 6px; color: var(--textm); background: var(--white); outline: none; display: block; margin: 0 auto; }
+.mc-participants-inp:focus { border-color: var(--teal); background: var(--teal-l); }
+.mc-participants-inp[data-synced="false"] { border-color: var(--sky); color: var(--navy); background: var(--sky-l); }
+.mc-participants-dash { color: var(--textd); font-size: 12px; }
+#te-matrix th.mc-total-th { position: sticky; right: 0; z-index: 6; background: var(--bg-low); border-left: 1px solid var(--bdr-s); }
+#te-matrix tfoot td:last-child { position: sticky; right: 0; background: var(--bg-low); z-index: 2; border-left: 1px solid var(--bdr-s); }
+.mc-add-row td { background: var(--white); padding: 0; border-bottom: 1px solid var(--bdr-s); }
+.mc-add-row button { width: 100%; padding: 8px 12px; background: none; border: none; cursor: pointer; font-size: 12px; font-weight: 600; color: var(--textd); font-family: inherit; text-align: left; transition: color .1s; }
+.mc-add-row button:hover { color: var(--teal); }
+#te-matrix tfoot td { padding: 9px 10px; background: var(--bg-low); font-size: 12px; font-weight: 700; color: var(--navy); text-align: center; border-top: 1px solid var(--bdr); font-family: "Courier New", monospace; }
+#te-matrix tfoot td.mc-name-th { text-align: left; position: sticky; left: 0; background: var(--bg-low); font-size: 10px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--textd); font-family: inherit; }
+
+/* ── TEMPLATE PICKER ── */
+.mc-tpl-picker { background: var(--white); border: 1px solid var(--bdr-s); border-radius: 8px; padding: 24px; text-align: center; }
+.mc-tpl-head { font-size: 14px; font-weight: 700; color: var(--navy); margin-bottom: 6px; }
+.mc-tpl-sub { font-size: 13px; color: var(--textm); margin-bottom: 18px; }
+.mc-tpl-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 10px; margin-bottom: 16px; }
+.mc-tpl-btn { background: var(--white); border: 1.5px solid var(--bdr); border-radius: 6px; padding: 14px 12px; cursor: pointer; text-align: left; transition: border-color .12s, background .12s; font-family: inherit; }
+.mc-tpl-btn:hover { border-color: var(--teal); background: var(--teal-l); }
+.mc-tpl-btn strong { display: block; font-size: 12px; color: var(--navy); margin-bottom: 4px; }
+.mc-tpl-btn span { font-size: 11px; color: var(--textd); line-height: 1.4; }
+.mc-tpl-skip { background: none; border: none; font-size: 12px; color: var(--textd); cursor: pointer; font-family: inherit; text-decoration: underline; padding: 4px; }
+
+/* ── SERVICES ── */
+.svc-hdr { display: grid; grid-template-columns: 1fr 130px 100px 110px; gap: 10px; padding: 7px 12px; border-bottom: 1px solid var(--bdr-s); background: var(--bg-low); }
+.svc-hdr span { font-size: 11px; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; color: var(--textd); }
+.svc-hdr span:nth-child(3), .svc-hdr span:nth-child(4) { text-align: right; }
+.svc-row { display: grid; grid-template-columns: 1fr 130px 100px 110px; gap: 10px; align-items: center; padding: 8px 12px; border-bottom: 1px solid var(--bdr-s); background: var(--white); }
+.svc-row:last-child { border-bottom: none; }
+.svc-name { font-size: 12.5px; color: var(--textm); line-height: 1.4; }
+.svc-price { font-size: 12px; color: var(--textd); font-family: "Courier New", monospace; }
+.svc-qty input { width: 100%; font-size: 13px; font-family: inherit; border: 1.5px solid var(--bdr); padding: 5px 8px; text-align: right; border-radius: 6px; outline: none; background: var(--white); }
+.svc-qty input:focus { border-color: var(--teal); }
+.svc-qty input:disabled { background: var(--bg-mid); cursor: not-allowed; }
+.svc-sub { font-size: 12px; font-weight: 700; color: var(--navy); text-align: right; font-family: "Courier New", monospace; }
+.other-row { display: grid; grid-template-columns: 1fr 120px 80px 30px; gap: 8px; align-items: center; padding: 8px 12px; border-bottom: 1px solid var(--bdr-s); background: var(--white); }
+.svc-top-head { font-size: 10px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: var(--teal); padding: 18px 0 8px; border-top: 1px solid var(--bdr-s); margin-top: 8px; }
+.svc-top-head:first-child { margin-top: 0; border-top: none; padding-top: 4px; }
+.svc-acc-group { border-bottom: 1px solid var(--bdr-s); }
+.svc-acc-head { display: flex; align-items: center; justify-content: space-between; padding: 9px 12px; background: var(--bg-low); cursor: pointer; font-size: 11px; font-weight: 700; color: var(--navy); user-select: none; transition: background .1s; border-bottom: 1px solid var(--bdr-s); }
+.svc-acc-head:hover { background: var(--bg-mid); }
+.svc-acc-chevron { font-size: 10px; color: var(--textd); transition: transform .15s; flex-shrink: 0; margin-left: 8px; display: inline-block; transform: rotate(-90deg); }
+.svc-acc-head.svc-acc-open .svc-acc-chevron { transform: rotate(0deg); }
+.svc-acc-body { display: none; }
+.svc-cat-head { font-size: 11px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--teal); padding: 18px 0 8px; border-top: 1px solid var(--bdr-s); margin-bottom: 0; margin-top: 8px; }
+.svc-group-head { font-size: 11px; font-weight: 600; color: var(--textm); margin: 16px 0 4px; padding-bottom: 4px; border-bottom: 1px solid var(--bdr-s); }
+#pt-cost-rows .svc-hdr { grid-template-columns: 1fr 110px 100px 110px 110px; column-gap: 10px; }
+#pt-cost-rows .svc-row { grid-template-columns: 1fr 110px 100px 110px 110px; column-gap: 10px; }
+#pt-cost-rows .pt-cell { display:flex;align-items:center;justify-content:flex-end; }
+#pt-cost-rows .pt-cell input { width:100%;text-align:right;font-size:13px;font-family:inherit;border:1.5px solid var(--bdr);padding:5px 8px;border-radius:6px;outline:none;background:var(--white); }
+#pt-cost-rows .pt-cell input:focus { border-color:var(--teal); }
+#pt-cost-rows .pt-cell input[data-synced="false"] { border-color:var(--sky); }
+@media (max-width: 699px) {
+  .svc-hdr { grid-template-columns: 1fr 80px 80px; }
+  .svc-hdr span:nth-child(2) { display: none; }
+  .svc-row { grid-template-columns: 1fr 80px 80px; }
+  .svc-price { display: none; }
+  #pt-cost-rows .svc-hdr { grid-template-columns: 1fr 80px 75px 80px 80px; }
+  #pt-cost-rows .svc-row { grid-template-columns: 1fr 80px 75px 80px 80px; }
+}
+@media (max-width: 599px) {
+  #pt-cost-rows .svc-hdr { display: none; }
+  #pt-cost-rows .svc-row { grid-template-columns: 1fr auto; gap: 6px; row-gap: 6px; }
+  #pt-cost-rows .svc-name { grid-column: 1; }
+  #pt-cost-rows .svc-sub { grid-column: 2; text-align: right; }
+  #pt-cost-rows .pt-cell { grid-column: 1 / -1; justify-content: flex-start; flex-wrap: wrap; }
+  #pt-cost-rows .pt-cell input { width: 80px; }
+}
+#svc-lab .svc-row { display: grid; grid-template-columns: 1fr 130px 100px 110px; gap: 10px; align-items: center; padding: 7px 12px; border-bottom: 1px solid var(--bdr-s); background: var(--white); }
+#svc-lab .svc-name { font-size: 12px; }
+#svc-lab .svc-name .svc-code { font-size: 10px; color: var(--textd); font-family: "Courier New", monospace; display: block; }
+#svc-lab .svc-row.lab-hidden { display: none !important; }
+
+/* ── REB ── */
+.reb-box { background: var(--white); border: 1px solid var(--bdr-s); overflow: hidden; border-radius: 6px; }
+.reb-fee-row { display: flex; justify-content: space-between; align-items: baseline; padding: 10px 18px; border-bottom: 1px solid var(--bdr-s); font-size: 13.5px; }
+.reb-fee-row:last-of-type { border-bottom: none; }
+.reb-fn { color: var(--textm); line-height: 1.4; }
+.reb-fa { font-weight: 700; color: var(--navy); font-family: "Courier New", monospace; white-space: nowrap; margin-left: 16px; }
+.reb-total-row { display: flex; justify-content: space-between; align-items: baseline; padding: 14px 18px; border-top: 2px solid var(--navy); background: var(--bg-low); }
+.reb-tl { font-size: 13px; font-weight: 700; color: var(--navy); }
+.reb-ta { font-size: 18px; font-weight: 800; color: var(--navy); font-family: "Courier New", monospace; }
+
+/* ── CONTINGENCY ── */
+.cont-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1px; background: var(--bdr-s); border: 1.5px solid var(--bdr-s); border-radius: 6px; overflow: hidden; margin-bottom: 16px; }
+@media (max-width: 599px) { .cont-grid { grid-template-columns: 1fr; } }
+.cont-card { background: var(--white); padding: 16px; cursor: pointer; transition: background .12s; }
+.cont-card:hover { background: var(--bg-low); }
+.cont-card.cc-sel-low { background: var(--green-l); outline: 2px solid var(--green); outline-offset: -2px; }
+.cont-card.cc-sel-low .cclabel { color: var(--green); }
+.cont-card.cc-sel-mod { background: var(--amber-l); outline: 2px solid var(--amber); outline-offset: -2px; }
+.cont-card.cc-sel-mod .cclabel { color: #7a4f00; }
+.cont-card.cc-sel-high { background: var(--coral-l); outline: 2px solid var(--coral); outline-offset: -2px; }
+.cont-card.cc-sel-high .cclabel { color: var(--coral); }
+.cclabel { font-size: 12px; font-weight: 700; color: var(--navy); margin-bottom: 3px; }
+.ccrange { font-size: 11px; color: var(--textd); margin-bottom: 2px; }
+.ccdef { font-size: 10px; color: var(--textd); font-style: italic; }
+
+/* ── REVIEW / BUDGET TABLE ── */
+.rv-row { display: flex; justify-content: space-between; align-items: baseline; padding: 7px 0; border-bottom: 1px solid var(--bdr-s); font-size: 13px; }
+.rv-row:last-child { border-bottom: none; }
+.rv-row-indent { padding-left: 16px; font-size: 12px; color: var(--textm); }
+.rv-row-strong { font-weight: 700; color: var(--navy); }
+.rv-amounts { display: flex; gap: 0; align-items: baseline; flex-shrink: 0; }
+.rv-amounts span { font-family: "Courier New", monospace; font-size: 12px; font-weight: 700; color: var(--navy); width: 104px; text-align: right; display: block; }
+.rv-amounts .rv-yr { color: var(--textm); }
+.rv-col-hdr { display: flex; justify-content: flex-end; gap: 0; font-size: 9px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--textd); padding: 8px 0 5px; border-bottom: 1px solid var(--bdr); }
+.rv-col-hdr span { width: 104px; text-align: right; display: block; }
+.rv-section-head { font-size: 10px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--textd); padding: 14px 0 6px; margin-top: 4px; }
+.rv-divider { height: 1px; background: var(--bdr-s); margin: 10px 0; }
+.rv-grand { display: flex; justify-content: space-between; align-items: baseline; padding: 14px 0 6px; border-top: 2px solid var(--navy); margin-top: 8px; font-weight: 800; font-size: 16px; color: var(--navy); }
+.rv-grand .rv-amounts span { font-size: 15px; width: 104px; }
+.rv-grand .rv-amounts span:last-child { font-size: 22px; width: 124px; }
+.rv-cpp { font-size: 12px; color: var(--textm); padding: 6px 0; }
+.rv-yearly { font-size: 11px; color: var(--textd); margin-top: 10px; }
+.rv-yr-row { display: flex; justify-content: space-between; padding: 4px 0; border-bottom: 1px solid var(--bdr-s); font-size: 11px; }
+.rv-yr-row:last-child { border-bottom: none; }
+.rv-export-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; max-width: 480px; }
+@media (max-width: 599px) { .rv-export-grid { grid-template-columns: 1fr; } }
+.pbtn { display: flex; align-items: center; justify-content: center; gap: 8px; font-size: 12px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; color: var(--white); background: var(--teal); border: none; padding: 12px 14px; cursor: pointer; font-family: inherit; transition: opacity .12s; border-radius: 6px; }
+.pbtn:hover { opacity: .88; }
+.pbtn-sec { background: var(--navy); }
+.xlink { display: flex; align-items: center; justify-content: center; gap: 7px; font-size: 11px; font-weight: 700; color: var(--textd); border: 1.5px solid var(--bdr-s); padding: 10px 12px; text-decoration: none; transition: border-color .12s, color .12s; border-radius: 6px; cursor: pointer; background: var(--white); }
+.xlink:hover { border-color: var(--navy); color: var(--navy); }
+
+/* ── ACTIVITY PICKER ── */
+.ap-group { border-bottom: 1px solid var(--bdr-s); }
+.ap-group-head { padding: 10px 16px; font-size: 9px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; display: flex; align-items: center; justify-content: space-between; cursor: pointer; user-select: none; }
+.ap-group-head.startup-grp { background: var(--amber-l); color: #7a4f00; }
+.ap-group-head.general-grp { background: var(--sky-l); color: var(--sky); }
+.ap-group-head.perpt-grp { background: var(--green-l); color: var(--green); }
+.ap-group-items { display: none; }
+.ap-group-items.open { display: block; }
+.ap-item { display: flex; align-items: flex-start; gap: 10px; padding: 8px 16px; border-bottom: 1px solid var(--bdr-s); cursor: pointer; transition: background .1s; }
+.ap-item:last-child { border-bottom: none; }
+.ap-item:hover { background: var(--bg-low); }
+.ap-item.ap-sel { background: var(--sky-l); }
+.ap-item input[type=checkbox] { width: 15px; height: 15px; accent-color: var(--teal); flex-shrink: 0; cursor: pointer; margin-top: 2px; }
+.ap-item-name { font-size: 12.5px; color: var(--textm); line-height: 1.4; }
+.ap-item.ap-hidden { display: none; }
+.ap-group-chevron { font-size: 12px; opacity: .6; transition: transform .15s; flex-shrink: 0; }
+.ap-group-head.open .ap-group-chevron { transform: rotate(180deg); }
+
+/* ── SECTION NAV ── */
+.sec-nav { display: flex; justify-content: space-between; align-items: center; padding: 24px 0 0; border-top: 1px solid var(--bdr-s); margin-top: 32px; }
+.sec-nav-btn { background: none; border: 1.5px solid var(--bdr); padding: 9px 18px; border-radius: 6px; cursor: pointer; font-family: inherit; font-size: 12px; font-weight: 700; color: var(--textm); transition: border-color .12s, color .12s; }
+.sec-nav-btn:hover { border-color: var(--navy); color: var(--navy); }
+.sec-nav-btn.sec-nav-next { border-color: var(--teal); color: var(--teal); }
+.sec-nav-btn.sec-nav-next:hover { background: var(--teal); color: #fff; }
+.sec-nav-spacer { flex: 1; }
+
+/* ── CIHR BLOCK (inline, inside Review section) ── */
+.cihr-print-block { display: none; margin-top: 24px; padding: 20px; border: 1px solid var(--bdr-s); border-radius: 6px; background: var(--white); }
+.cihr-head { font-size: 11px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--navy); margin-bottom: 12px; }
+.cihr-row { display: flex; justify-content: space-between; padding: 5px 0; border-bottom: 1px solid var(--bdr-s); font-size: 12px; }
+.cihr-row.cihr-total { border-top: 2px solid var(--navy); border-bottom: none; font-weight: 700; font-size: 13px; margin-top: 4px; padding-top: 8px; }
+.cihr-row-label { color: var(--textm); }
+.cihr-row-amt { font-family: "Courier New", monospace; font-weight: 700; color: var(--navy); }
+`;
+
+export const BT_HTML = `
+<div id="bt-root">
+
+  <!-- STICKY HEADER -->
+  <header id="bt-header">
+    <div class="bth-identity">
+      <span class="bth-brand">Clinical Research Budget</span>
+      <span class="bth-study" id="bth-title">Untitled study</span>
+    </div>
+    <div class="bth-sep"></div>
+    <div class="bth-stats" id="bth-total-wrap">
+      <div class="bth-stat-col" id="bth-col-main">
+        <span class="bth-amt" id="bth-grand">\$0</span>
+        <span class="bth-lbl" id="bth-lbl">Grand total</span>
+      </div>
+      <div class="bth-stat-col" id="bth-col-total" style="display:none">
+        <span class="bth-amt-sm" id="bth-tot-amt">\$0</span>
+        <span class="bth-lbl" id="bth-tot-lbl">—</span>
+      </div>
+    </div>
+    <div class="bth-sep"></div>
+    <div class="bth-actions">
+      <label class="bth-btn" style="cursor:pointer">Load backup (.json)<input type="file" id="budget-file-input" accept=".json" style="display:none" onchange="importBudget(this)"></label>
+      <button class="bth-btn" onclick="exportBudget()">Save a copy &#8595;</button>
+    </div>
+  </header>
+
+  <!-- SIDEBAR -->
+  <nav id="bt-sidebar">
+    <div class="sid-list">
+      <button class="sid-btn active" id="sb-s-profile" onclick="showSection('s-profile')">
+        <span class="sid-num">1</span><span class="sid-lbl">Study Profile</span>
+      </button>
+      <button class="sid-btn" id="sb-s-team" onclick="showSection('s-team')">
+        <span class="sid-num">2</span><span class="sid-lbl">Staff &amp; Salaries</span>
+      </button>
+      <button class="sid-btn" id="sb-s-work" onclick="showSection('s-work')">
+        <span class="sid-num">3</span><span class="sid-lbl">Work Plan</span>
+      </button>
+      <button class="sid-btn" id="sb-s-costs" onclick="showSection('s-costs')">
+        <span class="sid-num">4</span><span class="sid-lbl">Study Costs</span>
+      </button>
+      <button class="sid-btn" id="sb-s-review" onclick="showSection('s-review')">
+        <span class="sid-num">5</span><span class="sid-lbl">Review</span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- MAIN CONTENT -->
+  <main id="bt-main">
+
+    <!-- ══════════════════════════════════════ -->
+    <!-- SECTION 1: STUDY PROFILE              -->
+    <!-- ══════════════════════════════════════ -->
+    <section class="bt-section active" id="s-profile">
+      <div class="sec-label">Section 1 of 5</div>
+      <h2 class="sec-h2">Study Profile</h2>
+      <p class="sec-desc">Enter your study information. The funding type determines the overhead rate and controls which fields are visible throughout the tool. REB fee inputs are included here since they derive from your study setup.</p>
+
+      <div class="frow">
+        <div class="fg">
+          <label class="fl">Study title</label>
+          <input type="text" class="fi" id="study-title" placeholder="Full protocol title" oninput="updateSummary()">
+        </div>
+        <div class="fg">
+          <label class="fl">Protocol number</label>
+          <input type="text" class="fi" id="study-protocol" placeholder="e.g. MUHC-2025-001">
+        </div>
+      </div>
+
+      <div class="fg">
+        <label class="fl">Funding type</label>
+        <span class="fh">Sets overhead rate. Controls field visibility across all sections.</span>
+        <div class="fund-grid">
+          <div class="fund-card" id="fc-iit" onclick="selectFunding('iit')"><div class="fclabel">Investigator-Initiated (IIT)</div><div class="fcdesc">0% overhead</div></div>
+          <div class="fund-card" id="fc-found" onclick="selectFunding('found')"><div class="fclabel">Foundation / Charity</div><div class="fcdesc">Configurable overhead</div></div>
+          <div class="fund-card" id="fc-ind" onclick="selectFunding('ind')"><div class="fclabel">Industry-Sponsored</div><div class="fcdesc">30% overhead</div></div>
+        </div>
+      </div>
+
+      <div class="ci" id="ind-note" style="display:none"><strong>Industry-sponsored:</strong> 30% overhead applies to eligible direct costs. Startup staff T&amp;E activities are carved out at 0% overhead — mark them as &ldquo;Startup&rdquo; in the Work Plan. Startup <em>services</em> (CIM protocol-validation tests, pharmacy setup, baseline labs) are also eligible for the carve-out — enter their total in Study Costs under &ldquo;Startup services (0% OH).&rdquo;</div>
+      <div class="ci" id="pi-notice" style="display:none"><strong>Industry study:</strong> Include the PI salary line in Staff &amp; Salaries. For IIT and foundation studies, the PI is not typically budgeted.</div>
+
+      <div id="found-oh-field" style="display:none;margin-bottom:18px">
+        <div class="ci"><strong>Foundation overhead rate:</strong> McGill OSR indirect costs policy: 27% on total direct costs for grants from non-profit organizations. Override below if your funder specifies a different rate.</div>
+        <div class="fg" style="max-width:200px;margin-top:10px">
+          <label class="fl" for="found-oh-pct">Overhead rate (%)</label>
+          <input type="text" inputmode="decimal" class="fi" id="found-oh-pct" value="27" oninput="updateFoundOH()">
+        </div>
+      </div>
+
+      <div id="iit-oh-field" style="display:none;margin-bottom:18px">
+        <div class="ci"><strong>IIT overhead rate:</strong> Most IIT studies at RI-MUHC are 0%. Override below if your funder specifies a different rate (e.g. FRQS, NCI, PCORI grants with negotiated overhead).</div>
+        <div class="fg" style="max-width:200px;margin-top:10px">
+          <label class="fl" for="iit-oh-pct">Overhead rate (%)</label>
+          <input type="text" inputmode="decimal" class="fi" id="iit-oh-pct" value="0" oninput="updateIITOH()">
+        </div>
+      </div>
+
+      <div class="frow">
+        <div class="fg">
+          <label class="fl">Number of study years</label>
+          <input type="text" inputmode="decimal" class="fi" id="study-years" value="1" oninput="updateSummary();suggestRenewals()">
+        </div>
+        <div class="fg">
+          <label class="fl">Expected participants</label>
+          <input type="text" inputmode="decimal" class="fi" id="study-n" value="0" oninput="syncPtRowN();updateSummary();calcPtCost();calcSfCost();updateMatrixGroupHeaders()">
+        </div>
+      </div>
+
+      <div class="frow">
+        <div class="fg">
+          <label class="fl">Number of participating institutions <span class="tip-icon" data-tip="Quebec public health institutions (établissements) within the RSSS participating in the study. RI-MUHC counts as one. Used to calculate MSSS REB site authorization and annual monitoring fees. Fee #3 (ethics monitoring) is capped at 10 institutions; fee #6 (authorization monitoring) applies to all sites." onclick="showTip(this)">ⓘ</span></label>
+          <span class="fh">Includes RI-MUHC. Used for MSSS REB fees (fee #3 capped at 10 sites).</span>
+          <input type="text" inputmode="decimal" class="fi" id="study-sites" value="1" oninput="calcREB();syncStudyType()">
+        </div>
+        <div class="fg">
+          <label class="fl">Study type</label>
+          <select class="fs" id="study-type" onchange="syncStudySites()">
+            <option value="single">Single site (RI-MUHC only)</option>
+            <option value="multi">Multicentre (2+ institutions)</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="fg">
+        <label class="fl">Multi-year staff COLA <span class="tip-icon" data-tip="Cost of Living Adjustment — applies a 5% annual increase to staff costs each year of the study." onclick="showTip(this)">ⓘ</span></label>
+        <select class="fs" id="multiyear" onchange="updateSummary()">
+          <option value="no">No (or single year)</option>
+          <option value="yes">Yes &mdash; apply 5% annual COLA to staff costs each year</option>
+        </select>
+      </div>
+
+      <div class="sub-head">REB Fees</div>
+      <p class="sec-desc" style="margin-bottom:16px">REB fees are calculated from the MSSS fee schedule (April 2025). Renewals auto-suggest when you set study years.</p>
+      <div class="ci" id="reb-iit-note" style="display:none"><strong>IIT / Foundation study:</strong> REB fees are a real cost but some funders require them listed separately rather than included in the grant total. Check your funder's instructions, then set the option below.</div>
+      <div class="frow" style="margin-bottom:16px">
+        <div class="fg">
+          <label class="fl">Annual renewals</label>
+          <span class="fh">For a 2-year study, enter 1. For a 3-year study, enter 2. Auto-suggested from the number of years above.</span>
+          <input type="text" inputmode="decimal" class="fi" id="reb-renewals" value="0" oninput="calcREB()">
+        </div>
+        <div class="fg">
+          <label class="fl">Major amendments</label>
+          <span class="fh">\$634 per amendment &mdash; fixed MSSS fee schedule rate (April 2025).</span>
+          <input type="text" inputmode="decimal" class="fi" id="reb-amendments" value="0" oninput="calcREB()">
+        </div>
+      </div>
+      <div class="fg" style="max-width:300px">
+        <label class="fl">Include REB fees in the grand total?</label>
+        <select class="fs" id="reb-include" onchange="updateSummary()">
+          <option value="yes">Yes &mdash; include in total</option>
+          <option value="no">No &mdash; show for reference only</option>
+        </select>
+      </div>
+      <div class="reb-box" id="reb-box"><div class="reb-fee-row"><span class="reb-fn">Scientific review (one per project)</span><span class="reb-fa">\$634</span></div><div class="reb-fee-row"><span class="reb-fn">Ethical review (one per project)</span><span class="reb-fa">\$6,348</span></div><div class="reb-fee-row"><span class="reb-fn">Site authorization (1 institution)</span><span class="reb-fa">\$1,904</span></div><div class="reb-total-row"><span class="reb-tl">REB total</span><span class="reb-ta">\$8,886</span></div></div>
+
+      <div class="sec-nav">
+        <span class="sec-nav-spacer"></span>
+        <button class="sec-nav-btn sec-nav-next" onclick="showSection('s-team')">Staff &amp; Salaries &#8594;</button>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════ -->
+    <!-- SECTION 2: STAFF & SALARIES           -->
+    <!-- ══════════════════════════════════════ -->
+    <section class="bt-section" id="s-team">
+      <div class="sec-label">Section 2 of 5</div>
+      <h2 class="sec-h2">Staff &amp; Salaries</h2>
+      <p class="sec-desc">Add everyone who will work on this study. Once you add a person, they appear as a column in the Work Plan where you enter how many hours they spend on each activity. Salaries come from RI-MUHC annual midpoints &mdash; edit the salary directly if your situation differs.</p>
+
+      <div class="cn" id="cola-notice" style="display:none"><strong>Multi-year COLA active:</strong> 5% annual staff cost increase will be applied. Confirm study years in Study Profile.</div>
+      <div class="ci" id="cola-hint" style="display:none"><strong>Tip:</strong> Your study spans multiple years. Enable Multi-year COLA (above) to apply the 5% annual staff cost increase required by the RI-MUHC collective agreement.</div>
+      <div class="ci" id="pi-notice-team" style="display:none"><strong>Industry study:</strong> Include the principal investigator&rsquo;s salary line.</div>
+
+      <div style="overflow-x:auto;margin-bottom:12px">
+        <table id="staff-table">
+          <thead>
+            <tr>
+              <th style="min-width:200px">Role</th>
+              <th style="min-width:130px">Name (optional)</th>
+              <th style="width:120px">Annual salary</th>
+              <th class="st-fte-col" style="width:90px" title="Full-time equivalent. 100% = 1,820 hrs/yr at RI-MUHC.">FTE %</th>
+              <th style="width:110px" title="Calculated as: (annual salary × 1.19 benefits) ÷ 1,820 hrs">Rate / hr</th>
+              <th style="width:40px"></th>
+            </tr>
+          </thead>
+          <tbody id="staff-tbody"></tbody>
+        </table>
+      </div>
+
+      <button class="add-btn" onclick="addStaffRow()">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        Add team member
+      </button>
+
+      <div class="ct" style="margin-top:20px"><strong>Salary scale:</strong> RI-MUHC annual midpoints (1 FTE = 1,820 hrs/yr). Benefits at 19% &mdash; validate this rate with RI-MUHC People &amp; Culture (Quebec employer obligations may be 25&ndash;30%). Biostatistician: BCU (RI-MUHC) = \$80/hr &bull; ACT-CTU OHRI = \$250/hr.</div>
+
+      <div class="sec-nav">
+        <button class="sec-nav-btn" onclick="showSection('s-profile')">&#8592; Study Profile</button>
+        <button class="sec-nav-btn sec-nav-next" onclick="showSection('s-work')">Work Plan &#8594;</button>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════ -->
+    <!-- SECTION 3: WORK PLAN                  -->
+    <!-- ══════════════════════════════════════ -->
+    <section class="bt-section" id="s-work">
+      <div class="sec-label">Section 3 of 5</div>
+      <h2 class="sec-h2">Work Plan</h2>
+      <p class="sec-desc">Enter staff hours per activity. <strong style="color:#7a4f00">Startup</strong> rows = one-time hours at site initiation (0% OH for industry). <strong style="color:var(--sky)">General</strong> rows = annual hours across the whole study. <strong style="color:var(--green)">Per Participant</strong> rows = hours <em>per participant</em> for that activity — multiplied by each row's participant count to give the total cost. Add staff in Staff &amp; Salaries first — they appear as columns here.</p>
+      <div class="ci" id="te-no-staff-msg" style="display:none"><strong>No staff added yet.</strong> Go to Staff &amp; Salaries (Section 2) and add your team first.</div>
+
+      <!-- Template picker (shown when matrix is empty) -->
+      <div id="mc-tpl-picker" class="mc-tpl-picker" style="margin-bottom:20px">
+        <div class="mc-tpl-head">Choose a starting template</div>
+        <p class="mc-tpl-sub">Pre-populates common activities for your study type. You can add, remove, and rename any row.</p>
+        <div class="mc-tpl-grid">
+          <button class="mc-tpl-btn" onclick="applyTemplate('iit')"><strong>Investigator-Initiated Trial</strong><span>IIT / CIHR &mdash; PI-led, 0% overhead</span></button>
+          <button class="mc-tpl-btn" onclick="applyTemplate('ind-rct')"><strong>Industry-Sponsored Trial</strong><span>Randomized controlled trial (RCT), sponsor-funded</span></button>
+          <button class="mc-tpl-btn" onclick="applyTemplate('obs')"><strong>Observational / Cohort</strong><span>Prospective or retrospective cohort</span></button>
+          <button class="mc-tpl-btn" onclick="applyTemplate('chart')"><strong>Retrospective Chart Review</strong><span>Medical record abstraction study</span></button>
+          <button class="mc-tpl-btn" onclick="applyTemplate('phase1')"><strong>Phase I / First-in-Human</strong><span>Dose-escalation, regulatory-heavy</span></button>
+        </div>
+        <button class="mc-tpl-skip" onclick="hideTemplatePicker()">Start with blank matrix</button>
+      </div>
+
+      <!-- Matrix -->
+      <div class="mc-scroll-wrap" id="mc-wrap" style="display:none">
+        <table id="te-matrix">
+          <thead>
+            <tr id="mc-head-row">
+              <th class="mc-name-th" style="text-align:left">Activity</th>
+              <!-- staff columns inserted here -->
+              <th class="mc-participants-th">Participants<span class="mc-th-unit">overridable per row</span></th>
+              <th class="mc-total-th" style="width:110px">Cost</th>
+            </tr>
+          </thead>
+          <tbody id="mc-tbody-startup">
+            <tr class="mc-group-row" onclick="toggleMatrixGroup('startup')">
+              <td colspan="999" class="mc-group-startup"><span class="mc-chevron">&#9660;</span>STARTUP &mdash; 0% overhead for industry</td>
+            </tr>
+            <tr class="mc-add-row"><td colspan="999"><button onclick="openActPicker('startup')">+ Add startup activity</button></td></tr>
+          </tbody>
+          <tbody id="mc-tbody-general">
+            <tr class="mc-group-row" onclick="toggleMatrixGroup('general')">
+              <td colspan="999" class="mc-group-general"><span class="mc-chevron">&#9660;</span>GENERAL &mdash; flat study costs</td>
+            </tr>
+            <tr class="mc-add-row"><td colspan="999"><button onclick="openActPicker('general')">+ Add general activity</button></td></tr>
+          </tbody>
+          <tbody id="mc-tbody-perpt">
+            <tr class="mc-group-row" onclick="toggleMatrixGroup('perpt')">
+              <td colspan="999" class="mc-group-perpt"><span class="mc-chevron">&#9660;</span>PER PARTICIPANT &mdash; hours/participant &times; <span id="mc-perpt-n">0 participants</span></td>
+            </tr>
+            <tr id="mc-perpt-n-banner-row" style="display:none"><td colspan="999"><div id="mc-perpt-n-banner"></div></td></tr>
+            <tr class="mc-add-row"><td colspan="999"><button onclick="openActPicker('perpt')">+ Add per-participant activity</button></td></tr>
+          </tbody>
+          <tfoot id="mc-tfoot">
+            <tr id="mc-tfoot-hrs">
+              <td class="mc-name-th">Total hours</td>
+              <!-- column totals inserted here -->
+              <td id="mc-participants-ftr-hrs"></td>
+              <td id="mc-grand-hrs">—</td>
+            </tr>
+            <tr id="mc-tfoot-cost">
+              <td class="mc-name-th">Total cost</td>
+              <!-- column costs inserted here -->
+              <td id="mc-participants-ftr-cost"></td>
+              <td id="mc-grand-cost">—</td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+
+      <div style="display:none;gap:10px;flex-wrap:wrap;align-items:center;margin-top:14px" id="mc-actions">
+        <button class="add-btn" onclick="openActPicker()">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+          Add from activity list
+        </button>
+        <button class="secondary-btn" onclick="showSection('s-work');document.getElementById('mc-tpl-picker').style.display='block'">Reset from template</button>
+      </div>
+
+      <div class="ct" style="margin-top:16px"><strong>Activity types:</strong> <strong style="color:#7a4f00">Startup</strong> — one-time site initiation hours (0% OH for industry). <strong style="color:var(--sky)">General</strong> — annual staff hours for the whole study. <strong style="color:var(--green)">Per Participant</strong> — enter hours <em>per participant</em> for this activity; the row cost = hours/pt × rate × N. The N input in the Cost column can be overridden per row (e.g. adverse event review affects fewer participants than a routine visit). Use the type badge on each row to reassign.</div>
+
+      <div class="sec-nav">
+        <button class="sec-nav-btn" onclick="showSection('s-team')">&#8592; Staff &amp; Salaries</button>
+        <button class="sec-nav-btn sec-nav-next" onclick="showSection('s-costs')">Study Costs &#8594;</button>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════ -->
+    <!-- SECTION 4: STUDY COSTS                -->
+    <!-- ══════════════════════════════════════ -->
+    <section class="bt-section" id="s-costs">
+      <div class="sec-label">Section 4 of 5</div>
+      <h2 class="sec-h2">Study Costs</h2>
+      <p class="sec-desc">Enter quantities for priced institutional services and direct study costs. Industry-tier prices apply automatically when Industry-Sponsored is selected.</p>
+
+      <div class="sub-head">Priced Services</div>
+      <div style="display:flex;justify-content:flex-end;margin-bottom:4px"><button id="svc-expand-btn" onclick="toggleAllSvc()" style="font-size:11px;color:var(--textd);background:none;border:none;cursor:pointer;font-family:inherit;text-decoration:underline;padding:0">Expand all</button></div>
+      <div id="svc-cim-accordion"></div>
+
+      <div class="svc-top-head">MUHC Laboratory Tests</div>
+      <div class="svc-acc-group" id="svc-grp-lab">
+        <div class="svc-acc-head" onclick="toggleSvcGroup('lab')"><span>Laboratory Tests (1,967 tests)</span><span class="svc-acc-chevron">&#9660;</span></div>
+        <div class="svc-acc-body" id="svc-body-lab" style="display:none">
+          <div style="padding:12px 12px 4px;background:var(--bg-low);border-bottom:1px solid var(--bdr-s);display:flex;align-items:center;gap:12px;flex-wrap:wrap">
+            <input type="text" class="fi" id="lab-search" placeholder="Search by code or test name&hellip;" oninput="filterLab()" style="max-width:420px;font-size:13px;flex:1">
+            <span id="lab-count" style="font-size:11px;color:var(--textd);flex-shrink:0"></span>
+          </div>
+          <div class="svc-hdr"><span>Code / Test name</span><span>Unit price</span><span>Qty</span><span>Subtotal</span></div>
+          <div id="svc-lab" style="max-height:420px;overflow-y:auto"></div>
+          <div id="lab-empty" style="display:none;padding:14px 12px;font-size:13px;color:var(--textd);font-style:italic">No tests match your search.</div>
+          <div style="padding:10px 12px;background:var(--bg-low);border-top:1px solid var(--bdr-s);font-size:11px;color:var(--textd)">Prices update automatically by funding type: Foundation &rarr; researcher-funded (&times;1.1); IIT/CIHR &rarr; CIHR-sponsored (&times;1.5); Industry &rarr; pharmaceutical-sponsored (&times;2.0). Source: MUHC Laboratory pricelist 2023&ndash;2024.</div>
+        </div>
+      </div>
+
+      <div class="sub-head" style="margin-top:24px">Direct Costs</div>
+
+      <div class="svc-cat-head">Participant Costs</div>
+      <div id="pt-n-banner" class="cn" style="font-size:12px;padding:10px 14px">Participant count is 0 — subtotals will show \$0. Set the number of participants in <strong>Study Profile</strong> (Section 1) first.</div>
+      <div id="pt-cost-rows">
+      <div class="svc-hdr"><span>Item</span><span style="text-align:right">Rate / visit ($)</span><span style="text-align:right">No. of visits</span><span style="text-align:right">Participants (N)</span><span style="text-align:right">Subtotal</span></div>
+      <div class="svc-row">
+        <span class="svc-name">Participant stipend / honorarium</span>
+        <div class="pt-cell"><input type="text" inputmode="decimal" min="0" value="0" id="pt-stip-amt" oninput="calcPtCost()"></div>
+        <div class="pt-cell"><input type="text" inputmode="decimal" min="0" value="1" id="pt-stip-visits" oninput="calcPtCost()"></div>
+        <div class="pt-cell"><input type="text" inputmode="decimal" min="0" value="0" id="pt-stip-n" data-synced="true" oninput="this.dataset.synced='false';calcPtCost()"></div>
+        <span class="svc-sub" id="pt-stip-sub">\$0</span>
+      </div>
+      <div id="pt-stip-warn-row" style="grid-column:1/-1;display:none"><span id="pt-stip-warn" style="font-size:12px;padding:6px 10px;border-radius:6px;display:inline-block;margin:2px 0 4px"></span></div>
+      <div class="svc-row">
+        <span class="svc-name">Transportation reimbursement</span>
+        <div class="pt-cell"><input type="text" inputmode="decimal" min="0" value="0" id="pt-trans-amt" oninput="calcPtCost()"></div>
+        <div class="pt-cell"><input type="text" inputmode="decimal" min="0" value="1" id="pt-trans-visits" oninput="calcPtCost()"></div>
+        <div class="pt-cell"><input type="text" inputmode="decimal" min="0" value="0" id="pt-trans-n" data-synced="true" oninput="this.dataset.synced='false';calcPtCost()"></div>
+        <span class="svc-sub" id="pt-trans-sub">\$0</span>
+      </div>
+      <div class="svc-row">
+        <span class="svc-name">Parking reimbursement</span>
+        <div class="pt-cell"><input type="text" inputmode="decimal" min="0" value="0" id="pt-park-amt" oninput="calcPtCost()"></div>
+        <div class="pt-cell"><input type="text" inputmode="decimal" min="0" value="1" id="pt-park-visits" oninput="calcPtCost()"></div>
+        <div class="pt-cell"><input type="text" inputmode="decimal" min="0" value="0" id="pt-park-n" data-synced="true" oninput="this.dataset.synced='false';calcPtCost()"></div>
+        <span class="svc-sub" id="pt-park-sub">\$0</span>
+      </div>
+      <div class="svc-row" style="grid-template-columns:1fr 280px 90px">
+        <div><span class="svc-name">Other participant costs <span style="font-size:10px;color:var(--textd);font-weight:400">(flat study total)</span></span><input type="text" id="pt-other-desc" class="fi" placeholder="Description (optional)" style="margin-top:4px;font-size:12px;padding:4px 8px"></div>
+        <div class="svc-qty" style="display:flex;justify-content:flex-end"><input type="text" inputmode="decimal" min="0" value="0" id="pt-other-amt" oninput="calcPtCost()" style="width:80px;text-align:right;font-size:13px;border:1.5px solid var(--bdr);padding:5px 8px;border-radius:6px;outline:none"></div>
+        <span class="svc-sub" id="pt-other-sub">\$0</span>
+      </div>
+      </div>
+
+      <div class="svc-cat-head">Patient Partners &amp; Engagement</div>
+      <div class="ci" style="margin:0;border-radius:0;font-size:12px;padding:10px 14px">Costs for patient or community partners involved in research design, conduct, or knowledge translation (distinct from enrolled study participants). Include for CIHR iKT grants.</div>
+      <div class="svc-hdr"><span>Item</span><span>&nbsp;</span><span>Amount ($)</span><span>Subtotal</span></div>
+      <div class="svc-row">
+        <span class="svc-name">Patient partner honoraria (meetings)</span>
+        <span class="svc-price">&nbsp;</span>
+        <div class="svc-qty"><input type="text" inputmode="decimal" min="0" value="0" id="pp-hon" oninput="updateSimpleSub('pp-hon','pp-hon-sub')" style="width:100%;text-align:right;font-size:13px;border:1.5px solid var(--bdr);padding:5px 8px;border-radius:6px;outline:none"></div>
+        <span class="svc-sub" id="pp-hon-sub">\$0</span>
+      </div>
+      <div class="svc-row">
+        <span class="svc-name">Patient partner travel &amp; accommodation</span>
+        <span class="svc-price">&nbsp;</span>
+        <div class="svc-qty"><input type="text" inputmode="decimal" min="0" value="0" id="pp-travel" oninput="updateSimpleSub('pp-travel','pp-travel-sub')" style="width:100%;text-align:right;font-size:13px;border:1.5px solid var(--bdr);padding:5px 8px;border-radius:6px;outline:none"></div>
+        <span class="svc-sub" id="pp-travel-sub">\$0</span>
+      </div>
+      <div class="svc-row">
+        <span class="svc-name">Training &amp; capacity building (materials, facilitator)</span>
+        <span class="svc-price">&nbsp;</span>
+        <div class="svc-qty"><input type="text" inputmode="decimal" min="0" value="0" id="pp-training" oninput="updateSimpleSub('pp-training','pp-training-sub')" style="width:100%;text-align:right;font-size:13px;border:1.5px solid var(--bdr);padding:5px 8px;border-radius:6px;outline:none"></div>
+        <span class="svc-sub" id="pp-training-sub">\$0</span>
+      </div>
+      <div class="svc-row">
+        <span class="svc-name">Meeting costs (venue, catering)</span>
+        <span class="svc-price">&nbsp;</span>
+        <div class="svc-qty"><input type="text" inputmode="decimal" min="0" value="0" id="pp-meetings" oninput="updateSimpleSub('pp-meetings','pp-meetings-sub')" style="width:100%;text-align:right;font-size:13px;border:1.5px solid var(--bdr);padding:5px 8px;border-radius:6px;outline:none"></div>
+        <span class="svc-sub" id="pp-meetings-sub">\$0</span>
+      </div>
+
+      <div class="svc-cat-head">Travel</div>
+      <div class="svc-hdr"><span>Item</span><span>&nbsp;</span><span>Amount ($)</span><span>Subtotal</span></div>
+      <div class="svc-row">
+        <span class="svc-name">Investigator / CRC travel (flights, per diems, hotel)</span>
+        <span class="svc-price">&nbsp;</span>
+        <div class="svc-qty"><input type="text" inputmode="decimal" min="0" value="0" id="tv-inv" oninput="updateSummary()" style="width:100%;text-align:right;font-size:13px;border:1.5px solid var(--bdr);padding:5px 8px;border-radius:6px;outline:none"></div>
+        <span class="svc-sub" id="tv-inv-sub">\$0</span>
+      </div>
+      <div class="svc-row" id="tv-mon-row">
+        <span class="svc-name">Monitoring visit travel <span style="font-size:10px;color:var(--textd);font-weight:400">(on-site monitoring, sponsor visits, site initiation travel)</span></span>
+        <span class="svc-price">&nbsp;</span>
+        <div class="svc-qty"><input type="text" inputmode="decimal" min="0" value="0" id="tv-mon" oninput="updateSummary()" style="width:100%;text-align:right;font-size:13px;border:1.5px solid var(--bdr);padding:5px 8px;border-radius:6px;outline:none"></div>
+        <span class="svc-sub" id="tv-mon-sub">\$0</span>
+      </div>
+      <div class="svc-row">
+        <span class="svc-name">Other travel</span>
+        <span class="svc-price">&nbsp;</span>
+        <div class="svc-qty"><input type="text" inputmode="decimal" min="0" value="0" id="tv-other" oninput="updateSummary()" style="width:100%;text-align:right;font-size:13px;border:1.5px solid var(--bdr);padding:5px 8px;border-radius:6px;outline:none"></div>
+        <span class="svc-sub" id="tv-other-sub">\$0</span>
+      </div>
+
+      <div class="svc-cat-head">Knowledge Translation</div>
+      <div class="ci" style="margin:0;border-radius:0;font-size:12px;padding:10px 14px">Dissemination costs are a separate CIHR budget category (Knowledge Translation). Conference travel for presenting results belongs here, not under Travel above (which is for operational/monitoring travel).</div>
+      <div class="svc-hdr"><span>Item</span><span>&nbsp;</span><span>Amount ($)</span><span>Subtotal</span></div>
+      <div class="svc-row">
+        <span class="svc-name">Open access / publication fees</span>
+        <span class="svc-price">&nbsp;</span>
+        <div class="svc-qty"><input type="text" inputmode="decimal" min="0" value="0" id="kt-pub" oninput="updateSimpleSub('kt-pub','kt-pub-sub')" style="width:100%;text-align:right;font-size:13px;border:1.5px solid var(--bdr);padding:5px 8px;border-radius:6px;outline:none"></div>
+        <span class="svc-sub" id="kt-pub-sub">\$0</span>
+      </div>
+      <div class="svc-row">
+        <span class="svc-name">Conference travel &amp; registration (dissemination)</span>
+        <span class="svc-price">&nbsp;</span>
+        <div class="svc-qty"><input type="text" inputmode="decimal" min="0" value="0" id="kt-conf" oninput="updateSimpleSub('kt-conf','kt-conf-sub')" style="width:100%;text-align:right;font-size:13px;border:1.5px solid var(--bdr);padding:5px 8px;border-radius:6px;outline:none"></div>
+        <span class="svc-sub" id="kt-conf-sub">\$0</span>
+      </div>
+      <div class="svc-row">
+        <span class="svc-name">KT materials (guidelines, pamphlets, infographics)</span>
+        <span class="svc-price">&nbsp;</span>
+        <div class="svc-qty"><input type="text" inputmode="decimal" min="0" value="0" id="kt-mat" oninput="updateSimpleSub('kt-mat','kt-mat-sub')" style="width:100%;text-align:right;font-size:13px;border:1.5px solid var(--bdr);padding:5px 8px;border-radius:6px;outline:none"></div>
+        <span class="svc-sub" id="kt-mat-sub">\$0</span>
+      </div>
+      <div class="svc-row">
+        <span class="svc-name">Stakeholder workshops &amp; events</span>
+        <span class="svc-price">&nbsp;</span>
+        <div class="svc-qty"><input type="text" inputmode="decimal" min="0" value="0" id="kt-events" oninput="updateSimpleSub('kt-events','kt-events-sub')" style="width:100%;text-align:right;font-size:13px;border:1.5px solid var(--bdr);padding:5px 8px;border-radius:6px;outline:none"></div>
+        <span class="svc-sub" id="kt-events-sub">\$0</span>
+      </div>
+
+      <div class="svc-cat-head">Other Costs</div>
+      <div class="svc-hdr" style="margin-top:0"><span>Item</span><span>&nbsp;</span><span>Amount ($)</span><span>Subtotal</span></div>
+
+      <div class="svc-row">
+        <span class="svc-name">Screening failures <span class="tip-icon" data-tip="Budget for participants who are assessed but do not proceed to enrolment. Include staff time (in Work Plan) and any tests or procedures done at screening. Typical failure rates: 10–20% for most RCTs; 30–50% for Phase I or narrow-eligibility studies. Formula: enrolled ÷ (1 − rate) − enrolled = expected failures. E.g. 20% rate, 10 enrolled → 10 × 0.20 ÷ 0.80 = 2.5 failures." onclick="showTip(this)">ⓘ</span>
+          <div style="display:flex;gap:6px;margin-top:5px;align-items:center;flex-wrap:wrap">
+            <input type="text" inputmode="decimal" class="fi" id="sf-rate" placeholder="Failure rate %" oninput="calcSfCost()" style="font-size:12px;padding:4px 8px;max-width:110px">
+            <span style="font-size:11px;color:var(--textd)">×</span>
+            <input type="text" inputmode="decimal" class="fi" id="sf-pp-cost" placeholder="$ per failure" oninput="calcSfCost()" style="font-size:12px;padding:4px 8px;max-width:110px">
+            <span style="font-size:10px;color:var(--textd)">(or enter total directly)</span>
+            <span id="sf-n-hint" style="display:none;font-size:10px;color:#c0392b">Set participant count in Study Profile first.</span>
+          </div>
+          <div id="sf-calc-hint" style="display:none;margin-top:4px;font-size:11px;color:var(--textd)"></div>
+        </span>
+        <span class="svc-price">&nbsp;</span>
+        <div class="svc-qty"><input type="text" inputmode="decimal" min="0" value="0" id="sf-cost" class="oa" oninput="updateSfSub()" style="width:100%;text-align:right;font-size:13px;border:1.5px solid var(--bdr);padding:5px 8px;border-radius:6px;outline:none"></div>
+        <span class="svc-sub" id="sf-sub">\$0</span>
+      </div>
+
+      <div class="svc-group-head">Investigational product &amp; equipment</div>
+      <div class="svc-row">
+        <span class="svc-name">Investigational product / IMP <span style="font-size:10px;color:var(--textd);font-weight:400">(drugs, devices, comparators — total study cost)</span></span>
+        <span class="svc-price">&nbsp;</span>
+        <div class="svc-qty"><input type="text" inputmode="decimal" min="0" value="0" id="imp-cost" class="oa" oninput="updateSummary()" style="width:100%;text-align:right;font-size:13px;border:1.5px solid var(--bdr);padding:5px 8px;border-radius:6px;outline:none"></div>
+        <span class="svc-sub" id="imp-cost-sub">\$0</span>
+      </div>
+      <div class="svc-row">
+        <span class="svc-name">Equipment &amp; non-consumables <span style="font-size:10px;color:var(--textd);font-weight:400">(study-specific; partial depreciation only)</span></span>
+        <span class="svc-price">&nbsp;</span>
+        <div class="svc-qty"><input type="text" inputmode="decimal" min="0" value="0" id="equip-cost" oninput="updateEquipSub()" style="width:100%;text-align:right;font-size:13px;border:1.5px solid var(--bdr);padding:5px 8px;border-radius:6px;outline:none"></div>
+        <span class="svc-sub" id="equip-cost-sub">\$0</span>
+      </div>
+
+      <div class="svc-group-head">Software &amp; licensing</div>
+      <div class="svc-row">
+        <span class="svc-name">REDCap database licence &amp; setup</span>
+        <span class="svc-price">&nbsp;</span>
+        <div class="svc-qty"><input type="text" inputmode="decimal" min="0" value="0" id="sw-redcap" class="oa" oninput="updateSummary()" style="width:100%;text-align:right;font-size:13px;border:1.5px solid var(--bdr);padding:5px 8px;border-radius:6px;outline:none"></div>
+        <span class="svc-sub" id="sw-redcap-sub">\$0</span>
+      </div>
+      <div class="svc-row">
+        <span class="svc-name">Translation services (consent forms, questionnaires)</span>
+        <span class="svc-price">&nbsp;</span>
+        <div class="svc-qty"><input type="text" inputmode="decimal" min="0" value="0" id="sw-translation" class="oa" oninput="updateSummary()" style="width:100%;text-align:right;font-size:13px;border:1.5px solid var(--bdr);padding:5px 8px;border-radius:6px;outline:none"></div>
+        <span class="svc-sub" id="sw-translation-sub">\$0</span>
+      </div>
+      <div class="svc-row">
+        <span class="svc-name">Advertising &amp; participant recruitment (ads, flyers, outreach)</span>
+        <span class="svc-price">&nbsp;</span>
+        <div class="svc-qty"><input type="text" inputmode="decimal" min="0" value="0" id="sw-recruit" class="oa" oninput="updateSummary()" style="width:100%;text-align:right;font-size:13px;border:1.5px solid var(--bdr);padding:5px 8px;border-radius:6px;outline:none"></div>
+        <span class="svc-sub" id="sw-recruit-sub">\$0</span>
+      </div>
+      <div class="svc-row">
+        <span class="svc-name">Other software, licensing &amp; subscriptions</span>
+        <span class="svc-price">&nbsp;</span>
+        <div class="svc-qty"><input type="text" inputmode="decimal" min="0" value="0" id="sw-other" class="oa" oninput="updateSummary()" style="width:100%;text-align:right;font-size:13px;border:1.5px solid var(--bdr);padding:5px 8px;border-radius:6px;outline:none"></div>
+        <span class="svc-sub" id="sw-other-sub">\$0</span>
+      </div>
+
+      <div class="svc-group-head">Site &amp; administrative</div>
+      <div class="svc-row">
+        <span class="svc-name">Study insurance <span style="font-size:10px;color:var(--textd);font-weight:400">(clinical trial indemnity — required for industry; recommended for IIT)</span></span>
+        <span class="svc-price">&nbsp;</span>
+        <div class="svc-qty"><input type="text" inputmode="decimal" min="0" value="0" id="insure-cost" class="oa" oninput="updateSummary()" style="width:100%;text-align:right;font-size:13px;border:1.5px solid var(--bdr);padding:5px 8px;border-radius:6px;outline:none"></div>
+        <span class="svc-sub" id="insure-cost-sub">\$0</span>
+      </div>
+      <div class="svc-row">
+        <span class="svc-name">Study closeout <span style="font-size:10px;color:var(--textd);font-weight:400">(archiving, site closure visits, final vendor payments)</span></span>
+        <span class="svc-price">&nbsp;</span>
+        <div class="svc-qty"><input type="text" inputmode="decimal" min="0" value="0" id="closeout-cost" class="oa" oninput="updateSummary()" style="width:100%;text-align:right;font-size:13px;border:1.5px solid var(--bdr);padding:5px 8px;border-radius:6px;outline:none"></div>
+        <span class="svc-sub" id="closeout-cost-sub">\$0</span>
+      </div>
+      <div class="svc-row">
+        <span class="svc-name">Professional services <span style="font-size:10px;color:var(--textd);font-weight:400">(CRO, adjudication committee, central reading lab, medical monitoring)</span></span>
+        <span class="svc-price">&nbsp;</span>
+        <div class="svc-qty"><input type="text" inputmode="decimal" min="0" value="0" id="profsvc-cost" class="oa" oninput="updateSummary()" style="width:100%;text-align:right;font-size:13px;border:1.5px solid var(--bdr);padding:5px 8px;border-radius:6px;outline:none"></div>
+        <span class="svc-sub" id="profsvc-cost-sub">\$0</span>
+      </div>
+
+      <div class="svc-group-head">Custom / miscellaneous</div>
+      <div id="other-list"></div>
+      <button class="add-btn" onclick="addOther()" style="margin:10px 12px">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        Add other cost
+      </button>
+
+      <div id="startup-svc-field" style="display:none;margin-top:18px">
+        <div class="svc-cat-head">Industry startup carve-out</div>
+        <div class="svc-hdr" style="margin-top:0"><span>Item</span><span>&nbsp;</span><span>Amount ($)</span><span>Subtotal</span></div>
+        <div class="svc-row">
+          <span class="svc-name">Startup services (0% OH) <span class="tip-icon" data-tip="Services performed at study startup — protocol-validation CIM tests, pharmacy setup, baseline lab draws — that are exempt from industry overhead. This amount is subtracted from the overhead base, mirroring the Work Plan Startup row carve-out for staff." onclick="showTip(this)">ⓘ</span></span>
+          <span class="svc-price">&nbsp;</span>
+          <div class="svc-qty"><input type="text" inputmode="decimal" min="0" value="0" id="startup-svc" oninput="updateStartupSvcSub()" style="width:100%;text-align:right;font-size:13px;border:1.5px solid var(--bdr);padding:5px 8px;border-radius:6px;outline:none"></div>
+          <span class="svc-sub" id="startup-svc-sub">\$0</span>
+        </div>
+      </div>
+
+      <div class="sec-nav">
+        <button class="sec-nav-btn" onclick="showSection('s-work')">&#8592; Work Plan</button>
+        <button class="sec-nav-btn sec-nav-next" onclick="showSection('s-review')">Review &amp; Export &#8594;</button>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════ -->
+    <!-- SECTION 5: REVIEW & EXPORT            -->
+    <!-- ══════════════════════════════════════ -->
+    <section class="bt-section" id="s-review">
+      <div class="sec-label">Section 5 of 5</div>
+      <h2 class="sec-h2">Review &amp; Export</h2>
+      <p class="sec-desc">Review the full budget breakdown, adjust contingency, and export your budget as a spreadsheet or JSON backup.</p>
+
+      <div class="sub-head">Contingency</div>
+      <div class="cont-grid">
+        <div class="cont-card" id="cc-low" onclick="selectCont('low')"><div class="cclabel">Low complexity</div><div class="ccrange">8 &ndash; 10%</div><div class="ccdef">Recommended: 9%</div></div>
+        <div class="cont-card cc-sel-mod" id="cc-mod" onclick="selectCont('mod')"><div class="cclabel">Moderate complexity</div><div class="ccrange">10 &ndash; 12%</div><div class="ccdef">Recommended: 11%</div></div>
+        <div class="cont-card" id="cc-high" onclick="selectCont('high')"><div class="cclabel">High complexity</div><div class="ccrange">12 &ndash; 15%</div><div class="ccdef">Recommended: 13.5%</div></div>
+      </div>
+      <div class="fg" style="max-width:200px;margin-bottom:8px">
+        <label class="fl">Override contingency rate (%)</label>
+        <span class="fh">Leave blank to use the recommended midpoint.</span>
+        <input type="text" inputmode="decimal" class="fi" id="cont-pct" placeholder="e.g. 10" oninput="updateSummary()">
+        <span class="fh" style="margin-top:4px;color:var(--teal)">Overrides card selection above when set.</span>
+      </div>
+      <div class="ct" style="margin-bottom:8px"><strong>Complexity guide:</strong> Low = observational, chart review. Moderate = prospective interventional, Phase II&ndash;III. High = Phase I, first-in-human, complex interventional.</div>
+      <div class="ci" id="cont-ind-note" style="display:none;margin-bottom:24px"><strong>Industry study note:</strong> Contingency is calculated on direct costs only. If unplanned costs arise, the associated 30% overhead on those costs is not covered by this reserve. For studies with significant amendment risk, consider setting a higher rate or adding a manual buffer.</div>
+
+      <div class="sub-head">Budget Breakdown</div>
+      <div id="rv-table" style="background:var(--white);border:1px solid var(--bdr-s);border-radius:6px;padding:16px 20px;margin-bottom:20px"></div>
+
+      <!-- CIHR budget mapping (shown when toggled) -->
+      <div class="cihr-print-block" id="cihr-block" style="display:none">
+        <div class="cihr-head">Budget Summary &mdash; CIHR Category Mapping</div>
+        <div class="cihr-row"><span class="cihr-row-label">Salaries and Stipends</span><span class="cihr-row-amt" id="cihr-personnel">\$0</span></div>
+        <div class="cihr-row"><span class="cihr-row-label">Consumables (materials, supplies, services, laboratory)</span><span class="cihr-row-amt" id="cihr-matsup">\$0</span></div>
+        <div class="cihr-row"><span class="cihr-row-label">Non-consumables <span style="font-weight:400;color:#888;font-size:10px">(equipment owned by research team)</span></span><span class="cihr-row-amt" id="cihr-equip">\$0</span></div>
+        <div class="cihr-row"><span class="cihr-row-label">Knowledge Translation <span style="font-weight:400;color:#888;font-size:10px">(publications, conferences, dissemination)</span></span><span class="cihr-row-amt" id="cihr-kt">\$0</span></div>
+        <div class="cihr-row"><span class="cihr-row-label">Other <span style="font-weight:400;color:#888;font-size:10px">(participant costs, travel, contingency, other)</span></span><span class="cihr-row-amt" id="cihr-other">\$0</span></div>
+        <div class="cihr-row cihr-total"><span class="cihr-row-label">Total (direct costs + contingency, before overhead)</span><span class="cihr-row-amt" id="cihr-total">\$0</span></div>
+        <div style="font-size:10px;color:#888;margin-top:10px;line-height:1.6">CIHR does not use a separate Travel category. Operational travel (monitoring, site visits) maps to Other; dissemination travel maps to Knowledge Translation — enter it in the Knowledge Translation section of Study Costs. Patient Partner costs are mapped to Knowledge Translation. Equipment enters Non-consumables. CIHR requires the grant total to be a multiple of \$5,000 — round up to the nearest \$5,000 when entering in ResearchNet (e.g. \$342,150 → \$345,000). The CIHR-rounded total appears in Section 12 of the CSV export.</div>
+      </div>
+
+      <div class="sub-head">Export</div>
+      <div class="rv-export-grid" style="margin-bottom:16px">
+        <button class="pbtn" onclick="exportXLSX(this)">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Download spreadsheet (.xlsx)
+        </button>
+        <button class="pbtn pbtn-sec" onclick="toggleCIHRFormat()">CIHR Budget View</button>
+      </div>
+      <p style="font-size:11px;color:var(--textd);margin:0 0 16px">Spreadsheet includes full line-item detail, REB fee breakdown, CIHR category mapping, and year-by-year costs. Use <strong>Save a copy</strong> in the header to save a file you can reload into this tool.</p>
+      <div class="ct"><strong>Writing a grant application?</strong> See <a href="/kb/funding/budget-justifications" style="color:var(--teal)">Writing Budget Justifications</a> for how to turn these numbers into the narrative text that CIHR and foundation funders require.</div>
+
+      <div class="sec-nav">
+        <button class="sec-nav-btn" onclick="showSection('s-costs')">&#8592; Study Costs</button>
+        <span class="sec-nav-spacer"></span>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Activity picker — inside #bt-root so CSS vars cascade; <dialog> renders in browser top layer -->
+  <dialog id="act-picker" style="border:none;padding:0;width:min(680px,96vw);max-height:82vh;background:var(--white);flex-direction:column;overflow:hidden;border-radius:8px;box-shadow:0 20px 60px rgba(0,0,0,.22)">
+    <div style="background:var(--navy);padding:18px 20px;display:flex;align-items:center;justify-content:space-between;flex-shrink:0">
+      <div><div style="font-size:9px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.55);margin-bottom:4px">Work Plan</div><div id="ap-picker-title" style="font-size:16px;font-weight:700;color:#fff">Add activities from list</div></div>
+      <button onclick="closeActPicker()" style="background:none;border:none;color:rgba(255,255,255,.65);font-size:20px;cursor:pointer;padding:4px;line-height:1">&times;</button>
+    </div>
+    <div style="padding:12px 16px;border-bottom:1px solid var(--bdr-s);flex-shrink:0">
+      <input type="text" class="fi" id="act-picker-search" placeholder="Filter activities&hellip;" oninput="filterActPicker()" style="font-size:13px;max-width:340px">
+    </div>
+    <div id="act-picker-body" style="overflow-y:auto;flex:1;padding:0 0 8px"></div>
+    <div style="padding:10px 16px 12px;border-top:1px solid var(--bdr-s);background:var(--white);flex-shrink:0">
+      <div style="font-size:11px;font-weight:700;color:var(--textd);text-transform:uppercase;letter-spacing:.1em;margin-bottom:6px">Or add a custom activity</div>
+      <div style="display:flex;gap:8px;align-items:center">
+        <input type="text" id="ap-custom-name" class="fi" placeholder="Enter activity name&hellip;" style="font-size:13px;flex:1" onkeydown="if(event.key==='Enter'){addSelectedActivities();}">
+        <select id="ap-custom-type" class="fs" style="font-size:12px;width:140px;padding:6px 28px 6px 8px">
+          <option value="startup">Startup</option>
+          <option value="general" selected>General</option>
+          <option value="perpt">Per Participant</option>
+        </select>
+      </div>
+    </div>
+    <div style="padding:14px 16px;border-top:2px solid var(--navy);background:var(--bg);display:flex;align-items:center;justify-content:space-between;flex-shrink:0;gap:12px">
+      <span id="act-picker-count" style="font-size:12px;color:var(--textd)">0 selected</span>
+      <div style="display:flex;gap:10px">
+        <button class="add-btn" style="border-color:var(--bdr);color:var(--textd);margin-top:0" onclick="closeActPicker()">Cancel</button>
+        <button class="add-btn" style="background:var(--teal);color:#fff;border-color:var(--teal);margin-top:0" onclick="addSelectedActivities()">Add selected</button>
+      </div>
+    </div>
+  </dialog>
+  <div id="bt-tip"></div>
+</div>
+`;
+
+export const BudgetTool = () => {
+  useEffect(() => {
+    if (typeof window.__btInit === 'function') {
+      window.__btInit();
+    } else {
+      const s = document.createElement('script');
+      s.src = '/budget-tool-script.js';
+      s.onload = () => window.__btInit && window.__btInit();
+      document.body.appendChild(s);
+    }
+  }, []);
+
+  return (
+    <>
+      <style dangerouslySetInnerHTML={{__html: BT_CSS}} />
+      <div dangerouslySetInnerHTML={{__html: BT_HTML}} />
+    </>
+  );
+};
+
+<BudgetTool />

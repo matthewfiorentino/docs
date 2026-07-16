@@ -1,55 +1,33 @@
-# Mintlify Starter Kit
+# RI-MUHC Clinical Research Hub
 
-Use the starter kit to get your docs deployed and ready to customize.
+Documentation site for clinical research at the Research Institute of the McGill University Health Centre — role-based orientation, the Knowledge Base, Clinical Research SOPs, training requirements, Centre for Innovative Medicine guidance, and application guides (Nagano, TalentLMS, REDCap, and others).
 
-Click the green **Use this template** button at the top of this repo to copy the Mintlify starter kit. The starter kit contains examples with
-
-- Guide pages
-- Navigation
-- Customizations
-- API reference pages
-- Use of popular components
-
-**[Follow the full quickstart guide](https://starter.mintlify.com/quickstart)**
-
-## AI-assisted writing
-
-Set up your AI coding tool to work with Mintlify:
-
-```bash
-npx skills add https://mintlify.com/docs
-```
-
-This command installs Mintlify's documentation skill for your configured AI tools like Claude Code, Cursor, Windsurf, and others. The skill includes component reference, writing standards, and workflow guidance.
-
-See the [AI tools guides](/ai-tools) for tool-specific setup.
+Built with [Mintlify](https://mintlify.com). Content is Markdown/MDX; navigation and branding are defined in `docs.json`.
 
 ## Development
 
-Install the [Mintlify CLI](https://www.npmjs.com/package/mint) to preview your documentation changes locally. To install, use the following command:
+Install the [Mintlify CLI](https://www.npmjs.com/package/mint):
 
 ```
 npm i -g mint
 ```
 
-Run the following command at the root of your documentation, where your `docs.json` is located:
+Run from the folder containing `docs.json`:
 
 ```
 mint dev
 ```
 
-View your local preview at `http://localhost:3000`.
+Preview at `http://localhost:3333` (see `.claude/launch.json`).
 
-## Publishing changes
+## Publishing
 
-Install our GitHub app from your [dashboard](https://dashboard.mintlify.com/settings/organization/github-app) to propagate changes from your repo to your deployment. Changes are deployed to production automatically after pushing to the default branch.
+Changes deploy automatically to production when pushed to `main`, via the Mintlify GitHub app.
 
-## Need help?
+## Structure
 
-### Troubleshooting
-
-- If your dev environment isn't running: Run `mint update` to ensure you have the most recent version of the CLI.
-- If a page loads as a 404: Make sure you are running in a folder with a valid `docs.json`.
-
-### Resources
-- [Mintlify documentation](https://mintlify.com/docs)
+- `roles/`, `kb/`, `sops/`, `training/`, `cim/`, `apps/` — content by section
+- `docs.json` — navigation, theme, and site settings
+- `custom.css` — brand styling (Barlow / Barlow Condensed, self-hosted in `fonts/`)
+- `public/` — interactive tool scripts and downloadable resources
+- `images/`, `logo/` — media assets
