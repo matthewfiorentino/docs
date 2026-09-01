@@ -2,7 +2,7 @@
 title: "Research Nurse"
 sidebarTitle: "Research Nurse"
 description: "Starting point for OIIQ-licensed research nurses at the RI-MUHC — reserved acts under the Code des professions, CPR requirements, oncology certification, dual accountability, and the operational guide."
-keywords: ["Research Nurse", "nurse", "OIIQ", "Code des professions", "reserved acts", "dual accountability", "nursing obligations", "CPR", "nurse orientation"]
+keywords: ["Research Nurse", "nurse", "OIIQ", "Code des professions", "reserved acts", "dual accountability", "nursing obligations", "CPR", "nurse orientation", "nurse guide interventional", "IP administration", "specimen collection", "AE nursing", "pharmacy interaction"]
 boost: 2
 ---
 
@@ -10,12 +10,9 @@ boost: 2
 
 This page is for licensed nurses who appear on a study's main <Tooltip tip="Lists each team member, their qualifications, and specific trial tasks authorized by the QI." headline="Task Delegation Log (TDL)" cta="Full definition" href="/kb/foundations/glossary#tdl">Task Delegation Log</Tooltip> (TDL) at the RI-MUHC — whether you also coordinate the study or perform clinical tasks only. Your OIIQ licence and the RI-MUHC institutional training framework operate in parallel; neither substitutes for the other.
 
-<CardGroup cols={3}>
+<CardGroup cols={2}>
   <Card title="Get trained" icon="shield-check" href="/training/compliance-requirements">
-    The SOP Reader, Competency Assessment, and the certifications your study level requires.
-  </Card>
-  <Card title="Research Nurse Guide" icon="user-nurse" href="/roles/nurse-guide">
-    Day-to-day operations — delegated procedures, source documentation, specimen handling, safety, and your dual accountability.
+    The SOP Reader and Assessment, and the certifications your study level requires.
   </Card>
   <Card title="The Centre for Innovative Medicine" icon="hospital" href="/cim/services">
     Where much of the RI-MUHC's specialized research nursing happens — Phase I, oncology, and infusion studies at the Glen and Montreal General.
@@ -148,36 +145,116 @@ All research nurses on the main TDL complete the RI-MUHC institutional training 
 | Requirement | Details |
 |---|---|
 | Institutional onboarding | Portal access, ID card, [TalentLMS](/apps/talentlms) enrolment, Research Staff Handbook, Confidentiality Agreement (see [Privacy and Confidentiality](/kb/recruitment/privacy)), mandatory institutional courses |
-| SOP Reader on TalentLMS | Acknowledgement of the RI-MUHC SOPs applicable to your study type |
-| Competency Assessment on TalentLMS | 2-year cycle for SOP-CR; 5-year cycle for SOP-LR |
+| SOP Reader and Assessment on TalentLMS | Read and acknowledge the SOPs for your level, then complete the assessment. 2-year cycle for SOP-CR; 5-year cycle for SOP-LR |
 | GCP (Levels I–II) | ICH E6(R3) via CITI or recognized provider |
 | Health Canada Division 5 (Level I) | Required for drug trials under a <Tooltip tip="Application to Health Canada for authorization to conduct a drug trial under Division 5 of the Food and Drug Regulations." headline="Clinical Trial Application (CTA)" cta="Full definition" href="/kb/foundations/glossary#cta">CTA</Tooltip> |
 | ISO 14155 (Level II) | Required for medical device trials under an <Tooltip tip="Health Canada authorization to conduct a clinical investigation of a medical device. The device equivalent of a CTA." headline="Investigational Testing Authorization (ITA)" cta="Full definition" href="/kb/foundations/glossary#ita">ITA</Tooltip> |
 
-Good documentation practice (ALCOA+) applies to all source data you generate. See [Data Integrity](/kb/conduct/data-documentation/data-integrity).
+## During study visits — interventional workflow
 
-## Nursing-specific obligations throughout a study
+This part covers the nursing-specific operational layer for interventional studies: pre-visit preparation for IP visits, IP administration, specimen collection, clinical monitoring during visits, AE assessment within nursing scope, and between-visit contact.
+
+**Scope.** Levels I–III cover drug, medical device, and natural health product studies. The dominant pattern at the RI-MUHC — and the focus of this part — is IP administration visits (Level I drug studies, Level III NHP studies). For Level II medical device studies, the visit workflow, clinical monitoring, and AE capture sections still apply; IP-specific content is replaced by device-specific procedures governed by ISO 14155 and the study protocol. Refer to [SOP-CR-024](/sops/cr-024) for device-specific requirements.
+
+### Before the visit
+
+The CRC Guide's pre-visit checklist applies to you. Three nurse-specific additions:
+
+- **Pre-visit safety check for IP visits** — for any visit involving an investigational product, the QI confirms IP side effects, verifies emergency equipment is ready, and confirms qualified staff are available. This is a general expectation regardless of setting. At CIM, it is formalized as **WI-CIM-AD001 Appendix 1** (Safety Checklist Prior to Study Visit), completed before each such visit. Other settings follow the equivalent planning practice without the specific WI template. If you are aware of any gap, flag it to the QI before the visit begins.
+- **Review the <Tooltip tip="Compilation of clinical and nonclinical data on the investigational product relevant to the study." headline="Investigator's Brochure (IB)" cta="Full definition" href="/kb/foundations/glossary#ib">Investigator's Brochure</Tooltip>** — know the IP's known side effects and safety signals. You should be able to anticipate what to watch for during and after administration.
+- **Confirm pharmacy has dispensed IP** — the prepared dose is correct, labelled with the participant's study number, and not expired. Never administer IP that has not come through Pharmacy's dispensing workflow, unless the study has an approved nurse dispensing waiver on file (see [Nurse dispensing exception](#nurse-dispensing-exception) above).
+
+### Investigational product administration
+
+In Quebec, IP administration is governed by both Health Canada Division 5 and provincial pharmacy legislation. The MUHC Research Pharmacy holds the central role in IP management — receipt, storage, dispensing, and accountability. You administer what Pharmacy has dispensed.
+
+- **Pharmacy dispenses; you administer.** Under the standard Quebec rule, IP is dispensed by the Research Pharmacy. Administer only from pharmacy-dispensed supply — never from unpackaged stock, expired supply, or supply not traceable to a dispensing record.
+- **Follow the protocol** for route, dose, rate, and infusion procedure. Deviations (e.g. infusion interrupted, dose adjusted without authorization) must be documented and reported as [protocol deviations](/kb/conduct/safety-reporting/reportable-events).
+- **Complete IP accountability documentation** — dose administered, time, lot number if required. Pharmacy and the CRA audit this at [monitoring visits](/kb/conduct/safety-reporting/monitoring-audits).
+- **If the study has a nurse dispensing waiver** — see [Nurse dispensing exception](#nurse-dispensing-exception) before dispensing directly to participants.
+- **Report IP-related reactions immediately** — both clinical management and documentation. Escalate AEs and SAEs through the [safety reporting pathway](/kb/conduct/safety-reporting/reportable-events).
+
+For the full IP lifecycle at the MUHC — receipt, storage, temperature monitoring, accountability, and the Quebec pharmacy rule — see [Investigational Products](/kb/conduct/study-operations/investigational-products). For how deviations are classified and what triggers a CAPA, see [Deviation Management](/kb/conduct/safety-reporting/deviation-management).
 
 <AccordionGroup>
-  <Accordion title="Before each visit (IP studies)">
-    Know the IP's safety profile and confirm emergency readiness with the QI before any IP visit. Verify with pharmacy that the prepared dose is correct and not expired. See the [Nurse Guide — Before the Visit](/roles/nurse-guide#before-the-visit) for the full pre-visit checklist.
-  </Accordion>
-  <Accordion title="IP administration">
-    Administer only from pharmacy-dispensed supply. Follow the protocol for route, dose, rate, and infusion procedure. Complete IP accountability documentation after every administration. See the [Nurse Guide — IP Administration](/roles/nurse-guide#investigational-product-administration) for the full procedure.
-  </Accordion>
-  <Accordion title="Specimen collection">
-    Blood draws are reserved acts under the *Code des professions* — if non-nurse team members appear on the TDL for specimen collection, flag the delegation error. See the [Nurse Guide — Specimen Collection](/roles/nurse-guide#specimen-collection) for collection and hand-off procedures.
-  </Accordion>
-  <Accordion title="Clinical monitoring during visits">
-    Perform vital signs, ECG, and clinical assessments per the protocol's timing. Escalate in real time if participant condition changes — notify the QI immediately, not at the end of the visit. See the [Nurse Guide — Clinical Monitoring](/roles/nurse-guide#clinical-monitoring-during-visits) for the full monitoring workflow.
-  </Accordion>
-  <Accordion title="AE assessment and safety reporting">
-    Assess severity and clinical significance within nursing scope. Document your observations — they are the foundation for the QI's medical assessment. For SAEs, notify the QI immediately. See the [Nurse Guide — Safety and AE Assessment](/roles/nurse-guide#safety-and-ae-assessment) for scope boundaries and escalation.
-  </Accordion>
-  <Accordion title="Between visits">
-    You are often the most consistent point of contact for participants between scheduled visits. Document every call as source data. See the [Nurse Guide — Between Visits](/roles/nurse-guide#between-visits) for documentation standards and after-hours coverage.
+  <Accordion title="Learning activity — IP administration">
+    **Observe:** Accompany the research pharmacist during an IP dispensing session. Note how they verify the dose, check labelling, and document the dispensing record.
+
+    **Discuss with your QI or supervisor:**
+    - Walk me through the emergency unblinding procedure for this study — who has the codes, and what triggers unblinding?
+    - What happens if I discover a temperature excursion or labelling discrepancy at the time of administration?
   </Accordion>
 </AccordionGroup>
+
+### Specimen collection
+
+The CRC Guide covers specimen logistics — Lab Manual, labelling, processing, shipping. Your specific contribution is the collection itself: blood draws, urine, swabs, and other samples that require your licence.
+
+<Warning>
+  **Blood draws are reserved under the *Code des professions*** — to nurses and phlebotomists only. If non-nurse team members (a non-nurse CRC, research assistant, trainee) appear on the TDL for specimen collection, that is a delegation error to flag before the next collection visit.
+</Warning>
+
+- **Order of draw matters** — some assays are sensitive to contamination from prior tubes. Follow the Lab Manual's specified order.
+- **Processing window** — for specimens requiring time-sensitive processing (e.g. PBMC isolation, serum separation), your collection time starts the clock. Document the time of collection accurately. A deviation from the processing window is reportable.
+- **Coordinate hand-off** — once collected, specimens go to Processing per the Lab Manual. Your role ends at transfer unless you are also delegated for processing tasks.
+
+Follow biosafety precautions per the QI's risk assessment before beginning any specimen collection. For the full specimen management framework — TDG/IATA shipping, temperature monitoring, and biosafety — see [Biological Specimens](/kb/conduct/study-operations/biological-specimens).
+
+For pediatric participants, blood draws require age-appropriate technique and equipment. See [Pediatric Research](/kb/recruitment/pediatric-research).
+
+### Clinical monitoring during visits
+
+You are the team member with the clinical licence to perform in-visit monitoring and assessment. This is your most distinct contribution beyond CRC coordination.
+
+- **Vital signs and ECG** — per the protocol's specified timing. For IP infusions, protocols typically require frequent vitals during and after administration. Deviations from the timing grid are documented.
+- **Observe and assess during and after IP administration** — especially for first doses, infusions, or known risk IPs. Watch for infusion reactions, hypersensitivity signs, changes in participant-reported symptoms.
+- **Clinical assessment within your scope** — symptoms, participant-reported concerns, physical signs that fall within nursing assessment. Medical diagnosis remains with the QI.
+- **Escalate in real time** — if participant condition changes during a visit (vital sign abnormalities, reaction signs, reported distress), notify the QI immediately, not at the end of the visit.
+
+<AccordionGroup>
+  <Accordion title="Learning activity — Clinical monitoring">
+    **Observe:** If possible, shadow an experienced research nurse during an infusion visit. Note the timing of vital signs relative to IP administration, what they watch for during the observation period, and how they document the assessment.
+
+    **Discuss with your QI or supervisor:**
+    - What are the known safety signals for this IP, and at what point during the infusion are they most likely to appear?
+    - What is the escalation threshold — at what vital sign change or symptom do I stop the infusion and call the QI?
+  </Accordion>
+</AccordionGroup>
+
+### Safety and AE assessment
+
+The CRC Guide's AE section applies to you. Your clinical assessment capability adds one distinct layer: you can assess clinical significance and severity within nursing scope, which informs but does not replace the QI's medical assessment.
+
+- **Ask, observe, document** — at every visit, ask about new or changed symptoms. Observe during procedures. Document what participants report, using their own words where possible.
+- **Clinical assessment within scope** — you can assess severity (mild, moderate, severe) and clinical significance based on your nursing training. Document what you observed and your assessment. The QI's medical assessment determines causality, expectedness, and final AE classification — your documentation is the foundation for that determination, not a substitute for it.
+- **For SAEs, notify the QI immediately** — not at the next scheduled handoff. <Tooltip tip="An adverse event meeting seriousness criteria: death, life-threatening, hospitalization, disability, or congenital anomaly." headline="Serious Adverse Event (SAE)" cta="Full definition" href="/kb/foundations/glossary#sae">SAE</Tooltip> reporting timelines are tight: sponsor notification typically within 24 hours.
+- **Follow-up to resolution** — open AEs require follow-up. Your next-visit assessment of a previously reported AE is part of the clinical trail the QI relies on.
+
+### Between visits
+
+Research nurses are often the most consistent point of contact for participants between scheduled visits — receiving calls, responding to questions, fielding concerns outside business hours.
+
+- **Participant calls** — if a participant calls with a new symptom or concern, document the call (date, time, content, your assessment, action taken). Assess clinical urgency within your scope and escalate to the QI as needed.
+- **After-hours coverage** — confirm with the QI and CRC what after-hours coverage applies for your study. Some studies require dedicated after-hours nurse contact; others route calls to on-call clinical services or to the QI directly. The protocol and Site Initiation materials should specify the arrangement.
+- **Document everything** — between-visit contact is source data. The log you keep feeds the QI's ongoing safety review and the next monitoring visit.
+
+All documentation you create — vital signs, AE observations, call logs — is source data subject to ALCOA+ principles. Record at the time of the activity, in permanent ink, with corrections by single line-through, initials, date, and reason. See [Data Integrity](/kb/conduct/data-documentation/data-integrity).
+
+When documenting participant calls, use coded identifiers (study number), not names or MRNs, on any portable device or worksheet. See [Privacy and Confidentiality](/kb/recruitment/privacy).
+
+<AccordionGroup>
+  <Accordion title="Learning activity — Between visits">
+    **Review:** Check the after-hours coverage protocol for your study. Confirm who participants should call outside business hours and what your role is in that coverage.
+
+    **Discuss with your QI or supervisor:**
+    - What documentation standard do you expect for between-visit participant calls — is a note in the source record sufficient, or do I also update the CRF?
+    - If a participant calls with a symptom that could be an AE, what is the escalation pathway before the next scheduled visit?
+  </Accordion>
+</AccordionGroup>
+
+### At close-out
+
+Your clinical tasks end when the last participant completes the last scheduled visit. Confirm with the CRC that all nursing-related source documentation is complete and filed. If you administered IP, verify your accountability records are reconciled with pharmacy. Your end date is recorded on the Task Delegation Log by the QI.
 
 ## Working with your team
 
@@ -191,20 +268,20 @@ Research nursing is collaborative. A few counterparts you work with regardless o
 
 ## If you also coordinate the study
 
-If you hold both the coordinator role and a nursing licence (CRC-Nurse), the [Coordinator](/roles/coordinator) page is your complete coordinator reference. Use it alongside this page. Start with the Competency Domains section, which maps the 12 areas of coordinator work, and Professional Development for SOCRA/ACRP certification.
+If you hold both the coordinator role and a nursing licence (CRC-Nurse), the [Coordinator](/roles/coordinator) page is your complete coordinator reference. Use it alongside this page. Start with the Competency Domains section, which maps the areas of coordinator work, and Professional Development for SOCRA/ACRP certification.
 
 Everything on this page still applies to you. You will have a single TDL entry covering both your coordinator and nursing tasks.
 
 ## If you work at CIM
 
-The [Centre for Innovative Medicine (CIM)](/cim/services) at the Glen (blocks B4 and C4) and Montreal General adds site-specific Work Instructions on top of the generic requirements on this page.
+The [Centre for Innovative Medicine (CIM)](/cim/services) at the Glen (blocks B4 and C4) and Montreal General adds site-specific Work Instructions on top of the generic requirements on this page. These are held on the [RI-MUHC Portal](https://portal.rimuhc.ca/pls/apex/f?p=106:420) and read through the CIM Work Instructions Reader in TalentLMS.
 
 <AccordionGroup>
   <Accordion title="Emergency preparedness at CIM">
     In addition to BLS/CPR-HCP certification, CIM staff complete: **Code Blue** (cardiac and respiratory emergencies), **Code Red and Code Green** (fire and evacuation — site-specific at Glen and MGH), and **UBEC verification** (Unit Based Emergency Cart — confirms emergency cart is stocked and accessible).
   </Accordion>
   <Accordion title="IP visits — WI-CIM-AD001">
-    The CIM formalizes the pre-visit safety check as **WI-CIM-AD001 Appendix 1** (Safety Checklist Prior to Study Visit). Complete it before each IP administration visit.
+    See [Before the visit](#before-the-visit) for the pre-visit safety check, formalized at CIM as WI-CIM-AD001 Appendix 1.
   </Accordion>
   <Accordion title="CIM Infusion Centre">
     The CIM Infusion Centre, developed with the Cedars Cancer Centre, provides dedicated space for research infusion procedures. Nurses working in this setting follow infusion-specific procedures and safety requirements. Bookings and inquiries: **cim.infusion@muhc.mcgill.ca**.
@@ -219,12 +296,9 @@ The [Centre for Innovative Medicine (CIM)](/cim/services) at the Glen (blocks B4
 
 ## Guides by study type
 
-Use the Nurse Guide for day-to-day nursing operations — IP administration, visit workflow, and AE capture. Pair it with the corresponding CRC Guide if you also coordinate.
+Pair this page with the corresponding CRC Guide if you also coordinate.
 
-<CardGroup cols={2}>
-  <Card title="Nurse Guide — Interventional (I–III)" icon="syringe" href="/roles/nurse-guide">
-    IP administration, pharmacy interaction, specimen collection, clinical monitoring, and AE assessment for drug, device, and NHP studies.
-  </Card>
+<CardGroup cols={1}>
   <Card title="CRC Guide — Interventional (I–III)" icon="flask" href="/roles/crc-guide">
     Full operational reference for CRC-Nurses who also coordinate: study setup, consent, screening, ISF, monitoring visits, close-out.
   </Card>
@@ -240,13 +314,10 @@ Use the Nurse Guide for day-to-day nursing operations — IP administration, vis
     Obligations are set under the *Règlement sur la formation continue obligatoire des infirmières et infirmiers*. Check current requirements on the OIIQ website. Some CANTRAIN modules may be recognized — confirm directly with OIIQ.
   </Card>
   <Card title="CRC-Nurse certification" icon="award" href="/training/external-certifications">
-    After 2,500+ hours of coordinator experience, consider SoCRA CCRP or ACRP CCRC certification. See the [Coordinator — Professional development](/roles/coordinator) for the full coordinator development track.
+    Consider SoCRA CCRP or ACRP CCRC certification — see the certification pathways table on the [CRC Orientation](/roles/coordinator) for experience requirements and the full coordinator development track.
   </Card>
   <Card title="Community Connect" icon="users" href="/kb/community/community-connect">
     Regular sessions hosted by the Research Facilitator covering practical topics. Open to all research staff — a good way to stay current on institutional changes and connect with colleagues across research programs.
-  </Card>
-  <Card title="Learning Lab and team exercises" icon="flask" href="/training/learning-lab">
-    Self-directed practice across 11 topics — browse by topic, shuffle for variety, or try inspection prep mode. Team exercises are designed for group facilitation and can be used for ongoing team development.
   </Card>
 </CardGroup>
 

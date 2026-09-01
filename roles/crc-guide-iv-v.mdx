@@ -1,0 +1,194 @@
+---
+title: "CRC Guide — Observational & Retrospective Studies (Levels IV–V)"
+sidebarTitle: "Observational & Retrospective (IV–V)"
+description: "Operational reference for CRCs working on prospective observational studies (Level IV) and retrospective chart review or biobanked sample studies (Level V). Covers consent, the ÉFVP consent waiver decision, data extraction, privacy compliance, REB processes, and documentation."
+keywords: ["CRC guide observational", "CRC guide retrospective", "Level IV", "Level V", "chart review", "data extraction", "prospective CRC", "non-invasive CRC", "EFVP"]
+---
+
+## Understanding the role
+
+Level IV studies — prospective observational, educational, and non-invasive interventions — and Level V studies — retrospective chart reviews and studies using previously anonymized biobanked samples — have a different operational profile from interventional trials. There is typically no commercial sponsor, no <Tooltip tip="A drug, medical device, or natural health product being tested or used as a reference in a clinical trial." headline="Investigational Product (IP)" cta="Full definition" href="/kb/foundations/glossary#ip">investigational product</Tooltip>, no CRA monitoring your site, and no sponsor <Tooltip tip="An adverse event meeting seriousness criteria: death, life-threatening, hospitalization, disability, or congenital anomaly." headline="Serious Adverse Event (SAE)" cta="Full definition" href="/kb/foundations/glossary#sae">SAE</Tooltip> channel. You remain under <Tooltip tip="The ethics committee that reviews and approves research involving human participants. Also called CER at French-language institutions." headline="Research Ethics Board (REB)" cta="Full definition" href="/kb/foundations/glossary#reb">REB</Tooltip> oversight and SOP compliance at both levels.
+
+- **Level IV (prospective observational):** participants are contacted and consented. Your work centres on consent, recruitment, and data collection integrity — and you serve as a **participant advocate**, the person closest to their experience even in a non-interventional study.
+- **Level V (retrospective):** usually no participant contact. Your work centres on chart abstraction, de-identification, database management, and REB maintenance. Consent may still apply if the <Tooltip tip="Required under Quebec Law 25 before communicating personal information without consent for research. Non-compliance: up to $25M or 4% of worldwide turnover." headline="ÉFVP — Privacy Impact Assessment" cta="Full definition" href="/kb/foundations/glossary#efvp">ÉFVP</Tooltip> determines a waiver is not feasible.
+
+### Training requirements
+
+Both levels follow the SOP-LR path on a 5-year SOP Reader and Assessment cycle, with no external certifications (GCP, Division 5, ISO 14155) required. For the full matrix, see [Training and Compliance Requirements](/training/compliance-requirements). For the full onboarding sequence — institutional setup, SOP Reader and Assessment, and TDL — see the [CRC Orientation](/roles/coordinator).
+
+<Info>
+**If you also work on interventional studies:** your training level is set by your highest-risk active study — a Level IV or V study alongside a Level I drug trial means you train at Level I. See the [CRC Guide — Interventional](/roles/crc-guide).
+</Info>
+
+### On the study team
+
+- **<Tooltip tip="The physician responsible to the sponsor for the conduct of a clinical trial at the site. One QI per study per Canadian site." headline="Qualified Investigator (QI)" cta="Full definition" href="/kb/foundations/glossary#qi">QI</Tooltip>/PI:** carries ultimate accountability for the study. Your PI's countersignature on the delegation log confirms your qualification for your tasks.
+- **Sub-Investigator (Sub-I):** assists the PI and can serve as PI backup if they hold RI-MUHC [Human Research Privileges or Researcher Status](/training/compliance-requirements#human-research-privileges-and-researcher-status) — valid for Levels IV and V since no medical oversight is required.
+- **Research Assistant:** supports data collection and scheduling (IV), or data extraction and database management (V), under CRC or PI supervision, with a current SOP Reader and Assessment certificate and delegation before accessing study data.
+- **Research Nurse:** if your Level IV study involves clinical procedures, a research nurse handles tasks reserved under Quebec's *Code des professions*.
+
+### Institutional and service contacts
+
+- **QA department:** contact QA when uncertain about compliance, before a deviation occurs. QA verifies training, Privileges or Researcher Status, and delegation documentation at every <Tooltip tip="The RI-MUHC's electronic study submission and management platform. All studies requiring MUHC Authorization are submitted through Nagano." headline="Nagano (RI-MUHC)" cta="Full definition" href="/kb/foundations/glossary#nagano">Nagano</Tooltip> submission.
+- **Research Facilitator:** your entry point for RI-MUHC processes and the Nagano workflow. **Research Agreements Office:** reviews contracts where applicable.
+- **Nursing services / Laboratory (Level IV)** and **DPS** trigger feasibility reviews when required — for Level V, DPS review may also apply for access beyond standard OACIS. Answer the F11 form accurately; underreporting delays <Tooltip tip="Institutional authorization allowing a study to proceed at the RI-MUHC. Issued after ethics approval and feasibility review." headline="MUHC Authorization" cta="Full definition" href="/kb/foundations/glossary#muhc-auth">MUHC Authorization</Tooltip>.
+- **Privacy and information security:** the ÉFVP may be required for Level IV studies with identifiable PHI or software platforms, and is likely required for Level V studies accessing identifiable health information — often the most consequential feasibility review for retrospective studies.
+
+## Study preparation
+
+See also: [Preparing Your Submission](/kb/submission/preparing) | [Privacy and Confidentiality](/kb/recruitment/privacy)
+
+<Warning>
+**MUHC Authorization before any study procedures or data access.** The <Tooltip tip="Individual formally authorized to issue the final written authorization for each research project at a Quebec RSSS institution." headline="Personne mandatée (PFM)" cta="Full definition" href="/kb/foundations/glossary#personne-mandatee">Personne mandatée</Tooltip> must issue the MUHC Authorization letter. File it before any recruitment, screening, or consent activity (Level IV) or before your team accesses any patient records for research purposes (Level V).
+</Warning>
+
+<Steps>
+  <Step title="REB approval and MUHC Authorization">
+    Submit via Nagano (F11-H or appropriate form type). For Level V, the REB approval should explicitly state whether a consent waiver has been granted — a determination informed by the ÉFVP.
+  </Step>
+  <Step title="Protocol review, delegation log, and OACIS access">
+    Read the full protocol — data collection procedures and population (IV), or authorized data sources and population (V). The delegation log, signed by your PI, lists your tasks; file your CV and SOP Reader and Assessment certificate. For Level V, confirm your OACIS access is authorized and limited to what the protocol specifies — for data beyond OACIS, the [MUHC Data Warehouse](/kb/design-support/data-warehouse) may be required.
+  </Step>
+  <Step title="Data collection tools (IV) or extraction plan and database (V)">
+    For Level IV, set up tested REDCap databases, CRFs, survey instruments, or interview guides matching the protocol. For Level V, define which variables you are extracting, from which systems, for which population, and build the [REDCap](/apps/redcap) database to match, testing with sample records first. [CORD](/kb/design-support/cord) can build it for you — architecture decisions are costly to change once extraction begins.
+  </Step>
+  <Step title="Study file">
+    A full <Tooltip tip="The QI's collection of documentation demonstrating compliance, study integrity, and participant safety." headline="Investigator Site File (ISF)" cta="Full definition" href="/kb/foundations/glossary#isf">ISF</Tooltip> structure may not be required for every study, but maintain a file with: the protocol, REB approval letter, MUHC Authorization, delegation log, consent forms (IV) or data management plan and access agreements (V), and correspondence. Your PI and QA can advise on what your study needs.
+  </Step>
+</Steps>
+
+<AccordionGroup>
+  <Accordion title="Learning activity — Study preparation">
+    **Review:** Read your study's REB approval letter — for Level V, confirm it grants a waiver and specifies the authorized data sources and population.
+
+    **Discuss with your supervisor:** Is OACIS the primary data source, or are there others? Who built the REDCap database?
+  </Accordion>
+</AccordionGroup>
+
+## Consent
+
+### Level IV — consent and enrolment
+
+See also: [Consent in Quebec](/kb/recruitment/consent) | [SOP-CR-008](/sops/cr-008)
+
+Level IV studies involve participant contact, so consent applies, and the same Quebec-specific rules govern the process.
+
+- **Use the current REB-approved <Tooltip tip="The written document providing the participant with information essential to making an informed decision. Both parties must sign." headline="Informed Consent Form (ICF)" cta="Full definition" href="/kb/foundations/glossary#icf">ICF</Tooltip>** — version control is your responsibility. Under **Bill 96**, forms at public institutions must be available in French.
+- Give the participant adequate time to read, ask questions, and decide, and document the process in the source record. Confirm **who conducts the discussion** on your delegation log — the PI may need to be present for clinical decisions or medical risk.
+- **Incapacitated adults (Art. 21 CCQ):** the same hard legal requirements apply as for interventional studies — consent from the person with legal authority AND MSSS-designated REB authorization.
+- Some studies may qualify for a **waiver or alteration of consent** — for example, observation of routine care where the research adds no intervention. This requires REB approval; you cannot make the determination independently.
+
+### Level V — the consent waiver decision
+
+See also: [Privacy and Confidentiality in Research](/kb/recruitment/privacy)
+
+<Warning>
+**Consent waiver is not automatic.** Most retrospective chart review studies operate under a waiver of consent granted by the REB, but under Loi 25, whether a waiver is granted depends on the ÉFVP outcome. The legal default is always to obtain consent — access to identifiable data without consent requires ÉFVP committee approval. A waiver is granted when the committee determines consent is not feasible — for example, a chart review of 500 patients from 2000 to 2010, many of whom may have died, been lost to follow-up, or have outdated contact information. In contrast, for a small number of recent patients — say, five from the last year — the committee may determine it's reasonable to contact them for consent. Confirm the requirement with your PI and the REB before beginning extraction.
+</Warning>
+
+If the ÉFVP committee determines that consent is feasible, the Level IV consent process above applies to the consent component of your study, even though it remains Level V in every other respect.
+
+## Data extraction (Level V)
+
+Data extraction from medical records is the core of your work at this level. Accuracy and consistency are critical — errors at this stage propagate through the entire analysis.
+
+- **Follow the extraction plan exactly.** Extract only the variables specified in the protocol; do not extract data outside the plan without PI approval and, if necessary, a protocol amendment.
+- **Use participant IDs, not names.** Never enter patient names or health card numbers into the research database — maintain the identification key (linking IDs to chart numbers) separately and securely.
+- **Document your extraction process:** which records you reviewed, when, and any issues encountered (missing data, ambiguous or conflicting entries).
+- **Handle missing data consistently.** Decide in advance (with your PI) how missing data will be coded — do not leave fields blank undocumented.
+- **Verify a sample.** For large extractions, have a second person verify a random sample against source charts and document the error rate.
+- **Corrections follow GDP.** Correct extraction errors in the database using the audit trail (in REDCap, the Data History feature) — never overwrite without documentation.
+
+<AccordionGroup>
+  <Accordion title="Learning activity — Data extraction">
+    **Discuss with your supervisor:** How do we handle ambiguous data in the chart — for example, when the discharge summary doesn't match the clinical notes? What verification process do we use to ensure extraction accuracy?
+  </Accordion>
+</AccordionGroup>
+
+## Active conduct (Level IV)
+
+See also: [Data Integrity](/kb/conduct/data-documentation/data-integrity) | [SOP-CR-014](/sops/cr-014)
+
+### Data collection and management
+
+Data management centres on [REDCap](/apps/redcap) rather than a sponsor-provided EDC. Follow the protocol's collection procedures exactly — without a sponsor CRA checking your work, this is your primary quality assurance mechanism. Complete REDCap training (via [CORD](/kb/design-support/cord)), enter data promptly, and resolve validation errors as they arise. Corrections follow Good Documentation Practice: single line through the error, correct value, initial and date; electronic systems use the audit trail. Your PI reviews data periodically and signs off before analysis — document the review.
+
+<AccordionGroup>
+  <Accordion title="Learning activity — Data management">
+    **Discuss with your supervisor:** Who built the database and who do I contact if I find an issue? What's our process for data review and sign-off before analysis?
+  </Accordion>
+</AccordionGroup>
+
+### Safety and adverse events
+
+Level IV studies typically do not involve interventions that cause adverse events. If a participant reports a health concern, document it and notify your PI; follow the protocol's reporting procedures if it specifies any. Report any **unanticipated problems involving risk to participants** to the REB regardless of whether a formal <Tooltip tip="Any untoward medical occurrence in a participant, whether or not related to the investigational product." headline="Adverse Event (AE)" cta="Full definition" href="/kb/foundations/glossary#ae">AE</Tooltip> requirement exists — there is no sponsor SAE channel at this level.
+
+### Recruitment and screening
+
+Recruitment often relies on clinic referrals, patient registries, or chart review. Pre-screen using OACIS or clinic records with authorized access; recruitment materials must be REB-approved before use. Some eligibility criteria may require PI judgment — verify your delegation. Record every screened participant, including screen failures and reasons, on the Screening Log.
+
+<AccordionGroup>
+  <Accordion title="Learning activity — Recruitment and screening">
+    **Discuss with your supervisor:** How do you build referral relationships with clinical teams? What are the most common reasons for screen failure on our current studies?
+  </Accordion>
+</AccordionGroup>
+
+## Privacy and data protection
+
+See also: [Privacy and Confidentiality](/kb/recruitment/privacy) | [Data Security](/kb/conduct/data-documentation/data-security)
+
+Privacy is the highest-risk area for Level V studies, and Loi 25 applies fully to identifiable data collected at Level IV as well.
+
+- An **ÉFVP** may be required before data collection begins — confirm with your PI and QA before starting.
+- Your **OACIS access must be authorized and auditable** — access only what is specified in your protocol; logs may be reviewed.
+- **De-identification is not optional.** The research database holds participant IDs only; the key linking IDs to chart numbers (or names) is stored separately and securely, restricted to authorized team members — never on personal devices or unapproved cloud services.
+- Data shared outside the MUHC needs a **data transfer agreement** and de-identification unless the agreement authorizes identifiable data. **Cross-border transfers** have additional Loi 25 requirements.
+- **At Level V study completion, confirm the disposition of the identification key** — destroyed, retained, or transferred — and document it in the study file.
+
+<AccordionGroup>
+  <Accordion title="Learning activity — Privacy and data protection">
+    **Discuss with your supervisor:** Has an ÉFVP been completed for this study? Who has access to the identification key, and where is it stored? If I accidentally access a record outside the study population, who do I report it to?
+  </Accordion>
+</AccordionGroup>
+
+## Protocol deviations
+
+See also: [Reportable Events and Ethical Concerns](/kb/conduct/safety-reporting/reportable-events)
+
+Deviations happen on observational and retrospective studies too — missed data collection windows or eligibility documentation gaps (Level IV); extraction outside the approved scope, or an extraction plan changed without an amendment (Level V). The process is the same:
+
+- **Identify** deviations during routine work and escalate to your PI immediately.
+- **Document** what happened, when, why, and what corrective action was taken.
+- **Report.** Report major or critical deviations to QA and the REB. Minor deviations are documented and filed in the study file.
+- **Correct** the underlying issue — for example, if you extracted data for a patient outside the approved cohort, confirm with your PI whether it must be excluded from analysis.
+
+<AccordionGroup>
+  <Accordion title="Learning activity — Protocol deviations">
+    **Discuss with your supervisor:** What are the most common deviations on our observational and retrospective studies? When does a deviation need to be reported to the REB vs. documented internally?
+  </Accordion>
+</AccordionGroup>
+
+## Ongoing management
+
+- **Annual REB renewal** — submit via Nagano before approval expires, with updated progress, any change to the extraction scope (Level V), and a current personnel list. A lapse means you must stop all participant contact (IV) or data access (V) until renewed.
+- **Protocol amendments** — if what participants experience changes (IV), or the extraction plan changes (V), submit an amendment via Nagano before implementing it and document training on the Training Log.
+- **Staff changes, SOP updates, and leave of absence** — update the delegation log when members join or leave; complete updated SOP Reader units in [TalentLMS](/apps/talentlms) when they reset; SOP Reader and Assessment renews on a 5-year cycle. Leave of more than 6 months requires training renewal before returning, with the log reflecting undelegation during leave ([SOP-CR-002](/sops/cr-002)).
+
+## Close-out
+
+- Confirm all data collection or extraction is complete and any queries or validation errors are resolved, and the database is final.
+- Submit the **Study Completion Report** to the REB via Nagano.
+- Record end dates on the delegation log for all team members.
+- **Level V:** determine the disposition of the identification key — destroy it, retain it for a specified period, or transfer responsibility — and document and execute the decision.
+- Archive the study file. The 15-year Division 5 retention requirement does not apply to Levels IV–V; the minimum for non-regulated studies is 7 years from study closure (see [Data Integrity](/kb/conduct/data-documentation/data-integrity)). Confirm with your PI and QA.
+
+---
+
+## Related resources
+
+- [CRC Orientation](/roles/coordinator) — role definition, training progression, and the guides by study type
+- [CRC Guide — Interventional (Levels I–III)](/roles/crc-guide) — if you also work on drug, device, or NHP studies
+- [Privacy and Confidentiality in Research](/kb/recruitment/privacy) — ÉFVP framework, consent waivers, and data handling under Quebec law
+- [Consent in Quebec](/kb/recruitment/consent) — full consent framework, including Art. 21 CCQ
+- [Data Integrity](/kb/conduct/data-documentation/data-integrity) | [Data Management (CORD)](/kb/design-support/cord) | [MUHC Data Warehouse](/kb/design-support/data-warehouse)
+- [Reportable Events and Ethical Concerns](/kb/conduct/safety-reporting/reportable-events) — deviation reporting framework

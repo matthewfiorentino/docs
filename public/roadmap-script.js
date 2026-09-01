@@ -405,18 +405,16 @@
       5: 'Level V — Retrospective / Secondary Data Study'
     };
     var isCR = p.level <= 3;
-    var path = isCR ? 'SOP-CR path · Competency Assessment valid 2 years'
-                    : 'SOP-LR path · Competency Assessment valid 5 years';
+    var path = isCR ? 'SOP-CR path · certificate valid 2 years'
+                    : 'SOP-LR path · certificate valid 5 years';
     var reqs = [];
     if (isCR) {
-      reqs.push({ text: 'SOP-CR Reader', where: 'TalentLMS', href: '/training/compliance-requirements' });
-      reqs.push({ text: 'Competency Assessment — SOP-CR (valid 2 years)', where: 'TalentLMS', href: '/training/compliance-requirements' });
+      reqs.push({ text: 'SOP Reader and Assessment — SOP-CR (valid 2 years)', where: 'TalentLMS', href: '/training/compliance-requirements' });
       reqs.push({ text: 'ICH E6(R3) GCP — Good Clinical Practice (renew every 2 years)', where: 'CITI', href: '/training/external-certifications' });
       if (p.isDrug)   reqs.push({ text: 'Health Canada Division 5 — Drugs for Clinical Trials (renew every 2 years)', where: 'CITI', href: '/training/external-certifications' });
       if (p.isDevice) reqs.push({ text: 'ISO 14155:2020 GCP for Medical Devices (renew every 2 years)', where: 'iso.org', href: '/training/external-certifications' });
     } else {
-      reqs.push({ text: 'SOP-LR Reader', where: 'TalentLMS', href: '/training/compliance-requirements' });
-      reqs.push({ text: 'Competency Assessment — SOP-LR (valid 5 years)', where: 'TalentLMS', href: '/training/compliance-requirements' });
+      reqs.push({ text: 'SOP Reader and Assessment — SOP-LR (valid 5 years)', where: 'TalentLMS', href: '/training/compliance-requirements' });
     }
     var h = '<div class="rm-level-callout">';
     h += '<div class="rm-level-name">' + (names[p.level] || 'Level ' + p.level) + '</div>';
@@ -439,16 +437,12 @@
     var isCR = p.level <= 3;
 
     /* Phase 0 — Credentials & Training */
-    var ph0 = { id: 'p0', num: 'Phase 0', title: 'Credentials & Training', intro: levelCallout(p), items: [] };
+    var ph0 = { id: 'p0', num: 'Phase 0', title: 'Credentials & Compliance', intro: levelCallout(p), items: [] };
     ph0.items.push(it('p0-privs', 'Obtain Human Research Privileges (physicians/dentists) or Human Researcher Status (all others) — apply via TalentLMS, allow 1–5 business days', 'Privileges & Status', '/training/compliance-requirements'));
     ph0.items.push(it('p0-sop', isCR
-      ? 'Complete SOP-CR Reader on TalentLMS — acknowledge all SOPs in the Level I–III track'
-      : 'Complete SOP-LR Reader on TalentLMS — acknowledge all SOPs in the Level IV–V track',
-      'Training requirements', '/training/compliance-requirements'));
-    ph0.items.push(it('p0-ca', isCR
-      ? 'Pass Competency Assessment — SOP-CR on TalentLMS (certificate valid 2 years; Reader must be complete first)'
-      : 'Pass Competency Assessment — SOP-LR on TalentLMS (certificate valid 5 years; Reader must be complete first)',
-      'Training requirements', '/training/compliance-requirements'));
+      ? 'Complete the SOP Reader and Assessment for your level on TalentLMS — read and acknowledge every SOP, then pass the assessment (SOP-CR, certificate valid 2 years)'
+      : 'Complete the SOP Reader and Assessment for your level on TalentLMS — read and acknowledge every SOP, then pass the assessment (SOP-LR, certificate valid 5 years)',
+      'Compliance requirements', '/training/compliance-requirements'));
     if (p.level <= 3)
       ph0.items.push(it('p0-gcp',  'Complete ICH E6(R3) GCP — Good Clinical Practice via CITI (renew every 2 years; must not expire within 90 days of submission)', 'External certifications', '/training/external-certifications'));
     if (p.isDrug)

@@ -144,10 +144,6 @@
 
 /* Role cards already have photo overlays — keep their text white */
 .dark .ri-role-card-title,
-.dark .ri-role-card-sub,
-.dark .ri-role-badge {
-    color: var(--ri-white) !important;
-}
 
 /* RACI/dual-lane: keep white text on brand-colored backgrounds */
 .dark .raci-c { background: rgba(255,255,255,0.10); color: var(--ri-text-body); }
@@ -492,11 +488,10 @@ a.card,
 a:has([data-component-part="card-content-container"]) {
     border-color: transparent !important;
     box-shadow: 0 1px 4px rgba(0,0,0,0.06), 0 0 0 1px rgba(0,0,0,0.05) !important;
-    transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease !important;
+    transition: box-shadow 0.18s ease, border-color 0.18s ease !important;
 }
 a.card:hover,
 a:has([data-component-part="card-content-container"]):hover {
-    transform:    translateY(-3px) !important;
     box-shadow:   0 6px 20px rgba(0, 0, 0, 0.08) !important;
     border-color: var(--ri-accent) !important;
 }
@@ -926,44 +921,6 @@ body:has(.ri-text-hero, .ri-hub) main {
 }
 
 /* Role photo card grid */
-.ri-role-cards {
-    display: grid; grid-template-columns: repeat(4, 1fr);
-    gap: 12px; margin-bottom: 2.5rem;
-}
-.ri-role-card {
-    position: relative; height: 190px;
-    border-radius: 12px; overflow: hidden;
-    background-size: cover; background-position: center;
-    cursor: pointer; border: none;
-    transition: transform .2s, box-shadow .2s;
-    text-align: left; padding: 0; appearance: none; -webkit-appearance: none;
-    background-color: var(--ri-heading);
-}
-.ri-role-card:hover { transform: translateY(-3px); box-shadow: var(--ri-shadow-lift); }
-.ri-role-card--active {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 24px rgba(0,0,0,.2);
-}
-.ri-role-card-overlay {
-    position: absolute; inset: 0;
-    background: rgba(21,14,81,0.55);
-    transition: opacity .2s;
-}
-.ri-role-card--active .ri-role-card-overlay { opacity: 0.32; }
-.ri-role-card:hover:not(.ri-role-card--active) .ri-role-card-overlay { opacity: 0.82; }
-.ri-role-card-body {
-    position: relative; z-index: 1; height: 100%;
-    display: flex; flex-direction: column; justify-content: flex-end;
-    padding: 16px 15px;
-}
-.ri-role-card-title { font-size: 14px; font-weight: 700; color: var(--ri-white); line-height: 1.25; margin-bottom: 4px; }
-.ri-role-card-sub { font-size: 11px; color: rgba(255,255,255,.8); line-height: 1.4; margin-bottom: 6px; }
-.ri-role-card-cta {
-    font-size: 11px; font-weight: 600; color: var(--ri-white);
-    opacity: 0; transition: opacity .2s; letter-spacing: .04em;
-}
-.ri-role-card:hover .ri-role-card-cta,
-.ri-role-card--active .ri-role-card-cta { opacity: 1; }
 @media (max-width: 720px) { .ri-role-cards { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 420px) { .ri-role-cards { gap: 8px; } .ri-role-card { height: 150px; } }
 /* Role content panel — grid stack keeps container at tallest panel height */
@@ -981,32 +938,9 @@ body:has(.ri-text-hero, .ri-hub) main {
     pointer-events: none;
     user-select: none;
 }
-.ri-role-panel { animation: ri-fade-up .22s ease both; }
-.ri-role-panel-slot--hidden .ri-role-panel { animation: none; }
 .ri-role-framing { font-size: 16px; line-height: 1.65; color: var(--ri-text-body); margin: 0 0 2rem; max-width: 680px; }
 
 /* Detail card grid */
-.ri-dcard-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-bottom: 1.5rem; }
-.ri-role-panel .ri-dcard-grid { margin-top: 2rem; }
-.ri-dcard {
-    display: flex; flex-direction: column; gap: 8px; padding: 22px 24px;
-    border: 1px solid var(--ri-border); border-radius: 14px;
-    text-decoration: none !important; background: var(--ri-surface);
-    transition: border-color .15s, background .15s, transform .15s, box-shadow .15s;
-}
-.ri-dcard:hover {
-    border-color: var(--ri-blue);
-    background: rgba(43, 156, 226, 0.04);
-    transform: translateY(-1px);
-    box-shadow: var(--ri-shadow-card);
-}
-.ri-dcard-title {
-    font-size: 14.5px; font-weight: 700; color: var(--ri-text);
-    display: flex; align-items: baseline; justify-content: space-between; gap: 8px;
-    margin-bottom: 2px;
-    letter-spacing: -.005em;
-}
-.ri-dcard-desc { font-size: 13.5px; line-height: 1.6; color: var(--ri-text-secondary); }
 
 @media (max-width: 900px) { .ri-dcard-grid { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 560px) { .ri-dcard-grid { grid-template-columns: 1fr; } }
@@ -1091,43 +1025,16 @@ body:has(.ri-text-hero, .ri-hub) main {
     gap: 12px;
 }
 /* Orientation banner — neutral white card */
-.ri-orientation-banner {
-    display: flex; flex-direction: column; align-items: flex-start;
-    padding: 24px 26px; border-radius: 14px;
-    border: 1px solid var(--ri-border);
-    background: var(--ri-surface);
-    text-decoration: none !important; margin-bottom: 0;
-    transition: border-color .15s, background .15s, transform .15s, box-shadow .15s;
-}
-.ri-orientation-banner:hover {
-    border-color: var(--ri-blue);
-    background: rgba(43, 156, 226, 0.04);
-    transform: translateY(-1px);
-    box-shadow: var(--ri-shadow-card);
-}
 .ri-pb-label { font-size: 15px; font-weight: 700; color: var(--ri-text); margin-bottom: 8px; letter-spacing: -.005em; }
 .ri-pb-desc { font-size: 14px; line-height: 1.6; color: var(--ri-text-secondary); flex: 1; }
 .ri-pb-arrow { font-size: 14px; font-weight: 700; color: var(--ri-blue); margin-top: 16px; display: inline-block; }
 /* Orientation banner margin reset — spacing handled by panel grid gap */
-.ri-role-panel > .ri-orientation-banner { margin: 0; }
 /* Orientation card alongside guide cards — side-by-side layout */
 .ri-guides-row {
     display: grid;
     grid-template-columns: 1fr 2fr;
     gap: 12px;
     margin-bottom: 1.5rem;
-}
-.ri-guides-row .ri-orientation-banner {
-    margin: 0 !important;
-    background: rgba(43, 156, 226, 0.03);
-    border-color: rgba(43, 156, 226, 0.15);
-    justify-content: center;
-    transition: background .15s, border-color .15s, box-shadow .15s;
-}
-.ri-guides-row .ri-orientation-banner:hover {
-    background: rgba(43, 156, 226, 0.06);
-    border-color: var(--ri-accent);
-    box-shadow: 0 2px 8px rgba(43, 156, 226, 0.1);
 }
 
 .ri-guides-stack {
@@ -1639,14 +1546,6 @@ img.nav-logo {
         padding:   3px 8px !important;
     }
 }
-/* ── Page content fade-in ── */
-@keyframes ri-fade-up {
-    from { opacity: 0; transform: translateY(10px); }
-    to   { opacity: 1; transform: translateY(0);    }
-}
-article {
-    animation: ri-fade-up 0.3s ease-out both;
-}
 /* ── Callout / Note / Warning / Tip boxes ── */
 [data-component="callout"] {
     border-radius: 8px !important;
@@ -1681,14 +1580,13 @@ article {
     border-radius: 14px !important;
     padding: 20px 24px !important;
     box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 4px 16px rgba(0,0,0,0.05) !important;
-    transition: border-color .15s, box-shadow .15s, transform .12s !important;
+    transition: border-color .15s, box-shadow .15s !important;
     text-decoration: none !important;
     align-items: flex-start !important;
 }
 #pagination a:hover {
     border-color: rgba(43, 156, 226, 0.45) !important;
     box-shadow: 0 2px 6px rgba(0,0,0,0.04), 0 8px 24px rgba(43,156,226,0.10) !important;
-    transform: translateY(-1px) !important;
 }
 /* Page title — first div inside the space-y-1 wrapper */
 #pagination a div[class*="font-medium"][class*="text-gray-9"],
@@ -2302,84 +2200,11 @@ footer a:hover {
     gap: 24px;
     margin-top: 16px;
 }
-.ri-svc-card {
-    display: flex;
-    flex-direction: column;
-    border-radius: 18px;
-    overflow: hidden;
-    background: var(--ri-surface);
-    border: 1px solid var(--ri-border-subtle);
-    text-decoration: none !important;
-    color: inherit !important;
-    transition: box-shadow .2s ease, transform .2s ease, border-color .2s ease;
-}
-.ri-svc-card:hover {
-    box-shadow: var(--ri-shadow-hover);
-    border-color: rgba(43,156,226,.25);
-    transform: translateY(-2px);
-}
-.ri-svc-card-photo {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-    display: block;
-}
-.ri-svc-card-body {
-    padding: 28px 28px 32px;
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-}
-.ri-svc-card-label {
-    font-size: 11px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: .1em;
-    color: var(--ri-blue);
-    margin-bottom: 12px;
-}
-.ri-svc-card-stat {
-    font-size: clamp(2.4rem, 3.5vw, 3.4rem);
-    font-weight: 800;
-    color: var(--ri-text);
-    line-height: 1;
-    letter-spacing: -.02em;
-    margin-bottom: 4px;
-}
-.ri-svc-card-stat-sub {
-    font-size: 13px;
-    color: var(--ri-text-overlay);
-    line-height: 1.4;
-    margin-bottom: 14px;
-}
-.ri-svc-card-title {
-    font-size: 19px;
-    font-weight: 700;
-    color: var(--ri-text);
-    margin-bottom: 10px;
-    line-height: 1.3;
-    letter-spacing: -.01em;
-}
-.ri-svc-card-desc {
-    font-size: 14px;
-    color: var(--ri-text-overlay-strong);
-    line-height: 1.6;
-    flex: 1;
-}
-.ri-svc-card-cta {
-    display: inline-block;
-    margin-top: 20px;
-    font-size: 14px;
-    font-weight: 700;
-    color: var(--ri-blue) !important;
-}
 @media (max-width: 980px) {
     .ri-svc-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; }
 }
 @media (max-width: 640px) {
     .ri-svc-grid { grid-template-columns: 1fr; gap: 16px; }
-    .ri-svc-card-photo { height: 180px; }
-    .ri-svc-card-body { padding: 24px 24px 28px; }
 }
 
 /* Sub-service cards */
@@ -2657,7 +2482,6 @@ footer a:hover {
     padding-left: 32px;
     min-height: 420px;
 }
-.ri-sh-panel .ri-role-panel { animation: none; }
 
 /* In-card role header — eyebrow + title (icon dropped, already shown in tab) */
 .ri-sh-header {
@@ -3040,11 +2864,6 @@ body:has(.ri-text-hero, .ri-hub) .ri-cim-btn--outline {
 }
 
 /* ════ Services — keep flat cards; condensed labels handled above ════ */
-body:has(.ri-text-hero, .ri-hub) .ri-svc-card { border: 1px solid var(--hp-divider); }
-body:has(.ri-text-hero, .ri-hub) .ri-svc-card:hover { border-color: var(--hp-sky); }
-body:has(.ri-text-hero, .ri-hub) .ri-svc-card-label,
-body:has(.ri-text-hero, .ri-hub) .ri-svc-card-cta { color: var(--hp-sky); }
-body:has(.ri-text-hero, .ri-hub) .ri-svc-card-stat { color: var(--hp-dark-blue); }
 
 /* ════ QUICK-REFERENCE — flat hairline rows ════ */
 body:has(.ri-text-hero, .ri-hub) .hp-qref { border-top: 1px solid var(--hp-divider); }
@@ -3342,7 +3161,7 @@ body:has(.ri-text-hero, .ri-hub) .hp-acc__icon {
   background-color: var(--hp-sky) !important; display: block !important;
   mask-size: contain !important; -webkit-mask-size: contain !important;
 }
-body:has(.ri-text-hero, .ri-hub) .hp-acc--roles .ri-role-panel { margin: 0; animation: none; }
+body:has(.ri-text-hero, .ri-hub) .hp-acc--roles .ri-role-panel { margin: 0; }
 body:has(.ri-text-hero, .ri-hub) .hp-acc--roles .ri-callout { margin-top: 4px; }
 
 /* services cards stacked inside the turquoise rail content column → 2-up */

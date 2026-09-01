@@ -210,58 +210,10 @@
 
   /* Initial page load */
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', function () { applyPageAttr(); waitForToc(10); initCounters(); });
+    document.addEventListener('DOMContentLoaded', function () { applyPageAttr(); waitForToc(10); });
   } else {
     applyPageAttr();
     waitForToc(10);
-    initCounters();
-  }
-
-  /* ─── Stat counter animation ─────────────────────────────────────────── */
-  function parseStat(text) {
-    var m = text.trim().match(/^([^0-9]*)([0-9]+(?:\.[0-9]+)?)(.*)$/);
-    if (!m) return null;
-    var decimals = m[2].indexOf('.') !== -1 ? m[2].split('.')[1].length : 0;
-    return { prefix: m[1], value: parseFloat(m[2]), suffix: m[3], decimals: decimals };
-  }
-
-  function runCounter(el, parsed, duration) {
-    var start = null;
-    function step(ts) {
-      if (!start) start = ts;
-      var progress = Math.min((ts - start) / duration, 1);
-      var eased    = 1 - Math.pow(1 - progress, 3);
-      var current  = parsed.value * eased;
-      el.textContent = parsed.prefix + current.toFixed(parsed.decimals) + parsed.suffix;
-      if (progress < 1) requestAnimationFrame(step);
-    }
-    el.textContent = parsed.prefix + (0).toFixed(parsed.decimals) + parsed.suffix;
-    requestAnimationFrame(step);
-  }
-
-  function initCounters() {
-    var selectors = '.ri-svc-strip-stat';
-    var els = Array.from(document.querySelectorAll(selectors));
-    if (!els.length) {
-      setTimeout(initCounters, 600);
-      return;
-    }
-    var io = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (!entry.isIntersecting) return;
-        var el = entry.target;
-        var parsed = parseStat(el.getAttribute('data-stat-orig') || el.textContent);
-        if (!parsed) return;
-        el.setAttribute('data-stat-orig', el.getAttribute('data-stat-orig') || el.textContent.trim());
-        io.unobserve(el);
-        runCounter(el, parsed, 1400);
-      });
-    }, { threshold: 0.4 });
-
-    els.forEach(function (el) {
-      el.setAttribute('data-stat-orig', el.textContent.trim());
-      io.observe(el);
-    });
   }
 
 })();

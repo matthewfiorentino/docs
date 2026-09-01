@@ -5,3 +5,12 @@
 # Draft content
 drafts/
 *.draft.mdx
+
+# Deprecated for MVP launch — kept for reference, not published
+deprecated/
+
+# Local backups (no .mdx, but excluded defensively)
+_backups/
+
+# Internal tooling output (knowledge-graph reports) — never publish
+graphify-out/

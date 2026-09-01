@@ -92,8 +92,7 @@
                     "root": "roles/investigator",
                     "pages": [
                       "roles/pi-guide",
-                      "roles/pi-guide-iv",
-                      "roles/pi-guide-v"
+                      "roles/pi-guide-iv-v"
                     ]
                   },
                   {
@@ -101,16 +100,13 @@
                     "root": "roles/coordinator",
                     "pages": [
                       "roles/crc-guide",
-                      "roles/crc-guide-iv",
-                      "roles/crc-guide-v"
+                      "roles/crc-guide-iv-v"
                     ]
                   },
                   {
                     "group": "Research Nurse",
                     "root": "roles/nurse",
-                    "pages": [
-                      "roles/nurse-guide"
-                    ]
+                    "pages": []
                   },
                   "roles/trainee",
                   "roles/volunteer",
@@ -416,7 +412,6 @@
                 "group": "Beyond Compliance",
                 "icon": "lightbulb",
                 "pages": [
-                  "training/learning-lab",
                   "training/cantrain",
                   "training/supplementary-training"
                 ]
@@ -432,74 +427,6 @@
                 "pages": [
                   "cim/services",
                   "cim/planning"
-                ]
-              },
-              {
-                "group": "For CIM Staff",
-                "icon": "id-badge",
-                "pages": [
-                  "cim/researcher-guide",
-                  "cim/training",
-                  "cim/wi-sops",
-                  {
-                    "group": "Work Instructions",
-                    "expanded": false,
-                    "pages": [
-                      {
-                        "group": "AD — Administrative & Emergency",
-                        "expanded": false,
-                        "pages": [
-                          "cim/wi/ad001",
-                          "cim/wi/ad002",
-                          "cim/wi/ad003",
-                          "cim/wi/ad006"
-                        ]
-                      },
-                      {
-                        "group": "CR — Clinical Research",
-                        "expanded": false,
-                        "pages": [
-                          "cim/wi/cr001",
-                          "cim/wi/cr002",
-                          "cim/wi/cr003",
-                          "cim/wi/cr007",
-                          "cim/wi/cr009",
-                          "cim/wi/cr010"
-                        ]
-                      },
-                      {
-                        "group": "GN — General Nursing",
-                        "expanded": false,
-                        "pages": [
-                          "cim/wi/gn001",
-                          "cim/wi/gn002",
-                          "cim/wi/gn003",
-                          "cim/wi/gn004",
-                          "cim/wi/gn005"
-                        ]
-                      },
-                      {
-                        "group": "MO — Monitoring",
-                        "expanded": false,
-                        "pages": [
-                          "cim/wi/mo001",
-                          "cim/wi/mo002",
-                          "cim/wi/mo003",
-                          "cim/wi/mo004",
-                          "cim/wi/mo005",
-                          "cim/wi/mo006"
-                        ]
-                      },
-                      {
-                        "group": "ON — Oncology",
-                        "expanded": false,
-                        "pages": [
-                          "cim/wi/on001",
-                          "cim/wi/on002"
-                        ]
-                      }
-                    ]
-                  }
                 ]
               }
             ]
@@ -538,14 +465,6 @@
                       }
                     ]
                   }
-                ]
-              },
-              {
-                "item": "CTMS",
-                "icon": "clipboard-list",
-                "description": "Clinical trial management and visit scheduling",
-                "pages": [
-                  "apps/ctms"
                 ]
               },
               {
@@ -733,11 +652,11 @@
     },
     {
       "source": "/kb/roles/pi-guide-iv",
-      "destination": "/roles/pi-guide-iv"
+      "destination": "/roles/pi-guide-iv-v"
     },
     {
       "source": "/kb/roles/pi-guide-v",
-      "destination": "/roles/pi-guide-v"
+      "destination": "/roles/pi-guide-iv-v"
     },
     {
       "source": "/kb/roles/crc-orientation",
@@ -749,11 +668,11 @@
     },
     {
       "source": "/kb/roles/crc-guide-iv",
-      "destination": "/roles/crc-guide-iv"
+      "destination": "/roles/crc-guide-iv-v"
     },
     {
       "source": "/kb/roles/crc-guide-v",
-      "destination": "/roles/crc-guide-v"
+      "destination": "/roles/crc-guide-iv-v"
     },
     {
       "source": "/kb/roles/nurse-orientation",
@@ -761,7 +680,7 @@
     },
     {
       "source": "/kb/roles/nurse-guide",
-      "destination": "/roles/nurse-guide"
+      "destination": "/roles/nurse"
     },
     {
       "source": "/kb/roles/onboarding-trainees",
@@ -1052,98 +971,6 @@
       "destination": "/sops/cr-501"
     },
     {
-      "source": "/cim/wi/ad001-overview",
-      "destination": "/cim/wi/ad001"
-    },
-    {
-      "source": "/cim/wi/ad002-overview",
-      "destination": "/cim/wi/ad002"
-    },
-    {
-      "source": "/cim/wi/ad003-overview",
-      "destination": "/cim/wi/ad003"
-    },
-    {
-      "source": "/cim/wi/ad006-overview",
-      "destination": "/cim/wi/ad006"
-    },
-    {
-      "source": "/cim/wi/cr001-overview",
-      "destination": "/cim/wi/cr001"
-    },
-    {
-      "source": "/cim/wi/cr002-overview",
-      "destination": "/cim/wi/cr002"
-    },
-    {
-      "source": "/cim/wi/cr003-overview",
-      "destination": "/cim/wi/cr003"
-    },
-    {
-      "source": "/cim/wi/cr007-overview",
-      "destination": "/cim/wi/cr007"
-    },
-    {
-      "source": "/cim/wi/cr009-overview",
-      "destination": "/cim/wi/cr009"
-    },
-    {
-      "source": "/cim/wi/cr010-overview",
-      "destination": "/cim/wi/cr010"
-    },
-    {
-      "source": "/cim/wi/gn001-overview",
-      "destination": "/cim/wi/gn001"
-    },
-    {
-      "source": "/cim/wi/gn002-overview",
-      "destination": "/cim/wi/gn002"
-    },
-    {
-      "source": "/cim/wi/gn003-overview",
-      "destination": "/cim/wi/gn003"
-    },
-    {
-      "source": "/cim/wi/gn004-overview",
-      "destination": "/cim/wi/gn004"
-    },
-    {
-      "source": "/cim/wi/gn005-overview",
-      "destination": "/cim/wi/gn005"
-    },
-    {
-      "source": "/cim/wi/mo001-overview",
-      "destination": "/cim/wi/mo001"
-    },
-    {
-      "source": "/cim/wi/mo002-overview",
-      "destination": "/cim/wi/mo002"
-    },
-    {
-      "source": "/cim/wi/mo003-overview",
-      "destination": "/cim/wi/mo003"
-    },
-    {
-      "source": "/cim/wi/mo004-overview",
-      "destination": "/cim/wi/mo004"
-    },
-    {
-      "source": "/cim/wi/mo005-overview",
-      "destination": "/cim/wi/mo005"
-    },
-    {
-      "source": "/cim/wi/mo006-overview",
-      "destination": "/cim/wi/mo006"
-    },
-    {
-      "source": "/cim/wi/on001-overview",
-      "destination": "/cim/wi/on001"
-    },
-    {
-      "source": "/cim/wi/on002-overview",
-      "destination": "/cim/wi/on002"
-    },
-    {
       "source": "/kb/roles/pi-pathway",
       "destination": "/roles/investigator"
     },
@@ -1410,6 +1237,146 @@
     {
       "source": "/kb/publications",
       "destination": "/kb/close-out/publications"
+    },
+    {
+      "source": "/training/learning-lab",
+      "destination": "/training/compliance-requirements"
+    },
+    {
+      "source": "/apps/ctms",
+      "destination": "/apps/nagano/overview"
+    },
+    {
+      "source": "/cim/researcher-guide",
+      "destination": "/cim/services"
+    },
+    {
+      "source": "/cim/training",
+      "destination": "/cim/services"
+    },
+    {
+      "source": "/cim/wi-sops",
+      "destination": "/cim/services"
+    },
+    {
+      "source": "/cim/wi/ad001",
+      "destination": "/cim/services"
+    },
+    {
+      "source": "/cim/wi/ad002",
+      "destination": "/cim/services"
+    },
+    {
+      "source": "/cim/wi/ad003",
+      "destination": "/cim/services"
+    },
+    {
+      "source": "/cim/wi/ad006",
+      "destination": "/cim/services"
+    },
+    {
+      "source": "/cim/wi/cr001",
+      "destination": "/cim/services"
+    },
+    {
+      "source": "/cim/wi/cr002",
+      "destination": "/cim/services"
+    },
+    {
+      "source": "/cim/wi/cr003",
+      "destination": "/cim/services"
+    },
+    {
+      "source": "/cim/wi/cr007",
+      "destination": "/cim/services"
+    },
+    {
+      "source": "/cim/wi/cr009",
+      "destination": "/cim/services"
+    },
+    {
+      "source": "/cim/wi/cr010",
+      "destination": "/cim/services"
+    },
+    {
+      "source": "/cim/wi/gn001",
+      "destination": "/cim/services"
+    },
+    {
+      "source": "/cim/wi/gn002",
+      "destination": "/cim/services"
+    },
+    {
+      "source": "/cim/wi/gn003",
+      "destination": "/cim/services"
+    },
+    {
+      "source": "/cim/wi/gn004",
+      "destination": "/cim/services"
+    },
+    {
+      "source": "/cim/wi/gn005",
+      "destination": "/cim/services"
+    },
+    {
+      "source": "/cim/wi/mo001",
+      "destination": "/cim/services"
+    },
+    {
+      "source": "/cim/wi/mo002",
+      "destination": "/cim/services"
+    },
+    {
+      "source": "/cim/wi/mo003",
+      "destination": "/cim/services"
+    },
+    {
+      "source": "/cim/wi/mo004",
+      "destination": "/cim/services"
+    },
+    {
+      "source": "/cim/wi/mo005",
+      "destination": "/cim/services"
+    },
+    {
+      "source": "/cim/wi/mo006",
+      "destination": "/cim/services"
+    },
+    {
+      "source": "/cim/wi/on001",
+      "destination": "/cim/services"
+    },
+    {
+      "source": "/cim/wi/on002",
+      "destination": "/cim/services"
+    },
+    {
+      "source": "/kb/funding/budget-tool",
+      "destination": "/kb/funding/budgets-contracts"
+    },
+    {
+      "source": "/kb/funding/budget-justifications",
+      "destination": "/kb/funding/funding-applications"
+    },
+    {
+      "source": "/roles/pi-guide-iv",
+      "destination": "/roles/pi-guide-iv-v"
+    },
+    {
+      "source": "/roles/pi-guide-v",
+      "destination": "/roles/pi-guide-iv-v"
+    },
+    {
+      "source": "/roles/crc-guide-iv",
+      "destination": "/roles/crc-guide-iv-v"
+    },
+    {
+      "source": "/roles/crc-guide-v",
+      "destination": "/roles/crc-guide-iv-v"
+    },
+    {
+      "source": "/roles/nurse-guide",
+      "destination": "/roles/nurse"
     }
   ]
 }
