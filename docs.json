@@ -103,11 +103,7 @@
                       "roles/crc-guide-iv-v"
                     ]
                   },
-                  {
-                    "group": "Research Nurse",
-                    "root": "roles/nurse",
-                    "pages": []
-                  },
+                  "roles/nurse",
                   "roles/trainee",
                   "roles/volunteer",
                   "roles/observer"
