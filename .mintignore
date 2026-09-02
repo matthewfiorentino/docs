@@ -14,3 +14,6 @@ _backups/
 
 # Internal tooling output (knowledge-graph reports) — never publish
 graphify-out/
+
+# Site-review working files (findings, notes, packs) — never publish
+_review/

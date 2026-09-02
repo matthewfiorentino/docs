@@ -345,7 +345,7 @@
   function getFlags(p) {
     var f = [];
     if (p.crossBorder)
-      f.push({ tone: 'coral', title: 'Cross-border data — ÉFVP required',
+      f.push({ tone: 'coral', title: 'Cross-border data — EFVP required',
         detail: 'A Privacy Impact Assessment must be completed before any data transfer. File F17 or F18 alongside your Nagano F11 submission.',
         href: '/kb/recruitment/privacy' });
     else if (p.phi)
@@ -470,7 +470,7 @@
     if (p.needsHC)
       ph1.items.push(it('p1-hc-plan',   'Plan the Health Canada filing timeline — allow minimum 30 days for HC review, running in parallel with REB', 'Regulatory requirements', '/kb/planning/regulations'));
     if (p.crossBorder)
-      ph1.items.push(it('p1-efvp-plan', 'Plan the ÉFVP (Privacy Impact Assessment) — allow 4–8 weeks to complete before submission', 'Privacy & data governance', '/kb/recruitment/privacy'));
+      ph1.items.push(it('p1-efvp-plan', 'Plan the EFVP (Privacy Impact Assessment) — allow 4–8 weeks to complete before submission', 'Privacy & data governance', '/kb/recruitment/privacy'));
     if (p.phi)
       ph1.items.push(it('p1-data-plan', 'Plan the data management approach — REDCap build, CRF design, storage and access controls', 'CORD', '/kb/design-support/cord'));
     if (p.hasCIM)
@@ -488,7 +488,7 @@
     if (p.isDevice)
       ph2.items.push(it('p2-ita',      'Prepare the Health Canada Investigational Testing Authorization (ITA) submission', 'SOP-CR-024', '/sops/cr-024'));
     if (p.crossBorder)
-      ph2.items.push(it('p2-efvp',     'Complete the ÉFVP — file F17 (screening) or F18 (non-screening) alongside your Nagano F11 submission', 'Privacy & data governance', '/kb/recruitment/privacy'));
+      ph2.items.push(it('p2-efvp',     'Complete the EFVP — file F17 (screening) or F18 (non-screening) alongside your Nagano F11 submission', 'Privacy & data governance', '/kb/recruitment/privacy'));
     if (p.minors)
       ph2.items.push(it('p2-assent',   'Prepare age-appropriate assent form (ages 7–13) and separate parental/guardian consent form', 'Pediatric research', '/kb/recruitment/pediatric-research'));
     if (p.incapable)
@@ -810,7 +810,7 @@
       a.intType     ? ['Product type',         intMap[a.intType] || a.intType] : null,
       ['Sponsorship',    sponMap[a.sponsorship] || a.sponsorship],
       ['Identifiable PHI', a.phi === 'yes' ? 'Yes' : a.phi === 'unsure' ? 'Unsure' : 'No'],
-      (a.phi === 'yes' || a.phi === 'unsure') ? ['Cross-border data', a.crossBorder === 'yes' ? 'Yes — ÉFVP required' : 'No'] : null,
+      (a.phi === 'yes' || a.phi === 'unsure') ? ['Cross-border data', a.crossBorder === 'yes' ? 'Yes — EFVP required' : 'No'] : null,
       ['Vulnerable populations', popMap[a.population] || a.population],
       ['Sites',          sitMap[a.sites] || a.sites],
       a.cim         ? ['CIM involvement',  cimMap[a.cim]] : null,
@@ -879,7 +879,7 @@
       a.intType     ? ['Product type',          intMap[a.intType] || a.intType] : null,
       ['Sponsorship',    sponMap[a.sponsorship] || a.sponsorship],
       ['Identifiable PHI', a.phi === 'yes' ? 'Yes' : a.phi === 'unsure' ? 'Unsure' : 'No'],
-      (a.phi === 'yes' || a.phi === 'unsure') ? ['Cross-border data', a.crossBorder === 'yes' ? 'Yes — ÉFVP required' : 'No'] : null,
+      (a.phi === 'yes' || a.phi === 'unsure') ? ['Cross-border data', a.crossBorder === 'yes' ? 'Yes — EFVP required' : 'No'] : null,
       ['Vulnerable populations', popMap[a.population] || a.population],
       ['Sites',          sitMap[a.sites] || a.sites],
       a.cim         ? ['CIM involvement',  cimMap[a.cim]] : null,
