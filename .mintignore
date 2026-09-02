@@ -17,3 +17,14 @@ graphify-out/
 
 # Site-review working files (findings, notes, packs) — never publish
 _review/
+
+# Port package — migration data + brief for the Grav port. Internal working files.
+_port/
+
+# Internal working documents. Mintlify only auto-ignores README.md, so these
+# would otherwise build as pages and be reachable by URL on a public site.
+PROJECT_CONTEXT.md
+PUSH-CHECKLIST.md
+PORT-PACKAGE.md
+HANDOFF-role-guides.md
+HANDOFF-site-review.md

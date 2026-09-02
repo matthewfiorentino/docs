@@ -1,0 +1,802 @@
+[
+  {
+    "source": "/roles/pi-orientation",
+    "destination": "/roles/investigator"
+  },
+  {
+    "source": "/roles/crc-orientation",
+    "destination": "/roles/coordinator"
+  },
+  {
+    "source": "/roles/nurse-orientation",
+    "destination": "/roles/nurse"
+  },
+  {
+    "source": "/roles/onboarding-trainees",
+    "destination": "/roles/trainee"
+  },
+  {
+    "source": "/roles/onboarding-volunteers",
+    "destination": "/roles/volunteer"
+  },
+  {
+    "source": "/roles/onboarding-observers",
+    "destination": "/roles/observer"
+  },
+  {
+    "source": "/kb/introduction",
+    "destination": "/"
+  },
+  {
+    "source": "/kb/faq",
+    "destination": "/faq"
+  },
+  {
+    "source": "/kb/is-it-research",
+    "destination": "/is-it-research"
+  },
+  {
+    "source": "/kb/my-roadmap",
+    "destination": "/my-roadmap"
+  },
+  {
+    "source": "/home/investigator",
+    "destination": "/roles/investigator"
+  },
+  {
+    "source": "/home/coordinator",
+    "destination": "/roles/coordinator"
+  },
+  {
+    "source": "/home/nurse",
+    "destination": "/roles/nurse"
+  },
+  {
+    "source": "/home/trainee",
+    "destination": "/roles/trainee"
+  },
+  {
+    "source": "/home/volunteer",
+    "destination": "/roles/volunteer"
+  },
+  {
+    "source": "/home/observer",
+    "destination": "/roles/observer"
+  },
+  {
+    "source": "/kb/roles/pi-orientation",
+    "destination": "/roles/investigator"
+  },
+  {
+    "source": "/kb/roles/pi-guide",
+    "destination": "/roles/pi-guide"
+  },
+  {
+    "source": "/kb/roles/pi-guide-iv",
+    "destination": "/roles/pi-guide-iv-v"
+  },
+  {
+    "source": "/kb/roles/pi-guide-v",
+    "destination": "/roles/pi-guide-iv-v"
+  },
+  {
+    "source": "/kb/roles/crc-orientation",
+    "destination": "/roles/coordinator"
+  },
+  {
+    "source": "/kb/roles/crc-guide",
+    "destination": "/roles/crc-guide"
+  },
+  {
+    "source": "/kb/roles/crc-guide-iv",
+    "destination": "/roles/crc-guide-iv-v"
+  },
+  {
+    "source": "/kb/roles/crc-guide-v",
+    "destination": "/roles/crc-guide-iv-v"
+  },
+  {
+    "source": "/kb/roles/nurse-orientation",
+    "destination": "/roles/nurse"
+  },
+  {
+    "source": "/kb/roles/nurse-guide",
+    "destination": "/roles/nurse"
+  },
+  {
+    "source": "/kb/roles/onboarding-trainees",
+    "destination": "/roles/trainee"
+  },
+  {
+    "source": "/kb/roles/onboarding-volunteers",
+    "destination": "/roles/volunteer"
+  },
+  {
+    "source": "/kb/roles/onboarding-observers",
+    "destination": "/roles/observer"
+  },
+  {
+    "source": "/kb/conduct/biological-specimens",
+    "destination": "/kb/conduct/study-operations/biological-specimens"
+  },
+  {
+    "source": "/kb/conduct/close-out",
+    "destination": "/kb/close-out/close-out"
+  },
+  {
+    "source": "/kb/conduct/consent",
+    "destination": "/kb/recruitment/consent"
+  },
+  {
+    "source": "/kb/conduct/data-integrity",
+    "destination": "/kb/conduct/data-documentation/data-integrity"
+  },
+  {
+    "source": "/kb/conduct/data-security",
+    "destination": "/kb/conduct/data-documentation/data-security"
+  },
+  {
+    "source": "/kb/conduct/decentralized-trials",
+    "destination": "/kb/conduct/study-operations/decentralized-trials"
+  },
+  {
+    "source": "/kb/conduct/hc-inspection-guide",
+    "destination": "/kb/conduct/safety-reporting/hc-inspection-guide"
+  },
+  {
+    "source": "/kb/conduct/investigational-products",
+    "destination": "/kb/conduct/study-operations/investigational-products"
+  },
+  {
+    "source": "/kb/conduct/isf",
+    "destination": "/kb/site-activation/isf"
+  },
+  {
+    "source": "/kb/conduct/monitoring-audits",
+    "destination": "/kb/conduct/safety-reporting/monitoring-audits"
+  },
+  {
+    "source": "/kb/conduct/overview",
+    "destination": "/kb/conduct/conduct-overview"
+  },
+  {
+    "source": "/kb/conduct/pediatric-research",
+    "destination": "/kb/recruitment/pediatric-research"
+  },
+  {
+    "source": "/kb/conduct/privacy",
+    "destination": "/kb/recruitment/privacy"
+  },
+  {
+    "source": "/kb/conduct/protocol-documents",
+    "destination": "/kb/site-activation/protocol-documents"
+  },
+  {
+    "source": "/kb/conduct/publications",
+    "destination": "/kb/close-out/publications"
+  },
+  {
+    "source": "/kb/conduct/recruitment-enrollment",
+    "destination": "/kb/recruitment/recruitment-enrollment"
+  },
+  {
+    "source": "/kb/conduct/reportable-events",
+    "destination": "/kb/conduct/safety-reporting/reportable-events"
+  },
+  {
+    "source": "/kb/conduct/site-setup",
+    "destination": "/kb/site-activation/site-setup"
+  },
+  {
+    "source": "/kb/conduct/team-management",
+    "destination": "/kb/conduct/study-operations/team-management"
+  },
+  {
+    "source": "/kb/conduct/vulnerable-populations",
+    "destination": "/kb/recruitment/vulnerable-populations"
+  },
+  {
+    "source": "/kb/planning/bcu",
+    "destination": "/kb/design-support/bcu"
+  },
+  {
+    "source": "/kb/planning/budgets-contracts",
+    "destination": "/kb/funding/budgets-contracts"
+  },
+  {
+    "source": "/kb/planning/building-your-team",
+    "destination": "/kb/team/building-your-team"
+  },
+  {
+    "source": "/kb/planning/cord",
+    "destination": "/kb/design-support/cord"
+  },
+  {
+    "source": "/kb/planning/data-warehouse",
+    "destination": "/kb/design-support/data-warehouse"
+  },
+  {
+    "source": "/kb/planning/dct-design",
+    "destination": "/kb/design/dct-design"
+  },
+  {
+    "source": "/kb/planning/edi",
+    "destination": "/kb/team/edi"
+  },
+  {
+    "source": "/kb/planning/hiring-hr-support",
+    "destination": "/kb/team/hiring-hr-support"
+  },
+  {
+    "source": "/kb/planning/multi-centric",
+    "destination": "/kb/design/multi-centric"
+  },
+  {
+    "source": "/kb/planning/overview",
+    "destination": "/kb/planning/planning-overview"
+  },
+  {
+    "source": "/kb/planning/research-grants",
+    "destination": "/kb/funding/research-grants"
+  },
+  {
+    "source": "/kb/planning/study-design",
+    "destination": "/kb/design-support/study-design"
+  },
+  {
+    "source": "/kb/planning/study-intake",
+    "destination": "/my-roadmap"
+  },
+  {
+    "source": "/kb/study-intake",
+    "destination": "/my-roadmap"
+  },
+  {
+    "source": "/training/study-classifier",
+    "destination": "/my-roadmap"
+  },
+  {
+    "source": "/kb/submission/overview",
+    "destination": "/kb/submission/submission-overview"
+  },
+  {
+    "source": "/sops/cr-001-overview",
+    "destination": "/sops/cr-001"
+  },
+  {
+    "source": "/sops/cr-002-overview",
+    "destination": "/sops/cr-002"
+  },
+  {
+    "source": "/sops/cr-003-overview",
+    "destination": "/sops/cr-003"
+  },
+  {
+    "source": "/sops/cr-004-overview",
+    "destination": "/sops/cr-004"
+  },
+  {
+    "source": "/sops/cr-005-overview",
+    "destination": "/sops/cr-005"
+  },
+  {
+    "source": "/sops/cr-006-overview",
+    "destination": "/sops/cr-006"
+  },
+  {
+    "source": "/sops/cr-007-overview",
+    "destination": "/sops/cr-007"
+  },
+  {
+    "source": "/sops/cr-008-overview",
+    "destination": "/sops/cr-008"
+  },
+  {
+    "source": "/sops/cr-009-overview",
+    "destination": "/sops/cr-009"
+  },
+  {
+    "source": "/sops/cr-010-overview",
+    "destination": "/sops/cr-010"
+  },
+  {
+    "source": "/sops/cr-011-overview",
+    "destination": "/sops/cr-011"
+  },
+  {
+    "source": "/sops/cr-012-overview",
+    "destination": "/sops/cr-012"
+  },
+  {
+    "source": "/sops/cr-013-overview",
+    "destination": "/sops/cr-013"
+  },
+  {
+    "source": "/sops/cr-014-overview",
+    "destination": "/sops/cr-014"
+  },
+  {
+    "source": "/sops/cr-015-overview",
+    "destination": "/sops/cr-015"
+  },
+  {
+    "source": "/sops/cr-016-overview",
+    "destination": "/sops/cr-016"
+  },
+  {
+    "source": "/sops/cr-017-overview",
+    "destination": "/sops/cr-017"
+  },
+  {
+    "source": "/sops/cr-018-overview",
+    "destination": "/sops/cr-018"
+  },
+  {
+    "source": "/sops/cr-019-overview",
+    "destination": "/sops/cr-019"
+  },
+  {
+    "source": "/sops/cr-023-overview",
+    "destination": "/sops/cr-023"
+  },
+  {
+    "source": "/sops/cr-024-overview",
+    "destination": "/sops/cr-024"
+  },
+  {
+    "source": "/sops/cr-025-overview",
+    "destination": "/sops/cr-025"
+  },
+  {
+    "source": "/sops/cr-026-overview",
+    "destination": "/sops/cr-026"
+  },
+  {
+    "source": "/sops/cr-100-overview",
+    "destination": "/sops/cr-100"
+  },
+  {
+    "source": "/sops/cr-101-overview",
+    "destination": "/sops/cr-101"
+  },
+  {
+    "source": "/sops/cr-102-overview",
+    "destination": "/sops/cr-102"
+  },
+  {
+    "source": "/sops/cr-103-overview",
+    "destination": "/sops/cr-103"
+  },
+  {
+    "source": "/sops/cr-104-overview",
+    "destination": "/sops/cr-104"
+  },
+  {
+    "source": "/sops/cr-105-overview",
+    "destination": "/sops/cr-105"
+  },
+  {
+    "source": "/sops/cr-106-overview",
+    "destination": "/sops/cr-106"
+  },
+  {
+    "source": "/sops/cr-107-overview",
+    "destination": "/sops/cr-107"
+  },
+  {
+    "source": "/sops/cr-500-overview",
+    "destination": "/sops/cr-500"
+  },
+  {
+    "source": "/sops/cr-501-overview",
+    "destination": "/sops/cr-501"
+  },
+  {
+    "source": "/kb/roles/pi-pathway",
+    "destination": "/roles/investigator"
+  },
+  {
+    "source": "/kb/roles/crc-pathway",
+    "destination": "/roles/coordinator"
+  },
+  {
+    "source": "/kb/roles/nurse-pathway",
+    "destination": "/roles/nurse"
+  },
+  {
+    "source": "/kb/updates",
+    "destination": "/kb/community/updates"
+  },
+  {
+    "source": "/kb/community-connect",
+    "destination": "/kb/community/community-connect"
+  },
+  {
+    "source": "/kb/clinical-research-101",
+    "destination": "/kb/foundations/clinical-research-101"
+  },
+  {
+    "source": "/kb/trial-design",
+    "destination": "/kb/foundations/trial-design"
+  },
+  {
+    "source": "/kb/gcp-quality-by-design",
+    "destination": "/kb/foundations/gcp-quality-by-design"
+  },
+  {
+    "source": "/kb/study-lifecycle",
+    "destination": "/kb/foundations/study-lifecycle"
+  },
+  {
+    "source": "/kb/glossary",
+    "destination": "/kb/foundations/glossary"
+  },
+  {
+    "source": "/kb/planning-overview",
+    "destination": "/kb/planning/planning-overview"
+  },
+  {
+    "source": "/kb/feasibility",
+    "destination": "/kb/planning/feasibility"
+  },
+  {
+    "source": "/kb/sponsored-trials",
+    "destination": "/kb/planning/sponsored-trials"
+  },
+  {
+    "source": "/kb/sponsor-investigator",
+    "destination": "/kb/planning/sponsor-investigator"
+  },
+  {
+    "source": "/kb/iit-startup",
+    "destination": "/kb/planning/iit-startup"
+  },
+  {
+    "source": "/kb/regulations",
+    "destination": "/kb/planning/regulations"
+  },
+  {
+    "source": "/kb/ai-in-clinical-research",
+    "destination": "/kb/planning/ai-in-clinical-research"
+  },
+  {
+    "source": "/kb/patient-engagement",
+    "destination": "/kb/design/patient-engagement"
+  },
+  {
+    "source": "/kb/dct-design",
+    "destination": "/kb/design/dct-design"
+  },
+  {
+    "source": "/kb/real-world-evidence",
+    "destination": "/kb/design/real-world-evidence"
+  },
+  {
+    "source": "/kb/multi-centric",
+    "destination": "/kb/design/multi-centric"
+  },
+  {
+    "source": "/kb/cross-border-studies",
+    "destination": "/kb/design/cross-border-studies"
+  },
+  {
+    "source": "/kb/study-design",
+    "destination": "/kb/design-support/study-design"
+  },
+  {
+    "source": "/kb/bcu",
+    "destination": "/kb/design-support/bcu"
+  },
+  {
+    "source": "/kb/cord",
+    "destination": "/kb/design-support/cord"
+  },
+  {
+    "source": "/kb/data-warehouse",
+    "destination": "/kb/design-support/data-warehouse"
+  },
+  {
+    "source": "/kb/building-your-team",
+    "destination": "/kb/team/building-your-team"
+  },
+  {
+    "source": "/kb/hiring-hr-support",
+    "destination": "/kb/team/hiring-hr-support"
+  },
+  {
+    "source": "/kb/edi",
+    "destination": "/kb/team/edi"
+  },
+  {
+    "source": "/kb/funding-applications",
+    "destination": "/kb/funding/funding-applications"
+  },
+  {
+    "source": "/kb/budgets-contracts",
+    "destination": "/kb/funding/budgets-contracts"
+  },
+  {
+    "source": "/kb/budget-negotiation",
+    "destination": "/kb/funding/budget-negotiation"
+  },
+  {
+    "source": "/kb/clinical-trial-agreements",
+    "destination": "/kb/funding/clinical-trial-agreements"
+  },
+  {
+    "source": "/kb/research-grants",
+    "destination": "/kb/funding/research-grants"
+  },
+  {
+    "source": "/kb/budget-tool",
+    "destination": "/kb/funding/budget-tool"
+  },
+  {
+    "source": "/kb/budget-justifications",
+    "destination": "/kb/funding/budget-justifications"
+  },
+  {
+    "source": "/kb/submission-overview",
+    "destination": "/kb/submission/submission-overview"
+  },
+  {
+    "source": "/kb/preparing",
+    "destination": "/kb/submission/preparing"
+  },
+  {
+    "source": "/kb/submitting-via-nagano",
+    "destination": "/kb/submission/submitting-via-nagano"
+  },
+  {
+    "source": "/kb/tracking-responding",
+    "destination": "/kb/submission/tracking-responding"
+  },
+  {
+    "source": "/kb/study-review",
+    "destination": "/kb/submission/study-review"
+  },
+  {
+    "source": "/kb/site-setup",
+    "destination": "/kb/site-activation/site-setup"
+  },
+  {
+    "source": "/kb/protocol-documents",
+    "destination": "/kb/site-activation/protocol-documents"
+  },
+  {
+    "source": "/kb/isf",
+    "destination": "/kb/site-activation/isf"
+  },
+  {
+    "source": "/kb/recruitment-enrollment",
+    "destination": "/kb/recruitment/recruitment-enrollment"
+  },
+  {
+    "source": "/kb/recruitment-calculator",
+    "destination": "/kb/recruitment/recruitment-calculator"
+  },
+  {
+    "source": "/kb/consent",
+    "destination": "/kb/recruitment/consent"
+  },
+  {
+    "source": "/kb/consent-templates",
+    "destination": "/kb/recruitment/consent-templates"
+  },
+  {
+    "source": "/kb/pediatric-research",
+    "destination": "/kb/recruitment/pediatric-research"
+  },
+  {
+    "source": "/kb/vulnerable-populations",
+    "destination": "/kb/recruitment/vulnerable-populations"
+  },
+  {
+    "source": "/kb/indigenous-research-ethics",
+    "destination": "/kb/recruitment/indigenous-research-ethics"
+  },
+  {
+    "source": "/kb/privacy",
+    "destination": "/kb/recruitment/privacy"
+  },
+  {
+    "source": "/kb/conduct-overview",
+    "destination": "/kb/conduct/conduct-overview"
+  },
+  {
+    "source": "/kb/data-integrity",
+    "destination": "/kb/conduct/data-documentation/data-integrity"
+  },
+  {
+    "source": "/kb/data-security",
+    "destination": "/kb/conduct/data-documentation/data-security"
+  },
+  {
+    "source": "/kb/edc-query-management",
+    "destination": "/kb/conduct/data-documentation/edc-query-management"
+  },
+  {
+    "source": "/kb/decentralized-trials",
+    "destination": "/kb/conduct/study-operations/decentralized-trials"
+  },
+  {
+    "source": "/kb/investigational-products",
+    "destination": "/kb/conduct/study-operations/investigational-products"
+  },
+  {
+    "source": "/kb/biological-specimens",
+    "destination": "/kb/conduct/study-operations/biological-specimens"
+  },
+  {
+    "source": "/kb/team-management",
+    "destination": "/kb/conduct/study-operations/team-management"
+  },
+  {
+    "source": "/kb/reportable-events",
+    "destination": "/kb/conduct/safety-reporting/reportable-events"
+  },
+  {
+    "source": "/kb/deviation-management",
+    "destination": "/kb/conduct/safety-reporting/deviation-management"
+  },
+  {
+    "source": "/kb/study-amendments",
+    "destination": "/kb/conduct/safety-reporting/study-amendments"
+  },
+  {
+    "source": "/kb/monitoring-audits",
+    "destination": "/kb/conduct/safety-reporting/monitoring-audits"
+  },
+  {
+    "source": "/kb/hc-inspection-guide",
+    "destination": "/kb/conduct/safety-reporting/hc-inspection-guide"
+  },
+  {
+    "source": "/kb/close-out",
+    "destination": "/kb/close-out/close-out"
+  },
+  {
+    "source": "/kb/publications",
+    "destination": "/kb/close-out/publications"
+  },
+  {
+    "source": "/training/learning-lab",
+    "destination": "/training/compliance-requirements"
+  },
+  {
+    "source": "/apps/ctms",
+    "destination": "/apps/nagano/overview"
+  },
+  {
+    "source": "/cim/researcher-guide",
+    "destination": "/cim/services"
+  },
+  {
+    "source": "/cim/training",
+    "destination": "/cim/services"
+  },
+  {
+    "source": "/cim/wi-sops",
+    "destination": "/cim/services"
+  },
+  {
+    "source": "/cim/wi/ad001",
+    "destination": "/cim/services"
+  },
+  {
+    "source": "/cim/wi/ad002",
+    "destination": "/cim/services"
+  },
+  {
+    "source": "/cim/wi/ad003",
+    "destination": "/cim/services"
+  },
+  {
+    "source": "/cim/wi/ad006",
+    "destination": "/cim/services"
+  },
+  {
+    "source": "/cim/wi/cr001",
+    "destination": "/cim/services"
+  },
+  {
+    "source": "/cim/wi/cr002",
+    "destination": "/cim/services"
+  },
+  {
+    "source": "/cim/wi/cr003",
+    "destination": "/cim/services"
+  },
+  {
+    "source": "/cim/wi/cr007",
+    "destination": "/cim/services"
+  },
+  {
+    "source": "/cim/wi/cr009",
+    "destination": "/cim/services"
+  },
+  {
+    "source": "/cim/wi/cr010",
+    "destination": "/cim/services"
+  },
+  {
+    "source": "/cim/wi/gn001",
+    "destination": "/cim/services"
+  },
+  {
+    "source": "/cim/wi/gn002",
+    "destination": "/cim/services"
+  },
+  {
+    "source": "/cim/wi/gn003",
+    "destination": "/cim/services"
+  },
+  {
+    "source": "/cim/wi/gn004",
+    "destination": "/cim/services"
+  },
+  {
+    "source": "/cim/wi/gn005",
+    "destination": "/cim/services"
+  },
+  {
+    "source": "/cim/wi/mo001",
+    "destination": "/cim/services"
+  },
+  {
+    "source": "/cim/wi/mo002",
+    "destination": "/cim/services"
+  },
+  {
+    "source": "/cim/wi/mo003",
+    "destination": "/cim/services"
+  },
+  {
+    "source": "/cim/wi/mo004",
+    "destination": "/cim/services"
+  },
+  {
+    "source": "/cim/wi/mo005",
+    "destination": "/cim/services"
+  },
+  {
+    "source": "/cim/wi/mo006",
+    "destination": "/cim/services"
+  },
+  {
+    "source": "/cim/wi/on001",
+    "destination": "/cim/services"
+  },
+  {
+    "source": "/cim/wi/on002",
+    "destination": "/cim/services"
+  },
+  {
+    "source": "/kb/funding/budget-tool",
+    "destination": "/kb/funding/budgets-contracts"
+  },
+  {
+    "source": "/kb/funding/budget-justifications",
+    "destination": "/kb/funding/funding-applications"
+  },
+  {
+    "source": "/roles/pi-guide-iv",
+    "destination": "/roles/pi-guide-iv-v"
+  },
+  {
+    "source": "/roles/pi-guide-v",
+    "destination": "/roles/pi-guide-iv-v"
+  },
+  {
+    "source": "/roles/crc-guide-iv",
+    "destination": "/roles/crc-guide-iv-v"
+  },
+  {
+    "source": "/roles/crc-guide-v",
+    "destination": "/roles/crc-guide-iv-v"
+  },
+  {
+    "source": "/roles/nurse-guide",
+    "destination": "/roles/nurse"
+  }
+]

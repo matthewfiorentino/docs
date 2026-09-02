@@ -1,0 +1,46 @@
+{
+  "images": {
+    "file_count": 81,
+    "bytes": 33521807,
+    "mb": 32.0,
+    "by_ext": {
+      ".png": 45,
+      ".jpg": 31,
+      ".svg": 5
+    }
+  },
+  "logo": {
+    "file_count": 19,
+    "bytes": 764561,
+    "mb": 0.7,
+    "by_ext": {
+      ".png": 14,
+      ".svg": 5
+    }
+  },
+  "fonts": {
+    "file_count": 21,
+    "bytes": 376680,
+    "mb": 0.4,
+    "by_ext": {
+      ".woff2": 20,
+      ".css": 1
+    }
+  },
+  "public": {
+    "file_count": 4,
+    "bytes": 116372,
+    "mb": 0.1,
+    "by_ext": {
+      ".js": 2,
+      ".docx": 2
+    }
+  },
+  "root_js": {
+    "cookie-consent.js": 4378,
+    "toc-fix.js": 8310,
+    "flag-override.js": 2977
+  },
+  "custom_css_lines": 4403,
+  "custom_css_bytes": 213675
+}

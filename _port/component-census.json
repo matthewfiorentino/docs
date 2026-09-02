@@ -1,0 +1,1034 @@
+{
+  "totals": {
+    "Tooltip": 993,
+    "Accordion": 524,
+    "Step": 292,
+    "Card": 220,
+    "Note": 203,
+    "Warning": 186,
+    "Badge": 132,
+    "AccordionGroup": 121,
+    "CardGroup": 65,
+    "Steps": 64,
+    "Info": 36,
+    "Tree": 36,
+    "Tip": 28,
+    "Tab": 28,
+    "Frame": 17,
+    "Tabs": 12,
+    "Icon": 5,
+    "Update": 5,
+    "Columns": 2,
+    "IsItResearchTool": 1,
+    "StudyRoadmap": 1,
+    "RecruitmentCalculator": 1
+  },
+  "per_file": {
+    "index.mdx": {
+      "Card": 8,
+      "CardGroup": 2,
+      "Icon": 5,
+      "Note": 1
+    },
+    "is-it-research.mdx": {
+      "Tip": 1,
+      "Note": 1,
+      "AccordionGroup": 1,
+      "Accordion": 5,
+      "IsItResearchTool": 1,
+      "CardGroup": 1,
+      "Card": 4
+    },
+    "contacts.mdx": {
+      "CardGroup": 2,
+      "Card": 11,
+      "Columns": 1
+    },
+    "faq.mdx": {
+      "Note": 1,
+      "AccordionGroup": 8,
+      "Accordion": 34
+    },
+    "my-roadmap.mdx": {
+      "Tip": 1,
+      "StudyRoadmap": 1
+    },
+    "kb/design/multi-centric.mdx": {
+      "Tooltip": 9,
+      "Note": 3,
+      "Warning": 1
+    },
+    "kb/design/cross-border-studies.mdx": {
+      "Warning": 1
+    },
+    "kb/design/dct-design.mdx": {
+      "Tooltip": 14,
+      "Warning": 1,
+      "Note": 2,
+      "AccordionGroup": 1,
+      "Accordion": 5
+    },
+    "kb/design/patient-engagement.mdx": {
+      "Note": 1
+    },
+    "kb/design/real-world-evidence.mdx": {
+      "Tip": 1,
+      "Note": 1
+    },
+    "kb/conduct/conduct-overview.mdx": {
+      "Tooltip": 15,
+      "Note": 1,
+      "Steps": 1,
+      "Step": 7
+    },
+    "kb/conduct/data-documentation/edc-query-management.mdx": {
+      "Tooltip": 4,
+      "Steps": 1,
+      "Step": 3,
+      "Note": 1
+    },
+    "kb/conduct/data-documentation/data-security.mdx": {
+      "Tooltip": 5,
+      "Warning": 3,
+      "Note": 1
+    },
+    "kb/conduct/data-documentation/data-integrity.mdx": {
+      "Tooltip": 11,
+      "Note": 3,
+      "CardGroup": 2,
+      "Card": 9,
+      "Warning": 1
+    },
+    "kb/conduct/safety-reporting/reportable-events.mdx": {
+      "Tooltip": 14,
+      "Frame": 1,
+      "Steps": 1,
+      "Step": 5,
+      "Note": 2,
+      "Warning": 1,
+      "CardGroup": 1,
+      "Card": 3
+    },
+    "kb/conduct/safety-reporting/monitoring-audits.mdx": {
+      "Tooltip": 10,
+      "Warning": 3,
+      "Steps": 1,
+      "Step": 5
+    },
+    "kb/conduct/safety-reporting/hc-inspection-guide.mdx": {
+      "Tooltip": 13,
+      "Warning": 2,
+      "Note": 2,
+      "CardGroup": 2,
+      "Card": 8,
+      "Steps": 2,
+      "Step": 9,
+      "AccordionGroup": 4,
+      "Accordion": 22,
+      "Tip": 2
+    },
+    "kb/conduct/safety-reporting/deviation-management.mdx": {
+      "Tooltip": 5,
+      "Note": 1,
+      "Steps": 1,
+      "Step": 5,
+      "Frame": 1,
+      "AccordionGroup": 1,
+      "Accordion": 5
+    },
+    "kb/conduct/safety-reporting/study-amendments.mdx": {
+      "Tooltip": 6,
+      "Warning": 2,
+      "Note": 2,
+      "Steps": 1,
+      "Step": 5
+    },
+    "kb/conduct/study-operations/biological-specimens.mdx": {
+      "Tooltip": 5,
+      "Warning": 3,
+      "Note": 2
+    },
+    "kb/conduct/study-operations/decentralized-trials.mdx": {
+      "Tooltip": 12,
+      "Warning": 1,
+      "Note": 1
+    },
+    "kb/conduct/study-operations/investigational-products.mdx": {
+      "Tooltip": 10,
+      "Note": 2,
+      "CardGroup": 1,
+      "Card": 2,
+      "Steps": 2,
+      "Step": 10,
+      "Warning": 1,
+      "AccordionGroup": 1,
+      "Accordion": 3
+    },
+    "kb/conduct/study-operations/team-management.mdx": {
+      "Tooltip": 7,
+      "Note": 2,
+      "AccordionGroup": 1,
+      "Accordion": 6,
+      "Tip": 1,
+      "Steps": 1,
+      "Step": 5,
+      "Warning": 2
+    },
+    "kb/recruitment/consent-templates.mdx": {
+      "Card": 1,
+      "Note": 2,
+      "Tip": 1
+    },
+    "kb/recruitment/recruitment-calculator.mdx": {
+      "RecruitmentCalculator": 1
+    },
+    "kb/recruitment/pediatric-research.mdx": {
+      "Tooltip": 9,
+      "Note": 3,
+      "Warning": 3,
+      "Tip": 3
+    },
+    "kb/recruitment/vulnerable-populations.mdx": {
+      "Tooltip": 6,
+      "Note": 2,
+      "Warning": 2,
+      "Tip": 2
+    },
+    "kb/recruitment/consent.mdx": {
+      "Tooltip": 6,
+      "AccordionGroup": 2,
+      "Accordion": 6,
+      "Note": 1,
+      "Warning": 1
+    },
+    "kb/recruitment/indigenous-research-ethics.mdx": {
+      "Warning": 1,
+      "Note": 2
+    },
+    "kb/recruitment/privacy.mdx": {
+      "Tooltip": 9,
+      "AccordionGroup": 1,
+      "Accordion": 2,
+      "Warning": 1,
+      "Note": 2
+    },
+    "kb/recruitment/recruitment-enrollment.mdx": {
+      "Tooltip": 9,
+      "Warning": 3,
+      "Steps": 2,
+      "Step": 7,
+      "Info": 1,
+      "Note": 2,
+      "Tip": 1
+    },
+    "kb/close-out/close-out.mdx": {
+      "Tooltip": 19,
+      "Warning": 3,
+      "Note": 1,
+      "Steps": 1,
+      "Step": 5
+    },
+    "kb/close-out/publications.mdx": {
+      "Warning": 2,
+      "Tooltip": 3,
+      "Note": 7,
+      "Steps": 1,
+      "Step": 5
+    },
+    "kb/planning/planning-overview.mdx": {
+      "Tooltip": 8,
+      "Note": 2,
+      "Tabs": 1,
+      "Tab": 2,
+      "Warning": 1
+    },
+    "kb/planning/ai-in-clinical-research.mdx": {
+      "Warning": 2,
+      "Note": 2,
+      "Tabs": 1,
+      "Tab": 2
+    },
+    "kb/planning/regulations.mdx": {
+      "Note": 2,
+      "Tooltip": 11,
+      "Tabs": 1,
+      "Tab": 3,
+      "AccordionGroup": 1,
+      "Accordion": 4
+    },
+    "kb/planning/iit-startup.mdx": {
+      "Warning": 1,
+      "Steps": 1,
+      "Step": 8,
+      "Tooltip": 2
+    },
+    "kb/planning/feasibility.mdx": {
+      "Tip": 1,
+      "Note": 4,
+      "CardGroup": 1,
+      "Card": 5,
+      "Warning": 1,
+      "Tooltip": 9,
+      "AccordionGroup": 1,
+      "Accordion": 6,
+      "Steps": 1,
+      "Step": 3
+    },
+    "kb/planning/sponsored-trials.mdx": {
+      "Note": 2,
+      "Tooltip": 4,
+      "Warning": 1
+    },
+    "kb/planning/sponsor-investigator.mdx": {
+      "Tooltip": 16,
+      "Warning": 2,
+      "Note": 2
+    },
+    "kb/foundations/gcp-quality-by-design.mdx": {
+      "Tooltip": 6,
+      "CardGroup": 2,
+      "Card": 5,
+      "Tip": 1,
+      "AccordionGroup": 1,
+      "Accordion": 6,
+      "Warning": 1,
+      "Note": 1
+    },
+    "kb/foundations/study-lifecycle.mdx": {
+      "Note": 1,
+      "Steps": 1,
+      "Step": 8,
+      "Tooltip": 12,
+      "AccordionGroup": 1,
+      "Accordion": 4,
+      "CardGroup": 1,
+      "Card": 4,
+      "Warning": 1,
+      "Tip": 1
+    },
+    "kb/foundations/trial-design.mdx": {
+      "Tooltip": 10,
+      "Note": 4,
+      "Warning": 1,
+      "AccordionGroup": 3,
+      "Accordion": 11,
+      "Steps": 1,
+      "Step": 4
+    },
+    "kb/foundations/glossary.mdx": {
+      "Note": 1,
+      "AccordionGroup": 13,
+      "Accordion": 152
+    },
+    "kb/foundations/clinical-research-101.mdx": {
+      "Info": 2,
+      "Tooltip": 13,
+      "Steps": 3,
+      "Step": 16,
+      "AccordionGroup": 2,
+      "Accordion": 9,
+      "Note": 2,
+      "CardGroup": 1,
+      "Card": 2,
+      "Warning": 1
+    },
+    "kb/site-activation/protocol-documents.mdx": {
+      "Tooltip": 12,
+      "Note": 3,
+      "Warning": 4
+    },
+    "kb/site-activation/isf.mdx": {
+      "Tooltip": 19,
+      "Note": 2,
+      "Tree": 36,
+      "AccordionGroup": 1,
+      "Accordion": 3,
+      "Warning": 1
+    },
+    "kb/site-activation/site-setup.mdx": {
+      "Tooltip": 19,
+      "Tabs": 2,
+      "Tab": 4,
+      "Steps": 1,
+      "Step": 5,
+      "Warning": 3,
+      "AccordionGroup": 1,
+      "Accordion": 4,
+      "Note": 1,
+      "Info": 1
+    },
+    "kb/team/hiring-hr-support.mdx": {
+      "Tip": 1,
+      "Note": 2,
+      "Warning": 1
+    },
+    "kb/team/building-your-team.mdx": {
+      "Tooltip": 5,
+      "Note": 1,
+      "Warning": 2
+    },
+    "kb/team/edi.mdx": {
+      "Tip": 2,
+      "Note": 1
+    },
+    "kb/design-support/bcu.mdx": {
+      "AccordionGroup": 1,
+      "Accordion": 3,
+      "Tooltip": 2,
+      "Steps": 2,
+      "Step": 6,
+      "Warning": 1
+    },
+    "kb/design-support/cord.mdx": {
+      "Note": 1
+    },
+    "kb/design-support/study-design.mdx": {
+      "AccordionGroup": 1,
+      "Accordion": 7,
+      "Tooltip": 12
+    },
+    "kb/design-support/data-warehouse.mdx": {
+      "CardGroup": 2,
+      "Card": 6,
+      "Note": 1,
+      "Tooltip": 3,
+      "Steps": 1,
+      "Step": 5,
+      "Warning": 1
+    },
+    "kb/governance/quality-assurance.mdx": {
+      "Tooltip": 10,
+      "Steps": 1,
+      "Step": 3,
+      "Warning": 2
+    },
+    "kb/governance/french-language-requirements.mdx": {
+      "Note": 2,
+      "Warning": 2,
+      "Steps": 1,
+      "Step": 4
+    },
+    "kb/governance/modernized-ct-regulations.mdx": {
+      "Warning": 1,
+      "AccordionGroup": 2,
+      "Accordion": 10,
+      "Steps": 1,
+      "Step": 4,
+      "Note": 1
+    },
+    "kb/governance/regulatory-framework.mdx": {
+      "AccordionGroup": 2,
+      "Accordion": 7,
+      "Tooltip": 12,
+      "Note": 2,
+      "Tip": 1
+    },
+    "kb/governance/institutional-structure.mdx": {
+      "Tooltip": 10,
+      "Note": 1,
+      "Warning": 2,
+      "Tabs": 1,
+      "Tab": 2,
+      "Columns": 1,
+      "Card": 2
+    },
+    "kb/governance/conflict-of-interest.mdx": {
+      "Tooltip": 6,
+      "CardGroup": 1,
+      "Card": 2,
+      "Warning": 2,
+      "AccordionGroup": 1,
+      "Accordion": 3
+    },
+    "kb/governance/research-integrity.mdx": {
+      "Tooltip": 4,
+      "Note": 3,
+      "Tabs": 1,
+      "Tab": 3,
+      "Steps": 1,
+      "Step": 4
+    },
+    "kb/community/updates.mdx": {
+      "Update": 5
+    },
+    "kb/community/community-connect.mdx": {
+      "Card": 1,
+      "Tooltip": 1,
+      "Note": 1
+    },
+    "kb/submission/submitting-via-nagano.mdx": {
+      "Tooltip": 11,
+      "Warning": 2,
+      "Tabs": 2,
+      "Tab": 4,
+      "Info": 1,
+      "CardGroup": 1,
+      "Card": 3,
+      "Steps": 1,
+      "Step": 6
+    },
+    "kb/submission/tracking-responding.mdx": {
+      "Tooltip": 13,
+      "Note": 2,
+      "Warning": 4,
+      "CardGroup": 1,
+      "Card": 3,
+      "Info": 1,
+      "Steps": 1,
+      "Step": 5,
+      "AccordionGroup": 1,
+      "Accordion": 4
+    },
+    "kb/submission/study-review.mdx": {
+      "Tooltip": 18,
+      "Warning": 3,
+      "AccordionGroup": 1,
+      "Accordion": 4,
+      "Tabs": 1,
+      "Tab": 3,
+      "Note": 1
+    },
+    "kb/submission/submission-overview.mdx": {
+      "Tooltip": 13,
+      "Note": 2,
+      "Warning": 1,
+      "Steps": 1,
+      "Step": 5,
+      "CardGroup": 2,
+      "Card": 8,
+      "Tabs": 1,
+      "Tab": 3
+    },
+    "kb/submission/preparing.mdx": {
+      "Tooltip": 13,
+      "Note": 3,
+      "Steps": 1,
+      "Step": 12,
+      "Warning": 3,
+      "AccordionGroup": 1,
+      "Accordion": 6
+    },
+    "kb/funding/clinical-trial-agreements.mdx": {
+      "Note": 1,
+      "Tooltip": 3
+    },
+    "kb/funding/research-grants.mdx": {
+      "Tooltip": 4,
+      "Warning": 1,
+      "Note": 1
+    },
+    "kb/funding/budget-negotiation.mdx": {
+      "Note": 1,
+      "Tip": 1,
+      "AccordionGroup": 1,
+      "Accordion": 4,
+      "Steps": 1,
+      "Step": 4,
+      "Warning": 1,
+      "Card": 1
+    },
+    "kb/funding/funding-applications.mdx": {
+      "Note": 3,
+      "Steps": 1,
+      "Step": 5
+    },
+    "kb/funding/budgets-contracts.mdx": {
+      "Tooltip": 2,
+      "Card": 1
+    },
+    "training/compliance-requirements.mdx": {
+      "Note": 1,
+      "CardGroup": 4,
+      "Card": 13,
+      "AccordionGroup": 1,
+      "Accordion": 3,
+      "Steps": 1,
+      "Step": 3,
+      "Warning": 1
+    },
+    "training/external-certifications.mdx": {
+      "CardGroup": 1,
+      "Card": 3,
+      "Note": 2,
+      "Info": 1,
+      "Steps": 2,
+      "Step": 12,
+      "Warning": 1
+    },
+    "training/supplementary-training.mdx": {
+      "Note": 1,
+      "Card": 1
+    },
+    "training/cantrain.mdx": {
+      "Note": 4,
+      "CardGroup": 1,
+      "Card": 4,
+      "AccordionGroup": 2,
+      "Accordion": 9,
+      "Steps": 1,
+      "Step": 3
+    },
+    "roles/crc-guide-iv-v.mdx": {
+      "Tooltip": 11,
+      "Info": 1,
+      "Warning": 2,
+      "Steps": 1,
+      "Step": 4,
+      "AccordionGroup": 6,
+      "Accordion": 6
+    },
+    "roles/volunteer.mdx": {
+      "CardGroup": 1,
+      "Card": 3,
+      "Note": 2,
+      "Warning": 1,
+      "Tooltip": 5,
+      "Steps": 1,
+      "Step": 4
+    },
+    "roles/investigator.mdx": {
+      "Tooltip": 6,
+      "CardGroup": 7,
+      "Card": 21,
+      "Note": 2,
+      "Warning": 4,
+      "Tabs": 1,
+      "Tab": 2,
+      "Tip": 2,
+      "Accordion": 3
+    },
+    "roles/crc-guide.mdx": {
+      "AccordionGroup": 8,
+      "Accordion": 13,
+      "Tooltip": 8,
+      "Warning": 3,
+      "Steps": 1,
+      "Step": 4
+    },
+    "roles/coordinator.mdx": {
+      "Tooltip": 18,
+      "CardGroup": 6,
+      "Card": 16,
+      "Note": 6,
+      "Warning": 2,
+      "Tip": 1,
+      "Steps": 3,
+      "Step": 15,
+      "Info": 1,
+      "AccordionGroup": 13,
+      "Accordion": 14
+    },
+    "roles/trainee.mdx": {
+      "CardGroup": 1,
+      "Card": 3,
+      "Note": 2,
+      "Tooltip": 11,
+      "Warning": 1,
+      "Steps": 1,
+      "Step": 6
+    },
+    "roles/pi-guide-iv-v.mdx": {
+      "Info": 3,
+      "Tip": 1,
+      "Tooltip": 8,
+      "Note": 4,
+      "Warning": 1,
+      "AccordionGroup": 1,
+      "Accordion": 7
+    },
+    "roles/pi-guide.mdx": {
+      "Tooltip": 22,
+      "Note": 4,
+      "Info": 2,
+      "Steps": 1,
+      "Step": 3,
+      "Warning": 2,
+      "Tip": 1
+    },
+    "roles/nurse.mdx": {
+      "Tooltip": 12,
+      "CardGroup": 5,
+      "Card": 12,
+      "Note": 1,
+      "Warning": 5,
+      "Steps": 1,
+      "Step": 3,
+      "AccordionGroup": 4,
+      "Accordion": 8
+    },
+    "roles/observer.mdx": {
+      "CardGroup": 1,
+      "Card": 3,
+      "Note": 3,
+      "Tooltip": 3,
+      "Warning": 1,
+      "Steps": 1,
+      "Step": 3
+    },
+    "cim/services.mdx": {
+      "Note": 5,
+      "AccordionGroup": 3,
+      "Accordion": 18,
+      "Card": 7,
+      "CardGroup": 1,
+      "Warning": 1,
+      "Steps": 1,
+      "Step": 4
+    },
+    "cim/planning.mdx": {
+      "Note": 1,
+      "AccordionGroup": 1,
+      "Accordion": 9,
+      "Steps": 1,
+      "Step": 5,
+      "Warning": 1,
+      "Card": 1
+    },
+    "sops/overview.mdx": {
+      "Tooltip": 4,
+      "Warning": 1,
+      "Note": 1,
+      "CardGroup": 1,
+      "Card": 3
+    },
+    "sops/cr-023.mdx": {
+      "Badge": 4,
+      "Warning": 1,
+      "Tooltip": 11,
+      "Info": 1
+    },
+    "sops/cr-009.mdx": {
+      "Badge": 4,
+      "Warning": 1,
+      "Tooltip": 12,
+      "Steps": 1,
+      "Step": 6,
+      "Info": 1
+    },
+    "sops/cr-008.mdx": {
+      "Badge": 4,
+      "Warning": 5,
+      "Tooltip": 10,
+      "Frame": 1,
+      "Note": 2,
+      "Info": 1
+    },
+    "sops/cr-018.mdx": {
+      "Badge": 4,
+      "Warning": 1,
+      "Tooltip": 10,
+      "Info": 1
+    },
+    "sops/cr-024.mdx": {
+      "Badge": 4,
+      "Warning": 1,
+      "Tooltip": 9,
+      "Info": 1
+    },
+    "sops/cr-025.mdx": {
+      "Badge": 4,
+      "Warning": 1,
+      "Tooltip": 5,
+      "Info": 1
+    },
+    "sops/cr-019.mdx": {
+      "Badge": 4,
+      "Warning": 1,
+      "Tooltip": 9,
+      "Info": 1
+    },
+    "sops/cr-026.mdx": {
+      "Badge": 4,
+      "Warning": 1,
+      "Tooltip": 24,
+      "Note": 1,
+      "Info": 1
+    },
+    "sops/cr-003.mdx": {
+      "Badge": 4,
+      "Warning": 1,
+      "Tooltip": 11,
+      "Info": 1
+    },
+    "sops/cr-017.mdx": {
+      "Badge": 4,
+      "Warning": 2,
+      "Tooltip": 16,
+      "Info": 1
+    },
+    "sops/cr-016.mdx": {
+      "Badge": 4,
+      "Warning": 1,
+      "Tooltip": 27
+    },
+    "sops/cr-002.mdx": {
+      "Badge": 4,
+      "Warning": 4,
+      "Tooltip": 23,
+      "Note": 7,
+      "CardGroup": 1,
+      "Card": 3,
+      "Info": 1
+    },
+    "sops/cr-014.mdx": {
+      "Badge": 4,
+      "Warning": 1,
+      "Tooltip": 17,
+      "Info": 1
+    },
+    "sops/cr-001.mdx": {
+      "Badge": 4,
+      "Warning": 1,
+      "Tooltip": 2,
+      "Info": 1
+    },
+    "sops/cr-015.mdx": {
+      "Badge": 4,
+      "Warning": 1,
+      "Tooltip": 14,
+      "Info": 1
+    },
+    "sops/appendices.mdx": {
+      "Note": 1
+    },
+    "sops/cr-011.mdx": {
+      "Badge": 4,
+      "Warning": 1,
+      "Tooltip": 6,
+      "Info": 1
+    },
+    "sops/cr-005.mdx": {
+      "Badge": 4,
+      "Warning": 1,
+      "Tooltip": 26,
+      "CardGroup": 1,
+      "Card": 2
+    },
+    "sops/cr-004.mdx": {
+      "Badge": 4,
+      "Warning": 1,
+      "Tooltip": 14,
+      "Info": 1
+    },
+    "sops/cr-010.mdx": {
+      "Badge": 4,
+      "Warning": 1,
+      "Tooltip": 11
+    },
+    "sops/cr-006.mdx": {
+      "Badge": 4,
+      "Warning": 1,
+      "Tooltip": 11,
+      "Info": 1
+    },
+    "sops/cr-012.mdx": {
+      "Badge": 4,
+      "Warning": 1,
+      "Tooltip": 22,
+      "Info": 1
+    },
+    "sops/cr-013.mdx": {
+      "Badge": 4,
+      "Warning": 1,
+      "Tooltip": 20,
+      "Note": 2,
+      "Info": 1
+    },
+    "sops/cr-007.mdx": {
+      "Badge": 4,
+      "Warning": 1,
+      "Tooltip": 19,
+      "Info": 1
+    },
+    "sops/cr-100.mdx": {
+      "Badge": 4,
+      "Warning": 1,
+      "Tooltip": 9
+    },
+    "sops/cr-101.mdx": {
+      "Badge": 4,
+      "Warning": 1,
+      "Tooltip": 7
+    },
+    "sops/cr-103.mdx": {
+      "Badge": 4,
+      "Warning": 1,
+      "Tooltip": 6
+    },
+    "sops/cr-102.mdx": {
+      "Badge": 4,
+      "Warning": 1,
+      "Tooltip": 15,
+      "Info": 1
+    },
+    "sops/cr-106.mdx": {
+      "Badge": 4,
+      "Warning": 1,
+      "Tooltip": 4
+    },
+    "sops/cr-107.mdx": {
+      "Badge": 4,
+      "Warning": 1,
+      "Tooltip": 5
+    },
+    "sops/cr-105.mdx": {
+      "Badge": 4,
+      "Warning": 1,
+      "Tooltip": 4
+    },
+    "sops/cr-501.mdx": {
+      "Badge": 4,
+      "Warning": 1,
+      "Tooltip": 5,
+      "Info": 1
+    },
+    "sops/cr-500.mdx": {
+      "Badge": 4,
+      "Warning": 1,
+      "Tooltip": 9
+    },
+    "sops/cr-104.mdx": {
+      "Badge": 4,
+      "Warning": 1,
+      "Tooltip": 8
+    },
+    "apps/crosslab.mdx": {
+      "Card": 1
+    },
+    "apps/redcap.mdx": {
+      "CardGroup": 3,
+      "Card": 14,
+      "Note": 1,
+      "Warning": 1
+    },
+    "apps/talentlms.mdx": {
+      "CardGroup": 4,
+      "Card": 11,
+      "Steps": 2,
+      "Step": 9,
+      "AccordionGroup": 1,
+      "Accordion": 5,
+      "Note": 1
+    },
+    "apps/oacis.mdx": {
+      "Warning": 3,
+      "AccordionGroup": 1,
+      "Accordion": 5,
+      "Steps": 2,
+      "Step": 8,
+      "Note": 1,
+      "CardGroup": 1,
+      "Card": 2
+    },
+    "apps/nagano/guide-09.mdx": {
+      "Frame": 1,
+      "AccordionGroup": 3,
+      "Accordion": 6,
+      "Warning": 2,
+      "Note": 3
+    },
+    "apps/nagano/guide-08.mdx": {
+      "Frame": 1,
+      "AccordionGroup": 2,
+      "Accordion": 5,
+      "Note": 2,
+      "Warning": 3
+    },
+    "apps/nagano/overview.mdx": {
+      "Warning": 1,
+      "CardGroup": 3,
+      "Card": 8,
+      "AccordionGroup": 1,
+      "Accordion": 3,
+      "Note": 1
+    },
+    "apps/nagano/guide-03.mdx": {
+      "Frame": 2,
+      "Warning": 3,
+      "Note": 3,
+      "AccordionGroup": 1,
+      "Accordion": 9
+    },
+    "apps/nagano/guide-02.mdx": {
+      "Steps": 2,
+      "Step": 4,
+      "Frame": 3,
+      "AccordionGroup": 2,
+      "Accordion": 9,
+      "Note": 4,
+      "Warning": 1
+    },
+    "apps/nagano/guide-00.mdx": {
+      "Warning": 2,
+      "Note": 4,
+      "Steps": 2,
+      "Step": 9,
+      "Frame": 1,
+      "AccordionGroup": 1,
+      "Accordion": 4
+    },
+    "apps/nagano/guide-01.mdx": {
+      "Note": 3,
+      "AccordionGroup": 2,
+      "Accordion": 4,
+      "Warning": 1
+    },
+    "apps/nagano/guide-05.mdx": {
+      "Frame": 1,
+      "AccordionGroup": 3,
+      "Accordion": 6,
+      "Warning": 2,
+      "Note": 3
+    },
+    "apps/nagano/guide-11.mdx": {
+      "Frame": 1,
+      "Note": 3,
+      "Warning": 2,
+      "AccordionGroup": 1,
+      "Accordion": 2
+    },
+    "apps/nagano/guide-10.mdx": {
+      "Frame": 1,
+      "AccordionGroup": 1,
+      "Accordion": 12
+    },
+    "apps/nagano/guide-04.mdx": {
+      "Frame": 1,
+      "AccordionGroup": 4,
+      "Accordion": 12,
+      "Note": 2,
+      "Warning": 1
+    },
+    "apps/nagano/guide-12.mdx": {
+      "Steps": 2,
+      "Step": 5,
+      "Note": 1,
+      "AccordionGroup": 1,
+      "Accordion": 2,
+      "Warning": 2
+    },
+    "apps/nagano/guide-06.mdx": {
+      "Frame": 1,
+      "Note": 4,
+      "Warning": 4,
+      "AccordionGroup": 1,
+      "Accordion": 7
+    },
+    "apps/nagano/guide-07.mdx": {
+      "Frame": 1,
+      "AccordionGroup": 1,
+      "Accordion": 5,
+      "Note": 2,
+      "Warning": 1
+    },
+    "apps/nagano/guide-13.mdx": {
+      "Steps": 1,
+      "Step": 4,
+      "Tip": 2,
+      "AccordionGroup": 1,
+      "Accordion": 3,
+      "Warning": 2,
+      "Note": 2
+    }
+  }
+}

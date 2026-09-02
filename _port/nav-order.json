@@ -1,0 +1,1692 @@
+[
+  {
+    "page": "index",
+    "trail": [
+      "Getting Started",
+      "Start Here"
+    ],
+    "nav_ord": 1,
+    "under_root": null,
+    "grav_folder": "user/pages/01.index/default.md",
+    "url": "/index"
+  },
+  {
+    "page": "is-it-research",
+    "trail": [
+      "Getting Started",
+      "Start Here"
+    ],
+    "nav_ord": 2,
+    "under_root": null,
+    "grav_folder": "user/pages/02.is-it-research/default.md",
+    "url": "/is-it-research"
+  },
+  {
+    "page": "my-roadmap",
+    "trail": [
+      "Getting Started",
+      "Start Here"
+    ],
+    "nav_ord": 3,
+    "under_root": null,
+    "grav_folder": "user/pages/03.my-roadmap/default.md",
+    "url": "/my-roadmap"
+  },
+  {
+    "page": "roles/investigator",
+    "trail": [
+      "Getting Started",
+      "Choose Your Role"
+    ],
+    "nav_ord": 1,
+    "under_root": null,
+    "is_group_root": true,
+    "group_label": "Investigator",
+    "grav_folder": "user/pages/04.roles/01.investigator/default.md",
+    "url": "/roles/investigator"
+  },
+  {
+    "page": "roles/pi-guide",
+    "trail": [
+      "Getting Started",
+      "Choose Your Role",
+      "Investigator"
+    ],
+    "nav_ord": 1,
+    "under_root": "roles/investigator",
+    "grav_folder": "user/pages/04.roles/02.pi-guide/default.md",
+    "url": "/roles/pi-guide"
+  },
+  {
+    "page": "roles/pi-guide-iv-v",
+    "trail": [
+      "Getting Started",
+      "Choose Your Role",
+      "Investigator"
+    ],
+    "nav_ord": 2,
+    "under_root": "roles/investigator",
+    "grav_folder": "user/pages/04.roles/03.pi-guide-iv-v/default.md",
+    "url": "/roles/pi-guide-iv-v"
+  },
+  {
+    "page": "roles/coordinator",
+    "trail": [
+      "Getting Started",
+      "Choose Your Role"
+    ],
+    "nav_ord": 2,
+    "under_root": null,
+    "is_group_root": true,
+    "group_label": "Coordinator",
+    "grav_folder": "user/pages/04.roles/04.coordinator/default.md",
+    "url": "/roles/coordinator"
+  },
+  {
+    "page": "roles/crc-guide",
+    "trail": [
+      "Getting Started",
+      "Choose Your Role",
+      "Coordinator"
+    ],
+    "nav_ord": 1,
+    "under_root": "roles/coordinator",
+    "grav_folder": "user/pages/04.roles/05.crc-guide/default.md",
+    "url": "/roles/crc-guide"
+  },
+  {
+    "page": "roles/crc-guide-iv-v",
+    "trail": [
+      "Getting Started",
+      "Choose Your Role",
+      "Coordinator"
+    ],
+    "nav_ord": 2,
+    "under_root": "roles/coordinator",
+    "grav_folder": "user/pages/04.roles/06.crc-guide-iv-v/default.md",
+    "url": "/roles/crc-guide-iv-v"
+  },
+  {
+    "page": "roles/nurse",
+    "trail": [
+      "Getting Started",
+      "Choose Your Role"
+    ],
+    "nav_ord": 3,
+    "under_root": null,
+    "grav_folder": "user/pages/04.roles/07.nurse/default.md",
+    "url": "/roles/nurse"
+  },
+  {
+    "page": "roles/trainee",
+    "trail": [
+      "Getting Started",
+      "Choose Your Role"
+    ],
+    "nav_ord": 4,
+    "under_root": null,
+    "grav_folder": "user/pages/04.roles/08.trainee/default.md",
+    "url": "/roles/trainee"
+  },
+  {
+    "page": "roles/volunteer",
+    "trail": [
+      "Getting Started",
+      "Choose Your Role"
+    ],
+    "nav_ord": 5,
+    "under_root": null,
+    "grav_folder": "user/pages/04.roles/09.volunteer/default.md",
+    "url": "/roles/volunteer"
+  },
+  {
+    "page": "roles/observer",
+    "trail": [
+      "Getting Started",
+      "Choose Your Role"
+    ],
+    "nav_ord": 6,
+    "under_root": null,
+    "grav_folder": "user/pages/04.roles/10.observer/default.md",
+    "url": "/roles/observer"
+  },
+  {
+    "page": "faq",
+    "trail": [
+      "Getting Started",
+      "Help"
+    ],
+    "nav_ord": 1,
+    "under_root": null,
+    "grav_folder": "user/pages/05.faq/default.md",
+    "url": "/faq"
+  },
+  {
+    "page": "kb/community/updates",
+    "trail": [
+      "Knowledge Base",
+      "Community"
+    ],
+    "nav_ord": 1,
+    "under_root": null,
+    "grav_folder": "user/pages/06.kb/01.community/01.updates/default.md",
+    "url": "/kb/community/updates"
+  },
+  {
+    "page": "kb/community/community-connect",
+    "trail": [
+      "Knowledge Base",
+      "Community"
+    ],
+    "nav_ord": 2,
+    "under_root": null,
+    "grav_folder": "user/pages/06.kb/01.community/02.community-connect/default.md",
+    "url": "/kb/community/community-connect"
+  },
+  {
+    "page": "kb/foundations/clinical-research-101",
+    "trail": [
+      "Knowledge Base",
+      "Foundations"
+    ],
+    "nav_ord": 1,
+    "under_root": null,
+    "grav_folder": "user/pages/06.kb/02.foundations/01.clinical-research-101/default.md",
+    "url": "/kb/foundations/clinical-research-101"
+  },
+  {
+    "page": "kb/foundations/trial-design",
+    "trail": [
+      "Knowledge Base",
+      "Foundations"
+    ],
+    "nav_ord": 2,
+    "under_root": null,
+    "grav_folder": "user/pages/06.kb/02.foundations/02.trial-design/default.md",
+    "url": "/kb/foundations/trial-design"
+  },
+  {
+    "page": "kb/foundations/gcp-quality-by-design",
+    "trail": [
+      "Knowledge Base",
+      "Foundations"
+    ],
+    "nav_ord": 3,
+    "under_root": null,
+    "grav_folder": "user/pages/06.kb/02.foundations/03.gcp-quality-by-design/default.md",
+    "url": "/kb/foundations/gcp-quality-by-design"
+  },
+  {
+    "page": "kb/foundations/study-lifecycle",
+    "trail": [
+      "Knowledge Base",
+      "Foundations"
+    ],
+    "nav_ord": 4,
+    "under_root": null,
+    "grav_folder": "user/pages/06.kb/02.foundations/04.study-lifecycle/default.md",
+    "url": "/kb/foundations/study-lifecycle"
+  },
+  {
+    "page": "kb/foundations/glossary",
+    "trail": [
+      "Knowledge Base",
+      "Foundations"
+    ],
+    "nav_ord": 5,
+    "under_root": null,
+    "grav_folder": "user/pages/06.kb/02.foundations/05.glossary/default.md",
+    "url": "/kb/foundations/glossary"
+  },
+  {
+    "page": "kb/planning/planning-overview",
+    "trail": [
+      "Knowledge Base",
+      "Your Study, Step by Step",
+      "Study Planning"
+    ],
+    "nav_ord": 1,
+    "under_root": null,
+    "grav_folder": "user/pages/06.kb/03.planning/01.planning-overview/default.md",
+    "url": "/kb/planning/planning-overview"
+  },
+  {
+    "page": "kb/planning/feasibility",
+    "trail": [
+      "Knowledge Base",
+      "Your Study, Step by Step",
+      "Study Planning"
+    ],
+    "nav_ord": 2,
+    "under_root": null,
+    "grav_folder": "user/pages/06.kb/03.planning/02.feasibility/default.md",
+    "url": "/kb/planning/feasibility"
+  },
+  {
+    "page": "kb/planning/sponsored-trials",
+    "trail": [
+      "Knowledge Base",
+      "Your Study, Step by Step",
+      "Study Planning"
+    ],
+    "nav_ord": 3,
+    "under_root": null,
+    "grav_folder": "user/pages/06.kb/03.planning/03.sponsored-trials/default.md",
+    "url": "/kb/planning/sponsored-trials"
+  },
+  {
+    "page": "kb/planning/sponsor-investigator",
+    "trail": [
+      "Knowledge Base",
+      "Your Study, Step by Step",
+      "Study Planning"
+    ],
+    "nav_ord": 4,
+    "under_root": null,
+    "grav_folder": "user/pages/06.kb/03.planning/04.sponsor-investigator/default.md",
+    "url": "/kb/planning/sponsor-investigator"
+  },
+  {
+    "page": "kb/planning/iit-startup",
+    "trail": [
+      "Knowledge Base",
+      "Your Study, Step by Step",
+      "Study Planning"
+    ],
+    "nav_ord": 5,
+    "under_root": null,
+    "grav_folder": "user/pages/06.kb/03.planning/05.iit-startup/default.md",
+    "url": "/kb/planning/iit-startup"
+  },
+  {
+    "page": "kb/planning/regulations",
+    "trail": [
+      "Knowledge Base",
+      "Your Study, Step by Step",
+      "Study Planning"
+    ],
+    "nav_ord": 6,
+    "under_root": null,
+    "grav_folder": "user/pages/06.kb/03.planning/06.regulations/default.md",
+    "url": "/kb/planning/regulations"
+  },
+  {
+    "page": "kb/planning/ai-in-clinical-research",
+    "trail": [
+      "Knowledge Base",
+      "Your Study, Step by Step",
+      "Study Planning"
+    ],
+    "nav_ord": 7,
+    "under_root": null,
+    "grav_folder": "user/pages/06.kb/03.planning/07.ai-in-clinical-research/default.md",
+    "url": "/kb/planning/ai-in-clinical-research"
+  },
+  {
+    "page": "kb/design/patient-engagement",
+    "trail": [
+      "Knowledge Base",
+      "Your Study, Step by Step",
+      "Study Design"
+    ],
+    "nav_ord": 1,
+    "under_root": null,
+    "grav_folder": "user/pages/06.kb/04.design/01.patient-engagement/default.md",
+    "url": "/kb/design/patient-engagement"
+  },
+  {
+    "page": "kb/design/dct-design",
+    "trail": [
+      "Knowledge Base",
+      "Your Study, Step by Step",
+      "Study Design"
+    ],
+    "nav_ord": 2,
+    "under_root": null,
+    "grav_folder": "user/pages/06.kb/04.design/02.dct-design/default.md",
+    "url": "/kb/design/dct-design"
+  },
+  {
+    "page": "kb/design/real-world-evidence",
+    "trail": [
+      "Knowledge Base",
+      "Your Study, Step by Step",
+      "Study Design"
+    ],
+    "nav_ord": 3,
+    "under_root": null,
+    "grav_folder": "user/pages/06.kb/04.design/03.real-world-evidence/default.md",
+    "url": "/kb/design/real-world-evidence"
+  },
+  {
+    "page": "kb/design/multi-centric",
+    "trail": [
+      "Knowledge Base",
+      "Your Study, Step by Step",
+      "Study Design"
+    ],
+    "nav_ord": 4,
+    "under_root": null,
+    "grav_folder": "user/pages/06.kb/04.design/04.multi-centric/default.md",
+    "url": "/kb/design/multi-centric"
+  },
+  {
+    "page": "kb/design/cross-border-studies",
+    "trail": [
+      "Knowledge Base",
+      "Your Study, Step by Step",
+      "Study Design"
+    ],
+    "nav_ord": 5,
+    "under_root": null,
+    "grav_folder": "user/pages/06.kb/04.design/05.cross-border-studies/default.md",
+    "url": "/kb/design/cross-border-studies"
+  },
+  {
+    "page": "kb/design-support/study-design",
+    "trail": [
+      "Knowledge Base",
+      "Your Study, Step by Step",
+      "Design Support"
+    ],
+    "nav_ord": 1,
+    "under_root": null,
+    "grav_folder": "user/pages/06.kb/05.design-support/01.study-design/default.md",
+    "url": "/kb/design-support/study-design"
+  },
+  {
+    "page": "kb/design-support/bcu",
+    "trail": [
+      "Knowledge Base",
+      "Your Study, Step by Step",
+      "Design Support"
+    ],
+    "nav_ord": 2,
+    "under_root": null,
+    "grav_folder": "user/pages/06.kb/05.design-support/02.bcu/default.md",
+    "url": "/kb/design-support/bcu"
+  },
+  {
+    "page": "kb/design-support/cord",
+    "trail": [
+      "Knowledge Base",
+      "Your Study, Step by Step",
+      "Design Support"
+    ],
+    "nav_ord": 3,
+    "under_root": null,
+    "grav_folder": "user/pages/06.kb/05.design-support/03.cord/default.md",
+    "url": "/kb/design-support/cord"
+  },
+  {
+    "page": "kb/design-support/data-warehouse",
+    "trail": [
+      "Knowledge Base",
+      "Your Study, Step by Step",
+      "Design Support"
+    ],
+    "nav_ord": 4,
+    "under_root": null,
+    "grav_folder": "user/pages/06.kb/05.design-support/04.data-warehouse/default.md",
+    "url": "/kb/design-support/data-warehouse"
+  },
+  {
+    "page": "kb/team/building-your-team",
+    "trail": [
+      "Knowledge Base",
+      "Your Study, Step by Step",
+      "Building Your Team"
+    ],
+    "nav_ord": 1,
+    "under_root": null,
+    "grav_folder": "user/pages/06.kb/06.team/01.building-your-team/default.md",
+    "url": "/kb/team/building-your-team"
+  },
+  {
+    "page": "kb/team/hiring-hr-support",
+    "trail": [
+      "Knowledge Base",
+      "Your Study, Step by Step",
+      "Building Your Team"
+    ],
+    "nav_ord": 2,
+    "under_root": null,
+    "grav_folder": "user/pages/06.kb/06.team/02.hiring-hr-support/default.md",
+    "url": "/kb/team/hiring-hr-support"
+  },
+  {
+    "page": "kb/team/edi",
+    "trail": [
+      "Knowledge Base",
+      "Your Study, Step by Step",
+      "Building Your Team"
+    ],
+    "nav_ord": 3,
+    "under_root": null,
+    "grav_folder": "user/pages/06.kb/06.team/03.edi/default.md",
+    "url": "/kb/team/edi"
+  },
+  {
+    "page": "kb/funding/funding-applications",
+    "trail": [
+      "Knowledge Base",
+      "Your Study, Step by Step",
+      "Funding, Budgets and Agreements"
+    ],
+    "nav_ord": 1,
+    "under_root": null,
+    "grav_folder": "user/pages/06.kb/07.funding/01.funding-applications/default.md",
+    "url": "/kb/funding/funding-applications"
+  },
+  {
+    "page": "kb/funding/budgets-contracts",
+    "trail": [
+      "Knowledge Base",
+      "Your Study, Step by Step",
+      "Funding, Budgets and Agreements"
+    ],
+    "nav_ord": 2,
+    "under_root": null,
+    "grav_folder": "user/pages/06.kb/07.funding/02.budgets-contracts/default.md",
+    "url": "/kb/funding/budgets-contracts"
+  },
+  {
+    "page": "kb/funding/budget-negotiation",
+    "trail": [
+      "Knowledge Base",
+      "Your Study, Step by Step",
+      "Funding, Budgets and Agreements"
+    ],
+    "nav_ord": 3,
+    "under_root": null,
+    "grav_folder": "user/pages/06.kb/07.funding/03.budget-negotiation/default.md",
+    "url": "/kb/funding/budget-negotiation"
+  },
+  {
+    "page": "kb/funding/clinical-trial-agreements",
+    "trail": [
+      "Knowledge Base",
+      "Your Study, Step by Step",
+      "Funding, Budgets and Agreements"
+    ],
+    "nav_ord": 4,
+    "under_root": null,
+    "grav_folder": "user/pages/06.kb/07.funding/04.clinical-trial-agreements/default.md",
+    "url": "/kb/funding/clinical-trial-agreements"
+  },
+  {
+    "page": "kb/funding/research-grants",
+    "trail": [
+      "Knowledge Base",
+      "Your Study, Step by Step",
+      "Funding, Budgets and Agreements"
+    ],
+    "nav_ord": 5,
+    "under_root": null,
+    "grav_folder": "user/pages/06.kb/07.funding/05.research-grants/default.md",
+    "url": "/kb/funding/research-grants"
+  },
+  {
+    "page": "kb/submission/submission-overview",
+    "trail": [
+      "Knowledge Base",
+      "Your Study, Step by Step",
+      "Submission and Review"
+    ],
+    "nav_ord": 1,
+    "under_root": null,
+    "grav_folder": "user/pages/06.kb/08.submission/01.submission-overview/default.md",
+    "url": "/kb/submission/submission-overview"
+  },
+  {
+    "page": "kb/submission/preparing",
+    "trail": [
+      "Knowledge Base",
+      "Your Study, Step by Step",
+      "Submission and Review"
+    ],
+    "nav_ord": 2,
+    "under_root": null,
+    "grav_folder": "user/pages/06.kb/08.submission/02.preparing/default.md",
+    "url": "/kb/submission/preparing"
+  },
+  {
+    "page": "kb/submission/submitting-via-nagano",
+    "trail": [
+      "Knowledge Base",
+      "Your Study, Step by Step",
+      "Submission and Review"
+    ],
+    "nav_ord": 3,
+    "under_root": null,
+    "grav_folder": "user/pages/06.kb/08.submission/03.submitting-via-nagano/default.md",
+    "url": "/kb/submission/submitting-via-nagano"
+  },
+  {
+    "page": "kb/submission/tracking-responding",
+    "trail": [
+      "Knowledge Base",
+      "Your Study, Step by Step",
+      "Submission and Review"
+    ],
+    "nav_ord": 4,
+    "under_root": null,
+    "grav_folder": "user/pages/06.kb/08.submission/04.tracking-responding/default.md",
+    "url": "/kb/submission/tracking-responding"
+  },
+  {
+    "page": "kb/submission/study-review",
+    "trail": [
+      "Knowledge Base",
+      "Your Study, Step by Step",
+      "Submission and Review"
+    ],
+    "nav_ord": 5,
+    "under_root": null,
+    "grav_folder": "user/pages/06.kb/08.submission/05.study-review/default.md",
+    "url": "/kb/submission/study-review"
+  },
+  {
+    "page": "kb/site-activation/site-setup",
+    "trail": [
+      "Knowledge Base",
+      "Your Study, Step by Step",
+      "Site Activation"
+    ],
+    "nav_ord": 1,
+    "under_root": null,
+    "grav_folder": "user/pages/06.kb/09.site-activation/01.site-setup/default.md",
+    "url": "/kb/site-activation/site-setup"
+  },
+  {
+    "page": "kb/site-activation/protocol-documents",
+    "trail": [
+      "Knowledge Base",
+      "Your Study, Step by Step",
+      "Site Activation"
+    ],
+    "nav_ord": 2,
+    "under_root": null,
+    "grav_folder": "user/pages/06.kb/09.site-activation/02.protocol-documents/default.md",
+    "url": "/kb/site-activation/protocol-documents"
+  },
+  {
+    "page": "kb/site-activation/isf",
+    "trail": [
+      "Knowledge Base",
+      "Your Study, Step by Step",
+      "Site Activation"
+    ],
+    "nav_ord": 3,
+    "under_root": null,
+    "grav_folder": "user/pages/06.kb/09.site-activation/03.isf/default.md",
+    "url": "/kb/site-activation/isf"
+  },
+  {
+    "page": "kb/recruitment/recruitment-enrollment",
+    "trail": [
+      "Knowledge Base",
+      "Your Study, Step by Step",
+      "Recruitment and Enrollment"
+    ],
+    "nav_ord": 1,
+    "under_root": null,
+    "grav_folder": "user/pages/06.kb/10.recruitment/01.recruitment-enrollment/default.md",
+    "url": "/kb/recruitment/recruitment-enrollment"
+  },
+  {
+    "page": "kb/recruitment/recruitment-calculator",
+    "trail": [
+      "Knowledge Base",
+      "Your Study, Step by Step",
+      "Recruitment and Enrollment"
+    ],
+    "nav_ord": 2,
+    "under_root": null,
+    "grav_folder": "user/pages/06.kb/10.recruitment/02.recruitment-calculator/default.md",
+    "url": "/kb/recruitment/recruitment-calculator"
+  },
+  {
+    "page": "kb/recruitment/consent",
+    "trail": [
+      "Knowledge Base",
+      "Your Study, Step by Step",
+      "Recruitment and Enrollment"
+    ],
+    "nav_ord": 3,
+    "under_root": null,
+    "grav_folder": "user/pages/06.kb/10.recruitment/03.consent/default.md",
+    "url": "/kb/recruitment/consent"
+  },
+  {
+    "page": "kb/recruitment/consent-templates",
+    "trail": [
+      "Knowledge Base",
+      "Your Study, Step by Step",
+      "Recruitment and Enrollment"
+    ],
+    "nav_ord": 4,
+    "under_root": null,
+    "grav_folder": "user/pages/06.kb/10.recruitment/04.consent-templates/default.md",
+    "url": "/kb/recruitment/consent-templates"
+  },
+  {
+    "page": "kb/recruitment/pediatric-research",
+    "trail": [
+      "Knowledge Base",
+      "Your Study, Step by Step",
+      "Recruitment and Enrollment"
+    ],
+    "nav_ord": 5,
+    "under_root": null,
+    "grav_folder": "user/pages/06.kb/10.recruitment/05.pediatric-research/default.md",
+    "url": "/kb/recruitment/pediatric-research"
+  },
+  {
+    "page": "kb/recruitment/vulnerable-populations",
+    "trail": [
+      "Knowledge Base",
+      "Your Study, Step by Step",
+      "Recruitment and Enrollment"
+    ],
+    "nav_ord": 6,
+    "under_root": null,
+    "grav_folder": "user/pages/06.kb/10.recruitment/06.vulnerable-populations/default.md",
+    "url": "/kb/recruitment/vulnerable-populations"
+  },
+  {
+    "page": "kb/recruitment/indigenous-research-ethics",
+    "trail": [
+      "Knowledge Base",
+      "Your Study, Step by Step",
+      "Recruitment and Enrollment"
+    ],
+    "nav_ord": 7,
+    "under_root": null,
+    "grav_folder": "user/pages/06.kb/10.recruitment/07.indigenous-research-ethics/default.md",
+    "url": "/kb/recruitment/indigenous-research-ethics"
+  },
+  {
+    "page": "kb/recruitment/privacy",
+    "trail": [
+      "Knowledge Base",
+      "Your Study, Step by Step",
+      "Recruitment and Enrollment"
+    ],
+    "nav_ord": 8,
+    "under_root": null,
+    "grav_folder": "user/pages/06.kb/10.recruitment/08.privacy/default.md",
+    "url": "/kb/recruitment/privacy"
+  },
+  {
+    "page": "kb/conduct/conduct-overview",
+    "trail": [
+      "Knowledge Base",
+      "Your Study, Step by Step",
+      "Study Conduct"
+    ],
+    "nav_ord": 1,
+    "under_root": null,
+    "grav_folder": "user/pages/06.kb/11.conduct/01.conduct-overview/default.md",
+    "url": "/kb/conduct/conduct-overview"
+  },
+  {
+    "page": "kb/conduct/data-documentation/data-integrity",
+    "trail": [
+      "Knowledge Base",
+      "Your Study, Step by Step",
+      "Study Conduct",
+      "Data and Documentation"
+    ],
+    "nav_ord": 1,
+    "under_root": null,
+    "grav_folder": "user/pages/06.kb/11.conduct/02.data-documentation/01.data-integrity/default.md",
+    "url": "/kb/conduct/data-documentation/data-integrity"
+  },
+  {
+    "page": "kb/conduct/data-documentation/data-security",
+    "trail": [
+      "Knowledge Base",
+      "Your Study, Step by Step",
+      "Study Conduct",
+      "Data and Documentation"
+    ],
+    "nav_ord": 2,
+    "under_root": null,
+    "grav_folder": "user/pages/06.kb/11.conduct/02.data-documentation/02.data-security/default.md",
+    "url": "/kb/conduct/data-documentation/data-security"
+  },
+  {
+    "page": "kb/conduct/data-documentation/edc-query-management",
+    "trail": [
+      "Knowledge Base",
+      "Your Study, Step by Step",
+      "Study Conduct",
+      "Data and Documentation"
+    ],
+    "nav_ord": 3,
+    "under_root": null,
+    "grav_folder": "user/pages/06.kb/11.conduct/02.data-documentation/03.edc-query-management/default.md",
+    "url": "/kb/conduct/data-documentation/edc-query-management"
+  },
+  {
+    "page": "kb/conduct/study-operations/decentralized-trials",
+    "trail": [
+      "Knowledge Base",
+      "Your Study, Step by Step",
+      "Study Conduct",
+      "Study Operations"
+    ],
+    "nav_ord": 1,
+    "under_root": null,
+    "grav_folder": "user/pages/06.kb/11.conduct/03.study-operations/01.decentralized-trials/default.md",
+    "url": "/kb/conduct/study-operations/decentralized-trials"
+  },
+  {
+    "page": "kb/conduct/study-operations/investigational-products",
+    "trail": [
+      "Knowledge Base",
+      "Your Study, Step by Step",
+      "Study Conduct",
+      "Study Operations"
+    ],
+    "nav_ord": 2,
+    "under_root": null,
+    "grav_folder": "user/pages/06.kb/11.conduct/03.study-operations/02.investigational-products/default.md",
+    "url": "/kb/conduct/study-operations/investigational-products"
+  },
+  {
+    "page": "kb/conduct/study-operations/biological-specimens",
+    "trail": [
+      "Knowledge Base",
+      "Your Study, Step by Step",
+      "Study Conduct",
+      "Study Operations"
+    ],
+    "nav_ord": 3,
+    "under_root": null,
+    "grav_folder": "user/pages/06.kb/11.conduct/03.study-operations/03.biological-specimens/default.md",
+    "url": "/kb/conduct/study-operations/biological-specimens"
+  },
+  {
+    "page": "kb/conduct/study-operations/team-management",
+    "trail": [
+      "Knowledge Base",
+      "Your Study, Step by Step",
+      "Study Conduct",
+      "Study Operations"
+    ],
+    "nav_ord": 4,
+    "under_root": null,
+    "grav_folder": "user/pages/06.kb/11.conduct/03.study-operations/04.team-management/default.md",
+    "url": "/kb/conduct/study-operations/team-management"
+  },
+  {
+    "page": "kb/conduct/safety-reporting/reportable-events",
+    "trail": [
+      "Knowledge Base",
+      "Your Study, Step by Step",
+      "Study Conduct",
+      "Safety Reporting and Compliance"
+    ],
+    "nav_ord": 1,
+    "under_root": null,
+    "grav_folder": "user/pages/06.kb/11.conduct/04.safety-reporting/01.reportable-events/default.md",
+    "url": "/kb/conduct/safety-reporting/reportable-events"
+  },
+  {
+    "page": "kb/conduct/safety-reporting/deviation-management",
+    "trail": [
+      "Knowledge Base",
+      "Your Study, Step by Step",
+      "Study Conduct",
+      "Safety Reporting and Compliance"
+    ],
+    "nav_ord": 2,
+    "under_root": null,
+    "grav_folder": "user/pages/06.kb/11.conduct/04.safety-reporting/02.deviation-management/default.md",
+    "url": "/kb/conduct/safety-reporting/deviation-management"
+  },
+  {
+    "page": "kb/conduct/safety-reporting/study-amendments",
+    "trail": [
+      "Knowledge Base",
+      "Your Study, Step by Step",
+      "Study Conduct",
+      "Safety Reporting and Compliance"
+    ],
+    "nav_ord": 3,
+    "under_root": null,
+    "grav_folder": "user/pages/06.kb/11.conduct/04.safety-reporting/03.study-amendments/default.md",
+    "url": "/kb/conduct/safety-reporting/study-amendments"
+  },
+  {
+    "page": "kb/conduct/safety-reporting/monitoring-audits",
+    "trail": [
+      "Knowledge Base",
+      "Your Study, Step by Step",
+      "Study Conduct",
+      "Safety Reporting and Compliance"
+    ],
+    "nav_ord": 4,
+    "under_root": null,
+    "grav_folder": "user/pages/06.kb/11.conduct/04.safety-reporting/04.monitoring-audits/default.md",
+    "url": "/kb/conduct/safety-reporting/monitoring-audits"
+  },
+  {
+    "page": "kb/conduct/safety-reporting/hc-inspection-guide",
+    "trail": [
+      "Knowledge Base",
+      "Your Study, Step by Step",
+      "Study Conduct",
+      "Safety Reporting and Compliance"
+    ],
+    "nav_ord": 5,
+    "under_root": null,
+    "grav_folder": "user/pages/06.kb/11.conduct/04.safety-reporting/05.hc-inspection-guide/default.md",
+    "url": "/kb/conduct/safety-reporting/hc-inspection-guide"
+  },
+  {
+    "page": "kb/close-out/close-out",
+    "trail": [
+      "Knowledge Base",
+      "Your Study, Step by Step",
+      "Close-Out and Archiving"
+    ],
+    "nav_ord": 1,
+    "under_root": null,
+    "grav_folder": "user/pages/06.kb/12.close-out/01.close-out/default.md",
+    "url": "/kb/close-out/close-out"
+  },
+  {
+    "page": "kb/close-out/publications",
+    "trail": [
+      "Knowledge Base",
+      "Your Study, Step by Step",
+      "Close-Out and Archiving"
+    ],
+    "nav_ord": 2,
+    "under_root": null,
+    "grav_folder": "user/pages/06.kb/12.close-out/02.publications/default.md",
+    "url": "/kb/close-out/publications"
+  },
+  {
+    "page": "kb/governance/regulatory-framework",
+    "trail": [
+      "Knowledge Base",
+      "Governance & Oversight"
+    ],
+    "nav_ord": 1,
+    "under_root": null,
+    "grav_folder": "user/pages/06.kb/13.governance/01.regulatory-framework/default.md",
+    "url": "/kb/governance/regulatory-framework"
+  },
+  {
+    "page": "kb/governance/institutional-structure",
+    "trail": [
+      "Knowledge Base",
+      "Governance & Oversight"
+    ],
+    "nav_ord": 2,
+    "under_root": null,
+    "grav_folder": "user/pages/06.kb/13.governance/02.institutional-structure/default.md",
+    "url": "/kb/governance/institutional-structure"
+  },
+  {
+    "page": "kb/governance/quality-assurance",
+    "trail": [
+      "Knowledge Base",
+      "Governance & Oversight"
+    ],
+    "nav_ord": 3,
+    "under_root": null,
+    "grav_folder": "user/pages/06.kb/13.governance/03.quality-assurance/default.md",
+    "url": "/kb/governance/quality-assurance"
+  },
+  {
+    "page": "kb/governance/modernized-ct-regulations",
+    "trail": [
+      "Knowledge Base",
+      "Governance & Oversight"
+    ],
+    "nav_ord": 4,
+    "under_root": null,
+    "grav_folder": "user/pages/06.kb/13.governance/04.modernized-ct-regulations/default.md",
+    "url": "/kb/governance/modernized-ct-regulations"
+  },
+  {
+    "page": "kb/governance/french-language-requirements",
+    "trail": [
+      "Knowledge Base",
+      "Governance & Oversight"
+    ],
+    "nav_ord": 5,
+    "under_root": null,
+    "grav_folder": "user/pages/06.kb/13.governance/05.french-language-requirements/default.md",
+    "url": "/kb/governance/french-language-requirements"
+  },
+  {
+    "page": "kb/governance/research-integrity",
+    "trail": [
+      "Knowledge Base",
+      "Governance & Oversight",
+      "Research Ethics"
+    ],
+    "nav_ord": 1,
+    "under_root": null,
+    "grav_folder": "user/pages/06.kb/13.governance/06.research-integrity/default.md",
+    "url": "/kb/governance/research-integrity"
+  },
+  {
+    "page": "kb/governance/conflict-of-interest",
+    "trail": [
+      "Knowledge Base",
+      "Governance & Oversight",
+      "Research Ethics"
+    ],
+    "nav_ord": 2,
+    "under_root": null,
+    "grav_folder": "user/pages/06.kb/13.governance/07.conflict-of-interest/default.md",
+    "url": "/kb/governance/conflict-of-interest"
+  },
+  {
+    "page": "sops/overview",
+    "trail": [
+      "Clinical Research SOPs",
+      "Clinical Research SOPs"
+    ],
+    "nav_ord": 1,
+    "under_root": null,
+    "grav_folder": "user/pages/07.sops/01.overview/default.md",
+    "url": "/sops/overview"
+  },
+  {
+    "page": "sops/appendices",
+    "trail": [
+      "Clinical Research SOPs",
+      "Clinical Research SOPs"
+    ],
+    "nav_ord": 2,
+    "under_root": null,
+    "grav_folder": "user/pages/07.sops/02.appendices/default.md",
+    "url": "/sops/appendices"
+  },
+  {
+    "page": "sops/cr-001",
+    "trail": [
+      "Clinical Research SOPs",
+      "Team & Governance"
+    ],
+    "nav_ord": 1,
+    "under_root": null,
+    "grav_folder": "user/pages/07.sops/03.cr-001/default.md",
+    "url": "/sops/cr-001"
+  },
+  {
+    "page": "sops/cr-002",
+    "trail": [
+      "Clinical Research SOPs",
+      "Team & Governance"
+    ],
+    "nav_ord": 2,
+    "under_root": null,
+    "grav_folder": "user/pages/07.sops/04.cr-002/default.md",
+    "url": "/sops/cr-002"
+  },
+  {
+    "page": "sops/cr-003",
+    "trail": [
+      "Clinical Research SOPs",
+      "Team & Governance"
+    ],
+    "nav_ord": 3,
+    "under_root": null,
+    "grav_folder": "user/pages/07.sops/05.cr-003/default.md",
+    "url": "/sops/cr-003"
+  },
+  {
+    "page": "sops/cr-500",
+    "trail": [
+      "Clinical Research SOPs",
+      "Team & Governance"
+    ],
+    "nav_ord": 4,
+    "under_root": null,
+    "grav_folder": "user/pages/07.sops/06.cr-500/default.md",
+    "url": "/sops/cr-500"
+  },
+  {
+    "page": "sops/cr-501",
+    "trail": [
+      "Clinical Research SOPs",
+      "Team & Governance"
+    ],
+    "nav_ord": 5,
+    "under_root": null,
+    "grav_folder": "user/pages/07.sops/07.cr-501/default.md",
+    "url": "/sops/cr-501"
+  },
+  {
+    "page": "sops/cr-004",
+    "trail": [
+      "Clinical Research SOPs",
+      "Study Setup"
+    ],
+    "nav_ord": 1,
+    "under_root": null,
+    "grav_folder": "user/pages/07.sops/08.cr-004/default.md",
+    "url": "/sops/cr-004"
+  },
+  {
+    "page": "sops/cr-005",
+    "trail": [
+      "Clinical Research SOPs",
+      "Study Setup"
+    ],
+    "nav_ord": 2,
+    "under_root": null,
+    "grav_folder": "user/pages/07.sops/09.cr-005/default.md",
+    "url": "/sops/cr-005"
+  },
+  {
+    "page": "sops/cr-007",
+    "trail": [
+      "Clinical Research SOPs",
+      "Study Setup"
+    ],
+    "nav_ord": 3,
+    "under_root": null,
+    "grav_folder": "user/pages/07.sops/10.cr-007/default.md",
+    "url": "/sops/cr-007"
+  },
+  {
+    "page": "sops/cr-025",
+    "trail": [
+      "Clinical Research SOPs",
+      "Study Setup"
+    ],
+    "nav_ord": 4,
+    "under_root": null,
+    "grav_folder": "user/pages/07.sops/11.cr-025/default.md",
+    "url": "/sops/cr-025"
+  },
+  {
+    "page": "sops/cr-018",
+    "trail": [
+      "Clinical Research SOPs",
+      "Health Canada Applications"
+    ],
+    "nav_ord": 1,
+    "under_root": null,
+    "grav_folder": "user/pages/07.sops/12.cr-018/default.md",
+    "url": "/sops/cr-018"
+  },
+  {
+    "page": "sops/cr-023",
+    "trail": [
+      "Clinical Research SOPs",
+      "Health Canada Applications"
+    ],
+    "nav_ord": 2,
+    "under_root": null,
+    "grav_folder": "user/pages/07.sops/13.cr-023/default.md",
+    "url": "/sops/cr-023"
+  },
+  {
+    "page": "sops/cr-024",
+    "trail": [
+      "Clinical Research SOPs",
+      "Health Canada Applications"
+    ],
+    "nav_ord": 3,
+    "under_root": null,
+    "grav_folder": "user/pages/07.sops/14.cr-024/default.md",
+    "url": "/sops/cr-024"
+  },
+  {
+    "page": "sops/cr-006",
+    "trail": [
+      "Clinical Research SOPs",
+      "Participants"
+    ],
+    "nav_ord": 1,
+    "under_root": null,
+    "grav_folder": "user/pages/07.sops/15.cr-006/default.md",
+    "url": "/sops/cr-006"
+  },
+  {
+    "page": "sops/cr-008",
+    "trail": [
+      "Clinical Research SOPs",
+      "Participants"
+    ],
+    "nav_ord": 2,
+    "under_root": null,
+    "grav_folder": "user/pages/07.sops/16.cr-008/default.md",
+    "url": "/sops/cr-008"
+  },
+  {
+    "page": "sops/cr-009",
+    "trail": [
+      "Clinical Research SOPs",
+      "Participants"
+    ],
+    "nav_ord": 3,
+    "under_root": null,
+    "grav_folder": "user/pages/07.sops/17.cr-009/default.md",
+    "url": "/sops/cr-009"
+  },
+  {
+    "page": "sops/cr-019",
+    "trail": [
+      "Clinical Research SOPs",
+      "Participants"
+    ],
+    "nav_ord": 4,
+    "under_root": null,
+    "grav_folder": "user/pages/07.sops/18.cr-019/default.md",
+    "url": "/sops/cr-019"
+  },
+  {
+    "page": "sops/cr-010",
+    "trail": [
+      "Clinical Research SOPs",
+      "Investigational Products"
+    ],
+    "nav_ord": 1,
+    "under_root": null,
+    "grav_folder": "user/pages/07.sops/19.cr-010/default.md",
+    "url": "/sops/cr-010"
+  },
+  {
+    "page": "sops/cr-011",
+    "trail": [
+      "Clinical Research SOPs",
+      "Investigational Products"
+    ],
+    "nav_ord": 2,
+    "under_root": null,
+    "grav_folder": "user/pages/07.sops/20.cr-011/default.md",
+    "url": "/sops/cr-011"
+  },
+  {
+    "page": "sops/cr-012",
+    "trail": [
+      "Clinical Research SOPs",
+      "Safety Reporting"
+    ],
+    "nav_ord": 1,
+    "under_root": null,
+    "grav_folder": "user/pages/07.sops/21.cr-012/default.md",
+    "url": "/sops/cr-012"
+  },
+  {
+    "page": "sops/cr-026",
+    "trail": [
+      "Clinical Research SOPs",
+      "Safety Reporting"
+    ],
+    "nav_ord": 2,
+    "under_root": null,
+    "grav_folder": "user/pages/07.sops/22.cr-026/default.md",
+    "url": "/sops/cr-026"
+  },
+  {
+    "page": "sops/cr-013",
+    "trail": [
+      "Clinical Research SOPs",
+      "Monitoring, Data & Oversight"
+    ],
+    "nav_ord": 1,
+    "under_root": null,
+    "grav_folder": "user/pages/07.sops/23.cr-013/default.md",
+    "url": "/sops/cr-013"
+  },
+  {
+    "page": "sops/cr-014",
+    "trail": [
+      "Clinical Research SOPs",
+      "Monitoring, Data & Oversight"
+    ],
+    "nav_ord": 2,
+    "under_root": null,
+    "grav_folder": "user/pages/07.sops/24.cr-014/default.md",
+    "url": "/sops/cr-014"
+  },
+  {
+    "page": "sops/cr-015",
+    "trail": [
+      "Clinical Research SOPs",
+      "Monitoring, Data & Oversight"
+    ],
+    "nav_ord": 3,
+    "under_root": null,
+    "grav_folder": "user/pages/07.sops/25.cr-015/default.md",
+    "url": "/sops/cr-015"
+  },
+  {
+    "page": "sops/cr-016",
+    "trail": [
+      "Clinical Research SOPs",
+      "Monitoring, Data & Oversight"
+    ],
+    "nav_ord": 4,
+    "under_root": null,
+    "grav_folder": "user/pages/07.sops/26.cr-016/default.md",
+    "url": "/sops/cr-016"
+  },
+  {
+    "page": "sops/cr-017",
+    "trail": [
+      "Clinical Research SOPs",
+      "Monitoring, Data & Oversight"
+    ],
+    "nav_ord": 5,
+    "under_root": null,
+    "grav_folder": "user/pages/07.sops/27.cr-017/default.md",
+    "url": "/sops/cr-017"
+  },
+  {
+    "page": "sops/cr-100",
+    "trail": [
+      "Clinical Research SOPs",
+      "Sponsor-Investigator Series"
+    ],
+    "nav_ord": 1,
+    "under_root": null,
+    "grav_folder": "user/pages/07.sops/28.cr-100/default.md",
+    "url": "/sops/cr-100"
+  },
+  {
+    "page": "sops/cr-101",
+    "trail": [
+      "Clinical Research SOPs",
+      "Sponsor-Investigator Series"
+    ],
+    "nav_ord": 2,
+    "under_root": null,
+    "grav_folder": "user/pages/07.sops/29.cr-101/default.md",
+    "url": "/sops/cr-101"
+  },
+  {
+    "page": "sops/cr-102",
+    "trail": [
+      "Clinical Research SOPs",
+      "Sponsor-Investigator Series"
+    ],
+    "nav_ord": 3,
+    "under_root": null,
+    "grav_folder": "user/pages/07.sops/30.cr-102/default.md",
+    "url": "/sops/cr-102"
+  },
+  {
+    "page": "sops/cr-103",
+    "trail": [
+      "Clinical Research SOPs",
+      "Sponsor-Investigator Series"
+    ],
+    "nav_ord": 4,
+    "under_root": null,
+    "grav_folder": "user/pages/07.sops/31.cr-103/default.md",
+    "url": "/sops/cr-103"
+  },
+  {
+    "page": "sops/cr-104",
+    "trail": [
+      "Clinical Research SOPs",
+      "Sponsor-Investigator Series"
+    ],
+    "nav_ord": 5,
+    "under_root": null,
+    "grav_folder": "user/pages/07.sops/32.cr-104/default.md",
+    "url": "/sops/cr-104"
+  },
+  {
+    "page": "sops/cr-105",
+    "trail": [
+      "Clinical Research SOPs",
+      "Sponsor-Investigator Series"
+    ],
+    "nav_ord": 6,
+    "under_root": null,
+    "grav_folder": "user/pages/07.sops/33.cr-105/default.md",
+    "url": "/sops/cr-105"
+  },
+  {
+    "page": "sops/cr-106",
+    "trail": [
+      "Clinical Research SOPs",
+      "Sponsor-Investigator Series"
+    ],
+    "nav_ord": 7,
+    "under_root": null,
+    "grav_folder": "user/pages/07.sops/34.cr-106/default.md",
+    "url": "/sops/cr-106"
+  },
+  {
+    "page": "sops/cr-107",
+    "trail": [
+      "Clinical Research SOPs",
+      "Sponsor-Investigator Series"
+    ],
+    "nav_ord": 8,
+    "under_root": null,
+    "grav_folder": "user/pages/07.sops/35.cr-107/default.md",
+    "url": "/sops/cr-107"
+  },
+  {
+    "page": "training/compliance-requirements",
+    "trail": [
+      "Training and Learning",
+      "Clinical Research Training"
+    ],
+    "nav_ord": 1,
+    "under_root": null,
+    "grav_folder": "user/pages/08.training/01.compliance-requirements/default.md",
+    "url": "/training/compliance-requirements"
+  },
+  {
+    "page": "training/external-certifications",
+    "trail": [
+      "Training and Learning",
+      "Clinical Research Training"
+    ],
+    "nav_ord": 2,
+    "under_root": null,
+    "grav_folder": "user/pages/08.training/02.external-certifications/default.md",
+    "url": "/training/external-certifications"
+  },
+  {
+    "page": "training/cantrain",
+    "trail": [
+      "Training and Learning",
+      "Beyond Compliance"
+    ],
+    "nav_ord": 1,
+    "under_root": null,
+    "grav_folder": "user/pages/08.training/03.cantrain/default.md",
+    "url": "/training/cantrain"
+  },
+  {
+    "page": "training/supplementary-training",
+    "trail": [
+      "Training and Learning",
+      "Beyond Compliance"
+    ],
+    "nav_ord": 2,
+    "under_root": null,
+    "grav_folder": "user/pages/08.training/04.supplementary-training/default.md",
+    "url": "/training/supplementary-training"
+  },
+  {
+    "page": "cim/services",
+    "trail": [
+      "Centre for Innovative Medicine",
+      "For Researchers"
+    ],
+    "nav_ord": 1,
+    "under_root": null,
+    "grav_folder": "user/pages/09.cim/01.services/default.md",
+    "url": "/cim/services"
+  },
+  {
+    "page": "cim/planning",
+    "trail": [
+      "Centre for Innovative Medicine",
+      "For Researchers"
+    ],
+    "nav_ord": 2,
+    "under_root": null,
+    "grav_folder": "user/pages/09.cim/02.planning/default.md",
+    "url": "/cim/planning"
+  },
+  {
+    "page": "apps/nagano/overview",
+    "trail": [
+      "Applications",
+      "Nagano",
+      "Nagano"
+    ],
+    "nav_ord": 1,
+    "under_root": null,
+    "grav_folder": "user/pages/10.apps/01.nagano/01.overview/default.md",
+    "url": "/apps/nagano/overview"
+  },
+  {
+    "page": "apps/nagano/guide-00",
+    "trail": [
+      "Applications",
+      "Nagano",
+      "Nagano",
+      "User Guide"
+    ],
+    "nav_ord": 1,
+    "under_root": null,
+    "grav_folder": "user/pages/10.apps/01.nagano/02.guide-00/default.md",
+    "url": "/apps/nagano/guide-00"
+  },
+  {
+    "page": "apps/nagano/guide-01",
+    "trail": [
+      "Applications",
+      "Nagano",
+      "Nagano",
+      "User Guide"
+    ],
+    "nav_ord": 2,
+    "under_root": null,
+    "grav_folder": "user/pages/10.apps/01.nagano/03.guide-01/default.md",
+    "url": "/apps/nagano/guide-01"
+  },
+  {
+    "page": "apps/nagano/guide-02",
+    "trail": [
+      "Applications",
+      "Nagano",
+      "Nagano",
+      "User Guide"
+    ],
+    "nav_ord": 3,
+    "under_root": null,
+    "grav_folder": "user/pages/10.apps/01.nagano/04.guide-02/default.md",
+    "url": "/apps/nagano/guide-02"
+  },
+  {
+    "page": "apps/nagano/guide-03",
+    "trail": [
+      "Applications",
+      "Nagano",
+      "Nagano",
+      "User Guide"
+    ],
+    "nav_ord": 4,
+    "under_root": null,
+    "grav_folder": "user/pages/10.apps/01.nagano/05.guide-03/default.md",
+    "url": "/apps/nagano/guide-03"
+  },
+  {
+    "page": "apps/nagano/guide-04",
+    "trail": [
+      "Applications",
+      "Nagano",
+      "Nagano",
+      "User Guide"
+    ],
+    "nav_ord": 5,
+    "under_root": null,
+    "grav_folder": "user/pages/10.apps/01.nagano/06.guide-04/default.md",
+    "url": "/apps/nagano/guide-04"
+  },
+  {
+    "page": "apps/nagano/guide-05",
+    "trail": [
+      "Applications",
+      "Nagano",
+      "Nagano",
+      "User Guide"
+    ],
+    "nav_ord": 6,
+    "under_root": null,
+    "grav_folder": "user/pages/10.apps/01.nagano/07.guide-05/default.md",
+    "url": "/apps/nagano/guide-05"
+  },
+  {
+    "page": "apps/nagano/guide-06",
+    "trail": [
+      "Applications",
+      "Nagano",
+      "Nagano",
+      "User Guide"
+    ],
+    "nav_ord": 7,
+    "under_root": null,
+    "grav_folder": "user/pages/10.apps/01.nagano/08.guide-06/default.md",
+    "url": "/apps/nagano/guide-06"
+  },
+  {
+    "page": "apps/nagano/guide-07",
+    "trail": [
+      "Applications",
+      "Nagano",
+      "Nagano",
+      "User Guide"
+    ],
+    "nav_ord": 8,
+    "under_root": null,
+    "grav_folder": "user/pages/10.apps/01.nagano/09.guide-07/default.md",
+    "url": "/apps/nagano/guide-07"
+  },
+  {
+    "page": "apps/nagano/guide-08",
+    "trail": [
+      "Applications",
+      "Nagano",
+      "Nagano",
+      "User Guide"
+    ],
+    "nav_ord": 9,
+    "under_root": null,
+    "grav_folder": "user/pages/10.apps/01.nagano/10.guide-08/default.md",
+    "url": "/apps/nagano/guide-08"
+  },
+  {
+    "page": "apps/nagano/guide-09",
+    "trail": [
+      "Applications",
+      "Nagano",
+      "Nagano",
+      "User Guide"
+    ],
+    "nav_ord": 10,
+    "under_root": null,
+    "grav_folder": "user/pages/10.apps/01.nagano/11.guide-09/default.md",
+    "url": "/apps/nagano/guide-09"
+  },
+  {
+    "page": "apps/nagano/guide-10",
+    "trail": [
+      "Applications",
+      "Nagano",
+      "Nagano",
+      "User Guide"
+    ],
+    "nav_ord": 11,
+    "under_root": null,
+    "grav_folder": "user/pages/10.apps/01.nagano/12.guide-10/default.md",
+    "url": "/apps/nagano/guide-10"
+  },
+  {
+    "page": "apps/nagano/guide-11",
+    "trail": [
+      "Applications",
+      "Nagano",
+      "Nagano",
+      "User Guide"
+    ],
+    "nav_ord": 12,
+    "under_root": null,
+    "grav_folder": "user/pages/10.apps/01.nagano/13.guide-11/default.md",
+    "url": "/apps/nagano/guide-11"
+  },
+  {
+    "page": "apps/nagano/guide-12",
+    "trail": [
+      "Applications",
+      "Nagano",
+      "Nagano",
+      "User Guide"
+    ],
+    "nav_ord": 13,
+    "under_root": null,
+    "grav_folder": "user/pages/10.apps/01.nagano/14.guide-12/default.md",
+    "url": "/apps/nagano/guide-12"
+  },
+  {
+    "page": "apps/nagano/guide-13",
+    "trail": [
+      "Applications",
+      "Nagano",
+      "Nagano",
+      "User Guide"
+    ],
+    "nav_ord": 14,
+    "under_root": null,
+    "grav_folder": "user/pages/10.apps/01.nagano/15.guide-13/default.md",
+    "url": "/apps/nagano/guide-13"
+  },
+  {
+    "page": "apps/talentlms",
+    "trail": [
+      "Applications",
+      "TalentLMS"
+    ],
+    "nav_ord": 1,
+    "under_root": null,
+    "grav_folder": "user/pages/10.apps/02.talentlms/default.md",
+    "url": "/apps/talentlms"
+  },
+  {
+    "page": "apps/redcap",
+    "trail": [
+      "Applications",
+      "REDCap"
+    ],
+    "nav_ord": 1,
+    "under_root": null,
+    "grav_folder": "user/pages/10.apps/03.redcap/default.md",
+    "url": "/apps/redcap"
+  },
+  {
+    "page": "apps/oacis",
+    "trail": [
+      "Applications",
+      "OACIS"
+    ],
+    "nav_ord": 1,
+    "under_root": null,
+    "grav_folder": "user/pages/10.apps/04.oacis/default.md",
+    "url": "/apps/oacis"
+  },
+  {
+    "page": "apps/crosslab",
+    "trail": [
+      "Applications",
+      "CrossLab"
+    ],
+    "nav_ord": 1,
+    "under_root": null,
+    "grav_folder": "user/pages/10.apps/05.crosslab/default.md",
+    "url": "/apps/crosslab"
+  },
+  {
+    "page": "fr/kb/introduction",
+    "trail": [
+      "Base de connaissances",
+      "Base de connaissances"
+    ],
+    "nav_ord": 1,
+    "under_root": null,
+    "grav_folder": "user/pages/11.fr/01.kb/01.introduction/default.md",
+    "url": "/fr/kb/introduction"
+  }
+]
