@@ -6,7 +6,7 @@ flowchart LR
     Q1 -->|"No"| Q2{"Could it invalidate<br/>the study's data?"}
     Q1 -->|"Yes"| Q3{"Did it cause fatal,<br/>life-threatening or<br/>unsafe conditions<br/>for participants?"}
     Q2 -->|"Yes"| Q3
-    Q2 -->|"No"| MINOR(["`**Minor**<br/>Report it to the REB at<br/>the annual review, or<br/>within its deadlines if<br/>it was a sponsor-approved<br/>eligibility waiver,<br/>changed the approved<br/>consent process, led to<br/>an SAE or could otherwise<br/>affect participants'<br/>rights, safety or<br/>well-being.`"])
+    Q2 -->|"No"| MINOR("`**Minor**<br/>Report it to the REB at<br/>the annual review, or<br/>within its deadlines if<br/>it was a sponsor-approved<br/>eligibility waiver,<br/>changed the approved<br/>consent process, led to<br/>an SAE or, in the<br/>researcher's judgment,<br/>jeopardized participants'<br/>safety, the research's<br/>efficacy or data<br/>integrity, or could<br/>otherwise affect their<br/>rights, safety or<br/>well-being.`")
     Q3 -->|"Yes"| CRIT(["`**Critical**<br/>Report it to the REB<br/>with the CAPA<br/>already taken.`"])
     Q3 -->|"No"| MAJOR(["`**Major**<br/>Report it to the REB<br/>with the CAPA<br/>already taken.`"])
 

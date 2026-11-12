@@ -1,7 +1,7 @@
 ---
 title: "Investigator Guide — Observational & Retrospective Studies (Levels IV–V)"
 sidebarTitle: "Observational & Retrospective (IV–V)"
-description: "Operational reference for PIs leading prospective observational studies (Level IV) and retrospective chart review or biobanked sample studies (Level V) at the RI-MUHC. Consent, consent waivers and the EFVP, team oversight, data access and your obligations through close-out."
+description: "Operational reference for PIs leading Level IV studies (prospective studies not regulated by Health Canada and involving no surgery) and Level V studies (retrospective studies, including those of samples already in a biobank) at the RI-MUHC. Consent, consent waivers and the EFVP, team oversight, data access and your obligations through close-out."
 keywords: ["PI guide observational", "PI guide retrospective", "Level IV", "Level V", "chart review", "EFVP", "anonymized data", "prospective observational", "non-invasive"]
 ---
 
@@ -21,7 +21,7 @@ As <Tooltip tip="US equivalent of the Canadian Qualified Investigator (QI)." hea
 
 The difference between the two levels is where consent and data risk sit:
 
-- **Level IV (prospective observational):** participants are contacted and consented; your primary accountability areas are the consent process, team oversight, and data integrity.
+- **Level IV (prospective):** participants are contacted and consented; your primary accountability areas are the consent process, team oversight, and data integrity.
 - **Level V (retrospective):** there is usually no participant contact; your primary accountability areas are consent waivers and the EFVP, data access authorization and REB maintenance.
 
 ### Training requirements
@@ -29,7 +29,7 @@ The difference between the two levels is where consent and data risk sit:
 Both levels follow the SOP-LR path on a 5-year SOP Reader and Assessment cycle, with no external certifications required. For the full matrix, see [Training and Compliance Requirements](/training/compliance-requirements).
 
 <Info>
-**If you also lead interventional studies:** your training level is set by your highest-risk active study. A Level IV observational alongside a Level I drug trial means you hold Level I certification. See the [Investigator Guide — Interventional](/roles/pi-guide).
+**If you also lead studies at Levels I to III:** your training level is set by your highest-risk active study. A Level IV study alongside a Level I drug trial means you hold Level I certification. See the [Investigator Guide — Interventional](/roles/pi-guide).
 </Info>
 
 ## Prerequisites
@@ -74,14 +74,14 @@ See also: [Privacy and Confidentiality in Research](/kb/recruitment/privacy)
 Most retrospective studies rely on a consent waiver, which the REB decides. Access to the records without consent also needs MUHC authorization and an <Tooltip tip="The privacy impact assessment that Quebec's Act respecting health and social services information requires before a study accesses identifiable health information without consent, including for pre-screening." headline="EFVP (privacy impact assessment)" cta="Full definition" href="/kb/foundations/glossary#efvp">EFVP</Tooltip> (privacy impact assessment), which Quebec's Act respecting health and social services information requires.
 
 <Warning>
-**The legal default is always to obtain consent.** Access to identifiable data without consent needs MUHC authorization and an EFVP, which the MUHC's Access to Information Officer reviews. The REB may waive consent only if, among other conditions, seeking it is impossible or impracticable, as it may be for a chart review of 500 patients from 2000 to 2010, where many patients may have died, been lost to follow-up or have outdated contact information.
+**The legal default is always to obtain consent.** Access to identifiable data without consent needs MUHC authorization and an EFVP, which the MUHC's Directorate of Innovation, Performance and Quality reviews and approves. The REB may waive consent only if, among other conditions, seeking it is impossible or impracticable, as it may be for a chart review of 500 patients from 2000 to 2010, where many patients may have died, been lost to follow-up or have outdated contact information.
 
 In contrast, if you are reviewing records for a small number of recent patients (say, five patients from the last year), the REB may determine it is reasonable to contact those patients and obtain consent, even though the research is retrospective.
 </Warning>
 
 The REB evaluates whether obtaining consent is impracticable, meaning so onerous that it would jeopardize the research (mere inconvenience is not enough), and the MUHC, in deciding on access, whether consent is unreasonable to require. Consent may be impossible or impracticable when the group is very large or its members are likely to be deceased, geographically dispersed or difficult to track, and trying to contact them may raise privacy concerns of its own. The REB assesses the specific circumstances.
 
-**Who decides:** The MUHC's Access to Information Officer reviews the EFVP and sends it to the Commission d'accès à l'information du Québec. The REB decides the consent waiver, and the MUHC decides whether to authorize access to the records without consent. If the REB refuses the waiver, or the MUHC refuses access without consent, you must obtain consent from each participant, following the Level IV consent process above, even though the study remains Level V in every other respect. Consider whether this changes the study design or feasibility, and confirm the consent requirement before your team begins any data extraction.
+**Who decides:** The MUHC's Directorate of Innovation, Performance and Quality reviews and approves the EFVP, which is sent to the Commission d'accès à l'information du Québec. The REB decides the consent waiver, and the MUHC decides whether to authorize access to the records without consent. If the REB refuses the waiver, or the MUHC refuses access without consent, you must obtain consent from each participant, following the Level IV consent process above, even though the study remains Level V in every other respect. Consider whether this changes the study design or feasibility, and confirm the consent requirement before your team begins any data extraction.
 
 ## Data access and privacy
 
@@ -93,7 +93,7 @@ Privacy is the highest-risk area for retrospective studies, and the same obligat
 
 - **OACIS access** must be authorized specifically for the study. For data beyond OACIS (lab results at scale, pharmacy dispensing, administrative data), the [MUHC Data Warehouse](/kb/design-support/data-warehouse) may be required — for cohort identification and feasibility assessment, it is often the starting point.
 - **De-identification is not optional.** The research database must contain participant IDs only. Remove or code all direct identifiers (name, health insurance number, date of birth, address, phone number); indirect identifiers may remain only if they cannot reasonably re-identify an individual in context. The identification key must be stored separately from the research database — encrypted, access-restricted, and with a documented disposition plan. When in doubt, consult the CORD team.
-- **Data transfer agreements** are required if data is shared outside the MUHC. Cross-border transfers (data leaving Quebec or Canada) of identifiable information used without consent, or handled by a service provider outside Quebec, need a privacy impact assessment first, and may go ahead only if it shows the information will be adequately protected; the written agreement must take its results into account.
+- **Data transfer agreements** are required if data is shared outside the MUHC. Cross-border transfers (information leaving Quebec, including to another province) need a privacy impact assessment first when the identifiable information is accessed for the study without consent, or is handled by a contractor under a contract that involves sending it outside Quebec. They may go ahead only if the assessment shows the information will be adequately protected, and the written agreement that makes the authorization official, or the contract with the contractor, must take its results into account.
 
 **Data extraction (Level V):** Define the extraction plan before beginning — which variables, from which systems, for which date range. Have a second team member verify a sample (e.g., 10%) of extracted records against source for accuracy, and document the verification in the study file. If the extraction scope changes mid-study, submit an amendment before implementing the change.
 
@@ -126,7 +126,7 @@ For hiring research staff, see [Hiring and HR Support](/kb/team/hiring-hr-suppor
     If a participant reports a health concern during a study interaction, assess whether it constitutes an unanticipated problem — an event that is unexpected, related or possibly related to the research, and suggests increased risk to participants. Not every health concern is an unanticipated problem; the assessment requires your clinical judgment. Document your assessment even if the conclusion is that no reporting is required. Report unanticipated problems to the REB regardless of causality.
   </Accordion>
   <Accordion title="Deviations">
-    Document all deviations — including, at Level V, unauthorized data access or extraction outside the approved scope. Report major and critical deviations to the REB within its deadlines, with the corrective and preventive action (CAPA) already taken, recorded on the CAPA form, which should also be sent to QA. Also report to the REB within its deadlines, whatever its tier, any sponsor-approved waiver of an eligibility criterion, any change to the approved consent process, any deviation that leads to a serious adverse event and any other deviation that, in your judgment, could affect participants' rights, safety or well-being. Report other minor deviations at the annual continuing review. See [Reportable Events](/kb/conduct/safety-reporting/reportable-events).
+    Document all deviations — including, at Level V, unauthorized data access or extraction outside the approved scope. Report major and critical deviations to the REB within its deadlines, with the corrective and preventive action (CAPA) already taken, recorded on the CAPA form, which should also be sent to QA. Also report to the REB within its deadlines, whatever its tier, any sponsor-approved waiver of an eligibility criterion, any change to the approved consent process, any deviation that leads to a serious adverse event and any other deviation that, in your judgment, jeopardizes participants' safety, the efficacy of the research or data integrity, or could otherwise affect participants' rights, safety or well-being. Report other minor deviations at the annual continuing review. See [Reportable Events](/kb/conduct/safety-reporting/reportable-events).
   </Accordion>
   <Accordion title="Amendments">
     If what participants experience changes (Level IV), or the data extraction plan changes — new variables, expanded population, new data sources (Level V) — submit an amendment before implementing the change.
@@ -148,7 +148,7 @@ For hiring research staff, see [Hiring and HR Support](/kb/team/hiring-hr-suppor
 - Submit the Closure of Research Project form to the REB in Nagano.
 - Record end dates on the delegation log for all team members.
 - Execute the data disposition plan — destroy or archive the identification key as documented.
-- Archive the study file. Health Canada's 15-year retention requirement does not apply to Levels IV–V; the minimum for non-regulated studies is 7 years from the date the results are published (see [Data Integrity](/kb/conduct/data-documentation/data-integrity)). Confirm requirements with QA based on the funding source and institutional policy.
+- Archive the study file. Health Canada's 15-year retention requirement does not apply to Levels IV–V; the minimum for non-regulated studies is 7 years from the date the results are published (see [Study Close-Out](/kb/close-out/close-out#supply-reconciliation-and-archiving)). Confirm requirements with QA based on the funding source and institutional policy.
 
 ---
 
