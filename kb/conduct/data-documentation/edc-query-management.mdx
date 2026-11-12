@@ -1,106 +1,93 @@
 ---
 title: "EDC Systems and Query Management"
-description: "Working with electronic data capture systems in sponsor-led trials — data entry practices, query resolution, audit trails, and SAE reconciliation."
-keywords: ["EDC", "electronic data capture", "data query", "query resolution", "Medidata Rave", "data clarification form", "audit trail", "CR-014", "CR-105"]
+description: "Working in a sponsor's electronic data capture (EDC) system: getting access, entering data, answering queries, correcting data and reconciling serious adverse events."
+keywords: ["EDC", "electronic data capture", "data query", "query resolution", "Medidata Rave", "data clarification form", "audit trail", "SAE reconciliation", "CR-014"]
 ---
 
-In industry-sponsored studies, the sponsor provides an electronic data capture (EDC) system for collecting and managing clinical data. For <Tooltip tip="The team member who handles day-to-day administration and coordination of the clinical trial." headline="Clinical Research Coordinator (CRC)" cta="Full definition" href="/kb/foundations/glossary#crc">CRCs</Tooltip>, the EDC is where a significant portion of daily study work happens — entering data, responding to queries, and maintaining the audit trail. This page covers the practical aspects of working with EDC systems.
+In a sponsored study, the sponsor usually provides an electronic data capture (EDC) system to collect the study data, and much of a clinical research coordinator's daily work happens there: entering data, answering queries and keeping every change traceable. For RI-MUHC-led studies that use REDCap, see [Capture and Optimization of Research Data (CORD)](/kb/design-support/cord).
 
-For RI-MUHC-led studies using REDCap as the data management platform, see the [Capture and Optimization of Research Data (CORD)](/kb/design-support/cord) page.
+## Get access to the EDC
 
-## Common EDC platforms
+Sponsors use systems such as Medidata Rave, Oracle InForm or Clinical One, Veeva Vault CDMS and Medrio.
 
-Most industry sponsors use one of a small number of platforms. Each has a different interface, but the underlying workflow is the same: enter data, respond to queries, maintain the trail.
+Give EDC access only to team members whose training on the system is documented and who have been delegated the task on the Task Delegation Log, each with their own account. Keep the case report form (CRF) completion guidelines, if any, and the training records with the essential documents.
 
-| Platform | Common in | Notes |
-|---|---|---|
-| Medidata Rave | Large pharma, Phase II–IV | Widely used globally; browser-based |
-| Oracle Clinical One / InForm | Large pharma, complex protocols | Often paired with Oracle's randomization system |
-| Veeva Vault CDMS | Growing adoption across pharma | Newer platform; cloud-based |
-| Medrio | Smaller sponsors, biotech | Simpler interface; common in early-phase studies |
-| REDCap | Investigator-initiated, academic | Supported at the RI-MUHC through [CORD](/kb/design-support/cord) for eCRFs of low or moderate complexity; for a Health Canada-regulated study, ask CORD for the validation records that cover your use |
+Never share your login, because the system records every action under your name and someone else using your account breaks the trail. When someone leaves the study or no longer needs access, tell the sponsor, so that it can change or end their access.
 
-Access to the sponsor's EDC is granted per-study, typically at or shortly after the <Tooltip tip="Monitoring visit to train the site team on the protocol and confirm site readiness, after REB approval and MUHC Authorization." headline="Site Initiation Visit (SIV)" cta="Full definition" href="/kb/foundations/glossary#siv">SIV</Tooltip>. You will receive individual credentials — do not share login information. The system logs every action tied to your account, so someone else entering data under your credentials creates an audit trail problem.
+Participants appear in the EDC by their study number, unless the protocol requires otherwise and the Research Ethics Board (REB) has approved it. Enter no name or medical record number; the [privacy rules](/kb/governance/privacy#keep-participant-information-confidential) explain what stays at the site.
 
-## Data entry
+Based on: [SOP-CR-014](/sops/cr-014), sections 5.1, 5.5, 5.7 and 5.8; [SOP-CR-009](/sops/cr-009), section 5.7; the International Council for Harmonisation's guideline [ICH E6(R3)](https://www.canada.ca/en/health-canada/services/drugs-health-products/drug-products/applications-submissions/guidance-documents/international-council-harmonisation/guidelines.html), sections 2.12.10, 4.2.2 and 4.3.8.
 
-### When to enter data
+## Enter data promptly
 
-Enter data as close to the time of the event as possible. Protocol-required data that sits in paper source documents for weeks before being transcribed into the EDC is a risk: it delays query resolution, increases the chance of transcription errors, and creates a gap between the source record and the CRF that monitors will flag.
+Enter data as soon as possible after they are recorded in the source documents, within the timelines the sponsor sets in its data management plan or its CRF completion guidelines. Data left in paper source for weeks delay queries, invite transcription errors and widen the gap between source and CRF that monitors look for.
 
-Realistic targets depend on the study, but a general guideline:
+Only the data that the REB-approved protocol defines should go into the CRF. Enter laboratory results and vital signs as they become available, and enter serious adverse event (SAE) data promptly after the SAE report itself, as the sponsor's procedures set; the reporting deadlines are on [Reportable Events](/kb/conduct/safety-reporting/reportable-events). Check each entry against its source as you make it.
 
-- **Visit data** — within 2–3 business days of the visit (or per the sponsor's Data Management Plan)
-- **<Tooltip tip="An adverse event meeting seriousness criteria: death, life-threatening, hospitalization, disability, or congenital anomaly." headline="Serious Adverse Event (SAE)" cta="Full definition" href="/kb/foundations/glossary#sae">SAE</Tooltip> data** — immediately after the initial SAE report to the sponsor
-- **Lab and vitals** — when results are available, not batched at the end of the week
+Many queries come from the system's automatic checks:
 
-### Reducing downstream queries
+- Range checks flag values outside the expected range, such as a heart rate of 350. Check the source, and if the value is right, add a comment explaining it.
+- Consistency checks flag fields that contradict each other, such as "no concomitant medications" with a medication entered. Review related fields together.
+- Missing-data checks flag blank required fields. If a value is unavailable, use the system's "not done" or "not applicable" option rather than leaving the field blank.
+- Date checks flag dates that do not fit, such as an end before a start, an event before consent or a procedure outside its visit window.
 
-Most queries are generated because the EDC's built-in validation checks (edit checks) flag data inconsistencies. Understanding what triggers queries helps avoid them:
+Based on: [SOP-CR-014, sections 5.5](/sops/cr-014#5-5-case-report-forms), [5.6](/sops/cr-014#5-6-good-documentation-practices-gdps), [5.7](/sops/cr-014#5-7-transcription-of-source-data-to-paper-crfs) and [5.9](/sops/cr-014#5-9-quality-control-and-modifications-to-clinical-data); [SOP-CR-103](/sops/cr-103), section 5.2; [ICH E6(R3)](https://www.canada.ca/en/health-canada/services/drugs-health-products/drug-products/applications-submissions/guidance-documents/international-council-harmonisation/guidelines.html), section 4.2.1.
 
-- **Range checks** — values outside expected ranges (e.g., heart rate of 350). Double-check source values before entry; if the source value is genuinely out of range, add a comment explaining why.
-- **Consistency checks** — contradictions between fields (e.g., "no concomitant medications" checked but a medication name entered). Review related fields together, not in isolation.
-- **Missing data** — blank required fields. If data is genuinely unavailable, use the "not done" or "not applicable" option if provided rather than leaving fields empty.
-- **Date logic** — end dates before start dates, events before consent, procedures outside visit windows. Check date fields carefully.
+## Answer queries
 
-## The query lifecycle
+A query is a request from the sponsor's data managers or monitor to clarify or correct an entry. Some come automatically from the system's checks; others are raised by the data management team or the monitor during review.
 
-A query is a formal request from the sponsor, data manager, or monitor to clarify or correct a data entry. Queries are generated automatically by edit checks or manually by the data management team or CRA during review.
-
-
-<Steps>
-  <Step title="Query is opened">
-    The query appears in the EDC with a description of the issue and the affected field. Most systems highlight open queries with a flag or icon.
-  </Step>
-  <Step title="CRC reviews and responds">
-    Read the query carefully. The response should answer the specific question asked. If the data was entered correctly and the source supports it, confirm this and reference the source. If the data was entered in error, correct it and explain the correction.
-  </Step>
-  <Step title="Query is closed or re-queried">
-    The data manager or monitor reviews the response. If adequate, the query is closed. If the response does not resolve the issue, a follow-up query is issued. Avoid vague responses ("will check and update") — they generate follow-up queries.
-  </Step>
-</Steps>
-
-### Writing effective query responses
+1. Read the query and answer the question it asks.
+2. If the entry was right, say so and cite the source. If it was wrong, correct it and explain the correction.
+3. Send medical questions, such as whether an adverse event is related to the product or whether a result is clinically significant, to the physician investigator or the sub-investigator delegated that assessment.
+4. The data manager or monitor closes the query or asks again. A vague answer, such as "will check", brings another query.
 
 | Instead of | Write |
 |---|---|
-| "Confirmed" | "Value confirmed per source document dated 15-Mar-2026. Heart rate of 45 bpm is consistent with participant's baseline bradycardia documented at screening." |
-| "Updated" | "Value corrected from 15-Mar-2026 to 15-Apr-2026. Transcription error — source document confirms visit date was 15-Apr-2026." |
-| "Will check" | Don't submit until you've checked. Verify against the source and provide the complete response. |
-| "N/A" | "Assessment not performed — participant declined the optional MRI per protocol section 6.3, which permits this." |
+| "Confirmed" | "Value confirmed against the source document dated 15-Mar-2026. The investigator's screening note documents baseline bradycardia." |
+| "Updated" | "Corrected from 15-Mar-2026 to 15-Apr-2026: transcription error. The source document shows the visit on 15-Apr-2026." |
+| "Will check" | Check first, then answer with the source. |
+| "N/A" | "Assessment not done: the participant declined the optional MRI, which protocol section 6.3 allows." |
 
-<Note>
-Query response timelines are specified in the study's Data Management Plan (DMP). Typical expectations are 5–10 business days. Aged open queries — those unresolved for weeks — are flagged during monitoring visits and can trigger increased monitoring frequency under the risk-based model.
-</Note>
+A query on paper comes on the sponsor's data clarification form. Review it, sign it, return the original to the sponsor, unless you agreed otherwise, and keep a copy in the investigator site file (ISF); print a request sent by email and file it with the source data.
 
-## Audit trails
+The sponsor's data management plan, monitoring plan or CRF guidelines may set the time you have to answer. For a study that an RI-MUHC investigator sponsors, the RI-MUHC's standard operating procedures (SOPs) suggest, in their monitoring plan template, that the site resolve remaining queries within 2 weeks of the monitoring visit.
 
-Every change made in the EDC is logged: who made it, when, what the original value was, what it was changed to, and the reason. This audit trail is the electronic equivalent of the single-line-through correction on paper.
+Monitors may post queries at their visits for the site to resolve, and the number of data management queries is among the factors that may lead the sponsor to monitor more often.
 
-Key points:
+Based on: [SOP-CR-014, section 5.9](/sops/cr-014#5-9-quality-control-and-modifications-to-clinical-data); [SOP-CR-012](/sops/cr-012), section 5.1; [SOP-CR-013](/sops/cr-013), section 5.1 and Appendix 3; [SOP-CR-103](/sops/cr-103), section 5.2; [ICH E6(R3)](https://www.canada.ca/en/health-canada/services/drugs-health-products/drug-products/applications-submissions/guidance-documents/international-council-harmonisation/guidelines.html), sections 3.11.4 and 4.2.1.
 
-- **Every correction needs a reason.** The system will prompt you. Use the reason field to explain the correction, not just acknowledge it.
-- **You cannot delete entries.** You can only correct them, and the original value is preserved in the audit trail.
-- **The audit trail is inspectable.** Health Canada inspectors and sponsor auditors review audit trails for patterns — frequent corrections to the same field, corrections made long after the event, corrections without adequate reasons.
+## Correct data and keep the audit trail
 
-## SAE reconciliation
+The EDC's audit trail records each change: who made it, when, the old and new values and, where needed, the reason. It is the electronic version of the single line drawn through a paper entry.
 
-In most studies, <Tooltip tip="An adverse event meeting seriousness criteria: death, life-threatening, hospitalization, disability, or congenital anomaly." headline="Serious Adverse Event (SAE)" cta="Full definition" href="/kb/foundations/glossary#sae">SAE</Tooltip> data is entered in two places: the sponsor's safety database (via the SAE report form) and the EDC (via the adverse event CRF pages). The data in both systems must match — this is SAE reconciliation.
+- Give a reason for every correction unless it is obvious, and use the field to explain what was wrong.
+- Nothing is erased. A changed or deleted value stays in the audit trail. The audit trail itself is changed only in rare cases, such as a participant's personal information entered by mistake, and then with a record of what was done and why.
+- Health Canada inspectors and sponsors' auditors can review audit trails, including corrections made long after the event or without an adequate reason.
 
-The sponsor's data management team periodically compares the two databases and issues reconciliation queries when discrepancies are found. Common discrepancies include:
+How to correct paper records is on [Data Integrity](/kb/conduct/data-documentation/data-integrity#record-and-correct-data-properly).
 
-- SAE reported in the safety database but not yet entered in the EDC
-- Onset date, resolution date, or outcome coded differently between the two systems
-- Causality assessment in the EDC that does not match the SAE form
+Based on: [SOP-CR-014, sections 5.6](/sops/cr-014#5-6-good-documentation-practices-gdps) and [5.9](/sops/cr-014#5-9-quality-control-and-modifications-to-clinical-data); [SOP-CR-105](/sops/cr-105), section 5.3; [ICH E6(R3)](https://www.canada.ca/en/health-canada/services/drugs-health-products/drug-products/applications-submissions/guidance-documents/international-council-harmonisation/guidelines.html), section 4.2.2 and glossary.
 
-Address reconciliation queries promptly. Unresolved SAE reconciliation is a pre-database-lock requirement — the database cannot be locked until all SAE data is reconciled. For databases managed at the site, [SOP-CR-107](/sops/cr-107) lists the database lock steps, including SAE reconciliation.
+## Reconcile SAE data
 
----
+SAE data usually go in two places, the sponsor's safety database (through the SAE report form) and the EDC (on the adverse event pages), and the sponsor reconciles the two.
 
-## Related resources
+The sponsor's data managers compare them and send reconciliation queries about any difference, such as an SAE in the safety database that is not yet in the EDC, dates or outcomes recorded differently, or a causality assessment in the EDC that differs from the SAE form. A change to a causality assessment is a medical judgment for the physician investigator or a delegated sub-investigator.
 
-- [Data Integrity](/kb/conduct/data-documentation/data-integrity) — ALCOA+ principles, source documents, eSource
-- [Capture and Optimization of Research Data (CORD)](/kb/design-support/cord) — REDCap and data management support for RI-MUHC-led studies
-- [Reportable Events and Protocol Deviations](/kb/conduct/safety-reporting/reportable-events) — SAE reporting timelines
-- [SOP-CR-014](/sops/cr-014) — Clinical Data Management
-- [SOP-CR-105](/sops/cr-105) — Database Maintenance and Management (query management, pre-lock criteria)
+If the sponsor collects SAE reports in its EDC, print the electronic case report form (eCRF) report with the proof of the sponsor's receipt and its date, file it in the ISF and record it on the SAE Reporting Log. The RI-MUHC's SOPs recommend completing the RI-MUHC SAE report template first and keeping it in the ISF.
+
+Answer reconciliation queries promptly. For a database your team manages, the RI-MUHC's SOPs require all SAEs to be reconciled before the database is locked, unless the study contract or the data management plan sets otherwise; a sponsor's database follows the sponsor's own procedures.
+
+Based on: [SOP-CR-107](/sops/cr-107), sections 2 and 5.2; [SOP-CR-012](/sops/cr-012), sections 5.1 and 5.4; [SOP-CR-103](/sops/cr-103), section 5.2; [ICH E6(R3)](https://www.canada.ca/en/health-canada/services/drugs-health-products/drug-products/applications-submissions/guidance-documents/international-council-harmonisation/guidelines.html), section 4.2.6.
+
+## Contacts
+
+- The EDC itself, its queries and its timelines: the sponsor's data manager or monitor for your study.
+- REDCap for studies led at the RI-MUHC: CORD, [cord@rimuhc.ca](mailto:cord@rimuhc.ca).
+- Documentation practice: <Tooltip tip="All planned and systematic actions to ensure trial data are generated, documented, and reported in compliance with GCP and SOPs." headline="Quality Assurance (QA)" cta="Full definition" href="/kb/foundations/glossary#qa">Quality Assurance</Tooltip>, [QAclinicalresearch@muhc.mcgill.ca](mailto:QAclinicalresearch@muhc.mcgill.ca).
+- RI-MUHC processes and SOPs: the Research Facilitator, [research.facilitator@muhc.mcgill.ca](mailto:research.facilitator@muhc.mcgill.ca).
+
+{/* Checked against: SOP-CR-009_08 and SOP-CR-014_08 (May 1, 2025); SOP-CR-012_08 and SOP-CR-013_08 (June 19, 2023); SOP-CR-103_04, SOP-CR-105_04 and SOP-CR-107_04 (RI-MUHC effective Sept. 1, 2018; N2 versions of May 15, 2017); ICH E6(R3) Step 4 (Jan. 6, 2025). Kept out of the reader's view (MF, Nov. 9); a script finds these lines when a new SOP set arrives. */}
+
+Last reviewed: November 2026.

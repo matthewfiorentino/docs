@@ -1,133 +1,125 @@
 ---
-title: "Research Data Security"
-description: "How human research data is classified at the RI-MUHC, where it can be stored, and how it can be shared securely."
-keywords: ["data classification", "encryption", "secure storage", "OneDrive", "REDCap security", "data sharing", "USB"]
+title: "Storing and Sharing Human Data"
+description: "How human research data are classified at the RI-MUHC, who may receive each kind, where to store it, how to send it securely and how to archive it when the study ends."
+keywords: ["data classification", "de-identified", "anonymized", "aggregate", "identifying", "secure storage", "NextCloud", "encryption", "data sharing agreement", "archiving", "personal devices", "Researcher's Guide to Data Security"]
 ---
 
-The sensitivity of the data you are working with determines the environment in which it must be stored and the tools you must use to share it.
+Where you may keep human data from your study, who may receive them and how you may send them depend on whether the data are published and on how identifiable they are. Each kind of data has its own controls, set out in the RI-MUHC's [*Researcher's Guide to Data Security*](https://portal.rimuhc.ca/pls/apex/MUHC2.download_my_file?p_file=111401908461398782) (version 8; PDF, sign-in required). The RI-MUHC's standard operating procedures (SOPs) add rules for study records.
 
-## Data classification
+## Know how identifiable your data are
 
-The RI-MUHC classifies human research data into four categories. The category determines where data can be stored, how it can be shared, and what approvals are required to access it. Understanding these distinctions is essential for protocol design, <Tooltip tip="The RI-MUHC's electronic study submission and management platform. All studies requiring MUHC Authorization are submitted through Nagano." headline="Nagano (RI-MUHC)" cta="Full definition" href="/kb/foundations/glossary#nagano">Nagano</Tooltip> submissions, and day-to-day data handling.
+The MUHC Data Warehouse sorts human data into four types.
 
-| Category | Type | Description |
-|----------|------|-------------|
-| 1 | Aggregate / Statistical | Fully summarized data with no individual identifiers and no reasonable risk of re-identification. Examples: published statistics, summary tables, group averages. No restrictions on storage or sharing once published. |
-| 2 | Anonymized | Identifiers have been **irreversibly** stripped with no possibility of re-identification — no linking key exists or ever existed. Anonymized data can be stored more broadly and shared via standard encrypted methods. |
-| 3 | De-identified | Identifiers have been removed, but re-identification **remains possible** through a linking key (e.g., a master ID log or participant number list). Only the <Tooltip tip="US equivalent of the Canadian Qualified Investigator (QI)." headline="Principal Investigator (PI)" cta="Full definition" href="/kb/foundations/glossary#pi">PI</Tooltip> has access to the key. De-identified data is subject to the same security requirements as identifying data. |
-| 4 | Identifying | Contains direct identifiers: name, MRN, RAMQ number, date of birth, or any other information that can directly identify a participant. Strictest storage and sharing controls apply. Requires full <Tooltip tip="The ethics committee that reviews and approves research involving human participants. Also called CER at French-language institutions." headline="Research Ethics Board (REB)" cta="Full definition" href="/kb/foundations/glossary#reb">REB</Tooltip> approval, MUHC Authorization, and typically an EFVP. |
-
-<Warning>
-**De-identified is not the same as anonymized.** This is the most common misconception the RI-MUHC sees from research teams. If a linking key exists anywhere — even stored separately — the data is de-identified, not anonymized. The security and EFVP requirements for de-identified data are the same as for identifying data.
-</Warning>
-
-<Note>
-**Data linkage increases re-identification risk.** Two separately de-identified datasets may each carry low re-identification risk on their own. Merging them can make re-identification substantially easier — for example, combining a rare diagnosis with a date of birth may uniquely identify a patient. Consider re-identification risk whenever combining data sources.
-</Note>
-
-For the full classification framework with storage and sharing controls, see the [RI-MUHC Researcher's Guide to Data Security](https://portal.rimuhc.ca/pls/apex/MUHC2.download_my_file?p_file=111401908461398782).
-
-## Storage requirements
-
-Storage location depends on data classification. There are three environments: the MUHC network, the RARI network, and cloud services. These are not equivalent — the MUHC network operates behind Ministry (MSSS) firewalls with stricter security controls, while the RARI network has different access requirements. If you are unsure which network your workstation is on, contact ri.it@muhc.mcgill.ca.
-
-| Data type | Digital storage | Hardcopy storage | Off-site / USB |
-|-----------|----------------|-----------------|----------------|
-| Aggregate / Anonymized (unpublished) | Any MUHC or RARI network location, or a cloud service that uses encryption, as long as the data are not accessible to the public. | In an RI-MUHC or MUHC monitored area, or under constant attention in a public area; stored in a locked area. | Password-protected laptops and USB keys; hard copies taken off site kept under constant attention. |
-| De-identified / Identifying | Stored so that only people on the study's MUHC-approved access list (Nagano) can reach the data; in the cloud, only an encrypted service with two-factor authentication, a Canadian or EU server and MUHC-held encryption keys (NextCloud meets these requirements). | In a room accessible only to specific authorized people, in a locked cabinet; never taken off site. | Password-protected laptops and USB keys, kept under constant supervision or in a locked room on site and encrypted for off-site transport or use. |
+| Type | What it is |
+|---|---|
+| Aggregate | Counts, summary tables and other statistics about groups, with no data on individuals |
+| Anonymized | Data on individuals, irrevocably stripped of direct identifiers, with no code kept to link them back to people and a low or very low risk that anyone could be identified from what remains |
+| De-identified (coded) | Data on individuals whose direct identifiers have been replaced by a code; a key links the code back to the people |
+| Identifying | Data with any direct or indirect identifier, such as a name, address, contact information, medical record number (MRN), health insurance (RAMQ) number, date of birth or postal code |
 
 <Warning>
-**No personal devices.** Research data must never be stored on personal laptops, personal USB drives, or personal cloud accounts (including personal Google Drive, Dropbox, or iCloud). This applies even to de-identified data. The fact that you _can_ download something does not mean you are permitted to.
+Data are anonymized only if no key exists to link them back to people. If a key exists anywhere, even stored separately, the data are de-identified, and they can still identify people.
 </Warning>
 
-## Sharing data securely
+For health information that the MUHC holds, Quebec's Act respecting health and social services information (Law 5) counts information as anonymized only if it is, at all times, reasonably foreseeable in the circumstances that it irreversibly no longer allows anyone to be identified, even indirectly.
 
-Only authorized recipients may receive research data: people named in the REB-approved protocol, people who have signed the required legal agreements, or people appropriately delegated by the PI and listed on the <Tooltip tip="Lists each team member, their qualifications, and specific trial tasks authorized by the QI." headline="Task Delegation Log (TDL)" cta="Full definition" href="/kb/foundations/glossary#tdl">Task Delegation Log</Tooltip>.
+Indirect identifiers, such as a postal code or a date of birth, can point to a person when they are combined with other information. Linking datasets can also make people identifiable again, so linkage needs the approval of the Research Ethics Board (REB) before you do it.
 
-### Sending to another MUHC or MSSS recipient
+What each type needs before you can obtain MUHC patient data is on the [Data Warehouse page](/kb/design-support/data-warehouse#requirements-by-data-type). When the study uses health records without consent, the [privacy rules](/kb/governance/privacy#get-authorization-before-using-health-records-without-consent) apply too.
 
-If both sender and recipient have MUHC (muhc.mcgill.ca) or MSSS (ssss.gouv.qc.ca) email addresses, you may send encrypted files via Outlook. Encrypt the file using Excel's built-in encryption or 7-zip before attaching. Send the file by email, but **send the decryption password by a different channel** — SMS or phone. Never send the file and the password in the same email.
+Based on: the [*Tri-Council Policy Statement* (TCPS 2), chapter 5](https://ethics.gc.ca/eng/tcps2-eptc2_2022_chapter5-chapitre5.html), section A and article 5.7; the [Act respecting health and social services information](https://www.legisquebec.gouv.qc.ca/en/document/cs/R-22.1), section 111; the RI-MUHC's SOP Glossary of Terms (coded data; direct identifiers); the RI-MUHC's *Researcher's Guide to Data Security* (version 8); the MUHC Data Warehouse's Requirements for Opening a Data Request.
 
-### Sending to an external recipient (including McGill)
+## Apply the controls for each kind of data
 
-McGill University (mcgill.ca) email addresses are external to the MSSS network. If the recipient has a mcgill.ca email or any other non-MUHC, non-MSSS address, use **MUHC NextCloud** for file transfer — not Outlook. Encrypt the file before uploading. Send the decryption password by SMS or phone.
+Each kind of data falls into a security class, and each class has its own controls.
+
+| | Published processed or analysed data, conclusions and other intellectual property, with no identifying data | Unpublished aggregate data, and the Data Warehouse's Data Summary and Data Dictionary | Unpublished processed or analysed data, research conclusions and other intellectual property; unpublished data on individuals, with or without identifiers; lists of participants or patients |
+|---|---|---|---|
+| Security class | Public | Restricted (general) | Sensitive (highly confidential) |
+| Who may receive it | Anyone, within the grant's or publisher's conditions | The RI-MUHC research team and anyone on the study's MUHC-approved access list in Nagano | Only people on the study's MUHC-approved access list in Nagano |
+| What you need first | Nothing | Access to the RI-MUHC Portal, for the Data Summary and Data Dictionary; otherwise, a principal investigator (the person who leads the study at the MUHC) who is an RI-MUHC investigator | A principal investigator who is an RI-MUHC investigator, REB approval and MUHC Authorization; for de-identified or identifying data obtained without the participants' consent, also a privacy impact assessment (EFVP) |
+| Digital storage | No restrictions beyond the grant's or publisher's conditions | Where the public cannot reach it | Where only the people on the access list can reach it |
+| Paper | No restrictions beyond the grant's or publisher's conditions | In a monitored RI-MUHC or MUHC area, or under constant attention in a public area; off site, under constant attention; stored in a locked area | In a room that only specific people can enter, in a locked cabinet; never taken or used off site |
+| Email | Any email service | MUHC or McGill email, or a reliable service such as Gmail | Only as an encrypted file, through a service that uses encryption |
+| Cloud and websites | You may post it on your website if the grant or publisher allows | A cloud service that uses encryption | Only encrypted, with a provider that uses encryption and two-factor authentication, keeps its servers in Canada or the European Union and leaves the encryption keys with the MUHC alone, such as NextCloud |
+| Laptops and USB keys | No restrictions beyond the grant's or publisher's conditions | Password-protected | Password-protected, under constant supervision or locked in a room on site, and encrypted when taken or used off site |
+
+A principal investigator who is an RI-MUHC investigator holds RI-MUHC Privileges or Researcher Status and up-to-date SOP training at the appropriate level; people working for them count too. Clinical data that are confidential become sensitive once they are accessed or collected for research.
+
+Keep the key that links de-identified data back to participants apart from the data, and give access to it only to authorized members of the research team. For double-coded data, a third party holds the key and the research team has no access to it.
 
 <Warning>
-**McGill email addresses are external to the MUHC network.** Many RI-MUHC researchers and staff prefer their mcgill.ca accounts, but the RI-MUHC allows McGill email only for unpublished data with no direct or indirect identifiers. Never email de-identified or identifying data from a mcgill.ca address. Encrypt the data, transfer them through MUHC NextCloud and keep them behind MUHC firewalls.
+Never send data on individuals, even with the identifiers removed, through MUHC, McGill or Gmail email.
 </Warning>
 
-Any data sharing with an external collaborator must also be stipulated in a signed collaboration or data use agreement before transfer takes place. Contact the contracts office if you are unsure whether an agreement is required.
+Send the password for an encrypted file separately, by text message or phone, never in the same email or thread. To encrypt a file, use a tool such as 7-Zip.
 
-## Personal devices
+The RI-MUHC's SOPs add these rules for study records:
 
-Research data — including de-identified data — must never be stored or processed on personal devices. This includes personal laptops, home computers, personal tablets, and personal USB drives. If you need remote access to MUHC data, use Citrix to connect to the MUHC network from any device. Contact IT (ri.it@muhc.mcgill.ca) to set up appropriate remote access.
+- Participant information should not be saved on electronic shared drives, except temporarily during a transfer.
+- Research documents that identify participants should be kept apart from the other study documents.
+- Store completed case report forms apart from participants' identifying information, in a secure area that only study personnel can enter.
+- Limit access to study data and documents to the research team and the people whom the protocol, the consent form and the Task Delegation Log identify.
 
-## Archiving at study close-out
+In your REB application, describe how you will protect the information through its whole life cycle, from collection to disposal. In general, identifiable data kept on a computer connected to the Internet should be encrypted. Never store data on individuals, even de-identified data, on your own laptop, phone or USB key, or in a personal cloud account. For remote access to the MUHC network, use Citrix; the RI-MUHC's information technology (IT) team can set it up.
 
-When a study ends, data must be archived in an institutionally approved environment according to the applicable retention schedule. Health Canada's regulations, the RI-MUHC's SOPs and institutional policies set the [retention periods](/kb/site-activation/isf#retention-and-archiving).
+Based on: the RI-MUHC's *Researcher's Guide to Data Security* (version 8); the MUHC Data Warehouse's Requirements for Opening a Data Request; [SOP-CR-007, section 5.4](/sops/cr-007#5-4-initial-reb-and-institutional-review); the [Act respecting health and social services information](https://www.legisquebec.gouv.qc.ca/en/document/cs/R-22.1), section 44; the RI-MUHC's SOP Glossary of Terms (coded data); [SOP-CR-015, section 5.1](/sops/cr-015#5-1-tmf-and-isf-set-up); [SOP-CR-019](/sops/cr-019), sections 5.2 and 5.3; [SOP-CR-014, section 5.10](/sops/cr-014#5-10-clinical-data-storage); [TCPS 2, chapter 5](https://ethics.gc.ca/eng/tcps2-eptc2_2022_chapter5-chapitre5.html), article 5.3.
 
-Data must not be moved to personal storage at close-out. Archiving should be planned at the start of the project — a data management plan helps document your archiving strategy, including the file formats and software versions used, so records remain accessible years later. See [SOP-CR-107](/sops/cr-107) (Database Lock and Archiving) for detailed guidance.
+## Put an agreement in place before data leave or arrive
+
+Before data go to a site outside the MUHC, or come from one, all parties must sign a data sharing or transfer agreement. Use the template from the Research Agreements Office ([contracts@muhc.mcgill.ca](mailto:contracts@muhc.mcgill.ca)). McGill University researchers count as external collaborators. Upload the agreement both in Nagano and in My Contracts on the RI-MUHC Portal (sign-in required), so that the contract review starts.
+
+Based on: [SOP-CR-106](/sops/cr-106), RI-MUHC Addendum, section 1.1; [SOP-CR-007, section 5.4](/sops/cr-007#5-4-initial-reb-and-institutional-review).
+
+## Archive the data when the study ends
+
+Archive data on individuals in a secure, institutionally approved environment, never on a personal device, and keep access restricted for the retention period that applies to your study; see [how long study records are kept](/kb/close-out/close-out#supply-reconciliation-and-archiving).
+
+For a database your team manages, the RI-MUHC's SOPs require you to do the following, unless the study contract or the data management plan sets otherwise:
+
+- Export the data, metadata, audit trails and queries to long-term storage in an open format, such as CSV or PDF, labelled with the archive date and how long it must be kept.
+- Record the hardware and software used, with their versions, in the database manual or the data management plan.
+- Record the user history, including each user's access rights, every change and the dates they were authorized.
+- Remove all access to the database except an administrator account that controls the user accounts.
+- Keep the archive in a secure environment with backup copies, on storage media that are replicated.
+- Test on a regular schedule, such as every five years, that the archived database can still be retrieved and run.
+
+If you are the sponsor-investigator, plan the archiving of the trial master file from the start of the study.
+
+Clinical data from many RI-MUHC projects cannot go in McGill University's Dataverse repository, because they hold health information on individual participants; the RI-MUHC keeps them on its secure servers in the MUHC's digital environment (as of its research data management strategy, 2023). The RI-MUHC strongly encourages you to consult RI-MUHC IT, project by project, about secure storage and computing space, secure ways to access and share data, and the security of apps and tools that collect data from participants.
+
+Based on: [SOP-CR-107](/sops/cr-107), section 5.4; [SOP-CR-015](/sops/cr-015), section 5.7; the RI-MUHC's *Research Data Management Strategy* (2023).
+
+## Respect First Nations, Inuit and Métis data governance
+
+The RI-MUHC commits, in its research data management strategy, to a distinctions-based approach for research with First Nations, the Métis Nation and Inuit communities and their data. Which data governance applies to each People is on [Indigenous Research Ethics](/kb/recruitment/indigenous-research-ethics#respect-the-data-governance-of-each-people).
+
+Based on: the RI-MUHC's *Research Data Management Strategy* (2023).
+
+## Keep accounts and systems secure
+
+Each person on the team has their own account for every system the study uses, and passwords are never shared. A password manager helps you keep a different strong password for each sponsor portal.
+
+- Give access to an electronic data capture system only to people delegated that task on the Task Delegation Log, after their training on it is documented.
+- When someone leaves the study, remove their access to the systems you control, such as REDCap, and tell the sponsor, so that it can end their access to its systems.
+- Check unexpected attachments, even from a sponsor or a contract research organization, with the sender by phone or by a separate email before opening them. A request for your password by email is a warning sign; report suspicious emails to RI-MUHC IT.
+- Turn on two-factor authentication for your REDCap account.
+
+If data are lost, sent to the wrong person or seen by someone who should not see them, report it as set out in [Report information that is lost or seen by the wrong person](/kb/governance/privacy#report-information-that-is-lost-or-seen-by-the-wrong-person). REDCap at the RI-MUHC, including its validation records for Health Canada-regulated studies, is covered on the page of [Capture and Optimization of Research Data (CORD)](/kb/design-support/cord). Checking an electronic platform before a study adopts it is covered on [Data Integrity](/kb/conduct/data-documentation/data-integrity#check-electronic-systems-before-you-use-them).
+
+Based on: [SOP-CR-014](/sops/cr-014), section 5.8; [SOP-CR-019](/sops/cr-019), section 5.2 and Appendix 1; the International Council for Harmonisation's guideline [ICH E6(R3)](https://www.canada.ca/en/health-canada/services/drugs-health-products/drug-products/applications-submissions/guidance-documents/international-council-harmonisation/guidelines.html), sections 2.12.10 and 4.3.8.
 
 ## Contacts
 
-For questions specific to your study, always consult the relevant team directly rather than making assumptions about what is permitted.
+- Storage, remote access, access to NextCloud and secure data practices: RI-MUHC IT, through IT Rescue on the RI-MUHC Portal (sign-in required), or [ri.it@muhc.mcgill.ca](mailto:ri.it@muhc.mcgill.ca).
+- Data security: MUHC Information Security, [securitygovernance@muhc.mcgill.ca](mailto:securitygovernance@muhc.mcgill.ca).
+- Privacy impact assessments (EFVP): [efvp@muhc.mcgill.ca](mailto:efvp@muhc.mcgill.ca).
+- Ethics review: the REB, [reb@muhc.mcgill.ca](mailto:reb@muhc.mcgill.ca).
+- Data sharing and transfer agreements: the Research Agreements Office, [contracts@muhc.mcgill.ca](mailto:contracts@muhc.mcgill.ca).
+- The *Researcher's Guide to Data Security* and the Data Warehouse: the Data Warehouse team, [info.ridw@muhc.mcgill.ca](mailto:info.ridw@muhc.mcgill.ca). Consultations and data requests go through the [RI-MUHC Data Warehouse Request Center](https://rimuhc.atlassian.net/servicedesk/customer/user/login?destination=portals) (sign-in required).
+- Privileges and Researcher Status: the Performance Office, [riprograms@muhc.mcgill.ca](mailto:riprograms@muhc.mcgill.ca).
+- Training: Training and Learning, [training-formation@muhc.mcgill.ca](mailto:training-formation@muhc.mcgill.ca); for the training your study requires, <Tooltip tip="All planned and systematic actions to ensure trial data are generated, documented, and reported in compliance with GCP and SOPs." headline="Quality Assurance (QA)" cta="Full definition" href="/kb/foundations/glossary#qa">Quality Assurance</Tooltip>, [QAClinicalResearch@muhc.mcgill.ca](mailto:QAClinicalResearch@muhc.mcgill.ca).
 
-| Topic | Contact |
-|-------|---------|
-| REB questions | Research Ethics Board, reb@muhc.mcgill.ca |
-| EFVP questions | Privacy office, efvp@muhc.mcgill.ca |
-| Data security questions | MUHC IT Security, securitygovernance@muhc.mcgill.ca |
-| IT support / network access | RI-MUHC IT, ri.it@muhc.mcgill.ca |
-| Privileges and Researcher Status | Performance Office, riprograms@muhc.mcgill.ca |
-| Training | Training and Learning, training-formation@muhc.mcgill.ca; for the training your study requires, <Tooltip tip="All planned and systematic actions to ensure trial data are generated, documented, and reported in compliance with GCP and SOPs." headline="Quality Assurance (QA)" cta="Full definition" href="/kb/foundations/glossary#qa">Quality Assurance</Tooltip>, QAClinicalResearch@muhc.mcgill.ca |
-| Data Warehouse questions | RI-MUHC Data Warehouse team, info.ridw@muhc.mcgill.ca. Consultations and data requests go through the [RI-MUHC Data Warehouse Request Center](https://rimuhc.atlassian.net/servicedesk/customer/user/login?destination=portals) (sign-in required). |
+{/* Checked against: the RI-MUHC Researcher's Guide to Data Security v8 (PDF created Mar. 28, 2025; read on the rendered page Nov. 12, 2026); the MUHC Data Warehouse's Requirements for Opening a Data Request (Aug. 27, 2025, by its file); the RI-MUHC Research Data Management Strategy (undated; Feb. 21, 2023 by its file name); SOP-CR-007_08 and SOP-CR-014_08 (May 1, 2025); SOP-CR-015_08 (June 19, 2023); SOP-CR-019_07, SOP-CR-106_04 and SOP-CR-107_04 (RI-MUHC effective Sept. 1, 2018; N2 versions of May 15, 2017), with the RI-MUHC Addenda to SOP-CR-019 and SOP-CR-106 (Sept. 1, 2018); the SOP Glossary of Terms (Apr. 27, 2023); TCPS 2 (2022); ICH E6(R3) Step 4 (Jan. 6, 2025). The draft Human Data Management Guide is not used (MF, Nov. 11). Kept out of the reader's view (MF, Nov. 9); a script finds these lines when a new SOP set arrives. */}
 
-## Cybersecurity for research teams
-
-Clinical trial data is a high-value target. Sponsor portals, eConsent systems, EDC platforms, and REDCap instances all hold personal health information that must be protected throughout the trial lifecycle. The following practices address the most common vulnerabilities at the research-team level.
-
-### Phishing and social engineering
-
-Research staff receive communications from a wide range of sponsors, CROs, monitors, labs, and IRBs. This creates an environment where phishing attempts are easy to disguise as legitimate study communication.
-
-- Never open unexpected file attachments from sponsors or CROs without verifying through a second channel (a phone call or a separate email independent of the original message)
-- Sponsor portals will never ask you to confirm login credentials via email — portal credential requests by email are phishing attempts
-- Report suspicious emails to ri.it@muhc.mcgill.ca before clicking anything
-
-### Sponsor portal credential hygiene
-
-Research teams routinely hold active credentials for many sponsor portals simultaneously. This creates credential-accumulation risk — weak or reused passwords, shared credentials, and accounts that remain active after staff depart.
-
-- Use a unique, strong password for each sponsor portal — a password manager is the practical solution for managing this at scale
-- Never share portal credentials with colleagues. If a colleague needs access, request a separate account through the sponsor
-- When a team member leaves the study or the institution, notify the sponsor to deactivate their portal access. Include portal access deactivation in the Task Delegation Log off-boarding process
-- When you are removed from a study, confirm your portal access has been deactivated
-
-### REDCap and institutional platform security
-
-RI-MUHC REDCap instances are managed by [CORD](/kb/design-support/cord). For a Health Canada-regulated study, ask CORD for the validation records that cover your use; inspectors can ask for them. Research team obligations:
-
-- Only users listed on the REB-approved protocol and the Task Delegation Log should have REDCap project access
-- Remove user access when team members leave a study — this requires a deliberate action in the REDCap project, not just removal from the TDL
-- Enable two-factor authentication (2FA) on your REDCap account
-- Do not export REDCap data to personal devices or personal cloud storage (see storage requirements above)
-
-### Validated platforms for eConsent and electronic records
-
-When selecting an eConsent or eICF platform for a decentralized trial, platform security is an inspection-readiness question as much as an IT one. ICH E6(R3) requires that electronic systems used in clinical trials maintain audit trails, access logs, and data governance documentation from activation — retroactive remediation before an inspection is not always possible.
-
-Before adopting any sponsor-provided or investigator-selected digital platform:
-- Confirm the platform has a validation status document (IQ/OQ/PQ or equivalent)
-- Confirm audit trail and access log retention meets the study's retention period
-- Confirm the platform complies with Health Canada GUI-0100 requirements for electronic records
-
-Contact the [Research Facilitator](mailto:research.facilitator@muhc.mcgill.ca) before committing to a new digital platform in a study protocol — platform selection is a setup decision, not a conduct item.
-
----
-
-## Related resources
-
-- [RI-MUHC Researcher's Guide to Data Security](https://portal.rimuhc.ca/pls/apex/MUHC2.download_my_file?p_file=111401908461398782)
-- [SOP-CR-014](/sops/cr-014) — Clinical Data Management
-- [SOP-CR-019](/sops/cr-019) — Confidentiality and Privacy
-- [Privacy and Confidentiality in Quebec](/kb/recruitment/privacy)
+Last reviewed: November 2026.

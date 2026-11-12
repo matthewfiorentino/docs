@@ -225,8 +225,7 @@
                       "kb/recruitment/consent-templates",
                       "kb/recruitment/pediatric-research",
                       "kb/recruitment/vulnerable-populations",
-                      "kb/recruitment/indigenous-research-ethics",
-                      "kb/recruitment/privacy"
+                      "kb/recruitment/indigenous-research-ethics"
                     ]
                   },
                   {
@@ -285,6 +284,7 @@
                   "kb/governance/quality-assurance",
                   "kb/governance/modernized-ct-regulations",
                   "kb/governance/french-language-requirements",
+                  "kb/governance/privacy",
                   {
                     "group": "Research Ethics",
                     "expanded": false,
@@ -737,7 +737,7 @@
     },
     {
       "source": "/kb/conduct/privacy",
-      "destination": "/kb/recruitment/privacy"
+      "destination": "/kb/governance/privacy"
     },
     {
       "source": "/kb/conduct/protocol-documents",
@@ -1181,7 +1181,11 @@
     },
     {
       "source": "/kb/privacy",
-      "destination": "/kb/recruitment/privacy"
+      "destination": "/kb/governance/privacy"
+    },
+    {
+      "source": "/kb/recruitment/privacy",
+      "destination": "/kb/governance/privacy"
     },
     {
       "source": "/kb/conduct-overview",
