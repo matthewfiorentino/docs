@@ -4401,3 +4401,6 @@ footer.advanced-footer a[href="https://rimuhc.ca"]::before {
   white-space: nowrap;
 }
 
+
+/* Inline anchors (<a id> before SOP item numbers and other deep links) stop below the sticky header instead of under it (batch 85, Nov. 12, 2026). */
+a[id]:not([href]) { scroll-margin-top: 170px; }
