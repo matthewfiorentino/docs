@@ -127,7 +127,9 @@
                   "kb/recruitment/consent-v2",
                   "kb/submission/submission-overview-v2",
                   "training/compliance-requirements-v2",
-                  "kb/recruitment/pediatric-research-v2"
+                  "kb/recruitment/pediatric-research-v2",
+                  "kb/recruitment/recruitment-enrollment-v2",
+                  "kb/conduct/safety-reporting/reportable-events-v2"
                 ]
               },
               {
