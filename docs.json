@@ -122,6 +122,15 @@
             "tab": "Knowledge Base",
             "groups": [
               {
+                "group": "New writing (v2 examples)",
+                "pages": [
+                  "kb/recruitment/consent-v2",
+                  "kb/submission/submission-overview-v2",
+                  "training/compliance-requirements-v2",
+                  "kb/recruitment/pediatric-research-v2"
+                ]
+              },
+              {
                 "group": "Community",
                 "icon": "comments",
                 "pages": [

@@ -1,0 +1,19 @@
+%%{init: {'theme':'base','htmlLabels':false,'flowchart':{'htmlLabels':false,'subGraphTitleMargin':{'top':14,'bottom':10}},'themeVariables':{'primaryColor':'#2b2666','primaryTextColor':'#ffffff','primaryBorderColor':'#2b2666','lineColor':'#888','edgeLabelBackground':'#ffffff','titleColor':'#150e51','fontFamily':'system-ui,sans-serif'}}}%%
+flowchart LR
+    START([Your study involves<br/>MUHC participants, data,<br/>spaces or affiliation]) --> Q1{Is the MUHC<br/>the only site?}
+    Q1 -- Yes --> SINGLE["`**Single site**<br/>The MUHC REB<br/>reviews the study.<br/>Submit the F11 in Nagano.`"]
+    Q1 -- No --> Q2{Are all sites in<br/>Quebec's public network?}
+    Q2 -- Yes --> Q3{Is the MUHC<br/>the lead site?}
+    Q3 -- Yes --> LEAD["`**Multi-site in Quebec,**<br/>**MUHC leads**<br/>The MUHC REB is the<br/>evaluating REB for all sites.`"]
+    Q3 -- No --> FOLLOW["`**Multi-site in Quebec,**<br/>**another site leads**<br/>The lead site's REB<br/>evaluates the study.<br/>The MUHC does its own<br/>feasibility review.`"]
+    Q2 -- No --> OTHER["`**Sites in other provinces**<br/>The MUHC REB reviews<br/>the study for the MUHC.<br/>Each site submits<br/>to its own REB.`"]
+
+    style START fill:#150e51,color:#fff,stroke:none
+    style SINGLE fill:#2b9ce2,color:#150e51,stroke:none
+    style LEAD fill:#2b9ce2,color:#150e51,stroke:none
+    style FOLLOW fill:#2b9ce2,color:#150e51,stroke:none
+    style OTHER fill:#2b9ce2,color:#150e51,stroke:none
+    style Q1 fill:#1a1466,color:#fff,stroke:none
+    style Q2 fill:#1a1466,color:#fff,stroke:none
+    style Q3 fill:#1a1466,color:#fff,stroke:none
+    linkStyle default color:#150e51
