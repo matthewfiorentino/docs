@@ -1,0 +1,21 @@
+%%{init: {'theme':'base','htmlLabels':false,'flowchart':{'htmlLabels':false,'subGraphTitleMargin':{'top':14,'bottom':10}},'themeVariables':{'primaryColor':'#2b2666','primaryTextColor':'#ffffff','primaryBorderColor':'#2b2666','lineColor':'#888','edgeLabelBackground':'#ffffff','titleColor':'#150e51','fontFamily':'system-ui,sans-serif'}}}%%
+flowchart LR
+    S(["Deviation recorded<br/>on the Deviation Log"]) --> Q4{"Did it involve an<br/>unauthorized trial, or<br/>adulterated, misrepresented<br/>or falsified records?"}
+    Q4 -->|"Yes"| CRIT
+    Q4 -->|"No"| Q1{"Could it cause<br/>undue health risks<br/>to participants<br/>or others?"}
+    Q1 -->|"No"| Q2{"Could it invalidate<br/>the study's data?"}
+    Q1 -->|"Yes"| Q3{"Did it cause fatal,<br/>life-threatening or<br/>unsafe conditions<br/>for participants?"}
+    Q2 -->|"Yes"| Q3
+    Q2 -->|"No"| MINOR(["`**Minor**<br/>Report it to the REB at<br/>the annual review, or<br/>within its deadlines if<br/>it was a sponsor-approved<br/>eligibility waiver,<br/>changed the approved<br/>consent process, led to<br/>an SAE or could otherwise<br/>affect participants'<br/>rights, safety or<br/>well-being.`"])
+    Q3 -->|"Yes"| CRIT(["`**Critical**<br/>Report it to the REB<br/>with the CAPA<br/>already taken.`"])
+    Q3 -->|"No"| MAJOR(["`**Major**<br/>Report it to the REB<br/>with the CAPA<br/>already taken.`"])
+
+    style S fill:#150e51,color:#fff,stroke:none
+    style Q1 fill:#1a1466,color:#fff,stroke:none
+    style Q2 fill:#1a1466,color:#fff,stroke:none
+    style Q3 fill:#1a1466,color:#fff,stroke:none
+    style Q4 fill:#1a1466,color:#fff,stroke:none
+    style MINOR fill:#e4e6ed,color:#150e51,stroke:#888
+    style MAJOR fill:#2b9ce2,color:#150e51,stroke:none
+    style CRIT fill:#2b2666,color:#fff,stroke:none
+    linkStyle default color:#150e51

@@ -36,7 +36,7 @@ The type of study you are running determines whether you need Health Canada's pe
 | Study type | Canadian authorization | Standard | <Tooltip tip="The ethics committee that reviews and approves research involving human participants. Also called CER at French-language institutions." headline="Research Ethics Board (REB)" cta="Full definition" href="/kb/foundations/glossary#reb">REB</Tooltip> review |
 |------------|----------------------|----------|-----------|
 | Drug trial — Phase I–III | <Tooltip tip="Application to Health Canada for authorization to conduct a drug trial under Division 5 of the Food and Drug Regulations." headline="Clinical Trial Application (CTA)" cta="Full definition" href="/kb/foundations/glossary#cta">CTA</Tooltip> to Health Canada | ICH <Tooltip tip="International standard for design, conduct, monitoring, recording, and reporting of clinical studies." headline="Good Clinical Practice (GCP)" cta="Full definition" href="/kb/foundations/glossary#gcp">GCP</Tooltip> E6(R3) | Full board |
-| Medical device — Class II–IV | <Tooltip tip="Health Canada authorization to conduct a clinical investigation of a medical device. The device equivalent of a CTA." headline="Investigational Testing Authorization (ITA)" cta="Full definition" href="/kb/foundations/glossary#ita">ITA</Tooltip> to Health Canada | ISO 14155 | Full board (III/IV) |
+| Class II–IV medical device study that [needs an ITA](/kb/planning/regulations#medical-device-classification) | <Tooltip tip="Health Canada's authorization for a manufacturer or importer to sell a Class II, III or IV medical device to qualified investigators for testing." headline="Investigational Testing Authorization (ITA)" cta="Full definition" href="/kb/foundations/glossary#ita">ITA</Tooltip> to Health Canada | ISO 14155 | Full board (III/IV) |
 | Natural health product — Phase I–III | CTA to Health Canada | ICH GCP E6(R3) | Full board |
 | Drug trial — Phase IV (within label) | No CTA required | GCP still applies | Proportionate |
 | Observational / chart review | No federal auth. | TCPS2 | Proportionate / delegated |
@@ -47,9 +47,9 @@ A second dimension cuts across all of these categories: whether the study collec
 |-----------|------------|---------------|
 | Participant contact | Yes — enrolled, followed | Often none |
 | Data collected | During the study | Already exists (charts, databases, biobanks) |
-| Health Canada auth. | Required for drug/device trials | Generally not required |
+| Health Canada auth. | Required for trials of investigational drugs and natural health products, and for Class II–IV device studies that need an ITA | Generally not required |
 | REB review | Required — proportionate to risk | Required — may qualify for delegated review |
-| Quebec privacy (Laws 25, 5) | Consent typically obtained directly | **Triggers *<Tooltip tip="Required under Quebec Law 25 before communicating personal information without consent for research. Non-compliance: up to $25M or 4% of worldwide turnover." headline="EFVP — Privacy Impact Assessment" cta="Full definition" href="/kb/foundations/glossary#efvp">EFVP</Tooltip>*** when using personal health data without consent |
+| Quebec privacy (Laws 25, 5) | Consent typically obtained directly | **Triggers *<Tooltip tip="The privacy impact assessment that Quebec's Act respecting health and social services information requires before a study accesses identifiable health information without consent, including for pre-screening." headline="EFVP (privacy impact assessment)" cta="Full definition" href="/kb/foundations/glossary#efvp">EFVP</Tooltip>*** when using personal health data without consent |
 
 ## Phases of a clinical trial
 
@@ -96,7 +96,7 @@ A clinical study at an academic medical centre involves a dense web of documente
     Employed by or contracted to the sponsor, not the site. Conducts monitoring visits — reviewing source documents, confirming consent documentation, verifying protocol adherence. Under ICH E6(R3), monitoring is explicitly **risk-based**: remote and centralized review formally complement on-site visits. The CRA is there to verify, not to serve the site's operational needs.
   </Accordion>
   <Accordion title="Research Ethics Board (REB / CER) — Independent, cannot be overridden">
-    An independent committee reviewing every research protocol before any participant is approached. In Quebec: minimum five members including researchers, an ethicist, a legal expert (not the institution's own counsel), and a community member with no institutional affiliation. **The REB's decision is independent — institutional management cannot override a rejection.** MSSS-designated REBs hold specific authority to review research with minors and incapacitated adults under Article 21 CCQ.
+    An independent committee reviewing every research protocol before any participant is approached. In Quebec: minimum five members including researchers, an ethicist, a legal expert (not the institution's own counsel), and a community member with no institutional affiliation. **The REB's decision is independent — institutional management cannot override a rejection.** Research with minors or with adults who cannot consent must be approved and monitored by an REB that the Minister of Health and Social Services has formed or designated.
   </Accordion>
   <Accordion title="Research Pharmacist — Dual framework: Division 5 and pharmacy law">
     Manages the investigational product: receiving, storage, dispensing, and accounting for every unit. Maintains blinding when required. Participates in site initiation and monitoring visits. In Quebec, obligations flow from both **Health Canada Division 5 and provincial pharmacy practice legislation** — making the research pharmacy function distinct from standard clinical pharmacy.
@@ -141,7 +141,7 @@ Research ethics governance did not develop from first principles. It developed i
 |-------|------------|
 | International | ICH GCP E6(R3), Declaration of Helsinki |
 | Federal — Canada | Food and Drug Regulations Part C Division 5, Medical Devices Regulations (ITA), TCPS2 |
-| Provincial — Quebec | Civil Code Arts. 20–25, <Tooltip tip="Quebec's Act to modernize personal information protection law (in force Sept 2023). Requires EFVP before sharing personal data without consent." headline="Law 25 / Loi 25" cta="Full definition" href="/kb/foundations/glossary#law-25">Law 25</Tooltip>, <Tooltip tip="Quebec's Act respecting health and social services information (key provisions July 2024). Governs researcher access to health data through RSSS institutions." headline="Law 5 / Loi 5" cta="Full definition" href="/kb/foundations/glossary#law-5">Law 5</Tooltip>, MSSS *Cadre de référence*, LSSSS |
+| Provincial — Quebec | Civil Code Arts. 20–25, <Tooltip tip="Quebec's Act to modernize personal information protection law (in force Sept 2023). Requires EFVP before sharing personal data without consent." headline="Law 25 / Loi 25" cta="Full definition" href="/kb/foundations/glossary#law-25">Law 25</Tooltip>, <Tooltip tip="Quebec's Act respecting health and social services information (key provisions July 2024). Governs researcher access to health data through RSSS institutions." headline="Law 5 / Loi 5" cta="Full definition" href="/kb/foundations/glossary#law-5">Law 5</Tooltip>, MSSS *Cadre de référence*, Act respecting the governance of the health and social services system |
 
 Quebec's Civil Code creates legally enforceable obligations beyond federal policy. Each provincial layer adds requirements; none replaces the others.
 
@@ -173,13 +173,13 @@ Every RSSS institution designates a ***<Tooltip tip="Individual formally authori
 
 <AccordionGroup>
   <Accordion title="Art. 20 CCQ — Proportionality of risk">
-    Research affecting personal integrity may only proceed when the risk is **not disproportionate to the expected benefit** and the project has REB approval. The threshold is proportionality, not zero risk.
+    A capable adult may take part in research that could interfere with their integrity only if the risk is not disproportionate to the benefit that can reasonably be expected, and the project must be approved and monitored by a research ethics committee.
   </Accordion>
   <Accordion title="Art. 21 CCQ — Minors and incapacitated adults">
-    Governs research with **minors and adults who cannot consent**. A minor or an incapacitated adult who understands the research and objects cannot be enrolled — regardless of what a substitute decision-maker has authorized. Only MSSS-designated REBs may review Article 21 research.
+    Governs research with **minors and adults who cannot consent**. A minor or an adult who cannot consent, and who understands the nature and consequences of the research and objects to taking part, cannot take part, whoever has consented for them. The research must be approved and monitored by a research ethics committee that the Minister of Health and Social Services has formed or designated.
   </Accordion>
   <Accordion title="Art. 25 CCQ — Compensation restrictions">
-    Prohibits financial compensation beyond **actual loss reimbursement**. Stricter than both TCPS2 and ICH GCP, which permit payment to healthy Phase I volunteers. In Quebec, compensation must be calibrated to avoid constituting undue inducement.
+    Allows only an indemnity for the **loss and inconvenience** a participant suffers, and no other financial reward, in research that could interfere with the person's integrity. Stricter than both TCPS2 and ICH GCP, which permit payment to healthy Phase I volunteers. In Quebec, compensation must be calibrated to avoid constituting undue inducement.
   </Accordion>
 </AccordionGroup>
 
@@ -187,15 +187,15 @@ Every RSSS institution designates a ***<Tooltip tip="Individual formally authori
 
 <CardGroup cols={2}>
   <Card title="Law 25 — Privacy modernization (in force Sept. 2023)" icon="shield">
-    Requires a **Privacy Impact Assessment (*EFVP*)** before communicating personal information without consent for research, or when deploying systems that access personal data. Non-compliance penalties: up to \$25 million or 4% of worldwide turnover.
+    Amended Quebec's public-sector access act and its private-sector privacy act. For health and social services information held by the MUHC, Law 5 applies instead.
   </Card>
   <Card title="Law 5 — Health information framework (key provisions July 2024)" icon="database">
-    Creates a dedicated framework for health and social services information. Affiliated researchers access health data through their institution's information officer. Unaffiliated researchers go through **Santé Québec**. The *EFVP* is not a form completed at the end — it requires early engagement.
+    Governs health and social services information held by bodies such as the MUHC. To use health records without consent, a researcher attached to the MUHC needs the REB's decision, an EFVP and MUHC authorization. Researchers not attached to a health and social services body apply to Santé Québec's research access centre. The *EFVP* is not a form completed at the end — it requires early engagement.
   </Card>
 </CardGroup>
 
 <Info>
-**CATALIS FAST TRACK:** [CATALIS Québec](https://catalisquebec.com/en/) operates a [FAST TRACK Evaluation Service](https://catalisquebec.com/en/fast-track-evaluation-service/) targeting institutional authorization in **eight weeks or less** for qualifying industry-sponsored trials. As of early 2026, 37 trials across 14 institutions had been authorized through the program. Ask the Research Facilitator whether FAST TRACK eligibility applies to your study.
+**CATALIS FAST TRACK:** [CATALIS Québec](https://catalisquebec.com/en/) operates a [FAST TRACK Evaluation Service](https://catalisquebec.com/en/fast-track-evaluation-service/) for qualifying industry-sponsored trials; the RI-MUHC is one of its 23 partner health institutions. Ask the Research Facilitator whether FAST TRACK eligibility applies to your study.
 </Info>
 
 ## The participant at the centre

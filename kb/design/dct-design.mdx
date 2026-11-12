@@ -14,15 +14,15 @@ The **single-site principle** is fundamental. A decentralized MUHC trial has one
 
 All locations operate under the QI/PI's supervision and within the scope of a single REB approval.
 
-The compliance standard does not change with decentralization. Health Canada's draft guidance (December 2025) makes this explicit: the regulatory requirements are the same as for any other clinical trial. Discuss any planned decentralized elements with <Tooltip tip="All planned and systematic actions to ensure trial data are generated, documented, and reported in compliance with GCP and SOPs." headline="Quality Assurance (QA)" cta="Full definition" href="/kb/foundations/glossary#qa">QA</Tooltip> before writing the protocol.
+The compliance standard does not change with decentralization. In its final guidance on clinical trials with decentralized elements (Oct. 27, 2026), Health Canada confirms that the regulatory requirements are the same as for trials in traditional settings. Discuss any planned decentralized elements with <Tooltip tip="All planned and systematic actions to ensure trial data are generated, documented, and reported in compliance with GCP and SOPs." headline="Quality Assurance (QA)" cta="Full definition" href="/kb/foundations/glossary#qa">QA</Tooltip> before writing the protocol.
 
 <Warning>
-Health Canada's December 2025 draft guidance on decentralized trials will be updated once the proposed new Clinical Trials Regulations come into force. Treat it as current best practice, but confirm with QA before submission. See the Regulatory horizon section below.
+Health Canada's [guidance on clinical trials with decentralized elements](https://www.canada.ca/en/health-canada/services/drugs-health-products/drug-products/applications-submissions/guidance-documents/clinical-trials-decentralized-elements.html) (final, Oct. 27, 2026; it replaced the December 2025 draft) covers drug trials only; it does not apply to device or natural health product trials. A drug trial with decentralized elements should follow it; confirm with QA before submission. Health Canada will update it when the new Clinical Trials Regulations come into force ([Regulatory horizon](#regulatory-horizon)).
 </Warning>
 
 ## Why it matters: access, equity, and the direction of travel
 
-Decentralized trials reduce the travel burden on participants and expand who can realistically participate in research. For studies targeting rare diseases, elderly participants, or geographically dispersed populations, decentralization may be the difference between achieving representative enrolment and failing to. Health Canada's draft guidance specifically identifies decentralized methods as a tool for connecting researchers in remote areas to pan-Canadian research, broadening diversity in participant populations, and reducing drop-out caused by visit burden.
+Decentralized trials reduce the travel burden on participants and expand who can realistically participate in research. For studies targeting rare diseases, elderly participants, or geographically dispersed populations, decentralization may be the difference between achieving representative enrolment and failing to. Health Canada notes in its guidance that decentralized elements can let researchers and other healthcare providers take part in pan-Canadian research without being in the same place and help connect a greater diversity of participants, and that they may lead to higher enrolment and retention.
 
 This is also the direction the entire regulatory framework is moving. ICH E6(R3) — finalized January 2025 and effective in Canada April 1, 2026 — formally integrates decentralized trial design, remote monitoring, and electronic consent into the <Tooltip tip="International standard for design, conduct, monitoring, recording, and reporting of clinical studies." headline="Good Clinical Practice (GCP)" cta="Full definition" href="/kb/foundations/glossary#gcp">GCP</Tooltip> framework. The proposed new Canadian Clinical Trials Regulations explicitly accommodate decentralized elements. Teams who understand decentralized design will have a meaningful advantage as this becomes the expected norm rather than the exception.
 
@@ -36,7 +36,7 @@ Assess the following during study design:
 
 **Specialized procedures** — Some assessments cannot be conducted remotely (certain imaging, complex pharmacy procedures); these anchor in-person requirements.
 
-**Participant population** — Elderly participants, those with limited digital access, or populations where consent complexity is high may need adapted approaches to eICF or virtual visits; this must be addressed in the WI and REB submission.
+**Participant population** — Older adults, people with limited digital access, or populations where consent complexity is high may need adapted approaches to eICF or virtual visits; consider this when writing the WI and the REB submission.
 
 **Interprovincial considerations** — Decentralized elements crossing provincial borders introduce additional privacy and professional licensing considerations that must be addressed in the protocol.
 
@@ -46,40 +46,6 @@ Assess the following during study design:
 
 ## Is your study suitable for DCT elements?
 
-Work through the questions below before deciding which elements to include in the protocol. Each "limit" outcome does not mean DCT is off the table — it means the element in question needs additional safeguards, adaptation, or should be scoped back.
-
-```mermaid
-flowchart TD
-    START([Your study is being designed]) --> Q1{Is this an early-phase\nor first-in-human study\nwith uncharacterized safety?}
-
-    Q1 -- Yes --> LIMIT1["Limit DCT elements\nMore in-person oversight needed\nRemote monitoring may still apply"]
-    Q1 -- No --> Q2{Can your primary\nassessments and safety\nmonitoring be done remotely\nor at a local facility?}
-
-    Q2 -- No --> ANCHOR["In-person anchored\nDecentralize secondary\nvisits only"]
-    Q2 -- Yes --> Q3{Does your target\npopulation have\nreliable digital access?}
-
-    Q3 -- No --> ADAPT["Adapt the approach\nOffer opt-in per element\nProvide paper / phone alternatives\nAddress in REB submission"]
-    Q3 -- Yes --> Q4{Does the protocol\ninclude direct-to-participant\nIP or local pharmacy\ndispensing?}
-
-    Q4 -- Yes --> PHARMACY["Engage MUHC pharmacy\nduring design\nPharmacy agreement required\nbefore activation\nSee Bill 67 / OPQ obligations"]
-    Q4 -- No --> Q5{Will participants be\nlocated outside Quebec\nduring virtual visits?}
-
-    Q5 -- Yes --> LICENCING["Telemedicine licensure\ncheck required\nSee provincial rules\nbefore finalizing protocol"]
-    Q5 -- No --> PROCEED["DCT elements appropriate\nDocument each element\nin protocol and CTA\nSubmit WI to REB before use"]
-
-    style START fill:#150e51,color:#fff,stroke:none
-    style LIMIT1 fill:#c97b2e,color:#fff,stroke:none
-    style ANCHOR fill:#c97b2e,color:#fff,stroke:none
-    style ADAPT fill:#c97b2e,color:#fff,stroke:none
-    style PHARMACY fill:#1a1466,color:#fff,stroke:none
-    style LICENCING fill:#1a1466,color:#fff,stroke:none
-    style PROCEED fill:#2b9ce2,color:#fff,stroke:none
-    style Q1 fill:#1a1466,color:#fff,stroke:none
-    style Q2 fill:#1a1466,color:#fff,stroke:none
-    style Q3 fill:#1a1466,color:#fff,stroke:none
-    style Q4 fill:#1a1466,color:#fff,stroke:none
-    style Q5 fill:#1a1466,color:#fff,stroke:none
-```
 
 For element-by-element requirements once suitability is confirmed, see the table in [Decentralized elements at a glance](#decentralized-elements-at-a-glance) below.
 
@@ -91,7 +57,7 @@ When a study will reach participants across a wide geographic area, there is a s
 |--------------|----------------------------------------|-----------------|
 | Trial suitability | Complex initial assessments at MUHC; follow-ups delegated remotely | Large cohorts, or studies requiring in-person site-specific interactions at multiple locations |
 | QI oversight | Single QI/PI at MUHC responsible for all locations | Separate QI responsible for each site |
-| REB approval | One MUHC REB approval; no additional approvals for delegated locations within QI scope | REB approval required per site; CATALIS or CanReview streamlined review applicable for Quebec or multi-provincial studies |
+| REB approval | One MUHC REB approval; no additional approvals for delegated locations within QI scope | In Quebec's public network, one evaluating REB reviews the study for all participating institutions, and each institution then authorizes it (for industry-sponsored trials, CATALIS's FAST TRACK Evaluation Service may apply); sites in other provinces submit to their own REBs, or may share a single review through CanReview if they take part in it (no Quebec REB does, as of November 2026) |
 | Health Canada | One CTSI form; one CTA | Separate CTSI per site; same CTA protocol; each site listed |
 | Interprovincial | Cross-provincial delegated activities introduce provincial privacy and licensing considerations for the single QI to manage | Each site adapts to local provincial laws; adds coordination complexity but provides clearer local accountability |
 | <Tooltip tip="Lists each team member, their qualifications, and specific trial tasks authorized by the QI." headline="Task Delegation Log (TDL)" cta="Full definition" href="/kb/foundations/glossary#tdl">Delegation log</Tooltip> | Single TDL at MUHC covers all delegated personnel including those at other locations | Each QI maintains their own TDL for their site |
@@ -163,14 +129,14 @@ E6(R3) brings DHT oversight responsibilities down to the site, not just the spon
 
 ### Health Canada's position on DHTs in regulated trials
 
-Health Canada's February 2025 pre-market guidance on machine-learning-enabled medical devices and its December 2025 draft DCT guidance both treat DHT qualification as proportionate to risk. For trial data-collection purposes, this means:
+Health Canada takes a risk-based approach in its pre-market guidance for machine learning-enabled medical devices (April 1, 2026), where what a licence application needs depends on the device's risk, and in its final guidance on clinical trials with decentralized elements (Oct. 27, 2026), where it asks sponsors to make sure the DHTs a trial uses are fit for purpose and validated using a risk-based approach. For trial data-collection purposes, this means:
 
 - DHTs used to generate primary endpoints receive the same scrutiny as any other measurement instrument. The sponsor bears primary responsibility for qualification, but the <Tooltip tip="The physician responsible to the sponsor for the conduct of a clinical trial at the site. One QI per study per Canadian site." headline="Qualified Investigator (QI)" cta="Full definition" href="/kb/foundations/glossary#qi">QI</Tooltip>/PI is responsible for confirming that qualification documentation is in the ISF before data collection begins.
 - DHTs used for exploratory or secondary endpoints are subject to a lighter but still documented proportionate validation process.
 - Devices regulated as medical devices (Class II–IV) carry a separate regulatory clearance pathway that runs in parallel with trial qualification — clearance as a device does not substitute for trial-purpose qualification.
 
 <Note>
-If your protocol includes a wearable, ePRO, or other DHT for data collection, engage the Research Facilitator and the RI-MUHC Digital Health / IT division at the design stage — before the platform is selected. Validation documentation requirements and vendor agreement timelines can affect activation, and some platforms commonly used in US trials do not meet Law 25 data-residency requirements for Quebec participants.
+If your protocol includes a wearable, ePRO, or other DHT for data collection, engage the Research Facilitator, and ask Digital and Information Technology to evaluate the platform through an IT Rescue ticket on the RI-MUHC Portal, at the design stage, before the platform is selected. Validation documentation requirements and vendor agreement timelines can affect activation, and some platforms commonly used in US trials keep data outside Quebec, which may require an EFVP before Quebec participants' information can go there.
 </Note>
 
 ## Regulatory horizon
@@ -178,25 +144,25 @@ If your protocol includes a wearable, ePRO, or other DHT for data collection, en
 Decentralized trial regulation is one of the most actively evolving areas in clinical research. The following timeline captures the key developments affecting MUHC studies.
 
 <AccordionGroup>
-  <Accordion title="January 2025 — ICH E6(R3) finalized">
-    The updated GCP guideline formally integrates decentralized trials, remote monitoring, electronic consent, and risk-based quality management. Annex 2 — additional guidance specifically for pragmatic and decentralized trials — was in development as of early 2025 and will be finalized separately.
+  <Accordion title="January 2025: ICH E6(R3) finalized">
+    The updated GCP guideline formally integrates decentralized trials, remote monitoring, electronic consent, and risk-based quality management. Health Canada implemented Annex 2, additional guidance specifically for pragmatic and decentralized trials, on November 4, 2026.
   </Accordion>
-  <Accordion title="July 2025 — ICH E6(R3) effective in the EU">
+  <Accordion title="July 2025: ICH E6(R3) effective in the EU">
     European Medicines Agency implementation. Global sponsors conducting trials in Canada and the EU should plan for compliance under both timelines.
   </Accordion>
-  <Accordion title="December 2025 — Health Canada draft DCT guidance published">
+  <Accordion title="December 2025: Health Canada draft DCT guidance published">
     Draft guidance published for consultation. Simultaneously, Health Canada published proposed new Clinical Trials Regulations in Canada Gazette Part I — the most significant overhaul of the Canadian CT framework in over two decades. The proposed CT Regulations formally accommodate decentralized elements, flexible investigator definitions, and risk-based oversight.
   </Accordion>
-  <Accordion title="April 1, 2026 — ICH E6(R3) effective in Canada">
+  <Accordion title="April 1, 2026: ICH E6(R3) effective in Canada">
     Updated GUI-0100 aligned with E6(R3). All studies initiated after this date are expected to comply. RI-MUHC SOP updates will follow — check the SOP Hub and updates feed.
   </Accordion>
-  <Accordion title="TBD — New CT Regulations in force">
-    Once the proposed regulations are finalized and proclaimed, the interim DCT guidance will be updated. Monitor Health Canada and RI-MUHC QA communications. This page will be updated accordingly.
+  <Accordion title="Spring 2028 (anticipated): new Clinical Trials Regulations in force">
+    Health Canada expects to publish the final regulations in the Canada Gazette, Part II, in spring 2027, and anticipates that they will come into force in spring 2028, after a one-year coming-into-force period. It will then update its guidance on clinical trials with decentralized elements. Monitor Health Canada and RI-MUHC QA communications.
   </Accordion>
 </AccordionGroup>
 
 <Note>
-This is a fast-moving area. Health Canada's final DCT guidance, the new CT Regulations, and ICH E6(R3) Annex 2 will all require updates to this page when finalized. Confirm with QA that you are working from the most current guidance before submission.
+This is a fast-moving area. Health Canada published its final DCT guidance on Oct. 27, 2026, and will update it when the new Clinical Trials Regulations come into force. Confirm with QA that you are working from the most current guidance before submission.
 </Note>
 
 ---

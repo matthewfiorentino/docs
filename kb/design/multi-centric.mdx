@@ -26,41 +26,10 @@ All other RSSS institutions where the study will be conducted are **participatin
 Ethics approval from the lead site's REB covers all RSSS sites ethically, but each site must still complete its own institutional feasibility review and receive its own Authorization from its Personne mandatée. A participating site cannot begin any research activity — including screening and consent — until that local authorization is in hand.
 </Warning>
 
-```mermaid
-%%{init: {'theme':'base','themeVariables':{'primaryColor':'#2b2666','primaryTextColor':'#ffffff','primaryBorderColor':'#2b2666','lineColor':'#888','fontFamily':'system-ui,sans-serif'}}}%%
-flowchart TD
-    A(["Multi-centric study<br/>2+ RSSS institutions"]) --> B["Lead site rREB<br/>conducts single ethics review"]
-    B --> C{"REB approval<br/>granted?"}
-    C -- "Yes" --> D["Approval recognized by<br/>all RSSS participating sites"]
-    C -- "No" --> X["Revisions / resubmission"]
-    X --> B
-
-    D --> E["Lead site:<br/>Personne mandatée<br/>grants MUHC Authorization"]
-    D --> F["Participating site 1:<br/>local feasibility review<br/>+ Personne mandatée authorization"]
-    D --> G["Participating site 2:<br/>local feasibility review<br/>+ Personne mandatée authorization"]
-    D --> H["Participating site 3 …"]
-
-    E --> I(["Lead site<br/>can begin"])
-    F --> J(["Site 1<br/>can begin"])
-    G --> K(["Site 2<br/>can begin"])
-    H --> L(["Site 3<br/>can begin"])
-
-    style A fill:#150e51,color:#fff,stroke:none
-    style B fill:#2b9ce2,color:#fff,stroke:none
-    style C fill:#1a1466,color:#fff,stroke:none
-    style D fill:#2b9ce2,color:#fff,stroke:none
-    style X fill:#ff6b6b,color:#fff,stroke:none
-    style E fill:#2b9ce2,color:#fff,stroke:none
-    style F fill:#2b9ce2,color:#fff,stroke:none
-    style G fill:#2b9ce2,color:#fff,stroke:none
-    style H fill:#2b9ce2,color:#fff,stroke:none
-    style I fill:#2b2666,color:#fff,stroke:none
-    style J fill:#2b2666,color:#fff,stroke:none
-    style K fill:#2b2666,color:#fff,stroke:none
-    style L fill:#2b2666,color:#fff,stroke:none
-```
-
-The diagram captures the core principle: **one ethics review, multiple authorizations**. Each site goes through its own institutional feasibility review and receives its own Authorization from its own Personne mandatée before opening.
+{/* Diagram source: images/diagrams/multi-centric-review.mmd. Edit it there, then regenerate the SVG (STYLE-HUB H). */}
+<Frame caption="Click or tap to enlarge.">
+  ![Flowchart of a multi-centric study in Quebec's public network. One reviewing REB does the ethics review, and every site recognizes its approval. The lead site and each participating site do their own institutional feasibility review, and each site's Personne mandatée authorizes the study there after the ethics approval and that site's feasibility review.](/images/diagrams/multi-centric-review.svg)
+</Frame>
 
 ## What this does not cover
 
@@ -77,11 +46,11 @@ The multi-centric structure changes the operational reality of several routine s
 | Task | How it works in a multi-centric study |
 |------|--------------------------------------|
 | Initial ethics submission | The lead site submits one F11 to its REB covering all RSSS participating sites. Participating sites do not submit their own separate ethics packages — their institutional feasibility review runs in parallel locally. |
-| Amendments | The lead site submits amendments to the rREB. Once approved, the amended documents apply to all RSSS participating sites. Participating sites do not resubmit the amendment independently; they implement it once the lead has confirmed rREB approval. |
+| Amendments | The lead site submits amendments to the rREB. Once approved, the amended documents apply to all RSSS participating sites, which don't resubmit them for ethics review. When the MUHC is a participating site, the Personne mandatée creates an F1-MEO form in Nagano for each amendment the rREB approves; complete it, and implement the amendment at the MUHC only once the form is processed and any feasibility review it affects has approved it. |
 | EFVP | For studies requiring an EFVP (access to identifiable data without participant consent), the lead site submits one EFVP covering the entire project. Participating sites do not submit separate EFVPs. See [SOP-CR-007](/sops/cr-007) and Submitting via <Tooltip tip="The RI-MUHC's electronic study submission and management platform. All studies requiring MUHC Authorization are submitted through Nagano." headline="Nagano (RI-MUHC)" cta="Full definition" href="/kb/foundations/glossary#nagano">Nagano</Tooltip> for the applicable Nagano form. |
 | Annual renewal | Participating sites that have access to Nagano submit their own renewal directly. Those without Nagano access complete the PDF equivalent (F9) and send it to the lead site <Tooltip tip="The team member who handles day-to-day administration and coordination of the clinical trial." headline="Clinical Research Coordinator (CRC)" cta="Full definition" href="/kb/foundations/glossary#crc">CRC</Tooltip>, who submits on their behalf. All sites should renew at the same time to keep the project's ethics approval synchronized. |
 | Reportable events | Each site logs events on its own log (<Tooltip tip="An adverse event meeting seriousness criteria: death, life-threatening, hospitalization, disability, or congenital anomaly." headline="Serious Adverse Event (SAE)" cta="Full definition" href="/kb/foundations/glossary#sae">SAE</Tooltip> log, deviation log). Sites with Nagano access report directly to the MUHC rREB if MUHC is the lead. Sites without Nagano access complete the relevant PDF form (F3a for serious unexpected events, F3b for other events) and send to the lead site CRC for submission. The lead site must report external events to the rREB within 7 days if life-threatening, 15 days otherwise. |
-| Adding a site | Converting a single-site study to multi-centric, or adding a new site to an existing multi-centric study, requires a specific Nagano form. This is not handled through an amendment — it is a separate request type. |
+| Adding a site | Converting a single-site study to multi-centric, or adding a new site to an existing multi-centric study, uses Nagano form F1MP (Request to convert to an MP study or add a new site), an amendment form separate from the regular F1 amendment. A conversion also needs network versions of the consent forms. |
 
 ## When the MUHC is the lead site
 
@@ -90,7 +59,7 @@ When the MUHC is the lead site, the QI/PI at the MUHC is the **REB Lead**. The N
 In practical terms, the MUHC CRC typically becomes the coordination hub for the Quebec sites. This involves tracking authorization status at each site, ensuring participating sites receive amended documents in a timely way, coordinating annual renewal timing across sites, and routing reportable events from sites without Nagano access. The complexity scales with the number of participating sites and their varying levels of Nagano access.
 
 <Note>
-As lead site, the MUHC QI/PI is responsible for initial submission, all amendments, and all reportable events that originate from or affect RSSS participating sites under [SOP-CR-007](/sops/cr-007) and [SOP-CR-026](/sops/cr-026). External sites without Nagano access submit PDF forms to the MUHC CRC, who enters them into Nagano. See [SOP-CR-007](/sops/cr-007) (Section 5.6) and [SOP-CR-026](/sops/cr-026) (Section 5.4) for the full procedural requirements.
+As lead site, the MUHC principal investigator submits the initial application for all RSSS participating sites and the study-wide amendments. Each participating site's principal investigator reports its own reportable events to the reviewing REB through Nagano; for sites without Nagano access, which send PDF forms to the MUHC CRC, the MUHC team submits them. The RI-MUHC's SOPs on [submission](/sops/cr-007#5-6-multi-centrique-research-in-quebec) and [ongoing REB review](/sops/cr-026) set out the full procedure.
 </Note>
 
 ## When the MUHC is a participating site
@@ -103,7 +72,7 @@ If you are a CRC at the MUHC on a study where another institution is the lead, c
 
 ## CATALIS FAST TRACK
 
-For industry-sponsored multi-site clinical trials in Quebec, [CATALIS](https://catalisquebec.com/en/) — a public-private network mandated by the Quebec government — operates the [**FAST TRACK Evaluation Service**](https://catalisquebec.com/en/fast-track-evaluation-service/), which targets authorization of clinical trials in eight weeks or fewer. Based on data from over 90 authorizations across 20 Quebec RSSS institutions, the service has achieved a median authorization time of approximately nine weeks, against a standard authorization timeline roughly four times longer. Several Quebec institutions have been activated first in Canada or first in the world for studies run through FAST TRACK.
+For industry-sponsored multi-site clinical trials in Quebec, [CATALIS](https://catalisquebec.com/en/), a public-private network mandated by the Quebec government, operates the [**FAST TRACK Evaluation Service**](https://catalisquebec.com/en/fast-track-evaluation-service/). [CATALIS's aim](https://catalisquebec.com/en/resources-for-health-institutions/) is to have clinical trials approved through the service in no more than eight weeks (as of November 2026); Clinical Trials Quebec publishes the service's performance figures, with their date, on [its FAST TRACK page](https://sponsors.clinicaltrialsquebec.com/accelerate-clinical-research-projects/fasttrack-evaluation-service/). Several Quebec institutions have been activated first in Canada or first in the world for studies run through FAST TRACK.
 
 FAST TRACK is currently available to pharmaceutical companies and CROs that are members of the CATALIS Network. The RI-MUHC participates in the FAST TRACK network. If a sponsor is asking about FAST TRACK timelines, confirm with the Research Facilitator whether the specific study and site configuration qualify — the service is not automatic and requires the sponsor to be a CATALIS member and the institution to be enrolled in the service for that study.
 

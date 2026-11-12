@@ -18,7 +18,7 @@ Three frameworks converge on AI use in clinical research at RI-MUHC:
 
 **Quebec Law 25 / LPRPSP.** Since September 2023, any organization doing business in Quebec must conduct a Privacy Impact Assessment (PIA / EFVP) before implementing a technology that processes personal information. Feeding participant data into any AI tool — including a cloud-based LLM — requires a PIA and likely invokes the cross-border transfer provisions. See [Privacy and Data Protection](/kb/recruitment/privacy) for the EFVP workflow.
 
-**[TCPS2 (2022)](https://ethics.gc.ca/eng/policy-politique_tcps2-eptc2_2022.html) — secondary use and consent scope.** Participant data collected for a specific research purpose cannot be used for a different purpose without satisfying the conditions in TCPS2 Article 5.5 or obtaining fresh consent. Using participant data to prompt or fine-tune an AI system is a secondary use that falls outside original consent unless explicitly addressed in the ICF.
+**[TCPS2 (2022)](https://ethics.gc.ca/eng/policy-politique_tcps2-eptc2_2022.html) — secondary use and consent scope.** Participant data collected for a specific research purpose cannot be used for a different purpose unless the use meets TCPS 2's conditions for secondary use of identifiable information without consent, or the participants give fresh consent. Using participant data to prompt or fine-tune an AI system is a secondary use that falls outside original consent unless explicitly addressed in the ICF.
 
 ### Health Canada and FDA guidance
 
@@ -66,27 +66,6 @@ The applicable obligations depend on whether your use is **informal** (drafting,
 
 ## Decision guide
 
-Use the decision tree below to identify the applicable category for a specific AI use case. "Not appropriate" means the use requires validated systems, institutional approval, and controls that are not in place for general-purpose LLMs at this time.
-
-```mermaid
-flowchart TD
-    START([What are you using AI for?]) --> Q1{Does the output enter\na regulated trial record\nor regulatory submission\nwithout full human re-review?}
-    Q1 -- Yes --> REGULATED[Regulated use\nCSV validation + PIA required\nContact [Research Facilitator](mailto:research.facilitator@muhc.mcgill.ca) and sponsor first]
-    Q1 -- No --> Q2{Does the prompt include\nidentifiable participant data?}
-    Q2 -- Yes --> BREACH[Privacy breach risk\nDo not proceed\nSee Law 25 / Privacy page]
-    Q2 -- No --> Q3{Will you verify every\nfactual claim before the\noutput enters any document?}
-    Q3 -- Yes --> ALLOWED[Allowed with disclosure\nVerify all content\nDisclose AI use in manuscripts]
-    Q3 -- No --> CONDITIONAL[Conditional\nYou must verify before\nany output enters a document]
-
-    style START      fill:#150e51,color:#fff,stroke:none
-    style ALLOWED    fill:#2b9ce2,color:#fff,stroke:none
-    style CONDITIONAL fill:#c97b2e,color:#fff,stroke:none
-    style REGULATED  fill:#9b2335,color:#fff,stroke:none
-    style BREACH     fill:#9b2335,color:#fff,stroke:none
-    style Q1 fill:#1a1466,color:#fff,stroke:none
-    style Q2 fill:#1a1466,color:#fff,stroke:none
-    style Q3 fill:#1a1466,color:#fff,stroke:none
-```
 
 ## Practical guidance by use case
 

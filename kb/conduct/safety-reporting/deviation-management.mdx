@@ -14,21 +14,15 @@ Reporting obligations for deviations — the classification thresholds, REB time
 
 Classification is a judgment made by the <Tooltip tip="The physician responsible to the sponsor for the conduct of a clinical trial at the site. One QI per study per Canadian site." headline="Qualified Investigator (QI)" cta="Full definition" href="/kb/foundations/glossary#qi">QI</Tooltip>/PI with input from the <Tooltip tip="The team member who handles day-to-day administration and coordination of the clinical trial." headline="Clinical Research Coordinator (CRC)" cta="Full definition" href="/kb/foundations/glossary#crc">CRC</Tooltip>. Two questions drive the classification:
 
-1. **Did this affect — or could it have affected — participant safety?**
-2. **Did this affect — or could it have affected — data integrity?**
+1. Could it cause undue health risks to participants or others?
+2. Could it invalidate the study's data?
 
-If the answer to both is no, the deviation is likely minor. If the answer to either is yes or possibly, it is likely major. If the effect was severe, immediate, or involved deliberate misconduct, it is critical.
+If the answer to both is no, the deviation is likely minor. If the answer to either is yes or possibly, it is likely major. It is critical if it results in fatal, life-threatening or unsafe conditions for participants, or if it involves an unauthorized trial or the adulteration, misrepresentation or falsification of records.
 
-```mermaid
-flowchart TD
-    A[Deviation identified] --> B{Could it affect\nparticipant safety?}
-    B -->|No| C{Could it affect\ndata integrity?}
-    B -->|Yes / Possibly| D{Severe, immediate,\nor deliberate misconduct?}
-    C -->|No| E[Minor\nLog and monitor for patterns]
-    C -->|Yes / Possibly| F[Major\nCAPA required]
-    D -->|No| F
-    D -->|Yes| G[Critical\nImmediate action + CAPA]
-```
+{/* Diagram source: images/diagrams/deviation-severity.mmd. Edit it there, then regenerate the SVG (STYLE-HUB H). */}
+<Frame caption="Click or tap to enlarge.">
+  ![Decision tree for classifying a deviation, which is first recorded on the Deviation Log. A deviation that involved an unauthorized trial or adulterated, misrepresented or falsified records is critical. Otherwise, a deviation that could cause undue health risks to participants or others, or could invalidate the study's data, is critical if it caused fatal, life-threatening or unsafe conditions for participants, and major if it did not. Critical and major deviations are reported to the REB with the CAPA already taken. A deviation that could do neither is minor and is reported to the REB at the annual continuing review, or within the REB's deadlines if it was a sponsor-approved eligibility waiver, changed the approved consent process, led to a serious adverse event or, in the researcher's judgment, could otherwise affect participants' rights, safety or well-being.](/images/diagrams/deviation-severity.svg)
+</Frame>
 
 ### Common ambiguous scenarios
 
@@ -46,7 +40,7 @@ When in doubt, classify up rather than down. A major deviation that turns out to
 
 ## Working through a CAPA
 
-A CAPA is required for all major and critical deviations. The CAPA Form template is in [SOP-CR-026](/sops/cr-026) Appendix 2. A completed CAPA must be sent to <Tooltip tip="All planned and systematic actions to ensure trial data are generated, documented, and reported in compliance with GCP and SOPs." headline="Quality Assurance (QA)" cta="Full definition" href="/kb/foundations/glossary#qa">QA</Tooltip> at QAClinicalResearch@muhc.mcgill.ca for institutional trend tracking.
+A CAPA should accompany every major or critical deviation reported to the REB. The CAPA Form template is in [SOP-CR-026](/sops/cr-026) Appendix 2. A completed CAPA should also be sent to Quality Assurance at QAClinicalResearch@muhc.mcgill.ca for trend tracking.
 
 A CAPA has four parts:
 
@@ -58,8 +52,8 @@ A CAPA has four parts:
     Determine *why* the deviation occurred — not just what happened. The most common method is the **5 Whys**: ask "why" iteratively until you reach the underlying cause rather than the surface symptom.
 
     **Example:**
-    - Deviation: Participant received the wrong IP dose.
-    - Why? The CRC-N read the wrong line on the dosing chart.
+    - Deviation: A participant received the wrong dose of the investigational product (IP).
+    - Why? The research nurse read the wrong line on the dosing chart.
     - Why? The dosing chart had multiple participants listed on one page.
     - Why? The site used a shared dosing log instead of individual participant worksheets.
     - Why? No standard template existed for individual dosing worksheets.
@@ -69,10 +63,18 @@ A CAPA has four parts:
 
     The 5 Whys is one approach. For more complex deviations, a **Fishbone (Ishikawa) diagram** maps contributing factors across categories to identify multiple root causes that a linear analysis might miss. **Failure Mode and Effects Analysis (FMEA)** is a proactive tool — it identifies where processes are most vulnerable to failure before a deviation occurs, and is more commonly used for process design than for post-deviation investigation.
 
-    **Fishbone diagram — same dosing error, by category:**
+    For the same dosing error, a fishbone diagram sorts the contributing factors into four categories.
 
-    <Frame caption="Example: Fishbone (Ishikawa) diagram — the same dosing error mapped across four contributing-factor categories.">
-      <img src="/images/fishbone-example.svg" alt="Fishbone diagram showing contributing factors across People, Process, Environment, and Equipment categories leading to wrong IP dose administered" />
+    | Category | Contributing factors |
+    |---|---|
+    | People | A research nurse new to the study; no verification step |
+    | Process | A shared dosing log; no worksheet template |
+    | Environment | A busy clinic day; a shared dosing area |
+    | Equipment and materials | Dose columns that are not visually distinct; a dosing chart without row dividers |
+
+    {/* Diagram source: images/fishbone-example.svg, drawn by hand; edit the SVG itself (STYLE-HUB H). */}
+    <Frame caption="Click or tap to enlarge.">
+      <img src="/images/fishbone-example.svg" alt="Fishbone diagram of the dosing error, with two contributing factors in each of four categories (people, process, environment, and equipment and materials)." />
     </Frame>
 
     The Fishbone surfaces contributing factors the 5 Whys might miss — the busy clinic day and shared dosing area didn't cause the error on their own, but they made it more likely. A CAPA that addresses only the worksheet (the 5 Whys root cause) might miss the verification gap or the environmental factors.

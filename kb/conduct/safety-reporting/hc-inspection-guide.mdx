@@ -26,12 +26,12 @@ Inspections assess compliance with the following key standards. Reviewing them b
 
 | Document | What it covers |
 |---|---|
-| [Food and Drug Regulations, Part C, Division 5](https://laws-lois.justice.gc.ca/eng/regulations/C.R.C.,_c._870/page-134.html) | Primary Canadian regulation governing drugs for human clinical trials |
-| [GUI-0100 — Guidance for Clinical Trials](https://www.canada.ca/en/health-canada/services/drugs-health-products/compliance-enforcement/good-clinical-practices/guidance-documents/guidance-clinical-trials-phases-i-iv-human.html) | Division 5 compliance expectations and inspection procedures |
-| [ICH GCP E6(R3)](https://www.canada.ca/en/health-canada/services/drugs-health-products/drug-products/announcements/implementation-ich-e6r3-guideline-notice.html) | International GCP standards for clinical trials — in effect in Canada April 1, 2026 |
+| [Food and Drug Regulations, Part C, Division 5](https://laws-lois.justice.gc.ca/eng/regulations/C.R.C.,_c._870/section-C.05.001.html) | Primary Canadian regulation governing drugs for human clinical trials |
+| [GUI-0100 — Guidance for Clinical Trials](https://www.canada.ca/en/health-canada/services/drugs-health-products/compliance-enforcement/good-clinical-practices/guidance-documents/guidance-drugs-clinical-trials-human-subjects-gui-0100.html) | Division 5 compliance expectations and inspection procedures |
+| [ICH GCP E6(R3)](https://www.canada.ca/en/health-canada/services/drugs-health-products/drug-products/applications-submissions/guidance-documents/international-council-harmonisation/guidelines.html) | International GCP standards for clinical trials — in effect in Canada April 1, 2026 |
 | ISO 14155 | GCP for clinical investigations of medical devices (requires purchase) |
-| [GUI-0043 — Risk Classification Guide](https://www.canada.ca/en/health-canada/services/drugs-health-products/compliance-enforcement/good-clinical-practices/guidance-documents/risk-classification-guide-observations-inspections-clinical-trials-human-drugs-0043.html) | Criteria for Minor, Major, and Critical inspection observations |
-| [POL-0001 — Compliance and Enforcement Policy](https://www.canada.ca/en/health-canada/services/drugs-health-products/compliance-enforcement/good-clinical-practices/policies-procedures/compliance-enforcement-policy-health-products.html) | Health Canada's approach to compliance and enforcement |
+| [GUI-0043 — Risk Classification Guide](https://www.canada.ca/en/health-canada/services/drugs-health-products/compliance-enforcement/good-clinical-practices/guidance-documents/risk-classification-observations-inspections-clinical-trials-guide-0043.html) | Criteria for Minor, Major, and Critical inspection observations |
+| [POL-0001 — Compliance and Enforcement Policy](https://www.canada.ca/en/health-canada/services/drugs-health-products/compliance-enforcement/good-manufacturing-practices/policies-standards/compliance-enforcement-health-products.html) | Health Canada's approach to compliance and enforcement |
 | [Drug and Health Product Inspections Database (DHPID)](https://health-products.canada.ca/dhpid-bdipsa/index-eng.jsp) | Database of clinical trial site inspections conducted in Canada |
 
 <Note>
@@ -76,35 +76,6 @@ Findings are handled by Health Canada's Health Products and Food Branch (HPFB) t
 - **Coordination with other branches** — Significant non-compliance may involve the Therapeutic Products Directorate (TPD) or Biologics and Radiopharmaceutical Drugs Directorate (BRDD), which can recommend suspending study authorization or reassessing data validity
 - **Criminal investigation** — If non-compliance is deemed criminal in nature (e.g., fraud), Health Canada may initiate an investigation under the Criminal Code of Canada. Note that inspectors have limited authority in criminal cases; such investigations fall under separate legal oversight.
 
-```mermaid
-flowchart TD
-    A["📬 Notice received\n(routine: ~4 weeks / for-cause: no notice)"]
-    --> B["📞 Contact QA within 24 hours"]
-    --> C["📋 Preparation phase\n(team · documents · facility)"]
-    --> D["🔍 Inspection\n(5 days on-site / 10 days remote)"]
-    --> E["📝 Closing meeting\n(last inspection day)"]
-    --> F["📄 Draft Exit Notice\n(within 3 weeks; 48h before Exit Meeting)"]
-    --> G["🤝 Exit Meeting"]
-    --> H["✅ Final Exit Notice issued"]
-    --> I["📤 CAPA response\n(30 calendar days)"]
-    --> J{"Further clarification\nneeded?"}
-    J -- Yes --> K["Follow-up letter from HC"]
-    K --> I
-    J -- No --> L["✔ Inspection closed"]
-
-    style A fill:#150e51,color:#fff,stroke:none
-    style B fill:#2b9ce2,color:#fff,stroke:none
-    style C fill:#2b9ce2,color:#fff,stroke:none
-    style D fill:#2b9ce2,color:#fff,stroke:none
-    style E fill:#2b9ce2,color:#fff,stroke:none
-    style F fill:#2b9ce2,color:#fff,stroke:none
-    style G fill:#2b9ce2,color:#fff,stroke:none
-    style H fill:#2b9ce2,color:#fff,stroke:none
-    style I fill:#2b9ce2,color:#fff,stroke:none
-    style J fill:#1a1466,color:#fff,stroke:none
-    style K fill:#c0392b,color:#fff,stroke:none
-    style L fill:#2b2666,color:#fff,stroke:none
-```
 
 ---
 
@@ -150,7 +121,7 @@ Most routine inspections provide approximately 4 weeks' notice (minimum 5 busine
 
 <Steps>
   <Step title="Contact QA within 24 hours">
-    Email QAClinicalResearch@muhc.mcgill.ca. QA becomes the Inspection Facilitator and will help organize preparation, coordinate with the Sponsor, and support CAPA development.
+    Email QAClinicalResearch@muhc.mcgill.ca. Where possible, QA acts as the Inspection Facilitator and helps organize preparation, coordinate with the Sponsor and support CAPA development.
   </Step>
   <Step title="Confirm inspection details with the inspector">
     Confirm: inspector name and contact info, study title and protocol number, purpose (routine or for-cause), inspection plan areas, tentative start/end dates, and whether the inspection is on-site or virtual.
@@ -382,7 +353,7 @@ The inspector presents a verbal summary of observations — typically already di
 
 The inspector outlines next steps and the tentative timeline for the draft Inspection Exit Notice. Begin thinking about CAPA responses before the written draft arrives.
 
-Bring an Attendance Record (SOP-CR-017, Appendix 9). The QI, key CRCs, and QA must attend. Sponsor representatives and key department contacts attend depending on the nature of findings.
+Bring an Attendance Record (SOP-CR-017, Appendix 9). The QI and the research coordinators must attend; QA is usually present. Sponsor representatives and key department contacts attend depending on the nature of findings.
 
 ---
 
@@ -524,9 +495,9 @@ Health Canada does not publish an aggregated public summary of recurring inspect
 
 | Finding category | What inspectors flag | Applicable SOP | Primary mitigation |
 |---|---|---|---|
-| **Task Delegation Log** | Missing entries for team members performing delegated tasks; undated or unsigned entries; TDL not updated after amendments or personnel changes | [SOP-CR-002](/sops/cr-002) | Audit the TDL against the current team roster and all protocol versions at least quarterly. Any correction must be initialled and dated by the QI — white-out is never acceptable. |
+| **Task Delegation Log** | Missing entries for team members performing delegated tasks; undated or unsigned entries; TDL not updated after amendments or personnel changes | [SOP-CR-002](/sops/cr-002) | Check the TDL against the current team roster and all protocol versions regularly, for example quarterly. Corrections are made with a single line, initials, date and reason by the person who made the entry or someone authorized to do so, and any change in staff or delegated tasks is documented on the log, which the investigator signs. Correction fluid is never acceptable. |
 | **PI / QI medical oversight** | No contemporaneous evidence the QI reviewed SAE assessments, eligibility decisions, or deviation corrections; QI signature applied in bulk after the fact | [SOP-CR-002](/sops/cr-002), [SOP-CR-012](/sops/cr-012) | QI must initial and date SAE reports, eligibility checklists, and deviation logs at the time of review — not at the end of the month. Reviewers can verify this from the source document timestamps. |
-| **Source documentation** | Source not clearly defined (no source document plan); data in CRF not traceable to a source; clinic notes not contemporaneous; "source" changed without explanation | [SOP-CR-011](/sops/cr-011) | Define source for every protocol data point in the monitoring plan or a source document plan before activation. Any retrospective correction requires a single strikethrough, initial, date, and reason. |
+| **Source documentation** | Source not clearly defined (no source document plan); data in CRF not traceable to a source; clinic notes not contemporaneous; "source" changed without explanation | [SOP-CR-014](/sops/cr-014) | Define source for every protocol data point in the monitoring plan or a source document plan before activation. Any retrospective correction requires a single strikethrough, initial, date, and reason. |
 | **Informed consent process** | Wrong ICF version used after an amendment; pre-consent screening activities documented in the source; re-consent not obtained when required; consent witness absent or not documented | [SOP-CR-006](/sops/cr-006), [SOP-CR-008](/sops/cr-008) | Maintain a version-control log for all ICF versions with effective dates. After each amendment, audit existing participants to confirm re-consent where required. Consent must be documented before any protocol procedure. |
 | **Investigational product accountability** | Dispense and return quantities do not reconcile; temperature excursion not documented or acted on; shipping receipt not confirmed and dated; label discrepancies | [SOP-CR-010](/sops/cr-010) | Reconcile IP accountability at every visit and confirm the reconciliation in writing. Any temperature excursion — even within tolerance — must be documented and sponsor notified; do not assume it is acceptable without written confirmation. |
 | **Protocol training records** | No documentation of amendment-specific training; SIV training sign-off sheets missing; GCP certificates expired or predating the study; training for new team members not documented before first delegation | [SOP-CR-003](/sops/cr-003), [SOP-CR-005](/sops/cr-005) | Every protocol amendment must produce a new training record for all relevant team members before they act on the amendment. GCP training must be current (within the period specified by the sponsor or within 2 years per RI-MUHC policy) at activation and throughout the study. |
@@ -542,9 +513,9 @@ Health Canada does not publish an aggregated public summary of recurring inspect
 - [Monitoring, Audits, and Inspections](/kb/conduct/safety-reporting/monitoring-audits) — inspection types, finding classifications, and how inspections are triggered
 - [SOP-CR-017](/sops/cr-017) — Audits and Inspections (includes all appendix forms: Pre-Inspection Checklist, Document Checklist, Inspection Plan Checklist, Document Release Log, Room Sign, Do's and Don'ts, Attendance Records, Daily Report, Contact List)
 - [The Investigator Site File](/kb/site-activation/isf) — ISF organization and maintenance
-- [GUI-0100 — Guidance for Clinical Trials](https://www.canada.ca/en/health-canada/services/drugs-health-products/compliance-enforcement/good-clinical-practices/guidance-documents/guidance-clinical-trials-phases-i-iv-human.html)
-- [GUI-0043 — Risk Classification Guide for Inspection Observations](https://www.canada.ca/en/health-canada/services/drugs-health-products/compliance-enforcement/good-clinical-practices/guidance-documents/risk-classification-guide-observations-inspections-clinical-trials-human-drugs-0043.html)
-- [POL-0001 — Compliance and Enforcement Policy](https://www.canada.ca/en/health-canada/services/drugs-health-products/compliance-enforcement/good-clinical-practices/policies-procedures/compliance-enforcement-policy-health-products.html)
+- [GUI-0100 — Guidance for Clinical Trials](https://www.canada.ca/en/health-canada/services/drugs-health-products/compliance-enforcement/good-clinical-practices/guidance-documents/guidance-drugs-clinical-trials-human-subjects-gui-0100.html)
+- [GUI-0043 — Risk Classification Guide for Inspection Observations](https://www.canada.ca/en/health-canada/services/drugs-health-products/compliance-enforcement/good-clinical-practices/guidance-documents/risk-classification-observations-inspections-clinical-trials-guide-0043.html)
+- [POL-0001 — Compliance and Enforcement Policy](https://www.canada.ca/en/health-canada/services/drugs-health-products/compliance-enforcement/good-manufacturing-practices/policies-standards/compliance-enforcement-health-products.html)
 - [Drug and Health Product Inspections Database (DHPID)](https://health-products.canada.ca/dhpid-bdipsa/index-eng.jsp)
 
 <div className="ri-cantrain-callout">

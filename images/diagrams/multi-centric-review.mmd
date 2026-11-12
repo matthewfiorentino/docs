@@ -1,0 +1,21 @@
+%%{init: {'theme':'base','htmlLabels':false,'flowchart':{'htmlLabels':false,'subGraphTitleMargin':{'top':14,'bottom':10}},'themeVariables':{'primaryColor':'#2b2666','primaryTextColor':'#ffffff','primaryBorderColor':'#2b2666','lineColor':'#888','edgeLabelBackground':'#ffffff','titleColor':'#150e51','fontFamily':'system-ui,sans-serif'}}}%%
+flowchart LR
+    S(["Study at two or more<br/>RSSS institutions"]) --> FL["The lead site does<br/>its own institutional<br/>feasibility review"]
+    S --> R["The reviewing REB<br/>does one ethics review,<br/>which every site recognizes"]
+    S --> FP["Each participating site<br/>does its own institutional<br/>feasibility review"]
+    FL --> AL["The lead site's<br/>Personne mandatée<br/>authorizes the study there"]
+    R --> AL
+    R --> AP["Each participating site's<br/>Personne mandatée<br/>authorizes the study there"]
+    FP --> AP
+    AL --> EL(["Lead site authorized"])
+    AP --> EP(["Participating site authorized"])
+
+    style S fill:#150e51,color:#fff,stroke:none
+    style R fill:#2b9ce2,color:#150e51,stroke:none
+    style FL fill:#2b9ce2,color:#150e51,stroke:none
+    style FP fill:#2b9ce2,color:#150e51,stroke:none
+    style AL fill:#2b9ce2,color:#150e51,stroke:none
+    style AP fill:#2b9ce2,color:#150e51,stroke:none
+    style EL fill:#2b2666,color:#fff,stroke:none
+    style EP fill:#2b2666,color:#fff,stroke:none
+    linkStyle default color:#150e51

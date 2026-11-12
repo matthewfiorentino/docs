@@ -39,7 +39,7 @@ During a qualification visit, sponsors typically assess:
 
     - **Contract negotiation** — budget and CTA negotiations can take weeks to months. Engage [Finance](/kb/funding/budgets-contracts) early and flag complex indemnification or IP clauses to the Research Agreements Office.
     - **REB backlog** — submission timing matters. Check the REB meeting calendar and plan submissions to avoid holiday closures or peak periods.
-    - **Health Canada review** — CTA/ITA review runs in parallel with Nagano but cannot be rushed. Submit early.
+    - **Health Canada review** — the RI-MUHC's standard operating procedures (SOPs) have the sponsor obtain Health Canada's authorization before the Nagano submission (the order can differ for natural health products and some devices). It cannot be rushed. Submit early.
     - **Pharmacy and lab setup** — IP storage requirements, lab accreditation, and normal value ranges must be confirmed before the SIV. Start these early rather than treating them as post-authorization tasks.
     - **Staff availability** — if a key team member (QI/PI, <Tooltip tip="The team member who handles day-to-day administration and coordination of the clinical trial." headline="Clinical Research Coordinator (CRC)" cta="Full definition" href="/kb/foundations/glossary#crc">CRC</Tooltip>, research nurse) is unavailable for the SIV window, the entire timeline shifts.
   </Tab>
@@ -51,40 +51,9 @@ Once the contract is in progress and the regulatory package is assembled, the st
 
 ## The activation sequence
 
-```mermaid
-%%{init: {'theme':'base','themeVariables':{'primaryColor':'#2b2666','primaryTextColor':'#ffffff','primaryBorderColor':'#2b2666','lineColor':'#888','fontFamily':'system-ui,sans-serif'}}}%%
-flowchart TD
-    SUB[Study submitted<br/>via Nagano]
-
-    SUB --> REB[REB Review<br/>scientific + ethics]
-    SUB --> MUHCF[MUHC Feasibility<br/>Review]
-    SUB --> HC[Health Canada<br/>CTA / ITA Review<br/>drug & device only]
-
-    REB --> AUTH[MUHC Authorization<br/>Personne mandatée]
-    MUHCF --> AUTH
-    HC --> AUTH
-
-    AUTH --> SIV[Site Initiation<br/>Visit]
-    SIV --> GO[Sponsor Go<br/>Letter]
-    GO --> GATE{"All 4 conditions<br/>in hand?"}
-    GATE -->|"REB approval ✓<br/>MUHC Authorization ✓<br/>SIV completed ✓<br/>Go Letter ✓"| FP([First participant<br/>may be approached])
-    GATE -->|"Any one missing"| BLOCK([Study NOT activated<br/>— no participant contact])
-
-    style SUB fill:#150e51,color:#fff,stroke:none
-    style HC  fill:#2b9ce2,color:#fff,stroke:none
-    style REB fill:#2b9ce2,color:#fff,stroke:none
-    style MUHCF fill:#2b9ce2,color:#fff,stroke:none
-    style AUTH fill:#2b9ce2,color:#fff,stroke:none
-    style SIV  fill:#2b9ce2,color:#fff,stroke:none
-    style GO   fill:#2b9ce2,color:#fff,stroke:none
-    style GATE fill:#1a1466,color:#fff,stroke:none
-    style FP   fill:#2b2666,color:#fff,stroke:none
-    style BLOCK fill:#ff6b6b,color:#fff,stroke:none
-```
-
 <Steps>
-  <Step title="Health Canada authorization (drug and device studies only)">
-    <Tooltip tip="Letter from Health Canada confirming a CTA is satisfactory and authorizing the sponsor to proceed." headline="No Objection Letter (NOL)" cta="Full definition" href="/kb/foundations/glossary#nol">No Objection Letter</Tooltip> (NOL) for drug studies, Notice of Authorization (NOA) for natural health products, or <Tooltip tip="Health Canada authorization to conduct a clinical investigation of a medical device. The device equivalent of a CTA." headline="Investigational Testing Authorization (ITA)" cta="Full definition" href="/kb/foundations/glossary#ita">Investigational Testing Authorization</Tooltip> (ITA) for medical devices. Runs in parallel with Nagano submission. Must be received before <Tooltip tip="Institutional authorization allowing a study to proceed at the RI-MUHC. Issued after ethics approval and feasibility review." headline="MUHC Authorization" cta="Full definition" href="/kb/foundations/glossary#muhc-auth">MUHC Authorization</Tooltip> can be granted.
+  <Step title="Health Canada authorization (when the study needs it)">
+    <Tooltip tip="Letter from Health Canada confirming a CTA is satisfactory and authorizing the sponsor to proceed." headline="No Objection Letter (NOL)" cta="Full definition" href="/kb/foundations/glossary#nol">No Objection Letter</Tooltip> (NOL) for drug studies, Notice of Authorization (NOA) for natural health products, or <Tooltip tip="Health Canada's authorization for a manufacturer or importer to sell a Class II, III or IV medical device to qualified investigators for testing." headline="Investigational Testing Authorization (ITA)" cta="Full definition" href="/kb/foundations/glossary#ita">Investigational Testing Authorization</Tooltip> (ITA) for medical devices. The RI-MUHC's SOPs have the sponsor send you the letter, and you include it in the initial Nagano submission, although the order can differ for natural health products and some devices. Must be received before <Tooltip tip="Institutional authorization allowing a study to proceed at the RI-MUHC. Issued after ethics approval and feasibility review." headline="MUHC Authorization" cta="Full definition" href="/kb/foundations/glossary#muhc-auth">MUHC Authorization</Tooltip> can be granted.
   </Step>
   <Step title="REB review and institutional feasibility (parallel tracks via Nagano)">
     REB scientific and ethics review runs in parallel with the MUHC institutional feasibility review (<Tooltip tip="All planned and systematic actions to ensure trial data are generated, documented, and reported in compliance with GCP and SOPs." headline="Quality Assurance (QA)" cta="Full definition" href="/kb/foundations/glossary#qa">QA</Tooltip>, pharmacy, nursing, laboratory, contracts, Director of Professional Services). Both must be complete and satisfactory before the <Tooltip tip="Individual formally authorized to issue the final written authorization for each research project at a Quebec RSSS institution." headline="Personne mandatée (PFM)" cta="Full definition" href="/kb/foundations/glossary#personne-mandatee">Personne mandatée</Tooltip> can issue MUHC Authorization.
@@ -120,7 +89,7 @@ During the SIV, the Sponsor or Monitor reviews:
 The QI/PI and all team members who will be delegated protocol tasks should be present. When someone cannot attend, the reason must be documented and equivalent training must be provided and documented before that person can be added to the Task Delegation Log.
 
 <Warning>
-Pharmacy must be trained at the SIV or separately before being delegated tasks. For all drug studies, the MUHC Pharmacy must either attend the SIV or receive a separate dedicated SIV. The pharmacist must be trained and listed on the Task Delegation Log before any investigational product can be dispensed.
+Pharmacy must be trained at the SIV or separately before being delegated tasks. For every drug study that uses MUHC Pharmacy Services, whether industry-sponsored or investigator-initiated, the MUHC Pharmacy must be informed and invited to the SIV, or to a separate SIV for pharmacy staff. The pharmacist must be trained and listed on the Task Delegation Log before any investigational product can be dispensed.
 </Warning>
 
 <Tabs>
@@ -132,7 +101,7 @@ Pharmacy must be trained at the SIV or separately before being delegated tasks. 
   </Tab>
 </Tabs>
 
-## The four conditions before first participant contact
+## The four conditions before consent
 
 [SOP-CR-006](/sops/cr-006) §5.3.8 is explicit: do not consent participants before all four of the following are confirmed in writing and filed in the ISF.
 
@@ -140,7 +109,7 @@ Pharmacy must be trained at the SIV or separately before being delegated tasks. 
 |---|---|---|
 | 1 | REB written approval | Ethics and scientific review is complete. The REB has confirmed the study is ethical, the <Tooltip tip="The written document providing the participant with information essential to making an informed decision. Both parties must sign." headline="Informed Consent Form (ICF)" cta="Full definition" href="/kb/foundations/glossary#icf">ICF</Tooltip> is adequate, and participant rights will be protected. |
 | 2 | MUHC Authorization letter | The institution has formally confirmed readiness. The Personne mandatée has reviewed QA, training, feasibility, resource agreements, and regulatory status. Without this, the MUHC has not authorized the research to take place here, regardless of what the REB has approved. |
-| 3 | SIV completed and TDL signed | The team is trained and the site is operationally ready. Without this, no one can be on the Task Delegation Log, and no protocol activity — including screening — can begin. |
+| 3 | SIV completed and TDL signed | The team is trained and the site is operationally ready. Without this, no protocol activity, including screening, can begin. |
 | 4 | Sponsor's Go Letter (if applicable) | The Sponsor has confirmed site readiness and authorized enrolment to begin at this specific site. When required, it must be received and filed before the first participant is approached. |
 
 <Warning>
@@ -149,7 +118,7 @@ A consent obtained before any of these four conditions is met is a protocol devi
 
 ## ISF setup
 
-The Investigator Site File must be set up and organized before any study activities begin. It is a live record assembled from the moment the study is authorized — not a filing system built retroactively. The ISF structure is governed by [SOP-CR-015](/sops/cr-015), which maps to ICH GCP E6(R3) Appendix C.
+The Investigator Site File must be set up and organized before any study activities begin. It is a live record assembled from the moment the study is authorized — not a filing system built retroactively. The RI-MUHC's [SOP-CR-015](/sops/cr-015) sets out how to set up and maintain the ISF.
 
 <AccordionGroup>
   <Accordion title="Regulatory and approvals">
@@ -186,7 +155,7 @@ The Investigator Site File must be set up and organized before any study activit
 </AccordionGroup>
 
 <Note>
-Each document filed in the ISF must carry a clear version number and date. Documents without version control are an inspection finding. The ISF index in [SOP-CR-015](/sops/cr-015) Appendix 4 provides the filing structure that must be used at the MUHC.
+Each document filed in the ISF must carry a clear version number and date. Documents without version control are an inspection finding. [SOP-CR-015](/sops/cr-015) gives an example ISF filing structure to use when the sponsor doesn't provide one.
 </Note>
 
 ## Protocol and study documents
@@ -213,16 +182,16 @@ The Research Grants Office manages the financial administration of research proj
 Account opening is your responsibility. Research Grants does not open accounts automatically upon contract execution. Delays in initiating the request can delay the release of study funds. The study account does not exist until after all approvals are in place — budget for startup personnel accordingly.
 </Info>
 
-All research projects at the RI-MUHC are subject to overhead. Industry-sponsored clinical trials carry a 30% overhead rate mandated by MSSS. Failure to include the applicable overhead does not exempt the study from payment.
+The RI-MUHC sets overhead on all its research by funding source, as a percentage of eligible direct costs, in its Institutional Cost Recovery Policy (2026). Industry-funded clinical trials carry 35 per cent. Researchers cannot waive, reduce or negotiate overhead themselves; any exception needs the prior written approval of the RI-MUHC's Chief Operating Officer. If a budget leaves overhead out or reduces it, the RI-MUHC can decline the project, or cover the overhead by reducing the project's other direct costs where the funder's guidelines and the RI-MUHC's priorities allow. Ask the Pre-Awards Office which costs are eligible.
 
 | Funding source | Overhead rate |
 |---|---|
-| Industry-sponsored clinical trials | 30% |
-| <Tooltip tip="US equivalent of the Canadian Qualified Investigator (QI)." headline="Principal Investigator (PI)" cta="Full definition" href="/kb/foundations/glossary#pi">PI</Tooltip>-initiated studies funded by industry | 30% |
-| Charitable organizations and public foundations | 0% |
-| Tri-Agency grants (CIHR, NSERC, SSHRC) | Partial federal coverage |
-| Donations and departmental fund transfers | 15% |
-| US government grants (NIH) | 8% of direct costs less equipment |
+| Industry-funded clinical trials | 35% of all eligible direct costs |
+| Tri-Agency grants (CIHR, NSERC, SSHRC) | No added overhead on the Tri-Agency portion, which the federal Research Support Fund covers; other portions, such as matching funds, carry the highest rate the funder allows |
+| US National Institutes of Health (NIH) grants | 8% of direct costs, excluding equipment |
+| Unrestricted donations and fundraising transfers from an MUHC foundation | 15% |
+| Industry funds transferred through an MUHC foundation with a charitable receipt | 35% |
+| Other funders and sponsors, such as charities and other foundations | The highest rate the funder allows, or 35% if it sets none |
 
 Contact Research Grants at researchgrants@muhc.mcgill.ca for post-award accounts, financial reporting, invoicing, and fund management. For new account requests, contact rimuhcaccountopenings@muhc.mcgill.ca.
 

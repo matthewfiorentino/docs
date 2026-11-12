@@ -113,10 +113,10 @@ Assets moved with them:
 | `public/budget-tool-script.js` (305 KB) | budget-tool |
 | `public/budget-tool-script.js.bak` | budget-tool (was untracked in git) |
 | `public/cim-rates.csv`, `public/lab-rates.csv` | loaded at runtime by budget-tool-script.js |
-| `public/budget-template.xlsx`, `public/downloads/budget-template.xlsx` | budget-tool |
+| `public/budget-template.xlsx`, `public/downloads/budget-template.xlsx` | The RI-MUHC Clinical Trial Budget Template (ACT-CTU, Jan 2026). Held back deliberately: not ready to go live (MF, 21 Oct 2026). The Hub points to the Portal copy. |
 | `public/kb-intake-script-v1-archive.js` (81 KB) | superseded by `roadmap-script.js` (My Study Roadmap) |
 
 Redirects: budget-tool → budgets-contracts, budget-justifications → funding-applications.
 `/training/study-classifier` → `/my-roadmap` already existed and was left as-is.
 
-**Live tools remaining:** My Study Roadmap, Is It Research?, Recruitment Realism Calculator — all three in navigation.
+**Live tools remaining:** My Study Roadmap and Is It Research?, both in navigation. (The Recruitment Realism Calculator was retired on Nov. 10, 2026, in review batch 75: its method and its table of published screen failure rates are now a section of Recruitment, Screening and Enrolment, and `public/recruitment-calc-script.js` was deleted.)

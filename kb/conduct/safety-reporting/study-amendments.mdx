@@ -21,7 +21,8 @@ Amendments arise from different sources throughout the study. Understanding the 
 | **Operational issues** | Visit window impractical, assessment tool unavailable, site logistics | Moderate — address before the issue generates repeated deviations |
 | **Regulatory requirements** | Health Canada request, REB condition of approval | Variable — depends on the request |
 | **Data or statistical considerations** | Interim analysis results, sample size re-estimation, endpoint change | Variable — often sponsor-driven |
-| **Administrative changes** | Sponsor contact information, <Tooltip tip="The physician responsible to the sponsor for the conduct of a clinical trial at the site. One QI per study per Canadian site." headline="Qualified Investigator (QI)" cta="Full definition" href="/kb/foundations/glossary#qi">QI</Tooltip>/PI change, site address change | Low — but still requires REB notification |
+| **Administrative changes** | Sponsor contact information, site address change, a change in administrative research staff | Low: can be submitted to the REB at the annual continuing review |
+| **Change of principal investigator or sponsor** | A new principal investigator, a new sponsor | High: an amendment the REB must approve before the change takes effect; the contract is revised |
 
 ## Amendment types
 
@@ -31,7 +32,7 @@ For Health Canada-regulated studies, a CTA amendment (CTA-A) must be filed for c
 
 ### Notification-only changes
 
-Changes that do not affect participant safety or risk — sponsor contact updates, minor formatting corrections, typographical fixes — can be implemented immediately with written notification to Health Canada within 15 calendar days. The REB still requires notification of these changes, though the review process is typically faster.
+For Health Canada, changes that do not affect participant safety or risk, such as sponsor contact updates, minor formatting corrections and typographical fixes, need only a written notification within 15 calendar days after the change. The REB's rule is separate. Only administrative changes that do not affect participants, such as a change of address or of administrative research staff, can wait for the annual continuing review. Any other change, even one Health Canada only needs to be told about, needs the REB's approval before it is implemented.
 
 In Nagano, this category is submitted as a minor modification.
 
@@ -49,19 +50,8 @@ Filing an updated IB without reviewing it for new safety signals is a compliance
 
 ## Regulatory sequencing
 
-For Health Canada-regulated studies, both regulatory and ethics approvals are required before implementation. Health Canada review (CTA-A) and REB review can proceed in parallel — there is no mandated sequence — but both must be obtained before the amendment takes effect at the site.
+For Health Canada-regulated studies, both regulatory and ethics approvals are required before implementation. For a drug trial, Health Canada review (CTA-A) and REB review can proceed in parallel. For a natural health product trial, the application to Health Canada names the REB that approved the amended protocol, so the REB approves first. Both must be obtained before the amendment takes effect at the site.
 
-```mermaid
-flowchart TD
-    A[Sponsor prepares\namendment package] --> B[CTA-A to\nHealth Canada]
-    A --> C[Amendment to\nREB via Nagano]
-    B --> D[NOL received\n30-day review]
-    C --> E[REB approval\nletter]
-    D --> F{Both approvals\nin hand}
-    E --> F
-    F --> G[Sponsor Go Letter\nif applicable]
-    G --> H[Implement at site]
-```
 
 <Steps>
   <Step title="Sponsor prepares the amendment package">
@@ -74,6 +64,8 @@ flowchart TD
   </Step>
   <Step title="Both approvals in hand">
     Implementation cannot proceed until you have both Health Canada's NOL (for regulated studies) and the REB's written approval letter specifying the approved versions and dates.
+
+    If the amendment affects an MUHC feasibility review (MUHC resources such as nursing, pharmacy or laboratories, contracts and budgets, or access to health information), indicate it in the Nagano amendment form. For some reviews, Nagano then launches a new feasibility evaluation, and the amendment needs both the REB's approval and that feasibility approval before you implement it.
   </Step>
   <Step title="Receive Sponsor's Go Letter (if applicable)">
     For industry-sponsored studies, the sponsor issues a Go Letter confirming that both approvals are in place and the site may implement the amendment. The Go Letter is an operational step, not a regulatory requirement — but do not implement until it is received.
@@ -108,7 +100,7 @@ A participant who has not been re-consented on a current ICF version is particip
 
 For multi-centric studies, amendment implementation must be synchronized across sites to the extent possible. Practical considerations:
 
-- **REB timelines vary.** Quebec sites submit through their local REB; other provinces may have different review timelines. The sponsor may stagger implementation across sites.
+- **REB timelines vary.** In Quebec's public health network, one reviewing REB approves an amendment for all participating institutions; sites in other provinces have their own REBs and timelines. The sponsor may stagger implementation across sites.
 - **Version alignment.** All sites should be using the same protocol version within a reasonable timeframe. Track which version each site is operating under.
 - **Communication with the sponsor.** Confirm with the sponsor's monitor when the amendment is implemented at your site. The sponsor tracks implementation dates across all sites for regulatory reporting.
 

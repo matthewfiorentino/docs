@@ -17,8 +17,8 @@ Clinical research at The Institute must follow federal, provincial, and institut
     | Framework | Applies to | What it governs |
     |---|---|---|
     | **Food and Drug Regulations, Division 5** | Drug clinical trials | Requires GCP compliance. Governs <Tooltip tip="Application to Health Canada for authorization to conduct a drug trial under Division 5 of the Food and Drug Regulations." headline="Clinical Trial Application (CTA)" cta="Full definition" href="/kb/foundations/glossary#cta">CTA</Tooltip> submissions. |
-    | **Medical Devices Regulations (SOR/98-282)** | Medical device studies | Governs investigational testing. Requires an <Tooltip tip="Health Canada authorization to conduct a clinical investigation of a medical device. The device equivalent of a CTA." headline="Investigational Testing Authorization (ITA)" cta="Full definition" href="/kb/foundations/glossary#ita">ITA</Tooltip>. |
-    | **Natural Health Products Regulations (SOR/2003-196)** | NHP clinical trials | Governs NHP trials. Requires an NHP CTA. |
+    | **Medical Devices Regulations (SOR/98-282)** | Medical device studies | Governs investigational testing. Requires an Investigational Testing Authorization (ITA) to sell or import a Class II, III or IV device for investigational testing ([when a study needs one](#medical-device-classification)). |
+    | **Natural Health Products Regulations (SOR/2003-196)** | NHP clinical trials | Governs NHP trials. Requires an NHP CTA unless the trial stays within a licensed product's recommended use. |
     | **Health Canada GCP** | All regulated trials | Canadian GCP standard, aligned with ICH E6(R3). Ensures participant protection and data integrity. |
     | [**TCPS2**](https://ethics.gc.ca/eng/policy-politique_tcps2-eptc2_2022.html) | All human research at tri-council institutions | National ethics policy for Canadian institutions. Governs ethics review, consent, privacy, and vulnerable populations. |
   </Tab>
@@ -29,12 +29,12 @@ Clinical research at The Institute must follow federal, provincial, and institut
     | **MSSS Cadre de référence ministériel** | All <Tooltip tip="Quebec's public health and social services network (Réseau de la santé et des services sociaux), including the RI-MUHC." headline="RSSS" cta="Full definition" href="/kb/foundations/glossary#rsss">RSSS</Tooltip> institutions | Framework for research ethics governance. Source of the <Tooltip tip="Individual formally authorized to issue the final written authorization for each research project at a Quebec RSSS institution." headline="Personne mandatée (PFM)" cta="Full definition" href="/kb/foundations/glossary#personne-mandatee">Personne mandatée</Tooltip> requirement, triple evaluation, and Human Research Privileges. |
     | **<Tooltip tip="Quebec's Act to modernize personal information protection law (in force Sept 2023). Requires EFVP before sharing personal data without consent." headline="Law 25 / Loi 25" cta="Full definition" href="/kb/foundations/glossary#law-25">Law 25</Tooltip> (Act to Modernize Legislative Provisions Respecting the Protection of Personal Information)** | Studies accessing personal health data | Requires EFVP (privacy impact assessment) for new studies involving personal information at RSSS institutions. |
     | **<Tooltip tip="Quebec's Act respecting health and social services information (key provisions July 2024). Governs researcher access to health data through RSSS institutions." headline="Law 5 / Loi 5" cta="Full definition" href="/kb/foundations/glossary#law-5">Law 5</Tooltip> / R-22.1 (Act Respecting Health and Social Services Information)** | Health and social services data | In force July 2024. Governs use, sharing, and protection of personal health information held by Quebec public institutions. |
-    | **Pharmacy Act (RSQ c. P-10) and [OPQ](https://www.opq.org)** | All studies using investigational products | A qualified pharmacist must dispense all investigational products. No exceptions for urgency or convenience without a pre-arranged pharmacy agreement. |
+    | **Pharmacy Act (RSQ c. P-10) and [OPQ](https://www.opq.org)** | Studies that give participants medications, including investigational drugs | A pharmacist must dispense any medication given to a patient, including investigational drugs. Urgency and convenience are not exceptions. A research nurse may dispense an investigational drug only with the MUHC Research Pharmacy's approval, requested at submission. |
   </Tab>
   <Tab title="International">
     | Framework | Applies to | What it governs |
     |---|---|---|
-    | [**ICH GCP E6(R3)**](https://www.canada.ca/en/health-canada/services/drugs-health-products/drug-products/announcements/implementation-ich-e6r3-guideline-notice.html) | Interventional drug and device trials | International Good Clinical Practice standard, adopted by Health Canada effective April 1, 2026. Covers sponsor and investigator responsibilities, essential documents, data integrity, and safety reporting. |
+    | [**ICH GCP E6(R3)**](https://www.canada.ca/en/health-canada/services/drugs-health-products/drug-products/applications-submissions/guidance-documents/international-council-harmonisation/guidelines.html) | Interventional drug and device trials | International Good Clinical Practice standard, adopted by Health Canada effective April 1, 2026. Covers sponsor and investigator responsibilities, essential documents, data integrity, and safety reporting. |
     | [**Declaration of Helsinki**](https://www.wma.net/policies-post/wma-declaration-of-helsinki/) | All human research | International ethical principles for medical research. Most recently revised in 2024. |
     | **ISO 14155** | Medical device clinical investigations | GCP standard for clinical investigations of medical devices. Mirrors ICH GCP with device-specific requirements. |
     | **21 CFR Part 11** | Studies subject to FDA oversight | U.S. FDA regulations on electronic records and electronic signatures. Applies to studies with FDA regulatory obligations. |
@@ -73,10 +73,12 @@ Every requirement you encounter in clinical research at the MUHC comes from one 
   <Accordion title="Layer 1 — International (ICH GCP, Declaration of Helsinki, ISO 14155)">
     The international layer covers participant protection principles, data integrity, sponsor and investigator obligations, and safety reporting. ICH GCP E6(R3) and ISO 14155 have no direct legal force on their own — their binding effect in Canada comes from the federal layer, which requires compliance with these standards as a condition of conducting regulated trials.
 
-    ICH E6(R3) was adopted by Health Canada effective April 1, 2026. Annex 2 (covering non-traditional trial designs including decentralized and real-world data trials) is still pending finalization at the international level.
+    ICH E6(R3) was adopted by Health Canada effective April 1, 2026. Health Canada implemented Annex 2 (covering non-traditional trial designs including decentralized and real-world data trials) on November 4, 2026.
   </Accordion>
   <Accordion title="Layer 2 — Federal (Health Canada / TCPS2)">
-    Health Canada regulates clinical research involving investigational drugs, natural health products, and medical devices under the authority of the Food and Drugs Act. These regulations create the CTA/ITA submission requirement, the 30-day default review clock, the <Tooltip tip="Letter from Health Canada confirming a CTA is satisfactory and authorizing the sponsor to proceed." headline="No Objection Letter (NOL)" cta="Full definition" href="/kb/foundations/glossary#nol">No Objection Letter</Tooltip>, and the obligation to report SUSARs.
+    Health Canada regulates clinical research involving investigational drugs, natural health products, and medical devices under the authority of the Food and Drugs Act. These regulations set when a trial needs Health Canada's authorization, and they require SUSARs to be reported to Health Canada.
+
+    The sponsor of a drug trial may proceed if Health Canada does not object within 30 days of receiving the CTA; Health Canada usually sends a <Tooltip tip="Letter from Health Canada confirming a CTA is satisfactory and authorizing the sponsor to proceed." headline="No Objection Letter (NOL)" cta="Full definition" href="/kb/foundations/glossary#nol">No Objection Letter</Tooltip>. For a natural health product, Health Canada authorizes the trial by sending a notice. For a medical device, Health Canada's 30-day review of an ITA application is an estimated target, and Health Canada issues the authorization once it finds the application satisfactory.
 
     TCPS2 is Canada's national research ethics policy. It is not statute — it is a policy condition imposed by the three federal research funding bodies (CIHR, NSERC, SSHRC) on any institution that receives their funding. The MUHC <Tooltip tip="The ethics committee that reviews and approves research involving human participants. Also called CER at French-language institutions." headline="Research Ethics Board (REB)" cta="Full definition" href="/kb/foundations/glossary#reb">REB</Tooltip> has adopted TCPS2 as binding policy for all research under its jurisdiction, regardless of funding source.
   </Accordion>
@@ -84,11 +86,11 @@ Every requirement you encounter in clinical research at the MUHC comes from one 
     Quebec provincial law creates a distinct layer that applies because the MUHC is a Quebec public health institution. Researchers who trained or worked in other provinces frequently encounter these requirements as unfamiliar — they are not covered by GCP training.
 
     **Civil Code consent rules (Articles 20, 21, 25):**
-    - **Article 20 CCQ:** Research involving risk may only proceed when the risk is not disproportionate to the expected benefit and the project has REB approval.
-    - **Article 21 CCQ:** Governs research with minors and adults who cannot consent. A minor or incapacitated adult who understands the research and objects cannot be enrolled — regardless of what a substitute decision-maker has authorized. Only MSSS-designated REBs may review Article 21 research. The MUHC REB holds this designation.
-    - **Article 25 CCQ:** Prohibits financial compensation beyond reimbursement of actual expenses. Stricter than TCPS2 and ICH GCP, which permit payment to healthy Phase I volunteers.
+    - **Article 20 CCQ:** A capable adult may take part in research that could interfere with their integrity only if the risk is not disproportionate to the benefit that can reasonably be expected, and the project must be approved and monitored by a research ethics committee.
+    - **Article 21 CCQ:** Governs research with minors and adults who cannot consent. A minor or an adult who cannot consent, and who understands the nature and consequences of the research and objects to taking part, cannot take part, whoever has consented for them. The research must be approved and monitored by a research ethics committee that the Minister of Health and Social Services has formed or designated; the MUHC REB is a designated one.
+    - **Article 25 CCQ:** Allows only an indemnity for the loss and inconvenience a participant suffers, and no other financial reward. Stricter than TCPS2 and ICH GCP, which permit payment to healthy Phase I volunteers.
 
-    The Civil Code also establishes that the treating physician or nurse cannot obtain a research participant's consent to their own study — the therapeutic relationship creates an inherent power imbalance that the Civil Code specifically protects against.
+    The RI-MUHC's SOPs add that [the treating physician should not be the one who obtains consent](/kb/recruitment/consent#choose-who-obtains-consent), unless the REB approves.
 
     **MSSS Cadre de référence:**
     The _Cadre de référence ministériel_ (MSSS, 2020) establishes the governance structure for human research in Quebec's public health network. It is the source of the Personne formellement mandatée (PFM) requirement, Human Research Privileges and Researcher Status, and the triple review (scientific review, ethics review, institutional feasibility review).
@@ -119,7 +121,7 @@ Health Canada regulates clinical trials involving drugs, natural health products
 |---|---|---|---|---|
 | Drug, biologic, radiopharmaceutical, or gene/cell therapy | Clinical Trial Application (CTA) | No Objection Letter (NOL) | TPD or BGTD | [SOP-CR-018](/sops/cr-018) |
 | Natural health product (NHP) | NHP Clinical Trial Application (NHP CTA) | Notice of Authorization (NOA) | NNHPD | [SOP-CR-023](/sops/cr-023) |
-| Medical device (Class II, III, IV) or IVDD | Investigational Testing Authorization (ITA) | Investigational Testing Authorization (ITA) | MDB | [SOP-CR-024](/sops/cr-024) |
+| Medical device or IVDD (Class II, III, IV) that [needs an ITA](#medical-device-classification) | Investigational Testing Authorization (ITA) | Investigational Testing Authorization (ITA) | MDB | [SOP-CR-024](/sops/cr-024) (investigator-initiated, non-IVDD) |
 | Observational study or biological specimens only | Not required | — | — | — |
 
 ### What Health Canada issues — and what it means
@@ -132,14 +134,14 @@ Health Canada regulates clinical trials involving drugs, natural health products
 
 ## Medical device classification
 
-Not all medical device studies require an ITA. Class I devices present minimal risk and are exempt.
+Not all medical device studies require an ITA. Class I devices, the lowest-risk class, are exempt; a device's class depends on its labelling and on how the study uses it. A Class II, III or IV device needs an ITA when it is not licensed in Canada, or when a licensed one is used outside its licensed indications in a study the manufacturer sponsors or that is meant to support a licence application. A study that uses a licensed device within its licensed indications needs none. Neither does a study that the manufacturer does not sponsor and that uses a licensed device outside its indications without aiming to support a licence application (off-label use), nor a physician's use, at one site and only on their own patients, of a device of which they are the legal manufacturer, when they alone conduct the testing. Health Canada has separate guidance for in vitro diagnostic devices. If you are unsure whether your study needs an ITA, ask Health Canada's investigational testing division (it-ee@hc-sc.gc.ca); the RI-MUHC's SOPs strongly recommend asking it before testing a device a physician made.
 
-| Class | ITA required? | Risk level and examples |
-|---|---|---|
-| Class I | Exempt | Minimal risk. Non-invasive devices with no energy source. Examples: tongue depressors, bandages, non-powered wheelchairs. |
-| Class II | Yes | Low to moderate risk. Examples: powered wheelchairs, certain diagnostic imaging devices, hearing aids. |
-| Class III | Yes | Moderate to high risk. Examples: orthopedic implants, most powered surgical instruments. |
-| Class IV | Yes | High risk, often life-sustaining or life-supporting. Examples: cardiac pacemakers, defibrillators, coronary stents. |
+| Class | Risk level and examples |
+|---|---|
+| Class I | Lowest risk. Examples: tongue depressors, gauze bandages, wheelchairs (manual or powered). |
+| Class II | Low to moderate risk. Examples: hearing aids, certain diagnostic imaging devices, surgical gloves. |
+| Class III | Moderate to high risk. Examples: orthopedic implants such as shoulder prostheses, CT scanners, external (non-closed-loop) defibrillators. |
+| Class IV | High risk, often life-sustaining or life-supporting. Examples: cardiac pacemakers, implantable cardioverter defibrillators, coronary stents. |
 
 ## Sponsor-investigator studies outside Canada
 
@@ -152,8 +154,8 @@ To confirm whether FDA or other international regulatory requirements apply to y
 ## Health Canada resources
 
 - [Drugs and Biologics — Health Canada guidance documents](https://www.canada.ca/en/health-canada/services/drugs-health-products/drug-products/applications-submissions/guidance-documents/clinical-trials.html)
-- [Natural Health Products — Health Canada](https://www.canada.ca/en/health-canada/services/drugs-health-products/natural-non-prescription/legislation-guidelines/clinical-trials.html)
-- [Medical Devices — Health Canada guidance on investigational testing](https://www.canada.ca/en/health-canada/services/drugs-health-products/medical-devices/applications-submissions/guidance-documents/guidance-document-investigational-testing-medical-devices.html)
+- [Natural Health Products — Health Canada](https://www.canada.ca/en/health-canada/services/drugs-health-products/natural-non-prescription/legislation-guidelines/guidance-documents/clinical-trials.html)
+- [Medical Devices — Health Canada guidance on investigational testing](https://www.canada.ca/en/health-canada/services/drugs-health-products/medical-devices/application-information/guidance-documents/investigational-testing-authorizations-guidance/guidance-document.html)
 
 For support determining your regulatory obligations or preparing submissions, contact the [Research Facilitator](mailto:research.facilitator@muhc.mcgill.ca).
 
@@ -161,7 +163,7 @@ For support determining your regulatory obligations or preparing submissions, co
 
 - [Design Stage Support](/kb/design-support/study-design)
 - [Study Feasibility](/kb/planning/feasibility)
-- [Study Review](/kb/submission/study-review)
+- [Study Submission and Review](/kb/submission/submission-overview)
 - [SOP-CR-018](/sops/cr-018) — Clinical Trial Application (Drugs)
 - [SOP-CR-023](/sops/cr-023) — Clinical Trial Application (Natural Health Products)
 - [SOP-CR-024](/sops/cr-024) — Investigational Testing Authorization (Medical Devices)

@@ -1,0 +1,33 @@
+%%{init: {'theme':'base','htmlLabels':false,'flowchart':{'htmlLabels':false,'subGraphTitleMargin':{'top':14,'bottom':10}},'themeVariables':{'primaryColor':'#2b2666','primaryTextColor':'#ffffff','primaryBorderColor':'#2b2666','lineColor':'#888','edgeLabelBackground':'#ffffff','titleColor':'#150e51','fontFamily':'system-ui,sans-serif'}}}%%
+flowchart TB
+    subgraph R1 ["`**Before consent**`"]
+        direction LR
+        A(["Potential participant<br/>identified by<br/>REB-approved means"]) --> B["Give the REB-approved<br/>consent form<br/>and explain the study"]
+        B --> C["Answer questions and<br/>leave time to decide"]
+        C --> D{"Does the<br/>participant agree?"}
+        D -->|"No"| X(["Refusal recorded on<br/>the Screening Log.<br/>No further study contact."])
+    end
+    subgraph R2 ["`**If the participant agrees**`"]
+        direction LR
+        E["Everyone required signs<br/>and dates the form"] --> F["Give the participant a copy"]
+        F --> G["Do the screening procedures"]
+        G --> H{"Is the participant<br/>eligible?"}
+        H -->|"No"| Y(["Screen failure recorded"])
+        H -->|"Yes"| I(["Participant enrolled"])
+    end
+    R1 --> R2
+
+    style A fill:#150e51,color:#fff,stroke:none
+    style B fill:#2b9ce2,color:#150e51,stroke:none
+    style C fill:#2b9ce2,color:#150e51,stroke:none
+    style D fill:#1a1466,color:#fff,stroke:none
+    style E fill:#2b9ce2,color:#150e51,stroke:none
+    style F fill:#2b9ce2,color:#150e51,stroke:none
+    style G fill:#2b9ce2,color:#150e51,stroke:none
+    style H fill:#1a1466,color:#fff,stroke:none
+    style I fill:#2b2666,color:#fff,stroke:none
+    style X fill:#e4e6ed,color:#150e51,stroke:#888
+    style Y fill:#e4e6ed,color:#150e51,stroke:#888
+    style R1 fill:#f4f6fb,stroke:#d0d5e2,color:#150e51
+    style R2 fill:#f4f6fb,stroke:#d0d5e2,color:#150e51
+    linkStyle default color:#150e51

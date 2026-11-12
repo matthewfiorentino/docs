@@ -1,0 +1,27 @@
+%%{init: {'theme':'base','htmlLabels':false,'flowchart':{'htmlLabels':false,'subGraphTitleMargin':{'top':14,'bottom':10}},'themeVariables':{'primaryColor':'#2b2666','primaryTextColor':'#ffffff','primaryBorderColor':'#2b2666','lineColor':'#888','edgeLabelBackground':'#ffffff','titleColor':'#150e51','fontFamily':'system-ui,sans-serif'}}}%%
+flowchart LR
+    S(["Adverse event identified<br/>and assessed"]) --> Q1{"Does it meet a<br/>seriousness criterion?"}
+    Q1 -->|"No"| E1(["Recorded on the<br/>AE assessment log"])
+    Q1 -->|"Yes"| SP["Report the SAE to<br/>the sponsor within 24 hours,<br/>or as the protocol specifies"]
+    SP --> Q2{"Does it meet<br/>all three of the<br/>REB's criteria?"}
+    SP --> Q3{"Are you the<br/>sponsor-investigator of<br/>a drug or natural health<br/>product trial?"}
+    Q2 -->|"Yes"| E2(["`**Expedited REB report**<br/>Report it in Nagano<br/>on form F3H.`"])
+    Q2 -->|"No"| E3(["`**No expedited REB report**<br/>Submit it with the annual<br/>continuing review.`"])
+    Q3 -->|"No"| E4(["`**Reported by the sponsor**<br/>The sponsor reports it to<br/>Health Canada when the<br/>event meets its criteria.`"])
+    Q3 -->|"Yes"| Q4{"Does it meet<br/>Health Canada's<br/>criteria?"}
+    Q4 -->|"Yes"| E5(["`**Report to Health Canada**<br/>Use a CIOMS I form.`"])
+    Q4 -->|"No"| E6(["`**No report to**<br/>**Health Canada**`"])
+
+    style S fill:#150e51,color:#fff,stroke:none
+    style Q1 fill:#1a1466,color:#fff,stroke:none
+    style Q2 fill:#1a1466,color:#fff,stroke:none
+    style Q3 fill:#1a1466,color:#fff,stroke:none
+    style Q4 fill:#1a1466,color:#fff,stroke:none
+    style SP fill:#2b9ce2,color:#150e51,stroke:none
+    style E1 fill:#e4e6ed,color:#150e51,stroke:#888
+    style E2 fill:#2b2666,color:#fff,stroke:none
+    style E3 fill:#e4e6ed,color:#150e51,stroke:#888
+    style E4 fill:#e4e6ed,color:#150e51,stroke:#888
+    style E5 fill:#2b2666,color:#fff,stroke:none
+    style E6 fill:#e4e6ed,color:#150e51,stroke:#888
+    linkStyle default color:#150e51

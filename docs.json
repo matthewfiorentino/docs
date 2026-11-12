@@ -204,9 +204,7 @@
                     "pages": [
                       "kb/submission/submission-overview",
                       "kb/submission/preparing",
-                      "kb/submission/submitting-via-nagano",
-                      "kb/submission/tracking-responding",
-                      "kb/submission/study-review"
+                      "kb/submission/tracking-responding"
                     ]
                   },
                   {
@@ -219,11 +217,10 @@
                     ]
                   },
                   {
-                    "group": "Recruitment and Enrollment",
+                    "group": "Recruitment and Enrolment",
                     "expanded": false,
                     "pages": [
                       "kb/recruitment/recruitment-enrollment",
-                      "kb/recruitment/recruitment-calculator",
                       "kb/recruitment/consent",
                       "kb/recruitment/consent-templates",
                       "kb/recruitment/pediatric-research",
@@ -1120,7 +1117,11 @@
     },
     {
       "source": "/kb/submitting-via-nagano",
-      "destination": "/kb/submission/submitting-via-nagano"
+      "destination": "/kb/submission/preparing"
+    },
+    {
+      "source": "/kb/submission/submitting-via-nagano",
+      "destination": "/kb/submission/preparing"
     },
     {
       "source": "/kb/tracking-responding",
@@ -1128,7 +1129,11 @@
     },
     {
       "source": "/kb/study-review",
-      "destination": "/kb/submission/study-review"
+      "destination": "/kb/submission/submission-overview"
+    },
+    {
+      "source": "/kb/submission/study-review",
+      "destination": "/kb/submission/submission-overview"
     },
     {
       "source": "/kb/site-setup",
@@ -1148,7 +1153,11 @@
     },
     {
       "source": "/kb/recruitment-calculator",
-      "destination": "/kb/recruitment/recruitment-calculator"
+      "destination": "/kb/recruitment/recruitment-enrollment#estimate-how-long-recruitment-will-take"
+    },
+    {
+      "source": "/kb/recruitment/recruitment-calculator",
+      "destination": "/kb/recruitment/recruitment-enrollment#estimate-how-long-recruitment-will-take"
     },
     {
       "source": "/kb/consent",

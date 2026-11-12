@@ -1,176 +1,166 @@
 ---
 title: "Vulnerable Populations in Research"
-description: "Additional protections, consent modifications, and REB expectations when research involves populations in vulnerable persons or contexts."
-keywords: ["capacity assessment", "MacCAT-CR", "incapacitated", "LAR", "legally authorized representative", "Art. 21", "Art. 25", "dependent relationship", "emergency research", "independent consent monitor", "CCQ", "CR-008"]
+description: "How to recognize what may make participants vulnerable in your study, obtain consent for an adult who cannot consent, assess capacity, protect free choice and show the REB your safeguards."
+keywords: ["vulnerable participants", "circumstances of vulnerability", "decision-making capacity", "capacity assessment", "MacCAT-CR", "adult who can't consent", "mandatary", "tutor", "LAR", "legally appointed representative", "legally authorized representative", "substitute consent", "research directive", "dependent relationship", "undue influence", "therapeutic misconception", "emergency research", "deferred consent", "pregnancy", "incapacitated", "independent consent monitor", "Art. 21", "Art. 25", "CCQ", "TCPS 2", "CR-008"]
 boost: 2
-tag: "New"
 ---
 
-Research involving vulnerable populations is not simply a matter of adding safeguards to an existing protocol. It requires a fundamentally different approach to consent, recruitment, risk assessment, and oversight. In Quebec, the *Civil Code of Québec* (CCQ) imposes specific legal obligations that go beyond what TCPS2 and <Tooltip tip="International standard for design, conduct, monitoring, recording, and reporting of clinical studies." headline="Good Clinical Practice (GCP)" cta="Full definition" href="/kb/foundations/glossary#gcp">GCP</Tooltip> require — and the <Tooltip tip="The ethics committee that reviews and approves research involving human participants. Also called CER at French-language institutions." headline="Research Ethics Board (REB)" cta="Full definition" href="/kb/foundations/glossary#reb">REB</Tooltip> expects your protocol to reflect those obligations clearly. This page covers what you need to build into your protocol, your consent process, and your REB submission when your study involves persons or contexts that the law and TCPS2 recognize as requiring additional protections.
+Some participants need added protection in a particular study, such as an adult who can't consent, someone who depends on a member of the research team, someone for whom even a modest payment would be hard to refuse or a patient in an emergency.
 
-## Vulnerable persons vs. vulnerable contexts
+In their [*Tri-Council Policy Statement*](https://ethics.gc.ca/eng/tcps2-eptc2_2022_chapter4-chapitre4.html) (<Tooltip tip="The federal research agencies' policy on the ethical conduct of research involving humans, 2022 edition." headline="TCPS 2" cta="Full definition" href="/kb/foundations/glossary#tcps2">TCPS 2</Tooltip>), the federal research agencies ask researchers and the <Tooltip tip="The ethics committee that reviews and approves research involving human participants. Also called CER at French-language institutions." headline="Research Ethics Board (REB)" cta="Full definition" href="/kb/foundations/glossary#reb">Research Ethics Board (REB)</Tooltip> to recognize these circumstances in each study and to protect the people in them, without excluding anyone unfairly.
 
-TCPS2 Chapter 4 draws a critical distinction that shapes how your protocol should address vulnerability:
+Quebec's Civil Code adds rules for adults who can't consent. For children, use [Pediatric Research Considerations](/kb/recruitment/pediatric-research).
 
-- **Vulnerable persons** have characteristics that may limit their ability to provide free and informed consent — cognitive impairment, age (minors, elderly), or an acute mental health condition.
-- **Vulnerable contexts** arise from the situation surrounding the research — a dependent relationship with the researcher, institutionalization, economic disadvantage, or an emergency where prior consent is impossible.
+## Recognize what may make participants vulnerable in your study
 
-A participant may not be inherently vulnerable but may be placed in a vulnerable context by the research situation itself. A graduate student asked to participate in their supervisor's study is not cognitively impaired, but the power imbalance creates a context where voluntariness is compromised. Your protocol must address both dimensions.
+Vulnerability in research depends on a person's circumstances in the particular study. Belonging to a group doesn't by itself make someone vulnerable.
 
-<Note>
-The goal is neither to exclude vulnerable populations from research nor to treat vulnerability as a blanket barrier. TCPS2 emphasizes fairness: people should not bear disproportionate research burdens, but they also should not be denied the potential benefits of research participation without justification.
-</Note>
+The agencies' examples include people who live in an institution, people in dependent situations and people whose poverty or poor health could make even a modest payment an inducement to take risks they would otherwise refuse. Limited capacity to decide whether to take part is another such circumstance. For clinical trials, the International Council for Harmonisation (ICH) also names students and junior staff in a hierarchy, people in detention or nursing homes, and patients in emergencies.
 
-## Legal framework in Quebec
+As you design the study, look for these circumstances and plan a protection for each one you find:
+- The condition, or its treatment, may affect participants' understanding or judgment, and with it their capacity to consent.
+- Participants may depend on a member of the team, as patients, students or employees. Plan who will recruit them and who will obtain consent.
+- A payment could be hard to refuse for people in financial hardship. [Keep payment from becoming an inducement](#keep-payment-from-becoming-an-inducement).
+- You will recruit where people's choice may be limited, such as an emergency department, a psychiatric unit, a long-term care residence or a detention facility. Plan protections suited to that setting.
 
-Three bodies of law converge on research with vulnerable populations in Quebec:
+The REB requires special precautions when you recruit people in these circumstances, to protect their freedom to choose, and every recruitment and consent procedure must be described and justified in your submission. In the consent discussion, you should explain why the person is being invited, which added protections apply to them and what alternatives they have to taking part.
 
-| Source | Key provisions |
-|---|---|
-| **CCQ Art. 21** | Governs research involving minors and adults incapable of consenting. Consent must come from a legally appointed representative (LAR). Only MSSS-designated REBs may review Art. 21 research — the MUHC REB holds this designation. If a person who is incapable of consenting objects or shows resistance, they cannot be enrolled regardless of LAR consent. |
-| **CCQ Art. 25** | Prohibits financial compensation beyond reimbursement for actual loss. In populations where economic disadvantage is a factor, this provision sets the ceiling: compensation must not constitute undue inducement. This is stricter than TCPS2 or ICH GCP. |
-| **TCPS2 Chapter 4** | Requires that protocols involving vulnerable populations include additional protections proportionate to the nature and degree of vulnerability, while maintaining fair inclusion. |
-| **Law 25 (Act to modernize legislative provisions as regards the protection of personal information)** | Imposes heightened privacy obligations for sensitive data. Data collected from vulnerable populations — particularly health, cognitive, or psychiatric data — may attract additional safeguards under this framework. See [Privacy and Confidentiality](/kb/recruitment/privacy). |
+People whose circumstances may make them vulnerable should not be inappropriately included, or automatically excluded, on the basis of those circumstances. Base who takes part on criteria the research question justifies, and follow the [rules on including participants fairly](/kb/recruitment/consent#include-participants-fairly).
 
-<Warning>
-CCQ Art. 21 is absolute on one point: if a person who lacks legal capacity to consent nonetheless objects to or resists participation, enrollment is prohibited — even if an LAR has given consent. This applies to adults with impaired capacity and to minors. There is no override.
-</Warning>
+Circumstances can change during a study, for example when a student finishes your course, an employee changes jobs or a resident leaves the residence. Watch for changes that create, increase or reduce a participant's vulnerability, and adjust their protections. If you think their consent needs to be renewed, ask the REB.
 
-## Categories requiring specific consideration
+### Include participants who are pregnant or breastfeeding
 
-The following groupings reflect the most common scenarios at the RI-MUHC. Each requires distinct protocol-level provisions.
+[The rules on including participants fairly](/kb/recruitment/consent#include-participants-fairly) also cover people who are pregnant or breastfeeding. If a participant in a trial of an <Tooltip tip="A drug, medical device, or natural health product being tested or used as a reference in a clinical trial." headline="Investigational Product (IP)" cta="Full definition" href="/kb/foundations/glossary#ip">investigational product</Tooltip> becomes pregnant, [collect and follow the exposure in utero reports](/kb/recruitment/consent#track-a-pregnancy-during-a-trial).
 
-**Adults with impaired decision-making capacity** — including dementia, acquired brain injury, and acute psychiatric conditions. The protocol must specify how capacity will be assessed, who will provide LAR consent, and how fluctuating capacity will be managed over time.
+Based on: [TCPS 2](https://ethics.gc.ca/eng/tcps2-eptc2_2022_chapter4-chapitre4.html), articles 4.1, 4.3 and 4.7 and [chapter 3, section C](https://ethics.gc.ca/eng/tcps2-eptc2_2022_chapter3-chapitre3.html); the International Council for Harmonisation's guideline [ICH E6(R3)](https://www.canada.ca/en/health-canada/services/drugs-health-products/drug-products/applications-submissions/guidance-documents/international-council-harmonisation/guidelines.html), sections 1.2.1 and 2.8.10 and its glossary; the MUHC REB's [standard operating procedure (SOP) 404.001-2](https://muhc.ca/cae/muhc-research-ethics-board-reb-standard-operating-procedures-sops), section 5; [SOP-CR-012, section 5.4](/sops/cr-012#5-4-reporting-all-saes-to-the-sponsor-within-24-hours) (pregnancy in a trial).
 
-**Persons in dependent relationships** — employees of the investigator, students, prisoners, and long-term care residents. The concern is not capacity but voluntariness. The protocol must describe specific measures to ensure that participation is genuinely free from coercion or undue influence — including who will recruit, who will obtain consent, and how the participant will be assured that refusal carries no consequences for their care, employment, or academic standing.
+## Obtain consent for an adult who cannot consent
 
-**Pregnant and lactating participants** — not automatically excluded. Exclusion must be scientifically justified and approved by the REB. Where an <Tooltip tip="A drug, medical device, or natural health product being tested or used as a reference in a clinical trial." headline="Investigational Product (IP)" cta="Full definition" href="/kb/foundations/glossary#ip">investigational product</Tooltip> with unknown effects in pregnancy is involved, the protocol must address Exposure in Utero reporting.
+[The Civil Code sets who may consent for an adult who can't consent](/kb/recruitment/consent#who-can-consent), and the REB decides, when it reviews the project, whether it meets the Civil Code's requirements. [The person who consents for a participant cannot be the researcher or any other member of the research team](/kb/recruitment/consent#who-can-consent). If the participant signed a research directive while they could still decide, setting out their wishes about taking part in research, you and the representative should be guided by it.
 
-**Economically disadvantaged participants** — CCQ Art. 25 limits compensation to reimbursement for actual loss. For populations where economic hardship is a factor, the REB will scrutinize whether the compensation structure creates undue inducement. Justify your compensation amounts in the protocol.
+Involve the participant in the decision as far as possible, and document their assent. The consent form needs a line for the representative to sign and date, and a line on an assent portion where the participant, if capable, signs and dates. The Centre for Applied Ethics' [adult clinical-trial template](/kb/recruitment/consent-templates#choose-the-consent-form-template) has no assent line, but the Centre's pediatric templates include an assent-and-consent page for an adult who can't consent, with an assent line. Ask the REB which form to use.
 
-**Emergency research populations** — where prior consent is not possible because of the participant's acute condition (e.g., trauma, stroke, cardiac arrest). The protocol must describe emergency consent provisions in detail: what procedures will be performed before consent is obtained, the maximum time window allowed before consent or LAR consent must be secured, and what happens if consent cannot be obtained within that window. The REB must approve these provisions in advance — emergency consent cannot be improvised at the bedside.
-
-<Tip>
-For research involving **children and minors**, see the dedicated [Pediatric Research Considerations](/kb/recruitment/pediatric-research) page, which covers age-specific consent and assent requirements, parental authority rules, and the CCQ Art. 21 framework as it applies to participants under 18.
-</Tip>
-
-## Identifying vulnerability in your study
-
-Vulnerability is not always obvious from the eligibility criteria. Consider the following during protocol development:
-
-- Does the disease or condition affect cognition, judgment, or the ability to understand risk? If so, a capacity assessment plan is needed.
-- Are potential participants likely to be in a dependent relationship with any member of the research team? If so, recruitment and consent safeguards must be described.
-- Does the study population face economic hardship that could make even modest compensation coercive? If so, justify your compensation structure explicitly.
-- Could the research context itself create vulnerability — for example, recruiting in an emergency department, a psychiatric ward, or a detention facility? If so, context-specific protections must be built into the protocol.
-
-If the answer to any of these is yes, the protocol must describe what additional protections apply and how they will be implemented. The REB will not approve a protocol that simply states the population is vulnerable without specifying the response.
-
-## Capacity assessment
-
-When a protocol involves participants whose decision-making capacity may be impaired, you need a documented plan for assessing capacity — not an assumption about it.
-
-**When it is needed:** Any study enrolling participants with cognitive impairment, psychiatric conditions, acquired brain injury, neurodegenerative disease, or conditions where capacity may be affected by the illness or its treatment.
-
-**Who conducts it:** The person assessing capacity must not be the same person who will obtain consent. This separation is essential to avoid conflicts of interest. The assessment is typically performed by a physician or other qualified professional who is independent of the research team. Name the role (not necessarily the individual) in your protocol so the REB can evaluate whether the arrangement is appropriate.
-
-**What to document:** Record the method of assessment, the date, the name and qualifications of the assessor, and the determination (capable, not capable, or uncertain). If a validated tool was used (e.g., MacCAT-CR), note the instrument and the result. This documentation becomes part of the source documents and will be reviewed during monitoring visits.
-
-**Fluctuating capacity:** Some conditions — delirium, relapsing-remitting psychiatric illness, early-stage dementia — produce capacity that varies over time. The protocol must specify:
-- How often capacity will be reassessed
-- What triggers a reassessment (clinical deterioration, change in treatment, study milestones)
-- What happens if a previously capable participant loses capacity mid-study (transition to LAR consent, withdrawal, or continued participation under specified conditions)
-
-<Note>
-A determination that a person lacks capacity at one point in time does not permanently disqualify them. If capacity is restored — whether through recovery, treatment, or stabilization — the participant should be approached for their own informed consent as soon as practicable.
-</Note>
-
-## Consent modifications for vulnerable populations
-
-Standard consent procedures require adaptation when vulnerability is present. The following modifications apply depending on the population and context.
-
-**LAR consent for incapacitated adults** — When a participant lacks capacity to consent, consent must come from an LAR as defined under Quebec civil law. In Quebec, the LAR hierarchy follows the CCQ: mandatary (under a protection mandate), tutor, curator, or in the absence of a formal representative, a spouse, close relative, or person showing special interest in the person. The LAR's identity, legal authority, and relationship to the participant must be documented in the source records. The <Tooltip tip="The written document providing the participant with information essential to making an informed decision. Both parties must sign." headline="Informed Consent Form (ICF)" cta="Full definition" href="/kb/foundations/glossary#icf">ICF</Tooltip> must include a section for LAR signature. See [SOP-CR-008](/sops/cr-008) for procedural requirements.
-
-**Enhanced disclosure** — Vulnerable participants (or their LARs) may need additional information beyond what a standard ICF provides:
-- A plain-language explanation of why the participant was selected
-- A clear description of what alternatives to participation exist, including standard-of-care options
-- How the power dynamic (if any) will be managed
-- What additional protections are in place specifically because of the participant's situation
-- An explicit statement that declining or withdrawing will have no effect on the participant's care, employment, academic standing, or institutional status
-
-**Impartial witness** — Required when the participant cannot read the ICF. The witness must be present for the entire consent discussion, must attest that the information was accurately explained, and must sign the ICF. The witness must be independent of the research team.
-
-**Independent consent monitoring** — For studies involving significant vulnerability (e.g., institutionalized populations, participants with fluctuating capacity), the REB may require appointment of an independent consent monitor — a person not otherwise involved in the study who observes the consent process, verifies that it was conducted appropriately, and may interview the participant separately to confirm understanding and voluntariness. The monitor's observations must be documented, and any concerns raised must be addressed before enrollment proceeds. If your study involves populations where consent validity is likely to be questioned at audit or inspection, proposing an independent consent monitor proactively strengthens the protocol.
-
-**Re-consent triggers specific to vulnerability:**
-- Capacity is restored in a participant who was enrolled through LAR consent — the participant's own legally effective consent must be obtained as soon as practicable
-- The vulnerable context changes (e.g., a student completes the course taught by the investigator-instructor, a prisoner is released, an employee transfers departments)
-- New safety information emerges that may affect the risk-benefit assessment for the specific vulnerability
-- The LAR changes (e.g., new mandatary appointed, change in legal representation)
-
-Re-consent for vulnerable populations follows the same documentation requirements as standard re-consent — use the Informed Consent Process Checklist ([SOP-CR-008](/sops/cr-008#appendices), Appendix 3) — but the reason for re-consent must be clearly recorded in the source documents.
-
-## Recruitment safeguards
-
-Recruiting from vulnerable populations requires additional procedural controls.
-
-**Avoiding coercion in dependent populations** — When potential participants are in a power relationship with the researcher (students, employees, patients of the <Tooltip tip="The physician responsible to the sponsor for the conduct of a clinical trial at the site. One QI per study per Canadian site." headline="Qualified Investigator (QI)" cta="Full definition" href="/kb/foundations/glossary#qi">QI</Tooltip>), recruitment must be conducted by someone other than the person who holds power. The QI's own patients should be approached by a <Tooltip tip="The team member who handles day-to-day administration and coordination of the clinical trial." headline="Clinical Research Coordinator (CRC)" cta="Full definition" href="/kb/foundations/glossary#crc">CRC</Tooltip> or another team member, not the QI directly. For studies recruiting from institutional settings (long-term care, psychiatric facilities), recruitment should occur through a process that does not single out individuals or make non-participation visible to staff or other residents.
-
-**Compensation proportionality** — Under CCQ Art. 25, compensation must not exceed reimbursement for actual expenses and time lost. For economically disadvantaged participants, even amounts that seem modest to the research team may constitute undue inducement. Present your compensation rationale to the REB with specifics.
-
-**Accessible recruitment materials** — Materials must be appropriate to the population: simplified language for participants with cognitive impairment, large print or audio formats where needed, translations beyond English and French if the target population requires them. All participant-facing materials must be submitted to the REB for approval, including any adapted formats.
-
-**The treating physician restriction** — [SOP-CR-008](/sops/cr-008) prohibits the participant's treating physician from being the person who obtains consent. In vulnerable population research, this restriction extends more broadly: the person who recruits and the person who obtains consent should both be free of any pre-existing relationship that could compromise voluntariness. Document in your protocol who will approach potential participants and why that person was chosen.
+All required signatures must be on the current REB-approved consent form before any screening procedure takes place. A procedure done even minutes early is a deviation.
 
 <Warning>
-The treating physician restriction is especially important in vulnerable population research. A participant who depends on their physician for ongoing care may perceive a research invitation from that physician as an expectation, not a choice. The consent discussion must be conducted by someone without a pre-existing clinical relationship with the participant.
+An adult who cannot consent, and who understands the nature and consequences of the research and objects to taking part, cannot take part, whoever has consented for them. The federal research agencies add that if a participant who has some ability to understand the research dissents, in words or by their behaviour, they cannot take part.
 </Warning>
 
-## REB expectations
+The REB examines how the representative's consent will be obtained and documented. When you record the representative's name and their relationship to the participant, you should also note whether they consent as mandatary, as tutor or as the person qualified to consent to the participant's care. If the representative changes during the study, ask the REB whether the new one needs to consent.
 
-Research involving vulnerable populations triggers a higher level of REB scrutiny. Expect the following:
+A study with no therapeutic purpose may include participants who consent through a representative only if:
+- Its objectives can't be met with participants who can consent for themselves.
+- The foreseeable risks are low.
+- The negative effect on the participant's well-being is minimized and low.
+- The law doesn't prohibit it.
+- You expressly ask the REB to approve including these participants, and its written approval covers them.
 
-**Full board review** — Studies involving vulnerable populations are generally not eligible for delegated review. The full REB will review the protocol, consent documents, and all supporting materials.
+Based on: [Civil Code of Québec](https://www.legisquebec.gouv.qc.ca/en/document/cs/CCQ-1991), article 21; TCPS 2, articles 3.9 to 3.11; the MUHC REB's SOP 404.001-2, sections 5.2.6 and 5.7; [SOP-CR-008, sections 3.1](/sops/cr-008#3-1-requirements), [3.3](/sops/cr-008#3-3-signatures) (signatures before screening), [7](/sops/cr-008#special-populations) (research directives) and [7.2](/sops/cr-008#7-2-non-therapeutic); the Centre for Applied Ethics' adult clinical-trial template (version 4.2, July 15, 2024) and pediatric templates (Sept. 30, 2024).
 
-**Additional documentation required** — Beyond the standard submission, the REB will expect:
-- A capacity assessment plan specifying who will assess, what method will be used, and how often reassessment will occur (for studies involving impaired capacity)
-- A process for identifying and documenting the LAR, including how legal authority will be verified (for studies requiring substitute consent)
-- An independent consent monitoring plan describing who will monitor, how often, and how findings will be reported (where applicable)
-- A justification for inclusion of the vulnerable population — why this population is necessary for the research question and why the research cannot be done with a less vulnerable group
-- A description of additional safeguards tailored to the specific vulnerability, with an explanation of how each safeguard addresses the identified risk
+## Assess capacity and plan for changes
 
-**Continuing review** — The REB may impose more frequent continuing review intervals for vulnerable population studies — six months rather than twelve, for example. Annual renewal submissions must address how the safeguards are functioning in practice, not merely confirm that they exist. Be prepared to report:
-- How many participants were enrolled under LAR consent vs. self-consent
-- Whether any capacity reassessments resulted in a change in consent status
-- Whether any participants objected or withdrew, and how those situations were handled
-- Any deviations from the vulnerability safeguards described in the protocol
+Capacity to consent is the ability to understand the information about a study and to appreciate the consequences of deciding to take part or not. It can vary with how complex the decision is, the circumstances and the moment, and a person may be unable to make some decisions yet still able to decide about some research.
 
-**Amendments** — Any change to a protocol involving vulnerable populations — particularly changes affecting consent procedures, capacity assessment, or recruitment methods — will receive heightened scrutiny. Submit amendments with a clear explanation of why the change is needed and how it affects participant protections.
+You should plan how you will assess capacity whenever a condition, or its treatment, may affect it, as in cognitive impairment, a psychiatric condition, an acquired brain injury or a neurodegenerative disease.
 
-**Reporting obligations** — Protocol deviations related to vulnerable population safeguards — a missed capacity reassessment, consent obtained by the wrong person, failure to document LAR authority — must be reported promptly. These are not minor administrative gaps; the REB treats them as substantive deviations because they affect the core protections the protocol was designed to provide. See [Reportable Events and Protocol Deviations](/kb/conduct/safety-reporting/reportable-events).
+The protocol should say:
+- Who will assess capacity, by role. Consider having someone other than the person who obtains consent do it, to keep the assessment separate from recruitment.
+- How they will assess it, naming any structured tool, such as the MacArthur Competence Assessment Tool for Clinical Research (MacCAT-CR).
+- If capacity may change during the study, as in delirium, a relapsing psychiatric illness or early dementia, how often you will reassess it and what will prompt a reassessment, such as a clinical deterioration, a change in treatment or a study milestone.
+- What happens if a participant loses capacity during the study, for example consent from a representative, withdrawal or continued participation on conditions the REB approves.
 
-<Tip>
-Build your vulnerability safeguards into the protocol from the start. Retrofitting protections through amendments after the REB raises concerns adds delays and signals that the team did not fully consider the population's needs during study design.
-</Tip>
+For each assessment, you should record in the source documents the date, who assessed capacity, the method used and the result.
 
----
+Consider adapting consent materials to participants' cognitive and communication abilities, for example with plainer language, large print or an audio version. Like all participant-facing material, adapted materials need the REB's approval and, unless the REB accepts a justification, [an English and a French version](/kb/recruitment/consent#prepare-the-consent-form). If the participant or their representative can't read, or the participant speaks neither English nor French, [the consent process needs an impartial witness or an interpreter](/kb/recruitment/consent#adapt-the-consent-process-when-needed).
 
-## Related resources
+A participant who regains capacity during the study [signs their own consent as soon as possible](/kb/recruitment/consent#keep-consent-current), as a condition of staying in it. The Centre for Applied Ethics' adult clinical-trial template has a signature page for this. You should note the reason for the re-consent in the source documents.
 
-- [Informed Consent](/kb/recruitment/consent) — Civil Code consent rules, age of majority, treating physician restriction
-- [Pediatric Research Considerations](/kb/recruitment/pediatric-research) — age-specific consent, assent, and CCQ Art. 21 for minors
-- [Recruitment, Screening, and Enrollment](/kb/recruitment/recruitment-enrollment) — pre-screening, EFVP authorization, enrollment procedures
-- [Privacy and Confidentiality](/kb/recruitment/privacy) — confidentiality agreements, Law 25, data access controls
-- [EDI in Research](/kb/team/edi) — equity, diversity, and inclusion considerations in study design
-- [SOP-CR-006](/sops/cr-006) — Informed Consent Forms
-- [SOP-CR-008](/sops/cr-008) — Informed Consent
-- [SOP-CR-009](/sops/cr-009) — Participant Recruitment, Screening and Enrollment
+Based on: TCPS 2, chapter 3 (section C and articles 3.3 and 3.9) and article 4.6; [SOP-CR-006, section 5.3](/sops/cr-006#5-3-icf-content) (participant materials in English and French); [SOP-CR-008, sections 3.1](/sops/cr-008#3-1-requirements), [7](/sops/cr-008#special-populations) and [7.1](/sops/cr-008#7-1-assent); the Centre for Applied Ethics' adult clinical-trial template.
 
-<div className="ri-cantrain-callout">
-  <a href="/training/cantrain"><img src="/images/cantrain_logo.png" alt="CANTRAIN" className="ri-cantrain-logo" /></a>
-  <div className="ri-cantrain-text">
-    <p><strong>Looking to go deeper?</strong> Canada's national clinical trials training platform offers free, self-paced courses for RI-MUHC investigators, staff, and trainees. You might be interested in this course:</p>
-    <ul>
-      <li><em>Ethics and Informed Consent</em></li>
-    </ul>
-  </div>
-</div>
+## Protect the free choice of participants who depend on the team
+
+An employee recruited by their employer, a student by their teacher or a patient by their physician may feel unable to say no, even when no one pressures them. The agencies ask that this influence be judged from the participant's point of view, and it may be greater when the dependency is ongoing or substantial.
+
+The REB reviews how, when, where and by whom potential participants will be contacted, and any power relationship, trust or dependency that could unduly influence them. Describe these in your submission.
+
+As far as possible, keep your role as researcher separate from your role as their physician, teacher, supervisor or employer. If you act in both roles, you must tell them. Where you can, you should have someone with no authority over the participants recruit them and obtain consent.
+
+Saying no, or withdrawing later, should not affect their care, studies or other services; tell them so. A physician should make sure that continued care isn't linked to taking part, and students who decline research for course credit should be offered a comparable alternative.
+
+A clinician-researcher may approach their own patients about a study, but the patients should in no way feel pressured or obliged to take part. [The treating physician should not be the one who obtains consent](/kb/recruitment/consent#choose-who-obtains-consent), unless the REB approves. When participants are also the clinician-researcher's patients, [measures must be taken to minimize therapeutic misconception](/kb/recruitment/consent#choose-who-obtains-consent). Participants have that misconception when they don't understand that research aims mainly to produce knowledge and may bring them no therapeutic benefit.
+
+If you plan to recruit relatives of team members, or anyone else whose recruitment raises similar concerns, you may need special measures to protect their free decision, their confidentiality and the research's integrity. Ask the REB for guidance on your case.
+
+In long-term care residences, psychiatric units and similar settings, you should recruit in a way that doesn't single people out or make a refusal visible to staff or other residents.
+
+Based on: TCPS 2, articles 3.1 and 3.2, and [chapter 11](https://ethics.gc.ca/eng/tcps2-eptc2_2022_chapter11-chapitre11.html) (its sections on therapeutic misconception and on clinician-researchers' dual roles, and article 11.5); the MUHC REB's SOP 404.001-2, sections 5.1 and 5.2; [SOP-CR-008, sections 3.1](/sops/cr-008#3-1-requirements) and [3.2](/sops/cr-008#3-2-consent-discussion).
+
+## Keep payment from becoming an inducement
+
+Payment follows the [limits on compensation](/kb/recruitment/consent#compensate-participants-within-the-limits), including what a representative may accept on the participant's behalf. The agencies ask the REB, and you, to be sensitive to participants' economic circumstances. Justify the amount and the method of payment in your submission, giving the amounts, what each one compensates and when it's paid.
+
+Based on: [Civil Code of Québec](https://www.legisquebec.gouv.qc.ca/en/document/cs/CCQ-1991), article 25; TCPS 2, articles 3.1 and 4.7; ICH E6(R3), sections 1.2.8 and 1.2.9; the MUHC REB's SOP 404.001-2, section 5.2.3.
+
+## Plan for emergency research
+
+When an adult suddenly can't consent and the research must start promptly, [the Civil Code sets who may consent for them](/kb/recruitment/consent#who-can-consent). The REB may also allow deferred consent, given afterwards by the participant or their representative, when no one can consent beforehand.
+
+Before you plan for it, ask the REB whether and how deferred consent applies alongside the Civil Code's rule in your study. Where it applies, the REB may allow it only if you submit a satisfactory justification and the REB finds and documents that the conditions in [its standard operating procedure on recruitment and informed consent](https://muhc.ca/cae/muhc-research-ethics-board-reb-standard-operating-procedures-sops) for research in health emergencies are met.
+
+Seek the participant's consent as soon as they regain capacity, or a representative's as soon as one is found, as a condition of continuing.
+
+The REB sets its criteria before the research starts, and enrolment without prior consent should follow the measures in the protocol or another REB-approved document. Describe those measures in detail, for example which procedures will be done before consent, how soon consent will be sought and what happens if it can't be obtained.
+
+Consider added safeguards. For example, you could identify likely participants in advance so that their consent can be sought before an emergency, consult former and prospective participants, or have a data safety monitoring board follow special monitoring procedures.
+
+Based on: Civil Code of Québec, article 21; [TCPS 2, article 3.8](https://ethics.gc.ca/eng/tcps2-eptc2_2022_chapter3-chapitre3.html#8); the MUHC REB's SOP 404.001-2, section 5.6.2; [SOP-CR-008, section 7.1](/sops/cr-008#7-1-assent).
+
+## Show the REB your safeguards
+
+Describe the safeguards in your first submission; adding them later takes an amendment.
+
+[A new project that could interfere with the integrity of a minor or of an adult who can't consent cannot go through delegated review at its first review](/kb/submission/submission-overview#how-a-study-is-reviewed). For other research, the REB chair or their designee considers the recruitment practices and the participant population, among other things, when deciding whether it is eligible for delegated review.
+
+Your submission should explain:
+- If participants who can't consent will take part, why the research question can be answered only with them and, if the research can't benefit them directly, how it exposes them to no more than minimal risk and minimal burden.
+- For other participants, how your inclusion and exclusion criteria follow from the research question.
+- How you will identify each participant's representative, and obtain and record their consent.
+- The protection you planned for each circumstance of vulnerability, including your capacity assessment plan where capacity may be impaired.
+- Any monitoring of the consent process you propose.
+
+The consent form should also state, among the risks, any that come from participants' vulnerability.
+
+Based on: the MUHC REB's SOPs 402.001 (section 5.1) and 404.001-2 (section 5.2); TCPS 2, articles 3.9 and 4.6; [SOP-CR-008, section 7.3](/sops/cr-008#7-3-research-risks).
+
+## Keep the safeguards working during the study
+
+For research with more than minimal risk, the REB may require more extensive continuing review, which can include monitoring and reviewing the consent process. It may require continuing review more often than once a year, considering among other things the vulnerability of the population, and it sets the frequency when it first approves the study and may revise that frequency later. It may also impose special precautions.
+
+At renewal, be ready to tell the REB how the safeguards are working, for example how many participants consented through a representative, whether a reassessment changed who consents for anyone, whether anyone objected or withdrew and whether any safeguard was missed.
+
+Where consent is harder to secure freely, for example with residents of an institution or participants whose capacity fluctuates, you may propose that someone not otherwise involved in the study observe the consent discussion, check that it was done properly and, where appropriate, talk with the participant separately. You should record what they observe and resolve any concern they raise before you enrol the participant.
+
+For an amendment, the REB chair or their designee decides whether full-board review is needed, considering the participant population and recruitment practices among other things. Explain why the change is needed and how it affects participants' protections.
+
+A lapse in a safeguard the protocol describes, such as a missed capacity reassessment or consent obtained by someone other than the person the protocol designates, is a protocol deviation. [Record and report it](/kb/conduct/safety-reporting/reportable-events#protocol-deviations) according to its severity. [Repeated or deliberate failure to obtain consent properly, or to document it, can lead the REB to suspend or end the study](/kb/recruitment/consent#obtain-consent-before-any-study-procedure).
+
+If your study doesn't fit these steps, ask the REB about consent and review, or the Research Facilitator about RI-MUHC processes.
+
+Based on: the MUHC REB's SOPs 402.001 (section 5.1) and 406.001 (sections 5.1 and 5.2); [TCPS 2, chapter 6](https://ethics.gc.ca/eng/tcps2-eptc2_2022_chapter6-chapitre6.html), article 6.14; [SOP-CR-026, sections 5.3](/sops/cr-026#5-3-ongoing-study-submission-review-of-an-approved-study) (deviations) and 5.5 (suspension).
+
+## Contacts
+
+- Consent, capacity and the review of your study: the REB, [reb@muhc.mcgill.ca](mailto:reb@muhc.mcgill.ca).
+- RI-MUHC processes and SOPs: the Research Facilitator, [research.facilitator@muhc.mcgill.ca](mailto:research.facilitator@muhc.mcgill.ca).
+
+## Related pages
+
+- [Privacy and Confidentiality](/kb/recruitment/privacy), for how participants' health information is protected
+- [Recruitment, Screening and Enrolment](/kb/recruitment/recruitment-enrollment)
+- [EDI in Research](/kb/team/edi)
+- [CANTRAIN](/training/cantrain), for its course “Ethics and Informed Consent”
+
+{/* Checked against: the Civil Code of Québec, articles 21 and 25 (text current to Oct. 15, 2026); TCPS 2 (2022), chapters 3, 4, 6 and 11; ICH E6(R3) (Step 4, Jan. 6, 2025); the MUHC REB's SOPs 402.001 and 406.001 (March 20, 2020) and 404.001-2 (Oct. 15, 2024); SOP-CR-006_08 and SOP-CR-008_08 (May 1, 2025); SOP-CR-012_08 (June 19, 2023); SOP-CR-026_01 (May 1, 2025); the Centre for Applied Ethics' adult clinical-trial template, version 4.2 (July 15, 2024), and pediatric templates (Sept. 30, 2024). Kept out of the reader's view (MF, Nov. 9); a script finds these lines when a new SOP set arrives. */}
+
+Last reviewed: November 2026.

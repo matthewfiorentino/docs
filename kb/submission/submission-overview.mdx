@@ -1,194 +1,152 @@
 ---
 title: "Study Submission and Review"
-description: "Scientific review, REB ethics, and institutional feasibility — the three review streams at the RI-MUHC, how they connect, and what MUHC Authorization means."
-keywords: ["how to submit", "submission process", "Nagano submission", "triple review", "REB review"]
+description: "The reviews a study needs at the MUHC before it can start (scientific, ethics and institutional feasibility review, and Health Canada authorization for some trials), and the MUHC Authorization that follows them."
+keywords: ["how to submit", "submission process", "Nagano submission", "triple review", "REB review", "scientific review", "ethics review", "feasibility review", "MUHC Authorization", "Personne mandatée", "annual renewal", "CTA", "ITA"]
 ---
 
-Before any clinical research can begin at the MUHC, studies must pass through a sequence of submissions and reviews. This is mandatory regardless of study size, methodology, or funding source. All study submissions are entered through <Tooltip tip="The RI-MUHC's electronic study submission and management platform. All studies requiring MUHC Authorization are submitted through Nagano." headline="Nagano (RI-MUHC)" cta="Full definition" href="/kb/foundations/glossary#nagano">Nagano</Tooltip>, the MUHC's research management platform, and both the ethics review and institutional feasibility review are initiated simultaneously when you submit the F11 form.
-
-<Note>
-  **Before you submit: confirm this is research.** Quality assurance and quality improvement (QA/QI) projects are exempt from REB review under [TCPS2 Article 2.5](https://ethics.gc.ca/eng/tcps2-eptc2_2022_chapter2-chapitre2.html) and follow a different path — they go to the [Centre for Applied Ethics](mailto:cae@muhc.mcgill.ca) for an exemption letter, not to the REB via Nagano. If you have not already, use the [Is It Research?](/is-it-research) screening tool to determine which path applies.
-</Note>
+Every study under the MUHC's responsibility goes through three reviews before it can start: a scientific review, an ethics review by the Research Ethics Board (REB) and an institutional feasibility review. Many drug, medical device and natural health product trials also need Health Canada's authorization. When the reviews are positive, the <Tooltip tip="Individual formally authorized to issue the final written authorization for each research project at a Quebec RSSS institution." headline="Personne mandatée (PFM)" cta="Full definition" href="/kb/foundations/glossary#personne-mandatee">Personne mandatée</Tooltip>, the person the MUHC has mandated to authorize research, issues MUHC Authorization.
 
 <Warning>
-  **<Tooltip tip="The ethics committee that reviews and approves research involving human participants. Also called CER at French-language institutions." headline="Research Ethics Board (REB)" cta="Full definition" href="/kb/foundations/glossary#reb">REB</Tooltip> approval alone does not authorize research to begin.** <Tooltip tip="Institutional authorization allowing a study to proceed at the RI-MUHC. Issued after ethics approval and feasibility review." headline="MUHC Authorization" cta="Full definition" href="/kb/foundations/glossary#muhc-auth">MUHC Authorization</Tooltip> from the <Tooltip tip="Individual formally authorized to issue the final written authorization for each research project at a Quebec RSSS institution." headline="Personne mandatée (PFM)" cta="Full definition" href="/kb/foundations/glossary#personne-mandatee">Personne mandatée</Tooltip> is a separate and required step. Both must be in place before any research activities start — including recruitment, consent, and data collection.
+Do not start any research activity, including recruitment, data collection or analysis, until you have both REB approval and MUHC Authorization.
 </Warning>
 
-## The review process
+## How a study is reviewed
 
-Every study submitted at the MUHC passes through two parallel review processes, with an additional Health Canada track for drug and device trials.
+Before you submit, confirm that your project is research. A quality assurance or quality improvement project used only for assessment, management or improvement doesn't need REB review; the [Is It Research?](/is-it-research) tool helps you decide and explains how to get an exemption letter.
 
-```mermaid
-flowchart TD
-    A([Submit F11 via Nagano]) --> B & C
-    B["REB Review<br/>Scientific · Ethics · Multicentre coordination"]
-    C["Institutional Feasibility<br/>MUHC · RI-MUHC · The Neuro"]
-    A -. Drug or device trials only .-> D["Health Canada<br/>CTA or ITA required"]
-    B & C --> E{All reviews approved}
-    D --> E
-    E --> F["MUHC Authorization letter<br/>Personne mandatée office"]
-    F --> G([Research may begin])
+You submit your study in <Tooltip tip="The RI-MUHC's electronic study submission and management platform. All studies requiring MUHC Authorization are submitted through Nagano." headline="Nagano (RI-MUHC)" cta="Full definition" href="/kb/foundations/glossary#nagano">Nagano</Tooltip> with the F11 form, which starts the institutional feasibility review and, where one applies, the ethics review. If no recognized peer committee has already reviewed the science, the REB also carries out the scientific review. The institutional feasibility review starts at the same time as the REB's review. A trial that needs Health Canada's authorization also has its own application to Health Canada.
 
-    style A fill:#150e51,color:#fff,stroke:none
-    style B fill:#2b9ce2,color:#fff,stroke:none
-    style C fill:#2b9ce2,color:#fff,stroke:none
-    style D fill:#2b9ce2,color:#fff,stroke:none
-    style E fill:#1a1466,color:#fff,stroke:none
-    style F fill:#2b9ce2,color:#fff,stroke:none
-    style G fill:#2b2666,color:#fff,stroke:none
-```
+{/* Diagram source: images/diagrams/submission-reviews.mmd. Edit it there, then regenerate the SVG (STYLE-HUB H). */}
+<Frame caption="Click or tap to enlarge.">
+  ![Flowchart of review and authorization. You submit the study in Nagano (F11), usually with Health Canada's letter if the trial needs one. The F11 starts the institutional feasibility review and, where one applies, the REB's review at the same time. The REB completes the ethics review, and the scientific review unless it recognizes an earlier peer review; meanwhile MUHC and RI-MUHC services complete the institutional feasibility review. When the reviews are positive, the Personne mandatée issues MUHC Authorization. Recruitment can start once every start condition is met.](/images/diagrams/submission-reviews.svg)
+</Frame>
 
-<Steps>
-  <Step title="Submit via Nagano (F11)">
-    The F11 form is the entry point for all studies. Submitting it simultaneously initiates REB review and institutional feasibility review. For studies involving access to identifiable personal health information without consent, an EFVP form (F17 or F18) must be submitted alongside F11.
-  </Step>
-  <Step title="REB review (parallel)">
-    The MUHC REB conducts scientific and ethics review. For multicentre studies in Quebec, a single designated reviewing REB (rREB) conducts ethics review on behalf of all participating <Tooltip tip="Quebec's public health and social services network (Réseau de la santé et des services sociaux), including the RI-MUHC." headline="RSSS" cta="Full definition" href="/kb/foundations/glossary#rsss">RSSS</Tooltip> sites.
-  </Step>
-  <Step title="Institutional feasibility review (parallel)">
-    Multiple MUHC and RI-MUHC departments review whether the study can be practically and safely conducted at the site. This covers pharmacy, nursing, laboratories, contracts, Human Research Privileges, training, and the EFVP when applicable.
-  </Step>
-  <Step title="Health Canada approval (drug and device trials only)">
-    For studies involving investigational drugs (<Tooltip tip="Application to Health Canada for authorization to conduct a drug trial under Division 5 of the Food and Drug Regulations." headline="Clinical Trial Application (CTA)" cta="Full definition" href="/kb/foundations/glossary#cta">CTA</Tooltip>) or medical devices (<Tooltip tip="Health Canada authorization to conduct a clinical investigation of a medical device. The device equivalent of a CTA." headline="Investigational Testing Authorization (ITA)" cta="Full definition" href="/kb/foundations/glossary#ita">ITA</Tooltip>), Health Canada regulatory approval must be in hand before MUHC Authorization can be granted. This track runs in parallel with REB review and should be initiated during study design, not after submission.
-  </Step>
-  <Step title="MUHC Authorization issued by the Personne mandatée">
-    Once all review tracks are complete and satisfactory — REB approval, all institutional feasibility reviews, and Health Canada approvals where applicable — the Personne mandatée issues MUHC Authorization. Only then may research activities begin.
-  </Step>
-</Steps>
+Review time depends on the study's level of risk, how complete your submission is, whether revisions are needed and the REB's workload. There are no submission deadlines, so enter your study in Nagano as soon as it's ready. Staff of the Centre for Applied Ethics first check each submission for completeness and the quality of its documents, and assess its level of risk.
 
-## Which ethics route applies to your study?
+Full-board review is the default. Studies that involve no more than minimal risk are eligible for delegated review, which runs continuously.
 
-Use this to identify the correct submission path before you start your F11.
+Studies with more than minimal risk are reviewed at a full-board meeting of one of the REB's six specialized panels, which meet about twice a month; the meeting calendar is in Nagano. A new project that could interfere with the integrity of a minor or of an adult who can't consent cannot go through delegated review at its first review.
 
-```mermaid
-flowchart TD
-    START([Your study involves\nMUHC participants, data,\nspaces, or affiliation]) --> Q1{Is the MUHC\nthe only site?}
+Incomplete submissions are a common cause of delay, so check yours against [Preparing Your Nagano Submission](/kb/submission/preparing) before you submit.
 
-    Q1 -- Yes --> SINGLE["Single-site\nMUHC REB reviews\nSubmit F11 → Nagano"]
+Based on: [SOP-CR-007, study submission and review cycle](/sops/cr-007#study-submission-and-review-cycle); the Centre for Applied Ethics' [multicentre study page](https://muhc.ca/cae/multicentre-study) (the F11 form); Quebec's [*Cadre de référence ministériel pour la recherche avec des participants humains*](https://publications.msss.gouv.qc.ca/msss/fichiers/2019/19-727-05W.pdf) (October 2020), section 2.2; the Centre for Applied Ethics' [Research Ethics page](https://muhc.ca/cae/research-ethics) (updated Sept. 9, 2026), on panels, meetings and pre-review; the MUHC REB's [REB-SOP 402.001](https://muhc.ca/cae/muhc-research-ethics-board-reb-standard-operating-procedures-sops), section 5.1 (delegated review).
 
-    Q1 -- No --> Q2{Are all sites\nwithin Quebec\nRSSS network?}
+## Scientific and ethics review by the REB
 
-    Q2 -- Yes --> Q3{Is MUHC\nthe lead site?}
-    Q3 -- Yes --> LEAD["Multi-site Quebec\nMUHC REB acts as rREB\nParticipating sites follow\nMUHC REB review"]
-    Q3 -- No --> FOLLOW["Multi-site Quebec\nFollow the lead site's rREB\nMUHC submits local\nconvenance review only"]
+The REB is responsible for the scientific review, which checks that the study is methodologically sound: its design, data collection, statistical methods and the team's qualifications. You request it in your Nagano submission. The REB may recognize a peer review already done by a recognized committee, such as a granting agency's; a peer-reviewed funded project isn't reviewed again at the MUHC if you provide documentation of that review, such as the reviewers' comments and your responses.
 
-    Q2 -- No --> Q4{Does the study\ninclude Ontario sites?}
-    Q4 -- Yes --> Q5{Pediatric study\nwith MICYRN/CHEER\naffiliation?}
-    Q5 -- Yes --> CHEER["MICYRN/CHEER\nsingle-REB pilot\nContact Research\nFacilitator first"]
-    Q5 -- No --> CTO["Consider CTO Stream\nfor Ontario sites\nMUHC REB for MUHC\nparticipants"]
-    Q4 -- No --> MULTI["Multi-provincial\nMUHC REB for MUHC\nEach site submits\nto its local REB"]
+Your study needs review by an REB of Quebec's health and social services network (the MUHC REB or, for a multi-site study, the evaluating REB) and the MUHC's authorization when it:
+- Recruits participants at the MUHC, in person or through the MUHC's technology, or among its staff.
+- Uses health records stored at the MUHC.
+- Takes place at least partly at the MUHC, including by MUHC-affiliated researchers abroad.
+- Involves an investigator or sponsor-investigator affiliated with the MUHC.
+- Uses the MUHC's staff services, such as nursing or pharmacy, its technical platforms or its other human, material or financial resources.
+- Uses or creates a data repository or tissue bank hosted at the MUHC or held by an MUHC-affiliated researcher.
+- Is presented by its sponsor or researcher, openly or by implication, as involving the MUHC or an MUHC affiliation.
 
-    style START fill:#150e51,color:#fff,stroke:none
-    style SINGLE fill:#2b9ce2,color:#fff,stroke:none
-    style LEAD fill:#2b9ce2,color:#fff,stroke:none
-    style FOLLOW fill:#2b9ce2,color:#fff,stroke:none
-    style CHEER fill:#2b9ce2,color:#fff,stroke:none
-    style CTO fill:#2b9ce2,color:#fff,stroke:none
-    style MULTI fill:#2b9ce2,color:#fff,stroke:none
-    style Q1 fill:#1a1466,color:#fff,stroke:none
-    style Q2 fill:#1a1466,color:#fff,stroke:none
-    style Q3 fill:#1a1466,color:#fff,stroke:none
-    style Q4 fill:#1a1466,color:#fff,stroke:none
-    style Q5 fill:#1a1466,color:#fff,stroke:none
-```
+Research that relies only on information that is publicly available through a legal mechanism and protected by law, or that is in the public domain with no reasonable expectation of privacy, doesn't need REB review. If you're unsure, ask the Research Facilitator before you submit.
 
-<Note>
-If your study spans multiple provinces or includes networks like MICYRN, CHEER, or CTO, contact the [Research Facilitator](mailto:research.facilitator@muhc.mcgill.ca) before submitting. Multi-site routing decisions affect timelines and the documents required in Nagano.
-</Note>
+A study at more than one public institution in Quebec is reviewed by one Quebec evaluating REB, and each institution still does its own [feasibility review and authorization](/kb/design/multi-centric).
 
-## Research Ethics Board (REB) review
+In a study with [sites in other provinces](/kb/design/cross-border-studies), each site submits to its own REB. For those sites, some networks run streamlined ethics review, such as Clinical Trials Ontario (CTO) and, for child health research, the Canadian Collaboration for Child Health: Efficiency and Excellence in the Ethics Review of Research (CHEER). Ask the Research Facilitator early about your study's arrangement.
 
-The MUHC REB conducts scientific and ethics review for research under MUHC auspices. Its jurisdiction is established by Quebec's _Cadre de référence ministériel_ and the TCPS2. Reviews are also guided by the Declaration of Helsinki.
+{/* Diagram source: images/diagrams/submission-routing.mmd. Edit it there, then regenerate the SVG (STYLE-HUB H). */}
+<Frame caption="Click or tap to enlarge.">
+  ![Decision tree for where a study is reviewed. If the MUHC is the only site, the MUHC REB reviews it and you submit the F11 in Nagano. If all sites are in Quebec's public network and the MUHC is the lead site, the MUHC REB is the evaluating REB for all sites; if another site leads, its REB evaluates and the MUHC does its own feasibility review. With sites in other provinces, the MUHC REB reviews for the MUHC and each site submits to its own REB.](/images/diagrams/submission-routing.svg)
+</Frame>
 
-REB review applies when any of the following are true:
+After its review, the REB decides to:
 
-<CardGroup cols={2}>
-  <Card title="Recruitment or data under MUHC responsibility" icon="user-check">
-    Participants are recruited at the MUHC, or records and data under MUHC custody are used.
-  </Card>
-  <Card title="Databanks or biobanks" icon="database">
-    The project involves a research database or biobank hosted at an RSSS institution or under the responsibility of an RSSS-affiliated researcher.
-  </Card>
-  <Card title="MUHC platforms or services" icon="building-columns">
-    The study uses MUHC technical platforms (imaging, ORs, care units, exam rooms) or MUHC staff and services (nursing, pharmacy).
-  </Card>
-  <Card title="Institutional affiliation" icon="id-badge">
-    The sponsor or researcher states or implies MUHC affiliation or MUHC participation in the study.
-  </Card>
-</CardGroup>
+| Decision | What it means for you |
+|---|---|
+| Approve | The study is approved as submitted. |
+| Approve with modifications | Not an approval yet. The study cannot start until you've answered every condition and the REB has issued its final approval. |
+| Defer | The REB needs more information or major changes, and reviews the study again once you resubmit. |
+| Disapprove | The study cannot go ahead as proposed. |
 
-In short: if MUHC people, spaces, services, platforms, custody-held data, or MUHC affiliation are involved — REB review likely applies.
+Answer the REB's questions by the deadline in [Tracking Your Submission and Responding to Requests](/kb/submission/tracking-responding), or the study may be closed.
 
-For privately-funded studies — including foundation-funded studies, not only industry — REB review and authorization services are subject to billing fees under Directive ministérielle 2023-016. See [Study Budgets and Agreements](/kb/funding/budgets-contracts) for details on Sponsor obligations.
+You can ask the REB to reconsider a decision when you can justify your grounds, and you have the right to be heard at a full board meeting. If the REB maintains a disapproval, it may offer a second hearing before a separate quorum, whose decision is final.
+
+If you decline that hearing, you can appeal, on procedural or substantive grounds, to another REB of Quebec's health and social services network, chosen jointly by the REB and you; the appeal committee's decision is final.
+
+Based on: [SOP-CR-007, sections 5.3](/sops/cr-007#5-3-categories-of-research-requiring-muhc-reb-approval), [5.4](/sops/cr-007#5-4-initial-reb-and-institutional-review) and [5.6](/sops/cr-007#5-6-multi-centrique-research-in-quebec); the MUHC REB's [REB-SOP 401.001](https://muhc.ca/cae/muhc-research-ethics-board-reb-standard-operating-procedures-sops), section 5 (decisions, reconsideration and appeal); the *Cadre de référence* (October 2020), sections 2.2.1 and 2.5.3; the [*Tri-Council Policy Statement*](https://ethics.gc.ca/eng/tcps2-eptc2_2022_chapter2-chapitre2.html) (TCPS 2), article 2.2 (publicly available information); Health Canada's [interim policy](https://www.canada.ca/en/health-canada/services/drugs-health-products/drug-products/announcements/interim-policy-modernization-clinical-trial-framework-notice.html) (Sept. 14, 2026), on streamlined ethics review.
 
 ## Institutional feasibility review
 
-Feasibility reviews confirm that the study can be practically and safely conducted at the MUHC. Three groups review distinct aspects, all running in parallel with the REB review from the moment of Nagano submission.
+In the institutional feasibility review:
+- Quality Assurance checks the Human Research Privileges or Researcher Status, and institutional training, of each investigator who submits the study.
+- The Research Agreements Office reviews the study's agreements, which you upload to both Nagano and My Contracts and which must be fully executed before MUHC Authorization.
+- The Director of Professional Services must approve the study's use of MUHC resources.
+- Nursing, laboratory and pharmacy services review the study when it uses them.
+- Clinical departments give their approval, and an information security review covers any software, platforms or databases the study uses.
+- Any other site-specific review the study calls for takes place.
 
-<Tabs>
-  <Tab title="MUHC">
-    - **Pharmacy** — <Tooltip tip="A drug, medical device, or natural health product being tested or used as a reference in a clinical trial." headline="Investigational Product (IP)" cta="Full definition" href="/kb/foundations/glossary#ip">Investigational product</Tooltip> storage, dispensing, and accountability procedures
-    - **Nursing** — Staff availability and research-specific responsibilities
-    - **Laboratory services** — Sample processing, storage, and shipping arrangements
-    - **Department approvals** — Sign-off from all relevant clinical departments
-    - **Privacy Impact Assessment (EFVP)** — F17/F18 in Nagano; compliance with Quebec's <Tooltip tip="Quebec's Act to modernize personal information protection law (in force Sept 2023). Requires EFVP before sharing personal data without consent." headline="Law 25 / Loi 25" cta="Full definition" href="/kb/foundations/glossary#law-25">Loi 25</Tooltip>
-    - **Information security** — Any software, platforms, or databases used in the study
-  </Tab>
-  <Tab title="RI-MUHC">
-    - **Contracts and agreements** — CDAs, sponsor contracts, collaboration agreements
-    - **Human Research Privileges or Researcher Status** — Confirmed for the <Tooltip tip="US equivalent of the Canadian Qualified Investigator (QI)." headline="Principal Investigator (PI)" cta="Full definition" href="/kb/foundations/glossary#pi">PI</Tooltip> and all sub-investigators
-    - **Training verification** — All <Tooltip tip="Lists each team member, their qualifications, and specific trial tasks authorized by the QI." headline="Task Delegation Log (TDL)" cta="Full definition" href="/kb/foundations/glossary#tdl">Task Delegation Log</Tooltip> members have completed required SOP, <Tooltip tip="International standard for design, conduct, monitoring, recording, and reporting of clinical studies." headline="Good Clinical Practice (GCP)" cta="Full definition" href="/kb/foundations/glossary#gcp">GCP</Tooltip>, and regulatory training before any activities begin
-  </Tab>
-  <Tab title="The Neuro">
-    Applies when the study involves Montreal Neurological Institute-Hospital resources. Covers McGill University contracts, and Neuro-specific resources such as neuroimaging platforms, surgical suites, or other Neuro infrastructure.
-  </Tab>
-</Tabs>
+Answer Nagano's questions on nursing, laboratory and pharmacy use accurately, because the answers trigger those reviews. All drugs and some natural health products must be managed by the pharmacy, and you then receive a pharmacy agreement to sign. If the study needs OPTILAB-MUHC laboratory services, a laboratory feasibility review and a laboratory agreement follow. If the study uses MUHC nursing services, upload to Nagano a nursing feasibility form signed by the nurse manager.
 
-## EFVP — Privacy impact assessment
+You should never sign a binding contract or agreement before the Research Agreements Office has reviewed it, and investigators must not sign on behalf of the RI-MUHC.
 
-An _Évaluation des facteurs relatifs à la vie privée_ (EFVP) is a component of the feasibility review. It is required when a study involves access to identifiable personal health information held by the MUHC without obtaining participant consent for part or all of that data access.
+At the Montreal Neurological Institute-Hospital (the Neuro), some processes differ, including contracts managed through McGill University's contracting office and Neuro resources such as neuroimaging platforms and surgical suites; ask its administrative offices.
 
-In Nagano, the EFVP is submitted as:
-- **F17** — pre-screening access before consent (accessing OACIS or other MUHC health records to identify potential participants before approaching them)
-- **F18** — access without consent (research using identifiable records where consent will not be obtained, e.g., chart reviews or registry linkages)
+If the study uses identifiable health information held by the MUHC without participants' consent, pre-screening included, the principal investigator, who leads the study at the MUHC, completes an évaluation des facteurs relatifs à la vie privée (EFVP), the privacy impact assessment that Quebec's Act respecting health and social services information requires. Complete it in French and submit it in Nagano with your F11, using form F17 for pre-screening before consent or form F18 for research using identifiable records without consent.
 
-Both forms are submitted alongside the F11 as part of the initial submission. The EFVP is reviewed by the MUHC Access to Information Officer during feasibility review.
+The MUHC's Access to Information Officer reviews the EFVP. A study at several Quebec institutions files one EFVP, from the lead site. Check [when an EFVP is needed](/kb/recruitment/privacy).
 
-For guidance on which form applies, see [Submitting via Nagano](/kb/submission/submitting-via-nagano). For questions about scope, contact the EFVP committee at [efvp@muhc.mcgill.ca](mailto:efvp@muhc.mcgill.ca).
+Studies funded wholly or partly by private enterprise pay the [review and authorization fees](/kb/funding/budgets-contracts) set by the Ministry of Health and Social Services when the private funding exceeds the exemption amount. For the MUHC REB, private enterprise means any private-law body, not-for-profit organizations included.
 
-## MUHC Authorization
+Based on: [SOP-CR-007, sections 5.2](/sops/cr-007#5-2-investigator-responsibilities-for-initial-submission), [5.4](/sops/cr-007#5-4-initial-reb-and-institutional-review) and [5.6](/sops/cr-007#5-6-multi-centrique-research-in-quebec); the MUHC REB's [REB-SOP 350.002](https://muhc.ca/cae/muhc-research-ethics-board-reb-standard-operating-procedures-sops) (fees).
 
-MUHC Authorization is granted by the **Personne mandatée** once all review streams are complete and satisfactory — including REB approval and all departmental feasibility reviews. It is the final gate before any research activities may begin.
+## Health Canada authorization
 
-What must be in place before authorization is granted:
+Plan the Health Canada application during study design.
 
-- Full REB approval — conditional approval is not sufficient
-- Satisfactory completion of all institutional feasibility reviews (MUHC, RI-MUHC, and The Neuro if applicable)
-- All applicable Health Canada approvals (CTA/ITA/<Tooltip tip="Letter from Health Canada confirming a CTA is satisfactory and authorizing the sponsor to proceed." headline="No Objection Letter (NOL)" cta="Full definition" href="/kb/foundations/glossary#nol">NOL</Tooltip>) for drug or device trials
-- Confirmed Human Research Privileges or Researcher Status and training compliance for all Task Delegation Log members
+The RI-MUHC's standard operating procedures (SOPs) have the sponsor obtain Health Canada's approval first, whether a No Objection Letter (NOL) for a drug, a Notice of Authorization (NOA) for a natural health product or an Investigational Testing Authorization (ITA) for a device. The sponsor sends the letter to the site, which includes it in the initial Nagano submission.
 
-The Statuses tab in your Nagano project workspace shows the current state of each review stream and will display an **Authorized** label when MUHC Authorization has been granted.
+The order can differ. An application for a natural health product trial must include each site's REB attestation, so the REB approves first. For a Class III or IV device, Health Canada needs evidence of the REB's approval before the trial starts, ideally with the ITA application. MUHC Authorization waits until all regulatory requirements are met.
 
-## What this section covers
+The RI-MUHC's Regulatory Affairs Specialist, Lori Anderson ([lcoaconsulting@gmail.com](mailto:lcoaconsulting@gmail.com)), can help on a fee basis; researchers cover the specialist's costs, and the Pre-Awards Office handles the invoicing. For a drug or natural health product trial, the sponsor files the application; if you initiated the study as its sponsor-investigator, that's you. For a device, the manufacturer or importer holds the authorization.
 
-<CardGroup cols={2}>
-  <Card title="Preparing Your Submission" icon="clipboard-list" href="/kb/submission/preparing">
-    The complete document checklist, team readiness requirements, privileges and training prerequisites, and the 90-day rule for training certificates.
-  </Card>
-  <Card title="Submitting via Nagano" icon="upload" href="/kb/submission/submitting-via-nagano">
-    Choosing a project type, who to list as PI, EFVP form selection, and pre-submission decisions that shape everything downstream.
-  </Card>
-  <Card title="Tracking and Responding" icon="chart-line" href="/kb/submission/tracking-responding">
-    How to track your submission in Nagano, the three-month response deadline, responding to REB requests, and what each decision requires of you.
-  </Card>
-  <Card title="Study Review" icon="magnifying-glass" href="/kb/submission/study-review">
-    What scientific review, ethics review, and institutional feasibility review each assess, the role of the Personne mandatée, and Health Canada approvals when required.
-  </Card>
-</CardGroup>
+| Trial | What Health Canada requires |
+|---|---|
+| A drug, unless the trial uses a marketed drug within its authorized use | A Clinical Trial Application (CTA). The sponsor may proceed if Health Canada doesn't object within 30 days of receiving the application, and once each site's REB has approved the protocol and consent form. |
+| A medical device | An ITA for an unlicensed Class II, III or IV device, or for a licensed device used in a manufacturer-sponsored study to support a new indication. For a Class III or IV device, the application also includes the institution's written approval for the testing to take place there. Class I devices, and licensed devices used within their licensed indications, need no ITA. |
+| A natural health product, unless the trial stays within a licensed product's recommended use | Authorization under the Natural Health Products Regulations. |
 
-## Related resources
+Based on: [Food and Drug Regulations](https://laws-lois.justice.gc.ca/eng/regulations/C.R.C.,_c._870/section-C.05.006.html), section C.05.006; [Medical Devices Regulations](https://laws-lois.justice.gc.ca/eng/regulations/SOR-98-282/), sections 80 and 81, and Health Canada's [ITA guidance](https://www.canada.ca/en/health-canada/services/drugs-health-products/medical-devices/application-information/guidance-documents/investigational-testing-authorizations-guidance/guidance-document.html) (effective Oct. 1, 2018); [Natural Health Products Regulations](https://laws-lois.justice.gc.ca/eng/regulations/SOR-2003-196/), sections 64 and 66 to 68; [SOP-CR-007, sections 5.1](/sops/cr-007#5-1-sponsor-responsibilities) and [5.4](/sops/cr-007#5-4-initial-reb-and-institutional-review).
 
-- [Preparing Your Submission](/kb/submission/preparing)
-- [Submitting via Nagano](/kb/submission/submitting-via-nagano)
-- [Study Budgets and Agreements](/kb/funding/budgets-contracts)
-- [Study Planning Overview](/kb/planning/planning-overview)
+## Before recruitment, and keeping approval valid
+
+Recruitment begins only after all of:
+- Health Canada's authorization, if the study needs it.
+- The REB approval letter and the MUHC Authorization letter.
+- The sponsor's site initiation visit.
+- Documented training, and task delegation on the Task Delegation Log.
+- The sponsor's go letter, its written permission to start (it often arrives by email), where there is one.
+
+File the printed REB approval letter in the investigator site file, as the RI-MUHC's SOPs require until a compliant electronic document system is in place, ideally the day you receive it; the MUHC Authorization letter should be filed there too. Note the renewal date in your calendar at the same time.
+
+The sponsor or sponsor-investigator must [register a clinical trial in a public registry](/kb/close-out/publications) before the first participant is recruited.
+
+REB approval lasts up to a year. Request the annual continuing review in Nagano at least a month before the approval expires; MUHC Authorization is revalidated with each renewal.
+
+[Amendments](/kb/conduct/safety-reporting/study-amendments) to the protocol, consent form or other approved documents need the REB's approval or acknowledgement, the approval of any MUHC feasibility review the change affects, the sponsor's go letter if the sponsor issues one and, for a Health Canada-regulated trial, Health Canada's authorization when the change needs one, before you put them into effect. One exception is a change made at once to remove an immediate hazard to participants. It must then be reported to the REB immediately, and the sponsor or sponsor-investigator should be told as soon as possible.
+
+The REB also lets administrative changes that don't affect participants, such as a change of address or of administrative research staff, wait for the annual continuing review; changes to the consent form or other participant materials still need its approval first.
+
+If REB approval lapses, do not enrol anyone, and suspend study activities unless stopping them would put participants at risk. Submit the continuing review request at once, tell the REB if research-related treatment must continue for participants' safety, and record the lapse as a deviation. Renewal isn't retroactive, and if no request reaches the REB within 30 days of expiry, the REB may end the study. The RI-MUHC's [SOPs](/sops/cr-007#5-5-annual-renewal-continuing-review) warn that inspectors would consider a lapse a major observation.
+
+Major changes that affect feasibility or the use of resources may need a new assessment, and in rare cases, such as resource constraints or institutional priorities, the Personne mandatée may reassess or withdraw the authorization. When the study ends, or is suspended or stopped early, notify the REB and the Personne mandatée with form F10 in Nagano; for a completed study, do it in a timely way, ideally within 30 days of the close-out visit.
+
+If your study doesn't fit these steps, the Research Facilitator can help you plan its review.
+
+Based on: [SOP-CR-007, sections 5.4](/sops/cr-007#5-4-initial-reb-and-institutional-review), [5.5](/sops/cr-007#5-5-annual-renewal-continuing-review) and [5.8](/sops/cr-007#5-8-clinical-trial-registration); [SOP-CR-026, sections 5.1](/sops/cr-026#5-1-sponsor-responsibilities-regarding-ongoing-study-submissions), [5.2](/sops/cr-026#5-2-investigator-responsibilities-regarding-ongoing-reb-submissions), [5.3](/sops/cr-026#5-3-ongoing-study-submission-review-of-an-approved-study), [5.5](/sops/cr-026#5-5-suspension-or-termination-of-reb-approved-studies) and [5.6](/sops/cr-026#5-6-completion-of-a-clinical-study); [SOP-CR-015](/sops/cr-015) (amendments approved before use); [SOP-CR-006, section 5.7](/sops/cr-006#5-7-approval) (consent form changes); [SOP-CR-007, section 5.2](/sops/cr-007#5-2-investigator-responsibilities-for-initial-submission) (the renewal date); the MUHC REB's [REB-SOP 405A.001-2](https://muhc.ca/cae/muhc-research-ethics-board-reb-standard-operating-procedures-sops), sections 5.1.7 and 5.1.8 (amendments); [TCPS 2](https://ethics.gc.ca/eng/tcps2-eptc2_2022_chapter11-chapitre11.html), article 11.10 (registration); the [Food and Drug Regulations, section C.05.008](https://laws-lois.justice.gc.ca/eng/regulations/C.R.C.,_c._870/section-C.05.008.html) (amending an authorized drug trial).
+
+## Contacts
+
+- Planning your study's review, multi-site and cross-province studies: the Research Facilitator, [research.facilitator@muhc.mcgill.ca](mailto:research.facilitator@muhc.mcgill.ca).
+- The REB: [reb@muhc.mcgill.ca](mailto:reb@muhc.mcgill.ca), and the [Centre for Applied Ethics](https://muhc.ca/cae) site.
+- The EFVP: [efvp@muhc.mcgill.ca](mailto:efvp@muhc.mcgill.ca).
+
+{/* Checked against: SOP-CR-007_08 and SOP-CR-026_01 (May 1, 2025); SOP-CR-015_08 (June 19, 2023); REB-SOP 401.001-1 and 402.001 (March 20, 2020), REB-SOP 405A.001-2 (Oct. 15, 2024) and REB-SOP 350.002 (Oct. 7, 2025). Kept out of the reader's view (MF, Nov. 9); a script finds these lines when a new SOP set arrives. */}
+
+Last reviewed: November 2026.

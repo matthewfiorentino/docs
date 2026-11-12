@@ -18,7 +18,7 @@ Most industry sponsors use one of a small number of platforms. Each has a differ
 | Oracle Clinical One / InForm | Large pharma, complex protocols | Often paired with Oracle's randomization system |
 | Veeva Vault CDMS | Growing adoption across pharma | Newer platform; cloud-based |
 | Medrio | Smaller sponsors, biotech | Simpler interface; common in early-phase studies |
-| REDCap | Investigator-initiated, academic | Used at RI-MUHC via [CORD](/kb/design-support/cord); validated per 21 CFR Part 11 |
+| REDCap | Investigator-initiated, academic | Supported at the RI-MUHC through [CORD](/kb/design-support/cord) for eCRFs of low or moderate complexity; for a Health Canada-regulated study, ask CORD for the validation records that cover your use |
 
 Access to the sponsor's EDC is granted per-study, typically at or shortly after the <Tooltip tip="Monitoring visit to train the site team on the protocol and confirm site readiness, after REB approval and MUHC Authorization." headline="Site Initiation Visit (SIV)" cta="Full definition" href="/kb/foundations/glossary#siv">SIV</Tooltip>. You will receive individual credentials — do not share login information. The system logs every action tied to your account, so someone else entering data under your credentials creates an audit trail problem.
 
@@ -47,15 +47,6 @@ Most queries are generated because the EDC's built-in validation checks (edit ch
 
 A query is a formal request from the sponsor, data manager, or monitor to clarify or correct a data entry. Queries are generated automatically by edit checks or manually by the data management team or CRA during review.
 
-```mermaid
-flowchart TD
-    A[Query opened in EDC] --> B[CRC reviews query\nand checks source documents]
-    B --> C[CRC responds with\nexplanation or correction]
-    C --> D{Response\nadequate?}
-    D -->|Yes| E[Query closed]
-    D -->|No| F[Follow-up query issued]
-    F --> B
-```
 
 <Steps>
   <Step title="Query is opened">
@@ -102,7 +93,7 @@ The sponsor's data management team periodically compares the two databases and i
 - Onset date, resolution date, or outcome coded differently between the two systems
 - Causality assessment in the EDC that does not match the SAE form
 
-Address reconciliation queries promptly. Unresolved SAE reconciliation is a pre-database-lock requirement — the database cannot be locked until all SAE data is reconciled. See [SOP-CR-105](/sops/cr-105) for database lock criteria.
+Address reconciliation queries promptly. Unresolved SAE reconciliation is a pre-database-lock requirement — the database cannot be locked until all SAE data is reconciled. For databases managed at the site, [SOP-CR-107](/sops/cr-107) lists the database lock steps, including SAE reconciliation.
 
 ---
 

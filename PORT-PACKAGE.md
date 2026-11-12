@@ -51,7 +51,7 @@ Repo: `https://github.com/matthewfiorentino/docs` · branch `main` · deploys to
 | `custom.css` | 4,403 lines / 209 KB |
 | Images | 81 files / 32 MB |
 | Fonts (self-hosted) | 20 × `.woff2` |
-| Interactive tool scripts | `public/roadmap-script.js` 66 KB, `public/recruitment-calc-script.js` 12 KB |
+| Interactive tool scripts | `public/roadmap-script.js` 66 KB (the Recruitment Realism Calculator's script was deleted on Nov. 10, 2026, in review batch 75) |
 | Site-wide JS | `toc-fix.js` 8 KB, `cookie-consent.js` 4 KB, `flag-override.js` 3 KB |
 
 Content by section:
@@ -297,8 +297,8 @@ pages, that ordering came out right, that the TOC holds on the 6,000-word pages,
 
 **6. The interactive tools — last, and budget properly.** Grav is PHP and Twig; there is no
 React runtime. The documented pattern is to build a bundle and load it via the Asset Manager,
-with a shortcode providing the mount point. Three tools: My Study Roadmap (66 KB), Is It
-Research?, and the Recruitment Realism Calculator.
+with a shortcode providing the mount point. Two tools: My Study Roadmap (66 KB) and Is It
+Research?. (The Recruitment Realism Calculator was retired on Nov. 10, 2026, in review batch 75: its method and its table of published screen failure rates are now a section of Recruitment, Screening and Enrolment, and `public/recruitment-calc-script.js` was deleted.)
 
 **Important and useful:** Grav 2.0.20 **removed** page-content script registration entirely
 for security reasons. So these must live in the theme or a plugin, under version control —

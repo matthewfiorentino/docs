@@ -1,0 +1,14 @@
+%%{init: {'theme':'base','htmlLabels':false,'flowchart':{'htmlLabels':false,'subGraphTitleMargin':{'top':14,'bottom':10}},'themeVariables':{'primaryColor':'#2b2666','primaryTextColor':'#ffffff','primaryBorderColor':'#2b2666','lineColor':'#888','edgeLabelBackground':'#ffffff','titleColor':'#150e51','fontFamily':'system-ui,sans-serif'}}}%%
+flowchart LR
+    A(["Submit the study in<br/>Nagano (F11), usually<br/>with Health Canada's letter<br/>if the trial needs one"]) --> R["The REB completes the<br/>ethics review, and the<br/>scientific review unless it<br/>recognizes an earlier<br/>peer review"]
+    A --> C["MUHC and RI-MUHC services<br/>complete the institutional<br/>feasibility review"]
+    R --> F["When the reviews are<br/>positive, the Personne<br/>mandatée issues<br/>MUHC Authorization"]
+    C --> F
+    F --> G(["Recruitment can start<br/>once every start<br/>condition is met"])
+
+    style A fill:#150e51,color:#fff,stroke:none
+    style R fill:#2b9ce2,color:#150e51,stroke:none
+    style C fill:#2b9ce2,color:#150e51,stroke:none
+    style F fill:#2b9ce2,color:#150e51,stroke:none
+    style G fill:#2b2666,color:#fff,stroke:none
+    linkStyle default color:#150e51

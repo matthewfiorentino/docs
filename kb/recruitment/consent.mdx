@@ -1,187 +1,165 @@
 ---
 title: "Informed Consent in Quebec"
-description: "Civil Code consent rules, age of majority, treating physician restriction, MSSS paragraphs, re-consent triggers, and vulnerable population rules at RI-MUHC."
-keywords: ["ICF", "consent form", "CCQ", "Art. 20", "Art. 21", "Art. 25", "LAR", "legally authorized representative", "substitute consent", "eICF", "electronic consent", "consent waiver", "impartial witness", "who can consent", "CR-006", "CR-008"]
+description: "Who can consent to research in Quebec, how to obtain and document consent at the RI-MUHC, and when to obtain it again."
+keywords: ["ICF", "consent form", "CCQ", "Civil Code", "Art. 20", "Art. 21", "Art. 25", "LAR", "legally authorized representative", "legally appointed representative", "substitute consent", "eICF", "electronic consent", "consent waiver", "impartial witness", "who can consent", "re-consent", "CR-006", "CR-008"]
 boost: 3
 ---
 
-In Quebec, the right to consent to research participation flows from the Civil Code — provincial law — not common law. Who can consent, who can consent on someone else's behalf, and what the consent form must contain are all shaped by rules that apply specifically here and differ in important ways from the rest of Canada. The consent process is governed by [SOP-CR-006](/sops/cr-006) (Informed Consent Forms) and [SOP-CR-008](/sops/cr-008) (Informed Consent Process).
+In Quebec, the Civil Code sets who may consent to research and who may consent for someone who can't, and Quebec courts interpret it; good clinical practice guidelines leave these questions to local law. The RI-MUHC's standard operating procedures (SOPs) on [consent forms](/sops/cr-006) and the [consent process](/sops/cr-008) set how your team obtains consent, records it and keeps it current through the study.
 
-## Consent must precede every study procedure
+## Obtain consent before any study procedure
 
-No study procedure — including screening blood draws, eligibility chart reviews, or questionnaires — may be performed before written informed consent is obtained. The diagram below shows the required sequence:
+The person obtaining consent gives the participant the consent form approved by the <Tooltip tip="The ethics committee that reviews and approves research involving human participants. Also called CER at French-language institutions." headline="Research Ethics Board (REB)" cta="Full definition" href="/kb/foundations/glossary#reb">Research Ethics Board (REB)</Tooltip>, explains the study in plain terms, answers questions and leaves time to decide. Once everyone required has signed and dated the form, the participant receives a copy.
 
-```mermaid
-%%{init: {'theme':'base','themeVariables':{'primaryColor':'#2b2666','primaryTextColor':'#ffffff','primaryBorderColor':'#2b2666','lineColor':'#888','fontFamily':'system-ui,sans-serif'}}}%%
-flowchart TD
-    A(["Potential participant identified<br/>(referral, advert, chart prescreen<br/>under approved waiver)"]) --> B["Provide REB-approved<br/>recruitment materials and ICF"]
-    B --> C["Allow time to read,<br/>ask questions, consider"]
-    C --> D{"Participant agrees<br/>and signs ICF?"}
-    D -->|"No"| X(["No further<br/>study contact"])
-    D -->|"Yes"| E["Sign and date ICF<br/>(participant + person obtaining consent)"]
-    E --> F["Provide signed copy<br/>to participant"]
-    F --> G["Eligibility screening<br/>(labs, history, exams)"]
-    G --> H{"Eligible?"}
-    H -->|"No"| Y(["Screen failure documented<br/>— no further procedures"])
-    H -->|"Yes"| I(["Enrollment<br/>and randomization"])
+For research that could interfere with a person's integrity, consent is given in writing. The REB may accept consent given another way when the circumstances justify it, and then decides how it's recorded.
 
-    Z["Any study procedure<br/>before signed consent"]:::warn -.->|"VIOLATES TCPS2 + GCP +<br/>Civil Code"| RED([" Protocol deviation<br/>+ inspection finding"]):::warn
+Do not consent anyone until the study has the REB's written approval and [MUHC Authorization](/kb/submission/submission-overview), the site initiation visit has been held and you have the sponsor's go letter (its written permission to start, which often arrives by email), if the sponsor issues one.
 
-    classDef warn fill:#ff6b6b,color:#fff,stroke:none
-
-    style A fill:#150e51,color:#fff,stroke:none
-    style B fill:#2b9ce2,color:#fff,stroke:none
-    style C fill:#2b9ce2,color:#fff,stroke:none
-    style D fill:#1a1466,color:#fff,stroke:none
-    style E fill:#2b9ce2,color:#fff,stroke:none
-    style F fill:#2b9ce2,color:#fff,stroke:none
-    style G fill:#2b9ce2,color:#fff,stroke:none
-    style H fill:#1a1466,color:#fff,stroke:none
-    style I fill:#2b2666,color:#fff,stroke:none
-    style X fill:#888,color:#fff,stroke:none
-    style Y fill:#888,color:#fff,stroke:none
-```
-
-The most common deviation is drawing screening labs or recording history into the eCRF before the ICF is signed — even by minutes. If a study-specific procedure is needed before formal screening (e.g., a chart review to confirm potential eligibility), it requires either signed consent or an REB-approved consent waiver under TCPS2 Chapter 3 (waiver of consent requirement) and, where identifiable health data is involved, an EFVP — see [Privacy and Confidentiality in Quebec](/kb/recruitment/privacy).
-
-## The legal basis: the Civil Code
-
-Consent to research in Quebec is governed by the *Civil Code of Québec* (CCQ). The practical consequence is that the rules for who can give consent, who can give substitute consent, and under what conditions consent can be waived are all defined by the CCQ and interpreted by Quebec courts — not by the general <Tooltip tip="International standard for design, conduct, monitoring, recording, and reporting of clinical studies." headline="Good Clinical Practice (GCP)" cta="Full definition" href="/kb/foundations/glossary#gcp">GCP</Tooltip> framework.
-
-Three articles of the CCQ are directly relevant to research consent:
-
-<AccordionGroup>
-  <Accordion title="CCQ Art. 20 — proportionality of risk">
-    Research affecting personal integrity may only proceed when the risk is not disproportionate to the expected benefit and the project has <Tooltip tip="The ethics committee that reviews and approves research involving human participants. Also called CER at French-language institutions." headline="Research Ethics Board (REB)" cta="Full definition" href="/kb/foundations/glossary#reb">REB</Tooltip> approval. The threshold is proportionality, not zero risk.
-  </Accordion>
-  <Accordion title="CCQ Art. 21 — minors and incapable adults">
-    Governs research with minors and adults who cannot consent. A minor aged 14 or older, or an incapacitated adult who understands and objects, cannot be enrolled regardless of what a substitute decision-maker has authorized. Only MSSS-designated REBs may review Article 21 research. The MUHC REB holds this designation. For detailed guidance on pediatric consent, assent, and parental authority, see [Pediatric Research Considerations](/kb/recruitment/pediatric-research). For broader vulnerability protections, see [Vulnerable Populations](/kb/recruitment/vulnerable-populations).
-  </Accordion>
-  <Accordion title="CCQ Art. 25 — compensation limits">
-    Prohibits financial compensation beyond actual loss reimbursement. This is stricter than both TCPS2 and ICH GCP, which permit payment to healthy Phase I volunteers. In Quebec, compensation must not constitute undue inducement — it must be calibrated to what a person actually lost by participating, not as an incentive to participate.
-  </Accordion>
-</AccordionGroup>
-
-## Age of consent in Quebec
-
-```mermaid
-flowchart TD
-    A[Potential participant] --> B{Age?}
-
-    B -->|18 or over| C{Capable of\nfree & enlightened\nconsent?}
-    B -->|14 – 17| D{Minimal risk\n& REB-approved\nexception?}
-    B -->|Under 14| E[Parental authority\nor tutor consents\nAssent from minor]
-
-    C -->|Yes| F([Self-consent])
-    C -->|No| G[LAR consents\nAssent if capable]
-
-    D -->|Yes – REB approved| H([May self-consent])
-    D -->|No| I[Parental authority\nor tutor consents\nAssent from minor]
-
-    G --> J{Participant\nobjects?}
-    J -->|Yes| K([Cannot enrol —\nCCQ Art. 21])
-    J -->|No| L([Enrol with\nLAR consent])
-
-    style A  fill:#150e51,color:#fff,stroke:none
-    style B  fill:#1a1466,color:#fff,stroke:none
-    style C  fill:#1a1466,color:#fff,stroke:none
-    style D  fill:#1a1466,color:#fff,stroke:none
-    style J  fill:#1a1466,color:#fff,stroke:none
-    style F  fill:#2b9ce2,color:#fff,stroke:none
-    style H  fill:#2b9ce2,color:#fff,stroke:none
-    style L  fill:#2b9ce2,color:#fff,stroke:none
-    style E  fill:#2b2666,color:#fff,stroke:none
-    style I  fill:#2b2666,color:#fff,stroke:none
-    style G  fill:#2b9ce2,color:#fff,stroke:none
-    style K  fill:#c0392b,color:#fff,stroke:none
-```
-
-**The age of majority for research consent in Quebec is 18, not 16.** This is a common source of confusion for teams who have worked in other provinces. A 17-year-old patient can consent to their own medical care in Quebec but cannot independently consent to research participation unless the minimal-risk exception expressly applies and the REB has approved it.
-
-| Situation | Rule |
-|---|---|
-| Adult (18 and over) | Provides their own consent. No substitute consent is permitted simply because a physician or family member prefers it. The person must be capable of giving free and enlightened consent. |
-| Minor (under 18) — general rule | Consent must be given by the person holding parental authority or the tutor (CCQ Art. 21). The minor must be involved in the discussion to the extent they are able to understand, and should sign an assent document if capable. |
-| Minor aged 14 to 17 — minimal risk research | May consent independently, but only if the REB has expressly confirmed the research presents minimal risk and has approved this arrangement. This exception requires explicit REB authorization — it is not assumed. |
-| Incompetent adult | Consent given by a legally appointed representative (LAR) — a person formally authorized under Quebec civil law. The LAR's name and relationship must be documented. The participant signs an assent portion of the <Tooltip tip="The written document providing the participant with information essential to making an informed decision. Both parties must sign." headline="Informed Consent Form (ICF)" cta="Full definition" href="/kb/foundations/glossary#icf">ICF</Tooltip> if they are capable of doing so. |
-| Emergency — adult suddenly incapacitated, no time to designate an LAR | The person authorized to consent to care for that individual may give consent, but only if the REB has determined in advance that this emergency provision applies to the study. The protocol must describe the measures that apply. |
-| Minor reaches 18 or incompetent adult recovers capacity during study | Obtain legally effective signed consent from the participant directly as soon as possible after reaching majority or recovering capacity. |
-
-## The treating physician restriction
-
-[SOP-CR-008](/sops/cr-008) §5.1.1 states that the person obtaining consent should not be the participant's treating physician or another person with a long-standing relationship with the participant. The reason is undue influence: a patient who trusts and depends on their physician may feel unable to refuse, even if refusal would be entirely reasonable.
-
-In practice, the <Tooltip tip="The team member who handles day-to-day administration and coordination of the clinical trial." headline="Clinical Research Coordinator (CRC)" cta="Full definition" href="/kb/foundations/glossary#crc">CRC</Tooltip> or a research team member who is not the participant's own physician should conduct the consent discussion. The <Tooltip tip="The physician responsible to the sponsor for the conduct of a clinical trial at the site. One QI per study per Canadian site." headline="Qualified Investigator (QI)" cta="Full definition" href="/kb/foundations/glossary#qi">QI</Tooltip>/PI may be present and available for questions, but the person with the primary patient relationship should not be the one asking for consent.
-
-<Note>
-If the treating physician is genuinely the best-qualified person to explain the study, explain to the REB why this is necessary. If the REB approves it, the physician must disclose their dual role to the participant at the time of consent. The same principle applies to treating nurses and other clinicians with established relationships with the participant.
-</Note>
-
-## MSSS paragraph requirements
-
-Because Quebec law grants specific rights to research participants, those rights must be reflected explicitly in the ICF. The Ministère de la Santé et des Services Sociaux (MSSS) requires specific standard clauses in all ICFs submitted to Quebec REBs. These are not optional additions — they are provincial requirements. An ICF without them will be rejected.
-
-The required MSSS content covers these key areas:
-
-1. Voluntary participation and the right to withdraw without consequence
-2. Confidentiality and data protection
-3. What will happen if you suffer any harm during the study
-4. Contact information for questions
-5. Signatures
+{/* Diagram source: images/diagrams/consent-process.mmd. Edit it there, then regenerate the SVG (STYLE-HUB H). */}
+<Frame caption="Click or tap to enlarge.">
+  ![Flowchart of the consent process. A potential participant identified by REB-approved means is given the REB-approved consent form and an explanation of the study, has their questions answered and time to decide. If they agree, everyone required signs and dates the form, the participant gets a copy, and screening follows; eligible participants are enrolled. A refusal is recorded on the Screening Log with no further study contact, and a screen failure is recorded.](/images/diagrams/consent-process.svg)
+</Frame>
 
 <Warning>
-Always start from the [CAE consent form templates](https://muhc.ca/cae/page/templates-consent-forms). These already contain the mandatory provincial wording, shown in red text, required by Quebec law. If a sponsor provides their own ICF template, that wording must be inserted before submitting to the REB. Use the [Verification of ICF Document](https://portal.rimuhc.ca/pls/apex/MUHC2.download_my_file?p_file=249038753110964987) ([SOP-CR-006](/sops/cr-006#appendices), Appendix 1) as the checklist to confirm everything required is present before submission. See [Consent and Assent Templates](/kb/recruitment/consent-templates) for guidance on which template applies to your study type.
+All required signatures must be on the current REB-approved consent form before any screening procedure takes place. A procedure done even minutes early is a deviation.
 </Warning>
 
-For studies involving an <Tooltip tip="A drug, medical device, or natural health product being tested or used as a reference in a clinical trial." headline="Investigational Product (IP)" cta="Full definition" href="/kb/foundations/glossary#ip">investigational product</Tooltip> — drug, natural health product, or medical device — the ICF must be printed on MUHC hospital letterhead and include the MUHC Medical Records barcode **FMU-9997**. This barcode ensures the research ICF is filed in the Alert section of the participant's OACIS electronic medical record, making it visible to treating clinicians in an emergency.
+The procedures most often done too early, before the consent form is signed, are drawing blood for screening lab tests and recording medical history in the electronic case report form. If a procedure happens before consent, [record and report the deviation](/kb/conduct/safety-reporting/reportable-events). Repeated or deliberate failure to obtain consent properly, or to document the consent process, is among the reasons the REB may suspend or end a study, or suspend its recruitment.
 
-All participant-facing materials, including the ICF, must be available in both English and French. Submit participant materials to the REB in editable Word format — not PDF. A [Translation Certificate](https://portal.rimuhc.ca/pls/apex/MUHC2.download_my_file?p_file=249039073901978848) ([SOP-CR-006](/sops/cr-006#appendices), Appendix 2) must be completed for translated versions.
+To check eligibility in health records before someone consents, you need the REB's approval to use the records without consent and MUHC authorization to access them. You ask for both in your Nagano submission, where you answer the questions on access to information for pre-screening. The principal investigator, who leads the study at the MUHC, also completes the short version of the [évaluation des facteurs relatifs à la vie privée (EFVP)](/kb/recruitment/privacy), the MUHC's privacy impact assessment.
 
-## Exceptional situations
+Based on: [SOP-CR-008, section 3](/sops/cr-008#standard-consent-process); [SOP-CR-006, section 5.3](/sops/cr-006#5-3-icf-content) (no consent before the approvals); [SOP-CR-026, section 5.5](/sops/cr-026#5-5-suspension-or-termination-of-reb-approved-studies) (suspension); for pre-screening, [SOP-CR-007, section 5.4](/sops/cr-007#5-4-initial-reb-and-institutional-review) and the [Act respecting health and social services information](https://www.legisquebec.gouv.qc.ca/en/document/cs/R-22.1), section 44; [Civil Code of Québec](https://www.legisquebec.gouv.qc.ca/en/document/cs/CCQ-1991), article 24.
 
-| Situation | What applies |
+## Who can consent
+
+Research that could interfere with a person's integrity needs an REB's approval and monitoring, and its risk must not be disproportionate to the benefit that can reasonably be expected.
+
+Research with minors, or with adults who can't consent, must be approved and monitored by an REB that the Minister of Health and Social Services has formed or designated; the MUHC REB is a designated one. That research must also have the potential to benefit the participant's health or, for research on a group, people in the same age group or with the same disease or disability.
+
+| Participant | Who consents |
 |---|---|
-| Participant cannot read | An impartial witness must be present for the entire consent discussion. The ICF is read aloud and explained. The witness signs the ICF, attesting that the information was accurately explained, understood, and consent was freely given. Verbal consent is documented ([SOP-CR-008](/sops/cr-008) §5.9). |
-| Participant does not speak English or French | Consent discussion must take place in the participant's preferred language using an impartial qualified interpreter. A certified translation of the ICF must be provided if possible; the interpreter signs the ICF. Non-English/French-speaking participants cannot be excluded solely on language grounds (TCPS2). A Translation Certificate must be completed ([SOP-CR-008](/sops/cr-008) §5.10). |
-| Remote or electronic consent (eICF) | A written remote consent procedure must be submitted to the REB alongside the ICF. The eICF platform must be validated and compliant with Health Canada GUI-0100 and 21 CFR Part 11. Electronic signatures are acceptable if compliant with provincial, regulatory, and REB requirements ([SOP-CR-008](/sops/cr-008) §5.2). |
-| Consent waiver — records-based research | The REB may grant a waiver of consent for retrospective or records-based research. When health records are accessed without consent, an EFVP must be submitted. See [Privacy and Confidentiality in Quebec](/kb/recruitment/privacy) for the EFVP framework. |
+| An adult (18 or over) who can consent | The participant. |
+| A minor under 14 | The person with parental authority, or the tutor. |
+| A minor aged 14 to 17 | The person with parental authority, or the tutor. The minor may consent alone only if the REB finds that the research involves only minimal risk and that the circumstances justify it. |
+| An adult who can't consent | Their mandatary or tutor. If the adult has neither, the person qualified to consent to their care may consent, but only to research with minimal risk, as the REB decides when it reviews the project. |
+| An adult who suddenly can't consent, in research that must start promptly | The person qualified to consent to their care, when there's no time to designate a legal representative, as the REB decides when it reviews the project. Enrolment then should follow the measures set out in the protocol or another REB-approved document. |
 
-## Ongoing consent and re-consent
+A minor or an adult who can't consent, and who understands the nature and consequences of the research and objects to it, cannot take part, whoever has consented for them. Tell the participant about the study as far as they can understand it; if able, they should also sign the form or an assent.
 
-Consent is not a one-time event at enrolment. Three situations require re-consent:
+The RI-MUHC's SOPs and forms call the person who consents for someone else the legally appointed representative (LAR). When a participant can't consent, record that, and record the representative's name and their relationship to the participant. The person who consents for a participant cannot be the researcher or any other member of the research team. For children and other participants who need added protection, use [Pediatric Research Considerations](/kb/recruitment/pediatric-research) and [Vulnerable Populations](/kb/recruitment/vulnerable-populations).
 
-- **Amended ICF:** if the ICF is amended — because of new safety information, a protocol change, or any other reason — participants must be re-consented at their earliest visit after the REB approves the amended ICF. Do not re-consent before written REB approval is in hand.
-- **Important new information:** if information becomes available during the study that may be relevant to a participant's decision to continue, they must be informed and this must be documented.
-- **Capacity restored:** if a participant who was initially enrolled through an LAR recovers capacity during the study, their legally effective signed consent must be obtained as soon as possible.
+Full age in Quebec is 18. A minor of 14 or over can consent alone to the care their health requires, but research follows the stricter rules for minors.
 
-Re-consent is documented on the [Informed Consent Process Checklist](https://portal.rimuhc.ca/pls/apex/MUHC2.download_my_file?p_file=249391094414134256) ([SOP-CR-008](/sops/cr-008#appendices), Appendix 3). Each re-consented participant receives a copy of the signed amended ICF. The original signed amended ICF and the checklist are filed with the study source documents.
+Based on: [Civil Code of Québec](https://www.legisquebec.gouv.qc.ca/en/document/cs/CCQ-1991), articles 14, 20, 21 and 153; [SOP-CR-008, sections 3.1](/sops/cr-008#3-1-requirements) and [7.1](/sops/cr-008#7-1-assent); the MUHC REB's [SOP 404.001-2](https://muhc.ca/cae/muhc-research-ethics-board-reb-standard-operating-procedures-sops), section 5.7; the [*Tri-Council Policy Statement* (TCPS 2)](https://ethics.gc.ca/eng/tcps2-eptc2_2022_chapter3-chapitre3.html), article 3.9.
 
-## Other populations requiring consideration
+## Choose who obtains consent
 
-TCPS2 Chapter 4 identifies additional populations whose circumstances may require specific ethical consideration. These are not automatic exclusions — the principle is that people should neither be unfairly excluded from research nor be inappropriately included because of a vulnerability.
+The person obtaining consent must be qualified by education and experience, trained on [SOP-CR-006](/sops/cr-006), [SOP-CR-008](/sops/cr-008) and the protocol, with that training documented, and knowledgeable about the study procedures. The principal investigator must have delegated the task to them on the Task Delegation Log.
 
-<AccordionGroup>
-  <Accordion title="Pregnant participants">
-    Research involving pregnant participants requires careful consideration of risks to both the participant and the fetus. Where a study involves an investigational product with unknown effects in pregnancy, the protocol must address how pregnancies occurring during the study will be handled, including Exposure in Utero (EIU) reporting obligations ([SOP-CR-012](/sops/cr-012)). Pregnant participants are not automatically excluded — exclusion must be scientifically justified and approved by the REB.
-  </Accordion>
-  <Accordion title="Participants in dependent relationships">
-    TCPS2 identifies a heightened risk of undue influence in situations of dependency — prisoners, institutionalized persons, employees in studies conducted by their employer, students in studies conducted by their instructor. The concern is not that these people cannot consent, but that the power relationship may compromise the voluntariness of their decision. The REB will assess what measures are in place to ensure participation is genuinely free.
-  </Accordion>
-  <Accordion title="Participants at the margins of capacity">
-    Cognitive impairment exists on a continuum. A person may have reduced capacity without losing it entirely, and capacity may fluctuate over time. The standard is whether the person sufficiently understands the nature of the study and the risks and potential benefits at the time consent is sought. Where capacity is uncertain, consult the REB on how to assess and document it and whether an LAR is required.
-  </Accordion>
-</AccordionGroup>
+It should not be the participant's treating physician, or anyone else with a long-standing relationship with them: a patient who depends on that person may feel unable to say no. In practice, the clinical research coordinator or another member of the research team often leads the consent discussion, and the principal investigator may be present to answer questions.
 
----
+When participants are also a clinician-researcher's patients, measures must be taken to minimize therapeutic misconception. Participants have that misconception when they don't understand that research aims mainly to produce knowledge and may bring them no therapeutic benefit. Recruitment and consent should make clear which parts of the study are done for research and how they differ from the care the patient would otherwise receive, and clinicians must take care not to create unrealistic expectations about the research's benefits.
 
-## Related resources
+Where involving the patient's own clinician in recruitment and consent serves the patient's best interests, the proposal must say what other measures will minimize therapeutic misconception. For example, the clinician-researcher may lead the consent discussion, and someone not involved in the patient's care may then ask for their agreement.
 
-- [Study Conduct Overview](/kb/conduct/conduct-overview) — lifecycle stages and regulatory context
-- [Recruitment, Screening, and Enrollment](/kb/recruitment/recruitment-enrollment) — pre-screening, EFVP authorization, enrollment procedures
-- [Privacy and Confidentiality](/kb/recruitment/privacy) — confidentiality agreements, data access controls
-- [Reportable Events and Protocol Deviations](/kb/conduct/safety-reporting/reportable-events) — when a consent deviation triggers re-consent
-- [SOP-CR-006 — Informed Consent Documents](/sops/cr-006) — ICF preparation, verification, and tracking
-- [SOP-CR-008 — Obtaining Informed Consent](/sops/cr-008) — consent process, wallet cards, checklists
+<Note>
+If the treating physician is the best person to obtain consent, they must explain why to the REB. If the REB approves, the physician must tell the participant about their two roles.
+</Note>
+
+Based on: [SOP-CR-008, section 3.1](/sops/cr-008#3-1-requirements); the MUHC REB's SOP 404.001-2, sections 5.1 and 5.2; TCPS 2, [chapter 11](https://ethics.gc.ca/eng/tcps2-eptc2_2022_chapter11-chapitre11.html) (its sections on therapeutic misconception and on clinician-researchers' dual roles, and article 11.5).
+
+## Prepare the consent form
+
+Start from the [Centre for Applied Ethics consent form templates](https://muhc.ca/cae/templates-consent-forms), and use [Consent and Assent Templates](/kb/recruitment/consent-templates) to choose the right one and find the wording you may not change.
+
+If the sponsor provides its own form, insert word for word the paragraphs that Quebec's health ministry, the Ministère de la Santé, de la Prévention et des Aînés, requires: voluntary participation and the right to withdraw; confidentiality; what happens should the participant suffer any harm; contact information; and signatures. The REB rejects a form without them. Check the finished form against the [Verification of an ICF Document](https://portal.rimuhc.ca/pls/apex/MUHC2.download_my_file?p_file=249038753110964987) checklist (sign-in required).
+
+The form needs:
+- The version number or date on each page, also shown in the file name of an electronic version.
+- Signature and date lines for the participant and the person obtaining consent, and for the investigator, the representative, a witness or an interpreter where they apply.
+- An English and a French version, as for all participant-facing material, unless the REB accepts a justification.
+- For a clinical trial, the registry's name and web address and the trial's registration number, as the RI-MUHC's SOPs require. The template's registration paragraph names the registry but has no space for the number, so add it.
+- For a study of an investigational product (a drug, medical device or natural health product), MUHC letterhead with the Medical Records bar code FMU-9997, which [not every template carries](/kb/recruitment/consent-templates#edit-the-template), and a statement that participation will be recorded in the participant's medical record.
+- Letterhead and logos, where the form uses them, that follow the MUHC's logo guidelines, listed on its [Media contact page](https://muhc.ca/media-contact).
+- Information about any payments, such as the indemnity for loss and inconvenience, reimbursement of participation-related expenses and compensation for injury, and, for a clinical trial, the methods, amounts and schedule of payment.
+
+Once the REB approves the form in one language, have it translated and submit the translation to the REB. Translations should be done by a qualified or certified translator when required, and a translation certificate should be obtained; use the [Certificate of Translation](https://portal.rimuhc.ca/pls/apex/MUHC2.download_my_file?p_file=249039073901978848) template (sign-in required) if the translator doesn't provide one.
+
+A sponsor-investigator without funds for professional translation may translate the form, or delegate its translation. Submit the consent form and other participant-facing material to the REB as editable Word files, not PDFs.
+
+Based on: [SOP-CR-006, sections 5.1](/sops/cr-006#5-1-general-overview), [5.2](/sops/cr-006#5-2-icf-guidelines) and [5.3](/sops/cr-006#5-3-icf-content); [SOP-CR-007, section 5.8](/sops/cr-007#5-8-clinical-trial-registration) (the registry details); [SOP-CR-008, section 5](/sops/cr-008#ip-studies-medical-records); for payment information, the [*Tri-Council Policy Statement* (TCPS 2)](https://ethics.gc.ca/eng/tcps2-eptc2_2022_chapter3-chapitre3.html), article 3.2, and the International Council for Harmonisation's guideline [ICH E6(R3)](https://www.canada.ca/en/health-canada/services/drugs-health-products/drug-products/applications-submissions/guidance-documents/international-council-harmonisation/guidelines.html), section 1.2.9.
+
+## Adapt the consent process when needed
+
+| Situation | What to do |
+|---|---|
+| The participant or their representative can't read | An impartial witness must be present for the whole discussion. The form is read aloud and explained, and the participant or representative gives verbal consent. The participant (if able) or the representative, and the witness, sign and date the form. |
+| The participant asks to have the form read to them | An impartial witness must be present during the reading and the whole consent discussion. The witness attests that the information was accurately explained and that the participant gave consent. |
+| The participant doesn't speak English or French | Hold the discussion in the participant's preferred language with an impartial, qualified interpreter and, if possible, give them a certified translation of the form. The participant and the interpreter sign and date the REB-approved form. |
+| Research using health records without consent | The REB may approve it. At the MUHC, it also needs an EFVP, reviewed by the MUHC's Access to Information Officer, and MUHC authorization to access the records. |
+
+### Obtain consent remotely or electronically
+
+For drug trials, Health Canada's interim policy accepts consent obtained remotely or electronically when the process is documented, follows good clinical practice and meets the laws that govern consent, including the Civil Code's rule on written consent.
+
+Submit a written remote consent procedure to the REB with the electronic form and any participant-facing material; the REB must acknowledge them before you use them. The procedure names the software and confirms that it is fully validated and complies with electronic records guidance and regulations. For a Health Canada-regulated study, it should also describe how the form will be explained and discussed.
+
+The software must also be able to confirm the participant's identity, and the process needs documented procedures, trained users and secure storage of the signed forms.
+
+For a drug trial, Health Canada's [guidance on Division 5 of the Food and Drug Regulations (GUI-0100)](https://www.canada.ca/en/health-canada/services/drugs-health-products/compliance-enforcement/good-clinical-practices/guidance-documents/guidance-drugs-clinical-trials-human-subjects-gui-0100.html) applies; for more on electronic records, it refers to the US Food and Drug Administration rule, Part 11 of Title 21 of the Code of Federal Regulations (21 CFR Part 11).
+
+Based on: [SOP-CR-006, section 5.2](/sops/cr-006#5-2-icf-guidelines); the MUHC REB's SOP 404.001-2, section 5.4 (witnesses and interpreters); [SOP-CR-008, sections 4](/sops/cr-008#remote-electronic-consent), [7](/sops/cr-008#special-populations) and [8](/sops/cr-008#retrospective-studies); [SOP-CR-007, section 5.4](/sops/cr-007#5-4-initial-reb-and-institutional-review) and the [Act respecting health and social services information](https://www.legisquebec.gouv.qc.ca/en/document/cs/R-22.1), section 44 (health records without consent); Health Canada's [interim policy](https://www.canada.ca/en/health-canada/services/drugs-health-products/drug-products/announcements/interim-policy-modernization-clinical-trial-framework-notice.html) (Sept. 14, 2026); [Civil Code of Québec](https://www.legisquebec.gouv.qc.ca/en/document/cs/CCQ-1991), article 24.
+
+## Compensate participants within the limits
+
+Participants in research that could interfere with their integrity may receive an indemnity for the loss and inconvenience they suffer, and no other financial reward.
+
+Quebec's rule is stricter than national and international ethics guidance. Researchers following the [*Tri-Council Policy Statement*](https://ethics.gc.ca/eng/tcps2-eptc2_2022_chapter3-chapitre3.html) (TCPS 2) or the good clinical practice guideline (E6) of the International Council for Harmonisation (ICH) may pay participants for taking part, for example healthy volunteers in Phase I trials, as long as the payment isn't so large that it unduly influences the decision.
+
+[The RI-MUHC's SOPs](/sops/cr-007#5-7-conflict-of-interest-coi) add that the amount must not be an undue inducement and is paid pro rata, in proportion to the participation. For amounts and reimbursement in practice, use [Recruitment, Screening and Enrolment](/kb/recruitment/recruitment-enrollment).
+
+A parent, tutor or other representative should not receive an incentive for arranging the participant's involvement. They may accept, on the participant's behalf, compensation suited to the circumstances, within the same limits.
+
+Based on: [Civil Code of Québec](https://www.legisquebec.gouv.qc.ca/en/document/cs/CCQ-1991), article 25; [SOP-CR-007, section 5.7](/sops/cr-007#5-7-conflict-of-interest-coi); [TCPS 2](https://ethics.gc.ca/eng/tcps2-eptc2_2022_chapter3-chapitre3.html), article 3.1, and [chapter 11](https://ethics.gc.ca/eng/tcps2-eptc2_2022_chapter11-chapitre11.html); [ICH E6(R3)](https://www.canada.ca/en/health-canada/services/drugs-health-products/drug-products/applications-submissions/guidance-documents/international-council-harmonisation/guidelines.html), section 1.2.8.
+
+## Keep consent current
+
+Consent continues for the whole study. Participants can withdraw at any time, and can ask that their data or biological material be withdrawn too. Give them chances to ask questions, and tell them promptly about any important new information that could affect their decision to stay; this should be documented.
+
+Do not use an amended consent form until you have the REB's written approval and the sponsor's go letter for the amendment, if the sponsor issues one. Then re-consent each affected participant on it at their first visit after that, unless the sponsor or the REB asks for something different. A participant who turns 18, or who regains the capacity to consent, signs their own consent as soon as possible.
+
+Record each consent and re-consent on the [Informed Consent Process Checklist](https://portal.rimuhc.ca/pls/apex/MUHC2.download_my_file?p_file=249391094414134256) (sign-in required); the person who obtained the consent must complete it. Give the participant a copy of each signed amended form, and file the originals and the checklists with the study's source documents.
+
+When a participant starts a study of an investigational product, send MUHC Medical Records Services the Confirmation of Participation in Research form (FMU-9997) and a copy of the signed consent form, for the Alert section of the participant's electronic medical record (OACIS), so that any caregiver knows about the study. Follow [the steps for notifying Medical Records](/kb/recruitment/recruitment-enrollment#notify-medical-records-and-give-a-wallet-card).
+
+Based on: [SOP-CR-006, section 5.4](/sops/cr-006#5-4-ongoing-amendments); [SOP-CR-008, sections 5](/sops/cr-008#ip-studies-medical-records), [6](/sops/cr-008#ongoing-consent) and [9](/sops/cr-008#documenting-consent); [TCPS 2](https://ethics.gc.ca/eng/tcps2-eptc2_2022_chapter3-chapitre3.html), articles 3.1 and 3.3.
+
+## Track a pregnancy during a trial
+
+The protocol, or a separate document, should generally describe the type and duration of follow-up for participants who become pregnant. If a participant in a trial of an investigational product becomes pregnant, collect and follow the exposure in utero reports to learn the outcome, even when there's no adverse event.
+
+Based on: [SOP-CR-012, section 5.4](/sops/cr-012#5-4-reporting-all-saes-to-the-sponsor-within-24-hours); [ICH E6(R3)](https://www.canada.ca/en/health-canada/services/drugs-health-products/drug-products/applications-submissions/guidance-documents/international-council-harmonisation/guidelines.html), appendix B.9.4.
+
+## Include participants fairly
+
+You should be inclusive in choosing participants. Do not exclude people because of their culture, language, religion, race, disability, sexual orientation, ethnicity, linguistic proficiency, gender or age unless there's a valid reason, and do not exclude women because of their reproductive capacity, or because they're pregnant or breastfeeding, without one.
+
+In a sponsor's trial, the protocol sets who is eligible. Where you write the protocol, excluding people who are pregnant or breastfeeding doesn't have to be the default. You and the REB must take into account the foreseeable risks and potential benefits of the research for them and for the embryo, fetus or infant, and those of excluding them. [PregTrial](https://pregtrial.ca/), a national team working to include pregnant and lactating people in clinical trials, offers a Rapid Response Consultation Service.
+
+Where a participant depends on the researcher, as a student or an employee may, you should take particular care that the decision stays free; the REB looks at how your process protects it. Capacity can be partial, and it can change over time. If you're unsure whether someone can consent, ask the REB.
+
+If your situation is different, ask the REB about consent rules, or the Research Facilitator about RI-MUHC processes.
+
+Based on: [TCPS 2](https://ethics.gc.ca/eng/tcps2-eptc2_2022_chapter3-chapitre3.html), article 3.1, and [chapter 4](https://ethics.gc.ca/eng/tcps2-eptc2_2022_chapter4-chapitre4.html), articles 4.1 and 4.3.
+
+## Contacts
+
+- Consent requirements for your study: the REB, [reb@muhc.mcgill.ca](mailto:reb@muhc.mcgill.ca), and the [Centre for Applied Ethics](https://muhc.ca/cae) site.
+- RI-MUHC processes and SOPs: the Research Facilitator, [research.facilitator@muhc.mcgill.ca](mailto:research.facilitator@muhc.mcgill.ca).
+
+{/* Checked against: SOP-CR-006_08, SOP-CR-007_08, SOP-CR-008_08 and SOP-CR-009_08 (May 1, 2025), and SOP-CR-012_08 (June 19, 2023); Civil Code text current to Oct. 15, 2026. Kept out of the reader's view (MF, Nov. 9); a script finds these lines when a new SOP set arrives. */}
+
+Last reviewed: November 2026.
 
 <div className="ri-cantrain-callout">
   <a href="/training/cantrain"><img src="/images/cantrain_logo.png" alt="CANTRAIN" className="ri-cantrain-logo" /></a>

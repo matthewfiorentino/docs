@@ -8,7 +8,7 @@ Quebec law requires that any medication administered to a patient — including 
 
 ## The Quebec pharmacy rule
 
-Under the _Act Respecting Health Services and Social Services_ (RSQ, c. S-4.2) and the regulations of the Ordre des pharmaciens du Québec (OPQ), any medication administered to a patient must be dispensed by a pharmacist. This applies equally to investigational drugs in clinical trials. There is no equivalent requirement in most other Canadian provinces.
+The RI-MUHC's standard operating procedures (SOPs), based on the rules of the Ordre des pharmaciens du Québec (OPQ), require that any medication administered to a patient be dispensed by a pharmacist. This applies equally to investigational drugs in clinical trials. There is no equivalent requirement in most other Canadian provinces.
 
 At the MUHC, this means the **MUHC Research Pharmacy** is the central point for all investigational drug management. Once a study is initiated, the IP is shipped directly to the MUHC Research Pharmacy, where it is stored and dispensed by pharmacy staff. The <Tooltip tip="The physician responsible to the sponsor for the conduct of a clinical trial at the site. One QI per study per Canadian site." headline="Qualified Investigator (QI)" cta="Full definition" href="/kb/foundations/glossary#qi">QI</Tooltip> delegates the operational tasks of IP management to the pharmacy — but the QI retains ultimate responsibility for the IP and for ensuring it is used in accordance with the approved protocol.
 
@@ -47,26 +47,6 @@ The division of responsibility between the QI/PI and the MUHC Research Pharmacy 
 
 From the moment an investigational product arrives at the MUHC to its final destruction or return, every step requires documentation. The pharmacy leads operational management; the QI maintains oversight.
 
-```mermaid
-flowchart TD
-    A[Receipt at MUHC Pharmacy] --> B[Storage<br/>temperature-controlled]
-    B --> C[Dispensing<br/>on Rx from QI/Sub-I MD]
-    C --> D[Administration to participant]
-    D --> E[Accountability log update]
-    E --> F[Return to Sponsor<br/>or Destruction]
-    F --> G[Documentation filed in ISF]
-    B -.->|Temperature excursion<br/>or expiry| Q[Quarantine]
-    Q -.->|Resolved| B
-    Q -.->|Cannot release| F
-    style A fill:#dbeeff,stroke:#2b9ce2,color:#150e51
-    style B fill:#dbeeff,stroke:#2b9ce2,color:#150e51
-    style C fill:#dbeeff,stroke:#2b9ce2,color:#150e51
-    style D fill:#dbeeff,stroke:#2b9ce2,color:#150e51
-    style E fill:#dbeeff,stroke:#2b9ce2,color:#150e51
-    style F fill:#dbeeff,stroke:#2b9ce2,color:#150e51
-    style G fill:#dbeeff,stroke:#2b9ce2,color:#150e51
-    style Q fill:#fff3e0,stroke:#cc6600,color:#7a3a00
-```
 
 <Steps>
 
@@ -111,9 +91,9 @@ Storage equipment requirements under [SOP-CR-025](/sops/cr-025):
 - Regular maintenance and a calibrated Min/Max thermometer or centralized monitoring system
 - Backup power in case of power outage
 - An alarm system allowing quick detection of malfunction or temperature excursion
-- RI-MUHC or MUHC Biomed must be notified of any equipment malfunction
+- The appropriate Biomed department (MUHC Biomed for MUHC equipment, RI-MUHC Biomed for equipment of the Centre for Innovative Medicine) should be informed of any equipment malfunction
 
-Any temperature excursion must be documented. If the IP is moved from the main pharmacy to a research storage location, a control and traceability record must be maintained. All shipping records must confirm the IP was maintained at the recommended temperature range while in transit.
+Any temperature excursion must be documented and reported to the Sponsor immediately, and the IP quarantined until the Sponsor confirms whether it is fit for use. If the IP is moved from the main pharmacy to a research storage location, a control and traceability record must be maintained. All shipping records must confirm the IP was maintained at the recommended temperature range while in transit.
 
 ## Accountability and documentation
 
@@ -165,7 +145,7 @@ The Quebec pharmacy rule and the MUHC Research Pharmacy's central role apply pri
 <AccordionGroup>
 
 <Accordion title="Medical devices">
-Regulated under Health Canada's <Tooltip tip="Health Canada authorization to conduct a clinical investigation of a medical device. The device equivalent of a CTA." headline="Investigational Testing Authorization (ITA)" cta="Full definition" href="/kb/foundations/glossary#ita">Investigational Testing Authorization</Tooltip> (ITA) process. Device handling, storage, and accountability follow device-specific procedures. See [SOP-CR-024](/sops/cr-024) for the RI-MUHC framework.
+Regulated under Health Canada's <Tooltip tip="Health Canada's authorization for a manufacturer or importer to sell a Class II, III or IV medical device to qualified investigators for testing." headline="Investigational Testing Authorization (ITA)" cta="Full definition" href="/kb/foundations/glossary#ita">Investigational Testing Authorization</Tooltip> (ITA) process. Device handling, storage, and accountability follow device-specific procedures. See [SOP-CR-024](/sops/cr-024) for the RI-MUHC framework.
 </Accordion>
 
 <Accordion title="Natural health products (NHPs)">
