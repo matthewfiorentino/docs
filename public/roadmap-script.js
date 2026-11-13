@@ -468,7 +468,7 @@
     if (p.isSI)
       ph1.items.push(it('p1-si',        'Review Sponsor-Investigator obligations — the 100-series SOPs apply to your study', 'Sponsor-Investigator', '/kb/planning/sponsor-investigator'));
     if (p.needsHC)
-      ph1.items.push(it('p1-hc-plan',   'Plan the Health Canada filing timeline — allow minimum 30 days for HC review, running in parallel with REB', 'Regulatory requirements', '/kb/planning/regulations'));
+      ph1.items.push(it('p1-hc-plan',   'Plan the Health Canada filing timeline — allow minimum 30 days for HC review, running in parallel with REB', 'Regulatory requirements', '/kb/governance/laws-regulations#check-whether-your-study-needs-an-authorization-from-health-canada'));
     if (p.crossBorder)
       ph1.items.push(it('p1-efvp-plan', 'Plan the EFVP (Privacy Impact Assessment) — allow 4–8 weeks to complete before submission', 'Privacy & data governance', '/kb/recruitment/privacy'));
     if (p.phi)

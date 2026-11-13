@@ -149,7 +149,6 @@
                       "kb/planning/sponsored-trials",
                       "kb/planning/sponsor-investigator",
                       "kb/planning/iit-startup",
-                      "kb/planning/regulations",
                       "kb/planning/ai-in-clinical-research"
                     ]
                   },
@@ -275,10 +274,9 @@
                 "group": "Governance & Oversight",
                 "icon": "scale-balanced",
                 "pages": [
-                  "kb/governance/regulatory-framework",
+                  "kb/governance/laws-regulations",
                   "kb/governance/institutional-structure",
                   "kb/governance/quality-assurance",
-                  "kb/governance/modernized-ct-regulations",
                   "kb/governance/french-language-requirements",
                   "kb/governance/privacy",
                   {
@@ -1021,7 +1019,19 @@
     },
     {
       "source": "/kb/regulations",
-      "destination": "/kb/planning/regulations"
+      "destination": "/kb/governance/laws-regulations"
+    },
+    {
+      "source": "/kb/planning/regulations",
+      "destination": "/kb/governance/laws-regulations"
+    },
+    {
+      "source": "/kb/governance/regulatory-framework",
+      "destination": "/kb/governance/laws-regulations"
+    },
+    {
+      "source": "/kb/governance/modernized-ct-regulations",
+      "destination": "/kb/governance/laws-regulations"
     },
     {
       "source": "/kb/ai-in-clinical-research",
