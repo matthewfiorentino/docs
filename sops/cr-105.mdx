@@ -1,147 +1,199 @@
 ---
 timestamp: false
-title: "SOP-CR-105 — Database Maintenance and Management"
-description: "Ongoing maintenance and management requirements for the study database throughout the active phase of a Sponsor-Investigator study at the RI-MUHC, covering backups, access management, query management, data validation, and database issue handling."
+title: "SOP-CR-105: Database Maintenance and Management"
+description: "How to manage and maintain a study database at the site from launch to lock, so that its electronic data stay accurate, reliable, complete and secure."
 ---
 
+{/* HUB: meta */}
 <div className="ri-sop-meta">
-  <div className="ri-sop-badges">
-    <Badge color="gray">SOP-CR-105_04</Badge>
-    <Badge color="gray">Version 04</Badge>
-    <Badge color="green">Effective 01 Sep 2018</Badge>
-    <Badge color="blue">Sponsor-Investigator</Badge>
-  </div>
-  <button className="ri-print-btn" onClick={() => window.print()}>Print / Save PDF</button>
+  <button className="ri-print-btn" onClick={() => window.print()}>Print or save as PDF</button>
 </div>
 
-Reviewed by Dr. Louise Pilote, Director of Clinical Research, RI-MUHC.
-Approved by Gilbert Tordjman, Chief Operating and Development Officer, RI-MUHC.
-Signed copy on file — download the PDF for the approved version with signatures.
+<Note>
+Reading a standard operating procedure (SOP) on the Hub doesn't count toward your compliance record. Complete the [SOP Reader and Assessment](/training/compliance-requirements#sop-reader-and-assessment) for your level on TalentLMS.
+</Note>
+{/* /HUB */}
 
----
+{/* HUB: part heading */}
+## N2 SOP105_04: Database Maintenance and Management
+{/* /HUB */}
 
+| | |
+|---|---|
+| Title | Database Maintenance and Management |
+| SOP Code | SOP105_04 |
+| Effective Date | 15-May-2017 |
 
-<Warning>
-**Controlled document.** Always refer to this page for the current version. Do not rely on downloaded or printed copies. Reading this page does not count toward your compliance record — complete the SOP Reader and Assessment on TalentLMS.
-</Warning>
+**Site Approval/Authorization to Adopt**
 
-<div className="ri-sop-key-points">
-
-## Key points
-
-- The database must be **backed up** at a frequency sufficient to prevent data loss, using a method that ensures backups are recoverable. Backup logs must be maintained.
-- **User access must be reviewed** at regular intervals and updated promptly when team members join, change roles, or leave the study. Removed users must be logged.
-- **Data validation checks** must be run routinely to identify missing data, out-of-range values, and cross-field inconsistencies. Findings must be queried and resolved in a timely manner.
-- Any **system issue that could affect data integrity** must be documented, assessed for impact, and corrected. All data entries made during the affected period must be reviewed and verified.
-- All database changes (including query resolutions, data corrections, and user access changes) must be captured in the **audit trail** with user identifier, date, time, original value, and reason for change.
-- Prepare for **database lock** ([SOP-CR-107](/sops/cr-107)) by ensuring all data are entered, all queries resolved, all protocol deviations documented, and all validation checks completed.
-
-</div>
-
-## 1 · Purpose {#purpose}
-
-This Standard Operating Procedure (SOP) describes the management and
-maintenance of the study database from database launch until database lock to ensure
-accurate, reliable, complete, and secure electronic data.
-
----
-
-## 2 · Scope {#scope}
-
-This SOP is applicable to all studies databases managed at the site and to those
-personnel responsible for management and maintenance of studies databases, unless
-otherwise stated in the study contract or Data Management Plan.
-
----
-
-## 3 · Responsibilities {#responsibilities}
-
-The **Sponsor-Investigator or <Tooltip tip="The physician responsible to the sponsor for the conduct of a clinical trial at the site. One QI per study per Canadian site." headline="Qualified Investigator (QI)" cta="Full definition" href="/kb/foundations/glossary#qi">QI</Tooltip>/Investigator, Data Management personnel, and IT Systems Support personnel** (when applicable) are responsible for ensuring that all database maintenance and management processes meet all applicable regulatory, ICH-<Tooltip tip="International standard for design, conduct, monitoring, recording, and reporting of clinical studies." headline="Good Clinical Practice (GCP)" cta="Full definition" href="/kb/foundations/glossary#gcp">GCP</Tooltip>, Sponsor, and local requirements.
-
----
-
-## 4 · Definitions {#definitions}
-
-See [Glossary of Terms](/kb/foundations/glossary) for all term definitions.
-
----
-
-## 5 · Procedure {#procedure}
-### 5.1 Routine database backups
-
-**5.1.1** The database must be backed up at a frequency sufficient to prevent unacceptable data loss (as specified in the DMP → [SOP-CR-103](/sops/cr-103)). Minimum recommended frequency is daily for active studies.
-
-**5.1.2** Backups must use a method that ensures data are recoverable. Test backup restoration periodically to confirm recoverability.
-
-**5.1.3** Maintain a backup log documenting: date of backup, backup method, storage location, person responsible, and any issues encountered.
-
-**5.1.4** Store backups in a separate, secure location from the primary database.
-
-### 5.2 User access management
-
-**5.2.1** Review user access at regular intervals (at a minimum, at each annual renewal and whenever team members change) and update promptly when team members join, change roles, or leave the study.
-
-**5.2.2** Remove user access immediately when a team member is undelegated from the <Tooltip tip="Lists each team member, their qualifications, and specific trial tasks authorized by the QI." headline="Task Delegation Log (TDL)" cta="Full definition" href="/kb/foundations/glossary#tdl">Task Delegation Log</Tooltip> or leaves the study. Document the date of access removal.
-
-**5.2.3** Maintain a user access log documenting: user name, role, access level, date access was granted, and date access was removed (if applicable).
-
-**5.2.4** Shared user accounts are prohibited. Each user must have a unique login.
-
-### 5.3 Data entry and query management
-
-**5.3.1** Monitor data entry timelines per the DMP. Identify and address data entry backlogs promptly.
-
-**5.3.2** Run data validation checks routinely to identify:
-- Missing data or incomplete CRFs
-- Out-of-range values
-- Cross-field inconsistencies
-- Protocol deviation flags
-
-**5.3.3** Raise queries for all data issues identified. Queries must include: the field in question, the issue identified, and a request for the site/user to verify and correct.
-
-**5.3.4** Resolve all outstanding queries within the timeframes specified in the DMP. Document query status and closure.
-
-**5.3.5** All data corrections must be made through the audit trail — overwriting original data without an audit trail entry is prohibited.
-
-### 5.4 Handling database issues
-
-**5.4.1** Any system issue that could affect data integrity must be documented immediately, including: description of the issue, date/time of occurrence, potential data affected, and corrective action taken.
-
-**5.4.2** Assess the impact of any system issue on all data entries made during the affected period. Review and verify all potentially affected data.
-
-**5.4.3** Report significant database issues to the QI/PI and, if participant safety could be affected, to the <Tooltip tip="The ethics committee that reviews and approves research involving human participants. Also called CER at French-language institutions." headline="Research Ethics Board (REB)" cta="Full definition" href="/kb/foundations/glossary#reb">REB</Tooltip> → [SOP-CR-026](/sops/cr-026).
-
-### 5.5 Preparation for database lock
-
-**5.5.1** Prior to database lock → [SOP-CR-107](/sops/cr-107), ensure:
-- All participant data are entered and complete
-- All outstanding queries are resolved and closed
-- All protocol deviations are documented on the Deviation Log
-- All required data validation checks are completed and issues resolved
-- The Statistical Analysis Plan (SAP) is finalized → [SOP-CR-101](/sops/cr-101)
-- A final audit trail review has been completed
-
----
-
-## Appendices {#appendices}
-
-No appendices associated with this SOP.
-
----
-
-## References {#references}
-
-- N2 Network SOP105_04
-- ICH-GCP E6(R2), Guideline for Good Clinical Practice — Section 5.5
-- 21 CFR Part 11, Electronic Records; Electronic Signatures
-- Health Canada, Food and Drug Regulations, Part C, Division 5
-
----
-
-<h2>Revision history</h2>
-
-| Version | Date | Summary |
+| Name and Title of Local Personnel (typed or printed) | Signature | Date dd/Mon/yyyy |
 |---|---|---|
-| SOP-CR-105_04 | 01 Sep 2018 | Conversion to RI-MUHC SOP format. Updated regulatory references and local institutional requirements. |
-| SOP-CR-105_03 | 24 May 2016 | Revised backup and query management requirements; updated regulatory references. |
-| SOP-CR-105_02 | 15 May 2015 | Added Authorization to Adopt; updated reference versions. |
+| BRUCE MAZER, MD | Signed |  |
+| EXECUTIVE DIRECTOR AND CSO |  | 08-Aug-2018 |
+
+<a id="purpose"></a>
+
+### 1.0 Purpose
+
+This Standard Operating Procedure (SOP) describes the management and maintenance of the study database from database launch until database lock to ensure accurate, reliable, complete, and secure electronic data.
+
+<a id="scope"></a>
+
+### 2.0 Scope
+
+This SOP is applicable to all studies databases managed at the site and to those personnel responsible for management and maintenance of studies databases, unless otherwise stated in the study contract or Data Management Plan.
+
+<a id="responsibilities"></a>
+
+### 3.0 Responsibilities
+
+The Sponsor-Investigator or Qualified Investigator (<Tooltip tip="The physician responsible to the sponsor for the conduct of a clinical trial at the site. One QI per study per Canadian site." headline="Qualified Investigator (QI)" cta="Full definition" href="/kb/foundations/glossary#qi">QI</Tooltip>)/Investigator, Data Management personnel and IT Systems Support personnel (when applicable) are responsible for ensuring that the processes involved in all database maintenance and management meet all the applicable regulatory, International Conference on Harmonization (ICH) Good Clinical Practice (GCP), Sponsor and local requirements.
+
+Any or all parts of this procedure may be delegated to appropriately trained study team members, but remain the ultimate responsibility of the Sponsor, Sponsor-Investigator and/or Qualified Investigator (QI)/Investigator.
+
+<a id="definitions"></a>
+
+### 4.0 Definitions
+
+Computer system: The term computer system applies to the set of computer hardware or other similar device by or in which data are recorded or stored and any procedures related to the recording or storage of the study database. For example, a computer system may be a mainframe, server, virtual server, workstation, personal computer, portable device or a system of computers arranged as a network.
+
+Database: The term database applies to all computer software which is used to format, manipulate or control storage of the electronic data for the study. This may be one computer file or a system of files which are maintained as the study database.
+
+Study Database Manual: The repository of information concerning the study data base.
+
+User Acceptance Testing (UAT): A formal means by which one verifies that the system meets the required business functions by emulating normal use conditions.
+
+See also, “CDISC Clinical Research Glossary, Version 9.0” and “N2 Glossary of Terms”.
+
+<a id="procedure"></a>
+
+### 5.0 Procedure
+
+<a id="5-1"></a>
+
+#### 5.1 Documentation
+
+<a id="5-1-1"></a>**5.1.1** All documentation and record keeping described in the following sections must be maintained as part of the study database manual.
+
+<a id="5-2"></a>
+
+#### 5.2 Change control
+
+<a id="5-2-1"></a>**5.2.1** Clearly document all software information (software name, vendor name, release/version, patches) and the database configuration. Keep track of all changes and upgrades.
+
+<a id="5-2-2"></a>**5.2.2** Clearly document all hardware information (server, network share, etc) and the hardware configuration on which the database resides. Keep track of all changes and upgrades.
+
+<a id="5-2-3"></a>**5.2.3** Create and maintain a list of users who have access to the database. If there is restricted access to the database, keep track of the access privileges of all users.
+
+<a id="5-2-4"></a>**5.2.4** Maintain training logs for data management personnel and for end-users of the database.
+
+<a id="5-2-5"></a>**5.2.5** When changes are made to the database structure, follow the relevant steps in the site’s database set-up procedures. These steps include, but are not limited to:
+
+- Update the requirements for data transfers and integration with other systems.
+- Update the data entry screens.
+- Update edit check programs and validation rules.
+- Perform UAT of the changes.
+- Notify and train end users as necessary.
+- Update the study database manual.
+
+<a id="5-3"></a>
+
+#### 5.3 Data auditing
+
+<a id="5-3-1"></a>**5.3.1** Where possible, establish an electronic audit trail of all modifications and of additions to and deletions of entered data. Where an electronic audit trail is not possible, a paper trail documenting all modifications, deletions and additions must be maintained, including the date and time, the reason for change and initials of the person making the change.
+
+<a id="5-3-2"></a>**5.3.2** When data is directly entered into an eCRF, and there is no paper record, the audit trails must be computer-generated and time-stamped and must contain:
+
+- The date and time of the change, addition or deletion.
+- The user making the change, addition or deletion.
+- The reason for the change, addition or deletion.
+- The old value.
+- The new value.
+
+<a id="5-3-3"></a>**5.3.3** Data modifications, deletions and additions requested after database lock and which are outside of the audit trail capability must be clearly documented.
+
+<a id="5-3-4"></a>**5.3.4** Where possible, an archive of the database before modification should be maintained so that it is possible to track the changes electronically.
+
+<a id="5-4"></a>
+
+#### 5.4 Database security
+
+<a id="5-4-1"></a>**5.4.1** If the database is located on a networked share drive, ensure limited access to the database using network accounts or database access accounts.
+
+<a id="5-4-2"></a>**5.4.2** Ensure the computer system housing the database is protected with the latest antivirus and anti-spyware software and that it is in a secure location preferably with limited physical access and protected from fire and water damage.
+
+<a id="5-4-3"></a>**5.4.3** Create, maintain and document a data loss protection (DLP) process for the database. Database backup and recovery must be periodically tested.
+
+<a id="5-5"></a>
+
+#### 5.5 Interim release of data
+
+<a id="5-5-1"></a>**5.5.1** Ensure privacy legislation provisions (local, provincial, national, and international as applicable to the study) are met within the database for identifiable data (including coded data).
+
+<a id="5-5-2"></a>**5.5.2** Refer to your local requirements for the release of data. Maintain appropriate documentation and authorizations for access to the requested data.
+
+<a id="5-5-3"></a>**5.5.3** Best practice before releasing interim data is to follow the local procedure for database lock. This may mean temporarily removing the write access. These steps may include but are not limited to:
+
+- Notification of sponsor/investigator,
+- Entry and reconciliation of all data received,
+- Reconciliation of <Tooltip tip="An adverse event meeting seriousness criteria: death, life-threatening, hospitalization, disability, or congenital anomaly." headline="Serious Adverse Event (SAE)" cta="Full definition" href="/kb/foundations/glossary#sae">SAE</Tooltip>’s,
+- Performance of quality control checks,
+- Identification of protocol violations,
+- Completion of all medical coding, and
+- Resolution and quality control of outstanding data queries.
+
+<a id="5-5-4"></a>**5.5.4** Ensure the recipient is aware of the regulations regarding the use of linked data.
+
+<a id="5-5-5"></a>**5.5.5** Where necessary, maintain the blinding of the treatment coding in the released datasets. This may mean replacing the treatment codes with mock codes or sending the dataset without the treatment assignments.
+
+<a id="5-5-6"></a>**5.5.6** Maintain a record of the released datasets to include:
+
+- The data fields in the dataset,
+- The date and time the dataset was created,
+- The person to whom the dataset was released, and
+- Whether or not the recoding of the treatment assignment was implemented.
+
+<a id="5-5-7"></a>**5.5.7** If feasible, make a duplicate of the released data set for archiving. Ensure the file specifications include the date and time the original released file was created.
+
+<a id="5-5-8"></a>**5.5.8** For the transmission of datasets, follow your site’s requirements regarding the transfer of study data.
+
+<a id="references"></a>
+
+### 6.0 References
+
+- [Health Canada, Food and Drug Regulations, Part C, Division 5, Drugs for Clinical Trials Involving Human Subjects, (Schedule 1024), June 20, 2001.](https://laws-lois.justice.gc.ca/eng/regulations/C.R.C.,_c._870/)
+- [Government of Canada, Medical Devices Regulations, SOR/98-282](https://laws-lois.justice.gc.ca/eng/regulations/SOR-98-282/), May 7, 1998; last amended February 13, 2017, current to March 20, 2017.
+- [Government of Canada, Natural Health Products Regulations, Part 4 Clinical Trials Involving Human Subjects, SOR/2003-196](https://laws-lois.justice.gc.ca/eng/regulations/SOR-2003-196/), June 5, 2003; last amended June 1, 2008, current to March 20, 2017.
+- International Council for Harmonisation of Technical Requirements for Pharmaceuticals for Human Use (ICH), ICH Harmonised Guideline, Integrated Addendum to ICH E6(R1): Guideline for Good Clinical Practice, E6(R2), November 9, 2016.
+- Canadian Institutes of Health Research, Natural Sciences and Engineering Research Council of Canada, and Social Sciences and Humanities Research Council of Canada, Tri-Council Policy Statement: Ethical Conduct for Research Involving Humans, December 2014.
+- [Department of Justice (Canada), Personal Information Protection and Electronic Documents Act (PIPEDA)](https://laws-lois.justice.gc.ca/eng/acts/P-8.6/), last amended June 23, 2015, current to December 31, 2016.
+- CDISC Clinical Research Glossary, Version 9.0, Glossary. December 2011.
+- Canadian Institutes for Health Research, Privacy Advisory Committee, CIHR Best Practices for Protecting Privacy in Health Research, September 2005.
+- US Food and Drug Administration, Code of Federal Regulations, Title 21, Volume 1:
+  - [Part 11, Electronic Records; Electronic Signatures, (21CFR11).](https://www.ecfr.gov/current/title-21/chapter-I/subchapter-A/part-11)
+  - [Part 50, Protection of Human Subjects, (21CFR50).](https://www.ecfr.gov/current/title-21/chapter-I/subchapter-A/part-50)
+  - [Part 56, Institutional Review Boards, (21CFR56).](https://www.ecfr.gov/current/title-21/chapter-I/subchapter-A/part-56)
+- US Department of Health and Human Services, Office of the Secretary, 45 CFR Parts 160 and 164, Standards for Privacy of Individually Identifiable Health Information.
+- US Department of Health and Human Services, Guidance for Industry: Computerized Systems Used in Clinical Investigations, May 2007.
+- Official Journal of the European Communities, Directive 95/46/EC of the European Parliament and of the Council of 24 October 1995.
+- Official Journal of the European Communities, Directive 2001/20/EC of the European Parliament and of the Council of 4 April 2001.
+- Medical Dictionary for Regulatory Activities (MedDRA), Maintenance and Support Services Organization (MSSO).
+- The Society for Clinical Data Management, GCDMP Committee, Good Clinical Data Management Practices. December 2009 Ed.
+- WHO Drug Dictionary, Uppsala Monitoring Centre (UMC).
+
+<a id="revision-history"></a>
+
+### 7.0 Revision history
+
+| SOP Code | Effective Date | Pages | Summary of Changes |
+|---|---|---|---|
+| SOP105_01 | 15-May-2011 | 7 | Original version |
+
+| SOP Code | Effective Date | Summary of Changes |
+|---|---|---|
+| SOP105_02 | 15-May-2013 | Removed total number of pages from header and section 7.0 |
+| SOP105_03 | 15-May-2015 | Added ‘Authorization to Adopt’; update TCPS reference version. |
+| SOP105_04 | 15-May-2017 | Added MDR and NHP references; updated ICH E6 and PIPEDA references; removed Annex 11. |
+
+
+{/* Built word for word from SOP-CR-105_04 (N2 SOP105_04), pages 572 to 578 of "All SOPs combined and searchable -Final_12Dec2024-compressed.pdf", from the proofread transcription in _review/2026-11/batches/b85-sop-pages-exact/ (batch 85). Running headers and footers removed; signatures shown as "Signed". Hub additions sit between HUB comments. Old anchors kept: purpose, scope, responsibilities, definitions, procedure, references. */}

@@ -1,315 +1,347 @@
 ---
 timestamp: false
-title: "SOP-CR-014 — Clinical Data Management"
-description: "Creation, documentation, quality control, and storage of clinical study data at the RI-MUHC site, covering source documents, CRFs, GDPs, and electronic data capture."
+title: "SOP-CR-014: Clinical Data Management"
+description: "How to create a study's visit-specific source document forms and logs, how the site and the sponsor check the quality of its data and how the site manages the data, on paper or electronically."
 ---
 
+{/* HUB: meta */}
 <div className="ri-sop-meta">
-  <div className="ri-sop-badges">
-    <Badge color="gray">SOP-CR-014_08</Badge>
-    <Badge color="gray">Version 08</Badge>
-    <Badge color="green">Effective 01 May 2025</Badge>
-    <Badge color="blue">All levels</Badge>
-  </div>
-  <button className="ri-print-btn" onClick={() => window.print()}>Print / Save PDF</button>
+  <button className="ri-print-btn" onClick={() => window.print()}>Print or save as PDF</button>
 </div>
 
-Reviewed by Dr. Louise Pilote, Director of Clinical Research, RI-MUHC.
-Approved by Gilbert Tordjman, Chief Operating and Development Officer, RI-MUHC.
-Signed copy on file — download the PDF for the approved version with signatures.
+<Note>
+Reading a standard operating procedure (SOP) on the Hub doesn't count toward your compliance record. Complete the [SOP Reader and Assessment](/training/compliance-requirements#sop-reader-and-assessment) for your level on TalentLMS.
+</Note>
+{/* /HUB */}
 
----
+| | |
+|---|---|
+| Title | Clinical Data Management |
+| SOP Code | SOP-CR-014_08 |
+| Effective Date | 01-May-2025 |
 
+**RI-MUHC review and approval**
 
-<Warning>
-**Controlled document.** Always refer to this page for the current version. Do not rely on downloaded or printed copies. Reading this page does not count toward your compliance record — complete the SOP Reader and Assessment on TalentLMS.
-</Warning>
+| Name and Title of Upper Management (typed or printed) | Signature | Date dd/Mon/yyyy |
+|---|---|---|
+| Reviewer: Dr. Louise Pilote, Director of Clinical Research | Signed (DocuSign) | 08-Sep-2024 |
+| Approver: Gilbert Tordjman, Chief Operating and Development Officer | Signed (DocuSign) | 11/1/2024 |
 
-<div className="ri-sop-key-points">
+## 1.0 Purpose
 
-## Key points
+This Standard Operating Procedure (SOP) describes the creation of protocol visit-specific source document forms and logs, quality control (by site and Sponsor) and management of clinical study data at the Investigator’s/Sponsor-Investigator’s site, whether paper or electronic, to ensure that the data collection and data transcription follows the REB-approved study documents as well as GCP, the ALCOA Plus principles, Health Canada regulations and [21 CFR Part 11](https://www.ecfr.gov/current/title-21/chapter-I/subchapter-A/part-11) for electronic records (referenced in [Health Canada GUI 0100](https://www.canada.ca/en/health-canada/services/drugs-health-products/compliance-enforcement/good-clinical-practices/guidance-documents/guidance-drugs-clinical-trials-human-subjects-gui-0100.html)).
 
-- The <Tooltip tip="The physician responsible to the sponsor for the conduct of a clinical trial at the site. One QI per study per Canadian site." headline="Qualified Investigator (QI)" cta="Full definition" href="/kb/foundations/glossary#qi">QI</Tooltip>/PI must create visit-specific source document worksheets for every study visit, capturing all data required by the protocol. Every source form must include a standardized header and footer (protocol number, QI/PI name, visit type, visit date, participant number, and QC information).
-- All data must follow **ALCOA+ principles**: Attributable, Legible, Contemporaneous, Original, Accurate, Complete, Consistent, Enduring, and Available. Never backdate entries; use "late entry" notation with explanation, initials, and date for data recorded after the visit.
-- Corrections must never obscure original entries — draw a single line through incorrect data, initial, date, and explain. Never use liquid corrector, scribble, blackout, or overwrite.
-- Participant nominative information (name, MRN) must never be shared with the external Sponsor. De-identify all source documents using study identification codes. Two team members should be involved: one to de-identify, one to QC.
-- The RI-MUHC supports **REDCap** for investigator-initiated eCRFs of low to moderate complexity (ideally ≤1000 variables). REDCap is not fit for use as an electronic <Tooltip tip="The written document providing the participant with information essential to making an informed decision. Both parties must sign." headline="Informed Consent Form (ICF)" cta="Full definition" href="/kb/foundations/glossary#icf">ICF</Tooltip>.
-- Electronic source data documents must be printed, signed, and dated by the QI/PI to confirm content, unless obtained from the Sponsor's validated equipment with direct upload.
-- Retain all essential documents for a minimum of **15 years** for Health Canada-regulated studies, or **7 years from publication date** for non-regulated studies. All tracking systems for data modifications must remain accessible for monitors, auditors, and regulatory inspectors.
-- QI/PI must initial and date all test results (indicating c.s. or n.c.s.) and all documents requiring medical oversight. Thermal paper test results (e.g. ECGs) must be photocopied promptly; both copies are initialled and dated by the QI/PI.
+## 2.0 Scope
 
-</div>
+This procedure concerns the research community (employees, investigators, physicians, management, consultants, students, volunteers or other persons) involved in collection and management of human research data obtained from human participants at the MUHC/RI-MUHC.
 
-## 1 · Purpose {#purpose}
+## 3.0 Responsibilities
 
-This Standard Operating Procedure (SOP) describes the creation of protocol
-visit-specific source document forms and logs, quality control (by site and
-Sponsor) and management of clinical study data at the Investigator’s/Sponsor-
-Investigator’s site, whether paper or electronic, to ensure that the data collection
-and data transcription follows the REB-approved study documents as well as
-GCP, the ALCOA Plus principles, Health Canada regulations and 21 CFR Part
-11 for electronic records (referenced in Health Canada GUI 0100).
+The Sponsor-Investigator or Qualified Investigator (<Tooltip tip="The physician responsible to the sponsor for the conduct of a clinical trial at the site. One QI per study per Canadian site." headline="Qualified Investigator (QI)" cta="Full definition" href="/kb/foundations/glossary#qi">QI</Tooltip>)/Principal Investigator (<Tooltip tip="US equivalent of the Canadian Qualified Investigator (QI)." headline="Principal Investigator (PI)" cta="Full definition" href="/kb/foundations/glossary#pi">PI</Tooltip>) is responsible for ensuring that clinical data management activities at the site meet all of the applicable Health Canada (HC) regulatory, International Conference on Harmonisation (ICH) Good Clinical Practice (GCP) E6/ International Standards Organization (ISO)-14155 Good Clinical Practice (GCP), Sponsor, and local requirements.
 
----
+It is the responsibility of the Sponsor/Sponsor-Investigator to conduct quality control to ensure that all data required by the REB-approved protocol are recorded in source documents using Good Documentation Practices (GDPs), and conduct source data verification to ensure that all data transcribed into case report forms (CRFs) accurately reflects what has been documented in source documents. Refer to [SOP-CR-013](/sops/cr-013) regarding monitoring.
 
-## 2 · Scope {#scope}
+Note that it is the QI/PI’s responsibility to ensure that study source document forms are created in order to ensure the capture of all data required by the protocol using GDPs as well as any additional data that the QI/PI deems important for the safety of participants. It is also the responsibility of the QI/PI to ensure data is accurately and securely transcribed into Case Report Forms (CRFs).
 
-This procedure concerns the research community (employees, investigators,
-physicians, management, consultants, students, volunteers or other persons)
-involved in collection and management of human research data obtained from
-human participants at the MUHC/RI-MUHC.
+Note that according to ICH-GCP for drug, all parts of this procedure may be delegated to appropriately trained study team members, but remain the ultimate responsibility of the Sponsor-Investigator or QI/PI. However, according to ISO-GCP for medical device, responsibility is delegated with tasks.
 
----
+## 4.0 Definitions
 
-## 3 · Responsibilities {#responsibilities}
+See [Glossary of Terms](/kb/foundations/glossary)
 
-The **Sponsor-Investigator or <Tooltip tip="The physician responsible to the sponsor for the conduct of a clinical trial at the site. One QI per study per Canadian site." headline="Qualified Investigator (QI)" cta="Full definition" href="/kb/foundations/glossary#qi">QI</Tooltip>/PI** is responsible for ensuring that clinical data management activities at the site meet all applicable Health Canada regulatory, ICH-GCP E6/ISO 14155 GCP, Sponsor, and local requirements.
+## 5.0 Procedure
 
-The **Sponsor/Sponsor-Investigator** is responsible for conducting quality control to ensure all data required by the REB-approved protocol is recorded in source documents using Good Documentation Practices (GDPs), and conducting source data verification to ensure <Tooltip tip="Document designed to record all protocol-required information to be reported to the sponsor for each participant." headline="Case Report Form (CRF)" cta="Full definition" href="/kb/foundations/glossary#crf">CRF</Tooltip> data accurately reflects source documents. → [SOP-CR-013](/sops/cr-013)
+<a id="5-1"></a>
 
-The **QI/PI** is responsible for ensuring study source document forms are created to capture all protocol-required data using GDPs, and for ensuring data is accurately and securely transcribed into CRFs.
-
-Per ICH-GCP (for drug studies), all parts may be delegated to appropriately trained team members but remain the QI/PI's ultimate responsibility. Per ISO-GCP (for medical device studies), responsibility is delegated with tasks.
-
----
-
-## 4 · Definitions {#definitions}
-
-See [Glossary of Terms](/kb/foundations/glossary) for all term definitions.
-
----
-
-## 5 · Procedure {#procedure}
-
-```mermaid
-flowchart TD
-    A["Create source\ndocument forms §5.2"] --> B["Collect data\nat source §5.4"]
-    B --> C{"Paper or\nelectronic?"}
-    C -- "Paper CRF" --> D["Transcribe to\npaper CRF §5.7"]
-    C -- "eDC system" --> E["Enter in\neDC / eCRF §5.8"]
-    D --> F["QC review §5.9"]
-    E --> F
-    F --> G{"Discrepancy?"}
-    G -- "Yes" --> H["Query / correction\nwith audit trail §5.9"]
-    H --> F
-    G -- "No" --> I["Secure storage §5.10"]
-    I --> J["Database lock → SOP-CR-107"]
-    J --> K["Archiving → SOP-CR-015\nmin. 15 years"]
-```
+<a id="5-1-general-considerations"></a>
 
 ### 5.1 General considerations
 
-**5.1.1** Prepare a study-specific <Tooltip tip="The QI's collection of documentation demonstrating compliance, study integrity, and participant safety." headline="Investigator Site File (ISF)" cta="Full definition" href="/kb/foundations/glossary#isf">Investigator Site File</Tooltip> (ISF) per [SOP-CR-015](/sops/cr-015) and store all essential documents in the ISF in a timely, ongoing fashion throughout the study.
+<a id="5-1-1"></a>**5.1.1** Prepare a study-specific Investigator’s Site File (<Tooltip tip="The QI's collection of documentation demonstrating compliance, study integrity, and participant safety." headline="Investigator Site File (ISF)" cta="Full definition" href="/kb/foundations/glossary#isf">ISF</Tooltip>) for the essential documents according to the list provided in [SOP-CR-015](/sops/cr-015) and store all essential documents in the ISF in a timely fashion and on an ongoing basis throughout the course of the human research study.
 
-**5.1.2** Ensure all team members delegated clinical data management tasks have valid institutional training (→ [SOP-CR-003](/sops/cr-003)) and have been trained on study documents, source document forms, and CRFs before signing the <Tooltip tip="Lists each team member, their qualifications, and specific trial tasks authorized by the QI." headline="Task Delegation Log (TDL)" cta="Full definition" href="/kb/foundations/glossary#tdl">Task Delegation Log</Tooltip>.
+<a id="5-1-2"></a>**5.1.2** Ensure that all study team members who will be delegated clinical data management tasks have valid institutional training appropriate for the type of studies conducted (refer to [SOP-CR-003](/sops/cr-003)). Also ensure team members have been trained on study documents as well as the use of the source document forms and Case Report Forms (CRFs) prior to them signing the <Tooltip tip="Lists each team member, their qualifications, and specific trial tasks authorized by the QI." headline="Task Delegation Log (TDL)" cta="Full definition" href="/kb/foundations/glossary#tdl">Task Delegation Log</Tooltip> and subsequent involvement.
 
-**5.1.3** Establish and maintain appropriate authorizations for access to human research data. For blinded studies, ensure that blinded team members never see unblinded data.
+<a id="5-1-3"></a>**5.1.3** Establish and maintain appropriate authorizations for access to human research data within the research unit, whether physical or electronic. For blinded studies, ensure that blinded research team members never see unblinded data. Note: A blinded study is a type of study in which the patients (single-blinded) or the patients and the investigational team (double-blinded) do not know which drug or treatment is being given to participants.
 
-**5.1.4** Ensure the integrity and tracking of all human research data through procedures for collecting, capturing, controlling, verifying, correcting, and processing data (maintaining blinding where applicable — e.g. use separate source data forms for unblinded team members).
+<a id="5-1-4"></a>**5.1.4** Ensure the integrity and tracking of all human research data through procedures for collecting, capturing, controlling, verifying, correcting, and processing data, while respecting the fact that the study may be blinded, if applicable e.g., use separate source data collection forms for unblinded research team members.
 
-**5.1.5** Protect and secure study participant data and Sponsor proprietary information. Never share nominative participant information with the external Sponsor (note: sharing with the Sponsor's monitor who has signed an MUHC confidentiality agreement is expected). Keep data in a locked area protected from fire or water damage. Ensure electronic data is filed in a validated system compliant with 21 CFR Part 11 per [SOP-CR-015](/sops/cr-015); otherwise use paper.
+<a id="5-1-5"></a>**5.1.5** Ensure the protection and security of study participants, data and Sponsor’s proprietary information. Never share study participant nominative information with the external Sponsor (Note: it is expected that nominative information is shared with the Sponsor’s monitor who has signed an MUHC confidentiality agreement). Keep data in a locked area and protect from fire or water damage. Ensure that electronic data are filed securely in a validated system compliant with [21 CFR Part 11](https://www.ecfr.gov/current/title-21/chapter-I/subchapter-A/part-11) as per [SOP-CR-015](/sops/cr-015); otherwise ensure data is captured on paper.
+
+<a id="5-2"></a>
+
+<a id="5-2-creation-of-visit-specific-source-document-forms-and-logs"></a>
 
 ### 5.2 Creation of visit-specific source document forms and logs
 
-**5.2.1** Source documents are the first place study data is recorded and must be retained at the site in original state (paper or validated electronic system compliant with 21 CFR Part 11).
+<a id="5-2-1"></a>**5.2.1** Source documents are defined as the place where the study data is first recorded and is retained at the site in its original state (on paper or in a validated electronic system compliant with [21 CFR Part 11](https://www.ecfr.gov/current/title-21/chapter-I/subchapter-A/part-11)).
 
-**5.2.2** Although some Sponsors may provide source logs, the site must create visit worksheets to capture all data required per protocol visit, and any additional data the QI/PI deems necessary for participant safety. Design paginated worksheets specific to complete protocol visits (e.g. Screening Visit forms p.1–10, Visit 1 forms p.1–7). Every source form must include the following in the header and footer:
-- Protocol number
-- QI/PI name
-- Visit type (e.g. Screening/End of Study) and/or visit number
-- Visit date
-- Participant number and initials
-- Site number (if applicable)
-- Name and date of person who QC'd the blank form
-- Name and date of person completing the form
+<a id="5-2-2"></a>**5.2.2** Although some Sponsors may provide some source logs, it is the site’s responsibility to create source document visit worksheets in order to capture all data required by the study protocol per visit as well as any additional data that the QI/PI may deem necessary to the safety of the participants. Create study-specific source document visit worksheets, as needed, to collect source data in the sequence required by the protocol (e.g., add assessment dates) and necessary to comply with GCP and the REB-approved protocol. It is recommended to design paginated worksheets specific to complete protocol visits to facilitate study conduct and ensure all required data is collected (e.g., Screening Visit forms p. 1 – 10, Visit 1 forms p.1 – 7, etc.). Ensure that every source form created has a header and footer with the following information:
 
-**5.2.3** Only source data (first-time recorded) should be entered into visit-specific worksheets. Track all other source data (lab reports, ECG, imaging, concomitant medications, AEs) in a separate checklist or procedure-specific check built into the worksheet. Attach or file supporting source documents (e.g. OACIS printouts). If data must be obtained from another department or hospital, obtain original documents or certified copies.
+- Protocol number;
+- Qualified Investigator (QI) / Principal Investigator (PI) name;
+- Visit type (e.g., Screening/End of Study (EOS) and/or visit number);
+- Visit date;
+- Participant number and initials;
+- Site number (if applicable);
+- Name and date of person who QC’ed the blank form;
+- Name and date of person who is completing the form.
 
-**5.2.4** Source document worksheets should have documented QC (include the QC'd person in the footer). A manager, supervisor, or staff member independent from the study should ideally QC the blank worksheet prior to use, and QC again after source data is recorded to ensure GDPs.
+<a id="5-2-3"></a>**5.2.3** Only source data (first time recorded) should be entered into visit-specific source document worksheets. It is suggested that all other source data documents (e.g., lab reports, ECG, imaging, concomitant meds, AEs) should be tracked in a separate checklist or have a procedure-specific check built into the worksheets (e.g., checked done/not done or enter a date to ensure it was conducted) and attach (or file) the source document e.g., [OACIS](/apps/oacis) test result printout with the worksheet. If data must be obtained from another department or hospital (e.g., Medical History information or <Tooltip tip="Any untoward medical occurrence in a participant, whether or not related to the investigational product." headline="Adverse Event (AE)" cta="Full definition" href="/kb/foundations/glossary#ae">AE</Tooltip> follow-up), the original documents or certified copies should be obtained and placed on file as well.
 
-**5.2.5** Create a Training Log (→ [SOP-CR-003](/sops/cr-003)) and Task Delegation Log (→ [SOP-CR-002](/sops/cr-002)) as the first logs in the ISF. All other essential document logs are listed in [SOP-CR-015](/sops/cr-015).
+<a id="5-2-4"></a>**5.2.4** Source document worksheets should ideally have documented quality control (e.g., include the person who Quality Controlled (QC’ed) the blank worksheet in the footer of the document). Ideally, a manager, supervisor or staff member independent from the study should QC the blank worksheet prior to use to ensure that all protocol required procedures will be captured. QC should also be done after recording source data to ensure GDPs.
 
-**5.2.6** Create an Informed Consent Process checklist per [SOP-CR-008](/sops/cr-008) to document compliance of the consent process for each participant and each <Tooltip tip="The written document providing the participant with information essential to making an informed decision. Both parties must sign." headline="Informed Consent Form (ICF)" cta="Full definition" href="/kb/foundations/glossary#icf">ICF</Tooltip> version signed.
+<a id="5-2-5"></a>**5.2.5** Separate from the visit-specific source forms, a number of logs are required as per ICH-GCP/ISO-GCP and [SOP-CR-015](/sops/cr-015). Typically, the first logs created are the Training Log to document investigator and team training and the Task Delegation Log to document the QI/PI’s subsequent delegation of tasks to qualified and trained research team members. (Refer to [SOP-CR-002](/sops/cr-002) and [SOP-CR-003](/sops/cr-003)). All other forms to create an Investigator Site File (ISF) or Trial Master File (<Tooltip tip="The sponsor's collection of documentation demonstrating compliance across all study sites." headline="Trial Master File (TMF)" cta="Full definition" href="/kb/foundations/glossary#tmf">TMF</Tooltip>) are listed in [SOP-CR-015](/sops/cr-015).
 
-**5.2.7** Create and maintain the following participant-specific GCP-required logs (→ [SOP-CR-009](/sops/cr-009)):
-- **Screening Log** — all screened participants by sequential screening number, ICF signature dates, and screen failure reasons
-- **Enrollment Log** — all enrolled participants by enrollment number, tracking all study visit dates
-- **Participant Identification Code List** — confidential; the only log with nominative information; never shared with the Sponsor; used for emergency contact only
+<a id="5-2-6"></a>**5.2.6** Create an Informed Consent Process checklist from the template in [SOP-CR-008](/sops/cr-008) to document compliance of the informed consent process for each participant and each <Tooltip tip="The written document providing the participant with information essential to making an informed decision. Both parties must sign." headline="Informed Consent Form (ICF)" cta="Full definition" href="/kb/foundations/glossary#icf">ICF</Tooltip> version signed.
 
-**5.2.8** Create additional study conduct tools:
-- **<Tooltip tip="A drug, medical device, or natural health product being tested or used as a reference in a clinical trial." headline="Investigational Product (IP)" cta="Full definition" href="/kb/foundations/glossary#ip">IP</Tooltip> wallet cards** (REB-approved) for participants on IP studies → [SOP-CR-008](/sops/cr-008)
-- **Medical History Events Log** (Appendix 2) — medical events prior to/ongoing at ICF signature
-- **Medical History Medication Log** (Appendix 3) — relevant medications prior to consent; tracks washout periods (optional, for protocols requiring washout)
-- **<Tooltip tip="Any untoward medical occurrence in a participant, whether or not related to the investigational product." headline="Adverse Event (AE)" cta="Full definition" href="/kb/foundations/glossary#ae">AE</Tooltip> Assessment Log** (→ [SOP-CR-012](/sops/cr-012)) — all AEs from ICF date to end of study; changes from AE to <Tooltip tip="An adverse event meeting seriousness criteria: death, life-threatening, hospitalization, disability, or congenital anomaly." headline="Serious Adverse Event (SAE)" cta="Full definition" href="/kb/foundations/glossary#sae">SAE</Tooltip> documented here and on the SAE Reporting Log
-- **Local SAE Reporting Log** (→ [SOP-CR-012](/sops/cr-012)) — QI/PI SAE awareness date, report date, REB and Health Canada reporting criteria
-- **External <Tooltip tip="Suspected Unexpected Serious Adverse Reaction — unexpected in nature, severity, or frequency; must be reported to Health Canada and the REB." headline="SUSAR" cta="Full definition" href="/kb/foundations/glossary#susar">SUSAR</Tooltip> Reporting Log** (→ [SOP-CR-012](/sops/cr-012)) — SUSAR receipt date, REB reporting criteria and date
-- **Concomitant Medication Log** (Appendix 4) — all treatments (other than IP); must be consistent with the AE Assessment Log for required medication dates and outcomes
-- **Human Sample Collection, Processing and Shipping Log** (if applicable) → [SOP-CR-011](/sops/cr-011)
-- **Protocol/GCP/SOP Deviation Log** and <Tooltip tip="Actions taken to resolve a compliance issue and prevent recurrence: identify, correct, prevent." headline="Corrective and Preventive Action (CAPA)" cta="Full definition" href="/kb/foundations/glossary#capa">CAPA</Tooltip> form(s) for major/critical deviations → [SOP-CR-026](/sops/cr-026)
-- **Monitoring Visit Log** (if applicable) → [SOP-CR-013](/sops/cr-013)
+<a id="5-2-7"></a>**5.2.7** Ensure that study-specific participant logs are created as per GCP and filed in the ISF. Ensure that these logs are completed in a timely fashion and sequential order. Refer to [SOP-CR-009](/sops/cr-009).
 
-Other available logs: Telephone/VC Contact Log, Temperature Log, Confirmation and End of Participation forms.
+- Participant Screening Log containing all participants screened by sequential screening number. This log also tracks the date of ICF signatures prior to screening and asks for reasons for screen failures.
 
-All source document templates are available in Word format on the RI Portal (Clinical Research SOP Appendix section) for building the ISF or <Tooltip tip="The sponsor's collection of documentation demonstrating compliance across all study sites." headline="Trial Master File (TMF)" cta="Full definition" href="/kb/foundations/glossary#tmf">TMF</Tooltip> per [SOP-CR-015](/sops/cr-015). The MUHC Research Pharmacy maintains its own IP accountability logs → [SOP-CR-010](/sops/cr-010). For medical device accountability → [SOP-CR-024](/sops/cr-024).
+- Participant Enrollment Log containing all participants who met Inclusion/Exclusion criteria and enrolled, listed by enrollment number. Often the Sponsor will provide this enrollment number via an interactive web/voice based system. This log also tracks all study visit dates for tracking visit timelines to ensure compliance with protocol timelines.
 
-### 5.3 Confidentiality and direct access to clinical data
+- Participant identification code list) is the only log with confidential participant nominative information and is never shared with the Sponsor. This list of participants may be used for emergency reasons (e.g., quick contact of participants regarding investigational product recall).
 
-**5.3.1** Participants authorize access to their data through informed consent, expecting all information to be kept confidential by the Sponsor, QI/PI, authorized representatives, auditors, and regulatory inspectors.
+<a id="5-2-8"></a>**5.2.8** In addition, create tools to facilitate and document oversight of study conduct and trends as well as ensure data integrity and patient safety:
 
-**5.3.2** Conduct data management respecting privacy and confidentiality per Quebec <Tooltip tip="Quebec's Act respecting health and social services information (key provisions July 2024). Governs researcher access to health data through RSSS institutions." headline="Law 5 / Loi 5" cta="Full definition" href="/kb/foundations/glossary#law-5">Law 5</Tooltip>, TCPS2, RI-MUHC institutional policies, the confidentiality agreement, and the Clinical Study Agreement.
+- As per [SOP-CR-008](/sops/cr-008), for participants on a study with Investigational Product (<Tooltip tip="A drug, medical device, or natural health product being tested or used as a reference in a clinical trial." headline="Investigational Product (IP)" cta="Full definition" href="/kb/foundations/glossary#ip">IP</Tooltip>), create wallet cards and ensure they are <Tooltip tip="The ethics committee that reviews and approves research involving human participants. Also called CER at French-language institutions." headline="Research Ethics Board (REB)" cta="Full definition" href="/kb/foundations/glossary#reb">REB</Tooltip> approved prior to distribution to participants. Refer to [SOP-CR-008](/sops/cr-008) for a template;
 
-**5.3.3** Protect participant privacy and confidentiality:
-- Ensure the Task Delegation Log identifies those authorized to access, record, or correct source data
-- Participant ID Log and signed ICFs must never be shared with the external Sponsor
-- Identify participant source data by unambiguous study identification codes (Screening and Enrollment numbers); best practice is to print and de-identify source data by blacking out nominative information (China marker) and replacing with study number — two team members involved (one de-identifies, one QCs)
-- Collect data only for the REB-approved study
-- Ensure validated electronic devices used for study purposes contain no nominative participant information
-- Do not allow identifying information to leave the institution unless REB-approved and in accordance with institutional policies
+- Medical History Events Log for each participant (Refer to [Appendix 2](#appendix-2)) to capture all medical events which occurred prior to participant informed consent or remain ongoing;
 
-**5.3.4** → [SOP-CR-019](/sops/cr-019) for additional confidentiality and privacy requirements.
+- Medical History Medication Log per participant (Refer to [Appendix 3](#appendix-3)) to capture all relevant medications taken prior to participant informed consent and track any protocol-required treatment washout periods. Note this log is optional and intended for protocols requiring washout periods for medications prior to study start;
+
+- Adverse Events Assessment Log per participant (Refer to [SOP-CR-012](/sops/cr-012)) to capture and assess all adverse events (severity, seriousness, and relatedness) which started or changed (worsened or resolved) after participant informed consent. Note that a change from AE to <Tooltip tip="An adverse event meeting seriousness criteria: death, life-threatening, hospitalization, disability, or congenital anomaly." headline="Serious Adverse Event (SAE)" cta="Full definition" href="/kb/foundations/glossary#sae">SAE</Tooltip> should be documented on this form for QI/PI assessment AND on the SAE Reporting log for tracking. Outcome and Treatment Required are also documented on the AE Assessment log and should be consistent with the Concomitant Medication log. Note: For Medical Device trials, refer to the medical device incident reporting in [SOP-CR-024](/sops/cr-024);
+
+- Local Serious Adverse Event (SAE) Reporting Log (refer to [SOP-CR-012](/sops/cr-012)) which captures QI/PI SAE awareness date, SAE report date, REB reporting criteria and Health Canada Reporting criteria (if applicable);
+
+- External <Tooltip tip="A serious adverse reaction to a drug or natural health product whose nature, severity or frequency the Investigator's Brochure or product label does not anticipate; the sponsor reports it to Health Canada, and the site reports it to the REB when it meets the REB's criteria." headline="SUSAR" cta="Full definition" href="/kb/foundations/glossary#susar">SUSAR</Tooltip> Reporting Log (refer to [SOP-CR-012](/sops/cr-012)) which captures SUSAR receipt date, REB reporting criteria and REB reporting date (if applicable);
+
+- Concomitant Medication Log (refer to [Appendix 4](#appendix-4)) to capture all treatment (other than IP) administered to the participant. Note that QC should be done by the site to ensure that this log is consistent with the Adverse Events Log in terms of required medication, dates resolved etc.;
+
+- Human Sample Collection, Processing and Shipping Log (if applicable). Refer to [SOP-CR-011](/sops/cr-011);
+
+- Protocol/GCP/SOP Deviation Log and if required, event-specific CAPA form(s) for major/critical deviation(s) (refer to [SOP-CR-026](/sops/cr-026));
+
+- Monitoring Visit Log (if applicable, refer to [SOP-CR-013](/sops/cr-013)).
+
+Other logs are also available e.g., Telephone/VC Contact Log, Temperature Log (for equipment), as well as PDFs of Confirmation of Participation and End of Participation forms.
+
+All source document templates are listed and available in Word format in the RI portal in the Clinical Research SOP Appendix section in order to create a Trial Master File (TMF) or Investigator Site File (ISF) as per [SOP-CR-015](/sops/cr-015).
+
+It is also recommended that the site create a study-specific Equipment Inventory Log listing all equipment (with Biomed equipment tag numbers) to be used in the study. Accompanying maintenance certificates should also be obtained from Biomed on an ongoing basis throughout the study. Refer to [SOP-CR-025](/sops/cr-025).
+
+Additionally, best practice is to create REB approval tracking logs for tracking the REB approvals of ICFs (refer to [SOP-CR-008](/sops/cr-008) for the ICF Tracking Log) and all other document submissions to the REB (refer to [SOP-CR-007](/sops/cr-007) for an REB Approval Tracking Log).
+
+Note that the MUHC Research Pharmacy creates their own logs for study-specific IP accountability (receipt, dispensing, returns, quarantine, and destruction). Refer to [SOP-CR-010](/sops/cr-010). For medical device studies, refer to the Device Accountability log in [SOP-CR-024](/sops/cr-024). For other types of studies, e.g., some biological products not handled by pharmacy, the Medical Device Accountability Log template in [SOP-CR-024](/sops/cr-024) may be adapted.
+
+<a id="5-3"></a>
+
+<a id="5-3-confidentiality-and-direct-access-to-clinical-data"></a>
+
+### 5.3 Confidentiality and direct access to clinical data and source documents
+
+<a id="5-3-1"></a>**5.3.1** Participants, through informed consent, authorize access to their data, in the belief that all verified and collected information will be kept confidential by the Sponsor, Sponsor-Investigator, QI/PI, their authorized representatives, auditors, and regulatory inspectors. Refer to [SOP-CR-007](/sops/cr-007) regarding REB waiver of consent in rare cases.
+
+<a id="5-3-2"></a>**5.3.2** Carry out data management in such a way as to respect privacy and meet the standards for privacy and confidentiality required by the REB, Quebec [Law 5](https://www.legisquebec.gouv.qc.ca/en/document/cs/R-22.1), Tri-Council Policy Statement, RI-MUHC institutional policies and procedures, confidentiality agreement, and the Clinical Study Agreement.
+
+<a id="5-3-3"></a>**5.3.3** Protect the privacy and confidentiality of study participants, including:
+
+- Ensure the Task Delegation Log identifies those who have access, and those who can record or correct source data.
+
+- Ensure that the Participant ID Log and signed Informed Consent Forms (ICFs) obtained from every study participant are never shared with the Sponsor.
+
+- Identify participant source data by using unambiguous identification codes (i.e., study identifier), that allows identification of all data reported for each participant (i.e., best practice is to use a Screening number and an Enrollment number). Best practice is for source data to be printed and de-identified by blacking out nominative information (e.g., using a China marker to black out participants name and MRN) and replacing the nominative information with the participant’s study number from the Screening or Enrollment log. Two team members should be involved. One who de-identifies the source document and one who conducts quality control (QC) to ensure correct participant study number was recorded.
+
+- Collect data only for the REB-approved study.
+
+- Ensure that validated electronic devices that are used for study purposes, such as handheld computers and personal digital assistants, do not contain any participant nominative information.
+
+- Do not allow identifying information to leave the institution unless approved by the REB, and in accordance with institutional policies (create redacted certified copies).
+
+<a id="5-3-4"></a>**5.3.4** See confidentiality and privacy [SOP-CR-019](/sops/cr-019) for additional requirements and details.
+
+<a id="5-4"></a>
+
+<a id="5-4-source-data-collection"></a>
 
 ### 5.4 Source data collection
 
-**5.4.1** Do not collect any study-specific data until all required approvals have been obtained (Health Canada if applicable, REB, <Tooltip tip="Institutional authorization allowing a study to proceed at the RI-MUHC. Issued after ethics approval and feasibility review." headline="MUHC Authorization" cta="Full definition" href="/kb/foundations/glossary#muhc-auth">MUHC Authorization</Tooltip>, and Sponsor's Go Letter) and the participant has provided informed consent (or REB has provided a waiver of consent).
+<a id="5-4-1"></a>**5.4.1** Do not collect any data required specifically for the study until written Health Canada approval (if applicable), REB approval and MUHC Authorization (as well as the Sponsor’s Go Ahead, if applicable) has been obtained and the participant has provided informed consent (or the REB provided a waiver of consent).
 
-**5.4.2** Record, process, and store all study information following ALCOA+ principles: **A**ttributable, **L**egible, **C**ontemporaneous, **O**riginal, **A**ccurate, **C**omplete, **C**onsistent, **E**nduring, **A**vailable.
+<a id="5-4-2"></a>**5.4.2** Record, process, and store all human research study information in a way that allows its accurate reporting, interpretation and verification. Follow ALCOA+ principles (Attributable, Legible, Contemporaneous, Original, Accurate, Complete, Consistent, Enduring and Available).
 
-**5.4.3** Use unambiguous identification codes for confidential participant identifiers on all study source forms and logs.
+<a id="5-4-3"></a>**5.4.3** Use unambiguous identification codes for confidential participant identifiers on all study source forms and logs.
 
-**5.4.4** Collect source data using Good Documentation Practices (GDPs) per section 5.6 and in the procedure timelines and sequence required by the REB-approved protocol.
+<a id="5-4-4"></a>**5.4.4** Ensure that the source data is collected using Good Documentation Practices (GDPs) as per section [5.6](#5-6) and as per the procedure timelines and sequence indicated in the REB-approved protocol.
 
-**5.4.5** Test results:
-- Thermal paper results (e.g. ECG) must be photocopied promptly; both the thermal copy and photocopy are initialled and dated by the QI/PI. Note: thermal paper degrades faster than a photocopy.
-- Any abnormal test result must be assessed promptly by the QI/PI indicating clinical significance as "n.c.s." or "c.s.", initialling and dating each entry. If the QI/PI consistently reviews results online and subsequently initials printed results, a Work Instruction (WI) must document this process (subsequent documentation ideally within 14 days). For isolated cases, a Note to File can explain late medical oversight.
+<a id="5-4-5"></a>**5.4.5 Test results**
 
-**5.4.6** Per Health Canada GUI-0100, any source document (created by the <Tooltip tip="The team member who handles day-to-day administration and coordination of the clinical trial." headline="Clinical Research Coordinator (CRC)" cta="Full definition" href="/kb/foundations/glossary#crc">CRC</Tooltip> or printed from OACIS) must be signed and dated by the person collecting, recording, reviewing, and/or assessing the information to ensure traceability.
+- Ensure that any test results on thermal paper (e.g., ECG) is photocopied promptly and that both the thermal copy and photocopy are initialed and dated by the QI/PI. Note thermal paper will degrade faster than a photocopy.
 
-### 5.5 Case Report Forms
+- Ensure that any abnormal test result is assessed promptly by the QI/PI who should indicate clinical significance by “n.c.s.” or “c.s.”, initialing and dating each entry. The QI/PI’s assessment of clinical significance should be made in the context of the study (not standard of care). If the QI/PI is consistently reviewing test results online and then subsequently initialing and dating printed results, a Work Instruction (WI) should be written to document the process of medical oversight in a timely fashion (subsequent documentation should ideally be done within 14 days of obtaining results). Otherwise, if subsequent documentation of medical oversight is done for only one participant, a Note to File can be written to explain the inadvertent late medical oversight.
 
-**5.5.1** Case Report Forms (CRFs) are printed, optical, or electronic documents designed to collect protocol-defined data transcribed from source documents. Only data defined in the REB-approved protocol should be entered into the CRF.
+<a id="5-4-6"></a>**5.4.6** According to [Health Canada Guide 0100](https://www.canada.ca/en/health-canada/services/drugs-health-products/compliance-enforcement/good-clinical-practices/guidance-documents/guidance-drugs-clinical-trials-human-subjects-gui-0100.html), in order to allow traceability of all source data, any source documents (whether created by the Clinical Research Coordinator (<Tooltip tip="The team member who handles day-to-day administration and coordination of the clinical trial." headline="Clinical Research Coordinator (CRC)" cta="Full definition" href="/kb/foundations/glossary#crc">CRC</Tooltip>) or printed from OACIS) should be signed and dated by the person collecting, recording, reviewing and /or assessing the information or data.
 
-**5.5.2** CRFs (paper or electronic) are created by the Sponsor/Sponsor-Investigator, completed by the CRC (transcribing de-identified source data), and shared with the Sponsor/Sponsor-Investigator. → [SOP-CR-100](/sops/cr-100) for CRF design (Sponsor-Investigators). The Sponsor/Sponsor-Investigator must create a CRF Data Entry Manual/guideline for sites.
+<a id="5-5"></a>
 
-**5.5.3** Ensure appropriate team members are trained on the CRF/eCRF, with training documented (<Tooltip tip="Monitoring visit to train the site team on the protocol and confirm site readiness, after REB approval and MUHC Authorization." headline="Site Initiation Visit (SIV)" cta="Full definition" href="/kb/foundations/glossary#siv">SIV</Tooltip> training log, self-training, or other) and the task delegated on the Task Delegation Log.
+<a id="5-5-case-report-forms"></a>
 
-### 5.6 Good Documentation Practices (GDPs)
+### 5.5 Case report forms
 
-**5.6.1** Observe the following data entry practices on source document forms and CRFs:
+<a id="5-5-1"></a>**5.5.1** Case Report Forms (CRFs) are printed, optical or electronic documents designed to collect the data that is transcribed from source data and described in the REB-approved protocol for each study participant. Only data defined in the REB-approved protocol should be entered into the <Tooltip tip="Document designed to record all protocol-required information to be reported to the sponsor for each participant." headline="Case Report Form (CRF)" cta="Full definition" href="/kb/foundations/glossary#crf">CRF</Tooltip>.
 
-- No data can ever be discarded. If a document was replaced or is no longer used, mark as "Superseded" or "Obsolete" with initials, date, and a diagonal line.
-- Use permanent black or blue ink; entries must remain legible for up to 15 years.
-- Enter data sequentially with no empty spaces.
-- Initial and date all entries (authorized persons on the Task Delegation Log only).
-- Include both data collection and data entry dates for data obtained after a visit (late data). Never backdate. Do not insert late data between existing lines or in the margin — record following other entries with the notation "late entry," explanation, initials, and date.
-- If data is entered by several team members, each person signs and dates their entry.
-- Clearly report missing elements; document the source of retrieved information in a footnote with initials and date. If an entire paper record is missing, write a Note to File (NTF) → Appendix 1.
-- Blank fields must be marked "Not Applicable" (N/Ap), "Not Available" (N/Av), or "Unknown" with explanation, initials, and date.
-- No information may be voided without supporting documentation. Draw a single line through voided information, mark as "VOID," explain, sign, and date.
-- Direct entries into eCRFs are source data; ensure eCRF software is validated and 21 CFR Part 11 compliant; ensure the protocol describes these direct entries and the protocol has been REB-approved.
+<a id="5-5-2"></a>**5.5.2** CRFs (paper or electronic) are created by the Sponsor/Sponsor-Investigator, completed by the Clinical Research Coordinator (CRC) who transcribes de-identified data from source documents into the CRFs and then shares with the Sponsor/Sponsor-Investigator. Refer to section [5.8](#5-8) for electronic CRFs and [SOP-CR-100](/sops/cr-100) for CRF design for Sponsor-Investigator studies. Note: it is the Sponsor/Sponsor-Investigator’s responsibility to create a CRF Data Entry Manual/guideline for sites to follow.
 
-**5.6.2** Make corrections to source data and CRF data as follows:
-- Ensure changes are traceable. Do not obscure initial entries. Do not use liquid corrector or correcting material. Do not scribble, blackout, or overwrite.
-- Draw a single line through incorrect data without obscuring the original; initial, date, and explain. Changes must be made by the person who made the initial entry, or others authorized on the Task Delegation Log.
-- When space is limited for proper explanation, write a NTF (Appendix 1) and file with the source document or NTF section of essential documents.
-- Any correction must include a clear justification.
-- When a copy replaces an original document, mark the copy "True and Exact Copy," initial and date; attach the original (never destroy source documents).
-- Best practice: the QI/PI signs and dates the CRF only after the correction process is complete and before monitor retrieval of paper CRFs. After retrieval, corrections are captured on a Data Clarification Form (DCF) provided by the Sponsor/Sponsor-Investigator.
+<a id="5-5-3"></a>**5.5.3** Ensure all appropriate research team members are trained on the use of the CRF/eCRF, training is documented (e.g., Site Initiation Visit training log, self-training or other) and staff are delegated this task on the Task Delegation Log.
 
-### 5.7 Transcription of source data to paper CRFs
+<a id="5-6"></a>
 
-**5.7.1** Only authorized persons on the Task Delegation Log may transcribe data from source documents to CRFs.
+<a id="5-6-good-documentation-practices-gdps"></a>
 
-**5.7.2** Ensure source data is documented and on file for all protocol-required data before transcription.
+### 5.6 Good documentation practices (GDPs)
 
-**5.7.3** Transcribe data into the CRF as soon as possible after collection, using GDPs.
+<a id="5-6-1"></a>**5.6.1** Observe the following data entry practices on source document forms and CRFs, as appropriate for the data collection method:
 
-**5.7.4** De-identify test results, specimens, or reports that accompany CRF data: black out nominative information and identify participants by study identification code only (unless specifically required/permitted and REB-approved). De-identify all source documents prior to archiving (best done on an ongoing basis). Do not keep copies of clinical records, consents, printouts, discharge summaries, or any identifiable clinical reports in CRF files.
+- No data can ever be discarded. If an entire document was replaced by a newer version, or is not used, add “Superseded” with initials and date or “Obsolete” with initials and date along with a diagonal line across the document that clearly shows it once had value, however it is no longer in use.
 
-**5.7.5** Ensure CRF entries contain only protocol-defined data.
+- Use permanent black or blue ink; entries must still be legible up to 15 years later.
 
-**5.7.6** The QI/PI should sign and date the CRF where indicated, after the final entry. If the CRF is revised after QI/PI sign-off, the QI/PI should sign again.
+- Enter data in a sequential manner, without leaving any empty spaces.
+- Initial and date entries (authorized person/s on the Task Delegation Log only).
+- Include both data collection and data entry dates, for data obtained after a visit (late data). Never backdate. Do not insert late data between existing lines or in the margin. Record data following other entries, with the notation of “late entry”, explain, initial and date.
 
-**5.7.7** Complete and review CRFs on a timely basis, respecting the Sponsor's timelines.
+- If data is entered by several team members, sign and date each entry corresponding to the authorized person who made the entry.
 
-### 5.8 Electronic data capture systems / electronic CRFs
+- Clearly report missing elements and document the source of the retrieved info in a footnote, initial and date. If an entire paper record is missing, write a Note-to-File (NTF) to explain (refer to [Appendix 1](#appendix-1)).
 
-**5.8.1** Sponsors and Sponsor-Investigators must validate any EDC system for reliability, precision, performance, and 21 CFR Part 11 compliance. For MUHC Sponsor-Investigators, the RI-MUHC supports **REDCap** for investigator-initiated eCRFs of low to moderate complexity (ideally ≤1000 variables). REDCap is not fit for use as an electronic ICF (it only allows one signature per form). Source data must be filed separately from the eCRF.
+- Blank data fields must be marked “Not Applicable”, “N/Ap” or Not Available “N/Av”, or “unknown”, explain, initial and date.
 
-**5.8.2** Ensure authorized staff obtain documented EDC system training as required by the protocol. Retain CRF guidelines and training records with essential study documents.
+- No information may be voided without supporting documentation or explanation. Draw a single line through voided information, mark as “VOID”, explain, sign and date.
 
-**5.8.3** Permit EDC access only to authorized persons with authenticated identification and Task Delegation Log delegation. Ensure protection, detection, and correction measures are in place (secure electronic signature with audit trail).
+- Although unusual, entries entered directly into the CRF/eCRF are defined as source data; ensure that eCRF software has been validated and is [21 CRF Part 11](https://www.ecfr.gov/current/title-21/chapter-I/subchapter-A/part-11) compliant; ensure that the protocol (or other study document) describes these direct entries and that the protocol describing this has been REB approved.
 
-**5.8.4** Ensure clinical data transfer to another system (e.g. SAS, if required by protocol) is validated and secure.
+<a id="5-6-2"></a>**5.6.2** Make corrections to source data and CRF transcribed data, as follows:
 
-**5.8.5** Electronic source data documents must be printed, signed, and dated by the QI/PI to confirm content (unless obtained from the Sponsor's validated equipment/labs with direct upload into the Sponsor's validated eCRF). File with other study source documents.
+- Ensure that changes are traceable. When correcting, do not obscure initial entries so that the change can be explained if necessary. Do not use liquid corrector or correcting material. Do not scribble, blackout or overwrite.
+- Draw a single line through the data to be corrected, without obscuring the original data and initial, date and explain (this is your audit trail). Ensure that changes are made by the person who made the initial entry, or by others authorized to do so. (These persons must be on the Task Delegation Log).
+- Best practice is to explain any corrections directly on the source documents, however when there is limited room on a source document to properly explain source data correction/ambiguity, a Note to File (NTF) may be written and filed with the source document or NTF section of essential documents. Refer to [Appendix 1](#appendix-1) for a Note to File template.
 
-**5.8.6** If the protocol requires direct entry of source data into an eCRF, this must first be REB-approved. Employ a track-change system for the duration of document storage per applicable regulations (15 years for Health Canada-regulated; 7 years from publication for non-regulated).
+- Any correction brought to data must be accompanied by a clear justification, if not already obvious.
 
-**5.8.7** Retain the original or certified copy of the electronic data backup and audit trail.
+- When a copy is used to replace an original document, ensure that the copy fulfills the requirements for certified copies (indicated “True and Exact Copy”, initialed and dated) and the original is attached (i.e., never destroy any source documents).
 
-### 5.9 Quality control and modifications to clinical data
+- It is recommended that the Investigator sign and date the Case Report Form (CRF) only after completion of the correction process and before CRF retrieval from the site by a monitor (if paper CRFs are still being used). After paper CRF retrieval, all corrections must be captured on a Data Clarification Form (provided by the Sponsor/Sponsor-Investigator).
 
-**5.9.1** Best practice: conduct site QC of source data prior to CRF/eCRF transcription. After transcription, conduct QC to capture/clarify missed deviations, transcription errors, omissions, or ambiguities. Per [SOP-CR-026](/sops/cr-026), major or critical deviations must be detailed on the CAPA form; all deviations recorded on the Protocol/GCP/SOP Deviation Log. The site must not rely solely on the Sponsor for QC.
+<a id="5-7"></a>
 
-**5.9.2** The Sponsor/Sponsor-Investigator should establish QC systems (monitoring, eCRF entry specifications) to ensure consistency across all participating sites.
+<a id="5-7-transcription-of-source-data-to-paper-crfs"></a>
 
-**5.9.3** Apply QC to each stage of data handling to ensure reliability, source document verifiability, and correct processing (ICH-GCP 5.1.3).
+### 5.7 Transcription of source data to paper case report forms (CRFs)
 
-**5.9.4–5.9.5** Apply quality controls for coherence within the CRF after data capture; for paper or electronic systems, establish interactive QC (single or double entry) to decrease data capture errors.
+<a id="5-7-1"></a>**5.7.1** Ensure that only authorized person(s) on the Task Delegation Log transcribe data from source documents into the CRFs.
 
-**5.9.6** The control, verification, and correction process must allow comparison with source data and indicate who, when, and why modifications were made. Delegation to the persons making modifications must be documented on the Task Delegation Log (→ [SOP-CR-002](/sops/cr-002)).
+<a id="5-7-2"></a>**5.7.2** Ensure that source data is documented and on file for all protocol required data in preparation for transcription into CRFs.
 
-**5.9.7** Receive data modification requests from the Sponsor's Monitor, CRO, or team members on a Data Clarification Form (DCF) or equivalent (print emails and file with source data). Justify and document all required modifications to the CRF. Review and sign the DCF. Return the original to the Sponsor/Sponsor-Investigator; retain a copy in the ISF.
+<a id="5-7-3"></a>**5.7.3** Transcribe data into the CRF as soon as possible after it is collected and recorded in the source documentation using Good Documentation Practices.
 
-**5.9.8** Retain all data modification tracking systems for a minimum of **15 years** for Health Canada-regulated studies, or **7 years from publication date** for non-regulated studies. Ensure accessibility for monitors, auditors, and regulatory inspectors.
+<a id="5-7-4"></a>**5.7.4** Best practice is to de-identify any test results (e.g., labs, ECGs, diagnostic films or e-films), specimens, or reports that accompany CRF data (if they are required by the Sponsor). Blackout any nominative information and identify participants by study identification code only, unless specifically required/permitted and approved by the REB. Note that all source documents should be de-identified prior to archiving study files (It is best to do this on an ongoing basis). Do not keep copies of clinical records, consents, printouts, discharge summaries, or any identifiable clinical reports in CRF files.
+
+<a id="5-7-5"></a>**5.7.5** Ensure that data collected in the CRF only contains data pertinent to the REB-approved protocol (e.g. additional open text fields).
+
+<a id="5-7-6"></a>**5.7.6** The QI/PI should sign and date the CRF where indicated, after the final entry. If a source form or CRF has been revised after QI/PI sign off, the QI/PI should sign again.
+
+<a id="5-7-7"></a>**5.7.7** Ensure that CRFs are completed and reviewed, ready for sharing with the Sponsor in a timely fashion (i.e., respect the Sponsor’s timelines).
+
+<a id="5-8"></a>
+
+<a id="5-8-electronic-data-capture-systems-electronic-crfs"></a>
+
+### 5.8 Electronic data capture systems/ electronic CRFs
+
+<a id="5-8-1"></a>**5.8.1** Sponsors and Sponsor-Investigators must validate any electronic data capture (EDC) system in order to ensure its reliability and precision, as well as its expected performance and compliance with [21 CFR Part 11](https://www.ecfr.gov/current/title-21/chapter-I/subchapter-A/part-11). For MUHC Sponsor-Investigators, the RI-MUHC supports the [REDCap](/apps/redcap) electronic data capture system for investigator-initiated study eCRFs of low or moderate complexity, ideally, containing no more than 1000 variables. For a more complex study, requiring higher numbers of variables, it is recommended to program a few variables per form. Training videos on REDCap are available as well as over 200 learning materials in the REDCap Training Materials Repository tailored to different skill levels. Refer to the RI Portal Training section for links. Any REDCap self-training should be documented on a Training Log. Note that the purpose of this system is for use as an eCRF collecting data transcribed from source forms. REDCap is not fit-for-purpose for use as an electronic ICF as it only allows for one signature per form and source data should be filed separate from the eCRF.
+
+<a id="5-8-2"></a>**5.8.2** Ensure that authorized study staff obtains documented training on the use of the EDC system, as required by the study protocol, and follow correct procedures. Retain CRF guidelines (if applicable) and training records with essential study documents.
+
+<a id="5-8-3"></a>**5.8.3** Permit EDC access only to authorized persons with authenticated identification and delegation of this task on the Task Delegation Log. Ensure that measures of protection, detection, and correction are in place (secure electronic signature with audit trail).
+
+<a id="5-8-4"></a>**5.8.4** Ensure that clinical data transfer to another system e.g., SAS (if required by protocol) is validated and secure.
+
+<a id="5-8-5"></a>**5.8.5** Electronic source data documents must be printed, signed and dated by the QI/PI to confirm the content (unless obtained from the Sponsor’s validated equipment/labs with direct upload into the Sponsor’s validated eCRF). File with other study source documents.
+
+<a id="5-8-6"></a>**5.8.6** If the protocol requires direct entry of source data into an eCRF, this must first be approved by the REB. Employ a track change system, for the duration of document storage time, according to the applicable regulations (15 years for Health Canada regulated or 7 years from publication date for non-Health Canada regulated).
+
+<a id="5-8-7"></a>**5.8.7** Retain the original or certified copy of the electronic data backup, as well as an audit trail (tracking of electronic data).
+
+<a id="5-9"></a>
+
+<a id="5-9-quality-control-and-modifications-to-clinical-data"></a>
+
+### 5.9 Quality control (QC) and modifications to clinical data
+
+<a id="5-9-1"></a>**5.9.1** Best practice is to conduct QC of source data prior to transcription into a CRF/eCRF. Again, once data has been transcribed in a CRF/eCRF, the site should conduct QC in order to capture/clarify missed protocol deviations, transcription errors, omissions or any ambiguity. As per [SOP-CR-026](/sops/cr-026), any major or critical protocol deviations should be detailed on the CAPA form and all deviations should be recorded on the Protocol/GCP/SOP Deviation Log. Note that the site should not be relying on the Sponsor for sole responsibility of QC. Refer to [SOP-CR-026](/sops/cr-026) regarding reporting.
+
+<a id="5-9-2"></a>**5.9.2** In addition to site QC, in order to ensure the integrity of the data, the Sponsor or Sponsor-Investigator should establish QC systems (e.g., monitoring and eCRF entry specifications) to ensure that studies are conducted consistently across all participating sites in accordance with the protocol, GCP, SOPs and the regulatory requirements.
+
+<a id="5-9-3"></a>**5.9.3** QC should be applied to each stage of data handling to ensure that all data are reliable, are verifiable against source documents (no transcription errors) and have been processed correctly (ICH-GCP 5.1.3).
+
+<a id="5-9-4"></a>**5.9.4** In order to ensure coherence of the data within the same CRF, other quality controls should be applied once data capture is completed.
+
+<a id="5-9-5"></a>**5.9.5** In order to decrease errors during the data capture process, interactive quality control can be established, whether it is for paper or electronic (single or double entry).
+
+<a id="5-9-6"></a>**5.9.6** Whether paper or electronic, the process of control, verification and correction should allow for a comparison with the source data, and should indicate who, when and why modifications were made and delegation to these persons should have been recorded on the Task Delegation Log (refer to [SOP-CR-002](/sops/cr-002)).
+
+<a id="5-9-7"></a>**5.9.7** Receive requests for data modification from the Sponsor’s Monitor, CRO, or other team members, on a Data Clarification Form (DCF) or equivalent (e.g., email which should be printed and filed with source data. Justify and document all required modifications made to the CRF (paper or electronic). Review and sign the DCF (or equivalent). Return the original document to the Sponsor or Sponsor-Investigator (or as otherwise agreed upon). Retain a copy with the essential study documents in the ISF.
+
+<a id="5-9-8"></a>**5.9.8** Ensure that a tracking system (paper or electronic) of all data modifications is retained for a minimum of 15 years for Health Canada regulated studies or for 7 years from publication date for all other studies. Ensure that this system is accessible for monitors, auditors, and regulatory inspectors.
+
+<a id="5-10"></a>
+
+<a id="5-10-clinical-data-storage"></a>
 
 ### 5.10 Clinical data storage
 
-**5.10.1** Store clinical study information to permit preparation of complete, accurate reports, as well as their interpretation and verification.
+<a id="5-10-1"></a>**5.10.1** Store clinical study information in a manner which will permit the preparation of complete and accurate reports, as well as permit their interpretation and verification.
 
-**5.10.2** Per [SOP-CR-015](/sops/cr-015), retain all essential study documents for a minimum of 15 years (Health Canada-regulated) or 7 years from publication date (non-regulated).
+<a id="5-10-2"></a>**5.10.2** As per [SOP-CR-015](/sops/cr-015), retain all essential study documents for a minimum of 15 years for Health Canada regulated studies, or 7 years from publication date for studies not regulated by Health Canada. Refer to [SOP-CR-015](/sops/cr-015) for additional information on long-term storage.
 
-**5.10.3** Clearly identify source documents (including medical/hospital chart documents), CRFs, and other essential documents for archiving. Ensure nominative participant information is redacted before archiving.
+<a id="5-10-3"></a>**5.10.3** Clearly identify source documents (including documents from participants’ medical/hospital chart), CRFs, and other essential study documents for archiving. Ensure that any nominative participant information has been redacted prior to archiving.
 
-**5.10.4** Protect all paper and/or electronic data from deterioration, accidental damage, or destruction for the full retention period. The RI-MUHC can open an account at Iron Mountain (→ [SOP-CR-015](/sops/cr-015)).
+<a id="5-10-4"></a>**5.10.4** Protect all paper and/or electronic data from deterioration, and accidental damage or destruction, for the duration of the record retention period. The RI-MUHC can open an account at Iron Mountain for this purpose (refer to [SOP-CR-015](/sops/cr-015)).
 
-**5.10.5** Store completed CRFs separate from participant identifying information in a secure area accessible only to study personnel.
+<a id="5-10-5"></a>**5.10.5** Store completed CRFs separate from participant identifying information in a secure area, accessible only to study personnel.
 
-**5.10.6** Ensure all essential documents are accessible and audit/inspection-ready. Regulatory inspectors (Health Canada, FDA) or funding agencies may require access without notice. → [SOP-CR-017](/sops/cr-017).
+<a id="5-10-6"></a>**5.10.6** Ensure all essential documents are accessible and audit/inspection ready. Regulatory inspectors (e.g., Health Canada or the FDA) or funding agencies (e.g., CIHR) may require access to all essential documents without notice. Refer to [SOP-CR-017](/sops/cr-017) for more information on audits and inspections.
 
----
+<a id="appendices"></a>
 
-## Appendices {#appendices}
+## 6.0 Appendices
 
-<Info>
-Printable appendix templates are available for download below where linked. For the complete collection, see [SOP Appendices and Templates](/sops/appendices).
-</Info>
+<a id="appendix-1"></a>Appendix 1: Note-to-File (to be completed electronically or manually) {/* HUB: download */}[Download the form](https://portal.rimuhc.ca/pls/apex/MUHC2.download_my_file?p_file=249504742714731935) (sign-in required){/* /HUB */}
 
-- [Appendix 1 — Note to File Template](https://portal.rimuhc.ca/pls/apex/MUHC2.download_my_file?p_file=249504742714731935) (complete electronically or manually)
-- [Appendix 2 — Medical History Events Log](https://portal.rimuhc.ca/pls/apex/MUHC2.download_my_file?p_file=249506134524766068)
-- [Appendix 3 — Medical History Medication Log](https://portal.rimuhc.ca/pls/apex/MUHC2.download_my_file?p_file=249507045033815956)
-- [Appendix 4 — Concomitant Medication Log](https://portal.rimuhc.ca/pls/apex/MUHC2.download_my_file?p_file=249507109142831750)
+<a id="appendix-2"></a>Appendix 2: Medical History Events Log {/* HUB: download */}[Download the form](https://portal.rimuhc.ca/pls/apex/MUHC2.download_my_file?p_file=249506134524766068) (sign-in required){/* /HUB */}
 
----
+<a id="appendix-3"></a>Appendix 3: Medical History Medication Log {/* HUB: download */}[Download the form](https://portal.rimuhc.ca/pls/apex/MUHC2.download_my_file?p_file=249507045033815956) (sign-in required){/* /HUB */}
 
-## References {#references}
+<a id="appendix-4"></a>Appendix 4: Concomitant Medication Log {/* HUB: download */}[Download the form](https://portal.rimuhc.ca/pls/apex/MUHC2.download_my_file?p_file=249507109142831750) (sign-in required){/* /HUB */}
 
-- N2 Network SOP014_10
-- ICH-GCP E6 R2 and draft R3
-- ICH-GCP E8
-- ISO 14155:2020
-- Health Canada, Good Clinical Practice: Consolidated Guideline (ICH Topic E6)
-- Health Canada GUI-0100: Part C, Division 5
-- TCPS2 (2022)
-- Quebec Law 5 — Act respecting health and social services information
-- US FDA 21 CFR Part 11 (Electronic Records; Electronic Signatures) — referenced by Health Canada GUI-0100
+## 7.0 References
 
----
+- Network of Networks (N2) SOP014_10
+- International Conference on Harmonization – Good Clinical Practice (ICH-GCP) E6 R2 and draft R3
+- [International Conference on Harmonization – Good Clinical Practice (ICH-GCP) E8](https://www.canada.ca/en/health-canada/services/drugs-health-products/drug-products/applications-submissions/guidance-documents/international-council-harmonisation/guidelines.html)
+- International Standards Organization (ISO) 14155:2020 GCP
+- Health Canada Guidance for Industry: Good Clinical Practice: Consolidated Guideline: ICH Topic E6
+- [Health Canada GUI 0100](https://www.canada.ca/en/health-canada/services/drugs-health-products/compliance-enforcement/good-clinical-practices/guidance-documents/guidance-drugs-clinical-trials-human-subjects-gui-0100.html): Part C, Division 5 of the [Food and Drug Regulations](https://laws-lois.justice.gc.ca/eng/regulations/C.R.C.,_c._870/) “Drugs for Clinical Trials Involving Human Subjects”
+- Tri-Council Policy Statement: Ethical Conduct for Research Involving Humans ([TCPS 2](https://ethics.gc.ca/eng/policy-politique_tcps2-eptc2_2022.html), 2022)
+- Quebec [Law 5](https://www.legisquebec.gouv.qc.ca/en/document/cs/R-22.1) – Act respecting health and social services information and amending various legislative provisions
+- US Food and Drug Administration, Code of Federal Regulations, Title 21, Volume 1: Part 11, Electronic Records; Electronic Signatures, ([21CFR11](https://www.ecfr.gov/current/title-21/chapter-I/subchapter-A/part-11)) – referenced by Health Canada guide 0100.
 
-<h2>Revision history</h2>
+## 8.0 Revision history
 
-| Version | Date | Summary |
+| SOP Code | Effective Date | Summary of changes |
 |---|---|---|
-| SOP-CR-014_08 | 01 May 2025 | Combination of N2 SOP014_10 and RI-MUHC SOP-CR-014_07 Addendum with clarifications. Addition/revision to 5.1.1, 5.1.3, 5.1.5, 5.2, 5.3.4, 5.4.2, 5.4.4, 5.4.5, 5.5, 5.6.1 (last point), 5.6.2 (3rd point), 5.7.4, 5.8.1, 5.9.1, and 5.10.3. Revision of Appendix 1; addition of Appendices 2, 3, and 4. Added Health Canada GUI-0100 and 21 CFR Part 11 to references. |
-| SOP-CR-014_07 | 01 Sep 2018 | Section 1.1.3: specifying use of N/Ap and N/Av. Section 1.1.6: addition of justification requirement for corrections. Section 1.2.1: documentation of QC. Section 1.2.5: addition of Task Delegation Log requirement. Added Definitions section (4.0). Renamed from SOP014_06. |
-| SOP014_06 | 24 May 2016 | Combination of N2 SOP014_06 and RI-MUHC SOP-CR-009_EN04. |
+| SOP014_06 | 24-May-2016 | This SOP is a combination of N2 SOP014_06 and RI-MUHC SOP-CR009_EN04 |
+| SOP-CR-014_07 | 01-Sept-2018 | 1.1.3 specifying the use of N/Ap and N/Av 1.1.6 Addition of a requirement for justification of a correction 1.2.1 documentation of QC 1.2.5 Addition of “and delegation to these persons should be recorded on the Task Delegation Log” 4.0 Addition SOP014_06 renamed to SOP-CR-014_07 |
+| SOP-CR-014_08 | 01-May-2025 | This SOP is a combination of the N2 SOP014_10 and the RI-MUHC SOP-CR-014_07 Addendum with clarifications. Addition/Revision to 5.1.1, 5.1.3, 5.1.5, 5.2, 5.3.4, 5.4.2, 5.4.4, 5.4.5, 5.5, 5.6.1 (last point), 5.6.2 (3rd point), 5.7.4, 5.8.1, 5.9.1, and 5.10.3. Revision of Appendix 1 and Addition of Appendix 2, 3 and 4. Addition of HC Guide 0100 and 21 CFR, Part 11 in references. |
+
+{/* Built word for word from SOP-CR-014 by tools/sop_exact.py (batch 85), body pages 303 to 317 of "All SOPs combined and searchable -Final_12Dec2024-compressed.pdf"; checked word by word against the signed text. Hub additions sit between HUB comments. Old anchors kept: 5-1-general-considerations, 5-2-creation-of-visit-specific-source-document-forms-and-logs, 5-3-confidentiality-and-direct-access-to-clinical-data, 5-4-source-data-collection, 5-5-case-report-forms, 5-6-good-documentation-practices-gdps, 5-7-transcription-of-source-data-to-paper-crfs, 5-8-electronic-data-capture-systems-electronic-crfs, 5-9-quality-control-and-modifications-to-clinical-data, 5-10-clinical-data-storage, appendices. */}

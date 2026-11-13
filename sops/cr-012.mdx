@@ -1,311 +1,280 @@
 ---
 timestamp: false
-title: "SOP-CR-012 — AE, SAE, and SUSAR Reporting"
-description: "Requirements for assessing, documenting, and reporting adverse events, serious adverse events, and SUSARs in clinical research studies at the RI-MUHC."
+title: "SOP-CR-012: Adverse Events, Serious Adverse Events and Suspect Unexpected Serious Adverse Reaction Reporting"
+description: "How to assess and report adverse events, serious adverse events and suspected unexpected serious adverse reactions to the sponsor, the Research Ethics Board (REB), a data safety monitoring board and regulatory authorities, where applicable."
 ---
 
+{/* HUB: meta */}
 <div className="ri-sop-meta">
-  <div className="ri-sop-badges">
-    <Badge color="gray">SOP-CR-012_08</Badge>
-    <Badge color="gray">Version 08</Badge>
-    <Badge color="green">Effective 19 Jun 2023</Badge>
-    <Badge color="blue">Levels I–IV</Badge>
-  </div>
-  <button className="ri-print-btn" onClick={() => window.print()}>Print / Save PDF</button>
+  <button className="ri-print-btn" onClick={() => window.print()}>Print or save as PDF</button>
 </div>
 
-Reviewed by Dr. Louise Pilote, Director of Clinical Research, RI-MUHC.
-Approved by Gilbert Tordjman, Chief Operating and Development Officer, RI-MUHC.
-Signed copy on file — download the PDF for the approved version with signatures.
+<Note>
+Reading a standard operating procedure (SOP) on the Hub doesn't count toward your compliance record. Complete the [SOP Reader and Assessment](/training/compliance-requirements#sop-reader-and-assessment) for your level on TalentLMS.
+</Note>
+{/* /HUB */}
 
----
+| | |
+|---|---|
+| Title | Adverse Events, Serious Adverse Events and Suspect Unexpected Serious Adverse Reaction Reporting |
+| SOP Code | SOP-CR-012_08 |
+| Effective Date | 19-Jun-2023 |
 
+**RI-MUHC review and approval**
 
-<Warning>
-**Controlled document.** Always refer to this page for the current version. Do not rely on downloaded or printed copies. Reading this page does not count toward your compliance record — complete the SOP Reader and Assessment on TalentLMS.
-</Warning>
+| Name and Title of Upper Management (typed or printed) | Signature | Date dd/Mon/yyyy |
+|---|---|---|
+| Reviewer: Dr. Jean Bourbeau, Director of Clinical Research | Signed | 31/JAN/2023 |
+| Approver: Gilbert Tordjman, Chief Operating and Development Officer | Signed | 7/02/2023 |
 
-<div className="ri-sop-key-points">
+## 1.0 Purpose
 
-## Key points
+This Standard Operating Procedure (SOP) outlines the processes for assessing and reporting adverse events (AEs), including adverse drug reactions (ADRs), serious adverse events (SAEs) and Suspect Unexpected Serious Adverse Reactions (SUSARs) to the study Sponsor or Sponsor-Investigator (if applicable), the Research Ethics Board (<Tooltip tip="The ethics committee that reviews and approves research involving human participants. Also called CER at French-language institutions." headline="Research Ethics Board (REB)" cta="Full definition" href="/kb/foundations/glossary#reb">REB</Tooltip>), the Data Safety Monitoring Board (DSMB) if applicable, and regulatory authorities, including Health Canada, US Food and Drug Administration (FDA), and the European Medicines Agency (EMA).
 
-- All AEs must be collected, assessed by the <Tooltip tip="The physician responsible to the sponsor for the conduct of a clinical trial at the site. One QI per study per Canadian site." headline="Qualified Investigator (QI)" cta="Full definition" href="/kb/foundations/glossary#qi">QI</Tooltip>/PI, and documented on the <Tooltip tip="Any untoward medical occurrence in a participant, whether or not related to the investigational product." headline="Adverse Event (AE)" cta="Full definition" href="/kb/foundations/glossary#ae">AE</Tooltip> Assessment Log (Appendix 1) from the time of the participant's <Tooltip tip="The written document providing the participant with information essential to making an informed decision. Both parties must sign." headline="Informed Consent Form (ICF)" cta="Full definition" href="/kb/foundations/glossary#icf">ICF</Tooltip> signature date to end of study. The QI/PI must initial and date the log for every entry.
-- An AE becomes an <Tooltip tip="An adverse event meeting seriousness criteria: death, life-threatening, hospitalization, disability, or congenital anomaly." headline="Serious Adverse Event (SAE)" cta="Full definition" href="/kb/foundations/glossary#sae">SAE</Tooltip> when any one of these criteria is met: hospitalization or prolonged hospitalization; congenital malformation; persistent or significant disability; life-threatening or death; medically important event as per protocol.
-- All SAEs must be reported to the Sponsor or Sponsor-Investigator within **24 hours** of the QI/PI Awareness date and documented on the SAE Reporting Log (Appendix 2). A complete Follow-Up SAE report must be sent within 8 calendar days of the initial report.
-- **Reportable SAEs to the REB** must be: (1) unexpected, (2) related or possibly related to study participation, AND (3) suggest greater risk of harm than previously known. Report **within 7 days** if life-threatening or fatal; **within 15 days** otherwise. Submit via <Tooltip tip="The RI-MUHC's electronic study submission and management platform. All studies requiring MUHC Authorization are submitted through Nagano." headline="Nagano (RI-MUHC)" cta="Full definition" href="/kb/foundations/glossary#nagano">Nagano</Tooltip> (Form 3H).
-- Sponsor-Investigators must submit fatal or life-threatening SUSARs to Health Canada **within 7 calendar days** (with written follow-up within 8 days); all other SUSARs **within 15 calendar days**. Use a CIOMS-I form (Appendix 5).
-- External SUSARs received from the Sponsor must be reviewed and initialled by the QI/PI; those requiring protocol or ICF amendments or immediate participant notification must be reported to the REB within **15 days** via Nagano.
-- The QI/PI must establish a written procedure (e.g. a Working Instruction) for receiving and processing <Tooltip tip="Suspected Unexpected Serious Adverse Reaction — unexpected in nature, severity, or frequency; must be reported to Health Canada and the REB." headline="SUSAR" cta="Full definition" href="/kb/foundations/glossary#susar">SUSAR</Tooltip> reports from the Sponsor.
-- For studies without an <Tooltip tip="A drug, medical device, or natural health product being tested or used as a reference in a clinical trial." headline="Investigational Product (IP)" cta="Full definition" href="/kb/foundations/glossary#ip">investigational product</Tooltip>, the same AE/SAE collection and REB reporting procedures apply; part of the REB reporting criterion is that the SAE be at least possibly related to the study (not necessarily to an IP).
-- For medical device studies, use the Mandatory Medical Device Problem Reporting form on the Health Canada website for device incidents.
-- The Sponsor-Investigator/QI must report Device SAEs to the manufacturer and importer **within 72 hours** of awareness, in addition to reporting to Health Canada as per ISO 14155 GCP.
-
-</div>
-
-## 1 · Purpose {#purpose}
-
-This Standard Operating Procedure (SOP) outlines the processes for assessing and reporting adverse events (AEs), including adverse drug reactions (ADRs), serious adverse events (SAEs) and Suspect Unexpected Serious Adverse Reactions (SUSARs) to the study Sponsor or Sponsor-Investigator (if applicable), the Research Ethics Board (REB), the Data Safety Monitoring Board (DSMB) if applicable, and regulatory authorities, including Health Canada, US Food and Drug Administration (FDA), and the European Medicines Agency (EMA).
-
----
-
-## 2 · Scope {#scope}
+## 2.0 Scope
 
 This SOP is applicable to all interventional clinical studies undertaken at the MUHC/RI-MUHC, and to those clinical research site personnel responsible for collecting/receiving, assessing, reviewing, processing, documenting and reporting all AEs, SAEs and SUSARs.
 
 Serious adverse drug reaction reporting is in accordance with the International Council on Harmonisation (ICH) Guidelines E2A, Clinical Safety Data Management: Definitions and Standards for Expedited Reporting, applicable national regulations and guidance, and REB of record requirements.
 
-Note that ICH-GCP E6 and this SOP do not cover mandatory problem reporting for Investigational Device. The Sponsor-Investigator/QI is required to report Device SAEs to Health Canada as per ISO 14155 GCP and to the manufacturer and importer within 72 hours of awareness. Refer to the Health Canada website for Medical Device Incident reporting forms.
+Note that ICH-GCP E6 and this SOP do not cover mandatory problem reporting for Investigational Device. The Sponsor-Investigator/<Tooltip tip="The physician responsible to the sponsor for the conduct of a clinical trial at the site. One QI per study per Canadian site." headline="Qualified Investigator (QI)" cta="Full definition" href="/kb/foundations/glossary#qi">QI</Tooltip> is required to report Device SAEs to Health Canada as per ISO 14155 GCP and to the manufacturer and importer within 72 hours of awareness. Refer to the Health Canada website for Medical Device Incident reporting forms.
 
----
+## 3.0 Responsibilities
 
-## 3 · Responsibilities {#responsibilities}
+The Sponsor or Sponsor-Investigator is responsible for the collection of all AEs and SAEs, expediting reporting of SAEs to the regulatory authorities (Health Canada, FDA, EMA) and informing all involved Investigators of all SUSARs. The Qualified Investigator (QI)/Principal Investigator (<Tooltip tip="US equivalent of the Canadian Qualified Investigator (QI)." headline="Principal Investigator (PI)" cta="Full definition" href="/kb/foundations/glossary#pi">PI</Tooltip>) is responsible for assessment of all AEs and ensuring that the local <Tooltip tip="Any untoward medical occurrence in a participant, whether or not related to the investigational product." headline="Adverse Event (AE)" cta="Full definition" href="/kb/foundations/glossary#ae">AE</Tooltip>, <Tooltip tip="An adverse event meeting seriousness criteria: death, life-threatening, hospitalization, disability, or congenital anomaly." headline="Serious Adverse Event (SAE)" cta="Full definition" href="/kb/foundations/glossary#sae">SAE</Tooltip>, and external <Tooltip tip="A serious adverse reaction to a drug or natural health product whose nature, severity or frequency the Investigator's Brochure or product label does not anticipate; the sponsor reports it to Health Canada, and the site reports it to the REB when it meets the REB's criteria." headline="SUSAR" cta="Full definition" href="/kb/foundations/glossary#susar">SUSAR</Tooltip> reporting meet all of the applicable regulatory, International Conference on Harmonisation (ICH) Good Clinical Practice (GCP), Sponsor, REB and local requirements.
 
-The **Sponsor or Sponsor-Investigator** is responsible for collecting all AEs and SAEs, expediting reporting of SAEs to regulatory authorities (Health Canada, FDA, EMA), and informing all involved investigators of all SUSARs.
+Unless otherwise indicated, any or all parts of this procedure may be delegated to appropriately trained clinical research site personnel, but remain the ultimate responsibility of the Sponsor-Investigator and/or QI/PI.
 
-The **<Tooltip tip="The physician responsible to the sponsor for the conduct of a clinical trial at the site. One QI per study per Canadian site." headline="Qualified Investigator (QI)" cta="Full definition" href="/kb/foundations/glossary#qi">Qualified Investigator</Tooltip> (QI)/<Tooltip tip="US equivalent of the Canadian Qualified Investigator (QI)." headline="Principal Investigator (PI)" cta="Full definition" href="/kb/foundations/glossary#pi">Principal Investigator</Tooltip> (PI)** is responsible for assessing all AEs and ensuring that local <Tooltip tip="Any untoward medical occurrence in a participant, whether or not related to the investigational product." headline="Adverse Event (AE)" cta="Full definition" href="/kb/foundations/glossary#ae">AE</Tooltip>, <Tooltip tip="An adverse event meeting seriousness criteria: death, life-threatening, hospitalization, disability, or congenital anomaly." headline="Serious Adverse Event (SAE)" cta="Full definition" href="/kb/foundations/glossary#sae">SAE</Tooltip>, and external <Tooltip tip="Suspected Unexpected Serious Adverse Reaction — unexpected in nature, severity, or frequency; must be reported to Health Canada and the REB." headline="SUSAR" cta="Full definition" href="/kb/foundations/glossary#susar">SUSAR</Tooltip> reporting meets all applicable regulatory, ICH-GCP, Sponsor, REB, and local requirements.
+## 4.0 Definitions
 
-Unless otherwise indicated, any or all parts may be delegated to appropriately trained site personnel, but remain the ultimate responsibility of the Sponsor-Investigator and/or QI/PI.
+SAE Site Awareness date: The date that the QI/PI or any of his delegated research team members become aware of the serious adverse event. See [Glossary of Terms](/kb/foundations/glossary) for other definitions
 
----
+## 5.0 Procedure
 
-## AE/SAE decision flowchart {#ae-sae-decision-flowchart}
+<a id="5-1"></a>
 
-```mermaid
-flowchart TD
-    A[Event occurs / participant reports event] --> B[Document on AE Assessment Log]
-    B --> C[QI/PI assesses severity\nCTCAE grade 1–5]
-    C --> D{Meets SAE criteria?}
-    D -->|No — non-serious AE| E[Track on AE Assessment Log\nReport in CRF per protocol]
-    D -->|Yes| F[Report to Sponsor within 24h\nDocument QI Awareness date]
-    F --> G[Document on SAE Reporting Log]
-    G --> H[Complete SAE Follow-Up report\nwithin 8 days of initial report]
-    H --> I{Unexpected AND\npossibly related AND\ngreater risk of harm?}
-    I -->|No| J[Include in Annual REB Renewal]
-    I -->|Yes| K{Life-threatening\nor fatal?}
-    K -->|Yes| L[Report to REB via Nagano\nwithin 7 days]
-    K -->|No| M[Report to REB via Nagano\nwithin 15 days]
-    L --> N[Submit Nagano 3H form with\nSAE report, analysis, proposed changes]
-    M --> N
+### 5.1 General
 
-    style A fill:#150e51,color:#fff,stroke:none
-    style B fill:#2b9ce2,color:#fff,stroke:none
-    style C fill:#2b9ce2,color:#fff,stroke:none
-    style D fill:#1a1466,color:#fff,stroke:none
-    style E fill:#2b9ce2,color:#fff,stroke:none
-    style F fill:#c0392b,color:#fff,stroke:none
-    style G fill:#2b9ce2,color:#fff,stroke:none
-    style H fill:#2b9ce2,color:#fff,stroke:none
-    style I fill:#1a1466,color:#fff,stroke:none
-    style J fill:#2b9ce2,color:#fff,stroke:none
-    style K fill:#1a1466,color:#fff,stroke:none
-    style L fill:#c0392b,color:#fff,stroke:none
-    style M fill:#c0392b,color:#fff,stroke:none
-    style N fill:#2b2666,color:#fff,stroke:none
-```
+<a id="5-1-1"></a>**5.1.1** Ensure that all study investigators who will be assessing AEs, SAEs and SUSARs obtain RI-MUHC Privileges to conduct research. Refer to [SOP-CR-500](/sops/cr-500).
 
----
+<a id="5-1-2"></a>**5.1.2** Ensure all investigators and research team members obtain the appropriate level of institutional training on GCP, Health Canada Division 5 (where applicable) and SOPs. Refer to [SOP-CR-003](/sops/cr-003) regarding training. Ensure that all research team members are trained on and familiar with the AE/SAE/SUSAR process. Refer to [Appendix 6](#appendix-6) for a process flowchart.
 
-## 4 · Definitions {#definitions}
+<a id="5-1-3"></a>**5.1.3** Ensure that the QI/PI and Sub-investigators (Sub-Is) and trained staff members are delegated appropriate safety reporting tasks (AE/SAE/SUSAR). MD QI/PI/Su-Is are delegated AE/SAE Assessment and SUSAR review. <Tooltip tip="The team member who handles day-to-day administration and coordination of the clinical trial." headline="Clinical Research Coordinator (CRC)" cta="Full definition" href="/kb/foundations/glossary#crc">CRC</Tooltip>/nurses are delegated AE/SAE/SUSAR collection and reporting.
 
-| Term | Definition |
-|---|---|
-| **SAE Site Awareness Date** | The date that the QI/PI or any delegated research team members become aware of the serious adverse event. |
+<a id="5-1-4"></a>**5.1.4** It is essential to continue to educate participants about adverse events (AEs)/adverse drug reactions (ADRs i.e. AEs related to <Tooltip tip="A drug, medical device, or natural health product being tested or used as a reference in a clinical trial." headline="Investigational Product (IP)" cta="Full definition" href="/kb/foundations/glossary#ip">IP</Tooltip>), serious adverse events (SAEs), and the importance of reporting any AE (whether believed to be related to IP/study or not) to the human research site (e.g. coordinator or Investigator) ASAP via email or at study visits and/or during telephone or virtual contact. Refer to [SOP-CR-009](/sops/cr-009) Appendix 6 for a contact log. All AE discussions must be documented and all AEs must be recorded on the AE Assessment log. The documentation of this exchange as well as the updated AE Assessment log should be kept in the <Tooltip tip="The QI's collection of documentation demonstrating compliance, study integrity, and participant safety." headline="Investigator Site File (ISF)" cta="Full definition" href="/kb/foundations/glossary#isf">ISF</Tooltip>.
 
-See [Glossary of Terms](/kb/foundations/glossary) for all other term definitions.
+<a id="5-1-5"></a>**5.1.5** In the case of a participant who is not competent, or a minor (less than 18 years old), the QI/PI or delegated study team member should collect all data related to the AE/SAE from the legal representative.
 
----
+<a id="5-1-6"></a>**5.1.6** Delegated team members should discuss all AEs/SAEs reported by the participant or legal representative with the QI/PI and obtain assessment on the AE Assessment log on the same day or at the latest 5 days after and document discussion in the ISF.
 
-## 5 · Procedure {#procedure}
-### 5.1 General requirements
+<a id="5-1-7"></a>**5.1.7** AEs include all events related and not related to the investigational drug/natural health product. Non-related AEs are NOT considered as ADRs, and are NOT reportable to the REB or regulatory authorities; however, all AEs must be assessed and captured in source documents and Case Report Forms (CRFs), as described in the protocol.
 
-**5.1.1** Ensure all study investigators who will be assessing AEs, SAEs, and SUSARs hold RI-MUHC Privileges. → [SOP-CR-500](/sops/cr-500)
+<a id="5-1-8"></a>**5.1.8** Abnormal laboratory or test results should be reported to the QI/PI on the same day or at the latest 5 days afterwards for assessment. The QI/PI should review the test results and indicate any abnormalities as clinically significant (c.s.) or not clinically significant (n.c.s.) and initial and date the results ASAP. Laboratory abnormalities deemed clinically significant should be documented as described in the protocol. Note: If test results are reviewed by the QI/PI online and subsequently initialed and dated at a later date, this process should be documented (e.g. a Working Instruction) and a copy placed in the ISF.
 
-**5.1.2** Ensure all investigators and team members obtain the appropriate level of institutional training on GCP, Health Canada Division 5 (where applicable), and SOPs. → [SOP-CR-003](/sops/cr-003)
+<a id="5-1-9"></a>**5.1.9** Ensure that the protocol outlines recording and reporting requirements for AEs, SAEs, reportable SAEs and reportable medically important events as well as SUSARs.
 
-**5.1.3** Delegate safety reporting tasks appropriately on the <Tooltip tip="Lists each team member, their qualifications, and specific trial tasks authorized by the QI." headline="Task Delegation Log (TDL)" cta="Full definition" href="/kb/foundations/glossary#tdl">Task Delegation Log</Tooltip>: QI/PI and Sub-Investigators (MDs) are delegated AE/SAE assessment and SUSAR review; CRCs and nurses are delegated AE/SAE/SUSAR collection and reporting.
+<a id="5-1-10"></a>**5.1.10** Post-marketing (Phase IV) studies or studies that involve a marketed product: Report to the Sponsor/Market Authorization Holder (MAH) in order for them to report adverse reactions to marketed products, as per the Health Canada guidance document for industry, Reporting Adverse Reactions to Marketed Health Products (effective 23-May-2018).
 
-**5.1.4** Educate participants about AEs, adverse drug reactions (ADRs), SAEs, and the importance of reporting any event — whether believed to be related to <Tooltip tip="A drug, medical device, or natural health product being tested or used as a reference in a clinical trial." headline="Investigational Product (IP)" cta="Full definition" href="/kb/foundations/glossary#ip">IP</Tooltip> or not — to the site as soon as possible (via email, at study visits, or during telephone/virtual contact). All AE discussions must be documented; all AEs must be recorded on the AE Assessment Log.
-
-**5.1.5** For participants who are not competent or are minors (under 18 years), collect all AE/SAE data from the legal representative.
-
-**5.1.6** Team members should discuss all AEs/SAEs with the QI/PI and obtain assessment on the AE Assessment Log on the same day or within 5 days of receipt, and document the discussion in the <Tooltip tip="The QI's collection of documentation demonstrating compliance, study integrity, and participant safety." headline="Investigator Site File (ISF)" cta="Full definition" href="/kb/foundations/glossary#isf">ISF</Tooltip>.
-
-**5.1.7** AEs include all events related and not related to the investigational product. Non-related AEs are not considered ADRs and are not reportable to the REB or regulatory authorities; however, all AEs must be assessed and captured in source documents and CRFs as described in the protocol.
-
-**5.1.8** Abnormal laboratory or test results must be reported to the QI/PI on the same day or within 5 days for assessment. The QI/PI must indicate abnormalities as clinically significant (c.s.) or not clinically significant (n.c.s.) and initial and date results promptly.
-
-**5.1.9** Ensure the protocol outlines recording and reporting requirements for AEs, SAEs, reportable SAEs, reportable medically important events, and SUSARs.
-
-**5.1.10** For post-marketing (Phase IV) studies or studies involving a marketed product: report to the Sponsor/Market Authorization Holder (MAH) as per the Health Canada guidance on reporting adverse reactions to marketed health products (effective 23-May-2018).
+<a id="5-2"></a>
 
 ### 5.2 Documenting AEs in source documents for QI/PI assessment
 
-**5.2.1** Throughout the clinical trial, all AE details must be collected at each study visit/telephone/virtual contact and reported in clinical notes and on the AE Assessment Log, from the time of the participant's <Tooltip tip="The written document providing the participant with information essential to making an informed decision. Both parties must sign." headline="Informed Consent Form (ICF)" cta="Full definition" href="/kb/foundations/glossary#icf">ICF</Tooltip> signature date to end of study as per the REB-approved protocol.
+<a id="5-2-1"></a>**5.2.1** Throughout the course of a clinical trial, all AE details must be collected at each study visit/telephone/virtual contact and reported in clinical notes and on an AE Assessment log from the time of the participant’s <Tooltip tip="The written document providing the participant with information essential to making an informed decision. Both parties must sign." headline="Informed Consent Form (ICF)" cta="Full definition" href="/kb/foundations/glossary#icf">ICF</Tooltip> signature date to the end of study as per REB approved protocol.
 
-**5.2.2** All AEs must be reported to the QI/PI for documented assessment on the AE Assessment Log.
+<a id="5-2-2"></a>**5.2.2** It is important for delegated research team members to report all AEs, as per REB approved protocol, to the QI/PI for documented assessment on an AE Assessment log.
 
-**5.2.3** Any change from the Medical History Events Log (→ [SOP-CR-014](/sops/cr-014), Appendix 2) must be captured on the AE Assessment Log.
+<a id="5-2-3"></a>**5.2.3** Any change from the Medical History Events Log ([SOP-CR-014](/sops/cr-014), Appendix 2) should be captured on the AE Assessment log.
 
-**5.2.4** The QI/PI must assess each event using CTCAE severity grades:
+<a id="5-2-4"></a>**5.2.4** The QI/PI should assess the event and provide the participant with appropriate medical care. Assessment must include: Severity (e.g. as per Common Terminology Criteria for Adverse Events (CTCAE) An adverse event (AE) assessment log is to be completed for each study subject ([Appendix 1](#appendix-1) AE assessment log). Departments, study teams may adapt the AE assessment log or may implement a controlled version of their own log on condition that all elements described in this section and appendix 1 are included: 1- Mild; asymptomatic or mild symptoms; clinical or diagnostic observations only. Intervention not indicated.
 
-| Grade | Description |
-|---|---|
-| 1 | Mild — asymptomatic or mild symptoms; clinical/diagnostic observations only; no intervention indicated |
-| 2 | Moderate — minimal, local or non-invasive intervention indicated; limits age-appropriate ADLs |
-| 3 | Severe or medically significant but not immediately life-threatening; hospitalization indicated; limits self-care/ADLs |
-| 4 | Life-threatening; urgent intervention indicated |
-| 5 | Death related to AE |
+2- Moderate: minimal, local or non-invasive intervention indicated; limiting age-appropriate Activities of Daily Living (ADL’s).
 
-**5.2.5** The QI/PI must assess relationship to (A) IP(s)/study procedure individually, or (B) study procedures overall: 1 — Not Related; 2 — Unlikely Related; 3 — Possibly Related; 4 — Definitely Related. Part of Health Canada reporting criteria is that the AE be at least possibly related to the IP; REB reporting criteria include relatedness to the study as a whole.
+3- Severe or medically significant but not immediately life-threatening; hospitalization indicated. Disabling, limit of self-care/ADL’s. 4- Life-threatening consequences; urgent intervention indicated. 5- Death related to AE (based on appendix 1).
 
-**5.2.6** The QI/PI must assess seriousness using Health Canada criteria. If any one criterion is met, the AE is upgraded to an SAE:
+Note that the frequency of events should also be assessed by the QI/PI.
 
-1. Hospitalization or prolonged hospitalization
-2. Congenital malformation
-3. Persistent or significant disability or incapacity
-4. Life-threatening or death
-5. Medically important event as per the REB-approved protocol
+<a id="5-2-5"></a>**5.2.5** The QI/PI should assess the Relationship to A- IP(s)/study procedure i.e. all investigative drugs or NHPs individually Or B- the study procedures (1- Not Related, 2- Unlikely Related, 3- Possibly Related and 4. Definitely Related). Note that part of HC reporting criteria is that the AE be at least possibly “Related to IP”, however REB reporting criteria include relatedness to the study as a whole.
 
-**5.2.7** Additional elements to document: AE description, date started, date of change (resolved, improved, or worsened), action taken with study drug/procedure, and outcome. Action taken and outcome should correlate with the Concomitant Medication Log dates (→ [SOP-CR-014](/sops/cr-014), Appendix 4).
+<a id="5-2-6"></a>**5.2.6** The QI/PI or delegate should assess Seriousness as per Health Canada reporting criteria:
 
-**5.2.8** The <Tooltip tip="The team member who handles day-to-day administration and coordination of the clinical trial." headline="Clinical Research Coordinator (CRC)" cta="Full definition" href="/kb/foundations/glossary#crc">CRC</Tooltip> who completed the AE Assessment Log and the QI/PI providing medical oversight must both initial and date the log.
+1- Hospitalization or prolonged hospitalization; 2- Caused congenital malformation; 3- Persistent or significant disability or incapacity; 4- Life-threatening or Death; 5- Medically Important Event as per REB-approved protocol.
 
-**5.2.9** The CRC must report any AE grade change to SAE (e.g. hospitalization) on the AE Assessment Log, report to the QI/PI, and document the QI Awareness date in source and on the SAE Reporting Log.
+If any one of these criteria are met, then the AE is upgraded to an SAE. Note: This change in severity should be captured on the AE Assessment log and subsequently tracked on the SAE Reporting log.
 
-**5.2.10** If no sponsor-provided AE Assessment Log template exists, use the RI-MUHC AE Assessment Log template (Appendix 1).
+<a id="5-2-7"></a>**5.2.7** In addition, the AE Description, Date Started, Date of Change (i.e. resolved, improved or worsened in intensity or resulted in death), Action Taken with Study Drug/Procedure, as well as Outcome of AE should be recorded on the AE Assessment log. Note that Action Taken and Outcome should correlate with any Concomitant Medications and dates on the Concomitant Medication log (refer to Appendix in [SOP-CR-014](/sops/cr-014), Appendix 4 for the Concomitant Medication log).
 
-### 5.3 Documenting SAEs in source documents and report tracking
+<a id="5-2-8"></a>**5.2.8** The delegated CRC who completed the AE Assessment log and the QI/PI providing medical oversight must initial and date the log.
 
-**5.3.1** Any AE meeting SAE criteria on the AE Assessment Log must be reported to the Sponsor within 24 hours of the QI/PI Awareness date.
+<a id="5-2-9"></a>**5.2.9** As previously stated, the CRC must report the change in AE grade to SAE (e.g. patient is hospitalized) on the AE Assessment log, report the SAE to the QI/PI and document the QI Awareness date (e.g. printout the email exchange) in source and on the SAE Reporting log.
 
-**5.3.2** Document the SAE on the SAE Reporting Log (Appendix 2). All supporting documentation must be filed.
+<a id="5-2-10"></a>**5.2.10** If a source document AE Assessment log template is not provided by a Sponsor or Sponsor-Investigator, refer to [Appendix 1](#appendix-1) for the RI-MUHC AE Assessment log template.
 
-**5.3.3** The SAE Reporting Log documents: QI/PI Awareness date; SAE Report and Reporting date (initial and follow-up); REB criteria met; REB submission date; and (for Sponsor-Investigators) Health Canada reporting column.
+<a id="5-3"></a>
 
-**5.3.4** The expectedness of the event (per protocol, <Tooltip tip="Compilation of clinical and nonclinical data on the investigational product relevant to the study." headline="Investigator's Brochure (IB)" cta="Full definition" href="/kb/foundations/glossary#ib">IB</Tooltip>, or product monograph) is required to determine if the SAE is reportable to the REB and Health Canada.
+### 5.3 Documenting SAEs in source documents for QI assessment and report tracking
 
-**5.3.5** A column may be added to track SAE reporting to the <Tooltip tip="Independent committee that reviews interim safety and efficacy data and recommends whether to continue, modify, or stop the study." headline="Data Safety Monitoring Board (DSMB)" cta="Full definition" href="/kb/foundations/glossary#dsmb">DSMB</Tooltip> per the DSMB charter, if applicable.
+<a id="5-3-1"></a>**5.3.1** Any AE which meets SAE criteria on the Local AE Assessment log ([Appendix 1](#appendix-1)) should be reported to the Sponsor within 24 hours of the QI/PI Awareness date.
 
-### 5.4 Reporting all SAEs to the Sponsor within 24 hours
+<a id="5-3-2"></a>**5.3.2** The SAE should also be documented on the SAE Reporting Log. Refer to [Appendix 2](#appendix-2) for the SAE Reporting Log. All documentation to support this date must also be kept on file.
 
-**5.4.1** All SAEs must be reported to the Sponsor or Sponsor-Investigator within 24 hours of the QI/PI Awareness date using the appropriate forms (even if only partially complete). Follow up with additional information as soon as available. A complete SAE Follow-Up report must be sent within 8 calendar days of the initial report.
+<a id="5-3-3"></a>**5.3.3** The SAE Reporting Log documents the QI/PI Awareness date, the SAE Report &amp; Reporting date (Initial and Follow-up), the REB Criteria met, REB submission date, as well as a column for Sponsor-Investigators to capture Health Canada reporting (if applicable).
 
-**5.4.2** Ensure the SAE is on the AE Assessment Log with QI/PI Awareness date, assessment of expectedness, and initial reporting date documented.
+<a id="5-3-4"></a>**5.3.4** The Expectedness of the event (as per protocol, <Tooltip tip="Compilation of clinical and nonclinical data on the investigational product relevant to the study." headline="Investigator's Brochure (IB)" cta="Full definition" href="/kb/foundations/glossary#ib">IB</Tooltip> or PM), is an important assessment required to determine if the SAE is reportable to both the REB and to Health Canada.
 
-**5.4.3** Most Sponsors provide an SAE reporting form to be filled out, signed by the QI/PI, and emailed or faxed to the Sponsor's pharmacovigilance team. For electronic reporting, use the RI-MUHC SAE Report template (Appendix 4) first, then transcribe into the Sponsor's eCRF. Print and file proof of SAE reporting with date of Sponsor receipt in the ISF.
+<a id="5-3-5"></a>**5.3.5** A column may be added to the SAE Reporting log template to track SAE reporting to the DSMB as per DSMB charter (if applicable).
 
-**5.4.4** If the QI/PI determines it necessary to break the blinding code for participant safety, document the need and communicate to the Sponsor. Refer to the protocol for the unblinding procedure.
+<a id="5-4"></a>
 
-**5.4.5** If a participant becomes pregnant, collect and follow prospective and retrospective Exposure in Utero (EIU) reports, including outcome information. The absence of an AE does not preclude collection of this data.
+<a id="5-4-reporting-all-saes-to-the-sponsor-within-24-hours"></a>
 
-**5.4.6** Document and retain all correspondence with the Sponsor's Medical Monitor in the ISF.
+### 5.4 Reporting all SAE’s to the Sponsor within 24 hours
 
-**5.4.7** If no Sponsor SAE Report form was provided, use the SAE Report Form template (Appendix 4).
+<a id="5-4-1"></a>**5.4.1** All SAEs (i.e. All AEs that meet Health Canada criteria for seriousness) must be reported to the Sponsor or Sponsor-Investigator within 24 hours of the QI/PI Awareness or as otherwise specified in the REB-approved protocol using the appropriate forms (even if only partially completed). Follow up with additional information, as soon as it becomes available. A complete SAE Follow-Up report should be sent within 8 calendar days from the Initial SAE reporting in order for the Sponsor/Sponsor-Investigator to meet their Health Canada reporting deadline.
 
-### 5.5 Reporting unexpected, possibly related SAEs to the REB
+<a id="5-4-2"></a>**5.4.2** Ensure the SAE is reported on the AE Assessment log for assessment by the QI/PI. Ensure the QI/PI Awareness date, QI/PI’s assessment of Expectedness and Initial reporting date of the SAE are documented in source documents/on the SAE Reporting log.
 
-**5.5.1** The QI/PI must report to the REB any local SAE that is simultaneously:
-- **Unexpected** — in terms of nature, severity, or frequency given the REB-approved protocol, IB, or other relevant sources; and not associated with the expected natural progression of the participant's underlying condition; **AND**
-- **Related or possibly related** — there is a reasonable possibility the event was caused by the IP or study procedures; **AND**
-- **Suggests greater risk of harm** — physical, psychological, economic, or social harm — than was previously known.
+<a id="5-4-3"></a>**5.4.3** Most Sponsors or Sponsor-Investigators provide an SAE reporting form which must be filled out, signed by the QI/PI and then emailed or faxed to the Sponsor’s Pharmacovigilance team. More recently, Sponsors are providing electronic methods for SAE reporting. If this is the case, it is recommended to use the RI-MUHC SAE report template to keep in the ISF prior to transcribing into the Sponsor’s eCRF SAE report. Ensure that the eCRF report and proof of SAE reporting with date of Sponsor’s receipt is printed and filed in the ISF and documented on the SAE Reporting Log.
 
-**5.5.2** If the reportable SAE is life-threatening or fatal: report to the REB within **7 days** of the QI/PI Awareness date.
+<a id="5-4-4"></a>**5.4.4** QI/PIs may assess it to be necessary to break the blinding code to ensure optimal participant care. Refer to study protocol (or equivalent document) for detailed un-blinding procedure. Document the need to break the randomization code and communicate this to the Sponsor or Sponsor-Investigator.
 
-**5.5.3** If the reportable SAE is non-life-threatening or not fatal: report to the REB within **15 days** of the QI/PI Awareness date.
+<a id="5-4-5"></a>**5.4.5** If a participant becomes pregnant, collect and follow prospective and retrospective Exposure in Utero (EIU) reports, in order to obtain outcome information. The absence of an AE does not preclude collection of this data.
 
-**5.5.4** Submit reportable SAEs via the <Tooltip tip="The RI-MUHC's electronic study submission and management platform. All studies requiring MUHC Authorization are submitted through Nagano." headline="Nagano (RI-MUHC)" cta="Full definition" href="/kb/foundations/glossary#nagano">Nagano</Tooltip> system using Form 3H (the 2021 Nagano SAE reporting form). Any SAE Report form must be uploaded and appended to the Nagano form.
+<a id="5-4-6"></a>**5.4.6** Document and retain all correspondence (including phone conversations using SOP-CR-009_07_APPENDIX 6_Telephone Contact Log with the Sponsor or Sponsor-Investigator’s Medical Monitor) in the ISF.
 
-**5.5.5** The Nagano 3H form must include: participant study number; description of the unexpected, at least possibly related SAE; previous similar safety reports (if available); analysis of the significance of the event; proposed research changes (protocol, IB, and/or ICF); a copy of the current SAE report sent to the Sponsor; and DSMB meeting information (if applicable).
+<a id="5-4-7"></a>**5.4.7** If the Sponsor or Sponsor-Investigator did not provide an SAE Report form refer to the SAE Report Form template, [Appendix 4](#appendix-4).
 
-**5.5.6** Update the REB as soon as additional information is available by appending Follow-Up SAE reports.
+<a id="5-5"></a>
 
-**5.5.7** SAEs not meeting the above criteria for expedited reporting should be submitted with the Annual Continuing REB Review.
+### 5.5 Reporting unexpected related-to-IP/study SAE’s to the Research Ethics Board (REB)
 
-**5.5.8** For studies reviewed by an external Quebec Multi-centrique REB, submit an SAE notification to the MUHC <Tooltip tip="Individual formally authorized to issue the final written authorization for each research project at a Quebec RSSS institution." headline="Personne mandatée (PFM)" cta="Full definition" href="/kb/foundations/glossary#personne-mandatee">personne mandatée</Tooltip> via Form 3H, as well as to the external reviewing REB via their designated form.
+<a id="5-5-1"></a>**5.5.1** For Local SAEs: The QI/PI must report to the REB any SAE which is:
 
-### 5.6 Sponsor-Investigator reporting of SUSARs to Health Canada and the DSMB
+- Unexpected (in terms of nature, severity, or frequency) given (a) the research procedures that are described in the REB approved documents, such as the research protocol and informed consent document, the Investigator Brochure or other relevant sources of information such as product labelling and package inserts; and (b) the event is not associated with the expected natural progression of any underlying disease, disorder, predisposing risk factor, or condition of the participant(s) experiencing the adverse event; AND
+- Related or possibly related to participation in the research. Possibly related means there is a reasonable possibility that the incident, experience, or outcome may have been caused by the investigational product(s) or procedures involved in the research); AND
+- Suggests that the research places research participants or others at a greater risk of harm (including physical, psychological, economic, or social harm) than was previously known or recognized.
 
-**5.6.1** The Sponsor or Sponsor-Investigator must comply with Health Canada requirements for expedited reporting of individual cases of unexpected serious adverse reactions (for which a causal relationship with the IP cannot be ruled out). "Seriousness," not "Severity," guides regulatory reporting obligations (e.g. a severe headache is not serious).
+<a id="5-5-2"></a>**5.5.2** If the reportable SAE is life-threatening or fatal, the SAE must be reported to the REB within 7 days of the QI/PI Awareness date.
 
-**5.6.2** Medical and scientific judgement should be used to determine if expedited reporting is justified for other important medical events that may not result in hospitalization, death, or immediate life-threat, but alter the risk-benefit assessment (e.g. lack of efficacy for a life-threatening disease; anaphylaxis requiring ER treatment; significant increase in frequency of an expected serious <Tooltip tip="A noxious, unintended response to a drug where a causal relationship is at least reasonably possible." headline="Adverse Drug Reaction (ADR)" cta="Full definition" href="/kb/foundations/glossary#adr">ADR</Tooltip>; major new animal safety data).
+<a id="5-5-3"></a>**5.5.3** If the reportable SAE is non-life-threatening or not fatal, the SAE must be reported to the REB within 15 days of the QI/PI Awareness date.
 
-**5.6.3** Minimum information for a regulatory report: one identifiable patient, one identifiable reporter, at least one suspect medicinal product, and one event assessed as serious, unexpected, with a suspected relationship to the product.
+<a id="5-5-4"></a>**5.5.4** Reportable SAEs are reported to the REB through the [Nagano](/apps/nagano/overview) system. The former SAE reporting form was Nagano F3a. The new 2021 Nagano form for SAE reporting is now the Nagano 3H form. Any SAE Report form must be uploaded and appended to the Nagano form.
 
-**5.6.4** Prepare a CIOMS-I form (or MedWatch for US reports) for submission to national health authorities. Unblind unexpected and related SAE reports for expedited reporting purposes. → Appendix 5.
+<a id="5-5-5"></a>**5.5.5** The Nagano 3H form must include the following information:
 
-**5.6.5** Submit preliminary information on fatal and life-threatening reactions within **7 calendar days** following Sponsor/Sponsor-Investigator/CRO awareness (verbally if appropriate); complete written follow-up within another **8 calendar days**.
+- The patient study number and a description of the Unexpected, At least Possibly Related Serious Adverse Event
+- Previous safety reports concerning similar events, if available
+- An analysis of the significance of the current Unanticipated event
+- The proposed research changes (if any), protocol, IB and/or ICF changes or other corrective actions to be taken by the Sponsor in response to the event(s).
+- A copy of the current SAE report that was sent to the Sponsor/Sponsor-Investigator.
 
-**5.6.6** Submit all other unexpected and related SAE reports (non-life-threatening, not fatal) within **15 calendar days**.
+- DSMB meeting information (if applicable).
 
-**5.6.7** For blinded studies, it is recommended to break the blind for the individual participant experiencing the expedited SADR, while maintaining the blind for biometrics personnel responsible for study analysis. For studies where serious or fatal outcomes are primary endpoints, unblinding could compromise study integrity — confirm approach with health authorities in advance.
+<a id="5-5-6"></a>**5.5.6** Update the REB as soon as additional information is available, appending any Follow-Up SAE reports.
 
-**5.6.8** The Sponsor/Sponsor-Investigator must amend the IB to update safety information as required by regulations.
+<a id="5-5-7"></a>**5.5.7** All other reports (those not meeting above criteria for expedited reporting) should be submitted with REB annual Continuing Review.
 
-**5.6.9** Submit periodic, quarterly, or annual reports as per national regulations.
+<a id="5-5-8"></a>**5.5.8** For studies reviewed by an external Quebec Multi-centrique REB, an SAE notification must be submitted to the MUHC person mandatee via the F3H as well as the external reviewing REB via their designated form (or as per REB SOPs).
 
-**5.6.10** For post-marketing studies, submit reports as per applicable national regulations.
+<a id="5-6"></a>
 
-**5.6.11** The Sponsor/Sponsor-Investigator must report all reportable SAEs to the DSMB per the DSMB charter, if applicable.
+### 5.6 Sponsor-Investigators reporting individual suspected unexpected serious adverse reactions (SUSARs) to Health Canada and the DSMB
 
-### 5.7 Sponsor or Sponsor-Investigator distribution of external SUSARs to QI/PIs
+<a id="5-6-1"></a>**5.6.1** The Sponsor or Sponsor/Investigator must comply with the regulatory requirements of Health Canada regarding expedited reporting of single cases of unexpected serious adverse reactions, (for which a causal relationship with the investigational product cannot be ruled out, unless otherwise stated in the study contract, or other document) or where an increase in the rate of occurrence or severity, was judged to be clinically important. Note that “Seriousness” (and not “Severity”) serves as a guide for regulatory reporting obligations (e.g. A severe headache is not serious). Reminder: Expectedness is determined by the information in the Investigator’s Brochure (IB) or other REB approved documents such as protocol and informed consent form. If the AE is not listed or is more severe than listed in the IB, the AE is considered Unexpected.
 
-**5.7.1** The Sponsor or Sponsor-Investigator is responsible for distributing expedited external SAE reports (SUSARs) to each investigator of a multi-centre trial. Each investigator receives blinded serious adverse reaction reports.
+<a id="5-6-2"></a>**5.6.2** Medical and scientific judgement should be used to determine if expedited reporting is justified for other important medical events that may not result in hospitalization, death or be immediately life-threatening, however, alter the risk-benefit assessment (e.g. 1 – Lack of efficacy with IP used to treat a life-threatening disease; 2 - Treatment required in ER for anaphylaxis, blood dyscrasias or convulsions or development of drug dependency or drug abuse or 3- An expected serious ADR with an increase in frequency which is judged to be clinically important; 4 – Major safety data from newly completed animal studies e.g. carcinogenicity).
 
-**5.7.2** It is the QI/PI's responsibility to document their medical oversight of SUSARs.
+<a id="5-6-3"></a>**5.6.3** The minimum information for the submission of a report to regulatory health authorities includes at least one identifiable patient/participant, one identifiable reporter, at least one suspect medicinal product, one event or outcome that is assessed as serious and unexpected and there is reasonable suspected relationship to a medicinal product.
 
-**5.7.3** The QI/PI should establish a written procedure (e.g. a Working Instruction) for receiving and processing safety reports from the Sponsor.
+<a id="5-6-4"></a>**5.6.4** Prepare a Council for International Organizations of Medical Sciences (CIOMS)- I form (or MedWatch for US reports) for submission to national health authorities (Health Canada, FDA, EMA, etc.), as appropriate. Unblind the Unexpected and Related SAE Reports for the purposes of expedited reporting, especially for reports submitted in Europe. Refer to [Appendix 5](#appendix-5) for the CIOMS report template.
 
-### 5.8 QI/PI reporting of external SUSARs to the REB
+<a id="5-6-5"></a>**5.6.5** Submit preliminary information on fatal and life-threatening reactions from a clinical trial within 7 calendar days following Sponsor/Sponsor-Investigator/CRO awareness, verbally if appropriate, and complete written follow-up submitted within another 8 calendar days from the date of the Initial Report.
 
-**5.8.1** The QI/PI must report to the REB via Nagano any external SAE meeting all criteria in section 5.5.1 **plus** an additional criterion: **AND requires a change to the research** (amendment of protocol, IB, and/or ICF) and/or requires immediate notification to participants for safety reasons.
+<a id="5-6-6"></a>**5.6.6** Submit all other Unexpected and Related SAE reports (which are non-life-threatening and not fatal) within 15 calendar days.
 
-**5.8.2** The QI/PI must submit all qualifying SUSARs/summaries and follow-up information to the REB via Nagano within **15 days** of receipt/awareness. Retain all documentation in the ISF.
+<a id="5-6-7"></a>**5.6.7** For most blinded studies, it is recommended for the Sponsor/Sponsor-Investigator to break the blind for the one participant who is experiencing the expedited SADR. As per ICH E2A, it is also recommended that the blind be maintained for biometrics personnel responsible for the analysis and interpretation of study results. However, for studies where “Serious” or “Fatal” outcomes are primary study endpoints, unblinding could compromise the integrity of the study. In this case, it may be advantageous to reach an agreement with the health authorities prior to proceeding.
 
-**5.8.3** Maintain all SUSAR reports and associated REB correspondence in the study files. → Appendix 3, External SUSAR Reporting Log.
+<a id="5-6-8"></a>**5.6.8** The Sponsor/Sponsor-Investigator is required to amend the IB to update the safety information as needed in accordance with regulatory requirements.
 
-### 5.9 AEs and SAEs in studies without investigational products
+<a id="5-6-9"></a>**5.6.9** Submit periodic, quarterly or annual reports, as per national regulations.
 
-**5.9.1** For studies without an investigational product, the same procedures for collecting AE/SAE data, assessing, and reporting to the REB apply. Note: part of the REB reporting criterion is that the SAE be at least possibly related to the study (not necessarily to an IP).
+<a id="5-6-10"></a>**5.6.10** For post-marketing studies, submit reports as per applicable national regulations.
 
-**5.9.2** For investigational device trials, use the Mandatory Medical Device Problem Reporting form on the Health Canada website.
+<a id="5-6-11"></a>**5.6.11** The Sponsor/Sponsor-Investigator should report all reportable SAEs to the DSMB as per DSMB charter (if applicable).
 
-**5.9.3** For SAE submission in the Quebec MSSS Multi-centrique process, refer to the most recent MUHC REB information on the MUHC CAE website.
+<a id="5-7"></a>
 
----
+### 5.7 Sponsor or Sponsor-Investigator distribution of blinded external SUSARs to QI/PIs and QI/PI documented medical oversight
 
-## Appendices {#appendices}
+<a id="5-7-1"></a>**5.7.1** The Sponsor or Sponsor-Investigator is responsible for distributing expedited external SAEs, usually referred to as Suspected Unexpected Serious Adverse Reactions (SUSAR) reports to each investigator (of a multi-centre trial). Each investigator receives blinded serious adverse reaction reports.
 
-<Info>
-Printable appendix templates are available for download below where linked. For the complete collection, see [SOP Appendices and Templates](/sops/appendices).
-</Info>
+<a id="5-7-2"></a>**5.7.2** It is the QI/PI’s responsibility to document their medical oversight of SUSARs.
 
-- [Appendix 1 — Adverse Event Log](https://portal.rimuhc.ca/pls/apex/MUHC2.download_my_file?p_file=51243066542185621)
-- [Appendix 2 — Local SAE Reporting Log](https://portal.rimuhc.ca/pls/apex/MUHC2.download_my_file?p_file=51243178800191037)
-- [Appendix 3 — External SUSAR Reporting Log](https://portal.rimuhc.ca/pls/apex/MUHC2.download_my_file?p_file=51243208126195882)
-- [Appendix 4 — RI-MUHC SAE Report Form (Sponsor-Investigator)](https://portal.rimuhc.ca/pls/apex/MUHC2.download_my_file?p_file=238474205442323626)
-- [Appendix 5 — Health Canada SAE CIOMS Form 1 (Sponsor-Investigator)](https://portal.rimuhc.ca/pls/apex/MUHC2.download_my_file?p_file=51243473176206567)
-- Appendix 6 — SAE Process Flowchart
+<a id="5-7-3"></a>**5.7.3** The QI/PI should establish a written procedure for receiving and processing safety reports received from the Sponsor or Sponsor-Investigator. E.g. create a Working Instruction (WI) regarding how SUSAR reports will be read by the QI/PI.
 
----
+<a id="5-8"></a>
 
-## References {#references}
+### 5.8 Qi/pi reporting of blinded external SUSARs to the REB
 
-- N2 Network SOP012_09
-- ICH-GCP E6 R2
-- Health Canada Food and Drug Regulations, Part C, Division 5
-- Health Canada GUI-0100
-- Health Canada Guidance — Clinical Safety Data Management: Definitions and Standards for Expedited Reporting (ICH Topic E2A), 1995
-- Government of Canada, Natural Health Products Regulations, Part 4, SOR/2003-196
-- Health Canada, Reporting Adverse Reactions to Marketed Health Products (March 2011)
-- TCPS2 (2022)
-- PIPEDA
+<a id="5-8-1"></a>**5.8.1** For External Reportable SUSARs: The same criteria for reporting to the REB must apply with one additional criterion. Refer to [REB SOP 405A.001](https://muhc.ca/cae/muhc-research-ethics-board-reb-standard-operating-procedures-sops). The QI/PI must report to the REB via Nagano any External SAE which is:
 
----
+- Unexpected (in terms of nature, severity, or frequency) given (a) the research procedures that are described in the REB approved documents, such as the research protocol and informed consent document, the Investigator Brochure or other relevant sources of information such as product labelling and package inserts; and (b) the event is not associated with the expected natural progression of any underlying disease, disorder, predisposing risk factor, or condition of the participant(s) experiencing the adverse event; and
+- Related or possibly related to participation in the research. Possibly related means there is a reasonable possibility that the incident, experience, or outcome may have been caused by the investigational product(s) or procedures involved in the research); and
+- Suggests that the research places research participants or others at a greater risk of harm (including physical, psychological, economic, or social harm) than was previously known or recognized.
 
-<h2>Revision history</h2>
+- AND requires a change to the research (amendment of protocol, IB and/or ICF) and/or requires immediate notification to participants for safety reasons. (You may want to confirm with the Sponsor/Sponsor-Investigator that an amendment is forthcoming).
 
-| Version | Date | Summary |
+<a id="5-8-2"></a>**5.8.2** The QI/PI must submit all SUSARs/summaries and follow-up information which comply with the above criteria to the REB via the Nagano system within 15 days from receipt/awareness. Retain all documentation in the ISF.
+
+<a id="5-8-3"></a>**5.8.3** Maintain all SUSAR reports and associated REB correspondence in the study files. Refer to [Appendix 3](#appendix-3), External SUSAR Reporting Log.
+
+<a id="5-9"></a>
+
+### 5.9 Management of AEs and SAEs in studies with no investigational products
+
+<a id="5-9-1"></a>**5.9.1** In the case of clinical studies without an investigational product, it is recommended that the Sponsor or Sponsor-Investigator and QI/PI follow the same procedures for collecting clinical data related to AEs and SAEs, assessing and reporting to their REB/IEC. Note that part of the REB reporting criteria is that an SAE must be at least possibly related to study (not necessarily IP).
+
+<a id="5-9-2"></a>**5.9.2** For Investigational Device trial, use the Mandatory Medical Device Problem Reporting form on the Health Canada website.
+
+<a id="5-9-3"></a>**5.9.3 SAE Submission in the Multi-centrique Context**
+
+For SAE submission in the Quebec MSSS Multi-centrique process (I.e. more than one Quebec site for a given study) please refer to the most recent MUHC REB information on the MUHC CAE website.
+
+<a id="appendices"></a>
+
+## 6 Appendices
+
+<a id="appendix-1"></a>Appendix 1: AE Assessment Log template {/* HUB: download */}[Download the form](https://portal.rimuhc.ca/pls/apex/MUHC2.download_my_file?p_file=51243066542185621) (sign-in required){/* /HUB */}
+
+<a id="appendix-2"></a>Appendix 2: Local SAE Reporting Log template {/* HUB: download */}[Download the form](https://portal.rimuhc.ca/pls/apex/MUHC2.download_my_file?p_file=51243178800191037) (sign-in required){/* /HUB */}
+
+<a id="appendix-3"></a>Appendix 3: External SUSAR Reporting Log template {/* HUB: download */}[Download the form](https://portal.rimuhc.ca/pls/apex/MUHC2.download_my_file?p_file=51243208126195882) (sign-in required){/* /HUB */}
+
+<a id="appendix-4"></a>Appendix 4: SAE Report Form template {/* HUB: download */}[Download the form](https://portal.rimuhc.ca/pls/apex/MUHC2.download_my_file?p_file=238474205442323626) (sign-in required){/* /HUB */}
+
+<a id="appendix-5"></a>Appendix 5: Official Health Canada CIOMS Report Form {/* HUB: download */}[Download the form](https://portal.rimuhc.ca/pls/apex/MUHC2.download_my_file?p_file=51243473176206567) (sign-in required){/* /HUB */}
+
+<a id="appendix-6"></a>Appendix 6: SAE Process Flowchart
+
+{/* HUB: appendices */}
+Download the appendices from [SOP Appendices and Templates](/sops/appendices).
+{/* /HUB */}
+
+## 7 References
+
+- Network to Network (N2) SOP012 version 9
+- International Conference on Harmonization – Good Clinical Practice (ICH-GCP) E6 R2, 09-Nov-2016
+- Health Canada, [Food and Drug Regulations](https://laws-lois.justice.gc.ca/eng/regulations/C.R.C.,_c._870/), Part C, Division 5, Drugs for Clinical Trials Involving Human Subjects, (Schedule 1024), June 20, 2001.
+- Health Canada, Guidance Document: Part C, Division 5 of the Food and Drug Regulations “Drugs for Clinical Trials Involving Human Subjects”, [GUI-0100](https://www.canada.ca/en/health-canada/services/drugs-health-products/compliance-enforcement/good-clinical-practices/guidance-documents/guidance-drugs-clinical-trials-human-subjects-gui-0100.html), August 20, 2019.
+- Health Canada, Guidance for Industry, Clinical Safety Data Management Definitions and Standards for Expedited Reporting, ICH Topic E2A, 1995.
+- Government of Canada, [Natural Health Products Regulations](https://laws-lois.justice.gc.ca/eng/regulations/SOR-2003-196/), Part 4 Clinical Trials Involving Human Subjects, SOR/2003-196, June 5, 2003; last amended September 28, 2020, current to February 15, 2021.
+- Health Canada, Guidance Document for Industry - Reporting Adverse Reactions to Marketed Health Products, March 2, 2011.
+- Tri-Council Policy Statement: Ethical Conduct for Research Involving Humans ([TCPS 2](https://ethics.gc.ca/eng/policy-politique_tcps2-eptc2_2022.html), 2022)
+- Department of Justice (Canada), Personal Information Protection and Electronic Documents Act (PIPEDA), last amended June 21, 2019, current to February 15, 2021.
+
+## 8 Revision history
+
+| SOP Code | Effective Date | Summary of changes |
 |---|---|---|
-| SOP-CR-012_08 | 19 Jun 2023 | Merge of N2 v09 SOP and RI-MUHC Addendum. Standardization of nomenclature throughout. Scope: addition of reference to device reporting forms. Responsibilities: addition of Sponsor/Sponsor-Investigator responsibilities. General: addition of sections 5.1.1, 5.1.2, and note in 5.1.7. Additions of sections 5.2, 5.3, and 5.4. Additions of 5.5.4, 5.5.5, 5.6.2, 5.6.8, 5.6.10, and 5.7.2. New/revised Appendices 1–5. Reference to Health Canada GUI-0100 added. |
-| SOP-CR-012_07 | 01 Sep 2018 | Addition/revisions to 1.1.1, 1.1.2, 1.1.3, 1.2.3, 1.3.2, 1.3.3, and 4.0. Renamed from SOP012_06. |
-| SOP012_06 | 24 May 2016 | Combination of N2 SOP012_06 and RI-MUHC SOP-CR-008_EN04. Added reporting criterion for non-local SAEs: "AND requires a change to the research and/or ICF and/or requires immediate notification to participants for safety reasons." |
+| SOP012_06 | 24-May-2016 | This SOP is a combination of N2 SOP012_006 and RI MUHC SOP-CR008_EN04 Under Non-Local (External) SAE, the following was added: “AND requires a change to the research and/or informed consent form and/or requires immediate notification to participants for safety reasons”. Reference to SOP007 for new REB notification timeline. SOP-CR-12_07 01-Sep-2018 Addition/Revisions to 1.1.1, 1.1.2, 1.1.3, 1.2.3, 1.3.2, 1.3.3 and 4.0 SOP012_06 renamed to SOP-CR-012_07 SOP-CR-012-08 19-Jun-2023 Merge of N2 v09 SOP and RI-MUHC Addendum. Clarifications and standardization of nomenclature throughout SOP. Scope: Addition of reference to Device reporting forms Responsibilities: Addition of those for Sponsor/Sponsor Investigator General: Addition of 5.1.1, 5.1.2, Note in 5.1.7 regarding WI Additions of sections 5.2, 5.3 and 5.4 Additions of 5.5.4, 5.5.5, 5.6.2, 5.6.8, 5.6.10 and 5.7.2 New/Revised Appendices 1 through 5 References: Addition of Health Canada Guide 0100 |
+
+{/* Built word for word from SOP-CR-012 by tools/sop_exact.py (batch 85), body pages 191 to 202 of "All SOPs combined and searchable -Final_12Dec2024-compressed.pdf"; checked word by word against the signed text. Hub additions sit between HUB comments. Old anchors kept: appendices, 5-4-reporting-all-saes-to-the-sponsor-within-24-hours. */}

@@ -1,139 +1,166 @@
 ---
 timestamp: false
-title: "SOP-CR-103 — Data Management Plan"
-description: "Requirements for creating a Data Management Plan for Sponsor-Investigator studies at the RI-MUHC, including essential DMP components, roles and responsibilities, and alignment with the protocol and database setup."
+title: "SOP-CR-103: Data Management Plan"
+description: "When a study needs a data management plan, who is involved, how to create one and what it must include."
 ---
 
+{/* HUB: meta */}
 <div className="ri-sop-meta">
-  <div className="ri-sop-badges">
-    <Badge color="gray">SOP-CR-103_04</Badge>
-    <Badge color="gray">Version 04</Badge>
-    <Badge color="green">Effective 01 Sep 2018</Badge>
-    <Badge color="blue">Sponsor-Investigator</Badge>
-  </div>
-  <button className="ri-print-btn" onClick={() => window.print()}>Print / Save PDF</button>
+  <button className="ri-print-btn" onClick={() => window.print()}>Print or save as PDF</button>
 </div>
 
-Reviewed by Dr. Louise Pilote, Director of Clinical Research, RI-MUHC.
-Approved by Gilbert Tordjman, Chief Operating and Development Officer, RI-MUHC.
-Signed copy on file — download the PDF for the approved version with signatures.
+<Note>
+Reading a standard operating procedure (SOP) on the Hub doesn't count toward your compliance record. Complete the [SOP Reader and Assessment](/training/compliance-requirements#sop-reader-and-assessment) for your level on TalentLMS.
+</Note>
+{/* /HUB */}
 
----
+{/* HUB: part heading */}
+## N2 SOP103_04: Data Management Plan
+{/* /HUB */}
 
-
-<Warning>
-**Controlled document.** Always refer to this page for the current version. Do not rely on downloaded or printed copies. Reading this page does not count toward your compliance record — complete the SOP Reader and Assessment on TalentLMS.
-</Warning>
-
-<div className="ri-sop-key-points">
-
-## Key points
-
-- The DMP must specify: the **data collection method** (paper <Tooltip tip="Document designed to record all protocol-required information to be reported to the sponsor for each participant." headline="Case Report Form (CRF)" cta="Full definition" href="/kb/foundations/glossary#crf">CRF</Tooltip>, EDC/eCRF, or both), the source data verification approach, the data validation rules, the query management process, and the data transfer procedures if applicable.
-- The DMP must align with the **protocol** ([SOP-CR-102](/sops/cr-102)) and the **database setup plan** ([SOP-CR-104](/sops/cr-104)). Changes to one document typically require updates to the others.
-- The DMP must define **roles and responsibilities** for data management activities, including who may enter, edit, query, and approve data.
-- The DMP must address data security, backup procedures, and access controls.
-- The completed DMP must be **version-controlled** and filed in the <Tooltip tip="The sponsor's collection of documentation demonstrating compliance across all study sites." headline="Trial Master File (TMF)" cta="Full definition" href="/kb/foundations/glossary#tmf">Trial Master File</Tooltip> (TMF). All revisions must be documented with a new version number and date.
-- The DMP must be in place and approved **before** the database is built → [SOP-CR-104](/sops/cr-104).
-
-</div>
-
-## 1 · Purpose {#purpose}
-
-This Standard Operating Procedure (SOP) identifies the need for a Data Management
-Plan (DMP) and describes which parties are applicable, the purpose, the process for
-creating a DMP, and the essential components.
-
----
-
-## 2 · Scope {#scope}
-
-This SOP is applicable to all Data Management personnel, or other research team
-members, who are responsible for authoring or versioning a Data Management Plan.
-
----
-
-## 3 · Responsibilities {#responsibilities}
-
-The **Sponsor-Investigator, <Tooltip tip="The physician responsible to the sponsor for the conduct of a clinical trial at the site. One QI per study per Canadian site." headline="Qualified Investigator (QI)" cta="Full definition" href="/kb/foundations/glossary#qi">QI</Tooltip>/Investigator, and applicable Data Management personnel** are responsible for ensuring that all study data management activities meet all applicable regulatory, ICH-<Tooltip tip="International standard for design, conduct, monitoring, recording, and reporting of clinical studies." headline="Good Clinical Practice (GCP)" cta="Full definition" href="/kb/foundations/glossary#gcp">GCP</Tooltip>, Sponsor, and local requirements.
-
----
-
-## 4 · Definitions {#definitions}
-
-See [Glossary of Terms](/kb/foundations/glossary) for all term definitions.
-
----
-
-## 5 · Procedure {#procedure}
-### 5.1 Purpose of the DMP
-
-**5.1.1** The Data Management Plan (DMP) is a formal document that describes how data will be collected, entered, verified, validated, queried, corrected, transferred, and stored throughout the study. The DMP must be in place and approved before the database is built → [SOP-CR-104](/sops/cr-104).
-
-**5.1.2** The DMP must align with:
-- The study protocol → [SOP-CR-102](/sops/cr-102)
-- The <Tooltip tip="Document designed to record all protocol-required information to be reported to the sponsor for each participant." headline="Case Report Form (CRF)" cta="Full definition" href="/kb/foundations/glossary#crf">CRF</Tooltip> designs → [SOP-CR-100](/sops/cr-100)
-- The database setup plan → [SOP-CR-104](/sops/cr-104)
-
-Changes to one document typically require updates to the others.
-
-### 5.2 Essential DMP components
-
-The DMP must address the following at a minimum:
-
-| Component | Description |
+| | |
 |---|---|
-| Data collection method | Paper CRF, electronic CRF (eCRF/EDC), or both; applicable platforms (e.g., REDCap) |
-| Source data identification | Definition of source data, source documents, and source data verification approach |
-| Data entry | Who may enter data, data entry timelines, double data entry requirements if applicable |
-| Data validation rules | Range checks, consistency checks, required fields, cross-field logic rules |
-| Query management | Process for raising, resolving, and closing data queries; roles and timelines |
-| Protocol deviations tracking | How deviations are flagged, documented, and resolved in the database |
-| Data transfer | Method, format, encryption, documentation, and recipient confirmation for any data transfers |
-| Database security | User access controls, password policy, audit trail requirements |
-| Backup and disaster recovery | Backup frequency, method, storage location, and recovery testing |
-| Database lock procedure | Criteria for lock, roles, timeline → [SOP-CR-107](/sops/cr-107) |
-| Data archiving | Location, format, and retention period for archived data → [SOP-CR-015](/sops/cr-015) |
+| Title | Data Management Plan |
+| SOP Code | SOP103_04 |
+| Effective Date | 15-May-2017 |
 
-### 5.3 Roles and responsibilities in the DMP
+**Site Approval/Authorization to Adopt**
 
-**5.3.1** The DMP must define roles and responsibilities for data management activities, including:
-- Who may enter, edit, and query data
-- Who approves data queries
-- Who performs data validation checks
-- Who manages database access
-- Who is responsible for backups
-- Who authorizes and performs database lock → [SOP-CR-107](/sops/cr-107)
-
-### 5.4 Version control and filing
-
-**5.4.1** The DMP must be version-controlled. Each version must have a version number and date clearly indicated.
-
-**5.4.2** All revisions to the DMP must be documented with a new version number, date, and summary of changes.
-
-**5.4.3** The completed and approved DMP must be filed in the <Tooltip tip="The sponsor's collection of documentation demonstrating compliance across all study sites." headline="Trial Master File (TMF)" cta="Full definition" href="/kb/foundations/glossary#tmf">Trial Master File</Tooltip> (TMF). Superseded versions must be retained.
-
----
-
-## Appendices {#appendices}
-
-No appendices associated with this SOP.
-
----
-
-## References {#references}
-
-- N2 Network SOP103_04
-- ICH-GCP E6(R2), Guideline for Good Clinical Practice — Section 5.5 (Trial Management, Data Handling, and Record-keeping)
-- Health Canada, Food and Drug Regulations, Part C, Division 5
-- 21 CFR Part 11, Electronic Records; Electronic Signatures
-
----
-
-<h2>Revision history</h2>
-
-| Version | Date | Summary |
+| Name and Title of Local Personnel (typed or printed) | Signature | Date dd/Mon/yyyy |
 |---|---|---|
-| SOP-CR-103_04 | 01 Sep 2018 | Conversion to RI-MUHC SOP format. Updated regulatory references and local institutional requirements. |
-| SOP-CR-103_03 | 24 May 2016 | Revised DMP component requirements; updated regulatory references. |
-| SOP-CR-103_02 | 15 May 2015 | Added Authorization to Adopt; updated reference versions. |
+| BRUCE MAZER, MD | Signed |  |
+| EXECUTIVE DIRECTOR AND CSO |  | 08-Aug-2018 |
+
+<a id="purpose"></a>
+
+### 1.0 Purpose
+
+This Standard Operating Procedure (SOP) identifies the need for a Data Management Plan (DMP) and describes which parties are applicable, the purpose, the process for creating a DMP, and the essential components.
+
+<a id="scope"></a>
+
+### 2.0 Scope
+
+This SOP is applicable to all Data Management personnel, or other research team members, who are responsible for authoring or versioning a Data Management Plan.
+
+<a id="responsibilities"></a>
+
+### 3.0 Responsibilities
+
+The Sponsor-Investigator, Qualified Investigator (<Tooltip tip="The physician responsible to the sponsor for the conduct of a clinical trial at the site. One QI per study per Canadian site." headline="Qualified Investigator (QI)" cta="Full definition" href="/kb/foundations/glossary#qi">QI</Tooltip>)/Investigator, and applicable Data Management personnel are responsible for ensuring that all study data management activities at the site meet all of the applicable regulatory, International Conference on Harmonisation (ICH) Good Clinical Practice (GCP), Sponsor, and local requirements.
+
+Any or all parts of this procedure may be delegated to appropriately trained study team members, but remain the ultimate responsibility of the Sponsor, Sponsor-Investigator and/or Qualified Investigator (QI)/Investigator.
+
+<a id="definitions"></a>
+
+### 4.0 Definitions
+
+See “CDISC Clinical Research Glossary, Version 8.0” and “N2 Glossary of Terms”.
+
+<a id="procedure"></a>
+
+### 5.0 Procedure
+
+<a id="5-1"></a>
+
+#### 5.1 Purpose of the DMP
+
+<a id="5-1-1"></a>**5.1.1** The Data Management Plan is a study-specific document that:
+
+- Details all of the data management processes from study start to database lock and archive.
+- Helps to ensure conformity to local, national, and international regulations and guidelines and documents the study-specific practices used to achieve this.
+- Serves as a reference document, set of instructions, and a communication tool usable by all parties, throughout the study, explaining the processes by which data are to be handled under all situations.
+- Ensures a common understanding of how the data management aspects of the study are conducted; typically achieved by providing training on the DMP.
+- Identifies all of the functional roles within the data management process and the personnel who fulfill those roles.
+
+<a id="5-2"></a>
+
+#### 5.2 Authoring the initial version
+
+<a id="5-2-1"></a>**5.2.1** The Data Manager or designate authors a new DMP for each new study, based on the protocol, the scope of work, the contract agreement, analysis plans, dataflow, paper and/or electronic case report forms (CRFs), and any other applicable documents.
+
+<a id="5-2-2"></a>**5.2.2** The development of the DMP is a collaborative effort between all of the applicable research study parties. Different parties’ opinions are solicited, as needed, according to their specialty.
+
+<a id="5-2-3"></a>**5.2.3** The DMP must be identified on every page by characters such as the study code and title that clearly associate the DMP with its respective study.
+
+<a id="5-2-4"></a>**5.2.4** The draft document is organized into sections that may include, but are not limited to, the following:
+
+- Approvals page: provide detail regarding the key parties who review and authorize the document and the dates of their approvals.
+
+- Protocol summary: provide a brief summary of the research study protocol and refer the reader to the actual study protocol for more detailed information. Include a list of major protocol revisions and their associated version numbers.
+- Study specific notes: state any assumptions that affect the data management of the study.
+- Definitions and acronyms: a list of definitions and acronyms.
+- Functional role identification: identify the key study personnel and their respective roles, responsibilities and activities.
+- Communications: describe the communication plan, including frequency and methods to be used for the study.
+- Timelines: list the expected date of the study’s milestones and deliverables.
+- Database roles and privileges: include database user roles and privileges information.
+- Case Report Forms (CRFs): include CFR/eCRF development, description of <Tooltip tip="Document designed to record all protocol-required information to be reported to the sponsor for each participant." headline="Case Report Form (CRF)" cta="Full definition" href="/kb/foundations/glossary#crf">CRF</Tooltip>/eCRF design, and approval process. Develop and approve the completion instructions referred to in the DMP (i.e. form specific data entry direction).
+- Database design, creation and maintenance: describe the database validation/testing plan, the creation and maintenance of the database, the data management system that contains the database, the variable names and table structure, the specifications and timeline for data listings, database change control methods, and the audit trail (if applicable).
+- Data entry and processing: include the data entry guidelines for data entry personnel (both CRF and eCRF), the data query process and associated timelines, data processing procedures, CRF delinquency/reminder process, list of the data entry personnel, type of data entry, and database lock process.
+- <Tooltip tip="An adverse event meeting seriousness criteria: death, life-threatening, hospitalization, disability, or congenital anomaly." headline="Serious Adverse Event (SAE)" cta="Full definition" href="/kb/foundations/glossary#sae">SAE</Tooltip> data reconciliation: describe the SAE reconciliation processes to be used for the study.
+- Lab data handling: process for capturing lab normal ranges or reference ranges and associated data.
+- Dictionary and coding management: specify which coding dictionaries will be used in the study as well as the version numbers of those dictionaries.
+- External data handling: describe the data being transferred, list the location/vendor that is providing and/or receiving the data. Include the quality control (QC) process, acceptance criteria, error reporting, any applicable agreements, formatting information, frequency of transfer, and contact information.
+- QC: describe the level, frequency, and type of checks involved and ensure that there is a documentation process.
+- Data validation: identify data validation and test procedures for the data management system and the database, as well as management of data discrepancies.
+
+- Protocol deviations and violations: Specify the process for handling and reporting.
+- Reports: include a list and description of all reports that are available throughout the study.
+- Database security: describe network, server, and electronic record security measures.
+- Quality assurance (<Tooltip tip="All planned and systematic actions to ensure trial data are generated, documented, and reported in compliance with GCP and SOPs." headline="Quality Assurance (QA)" cta="Full definition" href="/kb/foundations/glossary#qa">QA</Tooltip>) and audit plans: define the timing and procedure for all database audit and action plans.
+- Regulatory documents: list external regulatory documents that apply to the study such as Sponsor, Sponsor-Investigator, Qualified Investigator, and CRO SOPs.
+- Study closure: provide an outline of the data management procedures to be followed at the end of the study.
+- Database archive: include procedures for the archiving system.
+
+<a id="5-2-5"></a>**5.2.5** Other documents and plans (e.g. SOPs, additional project planning documents, or additional data management documents) may be referred to, in lieu of process descriptions within the DMP.
+
+<a id="5-2-6"></a>**5.2.6** It is of great value to the research team that the initial version of the DMP is finalized, approved, signed, and available, before the work that it describes begins.
+
+<a id="5-3"></a>
+
+#### 5.3 Version control
+
+<a id="5-3-1"></a>**5.3.1** Maintain the DMP in a current state throughout the study, using appropriate versioning techniques, including protocol changes and addendums as well as procedural changes that occur.
+
+<a id="5-3-2"></a>**5.3.2** Note the author, date of change, reason for the change and the new version number for each new version of the DMP.
+
+<a id="references"></a>
+
+### 6.0 References
+
+- [Health Canada, Food and Drug Regulations, Part C, Division 5, Drugs for Clinical Trials Involving Human Subjects, (Schedule 1024), June 20, 2001.](https://laws-lois.justice.gc.ca/eng/regulations/C.R.C.,_c._870/)
+- [Government of Canada, Medical Devices Regulations, SOR/98-282](https://laws-lois.justice.gc.ca/eng/regulations/SOR-98-282/), May 7, 1998; last amended February 13, 2017, current to March 20, 2017.
+- [Government of Canada, Natural Health Products Regulations, Part 4 Clinical Trials Involving Human Subjects, SOR/2003-196](https://laws-lois.justice.gc.ca/eng/regulations/SOR-2003-196/), June 5, 2003; last amended June 1, 2008, current to March 20, 2017.
+- International Council for Harmonisation of Technical Requirements for Pharmaceuticals for Human Use (ICH), ICH Harmonised Guideline, Integrated Addendum to ICH E6(R1): Guideline for Good Clinical Practice, E6(R2), November 9, 2016.
+- Canadian Institutes of Health Research, Natural Sciences and Engineering Research Council of Canada, and Social Sciences and Humanities Research Council of Canada, Tri-Council Policy Statement: Ethical Conduct for Research Involving Humans, December 2014.
+- [Department of Justice (Canada), Personal Information Protection and Electronic Documents Act (PIPEDA)](https://laws-lois.justice.gc.ca/eng/acts/P-8.6/), last amended June 23, 2015, current to December 31, 2016.
+- CDISC Clinical Research Glossary, Version 9.0, Glossary. December 2011.
+- Canadian Institutes for Health Research, Privacy Advisory Committee, CIHR Best Practices for Protecting Privacy in Health Research, September 2005.
+- US Food and Drug Administration, Code of Federal Regulations, Title 21, Volume 1:
+  - [Part 11, Electronic Records; Electronic Signatures, (21CFR11).](https://www.ecfr.gov/current/title-21/chapter-I/subchapter-A/part-11)
+  - [Part 50, Protection of Human Subjects, (21CFR50).](https://www.ecfr.gov/current/title-21/chapter-I/subchapter-A/part-50)
+  - [Part 56, Institutional Review Boards, (21CFR56).](https://www.ecfr.gov/current/title-21/chapter-I/subchapter-A/part-56)
+- US Department of Health and Human Services, Office of the Secretary, 45 CFR Parts 160 and 164, Standards for Privacy of Individually Identifiable Health Information.
+- US Department of Health and Human Services, Guidance for Industry: Computerized Systems Used in Clinical Investigations, May 2007.
+- Official Journal of the European Communities, Directive 95/46/EC of the European Parliament and of the Council of 24 October 1995.
+- Official Journal of the European Communities, Directive 2001/20/EC of the European Parliament and of the Council of 4 April 2001.
+- Medical Dictionary for Regulatory Activities (MedDRA), Maintenance and Support Services Organization (MSSO).
+- The Society for Clinical Data Management, GCDMP Committee, Good Clinical Data Management Practices. December 2009 Ed.
+- WHO Drug Dictionary, Uppsala Monitoring Centre (UMC).
+
+<a id="revision-history"></a>
+
+### 7.0 Revision history
+
+| SOP Code | Effective Date | Pages | Summary of Changes |
+|---|---|---|---|
+| SOP103_01 | 15-May-2011 | 6 | Original version |
+
+| SOP Code | Effective Date | Summary of Changes |
+|---|---|---|
+| SOP103_02 | 15-May-2013 | Removed total number of pages from header and section 7.0 |
+| SOP103_03 | 15-May-2015 | Added ‘Authorization to Adopt’; update TCPS reference version. |
+| SOP103_04 | 15-May-2017 | Added MDR and NHP references; updated ICH E6 and PIPEDA references; removed Annex 11. |
+
+
+{/* Built word for word from SOP-CR-103_04 (N2 SOP103_04), pages 560 to 565 of "All SOPs combined and searchable -Final_12Dec2024-compressed.pdf", from the proofread transcription in _review/2026-11/batches/b85-sop-pages-exact/ (batch 85). Running headers and footers removed; signatures shown as "Signed". Hub additions sit between HUB comments. Old anchors kept: purpose, scope, responsibilities, definitions, procedure, references. */}

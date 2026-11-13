@@ -1,157 +1,154 @@
 ---
 timestamp: false
-title: "SOP-CR-104 — Database Set-up"
-description: "Requirements for building and validating the study database for Sponsor-Investigator studies at the RI-MUHC, including database design, User Acceptance Testing, access controls, and audit trail configuration."
+title: "SOP-CR-104: Database Set-up"
+description: "How to generate, test, implement and approve a study database at the site, so that its electronic data are accurate, reliable, complete and secure."
 ---
 
+{/* HUB: meta */}
 <div className="ri-sop-meta">
-  <div className="ri-sop-badges">
-    <Badge color="gray">SOP-CR-104_04</Badge>
-    <Badge color="gray">Version 04</Badge>
-    <Badge color="green">Effective 01 Sep 2018</Badge>
-    <Badge color="blue">Sponsor-Investigator</Badge>
-  </div>
-  <button className="ri-print-btn" onClick={() => window.print()}>Print / Save PDF</button>
+  <button className="ri-print-btn" onClick={() => window.print()}>Print or save as PDF</button>
 </div>
 
-Reviewed by Dr. Louise Pilote, Director of Clinical Research, RI-MUHC.
-Approved by Gilbert Tordjman, Chief Operating and Development Officer, RI-MUHC.
-Signed copy on file — download the PDF for the approved version with signatures.
+<Note>
+Reading a standard operating procedure (SOP) on the Hub doesn't count toward your compliance record. Complete the [SOP Reader and Assessment](/training/compliance-requirements#sop-reader-and-assessment) for your level on TalentLMS.
+</Note>
+{/* /HUB */}
 
----
+{/* HUB: part heading */}
+## N2 SOP104_04: Database Set-up
+{/* /HUB */}
 
-
-<Warning>
-**Controlled document.** Always refer to this page for the current version. Do not rely on downloaded or printed copies. Reading this page does not count toward your compliance record — complete the SOP Reader and Assessment on TalentLMS.
-</Warning>
-
-<div className="ri-sop-key-points">
-
-## Key points
-
-- The study database must be built according to the **<Tooltip tip="Document designed to record all protocol-required information to be reported to the sponsor for each participant." headline="Case Report Form (CRF)" cta="Full definition" href="/kb/foundations/glossary#crf">CRF</Tooltip> designs** ([SOP-CR-100](/sops/cr-100)) and the **Data Management Plan** ([SOP-CR-103](/sops/cr-103)). Do not begin database build until both documents are finalized and approved.
-- **User access must be role-based**: data entry users, data managers, statisticians, and auditors must each have access only to the functions they need. Access levels must be documented.
-- The database must have a **complete audit trail** that captures all entries, edits, and deletions with user identifier, date, and time — this is a regulatory requirement and cannot be disabled.
-- **User Acceptance Testing (UAT)** must be completed and documented before the database is opened for participant data entry. UAT documentation must be retained in the <Tooltip tip="The sponsor's collection of documentation demonstrating compliance across all study sites." headline="Trial Master File (TMF)" cta="Full definition" href="/kb/foundations/glossary#tmf">TMF</Tooltip>.
-- At the RI-MUHC, **REDCap** is the supported eCRF platform for studies with ≤1,000 variables → [SOP-CR-014](/sops/cr-014). For larger or more complex databases, consult the Clinical Research Hub.
-- The database must be configured in a **test environment** first; only after successful testing and sign-off should the production database be opened for data entry.
-
-</div>
-
-## 1 · Purpose {#purpose}
-
-This Standard Operating Procedure (SOP) describes the tasks necessary to generate,
-test, implement and approve a database set-up for a study to ensure accurate, reliable,
-complete and secure electronic data.
-
----
-
-## 2 · Scope {#scope}
-
-This SOP is applicable to all studies databases requiring set-up at the site and to those
-personnel responsible for study database set-up such as all Data Management and
-Information Technology (IT) personnel unless otherwise stated in the study contract or
-Data Management Plan.
-
----
-
-## 3 · Responsibilities {#responsibilities}
-
-The **Sponsor-Investigator or <Tooltip tip="The physician responsible to the sponsor for the conduct of a clinical trial at the site. One QI per study per Canadian site." headline="Qualified Investigator (QI)" cta="Full definition" href="/kb/foundations/glossary#qi">QI</Tooltip>/Investigator, Data Management personnel, and IT Systems Support personnel** (when applicable) are responsible for ensuring that database system set-up meets all applicable regulatory, ICH-<Tooltip tip="International standard for design, conduct, monitoring, recording, and reporting of clinical studies." headline="Good Clinical Practice (GCP)" cta="Full definition" href="/kb/foundations/glossary#gcp">GCP</Tooltip>, Sponsor, and local requirements.
-
----
-
-## 4 · Definitions {#definitions}
-
-See [Glossary of Terms](/kb/foundations/glossary) for all term definitions.
-
----
-
-## 5 · Procedure {#procedure}
-### 5.1 Prerequisites
-
-**5.1.1** Before beginning database build:
-- <Tooltip tip="Document designed to record all protocol-required information to be reported to the sponsor for each participant." headline="Case Report Form (CRF)" cta="Full definition" href="/kb/foundations/glossary#crf">CRF</Tooltip> designs must be finalized and approved → [SOP-CR-100](/sops/cr-100)
-- The Data Management Plan (DMP) must be finalized and approved → [SOP-CR-103](/sops/cr-103)
-- The protocol must have been finalized and <Tooltip tip="The ethics committee that reviews and approves research involving human participants. Also called CER at French-language institutions." headline="Research Ethics Board (REB)" cta="Full definition" href="/kb/foundations/glossary#reb">REB</Tooltip>-approved → [SOP-CR-102](/sops/cr-102), [SOP-CR-007](/sops/cr-007)
-
-### 5.2 Database design and build
-
-**5.2.1** Build the study database according to the CRF designs ([SOP-CR-100](/sops/cr-100)) and the DMP ([SOP-CR-103](/sops/cr-103)). Each CRF field must be accurately represented in the database with the appropriate data type, validation rules, and field label.
-
-**5.2.2** At the RI-MUHC, REDCap is the supported electronic data capture platform for studies with ≤1,000 variables → [SOP-CR-014](/sops/cr-014). For larger or more complex databases, consult the Clinical Research Hub.
-
-**5.2.3** Build the database in a test environment first. The production database must not be opened for data entry until all testing is complete and sign-off obtained.
-
-### 5.3 Audit trail
-
-**5.3.1** Configure the database audit trail to capture:
-- All data entries, edits, and deletions
-- The user identifier (individual-level, not shared accounts)
-- Date and time of each action
-- The original value, the new value, and the reason for change (where applicable)
-
-**5.3.2** The audit trail is a regulatory requirement and cannot be disabled at any time.
-
-### 5.4 User access controls
-
-**5.4.1** Implement role-based access controls:
-
-| Role | Access level |
+| | |
 |---|---|
-| Data entry user | Enter and edit data in assigned CRFs; cannot view other participants or fields outside their scope |
-| Data manager | Enter, edit, query, and resolve data; run validation checks; view all data |
-| Statistician | Read-only access to de-identified data after database lock |
-| Auditor/inspector | Read-only access to complete study data for audit purposes |
-| System administrator | Database configuration, user management, backup management |
+| Title | Database Set-up |
+| SOP Code | SOP104_04 |
+| Effective Date | 15-May-2017 |
 
-**5.4.2** All users must be uniquely identified; shared user accounts are prohibited.
+**Site Approval/Authorization to Adopt**
 
-**5.4.3** Document all user accounts, access levels, and dates of access grant and removal.
-
-**5.4.4** Remove access immediately when a team member leaves the study or is undelegated from the <Tooltip tip="Lists each team member, their qualifications, and specific trial tasks authorized by the QI." headline="Task Delegation Log (TDL)" cta="Full definition" href="/kb/foundations/glossary#tdl">Task Delegation Log</Tooltip>.
-
-### 5.5 Validation testing (User Acceptance Testing)
-
-**5.5.1** Complete User Acceptance Testing (UAT) before opening the database for participant data entry. UAT must include:
-- Verification that all CRF fields are correctly represented
-- Testing of all data validation rules (range checks, required fields, cross-field logic)
-- Testing of the audit trail
-- Testing of user access restrictions (each role can and cannot access the appropriate areas)
-- Testing of data export functionality
-
-**5.5.2** Document all UAT test cases, expected results, actual results, and whether each test passed or failed. Resolve all failed tests before production launch.
-
-**5.5.3** Retain all UAT documentation in the <Tooltip tip="The sponsor's collection of documentation demonstrating compliance across all study sites." headline="Trial Master File (TMF)" cta="Full definition" href="/kb/foundations/glossary#tmf">TMF</Tooltip>.
-
-### 5.6 Production launch
-
-**5.6.1** After successful UAT and documented sign-off by the Sponsor-Investigator or delegated data manager, open the production database for data entry.
-
-**5.6.2** Notify all data entry personnel of the database launch and provide training as needed. Document training on the Task Delegation Log.
-
----
-
-## Appendices {#appendices}
-
-No appendices associated with this SOP.
-
----
-
-## References {#references}
-
-- N2 Network SOP104_04
-- ICH-GCP E6(R2), Guideline for Good Clinical Practice — Section 5.5
-- 21 CFR Part 11, Electronic Records; Electronic Signatures
-- Health Canada, Food and Drug Regulations, Part C, Division 5
-- US DHHS, Guidance for Industry: Computerized Systems Used in Clinical Investigations
-
----
-
-<h2>Revision history</h2>
-
-| Version | Date | Summary |
+| Name and Title of Local Personnel (typed or printed) | Signature | Date dd/Mon/yyyy |
 |---|---|---|
-| SOP-CR-104_04 | 01 Sep 2018 | Conversion to RI-MUHC SOP format. Added reference to REDCap as the supported eCRF platform. Updated regulatory references. |
-| SOP-CR-104_03 | 24 May 2016 | Revised UAT and audit trail requirements; updated regulatory references. |
-| SOP-CR-104_02 | 15 May 2015 | Added Authorization to Adopt; updated reference versions. |
+| BRUCE MAZER, MD | Signed |  |
+| EXECUTIVE DIRECTOR AND CSO |  | 08-Aug-2018 |
+
+<a id="purpose"></a>
+
+### 1.0 Purpose
+
+This Standard Operating Procedure (SOP) describes the tasks necessary to generate, test, implement and approve a database set-up for a study to ensure accurate, reliable, complete and secure electronic data.
+
+<a id="scope"></a>
+
+### 2.0 Scope
+
+This SOP is applicable to all studies databases requiring set-up at the site and to those personnel responsible for study database set-up such as all Data Management and Information Technology (IT) personnel unless otherwise stated in the study contract or Data Management Plan.
+
+<a id="responsibilities"></a>
+
+### 3.0 Responsibilities
+
+The Sponsor-Investigator or Qualified Investigator (<Tooltip tip="The physician responsible to the sponsor for the conduct of a clinical trial at the site. One QI per study per Canadian site." headline="Qualified Investigator (QI)" cta="Full definition" href="/kb/foundations/glossary#qi">QI</Tooltip>)/Investigator, Data Management personnel and IT Systems Support personnel (when applicable) are responsible for ensuring that the processes involved in all database system set-up meet all the applicable regulatory, International Conference on Harmonization (ICH) Good Clinical Practice (GCP), Sponsor, and local requirements.
+
+Any or all parts of this procedure may be delegated to appropriately trained study team members, but remain the ultimate responsibility of the Sponsor, Sponsor-Investigator and/or Qualified Investigator (QI)/Investigator.
+
+<a id="definitions"></a>
+
+### 4.0 Definitions
+
+Annotation (of the eCRF): A representation of the variables and tables in the paper <Tooltip tip="Document designed to record all protocol-required information to be reported to the sponsor for each participant." headline="Case Report Form (CRF)" cta="Full definition" href="/kb/foundations/glossary#crf">CRF</Tooltip> or data entry screens.
+
+Coded data (de-identified): Single code: A participant's data are assigned a random code. Direct identifiers are removed from the dataset and held separately. The key linking the code back to direct identifiers is available only to authorized members of the research team. Double or multiple codes: Two or more codes are assigned to the same participant's data held in different datasets (e.g. health administrative data, clinical data, genetic samples and data). The key connecting the codes back to participants' direct identifiers is held by a third party (such as the data holder) and is not available to the researchers. Coded data refers to data that are at least single coded. (Adapted from CIHR Best Practices for Protecting Privacy in Health Research – September 2005)
+
+Data dictionary: The repository for all the required objects for creating and maintaining data collection, validation, and extraction operations.
+
+Database set-up: A collection of data entry screens that defines, through Data Management software, the database structure. The database set-up will be defined according to the study protocol. For paper based Case Report Form (CRF), the database set-up will be defined according to the CRF and the study protocol.
+
+Direct identifiers: These are variables such as name and address, health insurance number, etc., that provide an explicit link to a respondent. (CIHR Best Practices for Protecting Privacy in Health Research – September 2005)
+
+Edit check: An auditable process, of assessing the content of a data field against its expected logical, format, range, or other properties that is intended to reduce error. NOTE: Time-of-entry edit checks are a type of edit check that is run (executed) at the time data are first captured or transcribed to an electronic device at the time entry is completed of each field or group of fields on a form. Back-end edit checks are a type that is run against data that has been entered or captured electronically and has also been received by a centralized data store. (CDISC)
+
+Identifiable data: Any element or combination of data elements that allows direct or indirect identification of an individual (i.e. via direct identifiers or indirect identifiers). (Adapted from CIHR Best Practices for Protecting Privacy in Health Research – September 2005)
+
+Indirect identifiers: These are variables such as date of birth, sex, initials, marital status, area of residence, occupation, type of business, etc. that, in combination, could be used to identify an individual. (CIHR Best Practices for Protecting Privacy in Health Research – September 2005)
+
+User Acceptance Testing (UAT): A formal means by which one verifies that the system meets the required business functions by emulating normal use conditions.
+
+See also, “CDISC Clinical Research Glossary, Version 9.0” and “N2 Glossary of Terms”.
+
+<a id="procedure"></a>
+
+### 5.0 Procedure
+
+<a id="5-1"></a>
+
+#### 5.1 Database set-up
+
+<a id="5-1-1"></a>**5.1.1** Determine data variables to be captured at each specific visit according to the protocol and user requirements that may be beyond protocol.
+
+- Determine the event schedule, which specifies the segments and study variables expected as per the study protocol
+- Create the data dictionary which identifies software version, variable names, type (e.g. character, date, time, derived, numeric) and associated attributes.
+- Review and approval of the data dictionary
+- Define the applicable code-lists and the group of fields that will reflect the data storage
+- Annotation of the CRF/eCRF (where applicable)
+- Review and approval of the annotation of CRF/eCRF
+- Create database user’s manual
+
+<a id="5-1-2"></a>**5.1.2** Ensure planning of database set-up adheres to protocol timelines.
+
+<a id="5-1-3"></a>**5.1.3** Ensure requirements are defined for data transfers and integration with other systems, such as, but not limited to, laboratory databases or medical dictionary linkages (MedDRA, WHOdrug).
+
+<a id="5-1-4"></a>**5.1.4** Design the data entry screens and ensure they are user-friendly and flexible for data entry. Take into consideration the data collection method being used when setting-up the database.
+
+<a id="5-1-5"></a>**5.1.5** Define items/fields to be coded and the standard dictionaries to be used (e.g. MedDRA, WHOdrug), if applicable.
+
+<a id="5-1-6"></a>**5.1.6** Create specifications for database access authorization (user roles, e.g. data entry, and accounts).
+
+<a id="5-1-7"></a>**5.1.7** Identify and program the edit checks and validation rules
+
+- Perform UAT of the database and edit checks against user requirements or specifications, with expected and unexpected data in a testing environment.
+
+<a id="5-1-8"></a>**5.1.8** Ensure privacy legislation provisions (local, provincial, national, and international, as applicable to the study) are met within the database for identifiable data (including coded data).
+
+<a id="5-1-9"></a>**5.1.9** Ensure database finalization and agreement of approval by Data Management and the Sponsor (if applicable) are complete. Document appropriately that test and production environments match with UAT.
+
+<a id="references"></a>
+
+### 6.0 References
+
+- [Health Canada, Food and Drug Regulations, Part C, Division 5, Drugs for Clinical Trials Involving Human Subjects, (Schedule 1024), June 20, 2001.](https://laws-lois.justice.gc.ca/eng/regulations/C.R.C.,_c._870/)
+- [Government of Canada, Medical Devices Regulations, SOR/98-282](https://laws-lois.justice.gc.ca/eng/regulations/SOR-98-282/), May 7, 1998; last amended February 13, 2017, current to March 20, 2017.
+- [Government of Canada, Natural Health Products Regulations, Part 4 Clinical Trials Involving Human Subjects, SOR/2003-196](https://laws-lois.justice.gc.ca/eng/regulations/SOR-2003-196/), June 5, 2003; last amended June 1, 2008, current to March 20, 2017.
+- International Council for Harmonisation of Technical Requirements for Pharmaceuticals for Human Use (ICH), ICH Harmonised Guideline, Integrated Addendum to ICH E6(R1): Guideline for Good Clinical Practice, E6(R2), November 9, 2016.
+- Canadian Institutes of Health Research, Natural Sciences and Engineering Research Council of Canada, and Social Sciences and Humanities Research Council of Canada, Tri-Council Policy Statement: Ethical Conduct for Research Involving Humans, December 2014.
+- [Department of Justice (Canada), Personal Information Protection and Electronic Documents Act (PIPEDA)](https://laws-lois.justice.gc.ca/eng/acts/P-8.6/), last amended June 23, 2015, current to December 31, 2016.
+- CDISC Clinical Research Glossary, Version 9.0, Glossary. December 2011.
+- Canadian Institutes for Health Research, Privacy Advisory Committee, CIHR Best Practices for Protecting Privacy in Health Research, September 2005.
+- US Food and Drug Administration, Code of Federal Regulations, Title 21, Volume 1:
+  - [Part 11, Electronic Records; Electronic Signatures, (21CFR11).](https://www.ecfr.gov/current/title-21/chapter-I/subchapter-A/part-11)
+- 
+  - [Part 50, Protection of Human Subjects, (21CFR50).](https://www.ecfr.gov/current/title-21/chapter-I/subchapter-A/part-50)
+  - [Part 56, Institutional Review Boards, (21CFR56).](https://www.ecfr.gov/current/title-21/chapter-I/subchapter-A/part-56)
+- US Department of Health and Human Services, Office of the Secretary, 45 CFR Parts 160 and 164, Standards for Privacy of Individually Identifiable Health Information.
+- US Department of Health and Human Services, Guidance for Industry: Computerized Systems Used in Clinical Investigations, May 2007.
+- Official Journal of the European Communities, Directive 95/46/EC of the European Parliament and of the Council of 24 October 1995.
+- Official Journal of the European Communities, Directive 2001/20/EC of the European Parliament and of the Council of 4 April 2001.
+- Medical Dictionary for Regulatory Activities (MedDRA), Maintenance and Support Services Organization (MSSO).
+- The Society for Clinical Data Management, GCDMP Committee, Good Clinical Data Management Practices. December 2009 Ed.
+- WHO Drug Dictionary, Uppsala Monitoring Centre (UMC).
+
+<a id="revision-history"></a>
+
+### 7.0 Revision history
+
+| SOP Code | Effective Date | Pages | Summary of Changes |
+|---|---|---|---|
+| SOP104_01 | 15-May-2011 | 6 | Original version |
+
+| SOP Code | Effective Date | Summary of Changes |
+|---|---|---|
+| SOP104_02 | 15-May-2013 | Removed total number of pages from header and section 7.0 |
+| SOP104_03 | 15-May-2015 | Added ‘Authorization to Adopt’; update TCPS reference version. |
+| SOP104_04 | 15-May-2017 | Added MDR and NHP references; updated ICH E6 and PIPEDA references; removed Annex 11. |
+
+
+{/* Built word for word from SOP-CR-104_04 (N2 SOP104_04), pages 566 to 571 of "All SOPs combined and searchable -Final_12Dec2024-compressed.pdf", from the proofread transcription in _review/2026-11/batches/b85-sop-pages-exact/ (batch 85). Running headers and footers removed; signatures shown as "Signed". Hub additions sit between HUB comments. Old anchors kept: purpose, scope, responsibilities, definitions, procedure, references. */}

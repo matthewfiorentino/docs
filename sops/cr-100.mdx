@@ -1,145 +1,241 @@
 ---
 timestamp: false
-title: "SOP-CR-100 — CRF Design"
-description: "Standards for designing Case Report Forms for Sponsor-Investigator studies at the RI-MUHC, including CRF content requirements, version control, and alignment with the study protocol and Data Management Plan."
+title: "SOP-CR-100: Case Report Form Design"
+description: "How to design, develop, approve and distribute the case report forms for an investigator-initiated study."
 ---
 
+{/* HUB: meta */}
 <div className="ri-sop-meta">
-  <div className="ri-sop-badges">
-    <Badge color="gray">SOP-CR-100_05</Badge>
-    <Badge color="gray">Version 05</Badge>
-    <Badge color="green">Effective 01 Sep 2018</Badge>
-    <Badge color="blue">Sponsor-Investigator</Badge>
-  </div>
-  <button className="ri-print-btn" onClick={() => window.print()}>Print / Save PDF</button>
+  <button className="ri-print-btn" onClick={() => window.print()}>Print or save as PDF</button>
 </div>
 
-Reviewed by Dr. Louise Pilote, Director of Clinical Research, RI-MUHC.
-Approved by Gilbert Tordjman, Chief Operating and Development Officer, RI-MUHC.
-Signed copy on file — download the PDF for the approved version with signatures.
+<Note>
+Reading a standard operating procedure (SOP) on the Hub doesn't count toward your compliance record. Complete the [SOP Reader and Assessment](/training/compliance-requirements#sop-reader-and-assessment) for your level on TalentLMS.
+</Note>
+{/* /HUB */}
 
----
+{/* HUB: part heading */}
+## N2 SOP100_05: Case Report Form Design
+{/* /HUB */}
 
-
-<Warning>
-**Controlled document.** Always refer to this page for the current version. Do not rely on downloaded or printed copies. Reading this page does not count toward your compliance record — complete the SOP Reader and Assessment on TalentLMS.
-</Warning>
-
-<div className="ri-sop-key-points">
-
-## Key points
-
-- CRFs must capture all primary and secondary outcome measures defined in the protocol, plus safety data, medical history, and concomitant medications as required. **Only data defined in the protocol** will be entered in the CRF.
-- Each CRF must include site and participant identification, visit number and date. Standard CRF sections may include: Randomization/Registration, Demographic, Eligibility, Baseline/Screening, Treatment, Vital Signs, ECG, Physical Exam, Laboratory Evaluation, Imaging, Medical History, Prior/Concomitant Medications, Adverse Events, <Tooltip tip="An adverse event meeting seriousness criteria: death, life-threatening, hospitalization, disability, or congenital anomaly." headline="Serious Adverse Event (SAE)" cta="Full definition" href="/kb/foundations/glossary#sae">SAE</Tooltip> Reporting, Follow-up, End of Study, and Investigator Sign-off.
-- Each CRF field must map to a source document or source data entry point. Fields that cannot be sourced must be justified.
-- CRF design must be reviewed against the protocol and the Data Management Plan ([SOP-CR-103](/sops/cr-103)) before database setup begins ([SOP-CR-104](/sops/cr-104)).
-- Version control applies to CRFs: every change to a CRF after study start must be documented, version-stamped, and the <Tooltip tip="The QI's collection of documentation demonstrating compliance, study integrity, and participant safety." headline="Investigator Site File (ISF)" cta="Full definition" href="/kb/foundations/glossary#isf">ISF</Tooltip>/<Tooltip tip="The sponsor's collection of documentation demonstrating compliance across all study sites." headline="Trial Master File (TMF)" cta="Full definition" href="/kb/foundations/glossary#tmf">TMF</Tooltip> updated.
-
-</div>
-
-## 1 · Purpose {#purpose}
-
-This Standard Operating Procedure (SOP) describes the processes involved in the
-design, development, approval and distribution of Case Report Form(s) (CRFs).
-CRFs are designed to collect the information required by the clinical research or study
-protocol for each study subject.
-
----
-
-## 2 · Scope {#scope}
-
-This SOP applies to investigator-initiated clinical research, whereby Case Report Form
-design through distribution is the responsibility of the Sponsor-Investigator.
-
----
-
-## 3 · Responsibilities {#responsibilities}
-
-The **Sponsor-Investigator** is responsible for ensuring that CRF design meets all applicable regulatory, ICH-<Tooltip tip="International standard for design, conduct, monitoring, recording, and reporting of clinical studies." headline="Good Clinical Practice (GCP)" cta="Full definition" href="/kb/foundations/glossary#gcp">GCP</Tooltip>, and local requirements. Responsibilities may be delegated to appropriately trained team members.
-
----
-
-## 4 · Definitions {#definitions}
-
-See [Glossary of Terms](/kb/foundations/glossary) for all term definitions.
-
----
-
-## 5 · Procedure {#procedure}
-### 5.1 General principles
-
-**5.1.1** The CRF is a printed or electronic document designed to ensure that all data required by the protocol are captured and reported to the Sponsor-Investigator on each trial subject. Only data defined in the protocol will be entered in the CRF.
-
-**5.1.2** CRF design must be completed and reviewed against the study protocol and the Data Management Plan ([SOP-CR-103](/sops/cr-103)) before database setup begins → [SOP-CR-104](/sops/cr-104).
-
-**5.1.3** Each CRF field must map to a source document or source data entry point. Fields that cannot be sourced must be justified in the Data Management Plan.
-
-### 5.2 CRF sections
-
-Depending on the data required by the study protocol, a standard CRF may include, but is not limited to, the following sections:
-
-| CRF Section | Purpose |
+| | |
 |---|---|
-| Site and participant identification | Links data to a specific site and participant |
-| Visit number and date | Identifies the visit and date of data collection |
-| Randomization/Registration form | Documents randomization assignment |
-| Patient Demographic form | Captures basic demographic information |
-| Patient Characteristics form | Study-specific baseline characteristics |
-| Eligibility form | Documents inclusion/exclusion criteria assessment |
-| Baseline/Screening form | Pre-treatment assessments |
-| Treatment form | Treatment, doses, administration routes, frequency, escalations/reductions |
-| Vital Signs form | Blood pressure, heart rate, temperature, weight, height |
-| ECG form | Electrocardiogram results (if applicable) |
-| Physical Exam form | Physical examination findings |
-| Laboratory Evaluation (tests) form | Laboratory test results |
-| Imaging form | Radiology/imaging results (if applicable) |
-| Medical History (including relapse/recurrence form) | Medical history and relevant events |
-| Prior and Concomitant Medication log | All medications taken before and during the study |
-| <Tooltip tip="Any untoward medical occurrence in a participant, whether or not related to the investigational product." headline="Adverse Event (AE)" cta="Full definition" href="/kb/foundations/glossary#ae">Adverse Event</Tooltip> form | All adverse events observed during the study |
-| SAE Reporting form | <Tooltip tip="An adverse event meeting seriousness criteria: death, life-threatening, hospitalization, disability, or congenital anomaly." headline="Serious Adverse Event (SAE)" cta="Full definition" href="/kb/foundations/glossary#sae">Serious adverse event</Tooltip> documentation |
-| Other Important Safety Issues Reporting form | Any other safety concerns |
-| Follow-up forms | Post-treatment follow-up assessments |
-| Patient Completion form | Documents date, reason, and circumstances for cessation of visits/data collection (withdrawal, death, progression, or other) |
-| End of Study (EOS) form | Final study visit documentation |
-| End of Treatment form | End of treatment documentation |
-| Investigator date sign-off form | <Tooltip tip="The physician responsible to the sponsor for the conduct of a clinical trial at the site. One QI per study per Canadian site." headline="Qualified Investigator (QI)" cta="Full definition" href="/kb/foundations/glossary#qi">QI</Tooltip>/PI sign-off on completed CRFs |
+| Title | Case Report Form Design |
+| SOP Code | SOP100_05 |
+| Effective Date | 15-May-2017 |
 
-### 5.3 Version control
+**Site Approval/Authorization to Adopt**
 
-**5.3.1** Apply version control to all CRFs. Each version must have a version number and date clearly indicated on each page.
-
-**5.3.2** Any change to a CRF after study start must be documented, version-stamped, and filed in the <Tooltip tip="The sponsor's collection of documentation demonstrating compliance across all study sites." headline="Trial Master File (TMF)" cta="Full definition" href="/kb/foundations/glossary#tmf">TMF</Tooltip>/<Tooltip tip="The QI's collection of documentation demonstrating compliance, study integrity, and participant safety." headline="Investigator Site File (ISF)" cta="Full definition" href="/kb/foundations/glossary#isf">ISF</Tooltip>. Communicate CRF version changes to all affected data entry personnel.
-
-**5.3.3** Superseded CRF versions must be retained in the TMF for audit purposes.
-
-### 5.4 Electronic CRFs (eCRFs)
-
-**5.4.1** Electronic CRFs must comply with 21 CFR Part 11 or equivalent electronic records requirements → [SOP-CR-014](/sops/cr-014) and [SOP-CR-104](/sops/cr-104).
-
-**5.4.2** The eCRF system must maintain a complete audit trail of all entries, edits, and deletions with user identifier, date, and time.
-
----
-
-## Appendices {#appendices}
-
-No appendices associated with this SOP.
-
----
-
-## References {#references}
-
-- N2 Network SOP100_05
-- ICH-GCP E6(R2), Guideline for Good Clinical Practice
-- ICH E3, Structure and Content of Clinical Study Reports
-- Health Canada, Food and Drug Regulations, Part C, Division 5
-- 21 CFR Part 11, Electronic Records; Electronic Signatures
-
----
-
-<h2>Revision history</h2>
-
-| Version | Date | Summary |
+| Name and Title of Local Personnel (typed or printed) | Signature | Date dd/Mon/yyyy |
 |---|---|---|
-| SOP-CR-100_05 | 01 Sep 2018 | Conversion to RI-MUHC SOP format. Added RI-MUHC Addendum with detailed CRF section requirements. Updated to reflect REDCap as the supported eCRF system at the RI-MUHC. |
-| SOP-CR-100_04 | 24 May 2016 | Revision to CRF design standards; updated regulatory references. |
-| SOP-CR-100_03 | 15 May 2015 | Added Authorization to Adopt; updated reference versions. |
+| BRUCE MAZER, MD | Signed |  |
+| EXECUTIVE DIRECTOR AND CSO |  | 08-Aug-2018 |
+
+<a id="purpose"></a>
+
+### 1.0 Purpose
+
+This Standard Operating Procedure (SOP) describes the processes involved in the design, development, approval and distribution of Case Report Form(s) (CRFs). CRFs are designed to collect the information required by the clinical research or study protocol for each study subject.
+
+<a id="scope"></a>
+
+### 2.0 Scope
+
+This SOP applies to investigator-initiated clinical research, whereby Case Report Form design through distribution is the responsibility of the Sponsor-Investigator.
+
+<a id="responsibilities"></a>
+
+### 3.0 Responsibilities
+
+The Sponsor-Investigator or Qualified Investigator (<Tooltip tip="The physician responsible to the sponsor for the conduct of a clinical trial at the site. One QI per study per Canadian site." headline="Qualified Investigator (QI)" cta="Full definition" href="/kb/foundations/glossary#qi">QI</Tooltip>) is responsible for ensuring that the processes involved in case report form(s) design through distribution are followed and meet the applicable regulatory, International Conference on Harmonisation (ICH) Good Clinical Practice (GCP), and local requirements.
+
+Any or all parts of this procedure may be delegated to appropriately trained study team members, but remain the ultimate responsibility of the Sponsor-Investigator or Qualified Investigator (QI).
+
+<a id="definitions"></a>
+
+### 4.0 Definitions
+
+See [Glossary of Terms](/kb/foundations/glossary).
+
+<a id="procedure"></a>
+
+### 5.0 Procedure
+
+<a id="5-1"></a>
+
+#### 5.1 CRF design, development, and review
+
+<a id="5-1-1"></a>**5.1.1** Create a draft of the <Tooltip tip="Document designed to record all protocol-required information to be reported to the sponsor for each participant." headline="Case Report Form (CRF)" cta="Full definition" href="/kb/foundations/glossary#crf">CRF</Tooltip> using the appropriate software, taking into account the following:
+
+- The study protocol
+- Consistency within the project/therapeutic indication
+- Applicable regulatory requirements
+- Data collection
+- Data entry
+- Monitoring requirements
+- Avoidance of the collection of data not required by the protocol
+- Consistency with protocol statistical plan
+
+<a id="5-1-2"></a>**5.1.2** Assign a version control number and/or date to the CRF.
+
+<a id="5-1-3"></a>**5.1.3** Provide the draft CRF, for review by the clinical research team, as required. This may include the following: Sponsor-Investigator or QI, Study Coordinator(s), Data Management personnel, Biostatisticians, Drug Safety representative, and Quality Assurance personnel.
+
+<a id="5-1-4"></a>**5.1.4** Revise CRF, based on comments received, and obtain formal sign-off, as/if required.
+
+<a id="5-2"></a>
+
+#### 5.2 Research Ethics Board (REB)/independent ethics committee (IEC) approval of CRFs
+
+<a id="5-2-1"></a>**5.2.1** Obtain <Tooltip tip="The ethics committee that reviews and approves research involving human participants. Also called CER at French-language institutions." headline="Research Ethics Board (REB)" cta="Full definition" href="/kb/foundations/glossary#reb">REB</Tooltip>/IEC approval prior to study activation, if required by local procedures.
+
+<a id="5-2-2"></a>**5.2.2** Revise CRF, if required by REB/IEC.
+
+<a id="5-3"></a>
+
+#### 5.3 Final CRF distribution
+
+<a id="5-3-1"></a>**5.3.1** Generate the final CRF, and distribute to the Clinical Research Team and participating sites, as required.
+
+<a id="5-3-2"></a>**5.3.2** Retain a copy of the final CRF in the Investigator Study File or Trial Management File.
+
+<a id="5-4"></a>
+
+#### 5.4 CRF revisions
+
+<a id="5-4-1"></a>**5.4.1** Revise the CRF, as a result of protocol amendments, or the need to clarify or expand data collection to better reflect the protocol.
+
+<a id="5-4-2"></a>**5.4.2** Follow the same process as described above for original CRFs.
+
+<a id="5-4-3"></a>**5.4.3** Assign a new version control number and/or date to the revised CRF.
+
+<a id="5-4-4"></a>**5.4.4** Retain a copy of all revised CRFs in the Investigator Study File or Trial Management File.
+
+<a id="references"></a>
+
+### 6.0 References
+
+- [Health Canada, Food and Drug Regulations, Part C, Division 5, Drugs for Clinical Trials Involving Human Subjects, (Schedule 1024), June 20, 2001.](https://laws-lois.justice.gc.ca/eng/regulations/C.R.C.,_c._870/)
+- [Government of Canada, Medical Devices Regulations, SOR/98-282](https://laws-lois.justice.gc.ca/eng/regulations/SOR-98-282/), May 7, 1998; last amended February 13, 2017, current to March 20, 2017.
+- [Government of Canada, Natural Health Products Regulations, Part 4 Clinical Trials Involving Human Subjects, SOR/2003-196](https://laws-lois.justice.gc.ca/eng/regulations/SOR-2003-196/), June 5, 2003; last amended June 1, 2008, current to March 20, 2017.
+- International Council for Harmonisation of Technical Requirements for Pharmaceuticals for Human Use (ICH), ICH Harmonised Guideline, Integrated Addendum to ICH E6(R1): Guideline for Good Clinical Practice, E6(R2), November 9, 2016.
+- Canadian Institutes of Health Research, Natural Sciences and Engineering Research Council of Canada, and Social Sciences and Humanities Research Council of Canada, Tri-Council Policy Statement: Ethical Conduct for Research Involving Humans, December 2014.
+- [Department of Justice (Canada), Personal Information Protection and Electronic Documents Act (PIPEDA)](https://laws-lois.justice.gc.ca/eng/acts/P-8.6/), last amended June 23, 2015, current to December 31, 2016.
+- Health Canada, Guidance for Industry, [Clinical Safety Data Management Definitions and Standards for Expedited Reporting](https://www.canada.ca/en/health-canada/services/drugs-health-products/drug-products/applications-submissions/guidance-documents/international-council-harmonisation/guidelines.html), ICH Topic E2A, 1995.
+- US Food and Drug Administration, Code of Federal Regulations, Title 21, Volume 1:
+  - [Part 11, Electronic Records; Electronic Signatures, (21CFR11).](https://www.ecfr.gov/current/title-21/chapter-I/subchapter-A/part-11)
+  - [Part 50, Protection of Human Subjects, (21CFR50).](https://www.ecfr.gov/current/title-21/chapter-I/subchapter-A/part-50)
+- 
+  - [Part 54, Financial Disclosure by Clinical Investigators, (21CFR54).](https://www.ecfr.gov/current/title-21/chapter-I/subchapter-A/part-54)
+  - [Part 56, Institutional Review Boards, (21CFR56).](https://www.ecfr.gov/current/title-21/chapter-I/subchapter-A/part-56)
+  - [Part 312, Investigational New Drug Application (21CFR312).](https://www.ecfr.gov/current/title-21/chapter-I/subchapter-D/part-312)
+  - [Part 314, Applications for FDA Approval to Market a New Drug (21CFR314).](https://www.ecfr.gov/current/title-21/chapter-I/subchapter-D/part-314)
+- [US Department of Health and Human Services, Code of Federal Regulations, Title 45, Part 46, Protection of Human Subjects (45CFR46).](https://www.ecfr.gov/current/title-45/subtitle-A/subchapter-A/part-46)
+- US Department of Health and Human Services, Guidance for Industry: Computerized Systems Used in Clinical Investigations, May 2007.
+
+<a id="revision-history"></a>
+
+### 7.0 Revision history
+
+| SOP Code | Effective Date | Pages | Summary of Changes |
+|---|---|---|---|
+| SOP20_01 | 15-May-2010 | 4 | Original version |
+| SOP100_02 | 15-May-2011 | 5 | Changed SOP numbers to three digits in header/footer, title box, and section 7; SOP has been re-numbered to 100_02; added TCPS to references. |
+
+| SOP Code | Effective Date | Summary of Changes |
+|---|---|---|
+| SOP100_03 | 15-May-2013 | Removed total number of pages from header and section 7.0; 5.1.4 added ‘and obtain formal sign-off’. |
+| SOP100_04 | 15-May-2015 | Added ‘Authorization to Adopt’; update TCPS reference version; 1.0: change to subject/participant. |
+| SOP100_05 | 15-May-2017 | Added MDR and NHP references; updated ICH E6 and PIPEDA references; changed Annex 11 to FDA Guidance. |
+
+{/* HUB: part heading */}
+## RI-MUHC Addendum_01 of SOP-CR-100_05
+{/* /HUB */}
+
+### 1.0 Specific RI-MUHC policies and procedures
+
+<a id="1-1"></a>
+
+#### 1.1 Case report forms (CRF)
+
+<a id="1-1-1"></a>**1.1.1 General purpose**
+
+The CRF is a printed or electronic document to be designed to ensure that all data required by the protocol are captured and reported to the Sponsor on each trial subject. Only data defined in the protocol will be entered in the CRF.
+
+<a id="1-1-2"></a>**1.1.2 CRF sections**
+
+Depending on the data required by the study protocol, a standard CRF document might include, but is not limited to, the following sections:
+
+- Site and patient identification number, visit number and date
+- Randomisation/registration form
+- Patient Demographic form
+- Patient Characteristics form
+- Eligibility form
+- Baseline/Screening form
+- Treatment form (treatment, doses, administration routes, frequency, escalations or reductions)
+- Vital Signs form
+- ECG form
+- Patient Completion (documenting the date, reason and circumstances for the cessation of visits or data collection due to withdrawal, death, progression or other)
+- Medical History (including relapse/recurrence form)
+- Physical Exam form
+- Laboratory Evaluation (tests) form
+- Imaging form
+- Prior and Concomitant Medication log
+- Adverse Event
+- Serious Adverse Event Reporting Form
+- Other Important Safety Issues Reporting Form
+- Follow-up forms
+- End of study (EOS) form
+- End of treatment form
+- Investigator date sign-off form
+
+<a id="1-2"></a>
+
+#### 1.2 Electronic CRF
+
+<a id="1-2-1"></a>**1.2.1** You can create an electronic Case Report form (eCRF) via an Electronic Data Capture System (EDC). Ensure that the EDC system has been validated, it is password protected, it has an integrated audit trail and it has a backup to be compliant with ICH-GCP E6 R2
+
+Note: The use of Excel as an EDC does not conform to ICH-GCP, R2 and should not be used as an electronic CRF as it is difficult to maintain an audit trail.
+
+<a id="1-2-2"></a>**1.2.2** The RI MUHC supports the [REDCap](/apps/redcap) system (http://project-redcap.org/) for studies of low or moderate complexity, ideally, containing no more than 1000 variables. For a more complex study, requiring higher numbers of variables, it is recommended to program a few variables per form.
+
+Note: For Sub-Is from other institutions who are not eligible for Investigator Access on the RI-portal and who wish to be trained on REDCap, contact the CIM Data Manager directly.
+
+<a id="1-3"></a>
+
+#### 1.3 CRF/eCRF review
+
+<a id="1-3-1"></a>**1.3.1** Once the CRF/eCRF is reviewed/quality controlled, based on comments received, it should obtain formal Sponsor sign-off, as/if required.
+
+<a id="1-3-2"></a>**1.3.2** As per RI-MUHC and MUHC CAE SOPs, the REB does not review and approve CRFs/eCRFs.
+
+<a id="1-4"></a>
+
+#### 1.4 Data management assistance
+
+<a id="1-4-1"></a>**1.4.1** For assistance in creating your project, set-up of CRF and patient surveys in REDCap contact biometry@muhc.mcgill.ca.
+
+<a id="appendices"></a>
+
+### 2.0 Appendices
+
+None
+
+### 3.0 Revision history (addendum & appendices)
+
+| SOP Code | Effective Date | Summary of changes |
+|---|---|---|
+| SOP100_04 | 24-May-2016 | New SOP at the RI MUHC |
+| SOP-CR-100_05 | 01-Sept-2018 | Section 1.2 Addition: “Ensure that the EDC has been validated, it is password protected, it has an audit trail and it has a backup to be compliant with ICH-GCP E6 R2” Also added note on Excel not optimal. |
+|  |  | 4.0 Addition |
+|  |  | SOP100_04 renamed to SOP-CR-100_05 |
+|  |  | Added section 1.3 CRF/eCRF review. |
+|  |  | Added section 1.3.1 that REB does not need to review and approve the CRF/eCRF. |
+
+### 4.0 RI-MUHC review and approval
+
+| Name and Title of Local Personnel (typed or printed) | Signature | Date dd/Mon/yyyy |
+|---|---|---|
+| Reviewer: Cinzia Raponi RI-MUHC Director Administration | Signed | 9 Aug 2018 |
+| Approver: Dr. Bruce Mazer RI-MUHC Executive Director and CSO | Signed | 08-Aug-2018 |
+
+{/* Built word for word from SOP-CR-100_05 (N2 SOP100_05 and the RI-MUHC Addendum_01), pages 522 to 529 of "All SOPs combined and searchable -Final_12Dec2024-compressed.pdf", from the proofread transcription in _review/2026-11/batches/b85-sop-pages-exact/ (batch 85). Running headers and footers removed; signatures shown as "Signed". Hub additions sit between HUB comments. Old anchors kept: purpose, scope, responsibilities, definitions, procedure, references, appendices. */}

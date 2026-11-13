@@ -1,141 +1,183 @@
 ---
 timestamp: false
-title: "SOP-CR-106 — File Transfer"
-description: "Requirements for transferring study data files to and from the study database for Sponsor-Investigator studies at the RI-MUHC, including transfer methods, documentation, integrity validation, and the Data Sharing/Transfer Agreement requirement."
+title: "SOP-CR-106: File Transfer"
+description: "How to transfer data files to and from a study database while keeping the data and the database intact."
 ---
 
+{/* HUB: meta */}
 <div className="ri-sop-meta">
-  <div className="ri-sop-badges">
-    <Badge color="gray">SOP-CR-106_04</Badge>
-    <Badge color="gray">Version 04</Badge>
-    <Badge color="green">Effective 01 Sep 2018</Badge>
-    <Badge color="blue">Sponsor-Investigator</Badge>
-  </div>
-  <button className="ri-print-btn" onClick={() => window.print()}>Print / Save PDF</button>
+  <button className="ri-print-btn" onClick={() => window.print()}>Print or save as PDF</button>
 </div>
 
-Reviewed by Dr. Louise Pilote, Director of Clinical Research, RI-MUHC.
-Approved by Gilbert Tordjman, Chief Operating and Development Officer, RI-MUHC.
-Signed copy on file — download the PDF for the approved version with signatures.
+<Note>
+Reading a standard operating procedure (SOP) on the Hub doesn't count toward your compliance record. Complete the [SOP Reader and Assessment](/training/compliance-requirements#sop-reader-and-assessment) for your level on TalentLMS.
+</Note>
+{/* /HUB */}
 
----
+{/* HUB: part heading */}
+## N2 SOP106_04: File Transfer
+{/* /HUB */}
 
+| | |
+|---|---|
+| Title | File Transfer |
+| SOP Code | SOP106_04 |
+| Effective Date | 15-May-2017 |
 
-<Warning>
-**Controlled document.** Always refer to this page for the current version. Do not rely on downloaded or printed copies. Reading this page does not count toward your compliance record — complete the SOP Reader and Assessment on TalentLMS.
-</Warning>
+**Site Approval/Authorization to Adopt**
 
-<div className="ri-sop-key-points">
-
-## Key points
-
-- **A Data Sharing/Transfer Agreement must be in place** before any transfer or sharing of information (partial or entire data) to or from a non-MUHC site. Obtain the template Agreement from the RI-MUHC Contracts Office at contracts@muhc.mcgill.ca.
-- All data transfers must use **secure, encrypted methods**. Unencrypted transfer of identifiable or study data by email or unencrypted file sharing is prohibited.
-- Every transfer must be **documented**: what was transferred, to whom, by what method, on what date, and who received and confirmed the transfer.
-- **Recipient confirmation** of receipt and data integrity must be obtained and filed in the <Tooltip tip="The sponsor's collection of documentation demonstrating compliance across all study sites." headline="Trial Master File (TMF)" cta="Full definition" href="/kb/foundations/glossary#tmf">TMF</Tooltip>.
-- After transfer, verify the integrity of the received data against the source (checksums, record counts, or other validation methods as specified in the DMP → [SOP-CR-103](/sops/cr-103)).
-- For transfers to regulatory authorities (Health Canada), use only the submission formats and channels specified by the regulator.
-
-</div>
-
-## 1 · Purpose {#purpose}
-
-This Standard Operating Procedure (SOP) describes the steps required during the
-transfer of external files to and from the study database to preserve the integrity of
-transmitted data and the study database.
-
----
-
-## 2 · Scope {#scope}
-
-This SOP is applicable to all data files that are part of the study data set and which are
-transmitted from another site to be included in the study database. This SOP is also
-applicable to those personnel responsible for the transmission, such as all the Data
-Management and Information Technology (IT) personnel, unless otherwise stated in the
-study contract or data management plan.
-
----
-
-## 3 · Responsibilities {#responsibilities}
-
-The **Sponsor-Investigator or <Tooltip tip="The physician responsible to the sponsor for the conduct of a clinical trial at the site. One QI per study per Canadian site." headline="Qualified Investigator (QI)" cta="Full definition" href="/kb/foundations/glossary#qi">QI</Tooltip>/Investigator, Data Management, and IT personnel** (if applicable) are responsible for ensuring that all database file transfers meet all applicable regulatory, ICH-<Tooltip tip="International standard for design, conduct, monitoring, recording, and reporting of clinical studies." headline="Good Clinical Practice (GCP)" cta="Full definition" href="/kb/foundations/glossary#gcp">GCP</Tooltip>, Sponsor, and local requirements.
-
----
-
-## 4 · Definitions {#definitions}
-
-See [Glossary of Terms](/kb/foundations/glossary) for all term definitions.
-
----
-
-## 5 · Procedure {#procedure}
-### 5.1 RI-MUHC Data Sharing/Transfer Agreement requirement
-
-**5.1.1** Prior to transfer or sharing of information (partial or entire data) to a non-MUHC site, or prior to receiving information (partial or entire data) from a non-MUHC site, a **Data Sharing/Transfer Agreement** must be in place between all parties (Disclosing Party and Receiving Party).
-
-**5.1.2** Obtain the template Agreement from the RI-MUHC Contracts Office at **contracts@muhc.mcgill.ca**. The Agreement must be reviewed and signed before any data transfer occurs. File a copy in the <Tooltip tip="The sponsor's collection of documentation demonstrating compliance across all study sites." headline="Trial Master File (TMF)" cta="Full definition" href="/kb/foundations/glossary#tmf">TMF</Tooltip>.
-
-### 5.2 Secure transfer methods
-
-**5.2.1** All data transfers must use secure, encrypted methods. Prohibited methods include:
-- Unencrypted email (no study data or participant information in plain text attachments)
-- Unencrypted USB drives or removable media
-- Public file-sharing services without encryption and access controls
-
-**5.2.2** Acceptable secure transfer methods include:
-- Encrypted file transfer via institutional secure file sharing platforms
-- Secure FTP (SFTP) with authentication
-- Approved institutional data transfer services
-- Encrypted and password-protected archives (using strong encryption)
-
-### 5.3 Transfer documentation
-
-**5.3.1** Every data transfer must be documented in the TMF. The transfer record must include:
-- Description of the data transferred (dataset name, version, record count, date range)
-- Sending party (name, site, contact information)
-- Receiving party (name, organization, contact information)
-- Transfer method used
-- Date and time of transfer
-- Confirmation of receipt (from the receiving party)
-- Integrity validation results
-
-**5.3.2** Obtain written (or electronic) **confirmation of receipt** from the recipient, confirming that the data were received successfully and that data integrity was verified. File this confirmation in the TMF.
-
-### 5.4 Data integrity validation
-
-**5.4.1** After transfer, validate the integrity of the received data against the source data, using one or more of the following methods as specified in the DMP ([SOP-CR-103](/sops/cr-103)):
-- Checksum or hash comparison (MD5, SHA-256)
-- Record count verification
-- Field-level spot checks
-- Automated validation rules
-
-**5.4.2** Document the integrity validation results. If discrepancies are found, investigate, correct, and re-transfer as needed. Document all corrective actions.
-
-### 5.5 Regulatory authority transfers
-
-**5.5.1** For transfers to regulatory authorities (e.g., Health Canada), use only the submission formats and channels specified by the regulator. Retain a copy of all submitted data and documentation in the TMF.
-
----
-
-## Appendices {#appendices}
-
-No appendices associated with this SOP.
-
----
-
-## References {#references}
-
-- N2 Network SOP106_04
-- ICH-GCP E6(R2), Guideline for Good Clinical Practice — Section 5.5
-- 21 CFR Part 11, Electronic Records; Electronic Signatures
-- Health Canada, Food and Drug Regulations, Part C, Division 5
-- Personal Information Protection and Electronic Documents Act (PIPEDA)
-
----
-
-<h2>Revision history</h2>
-
-| Version | Date | Summary |
+| Name and Title of Local Personnel (typed or printed) | Signature | Date dd/Mon/yyyy |
 |---|---|---|
-| SOP-CR-106_04 | 01 Sep 2018 | Conversion to RI-MUHC SOP format. Added RI-MUHC Addendum: requirement for a Data Sharing/Transfer Agreement before any file transfer to/from a non-MUHC site; template Agreement to be obtained from the RI-MUHC Contracts Office. Renamed from SOP106_03. |
-| SOP-CR-106_03 | 24 May 2016 | New SOP at the RI-MUHC. Added file transfer procedures and documentation requirements. |
+| BRUCE MAZER, MD | Signed |  |
+| EXECUTIVE DIRECTOR AND CSO |  | 08-Aug-2018 |
+
+<a id="purpose"></a>
+
+### 1.0 Purpose
+
+This Standard Operating Procedure (SOP) describes the steps required during the transfer of external files to and from the study database to preserve the integrity of transmitted data and the study database.
+
+<a id="scope"></a>
+
+### 2.0 Scope
+
+This SOP is applicable to all data files that are part of the study data set and which are transmitted from another site to be included in the study database. This SOP is also applicable to those personnel responsible for the transmission, such as all the Data Management and Information Technology (IT) personnel, unless otherwise stated in the study contract or data management plan.
+
+<a id="responsibilities"></a>
+
+### 3.0 Responsibilities
+
+The Sponsor-Investigator or Qualified Investigator (<Tooltip tip="The physician responsible to the sponsor for the conduct of a clinical trial at the site. One QI per study per Canadian site." headline="Qualified Investigator (QI)" cta="Full definition" href="/kb/foundations/glossary#qi">QI</Tooltip>)/Investigator, Data Management and IT personnel (if applicable) are responsible for ensuring that the processes involved in all database file transfers, from or to the study database, meet all of the applicable regulatory, International Conference on Harmonisation (ICH), Good Clinical Practice (GCP), Sponsor, and local requirements.
+
+Any or all parts of this procedure may be delegated to appropriately trained study team members, but remain the ultimate responsibility of the Sponsor, Sponsor-Investigator and/or Qualified Investigator (QI)/Investigator.
+
+<a id="definitions"></a>
+
+### 4.0 Definitions
+
+Database: The term database applies to all computer software which is used to format, manipulate or control storage of the electronic data for the study. This may be one computer file or a system of files which are maintained as the study database.
+
+See also, “CDISC Clinical Research Glossary, Version 9.0” and “N2 Glossary of Terms”.
+
+<a id="procedure"></a>
+
+### 5.0 Procedure
+
+<a id="5-1"></a>
+
+#### 5.1 Treatment coding and blinding
+
+<a id="5-1-1"></a>**5.1.1** Where necessary, maintain the blinding of the treatment coding in released datasets. This may mean removing the treatment codes or replacing the treatment codes with mock codes. Document the recoding and include notification of the re-coding/blinding with the transmitted file.
+
+<a id="5-2"></a>
+
+#### 5.2 Data security
+
+<a id="5-2-1"></a>**5.2.1** Maintain appropriate authorizations for access to data to be transferred/ received.
+
+<a id="5-2-2"></a>**5.2.2** Ensure that the receiving site is aware of privacy legislation regarding the use of linked data.
+
+<a id="5-2-3"></a>**5.2.3** Encrypt files for transfer using local encryption methods and software. Files may also be transferred as password protected compressed archives or transferred directly using encrypted file transfer.
+
+<a id="5-2-4"></a>**5.2.4** Ensure that the original data files that are to be received by the data centre and that are to be transferred into the study data base are write protected and are included in the data archiving process.
+
+<a id="5-2-5"></a>**5.2.5** Maintain a copy of all files of the originating study database before they are transmitted externally. Ensure the copy is write protected and is included in the data archiving process.
+
+<a id="5-2-6"></a>**5.2.6** Point-to-point file transfers or utilization of authorized “drop file” facilities are used when available. File drop/exchange services, provided by many institutions, utilize file encryption and secure transmission. File transfer via an email message is a secondary option.
+
+<a id="5-2-7"></a>**5.2.7** Passwords are always sent to the recipient of the data files in a separate transmission
+
+<a id="5-3"></a>
+
+#### 5.3 Documentation and verification
+
+<a id="5-3-1"></a>**5.3.1** Ensure that the data file is accompanied by documentation of the content and format.
+
+- If applicable use export/import functions for creating/reading transport files and ensure that the appropriate documentation is associated to the transport.
+- The minimum information should include:
+  - The column positions or delimiter
+  - The column headings
+  - The field formats for all columns
+  - The field lengths for all columns
+
+<a id="5-3-2"></a>**5.3.2** In cases where transferred data are converted to a different format, verify the data conversion by comparing the transferred fields to original field specifications.
+
+<a id="5-3-3"></a>**5.3.3** When feasible, provide/verify the number of observations (rows) and number of variables (columns) in the transferred file.
+
+<a id="5-3-4"></a>**5.3.4** Request documentation from the receiving site or provide documentation to the transmitting site to ensure that the file was received and verified.
+
+<a id="references"></a>
+
+### 6.0 References
+
+- [Health Canada, Food and Drug Regulations, Part C, Division 5, Drugs for Clinical Trials Involving Human Subjects, (Schedule 1024), June 20, 2001.](https://laws-lois.justice.gc.ca/eng/regulations/C.R.C.,_c._870/)
+- [Government of Canada, Medical Devices Regulations, SOR/98-282](https://laws-lois.justice.gc.ca/eng/regulations/SOR-98-282/), May 7, 1998; last amended February 13, 2017, current to March 20, 2017.
+- [Government of Canada, Natural Health Products Regulations, Part 4 Clinical Trials Involving Human Subjects, SOR/2003-196](https://laws-lois.justice.gc.ca/eng/regulations/SOR-2003-196/), June 5, 2003; last amended June 1, 2008, current to March 20, 2017.
+- International Council for Harmonisation of Technical Requirements for Pharmaceuticals for Human Use (ICH), ICH Harmonised Guideline, Integrated Addendum to ICH E6(R1): Guideline for Good Clinical Practice, E6(R2), November 9, 2016.
+- Canadian Institutes of Health Research, Natural Sciences and Engineering Research Council of Canada, and Social Sciences and Humanities Research Council of Canada, Tri-Council Policy Statement: Ethical Conduct for Research Involving Humans, December 2014.
+- [Department of Justice (Canada), Personal Information Protection and Electronic Documents Act (PIPEDA)](https://laws-lois.justice.gc.ca/eng/acts/P-8.6/), last amended June 23, 2015, current to December 31, 2016.
+- CDISC Clinical Research Glossary, Version 9.0, Glossary. December 2011.
+- Canadian Institutes for Health Research, Privacy Advisory Committee, CIHR Best Practices for Protecting Privacy in Health Research, September 2005.
+- US Food and Drug Administration, Code of Federal Regulations, Title 21, Volume 1:
+  - [Part 11, Electronic Records; Electronic Signatures, (21CFR11).](https://www.ecfr.gov/current/title-21/chapter-I/subchapter-A/part-11)
+  - [Part 50, Protection of Human Subjects, (21CFR50).](https://www.ecfr.gov/current/title-21/chapter-I/subchapter-A/part-50)
+  - [Part 56, Institutional Review Boards, (21CFR56).](https://www.ecfr.gov/current/title-21/chapter-I/subchapter-A/part-56)
+- US Department of Health and Human Services, Office of the Secretary, 45 CFR Parts 160 and 164, Standards for Privacy of Individually Identifiable Health Information.
+- US Department of Health and Human Services, Guidance for Industry: Computerized Systems Used in Clinical Investigations, May 2007.
+- Official Journal of the European Communities, Directive 95/46/EC of the European Parliament and of the Council of 24 October 1995.
+- Official Journal of the European Communities, Directive 2001/20/EC of the European Parliament and of the Council of 4 April 2001.
+- Medical Dictionary for Regulatory Activities (MedDRA), Maintenance and Support Services Organization (MSSO).
+- The Society for Clinical Data Management, GCDMP Committee, Good Clinical Data Management Practices. December 2009 Ed.
+- WHO Drug Dictionary, Uppsala Monitoring Centre (UMC).
+
+<a id="revision-history"></a>
+
+### 7.0 Revision history
+
+| SOP Code | Effective Date | Pages | Summary of Changes |
+|---|---|---|---|
+| SOP106_01 | 15-May-2011 | 6 | Original version |
+
+| SOP Code | Effective Date | Summary of Changes |
+|---|---|---|
+| SOP106_02 | 15-May-2013 | Removed total number of pages from header and section 7.0 |
+| SOP106_03 | 15-May-2015 | Added ‘Authorization to Adopt’; update TCPS reference version. |
+| SOP106_04 | 15-May-2017 | Added MDR and NHP references; updated ICH E6 and PIPEDA references; removed Annex 11. |
+
+{/* HUB: part heading */}
+## RI-MUHC Addendum_01 of SOP-CR-106_04
+{/* /HUB */}
+
+### 1.0 Specific RI-MUHC policies and procedures
+
+<a id="1-1"></a>
+
+#### 1.1 Data sharing/transfer agreement
+
+Prior to transfer or sharing of information (partial or entire data) to a non-MUHC site or prior to receiving information (partial or entire data) from a non-MUHC site, a Data Sharing/Transfer Agreement must be in place by all parties (Disclosing Party and Receiving Party).
+
+A template Agreement must be obtained from the RI-MUHC Contracts Office via contracts@muhc.mcgill.ca.
+
+<a id="appendices"></a>
+
+### 2.0 Appendices
+
+None
+
+### 3.0 Revision history (addendum)
+
+| SOP Code | Effective Date | Summary of changes |
+|---|---|---|
+| SOP106_03 | 24-May-2016 | This is a new SOP at the RI MUHC |
+| SOP-CR-106_04 | 01-Sept--2018 | SOP106_03 renamed to SOP-CR-106_04 |
+|  |  | Addition of requirement for template Agreement to be used. |
+|  |  | 4.0 Addition |
+
+### 4.0 RI-MUHC review and approval
+
+| Name and Title of Local Personnel (typed or printed) | Signature | Date dd/Mon/yyyy |
+|---|---|---|
+| Reviewer: Cinzia Raponi RI-MUHC Director Administration | Signed | 9 Aug 2018 |
+| Approver: Dr. Bruce Mazer RI-MUHC Executive Director and CSO | Signed | 08-Aug-2018 |
+
+{/* Built word for word from SOP-CR-106_04 (N2 SOP106_04 and the RI-MUHC Addendum_01), pages 579 to 584 of "All SOPs combined and searchable -Final_12Dec2024-compressed.pdf", from the proofread transcription in _review/2026-11/batches/b85-sop-pages-exact/ (batch 85). Running headers and footers removed; signatures shown as "Signed". Hub additions sit between HUB comments. Old anchors kept: purpose, scope, responsibilities, definitions, procedure, references, appendices. */}

@@ -1,333 +1,521 @@
 ---
 timestamp: false
-title: "SOP-CR-007 — Initial REB Review, COI and Clinical Trial Registration"
-description: "Initial study submission to the MUHC REB, institutional feasibility review, MUHC Authorization, annual renewal, COI disclosure, and clinical trial registration."
+title: "SOP-CR-007: Initial REB/Institutional Review and Annual Renewal, COI and Clinical Trial Registration"
+description: "How to submit a new study for scientific, Research Ethics Board (REB) and institutional feasibility review at the MUHC, renew its approval each year, declare conflicts of interest and register a clinical trial."
 ---
 
+{/* HUB: meta */}
 <div className="ri-sop-meta">
-  <div className="ri-sop-badges">
-    <Badge color="gray">SOP-CR-007_08</Badge>
-    <Badge color="gray">Version 08</Badge>
-    <Badge color="green">Effective 01 May 2025</Badge>
-    <Badge color="blue">Levels I–IV</Badge>
-  </div>
-  <button className="ri-print-btn" onClick={() => window.print()}>Print / Save PDF</button>
+  <button className="ri-print-btn" onClick={() => window.print()}>Print or save as PDF</button>
 </div>
 
-Reviewed by Dr. Louise Pilote, Director of Clinical Research, RI-MUHC.
-Approved by Gilbert Tordjman, Chief Operating and Development Officer, RI-MUHC.
-Signed copy on file — download the PDF for the approved version with signatures.
+<Note>
+Reading a standard operating procedure (SOP) on the Hub doesn't count toward your compliance record. Complete the [SOP Reader and Assessment](/training/compliance-requirements#sop-reader-and-assessment) for your level on TalentLMS.
+</Note>
+{/* /HUB */}
 
----
+| | |
+|---|---|
+| Title | Initial REB/Institutional Review and Annual Renewal, COI and Clinical Trial Registration |
+| SOP Code | SOP-CR-007_08 |
+| Effective Date | 01-May-2025 |
 
+**RI-MUHC review and approval**
 
-<Warning>
-**Controlled document.** Always refer to this page for the current version. Do not rely on downloaded or printed copies. Reading this page does not count toward your compliance record — complete the SOP Reader and Assessment on TalentLMS.
-</Warning>
+| Name and Title of Upper Management (typed or printed) | Signature | Date dd/Mon/yyyy |
+|---|---|---|
+| Reviewer: Dr. Louise Pilote, Director of Clinical Research | Signed (DocuSign) | 27/Aug/2024 |
+| Approver: Gilbert Tordjman, Chief Operating and Development Officer | Signed (DocuSign) | 11/1/2024 |
 
-<div className="ri-sop-key-points">
+## 1.0 Purpose
 
-## Key points
-
-- **No study activity may begin** before all of the following are received: written Health Canada approval (if applicable), written REB approval, the **MUHC Authorization Letter**, SIV conducted and documented, task delegation documented, and the Sponsor's Go Letter/confirmation (if applicable).
-- All initial and annual submissions must be made through **<Tooltip tip="The RI-MUHC's electronic study submission and management platform. All studies requiring MUHC Authorization are submitted through Nagano." headline="Nagano (RI-MUHC)" cta="Full definition" href="/kb/foundations/glossary#nagano">Nagano</Tooltip>**. Paper submissions are not accepted.
-- The **MUHC Authorization Letter** is issued only after REB approval AND all site-specific feasibility reviews are completed (<Tooltip tip="All planned and systematic actions to ensure trial data are generated, documented, and reported in compliance with GCP and SOPs." headline="Quality Assurance (QA)" cta="Full definition" href="/kb/foundations/glossary#qa">QA</Tooltip> privileges/training check, Research Agreements, DPS review, nursing, laboratory, pharmacy). Do not start any study activities — including recruitment — before receiving this letter.
-- For multi-centrique studies (multiple Quebec sites within the Québec public health care network), one evaluating REB reviews on behalf of all sites. This is distinct from a multicenter study with sites in multiple provinces, where each site submits to its own REB.
-- **Annual renewal must be submitted at least one month before the current REB approval expires.** A lapse in REB approval is a major regulatory finding — enrollment must stop during any lapse, and renewal is never retroactive.
-- All **conflicts of interest** (real, potential, or perceived) must be disclosed to the REB at submission and updated if circumstances change.
-- Clinical trials meeting the TCPS2/ICMJE definition must be **registered in a recognized web-accessible registry** (e.g. ClinicalTrials.gov) before the first participant is enrolled. The registry name, URL, and registration number must appear in the <Tooltip tip="The written document providing the participant with information essential to making an informed decision. Both parties must sign." headline="Informed Consent Form (ICF)" cta="Full definition" href="/kb/foundations/glossary#icf">ICF</Tooltip>.
-- Investigators are not to sign agreements on behalf of the RI-MUHC — all research agreements must be reviewed and processed by the **Research Agreements Office** via My Contracts on the RI-MUHC portal.
-
-</div>
-
-## 1 · Purpose {#purpose}
-
-This Standard Operating Procedure (SOP) describes the required documentation
-and communication for initial study submission between the Sponsor-Investigator
-or Qualified Investigator (QI) /Principal Investigator (PI) and the MUHC Research
-Ethics Board (REB)/Scientific Review.
+This Standard Operating Procedure (SOP) describes the required documentation and communication for initial study submission between the Sponsor-Investigator or Qualified Investigator (<Tooltip tip="The physician responsible to the sponsor for the conduct of a clinical trial at the site. One QI per study per Canadian site." headline="Qualified Investigator (QI)" cta="Full definition" href="/kb/foundations/glossary#qi">QI</Tooltip>) /Principal Investigator (<Tooltip tip="US equivalent of the Canadian Qualified Investigator (QI)." headline="Principal Investigator (PI)" cta="Full definition" href="/kb/foundations/glossary#pi">PI</Tooltip>) and the MUHC Research Ethics Board (<Tooltip tip="The ethics committee that reviews and approves research involving human participants. Also called CER at French-language institutions." headline="Research Ethics Board (REB)" cta="Full definition" href="/kb/foundations/glossary#reb">REB</Tooltip>)/Scientific Review.
 
 This SOP also describes Institutional feasibility review which consists of:
 
-• QA Feasibility for Privileges/Researcher Status and appropriate level of
-Institutional training;
+- <Tooltip tip="All planned and systematic actions to ensure trial data are generated, documented, and reported in compliance with GCP and SOPs." headline="Quality Assurance (QA)" cta="Full definition" href="/kb/foundations/glossary#qa">QA</Tooltip> Feasibility for [Privileges/Researcher Status](/training/compliance-requirements#human-research-privileges-and-researcher-status) and appropriate level of Institutional training;
+- Research Agreements Office Review;
+- Director of Professional Services (DPS) Review;
+- Nursing Resources Review;
+- Laboratory Services Review; and
+- Pharmacy Services Review if applicable or
+- Any other site-specific feasibility in order to obtain approval and subsequent MUHC Authorization for a human research study prior to study initiation.
 
-• Research Agreements Office Review;
-• Director of Professional Services (DPS) Review;
-• Nursing Resources Review;
-• Laboratory Services Review; and
-• Pharmacy Services Review if applicable or
-• Any other site-specific feasibility in order to obtain approval and
+This SOP also describes the requirements for Annual Continuing REB approval, Conflict of Interest (COI) reporting and clinical trial web-accessible study registration on clinicaltrials.gov.
 
-subsequent MUHC Authorization for a human research study prior to
-study initiation.
+## 2.0 Scope
 
+This procedure concerns the research community (employees, investigators, physicians, management, consultants, students, volunteers or other persons) involved in the initial study submission and annual renewal processes to obtain approvals and authorization for conduct of research with human participants at the MUHC/RI-MUHC for a study that has not already been reviewed by an REB from a different RSSS site.
 
-This SOP also describes the requirements for Annual Continuing REB approval,
-Conflict of Interest (COI) reporting and clinical trial web-accessible study
-registration on clinicaltrials.gov.
+For Ongoing Institutional and REB review of amendments to an approved study and reportable events (e.g., SAEs and deviations), refer to [SOP-CR-026_01](/sops/cr-026).
 
----
+## 3.0 Responsibilities
 
-## 2 · Scope {#scope}
+The Sponsor or Sponsor-Investigator must ensure that the study has been approved by Health Canada (if conducting a study with investigational new drug, medical device or natural health product) and that the study is also registered on a web-accessible platform (e.g., clinicaltrials.gov).
 
-This procedure concerns the research community (employees, investigators,
-physicians, management, consultants, students, volunteers or other persons)
-involved in the initial study submission and annual renewal processes to obtain
-approvals and authorization for conduct of research with human participants at
-the MUHC/RI-MUHC for a study that has not already been reviewed by an REB
-from a different RSSS site.
+The Sponsor-Investigator is responsible for both Sponsor and QI/PI responsibilities including the setup of both a Trial Master File (<Tooltip tip="The sponsor's collection of documentation demonstrating compliance across all study sites." headline="Trial Master File (TMF)" cta="Full definition" href="/kb/foundations/glossary#tmf">TMF</Tooltip>) used to file regulatory documents by the Sponsor-Investigator and an Investigator Site File (<Tooltip tip="The QI's collection of documentation demonstrating compliance, study integrity, and participant safety." headline="Investigator Site File (ISF)" cta="Full definition" href="/kb/foundations/glossary#isf">ISF</Tooltip>) used to file regulatory documents by the Investigator. For monocentric sites only one TMF/ISF file is required.
 
-For Ongoing Institutional and REB review of amendments to an approved study
-and reportable events (e.g., SAEs and deviations), refer to SOP-CR-026_01.
+The Sponsor-Investigator or QI/PI is responsible for ensuring that all information required for initial study submission and annual renewal is forwarded to the Research Ethics Board (REB)/Institution in a timely manner. If the study is a multi-centrique study (not multicenter study with the RI-MUHC/MUHC as the only Quebec site, refer to [5.6](#5-6)) it is the responsibility of the Quebec REB Lead site to submit study documents using the study submission platform (e.g., [Nagano](/apps/nagano/overview)) on behalf of all participating sites which are part of the réseau de la santé et des services sociaux (RSSS).
 
----
+It is both the Sponsor/Sponsor-Investigator’s and QI/PI’s responsibility to ensure that the study does not begin and no study procedure is initiated until written Health Canada approval (if applicable), written REB approval, MUHC Authorization (which includes Quality Assurance, Contracts, DPS, Nursing, Laboratory and Pharmacy review, where applicable and any other site-specific feasibility), and the Sponsor’s Go Letter/confirmation (if applicable) are obtained.
 
-## 3 · Responsibilities {#responsibilities}
+It is the Sponsor-Investigator’s and QI/PI’s responsibility to ensure that the study’s annual renewal is submitted for REB approval early enough to limit the possibility of expiry of ethics approval. For multi-centrique studies with the MUHC as the REB Lead:
 
-| Role | Responsibility |
-|---|---|
-| **Sponsor / Sponsor-Investigator** | Ensure Health Canada approval (if required) is obtained before study start. Register the clinical trial before recruiting the first participant. Secure agreements and ensure direct access to <Tooltip tip="The sponsor's collection of documentation demonstrating compliance across all study sites." headline="Trial Master File (TMF)" cta="Full definition" href="/kb/foundations/glossary#tmf">TMF</Tooltip>/<Tooltip tip="The QI's collection of documentation demonstrating compliance, study integrity, and participant safety." headline="Investigator Site File (ISF)" cta="Full definition" href="/kb/foundations/glossary#isf">ISF</Tooltip> for monitoring. |
-| **Sponsor-Investigator** | Responsible for both Sponsor and QI/PI responsibilities. Sets up both a TMF (regulatory documents) and ISF. For monocentric studies, one TMF/ISF file is required. |
-| **QI/PI / REB Lead** | Submit all required documents in <Tooltip tip="The RI-MUHC's electronic study submission and management platform. All studies requiring MUHC Authorization are submitted through Nagano." headline="Nagano (RI-MUHC)" cta="Full definition" href="/kb/foundations/glossary#nagano">Nagano</Tooltip>. Ensure Privileges/Researcher Status and institutional training are obtained. Ensure the study does not begin before all required approvals are in hand. Submit annual renewals before approval expires. |
-| **MUHC REB** | Conduct scientific and ethical review of the study. Approve or refuse. Issue an REB approval letter. |
-| **<Tooltip tip="Individual formally authorized to issue the final written authorization for each research project at a Quebec RSSS institution." headline="Personne mandatée (PFM)" cta="Full definition" href="/kb/foundations/glossary#personne-mandatee">Personne mandatée</Tooltip> (MUHC Authorization)** | Formally attest through an authorization letter that the project has undergone scientific review, ethics review, and site-specific assessment with positive results. |
+- If participating site(s) is/are a study submission platform user, they can submit directly their annual renewal;
 
----
+- If participating site(s) are not harmonized with the study submission platform, they send submissions directly to the RI-MUHC/MUHC Clinical Research Coordinator (<Tooltip tip="The team member who handles day-to-day administration and coordination of the clinical trial." headline="Clinical Research Coordinator (CRC)" cta="Full definition" href="/kb/foundations/glossary#crc">CRC</Tooltip>) assigned to the REB submissions for the concerned study via email and then submit to the MUHC REB.
 
-## Study submission and review cycle {#study-submission-and-review-cycle}
+Tasks required for effective communication may be delegated, but the responsibility to ensure compliance with this SOP and the REB policies and procedures posted on the REB webpage rests with the Sponsor-Investigator or QI/PI.
 
-```mermaid
-flowchart TD
-    A[Prepare submission package] --> B{Health Canada approval needed?}
-    B -->|Drug / Device / NHP| C[Obtain NOL / ITA / NOA first]
-    B -->|Not required| D[Prepare Nagano submission]
-    C --> D
-    D --> E[Submit via Nagano]
-    E --> F[QA feasibility review\nPrivileges + training]
-    E --> G[Research Agreements\nreview contract]
-    E --> H[DPS / Nursing / Lab / Pharmacy\nfeasibility reviews]
-    F --> I{All reviews approved?}
-    G --> I
-    H --> I
-    I -->|No — revisions required| J[Revise and resubmit within 3 months]
-    J --> I
-    I -->|Yes| K[REB scientific and ethics review]
-    K --> L{REB decision}
-    L -->|Conditional approval| M[Address conditions and resubmit]
-    M --> K
-    L -->|Approved| N[MUHC Authorization Letter issued]
-    N --> O[SIV + Sponsor Go Letter if applicable]
-    O --> P[Recruitment begins]
-    P --> Q[Annual renewal — before expiry]
-    Q --> R{Study complete?}
-    R -->|No| Q
-    R -->|Yes| S[Study closure report — SOP-CR-026]
+For MUHC studies (and studies where the MUHC is the lead site) it is the responsibility of the MUHC Research Ethics Board to conduct a scientific and ethical review of the study (or ensure scientific review has been done) and then approve or refuse the study.
 
-    style A fill:#150e51,color:#fff,stroke:none
-    style B fill:#1a1466,color:#fff,stroke:none
-    style C fill:#2b9ce2,color:#fff,stroke:none
-    style D fill:#2b9ce2,color:#fff,stroke:none
-    style E fill:#2b9ce2,color:#fff,stroke:none
-    style F fill:#2b9ce2,color:#fff,stroke:none
-    style G fill:#2b9ce2,color:#fff,stroke:none
-    style H fill:#2b9ce2,color:#fff,stroke:none
-    style I fill:#1a1466,color:#fff,stroke:none
-    style J fill:#c0392b,color:#fff,stroke:none
-    style K fill:#2b9ce2,color:#fff,stroke:none
-    style L fill:#1a1466,color:#fff,stroke:none
-    style M fill:#c0392b,color:#fff,stroke:none
-    style N fill:#2b9ce2,color:#fff,stroke:none
-    style O fill:#2b9ce2,color:#fff,stroke:none
-    style P fill:#2b9ce2,color:#fff,stroke:none
-    style Q fill:#2b9ce2,color:#fff,stroke:none
-    style R fill:#1a1466,color:#fff,stroke:none
-    style S fill:#2b2666,color:#fff,stroke:none
-```
+The person mandated to authorize researchers to conduct research at the institution or under its auspices fulfills his or her responsibility by formally attesting, through an authorization letter, that the research project has undergone a scientific review, an ethics review and a site-specific assessment with positive results. No study should start any research activities (including recruitment, data collection, analysis etc.) prior to receiving both REB Approval (MUHC or external RSSS) and MUHC Authorization.
 
----
+The REB may be asked by investigators, Sponsors, or regulatory authorities, to provide REB membership lists and copies of its written procedures (while on site).
 
-## 4 · Definitions {#definitions}
+## 4.0 Definitions
 
-| Term | Definition |
-|---|---|
-| **Investigator** | Used throughout this document to refer to Sponsor-Investigator, QI, or PI. |
-| **Sponsor** | An individual, company, institution, or organization which takes responsibility for the initiation, management, and/or financing of a clinical trial. |
-| **Sponsor-Investigator** | An individual who both initiates and conducts a clinical trial and under whose immediate direction the investigational product is administered. The obligations of a Sponsor-Investigator include both those of a sponsor and those of an investigator. For studies not regulated by Health Canada, refers to a PI of a PI-initiated study. |
+The term Investigator is used throughout this document to refer to Sponsor-Investigator, QI or PI.
 
----
+The term Sponsor is used throughout the document to refer to Sponsor or Sponsor-Investigator. Note: a Sponsor-Investigator is a PI of a PI-Initiated study.
 
-## 5 · Procedure {#procedure}
-### 5.1 Sponsor responsibilities
+Sponsor: An individual, company, institution, or organization which takes responsibility for the initiation, management, and/or financing of a clinical trial.
 
-**5.1.1 Health Canada approval:** For any human research trial involving an investigational new drug (Phase I, II, III, or IV with conditions), natural health product, or Class II/III/IV new medical device, the Sponsor must obtain Health Canada approval before conducting human research. → [SOP-CR-018](/sops/cr-018) (drugs), [SOP-CR-023](/sops/cr-023) (NHPs), [SOP-CR-024](/sops/cr-024) (medical devices). The <Tooltip tip="Letter from Health Canada confirming a CTA is satisfactory and authorizing the sponsor to proceed." headline="No Objection Letter (NOL)" cta="Full definition" href="/kb/foundations/glossary#nol">NOL</Tooltip>/NOA/<Tooltip tip="Health Canada's authorization for a manufacturer or importer to sell a Class II, III or IV medical device to qualified investigators for testing." headline="Investigational Testing Authorization (ITA)" cta="Full definition" href="/kb/foundations/glossary#ita">ITA</Tooltip> must be forwarded to Investigators for filing in the ISF and submitted to the REB.
+Sponsor-Investigator: An individual who both initiates and conducts, alone or with others, a clinical trial, and under whose immediate direction the investigational product is administered to, dispensed to, or used by a participant. The term does not include any person other than an individual (e.g., it does not include a corporation or an agency). The obligations of a sponsor-investigator include both those of a sponsor and those of an investigator. For studies not regulated by Health Canada, Sponsor-Investigator refers to a PI of a PI-Initiated study.
 
-**5.1.2 Research agreements:** All agreements for studies at the MUHC/RI-MUHC must be drafted by the RI-MUHC Research Agreements Office. Submit all contract/agreement requests via My Contracts on the RI-MUHC portal. Key requirements:
-- For Sponsor-Investigator studies: the RI-MUHC should be indicated as "Sponsor" on agreements and regulatory documents to ensure insurance coverage (MDs are covered by CMPA)
-- Document all duties transferred to CROs or third parties vs. duties retained by the Sponsor — the Sponsor retains responsibility for data quality and integrity regardless
-- Never sign a binding contract without Research Agreements Office review
+See [Glossary of Terms](/kb/foundations/glossary)
 
-**5.1.3** Obtain the Investigator's REB membership list and address, plus initial conditional and final REB approval letters (which must include the list of reviewed documents, review date, and decision).
+## 5.0 Procedure
 
-**5.1.4** No Investigator may begin recruiting participants before REB approval and institutional authorization. Best practice: ship materials and conduct the <Tooltip tip="Monitoring visit to train the site team on the protocol and confirm site readiness, after REB approval and MUHC Authorization." headline="Site Initiation Visit (SIV)" cta="Full definition" href="/kb/foundations/glossary#siv">SIV</Tooltip> after initial REB approval and MUHC Authorization.
+<a id="5-1"></a>
 
-**5.1.5** At SIV, ensure only appropriately qualified and trained team members are delegated tasks on the <Tooltip tip="Lists each team member, their qualifications, and specific trial tasks authorized by the QI." headline="Task Delegation Log (TDL)" cta="Full definition" href="/kb/foundations/glossary#tdl">Task Delegation Log</Tooltip>.
+<a id="5-1-sponsor-responsibilities"></a>
 
-**5.1.6** Conduct QC and file all essential documents in the Trial Master File (TMF) — per ICH-<Tooltip tip="International standard for design, conduct, monitoring, recording, and reporting of clinical studies." headline="Good Clinical Practice (GCP)" cta="Full definition" href="/kb/foundations/glossary#gcp">GCP</Tooltip> section 8 for drug/NHP studies, or ISO-GCP Annex E for medical device studies.
+### 5.1 Sponsor responsibilities regarding study set-up and RI-MUHC/ MUHC REB initial submissions and communication
 
-**5.1.7** Register the clinical trial in a publicly accessible registry before participant recruitment begins. → Section 5.8
+<a id="5-1-1"></a>**5.1.1** For any human research trial involving investigational new natural health product, investigational new drug in a Phase I, II, III or Phase IV with conditions (e.g., Health Canada approval was contingent on more research conducted) or any trial involving a Class II, III or IV new medical device (including software as a medical device, SaMD) in the Pilot, Pivotal or Post marketing stage (with conditions), the Sponsor must first obtain Health Canada Approval to conduct human research. Refer to [SOP-CR-018](/sops/cr-018) for Clinical Trial Application (Drugs), [SOP-CR-023](/sops/cr-023) for Clinical Trial Application (Natural Health Products) or [SOP-CR-024](/sops/cr-024) for Investigational Testing Application (<Tooltip tip="Health Canada's authorization for a manufacturer or importer to sell a Class II, III or IV medical device to qualified investigators for testing." headline="Investigational Testing Authorization (ITA)" cta="Full definition" href="/kb/foundations/glossary#ita">ITA</Tooltip>) for Medical Device.
 
-### 5.2 Investigator responsibilities for initial submission
+The Sponsor should forward a copy of the Health Canada No Objection Letter (<Tooltip tip="Letter from Health Canada confirming a CTA is satisfactory and authorizing the sponsor to proceed." headline="No Objection Letter (NOL)" cta="Full definition" href="/kb/foundations/glossary#nol">NOL</Tooltip>) for drug, Notice of Authorization (NOA) for Natural Health Product (NHP) or Investigational Testing Authorization (ITA) for medical device to the Investigators to be filed in their Investigator Site File (ISF) as well as submitted to the REB. Refer to [SOP-CR-015](/sops/cr-015) for TMF and ISF structure.
 
-**5.2.1** Before submitting in Nagano, the investigator must:
-- Obtain Privileges or Researcher Status (→ [SOP-CR-500](/sops/cr-500)) and the appropriate level of institutional training (→ [SOP-CR-003](/sops/cr-003))
-- Obtain Nagano training and document it
-- Ensure the protocol and <Tooltip tip="Compilation of clinical and nonclinical data on the investigational product relevant to the study." headline="Investigator's Brochure (IB)" cta="Full definition" href="/kb/foundations/glossary#ib">Investigator Brochure</Tooltip> are the most recent versions
-- Prepare ICFs and recruitment materials per [SOP-CR-006](/sops/cr-006)
-- Submit the site-specific <Tooltip tip="The written document providing the participant with information essential to making an informed decision. Both parties must sign." headline="Informed Consent Form (ICF)" cta="Full definition" href="/kb/foundations/glossary#icf">ICF</Tooltip> to the Sponsor/Sponsor-Investigator for approval before REB submission
+Sponsor-Investigator’s wishing to conduct a clinical trial with a controlled substance must first submit a CTA to Health Canada and obtain an NOL prior to applying for a Controlled Drugs and Substances Act (CDSA) exemption (authorizing specific activities with controlled substances that would otherwise be illegal) which is valid for a 2-year period. An extension can be requested if required. For further information refer to the Guidance Document for Clinical Trial Sponsors: Clinical Trial Applications.
 
-**5.2.2** Refer to the MUHC REB webpages for submission platform access and appropriate forms.
+<a id="5-1-2"></a>**5.1.2** Secure agreement with all involved parties and ensure direct access to the TMF/ISF for monitoring, auditing and inspection. All agreements for studies conducted at the MUHC/RI-MUHC must be drafted by the RI-MUHC Research Agreements Office.
 
-**5.2.3** The REB Lead/Investigator creates an account in Nagano and completes the initial study submission. Depending on the study type, additional forms may be triggered (Department Head signature, nursing, laboratory, pharmacy agreement, EFVP form for privacy). When a delegate submits on behalf of the Investigator, the "<Tooltip tip="US equivalent of the Canadian Qualified Investigator (QI)." headline="Principal Investigator (PI)" cta="Full definition" href="/kb/foundations/glossary#pi">Principal Investigator</Tooltip>'s Commitment and Signature" form must be completed.
+- Submit any contract or agreement request/template to the RI-MUHC Research Agreements Office via My Contracts.
 
-**5.2.4** After submission:
-- Submit contract/agreement requests via My Contracts
-- Ensure a signed copy of the agreement is filed in the confidential investigator file
+- Document the responsibilities of the parties and financial aspect in an agreement between the institutions.
 
-**5.2.5** Full submission requirements:
+- In order for a Sponsor-Investigator initiated study to be covered under the RI-MUHC insurance policy the RI-MUHC should be indicated as the Sponsor on the Agreement/Contract and any regulatory documents (e.g., the NOL/NOA/ITA approval) as well as on clinicaltrials.gov. Medical doctors are covered by the Canadian Medical Protective Association (CMPA). Note that although the RI-MUHC is indicated as Sponsor for the purposes of insurance, the Sponsor-Investigator retains all Sponsor-Investigator research conduct responsibilities as outlined in RI-MUHC SOPs.
 
-| Document category | Required elements |
-|---|---|
-| Regulatory | Privileges/Researcher Status + institutional training confirmed; all contracts executed via Research Agreements Office |
-| Protocol package | Current protocol, IB/Product Monograph (if applicable), NOL/NOA/ITA (if applicable) |
-| Participant-facing | ICF (EN + FR), all participant-facing materials (EN + FR), recruitment materials (EN + FR) |
-| Administrative | Budget and financial information; Department Head authorizing signatures; EFVP form (if accessing health records) |
-| Supplementary | Recruitment plan, investigator CV, participant compensation information |
+- Address the costs of treatment of trial participants in the event of trial-related injuries in accordance with the applicable regulatory requirements.
+- Document all duties transferred and assumed by a Contract Research Organization (CRO), or Academic Research Organization (ARO) vs duties that are retained by the Sponsor. Despite the transfer of some Sponsor duties, the Sponsor remains responsible for the quality and integrity of the trial data.
 
-Respond to all REB questions within **3 months** — studies may be closed after that period.
+- Details regarding responsibility of tasks should be in writing as part of the contract or appendix of a contract including those for 3rd parties. Note that as per ICH-GCP E6, “The Sponsor should provide information to the investigator on any service provider identified by the Sponsor to undertake any activities under the responsibility of the investigator. The responsibility for such activities remains with the investigator.”
 
-**5.2.6** Submit all research advertisements to the **MUHC Communications Department** (outside Nagano) at communications@muhc.mcgill.ca.
+<a id="5-1-3"></a>**5.1.3** Obtain from the Investigator(s):
 
-**5.2.7** File all REB submissions, approvals, acknowledgments, and correspondence in the ISF/TMF. → [SOP-CR-015](/sops/cr-015)
+- The name, address and membership list of the Investigator’s REB;
+- The REB Initial Conditional Approval Letter (if applicable) and Final Approval Letter which should include:
+  - A statement from the REB that it is organized and operates according to ICH and/or ISO GCP internationally accepted good clinical practices and the applicable laws and regulations,
+  - List of documents that the REB has reviewed such as: Protocol; Informed Consent Form, Participant materials, Recruiting procedures, Advertisements,
+  - The date of REB review,
+  - The date approval was granted by the REB (if applicable).
 
-**5.2.8** Track when initial approval expires. Obtain continuing review annually or as directed by the REB.
+<a id="5-1-4"></a>**5.1.4** Ensure that no Investigator begins recruitment of study participants prior to REB approval and Institutional authorization. Best practice is to ship study materials and conduct a Site Initiation Visit (<Tooltip tip="Monitoring visit to train the site team on the protocol and confirm site readiness, after REB approval and MUHC Authorization." headline="Site Initiation Visit (SIV)" cta="Full definition" href="/kb/foundations/glossary#siv">SIV</Tooltip>) to train the site study team on study materials after REB initial approval and MUHC Authorization. Refer to [SOP-CR-013](/sops/cr-013) for SIV and ongoing monitoring procedures.
+
+<a id="5-1-5"></a>**5.1.5** At SIV, the Sponsor/monitor should ensure that only appropriately qualified and trained study team members are delegated tasks on the <Tooltip tip="Lists each team member, their qualifications, and specific trial tasks authorized by the QI." headline="Task Delegation Log (TDL)" cta="Full definition" href="/kb/foundations/glossary#tdl">Task Delegation Log</Tooltip> (Refer to [SOP-CR-002](/sops/cr-002) for the Task Delegation Log and [SOP-CR-003](/sops/cr-003) for the Training Log templates, if the Sponsor has not provided any).
+
+<a id="5-1-6"></a>**5.1.6** Conduct quality control (QC) and file all study essential documents in a Trial Master File (TMF) in compliance with ICH-GCP, section 8 for drug studies and NHP studies or ISO-GCP annexe E for medical device studies.
+
+<a id="5-1-7"></a>**5.1.7** Register the clinical trial in a publicly accessible registry before participant recruitment begins. Sponsor-Investigators are to register the clinical trial using the MUHC-RIMUHC Organization account if registering on the ClinicalTrials.gov website (refer to section 5.9).
+
+<a id="5-2"></a>
+
+<a id="5-2-investigator-responsibilities-for-initial-submission"></a>
+
+### 5.2 Investigator responsibilities regarding initial study submission:
+
+<a id="5-2-1"></a>**5.2.1** Prior to submitting study documents in the study submission platform (e.g., Nagano), the investigator should:
+
+- Obtain Privileges or Researcher Status (if not already obtained) as per [SOP-CR-500](/sops/cr-500) as well as the appropriate level of RI-MUHC Institutional training to conduct the type of study being submitted. Ensure any team member who will be submitting to the REB is also trained on the same SOP training level (Refer to [SOP-CR-003](/sops/cr-003));
+- Obtain training on the use of the study submission platform (e.g., Nagano) and document this training (even if self-training);
+- Ensure the protocol is the most recent version;
+- Prepare the Informed Consent Form(s) and any recruitment materials as per [SOP-CR-006](/sops/cr-006);
+- Submit the site-specific <Tooltip tip="The written document providing the participant with information essential to making an informed decision. Both parties must sign." headline="Informed Consent Form (ICF)" cta="Full definition" href="/kb/foundations/glossary#icf">ICF</Tooltip> to the Sponsor/Sponsor-Investigator and obtain approval for the submission to the REB;
+- Ensure the Investigational Brochure or Product Monograph is the most recent version.
+
+<a id="5-2-2"></a>**5.2.2** The Investigator should refer to the MUHC REB webpages regarding study submission platform access, submission information and appropriate form to use.
+
+<a id="5-2-3"></a>**5.2.3** The REB Lead/Investigator is responsible for creating an account in the study submission platform and completing required steps related to initial study submission to the MUHC REB for ethics and scientific review and approval, as well as institutional review and authorization.
+
+In addition to the study submission forms for ethical/scientific review, some platform questions may trigger additional feasibility reviews where the Investigator may be asked to sign the following:
+
+- Signature and Approval of the Department Head;
+- Request for Nursing Services;
+- Request for MUHC Clinical Laboratory Services;
+- Pharmacy Department Agreement For Clinical Trial Service;
+- When a delegate (e.g., CRC) is submitting on behalf of the Investigator, the form, Principal Investigator’s Commitment and Signature must be filled out. All four of these forms are embedded in the Initial Nagano form or in Nagano Discussions;
+- A French [EFVP](/kb/governance/privacy#know-when-an-efvp-is-needed) form to assess confidentiality and privacy. Tasks required for the completion of the study submission may be delegated, however the responsibility rests with the Investigator.
+
+<a id="5-2-4"></a>**5.2.4** Once the study document submission has been completed by the REB Lead/Investigator they should:
+
+- Submit any contract or agreement request/template to the RI-MUHC Research Agreements Office via My Contracts on the RI-MUHC portal;
+- As noted in the Sponsor Responsibilities section, for any service provider identified by the Sponsor to undertake any activities under the responsibility of the Investigator, the responsibility for such activities remains with the Investigator. Ensure all 3rd party tasks are outlined in the agreement;
+- Obtain a signed copy of the agreement for the confidential investigator file.
+
+<a id="5-2-5"></a>**5.2.5** The investigator is responsible for meeting all requirements for study submission to the REB and the MUHC/RI-MUHC including:
+
+- Ensuring Privileges/Researcher Status and institutional training have been obtained;
+- Having all contracts and agreements (e.g., confidentiality disclosure agreement, transfer agreement, inter-institutional agreement, services agreements with all involved laboratories) reviewed and fully executed by the RI-MUHC Research Agreements Office via My Contracts and the study submission platform (e.g., Nagano) prior to MUHC Authorization;
+- Submitting documentation of the financial aspect of the trial (as applicable);
+- Submitting all documentation for the initial science and ethics review by the REB and institutional feasibility review including and not limited to:
+  - Study protocol;
+  - Investigational Brochure or Product Monograph (if applicable);
+
+  - Informed Consent Form;
+  - Any participant-facing documents e.g., questionnaires and diaries;
+  - Any information for the public (including information to be posted on social media platforms) such as advertisements and posters.
+
+- It is highly recommended to have an REB Approval Tracking Log to track all document approvals. Refer to [Appendix 1](#appendix-1);
+- Accurately answering all questions on the study submission platform form(s) (These may trigger additional feasibility reviews);
+- Answering all questions from the REB within a 3 month period, after which time studies might be closed. Refer to MUHC REB SOPs;
+- DO NOT start a study prior to receiving the MUHC Authorization letter (obtained after REB approval and approval of all site-specific feasibility approvals) from the MUHC personne mandatée.
+
+<a id="5-2-6"></a>**5.2.6** The Investigator must also submit all research advertisements, posters, social media info and any information for the public to the MUHC Communications Department for their consultation (this is accomplished outside the study submission platform (e.g., Nagano).
+
+<a id="5-2-7"></a>**5.2.7** File all REB submissions, approvals, acknowledgments and correspondence in a study-specific Investigator Site File (ISF)/ Trial Master File (TMF). Refer to [SOP-CR-015](/sops/cr-015) regarding TMF and ISF structure.
+
+<a id="5-2-8"></a>**5.2.8** Take note of the date initial approval expires and prior to expiry obtain continuing REB review of the approved study annually or as determined by the REB. Adhere to REB requirements and timelines and ensure there is no lapse in REB approval.
+
+<a id="5-3"></a>
+
+<a id="5-3-categories-of-research-requiring-muhc-reb-approval"></a>
 
 ### 5.3 Categories of research requiring MUHC REB approval
 
-All research involving living human participants and/or personal data, cadavers, human remains, tissues, body fluids, embryos, foetuses, reproductive materials, or stem cells must receive written REB approval before initiation. This includes:
-- Studies recruiting participants from within the MUHC or via MUHC technological tools
-- Studies using health records stored at the MUHC
-- Studies conducted entirely or in part at the MUHC (including by MUHC-affiliated researchers abroad)
-- Studies relying on MUHC staff services (nursing, pharmacy)
-- Studies using MUHC technical platforms (imaging, OR, examination rooms)
-- Data repositories and tissue banks for potential human research
+<a id="5-3-1"></a>**5.3.1** The following studies must be REB reviewed prior to being conducted at the MUHC/RI-MUHC.
 
-Research based on publicly available data does not require REB review when the data is legally accessible and there is no reasonable expectation of privacy.
+- All research involving living human participants and/or personal data, cadavers, human remains, tissues, body fluids, embryos or foetuses, reproductive materials and stem cells will be assessed and approved in writing by the REB prior to being initiated ([TCPS2](https://ethics.gc.ca/eng/policy-politique_tcps2-eptc2_2022.html) and Policy on the Research Ethics Board of the MUHC REB) including:
+  - Studies that recruit participants from within the MUHC (in physical locations or via technological tools under the responsibility of the MUHC) or make use of health records stored at the MUHC;
+
+  - Fundamental research conducted on gametes not involving reproductive technology;
+  - Research using personal information contained in medical records or administrative databases will also be submitted to the REB;
+  - Studies to be conducted entirely or in part at the MUHC (including studies conducted in other countries by MUHC personnel using their MUHC affiliation);
+  - Studies that involve an Investigator or Sponsor-Investigator affiliated with the MUHC;
+  - Studies that rely on MUHC staff services as part of the conduct of research activities e.g., nursing and pharmacy services;
+  - Studies that utilize MUHC technical platforms, such as medical imaging, operating rooms, care units, examination rooms, etc.
+
+  - Studies that utilize human, material or financial resources from the MUHC;
+  - New and existing data repositories and tissue banks to be used potentially for human research.
+
+<a id="5-3-2"></a>**5.3.2** Research which is based on publicly available data does not require REB review under the following conditions:
+
+  1. The data is legally accessible to the public and appropriately protected by law;
+
+2. The data is publicly accessible and there is no reasonable expectation of privacy.
+
+For further information, including research involving people in public places, refer to [REB-SOP 102](https://muhc.ca/cae/muhc-research-ethics-board-reb-standard-operating-procedures-sops) posted on the REB web page.
+
+<a id="5-4"></a>
+
+<a id="study-submission-and-review-cycle"></a>
+
+<a id="5-4-initial-reb-and-institutional-review"></a>
 
 ### 5.4 Initial REB and institutional review
 
-**5.4.1 General:** All submissions must be via Nagano. The REB reviews confidentiality and privacy of participant information throughout the study. If requesting access to patient medical information without informed consent, an EFVP (Évaluation des facteurs relatifs à la vie privée) form is required.
+<a id="5-4-1"></a>**5.4.1 Generalities**
 
-**5.4.2 <Tooltip tip="All planned and systematic actions to ensure trial data are generated, documented, and reported in compliance with GCP and SOPs." headline="Quality Assurance (QA)" cta="Full definition" href="/kb/foundations/glossary#qa">QA</Tooltip> feasibility review (Privileges and training):** QA confirms the QI/PI holds valid RI-MUHC Privileges or Researcher Status (→ [SOP-CR-500](/sops/cr-500)) and the appropriate level of institutional training (→ [SOP-CR-003](/sops/cr-003)). If training is insufficient, the personne mandatée will not provide MUHC Authorization.
+- As per [REB-SOP 107](https://muhc.ca/cae/muhc-research-ethics-board-reb-standard-operating-procedures-sops), the REB reviews the processes used by the Investigator to ensure confidentiality of participant information throughout the study, including the manner in which the data is identified, collected, accessed, used, disclosed, retained, disposed of and protected and ensure any reasonably foreseeable disclosure requirements are met. If a study submission includes a request to access patient medical information or charts without informed consent, a Privacy Impact Assessment (known as an Évaluation des facteurs relatifs à la vie privée (EFVP)) form completion and review will be required.
 
-**5.4.3 Access to medical records:** If accessing participant information (OACIS, databases) before informed consent, or if consent is impracticable (e.g. deceased participants), the Investigator must obtain MUHC authorization through Nagano. The EFVP form (French) must be completed by the QI/PI and sent to the Commission d'accès à l'information du Québec (CAI). Contact efvp@muhc.mcgill.ca.
+- Feasibility will be assessed via the study submission platform (e.g., Nagano) including review of RI-MUHC Privileges/Researcher Status and appropriate level of institutional training, scientific merit, ethical acceptability and site-specific assessments including appropriate use of MUHC resources for research purposes, study contracts/agreements, nursing resources, laboratory and pharmacy reviews.
 
-**5.4.4 Pharmacy review:** All drugs and some NHPs must be managed by pharmacy. Triggering the pharmacy section in Nagano initiates a pharmacy feasibility evaluation; a pharmacy agreement will then be sent to the Investigator for signature.
+- All initial and annual reviews (covered in this SOP), as well as ongoing reviews and study completion reports (covered in [SOP-CR-026](/sops/cr-026)) for studies conducted at the MUHC must be submitted via the study submission platform (e.g., Nagano).
 
-**5.4.5 Laboratory review:** If OPTILAB-MUHC laboratory services are required, trigger the laboratory feasibility review in Nagano. Contact: clinicallaboratoryresearchinquiries@muhc.mcgill.ca
+- To proceed with a submission, refer to the section: Submit and manage projects (Nagano) on the MUHC REB webpage.
 
-**5.4.6 Research agreements:** All agreements must be uploaded into both Nagano and My Contracts. An agreement is required whenever there is collaboration with external parties (including McGill researchers), receipt/transfer of human samples or data, receipt/transfer of funds, or use of third-party services. Contracts are retained for 15 years (Health Canada regulated) or 7 years (non-regulated).
+- For additional information you may write to info.nagano@muhc.mcgill.ca.
 
-**5.4.7 Scientific review:** Peer-reviewed funded projects are not re-reviewed if documentation is provided. The scientific review request is part of the initial Nagano application.
+<a id="5-4-2"></a>**5.4.2 RI-MUHC QA review of RI-MUHC Privileges/Researcher Status and Institutional Training.**
 
-**5.4.8 Ethics review:** The REB reviews participant safety, rights, and well-being. Key quality control points for the initial approval letter:
-- Human study identification, protocol title and number
-- Clear document names, version numbers, and dates
-- Date of REB review; statement of full board or delegated review
-- Decision/opinion; procedures for appealing
-- Date of required renewal (usually one year from review date)
-- Research Ethics Board Attestation (REBA)
+- QA conducts a feasibility evaluation to ensure that each QI/PI who submits a study in the study submission platform has valid RI-MUHC Privileges or Researcher Status as per [SOP-CR-500](/sops/cr-500) as well as institutional training as per [SOP-CR-003](/sops/cr-003).
 
-**5.4.9 Nursing resources review:** Complete the nursing feasibility form in Nagano if MUHC nursing services are required. If using CIM services or a dedicated research nurse, answer "No" in Nagano.
+- Depending on the type of study being submitted, the Investigator may be required to renew institutional training or upgrade to a higher level of RI-MUHC training (refer to [SOP-CR-003](/sops/cr-003) for guidance on appropriate level of training).
 
-**5.4.10 MUHC Communications review:** After REB approval of recruitment materials, submit advertisements to MUHC Communications at communications@muhc.mcgill.ca. Materials must include the MUHC/RI-MUHC PI name, the RI-MUHC or MUHC logo, and be in both official languages.
+- Note that if an Investigator does not have the appropriate level of RI-MUHC Institutional training, that portion of feasibility will not be approved and the personne mandatée will not provide MUHC Authorization to conduct the study.
 
-**5.4.11 MUHC Authorization:** Participant recruitment may begin only after all of the following have been received:
-1. Health Canada approval (if applicable)
-2. Written REB approval letter
-3. **MUHC Authorization Letter**
-4. SIV conducted and documented
-5. Task delegation documented
-6. Sponsor's Go Letter/confirmation (if applicable)
+<a id="5-4-3"></a>**5.4.3 Impact on the MUHC Resources and Access to Medical Records**
 
-### 5.5 Annual renewal (continuing review)
+- If the study requires access to participant information ([OACIS](/apps/oacis), patient database) prior to obtaining written informed consent from the participant or LAR of the participants whose data is being sought, or if obtaining participants written informed consent for health records research is impracticable (e.g., health record research involving participants that are deceased), then the Investigator must obtain MUHC authorization in order to access medical records. The request for accessing the medical records is part of the initial study submission.
 
-Annual renewal is a complete review of the entire study and must occur before the previous approval expires. It continues until all data collection is complete, all participant contact has ended, and closure has been acknowledged by the REB.
+- The Investigator is required to complete a Nagano form answering questions pertaining to access of information for pre-screening activities. An EFVP form in a short version must be filled by the PI.
 
-- Submit the Annual Renewal form at **least one month** before approval expires
-- A lapse in REB approval is a major regulatory finding — enrollment must stop, research-related medical treatment of current participants may continue only if the REB is notified of patient safety needs
-- Renewal is **never retroactive** — the lapse period will have no ethics approval
-- A lapse should be documented on the Protocol/GCP/SOP Deviation Log → [SOP-CR-026](/sops/cr-026)
+- In cases where consent is not possible, the REB may provide an REB waiver for consent. The Act respecting health and social services information requires that an “évaluation des facteurs relatifs à la vie privée”, EFVP form be completed in French and signed by the QI/PI to ensure strict confidentiality in accordance with applicable legal requirements regarding the protection of health information from collection to destruction. The completed form is uploaded into the study submission platform and reviewed by the MUHC Access to Information Officer who then sends the form to the Commission d’accès à l’information du Québec (CAI). For multi-centrique studies the lead site must submit one EFVP form for the project. For further information, contact efvp@muhc.mcgill.ca.
 
-### 5.6 Multi-centrique research in Quebec
+- Note that there are other instances where an EFVP form may be required (e.g., If data is being transferred out of province or if technology products or services for a study involving collection, keeping, use or communication or destruction will be acquired, developed or altered).
 
-A study with more than one Quebec site within the Québec public healthcare network is "multi-centrique" and is reviewed by one evaluating REB. This is distinct from a multicenter study with sites in multiple provinces (where each site submits to its own REB).
+- The investigator is also required to answer questions regarding the study's impact on laboratories, medical imaging, beds, operating rooms, medical records, physiology testing services, etc.
 
-For multi-centrique trials: the REB Lead site submits on behalf of all participating Quebec RSSS sites. Participating sites that are Nagano users submit directly; non-Nagano sites send submissions to the RI-MUHC <Tooltip tip="The team member who handles day-to-day administration and coordination of the clinical trial." headline="Clinical Research Coordinator (CRC)" cta="Full definition" href="/kb/foundations/glossary#crc">CRC</Tooltip> for the study. All requests to add sites must be submitted via Nagano.
+- The Director of Professional Services (DPS) must approve the resource utilization of a study.
 
-### 5.7 Conflict of Interest (COI)
+<a id="5-4-4"></a>**5.4.4 Pharmacy Review**
 
-Investigators hold trust relationships with participants, Sponsors, institutions, and society. COI can occur when activities or situations place a real, potential, or perceived conflict between research duties and personal, institutional, or other interests.
+- All drugs and some natural health products (NHPs) must be managed by pharmacy. For all clinical research involving the dispensing and/or testing of a drug or natural health product, whether marketed or not, the Investigator must complete the form questions to trigger a pharmacy feasibility evaluation. A pharmacy agreement will then be submitted to the investigator for signature.
 
-- If any team member is unclear whether a COI exists, they must contact the REB Chair and follow the REB's directives
-- Investigators and team members shall disclose all actual, perceived, or potential COIs to the REB at submission and throughout the study
-- The Investigator should not participate in REB deliberations or vote on their own study
-- If required by the REB, disclose COI details to participants in the ICF
-- For studies subject to US regulations, a "Financial Disclosure Form" must be completed by the Investigator and each Sub-Investigator and kept with essential study documentation
+<a id="5-4-5"></a>**5.4.5 Laboratory Review**
 
-Participant compensation must not constitute an undue inducement and must be paid on a pro-rata basis for actual participation.
+When OPTILAB-MUHC laboratory services are required for a study, ensure this is reflected in answers to the form questions in order to trigger a laboratory feasibility review and laboratory agreement. All clinical laboratory research inquires may be sent to: clinicallaboratoryresearchinquiries@muhc.mcgill.ca.
+
+<a id="5-4-6"></a>**5.4.6 Research Agreement/Contract Review in the Study Submission Platform (e.g., Nagano) and in My Contracts**
+
+- The Research Agreements Office ensures that the rights and interests of the RI-MUHC, the Investigator, and the research team are protected. The Office acts as a liaison between the Investigator and the other parties involved in research contracts.
+
+- The Research Agreements Office is responsible for drafting, revising and negotiating all types of agreements related to research projects, including basic research, interventional, observational, clinical and non-clinical such as Clinical Trial Agreements, Data or Material Transfer Agreements, Collaboration Agreements, Inter-institutional Agreements, Confidentiality Agreements, Services Agreements and Licensing Agreements, among others.
+
+- Research agreements must be uploaded into both the MUHC study submission platform (e.g., Nagano) and the My Contracts application on the RI-MUHC portal in order to trigger the contract review process.
+- A Research agreement is required when:
+  - An agreement is received from a collaborator or collaborating institution;
+  - There is collaboration with collaborators external to the RI-MUHC for a study. Note: McGill University researchers are considered external;
+  - There will be receipt or transfer of any human samples and/or human data for the study;
+  - There will be receipt or transfer of funds to or from any external parties for the study;
+  - The Investigator will be receiving devices and/or materials (e.g., software) as part of this project;
+  - The Investigator will be using 3rd party services.
+
+- All responsibilities should be outlined in the agreement e.g., Sponsor-Investigator or Investigator responsibilities as per GCP; for 3rd party agreements, an addendum outlining tasks that a 3rd party will be conducting.
+- Important: Researchers should never sign a binding contract or agreement without prior review by the Research Agreements Office. Investigators are not to sign on behalf of the RI-MUHC.
+
+- In order to ensure that the rights and interests of the Institution, the researcher and the research team are protected, the agreements are reviewed for compliance with RI-MUHC policies, procedures and standard legal clauses. Once all signing parties have agreed to the legal terms, the Research Agreements Office makes recommendations to the signatory authority of the contract.
+
+- The original signed contract is filed in the Research Agreements Office and a copy is provided to the Investigator to be retained for 15 years post Health Canada regulated study (or 7 years for non-Health Canada regulated studies).
+
+- The Investigator should re-submit any amendments to the agreements/contracts to the Research Agreements Office.
+
+- For more information including a My Contracts user guide, consult the Research Agreements/Contracts section of the RI-Portal (Under Research &gt; Research Services &gt; Research Agreements/Contracts) or contact contracts@muhc.mcgill.ca.
+
+<a id="5-4-7"></a>**5.4.7 Scientific Review**
+
+- Review for scientific value and validity of new research proposals will be conducted either by internal REB reviewers or a previous peer review may be recognised by the REB. Peer-reviewed funded projects with appropriate documentation are not re-reviewed at the MUHC as long as documentation of the peer-review is provided.
+
+- The request for scientific review is filled out as part of the initial study application in the study submission platform.
+
+<a id="5-4-8"></a>**5.4.8 Ethics Review**
+
+- An REB should safeguard the rights, safety and well-being of all participants. Special attention is needed for studies that may include vulnerable participants (as per ICH-GCP E6 and [TCPS2](https://ethics.gc.ca/eng/policy-politique_tcps2-eptc2_2022.html)).
+
+- The following documents need to be included in the initial submission and submitted to the REB and personne mandatée. Note that any documents that will be seen by the participant must be submitted in English and in French (ICF, participant facing materials, recruitment materials, ads, social media campaigns).The Investigator should upload into the study submission platform (e.g., Nagano):
+  - Current Protocol (with version number and date);
+  - Protocol Summary;
+  - Protocol Amendment(s) (with version number and date) along with a version that tracks changes if required by the REB to address conditional approval;
+  - Original Informed Consent Form (with version number and date) should be customized and submitted in English and/or in French. Once approved, it must be translated then submitted (preferably with a certificate of translation. Refer to [SOP-CR-006](/sops/cr-006) Appendix 1 for an optional translation certificate). Note: the REB approves but does not review the translated ICF; ensure a true translation of the REB-approved ICF;
+  - Investigators in a therapeutic relationship with potential study participants must ensure that the informed consent process is in no way coercive. No participant should feel pressured or under any obligation to participate in a study. For this reason, the participant’s informed consent should be obtained from someone who does not have a long standing relationship with the participant. However, according to REB-SOP 404, in some cases, it may be in the participant’s best interest to have the primary care physician involved in recruitment and consent. In these special cases, the protocol should describe these alternative measures;
+  - Any other written participant-facing material in both English and French;
+  - Investigator Brochure (or equivalent) (version number and date) or Report of Prior Investigations or Product Monograph (phase IV clinical trials only), as applicable;
+  - Other Safety Information;
+  - Investigator’s Curriculum Vitae;
+  - Recruitment Plan, if applicable;
+  - Participant recruitment material in French and English (Any participant facing materials);
+  - Recruitment strategies in English and French (e.g., letters, script for phone calls, ads, posters, social media, websites, publication, wording for MUHC screens) for publicity in any medium;
+  - Participant recruitment methods, if applicable (e.g., health record screening, clinic patients);
+  - Information on participants’ compensation;
+  - Agreement/Contract and budget, if applicable;
+  - The NOL/NOA/ITA for a Clinical Trial Application (CTA/ITA) or CTA/ITA Amendment;
+  - The appropriate submission form (depends on the type of study), MUHC Authorizing Signatures signed by the Investigator and the Department/Division Head. In the event that the Department Head is the Investigator or has a conflict of interest, the form must be signed by an academic superior;
+  - Other locally required documents (if applicable).
+
+- File a copy of the submission and all related correspondence with the study-related essential documents in the ISF/TMF.
+
+- The REB may request changes to the protocol, ICF, or any other materials planned for participant recruitment or participant material.
+- Forward REB-requested revisions to the Sponsor or Sponsor-Investigator for review (if applicable) prior to re-submitting to the REB.
+- Sponsor-Investigator or Investigator is to:
+  - Revise documents, as required;
+  - Ensure that all revised documents contain an updated version number and date prior to submission i.e., revise the footer of the document as well as the file name with the version number and date. (Incorrect version numbering is a common Health Canada inspection finding);
+  - Document and file re-submissions in the same manner as initial submissions;
+  - Not begin the study until REB written approval, MUHC Authorization and the Sponsor’s Go Letter (if applicable) have been received;
+  - Make sure any printout to be placed in the ISF/TMF is clear and free of mistakes (e.g., older version of file name on the submission form making unclear what was REB approved).
+
+- As per REB-SOP 401, the Investigator has 3 months to respond to the REB, after which, the file will be closed and the research would have to be resubmitted.
+
+<a id="5-4-9"></a>**5.4.9 MUHC Nursing Resources Review**
+
+Identify if MUHC nursing resources will be used. If the QI/PI has made arrangements for the use of CIM services or if the QI/PI has their own dedicated research nurse and will not require MUHC nursing services, the QI/PI answers “No” within the Nagano submission platform. If MUHC nursing services are required and the QI/PI has answered “Yes”, then the nursing feasibility form needs to be completed, signed by the nurse manager and uploaded into Nagano.
+
+<a id="5-4-10"></a>**5.4.10 MUHC Communications Review**
+
+- All research advertisement(s) including posters, flyers, press releases, electronic publicity (including use of social media and MUHC monitor screens) and videos must comply with the MUHC Branding and Language Guidelines.
+
+- After receiving REB approval of recruitment materials, submit your advertisements in English and French to the MUHC Communications Department at communications@muhc.mcgill.ca, ensuring that
+  - The MUHC PI/Sub-I name and affiliation is mentioned on the ad;
+  - The ad includes the RI-MUHC logo (or the MUHC logo if the PI/Sub-I is based at the MUHC without being a member of the RI-MUHC);
+  - The message is clear and well written in both languages.
+- For studies conducted at the MUHC/RI-MUHC under external REB review (MEO studies) the MUHC Communications department should be reviewing announcement content related to unpublished MUHC research.
+- Ads for external studies not conducted at the MUHC/RI-MUHC are not accepted.
+
+- For further details refer to [SOP-CR-009](/sops/cr-009).
+
+<a id="5-4-11"></a>**5.4.11 MUHC Authorization to start the study**
+
+- In addition to having the documents uploaded in the study submission platform, the Investigator must keep the printed REB approval/favourable opinion letter in the ISF/TMF (until a [21 CFR Part 11](https://www.ecfr.gov/current/title-21/chapter-I/subchapter-A/part-11) compliant document management system is available).
+
+- Once the study is approved by all required reviewers, including the REB approval/favourable opinion, the Investigator receives the MUHC Authorization Letter.
+
+- A study cannot be conducted at the MUHC prior to the Investigator receiving written MUHC Authorization. This MUHC Authorization Letter should also be filed in the ISF/TMF.
+
+- If applicable, the Investigator should also obtain the Sponsor’s permission to proceed with study participant recruitment via the Sponsor’s Go Letter/confirmation, which should also be printed and filed in the ISF.
+- Participant recruitment activities should begin only after:
+  - Health Canada approval (if applicable);
+  - receiving the REB approval/favourable opinion letter;
+  - receiving the MUHC Authorization Letter;
+  - Sponsor/Sponsor-Investigator conduct of a Site Initiation Visit (SIV);
+  - obtaining documented training;
+  - documented task delegation (on the Task Delegation Log);
+  - receiving the Sponsor’s Go Letter/confirmation to start.
+
+<a id="5-4-12"></a>**5.4.12 Quality Control by the study team**
+
+Ensure that the final REB Initial Approval letter includes the following information:
+
+- Human study identification, protocol title and number;
+- Clear name and version number/date or amendment version number/date of all documents reviewed (Note: the file name of the document submitted is very important as it is the name that appears on the REB approval letter. Ensure that the file name is also clear and includes the version number. Refer to [SOP-CR-015](/sops/cr-015) regarding file names);
+- Date of review by the REB;
+- Statement of full board or delegated review;
+- Decision/opinion/approval of the human research study, including required modifications, if applicable;
+- Procedures for appealing the decision/opinion of the committee (if not provided separately in REB policy/procedure);
+- Any other information, if applicable;
+- Date of required renewal of approval, or statement of the length of time for which the approval is effective (usually one year from Initial Review date);
+- Research Ethics Board Attestation (REBA) statement.
+
+Note: If an error is observed by the study team in the available REB approbation (e.g., an incorrect protocol or ICF document version number, version date), the site should contact the REB coordinator and have the letter revised and re-sent to the investigator. Related correspondence should also be filed in the ISF/TMF.
+
+<a id="5-5"></a>
+
+<a id="5-5-annual-renewal-continuing-review"></a>
+
+### 5.5 Continuing REB review / annual re-approval submission through the study submission platform
+
+<a id="5-5-1"></a>**5.5.1** Continuing REB review is at least an annual review of the entire study and must occur BEFORE the previous approval expires. Annual reviews end once all of the data has been collected, all contact with research participants has concluded and the closure of the research has been acknowledged by the REB. Note that the REB may direct more frequent review. Continuing review of an entire study should not be confused with Ongoing Review of reportable events and amended study documents. For Ongoing Review refer to [SOP-CR-026](/sops/cr-026).
+
+<a id="5-5-2"></a>**5.5.2** It is the Investigator’s responsibility to know when REB approval expires and to submit for Continuing Review/Annual Re-Approval in a timely manner to ensure REB approval does not lapse.
+
+<a id="5-5-3"></a>**5.5.3** Annual re-approval must be requested at least one month prior to expiration in order to avoid any delays in approval. If there is a lapse of time in REB approval, then participants cannot be enrolled until REB approval is obtained.
+
+<a id="5-5-4"></a>**5.5.4** According to [REB-SOP 406](https://muhc.ca/cae/muhc-research-ethics-board-reb-standard-operating-procedures-sops), a warning, suspension notice, or notice of closure could be issued to the Investigator if the submission for Continuing Review is after the REB Approval expiry date.
+
+The Investigator must:
+
+- Submit a request for Continuing Review;
+- Suspend all study activities as long as there is no risk to participants;
+- Notify the REB if there is a need to continue research-related medical treatment of current participants for their safety and well-being;
+- Document the reasons for the lapse and identify the steps taken to prevent future lapses. This protocol violation should be recorded on the Protocol / GCP / SOP Deviation Log (Refer to [SOP-CR-026](/sops/cr-026)).
+
+<a id="5-5-5"></a>**5.5.5** Renewal granted by the REB is not retroactive i.e., there will be no ethics approval for the period covering the lapse.” A lapse period would be considered a major observation by regulatory inspectors.
+
+<a id="5-5-6"></a>**5.5.6** Prepare and submit an Annual Renewal Submission form for Continuing Review.
+
+<a id="5-6"></a>
+
+<a id="5-6-multi-centrique-research-in-quebec"></a>
+
+### 5.6 Multi-centrique research in Quebec (vs multicenter across Canada)
+
+<a id="5-6-1"></a>**5.6.1** A study with more than one Quebec site within the Québec public healthcare network is considered multi-centrique research which is reviewed by one Quebec evaluating REB. Refer to the REB flowchart located on the MUHC REB website, https://muhc.ca/cae/multicentre-study.
+
+Note: This is not to be confused with a multicentre study conducted with one Quebec site and other sites in other provinces, where each individual site submits to their respective individual REBs.
+
+<a id="5-6-2"></a>**5.6.2** According to [REB-SOP 405](https://muhc.ca/cae/muhc-research-ethics-board-reb-standard-operating-procedures-sops):
+
+- For multi-centrique trials within the Québec healthcare network, all participating sites within the Québec healthcare network covered by the evaluating REB’s approval will be considered local.
+
+- Requests to convert a study into a multi-centric project or to add at least one site to a multi-centric study must be done via the study submission platform, using the appropriate form.
+
+<a id="5-7"></a>
+
+<a id="5-7-conflict-of-interest-coi"></a>
+
+### 5.7 Conflict of interest
+
+<a id="5-7-1"></a>**5.7.1** The Investigator and research team members hold trust relationships with research participants, research Sponsors, Institutions, their professional bodies and society. These trust relationships can be put at risk by conflicts of interest (COI) that may compromise independence, objectivity or ethical duties of loyalty, ([TCPS2](https://ethics.gc.ca/eng/policy-politique_tcps2-eptc2_2022.html), chapter 7).
+
+<a id="5-7-2"></a>**5.7.2** According to [REB-SOP 105A](https://muhc.ca/cae/muhc-research-ethics-board-reb-standard-operating-procedures-sops):
+
+- COI may occur when activities or situations place an individual or institution in a real, potential or perceived conflict between the duties or responsibilities related to research, and personal, institutional or other interests. COI could be related to business, commercial or financial (for institutions) or it could involve research member’s family, friends or professional colleague relationships.
+- This COI could influence the research member’s professional judgment, objectivity and independence and could potentially influence the outcome of a decision, for personal benefit.
+
+- Research team members should identify and manage COI to maintain public trust and confidence and to maintain the integrity of the study data collected.
+
+- If a member is unclear as to whether a COI exists, they must contact the REB Chair and follow the REB’s directives.
+
+- Refer to the RI-MUHC policy on COI.
+
+<a id="5-7-3"></a>**5.7.3** Investigators and team members shall disclose actual, perceived or potential conflicts of interest or that of a close relative or partner to the REB. Researchers are expected to identify, minimize or otherwise manage their individual conflicts in a manner that is satisfactory to the REB. REBs shall determine the appropriateness of the steps to manage the conflict of interest (TCPS2, 7.4).
+
+- During the evaluation of a protocol by the REB, the Investigator may provide information on any aspect of a study, but should not participate in the deliberations of the REB or in the vote/opinion of the REB (ICH-GCP 3.2.5).
+- If requested by the REB, the Investigator should disclose to participants participating in a research study all details concerning possible conflicts of interest, real or apparent (TCPS2, 3.2). Ensure, where applicable, that the Informed Consent Form mentions the potential or actual existence of a conflict of interest.
+
+- The Investigator should inform the REB of any incentive (for example, fees or any other benefit agreed to in return for recruiting research participants).
+- As per [SOP-CR-002](/sops/cr-002), when the participation of an Investigator in a clinical research study is subject to U.S. regulations, a “Financial Disclosure Form” describing financial interests should be completed for the Investigator and each Sub-Investigator and returned to the Sponsor/Sponsor-Investigator. A copy of this document should be kept with the essential study documentation.
+
+<a id="5-7-4"></a>**5.7.4** A participant in a research study should receive compensation for loss and restriction suffered, complying with both ethics and the law, on condition that:
+
+- The compensation does not constitute an undue inducement;
+- The compensation is paid on a pro-rata basis for the participant’s participation.
+
+<a id="5-8"></a>
+
+<a id="5-8-clinical-trial-registration"></a>
 
 ### 5.8 Clinical trial registration
 
-TCPS2 (Article 11.10) requires registration of all clinical trials before recruiting the first participant in a recognized, publicly accessible registry. Clinical trial is defined broadly to include any investigation evaluating health-related interventions — including drugs, devices, surgical procedures, NHPs, psychotherapies, and process-of-care changes.
+<a id="5-8-1"></a>**5.8.1** The [TCPS2](https://ethics.gc.ca/eng/policy-politique_tcps2-eptc2_2022.html) defines a clinical trial as: “Any investigation involving participants that evaluates the effects of one or more health-related interventions on health outcomes. Interventions include, but are not restricted to, drugs, radiopharmaceuticals, cells and other biological products, surgical procedures, radiologic procedures, devices, genetic therapies, natural health products, process-of-care changes, preventive care, manual therapies and psychotherapies. Clinical trials may also include questions that are not directly related to therapeutic goals – for example, drug metabolism – in addition to those that directly evaluate the treatment of participants”.
 
-- The Sponsor or Sponsor-Investigator is responsible for registering the trial. For investigator-initiated studies, verify that registration has occurred; for funded studies, verify if the funding agency has registered it.
-- The MUHC has set up an Organization Account with clinicaltrials.gov. Contact QAClinicalResearch@muhc.mcgill.ca to access registration. When setting up: indicate MUHC-RIMUHC as "Sponsor" and select "Principal Investigator" as "Responsible Party" for insurance purposes.
-- The registry name, URL, and unique registration code must appear in the REB-approved ICF and be disclosed to potential participants.
-- The Nagano "Data" tab also provides an option to register in the Quebec Registry (requires clinicaltrials.gov number).
+<a id="5-8-2"></a>**5.8.2** The TCPS2 requires the registration of all clinical trials before recruitment of the first trial participant in a recognized and easily web-accessible registry (TCPS2, Article 11.10). The main ethical reasons for this are to induce investigator collaboration and avoid unnecessary duplication of clinical trials thereby reducing burden on study participants.
 
----
+<a id="5-8-3"></a>**5.8.3** The Sponsor or Sponsor-Investigator is responsible for registering the clinical trials before recruitment of the first trial participant. For Investigator-initiated studies, the study team should verify that the Investigator has registered the clinical trial. For agency-funded studies, verify if the funding agency has registered the clinical trial. If not, the Sponsor or Sponsor-Investigator must do so.
 
-## Appendices {#appendices}
+<a id="5-8-4"></a>**5.8.4** The MUHC has set up an Organization Account with the US DHHS site (www.clinicaltrials.gov) for Sponsor-Investigators conducting investigator-initiated clinical trials wishing to register on this site. Contact the RI-MUHC Quality Assurance Department at QAClinicalResearch@MUHC.MCGILL.CA to access the registration website. The Sponsor-Investigator is the responsible party for their study in this registry. The QA department’s involvement is solely to request Sponsor-Investigator’s account opening for those with valid RI-MUHC Privileges/Researcher Status.
 
-<Info>
-Printable appendix templates are available for download below where linked. For the complete collection, see [SOP Appendices and Templates](/sops/appendices).
-</Info>
+- For insurance purposes, in the setup of the US DHHS account, ensure that the MUHC-RIMUHC is indicated as the “Sponsor” and ensure to select “Principal Investigator” for “Responsible Party”. This will allow access to an additional section where the Sponsor-Investigator (indicated as Principal Investigator in the setup) may enter their name.
 
-- [Appendix 1 — REB Approval Tracking Log](https://portal.rimuhc.ca/pls/apex/MUHC2.download_my_file?p_file=249041588157044407) _(tracks document version, rationale for changes, REB submission date, approval date, departments advised, and effective date at site)_
+Notes:
 
----
+  - If the Sponsor-Investigator selects “Sponsor-Investigator” instead of “Principal Investigator” then the US DHHS site automatically enters the Sponsor-Investigator as Sponsor as well. This is not recommended unless the Sponsor-Investigator’s research is covered by their private insurance.
 
-## References {#references}
+- RI-MUHC Research Privileges/Researcher Status are required to create your account in clinicaltrial.gov.
 
-- N2 Network SOP007_10
-- MUHC Centre of Applied Ethics (CAE) SOPs
-- ICH-GCP E6 R2 and draft R3
-- ISO 14155:2020
-- Health Canada, Good Clinical Practice: Consolidated Guideline (ICH Topic E6)
-- TCPS2 (2022)
+- Only one clinicaltrial.gov account per Sponsor-Investigator is opened for all their studies.
+
+<a id="5-8-5"></a>**5.8.5** During the informed consent discussion, it must be disclosed to a potential participant that study registration is required. The registry’s name, URL and the unique code assigned by the registry must appear as standard information in the REB-approved Informed Consent Form.
+
+<a id="5-8-6"></a>**5.8.6** The Sponsor-Investigator must provide the REB and the participants with name of the database and URL where the study results can be found, if different from the previously provided registry.
+
+<a id="5-8-7"></a>**5.8.7** A Nagano form in the “Data” tab also provides the option to register the study in the Quebec Registry. Note a clinicaltrial.gov number will be required. If the clinicaltrial.gov number is not available at the time of submission, you may enter it at a later date.
+
+<a id="appendices"></a>
+
+## 6.0 Appendices
+
+<a id="appendix-1"></a>Appendix 1 REB Approval Tracking Log {/* HUB: download */}[Download the form](https://portal.rimuhc.ca/pls/apex/MUHC2.download_my_file?p_file=249041588157044407) (sign-in required){/* /HUB */}
+
+## 7.0 References
+
+- Network of Networks (N2) SOP007_10
+- [MUHC Centre of Applied Ethics (CAE) SOPs](https://muhc.ca/cae/muhc-research-ethics-board-reb-standard-operating-procedures-sops)
+- International Conference on Harmonization – Good Clinical Practice (ICH-GCP) E6 R2 and draft R3
+- International Standards Organization (ISO) 14155:2020 GCP
+- Health Canada Guidance for Industry: Good Clinical Practice: Consolidated Guideline: ICH Topic E6;
+- Tri-Council Policy Statement: Ethical Conduct for Research Involving Humans ([TCPS 2](https://ethics.gc.ca/eng/policy-politique_tcps2-eptc2_2022.html), 2022)
 - Policy on the Research Ethics Board of the MUHC REB
-- MSSS Framework for Public Health and Social Services Institutions to Authorize Research Conducted at More Than One Institution (01-Apr-2016)
-- Quebec <Tooltip tip="Quebec's Act to modernize personal information protection law (in force Sept 2023). Requires EFVP before sharing personal data without consent." headline="Law 25 / Loi 25" cta="Full definition" href="/kb/foundations/glossary#law-25">Law 25</Tooltip> (Act to modernize legislative provisions regarding protection of personal information)
-- Quebec <Tooltip tip="Quebec's Act respecting health and social services information (key provisions July 2024). Governs researcher access to health data through RSSS institutions." headline="Law 5 / Loi 5" cta="Full definition" href="/kb/foundations/glossary#law-5">Law 5</Tooltip> (Act respecting health and social services information)
-- Fonds de Recherche du Québec — Santé (FRQS)
+- [MSSS Framework for Public Health and Social Services Institutions to Authorize Research Conducted at More Than One Institution](https://www.quebec.ca/sante/professionnels/encadrement-recherche-participants-humains/encadrement-recherche-menee-dans-plus-un-etablissement-reseau-sante), 01-Apr-2016
+- [MSSS Cadre de référence ministériel pour la recherche avec des participants humains, octobre 2020](https://publications.msss.gouv.qc.ca/msss/document-002696/)
+- Quebec [Law 25](https://www.assnat.qc.ca/en/travaux-parlementaires/projets-loi/projet-loi-64-42-1.html) – Act to modernize legislative provisions as regards the protection of personal information
+- Quebec [Law 5](https://www.legisquebec.gouv.qc.ca/en/document/cs/R-22.1) – Act respecting health and social services information and amending various legislative provisions
+- Fond de Recherche du Québec - Santé FRQS;
 
----
+## 8.0 Revision history
 
-<h2>Revision history</h2>
-
-| Version | Date | Summary |
+| SOP Code | Effective Date | Summary of changes |
 |---|---|---|
-| SOP-CR-007_08 | 01 May 2025 | N2 SOP-CR-007_10 and RI-MUHC Addendum combined and clarified. SOP-CR-007 split into SOP-CR-007 (initial submission and annual renewal) and [SOP-CR-026](/sops/cr-026) (ongoing review and reportable events). Revision/addition to sections 5.1.1, 5.1.2, 5.1.6, 5.1.7, 5.2, 5.3.2, 5.4.1, 5.4.2–5.4.12, 5.5.4, 5.6, 5.7.2, 5.7.3, and 5.8. |
-| SOP-CR-007_07 | 01 Sep 2018 | QI must adhere to REB timelines (timelines defined, 1.1.2). Additions to 1.4.2, 1.4.3, and 1.4.4 including reference to REB SOP406. Multicentric ongoing information submission revised (1.5.1). REB SOP405 reference added (1.9.2). CAE flowchart for MSSS process added (1.11). Definitions section (4.0) added. SOP007_06 renamed to SOP-CR-007_07. |
-| SOP007_06 | 24 May 2016 | Combined RI-MUHC–specific information from multiple prior SOPs. eReviews system replaced by Nagano. Study review fees appendix removed (refer to RI-MUHC Portal). Various additions and revisions to sections 1.4.4, 1.6, 1.7.3, 1.9.2, 1.10, and 1.11. |
+| SOP007_06 | 24-May-2016 | Following to the implementation of N2 SOPs, we have pooled together RI-MUHC specific information from SOP-CR012, SOP-CR014, SOP-CR015, SOP-CR020 and SOP-CR021 eReviews system was replaced by Nagano. RI MUHC Study review fees Appendix – Removed. Refer to the RI MUHC Portal for valid fee schedule In order to verify you are using the pre-approved resources, your trial may be participant to internal audit Section 1.4.4, 1.6, 1.10 and 1.11 were added. Section 1.7.3, 4th point has been added, “Ensure that the QI-Sponsor is indicated as the “Sponsor” and “Responsible Person” in the site set-up (not the MUHC).” Section 1.9.2, 4th point has been revised to “In conformity with the Financial Disclosure Regulation, the definition of investigator includes the spouse and each dependent child of such an investigator or sub-investigator.” The following appendices were removed as they are automatic forms in the Nagano system: - Application to Conduct Human Participant Research (Authorizing Signatures) - REB Log Moved the following Appendix under SOP009 Appendix 3: Confirmation of Participation in Research Appendix 4: END of Participation in Research |
+| SOP-CR-007_07 | 01-Sept-2018 | 1.1.2 QI must adhere to REB timelines (timelines defined) 1.4.2 Addition 1.4.3 Addition 1.4.4 Addition of reference to REB SOP406 1.5.1 Revised to include Multicentric ongoing information to submit to the REB 1.9.2 Addition of reference to REB SOP405 1.10.2 Addition of reference to REB SOP407 1.11 Addition re: CAE flowchart for MSSS process1.4.3 Termination of study due to REB lapse in approval exceeding 30 days. Appendix 2 – Change of Research Personnel: Addition of “Qualified Investigator” and “New QI yes/no boxes”. 4.0 Addition. SOP007_06 renamed to SOP-CR-007_07 |
+| SOP-CR-007_08 | 01-May-2025 | N2 SOP-CR-007_10 and RI-MUHC Addendum are combined and clarified SOP-CR-007 is split into SOP-CR-007and SOP-CR-026_01 Revision/addition to 5.1.1, 5.1.2, 5.1.6, 5.1.7, 5.2, 5.3.2, 5.4.1, 5.4.2 to 5.4.12, 5.5.4, 5.6, 5.7.2 5.7.3, and 5.8 |
+
+{/* Built word for word from SOP-CR-007 by tools/sop_exact.py (batch 85), body pages 111 to 133 of "All SOPs combined and searchable -Final_12Dec2024-compressed.pdf"; checked word by word against the signed text. Hub additions sit between HUB comments. Old anchors kept: appendices, 5-1-sponsor-responsibilities, 5-2-investigator-responsibilities-for-initial-submission, study-submission-and-review-cycle, 5-5-annual-renewal-continuing-review, 5-6-multi-centrique-research-in-quebec, 5-7-conflict-of-interest-coi, 5-4-initial-reb-and-institutional-review, 5-8-clinical-trial-registration, 5-3-categories-of-research-requiring-muhc-reb-approval. */}
