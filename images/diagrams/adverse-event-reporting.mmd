@@ -4,10 +4,10 @@ flowchart LR
     Q1 -->|"No"| E1(["`**Non-serious AE**<br/>No SAE report.`"])
     Q1 -->|"Yes"| SP["Report every serious<br/>adverse event to the<br/>sponsor within 24 hours<br/>of the principal<br/>investigator learning of it,<br/>unless the REB-approved<br/>protocol sets a<br/>different timeline"]
     SP --> Q2{"Does the principal<br/>investigator judge that<br/>it meets all three of<br/>the REB's criteria?"}
-    SP --> Q3{"Is it a drug or<br/>natural health<br/>product trial?"}
+    SP --> Q3{"Is it a drug or<br/>natural health product<br/>trial that needs<br/>Health Canada's<br/>authorization?"}
     Q2 -->|"Yes"| E2(["`**Expedited REB report**<br/>Report it in Nagano<br/>on form F3H.`"])
     Q2 -->|"No"| E3(["`**No expedited REB report**<br/>It should be submitted<br/>with the REB's annual<br/>continuing review.`"])
-    Q3 -->|"No"| E7(["`**No SAE report to**<br/>**Health Canada**<br/>A medical device incident<br/>has its own report.`"])
+    Q3 -->|"No"| E7(["`**No SAE report to**<br/>**Health Canada**<br/>A device incident, or a<br/>reaction to a marketed<br/>product, has its own report.`"])
     Q3 -->|"Yes"| Q4{"Are you the<br/>sponsor-investigator?"}
     Q4 -->|"No"| E4(["`**Reported by the sponsor**<br/>The sponsor reports it to<br/>Health Canada when it<br/>meets Health Canada's<br/>criteria.`"])
     Q4 -->|"Yes"| Q5{"Does it meet<br/>Health Canada's<br/>criteria?"}
