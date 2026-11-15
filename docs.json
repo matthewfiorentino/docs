@@ -80,6 +80,14 @@
                 ]
               },
               {
+                "group": "Choose Your Type of Study",
+                "icon": "route",
+                "pages": [
+                  "paths/index",
+                  "paths/retrospective"
+                ]
+              },
+              {
                 "group": "Choose Your Role",
                 "icon": "users",
                 "pages": [
