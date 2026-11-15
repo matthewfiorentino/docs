@@ -93,16 +93,16 @@
                 "pages": [
                   {
                     "group": "Investigator",
-                    "root": "roles/investigator",
                     "pages": [
+                      "roles/investigator",
                       "roles/pi-guide",
                       "roles/pi-guide-iv-v"
                     ]
                   },
                   {
                     "group": "Coordinator",
-                    "root": "roles/coordinator",
                     "pages": [
+                      "roles/coordinator",
                       "roles/crc-guide",
                       "roles/crc-guide-iv-v"
                     ]
