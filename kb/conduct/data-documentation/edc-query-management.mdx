@@ -10,21 +10,23 @@ In a sponsored study, the sponsor usually provides an electronic data capture (E
 
 ## Get access to the EDC
 
-Sponsors use systems such as Medidata Rave, Oracle InForm or Clinical One, Veeva Vault CDMS and Medrio.
-
 [Give EDC access only to team members](/sops/cr-014#5-8-3) whose training on the system is documented and who have been delegated the task on the Task Delegation Log. Each needs their own account. [Keep the case report form (CRF) completion guidelines](/sops/cr-014#5-8-2), if any, and the training records with the essential documents.
+
+For a database that the site manages, [create and maintain a list of the users who have access to it](/sops/cr-105#5-2-3), unless the study contract or the data management plan sets otherwise. If access to the database is restricted, keep track of each user's access privileges.
+
+Sponsors use systems such as Medidata Rave, Oracle InForm or Clinical One, Veeva Vault CDMS and Medrio.
 
 Never share your login, because the system records every action under your name and someone else using your account breaks the trail. When someone leaves the study or no longer needs access, you [should tell the sponsor](https://www.canada.ca/en/health-canada/services/drugs-health-products/drug-products/applications-submissions/guidance-documents/international-council-harmonisation/guidelines.html), so that it can change or end their access.
 
 Participants appear in the EDC by their study number, unless the protocol requires otherwise and the Research Ethics Board (REB) has approved it. Enter no name or medical record number. The privacy rules set [what stays at the site](/kb/governance/privacy#keep-participant-information-confidential).
 
-{/* Sources: SOP-CR-014_08, sections 5.1, 5.5, 5.7 (5.7.4: study identification code only, unless required or permitted and approved by the REB) and 5.8 (5.8.2: documented training; "Retain CRF guidelines (if applicable) and training records with essential study documents"; 5.8.3: "Permit EDC access only to authorized persons with authenticated identification and delegation of this task on the Task Delegation Log"), /sops/cr-014#5-8-2 and #5-8-3; SOP-CR-009_08, section 5.7 (5.7.4: approved study identifiers, no nominative information unless required by the protocol and approved by the REB); the International Council for Harmonisation's guideline ICH E6(R3), sections 2.12.10 ("the investigator/institution should … For systems deployed by the sponsor, notify the sponsor when access permissions need to be changed or revoked from an individual"), 4.2.2 and 4.3.8 (attributability to an individual), https://www.canada.ca/en/health-canada/services/drugs-health-products/drug-products/applications-submissions/guidance-documents/international-council-harmonisation/guidelines.html. */}
+{/* Sources: SOP-CR-014_08, sections 5.1, 5.5, 5.7 (5.7.4: study identification code only, unless required or permitted and approved by the REB) and 5.8 (5.8.2: documented training; "Retain CRF guidelines (if applicable) and training records with essential study documents"; 5.8.3: "Permit EDC access only to authorized persons with authenticated identification and delegation of this task on the Task Delegation Log"), /sops/cr-014#5-8-2 and #5-8-3; SOP-CR-105_04, sections 2 (scope: "all studies databases managed at the site … unless otherwise stated in the study contract or Data Management Plan") and 5.2 (5.2.3: "Create and maintain a list of users who have access to the database. If there is restricted access to the database, keep track of the access privileges of all users."), /sops/cr-105#5-2-3; SOP-CR-009_08, section 5.7 (5.7.4: approved study identifiers, no nominative information unless required by the protocol and approved by the REB); the International Council for Harmonisation's guideline ICH E6(R3), sections 2.12.10 ("the investigator/institution should … For systems deployed by the sponsor, notify the sponsor when access permissions need to be changed or revoked from an individual"), 4.2.2 and 4.3.8 (attributability to an individual), https://www.canada.ca/en/health-canada/services/drugs-health-products/drug-products/applications-submissions/guidance-documents/international-council-harmonisation/guidelines.html. */}
 
 ## Enter data promptly
 
 [Enter data as soon as possible](/sops/cr-014#5-7-3) after they are recorded in the source documents, within the timelines the sponsor sets in its data management plan or its CRF completion guidelines.{/* TO CONFIRM (Quality Assurance): V2 added "Data left in paper source for weeks delay queries, invite transcription errors and widen the gap between source and CRF that monitors look for." No source read says so (an inference); cut from the reader text under row 157 and kept here. Does QA want a reason given for prompt entry, and in what words? */}
 
-[Only the data that the REB-approved protocol defines should go into the CRF](/sops/cr-014#5-5-1). Enter laboratory results and vital signs as they become available. Enter serious adverse event (SAE) data promptly after [the SAE report itself](/kb/conduct/safety-reporting/reportable-events#key-reporting-timelines), as the sponsor's procedures set. Check each entry against its source as you make it.
+[Only the data that the REB-approved protocol defines should go into the CRF](/sops/cr-014#5-5-1). Enter laboratory results and vital signs as they become available. Enter serious adverse event (SAE) data promptly after [the SAE report itself](/kb/conduct/safety-reporting/reportable-events#key-reporting-timelines), as the sponsor's procedures set. Best practice is to check the source data before you transcribe them into the CRF. Once the data are in the CRF, the site [should check them against the source](/sops/cr-014#5-9-1) for transcription errors, omissions, missed protocol deviations and anything unclear.
 
 Many queries come from the system's automatic checks:
 
@@ -33,11 +35,11 @@ Many queries come from the system's automatic checks:
 - Missing-data checks flag blank required fields. If a value is unavailable, use the system's "not done" or "not applicable" option rather than leaving the field blank.
 - Date checks flag dates that do not fit, such as an end before a start, an event before consent or a procedure outside its visit window.
 
-{/* Sources: SOP-CR-014_08, sections 5.5 (5.5.1: "Only data defined in the REB-approved protocol should be entered into the CRF"), 5.6, 5.7 (5.7.3: "Transcribe data into the CRF as soon as possible after it is collected and recorded in the source documentation"; 5.7.7: "respect the Sponsor's timelines") and 5.9 (5.9.1: QC of the data transcribed), /sops/cr-014#5-5-1 and #5-7-3; SOP-CR-103_04, section 5.2 (5.2.4: the data management plan's "data entry guidelines … the data query process and associated timelines"); ICH E6(R3), section 4.2.1. */}
+{/* Sources: SOP-CR-014_08, sections 5.5 (5.5.1: "Only data defined in the REB-approved protocol should be entered into the CRF"), 5.6, 5.7 (5.7.3: "Transcribe data into the CRF as soon as possible after it is collected and recorded in the source documentation"; 5.7.7: "respect the Sponsor's timelines") and 5.9 (5.9.1: "Best practice is to conduct QC of source data prior to transcription into a CRF/eCRF. Again, once data has been transcribed in a CRF/eCRF, the site should conduct QC in order to capture/clarify missed protocol deviations, transcription errors, omissions or any ambiguity"), /sops/cr-014#5-5-1, #5-7-3 and #5-9-1; SOP-CR-103_04, section 5.2 (5.2.4: the data management plan's "data entry guidelines … the data query process and associated timelines"); ICH E6(R3), section 4.2.1. */}
 
 ## Answer queries
 
-A query is a request from the sponsor's data managers or monitor to clarify or correct an entry. Some come automatically from the system's checks. Others are raised by the data management team or the monitor during review. To answer a query:
+A query is a request from the sponsor's data managers or monitor to clarify or correct an entry. To answer a query:
 
 1. Read the query and answer the question it asks.
 2. If the entry was right, say so and cite the source. If it was wrong, correct it and explain the correction.
@@ -54,7 +56,7 @@ The data manager or monitor closes the query or asks again. A vague answer, such
 
 A query on paper comes on the sponsor's data clarification form. [Review it, sign it and return the original to the sponsor](/sops/cr-014#5-9-7), unless you agreed otherwise. Keep a copy in the investigator site file (ISF). A request sent by email should be printed and filed with the source data.
 
-The sponsor's data management plan, monitoring plan or CRF guidelines may set the time you have to answer. For a study that an RI-MUHC investigator sponsors, the [monitoring plan template](/sops/cr-013#appendix-3) in the RI-MUHC's standard operating procedures (SOPs) suggests that the site resolve remaining queries within 2 weeks of the monitoring visit.
+The sponsor's data management plan, monitoring plan or CRF guidelines may set the time you have to answer. For a study that an RI-MUHC investigator sponsors, the RI-MUHC's standard operating procedures (SOPs) provide a [monitoring plan template](/sops/cr-013#appendix-3) in which remaining queries should be resolved by the site within 2 weeks of the monitoring visit.
 
 Monitors may post queries at their visits for the site to resolve. The number of data management queries is among the factors that may lead the sponsor to monitor more often.
 
@@ -68,18 +70,24 @@ For each change, the EDC's audit trail records who made it, when, the old and ne
 - Nothing is erased. A changed or deleted value stays in the audit trail. The audit trail itself should be changed only in rare cases, such as a participant's personal information entered by mistake, and then with a record of what was done and why.
 - Health Canada inspectors and sponsors' auditors can review audit trails, including corrections made long after the event or without an adequate reason.
 
-[The RI-MUHC's SOPs add a rule](/sops/cr-105#5-3-2) for databases that the site manages, unless the study contract or the data management plan sets otherwise. When data are entered directly into the electronic case report form with no paper record, the audit trail must be computer-generated and time-stamped. For each change, addition or deletion, the audit trail must show:
+For databases that the site manages, the RI-MUHC's SOPs [set what the audit trail must contain](/sops/cr-105#5-3-2), unless the study contract or the data management plan sets otherwise. When data are entered directly into the electronic case report form with no paper record, the audit trail must be computer-generated and time-stamped. For each change, addition or deletion, the audit trail must show:
 
 - Its date and time.
 - The user who made it.
 - The reason.
 - The old and new values.
 
-{/* Sources: SOP-CR-014_08, sections 5.6 (5.6.2: "Draw a single line through the data to be corrected … (this is your audit trail)") and 5.9 (5.9.6: who, when and why modifications were made); SOP-CR-105_04, sections 2 (scope: "all studies databases managed at the site … unless otherwise stated in the study contract or Data Management Plan") and 5.3 (5.3.2: for data entered directly into an eCRF, audit trails "must be computer-generated and time-stamped and must contain: The date and time of the change, addition or deletion. The user making the change, addition or deletion. The reason for the change, addition or deletion. The old value. The new value"), /sops/cr-105#5-3-2; ICH E6(R3), section 4.2.2 (changes and deletions documented, with the reason where appropriate; audit trails "should not be modified except in rare circumstances (e.g., when a participant's personal information is inadvertently included in the data) and only if a log of such action and justification is maintained") and glossary ("Audit Trail"). */}
+For the same databases, the RI-MUHC's SOPs also require that:
+
+- Where an electronic audit trail is not possible, [a paper trail of all modifications, deletions and additions is kept](/sops/cr-105#5-3-1), with the date and time, the reason for each change and the initials of the person who made it.
+- [Changes requested after the database is locked](/sops/cr-105#5-3-3) that the audit trail cannot capture are documented clearly.
+- [A data loss protection process for the database is created, maintained and documented](/sops/cr-105#5-4-3), and backup and recovery of the database are tested periodically.
+
+{/* Sources: SOP-CR-014_08, sections 5.6 (5.6.2: "Draw a single line through the data to be corrected … (this is your audit trail)") and 5.9 (5.9.6: who, when and why modifications were made); SOP-CR-105_04, sections 2 (scope: "all studies databases managed at the site … unless otherwise stated in the study contract or Data Management Plan"), 5.3 (5.3.1: "Where an electronic audit trail is not possible, a paper trail documenting all modifications, deletions and additions must be maintained, including the date and time, the reason for change and initials of the person making the change"; 5.3.2: for data entered directly into an eCRF, audit trails "must be computer-generated and time-stamped and must contain: The date and time of the change, addition or deletion. The user making the change, addition or deletion. The reason for the change, addition or deletion. The old value. The new value"; 5.3.3: "Data modifications, deletions and additions requested after database lock and which are outside of the audit trail capability must be clearly documented") and 5.4 (5.4.3: "Create, maintain and document a data loss protection (DLP) process for the database. Database backup and recovery must be periodically tested."), /sops/cr-105#5-3-1, #5-3-2, #5-3-3 and #5-4-3; ICH E6(R3), section 4.2.2 (changes and deletions documented, with the reason where appropriate; audit trails "should not be modified except in rare circumstances (e.g., when a participant's personal information is inadvertently included in the data) and only if a log of such action and justification is maintained") and glossary ("Audit Trail"). */}
 
 ## Reconcile SAE data
 
-SAE data usually go in two places, the sponsor's safety database (through the SAE report form) and the EDC (on the adverse event pages). The sponsor reconciles the two. The sponsor's data managers compare the two databases and send reconciliation queries about any difference, such as:
+SAE data usually go in two places, the sponsor's safety database (through the SAE report form) and the EDC (on the adverse event pages). The sponsor's data managers reconcile the two databases by comparing them, and send reconciliation queries about any difference, such as:
 
 - An SAE in the safety database that is not yet in the EDC.
 - Dates or outcomes recorded differently.
