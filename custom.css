@@ -4405,10 +4405,10 @@ footer.advanced-footer a[href="https://rimuhc.ca"]::before {
 /* Inline anchors (<a id> before SOP item numbers and other deep links) stop below the sticky header instead of under it (batch 85, Nov. 12, 2026). */
 a[id]:not([href]) { scroll-margin-top: 170px; }
 
-/* Scope strip ("Applies to"), mock-up for MF, Nov. 15, 2026 (b116; STYLE-HUB rule pending MF's choice) */
-.hub-scope{display:flex;flex-wrap:wrap;align-items:center;gap:6px 8px;margin:4px 0 22px;padding:10px 0;border-top:1px solid #d9dce5;border-bottom:1px solid #d9dce5;font-size:14px;line-height:1.4}
-.hub-scope-label{font-weight:600;color:#150e51;margin-right:4px;letter-spacing:.01em}
-.hub-scope-tag{display:inline-block;padding:2px 10px;border:1px solid #b9c0d4;border-radius:999px;color:#150e51;background:#f4f6fa;white-space:nowrap}
+/* Scope strip ("Applies to"): STYLE-HUB F1 (MF, Nov. 15, 2026: "tag strip"); compact sizing (MF: "try option 2") */
+.hub-scope{display:flex;flex-wrap:wrap;align-items:center;gap:4px 5px;margin:2px 0 20px;padding:8px 0;border-top:1px solid #d9dce5;border-bottom:1px solid #d9dce5;font-size:12.5px;line-height:1.35}
+.hub-scope-label{font-weight:600;color:#150e51;margin-right:3px;letter-spacing:.01em}
+.hub-scope-tag{display:inline-block;padding:1px 7px;border:1px solid #b9c0d4;border-radius:999px;color:#150e51;background:#f4f6fa;white-space:nowrap}
 .dark .hub-scope{border-color:#3a3f55}
 .dark .hub-scope-label{color:#e6e8f0}
 .dark .hub-scope-tag{color:#e6e8f0;background:#1d2133;border-color:#3a3f55}
