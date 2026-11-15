@@ -4,7 +4,7 @@ description: "Working in a sponsor's electronic data capture (EDC) system: getti
 keywords: ["EDC", "electronic data capture", "data query", "query resolution", "Medidata Rave", "data clarification form", "audit trail", "SAE reconciliation", "CR-014"]
 ---
 
-In a sponsored study, the sponsor usually provides an electronic data capture (EDC) system to collect the study data. Much of a clinical research coordinator's daily work happens there: entering data, answering queries and keeping every change traceable. Studies led at the RI-MUHC that use REDCap get support from [Capture and Optimization of Research Data (CORD)](/kb/design-support/cord).
+In a sponsored study, the sponsor usually provides an electronic data capture (EDC) system to collect the study data. Sponsors use systems such as Medidata Rave, Oracle InForm or Clinical One, Veeva Vault CDMS and Medrio. Much of a clinical research coordinator's daily work happens there: entering data, answering queries and keeping every change traceable. Studies led at the RI-MUHC that use REDCap get support from [Capture and Optimization of Research Data (CORD)](/kb/design-support/cord).
 
 {/* Sources: SOP-CR-014_08, section 5.5 (5.5.2: CRFs, paper or electronic, are created by the Sponsor or Sponsor-Investigator and completed by the CRC, who transcribes de-identified data from source documents) and section 5.8 (5.8.1: the RI-MUHC supports REDCap for investigator-initiated eCRFs). */}
 
@@ -13,8 +13,6 @@ In a sponsored study, the sponsor usually provides an electronic data capture (E
 [Give EDC access only to team members](/sops/cr-014#5-8-3) whose training on the system is documented and who have been delegated the task on the Task Delegation Log. Each needs their own account. [Keep the case report form (CRF) completion guidelines](/sops/cr-014#5-8-2), if any, and the training records with the essential documents.
 
 For a database that the site manages, [create and maintain a list of the users who have access to it](/sops/cr-105#5-2-3), unless the study contract or the data management plan sets otherwise. If access to the database is restricted, keep track of each user's access privileges.
-
-Sponsors use systems such as Medidata Rave, Oracle InForm or Clinical One, Veeva Vault CDMS and Medrio.
 
 Never share your login, because the system records every action under your name and someone else using your account breaks the trail. When someone leaves the study or no longer needs access, you [should tell the sponsor](https://www.canada.ca/en/health-canada/services/drugs-health-products/drug-products/applications-submissions/guidance-documents/international-council-harmonisation/guidelines.html), so that it can change or end their access.
 
@@ -70,14 +68,14 @@ For each change, the EDC's audit trail records who made it, when, the old and ne
 - Nothing is erased. A changed or deleted value stays in the audit trail. The audit trail itself should be changed only in rare cases, such as a participant's personal information entered by mistake, and then with a record of what was done and why.
 - Health Canada inspectors and sponsors' auditors can review audit trails, including corrections made long after the event or without an adequate reason.
 
-For databases that the site manages, the RI-MUHC's SOPs [set what the audit trail must contain](/sops/cr-105#5-3-2), unless the study contract or the data management plan sets otherwise. When data are entered directly into the electronic case report form with no paper record, the audit trail must be computer-generated and time-stamped. For each change, addition or deletion, the audit trail must show:
+For databases that the site manages, when data are entered directly into the electronic case report form with no paper record, [the RI-MUHC's SOPs require a computer-generated, time-stamped audit trail](/sops/cr-105#5-3-2), unless the study contract or the data management plan sets otherwise. For each change, addition or deletion, the audit trail must show:
 
 - Its date and time.
 - The user who made it.
 - The reason.
 - The old and new values.
 
-For the same databases, the RI-MUHC's SOPs also require that:
+For databases that the site manages, the RI-MUHC's SOPs also require that:
 
 - Where an electronic audit trail is not possible, [a paper trail of all modifications, deletions and additions is kept](/sops/cr-105#5-3-1), with the date and time, the reason for each change and the initials of the person who made it.
 - [Changes requested after the database is locked](/sops/cr-105#5-3-3) that the audit trail cannot capture are documented clearly.
