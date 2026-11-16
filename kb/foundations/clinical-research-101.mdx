@@ -1,227 +1,186 @@
 ---
 title: "Clinical Research 101"
-description: "Regulatory frameworks, key roles, trial phases, and Quebec-specific obligations — the conceptual foundation for everyone in clinical research at the RI-MUHC."
+description: "Learn how research differs from clinical care, what the phases of a drug trial are, who does what in a study and which rules apply to research at the MUHC, Quebec's included."
 keywords: ["what is clinical research", "trial phases", "Phase I", "Phase II", "Phase III", "Phase IV", "key roles", "GCP basics"]
 ---
 
-Before you can navigate the SOPs, manage a submission, or work with participants, you need a shared understanding of what clinical research is, how the regulatory system is structured, and what makes Quebec distinctive. This guide covers that foundation — study types, trial phases, key roles, the history behind the rules, the Quebec regulatory layer, and what informed consent actually means in practice.
+<div className="hub-scope"><span className="hub-scope-label">Applies to</span><span className="hub-scope-tag">Drug studies (Level I)</span><span className="hub-scope-tag">Medical device and surgery studies (Level II)</span><span className="hub-scope-tag">Natural health product studies (Level III)</span><span className="hub-scope-tag">Prospective studies not regulated by Health Canada (Level IV)</span><span className="hub-scope-tag">Retrospective and biobank studies (Level V)</span></div>
 
-## Research vs. clinical care
+Research rests on rules that grew out of past harm to participants. Several sets of rules apply to the same study at once: international guidelines, federal law and policy, and Quebec law. Knowing how they fit together makes the RI-MUHC's standard operating procedures (SOPs), a submission and the work with participants easier to follow.
 
-Clinical care and clinical research look similar from the outside. Both take place in clinical settings. Both involve patients and health care professionals. Both can lead to someone receiving a treatment. But they serve fundamentally different purposes.
+## Tell research apart from clinical care
 
-Clinical care is oriented toward the **individual patient in front of you**. Every decision is made in that person's best interest, using the best available evidence. Clinical research is oriented toward **generating that evidence** — producing knowledge that will be generalizable and useful for future patients, not just the person enrolled today.
+Clinical care and clinical research often happen in the same places, with the same patients and the same health care professionals. Both can lead to someone receiving a treatment. Their purposes differ.
 
-Every participant in a clinical study is contributing to the care of people they will never meet.
+Clinical care serves the patient being treated. Each decision is made in that person's best interest, from the best available evidence. Clinical research aims to produce knowledge that will apply to future patients, beyond the people enrolled.
 
-<Info>
-Canada's national standard, the [**Tri-Council Policy Statement (TCPS2)**](https://ethics.gc.ca/eng/policy-politique_tcps2-eptc2_2022.html), explicitly names the risk of **therapeutic misconception** — the tendency for participants to experience a research intervention as personalized treatment. Understanding it is part of designing a consent process that works.
-</Info>
+| | Clinical care | Clinical research |
+|---|---|---|
+| Who it serves | The patient being treated | Future patients |
+| How it uses evidence | Applies the best available evidence | Produces new evidence |
+| Its main goal | The patient's benefit | Knowledge that can be generalized |
+| The relationship | A clinician treats a patient | A researcher studies a participant |
+{/* TO CONFIRM (MF, for Indra): comment ledger row 30 asked what "Relationship" meant; the row now says "A clinician treats a patient" and "A researcher studies a participant", for MF and Indra to judge. Row 30 also suggested "Experimental or novel intervention" in the "uses" row; the draft keeps "Produces new evidence", which covers research with no intervention. */}
 
-| Dimension | Clinical Care | Clinical Research |
-|-----------|--------------|-------------------|
-| Aimed at | The individual patient | Future patients |
-| Uses | Best available evidence | Generates new evidence |
-| Primary goal | Patient benefit | Generalizable knowledge |
-| Relationship | Therapeutic | Scientific investigation |
+Patients asked to join a study may assume that what they receive is part of their treatment. This misunderstanding is called therapeutic misconception. The federal research agencies' [*Tri-Council Policy Statement* (TCPS 2)](https://ethics.gc.ca/eng/tcps2-eptc2_2022_chapter11-chapitre11.html) describes it as participants not understanding that research aims mainly at producing knowledge and may not benefit them.
 
-**What counts as research?** TCPS2 defines research broadly: any undertaking intended to extend knowledge through systematic investigation. This covers drug trials, device studies, chart reviews, psychosocial surveys, biobank studies, and educational interventions. If the goal is generalizable knowledge involving human data or participants, ethics governance applies. Quality improvement and program evaluation are generally not research under TCPS2 — provided the goal is improving local practice, not producing knowledge intended for broader application.
+TCPS 2 [defines research](https://ethics.gc.ca/eng/tcps2-eptc2_2022_chapter2-chapitre2.html) as an undertaking intended to extend knowledge through a disciplined inquiry or systematic investigation. Drug trials, device studies, chart reviews, surveys, biobank studies and studies of educational interventions can all be research. Quality improvement and program evaluation are not research under TCPS 2 when they are used only for assessment, management or improvement. [Is It Research?](/is-it-research) helps you check a project.
 
-## Study types and what they determine
+{/* Sources: TCPS 2 (2022), article 2.1 ("research" is "an undertaking intended to extend knowledge through a disciplined inquiry and/or systematic investigation") and article 2.5 ("Quality assurance and quality improvement studies, program evaluation activities, and performance reviews, or testing within normal educational requirements when used exclusively for assessment, management or improvement purposes, do not constitute research for the purposes of this Policy"); TCPS 2, chapter 11, "Therapeutic Misconception" ("Therapeutic misconception occurs when trial participants do not understand that research is aimed primarily at producing knowledge and may not provide any therapeutic benefit to them."). The list of kinds of research (drug trials to educational interventions) is the old page's; TCPS 2 gives no such list. */}
 
-How a study is classified shapes everything downstream: your regulatory pathway, required training level, oversight intensity, and whether Health Canada needs to authorize anything before the first participant is approached.
+## Find what kind of study you have
 
-The type of study you are running determines whether you need Health Canada's permission before approaching a single participant — and whether a protocol deviation is a paperwork issue or a regulatory event.
+What a study tests, and how it gets its data, decide the training its team needs, whether Health Canada must authorize it and which steps it follows. [Types of Study](/paths) defines the training levels, Health Canada's authorization, the designs and the sponsors, and links each to its steps.
 
-| Study type | Canadian authorization | Standard | <Tooltip tip="The ethics committee that reviews and approves research involving human participants. Also called CER at French-language institutions." headline="Research Ethics Board (REB)" cta="Full definition" href="/kb/foundations/glossary#reb">REB</Tooltip> review |
-|------------|----------------------|----------|-----------|
-| Drug trial — Phase I–III | <Tooltip tip="Application to Health Canada for authorization to conduct a drug trial under Division 5 of the Food and Drug Regulations." headline="Clinical Trial Application (CTA)" cta="Full definition" href="/kb/foundations/glossary#cta">CTA</Tooltip> to Health Canada | ICH <Tooltip tip="International standard for design, conduct, monitoring, recording, and reporting of clinical studies." headline="Good Clinical Practice (GCP)" cta="Full definition" href="/kb/foundations/glossary#gcp">GCP</Tooltip> E6(R3) | Full board |
-| Class II–IV medical device study that [needs an ITA](/kb/governance/laws-regulations#check-whether-a-device-study-needs-an-investigational-testing-authorization) | <Tooltip tip="Health Canada's authorization for a manufacturer or importer to sell a Class II, III or IV medical device to qualified investigators for testing." headline="Investigational Testing Authorization (ITA)" cta="Full definition" href="/kb/foundations/glossary#ita">ITA</Tooltip> to Health Canada | ISO 14155 | Full board (III/IV) |
-| Natural health product — Phase I–III | CTA to Health Canada | ICH GCP E6(R3) | Full board |
-| Drug trial — Phase IV (within label) | No CTA required | GCP still applies | Proportionate |
-| Observational / chart review | No federal auth. | TCPS2 | Proportionate / delegated |
+The Research Ethics Board (REB) reviews every study, with a review proportionate to its risk. A full board meeting is the default. Research of no more than minimal risk may receive a [delegated review](/kb/submission/submission-overview), by the REB Chair or by one or more qualified REB members the Chair designates. A new project that could interfere with the integrity of a minor or of an adult who cannot consent cannot receive a delegated review at its initial review.
 
-A second dimension cuts across all of these categories: whether the study collects data going forward or works from data that already exists.
+A study that uses identifiable health information without the participants' consent also needs an approved privacy impact assessment, the <Tooltip tip="The privacy impact assessment that Quebec's Act respecting health and social services information requires before a study accesses identifiable health information without consent, including for pre-screening." headline="EFVP (privacy impact assessment)" cta="Full definition" href="/kb/foundations/glossary#efvp">évaluation des facteurs relatifs à la vie privée (EFVP)</Tooltip>. [Whether a study needs an EFVP](/kb/governance/privacy#know-when-an-efvp-is-needed) depends on how it uses the information.
 
-| Dimension | Prospective | Retrospective |
-|-----------|------------|---------------|
-| Participant contact | Yes — enrolled, followed | Often none |
-| Data collected | During the study | Already exists (charts, databases, biobanks) |
-| Health Canada auth. | Required for trials of investigational drugs and natural health products, and for Class II–IV device studies that need an ITA | Generally not required |
-| REB review | Required — proportionate to risk | Required — may qualify for delegated review |
-| Quebec privacy (Laws 25, 5) | Consent typically obtained directly | **Triggers *<Tooltip tip="The privacy impact assessment that Quebec's Act respecting health and social services information requires before a study accesses identifiable health information without consent, including for pre-screening." headline="EFVP (privacy impact assessment)" cta="Full definition" href="/kb/foundations/glossary#efvp">EFVP</Tooltip>*** when using personal health data without consent |
+{/* Sources: paths/index (the levels, Health Canada's authorization, the designs and the sponsors: the page's home since b126; MASTER-PLAN step 3a-bis); TCPS 2 (2022), article 6.12 (proportionate review) and article 6.12's delegated review of minimal-risk research (chapter 6: "Where it is determined that the research is of minimal risk …, an REB may authorize a delegated research ethics review"); the MUHC REB's SOP 402.001, section 5.1 ("Full Board review is the default option"; 5.1.2: "New research projects that fall under Article 21 of the Civil Code of Québec cannot be evaluated by delegated review at the time of initial REB review"; 5.1.3: delegated review for research with no more than minimal risk that does not interfere with the integrity of a minor or an incapable adult) and section 5.2.2 ("delegated review may be conducted by the REB Chair, or by one or more qualified REB members as designated by the REB Chair or designee"), evidence/web/reb-sops/SOP_REB_402.001_2020-03-20_BoD_Approved_2021-03-22_CLEAN.txt, in the words of the home, kb/submission/submission-overview (b136 second reader: the article 21 condition and who reviews, from the blind fact check's row 9); the EFVP, through kb/governance/privacy and the glossary. The two tables of the old page (study types and prospective against retrospective) are replaced by the link: their Health Canada column said "Phase I–III" for the drug and natural health product trials that need a Clinical Trial Application, and "Generally not required" for retrospective studies (b126 fact check, section 2b; the Food and Drug Regulations, C.05.006(2); the Natural Health Products Regulations, section 68; paths/index, "No Health Canada authorization is needed … for a study at Level IV or Level V"). */}
 
-## Phases of a clinical trial
+## Know the phases of a drug trial
 
-By the time a compound reaches the first human participant, it has typically travelled through years of laboratory and animal research. Understanding that arc makes the operational structure make sense.
+Before a drug reaches its first human participant, it has usually gone through years of laboratory and animal research. That pre-clinical work gives the first safety profile, which regulators and REBs weigh before the first human dose.{/* TO CONFIRM (QA): "years of laboratory and animal research" and the pre-clinical step come from the old page; no source searched beyond Health Canada's guidance for clinical trial sponsors, which defines the phases only. */}
 
-<Steps>
-  <Step title="Pre-clinical — Laboratory and animal studies">
-    Safety parameters, pharmacokinetics, and early biological activity signals are established. This work generates the initial safety profile that regulators and ethics boards evaluate before approving the first human dose.
-  </Step>
-  <Step title="Phase I — First-in-human: safety and tolerability (20–80 participants)">
-    The central question is **safety**: how does the body respond, and at what doses do adverse effects appear? Dose-escalation designs with intensive safety monitoring are standard. In oncology, Phase I trials enroll patients — the compounds involved are too toxic for healthy volunteers.
+[Health Canada's guidance for clinical trial sponsors](https://www.canada.ca/en/health-canada/services/drugs-health-products/drug-products/applications-submissions/guidance-documents/clinical-trials/guidance-clinical-trial-sponsors-clinical-trial-applications.html) defines four phases of drug trials:
 
-    **Note for Canadian sites:** Health Canada's 30-day default review process for Phase I CTAs is faster than many comparable jurisdictions, which contributes to Canada's appeal as a first-in-human trial destination.
-  </Step>
-  <Step title="Phase II — Proof of concept and dose optimization (100–400 participants)">
-    Does the intervention do what it is supposed to do, and at what dose? Phase IIa establishes proof of concept; Phase IIb refines the dose. These studies are often randomized, sometimes blinded. Compounds either build a case for pivotal testing here — or are discontinued.
-  </Step>
-  <Step title="Phase III — Confirmatory: is it better than what exists? (hundreds to several thousand)">
-    Large randomized controlled trials generating the primary evidence base for regulatory submission. **Clinical equipoise must genuinely exist at the outset** — if one option is clearly better, it is not ethical to assign anyone to the other. These pivotal studies determine whether a compound receives authorization.
-  </Step>
-  <Step title="Regulatory review — Notice of Compliance and Drug Identification Number">
-    Health Canada evaluates the full submission — safety data, efficacy data, manufacturing quality. A **Notice of Compliance (NOC)** issues if the standard is met; a **Drug Identification Number (DIN)** is assigned. Standard review: 300 days. Priority review: 180 days.
-  </Step>
-  <Step title="Phase IV — Post-market: the real world">
-    The drug is authorized, but questions remain: how does it perform in populations not well-represented in Phase III? What are the long-term safety signals? No CTA is required for within-label Phase IV studies, though **GCP and REB oversight still apply**.
-  </Step>
-</Steps>
+| Phase | What it studies | Usual size |
+|---|---|---|
+| Phase I | The drug's pharmacokinetics and pharmacological actions, and the side effects of increasing doses. Phase I trials are generally conducted in healthy volunteers, but may enrol patients when giving the drug to healthy volunteers is not ethical, as in many oncology trials. | 20 to 80 participants |
+| Phase II | The drug's efficacy in patients with the condition to be treated, diagnosed or prevented, and its side effects and risks. Phase IIa trials often establish proof of concept, and Phase IIb trials refine the dose. | 100 to 400 participants |
+| Phase III | Additional information on clinical efficacy and safety, under the proposed conditions of use, after preliminary evidence suggests efficacy. These trials give the main evidence for a submission to market the drug. | Hundreds to several thousand participants |
+| Phase IV | Any study within the approved indication after the drug is approved for the market, such as safety studies. | Varies |
+{/* TO CONFIRM (QA): the sizes, "as in many oncology trials", and Phase IIa and IIb come from the old page; Health Canada's guidance gives none of them. Searched: the guidance (evidence/web/audit-S1_fetched-2026-11-14/hc-cta-sponsor-guidance.txt) and FACTS. "Varies" for Phase IV is the draft's, since the old page gave no size. TO CONFIRM (QA; new, b136 second reader, needs its master-doc entry): "These trials give the main evidence for a submission to market the drug" merges the old page's "generating the primary evidence base for regulatory submission" and "These pivotal studies determine whether a compound receives authorization"; Health Canada's definition of Phase III (the guidance above) doesn't say it. Is it right as written? */}
 
-## The key roles
+Health Canada must authorize a drug trial before it starts, unless the trial uses a marketed drug within the conditions of its notice of compliance or its drug identification number. Health Canada's guidance calls those trials Phase IV trials. Even then, the sponsor must conduct the trial in accordance with Division 5 of the Food and Drug Regulations, including good clinical practices, labelling and REB approval.
 
-A clinical study at an academic medical centre involves a dense web of documented accountability. Here are the key roles, what each is responsible for, and how they connect.
+Health Canada may object to a <Tooltip tip="Application to Health Canada for authorization to conduct a drug trial under Division 5 of the Food and Drug Regulations." headline="Clinical Trial Application (CTA)" cta="Full definition" href="/kb/foundations/glossary#cta">Clinical Trial Application (CTA)</Tooltip> within 30 days after the date it receives the application.{/* TO CONFIRM (the Research Facilitator): the old page added that this 30-day review "is faster than many comparable jurisdictions, which contributes to Canada's appeal as a first-in-human trial destination", for Phase I CTAs; no source found (searched FACTS, the guidance for clinical trial sponsors). The 30 days apply to every drug CTA (C.05.006(1)(b)), not only Phase I. Kept here as a hidden note: should the comparison return, with a source? */}
 
-<AccordionGroup>
-  <Accordion title="Principal Investigator / Qualified Investigator — Required, one per site">
-    In Health Canada's Division 5 language, this person is the **Qualified Investigator** — a physician or dentist licensed in the province. Delegation is documented and legal. **Accountability does not transfer.** In investigator-initiated trials, the PI is often also the sponsor, a combined role that adds substantial regulatory obligation including filing a CTA, arranging independent monitoring, and ensuring that the <Tooltip tip="A drug, medical device, or natural health product being tested or used as a reference in a clinical trial." headline="Investigational Product (IP)" cta="Full definition" href="/kb/foundations/glossary#ip">investigational product</Tooltip> meets GMP standards.
-  </Accordion>
-  <Accordion title="Clinical Research Coordinator — Site operations">
-    The day-to-day operational lead. Scheduling, documentation, data capture, participant coordination, regulatory filings, REB submissions. There is no regulated CRC profession in Canada — scope of practice is defined institutionally and by the <Tooltip tip="Lists each team member, their qualifications, and specific trial tasks authorized by the QI." headline="Task Delegation Log (TDL)" cta="Full definition" href="/kb/foundations/glossary#tdl">delegation log</Tooltip>. A CRC without a nursing credential cannot perform reserved health acts in Quebec: **blood draws, medication administration, clinical assessment**. Those require a licensed research nurse.
-  </Accordion>
-  <Accordion title="Research Nurse — Licensed by OIIQ">
-    Licensed by the OIIQ in Quebec, able to perform the full range of delegated clinical tasks. Often the most consistent human presence for participants across the study — coordinating visits, responding to questions, fielding calls outside of business hours. Bridges clinical practice and research protocol.
-  </Accordion>
-  <Accordion title="Clinical Research Associate (Monitor) — Sponsor-side, verification role">
-    Employed by or contracted to the sponsor, not the site. Conducts monitoring visits — reviewing source documents, confirming consent documentation, verifying protocol adherence. Under ICH E6(R3), monitoring is explicitly **risk-based**: remote and centralized review formally complement on-site visits. The CRA is there to verify, not to serve the site's operational needs.
-  </Accordion>
-  <Accordion title="Research Ethics Board (REB / CER) — Independent, cannot be overridden">
-    An independent committee reviewing every research protocol before any participant is approached. In Quebec: minimum five members including researchers, an ethicist, a legal expert (not the institution's own counsel), and a community member with no institutional affiliation. **The REB's decision is independent — institutional management cannot override a rejection.** Research with minors or with adults who cannot consent must be approved and monitored by an REB that Quebec's health minister has formed or designated.
-  </Accordion>
-  <Accordion title="Research Pharmacist — Dual framework: Division 5 and pharmacy law">
-    Manages the investigational product: receiving, storage, dispensing, and accounting for every unit. Maintains blinding when required. Participates in site initiation and monitoring visits. In Quebec, obligations flow from both **Health Canada Division 5 and provincial pharmacy practice legislation** — making the research pharmacy function distinct from standard clinical pharmacy.
-  </Accordion>
-</AccordionGroup>
+A study of interventions intended to benefit participants must start from clinical equipoise: a genuine uncertainty in the relevant expert community about which intervention is most effective. When Health Canada finds the evidence in a drug submission sufficient, it issues a Notice of Compliance (NOC), and a Drug Identification Number (DIN) is assigned. Health Canada's review target for a new drug submission is 300 days, or 180 days for a submission granted priority review.{/* TO CONFIRM (QA; b136 fact check, row 21, needs its master-doc entry): how the NOC is issued and the DIN assigned (C.08.004 and the DIN provisions) was not checked in a saved source. Answered (b136 second reader): the 300 and 180 days are review targets, from Health Canada's fact sheet "Priority Review of Drug Submissions (Therapeutic Products)" ("Priority Review status assigns eligible submissions a shortened review target of 180 days, in comparison to 300 days for non-priority."; the page carries no date; saved in batches/b136-3b-foundations/factcheck/hc-priority-review-fact-sheet.txt). For MF: whether a drug submission's review target belongs on the Hub at all (STYLE-HUB E, no typical durations; a target for a marketing submission, not for research review); kept until MF answers. */}
 
-<Note>
-In a moderately complex industry-sponsored trial, more than **twenty people** carry documented accountability before the first participant signs anything — investigators, coordinators, nurses, pharmacists, ethics board members, monitors, and institutional administrators.
-</Note>
+{/* Sources: Health Canada, Guidance document for clinical trial sponsors: clinical trial applications (saved Nov. 14, 2026, evidence/web/audit-S1_fetched-2026-11-14/hc-cta-sponsor-guidance.txt), its definitions of Phase I ("Clinical trials designed to determine the pharmacokinetics/pharmacological actions of the drug and the side effects associated with increasing doses. … Phase I trials are generally conducted in healthy volunteers, but may be conducted in patients when administration of the drug to healthy volunteers is not ethical."), Phase II, Phase III and Phase IV ("All studies performed within the approved indication after the drug has been approved by the regulator for the market"), and its sentences "Sponsors are not required to file a CTA for clinical trials involving marketed drugs where the investigation is to be conducted within the parameters of the approved NOC or DIN [C.05.006(2)]; these trials are referred to as Phase IV clinical trials." and "Sponsors must conduct all clinical trials, including Phase IV trials, in accordance with Division 5, including the principles of GCPs, labelling requirements and obtaining REB approval."; the Food and Drug Regulations, C.05.006(1)(b) ("within 30 days after the date of receipt of the application") and C.05.006(2); TCPS 2 (2022), article 11.3, Application ("In the context of studies that involve interventions intended to have a beneficial effect upon participants, there must exist a genuine uncertainty (i.e., clinical equipoise) on the part of the relevant expert community about which interventions are most effective"; b136 second reader: the scope is these studies, not Phase III alone, fact check row 20); Health Canada's fact sheet "Priority Review of Drug Submissions (Therapeutic Products)" (fetched Nov. 15, 2026: "Priority Review status assigns eligible submissions a shortened review target of 180 days, in comparison to 300 days for non-priority."; b136 second reader: targets, not review lengths, fact check row 22). The 30-day sentence follows C.05.006(1)(b): the Minister may send a notice within 30 days after receipt (fact check row 19: the review does not "last" 30 days). The old page's Steps component held reference content, not a procedure (STYLE-HUB H): it is now a table. Ledger row 31: "drug" for "compound" throughout. */}
 
-## Where the rules came from
+## Know the roles in a study
 
-Research ethics governance did not develop from first principles. It developed in response to specific failures — cases where the absence of structured oversight led to harm. Understanding the history makes the obligations feel necessary rather than arbitrary.
+A study at an academic medical centre involves many people, each with documented responsibilities. The main roles are these:
 
-<Steps>
-  <Step title="1947 — The Nuremberg Code">
-    The Nuremberg Doctors' Trial produced ten foundational principles for ethical research. First and most developed: **voluntary informed consent is an absolute requirement**.
-  </Step>
-  <Step title="1964 — Declaration of Helsinki">
-    The World Medical Association developed this framework for physicians conducting research. Its 1975 revision introduced the requirement for **independent ethics committee review**. Core principle: participant welfare takes precedence over the interests of science and society. Revised eight times, most recently in 2024.
-  </Step>
-  <Step title="1979 — The Belmont Report">
-    Following public exposure of the Tuskegee Syphilis Study, US congressional hearings produced this landmark document articulating three principles: **respect for persons, beneficence, and justice**. These directly shaped Canada's TCPS2 and remain its organizing framework.
-  </Step>
-  <Step title="1996 — ICH GCP E6(R1): international harmonization">
-    The International Council for Harmonization published the first unified Good Clinical Practice standard, aligning clinical trial requirements across the US, EU, and Japan. **Canada adopted it as the operational standard for regulated drug trials.**
-  </Step>
-  <Step title="2016 — ICH GCP E6(R2): risk-based monitoring">
-    An addendum to R1 formalizing **risk-based quality management** and acknowledging the shift to electronic clinical data. It set the expectation that monitoring strategies be tailored to study risk — the conceptual foundation for the more complete redesign in R3.
-  </Step>
-  <Step title="1998–2022 — TCPS2: Canada's national ethics standard">
-    The Tri-Council Policy Statement (first published 1998, current version 2022) governs all human participant research at institutions receiving CIHR, NSERC, or SSHRC funding. Compliance is a **condition of federal funding**.
-  </Step>
-  <Step title="2026 — ICH GCP E6(R3): in effect in Canada April 1, 2026">
-    The most significant GCP revision in three decades. Core shift: from reactive <Tooltip tip="The RI-MUHC's Quality Assurance department, which checks the credentials and training of each investigator who submits a study, audits research and maintains the SOPs. In GCP, quality assurance is the planned, systematic actions that ensure a trial complies with GCP and the applicable regulatory requirements." headline="Quality Assurance (QA)" cta="Full definition" href="/kb/foundations/glossary#qa">quality assurance</Tooltip> to **quality by design** — identify critical-to-quality factors before the study begins, build controls proportionate to those risks. Formalizes risk-based monitoring, electronic data governance, and decentralized trial elements.
-  </Step>
-</Steps>
+| Role | Who holds it | What they do |
+|---|---|---|
+| Principal investigator (PI) | The person who leads the study at the MUHC. In a drug trial regulated by Health Canada, the <Tooltip tip="The physician responsible to the sponsor for the conduct of a clinical trial at the site. One QI per study per Canadian site." headline="Qualified Investigator (QI)" cta="Full definition" href="/kb/foundations/glossary#qi">qualified investigator</Tooltip> is entitled to provide health care under the laws of the province where the site is located. The qualified investigator is a physician, or a physician or dentist for a drug used only for dental purposes. The sponsor must ensure that each site has no more than one qualified investigator. Since September 14, 2026, Health Canada's interim policy also accepts a person who is not a physician or dentist, if they meet [its conditions](/kb/governance/laws-regulations). | Leads the study and delegates tasks, with each delegation documented. The investigator retains the ultimate responsibility for the delegated tasks. In an investigator-initiated trial, the principal investigator is often also the sponsor, and takes on the sponsor's duties too, such as filing the CTA, arranging monitoring and ensuring that the <Tooltip tip="A drug, medical device, or natural health product being tested or used as a reference in a clinical trial." headline="Investigational Product (IP)" cta="Full definition" href="/kb/foundations/glossary#ip">investigational product</Tooltip> meets good manufacturing practices. |
+| Clinical research coordinator (CRC) | A member of the study team. No order regulates the coordinator's profession in Canada: the institution and the <Tooltip tip="Lists each team member, their qualifications, and specific trial tasks authorized by the QI." headline="Task Delegation Log (TDL)" cta="Full definition" href="/kb/foundations/glossary#tdl">Task Delegation Log</Tooltip> set what a coordinator may do. | Runs the study day to day: scheduling, documentation, data capture, participants' visits, regulatory filings and REB submissions. A coordinator who is not a member of a professional order cannot perform activities that Quebec's laws reserve to members of professional orders, such as taking blood specimens or administering prescribed medications. |
+| Research nurse | A nurse licensed by the Ordre des infirmières et infirmiers du Québec (OIIQ). | Performs the clinical tasks delegated to them, within the activities the Nurses Act reserves to nurses. Often the person participants see most often during the study. |
+| Clinical research associate (monitor) | A person employed by or contracted to the sponsor, not the site. | Visits or reviews the site to verify source documents, consent documentation and protocol adherence. Under guideline E6(R3), the sponsor's monitoring is risk-based, and remote and centralized review can complement on-site visits. |
+| Research Ethics Board (REB) | An independent committee. | Reviews every research protocol before any participant is approached. |
+| Research pharmacist | A pharmacist. | Manages the investigational product: receipt, storage, dispensing and accounting for every unit. Maintains blinding when the protocol requires it, and takes part in site initiation and monitoring visits. |
+{/* TO CONFIRM (People and Culture, for the step 4c topic on who may do what): the old page said a coordinator without a nursing credential cannot perform "blood draws, medication administration, clinical assessment" and "Those require a licensed research nurse". The Professional Code, s. 37.1, also reserves taking specimens and administering prescribed medications to licensed practical nurses, medical technologists and respiratory therapists, within their orders' scope; the draft names the activities and the rule, not the nurse alone. "Clinical assessment" is not in the Nurses Act's s. 36 in those words ("evaluating the physical and mental condition of a symptomatic person" is): is a coordinator barred from it, and in what words? TO CONFIRM (QA): "Often the person participants see most often", the pharmacist's role in initiation and monitoring visits, and "no order regulates the coordinator's profession in Canada" come from the old page, with no source found (searched FACTS and the SOP text for "coordinator" with "regulated" or "order"). */}
 
-**The regulatory stack — all layers apply simultaneously**
+Under [TCPS 2](https://ethics.gc.ca/eng/tcps2-eptc2_2022_chapter6-chapitre6.html), an REB has at least five members, both men and women, among them at least two members with expertise in the relevant research disciplines, one member knowledgeable in ethics, one member knowledgeable in the relevant law and one community member with no affiliation with the institution.
 
-| Layer | Instruments |
-|-------|------------|
-| International | ICH GCP E6(R3), Declaration of Helsinki |
-| Federal — Canada | Food and Drug Regulations Part C Division 5, Medical Devices Regulations (ITA), TCPS2 |
-| Provincial — Quebec | Civil Code Arts. 20–25, <Tooltip tip="Quebec's 2021 act that amended its privacy laws for public bodies and private enterprises; health and social services information held by the MUHC falls under Law 5 instead." headline="Law 25" cta="Full definition" href="/kb/foundations/glossary#law-25">Law 25</Tooltip>, <Tooltip tip="Quebec's Act respecting health and social services information (key provisions July 2024). Governs researcher access to health data through RSSS institutions." headline="Law 5 / Loi 5" cta="Full definition" href="/kb/foundations/glossary#law-5">Law 5</Tooltip>, the health ministry's *Cadre de référence*, Act respecting the governance of the health and social services system |
+The member knowledgeable in the law should not be the institution's legal counsel or risk manager. An institution may not override an REB's decision to reject a research proposal. Research with minors or with adults who cannot consent, if it could interfere with their integrity, must be approved and monitored by an REB that Quebec's health minister has formed or designated.
 
-Quebec's Civil Code creates legally enforceable obligations beyond federal policy. Each provincial layer adds requirements; none replaces the others.
+In an industry-sponsored trial of moderate complexity, more than twenty people may carry documented responsibilities before the first participant signs a consent form.{/* TO CONFIRM (the Research Facilitator): "more than twenty people" comes from the old page (a Note); no source found. Moved out of the Note, since it is not a local exception (STYLE-HUB H). */}
 
-## The Quebec layer
+{/* Sources: the Food and Drug Regulations, C.05.001 ("qualified investigator means the person responsible to the sponsor for the conduct of the clinical trial at a clinical trial site, who is entitled to provide health care under the laws of the province where that clinical trial site is located, and who is (a) in the case of a clinical trial respecting a drug to be used for dental purposes only, a physician or dentist …; and (b) in any other case, a physician"; batches/b113-retro-path-pilot/factcheck/fdr-C.05.001_text-from-saved-html.txt) and C.05.010(e) ("at each clinical trial site, there is no more than one qualified investigator", among the sponsor's duties; evidence/web/audit-S1_fetched-2026-11-14/gui0100-good-clinical-practices.txt) (b136 second reader: both restored from the old page's "licensed in the province" and "one per site", cut without a note; fact check part 6); Health Canada, Interim policy for the modernization of the clinical trial framework: Notice (Sept. 14, 2026), through FACTS "Who can be a qualified investigator (drug trials)" and kb/governance/laws-regulations; ICH E6(R3), section 2.3.1 ("The investigator may delegate trial-related activities to other persons or parties."; "The investigator retains the ultimate responsibility"), section 2.3.3 (a record of delegation) and section 3.11.4 (monitoring); Health Canada's guidance for clinical trial sponsors ("For such trials, the institution or investigator is considered to be the sponsor of the trial and must fulfill all the regulatory obligations of the sponsor"); the Nurses Act (I-8), sections 36 and 41, and the Professional Code (C-26), section 37.1, through evidence/laws-quebec_2026-11-08.md; TCPS 2 (2022), article 6.4 ("The REB shall consist of at least five members, including both men and women"; "one member is knowledgeable in the relevant law. That member should not be the institution's legal counsel or risk manager."; "one community member has no affiliation with the institution") and article 6.3 ("An institution may not override an REB decision to reject a research proposal."); the Civil Code of Québec, article 21, through kb/recruitment/consent. Until this draft, the REB's composition was given as Quebec's ("In Quebec: minimum five members"); its source is TCPS 2, article 6.4. The old roles were in a dropdown group; roles compared on the same points go in a table (STYLE-HUB H). */}
 
-Quebec does not apply the federal rules and stop there. It adds obligations that address what federal frameworks leave to the provinces: consent under civil law, governance of the public health network, and privacy requirements specific to Quebec institutions.
+## Know where the rules came from
 
-### The triple evaluation
+Research ethics rules grew out of specific failures, where the absence of oversight led to harm. Each milestone below added a principle that still applies:
 
-Before any research project can begin at a Quebec <Tooltip tip="Quebec's public health and social services network (Réseau de la santé et des services sociaux), including the RI-MUHC." headline="RSSS" cta="Full definition" href="/kb/foundations/glossary#rsss">RSSS</Tooltip> institution, three distinct evaluations must be completed. They can run simultaneously — but final authorization issues only when all three are complete and positive.
+| Year | Milestone | What it added |
+|---|---|---|
+| 1947 | The Nuremberg Code, from the Nuremberg Doctors' Trial | Ten principles for ethical research, the first of which is that the voluntary consent of the participant is absolutely essential. |
+| 1964 | The World Medical Association's [Declaration of Helsinki](https://www.wma.net/policies-post/wma-declaration-of-helsinki/) | A framework for physicians who conduct research. Its 1975 revision introduced review by an independent ethics committee. Its core principle is that the participant's welfare takes precedence over the interests of science and society. It has been revised eight times, most recently in 2024. |
+| 1979 | The Belmont Report, in the United States, after the Tuskegee Syphilis Study became public | Three principles: respect for persons, beneficence and justice. |
+| 1996 | The International Council for Harmonisation's (ICH) good clinical practice guideline, E6 | One standard for clinical trials across the United States, the European Union and Japan. Health Canada adopted it for drug trials regulated under Division 5. |
+| 1998 | The first *Tri-Council Policy Statement* | Canada's national ethics policy. Its current edition is TCPS 2 (2022). |
+| 2016 | ICH E6(R2) | An addendum that brought in risk-based quality management and recognized electronic clinical data. |
+| 2025 | ICH E6(R3), in effect in Canada since April 1, 2026 | Quality built into the design of a trial: the critical-to-quality factors identified before the trial begins, and controls proportionate to the risks. E6(R3) also covers risk-based monitoring, electronic data and decentralized elements. |
+{/* TO CONFIRM (the coordinator; searched Nov. 15, 2026): the WMA's page (fetched) lists the adoption in 1964 and amendments in 1975, 1983, 1989, 1996, 2000, 2008, 2013 and 2024 (eight), with notes of clarification in 2002 and 2004; it does not say what the 1975 revision added, or name a "core principle" in the old page's words (its current text: "These purposes can never take precedence over the rights and interests of individual research participants"). The Nuremberg Code's first principle and the Belmont Report's origin were not checked (no saved source). Answered (b136 second reader, from the blind fact check): E6 in 1996, from ICH E6(R3)'s document history ("Approval by the Steering Committee under Step 4 and recommended for adoption to the three ICH regulatory bodies", "1 May 1996", run/src/ich-e6r3.txt); E6(R2) in 2016, from Health Canada's POL-0030 ("ICH E6(R1) was amended in November 2016 to ICH E6(R2) to enhance sponsor oversight and management of clinical trials and to improve standards for electronic records", evidence/web/audit-S1_fetched-2026-11-14/pol0030.txt), which doesn't name risk-based quality management, so that part of the E6(R2) row stays open (QA); the first TCPS in 1998, from TCPS 2's Introduction ("Since the adoption of the original Policy in 1998", factcheck/tcps2-2022-intro.txt). */}
 
-<Steps>
-  <Step title="01 — Scientific evaluation: Is the science sound?">
-    Assesses merit and methodological feasibility. For projects already peer-reviewed by a recognized funding body (CIHR, FRQ-Santé), that review is generally accepted. Otherwise, an institutional scientific committee evaluates it.
-  </Step>
-  <Step title="02 — Ethics evaluation: Are the participants protected?">
-    Conducted by the CER following TCPS2 proportionality principles. Lower-risk studies may receive delegated review by the chair; higher-risk protocols go to the full board. Annual continuing review is required throughout.
-  </Step>
-  <Step title="03 — Institutional feasibility: Can this institution do this work?">
-    Patient population alignment, clinical capacity, pharmacy readiness, resource availability, contract review, legal review — and the *EFVP* (privacy impact assessment) when personal health data is involved.
-  </Step>
-</Steps>
+TCPS 2 rests on three core principles of its own: respect for persons, concern for welfare and justice. Institutions that receive funds from the three federal research agencies (the Canadian Institutes of Health Research, the Natural Sciences and Engineering Research Council and the Social Sciences and Humanities Research Council) agree to apply it, so compliance is a condition of federal funding.{/* Correction: the old page said the Belmont principles "directly shaped Canada's TCPS2 and remain its organizing framework" (wave 2 C25: TCPS 2 never names Belmont or "beneficence"). */}
 
-### *La personne formellement mandatée*
+{/* Sources: TCPS 2 (2022), chapter 1, section B (fetched Nov. 15, 2026: "expressed through three core principles: Respect for Persons, Concern for Welfare, and Justice"); the WMA's Declaration of Helsinki page (fetched Nov. 15, 2026: adopted "Helsinki, Finland, June 1964"; amended in "Tokyo, Japan, October 1975" and seven more times, the last in "Helsinki, Finland, October 2024"); Health Canada's ICH guidelines page (evidence/web/health-canada-ich-guidelines_read-2026-11-08.html: E6(R3) "implemented on April 1, 2026"), through FACTS "ICH E6(R3) and its Annex 2 in Canada"; ICH E6(R3) (Step 4, Jan. 6, 2025), principles 6 and 7 ("Quality should be built into the scientific and operational design and conduct of clinical trials"; "Factors critical to the quality of the trial should be identified prospectively"). The old page's Steps component held history, not a procedure (STYLE-HUB H): it is now a table. Ledger row 31: "First and most developed" reworded. */}
 
-Every RSSS institution designates a ***<Tooltip tip="The person the MUHC has mandated to authorize research: the Director of Innovation, Performance and Quality, who issues MUHC Authorization for each study." headline="Personne mandatée" cta="Full definition" href="/kb/foundations/glossary#personne-mandatee">personne formellement mandatée</Tooltip>*** (PFM): at the MUHC, the person to whom the President and Chief Executive Officer has delegated, in writing, the final written authorization of each research project.{/* Source: the Regulatory Framework, section 1.2.2 ("The PCEO may delegate the operational authorization of research projects to a mandated person by means of a written instrument of delegation."). Until Nov. 15, 2026: "an individual authorized by the Board of Directors" (a sibling of facts-21, P5-14). */} No study begins — not even participant identification — without the PFM's authorization letter. The requirement reflects a provincial governance obligation, not an administrative preference.
+## Know which rules apply at the same time
 
-### The Civil Code of Quebec — legally enforceable
+Every layer applies at once. Each provincial layer adds requirements, and none replaces another.
 
-<AccordionGroup>
-  <Accordion title="Art. 20 CCQ — Proportionality of risk">
-    A capable adult may take part in research that could interfere with their integrity only if the risk is not disproportionate to the benefit that can reasonably be expected, and the project must be approved and monitored by a research ethics committee.
-  </Accordion>
-  <Accordion title="Art. 21 CCQ — Minors and incapacitated adults">
-    Governs research with **minors and adults who cannot consent**. A minor or an adult who cannot consent, and who understands the nature and consequences of the research and objects to taking part, cannot take part, whoever has consented for them. The research must be approved and monitored by a research ethics committee that Quebec's health minister has formed or designated.
-  </Accordion>
-  <Accordion title="Art. 25 CCQ — Compensation restrictions">
-    Allows only an indemnity for the **loss and inconvenience** a participant suffers, and no other financial reward, in research that could interfere with the person's integrity. Stricter than both TCPS2 and ICH GCP, which permit payment to healthy Phase I volunteers. In Quebec, compensation must be calibrated to avoid constituting undue inducement.
-  </Accordion>
-</AccordionGroup>
+| Layer | Rules |
+|---|---|
+| International | ICH E6(R3). The Declaration of Helsinki. |
+| Federal | The Food and Drug Regulations, Part C, Division 5. The Medical Devices Regulations (investigational testing). The Natural Health Products Regulations, Part 4. TCPS 2. |
+| Quebec | The Civil Code, articles 20 to 25. <Tooltip tip="Quebec's 2021 act that amended its privacy laws for public bodies and private enterprises; health and social services information held by the MUHC falls under Law 5 instead." headline="Law 25" cta="Full definition" href="/kb/foundations/glossary#law-25">Law 25</Tooltip>. <Tooltip tip="Quebec's Act respecting health and social services information (key provisions July 2024). Governs researcher access to health data through RSSS institutions." headline="Law 5 / Loi 5" cta="Full definition" href="/kb/foundations/glossary#law-5">Law 5</Tooltip>. The health ministry's frameworks for research. The Act respecting the governance of the health and social services system. |
 
-### Privacy: Laws 25 and 5
+{/* Sources: the old page's table ("The regulatory stack — all layers apply simultaneously"), checked in the batches of Nov. 9 (U01 107–111: the governance act); the Natural Health Products Regulations, Part 4 (section 64), added beside the two federal regulations the old table named (paths/index, "Check whether Health Canada must authorize the study"). "the health ministry's *Cadre de référence*" became "the health ministry's frameworks for research", since two exist (the 2020 Cadre de référence ministériel and the 2016 multi-centre Cadre; STYLE-HUB D). */}
 
-<CardGroup cols={2}>
-  <Card title="Law 25 — Privacy modernization (in force Sept. 2023)" icon="shield">
-    Amended Quebec's public-sector access act and its private-sector privacy act. For health and social services information held by the MUHC, Law 5 applies instead.
-  </Card>
-  <Card title="Law 5 — Health information framework (key provisions July 2024)" icon="database">
-    Governs health and social services information held by bodies such as the MUHC. To use health records without consent, a researcher attached to the MUHC needs the REB's decision, an EFVP and MUHC authorization. Researchers not attached to a health and social services body apply to Santé Québec's research access centre. The *EFVP* is not a form completed at the end — it requires early engagement.
-  </Card>
-</CardGroup>
+## Know what Quebec adds
 
-<Info>
-**CATALIS FAST TRACK:** [CATALIS Québec](https://catalisquebec.com/en/) operates a [FAST TRACK Evaluation Service](https://catalisquebec.com/en/fast-track-evaluation-service/) for qualifying industry-sponsored trials; the RI-MUHC is one of its 23 partner health institutions. Ask the Research Facilitator whether FAST TRACK eligibility applies to your study.
-</Info>
+Quebec adds rules on what federal policy leaves to the provinces: consent under civil law, the governance of the public health network, and privacy rules for its institutions. [Laws, Regulations and Guidelines](/kb/governance/laws-regulations) explains each.
 
-## The participant at the centre
+### Three reviews before MUHC Authorization
 
-Informed consent is a process, not a signature. Under both TCPS2 and Quebec's Civil Code, it must be continuous, documented, and designed to ensure that participation remains genuinely voluntary throughout — not just at the moment of enrolment.
+A study at the MUHC needs three favourable reviews: a scientific review, an ethics review and an institutional feasibility review. They run in parallel. [Study Submission and Review](/kb/submission/submission-overview) explains each.
 
-The right to withdraw at any time, without consequence to care — this is not a formality. It is a legal and ethical guarantee that every research participant retains throughout the study.
+- **Scientific review.** It checks the study's scientific relevance and validity. The REB may recognize an earlier review by a recognized peer review committee, such as the Canadian Institutes of Health Research (CIHR) or the Fonds de recherche du Québec (FRQ). A peer-reviewed funded project is not reviewed again at the MUHC, as long as documentation of its peer review is provided. Otherwise, the REB's scientific members review the study.
+- **Ethics review.** The REB reviews the study, with a review proportionate to its risk. Continuing review is required at least once a year.
+- **Institutional feasibility review.** It checks whether the MUHC can do the study: its patients, clinical capacity, pharmacy, resources, contract and legal review, and the EFVP where the study needs one.
 
-Consent is not permanent. If important new information that may be relevant to their consent becomes available, it must be communicated to participants in a timely manner, and the REB decides whether they must be re-consented.{/* Sources: SOP-CR-008, section 5.7.2; the MUHC REB's SOP 405A.001-2, section 5.1.6. Until Nov. 15, 2026: "participants must be re-consented before continuing" (a sibling of b111, A3). */} Initial consent authorizes participation as understood at the time. It does not authorize participation under conditions that did not yet exist.
-
-**Elements of valid consent — TCPS2 and Civil Code:**
-
-- **Nature and purpose** of the study
-- **What participation involves** — procedures, visits, time, potential discomfort
-- **Known risks** and potential benefits
-- **Right to withdraw** at any time, without consequences to care
-- What happens to **their data**
-- **Who to contact** with questions or concerns
-
-<Note>
-At the MUHC, a consent form needs [an English and a French version](/kb/recruitment/consent#prepare-the-consent-form), unless the REB accepts a justification. Never use a translated or modified <Tooltip tip="The written document providing the participant with information essential to making an informed decision. Both parties must sign." headline="Informed Consent Form (ICF)" cta="Full definition" href="/kb/foundations/glossary#icf">ICF</Tooltip> without REB approval.
-</Note>
+The <Tooltip tip="The person the MUHC has mandated to authorize research: the Director of Innovation, Performance and Quality, who issues MUHC Authorization for each study." headline="Personne mandatée" cta="Full definition" href="/kb/foundations/glossary#personne-mandatee">Personne mandatée</Tooltip> issues <Tooltip tip="The MUHC's final authorization for a study to begin, issued by the Personne mandatée once the scientific, ethics and institutional feasibility reviews are favourable and, where the study needs it, Health Canada has authorized it." headline="MUHC Authorization" cta="Full definition" href="/kb/foundations/glossary#muhc-auth">MUHC Authorization</Tooltip> once all three reviews are favourable. At the MUHC, the Personne mandatée is the person to whom the President and Chief Executive Officer has delegated, in writing, the authorization of research projects. Quebec's health ministry requires every establishment in its network to formally authorize all the research under its auspices.
 
 <Warning>
-**Therapeutic misconception in practice:** Researchers and coordinators who work closely with participants can underestimate how easy it is for participants to conflate research participation with personalized care. A well-designed consent process — plain language, time for questions, periodic checks on understanding — is the primary tool for keeping that distinction clear throughout the study.
+Do not start any research activity, including recruitment, data collection or analysis, until you have both REB approval and MUHC Authorization.
 </Warning>
+
+{/* Sources: the Regulatory Framework, section 3.1.02 ("it must receive the three required favourable reviews, namely: a scientific review; an ethics review; an institutional suitability review."; "No solicitation, participant recruitment or data collection activity may be undertaken until the principal investigator has received this le-er of authorization."), section 3.1.03 ("Unless the project has already undergone a scientific review by a recognized peer review commi-ee (e.g., the Canadian Institutes of Health Research (CIHR), the Fonds de recherche du Québec (FRQ)), the project is reviewed for its scientific quality by the scientific members of the Research Ethics Board (REB)."), section 3.1.05 (the suitability review "is conducted in parallel with the scientific review and the ethics review") and section 1.2.2 ("The PCEO may delegate the operational authorization of research projects to a mandated person by means of a written instrument of delegation."); SOP-CR-007_08, section 5.4.7 ("Review for scientific value and validity of new research proposals will be conducted either by internal REB reviewers or a previous peer review may be recognised by the REB. Peer-reviewed funded projects with appropriate documentation are not re-reviewed at the MUHC as long as documentation of the peer-review is provided."; b136 second reader: the condition restored, fact check row 54; FACTS "Not automatic: the REB recognizes the earlier review") and section 5.5.1 ("Continuing REB review is at least an annual review"); the health ministry's Cadre de référence ministériel pour la recherche avec des participants humains (2020), Norme 3 ("L'établissement autorise formellement la réalisation de toutes les recherches ayant lieu sous ses auspices"), through FACTS "Batch b108"; critical rule 1 (STYLE-HUB B3; SOP-CR-007_08, section 3.0). Changes from the old page: "an institutional scientific committee" became the REB's scientific members (section 3.1.03); "generally accepted" became the REB's discretion and SOP-CR-007's condition of documentation (section 3.1.03's "Unless"; SOP-CR-007_08, section 5.4.7); "Annual continuing review" became "at least once a year" (section 5.5.1); "No study begins — not even participant identification — without the PFM's authorization letter" became critical rule 1, word for word, which needs REB approval too; "The requirement reflects a provincial governance obligation, not an administrative preference" became the ministry's Norme 3. "Institutional suitability review" is the Framework's name; the Hub says feasibility (STYLE-HUB D). The old heading "The triple evaluation" was shorthand (STYLE-HUB A5.2). */}
+
+### Rules of the Civil Code on research
+
+Quebec's [Civil Code](https://www.legisquebec.gouv.qc.ca/en/document/cs/CCQ-1991) sets rules for research that could interfere with a person's integrity:
+
+- A capable adult may take part only if the risk is not disproportionate to the benefit that can reasonably be expected. The project must be approved and monitored by a research ethics committee.
+- A minor or an adult who cannot consent may take part only if the risk, given their state of health and personal condition, is not disproportionate to the benefit that may reasonably be anticipated.
+- If a minor or an adult who cannot consent is the only subject of the research, it must have the potential to benefit their health. If the research is on a group, it must have the potential to produce results that benefit people in the same age group or with the same disease or disability.
+- A minor or an adult who cannot consent, and who understands the nature and consequences of the research and objects to taking part, cannot take part, whoever has consented for them. [Who consents for them](/kb/recruitment/consent#who-can-consent) depends on their age and situation. The research must be approved and monitored by a research ethics committee that Quebec's health minister has formed or designated.
+- A participant may receive an indemnity for the loss and inconvenience they suffer, and no other financial reward.
+
+National and international ethics guidance allows payment for taking part, such as payment to healthy volunteers in Phase I trials, but at the MUHC it doesn't override the Civil Code's limit. Participants should receive [compensation for the loss and restriction they suffer](/sops/cr-007#5-7-4), on condition that it is not an undue inducement and is paid pro rata.
+
+{/* Sources: the Civil Code of Québec, article 20 (risk "not disproportionate to the benefit that can reasonably be anticipated"; "approved and monitored by a research ethics committee"), article 21 (first paragraph: "only if the risk incurred, taking into account his state of health and personal condition, is not disproportionate to the benefit that may reasonably be anticipated"; second paragraph: benefit to the person's health, or for research on a group, "results capable of conferring benefit to other persons in the same age category or having the same disease or handicap"; both restored by the b136 second reader, fact check row 61, in the words of the home, kb/recruitment/consent; objection; "approved and monitored by a competent research ethics committee … formed by the Minister of Health and Social Services or designated by that Minister") and article 25 (an indemnity "as compensation for the loss and inconvenience suffered"; no other financial reward), through evidence/laws-quebec-ccq-arts-20-25-153-167-176-600-606_read-2026-11-11.md and kb/recruitment/consent; SOP-CR-007_08, section 5.7.4 ("A participant in a research study should receive compensation for loss and restriction suffered, complying with both ethics and the law, on condition that: The compensation does not constitute an undue inducement; The compensation is paid on a pro-rata basis"), in the approved wording of kb/recruitment/consent (card E9). Changes from the old page: "In Quebec, compensation must be calibrated to avoid constituting undue inducement" tied the undue-inducement rule to article 25; it is the RI-MUHC's SOPs' "should" (wave 1 B, FACTS "Compensating participants"). "Stricter than both TCPS2 and ICH GCP, which permit payment to healthy Phase I volunteers" became the consent page's approved contrast. The dropdowns held rules (STYLE-HUB H): a list. "Art. 20 CCQ" and similar headings had article numbers in reader text (A3). */}
+
+### Privacy laws in Quebec
+
+Two Quebec laws protect personal information. Law 25 (2021, most provisions in force since September 22, 2023) amended Quebec's public-sector access act and its private-sector privacy act. For health and social services information held by the MUHC, Law 5, the Act respecting health and social services information, applies instead.
+
+To use health records without consent, a researcher attached to the MUHC needs the REB's decision, an approved EFVP and MUHC Authorization. Researchers not attached to a health and social services body apply to Santé Québec's research access centre. Start the EFVP early, while you plan the study. [Privacy and the EFVP](/kb/governance/privacy) explains the steps.
+
+{/* Sources: FACTS "Law 25's official title and dates" (assented to Sept. 22, 2021; "Coming into force le 22 septembre 2023, sauf exceptions"); the old page's cards, fact-fixed in batch 79 (the privacy batch) and checked in kb/governance/privacy, the home; the order of the EFVP and MUHC Authorization from FACTS (MF, Nov. 12, 2026: "The EFVP review comes before and has to be approved before authorization from the personne mandatee is given"). The cards were not links (STYLE-HUB H): running text. "Law 5 — key provisions July 2024" stays in the pop-up. TO CONFIRM (the EFVP office): "Start the EFVP early, while you plan the study" restates the old page's "The EFVP is not a form completed at the end — it requires early engagement"; no source found beyond the old page. */}
+
+### Faster authorization for industry-sponsored trials
+
+For industry-sponsored trials, CATALIS Québec runs a [FAST TRACK Evaluation Service](https://catalisquebec.com/en/fast-track-evaluation-service/). The RI-MUHC is one of its 23 partner health institutions. Ask the [Research Facilitator](mailto:research.facilitator@muhc.mcgill.ca) whether your study is eligible.
+
+{/* Sources: CATALIS's FAST TRACK page, read in the built-in browser on Nov. 15, 2026 (evidence/web/catalis-fast-track_read-in-browser-2026-11-15/README.md: the RI-MUHC's logo among the "23 partner health institutions"), through FACTS "Batch b108". The old page held this in an Info box, which STYLE-HUB H doesn't allow. */}
+
+## Keep consent going through the study
+
+Consent is a process, not only a signature. Under [TCPS 2](https://ethics.gc.ca/eng/tcps2-eptc2_2022_chapter3-chapitre3.html), consent must be free, informed and ongoing, so that participation stays voluntary throughout the study. Consent must also be documented, in a signed consent form or in the researcher's documentation of another appropriate means of consent. Participants may withdraw their consent at any time, without giving a reason. Their pre-existing entitlements to care should not be prejudiced by their decision to take part or to withdraw.
+
+Consent does not last unchanged. If important new information that may be relevant to their consent becomes available, it must be communicated to participants in a timely manner, and the REB decides whether they must be re-consented. Initial consent covers participation as the participant understood it at the time. It doesn't cover participation under conditions that did not yet exist.
+
+TCPS 2 lists the information researchers must give prospective participants, as appropriate to the study. It includes:
+
+- The purpose of the research, in plain language.
+- What taking part involves: the procedures, the expected duration and the participant's responsibilities.
+- The reasonably foreseeable risks and potential benefits.
+- That participants are under no obligation to take part and may withdraw at any time without prejudice to pre-existing entitlements.
+- What information will be collected about participants, for what purposes, and who will have access to it.
+- Whom to contact with questions about the research, and whom to contact outside the research team about ethical issues.
+
+At the MUHC, a consent form needs [an English and a French version](/kb/recruitment/consent#prepare-the-consent-form), unless the REB accepts a justification. Never use a translated or modified <Tooltip tip="The written document providing the participant with information essential to making an informed decision. Both parties must sign." headline="Informed Consent Form (ICF)" cta="Full definition" href="/kb/foundations/glossary#icf">consent form</Tooltip> without the REB's approval.
+
+Researchers and coordinators who work closely with participants can underestimate how easily participants confuse research with personal care. Plain language, time for questions and regular checks on understanding help keep the difference clear throughout the study.{/* TO CONFIRM (QA): the old page's Warning ("Therapeutic misconception in practice") said a well-designed consent process "is the primary tool" for this; no source found beyond TCPS 2's description of therapeutic misconception. Moved out of a Warning: it names no harm or broken rule a reader must not miss (STYLE-HUB H). */}
+
+{/* Sources: TCPS 2 (2022), article 3.1 ("Consent can be withdrawn at any time."; "participants shall be free to withdraw their consent to participate in the research at any time, without offering any reason for doing so"; "Pre-existing entitlements to care, education and other services should not be prejudiced by the decision of whether to participate in or withdraw from a research project") article 3.2 ("The information generally required for informed consent includes: …", "as appropriate to the particular research project") and article 3.12 ("Evidence of consent shall be contained either in a signed consent form or in documentation by the researcher of another appropriate means of consent."; b136 second reader: the old page's "documented", cut without a note, restored from its source, fact check part 6); SOP-CR-008, section 5.7.2 ("Communicate any important new information that becomes available, and that may be relevant to participant's consent, in a timely manner."); the MUHC REB's SOP 405A.001-2, section 5.1.6 (whether re-consent is required); the English and French rule, as on kb/recruitment/consent (REB-SOP 404.001-2, section 5.4.1; SOP-CR-006_08, section 5.3.7). Changes from the old page: "Under both TCPS2 and Quebec's Civil Code, it must be continuous" credited ongoing consent to the Civil Code (wave 1 B); TCPS 2 sets it. "Elements of valid consent — TCPS2 and Civil Code" became TCPS 2's list, which the Civil Code doesn't give, and "without consequences to care" became TCPS 2's "without prejudice to pre-existing entitlements". */}
 
 <div className="ri-cantrain-callout">
   <a href="/training/cantrain"><img src="/images/cantrain_logo.png" alt="CANTRAIN" className="ri-cantrain-logo" /></a>
@@ -233,3 +192,16 @@ At the MUHC, a consent form needs [an English and a French version](/kb/recruitm
     </ul>
   </div>
 </div>
+
+## Contacts
+
+| Write to | About |
+|---|---|
+| The Research Facilitator, [research.facilitator@muhc.mcgill.ca](mailto:research.facilitator@muhc.mcgill.ca) | Which kind of study yours is, CATALIS FAST TRACK, RI-MUHC processes and SOPs. |
+| Quality Assurance (QA), [QAClinicalResearch@muhc.mcgill.ca](mailto:QAClinicalResearch@muhc.mcgill.ca) | Questions about the SOPs. |
+
+{/* Sources: the Research Facilitator's and QA's rows as on paths/index. */}
+
+{/* Checked against: TCPS 2 (2022), chapters 1, 2, 3, 6 and 11; ICH E6(R3) (Step 4, Jan. 6, 2025); Health Canada's guidance for clinical trial sponsors (saved Nov. 14, 2026); the Food and Drug Regulations, C.05.001, C.05.006 and C.05.010 (Justice Laws, current to Oct. 19, 2026); Health Canada's fact sheet on priority review (fetched Nov. 15, 2026); the Civil Code of Québec, articles 20, 21 and 25 (LégisQuébec, read Nov. 11, 2026); the Nurses Act, sections 36 and 41, and the Professional Code, section 37.1 (read Nov. 9, 2026); the Regulatory Framework (approved June 15, 2026), sections 1.2.2 and 3.1.02 to 3.1.05; SOP-CR-006_08, SOP-CR-007_08, SOP-CR-008_08; REB-SOP 402.001, 404.001-2 and 405A.001-2. Rewritten in batch b136, Nov. 15, 2026. */}
+
+Last reviewed: November 2026.

@@ -1,225 +1,196 @@
 ---
 title: "Trial Design and Study Types"
-description: "How study design determines the kind of evidence a trial can produce — and the regulatory and ethical obligations that follow."
+description: "Learn how blinding, randomization and the choice of comparator shape what a trial can show, and what the REB and Health Canada look for in a study's design."
 keywords: ["RCT", "randomized controlled trial", "observational", "cohort", "case-control", "crossover", "study types"]
 ---
 
-## What the study type actually determines
+<div className="hub-scope"><span className="hub-scope-label">Applies to</span><span className="hub-scope-tag">Drug studies (Level I)</span><span className="hub-scope-tag">Medical device and surgery studies (Level II)</span><span className="hub-scope-tag">Natural health product studies (Level III)</span><span className="hub-scope-tag">Prospective studies not regulated by Health Canada (Level IV)</span><span className="hub-scope-tag">Retrospective and biobank studies (Level V)</span></div>
 
-Study design is not a methodological preference. In Canada, the category of research a study falls into determines which regulatory authorizations are required before a single participant can be enrolled, what <Tooltip tip="International standard for design, conduct, monitoring, recording, and reporting of clinical studies." headline="Good Clinical Practice (GCP)" cta="Full definition" href="/kb/foundations/glossary#gcp">GCP</Tooltip> standard applies, how the <Tooltip tip="The ethics committee that reviews and approves research involving human participants. Also called CER at French-language institutions." headline="Research Ethics Board (REB)" cta="Full definition" href="/kb/foundations/glossary#reb">REB</Tooltip> reviews the submission, and what training the research team must hold.
+A study's design decides what its results can show. Randomization, blinding and the choice of comparator, taken together, decide which claims a trial can support. The Research Ethics Board (REB) weighs the same choices when it reviews the ethics of a study, and Health Canada when it reviews a trial it must authorize.
 
-A drug trial under Health Canada's Division 5 requires a <Tooltip tip="Application to Health Canada for authorization to conduct a drug trial under Division 5 of the Food and Drug Regulations." headline="Clinical Trial Application (CTA)" cta="Full definition" href="/kb/foundations/glossary#cta">Clinical Trial Application</Tooltip> and must comply with ICH GCP E6(R3). A study of a Class II, III or IV medical device may need an <Tooltip tip="Health Canada's authorization for a manufacturer or importer to sell a Class II, III or IV medical device to qualified investigators for testing." headline="Investigational Testing Authorization (ITA)" cta="Full definition" href="/kb/foundations/glossary#ita">Investigational Testing Authorization</Tooltip> ([when it does](/kb/governance/laws-regulations#check-whether-a-device-study-needs-an-investigational-testing-authorization)); device studies follow ISO 14155. An observational chart review needs neither, but it still needs REB review and, in Quebec, an <Tooltip tip="The privacy impact assessment that Quebec's Act respecting health and social services information requires before a study accesses identifiable health information without consent, including for pre-screening." headline="EFVP (privacy impact assessment)" cta="Full definition" href="/kb/foundations/glossary#efvp">EFVP</Tooltip> when it uses identifiable health data without consent.
+## Find what kind of study you have
 
-The classification comes first. The regulatory pathway, the design, the training requirements — all of it follows from that initial determination. Understanding how trials are classified — and what the design mechanics like blinding and randomization actually accomplish — is foundational for anyone reading a protocol, preparing a submission, or working with participants.
+What a study tests decides the training its team needs and whether Health Canada must authorize it. [Types of Study](/paths) gives the training levels, the cases that need Health Canada's authorization and how a study's design relates to its level.
 
-<Note>
-**Three frameworks, one study.** In Canada, a single clinical trial must satisfy three separate regulatory frameworks simultaneously: **TCPS2** (ethics, applies to all human research at Tri-Council-funded institutions), **ICH GCP E6(R3)** (operational standards, applies to interventional drug trials), and **Health Canada Division 5** (federal drug law, applies to investigational drug trials). These do not always agree — where they conflict, the most stringent requirement applies.
-</Note>
+A drug trial that needs Health Canada's authorization requires a <Tooltip tip="Application to Health Canada for authorization to conduct a drug trial under Division 5 of the Food and Drug Regulations." headline="Clinical Trial Application (CTA)" cta="Full definition" href="/kb/foundations/glossary#cta">Clinical Trial Application (CTA)</Tooltip>. A study of a Class II, III or IV medical device may need an <Tooltip tip="Health Canada's authorization for a manufacturer or importer to sell a Class II, III or IV medical device to qualified investigators for testing." headline="Investigational Testing Authorization (ITA)" cta="Full definition" href="/kb/foundations/glossary#ita">investigational testing authorization (ITA)</Tooltip>, [depending on the device's licence and the study](/kb/governance/laws-regulations#check-whether-a-device-study-needs-an-investigational-testing-authorization). A trial of a marketed drug within the conditions of its notice of compliance or its drug identification number needs no CTA. Its sponsor must still conduct it in accordance with Division 5 of the Food and Drug Regulations, including good clinical practices, labelling and REB approval.
 
-## The classification landscape
+The RI-MUHC's standard operating procedures (SOPs) require good clinical practice (GCP) training for each kind of study that Health Canada regulates. Teams on drug and natural health product studies train on guideline E6 of the International Council for Harmonisation (ICH). Teams on medical device studies train on the International Organization for Standardization's (ISO) standard ISO 14155, or on ICH E6 if the sponsor cannot provide ISO 14155 training. [Training and Compliance Requirements](/training/compliance-requirements#training-requirements-by-study-level) gives the details.
 
-Research involving human participants covers a wide range of methodologies. The table below maps the major study categories to their regulatory pathway, applicable GCP standard, and review level under Canadian law. The row that describes your study determines the compliance baseline before any design choices are made.
+A chart review needs neither a CTA nor an ITA. It still needs REB review, and a privacy impact assessment (<Tooltip tip="The privacy impact assessment that Quebec's Act respecting health and social services information requires before a study accesses identifiable health information without consent, including for pre-screening." headline="EFVP (privacy impact assessment)" cta="Full definition" href="/kb/foundations/glossary#efvp">EFVP</Tooltip>) when it uses identifiable health information without consent.
 
-| Study type | Health Canada authorization | GCP standard | REB review level |
-| --- | --- | --- | --- |
-| Drug trial, Phase I–III | CTA required — Division 5, C.05.005 | ICH GCP E6(R3) | Full board |
-| Drug trial, Phase IV (within NOC/DIN) | No CTA — C.05.002(2) exemption | ICH GCP E6(R3) still applies | Proportionate |
-| Class II–IV medical device trial that [needs an ITA](/kb/governance/laws-regulations#check-whether-a-device-study-needs-an-investigational-testing-authorization) | ITA required (Medical Devices Regulations, Part 3) | ISO 14155 | Full board (Class III/IV) |
-| Natural health product trial, Phase I–III | CTA required — NHP Regulations, Part 4 | ICH GCP E6(R3) | Full board |
-| Observational / chart review | No CTA/ITA | TCPS2 | Often delegated |
-| Psychosocial or educational study | No CTA/ITA | TCPS2 | Proportionate |
+The *Tri-Council Policy Statement* (TCPS 2), ICH E6(R3) and Division 5 of the Food and Drug Regulations can all apply to one drug trial. Where they differ, the most stringent requirement applies.{/* TO CONFIRM (QA): "where they conflict, the most stringent requirement applies" comes from the old page's Note; no source found (searched FACTS, the SOP text, TCPS 2 chapters 1 and 11 for "stringent"). The old Note also gave TCPS 2's scope as "all human research at Tri-Council-funded institutions" and ICH E6(R3)'s as "interventional drug trials": kept out of the sentence until QA confirms how the Hub should state the three scopes. */}
 
-<Warning>
-**Sponsor-investigator studies.** When the investigator also initiates the study — as happens frequently at the RI-MUHC with investigator-initiated trials — they assume all sponsor obligations under Division 5 in addition to their investigator duties. This includes filing the CTA, arranging independent monitoring, managing <Tooltip tip="A drug, medical device, or natural health product being tested or used as a reference in a clinical trial." headline="Investigational Product (IP)" cta="Full definition" href="/kb/foundations/glossary#ip">investigational product</Tooltip> supply, and submitting safety reports. Health Canada does not distinguish between commercial and non-commercial sponsors.
-</Warning>
+{/* Sources: paths/index (the levels; "Check whether Health Canada must authorize the study"); the Food and Drug Regulations, C.05.005 (the application) and C.05.006(2) ("a new drug that has been issued a notice of compliance …, if the clinical trial is in respect of a purpose or condition of use for which the notice of compliance was issued"; "a drug, other than a new drug, that has been assigned a drug identification number …"), copies in batches/b126-types-of-study/factcheck/fdr-C.05.006.txt; Health Canada's guidance for clinical trial sponsors ("Sponsors must conduct all clinical trials, including Phase IV trials, in accordance with Division 5, including the principles of GCPs, labelling requirements and obtaining REB approval."); the Medical Devices Regulations, section 80(2), through kb/governance/laws-regulations; QA's draft SOP-CR-003_11, section 5.3.2 ("Level I (drug studies) requires Health Canada Part C Division 5 Training and ICH-GCP training."; "Level 2 (medical device studies) requires ISO 14155 – GCP (or ICH-GCP) training."; "Level 3 (natural health product studies) requires ICH-GCP training.") and section 5.3.3 ("if a Sponsor or Sponsor-Investigator cannot provide sites with ISO-14155 GCP training/document, in lieu of ISO-14155 GCP, teams can train on ICH-GCP"); the EFVP, through kb/governance/privacy. The old table of study types is replaced by the link to its home, paths/index (MASTER-PLAN 3a-bis). It cited a "C.05.002(2) exemption" for marketed drugs: the exemption is in C.05.006(2), and C.05.002(2) lists what still applies; and "ICH GCP E6(R3) still applies", where Health Canada's guidance names Division 5's GCP, labelling and REB approval (b126 fact check, section 2b). Its REB column ("Full board", "Proportionate", "Often delegated") went with the table; kb/submission/submission-overview is the home of how the REB chooses a full board or a delegated review. "Device studies follow ISO 14155" became the training rule of QA's draft. */}
 
-### Interventional studies
+## Know who takes on the duties of the sponsor
 
-An interventional study assigns participants to receive a health-related intervention — a drug, device, procedure, behaviour change, or other action — and measures its effect. The investigator actively modifies what happens to participants beyond their standard clinical care. Clinical trials are the most regulated form of interventional research; the sponsor must demonstrate that the risk of the intervention is justified before any human testing can begin.
+<div className="hub-scope"><span className="hub-scope-label">Applies to</span><span className="hub-scope-tag">Studies you sponsor yourself (sponsor-investigator)</span></div>
 
-Because investigators are introducing something into participants' lives, the ethical threshold is higher: consent must cover the specific risks of the intervention, participants must be able to withdraw without consequence to their care, and safety monitoring must be in place throughout.
+When the investigator also initiates the trial, as in an investigator-initiated trial, they take on the sponsor's duties under Division 5 as well as the investigator's. The sponsor's duties include filing the CTA, arranging monitoring, managing the supply of the <Tooltip tip="A drug, medical device, or natural health product being tested or used as a reference in a clinical trial." headline="Investigational Product (IP)" cta="Full definition" href="/kb/foundations/glossary#ip">investigational product</Tooltip> and submitting safety reports. Health Canada's regulations make no difference between a commercial and a non-commercial sponsor. [Sponsor-Investigator Studies](/kb/planning/sponsor-investigator) explains the duties.
 
-### Observational studies
+{/* Sources: Health Canada's guidance for clinical trial sponsors ("A clinical trial that is initiated and conducted by an institution or an individual investigator. For such trials, the institution or investigator is considered to be the sponsor of the trial and must fulfill all the regulatory obligations of the sponsor"); Health Canada's GUI-0100, version 4, Overview ("The Regulations do not differentiate between a commercial and a non-commercial sponsor (for example Sponsor-Investigator) and as such, the same requirements apply."), through paths/index. The old Warning held no harm a skimming reader must not miss beyond the text (STYLE-HUB H): running text, with its own strip. "As happens frequently at the RI-MUHC" was dropped as a provenance-free claim: TO CONFIRM (the Research Facilitator): do investigator-initiated trials run "frequently" at the RI-MUHC? The old page's "independent monitoring": the draft says "monitoring", as GUI-0100 sets no independence for it (not searched further; the fact checker may weigh it). */}
 
-Observational studies do not modify participants' standard care. Investigators collect and analyze data — from existing records, biological samples, questionnaires, or direct observation — without assigning any treatment. Common forms include cohort studies, case-control studies, and cross-sectional studies.
+## Tell interventional and observational studies apart
 
-Observational research does not require a CTA or ITA, but it is not exempt from ethics oversight. In Quebec, a study that accesses identifiable health data before consent or without it needs an EFVP, and REB approval is still mandatory. The absence of a regulatory authorization requirement does not mean the absence of participant protection obligations.
+An interventional study assigns participants to a health-related intervention, such as a drug, a device, a procedure or a change in behaviour, and measures its effect. The investigator changes what happens to participants beyond their standard care. Clinical trials are perhaps the most regulated kind of research. Before any human testing, the sponsor must show that the risk of the intervention is justified.
 
-## Blinding
+Because the study adds something to participants' lives, the consent must cover the specific risks of the intervention. Participants must be able to withdraw without consequence to their care, and safety monitoring must be in place throughout.
 
-When people know which treatment they are receiving — or administering — their expectations can change the outcome. A participant who knows they received the active drug may report feeling better regardless of pharmacological effect. An investigator who knows which arm a participant is in may unconsciously assess outcomes differently. Blinding controls for these effects by concealing treatment allocation from some or all of the people involved.
+An observational study doesn't change participants' care. The investigators collect and analyze data, from existing records, biological samples, questionnaires or direct observation, without assigning any treatment. Cohort, case-control and cross-sectional studies are common forms. An observational study needs no CTA or ITA, but it still needs the REB's approval. In Quebec, a study that uses identifiable health information before or without consent also needs an EFVP.
 
-TCPS2 is clear that random, blinded assignment does not change consent requirements: participants must be informed that they may receive any of the trial's treatments, including placebo, and must understand the range of possibilities before agreeing to participate. Blinding conceals _which_ treatment a participant received; it does not conceal the fact that multiple treatments exist.
+{/* Sources: the RI-MUHC's SOP Glossary of Terms (Apr. 27, 2023), "Clinical trial (or interventional study MUHC definition)" ("Any research project that prospectively assigns human participants to intervention or concurrent comparison or control groups to study the cause-and-effect relationship between a medical intervention and a health outcome. Medical interventions include drugs, surgical procedures, devices, behavioral treatments, process-of-care changes, and the like.") and "Observational study" ("Participants may receive diagnostic, therapeutic, or other types of interventions, but the investigator does not assign participants to a specific intervention/treatment."), through paths/index; TCPS 2 (2022), chapter 11 ("Clinical trials are, perhaps, the most regulated type of research"); TCPS 2, article 3.1 (withdrawal; "Pre-existing entitlements to care … should not be prejudiced"). Answered in part (b136 second reader, from the blind fact check, row 12): for "safety monitoring must be in place throughout", TCPS 2, article 11.6 ("Researchers shall provide the REB with an acceptable plan for monitoring safety, efficacy/effectiveness (where feasible) and validity. This plan shall describe: how participant safety will be monitored and what actions will be taken in the event of a threat to participant safety"), evidence/web/tcps2-2022-chapter11_read-2026-11-08.txt. "Clinical trials are perhaps the most regulated kind of research" keeps TCPS 2's "perhaps" (fact check row 9). TO CONFIRM (QA): "the sponsor must demonstrate that the risk of the intervention is justified before any human testing can begin" comes from the old page; the Food and Drug Regulations' C.05.006(1)(b)(ii) has Health Canada assess that the trial does not endanger participants' health, which is a lead, not the old sentence's words. "Without consequence to their care" is the old page's; TCPS 2 says "without prejudice to pre-existing entitlements". The old page's "The absence of a regulatory authorization requirement does not mean the absence of participant protection obligations" repeated the paragraph (STYLE-HUB part C rule 10): for MF, as a cut of a sentence with no new fact. */}
 
-<AccordionGroup>
-  <Accordion title="Open-label — no blinding">
-    All parties know which treatment is administered. Common when blinding is impractical — surgical procedures, device implantation, or lifestyle interventions where concealment cannot be maintained.
+## Know what blinding hides, and from whom
 
-    - Participant: knows
-    - Investigator: knows
-    - Data analyst: knows
-  </Accordion>
-  <Accordion title="Single-blind — one party blinded">
-    Typically the participant does not know their treatment assignment, but the investigator and research team do. Each direction controls for a different bias.
+<div className="hub-scope"><span className="hub-scope-label">Applies to</span><span className="hub-scope-tag">Drug studies (Level I)</span><span className="hub-scope-tag">Medical device and surgery studies (Level II)</span><span className="hub-scope-tag">Natural health product studies (Level III)</span><span className="hub-scope-tag">Prospective studies not regulated by Health Canada (Level IV)</span></div>
 
-    - Participant: blinded
-    - Investigator: knows
-    - Data analyst: knows
-  </Accordion>
-  <Accordion title="Double-blind — two parties blinded">
-    Neither the participant nor the investigator knows treatment assignment. The research pharmacy maintains the allocation code. Most Phase II–III drug trials use this design.
+People who know which treatment they receive, or give, can change the outcome without meaning to. A participant who knows they received the active drug may report feeling better whatever the drug's effect. An investigator who knows a participant's group may assess the outcome differently. Blinding hides the treatment assignment from some or all of the people involved.
 
-    - Participant: blinded
-    - Investigator: blinded
-    - Data analyst: knows
-  </Accordion>
-  <Accordion title="Triple-blind — three parties blinded">
-    Participant, investigator, and data analyst are all blinded. The allocation code is held independently, often by the <Tooltip tip="Independent committee that reviews interim safety and efficacy data and recommends whether to continue, modify, or stop the study." headline="Data Safety Monitoring Board (DSMB)" cta="Full definition" href="/kb/foundations/glossary#dsmb">Data Safety Monitoring Board</Tooltip>, until pre-specified unblinding criteria are met.
+Random and blinded assignment does not change the consent requirements, as long as participants are told the probability of their assignment to each group of the trial. Blinding hides which treatment a participant receives. It doesn't hide that the trial has more than one treatment.
 
-    - Participant: blinded
-    - Investigator: blinded
-    - Data analyst: blinded
-  </Accordion>
-</AccordionGroup>
+| Design | Participant | Investigator | Data analyst | When it is used |
+|---|---|---|---|---|
+| Open-label | Knows | Knows | Knows | When blinding is impractical, such as surgery, device implantation or a change in lifestyle. |
+| Single-blind | Blinded | Knows | Knows | Usually the participant alone doesn't know the assignment. |
+| Double-blind | Blinded | Blinded | Knows | Neither the participant nor the investigator knows. The research pharmacy keeps the allocation code. Most Phase II and III drug trials use this design. |
+| Triple-blind | Blinded | Blinded | Blinded | All three are blinded. The allocation code is held independently, often by the <Tooltip tip="Independent committee that reviews interim safety and efficacy data and recommends whether to continue, modify, or stop the study." headline="Data Safety Monitoring Board (DSMB)" cta="Full definition" href="/kb/foundations/glossary#dsmb">Data Safety Monitoring Board</Tooltip>, until the protocol's criteria for unblinding are met. |
+{/* TO CONFIRM (QA or the Biostatistics Consulting Unit): "Most Phase II–III drug trials use this design", "The research pharmacy maintains the allocation code" and "often by the Data Safety Monitoring Board" come from the old page, with no source found (searched TCPS 2 chapter 11, ICH E6(R3) for "allocation code": none). Ledger row 32 (Indra): a table instead of dropdowns. */}
 
-### Unblinding — when and how
+### Unblind a participant
 
-**Emergency unblinding** occurs when a participant experiences a serious <Tooltip tip="Any untoward medical occurrence in a participant, whether or not related to the investigational product." headline="Adverse Event (AE)" cta="Full definition" href="/kb/foundations/glossary#ae">adverse event</Tooltip> and the treating physician needs to know what they received to manage it safely. The research pharmacy holds the code and must be reachable at all times. **Planned unblinding** occurs at a pre-specified interim analysis or at study completion. The protocol must define both pathways in advance. Any premature unblinding, whether accidental or because of a serious adverse event, must be documented and promptly explained to the sponsor, and the REB informed as its procedures require.
+Emergency unblinding happens when a participant has a serious <Tooltip tip="Any untoward medical occurrence in a participant, whether or not related to the investigational product." headline="Adverse Event (AE)" cta="Full definition" href="/kb/foundations/glossary#ae">adverse event</Tooltip> and the treating physician needs to know what they received to treat them safely. Planned unblinding happens at an interim analysis set in advance or at the end of the study. The protocol must define both in advance, and the team follows the protocol's requirements for unblinding.
 
-## Randomization and what it controls for
+In an investigator-blinded trial, the investigator should ensure that the randomization code is broken only as the protocol allows. In an emergency, to protect a participant's safety, the investigator should be prepared and capable from the start of the trial to unblind without undue delay and hindrance.
 
-Randomization assigns participants to treatment groups by chance rather than by choice — by the investigator, the participant, or any other party. Its purpose is to distribute known and unknown factors evenly across groups so that, at baseline, the groups are comparable. Without randomization, differences observed between groups at the end of a trial may reflect pre-existing differences in the groups rather than the effect of the treatment.
+[Promptly document and explain to the sponsor any premature unblinding](/sops/cr-010#5-8-3), whether accidental or because of a serious adverse event, and inform the REB as its procedures require. File the unblinding documentation with the study's essential documents.{/* TO CONFIRM (the Research Pharmacy): the old page said "The research pharmacy holds the code and must be reachable at all times"; no source found (SOP-CR-010_07, section 5.8, read on its rendered page in batch 51, says nothing of it). Kept in this note until the pharmacy confirms. */}
 
-<Note>
-Randomization doesn't just control for what you know. It controls for what you don't know you should have controlled for.
-</Note>
+{/* Sources: TCPS 2 (2022), chapter 3 ("in some cases of randomization and blinding in clinical trials, neither the participants nor the researchers know which treatment the participant will be receiving. As long as participants are informed of the probability of their assignment to each arm of the trial, this random and blind assignment does not constitute an alteration"), evidence/web/tcps2-2022-chapter3_read-2026-11-08.txt; SOP-CR-010_07, section 5.8.2 ("Follow the protocol-specific requirements for unblinding the investigational product"), 5.8.3 ("Promptly document and explain to the Sponsor or Sponsor-Investigator any premature unblinding of the investigational product/s such as, accidental unblinding or unblinding due to a serious adverse event/drug reaction. Inform REB/IEC as per their procedures.") and 5.8.4 ("File unblinding documentation with the essential study documents."), through FACTS "Batch 51"; ICH E6(R3), section 2.11 ("in the case of an investigator-blinded trial, should ensure that the treatment randomisation code is broken only in accordance with the protocol. In the case of an emergency, to protect participant safety, the investigator should be prepared and capable from the start of the trial to perform unblinding without undue delay and hindrance."), run/src/ich-e6r3.txt (b136 second reader: added from the fact check's list 1; it answers in part the Research Pharmacy's note above, since E6(R3) puts the readiness on the investigator, not on the pharmacy). Correction: the old page said participants "must be informed that they may receive any of the trial's treatments, including placebo"; TCPS 2's condition is the probability of assignment to each arm (wave 2 C42). "The protocol must define both pathways in advance" is the old page's; TCPS 2, chapter 11, has researchers provide "a plan for interim analysis of data, early unblinding" for phase III trials ("should"): TO CONFIRM (QA) whether the RI-MUHC's SOPs require it of every protocol. */}
 
-<AccordionGroup>
-  <Accordion title="Randomized Controlled Trial — allocation by chance">
-    Participants are assigned to groups through a random process — a computer-generated sequence, a sealed envelope system, or centralized randomization via an Interactive Response Technology (IRT) system. No one involved in patient care or outcome assessment selects who receives which treatment.
+## Randomize to make the groups comparable
 
-    TCPS2 states that randomization is ethically justified only when **clinical equipoise** exists — genuine uncertainty within the expert community about which intervention is superior. You cannot randomize participants to an arm you already know to be inferior.
-  </Accordion>
-  <Accordion title="Non-Randomized Trial — allocation by design">
-    Participants are assigned to groups by the investigator, by participant preference, by clinical presentation, or by another non-random criterion.
+<div className="hub-scope"><span className="hub-scope-label">Applies to</span><span className="hub-scope-tag">Drug studies (Level I)</span><span className="hub-scope-tag">Medical device and surgery studies (Level II)</span><span className="hub-scope-tag">Natural health product studies (Level III)</span><span className="hub-scope-tag">Prospective studies not regulated by Health Canada (Level IV)</span></div>
 
-    This is appropriate when randomization is impractical or unethical — for example, comparing outcomes in patients who have and have not been exposed to a risk factor that cannot be experimentally assigned. The tradeoff is greater vulnerability to confounding: systematic differences between groups at baseline that may explain the outcome independently of the treatment being studied.
-  </Accordion>
-</AccordionGroup>
+Randomization assigns participants to groups by chance, not by anyone's choice. It spreads known and unknown factors evenly across the groups, so that the groups are comparable at the start. Without it, a difference between groups at the end may come from differences that existed before the trial, not from the treatment.
 
-### Stratified and adaptive randomization
+| Assignment | How it works | What to weigh |
+|---|---|---|
+| Randomized | A random process assigns participants: a computer-generated sequence, sealed envelopes or central randomization through an interactive response technology (IRT) system. No one involved in care or in assessing outcomes chooses who receives which treatment. | In a study of interventions meant to benefit participants, the relevant expert community must be genuinely uncertain about which intervention is most effective (clinical equipoise). The researcher must justify the control group to the REB, including its consistency with clinical equipoise. |
+| Non-randomized | The investigator, the participant's preference, the clinical presentation or another non-random criterion decides the group. | Useful when randomization is impractical or unethical, such as comparing patients who were or weren't exposed to a risk factor that can't be assigned. The groups are more open to confounding: differences at the start that may explain the outcome on their own. |
 
-Simple randomization can produce imbalanced groups by chance, particularly in smaller trials. **Stratified randomization** ensures balance on key variables (age, disease severity, site) by randomizing separately within each stratum. **Adaptive randomization** adjusts allocation probabilities as the trial accumulates data — increasing the proportion assigned to the arm that appears more effective. Both are accepted by Health Canada under standard CTA processes.
+Simple randomization can leave groups unbalanced by chance, especially in small trials. Stratified randomization keeps key variables such as age, disease severity or site balanced, by randomizing separately within each stratum. Adaptive randomization changes the chances of assignment as data accumulate, for example to assign more participants to the group that appears to do better. Health Canada accepts both under its standard CTA process.{/* TO CONFIRM (QA): "Both are accepted by Health Canada under standard CTA processes" comes from the old page; no source found (searched Health Canada's guidance for clinical trial sponsors for "adaptive" and "stratif": nothing). TCPS 2, chapter 11, describes adaptive designs ("Adaptive design trials … typically include a prospective adaptation of some design features according to decision points based on accrued data"). */}
 
-## Controls and comparators
+{/* Sources: TCPS 2 (2022), article 11.3 ("researchers shall justify their choice of control group(s) to the REB by demonstrating that the choice is: relevant to the research question; appropriate for the population of interest; and consistent with the criteria for clinical equipoise.") and its Application ("In the context of studies that involve interventions intended to have a beneficial effect upon participants, there must exist a genuine uncertainty (i.e., clinical equipoise) on the part of the relevant expert community about which interventions are most effective."). Correction: the old page said "TCPS2 states that randomization is ethically justified only when clinical equipoise exists"; TCPS 2 sets equipoise for studies of interventions meant to benefit participants and for the choice of control group. The dropdowns held a comparison (STYLE-HUB H): a table. Interactive response technology spelled out at first use. */}
 
-A control is what the investigational treatment is being compared against. The choice of comparator is both a scientific decision and an ethical one. Researchers following [TCPS 2](https://ethics.gc.ca/eng/tcps2-eptc2_2022_chapter11-chapitre11.html) should generally test a new treatment against an established effective one. A placebo control is acceptable only when it is scientifically and methodologically sound, does not compromise participants' safety or health and is compellingly justified to the REB, and when participants are told what treatment is withheld and what that may mean. The comparator choice also shapes what claims can be made from the results.
+## Choose the comparator
 
-<AccordionGroup>
-  <Accordion title="Placebo control — inert comparator">
-    An intervention designed to be indistinguishable from the experimental treatment but without active components. Appropriate only when no established effective treatment exists, or when compelling scientific reasons justify its use and withholding active treatment will not cause serious or irreversible harm. Give the REB a compelling scientific justification for any placebo control. Health Canada's guidance on control groups is the ICH guideline E10.
-  </Accordion>
-  <Accordion title="Active comparator — standard of care">
-    The current best available treatment. ICH considers a placebo control generally inappropriate when an available treatment is known to prevent serious harm, such as death or irreversible morbidity, and notes that placebo-controlled trials without an active control give little useful information about comparative effectiveness. Phase III trials typically use active comparators; a new treatment that only proves superior to placebo has not demonstrated it is better than — or equivalent to — what is already available.
-  </Accordion>
-  <Accordion title="No comparator — single-arm trials">
-    All participants receive the experimental intervention; there is no control group. Common in early Phase I safety work or in rare disease research where patient numbers are insufficient for a parallel controlled design. Single-arm trials cannot show whether the treatment is better than existing alternatives without external comparison data.
-  </Accordion>
-  <Accordion title="Crossover designs">
-    In a crossover trial, each participant receives more than one treatment in sequence, with each participant serving as their own control. This reduces the sample size needed and controls for between-person variability. A washout period between treatment phases is required to prevent carry-over effects. Crossover designs are appropriate for chronic conditions with stable outcomes; they are not suitable for acute treatments or irreversible interventions.
-  </Accordion>
-  <Accordion title="External control arms">
-    An external control arm uses historical or concurrent comparison data drawn from sources outside the trial — prior studies, registries, or real-world data — rather than a parallel control group enrolled in the current study.
+<div className="hub-scope"><span className="hub-scope-label">Applies to</span><span className="hub-scope-tag">Drug studies (Level I)</span><span className="hub-scope-tag">Medical device and surgery studies (Level II)</span><span className="hub-scope-tag">Natural health product studies (Level III)</span><span className="hub-scope-tag">Prospective studies not regulated by Health Canada (Level IV)</span></div>
 
-    **When it applies:** External controls are most accepted when a randomized control group is not feasible — insufficient patients for a parallel arm, ethical barriers to randomization, or rare disease settings where the natural history is well-documented and no standard therapy exists.
+A control is what the treatment under study is compared with. The choice of comparator is both a scientific and an ethical decision, and it decides what the results can claim. Under [TCPS 2](https://ethics.gc.ca/eng/tcps2-eptc2_2022_chapter11-chapitre11.html), a new therapy should generally be tested against an established effective therapy.
 
-    **Key limitations:** Selection bias (external controls may differ systematically from enrolled participants), temporal bias (standard of care may have shifted between when external controls were treated and when the study runs), and missing data (real-world sources rarely capture all protocol-required endpoints). These limitations produce less certain evidence than concurrent randomized controls, and regulators require robust justification.
+A placebo control is ethically acceptable in a randomized controlled trial only if all four of these conditions are met:
 
-    **FDA position:** The [FDA's Feb 2023 draft guidance](https://www.fda.gov/regulatory-information/search-fda-guidance-documents/considerations-design-and-conduct-externally-controlled-trials-drug-and-biological-products) identifies five key considerations: data quality and relevance; patient similarity (eligibility criteria must produce populations comparable to the trial); temporal comparability; estimand alignment; and pre-specified sensitivity analyses to test robustness.
+- Its use is scientifically and methodologically sound in establishing the efficacy or safety of the therapy tested.
+- It does not compromise the safety or health of participants.
+- The researcher gives the REB a compelling scientific justification for it.
+- The general principles of consent are respected, and participants or their authorized third parties are told specifically what intervention or therapy will be withdrawn or withheld for the research, and the expected consequences.
 
-    **Health Canada position:** No guidance document specific to external control arms exists. Health Canada applies the general Division 5 framework, and both the REB and Health Canada will scrutinize the scientific justification for choosing an external control over a randomized parallel design. The stronger the justification — particularly in rare disease contexts — the more receptive the review.
+Health Canada uses the ICH guideline E10 as its guidance on the choice of control groups. Each kind of comparator has its uses and limits:
 
-    If your protocol contemplates an external control arm, contact the [BCU](/kb/design-support/bcu) and the [Research Facilitator](mailto:research.facilitator@muhc.mcgill.ca) during design — the statistical approach and choice of external data source must be pre-specified before submission.
-  </Accordion>
-</AccordionGroup>
+| Comparator | What it is | When it fits, and its limits |
+|---|---|---|
+| Placebo | An intervention made to look like the treatment under study, with no active components. | TCPS 2 accepts a placebo in five situations, among them when no established effective therapy exists, and when patients with decision-making capacity have given an informed refusal of the established therapy and withholding it will cause no serious or irreversible harm. The informed refusal must be determined outside recruitment for the trial and before the trial is offered, and it must be documented. |
+| Active comparator | The current established effective treatment. | ICH E10 considers a placebo control generally inappropriate when an available treatment is known to prevent serious harm, such as death or irreversible morbidity. Placebo-controlled trials without an active control give little useful information about comparative effectiveness. A treatment shown better than placebo only hasn't been shown better than, or equivalent to, the treatment already available. |
+| None (single-arm trial) | All participants receive the treatment under study. | Common in early Phase I safety studies, and in rare diseases where too few patients exist for a parallel control group. A single-arm trial can't show whether the treatment is better than existing ones without outside comparison data. |
+| Crossover | Each participant receives more than one treatment in turn, and serves as their own control. | Needs fewer participants and controls for differences between people. A washout period between treatments prevents carry-over effects. Fits chronic conditions with stable outcomes, not acute treatments or irreversible interventions. |
+| External control arm | Comparison data from outside the trial, such as earlier studies, registries or real-world data, instead of a control group enrolled in the trial. | See the section below. |
+{/* TO CONFIRM (the Biostatistics Consulting Unit): the single-arm and crossover cells come from the old page's dropdowns; methods content with no source searched. The old page's "Phase III trials typically use active comparators" is left out of the table's text until the BCU or the ACT-CTU answers 14-open-questions.md B87; it stays here for MF: "Phase III trials typically use active comparators; a new treatment that only proves superior to placebo has not demonstrated it is better than — or equivalent to — what is already available." (the second half kept in the table). */}
 
-## Master protocols and complex innovative designs
+{/* Sources: TCPS 2 (2022), article 11.4 ("A new therapy or intervention should generally be tested against an established effective therapy. A placebo control is ethically acceptable in a randomized controlled clinical trial only if: its use is scientifically and methodologically sound in establishing the efficacy or safety of the test therapy or intervention; it does not compromise the safety or health of participants; the researcher articulates to the REB a compelling scientific justification for the use of the placebo control; and the general principles of consent are respected …") and its Application (the five situations: "There are no established effective therapies for the population or for the indication under study." … "Patients with decision-making capacity have provided an informed refusal of established effective therapy, and withholding such therapy will not cause serious or irreversible harm."; "The determination of response satisfaction and refusal of treatment must take place outside the context of recruitment for the clinical trial and prior to offering trial participation to the prospective participant, and both must be documented."; b136 second reader: the condition added, and the fourth condition's "general principles of consent" and "authorized third parties" restored, fact check rows 22 and 24); ICH E10, section 2.1.7.4 ("Placebo-controlled trials lacking an active control give little useful information about comparative effectiveness, information that is of interest and importance in many circumstances."; b136 second reader: restored from the old page's active-comparator dropdown, cut without a note, fact check part 6); ICH E10 (Step 4, 2000), evidence/web/ich-e10-guideline-step4-2000_read-2026-11-09.pdf, text in run/src/ich-e10.txt; Health Canada adopted ICH E10 as guidance (wave 2 C45; Health Canada's ICH guidelines page). Change: the old placebo row said a placebo is appropriate "only when no established effective treatment exists, or when compelling scientific reasons justify its use and withholding active treatment will not cause serious or irreversible harm"; TCPS 2 lists five situations, and the table now names two of them with the four conditions above it. The old "Give the REB a compelling scientific justification for any placebo control." is the third condition. */}
 
-A master protocol is a single overarching protocol designed to simultaneously evaluate one or more interventions in one or more disease subsets, using a shared infrastructure. They are increasingly used where the traditional parallel-arm RCT is inefficient — particularly in oncology, rare disease, and precision medicine. ICH E6(R3) and [ICH E8(R1)](https://database.ich.org/sites/default/files/E8-R1_Guideline_Step4_2021_1006.pdf) both explicitly recognize complex innovative designs as a core part of the clinical trial landscape.
+### Use an external control arm
 
-### Types
+<div className="hub-scope"><span className="hub-scope-label">Applies to</span><span className="hub-scope-tag">Drug studies (Level I)</span><span className="hub-scope-tag">Medical device and surgery studies (Level II)</span><span className="hub-scope-tag">Natural health product studies (Level III)</span><span className="hub-scope-tag">Prospective studies not regulated by Health Canada (Level IV)</span></div>
+
+Under ICH E10, which Health Canada uses as its guidance on control groups, an externally controlled trial should generally be considered only when two conditions are met. Belief in the superiority of the treatment under study to all available alternatives is so strong that other designs appear unacceptable. The disease or condition to be treated has a well-documented, highly predictable course.
+
+External controls are most accepted when a randomized control group isn't feasible: too few patients for a parallel group, ethical barriers to randomization, or a rare disease whose natural history is well documented and that has no standard therapy. Their limits make the evidence less certain than a concurrent randomized control, and regulators require a strong justification:
+
+- Selection bias: the external controls may differ systematically from the enrolled participants.
+- Time bias: the standard of care may have changed between when the external controls were treated and when the study runs.
+- Missing data: real-world sources rarely capture every endpoint the protocol needs.
+
+The United States Food and Drug Administration (FDA) published a [draft guidance on externally controlled trials](https://www.fda.gov/regulatory-information/search-fda-guidance-documents/considerations-design-and-conduct-externally-controlled-trials-drug-and-biological-products) in February 2023. It covers the quality and relevance of the data, the similarity of the patients, comparability over time, the alignment of the estimand (the precise treatment effect the trial sets out to estimate) and sensitivity analyses specified in advance.{/* TO CONFIRM (the coordinator): the FDA's page (fetched Nov. 15, 2026) confirms the title, "Draft", "Not for implementation" and February 2023, and lists no considerations; the five considerations come from the old page, from the guidance's PDF, not opened (a download). Ledger row 32 (Indra): "estimand" defined where it appears. */}
+
+Health Canada has no guidance specific to external control arms, and applies its general Division 5 framework. Both the REB and Health Canada scrutinize the scientific reasons for choosing an external control over a randomized parallel group.{/* TO CONFIRM (QA): "No guidance document specific to external control arms exists" comes from the old page; not found after searching Health Canada's ICH guidelines page and its guidance for clinical trial sponsors (saved copies) for "external control": no hit, which shows only that those two documents don't cover it. "The stronger the justification … the more receptive the review" was dropped from the reader text as an unsourced prediction of a review's outcome (STYLE-HUB A10): for MF. */}
+
+If your protocol plans an external control arm, contact the [Biostatistics Consulting Unit (BCU)](/kb/design-support/bcu) and the [Research Facilitator](mailto:research.facilitator@muhc.mcgill.ca) while you design it. The statistical approach and the choice of external data source must be specified before submission.
+
+{/* Sources: ICH E10 (Step 4, 2000), section 2.5.4 ("An externally controlled trial should generally be considered only when prior belief in the superiority of the test therapy to all available alternatives is so strong that alternative designs appear unacceptable and the disease or condition to be treated has a well-documented, highly predictable course."), run/src/ich-e10.txt, and section 2.5.2 ("Inability to control bias is the major and well-recognized limitation of externally controlled trials"); Health Canada uses E10 as its guidance on control groups (its ICH guidelines page, run/src/health-canada-ich-guidelines_read-2026-11-08.txt); the FDA's guidance page (fetched Nov. 15, 2026: "Considerations for the Design and Conduct of Externally Controlled Trials for Drug and Biological Products"; draft; February 2023). The rest of the section is the old page's, with its hidden notes. TO CONFIRM (QA; b136 second reader, needs its master-doc entry): the old page's "External controls are most accepted when a randomized control group isn't feasible …" and its three cases are kept after E10's narrower condition; is the old sentence consistent with E10, section 2.5.4, or should it go? The dropdown held required content (STYLE-HUB H): a section. Its strip (b136 second reader, fact check row 28): Levels I to IV, as on the other design sections, since the section is about a design choice any interventional study can make; until then it carried "Studies that need Health Canada authorization", which STYLE-HUB F1 keeps for sections about Health Canada's application, authorization, reporting and notices. The Health Canada and FDA sentences name their own scope. */}
+
+## Plan a master protocol
+
+<div className="hub-scope"><span className="hub-scope-label">Applies to</span><span className="hub-scope-tag">Studies that need Health Canada authorization</span></div>
+
+A master protocol is one overall protocol that evaluates one or more interventions in one or more disease subgroups, with shared infrastructure. Master protocols are used where a classic parallel-group randomized trial is inefficient, in oncology, rare diseases and precision medicine in particular. ICH E6(R3) and [ICH E8(R1)](https://database.ich.org/sites/default/files/E8-R1_Guideline_Step4_2021_1006.pdf) both recognize complex innovative designs.
 
 | Design | Structure | Typical use |
 |---|---|---|
-| **Basket trial** | One investigational agent tested across multiple disease subsets simultaneously, often sharing a biomarker or molecular target | Oncology: a targeted therapy across tumor types sharing a driver mutation (e.g., NTRK fusion across lung, colorectal, salivary gland) |
-| **Umbrella trial** | Multiple investigational agents tested within a single disease, with participants assigned by biomarker profiling | Oncology: patients with one cancer type screened for multiple molecular targets, then assigned to the matched treatment arm |
-| **Platform trial** | A long-duration adaptive infrastructure where new treatments can enter and leave based on pre-specified rules while the trial continues | RECOVERY trial model; pandemic preparedness; diseases with multiple candidate therapies and stable patient populations |
+| Basket trial | One investigational agent tested in several disease subgroups at once, often sharing a biomarker or a molecular target. | Oncology: a targeted therapy across tumour types that share a driver mutation, such as an NTRK fusion in lung, colorectal and salivary gland cancers. |
+| Umbrella trial | Several investigational agents tested in one disease, with participants assigned by biomarker profile. | Oncology: patients with one cancer screened for several molecular targets, then assigned to the matching treatment group. |
+| Platform trial | A long-running adaptive structure that lets treatments enter and leave by rules set in advance, while the trial continues. | The RECOVERY trial. Pandemic preparedness. Diseases with several candidate therapies and stable patient populations. |
 
-### What makes these designs different
+These designs share three features:
 
-**Shared infrastructure** — participants are enrolled once and assigned using a central allocation system. This reduces per-study overhead and allows shared control arms across treatment comparisons — but shared controls require careful statistical justification.
+- **Shared infrastructure.** Participants enrol once and a central system assigns them. Shared control groups across comparisons need careful statistical justification.
+- **Adaptive rules.** Most master protocols set decision rules in advance: interim analyses that can add or drop groups, change the sample size or change the allocation ratio. The decision rules must be fully specified before the first participant is enrolled. Changing the statistical plan after the fact is a problem of data integrity.
+- **Statistical approach.** Adaptive master protocols often use Bayesian methods, which update the probability of success as data accumulate. Health Canada accepts both Bayesian and frequentist approaches. The [BCU](/kb/design-support/bcu) can advise on which suits your study.
 
-**Adaptive features** — most master protocols incorporate pre-specified decision rules: interim analyses that can add or drop arms, modify sample size, or adjust allocation ratios as data accumulates. These rules must be fully specified before the first participant is enrolled. Post-hoc modifications to the statistical plan are a data integrity problem, not a design refinement.
+Health Canada has no separate pathway for master protocols: they go through its standard Division 5 CTA process. In the CTA, the statistical analysis plan must be complete and specified in advance, with every decision rule for adaptations. Shared control groups must be statistically justified. Each subgroup may need its own consent requirements, if its biomarker changes the balance of risks and benefits for it.
 
-**Statistical approach** — adaptive master protocols frequently use Bayesian methods that allow probability of success to be updated as data accumulates. Bayesian and frequentist approaches are both accepted by Health Canada; the choice depends on the scientific question and funder context. The [BCU](/kb/design-support/bcu) can advise on which is appropriate for your study.
+The REB assesses whether the adaptive design keeps clinical equipoise across all groups throughout the trial, and whether the consent documents describe the possibility of groups changing or opening while a participant is in the trial. Consider involving the [BCU](/kb/design-support/bcu) and the [Research Facilitator](mailto:research.facilitator@muhc.mcgill.ca) while you design the protocol, before the CTA or the REB submission.{/* TO CONFIRM (QA): the section's regulatory statements come from the old page, with no source found: Health Canada's acceptance of Bayesian and frequentist approaches, "no separate regulatory pathway for master protocols", the CTA's content for adaptive designs and what the REB assesses (searched Health Canada's guidance for clinical trial sponsors for "master protocol", "Bayesian", "adaptive": nothing). ICH E8(R1)'s recognition of complex innovative designs not checked (the linked PDF not opened). "Both are needed" became "Consider involving the BCU and the Research Facilitator" (b136 second reader, fact check row 38: the old page's instruction has no source, so it is the Hub's own advice, STYLE-HUB A1): TO CONFIRM (the Research Facilitator) whether a source or the office's practice requires it. */}
 
-### Regulatory and ethics considerations at RI-MUHC
+{/* Sources: the old page, its hidden notes above; ICH E6(R3) (Step 4, Jan. 6, 2025), run/src/ich-e6r3.txt. The heading "Regulatory and ethics considerations at RI-MUHC" named no task; its content is now part of this section. */}
 
-Health Canada does not have a separate regulatory pathway for master protocols — they proceed under standard Division 5 CTA processes. However, the design complexity requires careful attention in the CTA:
+## Read the design in a protocol
 
-- The statistical analysis plan must be complete and pre-specified, including all decision rules for adaptations
-- Control arm sharing across sub-studies must be statistically justified
-- Each sub-study population may have different consent requirements if the biomarker-defined population changes the risk–benefit profile for that subgroup
+<div className="hub-scope"><span className="hub-scope-label">Applies to</span><span className="hub-scope-tag">Drug studies (Level I)</span><span className="hub-scope-tag">Medical device and surgery studies (Level II)</span><span className="hub-scope-tag">Natural health product studies (Level III)</span><span className="hub-scope-tag">Prospective studies not regulated by Health Canada (Level IV)</span></div>
 
-The REB will assess whether the master protocol's adaptive design genuinely maintains equipoise across all arms throughout the trial, and whether consent documents adequately describe the possibility of arm modification or new arms opening during a participant's involvement.
+Every protocol you work with states its design: whether the study is interventional, how participants are assigned, who is blinded and what the comparator is. The design elements are the basis on which the REB evaluates the ethics of the study and Health Canada its application. When you read a new protocol, look for:
 
-Engage the [BCU](/kb/design-support/bcu) and the [Research Facilitator](mailto:research.facilitator@muhc.mcgill.ca) during protocol design — both are needed before the CTA or REB submission for a master protocol study.
+| Element | What to look for |
+|---|---|
+| The kind of study | Is it interventional or observational? Does it involve an investigational drug or device, so that it needs a CTA or an ITA? |
+| Randomization | How are participants assigned? What system manages the randomization, and who holds the allocation sequence? |
+| Blinding | Who is blinded, and who holds the code? What is the emergency unblinding procedure? |
+| Comparator | What is the control group? Is a placebo justified? Does the comparator reflect the current standard of care? |
 
-## How design choices shape the evidence
+In a double-blind trial, coordinators and research nurses don't know what a participant received unless a clinical reason calls for unblinding. Visit notes and adverse event reports must not reveal the treatment assignment by accident.{/* TO CONFIRM (QA): "Your documentation — visit notes, adverse event reports — must not inadvertently reveal treatment assignment" comes from the old page; no SOP item found that says it (searched the SOP text for "reveal"). The old page's "the research pharmacy … prepares treatments in a way that is visually identical regardless of assignment" is kept here for MF until a source is found. */}
 
-No single design element determines the quality of a study's evidence. It is the combination of randomization, blinding, and comparator choice — applied consistently and transparently — that determines what claims the results can and cannot support. Regulatory agencies and REBs evaluate these choices together, not in isolation.
+{/* Sources: the old page's "Reading a protocol" Steps, which were reference questions, not a procedure (STYLE-HUB H): a table. The old closing sentences ("These are not boilerplate"; "The design of a study is a set of commitments made before any data exists. Its integrity cannot be recovered after the fact.") were cut as closing aphorisms (STYLE-HUB A11): for MF. */}
 
-| Design element | What it controls for | Why it matters |
-| --- | --- | --- |
-| Randomization | Confounding | Distributes unknown variables across groups, making them comparable at baseline. Without it, observed differences may reflect pre-existing group differences rather than the treatment effect. |
-| Blinding | Expectation bias | Prevents participants, investigators, and analysts from allowing expectations to influence outcomes or analysis. The appropriate level depends on the intervention type and outcome measures. |
-| Comparator | What can be claimed | A trial that proves superiority over placebo cannot claim equivalence to current standard of care. The comparator choice must be scientifically and ethically justified. |
+## Know what changes for a device study
 
-<Note>
-**The hierarchy of evidence — a practical note.** Systematic reviews and meta-analyses sit at the top of the evidence hierarchy, but they depend entirely on the quality of the trials they analyze. A poorly designed trial — even one with hundreds of participants — produces results that are difficult to interpret. Design quality is not a secondary concern. It is the mechanism by which research translates into changes in care.
-</Note>
+<div className="hub-scope"><span className="hub-scope-label">Applies to</span><span className="hub-scope-tag">Medical device and surgery studies (Level II)</span></div>
 
-## What this means at the RI-MUHC
+Device studies follow the standard ISO 14155 for good clinical practice, rather than ICH E6(R3). Blinding is often impractical, since a participant knows whether they received an implant or a sham procedure. A device's design may change during development, through the amendment process, and its risks differ from a drug's. At the start of a device study, check which standard applies: monitoring, documentation and safety reporting differ from a drug trial's.
 
-Most of what this guide covers appears directly in every protocol you will read at the RI-MUHC. The protocol's study design section will specify the classification, the randomization method (or justify its absence), the blinding level, and the comparator. These are not boilerplate — they are the basis on which the REB evaluates the ethics of the study and Health Canada evaluates its regulatory pathway.
+{/* Sources: QA's draft SOP-CR-003_11, section 5.3.2 ("Level 2 (medical device studies) requires ISO 14155 – GCP (or ICH-GCP) training."); Health Canada's ITA guidance ("conform to Good Clinical Practices (GCP) as set out by ISO 14155"), through FACTS "ISO 14155 and Health Canada"; SOP-CR-024_03, RI-MUHC Addendum, section 1.1.2 ("Investigational testing must be conducted in compliance with the Declaration of Helsinki …, ISO 14155:2011 (E)"), through FACTS b105 (ISO 14155:2026 is current: FACTS "ISO 14155's current edition"). TO CONFIRM (QA): the rest of the paragraph (blinding, iterative design changes, different risks) comes from the old page, with no source searched. The strip: medical device studies only; surgery studies that test no device are left to QA's question on paths/index. */}
 
-For CRCs and research nurses, blinding has direct operational implications. In a double-blind trial, the research pharmacy manages the allocation code and prepares treatments in a way that is visually identical regardless of assignment. You will not know what a participant received unless there is a clinical reason to unblind. Your documentation — visit notes, adverse event reports — must not inadvertently reveal treatment assignment.
+## Know how a multicentre study is reviewed
 
-### Device trials: a different standard
+A study at more than one public institution in Quebec's health and social services network is reviewed by one evaluating REB for all the sites. Each other site accepts that review, but must still complete its own institutional feasibility review and obtain authorization from its Personne mandatée. The sites share the ethics review, and each site authorizes the study itself. [Multicentre Studies](/kb/design/multi-centric) explains the steps.{/* TO CONFIRM (the Centre for Applied Ethics): the old page said the evaluating REB is "typically at the principal investigator's institution"; not found in SOP-CR-007_08, section 5.6.1, or the CAE's multicentre page (saved). Kept here for the Centre. */}
 
-Medical device trials at the RI-MUHC follow ISO 14155 rather than ICH GCP E6(R3). Blinding is often impractical (a participant knows whether they have received an implant or a sham procedure), device designs may undergo iterative modification during development subject to amendment procedures, and the risk profile is fundamentally different from drug pharmacology. If you are working on a device study, verify the applicable standard at the start — the monitoring, documentation, and safety reporting requirements differ from those in drug trials.
+{/* Sources: SOP-CR-007_08, section 5.6.1 ("A study with more than one Quebec site within the Québec public healthcare network is considered multi-centrique research which is reviewed by one Quebec evaluating REB."); the ministry's multi-centre Cadre de référence (April 2016), through kb/design/multi-centric and paths/index. The old Note held a rule, not a local exception (STYLE-HUB H): running text. "The ethics review is shared; the authorization is not." held a semicolon (STYLE-HUB part C rule 4): rewritten as one sentence. */}
 
-### Reading a protocol: what to look for
+## Contacts
 
-When you review a new protocol, four design elements determine the compliance baseline:
+| Write to | About |
+|---|---|
+| The Research Facilitator, [research.facilitator@muhc.mcgill.ca](mailto:research.facilitator@muhc.mcgill.ca) | External control arms, master protocols, RI-MUHC processes and SOPs. |
+| The Biostatistics Consulting Unit, [bcu@rimuhc.ca](mailto:bcu@rimuhc.ca) | Randomization, the statistical plan and adaptive designs. |
 
-<Steps>
-  <Step title="Classification">
-    Interventional or observational? Does it involve an investigational drug or device? This determines whether a CTA or ITA is required.
-  </Step>
-  <Step title="Randomization">
-    How are participants allocated? What system manages the randomization? Who holds the allocation sequence?
-  </Step>
-  <Step title="Blinding">
-    Who is blinded? Who holds the code? What is the emergency unblinding procedure?
-  </Step>
-  <Step title="Comparator">
-    What is the control arm? Is placebo use justified? Does the comparator reflect current standard of care?
-  </Step>
-</Steps>
+{/* Sources: the Research Facilitator's row as on paths/index; the BCU's page, kb/design-support/bcu (bcu@rimuhc.ca, as on kb/design-support/bcu). */}
 
-<Note>
-**Multicentric studies.** When a trial runs across multiple sites, Quebec mandates a single ethics review conducted by one designated reviewing REB, typically at the <Tooltip tip="US equivalent of the Canadian Qualified Investigator (QI)." headline="Principal Investigator (PI)" cta="Full definition" href="/kb/foundations/glossary#pi">principal investigator</Tooltip>'s institution. All other sites accept that review. However, every site must still complete its own institutional feasibility review and obtain authorization from its _personne formellement mandatée_. The ethics review is shared; the authorization is not.
-</Note>
+{/* Checked against: TCPS 2 (2022), chapters 3 and 11; ICH E6(R3) (Step 4, Jan. 6, 2025) and ICH E10 (2000); the Food and Drug Regulations, C.05.005 and C.05.006 (Justice Laws, current to Oct. 19, 2026); Health Canada's guidance for clinical trial sponsors and GUI-0100, version 4 (saved Nov. 14, 2026); QA's draft SOP-CR-003_11 (a draft: effective date "XX-XXX-2027"); SOP-CR-007_08; SOP-CR-010_07; the SOP Glossary of Terms (Apr. 27, 2023). Rewritten in batch b136, Nov. 15, 2026. */}
 
-The design of a study is a set of commitments made before any data exists. Its integrity cannot be recovered after the fact.
+Last reviewed: November 2026.
