@@ -1,95 +1,127 @@
 ---
 title: "International and Cross-Border Studies"
-description: "Regulatory, privacy, and logistical considerations when participating in studies that span Canada and other jurisdictions."
-keywords: ["cross-border", "international study", "IND", "CTA", "PIPEDA", "Law 25", "GDPR", "IP shipment", "customs"]
+sidebarTitle: "International and Cross-Border Studies (v2)"
+description: "Plan the regulatory submissions, data transfers and shipments of a study with sites in Canada and in other countries."
+keywords: ["cross-border", "international study", "IND", "CTA", "PIPEDA", "Law 5", "GDPR", "IP shipment", "customs"]
 ---
 
-Multi-centric studies increasingly span national borders — a Canadian site participating in a US-sponsored trial, a European collaboration, or a study with sites across multiple regulatory jurisdictions. This page covers the regulatory, privacy, and logistical considerations specific to cross-border research. For multi-site studies within Quebec, see [Multi-Centric Studies in Quebec](/kb/design/multi-centric).
+<div className="hub-scope"><span className="hub-scope-label">Applies to</span><span className="hub-scope-tag">Drug studies (Level I)</span><span className="hub-scope-tag">Medical device and surgery studies (Level II)</span><span className="hub-scope-tag">Natural health product studies (Level III)</span><span className="hub-scope-tag">Prospective studies not regulated by Health Canada (Level IV)</span><span className="hub-scope-tag">Retrospective and biobank studies (Level V)</span></div>
 
-## Regulatory requirements
+When the MUHC is one site of a study that also runs in other provinces or countries, each country's regulator, each site's research ethics board (REB) and each jurisdiction's privacy law still applies to its own part. A US-sponsored trial needs Health Canada's authorization for its Canadian sites, and participants' information that leaves Quebec needs Quebec's own safeguards. For several sites within Quebec's public network, see [Multi-Centric Studies in Quebec](/kb/design/multi-centric).
 
-### Canada and the United States
+## Get Health Canada authorization for the Canadian sites
 
-The sponsor must file a Clinical Trial Application (CTA) with Health Canada for a Canadian site, whether or not it holds a US Investigational New Drug application (IND) with the US Food and Drug Administration (FDA). The two are independent regulatory submissions:
+<div className="hub-scope"><span className="hub-scope-label">Applies to</span><span className="hub-scope-tag">Studies that need Health Canada authorization</span></div>
 
-- **CTA to Health Canada:** Required under Part C, Division 5 of the Food and Drug Regulations. Health Canada reviews it within a 30-day default period and typically issues a No Objection Letter (NOL).
-- **IND to the FDA:** A separate submission governed by 21 CFR Part 312. Canadian data generated under a Health Canada CTA can be submitted to the FDA in support of a US IND.
+For a drug trial, the sponsor files a <Tooltip tip="Application to Health Canada for authorization to conduct a drug trial under Division 5 of the Food and Drug Regulations." headline="Clinical Trial Application (CTA)" cta="Full definition" href="/kb/foundations/glossary#cta">Clinical Trial Application (CTA)</Tooltip> with Health Canada for the Canadian sites, whether or not it holds an Investigational New Drug application (IND) with the US Food and Drug Administration (FDA). The two are separate submissions:
 
-At the MUHC, the RI-MUHC's standard operating procedures (SOPs) have the sponsor obtain Health Canada's authorization first and send its letter to the site, which includes it in the Nagano submission for ethics review, although the order can differ for natural health products and some devices.
+- The CTA is made under [Division 5 of the Food and Drug Regulations](https://laws-lois.justice.gc.ca/eng/regulations/C.R.C.,_c._870/page-111.html). The sponsor may sell or import the drug for the trial at a site once all of these conditions are met:
+  - Health Canada has not sent a notice of objection within 30 days after it received the application. Health Canada typically issues a No Objection Letter (NOL) when it raises no objection.
+  - For that site, an REB has approved the protocol and the informed consent form.
+  - Health Canada has the site's information, such as its qualified investigator and its REB, if the sponsor didn't give it with the application.
+- The IND is a separate submission to the FDA, governed by Part 312 of Title 21 of the US Code of Federal Regulations (21 CFR). Canadian data generated under a Health Canada CTA can be submitted to the FDA in support of a US IND.{/* TO CONFIRM (QA): no source found for "Canadian data generated under a Health Canada CTA can be submitted to the FDA in support of a US IND" (searched: the saved eCFR text of 21 CFR 312, evidence/web/ecfr_read-2026-11-09/; Health Canada's CTA guidance). Is it right as stated? */}
 
-### Canada and the European Union
+The RI-MUHC's standard operating procedures (SOPs) have the sponsor [obtain Health Canada's authorization first](/sops/cr-007#5-1-1) and send its letter to the site, which includes it in the Nagano submission for ethics review. The order can differ for natural health products and some devices: [Study Submission and Review](/kb/submission/submission-overview#health-canada-authorization) gives the order for each.
 
-Studies involving EU sites operate under the EU Clinical Trials Regulation (CTR 536/2014), which differs from the Canadian framework in several ways — centralized authorization through CTIS (Clinical Trials Information System), a single assessment process across member states, and distinct timelines. Canadian sites are not subject to EU regulation, but the sponsor may impose EU-aligned requirements across all sites to maintain consistency.
+{/* Sources: the Food and Drug Regulations, C.05.006(1) ("a sponsor may sell or import a drug … for the purposes of a clinical trial if (a) the sponsor has submitted to the Minister an application in accordance with section C.05.005; (b) the Minister does not, within 30 days after the date of receipt of the application, send to the sponsor a notice"; (c) "for each clinical trial site, the sponsor has obtained the approval of the research ethics board in respect of the protocol referred to in paragraph C.05.005(a) and in respect of an informed consent form"; (d) "before the sale or importation of the drug at a clinical trial site, the sponsor submits to the Minister the information referred to in subparagraphs C.05.005(c)(ix) and (x) and paragraphs C.05.005(d) and (h), if it was not submitted in respect of that clinical trial site at the time of submitting the application"; saved, _review/2026-11/evidence/web/fdr-division5_fetched-2026-11-13/C.05.006.html); C.05.005(c)(ix) and (x) (for each site, the qualified investigator's and the approving REB's details), (d) (any REB that refused the protocol) and (h) (the proposed start date at each site) (saved, C.05.005.html, same folder). b154, second reader (the fact check's finding CB4): conditions (c) and (d) added, in the words kb/planning/iit-startup uses for the same rule; Health Canada's Guidance Document for Clinical Trial Sponsors: Clinical Trial Applications (saved, evidence/web/audit-S1_fetched-2026-11-14/hc-cta-sponsor-guidance.txt: "Health Canada typically issues a No Objection Letter in instances where no objection has been raised."); 21 CFR 312.40 (FACTS "Batch 54"); SOP-CR-007_08, section 5.1.1 (FACTS "Applied Nov. 12, 2026: batch 80 part 4c": the sponsor "must first obtain Health Canada Approval"), /sops/cr-007#5-1-1; kb/submission/submission-overview, the home of the order (natural health products and devices). The live page's "Health Canada reviews it within a 30-day default period" is said in the regulation's terms. */}
 
-### Quebec within Canada
+## Know how EU rules reach a Canadian site
 
-Quebec's ethics review system is distinct from other provinces. The multicentre research ethics review mechanism of Quebec's health ministry (in effect since 2015) provides a single ethics review by a CER évaluateur (REB of Record) for all public health network sites in Quebec, with each site conducting a separate site-specific assessment (examen de convenance).
+Studies with sites in the European Union come under the EU's Clinical Trials Regulation (Regulation (EU) No 536/2014). It authorizes trials through a central portal, the Clinical Trials Information System (CTIS), with one assessment across member states. Canadian sites are not subject to the EU regulation, but a sponsor may apply EU-aligned requirements to every site for consistency.{/* TO CONFIRM (QA): no source opened for the EU regulation's description (CTIS, a single assessment, "distinct timelines") or for sponsors applying EU-aligned requirements at every site; the live page stated them. Are they right as of November 2026? */}
 
-In a pan-Canadian study, submit the sites outside Quebec under their own jurisdictions' rules, and submit the Quebec sites in Nagano. A streamlined review elsewhere, such as Clinical Trials Ontario's for Ontario sites or [CanReview](https://canreview.ca/)'s for the sites that take part in it, doesn't replace the Nagano submission.{/* The Research Facilitator, through MF, Nov. 13, 2026 (FACTS "The Research Facilitator, Nov. 13, answers 14 to 34"). */}
+{/* Sources: none opened in b154 (the TO CONFIRM above). "Distinct timelines" on the live page is in the note, not the text: it said nothing a reader can use. */}
 
-## Data transfer and privacy
+## Submit the Quebec sites in Nagano
 
-Cross-border data transfer is one of the most complex aspects of international studies. Three privacy frameworks commonly intersect:
+Quebec's ethics review differs from other provinces'. In a pan-Canadian study, submit the sites outside Quebec under their own jurisdictions' rules, and submit the Quebec sites in Nagano. A streamlined review elsewhere, such as Clinical Trials Ontario's for Ontario sites or [CanReview](https://canreview.ca/)'s for the sites that take part in it, doesn't replace the Nagano submission.
 
-### PIPEDA (federal)
+Several sites within Quebec's public network share one ethics review by a reviewing REB, and each site does its own institutional feasibility review: [Multi-Centric Studies in Quebec](/kb/design/multi-centric) covers it.
 
-Canada's Personal Information Protection and Electronic Documents Act (PIPEDA), the federal private-sector privacy law, generally doesn't apply to hospitals, which provincial laws cover, though it may apply in certain situations, such as to a private sponsor or service provider. Where it applies, it requires organizations to ensure "comparable" protection through contractual measures when transferring personal information outside Canada, and participants must be informed that their data may be processed abroad.
+{/* Sources: the Research Facilitator, through MF, Nov. 13, 2026 (FACTS "The Research Facilitator, Nov. 13, answers 14 to 34", answer 15: "if you're doing pan-canadian study with sites outside of Quebec, you have to submit project for those sites as per jurisdictional regulations for those sites and also submit in Quebec via Nagano for Quebec sites"); SOP-CR-007_08, section 5.6.1 (each site in other provinces "submits to their respective individual REBs"); the Framework (April 1, 2016), the home's source. The live page's paragraph on the ministry's mechanism ("in effect since 2015 … examen de convenance") restated its home: one sentence and a link here (B1). */}
 
-### Quebec's privacy laws
+## Protect participant information that leaves Quebec
 
-Quebec's privacy legislation sets its own requirements for transfers outside Quebec:
+Participants' information held by the MUHC is health and social services information, and Law 5, the [Act respecting health and social services information](https://www.legisquebec.gouv.qc.ca/en/document/cs/R-22.1), sets the rules for sending it outside Quebec. These rules apply to other Canadian provinces too.
 
-- A **privacy impact assessment (PIA)** may be required before personal information is transferred outside Quebec; at the MUHC, write to efvp@muhc.mcgill.ca to learn whether your study needs one
-- A **written agreement** with the recipient organization is required
-- The **adequacy of the receiving jurisdiction's legal framework** must be assessed on a case-by-case basis — Quebec does not maintain a list of "adequate" jurisdictions
-- These requirements apply even for transfers to other Canadian provinces
+- A privacy impact assessment (*évaluation des facteurs relatifs à la vie privée*, EFVP) is done before the information leaves Quebec. It weighs, among other things, the legal framework of the place it goes to.
+- The information goes outside Quebec only if the assessment shows that it will be adequately protected there.
+- A written agreement sets the terms. For research access to records without consent, it takes the assessment's results into account.
+
+Quebec does not maintain a list of jurisdictions it considers adequate, so each transfer is assessed case by case.{/* TO CONFIRM (the EFVP office, efvp@muhc.mcgill.ca): no source found for "Quebec does not maintain a list of 'adequate' jurisdictions" (searched: R-22.1 ss. 45, 47, 48, 73, 78 as saved; the CAI's pages saved in evidence/web/b79-privacy_read-2026-11-11/). Is it right as of November 2026? */}
+
+[Privacy and the EFVP](/kb/governance/privacy#know-when-an-efvp-is-needed) says when a study needs an EFVP. Write to the [EFVP office](mailto:efvp@muhc.mcgill.ca) when you plan to send participants' information outside Quebec.
+
+Canada's federal private-sector privacy law, the [Personal Information Protection and Electronic Documents Act](https://www.priv.gc.ca/en/privacy-topics/privacy-laws-in-canada/the-personal-information-protection-and-electronic-documents-act-pipeda/pipeda_brief/) (PIPEDA), generally doesn't apply to hospitals, which provincial laws cover. It may apply in certain situations, such as to a private sponsor or service provider. Where it applies, it requires organizations to use contractual or other means to provide a comparable level of protection when a third party processes personal information, including outside Canada. Participants must be informed that their data may be processed abroad.{/* Closed in b154 by the second reader (the fact check's rows CB20 and CB21; the question was for the EFVP office): the Office of the Privacy Commissioner of Canada's Guidelines for processing personal data across borders (saved, _review/2026-11/batches/b154-3b-design/factcheck/web/opc-crossborder-guidelines.txt), quoting PIPEDA's Principle 4.1.3: "The organization shall use contractual or other means to provide a comparable level of protection while the information is being processed by a third party."; "PIPEDA does not distinguish between domestic and international transfers of data."; "Organizations need to make it plain to individuals that their information may be processed in a foreign country". The sentence said "through contracts" and "outside Canada" only: it now carries the Principle's "contractual or other means" and its third-party scope. */}
 
 <Warning>
-Do not assume PIPEDA compliance covers Quebec-specific requirements. Quebec's privacy laws have their own rules on transfers outside Quebec, and for health information held by the MUHC, Law 5 sets them. When planning data transfers outside Quebec, write to efvp@muhc.mcgill.ca.
+Do not assume that meeting PIPEDA's requirements meets Quebec's. For health information held by the MUHC, Law 5 sets its own rules on information that leaves Quebec.
 </Warning>
 
-### GDPR (EU collaboration)
+{/* Sources: the Act respecting health and social services information (R-22.1), s. 2 (what the information is) and the saved excerpts (evidence/laws-quebec-R-22.1-ss8-44-58_read-2026-11-11.md; evidence/laws-quebec-R-22.1-excerpt-ss1-16-62-78-99-111-159-164_read-2026-11-11.md): s. 45 (the assessment, if information goes outside Quebec, weighs "the legal framework applicable in the State"), s. 47(4) (outside Quebec, the assessment establishes adequate protection), s. 48 (the authorization "is made official by a written agreement"; the agreement takes the assessment's results into account), s. 73 (before communicating information outside Quebec under s. 72, a privacy impact assessment; communication only if it shows "adequate protection", under a written agreement), s. 78 (the same before "giving a mandate or entering into a contract of enterprise or for services involving the communication of information outside Québec"); FACTS "Batch 79" and "Cross-border transfers, Law 5"; SOP-CR-007_08, section 5.4.3 ("there are other instances where an EFVP form may be required (e.g., If data is being transferred out of province …)"); the Office of the Privacy Commissioner of Canada, "PIPEDA in brief" ("Municipalities, universities, schools, and hospitals are generally covered by provincial laws. PIPEDA may apply in certain situations."); kb/governance/privacy, the home of the EFVP. The live page named "Quebec's privacy laws" and listed four bullets; the bullets now carry R-22.1's own terms, and "may be required" stays on the home. */}
 
-When collaborating with European sites, both GDPR and Canadian privacy requirements must be satisfied. Canada's PIPEDA has GDPR adequacy status, meaning EU-to-Canada transfers under PIPEDA are generally permitted. However, Quebec's Law 25 has not separately received EU adequacy status — the practical impact of this distinction depends on the specific data flows and should be assessed with legal counsel.
+## Work with European sites under the GDPR
 
-## Investigational product shipment
+When a study has European sites, both the EU's General Data Protection Regulation (GDPR) and Canadian privacy requirements apply. The EU recognizes PIPEDA as giving adequate protection, so transfers from the EU to organizations covered by PIPEDA are generally allowed. Quebec's laws have not separately received that recognition. How much this matters depends on the study's data flows: ask the [Research Agreements Office](mailto:contracts@muhc.mcgill.ca), which handles the RI-MUHC's legal questions on research agreements, including data transfer agreements.{/* TO CONFIRM (the Research Agreements Office): the live page sent readers to "legal counsel" with no contact; ledger row 51 (Indra) asked for the legal body, and the Research Facilitator answered on Nov. 13, 2026, "Legal would be our Research Agreements Office". Is the office the right contact for GDPR questions on data flows? (Closed in b154 by the second reader, the fact check's rows CB23 and CB24: the two statements on adequacy. The European Commission's page on adequacy decisions, saved in _review/2026-11/batches/b154-3b-design/factcheck/web/ec-adequacy.txt, lists "Canada (commercial organisations)," and has no decision for Quebec.) */}
 
-Importing clinical trial drugs into Canada is regulated under the Food and Drugs Act. Requirements for cross-border IP shipment:
+The Centre for Applied Ethics' adult clinical trial consent template has an addendum on data privacy under the GDPR, for studies whose sponsor needs it.{/* TO CONFIRM (the coordinator; new in b154's second reader, the fact check's row CB26): the addendum rests on FACTS line 1166 only ("Additional Information on Data Privacy Following the Application of the General Data Protection Regulation"); kb/recruitment/consent-templates says the same. Confirm it on the Centre for Applied Ethics' adult clinical trial template, version 4.2, before the page goes live. */}
 
-- A copy of the **No Objection Letter (NOL)** from Health Canada must accompany the drug shipment
-- The shipment may only be sent to a **qualified investigator** for use in an authorized clinical trial
-- Documentation accompanying the shipment must include: the NOL, product labelling, and shipping records
-- Diversion into the commercial market is prohibited
-- CBSA Memorandum D19-9-1 governs the administration of health product imports at the border
+{/* Sources: the Research Facilitator, Nov. 13, 2026, answer 5 (FACTS "The Research Facilitator, Nov. 13, answers 1, 3 to 5, 7 to 11 and 13": "Regulatory would be QA. Legal would be our Research Agreements Office."); contacts.mdx ("Legal questions about research agreements | Research Agreements Office | contracts@muhc.mcgill.ca"); FACTS line 1166 (the adult clinical trial template V4.2's addendum, "Additional Information on Data Privacy Following the Application of the General Data Protection Regulation (GDPR)", with "Sponsor: Insert name of the sp[onsor]"). The template sentence is new on the page: a resource the CAE publishes for this case (for MF). */}
 
-For shipments involving temperature-sensitive IP, ensure the cold chain is maintained throughout customs clearance. Plan for potential customs delays — particularly for first-time shipments to a new site or when using a new shipping route.
+## Import the investigational drug
 
-### Exporting specimens
+<div className="hub-scope"><span className="hub-scope-label">Applies to</span><span className="hub-scope-tag">Drug studies (Level I)</span></div>
 
-Biological specimens shipped internationally are subject to both Canadian export requirements (Transportation of Dangerous Goods Act for ground transport, IATA regulations for air transport) and the importing country's requirements. See [Management of Biological Specimens](/kb/conduct/study-operations/biological-specimens) for TDG/IATA certification requirements.
+The Food and Drugs Act and its regulations govern importing drugs for a clinical trial into Canada. A person who imports a drug for a clinical trial must be authorized under Division 5 and, if the drug is imported, have a representative in Canada responsible for its sale. The sponsor or a person it designates is the importer, and individual investigators at Canadian sites may serve as importers.
 
-## Practical considerations
+For a shipment, Health Canada's guidance says:
 
-| Area | What to plan for |
+- A No Objection Letter should be provided at the time of importation, to facilitate shipment and to show compliance with the regulations.
+- A copy of the importer's details from Appendix 1 of the HC/SC 3011 form should be included with the shipment, along with the NOL.
+- Any delegation of importation duties to third parties should be set out in a written agreement. Systems must be in place for monitoring, storage conditions, transport and disposition of the drug, and the sponsor remains responsible for its handling and storage.
+
+The shipment may be sent only to a qualified investigator, for use in an authorized clinical trial, and diverting the drug into the commercial market is prohibited. The Canada Border Services Agency's Memorandum D19-9-1 governs the administration of health product imports at the border.{/* TO CONFIRM (QA): no source opened for these statements from the live page (Division 5, C.05.003 to C.05.006, read for the authorization only; the CBSA memorandum not opened). Are they right, and is D19-9-1 the current memorandum? */}
+
+For a temperature-sensitive product, plan for the cold chain to hold through customs clearance, and allow for customs delays, especially for a first shipment to a new site or by a new route.{/* TO CONFIRM (QA): Hub advice from the live page; no source found. */}
+
+{/* Sources: the Food and Drug Regulations, C.05.003 ("no person shall sell or import a drug for the purposes of a clinical trial unless (a) the person is authorized under this Division; … (c) if the drug is to be imported, the person has a representative in Canada who is responsible for the sale of the drug"; saved, evidence/web/fdr-division5_fetched-2026-11-13/C.05.003.html); Health Canada's CTA guidance, section 2.7.5 ("a No Objection Letter should be provided at the time of importation to facilitate shipment and to demonstrate compliance with section C.05.006 or section C.05.008 of the Regulations"; "Any delegation of importation duties to third parties should be clearly articulated through written agreement. Systems must be in place for the monitoring, storage conditions, transportation and disposition of the drug to be imported."; "the sponsor ultimately bears responsibility for the correct handling and storage of the product"; "A copy of Appendix 1 should be included with the shipment along with the NOL.") and its definition of "Importer" ("The sponsor or person designated by the sponsor … Individual investigators at the clinical trial sites in Canada may serve as Canadian Importers."). The live page said the NOL "must accompany the drug shipment": the guidance says "should". */}
+
+## Ship biological specimens abroad
+
+Biological specimens shipped to another country follow Canada's requirements for transport, the Transportation of Dangerous Goods regulations for ground transport and the International Air Transport Association's (IATA) regulations for air transport, and the importing country's requirements. [Management of Biological Specimens](/kb/conduct/study-operations/biological-specimens) covers the training and certification these shipments need.
+
+{/* Sources: kb/conduct/study-operations/biological-specimens, the home of specimen shipping (its own sources: Transport Canada's pages, saved in evidence/web/tc-shipping-infectious-substances_fetched-2026-11-15/). The live page wrote "Transportation of Dangerous Goods Act for ground transport, IATA regulations for air transport": kept, linked to its home. */}
+
+## Plan for the practical differences
+
+Some points of an international study are worth settling with the sponsor early:
+
+| Point | What to consider |
 |---|---|
-| **Time zones** | Monitoring visits, sponsor calls, and safety reporting deadlines may reference a different time zone. Confirm which timezone governs reporting clocks. |
-| **Language** | At the MUHC, a consent form needs [an English and a French version](/kb/recruitment/consent#prepare-the-consent-form), unless the REB accepts a justification. International sponsors may not have French translations ready — build translation time into the timeline. |
-| **Currency** | Clinical trial budgets with international sponsors are often denominated in USD or EUR. Address currency risk and conversion timing in the clinical trial agreement. |
-| **Insurance** | Confirm the sponsor's clinical trial insurance covers Canadian sites and is valid under Quebec law. |
-| **Regulatory reporting** | The sponsor reports to Health Canada and to other jurisdictions' regulators; the site reports to the sponsor and the REB, and in a trial of a device sold or imported for investigational testing, the qualified investigator also reports certain incidents to Health Canada and to the manufacturer or importer ([Reportable Events](/kb/conduct/safety-reporting/reportable-events#key-reporting-timelines)). Confirm that the sponsor's safety reporting covers all jurisdictions. |
+| Time zones | Monitoring visits, sponsor calls and safety reporting deadlines may be set in another time zone. Consider confirming which time zone governs the reporting clocks. |
+| Language | At the MUHC, a consent form needs [an English and a French version](/kb/recruitment/consent#prepare-the-consent-form), unless the REB accepts a justification. An international sponsor may not have French translations ready, so allow time for translation. |
+| Currency | Budgets with international sponsors are often in US dollars or euros. Consider addressing currency risk and the timing of conversion in the clinical trial agreement. |
+| Insurance | Consider confirming that the sponsor's clinical trial insurance covers Canadian sites and is valid under Quebec law. |
+| Regulatory reporting | The sponsor reports to Health Canada and to other countries' regulators. The site reports to the sponsor and the REB. In a trial of a device sold or imported for investigational testing, the qualified investigator also reports certain incidents to Health Canada and to the manufacturer or importer ([Reportable Events](/kb/conduct/safety-reporting/reportable-events#key-reporting-timelines)). Consider confirming that the sponsor's safety reporting covers every jurisdiction. |
+
+{/* TO CONFIRM (QA, or the Research Agreements Office for currency and insurance): the time-zone, currency, insurance and safety-coverage points and "International sponsors may not have French translations ready" are Hub advice from the live page; no source found. Do the offices give this advice? */}
+
+{/* Sources: kb/recruitment/consent, the home of the language rule ("unless the REB accepts a justification"); kb/conduct/safety-reporting/reportable-events, the home of the reporting deadlines; the Medical Devices Regulations, s. 81(k) (the qualified investigator's undertaking to report incidents "to the Minister and to the manufacturer or importer", FACTS "Device incidents"); the Food and Drug Regulations, C.05.014 (the sponsor's reports). The table's bold labels were dropped (STYLE-HUB part C). */}
 
 ## Contacts
 
-- Data transfers and privacy assessments: [efvp@muhc.mcgill.ca](mailto:efvp@muhc.mcgill.ca).
-- Agreements, including data sharing and transfer agreements: the RI-MUHC Contracts Office, [contracts@muhc.mcgill.ca](mailto:contracts@muhc.mcgill.ca).
-- Regulatory questions: Quality Assurance, [QAclinicalresearch@muhc.mcgill.ca](mailto:QAclinicalresearch@muhc.mcgill.ca).
+| Write to | About |
+|---|---|
+| The MUHC's Directorate of Innovation, Performance and Quality, [efvp@muhc.mcgill.ca](mailto:efvp@muhc.mcgill.ca) | Privacy impact assessments (EFVP), including information that leaves Quebec. |
+| The Research Agreements Office, [contracts@muhc.mcgill.ca](mailto:contracts@muhc.mcgill.ca) | Legal questions on research agreements, including data sharing and transfer agreements. |
+| Quality Assurance (QA), [QAClinicalResearch@muhc.mcgill.ca](mailto:QAClinicalResearch@muhc.mcgill.ca) | Regulatory questions. |
 
----
+{/* Sources: the Research Facilitator, Nov. 13, 2026, answer 5 ("Regulatory would be QA. Legal would be our Research Agreements Office."); the rows as on kb/governance/privacy (EFVP), kb/planning/sponsored-trials (the Research Agreements Office) and contacts.mdx (QA's address, spelled as there). The live page's "RI-MUHC Contracts Office" is the Research Agreements Office (one thing, one name). */}
 
 ## Related resources
 
-- [Multi-Centric Studies in Quebec](/kb/design/multi-centric) — Quebec-specific multi-site ethics and regulatory framework
-- [Privacy and Confidentiality](/kb/governance/privacy) — Quebec privacy framework and Law 25
-- [Laws, Regulations and Guidelines](/kb/governance/laws-regulations) — Health Canada regulatory framework
-- [Management of Biological Specimens](/kb/conduct/study-operations/biological-specimens) — specimen shipping and TDG/IATA requirements
-- [Research Agreements](/kb/funding/clinical-trial-agreements) — agreement clauses relevant to international studies
+- [Laws, Regulations and Guidelines](/kb/governance/laws-regulations)
+- [Research Agreements](/kb/funding/clinical-trial-agreements)
+
+{/* Checked against: the Food and Drug Regulations, C.05.003 to C.05.006 (Justice Laws, current to Oct. 19, 2026); Health Canada's Guidance Document for Clinical Trial Sponsors: Clinical Trial Applications (saved Nov. 14, 2026); the Act respecting health and social services information (R-22.1; LégisQuébec, current to Oct. 15, 2026, saved excerpts); SOP-CR-007_08 (May 1, 2025); the OPC's PIPEDA in brief (modified May 1, 2024). Rewritten in b154 (Nov. 15, 2026). */}
+
+Last reviewed: November 2026.
