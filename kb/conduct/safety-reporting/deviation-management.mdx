@@ -1,158 +1,195 @@
 ---
 title: "Deviation Management and CAPA"
-description: "Classifying deviations, working through the CAPA process, root cause analysis, and preventing common deviations at the RI-MUHC."
+sidebarTitle: "Deviation Management and CAPA (v2)"
+description: "Classify a protocol deviation, find its causes and complete the corrective and preventive action (CAPA) that a major or critical deviation needs."
 keywords: ["protocol deviation", "CAPA", "corrective action", "preventive action", "root cause analysis", "deviation log", "CR-026", "CR-017"]
 ---
 
-Reporting obligations for deviations — the classification thresholds, REB timelines, and Deviation Log requirements — are covered in [Reportable Events and Protocol Deviations](/kb/conduct/safety-reporting/reportable-events). This page covers the operational side: how to classify ambiguous cases, how to work through a <Tooltip tip="Actions taken to resolve a compliance issue and prevent recurrence: identify, correct, prevent." headline="Corrective and Preventive Action (CAPA)" cta="Full definition" href="/kb/foundations/glossary#capa">CAPA</Tooltip>, and how to prevent the most common deviations from occurring in the first place.
+<div className="hub-scope"><span className="hub-scope-label">Applies to</span><span className="hub-scope-tag">Drug studies (Level I)</span><span className="hub-scope-tag">Medical device and surgery studies (Level II)</span><span className="hub-scope-tag">Natural health product studies (Level III)</span><span className="hub-scope-tag">Prospective studies not regulated by Health Canada (Level IV)</span><span className="hub-scope-tag">Retrospective and biobank studies (Level V)</span></div>
+
+A deviation is any departure from the study's current documents approved by the Research Ethics Board (<Tooltip tip="The ethics committee that reviews and approves research involving human participants. Also called CER at French-language institutions." headline="Research Ethics Board (REB)" cta="Full definition" href="/kb/foundations/glossary#reb">REB</Tooltip>), the RI-MUHC's standard operating procedures (SOPs), good clinical practice or, where it applies, the ISO 14155 standard of the International Organization for Standardization (ISO). [Every deviation must be assessed, addressed and documented](/sops/cr-026#5-2-3), whatever its tier.
+
+Do not implement a deviation from the approved protocol without the sponsor's prior agreement and the REB's approval. Two exceptions apply: a deviation needed to eliminate an immediate hazard to participants, and one for an administrative aspect of the study, such as a small editorial change.
+
+If the sponsor allows minor changes to the protocol, [its confirmation should be provided in writing](/sops/cr-026#5-3-3). The documentation of this waiver should be filed in the investigator site file and be available to the REB for review on request.
+
+The tier decides whether the study should have a corrective and preventive action (<Tooltip tip="Actions taken to resolve a compliance issue and prevent recurrence: identify, correct, prevent." headline="Corrective and Preventive Action (CAPA)" cta="Full definition" href="/kb/foundations/glossary#capa">CAPA</Tooltip>), and for most deviations how soon the REB hears of it. A good CAPA finds why the deviation happened and changes the process, so that it doesn't happen again.
+
+Which deviations to report, to whom and by when is on [Reportable Events and Protocol Deviations](/kb/conduct/safety-reporting/reportable-events#classify-and-report-protocol-deviations).
+
+{/* Sources: [SOP-CR-026_01, sections 5.2.3](/sops/cr-026#5-2-3) ("The Investigator must not implement any deviation from the approved protocol without prior agreement by the Sponsor and approval from the REB except where necessary to eliminate immediate hazard(s) to study participants(s) or for an administrative aspect of the study (e.g., changes that are minor, and may involve grammar, rephrasing, punctuation or small editorial changes)."; "All protocol deviations (minor, major and critical) must be assessed, addressed and documented") and [5.3.3](/sops/cr-026#5-3-3) ("Any excursion from the current REB approved study documents, RI-MUHC SOPs, ICH-GCP or ISO-GCP (if applicable) is considered a deviation."; "All major and critical deviations should have corrective and preventive action (CAPA) implemented"; "If the Sponsor allows minor changes to the protocol, confirmation of this should be provided in writing by the Sponsor. The documentation of this waiver should be filed in the ISF and available to the REB for review upon request."; major and critical deviations "should be reported to the evaluating REB within 7 days (if life-threatening) or 15 days"; minor ones "may be collected and submitted to the REB at the time of annual Continuing Review"); the CAPA form, [SOP-CR-026_01 Appendix 2](/sops/cr-026#appendix-2) (preventive actions: "What new processes have you put in place to prevent the deviations(s) from occurring in future?"). The topic home of the reporting rules and the three tiers' table is kb/conduct/safety-reporting/reportable-events (STYLE-HUB B1). */}
 
 ## Classification in practice
 
-[SOP-CR-026](/sops/cr-026) defines three tiers: minor, major, and critical. This is the RI-MUHC's operational classification — ICH E6(R3) uses a two-tier distinction between "important" and "non-important" deviations, while many institutions and sponsors use three tiers for more granular tracking. The definitions are clear at the extremes — a missed non-critical document filing deadline is minor; fabricated data is critical. The difficulty is in the middle, where most real deviations fall.
+[The RI-MUHC's SOPs](/sops/cr-026#5-3-3) sort deviations into three tiers: minor, major and critical. [Reportable Events and Protocol Deviations](/kb/conduct/safety-reporting/reportable-events#classify-a-deviation-as-minor-major-or-critical) gives each tier's definition, with examples.
 
-### The classification decision
+The tiers are easy to tell apart at the extremes. A non-critical document filed late is minor, and fabricated data is critical. The difficulty is in the middle, where most real deviations fall.
 
-Classification is a judgment made by the <Tooltip tip="The physician responsible to the sponsor for the conduct of a clinical trial at the site. One QI per study per Canadian site." headline="Qualified Investigator (QI)" cta="Full definition" href="/kb/foundations/glossary#qi">QI</Tooltip>/PI with input from the <Tooltip tip="The team member who handles day-to-day administration and coordination of the clinical trial." headline="Clinical Research Coordinator (CRC)" cta="Full definition" href="/kb/foundations/glossary#crc">CRC</Tooltip>. Two questions drive the classification:
+{/* Cut as a repetition of the home, for MF (kb/conduct/safety-reporting/reportable-events carries the ICH sentence, with its source): "This is the RI-MUHC's operational classification — ICH E6(R3) uses a two-tier distinction between "important" and "non-important" deviations, while many institutions and sponsors use three tiers for more granular tracking." ICH E6(R3), section 3.9.3, has "important protocol deviations" only, never "non-important"; "many institutions and sponsors use three tiers" has no source found (searched the SOP text, ICH E6(R3) and FACTS). asked of QA in the master doc. */}
 
-1. Could it cause undue health risks to participants or others?
-2. Could it invalidate the study's data?
+### Decide the tier
 
-If the answer to both is no, the deviation is likely minor. If the answer to either is yes or possibly, it is likely major. It is critical if it results in fatal, life-threatening or unsafe conditions for participants, or if it involves an unauthorized trial or the adulteration, misrepresentation or falsification of records.
+The principal investigator, who leads the study at the MUHC, decides each deviation's tier, with input from the clinical research coordinator (<Tooltip tip="The team member who handles day-to-day administration and coordination of the clinical trial." headline="Clinical Research Coordinator (CRC)" cta="Full definition" href="/kb/foundations/glossary#crc">CRC</Tooltip>). The tier is recorded on the [Protocol/GCP/SOP Deviation Log](/sops/cr-026#appendix-1).
 
-{/* Diagram source: images/diagrams/deviation-severity.mmd. Edit it there, then regenerate the SVG (STYLE-HUB H). */}
+The tiers' definitions turn on three questions. Ask them in this order:
+
+1. Did the deviation involve an unauthorized trial, or the adulteration, misrepresentation or falsification of records? If it did, it is critical.
+2. Could it cause undue health risks to participants or others, or could it invalidate the study's data? If it could do neither, it is minor.
+3. Did it result in fatal, life-threatening or unsafe conditions for participants? If it did, it is critical. If it didn't, it is major.
+
+{/* Diagram source: images/diagrams/deviation-severity.mmd. Edit it there, then regenerate the SVG (STYLE-HUB H). b177: new labels proposed in batches/b177-3b-oversight/run/deviation-severity-proposed.mmd; the SVG needs regenerating before this draft goes live. */}
 <Frame caption="Click or tap to enlarge.">
-  ![Decision tree for classifying a deviation, which is first recorded on the Deviation Log. A deviation that involved an unauthorized trial or adulterated, misrepresented or falsified records is critical. Otherwise, a deviation that could cause undue health risks to participants or others, or could invalidate the study's data, is critical if it caused fatal, life-threatening or unsafe conditions for participants, and major if it did not. Critical and major deviations are reported to the REB with the CAPA already taken. A deviation that could do neither is minor and is reported to the REB at the annual continuing review, or within the REB's deadlines if it was a sponsor-approved eligibility waiver, changed the approved consent process, led to a serious adverse event or, in the researcher's judgment, jeopardized participants' safety, the efficacy of the research or data integrity, or could otherwise affect participants' rights, safety or well-being.](/images/diagrams/deviation-severity.svg)
+  ![Decision tree for classifying a deviation, which is first recorded on the Deviation Log. A deviation that involved an unauthorized trial or adulterated, misrepresented or falsified records is critical. Otherwise, a deviation that could neither cause undue health risks to participants or others nor invalidate the study's data is minor. One that could do either is critical if it resulted in fatal, life-threatening or unsafe conditions for participants, and major if it did not. A major or critical deviation should have a CAPA, and its report to the REB should include the CAPA already implemented. A minor deviation is reported with the annual continuing review, unless it is one of the kinds the REB wants reported within its deadlines.](/images/diagrams/deviation-severity.svg)
 </Frame>
 
-### Common ambiguous scenarios
+{/* Sources: [SOP-CR-026_01, section 5.3.3](/sops/cr-026#5-3-3) (Minor: "a deviation that is classified as not critical or major, but which indicates a deficiency and/or deviation from protocol/GCP/regulations"; Major: "a marked deviation or deficiency, other than a critical one, that may result in undue health risks to the clinical trial participants, in other persons or could invalidate data"; Critical: "a situation that results in fatal, life threatening or unsafe conditions for participants enrolled in a clinical trial. It presents an immediate or latent undue risk to the rights, health and safety of participants. The conduct or unauthorized trials, adulteration, misrepresentation and falsification of records are also critical deviations from SOPs and GCP."; "All major and critical deviations should have corrective and preventive action (CAPA) implemented"; reported "along with CAPA implemented by the Investigator to avoid repetition of the event"; minor deviations "may be collected and submitted to the REB at the time of annual Continuing Review") and [Appendix 1](/sops/cr-026#appendix-1) (the Deviation Log's "Deviation category" column; "Report all minor deviations to the REB with annual REB Continuing Review"); the MUHC REB's SOP 405A.001-2, section 5.2.3 (the deviations the REB wants reported whatever their tier), through kb/conduct/safety-reporting/reportable-events. The order of the questions follows the diagram that ledger rows 98 and 99 (Indra) led to (U01 76): falsified records are critical whatever their effect. b177 change of meaning: the live page said such a deviation "is likely minor" or "likely major"; the tiers are defined by these effects, so the sentences now give the definitions' result (the judgment stays the principal investigator's, in the paragraph above). */}
 
-| Scenario | Considerations | Likely classification |
+### Classify deviations that fall between tiers
+
+These examples show how the questions apply to common cases. The tier still depends on what happened in the study.
+
+| Situation | What to consider | Likely tier |
 |---|---|---|
-| Visit window missed by 1 day; no safety assessments due | Protocol specifies the window as a guideline, not a safety requirement. No data was lost. | Minor — log and monitor for patterns |
-| Visit window missed by 1 week; safety labs were due | Safety assessment was delayed. Participant may have continued with undetected lab abnormalities. | Major: a CAPA should be in place |
-| Consent obtained with a superseded ICF version, discovered after procedures were performed | Participant did not receive current risk information before procedures. The consent was not fully informed. | Major — assess whether re-consent is needed |
-| A non-fasting blood draw was taken when the protocol required fasting | Data point may be invalid. Assess whether the sample can be repeated or whether the data is unrecoverable. | Major if the data point is a primary endpoint; minor if secondary and repeatable |
-| CRC performed a delegated task before being added to the <Tooltip tip="Lists each team member, their qualifications, and specific trial tasks authorized by the QI." headline="Task Delegation Log (TDL)" cta="Full definition" href="/kb/foundations/glossary#tdl">Task Delegation Log</Tooltip> | Data collected by an unauthorized person. Even if the CRC was qualified, the delegation documentation was not in place. | Major — the data integrity concern is the lack of documented authorization |
+| A visit window missed by one day, with no safety assessment due | The protocol gives the window as a guideline, not a safety requirement. No data was lost. | Minor. Record it and watch for a pattern. |
+| A visit window missed by one week, with safety labs due | The safety assessment was delayed. The participant may have continued with an undetected lab abnormality. | Major. A CAPA should be in place. |
+| Consent obtained on a superseded consent form, found after procedures were done | The participant didn't receive the current risk information before the procedures, so the consent was not fully informed. Not using the current consent form is one of the deviations the REB wants reported whatever its tier. | Major. Assess whether the participant needs to be re-consented. |
+| A blood sample drawn without the fasting the protocol required | The data point may be invalid. Assess whether the sample can be repeated or whether the data can't be recovered. | Major if the data point is a primary endpoint. Minor if it is secondary and the sample can be repeated. |
+| A coordinator performed a task before being added to the <Tooltip tip="Lists each team member, their qualifications, and specific trial tasks authorized by the QI." headline="Task Delegation Log (TDL)" cta="Full definition" href="/kb/foundations/glossary#tdl">Task Delegation Log</Tooltip> | A person without documented delegation collected the data. Even if the coordinator was qualified, the delegation wasn't documented. | Major. The concern for data integrity is the missing documented delegation. |
 
-<Note>
-When in doubt, classify up rather than down. A major deviation that turns out to be minor after investigation is a non-issue. A minor deviation that should have been major is a compliance gap.
-</Note>
+When you are unsure between two tiers, consider choosing the higher one. A major deviation that turns out to be minor after investigation causes no harm, while a minor deviation that should have been major is a compliance gap.
+
+{/* Sources: the MUHC REB's SOP 405A.001-2, section 5.2.3 ("Any change in the approved process for obtaining consent (e.g., improper translation, current consent form not implemented)"), through kb/conduct/safety-reporting/reportable-events (b177: an addition to the consent row, from the page's topic home; the live row said only "Major — assess whether re-consent is needed"); [SOP-CR-026_01, section 5.3.3](/sops/cr-026#5-3-3) (the tiers; "All major and critical deviations should have corrective and preventive action (CAPA) implemented"). The rows themselves: the live page (asked of QA in the master doc). */}
 
 ## Working through a CAPA
 
-A CAPA should accompany every major or critical deviation reported to the REB. The CAPA Form template is in [SOP-CR-026](/sops/cr-026) Appendix 2. A completed CAPA should also be sent to Quality Assurance at QAClinicalResearch@muhc.mcgill.ca for trend tracking.
+Every major or critical deviation [should have a CAPA](/sops/cr-026#5-3-3), captured on the RI-MUHC's [CAPA form](/sops/cr-026#appendix-2). Its report to the REB should include the CAPA already implemented. It is best practice for the CAPA form to describe what has already been done, not what will be done.
 
-A CAPA has four parts:
+The CAPA's number should be entered on the Deviation Log and on the CAPA form, so that the CAPA can be tracked and closed. The completed CAPA form should be filed in the investigator site file. Send a copy to [Quality Assurance (QA)](mailto:QAClinicalResearch@muhc.mcgill.ca), which tracks trends across studies to improve processes.
+
+To complete a CAPA form:
 
 <Steps>
   <Step title="Describe what happened">
-    State the deviation factually: what occurred, when it was identified, who was involved, which participants were affected, and what the immediate impact was. Reference the Deviation Log entry number.
-  </Step>
-  <Step title="Identify the root cause">
-    Determine *why* the deviation occurred — not just what happened. The most common method is the **5 Whys**: ask "why" iteratively until you reach the underlying cause rather than the surface symptom.
+    Explain the deviation: the dates and times, who identified it, the sequence of events, the participants' study numbers (never their names), the people involved and whether any participant was adversely affected. Add the equipment ID or the SOP number where it applies.
 
-    **Example:**
-    - Deviation: A participant received the wrong dose of the investigational product (IP).
+    Say how far the deviation extends: how many participants it affected, how many were harmed and how many could have been. Say too whether it could reach other studies that follow similar processes or share staff, and how you will check them. If there are several deviations, describe each one separately.
+  </Step>
+  <Step title="Find the causes">
+    Explain how and why the deviation happened, and how you investigated it. A deviation often has causes at several levels, so look for every point where a process failed. Find the root causes with the "5 Whys" or a similar method, and state each root cause separately.
+
+    The 5 Whys asks "why" again after each answer, until it reaches the underlying cause rather than the visible symptom. For example:
+
+    - The deviation: a participant received the wrong dose of the investigational product.
     - Why? The research nurse read the wrong line on the dosing chart.
-    - Why? The dosing chart had multiple participants listed on one page.
+    - Why? The dosing chart listed several participants on one page.
     - Why? The site used a shared dosing log instead of individual participant worksheets.
     - Why? No standard template existed for individual dosing worksheets.
-    - **Root cause:** Absence of a standardized individual dosing worksheet.
+    - The root cause: no standard individual dosing worksheet.
 
-    The root cause is rarely "human error." If a person made a mistake, something in the system allowed the mistake to happen — and that system issue is the root cause.
+    The root cause is rarely human error. If a person made a mistake, something in the system allowed it, and that is the root cause to fix.
 
-    The 5 Whys is one approach. For more complex deviations, a **Fishbone (Ishikawa) diagram** maps contributing factors across categories to identify multiple root causes that a linear analysis might miss. **Failure Mode and Effects Analysis (FMEA)** is a proactive tool — it identifies where processes are most vulnerable to failure before a deviation occurs, and is more commonly used for process design than for post-deviation investigation.
-
-    For the same dosing error, a fishbone diagram sorts the contributing factors into four categories.
+    For a more complex deviation, consider a fishbone (Ishikawa) diagram. It sorts the contributing factors into categories, and can show several root causes that a linear analysis would miss. For the same dosing error:
 
     | Category | Contributing factors |
     |---|---|
-    | People | A research nurse new to the study; no verification step |
-    | Process | A shared dosing log; no worksheet template |
-    | Environment | A busy clinic day; a shared dosing area |
-    | Equipment and materials | Dose columns that are not visually distinct; a dosing chart without row dividers |
+    | People | A research nurse new to the study. No verification step. |
+    | Process | A shared dosing log. No worksheet template. |
+    | Environment | A busy clinic day. A shared dosing area. |
+    | Equipment and materials | Dose columns that are not visually distinct. A dosing chart without row dividers. |
 
-    {/* Diagram source: images/fishbone-example.svg, drawn by hand; edit the SVG itself (STYLE-HUB H). */}
+    {/* Diagram source: images/fishbone-example.svg, drawn by hand; edit the SVG itself (STYLE-HUB H). b177: its labels match the table; no change needed. */}
     <Frame caption="Click or tap to enlarge.">
       <img src="/images/fishbone-example.svg" alt="Fishbone diagram of the dosing error, with two contributing factors in each of four categories (people, process, environment, and equipment and materials)." />
     </Frame>
 
-    The Fishbone surfaces contributing factors the 5 Whys might miss — the busy clinic day and shared dosing area didn't cause the error on their own, but they made it more likely. A CAPA that addresses only the worksheet (the 5 Whys root cause) might miss the verification gap or the environmental factors.
-  </Step>
-  <Step title="Define corrective actions">
-    Corrective actions address the specific deviation that occurred. What was done to fix the immediate problem?
+    The fishbone shows factors that the 5 Whys missed. The busy clinic day and the shared dosing area didn't cause the error on their own, but they made it more likely. A CAPA that fixes only the worksheet would leave the missing verification step and the environment as they were.
 
-    - Was the participant re-assessed?
-    - Was the data corrected or annotated?
-    - Was the Sponsor and/or REB notified?
-    - Was the participant re-consented if necessary?
+    Failure mode and effects analysis (FMEA) works the other way. It looks for where a process is most likely to fail before a deviation happens, so it serves more often in designing a process than in investigating a deviation.
   </Step>
-  <Step title="Define preventive actions">
-    Preventive actions address the root cause to prevent recurrence — not just for this participant or this study, but for similar situations in the future.
+  <Step title="Describe the corrective actions">
+    Describe the immediate actions taken to resolve the issue and reduce the risk. Examples are a documented correction of errors or omissions in the source data, escalation to management and notifying the principal investigator. Describe any assessment of the deviation's impact on participants' health, safety or well-being, or on data integrity.
 
-    - Was a process or template changed?
-    - Was additional training provided?
-    - Was a verification step added?
-    - Was a system or tool modified?
-
-    Preventive actions should be specific and implementable. "Staff will be more careful" is not a preventive action. "Individual dosing worksheets will be used for all participants, verified by a second person before administration" is.
+    Depending on the deviation, corrective actions can also include re-assessing the participant, annotating the data, notifying the sponsor or the REB, and re-consenting the participant.
   </Step>
-  <Step title="Verify effectiveness">
-    After the corrective and preventive actions are implemented, confirm they worked. Did the same type of deviation recur? If the CAPA involved a new process or template, is the team actually using it? Effectiveness verification closes the loop — without it, the CAPA is a plan, not a solution.
+  <Step title="Describe the preventive actions">
+    Describe the new processes put in place to prevent the deviation from happening again. Be specific: who, what, when, where and how. Most effective CAPAs include new procedures, processes or workflows, and training on them. Attach the relevant documents, such as a checklist, a training log or an SOP. For the training, give who will be trained, when, who will lead it and how it will be given, and record it in a training log.
+
+    A preventive action is specific enough to implement and check. "Staff will be more careful" is not one. "Individual dosing worksheets will be used for all participants, verified by a second person before administration" is.
+  </Step>
+  <Step title="List the other reports the deviation needs">
+    Give any other reports the deviation requires, for example to the sponsor, a lead site, Health Canada or a funding agency. If there are none, write "Not applicable."
+  </Step>
+  <Step title="Plan how to check that the CAPA worked">
+    Describe how you will evaluate whether the CAPA corrected the deviation and whether it will prevent it from happening again. Say when the evaluation will take place, what will be evaluated and who will do it. The evaluation can be an internal audit by the study team, or by QA on request. If the evaluation shows that the CAPA didn't solve the problem, say how you will notify the REB and update the CAPA.
+
+    Give the CAPA's closing date, and whether it will be reviewed in six months. The reporter, the principal investigator, the study nurse or coordinator and the clinical research manager sign and date the form.
   </Step>
 </Steps>
 
+If a preventive action changes the study application, the protocol, a consent form or other study materials, you must also submit those changes to the REB as a separate amendment. Each evaluation of the CAPA should be well documented and kept in the study's regulatory files.
+
+{/* Sources: [SOP-CR-026_01, section 5.3.3](/sops/cr-026#5-3-3) ("All major and critical deviations should have corrective and preventive action (CAPA) implemented which should be captured on a CAPA from. It is best practice to document what has already been implemented (not to be implemented in future). The CAPA number should be entered on the Deviation Log (Refer to Appendix 1) as well as the CAPA form (Refer to Appendix 2) in order to facilitate tracking and closure."; "All major or critical deviations should be reported to the evaluating REB … along with CAPA implemented by the Investigator to avoid repetition of the event"; "The CAPA form for major or critical violations should also be sent to RI-MUHC Quality Assurance department for trend tracking and further process improvement"; and in the list under that item: "Send the CAPA form to QAclinicalresearch@muhc.mcgill.ca.") and [Appendix 1](/sops/cr-026#appendix-1) (its "Reporting" note: "CAPA forms for Major and Critical deviations should be filed in the ISF and a copy sent to QA at QAclinicalresearch@muhc.mcgill.ca"); the CAPA form, [SOP-CR-026_01 Appendix 2](/sops/cr-026#appendix-2) (the All-in-One's text layer, read whole: "DESCRIPTION OF THE DEVIATIONS(S): Explain what happened. Provide a description of the deviation including dates, times, who identified the deviation, sequence of events, participant numbers (not names), persons involved, status of participant and if they were adversely affected, equipment ID, SOP#. In a narrative of events include an analysis of the extent of the deviation, such as the number of participants impacted, whether any participants were actually harmed, and the number of participants potentially harmed. If there are multiple deviations, describe each one under a separate sub-heading. Provide details about whether the deviation could extend beyond this study, if other protocols follow similar processes and share staff from the current protocol."; "CAUSES OF THE DEVIATION: Explain how and why the deviation occurred. Describe the method of investigation. Note that there are often multiple levels of causes to a single deviation, and it is important to determine all possible points of process failures. Be sure to determine root cause(s) by using "5-Whys", or a similar method(s)."; "CORRECTIVE ACTIONS: Describe the immediate actions you implemented to resolve the issue and minimize the risk. Describe preliminary steps taken, if any (e.g., documented correction of errors/omissions to source data, escalation to management, QI/PI notification) as well as any assessment of impact on participant health, safety or well-being or data integrity."; "PREVENTIVE ACTIONS: What new processes have you put in place to prevent the deviations(s) from occurring in future? Be specific: who, what, when, where, how. To be effective, most CAPAs will include some new procedures/processes/workflows."; "Note that if you are making any changes to the study application/protocol/consent form(s) or other study materials, you must also submit them to the REB in a separate amendment. The majority of effective CAPAs also include training to the new procedures/processes/workflows."; "Provide information on any reporting requirements, if applicable (to the sponsor, lead site, Health Canada, funding agency, etc.)"; "Detail your plan for evaluating how effectively your CAPA corrected the deviation and whether it will be successful at preventing future occurrences. This could be in the form of an internal audit to assess compliance to the CAPA and whether new events have occurred, conducted by members of the study team and/or by the RI-MUHC QA team on request."; "Your CAPA evaluation(s) should be well-documented and maintained in your regulatory files."; "CAPA CLOSING DATE (dd-Mon-yyyy): ____ To be reviewed in 6 months: Y/N"; signature lines for the "Reporter (Name & Role)", the "Principal Investigator", the "Unblinded/Blinded Study Nurse/CRC" and the "Clinical Research Manager"). b177 changes: the steps follow the form's sections, and the form's requirements the live page lacked are added (for MF, P27): the CAPA number on the log and the form, the form filed in the ISF, what has already been implemented, the extent and the other studies, other reports, the evaluation's details, the closing date and signatures, and the amendment for changed study materials. The live "four parts" over five steps is gone. Kept from the live page, with its question asked of QA in the master doc: the 5 Whys example, "rarely human error", the fishbone and its table, the remark on FMEA, the list of corrective actions after the form's examples, and the example of a vague preventive action. */}
+
 ## Trend awareness
 
-QA reviews CAPA forms submitted across the institution for patterns. At the study level, the QI/PI and CRC should review the Deviation Log periodically for trends.
+Every deviation [should be assessed to identify trends](/sops/cr-026#5-3-3), with corrective and preventive action on the processes where it applies. [QA](mailto:QAClinicalResearch@muhc.mcgill.ca) reviews the CAPA forms it receives for trends across studies.
 
-A pattern of minor deviations in the same category — repeated visit window misses, recurring data entry errors, multiple consent version issues — may signal a systemic problem even if no single deviation is major. When a pattern is identified:
+Consider having the principal investigator and the coordinator review the Deviation Log regularly for trends.
 
-- Assess whether the underlying cause is the same across events
-- Consider whether the cumulative effect changes the classification (a pattern of minor deviations in a safety-relevant area may warrant a major classification for the overall trend)
-- Document the trend assessment and any resulting actions on the Deviation Log or in a Note-to-File
+A pattern of minor deviations of the same kind can signal a problem in the system even when no single deviation is major. Examples are repeated missed visit windows, recurring data entry errors or several errors with consent form versions. When you see a pattern, consider:
+
+- Assessing whether the deviations share the same underlying cause.
+- Assessing whether their combined effect changes their classification. A pattern of minor deviations in an area that matters for safety may call for a major classification of the trend as a whole.
+- Documenting the trend assessment and any resulting actions on the Deviation Log or in a note to file.
+
+{/* Sources: [SOP-CR-026_01, section 5.3.3](/sops/cr-026#5-3-3) ("All protocol, GCP and SOP deviations observed by the site (intentional or not) or detected by a monitor, auditor or inspector should be documented on the Protocol/GCP/SOP Deviation Log, assessed in order to identify trends and take corrective and preventive action regarding process change (as applicable)"; the CAPA form "should also be sent to RI-MUHC Quality Assurance department for trend tracking and further process improvement"). */}
+
+### Track deviations across sites
+
+<div className="hub-scope"><span className="hub-scope-label">Applies to</span><span className="hub-scope-tag">Studies you sponsor yourself (sponsor-investigator)</span></div>
+
+If you are the sponsor-investigator of a study with more than one site, you [should conduct a risk analysis](/sops/cr-026#5-4-7) for each deviation identified at any site, and rate each one by its impact on the study and the probability that it happens again. Track the number and type of deviations at all sites, to identify trends that may call for an amendment to the protocol.
+
+Deviations a monitor, an auditor or an inspector detects go on the Deviation Log too. [Monitoring, Audits, and Inspections](/kb/conduct/safety-reporting/monitoring-audits) explains each kind of oversight.
+
+{/* Sources: [SOP-CR-026_01, section 5.4.7](/sops/cr-026#5-4-7) ("The Sponsor/Sponsor-Investigator should conduct a risk analysis for each of the deviations identified and rate them according to impact on the study and probability of reoccurrence. Track the number and type of deviations that have occurred across all sites in order to identify trends that may trigger a need for a protocol amendment."; the item sits in section 5.4, "Multi-centrique research in Quebec and multi-center research across Canada", hence "a study with more than one site"); section 5.3.3 ("detected by a monitor, auditor or inspector should be documented on the Protocol/GCP/SOP Deviation Log"). b177: an addition, for MF (P27: a requirement of the page's own source that no version carried). */}
 
 ## Preventing common deviations
 
-Most deviations at research sites fall into a small number of recurring categories. Targeted systems can prevent them.
+Most deviations at research sites fall into a few recurring kinds. Targeted habits and tools can prevent them.
 
-<AccordionGroup>
-  <Accordion title="Visit window misses">
-    **Why it happens:** Visit windows are tracked manually or in spreadsheets that are not updated in real time. Staff turnover means the person who scheduled the visit is not the person confirming it.
+| Deviation | Why it happens | How to prevent it |
+|---|---|---|
+| Missed visit windows | Visit windows are tracked by hand, or in spreadsheets not updated in real time. With staff turnover, the person who scheduled a visit may not be the person confirming it. | Consider a central visit tracking system with automatic reminders, flagging visits that approach the edge of their window at least a week ahead, and one person per study responsible for the visit schedule. |
+| Consent form version errors | The REB approves a new consent form, but the site keeps using the previous version, because copies were printed in advance or the old version stayed in the consent area. | When a new version is approved, consider removing every copy of the superseded version from use at once. Superseded versions kept in the same binder as the current one should be clearly marked as superseded: a line through the first page, the word "superseded", initials and the date. Consider checking the version number and date on the form itself before every consent discussion. |
+| Gaps in the Task Delegation Log | A new team member starts tasks before the principal investigator adds them to the log, or a member's role changes and the log isn't updated. | The log [is to be completed before a team member conducts any study task](/sops/cr-002#5-6-1), and should be kept up to date throughout the study. Consider making the log part of the onboarding checklist, and reviewing it monthly against the team and their tasks. |
+| Errors in investigational product accountability | Dispensing, storage temperature, or return and destruction logs fall behind in busy enrolment periods. | If an accounting inconsistency appears, [follow up with the participant or the pharmacy](/sops/cr-010#5-5-2) for the participant's safety, and document it. Consider completing accountability records at each transaction rather than in batches, and making accountability a specific delegated task of one team member per study. The rules for storage and temperature records are on [Investigational Products](/kb/conduct/study-operations/investigational-products). |
+| Late or missed safety assessments | Laboratory tests, vital signs or electrocardiograms (ECGs) are missed because the visit schedule didn't flag them, or because the participant arrived late and procedures were rushed. | Consider a protocol-specific checklist for each visit that lists every required procedure, reviewed before the participant arrives and again before they leave. If a required assessment can't be done, consider documenting the reason and assessing whether it is a deviation. |
 
-    **Prevention:** Maintain a centralized visit tracking system (spreadsheet, calendar, or CTMS) with automated reminders. Flag visits approaching window boundaries at least one week in advance. Assign a single person per study to own the visit schedule.
-  </Accordion>
-  <Accordion title="Consent version errors">
-    **Why it happens:** A new ICF version is approved by the REB, but the site continues using the previous version because copies were pre-printed or the old version was not physically removed from the consent area.
+<Warning>
+Do not perform a study task until your training for it is documented and the task has been delegated on the Task Delegation Log.
+</Warning>
 
-    **Prevention:** When a new ICF version is approved, immediately remove all copies of the superseded version from circulation. Mark them "SUPERSEDED" and file them. Confirm the correct version is in use before every consent encounter — check the version number and date on the form, not just the stack it came from.
-  </Accordion>
-  <Accordion title="Delegation log gaps">
-    **Why it happens:** A new team member starts performing tasks before the QI/PI formally adds them to the Task Delegation Log. Or a team member's role changes and the log is not updated.
+{/* Sources: [SOP-CR-002_09, section 5.6.1](/sops/cr-002#5-6-1) ("This log is to be completed for site team members who will be involved in the study (i.e. prior to conducting any study-related task). This log should be maintained up-to-date throughout the study."); [SOP-CR-015_08, section 5.2.4](/sops/cr-015#5-2-4) ("If superseded/obsolete documents are kept in the same binder as current, the superseded/obsolete documents should be clearly marked as superseded/obsolete. Draw a line through the first page of the document; indicate superseded, initial and date."); [SOP-CR-010_07, section 5.5.2](/sops/cr-010#5-5-2) ("Perform a subject or pharmacy follow-up in the event of accounting inconsistency, for the safety of the subject. Document this inconsistency."); critical rule 3, word for word (STYLE-HUB B3; SOP-CR-002_09; SOP-CR-003_10 §5.3; SOP-CR-007_08 §5.4.11). b177 changes of meaning: the live accordions said "No study tasks should be performed until the delegation entry is signed" (now critical rule 3 and section 5.6.1's wording); "Mark them "SUPERSEDED" and file them" (now section 5.2.4's marking, for copies kept in the same binder); "Temperature logs should be reviewed daily during active enrollment" (a "should" with no source found: the rules for temperature records live on kb/conduct/study-operations/investigational-products, linked; cut here as a pointer to its home, for MF). The five accordions became a table (STYLE-HUB H: items compared on the same points; rules out of dropdowns). */}
 
-    **Prevention:** Make delegation log updates part of the onboarding checklist for new team members. No study tasks should be performed until the delegation entry is signed. Review the delegation log monthly to confirm it reflects current team composition and task assignments.
-  </Accordion>
-  <Accordion title="IP accountability errors">
-    **Why it happens:** IP dispensing, storage temperature, or return/destruction logs fall behind during busy enrollment periods.
+## Contacts
 
-    **Prevention:** Complete IP accountability records at the time of each transaction — not in batches. Temperature logs should be reviewed daily during active enrollment. Assign IP accountability as a specific delegation to one team member per study.
-  </Accordion>
-  <Accordion title="Late or missed safety assessments">
-    **Why it happens:** Safety assessments (labs, vitals, ECGs) are missed because they were not clearly flagged in the visit schedule, or because the participant arrived late and procedures were rushed.
+| Write to | About |
+|---|---|
+| Quality Assurance (QA), [QAClinicalResearch@muhc.mcgill.ca](mailto:QAClinicalResearch@muhc.mcgill.ca) | Copies of CAPA forms for major and critical deviations, classifying a deviation and evaluating a CAPA. |
+| Your REB panel's inbox, listed on the Centre for Applied Ethics' [contact page](https://muhc.ca/cae/page/contact-information), or [reb@muhc.mcgill.ca](mailto:reb@muhc.mcgill.ca) if you aren't sure which panel reviews your study | Questions about reporting a deviation to the MUHC REB. |
 
-    **Prevention:** Use protocol-specific visit checklists that list every required procedure per visit. Review the checklist before the participant arrives and again before they leave. If a required assessment cannot be completed, document the reason and assess whether it constitutes a deviation.
-  </Accordion>
-</AccordionGroup>
+{/* Sources: QA's row as on kb/governance/quality-assurance (the address) and STYLE-HUB H (its spelling); QA receives CAPA forms (SOP-CR-026_01, section 5.3.3) and may evaluate a CAPA on request (the CAPA form: "by the RI-MUHC QA team on request"); "classifying a deviation" is kept from the live page's purpose, as QA's role on the SOPs (QA's draft SOP-CR-003_11, section 3.0: "For any questions regarding SOPs, contact QA"). The REB's row as on kb/conduct/safety-reporting/reportable-events. */}
 
----
+## Related pages
 
-## Related resources
+- [Data Integrity](/kb/conduct/data-documentation/data-integrity): how to correct records and keep them attributable, legible, contemporaneous, original and accurate.
 
-- [Reportable Events and Protocol Deviations](/kb/conduct/safety-reporting/reportable-events) — classification definitions, reporting timelines, Deviation Log
-- [SOP-CR-026](/sops/cr-026) — Ongoing REB Review (deviation categorization, CAPA form template)
-- [SOP-CR-017](/sops/cr-017) — Audits and Inspections (CAPA in the inspection context)
-- [SOP-CR-013](/sops/cr-013) — Study Monitoring and Communication (monitor role in deviation detection)
-- [Data Integrity](/kb/conduct/data-documentation/data-integrity) — ALCOA+ principles and documentation requirements
+{/* b177: the live "Related resources" list is cut except Data Integrity (STYLE-HUB B9): Reportable Events, SOP-CR-026, SOP-CR-013 and Monitoring, Audits, and Inspections are linked in the text. SOP-CR-017 (CAPA in the inspection context) is linked from kb/conduct/safety-reporting/hc-inspection-guide, the home of the inspection response; for MF: the pointer is gone from this page. */}
+
+{/* Checked against: SOP-CR-026_01 (May 1, 2025), with its Appendix 1 (the Deviation Log) and Appendix 2 (the CAPA form), read in the All-in-One's text layer; SOP-CR-002_09 and SOP-CR-015_08 (June 19, 2023); SOP-CR-010_07; the MUHC REB's SOP 405A.001-2 (effective Oct. 15, 2024), section 5.2.3, through kb/conduct/safety-reporting/reportable-events; ICH E6(R3) Step 4 (Jan. 6, 2025), section 3.9.3; Health Canada's GUI-0043, version 3 (April 1, 2026), as a lead only. Rewritten under STYLE-HUB version 2.0 in batch b177 (Nov. 16, 2026); fixes of its blind fact check drafted by the batch's second reader (second-reader/REPLACEMENTS.md). */}
+
+Last reviewed: November 2026.
 
 <div className="ri-cantrain-callout">
   <a href="/training/cantrain"><img src="/images/cantrain_logo.png" alt="CANTRAIN" className="ri-cantrain-logo" /></a>
