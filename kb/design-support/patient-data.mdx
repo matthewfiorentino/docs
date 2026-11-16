@@ -1,0 +1,244 @@
+---
+title: "Working with MUHC Patient Data"
+sidebarTitle: "Working with MUHC Patient Data (v2)"
+description: "Explore synthetic MUHC patient data in MDClone while you plan a study, and request real patient data from the MUHC Data Warehouse once the study is approved."
+keywords: ["MUHC Data Warehouse", "MDClone", "synthetic data", "patient data", "OACIS data", "ADT", "Med-Echo", "data request", "clinical data extract", "feasibility", "cohort"]
+---
+
+<div className="hub-scope"><span className="hub-scope-label">Applies to</span><span className="hub-scope-tag">Drug studies (Level I)</span><span className="hub-scope-tag">Medical device and surgery studies (Level II)</span><span className="hub-scope-tag">Natural health product studies (Level III)</span><span className="hub-scope-tag">Prospective studies not regulated by Health Canada (Level IV)</span><span className="hub-scope-tag">Retrospective and biobank studies (Level V)</span></div>
+
+Researchers at the RI-MUHC can work with MUHC patient data in two ways. While they plan a study, they can explore synthetic patient data in MDClone, which needs no approval from the Research Ethics Board (REB). Once the study is approved, they can request real patient data from the MUHC Data Warehouse.
+
+| What differs | Synthetic data in MDClone | Real data from the Data Warehouse |
+|---|---|---|
+| What you work with | Synthetic patient data that keep the statistical properties and relationships of real clinical data. They contain no real patient records and no identifiable information. | Real patient data: aggregate, anonymized, de-identified or identifying. |
+| Suited to | Exploring patient populations, estimating cohort sizes, testing inclusion and exclusion criteria, assessing feasibility, preliminary statistics, research hypotheses, and grant and REB applications. | Publication-ready analyses, validated research datasets, and projects that need real patient-level data for validation, publication or detailed statistical analyses. |
+| How you get it | You explore the data and build cohorts yourself, once your account is approved. | You submit a formal data request, and the Data Warehouse team extracts the data after reviewing and processing the project. |
+| Approvals | REB approval is not required to generate or explore synthetic data. | REB approval and MUHC Authorization, except for aggregate data, which can be requested at any time. |
+
+Many projects begin in MDClone to explore feasibility and define cohorts before a formal Data Warehouse request is submitted to obtain real patient data.
+
+{/* Sources: the RI-MUHC Portal's MDClone page (pasted by MF on Oct. 23, 2026, and again on Nov. 16, 2026; ~/Desktop/rimuhc-redesign/_research/digital-health/context/portal-2026-10-23/mdclone.md): "MDClone is a secure self-service data exploration platform that enables researchers to explore synthetic patient data that preserves the statistical characteristics and relationships of real clinical data while protecting patient privacy."; "At the RI-MUHC, MDClone complements the Data Warehouse by providing researchers with rapid access to synthetic data for exploratory analyses and study planning."; "When Should I Use MDClone?" (the nine uses, of which the table keeps the eight that concern a study; "Learning and teaching with realistic clinical data" is in the next section); "Projects requiring real patient-level data for validation, publication, or detailed statistical analyses should be submitted through the RI-MUHC Data Warehouse Service."; the table "MDClone vs. Data Warehouse" ("Synthetic patient data | Real patient data"; "Self-service exploration | Custom data extraction by the Data Warehouse team"; "Self-service access after account approval | Data provided following project review and processing"; "Ideal for feasibility studies and hypothesis generation | Ideal for publication-ready analyses and validated research datasets"; "Privacy-preserving synthetic data | Governed access to identifiable or de-identified clinical data"; "Researchers independently build cohorts and explore data | Researchers submit a formal data request for extraction"); "Many projects begin in MDClone to explore feasibility and define cohorts before a formal Data Warehouse request is submitted to obtain real patient data."; the FAQ ("It does not contain real patient records or identifiable information."; "No. REB approval is not required to generate or explore synthetic data in MDClone."); the Portal's Data Warehouse page (saved Oct. 23, 2026; tools/_sources_text, "portal-2026-10-23__data-warehouse-and-bcu"): "As soon as the ethical and scientific review ("REB evaluation" in Nagano) has been approved, and PM Final Authorization received, a Data Request can be made."; "Aggregate data can be requested at any time"; "Data Request: Request aggregate, identifying, de-identified and anonymized data." MF, Nov. 16, 2026 (ledger row 223): one page about working with patient data, titled for its subject, opening with a short table on when to use synthetic data and when to request real data. The table's rows "Suited to" and "Approvals" use the Portal's own uses; its "Ideal for" became "Suited to", the Portal's own heading for the uses ("MDClone is well suited for"). */}
+
+## Explore synthetic data in MDClone
+
+MDClone is a secure self-service platform for exploring synthetic patient data. Researchers use it to explore patient populations, assess a project's feasibility, refine cohort definitions and develop research hypotheses before they request access to real patient data. MDClone can also be used to learn and to teach with realistic clinical data.
+
+Synthetic data are artificially generated. They preserve the statistical properties and relationships of the original clinical data while protecting patients' privacy. Researchers can export the synthetic datasets they generate in MDClone.
+
+As of November 2026, MDClone holds synthetic data from these domains, and new clinical domains are added as they become available:
+
+- Demographics.
+- Conditions.
+- Encounters.
+- Laboratory and pathology.
+- Medications.
+- Radiology.
+- SARDO, the MUHC's cancer tumour registry.
+- Surgeries and procedures.
+
+Synthetic data are commonly used for exploratory analyses, cohort discovery, hypothesis generation and study planning. Depending on the research methodology, they may also support other research activities. A study that needs real patient data should obtain the appropriate approvals and submit a Data Warehouse request.
+
+{/* Sources: the Portal's MDClone page (as above): "Researchers can use MDClone to explore patient populations, assess project feasibility, refine cohort definitions, and develop research hypotheses before requesting access to real patient data."; "Learning and teaching with realistic clinical data"; "Synthetic data is artificially generated data that preserves the statistical properties and relationships of the original clinical data while protecting patient privacy."; "Yes. MDClone allows you to export synthetic datasets generated within the platform."; "Researchers can currently explore synthetic data from the following domains:" (the eight domains); "As additional clinical domains become available, they will be added to the platform."; "Synthetic data generated in MDClone is commonly used for exploratory analyses, cohort discovery, hypothesis generation, and study planning. Depending on the research methodology, synthetic data may also support other research activities. Studies requiring real patient data should obtain the appropriate approvals and submit a Data Warehouse request."; the team's "Data Available in DW" (tools/_sources_text, "Reference files__Data__Available in DW": "MUHC Cancer Tumour Registry (dates depend on cancer type) - Sardo"), for the gloss on SARDO. TO CONFIRM (the Data Warehouse team, info.ridw@muhc.mcgill.ca): "As of November 2026" dates the Portal's "currently". Cut by MF's decision (ledger row 225): the Portal page's list of two publications from MDClone's synthetic data at the RI-MUHC (2025 and 2026). Not stated anywhere read: whether an EFVP or MUHC Authorization applies to MDClone itself (none is stated; both apply when real data are then requested). */}
+
+### Get access to MDClone
+
+Access to MDClone is available to all active RI-MUHC staff and members who hold valid MUHC credentials. They include:
+
+- Principal investigators.
+- Research staff and trainees affiliated with an RI-MUHC principal investigator.
+- Other RI-MUHC members with a valid UNI number, the MUHC credential that looks like MAMO1234.
+
+If you have no UNI number, confirm your eligibility and request a UNI number through a C2 request, with your principal investigator, before you apply for MDClone access.{/* TO CONFIRM (the Data Warehouse team): the guide names the "C2 request" without saying what or where it is. Where do RI-MUHC staff submit a C2 request (the form's name and address)? */}
+
+MDClone is accessible only through the MUHC network. Before your first login, make sure you can connect on-site at an RI-MUHC facility, or remotely through Citrix or a virtual private network (VPN). If network access isn't set up yet, submit a C2 request to have it configured before you use MDClone.
+
+Before your access request can be approved, you must:
+
+- Have written approval from your principal investigator. Every team member who requests access needs it.
+- Review and sign the MDClone Data and User Use Agreement, which sets the terms for data access, privacy and acceptable use of the platform.
+- Complete the first three modules of the MDClone Academy, MDClone's training platform. These introductory modules are mandatory for all users.{/* TO CONFIRM (the Data Warehouse team): the Access Request Guide makes the three Academy modules a prerequisite "before your access request can be approved", while the Portal's MDClone page says "Once your access request has been approved, you will also receive access to the MDClone Academy". In what order do users get Academy access, complete the modules and receive platform access? The page follows the guide, which sets the requirement. */}
+
+When you meet the eligibility criteria and have completed the prerequisites, submit your request through the official [MDClone Access Request form](https://forms.office.com/pages/responsepage.aspx?id=KP7hBotfdUC_bK4kvhp5koBH7agR8YRInTq4ci_I_T5UQUVDRjJONFlVN0lFOEo4SkQzSlZETFhTSiQlQCN0PWcu&route=shorturl). Every field of the form is mandatory, and incomplete submissions will not be processed.{/* TO CONFIRM (the Data Warehouse team, info.ridw@muhc.mcgill.ca): the Access Request Guide says both "Incomplete submissions will not be processed" (its section 2) and "Incomplete submissions will delay processing" (its notes). Which holds? (b155 fact check, P15.) */} The form asks for:
+
+- Your UNI number.
+- Your full name, as it appears in institutional records.
+- Your work email address, an active MUHC or affiliated institutional address.
+- The research account number to be associated with the access.
+- Your principal investigator's full name and email address, which every team member must give.
+
+Access is activated only once all the required information and documents have been submitted and validated. Access is tied to your UNI number, so do not share your login with others.
+
+For questions about eligibility, the training or the use agreement, ask your principal investigator or the [Data Warehouse team](mailto:info.ridw@muhc.mcgill.ca).{/* TO CONFIRM (the Data Warehouse team): (1) the guide sends questions to "your Principal Investigator or the RI-MUHC Data Warehouse Team" (its header) and to "the RI-MUHC data request center team" (its notes); is info.ridw@muhc.mcgill.ca the right address for MDClone questions, or should they go through the Request Center? A lead (the rimuhc.ca redesign's design plan, Oct. 29, 2026, from a meeting with MF; never cited): MDClone is "run by its ADAMS Centre". (2) Fees: does MDClone access cost anything, and what is the research account number used for? No source read states a fee. (3) The guide is undated on its face (its file was made Aug. 25, 2026): is it the current version? */}
+
+{/* Sources: the MDClone Access Request Guide (provided by MF, Nov. 16, 2026; evidence/mdclone-access-guide_from-MF-2026-11-16/, "MDClone Access Guide RIMUHC.txt" and the PDF; the form's address in LINKS-and-metadata.txt): "Access to MDClone is available to all active RI-MUHC staff and members who hold valid MUHC credentials."; "Principal Investigators (PIs)"; "Research staff and trainees affiliated with an RI-MUHC PI"; "Other RI-MUHC members with a valid UNI number (e.g., MAMO1234)"; "Individuals without MUHC credentials must confirm their eligibility and request a UNI number through a C2 request, in coordination with their Principal Investigator, before applying for MDClone access."; "The following information must be included in your access request form. Incomplete submissions will not be processed." (the five fields: "Your UNI number (e.g., MAMO1234)"; "As it appears in institutional records"; "Your active MUHC or affiliated institutional email"; "Research account number to be associated with the access"; "PI's full name and email address (required for all team members)"); "All of the following conditions must be met before your access request can be approved."; "Written approval from the Principal Investigator is required for all team members requesting access."; "Review and sign the "MDClone Data and User Use Agreement." This document outlines the terms governing data access, privacy, and acceptable use of the platform."; "Complete the first three modules of the MDClone Academy. These introductory modules are mandatory for all users"; "The MDClone platform is accessible only through the MUHC network. Before your first login, ensure one of the following connectivity options is in place: On-site access at an RI-MUHC facility; Remote access via Citrix or VPN"; "If network access is not yet set up, you must submit a C2 request to have it configured before using MDClone."; "Once all eligibility criteria are met and pre-requisites are completed, submit your request using the official online form"; "Access will only be activated once all required information and documentation have been submitted and validated."; "All fields in the access request form are mandatory."; "Access is tied to your MUHC credentials (UNI number). Do not share your login with others."; "For questions about eligibility, training, or the use agreement, contact your Principal Investigator or the RI-MUHC data request center team."; the Portal's MDClone page (as above): "a training platform that offers resources and courses to help users learn how to use MDClone and securely analyze health data". The Data Warehouse team's address: the Portal's Data Warehouse page and its Contacts row on paths/retrospective. */}
+
+### Move from MDClone to real patient data
+
+Once you have finalized your cohort definition in MDClone and the study has the necessary approvals, submit a Data Warehouse request. For an approved research project, the Data Warehouse team can generate the real patient dataset that corresponds to the cohort definition you developed in MDClone, which reduces the need to recreate it. The request follows the Data Warehouse's [request process](#the-request-process) and its [requirements by type of data](#requirements-by-data-type).
+
+{/* Sources: the Portal's MDClone page (as above): "For approved research projects, those cohort definitions can then be used by the RI-MUHC Data Warehouse to generate the corresponding real patient dataset, subject to the applicable governance and approval processes."; "Once you have finalized your cohort definition in MDClone and obtained the necessary approvals, submit a Data Warehouse request. The Data Warehouse team can generate the corresponding real patient dataset based on the cohort definition you developed in MDClone, reducing the need to recreate your cohort definition and helping streamline the data request process." */}
+
+## Request real data from the MUHC Data Warehouse
+
+The MUHC Data Warehouse brings together health care data from many of the MUHC's clinical and administrative systems, organized mainly around each patient. Researchers use it to count patients when they plan a study, and to obtain patient data for research once the study is approved. The RI-MUHC [Data Warehouse team](mailto:info.ridw@muhc.mcgill.ca) runs the service for research and helps you define the data you need.
+
+As of 2024, the Data Warehouse held data on 4.9 million patients and 28 million episodes of care, in more than 400 database tables with more than 6,000 columns, for more than 7.5 billion facts. Its data come from more than 18 MUHC hospital systems, such as those of the emergency departments, the operating rooms, outpatient clinics, imaging, the laboratory, the pharmacy, the cancer registry and the medical records archives.{/* TO CONFIRM (the Data Warehouse team, info.ridw@muhc.mcgill.ca; already asked, 14-open-questions.md, B159): "more than 18 MUHC hospital systems". The team's "Data Available in DW" names 14 source systems, and the Portal's chart shows 18 unlabelled sources, probably from 2019. How many source systems does the Data Warehouse draw on today? The counts are from the team's slides at Community Connect #4 (Oct. 2, 2024; session material, FACTS "Other institutional facts": "4.9 million patients", 28 million episodes, more than 7.5 billion facts; the slides: ">400 database tables", ">6000 table columns"); the Portal's About page gives "381 database tables" and the Data Summary v2.1 "4.8M unique patients". */} The data are updated within 24 hours.{/* TO CONFIRM (the Data Warehouse team): "updated within 24 hours" is on the old page only. The Portal's About page says "Data are routinely updated and linked". How often are the data updated? */}
+
+{/* Sources: the RI-MUHC Portal's Data Warehouse page and its About page (saved Oct. 23, 2026; tools/_sources_text, "portal-2026-10-23__data-warehouse-and-bcu"): "The MUHC Data Warehouse (MUHC DW) centralizes health care data from many clinical and administrative systems."; "Data are organized primarily around a patient"; "Aggregate data can be requested at any time"; "over 7.5 billion facts are accessible in 380 million rows, and over 6,000 columns, in 381 database tables"; FACTS only: Community Connect #4 (Oct. 2, 2024), FACTS "Other institutional facts" (session material; the counts, dated 2024, and the sources: "Archives (MedEcho)", "ER (MED-URGE/SIURGE)", "OR (Opera)", "Outpatient* (eRDV)", "Imaging (RADIMAGE)", "Lab (Cerner)", "Pharmacy (BDM)", "Cancer Tumor Registry (METRIQ-SARDO)"). The old page's five large figures became one dated sentence (STYLE-HUB C7: date anything that changes). From the b155 run draft (data-warehouse-draft.mdx), its opening, unchanged. */}
+
+### What the Data Warehouse team offers
+
+The team offers two services, both requested through its Request Center:
+
+- **Consultation.** The team checks whether a project is feasible, counts patients and variables, helps prepare the data specifications and advises on completing the privacy impact assessment (EFVP) or the data access section of the Nagano submission.
+- **Data extraction.** Research analysts and programmers extract aggregate data, anonymized data, de-identified data and identifying data for research projects.
+
+{/* Sources: the Portal's Data Warehouse page (saved Oct. 23, 2026): "Consultation: for questions about variables available in the Data Warehouse, advice on filling EFVP or Nagano "Data Access" section."; "Data Request: Request aggregate, identifying, de-identified and anonymized data."; FACTS only: Community Connect #4 (Oct. 2, 2024), the slide "Services Offered" ("1) Consultation • Project feasibility • Enough patients? • Variables available? • Help preparing data specifications."; "2) Data extraction • Aggregates • Anonymized • De-personalized • Identifiable"; "Research Analysts and Programmers to extract patient data for research projects"). The two cards weren't links and became a short list of named services (STYLE-HUB H and part C). Cut: "identifiable data when justified" (no source for "when justified"; for MF: the condition for identifiable data is the requirements below and, without consent, TCPS 2, article 5.5A, which the privacy page carries). From the b155 run draft, unchanged. */}
+
+### When to use the Data Warehouse
+
+The [Data Warehouse](mailto:info.ridw@muhc.mcgill.ca) serves research, including large retrospective analyses of patient data across MUHC sites: admissions, emergency visits, laboratory results, imaging reports, pharmacy dispensations, surgical records and more. Many of its data go back to 2008. The Data Warehouse provides data for research projects, not for quality improvement projects. If you aren't sure which your project is, use the Centre for Applied Ethics' [Quality Improvement (QI) vs Research Screening tool](https://muhc.ca/cae/templates-consent-forms).
+
+<Note>
+The Data Warehouse team recommends a consultation before you finalize your protocol and submit it in <Tooltip tip="The MUHC's electronic study submission and management platform. All studies requiring MUHC Authorization are submitted through Nagano." headline="Nagano (MUHC)" cta="Full definition" href="/kb/foundations/glossary#nagano">Nagano</Tooltip>. The team can help define the patient selection criteria, the sample size and the variables. If these are not clearly defined in Nagano, they can cause unnecessary delays.
+</Note>
+
+The Data Warehouse holds data from these MUHC sites: the Montreal General Hospital (MGH), the Royal Victoria Hospital (RVH), the Montreal Children's Hospital (MCH), the Lachine Hospital (LAC) and the Montreal Neurological Hospital (MNH).{/* TO CONFIRM (the Data Warehouse team; already asked, 14-open-questions.md): is the MNH (the Neuro) a full site in the Data Warehouse? The team's "Data Available in DW" says the Master Patient Index "links pt records across LAC, MCH, MGH, RVH", and names the MNH only for infection control; the Data Summary v2.1 names it in the pharmacy data. */} Not every kind of data is available for every site and every period. When you plan the protocol, check the [Data Summary](https://portal.rimuhc.ca/pls/apex/MUHC2.download_my_file?p_file=65514749312768742) (PDF) and the [Data Dictionary tool](https://portal.rimuhc.ca/pls/apex/f?p=132:1).
+
+The main kinds of data available are:
+
+- Patient demographics and identifiers.
+- Hospitalization and emergency episodes.
+- Laboratory results, from 2020.
+- Medical imaging reports, from 2000.
+- Surgical records, from 2003.
+- Pharmacy prescriptions and dispensations.
+- The cancer tumour registry.
+- Infection control data.
+- Blood bank records.
+- The activities of allied health professionals.
+- Outpatient appointments.
+
+The Data Warehouse doesn't hold medical image files (PACS), scanned documents or outpatient clinical notes. Some of these may be available through other systems, such as PACS or OACIS, and the team can advise you, since similar information may still be in the Data Warehouse.{/* TO CONFIRM (the Data Warehouse team): the start years disagree between the team's documents. "Data Available in DW" gives "Laboratory – Cerner - (from 2020)" and "Imaging text reports (radiology reports) – Radimage (From 1991)"; the Data Summary v2.1 (revised Feb. 21, 2024) gives general laboratory results "from 2017-10" and imaging "from 2000-04 to current". The page keeps the old page's years (2020, 2000). Which are right? */}
+
+{/* Sources: the Portal's Data Warehouse page (saved Oct. 23, 2026): "NOTE: This is a service to provide data from the MUHC DW for research projects, not quality improvement projects. If unclear, researchers can use the REB-provided QI vs Research tool to help determine if a project is Research or QI."; "MUHC CAE "Quality Improvement (QI) vs Research Screening" Tool: https://muhc.ca/cae/templates-consent-forms (public)"; "It is beneficial that researchers contact the RI-MUHC Data Warehouse Service team for a Consultation before finalizing their protocol and submitting to Nagano. The RI-MUHC Data Warehouse team can help define patient selection criteria, sample size, and variables. If these are not clearly defined in Nagano, it can cause unnecessary delays."; the team's "Data Available in DW" (tools/_sources_text, "Reference files__Data__Available in DW"): the data available and not available, from 2008-04 for hospitalizations, emergency episodes and outpatient appointments, "Laboratory – Cerner - (from 2020)", "Operating Room – Opera (Interventions from 2003-04)", and "Note: The Data Warehouse does not contain medical images, scanned documents, or outpatient notes. These may be available through other systems (e.g., PACS, OACIS). RI-MUHC Data Warehouse Team is happy to consult with you about your needs, as in some cases similar information may still be available in the Data Warehouse."; the Data Summary v2.1 (imaging "from 2000-04 to current"). TO CONFIRM (the Data Warehouse team): the Lachine hospital's current name ("the Lachine Hospital"; the old page said "Lachine General Hospital"). From the b155 run draft, unchanged. */}
+
+### The request process
+
+Every consultation and data request goes through the [RI-MUHC Data Warehouse Request Center](https://rimuhc.atlassian.net/servicedesk/customer/user/login?destination=portals), a separate site where you sign in or create an account. The Data Warehouse page on the RI-MUHC Portal links to it. Do not submit patients' medical record numbers (MRNs) or any other sensitive information through the Request Center.
+
+<Steps>
+  <Step title="Explore the Data Summary and the Data Dictionary">
+    Check which data are available, from which source systems and from what dates. Use the Data Dictionary tool to check variable definitions, data types and the sites where each variable is available before you settle the protocol's design.
+  </Step>
+  <Step title="Request a consultation">
+    Through the Request Center, discuss the patient selection criteria, the variables available and the sample size with the team, before you finalize the protocol.
+  </Step>
+  <Step title="Finalize the protocol and submit it in Nagano">
+    Define the data access section of the Nagano submission clearly. The team can advise you on completing it, and on completing the EFVP if the study needs one.
+  </Step>
+  <Step title="Submit a data request">
+    Once the Research Ethics Board (REB) has approved the study and it has <Tooltip tip="The MUHC's final authorization for a study to begin, issued by the Personne mandatée once the scientific, ethics and institutional feasibility reviews are favourable and, where the study needs it, Health Canada has authorized it." headline="MUHC Authorization" cta="Full definition" href="/kb/foundations/glossary#muhc-auth">MUHC Authorization</Tooltip>, and you meet the other [requirements for your type of data](#requirements-by-data-type), submit a data request through the Request Center.
+  </Step>
+  <Step title="Receive the data through NextCloud">
+    The data come to you through the MUHC's NextCloud platform. A NextCloud account is required for every type of data except aggregate data. [Store and share the data you receive](/kb/conduct/data-documentation/data-security) as their type requires.
+  </Step>
+</Steps>
+
+Aggregate data can be requested at any time, for example for feasibility checks or sample size calculations, before the study is approved.
+
+Besides consultations and data requests, the Request Center takes feedback: suggestions to improve the service, reports of a data issue and other questions. Every communication and file about your request is visible to you in the Request Center, and you receive an email for each update. Reply to the email or add a comment to the request to respond. To check a request's status, select **Requests** under your name, in the top right corner.
+
+{/* Sources: the Portal's Data Warehouse page (saved Oct. 23, 2026): "In general, the process should be: 1. Start protocol and explore Data Summary and Data Dictionary 2. Request a Consultation through RI-MUHC Data Warehouse Request Center 3. Finalize protocol and submit to Nagano 4. Submit Data Request through RI-MUHC Data Warehouse Request Center (only after PM Final Authorization) 5. Receive data through NextCloud"; "As soon as the ethical and scientific review ("REB evaluation" in Nagano) has been approved, and PM Final Authorization received, a Data Request can be made."; "Aggregate data can be requested at any time, taking into consideration important guidelines"; "Note: Please do not submit patient MRNs or any other sensitive information through this system."; "Login or create an account: RI-MUHC Data Warehouse Request Center, https://rimuhc.atlassian.net/servicedesk/customer/user/login?destination=portals (public sign-in page)"; "Consultation: for questions about variables available in the Data Warehouse, advice on filling EFVP or Nagano "Data Access" section."; "Feedback: For suggestions on improving the RI-MUHC DW Service, to report a data issue, or any questions not mentioned above."; "All communications and files related to your request will be visible to you in the Request Center and you'll also receive email notifications for any updates."; "Respond easily by replying directly to the email, or by adding a comment to your request."; "Check your request's status anytime by clicking on "Requests" under your name in the top right."; the team's Requirements for Opening a Data Request (a NextCloud account for all but aggregate data). The heading is unchanged: kb/recruitment/recruitment-enrollment links #the-request-process twice, for aggregate counts (now a level-3 heading; Mintlify's anchor is the same). From the b155 run draft; new in the restructure: the Request Center's third request type, Feedback (the rimuhc.ca redesign chat's lead, HUB-CHANGES-2026-10-23.md §2, checked in the Portal's page). */}
+
+### Request aggregate data
+
+Even with no names or medical record numbers, aggregate results can identify patients, so the [Data Warehouse team](mailto:info.ridw@muhc.mcgill.ca) applies privacy rules to aggregate requests, set out in its [*Guidelines on Aggregate Data Requests*](https://portal.rimuhc.ca/pls/apex/f?p=106:360):
+
+- The Data Warehouse doesn't release aggregate cells that hold fewer than 5 patients.
+- A request that is acceptable on its own can become risky when combined with other requests or with outside data, through small changes between similar requests, or through repeated requests over time.
+- The team keeps a log of requests by project and by population, and may review earlier requests with a new one. The team may deny, restrict, change or restructure requests whose overall pattern presents an unacceptable privacy risk.
+
+Simple extractions, such as the number of patients in a cohort or its age or sex distribution, are generally provided at no cost. Complex extractions, such as a cohort broken down by several variables, or means and trends for specific variables, may involve costs or other approvals.
+
+When you request aggregate data, you should:
+
+- Plan your analyses in advance, rather than refining your requests step by step.
+- Disclose earlier or parallel projects on similar populations or data sets.
+- Avoid unnecessary breakdowns, or breakdowns finer than you need.
+- Flag any result that looks as if it could identify someone.
+- Consult the team when you are unsure about a privacy risk.
+
+{/* Sources: the team's Guidelines on Aggregate Data Requests (tools/_sources_text, "portal-2026-10-23__docs__Guidelines on Aggregate Data Extractions"; FACTS "Batch 79", the B06 note; the Guidelines' address on the Portal: MF, Nov. 13, 2026, as on kb/recruitment/recruitment-enrollment): "Even when no direct identifiers (e.g., names or medical record numbers) are disclosed, aggregate outputs can still create re-identification risks."; "The Data Warehouse does not release aggregate cells containing fewer than 5 patients."; "A request can be acceptable on its own and still become risky when combined with other requests."; the mosaic effect, differential requests, linkage risk and cumulative risk over time; "The Data Request Center keeps a consolidated log of requests by research project and by target population."; "Previous requests may be reviewed together with new ones to assess cumulative re-identification risk."; "The data warehouse team may deny, restrict, modify, or restructure requests when the overall request pattern is considered to present an unacceptable privacy risk."; simple extractions "generally provided without cost to researchers"; complex extractions "may entail costs or additional approvals for researchers"; "What researchers should do: Plan analyses in advance rather than refining requests incrementally. Disclose previous or parallel projects involving similar populations or datasets. Avoid requesting unnecessary stratifications or overly granular breakdowns. Flag any output that appears potentially identifying. Consult the data warehouse team for preventive review when uncertain about privacy risks." From the b155 run draft; new in the restructure: the link to the Guidelines on the Portal, as on recruitment-enrollment. */}
+
+### Requirements by data type
+
+What you need before the team releases data depends on the type of data you request. The [Data Warehouse](mailto:info.ridw@muhc.mcgill.ca) sorts data into four types, from least to most identifying: aggregate, anonymized, de-identified (coded) and identifying. [What each type is](/kb/conduct/data-documentation/data-security#know-how-identifiable-your-data-are) decides how you must store and share it.
+
+| Requirement | Aggregate | Anonymized | De-identified | Identifying |
+|---|---|---|---|---|
+| Data Use Agreement | Yes | Yes | Yes | Yes |
+| Valid Human Research Privileges or Researcher Status, and standard operating procedure (SOP) training | Yes | Yes | Yes | Yes |
+| NextCloud account | No | Yes | Yes | Yes |
+| Most recently REB-approved protocol | No | Yes | Yes | Yes |
+| REB approval letter | No | Yes | Yes | Yes |
+| MUHC Authorization letter | No | Yes | Yes | Yes |
+| REB renewal letter, if applicable | No | Yes | Yes | Yes |
+| Privacy impact assessment (EFVP) | No | No | Without consent only | Without consent only |
+
+For de-identified or identifying data, the EFVP depends on consent:
+
+- If the study accesses personal health information without the participants' consent, to screen candidates, it needs the short EFVP (EFVP-FT), on form F17.
+- If the study accesses personal health information without the participants' consent for any other research purpose, it needs the EFVP, on form F18.
+- If the participants have consented to this use of their information, no EFVP is required.
+
+[How to complete the EFVP](/kb/governance/privacy#get-authorization-before-using-health-records-without-consent) is on the privacy page.
+
+Consider requesting the least identifying type of data that answers your research question, since each more identifying type needs more documents before the team releases it.{/* TO CONFIRM (the Data Warehouse team): the old page said "Always request the lowest-risk category sufficient for your research question — each higher category requires additional approvals and justification." No Data Warehouse document says it. TCPS 2, article 5.5A, requires researchers who use identifiable information without consent to satisfy the REB that "identifiable information is essential to the research" (the privacy page's topic). Does the team ask researchers to request the least identifying type? */}
+
+<Warning>
+De-identified data are not anonymized. Their direct identifiers have been replaced by a code, and a key can link the code back to the patients, so the data can still identify people. The requirements for EFVPs and for security differ between the two types. The RI-MUHC's *Researcher's Guide to Data Security* gives only the principal investigator access to the key that links de-identified data to the patient list.{/* TO CONFIRM (the Data Warehouse team, owner of the guide; already asked, 14-open-questions.md: "who holds the key to de-identified data: only the PI (the guide v8) or authorized members of the team (the SOP Glossary)?"). The Hub's home, kb/conduct/data-documentation/data-security, follows the SOP Glossary of Terms ("Give access to the key only to authorized members of the research team"). For MF: the b155 drafter recommends cutting this sentence, which repeats the guide against the home's wording; a cut of a sourced sentence waits for MF. */}
+</Warning>
+
+{/* Sources: the team's Requirements for Opening a Data Request (PDF created Aug. 27, 2025; read on the image Nov. 12, 2026, FACTS "Batch 79, round 2"; tools/_sources_text, "Reference files__Data__Requirements for Opening a Data Request"): the rows "Data Use Agreement", "Valid Human Research Privileges/Researcher Status and SOP training", "Next Cloud Account", "Most recently REB-approved protocol", "REB letter", "PM Final authorization letter", "REB renewal letter (if applicable)", "EFVP" (none for aggregate or anonymized data; "See below" for de-identified and identifying data); "If the study involves access to personal health information WITHOUT study participant's consent for research purposes and the access to data is for screening purposes: EFVP-FT (court) is required."; "If the study involves access to personal health information WITHOUT study participant's consent for research purposes and the access to data is NOT for screening purposes: EFVP is required."; "If the study involves access to personal health information WITH study participant's consent for research purposes: EFVP is NOT required."; the Personne mandatée's office's MEO guide (FACTS "F17 and F18, settled by document"): "F17 | Data access for pre-screening (EFVP-FT)"; "F18 | Data access without consent (EFVP)"; the RI-MUHC's Researcher's Guide to Data Security v8 (FACTS, batch 31: "Only the PI has access to the key linking de-identified information to patient list"); FACTS only: Community Connect #4 (Oct. 2, 2024), "Data types" (the four types). The heading is unchanged: kb/conduct/data-documentation/data-security and paths/retrospective link #requirements-by-data-type (now a level-3 heading; the anchor is the same). From the b155 run draft, unchanged. */}
+
+### Acknowledge the Data Warehouse in publications
+
+If your research used data from the MUHC Data Warehouse, the [Data Warehouse team](mailto:info.ridw@muhc.mcgill.ca) asks you to acknowledge the MUHC Data Warehouse and the RI-MUHC in the Methods, Data Sources or Acknowledgements section of your publication, as appropriate. If you aren't sure of the citation format for your study design or your journal, write to the team.
+
+The team keeps a record of the publications that used Data Warehouse data. If your article is missing from it, the team asks you to [let it know](mailto:info.ridw@muhc.mcgill.ca).{/* TO CONFIRM (the Data Warehouse team): the Portal's publications page sends authors of a missing article to "the form here", and the form's address was not in MF's paste. What is the form's address? Until it is known, the link is the team's address (STYLE-HUB H: the address where the reader needs it). */}
+
+{/* Sources: the Portal's Data Warehouse publications page (pasted by MF, Oct. 23, 2026; ~/Desktop/rimuhc-redesign/_research/digital-health/context/portal-2026-10-23/dw-publications-and-docs.md): "If your research used data from the MUHC Data Warehouse, please acknowledge the MUHC DW and the Research Institute of the MUHC (RI-MUHC) in the Methods, Data Sources, or Acknowledgements section of your publication, as appropriate. If you are uncertain about the appropriate citation format for your specific study design or journal requirements, please contact us at info.ridw@muhc.mcgill.ca."; "We strive to maintain a complete and up-to-date record of all research publications that have used MUHC Data Warehouse data. If your article is not listed above, please let us know by filling out the form here." New in the restructure (the rimuhc.ca redesign chat's lead, HUB-CHANGES-2026-10-23.md §5, checked in the paste): the team's own request of authors. "Asks": the team's own verb is "please" (STYLE-HUB A1). */}
+
+### Resources and tools
+
+<CardGroup cols={2}>
+  <Card title="RI-MUHC Data Warehouse Request Center" icon="arrow-up-right-from-square" href="https://rimuhc.atlassian.net/servicedesk/customer/user/login?destination=portals">
+    Submit consultation requests and data requests, follow their status, write to the team and receive files.
+  </Card>
+  <Card title="Data Dictionary tool" icon="magnifying-glass" href="https://portal.rimuhc.ca/pls/apex/f?p=132:1">
+    Search variables by domain, source system and site, and see each one's sites and start year.{/* TO CONFIRM (the Data Warehouse team): the tool's filters come only from Community Connect #4 (Oct. 2, 2024; session material). Are they right? (b155 fact check, P45.) */}
+  </Card>
+  <Card title="Data Summary (PDF)" icon="file-pdf" href="https://portal.rimuhc.ca/pls/apex/MUHC2.download_my_file?p_file=65514749312768742">
+    See the data available in the Data Warehouse by domain and source system, to plan a protocol.
+  </Card>
+  <Card title="Requirements for Opening a Data Request (PDF)" icon="list-check" href="https://portal.rimuhc.ca/pls/apex/MUHC2.download_my_file?p_file=290508773952215500">
+    Check the full list of requirements by type of data before you submit a request.
+  </Card>
+</CardGroup>
+
+{/* Sources: the Portal's Data Warehouse page (saved Oct. 23, 2026; the Request Center, the Data Summary, the Data Dictionary Tool, the Requirements); FACTS only: Community Connect #4 (Oct. 2, 2024), the Data Dictionary App's filters ("Domain", "Source", "Field Type", "Sites availability", "Direct identifier", "Start Year to End Year"). TO CONFIRM (the Data Warehouse team): the old card's "View value distributions, completeness percentages, and min/max ranges" (not in the saved sources; cut from the card for MF, kept here as a question: does the Data Dictionary tool show them?). Cut: the card's "(sign-in required)" label (STYLE-HUB H). From the b155 run draft, unchanged. */}
+
+## Contacts
+
+| Write to | About |
+|---|---|
+| The Data Warehouse team, [info.ridw@muhc.mcgill.ca](mailto:info.ridw@muhc.mcgill.ca) | Data from the MUHC Data Warehouse, and MDClone. Consultations and data requests go through the [RI-MUHC Data Warehouse Request Center](https://rimuhc.atlassian.net/servicedesk/customer/user/login?destination=portals). MDClone access requests go through the [MDClone Access Request form](https://forms.office.com/pages/responsepage.aspx?id=KP7hBotfdUC_bK4kvhp5koBH7agR8YRInTq4ci_I_T5UQUVDRjJONFlVN0lFOEo4SkQzSlZETFhTSiQlQCN0PWcu&route=shorturl). |
+| The MUHC's Directorate of Innovation, Performance and Quality, [efvp@muhc.mcgill.ca](mailto:efvp@muhc.mcgill.ca) | The privacy impact assessment (EFVP). |
+
+{/* Sources: the Data Warehouse team's row as on paths/retrospective, with "and MDClone" (the MDClone Access Request Guide's header: "For questions, contact your Principal Investigator or the RI-MUHC Data Warehouse Team"; the address question is in the hidden note under "Get access to MDClone") and the MDClone form as a request system (STYLE-HUB H); the EFVP office's row as STYLE-HUB H settles it. */}
+
+{/* Checked against: the RI-MUHC Portal's MDClone page (pasted by MF, Oct. 23 and Nov. 16, 2026), its Data Warehouse, About and publications pages (pasted Oct. 23, 2026); the MDClone Access Request Guide (provided by MF, Nov. 16, 2026; file made Aug. 25, 2026); the Data Warehouse team's Requirements for Opening a Data Request (Aug. 27, 2025, by its file), Data Available in DW, the Data Summary v2.1 (revised Feb. 21, 2024) and the Guidelines on Aggregate Data Requests; the RI-MUHC's Researcher's Guide to Data Security v8; Community Connect #4 (Oct. 2, 2024; session material, a lead only). The page replaces kb/design-support/data-warehouse (MUHC Data Warehouse — Accessing MUHC Patient Data): batch b155's restructure (Nov. 16, 2026; MF, ledger row 223), from the b155 run draft of that page and the Portal's MDClone page. */}
+
+Last reviewed: November 2026.
