@@ -84,6 +84,7 @@
                 "icon": "route",
                 "pages": [
                   "paths/index",
+                  "paths/hc-regulated",
                   "paths/retrospective"
                 ]
               },
