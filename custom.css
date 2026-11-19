@@ -4414,7 +4414,7 @@ a[id]:not([href]) { scroll-margin-top: 170px; }
 /* Scope strip ("Applies to"): STYLE-HUB F1 (MF, Nov. 15, 2026: "tag strip"); compact sizing (MF: "try option 2") */
 .hub-scope{display:flex;flex-wrap:wrap;align-items:center;gap:4px 5px;margin:2px 0 20px;padding:8px 0;border-top:1px solid #d9dce5;border-bottom:1px solid #d9dce5;font-size:12.5px;line-height:1.35}
 .hub-scope-label{flex-basis:100%;font-weight:600;color:#150e51;letter-spacing:.01em;margin-bottom:1px}
-.hub-scope-tag{display:inline-block;padding:1px 7px;border:1px solid #b9c0d4;border-radius:999px;color:#150e51;background:#f4f6fa;white-space:nowrap}
+.hub-scope-tag{display:inline-block;padding:1px 7px;border:1px solid #b9c0d4;border-radius:0;color:#150e51;background:#f4f6fa;white-space:nowrap}
 .dark .hub-scope{border-color:#3a3f55}
 .dark .hub-scope-label{color:#e6e8f0}
 .dark .hub-scope-tag{color:#e6e8f0;background:#1d2133;border-color:#3a3f55}
