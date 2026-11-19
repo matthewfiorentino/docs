@@ -97,14 +97,7 @@
                 "group": "Choose Your Role",
                 "icon": "users",
                 "pages": [
-                  {
-                    "group": "Investigator",
-                    "pages": [
-                      "roles/investigator",
-                      "roles/pi-guide",
-                      "roles/pi-guide-iv-v"
-                    ]
-                  },
+                  "roles/investigator",
                   {
                     "group": "Coordinator",
                     "pages": [
@@ -659,15 +652,15 @@
     },
     {
       "source": "/kb/roles/pi-guide",
-      "destination": "/roles/pi-guide"
+      "destination": "/roles/investigator"
     },
     {
       "source": "/kb/roles/pi-guide-iv",
-      "destination": "/roles/pi-guide-iv-v"
+      "destination": "/roles/investigator"
     },
     {
       "source": "/kb/roles/pi-guide-v",
-      "destination": "/roles/pi-guide-iv-v"
+      "destination": "/roles/investigator"
     },
     {
       "source": "/kb/roles/crc-orientation",
@@ -1399,11 +1392,11 @@
     },
     {
       "source": "/roles/pi-guide-iv",
-      "destination": "/roles/pi-guide-iv-v"
+      "destination": "/roles/investigator"
     },
     {
       "source": "/roles/pi-guide-v",
-      "destination": "/roles/pi-guide-iv-v"
+      "destination": "/roles/investigator"
     },
     {
       "source": "/roles/crc-guide-iv",
@@ -1440,6 +1433,14 @@
     {
       "source": "/roles/observer",
       "destination": "/roles/volunteer-observer"
+    },
+    {
+      "source": "/roles/pi-guide",
+      "destination": "/roles/investigator"
+    },
+    {
+      "source": "/roles/pi-guide-iv-v",
+      "destination": "/roles/investigator"
     }
   ]
 }
