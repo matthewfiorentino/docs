@@ -4603,3 +4603,13 @@ a[id]:not([href]) { scroll-margin-top: 170px; }
 #content-area a.hub-home-cta { display: table; margin-top: 0.6rem; }
 #content-area a.hub-home-cta + a.hub-home-cta { margin-top: 0.75rem; }
 #content-area a.hub-home-cta:not(:has(+ a.hub-home-cta)) { margin-bottom: 1.25rem; }
+
+/* ══════════════════════════════════════════════
+   PATHS (Nov. 18, 2026): the marker over steps only some studies of a kind take (hub-steps), and a stage's ending where the reader waits on something (hub-next). Hairlines, no box, so neither reads as an "Applies to" strip or a callout.
+   ══════════════════════════════════════════════ */
+.hub-steps { margin: 26px 0 10px; padding: 6px 0 0; border-top: 1px solid #d9dce5; font-size: 12.5px; line-height: 1.35; font-weight: 600; letter-spacing: .01em; color: var(--ri-heading); }
+.hub-next { margin: 30px 0 8px; padding: 10px 0 12px; border-top: 1px solid #d9dce5; border-bottom: 1px solid #d9dce5; }
+.hub-next-label { display: block; margin: 0 0 4px; font-size: 12.5px; line-height: 1.35; font-weight: 600; letter-spacing: .01em; color: var(--ri-heading); }
+.hub-next span[data-as="p"], .hub-next p { display: block; margin: 0; }
+.dark .hub-steps, .dark .hub-next-label { color: #e6e8f0; }
+.dark .hub-steps, .dark .hub-next { border-color: #3a3f55; }
