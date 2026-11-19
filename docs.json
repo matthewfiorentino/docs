@@ -191,7 +191,6 @@
                     "expanded": false,
                     "pages": [
                       "kb/team/building-your-team",
-                      "kb/team/hiring-hr-support",
                       "kb/team/edi"
                     ]
                   },
@@ -201,7 +200,6 @@
                     "pages": [
                       "kb/funding/funding-applications",
                       "kb/funding/budgets-contracts",
-                      "kb/funding/budget-negotiation",
                       "kb/funding/clinical-trial-agreements",
                       "kb/funding/research-liability-insurance",
                       "kb/funding/research-grants"
@@ -813,7 +811,7 @@
     },
     {
       "source": "/kb/planning/hiring-hr-support",
-      "destination": "/kb/team/hiring-hr-support"
+      "destination": "/kb/team/building-your-team#hire-staff-and-put-agreements-in-place"
     },
     {
       "source": "/kb/planning/multi-centric",
@@ -1101,7 +1099,7 @@
     },
     {
       "source": "/kb/hiring-hr-support",
-      "destination": "/kb/team/hiring-hr-support"
+      "destination": "/kb/team/building-your-team#hire-staff-and-put-agreements-in-place"
     },
     {
       "source": "/kb/edi",
@@ -1117,7 +1115,7 @@
     },
     {
       "source": "/kb/budget-negotiation",
-      "destination": "/kb/funding/budget-negotiation"
+      "destination": "/kb/funding/budgets-contracts#negotiate-the-budget-with-an-industry-sponsor"
     },
     {
       "source": "/kb/clinical-trial-agreements",
@@ -1414,6 +1412,14 @@
     {
       "source": "/roles/nurse-guide",
       "destination": "/roles/nurse"
+    },
+    {
+      "source": "/kb/team/hiring-hr-support",
+      "destination": "/kb/team/building-your-team#hire-staff-and-put-agreements-in-place"
+    },
+    {
+      "source": "/kb/funding/budget-negotiation",
+      "destination": "/kb/funding/budgets-contracts#negotiate-the-budget-with-an-industry-sponsor"
     }
   ]
 }

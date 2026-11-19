@@ -462,7 +462,7 @@
       ph1.items.push(it('p1-bcu',       'Consult BCU (Biostatistics & Clinical Epidemiology) for study design and statistical planning', 'BCU', '/kb/design-support/bcu'));
     if (p.isRetro)
       ph1.items.push(it('p1-dw',        'Check the MUHC Data Warehouse for variable availability and cohort feasibility before finalizing the protocol', 'MUHC Data Warehouse', '/kb/design-support/data-warehouse'));
-    ph1.items.push(it('p1-budget',      'Develop the study budget — include REB fees, pharmacy, indirect costs, and screen-failure buffer', 'Budgets & contracts', '/kb/funding/budget-negotiation'));
+    ph1.items.push(it('p1-budget',      'Develop the study budget — include REB fees, pharmacy, indirect costs, and screen-failure buffer', 'Budgets & contracts', '/kb/funding/budgets-contracts'));
     if (p.isIndustry)
       ph1.items.push(it('p1-cta-neg',   'Negotiate the Clinical Trial Agreement with the sponsor — allow 60–90 days', 'Clinical trial agreements', '/kb/funding/clinical-trial-agreements'));
     if (p.isSI)

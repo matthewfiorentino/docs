@@ -1,8 +1,8 @@
 ---
 title: "Study Budgets"
 sidebarTitle: "Study Budgets (v2)"
-description: "Build a study budget that includes the RI-MUHC's overhead, the REB and authorization fees a privately funded study pays, and the costs the study's agreements must cover."
-keywords: ["study budget", "overhead", "institutional cost recovery", "REB fees", "indirect costs", "contingency"]
+description: "Build a study budget that includes the RI-MUHC's overhead, the REB and authorization fees a privately funded study pays, and the costs the study's agreements must cover, and negotiate the budget with an industry sponsor."
+keywords: ["study budget", "overhead", "institutional cost recovery", "REB fees", "indirect costs", "contingency", "clinical trial budget", "budget negotiation", "holdback", "screen failure", "exhibit", "payment terms", "sponsor budget"]
 ---
 
 <div className="hub-scope"><span className="hub-scope-label">Applies to</span><span className="hub-scope-tag">Drug studies (Level I)</span><span className="hub-scope-tag">Medical device and surgery studies (Level II)</span><span className="hub-scope-tag">Natural health product studies (Level III)</span><span className="hub-scope-tag">Prospective studies not regulated by Health Canada (Level IV)</span><span className="hub-scope-tag">Retrospective and biobank studies (Level V)</span></div>
@@ -127,23 +127,169 @@ Include the REB and authorization fees in the study budget. If they are not in t
 
 When you close or abandon the project, [notify the REB](/kb/close-out/close-out#notifying-the-reb-and-health-canada). Every REB action before the REB confirms the project's closure is billable.
 
-{/* Sources: MSSS, annex to ministerial directive 2023-016 ("Entrée en vigueur : le 1er avril 2026"; saved Nov. 15, 2026, `evidence/web/msss-2023-016-annexe-2026_fetched-2026-11-15/`, and re-read by b124's second reader: the six amounts; "19 420 $"; items 1 and 2, "si effectué par un comité de l'établissement", "Un seul examen scientifique par projet", "Un seul examen éthique par projet"; its note **, "Au 1er avril de chaque année, il y a indexation en fonction de l'indice des rentes établi conformément à l'article 117 de la Loi sur le régime de rentes du Québec (RLRQ, chapitre R-9). En 2026 : 2 %."), and the MSSS message of March 26, 2026 ("Indexation de 2 % à partir du 1er avril 2026") (FACTS "REB and authorization fees for studies funded by private enterprise"); the MUHC REB's REB-SOP 350.002 (effective Oct. 7, 2025), sections 3 (the researcher declares "all sources of funding for a research project at the time of submission" and is responsible for "Submitting a notice to the REB when closing or abandoning the research project (as per the applicable REB SOP)"), 4 ("Billable item: any REB review provided for in the Fee Schedule, regardless of the decision rendered"; "Billable project", its list, including "Investigator-initiated clinical trials with private or mixed (private and public) funding for which the sponsor is the RI-MUHC"; "Signature of a contract is not required for a project to be considered billable"; "Private enterprise", "all legal persons governed by private law … including … not‑for‑profit organizations"), 5.1.1 ("The Researcher must identify the source of funding for the project in the research project submission form"), 5.1.2 ("the Researcher must provide the information requested at the time of submission, including the corresponding contact information of the private enterprises and the budgets"), 5.1.3 ("If the required billing contact information is not provided at the time of submission, the Researcher must follow up with the contracts office and/or the finance department of the RI-MUHC.") and 5.3.2 ("All REB actions that occur before confirmation by the REB of project closure are billable."); the Regulatory Framework, section 4.2 ("Where the fees are not included in the study budget, the principal investigator is held personally responsible for paying these fees"). */}
+{/* Sources: MSSS, annex to ministerial directive 2023-016 ("Entrée en vigueur : le 1er avril 2026"; saved Nov. 15, 2026, `evidence/web/msss-2023-016-annexe-2026_fetched-2026-11-15/`, and re-read by b124's second reader: the six amounts; "19 420 $"; items 1 and 2, "si effectué par un comité de l'établissement", "Un seul examen scientifique par projet", "Un seul examen éthique par projet"; its note **, "Au 1er avril de chaque année, il y a indexation en fonction de l'indice des rentes établi conformément à l'article 117 de la Loi sur le régime de rentes du Québec (RLRQ, chapitre R-9). En 2026 : 2 %."), and the MSSS message of March 26, 2026 ("Indexation de 2 % à partir du 1er avril 2026") (FACTS "REB and authorization fees for studies funded by private enterprise"); the MUHC REB's REB-SOP 350.002 (effective Oct. 7, 2025), sections 3 (the researcher declares "all sources of funding for a research project at the time of submission" and is responsible for "Submitting a notice to the REB when closing or abandoning the research project (as per the applicable REB SOP)"), 4 ("Billable item: any REB review provided for in the Fee Schedule, regardless of the decision rendered"; "Billable project", its list, including "Investigator-initiated clinical trials with private or mixed (private and public) funding for which the sponsor is the RI-MUHC"; "Signature of a contract is not required for a project to be considered billable"; "Private enterprise", "all legal persons governed by private law … including … not‑for‑profit organizations"), 5.1.1 ("The Researcher must identify the source of funding for the project in the research project submission form"), 5.1.2 ("the Researcher must provide the information requested at the time of submission, including the corresponding contact information of the private enterprises and the budgets"), 5.1.3 ("If the required billing contact information is not provided at the time of submission, the Researcher must follow up with the contracts office and/or the finance department of the RI-MUHC.") and 5.3.2 ("All REB actions that occur before confirmation by the REB of project closure are billable."); the Regulatory Framework, section 4.2 ("Where the fees are not included in the study budget, the principal investigator is held personally responsible for paying these fees"). b272 (the b271 fact check, B11; the coordinator's decision): cut, "Health Canada charges no fee for a Clinical Trial Application (CTA), or for operational requests about clinical trials.", a new addition in b267 with no source (the b124 fact check, BN17, and the b271 fact check: Health Canada's fee pages, read Nov. 15 and Nov. 19, 2026, list no CTA fee but do not say there is none; its ITA guidance says only "ITA applications are not subject to a fee."). */}
 
 ## Negotiate the budget with an industry sponsor
 
 <div className="hub-scope"><span className="hub-scope-label">Applies to</span><span className="hub-scope-tag">Industry-sponsored studies</span></div>
 
-In an industry-sponsored study, the principal investigator negotiates the budget with the sponsor while the [Research Agreements Office](mailto:contracts@muhc.mcgill.ca) negotiates the agreement's clauses. The budget respects the rates the hospital departments set. The research contract must give the total amount granted, and a detailed budget with the cost of each examination, test or other procedure the protocol requires.
+An industry sponsor usually proposes the budget for a clinical trial, and the site negotiates it. In an industry-sponsored study, the principal investigator negotiates the budget with the sponsor while the [Research Agreements Office](mailto:contracts@muhc.mcgill.ca) negotiates the agreement's clauses. The Research Agreements Office does not negotiate or approve the budget. The budget respects the rates the hospital departments set.
 
-[Negotiating an Industry-Sponsored Budget](/kb/funding/budget-negotiation) takes you through the sponsor's proposed budget line by line. For a study run by the CIM, the CIM's budget specialists can help prepare and negotiate it.
+The research contract must give the total amount granted, and a detailed budget with the cost of each examination, test or other procedure the protocol requires.
 
-{/* Sources: the Regulatory Framework, section 4.1.01 ("The research contract must indicate the total amount granted to the researcher, the establishment or the patient, where applicable. It must include a detailed budget breakdown, including the cost of each examination, test or other procedure required by the research protocol."; "in parallel with the negotiation of the contractual clauses, the researcher negotiates the budget with their academic or industry partner in accordance with the standard institutional financial review, respecting the rates established by hospital departments"); FACTS "The Research Facilitator, Nov. 13, 2026", question 2 (the CIM's budget review for studies it runs). */}
+For a study run by the CIM, the [CIM's budget specialists](mailto:nadia.lombardo@muhc.mcgill.ca) can help prepare and negotiate the budget, and they estimate the cost of the CIM services a study uses. Consider contacting them during feasibility, before the clinical trial agreement is signed. Most budget problems come from engaging too late. If the protocol uses CIM services, hospital departments or outside vendors, consider putting their costs in the first budget, before the clinical trial agreement is signed.
+
+The industry sponsor pays the start-up fees, which are invoiced after the service has been provided. Pharmacy fees are invoiced as needed. Start-up, REB and pharmacy fees are not refunded, and researchers cannot waive them.
+
+The RI-MUHC is a hospital authority that is a registered charity, and the clinical trial services it provides to industry sponsors are exempt from the goods and services tax and the harmonized sales tax (GST and HST), so the budget includes neither.
+
+{/* Sources: the Regulatory Framework, section 4.1.01 ("The research contract must indicate the total amount granted to the researcher, the establishment or the patient, where applicable. It must include a detailed budget breakdown, including the cost of each examination, test or other procedure required by the research protocol."; "in parallel with the negotiation of the contractual clauses, the researcher negotiates the budget with their academic or industry partner in accordance with the standard institutional financial review, respecting the rates established by hospital departments"); FACTS "MF, Nov. 12, 2026, later", "Budgets and agreements" ("The Agreements Office has no expertise in negotiating budgets and does not approve them"; added in b267 for the Research Agreements Office's request, ledger row 299); FACTS "The Research Facilitator, Nov. 13, 2026", question 2 (the CIM's budget review for studies it runs); FACTS "The Research Facilitator, Nov. 13, answers 14 to 34", answer 28 ("They are non-refundable, the start-up fees are paid by industry sponsor. They are invoiced after the service has been provided. Pharmacy is invoiced on as-needed basis."). None found: the sponsor usually proposes the budget; the CIM's estimate of its service costs; contacting the CIM during feasibility; engaging late; that researchers cannot waive the start-up, REB and pharmacy fees (wave 3 A18, Pre-Awards); the GST and HST exemption (a 2012 draft policy statement of the Canada Revenue Agency is the only lead, not cited). Moved in b267 from kb/funding/budget-negotiation, which this section replaces. */}
+
+### Prepare the negotiation
+
+Consider these checklists when you prepare the negotiation with the sponsor:
+
+<AccordionGroup>
+  <Accordion title="Documents to gather before you negotiate">
+    - The protocol, draft or final. Its schedule of assessments is the basis of the budget, and every procedure it lists needs a budget line.
+    - The consent form. The form gives the visit details, the procedures described to participants and what participants are promised for compensation.
+    - The sponsor's proposed budget, the starting point of the negotiation.
+    - The exhibit, or financial appendix. The exhibit sets the payment terms: the schedule, the holdback, the invoicing instructions, the currency and the archiving terms.
+    - Quotes from the departments and vendors the study will use. Nursing, pharmacy, ophthalmology, pathology, imaging and laboratory services each set their own costs.
+
+    Consider comparing the protocol's schedule of assessments with the sponsor's proposed budget, procedure by procedure. A procedure the protocol lists and the budget leaves out is a cost the site absorbs unless it is added during the negotiation.
+  </Accordion>
+  <Accordion title="Costs to check in the sponsor's budget">
+    Every industry-sponsored budget covers four kinds of cost: site costs, site management costs, patient costs and patient administration costs. The items most often missing from a sponsor's budget are marked "often missing".
+
+    Site costs:
+
+    - Start-up fees: the REB submission, the pharmacy's set-up, the regulatory documents, the preparation for the site qualification and site initiation visits, the team's training on the protocol and the time spent negotiating the contract.
+    - The [REB and authorization fees](#budget-the-reb-and-authorization-fees).
+    - Pharmacy fees: start-up, dispensing at each visit, drug accountability, storage, on-call pharmacist services and annual maintenance.
+    - The RI-MUHC's [overhead](#include-overhead-in-the-budget).
+    - Archiving: storage, security and retrieval of the documents over [the retention period](/kb/close-out/close-out#supply-reconciliation-and-archiving). Archiving happens at the end of the study and is budgeted at the start.
+    - Laboratory and imaging set-up fees, for the one-time set-up of a department's workflow (often missing). Get the departments' quotes before signing.
+    - Lead site submission fees, if the site leads a multi-site submission in Canada.
+
+    Site management costs:
+
+    - Pre-study and qualification visits: the team's time for the sponsor's visits during feasibility.
+    - Monitoring visits: preparing and hosting on-site and remote visits, retrieving documents and following up.
+    - Protocol amendments: re-training, re-consent, revised source documents and the REB submission for each amendment (often missing from the sponsor's first budget). The average industry trial has several amendments.
+    - Re-consent: the coordinator's and the principal investigator's time for each active participant, for each amendment to the consent form (often missing).
+    - Annual REB renewals: preparing the submission, and the fees, for each year the study is open.
+    - Document translation, for participants who speak neither English nor French, or for Quebec regulatory submissions (often missing).
+    - The close-out visit: preparation, hosting, data cleaning, queries, final drug accountability and regulatory submissions. The visit happens at the end of the study and is budgeted at the start.
+    - Audit support: the team's time to prepare for and take part in an audit by the sponsor, Health Canada, another regulator or the institution (often missing).
+
+    Patient costs, by visit:
+
+    - Screening visits: the consent process, the eligibility assessment and every screening procedure.
+    - Treatment and follow-up visits: every assessment and procedure the protocol requires, priced by the visit's complexity. A 3-hour infusion visit costs more than a 30-minute follow-up.
+    - Screen failures, paid for every procedure completed (often missing).
+    - Re-screening, needed if the protocol allows a participant who failed screening to be screened again (often missing).
+    - Unscheduled visits: the principal investigator's and the coordinator's time, and the participant's stipend (often missing).
+    - Tests that are not standard of care, done only for the research.
+    - Third-party costs: imaging, central and local laboratory work, pathology and ophthalmology. Local laboratories, pathology and imaging cover every protocol procedure an MUHC department outside the research team performs. Get the departments' quotes before you negotiate.
+    - Overnight stays, for phase I or intensive monitoring protocols.
+    - Participant reimbursement: transportation, including taxis for participants who cannot drive, parking, meals and any stipend or reimbursement the consent form promises.
+    - Dry ice and specimen shipping, packaging included, for each shipment of samples to a central laboratory (often missing).
+    - Participant transportation, if the site is to arrange participants' travel (often missing).
+
+    Patient administration costs:
+
+    - The principal investigator's fees: oversight, medical review, sign-off and availability for questions about the protocol, by visit or by participant.
+    - The study coordinator's fees: screening, consent, visits, data entry, queries, source document verification, monitoring visits, serious adverse event reports and regulatory upkeep. The coordinator's time is the line most often underestimated.
+    - The coordinator's and the principal investigator's fees on every participant visit: screening, re-screening, unscheduled and follow-up visits as well as treatment visits.
+    - Research nurse fees, for procedures that need a nurse, such as intravenous administration, blood draws, vital signs and electrocardiograms.
+    - Data entry fees: case report forms, electronic data capture, queries and data cleaning.
+    - Pharmacy administration: dispensing at each visit, accountability and annual fees.
+    - Serious adverse event reporting: the coordinator's and the principal investigator's time to prepare, submit and follow up each report, which adds up in large trials (often missing).
+    - Reviews of the sponsor's safety reports: the principal investigator's time to review and acknowledge each report (often missing).
+
+    Other lines that often become costs no one budgeted:
+
+    - Advertising and recruitment costs, if the site is to recruit actively.
+    - The administrative time for uploading invoices to the sponsor's invoicing portal.
+    - A [contingency](#consider-adding-a-contingency), scaled to the study's complexity.
+  </Accordion>
+  <Accordion title="Payment terms in the exhibit">
+    The exhibit, or financial appendix, sets how and when the site is paid. Most of the negotiation happens here.
+
+    Industry-sponsored trials in Canada are funded in one of two ways:
+
+    - Activity-based funding, the most common. The parties agree a fixed fee for each visit or procedure, paid as milestones are completed, such as enrolment, a completed visit or data entry. Most sponsors propose it.
+    - Position-based funding. The sponsor pays a coordinator's annual cost up front, and specific procedures and pass-through costs are billed separately. Position-based funding is more common in academic and investigator-initiated research, and some sponsors propose it for large or complex trials.
+
+    Consider confirming which model the sponsor proposes before you negotiate the individual lines. Consider also negotiating these terms:
+
+    - Start-up fees payable once the clinical trial agreement is fully executed, not when the first participant enrols, written in the exhibit.
+    - Whether payments are automatic, triggered by milestones in the electronic data capture system, or invoiced. If they are invoiced, confirm the process, the portal and the mailing address.
+    - Payment within 30 to 60 days of a correct invoice.
+    - Monthly or quarterly payment, on a schedule that suits the study's enrolment. Infrequent payments strain the cash flow of a study that enrols slowly.
+    - The currency, Canadian or US dollars, settled before signing, since it affects every line. For a budget in US dollars, how changes in the exchange rate are handled.
+    - One full participant visit paid up front, refundable if no one enrols, which protects the site while enrolment is slow.
+
+    Many sponsors hold back part of each payment until data cleaning or database lock.
+
+    The practice began when data travelled on paper between sites and sponsors, and electronic data capture and real-time monitoring make it harder to justify.
+
+    Consider asking the sponsor to remove the holdback. If it stays, consider negotiating it down and asking for release participant by participant, as each participant's data are cleaned, rather than all at once at the end of the study. Consider also settling what triggers the release: database lock can come months or years after the last participant's last visit.
+
+    Sponsors often cap the payment for screen failures at a fixed ratio, for example one screen failure paid for every three participants randomized. Every screen failure uses the site's resources, however many participants are randomized in the end. Consider negotiating to remove the ratio.
+
+    If the ratio stays, consider basing it on the realistic screen failure rate for your population: rates differ widely between conditions, and the published rates are in [Set a realistic recruitment target](/kb/recruitment/recruitment-enrollment#set-a-realistic-recruitment-target). Consider making sure a screen failure is paid for every procedure completed, not a flat fee. If a participant who failed screening had laboratory tests, imaging and an electrocardiogram, each is paid.
+
+    Consider checking the rest of the exhibit too:
+
+    - The payee's address is the RI-MUHC's, not a personal address.
+    - The invoicing instructions say where and how to send invoices. Some sponsors require invoices through a portal, in a set format.
+    - Every message carries the file number the Research Agreements Office gives the agreement.
+  </Accordion>
+  <Accordion title="Common mistakes">
+    - Underestimating the coordinator's time. Every procedure takes coordinator effort, and it is the cost most often underestimated at Canadian sites.
+    - Accepting the same payment for every visit, whatever its length.
+    - Leaving out the cost of amendments. The average industry trial has several.
+    - Forgetting the departments' fees: pharmacy dispensing, laboratory processing, imaging, dry ice, specimen shipping and participant transportation.
+    - Vague terms for unscheduled visits, which leave the site absorbing their cost.
+    - Accepting terms that strain the cash flow: payment after 90 days, a large holdback or infrequent payments, especially for a site with several trials at once.
+    - Overlooking archiving, a real cost over the whole retention period.
+    - No payment up front. If the ethics review or enrolment is slow, the site is in deficit before the first participant enrols.
+    - Keeping a study that does not enrol open. A study that does not enrol uses the coordinator's time, the pharmacy and regulatory upkeep without revenue, so consider building in a way to renegotiate or close it.
+    - Not benchmarking the rates. Provincial and commercial benchmarking data exist for common procedures. Consider asking the CIM's budget specialists whether rate data are available for your type of study.
+    - Adding tax the site does not charge.
+  </Accordion>
+  <Accordion title="Overhead and tax elsewhere in Canada">
+    The RI-MUHC's [overhead](#include-overhead-in-the-budget) applies to every industry-funded clinical trial. Other Canadian institutions publish their own rates for industry-funded trials:
+
+    | Institution | Overhead rate | Applies to |
+    |---|---|---|
+    | Vancouver Coastal Health Research Institute (VCHRI) | 30 per cent | Industry-funded clinical trials. |
+    | University of Calgary | 30 per cent | Clinical trials. Other industry-funded research carries 40 per cent. |
+    | McMaster University | 40 per cent | Industry-sponsored clinical trials. |
+    | University of British Columbia (UBC) | 40 per cent | All industry funding. Government and non-profit funding carries 25 per cent. |
+
+    Sponsors pay no tax on clinical trial services at a Canadian non-profit research institute, while a for-profit contract research organization must charge it.
+  </Accordion>
+</AccordionGroup>
+
+{/* Sources: none found for the checklists, the payment models and terms and the common mistakes (the b124 fact check, BN7, BN22, BN25, BN26, BN28, BN30; asked of the CIM in 14-open-questions.md, "Centre for Innovative Medicine (CIM)": "The 'about $2,500 per amendment' and the holdback and payment figures on kb/funding/budget-negotiation (CIM Budget Specialists): a source, or drop them"; A112 for the benchmarking data). FACTS "Overhead at other Canadian institutions" (VCHRI overhead guideline, 2021; Calgary, 2024 Research Overhead page; McMaster, Indirect Costs policy, 2025; UBC, Indirect Costs FAQ; read Nov. 8, 2026) (the institutions' table). The published screen failure rates: kb/recruitment/recruitment-enrollment, their home. The overhead, the REB fees, the contingency and the retention period are linked to their homes on this page and on Study Closure (STYLE-HUB B3). Moved in b267 from kb/funding/budget-negotiation as optional detail (STYLE-HUB H), for MF (ledger rows 300 and 301; the other choice was a CANTRAIN link alone). The four tellings of the costs on that page (a table, four dropdowns, a list and a second table) are one list per kind of cost here (STYLE-HUB B2). b272 (MF, the b272 handoff, decisions 9 and 10; the b271 fact check, B30, B35, B36, B40 and B48): cut, with no source found, each figure and the sentences that only carried them: "A screening visit often takes 2 to 3 hours."; "Across the industry, 23 per cent of sites report payment delays of 90 days or more."; "About 76 per cent of clinical trial agreements still have a holdback clause."; the lead-in "Consider these figures as reference points during the negotiation, not as fixed rates:" and its table (screen failure payment \$50 to \$250 or more; ratio 1 for 3 to 1 for 5; holdback 5 to 14 per cent, typically 10 to 14, "Push for 5 per cent, or none"; payment terms 30 to 60 days, "Push back on anything longer than 60 days"; about \$2,500 per amendment, "Budget for at least two or three"). The advice stays in the lists: removing the ratio and basing it on the real rate, removing the holdback and releasing it participant by participant, payment within 30 to 60 days of a correct invoice, and the cost of amendments. Cut too, as U01 58 had removed it (FACTS "Overhead at other Canadian institutions", "No source for"): "Across Canada, rates run from 25 to 40 per cent, and 30 per cent is the most common. Canadian rates are lower than at comparable institutions in the United States, which helps Canada compete for clinical trials." b272 (the b271 fact check, B50, C; decision 12): cut, "Canadian hospital authorities can also claim rebates of part of the GST and HST they pay on research inputs." The CRA's rebate is for a hospital authority "only on activities of operating a public hospital" (batches/b271-merges-factcheck/run/cra-public-service-bodies-rebate_fetched-2026-11-19.txt), not research inputs; in that scope the sentence tells a budget reader nothing to do, so it is out rather than rescoped (for MF). */}
+
+### Finalize the budget before the agreement is signed
+
+When the negotiation is over, the sponsor sends clean final copies of the budget and the exhibit. Consider checking that they match what you agreed, not an earlier draft. Then reply to the sponsor with a copy to the [Research Agreements Office](mailto:contracts@muhc.mcgill.ca). Attach the approved documents as the final version, and give the agreement's file number.
+
+The Research Agreements Office reviews the whole clinical trial agreement before it is signed. Consider checking one last time that the budget attached to the agreement is the version you approved. An error found after signing is costly to correct.
+
+{/* Sources: SOP-CR-007_08, section 5.4.6 ("Important: Researchers should never sign a binding contract or agreement without prior review by the Research Agreements Office."; "the agreements are reviewed for compliance with RI-MUHC policies, procedures and standard legal clauses"); FACTS "MF, Nov. 12, 2026, later", "Budgets and agreements" ("the budget is integrated into the contract between PI and sponsor"; "The Agreements Office has no expertise in negotiating budgets and does not approve them"). None found for the steps, the copy to the office and the file number (the b124 fact check, BN29; asked of the Research Agreements Office). Changed in b267 (ledger row 299): "The Contract Officer reviews the whole clinical trial agreement, your final budget included, before the signatures." rests on no source for "your final budget included", and the office reviews the agreement's legal terms, not the budget; the office's name replaces "your Contract Officer", a title no source gives. */}
 
 <div className="ri-cantrain-callout">
   <a href="/training/cantrain"><img src="/images/cantrain_logo.png" alt="CANTRAIN" className="ri-cantrain-logo" /></a>
   <div className="ri-cantrain-text">
     <p><strong>Looking to go deeper?</strong> Canada's national clinical trials training platform offers free, self-paced courses for RI-MUHC investigators, staff, and trainees. You might be interested in:</p>
     <ul>
+      <li><em>Negotiating and Managing a Budget</em></li>
       <li><em>Contracts and Agreements</em></li>
     </ul>
   </div>
@@ -155,10 +301,13 @@ In an industry-sponsored study, the principal investigator negotiates the budget
 |---|---|
 | The Pre-Awards Office, [pre-awards.rimuhc@muhc.mcgill.ca](mailto:pre-awards.rimuhc@muhc.mcgill.ca) | Overhead, eligible direct costs and the Pre-Awards Checklist. |
 | The Research Agreements Office, [contracts@muhc.mcgill.ca](mailto:contracts@muhc.mcgill.ca) | The study's agreements. |
+| The CIM's Budget Supervisor, [nadia.lombardo@muhc.mcgill.ca](mailto:nadia.lombardo@muhc.mcgill.ca), 514-934-1934, extension 36951 | The budget of a study the CIM runs, and the cost of CIM services. |
 | The Research Grants Office, [researchgrants@muhc.mcgill.ca](mailto:researchgrants@muhc.mcgill.ca) | Research accounts and financial reporting. |
 | The REB, [reb@muhc.mcgill.ca](mailto:reb@muhc.mcgill.ca) | REB fees and whether a study is billable. |
 | The Research Facilitator, [research.facilitator@muhc.mcgill.ca](mailto:research.facilitator@muhc.mcgill.ca) | The Clinical Trial Budget Template, and RI-MUHC processes. |
 
-{/* Checked against: the RI-MUHC Institutional Cost Recovery Policy (effective June 10, 2026); SOP-CR-004_08, SOP-CR-007_08 (May 1, 2025) and SOP-CR-015_08 (June 19, 2023), December 2024 set; the MUHC REB's REB-SOP 350.002 (Oct. 7, 2025); the MSSS's fee schedule, annex to directive 2023-016, in force April 1, 2026 (saved and re-read Nov. 15, 2026); the Regulatory Framework (approved June 15, 2026), sections 4.1.01 and 4.2. Batch b124, Nov. 15, 2026. */}
+{/* Sources: the CIM Budget Supervisor's row as on kb/funding/budget-negotiation (b124) and contacts.mdx ("Budget Supervisor", nadia.lombardo@muhc.mcgill.ca, "514-934-1934 ext. 36951"; a name given as a contact stays until the CIM provides a role inbox, STYLE-HUB A1); the other rows as on this page. The Research Agreements Office's row, "The study's agreements.", unchanged (ledger row 299: the office does not negotiate or approve budgets). */}
+
+{/* Checked against: the RI-MUHC Institutional Cost Recovery Policy (effective June 10, 2026); SOP-CR-004_08, SOP-CR-007_08 (May 1, 2025) and SOP-CR-015_08 (June 19, 2023), December 2024 set; the MUHC REB's REB-SOP 350.002 (Oct. 7, 2025); the MSSS's fee schedule, annex to directive 2023-016, in force April 1, 2026 (saved and re-read Nov. 15, 2026); the Regulatory Framework (approved June 15, 2026), sections 4.1.01 and 4.2; the published overhead pages of VCHRI, the University of Calgary, McMaster University and UBC (read Nov. 8, 2026). Batch b124, Nov. 15, 2026; kb/funding/budget-negotiation merged into this page in batch b267, Nov. 19, 2026. */}
 
 Last reviewed: November 2026.
