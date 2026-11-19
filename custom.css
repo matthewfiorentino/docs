@@ -4418,6 +4418,8 @@ a[id]:not([href]) { scroll-margin-top: 170px; }
 .dark .hub-scope{border-color:#3a3f55}
 .dark .hub-scope-label{color:#e6e8f0}
 .dark .hub-scope-tag{color:#e6e8f0;background:#1d2133;border-color:#3a3f55}
+/* Nov. 19, 2026 (MF: the tables in Studies Regulated by Health Canada's accordions "get kind of crunched/cut off"): inside a table cell a tag wraps, so a long tag stays within its column. */
+td .hub-scope-tag{white-space:normal;display:inline-block;max-width:100%;margin:2px 0}
 
 
 /* ══════════════════════════════════════════════
