@@ -157,7 +157,6 @@
                     "group": "Study Planning",
                     "expanded": false,
                     "pages": [
-                      "kb/planning/planning-overview",
                       "kb/planning/feasibility",
                       "kb/planning/sponsored-trials",
                       "kb/planning/sponsor-investigator",
@@ -239,7 +238,6 @@
                     "group": "Study Conduct",
                     "expanded": false,
                     "pages": [
-                      "kb/conduct/conduct-overview",
                       {
                         "group": "Data and Documentation",
                         "expanded": false,
@@ -579,7 +577,7 @@
   "redirects": [
     {
       "source": "/kb/design-support/study-design",
-      "destination": "/kb/planning/planning-overview"
+      "destination": "/paths"
     },
     {
       "source": "/kb/design-support/data-warehouse",
@@ -743,7 +741,7 @@
     },
     {
       "source": "/kb/conduct/overview",
-      "destination": "/kb/conduct/conduct-overview"
+      "destination": "/kb/foundations/study-lifecycle#6-run-the-study-according-to-the-protocol"
     },
     {
       "source": "/kb/conduct/pediatric-research",
@@ -819,7 +817,7 @@
     },
     {
       "source": "/kb/planning/overview",
-      "destination": "/kb/planning/planning-overview"
+      "destination": "/paths"
     },
     {
       "source": "/kb/planning/research-grants",
@@ -827,7 +825,7 @@
     },
     {
       "source": "/kb/planning/study-design",
-      "destination": "/kb/planning/planning-overview"
+      "destination": "/paths"
     },
     {
       "source": "/kb/planning/study-intake",
@@ -1019,7 +1017,7 @@
     },
     {
       "source": "/kb/planning-overview",
-      "destination": "/kb/planning/planning-overview"
+      "destination": "/paths"
     },
     {
       "source": "/kb/feasibility",
@@ -1079,7 +1077,7 @@
     },
     {
       "source": "/kb/study-design",
-      "destination": "/kb/planning/planning-overview"
+      "destination": "/paths"
     },
     {
       "source": "/kb/bcu",
@@ -1215,7 +1213,7 @@
     },
     {
       "source": "/kb/conduct-overview",
-      "destination": "/kb/conduct/conduct-overview"
+      "destination": "/kb/foundations/study-lifecycle#6-run-the-study-according-to-the-protocol"
     },
     {
       "source": "/kb/data-integrity",
@@ -1420,6 +1418,14 @@
     {
       "source": "/kb/funding/budget-negotiation",
       "destination": "/kb/funding/budgets-contracts#negotiate-the-budget-with-an-industry-sponsor"
+    },
+    {
+      "source": "/kb/planning/planning-overview",
+      "destination": "/paths"
+    },
+    {
+      "source": "/kb/conduct/conduct-overview",
+      "destination": "/kb/foundations/study-lifecycle#6-run-the-study-according-to-the-protocol"
     }
   ]
 }
