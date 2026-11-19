@@ -17,11 +17,11 @@
   },
   {
     "source": "/roles/onboarding-volunteers",
-    "destination": "/roles/volunteer"
+    "destination": "/roles/volunteer-observer"
   },
   {
     "source": "/roles/onboarding-observers",
-    "destination": "/roles/observer"
+    "destination": "/roles/volunteer-observer"
   },
   {
     "source": "/kb/introduction",
@@ -57,11 +57,11 @@
   },
   {
     "source": "/home/volunteer",
-    "destination": "/roles/volunteer"
+    "destination": "/roles/volunteer-observer"
   },
   {
     "source": "/home/observer",
-    "destination": "/roles/observer"
+    "destination": "/roles/volunteer-observer"
   },
   {
     "source": "/kb/roles/pi-orientation",
@@ -109,11 +109,11 @@
   },
   {
     "source": "/kb/roles/onboarding-volunteers",
-    "destination": "/roles/volunteer"
+    "destination": "/roles/volunteer-observer"
   },
   {
     "source": "/kb/roles/onboarding-observers",
-    "destination": "/roles/observer"
+    "destination": "/roles/volunteer-observer"
   },
   {
     "source": "/kb/conduct/biological-specimens",
@@ -798,5 +798,13 @@
   {
     "source": "/roles/nurse-guide",
     "destination": "/roles/nurse"
+  },
+  {
+    "source": "/roles/volunteer",
+    "destination": "/roles/volunteer-observer"
+  },
+  {
+    "source": "/roles/observer",
+    "destination": "/roles/volunteer-observer"
   }
 ]

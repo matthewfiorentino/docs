@@ -115,8 +115,7 @@
                   },
                   "roles/nurse",
                   "roles/trainee",
-                  "roles/volunteer",
-                  "roles/observer"
+                  "roles/volunteer-observer"
                 ]
               },
               {
@@ -608,11 +607,11 @@
     },
     {
       "source": "/roles/onboarding-volunteers",
-      "destination": "/roles/volunteer"
+      "destination": "/roles/volunteer-observer"
     },
     {
       "source": "/roles/onboarding-observers",
-      "destination": "/roles/observer"
+      "destination": "/roles/volunteer-observer"
     },
     {
       "source": "/kb/introduction",
@@ -648,11 +647,11 @@
     },
     {
       "source": "/home/volunteer",
-      "destination": "/roles/volunteer"
+      "destination": "/roles/volunteer-observer"
     },
     {
       "source": "/home/observer",
-      "destination": "/roles/observer"
+      "destination": "/roles/volunteer-observer"
     },
     {
       "source": "/kb/roles/pi-orientation",
@@ -700,11 +699,11 @@
     },
     {
       "source": "/kb/roles/onboarding-volunteers",
-      "destination": "/roles/volunteer"
+      "destination": "/roles/volunteer-observer"
     },
     {
       "source": "/kb/roles/onboarding-observers",
-      "destination": "/roles/observer"
+      "destination": "/roles/volunteer-observer"
     },
     {
       "source": "/kb/conduct/biological-specimens",
@@ -1433,6 +1432,14 @@
     {
       "source": "/kb/conduct/conduct-overview",
       "destination": "/kb/foundations/study-lifecycle#6-run-the-study-according-to-the-protocol"
+    },
+    {
+      "source": "/roles/volunteer",
+      "destination": "/roles/volunteer-observer"
+    },
+    {
+      "source": "/roles/observer",
+      "destination": "/roles/volunteer-observer"
     }
   ]
 }
