@@ -76,7 +76,8 @@
                 "pages": [
                   "index",
                   "is-it-research",
-                  "my-roadmap"
+                  "my-roadmap",
+                  "kb/community/updates"
                 ]
               },
               {
@@ -134,7 +135,6 @@
                 "group": "Community",
                 "icon": "comments",
                 "pages": [
-                  "kb/community/updates",
                   "kb/community/community-connect"
                 ]
               },
@@ -160,8 +160,7 @@
                       "kb/planning/feasibility",
                       "kb/planning/sponsored-trials",
                       "kb/planning/sponsor-investigator",
-                      "kb/planning/iit-startup",
-                      "kb/planning/ai-in-clinical-research"
+                      "kb/planning/iit-startup"
                     ]
                   },
                   {
@@ -211,7 +210,8 @@
                     "pages": [
                       "kb/submission/submission-overview",
                       "kb/submission/preparing",
-                      "kb/submission/tracking-responding"
+                      "kb/submission/tracking-responding",
+                      "kb/governance/privacy"
                     ]
                   },
                   {
@@ -245,7 +245,8 @@
                         "pages": [
                           "kb/conduct/data-documentation/data-integrity",
                           "kb/conduct/data-documentation/data-security",
-                          "kb/conduct/data-documentation/edc-query-management"
+                          "kb/conduct/data-documentation/edc-query-management",
+                          "kb/planning/ai-in-clinical-research"
                         ]
                       },
                       {
@@ -259,12 +260,19 @@
                         ]
                       },
                       {
-                        "group": "Safety Reporting and Compliance",
+                        "group": "Safety Reporting and Changes",
                         "expanded": false,
                         "pages": [
                           "kb/conduct/safety-reporting/reportable-events",
                           "kb/conduct/safety-reporting/deviation-management",
-                          "kb/conduct/safety-reporting/study-amendments",
+                          "kb/conduct/safety-reporting/study-amendments"
+                        ]
+                      },
+                      {
+                        "group": "Monitoring, Audits and Inspections",
+                        "expanded": false,
+                        "pages": [
+                          "kb/governance/quality-assurance",
                           "kb/conduct/safety-reporting/monitoring-audits",
                           "kb/conduct/safety-reporting/hc-inspection-guide"
                         ]
@@ -282,14 +290,12 @@
                 ]
               },
               {
-                "group": "Governance & Oversight",
+                "group": "Laws, Ethics and the MUHC's Framework",
                 "icon": "scale-balanced",
                 "pages": [
                   "kb/governance/laws-regulations",
                   "kb/governance/institutional-structure",
-                  "kb/governance/quality-assurance",
                   "kb/governance/french-language-requirements",
-                  "kb/governance/privacy",
                   {
                     "group": "Research Ethics",
                     "expanded": false,
@@ -313,7 +319,7 @@
                 ]
               },
               {
-                "group": "Team & Governance",
+                "group": "Team and Governance",
                 "pages": [
                   "sops/cr-001",
                   "sops/cr-002",
@@ -369,7 +375,7 @@
                 "icon": "triangle-exclamation"
               },
               {
-                "group": "Monitoring, Data & Oversight",
+                "group": "Monitoring, Data and Oversight",
                 "pages": [
                   "sops/cr-013",
                   "sops/cr-014",
