@@ -85,15 +85,15 @@
   },
   {
     "source": "/kb/roles/crc-guide",
-    "destination": "/roles/crc-guide"
+    "destination": "/roles/coordinator"
   },
   {
     "source": "/kb/roles/crc-guide-iv",
-    "destination": "/roles/crc-guide-iv-v"
+    "destination": "/roles/coordinator"
   },
   {
     "source": "/kb/roles/crc-guide-v",
-    "destination": "/roles/crc-guide-iv-v"
+    "destination": "/roles/coordinator"
   },
   {
     "source": "/kb/roles/nurse-orientation",
@@ -789,11 +789,11 @@
   },
   {
     "source": "/roles/crc-guide-iv",
-    "destination": "/roles/crc-guide-iv-v"
+    "destination": "/roles/coordinator"
   },
   {
     "source": "/roles/crc-guide-v",
-    "destination": "/roles/crc-guide-iv-v"
+    "destination": "/roles/coordinator"
   },
   {
     "source": "/roles/nurse-guide",
@@ -814,5 +814,13 @@
   {
     "source": "/roles/pi-guide-iv-v",
     "destination": "/roles/investigator"
+  },
+  {
+    "source": "/roles/crc-guide",
+    "destination": "/roles/coordinator"
+  },
+  {
+    "source": "/roles/crc-guide-iv-v",
+    "destination": "/roles/coordinator"
   }
 ]
