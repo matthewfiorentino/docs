@@ -6,7 +6,7 @@ flowchart LR
     SP --> QR{"Is the site under<br/>the MUHC REB's<br/>approval?"}
     SP --> Q3{"Is it a drug or<br/>natural health product<br/>trial that needs<br/>Health Canada's<br/>authorization?"}
     QR -->|"Yes"| Q2{"Does the principal<br/>investigator judge that<br/>it meets all three of<br/>the REB's criteria?"}
-    QR -->|"No, another Quebec<br/>REB reviews the study"| E8("`**Report to the reviewing**<br/>**REB, the MUHC REB and**<br/>**the Personne mandatée**<br/>For an SAE at the MUHC<br/>that is unexpected and is<br/>related or possibly<br/>related to the study,<br/>report to the reviewing<br/>REB by its own procedure.<br/>Also report it in Nagano<br/>to the MUHC REB and the<br/>MUHC's Personne mandatée,<br/>without waiting for the<br/>reviewing REB's decision.`")
+    QR -->|"No, another Quebec<br/>REB reviews the study"| E8("`**Report to the reviewing**<br/>**REB, the MUHC REB and**<br/>**the Personne mandatée**<br/>If it is unexpected and<br/>related or possibly<br/>related, report it in<br/>Nagano to the MUHC REB<br/>and the MUHC's Personne<br/>mandatée, without waiting<br/>for the reviewing REB's<br/>decision.`")
     Q2 -->|"Yes"| E2(["`**Expedited REB report**<br/>Report it in Nagano<br/>on form F3H, by<br/>the REB's deadline.`"])
     Q2 -->|"No"| E3(["`**No expedited REB report**<br/>It should be submitted<br/>with the REB's annual<br/>continuing review.`"])
     Q3 -->|"No"| E7(["`**No SAE report to**<br/>**Health Canada**<br/>A device incident, or a<br/>reaction to a marketed<br/>product, has its own<br/>report.`"])
