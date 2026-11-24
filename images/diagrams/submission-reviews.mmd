@@ -1,14 +1,33 @@
 %%{init: {'theme':'base','htmlLabels':false,'flowchart':{'htmlLabels':false,'subGraphTitleMargin':{'top':14,'bottom':10}},'themeVariables':{'primaryColor':'#2b2666','primaryTextColor':'#ffffff','primaryBorderColor':'#2b2666','lineColor':'#888','edgeLabelBackground':'#ffffff','titleColor':'#150e51','fontFamily':'system-ui,sans-serif'}}}%%
 flowchart LR
-    A(["Submit the study in<br/>Nagano (F11), usually<br/>with Health Canada's letter<br/>if the trial needs one"]) --> R["The REB completes the<br/>ethics review, and the<br/>scientific review unless it<br/>recognizes an earlier<br/>peer review"]
+    A(["Submit your study<br/>in Nagano with<br/>the F11 form"]) --> RE["The REB carries out<br/>the ethics review,<br/>where one applies"]
+    A --> SC["The REB carries out the<br/>scientific review. The REB<br/>may recognize a peer<br/>review already done by a<br/>recognized committee. A<br/>peer-reviewed funded<br/>project isn't reviewed<br/>again at the MUHC if you<br/>provide documentation of<br/>its peer review."]
     A --> C["MUHC and RI-MUHC services<br/>complete the institutional<br/>feasibility review"]
-    R --> F["Once the study has been<br/>approved in all three<br/>reviews, and by Health<br/>Canada where it needs<br/>that authorization, the<br/>Personne mandatée issues<br/>MUHC Authorization"]
+    A --> AG["As part of the<br/>institutional feasibility<br/>review, the Research<br/>Agreements Office reviews<br/>the study's agreements"]
+    AG --> SG
+    RE --> RA["The REB approves<br/>the study"]
+    RA ~~~ AG
+    SC --> RA
+    RA --> SG["A clinical trial agreement<br/>can be signed once the REB<br/>has approved the study"]
+    SG --> EX
+    EX["Every agreement must<br/>be fully executed before<br/>MUHC Authorization"]
+    H(["A trial that needs Health<br/>Canada's authorization<br/>has its own application<br/>to Health Canada"]) --> HL["The sponsor sends Health<br/>Canada's letter to the<br/>site. The order of Health<br/>Canada's letter and the<br/>REB's approval can differ."]
+    RA --> F["Once the study has been<br/>approved in all three<br/>reviews, and by Health<br/>Canada where it needs<br/>that authorization, the<br/>Personne mandatée issues<br/>MUHC Authorization"]
     C --> F
+    EX --> F
+    HL --> F
     F --> G(["Recruitment can start<br/>once every start<br/>condition is met"])
 
     style A fill:#150e51,color:#fff,stroke:none
-    style R fill:#2b9ce2,color:#150e51,stroke:none
+    style H fill:#150e51,color:#fff,stroke:none
+    style RE fill:#2b9ce2,color:#150e51,stroke:none
+    style SC fill:#2b9ce2,color:#150e51,stroke:none
     style C fill:#2b9ce2,color:#150e51,stroke:none
+    style AG fill:#2b9ce2,color:#150e51,stroke:none
+    style RA fill:#2b9ce2,color:#150e51,stroke:none
+    style SG fill:#2b9ce2,color:#150e51,stroke:none
+    style EX fill:#2b9ce2,color:#150e51,stroke:none
+    style HL fill:#2b9ce2,color:#150e51,stroke:none
     style F fill:#2b9ce2,color:#150e51,stroke:none
     style G fill:#2b2666,color:#fff,stroke:none
     linkStyle default color:#150e51

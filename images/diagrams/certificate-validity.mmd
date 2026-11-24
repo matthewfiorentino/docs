@@ -1,0 +1,28 @@
+%%{init: {'theme':'base','htmlLabels':false,'flowchart':{'htmlLabels':false,'subGraphTitleMargin':{'top':14,'bottom':10}},'themeVariables':{'primaryColor':'#2b2666','primaryTextColor':'#ffffff','primaryBorderColor':'#2b2666','lineColor':'#888','edgeLabelBackground':'#ffffff','titleColor':'#150e51','fontFamily':'system-ui,sans-serif'}}}%%
+flowchart TB
+    subgraph T ["`**An SOP Reader and Assessment certificate**`"]
+        direction LR
+        A(["Passing the assessment<br/>generates a certificate"]) --> P["Your level's<br/>renewal period"]
+        P --> W["Renew the certificate<br/>within the three months<br/>before it expires."]
+        P --> R["TalentLMS sends an<br/>automatic reminder 90 days<br/>before the certificate<br/>expires. If you have<br/>active studies in Nagano,<br/>renew as soon as the<br/>reminder arrives."]
+        R --> R2["TalentLMS sends<br/>a second reminder<br/>30 days before<br/>it expires."]
+        P --> N["When a study is submitted,<br/>no team member's training<br/>certificate may be within<br/>90 days of expiry. Renew<br/>any certificate that close<br/>to expiry before<br/>submission, or it will not<br/>count in the institutional<br/>feasibility review."]
+        W --> D{"Is the certificate<br/>renewed before<br/>it expires?"}
+        R2 --> D
+        N --> D
+        D -->|"Yes"| RN["At renewal, re-read and<br/>acknowledge every SOP<br/>in the course, then<br/>complete the<br/>assessment again."]
+        RN --> A
+        D -->|"No"| X(["`**Certificate expired**<br/>The certificate expires<br/>at the end of your level's<br/>renewal period.`"])
+    end
+
+    style A fill:#150e51,color:#fff,stroke:none
+    style P fill:#2b9ce2,color:#150e51,stroke:none
+    style W fill:#2b9ce2,color:#150e51,stroke:none
+    style R fill:#2b9ce2,color:#150e51,stroke:none
+    style R2 fill:#2b9ce2,color:#150e51,stroke:none
+    style N fill:#2b9ce2,color:#150e51,stroke:none
+    style D fill:#1a1466,color:#fff,stroke:none
+    style RN fill:#2b9ce2,color:#150e51,stroke:none
+    style X fill:#e4e6ed,color:#150e51,stroke:#888
+    style T fill:#f4f6fb,stroke:#d0d5e2,color:#150e51
+    linkStyle default color:#150e51

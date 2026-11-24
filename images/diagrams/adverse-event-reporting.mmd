@@ -1,21 +1,24 @@
 %%{init: {'theme':'base','htmlLabels':false,'flowchart':{'htmlLabels':false,'subGraphTitleMargin':{'top':14,'bottom':10}},'themeVariables':{'primaryColor':'#2b2666','primaryTextColor':'#ffffff','primaryBorderColor':'#2b2666','lineColor':'#888','edgeLabelBackground':'#ffffff','titleColor':'#150e51','fontFamily':'system-ui,sans-serif'}}}%%
 flowchart LR
-    S(["Adverse event identified,<br/>assessed and recorded on<br/>the AE Assessment Log"]) --> Q1{"Does it meet a<br/>seriousness criterion?"}
+    S(["In an interventional<br/>study, every adverse event<br/>must be assessed and<br/>recorded on the AE<br/>Assessment Log and in the<br/>source documents"]) --> Q1{"Does it meet any<br/>one of the<br/>seriousness criteria?"}
     Q1 -->|"No"| E1(["`**Non-serious AE**<br/>No SAE report.`"])
-    Q1 -->|"Yes"| SP["Report every serious<br/>adverse event to the<br/>sponsor within 24 hours<br/>of the principal<br/>investigator learning of it,<br/>unless the REB-approved<br/>protocol sets a<br/>different timeline"]
-    SP --> Q2{"Does the principal<br/>investigator judge that<br/>it meets all three of<br/>the REB's criteria?"}
+    Q1 -->|"Yes"| SP["Report every serious<br/>adverse event to the<br/>sponsor within 24 hours of<br/>the principal investigator<br/>learning of it, unless the<br/>REB-approved protocol sets<br/>a different timeline"]
+    SP --> QR{"Is the site under<br/>the MUHC REB's<br/>approval?"}
     SP --> Q3{"Is it a drug or<br/>natural health product<br/>trial that needs<br/>Health Canada's<br/>authorization?"}
-    Q2 -->|"Yes"| E2(["`**Expedited REB report**<br/>Report it in Nagano<br/>on form F3H.`"])
+    QR -->|"Yes"| Q2{"Does the principal<br/>investigator judge that<br/>it meets all three of<br/>the REB's criteria?"}
+    QR -->|"No, another Quebec<br/>REB reviews the study"| E8("`**Report to the reviewing**<br/>**REB, the MUHC REB and**<br/>**the Personne mandatée**<br/>For an SAE at the MUHC<br/>that is unexpected and is<br/>related or possibly<br/>related to the study,<br/>report to the reviewing<br/>REB by its own procedure.<br/>Also report it in Nagano<br/>to the MUHC REB and the<br/>MUHC's Personne mandatée,<br/>without waiting for the<br/>reviewing REB's decision.`")
+    Q2 -->|"Yes"| E2(["`**Expedited REB report**<br/>Report it in Nagano<br/>on form F3H, by<br/>the REB's deadline.`"])
     Q2 -->|"No"| E3(["`**No expedited REB report**<br/>It should be submitted<br/>with the REB's annual<br/>continuing review.`"])
-    Q3 -->|"No"| E7(["`**No SAE report to**<br/>**Health Canada**<br/>A device incident, or a<br/>reaction to a marketed<br/>product, has its own report.`"])
+    Q3 -->|"No"| E7(["`**No SAE report to**<br/>**Health Canada**<br/>A device incident, or a<br/>reaction to a marketed<br/>product, has its own<br/>report.`"])
     Q3 -->|"Yes"| Q4{"Are you the<br/>sponsor-investigator?"}
     Q4 -->|"No"| E4(["`**Reported by the sponsor**<br/>The sponsor reports it to<br/>Health Canada when it<br/>meets Health Canada's<br/>criteria.`"])
     Q4 -->|"Yes"| Q5{"Does it meet<br/>Health Canada's<br/>criteria?"}
-    Q5 -->|"Yes"| E5(["`**Report to Health Canada**<br/>Use a CIOMS I form.`"])
+    Q5 -->|"Yes"| E5(["`**Report to Health Canada**<br/>**yourself**<br/>Report it whether or not it<br/>meets the REB's criteria.`"])
     Q5 -->|"No"| E6(["`**No report to**<br/>**Health Canada**`"])
 
     style S fill:#150e51,color:#fff,stroke:none
     style Q1 fill:#1a1466,color:#fff,stroke:none
+    style QR fill:#1a1466,color:#fff,stroke:none
     style Q2 fill:#1a1466,color:#fff,stroke:none
     style Q3 fill:#1a1466,color:#fff,stroke:none
     style Q4 fill:#1a1466,color:#fff,stroke:none
@@ -28,4 +31,5 @@ flowchart LR
     style E5 fill:#2b2666,color:#fff,stroke:none
     style E6 fill:#e4e6ed,color:#150e51,stroke:#888
     style E7 fill:#e4e6ed,color:#150e51,stroke:#888
+    style E8 fill:#2b2666,color:#fff,stroke:none
     linkStyle default color:#150e51
