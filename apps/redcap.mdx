@@ -1,81 +1,102 @@
 ---
-title: "REDCap — Secure Research Data Capture"
-sidebarTitle: "REDCap"
-description: "Request a REDCap project or user account, log in through the RI-MUHC portal, and learn about features, REB requirements, and CORD support."
-keywords: ["REDCap", "data capture", "eCRF", "survey", "REDCap project", "CORD"]
+title: "REDCap"
+sidebarTitle: "REDCap (v2)"
+description: "Request a REDCap project or a REDCap account at the RI-MUHC, log in, and know what must be in place before your project collects data."
+keywords: ["REDCap", "data capture", "eCRF", "survey", "REDCap project", "REDCap user account", "CORD", "CORD Service Request Form"]
 ---
 
-REDCap (Research Electronic Data Capture) is a secure web platform for building and managing online databases and surveys. At the RI-MUHC, REDCap is provided and administered by **CORD** — the Capture and Optimization of Research Data unit — in partnership with the Research Institute.
+REDCap is a secure web platform for building and managing online databases and surveys. The RI-MUHC and its Centre for Outcomes Research and Evaluation (CORE) provide REDCap to support clinical research. [Capture and Optimization of Research Data (CORD)](/kb/design-support/cord), a unit of CORE, hosts the projects and administers REDCap.
 
-## Getting access
+[CORD hosts REDCap projects](/kb/design-support/cord#who-can-use-cord) for teams of the RI-MUHC and of its affiliated institutions, the MUHC and McGill University. Creating and hosting a project has [fees](/kb/design-support/cord#fees).
 
-REDCap access at the RI-MUHC is managed by the CORD team. There are two separate request types — use the correct form for your situation. Allow 2–3 working days for any request to be processed. When a request is submitted, the CORD team is automatically notified.
+[REDCap is meant as an electronic case report form (eCRF) that collects data transcribed from source documents](/kb/design-support/cord#use-redcap-for-a-study). [REDCap may be used for electronic consent only in a study that Health Canada doesn't regulate](/kb/recruitment/consent#obtain-consent-remotely-or-electronically), and only if the basic guidelines that [CORD](mailto:cord@rimuhc.ca) has been preparing with Quality Assurance are followed.
 
-<CardGroup cols={2}>
-  <Card title="New project or CORD support" icon="folder-plus" href="https://portal.rimuhc.ca/cim/redcap/surveys/?s=LPCYP8KP4JHP8C79">
-    Use this form to request a new REDCap project for your study, or to request methodological or data management support from the CORD team.
-  </Card>
-  <Card title="New user or project access" icon="user-plus" href="https://portal.rimuhc.ca/cim/redcap/surveys/?s=SKbfXbvAig">
-    Use this form if you are new to REDCap at the RI-MUHC and need a user account, or if you need to be added as a user to an existing project.
-  </Card>
-</CardGroup>
+{/* Sources: the RI-MUHC REDCap login page (https://portal.rimuhc.ca/cim/redcap/, saved Nov. 25, 2026, batches/b462-training-apps/run-b/web/redcap-login.html): "REDCap is a secure web platform for building and managing online databases and surveys."; "The Research Institute of the McGill University Health Centre (RI-MUHC) and the Centre for Outcomes Research & Evaluation (CORE) are glad to provide access to "REDCap, Research Electronic Data Capture" to support Clinical Research."; its "RI-MUHC REDCap Administrator" link is mailto:cord@rimuhc.ca. The RI Portal's CORD page (pasted by MF, Nov. 16, 2026, evidence/portal-cord-page_pasted-by-MF-2026-11-16/portal-cord-page.md): "The Capture and Optimization of Research Data (CORD) Unit is one of the service platforms under the umbrella of the Centre for Outcomes Research and Evaluation (CORE)." The CORD Service Request Form (saved Nov. 9, 2026, and again Nov. 25, 2026, unchanged): "the RI-MUHC has decided to limit REDCap hosting to our internal teams (RI-MUHC) and our affiliate institutions (MUHC and McGill)"; its fees. SOP-CR-014_08, section 5.8.1 ("Note that the purpose of this system is for use as an eCRF collecting data transcribed from source forms."). The sentences on the eCRF and electronic consent are their homes' sentences, word for word: kb/design-support/cord, "Use REDCap for a study" (from SOP-CR-014_08, section 5.8.1, and FACTS "Electronic consent platforms, studies regulated by Health Canada or not", the Research Facilitator through MF, Nov. 18, 2026: "REDCap, and any platform for that matter, can be used for non-regulated studies, so long as some basic guidelines are followed that the CORD team (ie. Mathieu) was working on with QA to create."). */}
 
-<Note>
-  Once your account is active, log in through the [RI-MUHC REDCap portal](https://portal.rimuhc.ca/cim/redcap/). Do not attempt to access REDCap directly from the Vanderbilt URL — use only the RI-MUHC instance managed by CORD.
-</Note>
+## What REDCap can do
 
-## What REDCap does
+Study teams use REDCap for electronic case report forms, participant surveys, longitudinal data collection, randomization and other data collection. A project can be created quickly and changed at any time, even after data collection has begun. Its features include:
 
-REDCap is designed specifically for clinical and translational research data collection. It can be used for electronic case report forms (eCRFs), participant surveys, longitudinal data collection, randomization, and more. Projects can be set up quickly and modified at any time, including after data collection has begun.
+- Building online surveys and databases in a web browser, from any device, with no extra software.
+- Instrument design with automatic validation, calculated fields, file uploads, branching and skip logic, and survey stop actions.
+- Survey invitations sent with personalized messages to a list of email addresses or phone numbers, with a record of who has responded, or a link to an anonymous survey for mass distribution.
+- Field validation, branching logic and missing data codes that protect data quality during data entry, and data queries that identify and resolve discrepancies as they arise.
+- Custom reports with basic statistics and charts, and exports to Excel, SPSS, SAS, Stata and R.
+- Alerts and notifications to the team by email, text message or phone when certain data are entered or a question has a particular answer.
+- Secure file storage and sharing through the File Repository or the Send-It tool, which also work with exports and the built-in file uploads.
+- An application programming interface (API) that moves data to and from a project, and custom development that connects REDCap to other systems.
 
-<CardGroup cols={2}>
-  <Card title="Online surveys and databases" icon="database">
-    Build and manage data collection instruments in your browser. Access from any device, no extra software required.
-  </Card>
-  <Card title="Advanced instrument design" icon="sliders">
-    Auto-validation, calculated fields, file uploading, branching and skip logic, and survey stop actions.
-  </Card>
-  <Card title="Survey distribution" icon="envelope">
-    Send personalized invitations to participants by email or SMS, track responses, and create anonymous survey links for mass distribution.
-  </Card>
-  <Card title="Data quality controls" icon="shield-check">
-    Field validation, missing data codes, and open data queries to identify and resolve discrepancies in real time.
-  </Card>
-  <Card title="Data export" icon="file-export">
-    Export directly to Excel, SPSS, SAS, Stata, and R. Built-in basic statistics and custom report generation.
-  </Card>
-  <Card title="Alerts and automated triggers" icon="bell">
-    Send real-time email, text, or phone alerts to your team based on specific data entry events or responses.
-  </Card>
-  <Card title="Secure file storage" icon="lock">
-    Upload and share files through the File Repository or Send-It tool. Compatible with exports and built-in file upload features.
-  </Card>
-  <Card title="API and integrations" icon="plug">
-    Use the built-in API to move data to and from your project, or connect REDCap to other systems through custom development.
-  </Card>
-</CardGroup>
+{/* Sources: the RI-MUHC REDCap login page (saved Nov. 25, 2026): "Build online surveys and databases quickly and securely in your browser - Create and design your project using a secure login from any device. No extra software required."; "Fast and flexible - Go from project creation to starting data collection in less than one day. Customizations and changes are possible any time, even after data collection has begun."; "Advanced instrument design features - Auto-validation, calculated fields, file uploading, branching/skip logic, and survey stop actions."; "Diverse and flexible survey distribution options - Use a list of email addresses or phone numbers for your survey respondents and automatically contact them with personalized messages, and track who has responded. Or create a simple link for an anonymous survey for mass email mailings, to post on a website, or print on a flyer."; "Data quality - Use field validation, branching/skip logic, and Missing Data Codes to improve and protect data quality during data entry. Open data queries to automatically identify and resolve discrepancies and other issues real-time."; "Custom reporting - Create custom searches for generating reports to view aggregate data. Identify trends with built-in basic statistics and charts."; "REDCap provides automated export procedures for seamless data downloads to Excel and common statistical packages (SPSS, SAS, Stata, R)"; "Secure file storage and sharing - Upload and share any type of file with anyone in the world through the File Repository feature or Send-It tool. Also works with exports and other built-in file uploading features."; "Data-based triggers and alerts - Send real-time alerts and notifications to your team or other stakeholders via email, text, or phone based on certain data being entered or specific questions having a particular answer."; "Connect to other resources - Use built-in features (API) to move data to/from your project. Build your own custom software development features to connect your project to other systems." The RI-MUHC REDCap Training Resources page (saved Nov. 25, 2026): longitudinal projects, survey projects, "Randomization". SOP-CR-014_08, section 5.8.1 (the eCRF). The cards became a list (STYLE-HUB H: cards that are not links). */}
 
-## Use policy and REB requirement
+## Request a project or an account
 
-REDCap at the RI-MUHC must be used in accordance with the **REDCap Use Policy**. If you are collecting data for human subjects research, your project requires review and approval by your Research Ethics Board before data collection begins. This applies to REDCap projects in the same way as any other data collection method — REDCap is a tool, not an exemption from ethics obligations.
+Every REDCap project and every REDCap account at the RI-MUHC starts with a request to [CORD](mailto:cord@rimuhc.ca). Two forms serve the two kinds of request:
+
+| You need | Use |
+|---|---|
+| A new REDCap project for a study or initiative, or CORD's paid support | The [CORD Service Request Form](https://portal.rimuhc.ca/cim/redcap/surveys/?s=LPCYP8KP4JHP8C79) |
+| A REDCap account, or access to a project that already exists | The [REDCap User Account Request Form](https://portal.rimuhc.ca/cim/redcap/surveys/?s=SKbfXbvAig) |
+
+Staff, students and trainees can submit requests, but each request must be linked to a <Tooltip tip="The investigator who leads the study team at a site and is responsible for conducting the study there." headline="Principal Investigator (PI)" cta="Full definition" href="/kb/foundations/glossary#pi">principal investigator</Tooltip>. The CORD Service Request Form is for requests that CORD bills, not for general questions. For a general question, write to [CORD](mailto:cord@rimuhc.ca).
+
+If this is your first REDCap project and you don't have a REDCap account yet, submit the project request first, then the account request. Account requests are processed after the project has been created in REDCap.
+
+[Every trainee, researcher and administrative staff member must complete a REDCap User Account Request Form and agree to the REDCap Use Policy before receiving access](/kb/design-support/cord#before-your-redcap-project-collects-data). Anyone who does not is denied access.
+
+The principal investigator manages user access and roles in the project, or may designate a team member to do it after the project is created. [Give REDCap access only to team members](/kb/conduct/data-documentation/edc-query-management#get-access-to-the-edc) whose training on it is documented and who have been delegated the task on the Task Delegation Log. Make sure that measures of protection, detection and correction are in place, including a secure electronic signature with an audit trail.
+
+To request an account, or access to an existing project, complete the REDCap User Account Request Form:
+
+1. Give the project's full name as it appears in REDCap, or its project ID (PID). If you don't know the PID, ask the principal investigator or the person who manages user rights in the project.
+2. Give the user's name, email address and role in the project. Confirm the role with the principal investigator.
+3. Answer the form's two required questions on approval: whether the principal investigator has approved the request, and whether the site investigator has approved it. Each question takes "Yes", or "Not applicable" when the person it names is the one completing the form.
+4. Submit the form. The new user then receives a questionnaire that confirms their identity and contact information.
+5. Once the user completes it, [CORD](mailto:cord@rimuhc.ca) creates the account and the user receives an email with their username. If that email doesn't arrive, check the junk mail folder before you write to [CORD](mailto:cord@rimuhc.ca).
+
+Allow 2 to 3 working days for any request to be processed. CORD is notified automatically when a request is submitted.
+
+{/* Sources: the RI-MUHC REDCap login page (saved Nov. 25, 2026): "For a REDCap project or support from CORD, please click here For a new REDCap user account or access to a new project, please click here" (the two forms); "Please allow 2-3 working days for any request to be processed."; "Please also note that when the requests are submitted, the CORD team is automatically notified." The CORD Service Request Form (saved Nov. 9, 2026, and again Nov. 25, 2026): "Staff, students, and trainees can submit requests, but must be linked to a Principal Investigator (PI)."; "If this is your first RI-MUHC REDCap project submission AND that you also do not have a user account yet, submit this project request first, and then click here to submit a new RI REDCap user account request."; "To initiate a request for a REDCap user account, please follow this link." (the REDCap User Account Request Form); "PLEASE NOTE that this is a Cost-Recovery Request form and is NOT intended as a general question form."; the REDCap Service Terms ("I understand that the Principal Investigator is responsible for managing user access and roles in their REDCap project(s) or may designate a team member for this task after project creation."; "I understand that every trainee, researcher, or administrative staff member must fill out a "REDCap User Account Request Form" and agree to the "REDCap Use Policy" before being granted access to the REDCap system. Failure to comply will result in denial of access."), through their home, kb/design-support/cord, "Before your REDCap project collects data". The REDCap User Account Request Form (public, saved Nov. 25, 2026, run-b/web/redcap-user-account-form.html): "Please note that User account requests are processed after a project has been created within the system."; "Please enter either the project name (in full) or the PID of the project"; "If you don't know what your Project ID (PID) is, ask your principal investigator or a person responsible for managing user rights in your RI REDCap project."; "What is the role of the user in the project?"; "Please see the role description below and confirm it with the PI"; "This "User Account Request" is approved by the Principal Investigator for this project"; "This "User Account Request" is approved by the Site Investigator for this project"; "By clicking on the Submit button below, a questionnaire will be sent to … to confirm identity and contact information. Once that second questionnaire is completed, a user account will be created and you will receive an email to … confirming the username."; "If the new user has not received the automated email, please have them check their junk mail folder before following-up with the CORD team." b464 second reader (from the b463 fact check): step 3 gives the form's two required items, each with its answers ("This "User Account Request" is approved by the Principal Investigator for this project * must provide value Yes Not applicable (form completed by PI)"; "This "User Account Request" is approved by the Site Investigator for this project * must provide value Yes Not applicable (form completed by Site Investigator)"; run-b/web/redcap-user-account-form.full.joined.txt), where it read as one approval by either investigator; old text, for MF: "Confirm on the form that the principal investigator, or the site investigator, has approved the request." What a requester answers for a study with no site investigator is asked of CORD (b464 report). The paragraph on user access: kb/conduct/data-documentation/edc-query-management, "Get access to the EDC", also holds the measures of protection, detection and correction (SOP-CR-014_08, section 5.8.3, second sentence: "Ensure that measures of protection, detection, and correction are in place (secure electronic signature with audit trail)."), added there in b464 and repeated here as an obligation (STYLE-HUB B3), with the section's one link to that home on the access sentence. SOP-CR-014_08, sections 5.8.2 and 5.8.3 ("Permit EDC access only to authorized persons with authenticated identification and delegation of this task on the Task Delegation Log."), through their home, kb/conduct/data-documentation/edc-query-management, "Get access to the EDC". The two cards became a table (STYLE-HUB H). */}
+
+## Log in
+
+Log in to the [RI-MUHC's REDCap](https://portal.rimuhc.ca/cim/redcap/) with your REDCap username and password. If you have trouble logging in, use the **Forgot your password?** link on the login page. Do not access REDCap from Vanderbilt University's website. Use only the RI-MUHC's REDCap, which [CORD](mailto:cord@rimuhc.ca) manages.
+
+REDCap must be used in accordance with the REDCap Use Policy, which the login page links.
+
+{/* Sources: the RI-MUHC REDCap login page (saved Nov. 25, 2026): "Please log in with your user name and password. If you are having trouble logging in, try clicking the "Forgot your password" link below."; "As a reminder, the system must be used in accordance with the REDCap Use Policy." (its link: https://portal.rimuhc.ca/i/rimuhc/doc/REDCap policy.pdf, a PDF: the page links the login page that lists it). Kept from the live page with no source found: "Do not attempt to access REDCap directly from the Vanderbilt URL — use only the RI-MUHC instance managed by CORD" (asked of CORD in the batch record; REDCap was created at Vanderbilt University, projectredcap.org "About", saved Nov. 25, 2026). */}
+
+## Before your project collects data
+
+A REDCap project is built in a testing environment, then moves to production status to collect data. [Test the project before it moves to production](/kb/design-support/cord#before-your-redcap-project-collects-data). When it reaches production, all data entered while testing are deleted.
+
+A research study needs approval from a <Tooltip tip="A body, not affiliated with the sponsor, whose main mandate is to approve the start of biomedical research involving human participants and to review it periodically, to protect the participants' rights, safety and well-being." headline="Research Ethics Board (REB)" cta="Full definition" href="/kb/foundations/glossary#reb">research ethics board (REB)</Tooltip> before its REDCap project moves to production and starts collecting data.
 
 <Warning>
-  For studies involving identifiable participant data, your REDCap project setup must be consistent with what was described in your REB submission, including any EFVP (privacy impact assessment) filed with your Nagano submission. If the data collection scope changes, an amendment may be required before the change can be implemented.
+Do not start any research activity, including recruitment, data collection or analysis, until you have both REB approval and MUHC Authorization.
 </Warning>
 
-## Support and contacts
+If the REDCap project is the study's eCRF, make sure that it collects [only data pertinent to the REB-approved protocol](/sops/cr-014#5-7-5). In a study that uses identifiable participant data, the project's setup must be consistent with what the study's REB submission describes, including any privacy impact assessment (<Tooltip tip="The privacy impact assessment, or évaluation des facteurs relatifs à la vie privée, that Quebec's Act respecting health and social services information requires with a researcher's request for access to health and social services information without consent, including access before consent for pre-screening." headline="EFVP (privacy impact assessment)" cta="Full definition" href="/kb/foundations/glossary#efvp">EFVP</Tooltip>) filed with the Nagano submission. If the data the study collects change, submit the change to the REB. [Implement the change only after the REB approves it](/kb/conduct/safety-reporting/study-amendments#wait-for-every-approval-before-you-implement-the-amendment).
 
-<CardGroup cols={2}>
-  <Card title="General support" icon="circle-question">
-    Contact the REDCap administrator for questions, technical issues, or guidance on project setup: [cord@rimuhc.ca](mailto:cord@rimuhc.ca)
-  </Card>
-  <Card title="Training" icon="graduation-cap">
-    Self-directed training videos and documentation are available on the [REDCap Training Resources page](https://portal.rimuhc.ca/cim/redcap/index.php?action=training), accessible after logging in through the RI-MUHC portal.
-  </Card>
-  <Card title="New requests" icon="file-plus">
-    All new project requests and user account requests are submitted through the forms above. Allow 2–3 working days for processing.
-  </Card>
-  <Card title="CORD" icon="building">
-    The Capture and Optimization of Research Data (CORD) unit administers REDCap and provides methodological support for data management at the RI-MUHC.
-  </Card>
-</CardGroup>
+[Sponsors and sponsor-investigators must validate](/kb/design-support/cord#use-redcap-for-a-study) any electronic data capture system they use, REDCap included. For a Health Canada-regulated study, ask [CORD](mailto:cord@rimuhc.ca) for the validation records that cover your use.
+
+{/* Sources: the CORD Service Request Form (saved Nov. 9, 2026, and again Nov. 25, 2026), the REDCap Service Terms: "I acknowledge the necessity of project testing prior to transitioning to Production status and actively collecting data. Upon reaching Production status, I understand that all data, including calendar events, uploaded documents, and survey responses, entered in the testing environment will be deleted."; "I acknowledge the requirement for Research Ethics Board (REB) or Institutional Review Board (IRB) approval before transitioning a research study to production and initiating data collection." (their home: kb/design-support/cord, "Before your REDCap project collects data"). The RI-MUHC REDCap login page (saved Nov. 25, 2026), Quality Assurance's notice: "If you will be collecting data for the purposes of human subjects research, review and approval of the project (protocol, ICF, participant-facing materials including recruitment materials) is required by your Institutional Review Board (REB approval) and the MUHC Pesonne Mandatee (MUHC Authorization) prior to starting your project." Critical rule 1, word for word, which carries the notice's MUHC Authorization (STYLE-HUB B3; SOP-CR-007_08, section 3.0; the Regulatory Framework, section 3.1.02). SOP-CR-014_08, section 5.7.5 ("Ensure that data collected in the CRF only contains data pertinent to the REB-approved protocol (e.g. additional open text fields)."), /sops/cr-014#5-7-5. Kept from the live page's Warning with no source found for "must be consistent", asked of QA in the batch record: "your REDCap project setup must be consistent with what was described in your REB submission, including any EFVP (privacy impact assessment) filed with your Nagano submission". The amendment sentences: the MUHC REB's SOP 405A.001-2, sections 5.1.1 ("The Researcher is responsible for submitting to the REB any change to an approved project.") and 5.1.7 ("Amendments may not be implemented prior to the REB review and approval, except when necessary to eliminate immediate hazards to participants."), through their home, kb/conduct/safety-reporting/study-amendments, "Wait for every approval before you implement the amendment", which carries 5.1.7's exception for an immediate hazard (STYLE-HUB B3: the rule links its home rather than restate the exception). b464 second reader (from the b463 fact check): the live page's "an amendment may be required before the change is implemented" put a "may" where 405A sets a duty for any change to an approved project; old text, for MF: "If the data the study collects change, an amendment may be required before the change is implemented." (its link went to "Know which changes need an amendment"). SOP-CR-014_08, section 5.8.1 ("Sponsors and Sponsor-Investigators must validate any electronic data capture (EDC) system in order to ensure its reliability and precision, as well as its expected performance and compliance with 21 CFR Part 11."), through its home, kb/design-support/cord, "Use REDCap for a study"; MF's REDCap wording, Nov. 9, 2026 (FACTS "Batches 35 and 36": "For a Health Canada-regulated study, ask CORD for the validation records that cover your use"). */}
+
+## Get training and help
+
+[Training videos](https://portal.rimuhc.ca/cim/redcap/index.php?action=training) on the RI-MUHC REDCap's Training Resources page cover the basics, building a project, and REDCap's modules and features. [Any REDCap self-training should be documented on a Training Log](/sops/cr-014#5-8-1). [CORD](mailto:cord@rimuhc.ca) also offers [training on REDCap and help with it throughout the project](/kb/design-support/cord#what-cord-offers).
+
+For questions about REDCap, technical problems or help with project setup, write to CORD, the RI-MUHC's REDCap administrator, at [cord@rimuhc.ca](mailto:cord@rimuhc.ca).
+
+{/* Sources: the RI-MUHC REDCap Training Resources page (https://portal.rimuhc.ca/cim/redcap/index.php?action=training, saved Nov. 25, 2026): "REDCap Training Videos"; "Just Getting Started?"; "Building a Project"; "Basic Features & Modules"; "Special Features within REDCap Projects" (it opened without a sign-in, so the live page's "accessible after logging in through the RI-MUHC portal" is not repeated; STYLE-HUB H: no sign-in labels). SOP-CR-014_08, section 5.8.1 ("Any REDCap self-training should be documented on a Training Log."), /sops/cr-014#5-8-1. The RI-MUHC REDCap login page (saved Nov. 25, 2026): "If you require assistance or have any questions about REDCap, please contact RI-MUHC REDCap Administrator." (mailto:cord@rimuhc.ca). CORD's training and help: kb/design-support/cord, "What CORD offers". */}
+
+## Contacts
+
+| Write to | About |
+|---|---|
+| Capture and Optimization of Research Data (CORD), [cord@rimuhc.ca](mailto:cord@rimuhc.ca) | Data management plans and REDCap. Requests for REDCap projects and billed services go through the [CORD Service Request Form](https://portal.rimuhc.ca/cim/redcap/surveys/?s=LPCYP8KP4JHP8C79). |
+
+{/* Sources: CORD's row as on kb/design-support/cord. */}
+
+{/* Checked against: SOP-CR-007_08 and SOP-CR-014_08 (May 1, 2025); the MUHC REB's SOP 405A.001-2 (Oct. 15, 2024); the RI-MUHC REDCap login page, Training Resources page, CORD Service Request Form and REDCap User Account Request Form (public pages, saved Nov. 25, 2026, batches/b462-training-apps/run-b/web/); the RI Portal's CORD page (pasted by MF, Nov. 16, 2026). Rewritten in batch b462 (Nov. 25, 2026). */}
+
+Last reviewed: November 2026.
