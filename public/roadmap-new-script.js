@@ -19,7 +19,7 @@
  * sponsor question is "si". Several values after the colon mean any of them. Several entries
  * mean all of them. When the answer is "Not sure", the step still shows, as its "ifText"
  * sentence, with who can settle it ("who"). A value written "!x" means the answer does not hold x.
- * "on" can also be a map by type of study, like "stage". "sureOnly" means the step shows only when its
+ * "on" can also be a map by type of study, like "stage", and so can "link" (b505). "sureOnly" means the step shows only when its
  * answers are settled: a "Not sure" answer is covered by another step's "If" line.
  * "paths" lists the types of study the step belongs to:
  *   L1 drug, L2D device, L2S surgery, L3 natural health product,
@@ -177,14 +177,15 @@
         { v: 'unsure', short: 'Not sure', label: 'Not sure', exclusive: true }
       ],
       why: 'Consent to research that could interfere with the integrity of a minor or of an adult who can’t consent follows Quebec’s Civil Code.',
-      whyL5: 'The REB’s Pediatrics panel reviews all projects involving minors. Who consents depends on the participant’s age and whether they can consent.',
+      whyL5: 'If the MUHC REB reviews the study, its Pediatrics panel reviews every project involving minors. Who consents depends on the participant’s age and whether they can consent.',
       mixups: [
         { text: 'Quebec’s Civil Code sets no age for assent.', link: '/kb/recruitment/pediatric-research', paths: 'L1 L2D L2S L3 L4i L4o ANY' }
       ] },
 
     { id: 'q5', key: 'sites', brief: 'Sites', type: 'multi', show: 'all',
       title: 'Besides the MUHC, where else will the study take place?',
-      hint: 'Choose every answer that applies.',
+      titleL5: 'Besides the MUHC, where else will the study take place, or its records, data or samples come from or go?',
+      hint: 'Choose every answer that applies. If the study has other Quebec sites and you don’t know which REB will review it, choose Not sure.',
       options: [
         { v: 'muhc', short: 'The MUHC only',    label: 'Nowhere else. The MUHC is the only site', exclusive: true },
         { v: 'qcmuhc', short: 'Other Quebec institutions, the MUHC REB reviewing',  label: 'Other public institutions in Quebec, with the MUHC REB reviewing the study for every site', clears: 'qcother' },
@@ -372,7 +373,11 @@
       text: 'The principal investigator prepares the budget, negotiates it and approves it.',
       ifText: 'If you sponsor the trial yourself, the principal investigator prepares the budget, negotiates it and approves it.',
       who: 'rf', link: '/kb/funding/budgets-contracts' },
-    { id: 'g-agreement-need', stage: 'plan', paths: 'L4i L4o',
+    /* b505 (the b504 walkthrough, case b): SOP-CR-007, section 5.4.6, requires a research agreement when "There will be
+       receipt or transfer of any human samples and/or human data for the study", in or out, and its scope (section 2.0) is
+       research with human participants at the MUHC/RI-MUHC "for a study that has not already been reviewed by an REB from
+       a different RSSS site". So Level V sees the step unless another Quebec institution's REB reviews the study. */
+    { id: 'g-agreement-need', stage: 'plan', paths: 'L4i L4o L5', /* b507 run-a (A, S2): no condition on which REB reviews; SOP-CR-007 5.4.6 ("receipt or transfer of any human samples and/or human data") and the MEO guide (the MUHC's own feasibility review covers the contract) */
       text: 'Check whether the study needs an agreement, such as for collaborators outside the RI-MUHC, McGill University researchers included.', link: '/kb/funding/clinical-trial-agreements#know-when-the-study-needs-an-agreement' },
     { id: 'g-fund', stage: 'plan', paths: 'L4i L4o L5 ANY',
       text: 'If a grant will fund the study, the Pre-Awards Office helps you prepare the application. When you receive the notice of award, request the study’s account.', link: '/kb/funding/research-grants#request-a-research-account' },
@@ -639,10 +644,14 @@
       who: 'reb', link: '/kb/submission/submission-overview#how-a-study-is-reviewed' },
 
     /* Minors and adults who can’t consent, in a retrospective study (b483). No page states what else a study of
-       minors' records needs, so the step says what Pediatric Research states and sends the reader to the Research Facilitator. */
-    { id: 'c-peds-l5', stage: 'submit', paths: 'L5', on: ['people: minors'],
-      text: 'The REB’s Pediatrics panel reviews all projects involving minors. For what else a study of minors’ records needs, ask the Research Facilitator.',
-      ifText: 'If the study may involve minors, the REB’s Pediatrics panel reviews all projects involving minors. For what else a study of minors’ records needs, ask the Research Facilitator.',
+       minors' records needs, so the step says what Pediatric Research states and sends the reader to the Research Facilitator.
+       b505 (the b504 walkthrough, case a): the Pediatrics panel is one of the MUHC REB's panels (the Centre for Applied
+       Ethics' Research Ethics page: "Pediatrics (PED): All projects involving minors"), and when another Quebec institution's
+       REB reviews the study, "the MUHC REB does not do its own ethics review of the study" (kb/design/multi-centric). So the
+       step shows only where the MUHC REB may review the study ("sites: !qcother"), and its lines name the MUHC REB. */
+    { id: 'c-peds-l5', stage: 'submit', paths: 'L5', on: ['people: minors', 'sites: !qcother'],
+      text: 'The MUHC REB’s Pediatrics panel reviews every project involving minors. For what else a study of minors’ records needs, ask the Research Facilitator.',
+      ifText: 'If the study may involve minors and the MUHC REB reviews it, its Pediatrics panel reviews every project involving minors. For what else a study of minors’ records needs, ask the Research Facilitator.',
       who: 'rf', link: '/kb/recruitment/pediatric-research#prepare-the-reb-submission' },
     { id: 'c-consent-l5', stage: 'plan', paths: 'L5', on: ['people: minors, adults'],
       text: 'If the REB decides that the study needs consent, who consents for a minor or an adult who can’t consent depends on their age and whether they can consent.',
@@ -669,6 +678,8 @@
     { id: 'c-cross', stage: 'submit', paths: 'all', on: ['sites: outside'],
       text: 'Follow International and Cross-Border Studies.',
       ifText: 'If the study will have sites outside Quebec, follow International and Cross-Border Studies.',
+      /* b507 run-a (C, S5): the page's top, as before b505: its new opening paragraph names the three rules a study of
+         existing records, data or samples meets. */
       who: 'rf', link: '/kb/design/cross-border-studies' },
 
     /* EFVP: required */
@@ -824,7 +835,15 @@
     { id: 'c-biobank-policy', stage: 'plan', paths: 'L5', on: ['also: biobank'],
       text: 'A biobank may have its own policies on access to its samples, and researchers should be aware of them.',
       ifText: 'If the study uses samples from a biobank, the biobank may have its own policies on access to them.',
-      who: 'rf', link: '/paths/retrospective#decide-whether-the-study-needs-consent' },
+      /* b505 (the b504 walkthrough, case c): the link opens the biobank page's section that states this rule (TCPS 2,
+         article 12.5, Application); "Use a bank that already exists" doesn't state it. */
+      who: 'rf', link: '/kb/design/biobanks-registries#release-materials-or-data-to-other-researchers' },
+    /* b505: the Centre for Applied Ethics' template for this kind of project, in the words of kb/recruitment/consent-templates,
+       "Choose a protocol template" (the templates page: "A new template is now available"; no source requires its use). */
+    { id: 'c-biobank-protocol', stage: 'plan', paths: 'L5', on: ['also: biobank'],
+      text: 'The Centre for Applied Ethics posts a Use Protocol Template, for a project that uses data or samples already stored in a research biobank.',
+      ifText: 'If the study uses data or samples already stored in a research biobank, the Centre for Applied Ethics posts a Use Protocol Template for that kind of project.',
+      who: 'rf', link: '/kb/recruitment/consent-templates#choose-a-protocol-template' },
     { id: 'c-software', stage: 'plan', paths: 'L5', on: ['also: software'],
       text: 'Ask Health Canada’s Investigational Testing division whether the study needs an ITA, and ask the Research Facilitator whether Level V still applies.',
       ifText: 'If the study develops or validates software on the data or samples, ask Health Canada’s Investigational Testing division whether it needs an ITA, and ask the Research Facilitator whether Level V still applies.',
@@ -986,6 +1005,7 @@
     'c-provincial': 'Real-World Evidence and Pragmatic Trials',
     'c-banktype': 'F11-NIR',
     'c-biobank-policy': 'its own policies',
+    'c-biobank-protocol': 'Use Protocol Template',
     'c-software': 'needs an ITA'
   };
   var MAILS = {
@@ -1061,7 +1081,7 @@
     'c-cim': 'p-site', 'c-cim-phase1': 'p-site', 'c-cim-catalis': 'p-site', 'c-cim-platform': 'p-site', 'c-cim-lab': 'p-site',
     'c-cim-peds': 'p-site', 'c-cim-monitor': 'p-site', 'g-cim-feas': 'p-site',
     'g-data-plan': 'p-data', 'c-waiver': 'p-data', 'c-efvp-may': 'p-data', 'c-cree': 'p-data', 'c-dw': 'p-data', 'c-mdclone': 'p-data',
-    'c-provincial': 'p-data', 'c-biobank-policy': 'p-data',
+    'c-provincial': 'p-data', 'c-biobank-policy': 'p-data', 'c-biobank-protocol': 'p-protocol',
     'c-si-protocol': 'p-protocol', 'g-protocol-design': 'p-protocol', 'g-actctu': 'p-protocol', 'g-stats': 'p-protocol', 'g-redcap': 'p-protocol',
     'c-si-insurance': 'p-sponsor', 'c-si-monitor': 'p-sponsor', 'c-si-tmf': 'p-sponsor', 'c-si-safety': 'p-sponsor', 'c-si-apply': 'p-sponsor',
     'c-si-gmp': 'p-sponsor', 'c-si-ita': 'p-sponsor', 'c-si-device-qa': 'p-sponsor', 'c-si-device-gcp': 'p-sponsor',
@@ -1118,7 +1138,7 @@
     'c-cim-platform': 'CIM platforms', 'c-cim-lab': 'CIM laboratory', 'c-cim-peds': 'CIM pediatric space', 'c-cim-monitor': 'CIM monitoring',
     'g-cim-feas': 'Planning with the CIM',
     'g-data-plan': 'Choosing the data', 'c-waiver': 'Use without consent', 'c-efvp-may': 'EFVP may be required', 'c-cree': 'Cree joint review',
-    'c-dw': 'Data Warehouse advice', 'c-mdclone': 'Synthetic data', 'c-provincial': 'Quebec’s provincial databases', 'c-biobank-policy': 'Biobank policies',
+    'c-dw': 'Data Warehouse advice', 'c-mdclone': 'Synthetic data', 'c-provincial': 'Quebec’s provincial databases', 'c-biobank-policy': 'Biobank policies', 'c-biobank-protocol': 'Biobank protocol',
     'c-si-protocol': 'Writing the protocol', 'g-protocol-design': 'What the protocol sets', 'g-actctu': 'Protocol template', 'g-stats': 'Statistical advice',
     'g-redcap': 'Data collection in REDCap',
     'c-si-insurance': 'Insurance', 'c-si-monitor': 'Monitoring independence', 'c-si-tmf': 'Sponsor’s files', 'c-si-safety': 'Monitoring plan',
@@ -1377,6 +1397,12 @@
     return obj[field];
   }
 
+  /* A step's link for a type of study: a string, or a map by type (b505). */
+  function linkOf(step, p) {
+    if (typeof step.link === 'string') return step.link;
+    return step.link.hasOwnProperty(p) ? step.link[p] : step.link['default'];
+  }
+
   function whoOf(step, p) {
     if (!step.who) return CONTACTS.rf;
     if (typeof step.who === 'string') return CONTACTS[step.who];
@@ -1402,7 +1428,7 @@
       var target = byId[st];
       if (!target) return;
       var item = { id: step.id, stage: st, text: r === 'maybe' && step.ifText ? step.ifText : step.text, conditional: !!onOf(step, p),
-                   link: step.link, kw: step.kw || null, mails: step.mails || null, note: step.note || null, group: groupOf(step, st),
+                   link: linkOf(step, p), kw: step.kw || null, mails: step.mails || null, note: step.note || null, group: groupOf(step, st),
                    name: step.name || null, kwName: !!step.kwName, why: step.why || null, asks: !!step.asks,
                    mixups: stepMixups(step.id, p),
                    maybe: r === 'maybe', maybeFrom: r === 'maybe' ? maybeSource(step, a, p) : [],
@@ -1674,7 +1700,7 @@
     window.__rmnLogic = {
       CONTACTS: CONTACTS, TYPES: TYPES, STAGES: STAGES, STAGE_ANCHORS: STAGE_ANCHORS, QUESTIONS: QUESTIONS, STEPS: STEPS,
       FIELDS: FIELDS, qTitle: qTitle, qWhy: qWhy, screenMixups: screenMixups, stepMixups: stepMixups, MIX_BY_STEP: MIX_BY_STEP, WARNING: WARNING, GOVERNS: GOVERNS, STAGE_ORDER: STAGE_ORDER,
-      onOf: onOf, stepApplies: stepApplies, stageOf: stageOf, toggleAnswer: toggleAnswer, MIX_STEP: MIX_STEP,
+      onOf: onOf, linkOf: linkOf, stepApplies: stepApplies, stageOf: stageOf, toggleAnswer: toggleAnswer, MIX_STEP: MIX_STEP,
       pathOf: pathOf, authOf: authOf, visibleQuestions: visibleQuestions, optionsFor: optionsFor, buildResult: buildResult,
       buildSummary: buildSummary, buildMailBody: buildMailBody, mailtoUrl: mailtoUrl, outlookUrl: outlookUrl, muhcDate: muhcDate,
       /* b488 */
