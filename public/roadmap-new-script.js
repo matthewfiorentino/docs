@@ -60,7 +60,7 @@
     L4o: { name: 'a prospective study not regulated by Health Canada', level: 'Level IV', path: '/paths/level-iv', pathTitle: 'Prospective Studies Not Regulated by Health Canada',
            reason: 'The study follows participants from the time they are identified, for outcomes or events that happen afterwards.',
            reasonSI: 'For a study that Health Canada does not regulate, the RI-MUHC’s standard operating procedures (SOPs) call the principal investigator of an investigator-initiated study its sponsor-investigator.' },
-    L5:  { name: 'a retrospective study', level: 'Level V', path: '/paths/retrospective', pathTitle: 'Retrospective and Secondary-Data Research',
+    L5:  { name: 'a retrospective study', level: 'Level V', path: '/paths/retrospective', pathTitle: 'Retrospective and Biobank Studies',
            reason: 'A study that uses only data that already exist, or only samples already held in a biobank, is at Level V.' },
     ANY: { name: null, level: null, path: '/paths', pathTitle: 'Types of Study',
            reason: 'The type of study decides whether Health Canada must authorize it, which SOPs apply and what training its team needs.' }
