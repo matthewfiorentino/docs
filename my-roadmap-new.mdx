@@ -1,0 +1,26 @@
+---
+title: "My Study Roadmap (new)"
+sidebarTitle: "My Study Roadmap (new)"
+mode: "wide"
+description: "Answer a few questions about your study to find out its type and what to do at each stage."
+---
+
+import { useEffect } from 'react'
+
+export const StudyRoadmapNew = () => {
+  useEffect(() => {
+    if (typeof window.__rmnInit === 'function') {
+      window.__rmnInit();
+    } else {
+      const s = document.createElement('script');
+      s.src = '/roadmap-new-script.js';
+      s.onload = () => window.__rmnInit && window.__rmnInit();
+      document.body.appendChild(s);
+    }
+  }, []);
+  return <div id="rmn-root" />;
+};
+
+<StudyRoadmapNew />
+
+{/* Batch b482 (Nov. 26, 2026; MF, ledger rows 401 to 413): a mock-up of the rebuilt roadmap, beside the old page (my-roadmap), which stays for comparison. The script, roadmap-new-script.js, holds the questions and the steps as one readable list at its top; every step is one line and a link to its home, with the home's words in batches/b482-roadmap-mockup/run/RECORD.md. Any .js file in the repository loads on every page of the Mintlify site, so the script does nothing unless #rmn-root is on the page; the fallback above loads it by name only if it hasn't loaded already. It sends and stores nothing. b483 (Nov. 26, 2026; MF, ledger rows 414 and 415): a voice pass on every line a reader sees; Level V now asks the minors question; each step links its key words; condition labels sit on their own line (batches/b483-roadmap-voice/run/VOICE.md). b485 (Nov. 26, 2026; MF, ledger row 420): the fixes of the logic review b484 (batches/b485-roadmap-logic-fixes/run/FIXES.md). b488 (Nov. 26, 2026; MF, ledger rows 401 to 432): the result in the approved look (study panel, a timeline of stage buttons, themed groups with short names), the CIM question, mode wide (no "On this page"), and an audit of every screen against MF's six principles (batches/b488-roadmap-round/run/AUDIT.md). b491 (Nov. 26, 2026; the coordinator's findings, ledger row 437): empty step marks, bold names that no longer repeat their sentence (the link on the name where the sentence no longer names it), a lighter study panel, answers that an earlier answer settles no longer offered, the start screen no longer repeating the description, the Task Delegation Log and the sponsor's obligations moved to groups that fit them at Run (batches/b491-roadmap-polish/run/RECORD.md). b492 (Nov. 26, 2026; MF, ledger row 440): a warm start screen that says how long the tool is; the reason for each question as a static note beside the answers (below them on a phone), no longer a toggle; the question's number; the sponsor question in the readers' own terms; the two critical rules' names "Training first" and "Safety reporting" (batches/b492-roadmap-warm/run/RECORD.md). b493 (Nov. 26, 2026; ledger row 413): the blind fact check of its text (batches/b493-roadmap-factcheck/run/REPORT.md). b494 (Nov. 26, 2026): its nine A findings fixed from their sources, the triggers of six steps widened only as far as their sources reach (batches/b494-roadmap-factcheck-fixes/run/RECORD.md); its B findings wait for their owners' answers. */}
