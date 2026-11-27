@@ -484,6 +484,10 @@
       text: 'Before you implement an amendment, wait for every approval it needs.', link: '/kb/conduct/safety-reporting/study-amendments#wait-for-every-approval-before-you-implement-the-amendment' },
     { id: 'g-renew', stage: 'run', paths: 'all',
       text: 'Before the REB’s approval expires, request the continuing review in Nagano, by the deadline the RI-MUHC’s SOPs set.', link: '/kb/submission/submission-overview#before-recruitment-and-keeping-approval-valid' },
+    /* b498 (the b495 pooled look's list 1 (a)): REB-SOP 105B.002, section 5.2.5, has the researcher disclose any conflict
+       of interest at each continuing review and whenever one arises, so a reader at Run can act on it. */
+    { id: 'g-coi-update', stage: 'run', paths: 'all',
+      text: 'Declare your conflicts of interest to the REB at each continuing review of the study, and whenever a conflict arises, such as when your responsibilities or financial circumstances change.', link: '/kb/governance/conflict-of-interest#declare-a-conflict-to-the-reb-that-reviews-your-study' },
     { id: 'g-tdl-update', stage: 'run', paths: 'L1 L2D L2S L3 L4i L4o ANY',
       text: 'The Task Delegation Log should be kept up to date throughout the study.', link: '/kb/conduct/study-operations/team-management#keep-the-task-delegation-log-up-to-date' },
     { id: 'g-monitor', stage: 'run', paths: 'L1 L2D L2S L3',
@@ -498,11 +502,18 @@
     /* b494 (the b493 fact check's A2): the RI-MUHC's SOPs don't require drug accountability records for a drug that is the
        subject of a Phase IV clinical trial (SOP-CR-010, Addendum 1.4.3), so for a drug trial the step needs the drug not to be
        a marketed drug used within the conditions of its approval (Health Canada's Phase IV). The natural health product and
-       device rows are unchanged: the exemption names drugs, and QA is asked whether it reaches a natural health product. */
+       device rows are unchanged: the exemption names drugs, and QA is asked whether it reaches a natural health product.
+       b498 (the b495 pooled look's rows 12 and 13): the exemption covers the drug under study, not every investigational
+       product of the trial (SOP-CR-016, section 5.3.1: the logs "for all investigational products"; SOP-CR-010, Addendum
+       1.4.3, exempts a comparator only if it "hasn't been altered in any manner"). So the "If" line keeps the duty and points
+       to the exemptions, and a Phase IV drug trial gets its own line (g-ip-account-p4) instead of none. */
     { id: 'g-ip-account', stage: 'close', paths: 'L1 L2D L3', on: { L1: ['hc: !within'], 'default': null },
       text: 'Every unit of the investigational product must be fully accounted for in the log.',
-      ifText: 'Unless the trial uses a drug marketed in Canada within the conditions of its approval, every unit of the investigational product must be fully accounted for in the log.',
+      ifText: 'Every unit of the investigational product must be fully accounted for in the log. The RI-MUHC’s SOPs do not require drug accountability records for some drugs, such as a drug that is the subject of a Phase IV clinical trial.',
       who: 'rf', link: '/kb/close-out/close-out#supply-reconciliation-and-archiving' },
+    { id: 'g-ip-account-p4', stage: 'close', paths: 'L1', on: ['hc: within'], sureOnly: true,
+      text: 'The RI-MUHC’s SOPs do not require drug accountability records for some drugs, such as a drug that is the subject of a Phase IV clinical trial. Health Canada calls a trial of a marketed drug within the conditions of its approval a Phase IV clinical trial. Every unit of any other investigational product, such as a placebo or a comparator drug that has been altered, must still be fully accounted for in the log.',
+      who: 'rf', link: '/kb/conduct/study-operations/investigational-products#keep-the-accountability-records' },
     { id: 'g-f10', stage: 'close', paths: 'all',
       text: 'When the conditions for closure are met, notify the REB and the Personne mandatée with the Closure of Research Project form in Nagano.', link: '/kb/close-out/close-out#notifying-the-reb-and-health-canada' },
     { id: 'g-archive', stage: 'close', paths: 'all',
@@ -695,7 +706,9 @@
       text: 'Consider asking the Directorate of Innovation, Performance and Quality before the protocol is final.',
       ifText: 'If participants’ information will leave Quebec, or the study acquires, develops or alters technology to handle it, consider asking the Directorate of Innovation, Performance and Quality before the protocol is final.',
       who: 'efvp', link: '/kb/governance/privacy#know-when-an-efvp-is-needed' },
-    { id: 'c-dta', stage: { L4i: 'plan', L4o: 'plan', L5: 'plan', 'default': 'submit' }, paths: 'all', on: ['efvp: leave'],
+    /* b498 (the b495 pooled look's rows 16 and 17): Levels I to III have c-dta-sites, below, for every study, so c-dta
+       is for the other types only, and the two never show together. */
+    { id: 'c-dta', stage: { L4i: 'plan', L4o: 'plan', L5: 'plan', 'default': 'submit' }, paths: 'L4i L4o L5 ANY', on: ['efvp: leave'],
       text: 'Before data go to a site outside the MUHC or come from one, all parties must sign a data sharing or transfer agreement.',
       ifText: 'If data will go to a site outside the MUHC or come from one, all parties must sign a data sharing or transfer agreement first.',
       who: 'rf', link: '/kb/conduct/data-documentation/data-security#put-an-agreement-in-place-before-data-leave-or-arrive',
@@ -704,8 +717,11 @@
        non-MUHC site, not only information leaving Quebec, so a study with other sites sees the same line. Levels I to III
        only: the SOP-CR series binds them, and whether the SOP-LR series sets the same rule for Levels IV and V is asked of QA
        (those levels keep c-dta, on information leaving Quebec, as before). It never shows with c-dta: "!leave" leaves that
-       answer to c-dta, and "sureOnly" leaves a Not sure answer to c-dta's "If" line. */
-    { id: 'c-dta-sites', stage: 'submit', paths: 'L1 L2D L2S L3', on: ['sites: qcmuhc, qcother, outside', 'efvp: !leave'], sureOnly: true,
+       answer to c-dta, and "sureOnly" leaves a Not sure answer to c-dta's "If" line.
+       b498 (the b495 pooled look's rows 16 and 17): no answer shows whether data go to or come from a non-MUHC site (a
+       Not sure on the sites, or a study whose only site is the MUHC but whose data come from elsewhere in Quebec, reached
+       no line), so the step shows to every study at Levels I to III. Its sentence carries its own condition. */
+    { id: 'c-dta-sites', stage: 'submit', paths: 'L1 L2D L2S L3',
       text: 'Before data go to a site outside the MUHC or come from one, all parties must sign a data sharing or transfer agreement.',
       who: 'rf', link: '/kb/conduct/data-documentation/data-security#put-an-agreement-in-place-before-data-leave-or-arrive',
       early: 'Every agreement must be fully executed before MUHC Authorization.' },
@@ -888,12 +904,14 @@
     'g-device-acc': 'accountability records',
     'g-consent-current': 'consent valid',
     'g-amend': 'wait for every approval it needs',
+    'g-coi-update': 'conflicts of interest',
     'g-renew': 'continuing review',
     'g-tdl-update': 'Task Delegation Log',
     'g-monitor': 'monitoring visit',
     'g-audit-notify': 'planned audit or inspection',
     'g-closeout-visit': 'close-out visit',
     'g-ip-account': 'in the log',
+    'g-ip-account-p4': 'some drugs',
     'g-f10': 'Closure of Research Project form',
     'g-archive': 'retention period',
     'g-results': 'make their results public',
@@ -1070,9 +1088,9 @@
     'g-ae': 'u-safety', 'g-rule4': 'u-safety', 'g-reb-sae': 'u-safety', 'g-events-reb': 'u-safety', 'g-pregnancy': 'u-safety',
     'g-deviations': 'u-safety', 'c-marketed': 'u-safety', 'c-hospital-device': 'u-safety', 'c-si-report-hc': 'u-safety',
     'c-meo-sae': 'u-safety', 'c-other-site-sae': 'u-safety',
-    'g-consent-current': 'u-current', 'g-amend': 'u-current', 'g-renew': 'u-current', 'c-si-hc-obligations': 'u-sponsor',
+    'g-consent-current': 'u-current', 'g-amend': 'u-current', 'g-coi-update': 'u-current', 'g-renew': 'u-current', 'c-si-hc-obligations': 'u-sponsor',
     'g-monitor': 'u-monitor', 'g-audit-notify': 'u-monitor', 'g-closeout-visit': 'u-monitor',
-    'g-ip-account': 'x-close', 'g-f10': 'x-close', 'g-early-stop': 'x-close',
+    'g-ip-account': 'x-close', 'g-ip-account-p4': 'x-close', 'g-f10': 'x-close', 'g-early-stop': 'x-close',
     'g-archive': 'x-archive', 'g-results': 'x-archive', 'c-destroy': 'x-archive',
     /* by stage */
     'g-register': { plan: 'p-sponsor', ready: 'r-register' },
@@ -1131,9 +1149,9 @@
     'g-ae': 'Event assessment', 'g-rule4': 'Safety reporting', 'g-reb-sae': 'Expedited reports', 'g-events-reb': 'Reportable events',
     'g-pregnancy': 'Pregnancy', 'g-deviations': 'Deviation tiers', 'c-marketed': 'Reaction reports', 'c-hospital-device': 'Device incidents',
     'c-si-report-hc': 'Reports to Health Canada', 'c-meo-sae': 'The other REB', 'c-other-site-sae': 'Other sites',
-    'g-consent-current': 'Valid consent', 'g-amend': 'Changes to the study', 'g-renew': 'Renewal', 'c-si-hc-obligations': 'After the start',
+    'g-consent-current': 'Valid consent', 'g-amend': 'Changes to the study', 'g-coi-update': 'Conflicts during the study', 'g-renew': 'Renewal', 'c-si-hc-obligations': 'After the start',
     'g-monitor': 'The sponsor’s monitor', 'g-audit-notify': 'Audits and inspections', 'g-closeout-visit': 'Preparing for close-out',
-    'g-ip-account': 'Product accountability', 'g-f10': 'The F10', 'g-early-stop': 'A trial stopped early',
+    'g-ip-account': 'Product accountability', 'g-ip-account-p4': 'Phase IV accountability', 'g-f10': 'The F10', 'g-early-stop': 'A trial stopped early',
     'g-archive': 'Retention period', 'g-results': 'Publication', 'c-destroy': 'Destroying the information',
     'g-register': 'Trial registration', 'g-controls': 'Data controls', 'g-breach': 'Lost information',
     'c-noconsent': 'EFVP required', 'c-dta': 'Data sharing agreement', 'c-dta-sites': 'Data sharing agreement', 'c-indig': 'Indigenous participants', 'c-equipment': 'Study equipment'
