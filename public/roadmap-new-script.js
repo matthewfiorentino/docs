@@ -719,7 +719,7 @@
       who: 'efvp', link: '/kb/governance/privacy#know-when-an-efvp-is-needed' },
     /* b498 (the b495 pooled look's rows 16 and 17): Levels I to III have c-dta-sites, below, for every study, so c-dta
        is for the other types only, and the two never show together. */
-    { id: 'c-dta', stage: { L4i: 'plan', L4o: 'plan', L5: 'plan', 'default': 'submit' }, paths: 'L4i L4o L5 ANY', on: ['efvp: leave'],
+    { id: 'c-dta', stage: { L4i: 'plan', L4o: 'plan', L5: 'plan', 'default': 'submit' }, paths: 'L4i L4o L5', on: ['efvp: leave'],
       text: 'Before data go to a site outside the MUHC or come from one, all parties must sign a data sharing or transfer agreement.',
       ifText: 'If data will go to a site outside the MUHC or come from one, all parties must sign a data sharing or transfer agreement first.',
       who: 'rf', link: '/kb/conduct/data-documentation/data-security#put-an-agreement-in-place-before-data-leave-or-arrive',
@@ -732,7 +732,7 @@
        b498 (the b495 pooled look's rows 16 and 17): no answer shows whether data go to or come from a non-MUHC site (a
        Not sure on the sites, or a study whose only site is the MUHC but whose data come from elsewhere in Quebec, reached
        no line), so the step shows to every study at Levels I to III. Its sentence carries its own condition. */
-    { id: 'c-dta-sites', stage: 'submit', paths: 'L1 L2D L2S L3',
+    { id: 'c-dta-sites', stage: 'submit', paths: 'L1 L2D L2S L3 ANY', /* b511 run-a (A, row 13): a reader whose type is not settled may be at Levels I to III, where SOP-CR-106 Addendum 1.1 requires the agreement */
       text: 'Before data go to a site outside the MUHC or come from one, all parties must sign a data sharing or transfer agreement.',
       who: 'rf', link: '/kb/conduct/data-documentation/data-security#put-an-agreement-in-place-before-data-leave-or-arrive',
       early: 'Every agreement must be fully executed before MUHC Authorization.' },
