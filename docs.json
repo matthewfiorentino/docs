@@ -163,16 +163,6 @@
                     ]
                   },
                   {
-                    "group": "Design Support",
-                    "expanded": false,
-                    "pages": [
-                      "kb/design-support/act-ctu",
-                      "kb/design-support/bcu",
-                      "kb/design-support/cord",
-                      "kb/design-support/patient-data"
-                    ]
-                  },
-                  {
                     "group": "Building Your Team",
                     "expanded": false,
                     "pages": [
@@ -418,6 +408,21 @@
                 "pages": [
                   "cim/services",
                   "cim/planning"
+                ]
+              }
+            ]
+          },
+          {
+            "tab": "Services",
+            "groups": [
+              {
+                "group": "Research Services",
+                "icon": "handshake",
+                "pages": [
+                  "kb/design-support/bcu",
+                  "kb/design-support/cord",
+                  "kb/design-support/act-ctu",
+                  "kb/design-support/patient-data"
                 ]
               }
             ]
